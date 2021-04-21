@@ -1,3 +1,10 @@
+# Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
+# Initialization code that may require console input (password prompts, [y/n]
+# confirmations, etc.) must go above this block; everything else may go below.
+if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
+  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
+fi
+
 # Source manjaro-zsh-configuration
 #if [[ -e /usr/share/zsh/manjaro-zsh-config ]]; then
 #  source /usr/share/zsh/manjaro-zsh-config
@@ -110,3 +117,36 @@ zinit light-mode for \
     zinit-zsh/z-a-bin-gem-node
 
 ### End of Zinit's installer chunk
+
+# 補完
+zinit ice wait'!0'
+zinit light zsh-users/zsh-autosuggestions
+
+# シンタックスハイライト
+zinit ice wait'!0'
+zinit light zdharma/fast-syntax-highlighting
+
+# Ctrl+r でコマンド履歴を検索
+# zinit light zdharma/history-search-multi-word
+
+# fzf 履歴とファイル検索
+zinit ice wait'!0'
+zinit light unixorn/fzf-zsh-plugin
+
+# zsh-fzf-history-search
+zinit ice lucid wait'!0'
+zinit light joshskidmore/zsh-fzf-history-search
+
+# oh-my-zshで使われているgitプラグインとエイリアス
+zinit ice wait'!0'
+zinit light davidde/git
+
+# PowerLevel10k
+zinit ice depth=1
+zinit light romkatv/powerlevel10k
+# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
+[[ ! -f ~/dotfiles/.p10k.zsh ]] || source ~/dotfiles/.p10k.zsh
+
+# enhancd
+zinit ice wait'!0'
+zinit light b4b4r07/enhancd
