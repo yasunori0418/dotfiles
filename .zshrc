@@ -110,43 +110,35 @@ autoload -Uz _zinit
 
 # Load a few important annexes, without Turbo
 # (this is currently required for annexes)
-zinit light-mode for \
-    zinit-zsh/z-a-rust \
-    zinit-zsh/z-a-as-monitor \
-    zinit-zsh/z-a-patch-dl \
-    zinit-zsh/z-a-bin-gem-node
+# zinit light-mode for \
+#     zinit-zsh/z-a-rust \
+#     zinit-zsh/z-a-as-monitor \
+#     zinit-zsh/z-a-patch-dl \
+#     zinit-zsh/z-a-bin-gem-node
 
 ### End of Zinit's installer chunk
 
 # 補完
-zinit ice wait'!0'
+zinit ice wait'!0' lucid atload'_zsh_autosuggest_start'
 zinit light zsh-users/zsh-autosuggestions
+
+# 補完強化
+zinit ice wait'!0'
+zinit light zsh-users/zsh-completions
 
 # シンタックスハイライト
 zinit ice wait'!0'
 zinit light zdharma/fast-syntax-highlighting
 
 # Ctrl+r でコマンド履歴を検索
-# zinit light zdharma/history-search-multi-word
+zinit light zdharma/history-search-multi-word
 
-# fzf 履歴とファイル検索
+# enhancd
 zinit ice wait'!0'
-zinit light unixorn/fzf-zsh-plugin
-
-# zsh-fzf-history-search
-zinit ice lucid wait'!0'
-zinit light joshskidmore/zsh-fzf-history-search
-
-# oh-my-zshで使われているgitプラグインとエイリアス
-zinit ice wait'!0'
-zinit light davidde/git
+zinit light b4b4r07/enhancd
 
 # PowerLevel10k
 zinit ice depth=1
 zinit light romkatv/powerlevel10k
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/dotfiles/.p10k.zsh ]] || source ~/dotfiles/.p10k.zsh
-
-# enhancd
-zinit ice wait'!0'
-zinit light b4b4r07/enhancd
