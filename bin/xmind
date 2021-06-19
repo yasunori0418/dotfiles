@@ -1,0 +1,21 @@
+##!/usr/bin/env bash
+
+if [ ! -d ${HOME}/.xmind ]; then
+    echo 'init configuration'
+    mkdir -p ${HOME}/.xmind
+    cp -r /usr/share/xmind/XMind/configuration ${HOME}/.xmind/
+fi
+
+pass=`zenity --title "User authentication" --password`
+
+case $? in
+    0)
+        echo $pass | sudo -S XMind
+        ;;
+    1)
+        echo "Authentication has been canceled."
+        ;;
+    -1)
+        echo "Unexpected error."
+        ;;
+esac
