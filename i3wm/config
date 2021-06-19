@@ -74,6 +74,8 @@ bindsym $mod+Print --release exec --no-startup-id i3-scrot -w
 bindsym $mod+Shift+Print --release exec --no-startup-id i3-scrot -s
 #bindsym $mod+Shift+h exec xdg-open /usr/share/doc/manjaro/i3_help.pdf
 bindsym $mod+Ctrl+x --release exec --no-startup-id xkill
+bindsym $Alt+c exec cautoclick -p 10 -i 10 -r 0 -n 2147483647
+bindsym $Alt+x exec pkill cautoclick
 
 # focus_follows_mouse no
 
