@@ -11,3 +11,4 @@ eval "$(pyenv init -)"
 
 # User add enviroment variable.
 export PATH=$PATH:$HOME/bin
+export XDG_CONFIG_HOME="$HOME/.config"
