@@ -85,7 +85,6 @@ bindkey "^P" history-beginning-search-backward-end
 bindkey "^N" history-beginning-search-forward-end
 
 
-
 # lsコマンドのalias関連
 alias ls='ls --color=auto -G'
 alias la='ls -lAG'
@@ -94,6 +93,9 @@ alias ll='ls -lG'
 # clearコマンドのalias関連
 alias c='clear'
 alias cc='c &&'
+
+# Neovimをvimで起動できるようにする
+alias vim='nvim'
 
 ### Added by Zinit's installer
 if [[ ! -f $HOME/.zinit/bin/zinit.zsh ]]; then
