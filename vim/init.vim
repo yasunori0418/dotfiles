@@ -80,7 +80,7 @@ set clipboard+=unnamed
 " カラースキーム
 colorscheme iceberg
 " mapleader
-let mapleader = ':'
+let mapleader = ' '
 
 " ========================
 " 表示設定
@@ -137,8 +137,6 @@ set laststatus=2
 set wildmenu
 " コマンド履歴
 set history=5000
-" lightline設定ファイル
-source ~/.vim/lightline.rc.vim
 
 " ========================
 " 不可視文字の表示
