@@ -6,6 +6,9 @@ repo = 'cocopon/iceberg.vim'
 
 [[plugins]] # Modern and light status line.
 repo = 'itchyny/lightline.vim'
+hook_add = '''
+    source ~/.vim/lightline.rc.vim
+'''
 
 [[plugins]]
 repo = 'Shougo/neosnippet-snippets'
@@ -13,11 +16,6 @@ repo = 'Shougo/neosnippet-snippets'
 [[plugins]]
 repo = 'tpope/vim-fugitive'
 hook_add = '''
-    nnoremap [figitive] <Nop>
-    nnoremap <Leader>g [figitive]
-    nnoremap <silent> [figitive]s :<C-u>Gstatus<CR>
-    nnoremap <silent> [figitive]d :<C-u>Gdiff<CR>
-    nnoremap <silent> [figitive]b :<C-u>Gblame<CR>
 '''
 
 [[plugins]]
