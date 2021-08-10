@@ -1,6 +1,4 @@
 " Normal Mode
-" init.vimを開く(init)
-cnoremap init :edit $MYVIMRC<CR>
 " スペース+wで保存
 nnoremap <Space>w :w<CR>
 
