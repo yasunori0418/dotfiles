@@ -14,10 +14,6 @@ hook_source = '''
 repo = 'wsdjeg/dein-ui.vim'
 on_cmd = ['DeinUpdate']
 
-[[plugins]] # Preview of replacement results
-repo = 'markonm/traces.vim'
-on_cmd = ['%s']
-
 [[plugins]]
 repo = 'Shougo/deoplete.nvim'
 on_i = 1

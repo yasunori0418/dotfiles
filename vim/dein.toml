@@ -10,6 +10,9 @@ hook_add = '''
     source ~/.vim/lightline.rc.vim
 '''
 
+[[plugins]] # Preview of replacement results
+repo = 'markonm/traces.vim'
+
 [[plugins]]
 repo = 'Shougo/neosnippet-snippets'
 
