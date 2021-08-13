@@ -1,3 +1,10 @@
+set noshowmode
 let g:lightline = {
-    \ 'colorscheme': 'iceberg'
-    \ }
+        \ 'colorscheme': 'iceberg',
+        \ 'active': {
+            \ 'left': [
+                    \ ['mode', 'past'],
+                    \ ['filename', 'readonly', 'modifide']
+                \ ]
+            \}
+    \}
