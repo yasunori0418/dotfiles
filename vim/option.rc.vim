@@ -25,8 +25,6 @@ set virtualedit=onemore
 set clipboard+=unnamed
 " カラースキーム
 colorscheme iceberg
-" mapleader
-let mapleader = ' '
 
 " ========================
 " 表示設定
