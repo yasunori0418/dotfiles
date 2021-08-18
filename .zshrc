@@ -86,9 +86,18 @@ bindkey "^N" history-beginning-search-forward-end
 
 
 # lsコマンドのalias関連
-alias ls='ls --color=auto -G'
-alias la='ls -lAG'
-alias ll='ls -lG'
+if [[ $(command -v exa) ]]; then
+    alias exa='exa --icons'
+    alias ls='exa'
+    alias la='exa -la'
+    alias lt='exa -T -L 3 -a -I ".git|.atom|.cache"'
+    alias ltl='lt --color=always | less -r'
+    alias lal='la --color=always | less -r'
+else
+    alias ls='ls --color=auto -G'
+    alias la='ls -lAG'
+    alias ll='ls -lG'
+fi
 
 # clearコマンドのalias関連
 alias c='clear'
