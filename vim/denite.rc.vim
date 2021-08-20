@@ -37,8 +37,11 @@ function! s:denite_my_settings() abort
     nnoremap <silent><buffer><expr> q
     \ denite#do_map('quit')
 
+    " Switch to file search mode with i-key 
     nnoremap <silent><buffer><expr> i
     \ denite#do_map('open_filter_buffer')
+
+    " Select multiple files with <Space>
     nnoremap <silent><buffer><expr> <Space>
     \ denite#do_map('toggle_select').'j'
 endfunction
