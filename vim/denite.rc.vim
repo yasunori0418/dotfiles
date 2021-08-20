@@ -1,7 +1,7 @@
 set pumblend=30
 
 nnoremap [denite] <Nop>
-nmap <Leader>o [denite]
+nmap <Space>d [denite]
 nnoremap [denite]b :Denite buffer file:new<CR>
 nnoremap [denite]f :Denite file file:new<CR>
 nnoremap [denite]a :Denite file buffer file:new<CR>
