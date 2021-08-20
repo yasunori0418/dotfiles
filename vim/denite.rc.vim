@@ -10,8 +10,20 @@ nnoremap [denite]r :Denite file/rec buffer file:new<CR>
 autocmd FileType denite set winblend=30
 autocmd FileType denite call s:denite_my_settings()
 function! s:denite_my_settings() abort
+    " Open to current window with Enter-key
     nnoremap <silent><buffer><expr> <CR>
     \ denite#do_map('do_action')
+    " Open to horizontal split window with s-key
+    nnoremap <silent><buffer><expr> s
+    \ denite#do_map('do_action', 'split')
+    " Open to vertical split window with v-key
+    nnoremap <silent><buffer><expr> v
+    \ denite#do_map('do_action', 'vsplit')
+    " Open to tab window with t-key
+    nnoremap <silent><buffer><expr> t
+    \ denite#do_map('do_action', 'tabopen')
+
+    " Remove from buffer list
     nnoremap <silent><buffer><expr> d
     \ denite#do_map('do_action', 'delete')
 
