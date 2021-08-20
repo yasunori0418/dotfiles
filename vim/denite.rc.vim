@@ -33,3 +33,19 @@ augroup denite
         \ denite#do_map('toggle_select').'j'
     endfunction
 augroup end
+
+" Change file/rec command.
+call denite#custom#var('file/rec', 'command',
+    \ ['rg', '--files', '--glob', '!.git', '--color', 'never'])
+" Ripgrep command on grep source
+call denite#custom#var('grep', {
+    \ 'command': ['rg'],
+    \ 'default_opts': ['-i', '--vimgrep', '--no-heading'],
+    \ 'recursive_opts': [],
+    \ 'pattern_opt': ['--regexp'],
+    \ 'separator': ['--'],
+    \ 'final_opts': [],
+    \ })
+call denite#custom#option('_', {
+    \ 'split': 'floating'
+    \ })
