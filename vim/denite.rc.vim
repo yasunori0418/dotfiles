@@ -6,6 +6,7 @@ nnoremap [denite]b :Denite buffer file:new<CR>
 nnoremap [denite]f :Denite file file:new<CR>
 nnoremap [denite]a :Denite file buffer file:new<CR>
 nnoremap [denite]r :Denite file/rec buffer file:new<CR>
+nnoremap [denite]h :Denite help<CR>
 
 autocmd FileType denite set winblend=30
 autocmd FileType denite call s:denite_my_settings()
