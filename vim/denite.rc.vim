@@ -59,5 +59,6 @@ call denite#custom#var('grep', {
     \ 'final_opts': [],
     \ })
 call denite#custom#option('_', {
-    \ 'split': 'floating'
+    \ 'split': 'floating',
+    \ 'prompt': '❯'
     \ })
