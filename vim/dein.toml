@@ -26,3 +26,9 @@ repo = 'airblade/vim-gitgutter'
 
 [[plugins]]
 repo = 'Yggdroot/indentLine'
+
+[[plugins]]
+repo = 'Shougo/denite.nvim'
+hook_add = '''
+    source ~/.vim/denite.rc.vim
+'''

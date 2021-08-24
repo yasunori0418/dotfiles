@@ -49,7 +49,3 @@ on_i  = 1
 on_ft = ['snippet']
 depends = ['neosnippet-snippets']
 
-[[plugins]]
-repo = 'Shougo/denite.nvim'
-on_cmd = 'Denite'
-hook_source = 'source ~/.vim/denite.rc.vim'
