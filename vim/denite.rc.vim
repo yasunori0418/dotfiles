@@ -6,6 +6,7 @@ nnoremap [denite]a :Denite file buffer file:new<CR>
 nnoremap [denite]r :Denite file/rec buffer file:new<CR>
 nnoremap [denite]h :Denite help<CR>
 nnoremap [denite]g :Denite grep<CR>
+nnoremap [denite]m :Denite menu<CR>
 
 autocmd FileType denite set winblend=30
 autocmd FileType denite call s:denite_my_settings()
@@ -64,6 +65,56 @@ function! s:denite_my_settings() abort
     nnoremap <silent><buffer><expr> <Space>
     \ denite#do_map('toggle_select').'j'
 endfunction
+
+
+" ========  Denite menus  ========
+let s:menus = {}
+
+let s:menus.dotfiles_Vim = {
+    \ 'description':        ' Edit Vim config files.'
+    \ }
+
+let s:menus.dotfiles_Vim.file_candidates = [
+    \ ['init.vim',          '~/dotfiles/vim/init.vim'],
+    \ ['option.rc.vim',     '~/dotfiles/vim/option.rc.vim'],
+    \ ['keybind.vim',       '~/dotfiles/vim/keybind.vim'],
+    \ ['denite.rc.vim',     '~/dotfiles/vim/denite.rc.vim'],
+    \ ['lightline.rc.vim',  '~/dotfiles/vim/lightline.rc.vim'],
+    \ ['dein.toml',         '~/dotfiles/vim/dein.toml'],
+    \ ['lazy.toml',         '~/dotfiles/vim/lazy.toml'],
+    \ ['filetype.toml',     '~/dotfiles/vim/filetype.toml'],
+    \ ]
+
+let s:menus.dotfiles_Alacritty = {
+    \ 'description':        ' Edit alacritty config filles.'
+    \ }
+
+let s:menus.dotfiles_Alacritty.file_candidates = [
+    \ ['alacritty.yml',     '~/dotfiles/alacritty/alacritty.yml'],
+    \ ]
+
+let s:menus.dotfiles_Zsh = {
+    \ 'description':        ' Edit zsh config files.'
+    \ }
+
+let s:menus.dotfiles_Zsh.file_candidates = [
+    \ ['zshrc',             '~/dotfiles/.zshrc'],
+    \ ['zprofile',          '~/dotfiles/.zprofile'],
+    \ ['p10k config',       '~/dotfiles/.p10k.zsh'],
+    \ ]
+
+let s:menus.dotfiles_i3wm = {
+    \ 'description':        'Edit i3wm config file.'
+    \ }
+
+let s:menus.dotfiles_i3wm.file_candidates = [
+    \ ['i3wm config',       '~/dotfiles/i3wm/config'],
+    \ ]
+
+" Registration of denite menu
+call denite#custom#var('menu', 'menus', s:menus)
+
+" ================================
 
 " Change file/rec command.
 call denite#custom#var('file/rec', 'command',
