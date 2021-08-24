@@ -43,6 +43,8 @@ if exists('+termguicolors')
   let &t_8b="\<Esc>[48;2;%lu;%lu;%lum"
   set termguicolors
 endif
+" 補完等のポップアップメニューの透過
+set pumblend=30
 
 " ========================
 " 検索関係
