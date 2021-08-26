@@ -32,3 +32,12 @@ repo = 'Shougo/denite.nvim'
 hook_add = '''
     source ~/.vim/denite.rc.vim
 '''
+
+[[plugins]]
+repo = 'tpope/vim-surround'
+
+[[plugins]]
+repo = 'majutsushi/tagbar'
+hook_add = '''
+    nmap <F8> :TagbarToggle<CR>
+'''

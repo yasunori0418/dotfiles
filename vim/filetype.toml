@@ -1,7 +1,17 @@
 [[plugins]]
 repo = 'cespare/vim-toml'
-on_ft = ['toml']
+on_ft = 'toml'
 
 [[plugins]]
 repo = 'deoplete-plugins/deoplete-jedi'
 on_ft = 'python'
+
+[[plugins]]
+repo = 'alvan/vim-closetag'
+on_ft = ['html','xml']
+hook_source = '''
+    nnoremap [closetag] <Nop>
+    nmap <silent> <Space>t [closetag]
+    nnoremap [closetag]o :CloseTagEnableBuffer<CR>
+    nnoremap [closetag]f :CloseTagDisableBuffer<CR>
+'''

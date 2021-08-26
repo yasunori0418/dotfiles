@@ -49,3 +49,6 @@ on_i  = 1
 on_ft = ['snippet']
 depends = ['neosnippet-snippets']
 
+[[plugins]]
+repo = 'jiangmiao/auto-pairs'
+on_i = 1
