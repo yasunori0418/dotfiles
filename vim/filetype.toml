@@ -18,4 +18,25 @@ hook_source = '''
 
 [[plugins]]
 repo = 'mattn/emmet-vim'
-on_ft = ['html','xml']
+on_ft = ['html', 'css']
+hook_add = '''
+    let g:user_emmet_install_global = 0
+    autocmd FileType html,css EmmetInstall
+    let g:user_emmet_settings = {
+        \ 'variables': {
+            \ 'lang': "ja"
+            \ },
+        \ 'html': {
+            \ 'snippets': {
+                \ 'html:5': "<!DOCTYPE html>\n"
+                \ ."<html lang=\"${lang}\">\n"
+                \ ."<head>\n"
+                \ ."\t<meta charset=\"${charset}\">\n"
+                \ ."\t<link rel=\"stylesheet\" href=\"css/style.css\">\n"
+                \ ."</head>\n"
+                \ ."<body>\n\t${child}|\n</body>\n"
+                \ ."</html>",
+                \ }
+            \ }
+        \ }
+'''
