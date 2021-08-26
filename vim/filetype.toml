@@ -17,5 +17,5 @@ hook_source = '''
 '''
 
 [[plugins]]
-repo = ''mattn/emmet-vim''
+repo = 'mattn/emmet-vim'
 on_ft = ['html','xml']
