@@ -15,3 +15,7 @@ hook_source = '''
     nnoremap [closetag]o :CloseTagEnableBuffer<CR>
     nnoremap [closetag]f :CloseTagDisableBuffer<CR>
 '''
+
+[[plugins]]
+repo = ''mattn/emmet-vim''
+on_ft = ['html','xml']
