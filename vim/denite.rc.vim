@@ -1,13 +1,3 @@
-nnoremap [denite] <Nop>
-nmap <Space>d [denite]
-nnoremap [denite]b :Denite buffer file:new<CR>
-nnoremap [denite]f :Denite file file:new<CR>
-nnoremap [denite]a :Denite file buffer file:new<CR>
-nnoremap [denite]r :Denite file/rec buffer file:new<CR>
-nnoremap [denite]h :Denite help<CR>
-nnoremap [denite]g :Denite grep<CR>
-nnoremap [denite]m :Denite menu<CR>
-
 autocmd FileType denite set winblend=30
 autocmd FileType denite call s:denite_my_settings()
 function! s:denite_my_settings() abort
