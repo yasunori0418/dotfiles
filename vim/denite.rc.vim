@@ -120,5 +120,6 @@ call denite#custom#var('grep', {
     \ })
 call denite#custom#option('_', {
     \ 'split': 'floating',
+    \ 'floating_preview': v:true,
     \ 'prompt': '❯'
     \ })
