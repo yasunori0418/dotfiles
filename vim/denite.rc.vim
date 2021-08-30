@@ -101,6 +101,14 @@ let s:menus.dotfiles_i3wm.file_candidates = [
     \ ['i3wm config',       '~/dotfiles/i3wm/config'],
     \ ]
 
+let s:menus.commands = {
+    \ 'description':        'Execute commands'
+    \ }
+
+let s:menus.commands.command_candidates = [
+    \ ['Denite-Buffer', 'Denite buffer']
+    \ ]
+
 " Registration of denite menu
 call denite#custom#var('menu', 'menus', s:menus)
 
@@ -111,8 +119,8 @@ call denite#custom#var('file/rec', 'command',
     \ ['rg', '--files', '--glob', '!.git', '--color', 'never'])
 " Ripgrep command on grep source
 call denite#custom#var('grep', {
-    \ 'command': ['rg'],
-    \ 'default_opts': ['-i', '--vimgrep', '--no-heading'],
+    \ 'command': ['rg', '--threads', '1'],
+    \ 'default_opts': ['--smart-case', '--vimgrep', '--no-heading'],
     \ 'recursive_opts': [],
     \ 'pattern_opt': ['--regexp'],
     \ 'separator': ['--'],
