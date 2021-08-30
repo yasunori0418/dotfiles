@@ -88,25 +88,28 @@ let s:menus.dotfiles_Zsh = {
     \ }
 
 let s:menus.dotfiles_Zsh.file_candidates = [
-    \ ['zshrc',             '~/dotfiles/.zshrc'],
-    \ ['zprofile',          '~/dotfiles/.zprofile'],
-    \ ['p10k config',       '~/dotfiles/.p10k.zsh'],
+    \ ['zshrc',                 '~/dotfiles/.zshrc'],
+    \ ['zprofile',              '~/dotfiles/.zprofile'],
+    \ ['p10k config',           '~/dotfiles/.p10k.zsh'],
     \ ]
 
 let s:menus.dotfiles_i3wm = {
-    \ 'description':        'Edit i3wm config file.'
+    \ 'description':            'Edit i3wm config file.'
     \ }
 
 let s:menus.dotfiles_i3wm.file_candidates = [
-    \ ['i3wm config',       '~/dotfiles/i3wm/config'],
+    \ ['i3wm config',           '~/dotfiles/i3wm/config'],
     \ ]
 
 let s:menus.commands = {
-    \ 'description':        'Execute commands'
+    \ 'description':            'Denite commands'
     \ }
 
 let s:menus.commands.command_candidates = [
-    \ ['Denite-Buffer', 'Denite buffer']
+    \ ['buffer',                'Denite buffer']
+    \ ['file buffer',           'Denite file buffer']
+    \ ['file/rec buffer',       'Denite file/rec buffer']
+    \ ['help -start-filter',    'Denite help -start-filter']
     \ ]
 
 " Registration of denite menu
