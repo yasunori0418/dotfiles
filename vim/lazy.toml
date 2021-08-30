@@ -64,7 +64,8 @@ hook_add = '''
     nnoremap [denite]r <cmd>Denite file/rec buffer file:new<CR>
     nnoremap [denite]h <cmd>Denite help<CR>
     nnoremap [denite]g <cmd>Denite grep<CR>
-    nnoremap [denite]m <cmd>Denite menu<CR>
+    nnoremap [denite]M <cmd>Denite menu<CR>
+    nnoremap [denite]dm <cmd>Denite menu:commands<CR>
 '''
 
 [[plugins]]
