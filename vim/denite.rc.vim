@@ -106,10 +106,10 @@ let s:menus.commands = {
     \ }
 
 let s:menus.commands.command_candidates = [
-    \ ['buffer',                'Denite buffer']
-    \ ['file buffer',           'Denite file buffer']
-    \ ['file/rec buffer',       'Denite file/rec buffer']
-    \ ['help -start-filter',    'Denite help -start-filter']
+    \ ['buffer',                'Denite buffer'],
+    \ ['file buffer',           'Denite file buffer'],
+    \ ['file/rec buffer',       'Denite file/rec buffer'],
+    \ ['help -start-filter',    'Denite help -start-filter'],
     \ ]
 
 " Registration of denite menu
