@@ -101,15 +101,16 @@ let s:menus.dotfiles_i3wm.file_candidates = [
     \ ['i3wm config',           '~/dotfiles/i3wm/config'],
     \ ]
 
-let s:menus.commands = {
+let s:menus.Denite_cmd= {
     \ 'description':            'Denite commands'
     \ }
 
-let s:menus.commands.command_candidates = [
-    \ ['buffer',                'Denite buffer'],
-    \ ['file buffer',           'Denite file buffer'],
-    \ ['file/rec buffer',       'Denite file/rec buffer'],
-    \ ['help -start-filter',    'Denite help -start-filter'],
+let s:menus.Denite_cmd.command_candidates = [
+    \ ['buffer',                                'Denite buffer'],
+    \ ['file buffer',                           'Denite file buffer'],
+    \ ['file/rec buffer -start-filter',         'Denite file/rec buffer -start-filter'],
+    \ ['help -start-filter',                    'Denite help -start-filter'],
+    \ ['source denite.rc.vim',                  'source denite.rc.vim'],
     \ ]
 
 " Registration of denite menu
