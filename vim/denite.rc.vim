@@ -106,12 +106,13 @@ let s:menus.Denite_cmd= {
     \ }
 
 let s:menus.Denite_cmd.command_candidates = [
+    \ ['dein',                                  'Denite dein'],
     \ ['buffer',                                'Denite buffer'],
     \ ['register',                              'Denite register'],
     \ ['file buffer',                           'Denite file buffer'],
     \ ['help -start-filter',                    'Denite help -start-filter'],
     \ ['source denite.rc.vim',                  'source ~/dotfiles/vim/denite.rc.vim'],
-    \ ['file/rec buffer -start-filter',         'Denite file/rec buffer -start-filter'],
+    \ ['file/rec buffer -start-filter',         'Denite file/rc buffer -start-filter'],
     \ ]
 
 " Registration of denite menu
