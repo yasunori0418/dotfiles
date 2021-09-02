@@ -58,7 +58,6 @@ hook_source = '''
 hook_add = '''
     nnoremap [denite] <Nop>
     nmap <Space>d [denite]
-    nnoremap [denite]b <cmd>Denite buffer file:new<CR>
     nnoremap [denite]a <cmd>Denite file buffer file:new<CR>
     nnoremap [denite]g <cmd>Denite grep<CR>
     nnoremap [denite]m <cmd>Denite menu<CR>
