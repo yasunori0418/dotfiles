@@ -1,13 +1,3 @@
-nnoremap [denite] <Nop>
-nmap <Space>d [denite]
-nnoremap [denite]b :Denite buffer file:new<CR>
-nnoremap [denite]f :Denite file file:new<CR>
-nnoremap [denite]a :Denite file buffer file:new<CR>
-nnoremap [denite]r :Denite file/rec buffer file:new<CR>
-nnoremap [denite]h :Denite help<CR>
-nnoremap [denite]g :Denite grep<CR>
-nnoremap [denite]m :Denite menu<CR>
-
 autocmd FileType denite set winblend=30
 autocmd FileType denite call s:denite_my_settings()
 function! s:denite_my_settings() abort
@@ -98,17 +88,31 @@ let s:menus.dotfiles_Zsh = {
     \ }
 
 let s:menus.dotfiles_Zsh.file_candidates = [
-    \ ['zshrc',             '~/dotfiles/.zshrc'],
-    \ ['zprofile',          '~/dotfiles/.zprofile'],
-    \ ['p10k config',       '~/dotfiles/.p10k.zsh'],
+    \ ['zshrc',                 '~/dotfiles/.zshrc'],
+    \ ['zprofile',              '~/dotfiles/.zprofile'],
+    \ ['p10k config',           '~/dotfiles/.p10k.zsh'],
     \ ]
 
 let s:menus.dotfiles_i3wm = {
-    \ 'description':        'Edit i3wm config file.'
+    \ 'description':            'Edit i3wm config file.'
     \ }
 
 let s:menus.dotfiles_i3wm.file_candidates = [
-    \ ['i3wm config',       '~/dotfiles/i3wm/config'],
+    \ ['i3wm config',           '~/dotfiles/i3wm/config'],
+    \ ]
+
+let s:menus.Denite_cmd= {
+    \ 'description':            'Denite commands'
+    \ }
+
+let s:menus.Denite_cmd.command_candidates = [
+    \ ['dein',                                  'Denite dein'],
+    \ ['buffer',                                'Denite buffer'],
+    \ ['register',                              'Denite register'],
+    \ ['file buffer',                           'Denite file buffer'],
+    \ ['help -start-filter',                    'Denite help -start-filter'],
+    \ ['source denite.rc.vim',                  'source ~/dotfiles/vim/denite.rc.vim'],
+    \ ['file/rec:~/ -start-filter',             'Denite file/rec:~/ -start-filter'],
     \ ]
 
 " Registration of denite menu
@@ -121,8 +125,8 @@ call denite#custom#var('file/rec', 'command',
     \ ['rg', '--files', '--glob', '!.git', '--color', 'never'])
 " Ripgrep command on grep source
 call denite#custom#var('grep', {
-    \ 'command': ['rg'],
-    \ 'default_opts': ['-i', '--vimgrep', '--no-heading'],
+    \ 'command': ['rg', '--threads', '1'],
+    \ 'default_opts': ['--smart-case', '--vimgrep', '--no-heading'],
     \ 'recursive_opts': [],
     \ 'pattern_opt': ['--regexp'],
     \ 'separator': ['--'],
@@ -130,5 +134,6 @@ call denite#custom#var('grep', {
     \ })
 call denite#custom#option('_', {
     \ 'split': 'floating',
+    \ 'floating_preview': v:true,
     \ 'prompt': '❯'
     \ })

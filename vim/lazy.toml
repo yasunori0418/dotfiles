@@ -49,3 +49,21 @@ on_i  = 1
 on_ft = ['snippet']
 depends = ['neosnippet-snippets']
 
+[[plugins]]
+repo = 'Shougo/denite.nvim'
+on_cmd = 'Denite'
+hook_source = '''
+    source ~/dotfiles/vim/denite.rc.vim
+'''
+hook_add = '''
+    nnoremap [denite] <Nop>
+    nmap <Space>d [denite]
+    nnoremap [denite]a <cmd>Denite file buffer file:new<CR>
+    nnoremap [denite]g <cmd>Denite grep<CR>
+    nnoremap [denite]m <cmd>Denite menu<CR>
+    nnoremap [denite]dm <cmd>Denite menu:Denite_cmd<CR>
+'''
+
+[[plugins]]
+repo = 'jiangmiao/auto-pairs'
+on_i = 1

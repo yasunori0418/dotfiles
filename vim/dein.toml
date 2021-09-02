@@ -28,7 +28,10 @@ repo = 'airblade/vim-gitgutter'
 repo = 'Yggdroot/indentLine'
 
 [[plugins]]
-repo = 'Shougo/denite.nvim'
+repo = 'tpope/vim-surround'
+
+[[plugins]]
+repo = 'majutsushi/tagbar'
 hook_add = '''
-    source ~/.vim/denite.rc.vim
+    nmap <F8> :TagbarToggle<CR>
 '''

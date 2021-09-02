@@ -1,7 +1,42 @@
 [[plugins]]
 repo = 'cespare/vim-toml'
-on_ft = ['toml']
+on_ft = 'toml'
 
 [[plugins]]
 repo = 'deoplete-plugins/deoplete-jedi'
 on_ft = 'python'
+
+[[plugins]]
+repo = 'alvan/vim-closetag'
+on_ft = ['html','xml']
+hook_source = '''
+    nnoremap [closetag] <Nop>
+    nmap <silent> <Space>t [closetag]
+    nnoremap [closetag]o :CloseTagEnableBuffer<CR>
+    nnoremap [closetag]f :CloseTagDisableBuffer<CR>
+'''
+
+[[plugins]]
+repo = 'mattn/emmet-vim'
+on_ft = ['html', 'css']
+hook_add = '''
+    let g:user_emmet_install_global = 0
+    autocmd FileType html,css EmmetInstall
+    let g:user_emmet_settings = {
+        \ 'variables': {
+            \ 'lang': "ja"
+            \ },
+        \ 'html': {
+            \ 'snippets': {
+                \ 'html:5': "<!DOCTYPE html>\n"
+                \ ."<html lang=\"${lang}\">\n"
+                \ ."<head>\n"
+                \ ."\t<meta charset=\"${charset}\">\n"
+                \ ."\t<link rel=\"stylesheet\" href=\"css/style.css\">\n"
+                \ ."</head>\n"
+                \ ."<body>\n\t${child}|\n</body>\n"
+                \ ."</html>",
+                \ }
+            \ }
+        \ }
+'''
