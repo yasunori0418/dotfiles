@@ -73,5 +73,8 @@ repo = 'Shougo/defx.nvim'
 hook_add = '''
     nnoremap [defx] <Nop>
     nmap <Space>f [defx]
-    nnoremap [defx]a <cmd>Defx -split=vertical -win-widht=40 ~<CR>
+    nnoremap [defx]a <cmd>Defx -search=`expand('%:p')` `expand('%:p:h')`<CR>
+'''
+hook_source = '''
+    source ~/dotfiles/vim/plugins/defx.vim
 '''
