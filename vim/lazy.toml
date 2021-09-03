@@ -53,7 +53,7 @@ depends = ['neosnippet-snippets']
 repo = 'Shougo/denite.nvim'
 on_cmd = 'Denite'
 hook_source = '''
-    source ~/dotfiles/vim/denite.rc.vim
+    source ~/dotfiles/vim/plugins/denite.vim
 '''
 hook_add = '''
     nnoremap [denite] <Nop>
