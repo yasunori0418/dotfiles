@@ -24,10 +24,10 @@ if dein#load_state(s:dein_dir)
     call dein#begin(s:dein_dir)
 
     " .toml files
-    let s:rc_dir = expand('~/.vim')
-    let s:dein_toml = s:rc_dir . '/dein.toml'
-    let s:dein_lazy_toml = s:rc_dir . '/lazy.toml'
-    let s:dein_ft_toml = s:rc_dir . '/filetype.toml'
+    let s:toml_dir = expand('~/dotfiles/vim')
+    let s:dein_toml = s:toml_dir . '/dein.toml'
+    let s:dein_lazy_toml = s:toml_dir . '/lazy.toml'
+    let s:dein_ft_toml = s:toml_dir . '/filetype.toml'
 
     " read toml and cache
     call dein#load_toml(s:dein_toml, {'lazy': 0})
