@@ -37,7 +37,15 @@ function! s:defx_my_settings() abort
     \ defx#do_action('toggle_select')
     nnoremap <silent><buffer><expr> A
     \ defx#do_action('toggle_select_all')
-
+    
+    " Wrap when moving to the beginning and end of a line
+    nnoremap <silent><buffer><expr> j
+    \ line('.') == line('$') ?
+        \ 'gg' : 'j'
+    nnoremap <silent><buffer><expr> k
+    \ line('.') == 1 ?
+        \ 'G' : 'k'
+    
     " Close defx buffer.
     nnoremap <silent><buffer><expr> q
     \ defx#do_action('quit')
