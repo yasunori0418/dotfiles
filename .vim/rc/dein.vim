@@ -24,7 +24,7 @@ if dein#load_state(s:dein_dir)
     call dein#begin(s:dein_dir)
 
     " .toml files
-    let s:toml_dir = expand('~/dotfiles/vim/toml')
+    let s:toml_dir = expand('~/dotfiles/.vim/toml')
     let s:dein_toml = s:toml_dir . '/dein.toml'
     let s:dein_lazy_toml = s:toml_dir . '/lazy.toml'
     let s:dein_ft_toml = s:toml_dir . '/filetype.toml'

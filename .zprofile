@@ -12,3 +12,9 @@ eval "$(pyenv init -)"
 # User add enviroment variable.
 export PATH=$PATH:$HOME/bin
 export XDG_CONFIG_HOME="$HOME/.config"
+
+# My dotfiles enviroment path setting.
+export DOTFILES=$HOME/dotfiles
+
+# $MYVIMRC eviroment path setting.
+export MYVIMRC=$DOTFILES/.vim/init.vim

@@ -53,7 +53,7 @@ depends = ['neosnippet-snippets']
 repo = 'Shougo/denite.nvim'
 on_cmd = 'Denite'
 hook_source = '''
-    source ~/dotfiles/vim/plugins/denite.vim
+    source ~/dotfiles/.vim/plugins/denite.vim
 '''
 hook_add = '''
     nnoremap [denite] <Nop>
@@ -76,5 +76,5 @@ hook_add = '''
     nnoremap [defx]a <cmd>Defx -search=`expand('%:p')` `expand('%:p:h')`<CR>
 '''
 hook_source = '''
-    source ~/dotfiles/vim/plugins/defx.vim
+    source ~/dotfiles/.vim/plugins/defx.vim
 '''
