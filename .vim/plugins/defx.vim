@@ -33,7 +33,7 @@ function! s:defx_my_settings() abort
     \ defx#do_action('preview')
 
     " Toggle the cursor candidate select.
-    nnoremap <silent><buffer><expr> a
+    nnoremap <silent><buffer><expr> <Space>
     \ defx#do_action('toggle_select')
     nnoremap <silent><buffer><expr> A
     \ defx#do_action('toggle_select_all')
