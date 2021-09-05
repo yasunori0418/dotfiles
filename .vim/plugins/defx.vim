@@ -78,7 +78,7 @@ function! s:defx_my_settings() abort
     \ defx#do_action('paste')
 
     " Yank path
-    nnoremap <silent><buffer><expr> Y
+    nnoremap <silent><buffer><expr> yy
     \ defx#do_action('yank_path')
 
     " Delete the file/directory to trashbox.
