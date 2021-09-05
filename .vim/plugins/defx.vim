@@ -86,6 +86,9 @@ function! s:defx_my_settings() abort
     \ defx#do_action('remove_trash')
 endfunction
 
+" defx_icons configure
+let g:defx_icons_column_length = 2
+
 call defx#custom#option('_', {
     \ 'winwidth': 40,
     \ 'split': 'vertical',
@@ -96,4 +99,5 @@ call defx#custom#option('_', {
     \ 'show_ignored_files': v:true,
     \ 'toggle': v:true,
     \ 'resume': v:true,
+    \ 'columns': 'indent:icons:filename:mark',
     \ })
