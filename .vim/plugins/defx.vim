@@ -37,7 +37,7 @@ function! s:defx_my_settings() abort
     \ defx#do_action('toggle_select')
     nnoremap <silent><buffer><expr> A
     \ defx#do_action('toggle_select_all')
-    
+
     " Wrap when moving to the beginning and end of a line
     nnoremap <silent><buffer><expr> j
     \ line('.') == line('$') ?
@@ -45,7 +45,7 @@ function! s:defx_my_settings() abort
     nnoremap <silent><buffer><expr> k
     \ line('.') == 1 ?
         \ 'G' : 'k'
-    
+
     " Close defx buffer.
     nnoremap <silent><buffer><expr> q
     \ defx#do_action('quit')
@@ -76,6 +76,10 @@ function! s:defx_my_settings() abort
     \ defx#do_action('move')
     nnoremap <silent><buffer><expr> P
     \ defx#do_action('paste')
+
+    " Yank path
+    nnoremap <silent><buffer><expr> Y
+    \ defx#do_action('yank_path')
 
     " Delete the file/directory to trashbox.
     nnoremap <silent><buffer><expr> D
