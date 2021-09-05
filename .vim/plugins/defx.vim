@@ -88,6 +88,11 @@ endfunction
 
 " defx_icons configure
 let g:defx_icons_column_length = 2
+call defx#custom#column('git', 'column_length', 2)
+call defx#custom#column('indent', 'indent', '  ')
+call defx#custom#column('mark', 'length', 1)
+call defx#custom#column('mark', 'readonly_icon', '')
+call defx#custom#column('mark', 'selected_icon', '')
 
 call defx#custom#option('_', {
     \ 'winwidth': 40,
@@ -99,5 +104,5 @@ call defx#custom#option('_', {
     \ 'show_ignored_files': v:true,
     \ 'toggle': v:true,
     \ 'resume': v:true,
-    \ 'columns': 'indent:icons:filename:mark',
+    \ 'columns': 'mark:indent:git:icons:filename',
     \ })
