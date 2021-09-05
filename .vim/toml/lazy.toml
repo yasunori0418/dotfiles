@@ -12,7 +12,7 @@ hook_source = '''
 
 [[plugins]]
 repo = 'wsdjeg/dein-ui.vim'
-on_cmd = ['DeinUpdate']
+on_cmd = 'DeinUpdate'
 
 [[plugins]]
 repo = 'Shougo/deoplete.nvim'
@@ -78,3 +78,11 @@ hook_add = '''
 hook_source = '''
     source ~/dotfiles/.vim/plugins/defx.vim
 '''
+
+[[plugins]]
+repo = 'ryanoasis/vim-devicons'
+on_ft = 'defx'
+
+[[plugins]]
+repo = 'kristijanhusak/defx-icons'
+on_ft = 'defx'
