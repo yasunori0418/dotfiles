@@ -86,3 +86,7 @@ on_ft = 'defx'
 [[plugins]]
 repo = 'kristijanhusak/defx-icons'
 on_ft = 'defx'
+
+[[plugins]]
+repo = 'kristijanhusak/defx-git'
+on_ft = 'defx'
