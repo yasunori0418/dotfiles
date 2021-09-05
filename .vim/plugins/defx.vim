@@ -87,7 +87,7 @@ function! s:defx_my_settings() abort
 endfunction
 
 call defx#custom#option('_', {
-    \ 'winwidth': 35,
+    \ 'winwidth': 40,
     \ 'split': 'vertical',
     \ 'floating_preview': v:true,
     \ 'preview_height': 30,
