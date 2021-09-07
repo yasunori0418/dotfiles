@@ -12,7 +12,7 @@ hook_source = '''
 
 [[plugins]]
 repo = 'wsdjeg/dein-ui.vim'
-on_cmd = ['DeinUpdate']
+on_cmd = 'DeinUpdate'
 
 [[plugins]]
 repo = 'Shougo/deoplete.nvim'
@@ -53,7 +53,7 @@ depends = ['neosnippet-snippets']
 repo = 'Shougo/denite.nvim'
 on_cmd = 'Denite'
 hook_source = '''
-    source ~/dotfiles/vim/denite.rc.vim
+    source ~/dotfiles/.vim/plugins/denite.vim
 '''
 hook_add = '''
     nnoremap [denite] <Nop>
@@ -67,3 +67,26 @@ hook_add = '''
 [[plugins]]
 repo = 'jiangmiao/auto-pairs'
 on_i = 1
+
+[[plugins]]
+repo = 'Shougo/defx.nvim'
+hook_add = '''
+    nnoremap [defx] <Nop>
+    nmap <Space>f [defx]
+    nnoremap [defx]a <cmd>Defx -search=`expand('%:p')` `expand('%:p:h')`<CR>
+'''
+hook_source = '''
+    source ~/dotfiles/.vim/plugins/defx.vim
+'''
+
+[[plugins]]
+repo = 'ryanoasis/vim-devicons'
+on_ft = 'defx'
+
+[[plugins]]
+repo = 'kristijanhusak/defx-icons'
+on_ft = 'defx'
+
+[[plugins]]
+repo = 'kristijanhusak/defx-git'
+on_ft = 'defx'

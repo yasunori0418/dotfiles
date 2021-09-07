@@ -7,7 +7,7 @@ repo = 'cocopon/iceberg.vim'
 [[plugins]] # Modern and light status line.
 repo = 'itchyny/lightline.vim'
 hook_add = '''
-    source ~/.vim/lightline.rc.vim
+    source ~/dotfiles/.vim/plugins/lightline.vim
 '''
 
 [[plugins]] # Preview of replacement results
