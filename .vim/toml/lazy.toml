@@ -90,3 +90,11 @@ on_ft = 'defx'
 [[plugins]]
 repo = 'kristijanhusak/defx-git'
 on_ft = 'defx'
+
+[[plugins]]
+repo = 'voldikss/vim-floaterm'
+on_cmd = 'FloatermNew'
+
+[[plugins]]
+repo = 'Shougo/deol.nvim'
+on_cmd = 'Deol'
