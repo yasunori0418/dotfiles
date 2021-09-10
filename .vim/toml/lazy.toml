@@ -97,3 +97,11 @@ on_ft = 'defx'
 [[plugins]]
 repo = 'Shougo/deol.nvim'
 on_cmd = 'Deol'
+hook_add = '''
+    nnoremap [term] <Nop>
+    nmap <Space>t [term]
+    nnoremap [term]d <cmd>Deol -split=floating<CR>
+
+    " Exit deol buffer with <ESC>
+    tnoremap <ESC> <cmd>quit<CR>
+'''
