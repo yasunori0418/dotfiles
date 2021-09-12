@@ -1,8 +1,8 @@
 #!/bin/bash
 
 yaskkserv2 \
-    --google-japanese-input=notfound \
+    --google-japanese-input notfound \
     --google-suggest \
-    --google-cache-filename=/tmp/yaskkserv2.cache \
+    --google-cache-filename ~/.skk/yaskkserv2.dict/cache.dict \
     --port 1178 \
-    /tmp/dict.base.yaskkserv2
+    ~/.skk/yaskkserv2.dict/base.dict
