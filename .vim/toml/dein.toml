@@ -19,6 +19,13 @@ repo = 'Shougo/neosnippet-snippets'
 [[plugins]]
 repo = 'tpope/vim-fugitive'
 hook_add = '''
+    nnoremap [fugitive] <Nop>
+    nmap <Space>g [fugitive]
+    nnoremap [fugitive]s <cmd>Git<CR>
+    nnoremap [fugitive]a <cmd>Gwrite<CR>
+    nnoremap [fugitive]d <cmd>Gdiff<CR>
+    nnoremap [fugitive]b <cmd>Gblame<CR>
+    nnoremap [fugitive]c <cmd>Git commit -v<CR>
 '''
 
 [[plugins]]
