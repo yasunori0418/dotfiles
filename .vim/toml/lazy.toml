@@ -134,4 +134,5 @@ hook_add = '''
     nnoremap [fugitive]l <cmd>Git log<CR>
     nnoremap [fugitive]L <cmd>Git lol<CR>
     nnoremap [fugitive]t <cmd>Deol --command tig -split="floating"<CR>
+    nnoremap [fugitive]m <cmd>!git branch<CR>:Git merge<Space>
 '''
