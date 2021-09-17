@@ -9,8 +9,8 @@ inoremap <silent> jj <ESC>:w<CR>
 inoremap <silent> <ESC> <ESC>:call system('fcitx-remote -c')<CR>
 
 " Insert Mode(Move)
-inoremap <C-h> <Left>
-inoremap <C-j> <Down>
-inoremap <C-k> <Up>
-inoremap <C-l> <Right>
-inoremap <C-d> <BS>
+"inoremap <C-h> <Left>
+"inoremap <C-j> <Down>
+"inoremap <C-k> <Up>
+"inoremap <C-l> <Right>
+"inoremap <C-d> <BS>

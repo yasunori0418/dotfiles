@@ -7,3 +7,5 @@ source ~/dotfiles/.vim/rc/option.vim
 " キーバインド設定
 source ~/dotfiles/.vim/rc/keybind.vim
 
+" Font and size settings when using GUI
+set guifont=HackGenNerd\ Console:h14
