@@ -38,9 +38,3 @@ hook_add = '''
 
 [[plugins]]
 repo = 'vim-denops/denops.vim'
-
-[[plugins]]
-repo = 'kuuote/denops-skkeleton.vim'
-hook_add = '''
-    source ~/dotfiles/.vim/plugins/skkeleton.vim
-'''

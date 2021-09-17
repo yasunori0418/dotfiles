@@ -105,3 +105,14 @@ hook_add = '''
     " Exit deol buffer with <ESC>
     tnoremap <ESC> <cmd>quit<CR>
 '''
+
+[[plugins]]
+repo = 'kuuote/denops-skkeleton.vim'
+on_map = '<Plug>(skkeleton-toggle)'
+hook_add = '''
+    imap <C-j> <Plug>(skkeleton-toggle)
+    cmap <C-j> <Plug>(skkeleton-toggle)
+'''
+hook_source = '''
+    source ~/dotfiles/.vim/plugins/skkeleton.vim
+'''
