@@ -116,3 +116,16 @@ hook_add = '''
 hook_source = '''
     source ~/dotfiles/.vim/plugins/skkeleton.vim
 '''
+
+[[plugins]]
+repo = 'tpope/vim-fugitive'
+on_map = '[fugitive]'
+hook_add = '''
+    nnoremap [fugitive] <Nop>
+    nmap <Space>g [fugitive]
+    nnoremap [fugitive]s <cmd>Git<CR>
+    nnoremap [fugitive]a <cmd>Gwrite<CR>
+    nnoremap [fugitive]d <cmd>Gdiff<CR>
+    nnoremap [fugitive]b <cmd>Gblame<CR>
+    nnoremap [fugitive]c <cmd>Git commit -v<CR>
+'''
