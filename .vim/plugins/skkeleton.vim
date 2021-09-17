@@ -3,8 +3,8 @@ imap <C-j> <Plug>(skkeleton-toggle)
 cmap <C-j> <Plug>(skkeleton-toggle)
 
 " Disable skkeleton
-" imap <C-x> <Plug>(skkeleton-disable)
-" cmap <C-x> <Plug>(skkeleton-disable)
+" imap x <Plug>(skkeleton-disable)
+" cmap x <Plug>(skkeleton-disable)
 
 " Load merged dictionary.
 call skkeleton#config({
