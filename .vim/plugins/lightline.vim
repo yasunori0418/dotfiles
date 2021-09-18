@@ -7,6 +7,7 @@ let g:lightline.colorscheme = 'iceberg'
 
 
 " Statusline======================================================
+
 " active
 let g:lightline.active = {}
 let g:lightline.active.left = [
@@ -25,8 +26,8 @@ let g:lightline.inactive.left = [
     \ ['filename']
     \ ]
 let g:lightline.inactive.right = [
+    \ ['lineinfo'],
     \ ['percent'],
-    \ ['fileformat', 'fileencoding', 'filetype'],
     \ ]
 " ================================================================
 
@@ -41,6 +42,8 @@ let g:lightline.tabline.right = [
     \ ]
 
 let g:lightline.tab = {}
+let g:lightline.tab.active = ['tabnum', 'filename', 'modified']
+let g:lightline.tab.inactive = ['tabnum', 'filename', 'modified']
 " ================================================================
 
 
