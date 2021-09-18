@@ -8,4 +8,4 @@ source ~/dotfiles/.vim/rc/option.vim
 source ~/dotfiles/.vim/rc/keybind.vim
 
 " Font and size settings when using GUI
-set guifont=HackGenNerd\ Console:h14
+set guifont=Cica:h14
