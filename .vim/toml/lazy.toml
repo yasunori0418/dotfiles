@@ -119,6 +119,7 @@ hook_source = '''
 
 [[plugins]]
 repo = 'tpope/vim-fugitive'
+on_cmd = ['Git', 'Gwrite', 'Gdiff', 'Gblame']
 on_map = '[fugitive]'
 hook_add = '''
     nnoremap [fugitive] <Nop>
