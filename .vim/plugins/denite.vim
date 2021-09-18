@@ -115,6 +115,27 @@ let s:menus.Denite_cmd.command_candidates = [
     \ ['file/rec:~/ -start-filter',             'Denite file/rec:~/ -start-filter'],
     \ ]
 
+let s:menus.fugitive_cmd = {
+    \ 'description':              'fugitive commands'
+    \ }
+
+let s:menus.fugitive_cmd.command_candidates = [
+    \ ['status',                      'Git'],
+    \ ['add',                         'Gwrite'],
+    \ ['commit -v',                   'Git commit -v'],
+    \ ['diff',                        'Gdiff'],
+    \ ['blame',                       'Gblame'],
+    \ ['commit log',                  'Git log'],
+    \ ['oneline log and graph',       'Git lol'],
+    \ ['push',                        'Git push'],
+    \ ['pull',                        'Git pull'],
+    \ ['Other some commands keymap',  'echo " [fugitive]C => branch list and switch branch\n
+                                            \ [fugitive]B => switch new branch\n
+                                            \ [fugitive]D => branch list and delete branch\n
+                                            \ [fugitive]M => branch list and merge\n
+                                            \ [fugitive]t => startup tig"'],
+    \ ]
+
 " Registration of denite menu
 call denite#custom#var('menu', 'menus', s:menus)
 
