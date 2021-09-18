@@ -1,8 +1,5 @@
 set noshowmode
 let g:lightline = {}
-let g:lightline.active = {}
-let g:lightline.inactive = {}
-let g:lightline.tabline = {}
 let g:lightline.component = {}
 let g:lightline.component_function = {}
 let g:lightline.component_expand = {}
@@ -11,31 +8,34 @@ let g:lightline.component_expand = {}
 let g:lightline.colorscheme = 'iceberg'
 
 " active
+let g:lightline.active = {}
 let g:lightline.active.left = [
     \ ['mode', 'paste'], 
-    \ ['readonly', 'filename', 'modifide']
+    \ ['readonly', 'filename', 'modifide'],
     \ ]
 let g:lightline.active.right = [
     \ ['lineinfo'],
     \ ['percent'],
-    \ ['fileformat', 'fileencoding', 'filetype']
+    \ ['fileformat', 'fileencoding', 'filetype'],
     \ ]
 
 " inactive
+let g:lightline.inactive = {}
 let g:lightline.inactive.left = [
     \ ['filename']
     \ ]
 let g:lightline.inactive.right = [
     \ ['percent'],
-    \ ['fileformat', 'fileencoding', 'filetype']
+    \ ['fileformat', 'fileencoding', 'filetype'],
     \ ]
 
 " tabline
+let g:lightline.tabline = {}
 let g:lightline.tabline.left = [
-    \ ['tabs']
+    \ ['tabs'],
     \ ]
 let g:lightline.tabline.right = [
-    \ ['close']
+    \ ['close'],
     \ ]
 
 " separator 
