@@ -3,8 +3,6 @@ let g:lightline = {}
 let g:lightline.active = {}
 let g:lightline.inactive = {}
 let g:lightline.tabline = {}
-let g:lightline.separator = {}
-let g:lightline.subseparator = {}
 let g:lightline.component = {}
 let g:lightline.component_function = {}
 let g:lightline.component_expand = {}
@@ -40,7 +38,16 @@ let g:lightline.tabline.right = [
     \ ['close']
     \ ]
 
-command! -bar LightlineUpdate call lightline#init()|
+" separator 
+let g:lightline.separator = {}
+let g:lightline.separator.left = ''
+let g:lightline.separator.right = ''
+
+" subseparator
+let g:lightline.subseparator = {}
+let g:lightline.subseparator.left = ''
+let g:lightline.subseparator.right = ''
+
 command! -bar LightlineUpdate source ~/dotfiles/.vim/plugins/lightline.vim
     \ call lightline#init()|
     \ call lightline#colorscheme()|
