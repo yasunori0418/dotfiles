@@ -39,3 +39,7 @@ let g:lightline.tabline.left = [
 let g:lightline.tabline.right = [
     \ ['close']
     \ ]
+
+command! -bar LightlineUpdate call lightline#init()|
+    \ call lightline#colorscheme()|
+    \ call lightline#update()
