@@ -4,9 +4,13 @@ let g:lightline.component = {}
 let g:lightline.component_function = {}
 let g:lightline.component_expand = {}
 
+" ================================================================
 " colorscheme
 let g:lightline.colorscheme = 'iceberg'
+" ================================================================
 
+
+" ================================================================
 " active
 let g:lightline.active = {}
 let g:lightline.active.left = [
@@ -28,7 +32,10 @@ let g:lightline.inactive.right = [
     \ ['percent'],
     \ ['fileformat', 'fileencoding', 'filetype'],
     \ ]
+" ================================================================
 
+
+" ================================================================
 " tabline
 let g:lightline.tabline = {}
 let g:lightline.tabline.left = [
@@ -37,7 +44,10 @@ let g:lightline.tabline.left = [
 let g:lightline.tabline.right = [
     \ ['close'],
     \ ]
+" ================================================================
 
+
+" ================================================================
 " separator 
 let g:lightline.separator = {}
 let g:lightline.separator.left = ''
@@ -47,7 +57,10 @@ let g:lightline.separator.right = ''
 let g:lightline.subseparator = {}
 let g:lightline.subseparator.left = ''
 let g:lightline.subseparator.right = ''
+" ================================================================
 
+
+" ================================================================
 command! -bar LightlineUpdate source ~/dotfiles/.vim/plugins/lightline.vim
     \ call lightline#init()|
     \ call lightline#colorscheme()|
