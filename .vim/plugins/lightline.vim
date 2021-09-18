@@ -41,5 +41,7 @@ let g:lightline.tabline.right = [
     \ ]
 
 command! -bar LightlineUpdate call lightline#init()|
+command! -bar LightlineUpdate source ~/dotfiles/.vim/plugins/lightline.vim
+    \ call lightline#init()|
     \ call lightline#colorscheme()|
     \ call lightline#update()
