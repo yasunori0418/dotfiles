@@ -1,12 +1,12 @@
 set noshowmode
 let g:lightline = {}
 
-" Colorscheme=====================================================
+" Colorscheme{{{
 let g:lightline.colorscheme = 'iceberg'
-" ================================================================
+" }}}
 
 
-" Statusline======================================================
+" Statusline{{{
 
 " active
 let g:lightline.active = {}
@@ -29,10 +29,10 @@ let g:lightline.inactive.right = [
     \ ['lineinfo'],
     \ ['percent'],
     \ ]
-" ================================================================
+" }}}
 
 
-" Tabline=========================================================
+" Tabline{{{
 let g:lightline.tabline = {}
 let g:lightline.tabline.left = [
     \ ['tabs'],
@@ -44,10 +44,10 @@ let g:lightline.tabline.right = [
 let g:lightline.tab = {}
 let g:lightline.tab.active = ['tabnum', 'filename', 'modified']
 let g:lightline.tab.inactive = ['tabnum', 'filename', 'modified']
-" ================================================================
+" }}}
 
 
-" Separator=======================================================
+" Separator{{{
 " 
 let g:lightline.separator = {}
 let g:lightline.separator.left = ''
@@ -57,10 +57,10 @@ let g:lightline.separator.right = ''
 let g:lightline.subseparator = {}
 let g:lightline.subseparator.left = ''
 let g:lightline.subseparator.right = ''
-" ================================================================
+" }}}
 
 
-" Component=======================================================
+" Component{{{
 let g:lightline.component = {}
 let g:lightline.component.mode = '%{lightline#mode()}'
 let g:lightline.component.absolutepath = '%F'
@@ -83,22 +83,22 @@ let g:lightline.component.line = '%l'
 let g:lightline.component.column = '%c'
 let g:lightline.component.close = '%999X X '
 let g:lightline.component.winnr = '%{winnr()}'
-" ================================================================
+" }}}
 
 
-" Component_function==============================================
+" Component_function{{{
 let g:lightline.component_function = {}
-" ================================================================
+" }}}
 
 
-" Component_expand================================================
+" Component_expand{{{
 let g:lightline.component_expand = {}
-" ================================================================
+" }}}
 
 
-" LightlineUpdate_Command=========================================
+" LightlineUpdate_Command{{{
 command! -bar LightlineUpdate source ~/dotfiles/.vim/plugins/lightline.vim
     \ call lightline#init()|
     \ call lightline#colorscheme()|
     \ call lightline#update()
-" ================================================================
+" }}}
