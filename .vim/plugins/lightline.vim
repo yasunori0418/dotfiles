@@ -11,8 +11,8 @@ let g:lightline.colorscheme = 'iceberg'
 " active
 let g:lightline.active = {}
 let g:lightline.active.left = [
-    \ ['mode', 'paste'], 
-    \ ['readonly', 'filename', 'modifide'],
+    \ ['mode', 'paste', 'git_branch'], 
+    \ ['filename', 'modified'],
     \ ]
 let g:lightline.active.right = [
     \ ['lineinfo'],
@@ -87,6 +87,7 @@ let g:lightline.component.winnr = '%{winnr()}'
 
 " Component_function{{{
 let g:lightline.component_function = {}
+let g:lightline.component_function.git_branch= 'LightlineFugitive'
 " }}}
 
 
@@ -95,9 +96,16 @@ let g:lightline.component_expand = {}
 " }}}
 
 
-"LightlineUpdate_Command{{{
+" LightlineUpdate_Command{{{
 command! -bar LightlineUpdate source ~/dotfiles/.vim/plugins/lightline.vim|
     \ call lightline#init()|
     \ call lightline#colorscheme()|
     \ call lightline#update()
+" }}}
+
+
+" Display function of branch name.{{{
+function! LightlineFugitive() abort
+    return fugitive#head()
+endfunction
 " }}}
