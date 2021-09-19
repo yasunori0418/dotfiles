@@ -48,7 +48,6 @@ let g:lightline.tab.inactive = ['tabnum', 'filename', 'modified']
 
 
 " Separator{{{
-" 
 let g:lightline.separator = {}
 let g:lightline.separator.left = ''
 let g:lightline.separator.right = ''
@@ -96,8 +95,8 @@ let g:lightline.component_expand = {}
 " }}}
 
 
-" LightlineUpdate_Command{{{
-command! -bar LightlineUpdate source ~/dotfiles/.vim/plugins/lightline.vim
+"LightlineUpdate_Command{{{
+command! -bar LightlineUpdate source ~/dotfiles/.vim/plugins/lightline.vim|
     \ call lightline#init()|
     \ call lightline#colorscheme()|
     \ call lightline#update()
