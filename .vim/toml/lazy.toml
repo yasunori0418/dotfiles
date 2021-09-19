@@ -130,7 +130,7 @@ hook_add = '''
     nnoremap [fugitive]b <cmd>Gblame<CR>
     nnoremap [fugitive]c <cmd>Git commit -v<CR>
     nnoremap [fugitive]C <cmd>!git branch<CR>:Git checkout<Space>
-    nnoremap [fugitive]B <cmd>Git checkout -b<Space>
+    nnoremap [fugitive]B :Git checkout -b<Space>
     nnoremap [fugitive]D <cmd>!git branch<CR>:Git checkout -d<Space>
     nnoremap [fugitive]l <cmd>Git log<CR>
     nnoremap [fugitive]L <cmd>Git lol<CR>
