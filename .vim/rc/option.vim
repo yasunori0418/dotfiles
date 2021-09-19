@@ -9,6 +9,7 @@ set fileencoding=utf-8
 " Use file encodings when loaded.
 set fileencodings=utf-8,sjis,iso-2022-jp,euc-jp
 " }}}
+
 " Automatic line feed code recognition.
 set fileformats=unix,dos,mac
 
@@ -19,7 +20,7 @@ set nobackup
 set noswapfile
 
 " East asia ambigunous charactor width problem.
-set ambiwidth=double
+set ambiwidth=single
 
 " Automatically load the file being edited
 set autoread
