@@ -1,95 +1,117 @@
-" ========================
-" エディタ設定
-" ========================
-" 文字コード {{{
-" 全体の文字コードをUTF-8
+" Editor-Settings{{{
+" Encoding{{{
+" Use utf-8 to overall encoding.
 set encoding=utf-8
-" ファイル書き込み時の文字コードをUTF-8
+
+" Use utf-8 when file write.
 set fileencoding=utf-8
-" ファイル読み込み時の文字コード
+
+" Use file encodings when loaded.
 set fileencodings=utf-8,sjis,iso-2022-jp,euc-jp
 " }}}
-" 改行コードの自動認識
+" Automatic line feed code recognition.
 set fileformats=unix,dos,mac
-" バックアップの無効化
+
+" Disable backup.
 set nobackup
-" スワップファイルを作成しない
+
+" Don't make swap file.
 set noswapfile
-" 全角文字専用の設定
+
+" East asia ambigunous charactor width problem.
 set ambiwidth=double
-" 編集中のファイルの自動読み込み
+
+" Automatically load the file being edited
 set autoread
-" 行末の1文字先までカーソルを移動できるように
+
+" Move the cursor one character ahead of the end of the line
 set virtualedit=onemore
-" クリップボードを使う
+
+" Use clipboard.
 set clipboard+=unnamed
-" カラースキーム
+
+" Colorscheme.
 colorscheme iceberg
+" }}}
 
-" ========================
-" 表示設定
-" ========================
-" 行番号の表示
+" Display{{{
+" Display rows number.
 set number
-" 相対行数の表示
+
+" Display relative rows number.
 set relativenumber
-" カーソルラインを表示
+
+" Display current row cursorline.
 set cursorline
-" タイトル表示
-set title
-" RGBカラー設定
+
+" True color terminal settings.
 if exists('+termguicolors')
-  let &t_8f="\<Esc>[38;2;%lu;%lu;%lum"
-  let &t_8b="\<Esc>[48;2;%lu;%lu;%lum"
-  set termguicolors
+    let &t_8f="\<Esc>[38;2;%lu;%lu;%lum"
+    let &t_8b="\<Esc>[48;2;%lu;%lu;%lum"
+    set termguicolors
 endif
-" 補完等のポップアップメニューの透過
+
+" Transparency of pop-up menus such as completion
 set pumblend=30
+" }}}
 
-" ========================
-" 検索関係
-" ========================
-" 検索結果をハイライト
+" Folding{{{
+set foldmethod=marker
+set foldlevel=0
+set foldcolumn=3
+" }}}
+
+" Search{{{
+" Highlight search results
 set hlsearch
-" インクリメント検索(検索ワードの最初の文字を入力した時点で検索が開始)
+
+" Incremental search.
+" Search starts when you enter the first character of the search word.
 set incsearch
-" 検索するときに大文字小文字を区別しない
+
+" Search is not case sensitive
 set ignorecase
-" 小文字で検索すると大文字と小文字を無視して検索
+
+" Searching in lowercase ignores uppercase and lowercase
 set smartcase
-" 検索がファイル末尾まで進んだら、ファイル先頭から再び検索
+
+" When the search progresses to the end of the file, search again from the beginning of the file.
 set wrapscan
+" }}}
 
-" ========================
-" インデント関係
-" ========================
-" スマートインデント
+" Indent{{{
+" Smart indent.
 set smartindent
-" タブを半角スペースで挿入する
+
+" Insert tab with half-width space.
 set expandtab
-" 各コマンドやsmartindentで挿入する空白の量
+
+" The amount of blank space to insert with each command or smart indent.
 set shiftwidth=4
-" タブ幅をスペース4つにする
+
+" Tab width with 4 spaces.
 set tabstop=4
-" 半角スペース4分のタブを挿入する
+
+" Insert a tab with 4 minutes of half-width space.
 set softtabstop=4
+" }}} 
 
-" ========================
-" ステータスライン関係
-" ========================
-" ステータスラインを表示
+" Statusline{{{
+" Display statusline.
 set laststatus=2
-" コマンドライン補完
+
+" Command line completion.
 set wildmenu
-" コマンド履歴
+
+" Command history.
 set history=5000
+" }}} 
 
-" ========================
-" 不可視文字の表示
-" ========================
+" Invisible characters{{{
+" Invisible characters
 set list
-"タブ/行末スペース/改行/ノーブレークスペース
+
+"Tab/End line Space/End line/No brake space.
 set listchars=tab:»-,trail:･,eol:↲,nbsp:%
-
-
+" }}}
 
