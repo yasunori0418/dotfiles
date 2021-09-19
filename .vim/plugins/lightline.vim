@@ -106,6 +106,10 @@ command! -bar LightlineUpdate source ~/dotfiles/.vim/plugins/lightline.vim|
 
 " Display function of branch name.{{{
 function! LightlineFugitive() abort
-    return fugitive#head()
+    if &ft !~? 'help\|denite\|defx\|tagbar' && exists('*fugitive#head')
+        return '' . fugitive#head()
+    else
+        return ''
+    endif
 endfunction
 " }}}
