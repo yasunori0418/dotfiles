@@ -11,8 +11,8 @@ let g:lightline.colorscheme = 'iceberg'
 " active
 let g:lightline.active = {}
 let g:lightline.active.left = [
-    \ ['mode', 'paste', 'git_branch'], 
-    \ ['filename', 'modified'],
+    \ ['mode', 'paste', ], 
+    \ ['git_branch', 'filename', 'modified'],
     \ ]
 let g:lightline.active.right = [
     \ ['lineinfo'],
@@ -59,7 +59,7 @@ let g:lightline.subseparator.right = ''
 " }}}
 
 
-" Component{{{
+" Component_default{{{
 let g:lightline.component = {}
 let g:lightline.component.mode = '%{lightline#mode()}'
 let g:lightline.component.absolutepath = '%F'
@@ -84,10 +84,13 @@ let g:lightline.component.close = '%999X X '
 let g:lightline.component.winnr = '%{winnr()}'
 " }}}
 
+" Component{{{
+" let g:lightline.component.git_branch = '%{FugitiveStatusline()}'
+" }}}
 
 " Component_function{{{
 let g:lightline.component_function = {}
-let g:lightline.component_function.git_branch= 'LightlineFugitive'
+let g:lightline.component_function.git_branch = 'LightlineFugitive'
 " }}}
 
 
@@ -104,10 +107,10 @@ command! -bar LightlineUpdate source ~/dotfiles/.vim/plugins/lightline.vim|
 " }}}
 
 
-" Display function of branch name.{{{
+" Branch name{{{
 function! LightlineFugitive() abort
-    if &ft !~? 'help\|denite\|defx\|tagbar' && exists('*fugitive#head')
-        return '' . fugitive#head()
+    if &ft !~? 'help\|denite\|defx\|tagbar' && exists('*FugitiveHead')
+        return '' . FugitiveHead()
     else
         return ''
     endif
