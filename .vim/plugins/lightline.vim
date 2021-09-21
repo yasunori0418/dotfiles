@@ -61,32 +61,35 @@ let g:lightline.subseparator.right = ''
 
 " Component_default{{{
 let g:lightline.component = {}
-let g:lightline.component.mode = '%{lightline#mode()}'
-let g:lightline.component.absolutepath = '%F'
-let g:lightline.component.relativepath= '%f'
-let g:lightline.component.filename = '%t'
-let g:lightline.component.modified = '%M'
-let g:lightline.component.bufnum = '%n'
-let g:lightline.component.paste = '%{&paste?"PASTE":""}'
-let g:lightline.component.readonly = '%R'
-let g:lightline.component.charvalue = '%b'
-let g:lightline.component.charvaluehex = '%B'
-let g:lightline.component.fileencoding = '%{&fenc!=#""?&fenc:&enc}'
-let g:lightline.component.fileformat = '%{&ff}'
-let g:lightline.component.filetype = '%{&ft!=#""?&ft:"no ft"}'
-let g:lightline.component.percent = '%3p%%'
-let g:lightline.component.percentwin = '%P'
-let g:lightline.component.spell = '%{&spell?&spelllang:""}'
-let g:lightline.component.lineinfo = '%3l:%-2c'
-let g:lightline.component.line = '%l'
-let g:lightline.component.column = '%c'
-let g:lightline.component.close = '%999X X '
-let g:lightline.component.winnr = '%{winnr()}'
+let g:lightline.component = {
+    \ 'mode': '%{lightline#mode()}',
+    \ 'absolutepath': '%F',
+    \ 'relativepath': '%f',
+    \ 'filename': '%t',
+    \ 'modified': '%M',
+    \ 'bufnum': '%n',
+    \ 'paste': '%{&paste?"PASTE":""}',
+    \ 'readonly': '%R',
+    \ 'charvalue': '%b',
+    \ 'charvaluehex': '%B',
+    \ 'fileencoding': '%{&fenc!=#""?&fenc:&enc}',
+    \ 'fileformat': '%{&ff}',
+    \ 'filetype': '%{&ft!=#""?&ft:"no ft"}',
+    \ 'percent': '%3p%%',
+    \ 'percentwin': '%P',
+    \ 'spell': '%{&spell?&spelllang:""}',
+    \ 'lineinfo': '%3l:%-2c',
+    \ 'line': '%l',
+    \ 'column': '%c',
+    \ 'close': '%999X X ',
+    \ 'winnr': '%{winnr()}' }
 " }}}
+
 
 " Component{{{
 " let g:lightline.component.git_branch = '%{FugitiveStatusline()}'
 " }}}
+
 
 " Component_function{{{
 let g:lightline.component_function = {}
