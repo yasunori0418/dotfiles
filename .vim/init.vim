@@ -27,6 +27,17 @@ if exists('g:neovide')
     " Animation trail length
     let g:neovide_cursor_trail_length=0.4
 
+
+    " Lightline separator{{{
+    " Separator
+    let g:lightline.separator = {}
+    let g:lightline.separator.left = ''
+    let g:lightline.separator.right = ''
+
+    " subseparator
+    let g:lightline.subseparator = {}
+    let g:lightline.subseparator.left = ''
+    let g:lightline.subseparator.right = ''
     " }}}
 
 endif
