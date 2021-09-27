@@ -11,7 +11,7 @@ source ~/dotfiles/.vim/rc/keybind.vim
 
 if exists('g:neovide')
     " Font and size settings when using GUI
-    set guifont=Cica:h14
+    set guifont=Cica:h12
 
     " East asia ambigunous width ploblem.
     set ambiwidth=double
@@ -22,10 +22,12 @@ if exists('g:neovide')
     " Cursor settings{{{
     
     " Animation length
-    let g:neovide_cursor_animation_length=0.05
+    let g:neovide_cursor_animation_length=0
 
     " Animation trail length
-    let g:neovide_cursor_trail_length=0.4
+    let g:neovide_cursor_trail_length=0
+
+    " }}}
 
 
     " Lightline separator{{{
