@@ -48,14 +48,19 @@ let g:lightline.tab.inactive = ['tabnum', 'filename', 'modified']
 
 
 " Separator{{{
-let g:lightline.separator = {}
-let g:lightline.separator.left = ''
-let g:lightline.separator.right = ''
 
-" subseparator
-let g:lightline.subseparator = {}
-let g:lightline.subseparator.left = ''
-let g:lightline.subseparator.right = ''
+if &ambiwidth =~ 'single'
+
+    let g:lightline.separator = {}
+    let g:lightline.separator.left = ' '
+    let g:lightline.separator.right = ' '
+
+    let g:lightline.subseparator = {}
+    let g:lightline.subseparator.left = ' '
+    let g:lightline.subseparator.right = ' '
+
+endif
+
 " }}}
 
 
