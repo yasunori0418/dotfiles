@@ -11,7 +11,7 @@ source ~/dotfiles/.vim/rc/keybind.vim
 
 if exists('g:neovide')
     " Font and size settings when using GUI
-    set guifont=Cica:h10
+    set guifont=Cica:h14
 
     " East asia ambigunous width ploblem.
     set ambiwidth=double
