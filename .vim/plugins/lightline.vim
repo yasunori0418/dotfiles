@@ -2,7 +2,9 @@ set noshowmode
 let g:lightline = {}
 
 " Colorscheme{{{
+
 let g:lightline.colorscheme = 'iceberg'
+
 " }}}
 
 
@@ -13,6 +15,7 @@ let g:lightline.active = {}
 let g:lightline.active.left = [
     \ ['mode', 'paste', ], 
     \ ['git_branch', 'filename', 'modified'],
+    \ ['skk_mode'],
     \ ]
 let g:lightline.active.right = [
     \ ['lineinfo'],
@@ -29,10 +32,12 @@ let g:lightline.inactive.right = [
     \ ['lineinfo'],
     \ ['percent'],
     \ ]
+
 " }}}
 
 
 " Tabline{{{
+
 let g:lightline.tabline = {}
 let g:lightline.tabline.left = [
     \ ['tabs'],
@@ -44,6 +49,7 @@ let g:lightline.tabline.right = [
 let g:lightline.tab = {}
 let g:lightline.tab.active = ['tabnum', 'filename', 'modified']
 let g:lightline.tab.inactive = ['tabnum', 'filename', 'modified']
+
 " }}}
 
 
@@ -65,6 +71,7 @@ endif
 
 
 " Component_default{{{
+
 let g:lightline.component = {}
 let g:lightline.component = {
     \ 'mode': '%{lightline#mode()}',
@@ -88,39 +95,76 @@ let g:lightline.component = {
     \ 'column': '%c',
     \ 'close': '%999X X ',
     \ 'winnr': '%{winnr()}' }
+
 " }}}
 
 
 " Component{{{
+
 " let g:lightline.component.git_branch = '%{FugitiveStatusline()}'
+
 " }}}
 
 
 " Component_function{{{
+
 let g:lightline.component_function = {}
-let g:lightline.component_function.git_branch = 'LightlineFugitive'
+let g:lightline.component_function.git_branch = 'g:LightlineFugitive'
+let g:lightline.component_function.skk_mode = 'g:LightlineSkkeleton'
+
 " }}}
 
 
 " Component_expand{{{
+
 let g:lightline.component_expand = {}
+
 " }}}
 
 
 " LightlineUpdate_Command{{{
+
 command! -bar LightlineUpdate source ~/dotfiles/.vim/plugins/lightline.vim|
     \ call lightline#init()|
     \ call lightline#colorscheme()|
     \ call lightline#update()
+
 " }}}
 
 
 " Branch name{{{
-function! LightlineFugitive() abort
+
+function! g:LightlineFugitive() abort
     if &ft !~? 'help\|denite\|defx\|tagbar' && exists('*FugitiveHead')
         return '' . FugitiveHead()
     else
         return ''
     endif
 endfunction
+
+" }}}
+
+
+" Skkeleton mode{{{
+
+function! g:LightlineSkkeleton() abort
+
+    if get(g:, 'loaded_skkeleton') == 0
+        return ''
+    endif
+
+    let l:mode = skkeleton#mode()
+
+    if l:mode == 'hira'
+        return 'あ﫦'
+    elseif l:mode == 'kata'
+        return 'ア﫦'
+    else
+        return 'Aa﫦'
+    endif
+
+    autocmd User skkeleton-mode-changed redrawstatus
+
+endfunction
+
 " }}}
