@@ -13,9 +13,8 @@ let g:lightline.colorscheme = 'iceberg'
 " active
 let g:lightline.active = {}
 let g:lightline.active.left = [
-    \ ['mode', 'paste', ], 
+    \ ['mode', 'paste', 'skk_mode'], 
     \ ['git_branch', 'filename', 'modified'],
-    \ ['skk_mode'],
     \ ]
 let g:lightline.active.right = [
     \ ['lineinfo'],
@@ -111,6 +110,7 @@ let g:lightline.component = {
 let g:lightline.component_function = {}
 let g:lightline.component_function.git_branch = 'g:LightlineFugitive'
 let g:lightline.component_function.skk_mode = 'g:LightlineSkkeleton'
+let g:lightline.component_function.mode = 'g:LightlineMode'
 
 " }}}
 
@@ -155,15 +155,44 @@ function! g:LightlineSkkeleton() abort
 
     let l:mode = skkeleton#mode()
 
-    if l:mode == 'hira'
-        return 'あ﫦'
-    elseif l:mode == 'kata'
-        return 'ア﫦'
+    if lightline#mode() == 'INSERT'
+        if l:mode == 'hira'
+            return 'あ﫦'
+        elseif l:mode == 'kata'
+            return 'ア﫦'
+        else
+            return 'Aa﫦'
+        endif
     else
-        return 'Aa﫦'
+        return ''
     endif
 
     autocmd User skkeleton-mode-changed redrawstatus
+
+endfunction
+
+" }}}
+
+
+" Custom Lightline mode{{{
+
+function! g:LightlineMode() abort
+
+    if lightline#mode() == 'INSERT'
+        if get(g:, 'loaded_skkeleton') == 0
+            return lightline#mode()
+        else
+            if skkeleton#mode() == 'hira'
+                return 'INSERT-SKK'
+            elseif skkeleton#mode() == 'kata'
+                return 'INSERT-SKK'
+            else
+                return lightline#mode()
+            endif
+        endif
+    else
+        return lightline#mode()
+    endif
 
 endfunction
 
