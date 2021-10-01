@@ -161,11 +161,19 @@ function! g:LightlineSkkeleton() abort
         else
             return 'Aa﫦'
         endif
+    elseif lightline#mode() == 'COMMAND'
+        if skkeleton#mode() == 'hira'
+            return 'あ﫦'
+        elseif skkeleton#mode() == 'kata'
+            return 'ア﫦'
+        else
+            return 'Aa﫦'
+        endif
     else
         return ''
     endif
 
-    autocmd User skkeleton-mode-changed redrawstatus
+    autocmd User skkeleton-mode-changed call lightline#update()
 
 endfunction
 
@@ -180,10 +188,18 @@ function! g:LightlineMode() abort
         if get(g:, 'loaded_skkeleton') == 0
             return lightline#mode()
         else
-            if skkeleton#mode() == 'hira'
+            if skkeleton#mode() != ''
                 return 'INSERT-SKK'
-            elseif skkeleton#mode() == 'kata'
-                return 'INSERT-SKK'
+            else
+                return lightline#mode()
+            endif
+        endif
+    elseif lightline#mode() == 'COMMAND'
+        if get(g:, 'loaded_skkeleton') == 0
+            return lightline#mode()
+        else
+            if skkeleton#mode() != ''
+                return 'COMMAND-SKK'
             else
                 return lightline#mode()
             endif
