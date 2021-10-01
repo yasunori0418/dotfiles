@@ -153,12 +153,10 @@ function! g:LightlineSkkeleton() abort
         return ''
     endif
 
-    let l:mode = skkeleton#mode()
-
     if lightline#mode() == 'INSERT'
-        if l:mode == 'hira'
+        if skkeleton#mode() == 'hira'
             return 'あ﫦'
-        elseif l:mode == 'kata'
+        elseif skkeleton#mode() == 'kata'
             return 'ア﫦'
         else
             return 'Aa﫦'
