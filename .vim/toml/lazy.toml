@@ -68,10 +68,6 @@ hook_add = '''
 '''
 
 [[plugins]]
-repo = 'jiangmiao/auto-pairs'
-on_i = 1
-
-[[plugins]]
 repo = 'Shougo/defx.nvim'
 hook_add = '''
     nnoremap [defx] <Nop>
@@ -116,3 +112,7 @@ hook_add = '''
 hook_source = '''
     source ~/dotfiles/.vim/plugins/skkeleton.vim
 '''
+
+[[plugins]]
+repo = 'cohama/lexima.vim'
+on_event = 'InsertEnter'
