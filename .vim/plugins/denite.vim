@@ -136,6 +136,15 @@ let s:menus.fugitive_cmd.command_candidates = [
                                             \ [fugitive]t => startup tig"'],
     \ ]
 
+let s:menus.gui_font_size = {
+    \ 'description':    'Chage the gui font size.',
+    \ }
+
+let s:menus.gui_font_size.command_candidates = [
+    \ ['For desktop size',      'set guifont=Cica:h14'],
+    \ ['For laptop size',       'set guifont=Cica:h12'],
+    \ ]
+
 " Registration of denite menu
 call denite#custom#var('menu', 'menus', s:menus)
 
