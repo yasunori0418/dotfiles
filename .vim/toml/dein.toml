@@ -10,9 +10,6 @@ hook_add = '''
     source ~/dotfiles/.vim/plugins/lightline.vim
 '''
 
-[[plugins]] # Preview of replacement results
-repo = 'markonm/traces.vim'
-
 [[plugins]]
 repo = 'Shougo/neosnippet-snippets'
 
@@ -24,12 +21,6 @@ repo = 'Yggdroot/indentLine'
 
 [[plugins]]
 repo = 'tpope/vim-surround'
-
-[[plugins]]
-repo = 'majutsushi/tagbar'
-hook_add = '''
-    nmap <F8> :TagbarToggle<CR>
-'''
 
 [[plugins]]
 repo = 'vim-denops/denops.vim'

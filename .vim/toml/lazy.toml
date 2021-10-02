@@ -2,6 +2,10 @@
 repo = 'vim-jp/vimdoc-ja'
 on_cmd = ['h', 'help']
 
+[[plugins]] # Preview of replacement results
+repo = 'markonm/traces.vim'
+on_event = 'CmdwinEnter'
+
 [[plugins]] # Translate, Japanese to English
 repo = 'skanehira/translate.vim'
 on_cmd = 'Translate'
@@ -11,12 +15,19 @@ hook_source = '''
 '''
 
 [[plugins]]
+repo = 'majutsushi/tagbar'
+on_cmd = 'TagbarToggle'
+hook_add = '''
+    nmap <F8> :TagbarToggle<CR>
+'''
+
+[[plugins]]
 repo = 'wsdjeg/dein-ui.vim'
 on_cmd = 'DeinUpdate'
 
 [[plugins]]
 repo = 'Shougo/deoplete.nvim'
-on_i = 1
+on_event = 'InsertEnter'
 hook_source = '''
     let g:deoplete#enable_at_startup = 1
     inoremap <expr><tab> pumvisible() ? "\<C-n>" :
@@ -45,9 +56,9 @@ hook_source = '''
         set conceallevel=2 concealcursor=niv
     endif
 '''
-on_i  = 1
-on_ft = ['snippet']
-depends = ['neosnippet-snippets']
+on_event = 'InsertEnter'
+on_ft = 'snippet'
+depends = 'neosnippet-snippets'
 
 [[plugins]]
 repo = 'Shougo/denite.nvim'
