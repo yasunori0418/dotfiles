@@ -107,7 +107,7 @@ hook_add = '''
 '''
 
 [[plugins]]
-repo = 'kuuote/denops-skkeleton.vim'
+repo = 'vim-skk/skkeleton'
 on_map = {ic = '<Plug>(skkeleton-toggle)'}
 hook_add = '''
     imap <C-j> <Plug>(skkeleton-toggle)
