@@ -79,16 +79,5 @@ hook_add = '''
 '''
 
 [[plugins]]
-repo = 'vim-skk/skkeleton'
-on_map = {ic = '<Plug>(skkeleton-toggle)'}
-hook_add = '''
-    imap <C-j> <Plug>(skkeleton-toggle)
-    cmap <C-j> <Plug>(skkeleton-toggle)
-'''
-hook_source = '''
-    source ~/dotfiles/.vim/plugins/skkeleton.vim
-'''
-
-[[plugins]]
 repo = 'cohama/lexima.vim'
 on_event = 'InsertEnter'
