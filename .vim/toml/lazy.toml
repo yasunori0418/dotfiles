@@ -26,41 +26,6 @@ repo = 'wsdjeg/dein-ui.vim'
 on_cmd = 'DeinUpdate'
 
 [[plugins]]
-repo = 'Shougo/deoplete.nvim'
-on_event = 'InsertEnter'
-hook_source = '''
-    let g:deoplete#enable_at_startup = 1
-    inoremap <expr><tab> pumvisible() ? "\<C-n>" :
-        \ neosnippet#expandable_or_jumpable() ?
-        \    "\<Plug>(neosnippet_expand_or_jump)" : "\<tab>"
-
-    " <S-TAB>: completion back.
-    inoremap <expr><S-TAB>  pumvisible() ? "\<C-p>" : "\<C-h>"
-'''
-
-[[plugins]]
-repo = 'Shougo/neosnippet'
-hook_source = '''
-    imap <C-k> <Plug>(neosnippet_expand_or_jump)
-    smap <C-k> <Plug>(neosnippet_expand_or_jump)
-    xmap <C-k> <Plug>(neosnippet_expand_target)
-
-    " SuperTab like snippets behavior.
-    imap <expr><TAB> pumvisible() ? 
-    \ "\<C-n>" : neosnippet#jumpable() ? 
-    \ "\<Plug>(neosnippet_expand_or_jump)" : "\<TAB>"
-    smap <expr><TAB> neosnippet#expandable_or_jumpable() ?
-    \ "\<Plug>(neosnippet_expand_or_jump)" : "\<TAB>"
-
-    if has('conceal')
-        set conceallevel=2 concealcursor=niv
-    endif
-'''
-on_event = 'InsertEnter'
-on_ft = 'snippet'
-depends = 'neosnippet-snippets'
-
-[[plugins]]
 repo = 'Shougo/denite.nvim'
 on_cmd = 'Denite'
 hook_source = '''
