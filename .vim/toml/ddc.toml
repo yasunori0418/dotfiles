@@ -27,6 +27,10 @@ repo = 'LumaKernel/ddc-file'
 on_source ='ddc.vim'
 
 [[plugins]]
+repo = 'Shougo/ddc-converter_remove_overlap'
+on_source = 'ddc.toml'
+
+[[plugins]]
 repo = 'Shougo/neosnippet'
 on_event = 'InsertEnter'
 hook_source = '''
