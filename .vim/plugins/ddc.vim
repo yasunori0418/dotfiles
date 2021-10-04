@@ -30,6 +30,7 @@ call ddc#custom#patch_global('sourceOptions', {
         \ 'mark': 'SKK',
         \ 'matchers': ['skkeleton'],
         \ 'sorters': [],
+        \ 'minAutoCompleteLength': 2,
     \ },
     \ })
 
