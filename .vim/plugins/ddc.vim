@@ -24,7 +24,7 @@ call ddc#custom#patch_global('sourceOptions', {
     \ 'file': {
         \ 'mark': 'F',
         \ 'isVolatile': v:true,
-        \ 'forceCompletionPattern': '\S\/\S*',
+        \ 'forceCompletionPattern': '\S/\S*',
     \ },
     \ 'skkeleton': {
         \ 'mark': 'SKK',
