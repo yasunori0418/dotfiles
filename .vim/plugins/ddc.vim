@@ -10,6 +10,7 @@ inoremap <expr><S-TAB>  pumvisible() ? '<C-p>' : '<C-h>'
 call ddc#custom#patch_global('sources', ['around', 'file', 'neosnippet', 'skkeleton'])
 call ddc#custom#patch_global('sourceOptions', {
     \ '_': {
+        \ 'ignoreCase': v:true,
         \ 'matchers': ['matcher_head'],
         \ 'sorters': ['sorter_rank'],
     \ },
