@@ -4,6 +4,12 @@ repo = 'Shougo/dein.vim'
 [[plugins]] # Color scheme for editor
 repo = 'cocopon/iceberg.vim'
 
+[[plugins]]
+repo = 'lewis6991/impatient.nvim'
+hook_source = '''
+  lua require('impatient')
+'''
+
 [[plugins]] # Modern and light status line.
 repo = 'itchyny/lightline.vim'
 hook_add = '''
