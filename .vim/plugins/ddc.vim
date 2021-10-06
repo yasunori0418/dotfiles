@@ -18,6 +18,7 @@ call ddc#custom#patch_global('sourceOptions', {
     \ 'around': {
         \ 'mark': 'A',
         \ 'matchers': ['matcher_head', 'matcher_length'],
+        \ 'maxSize': 500,
     \ },
     \ 'neosnippet': {
         \ 'mark': 'ns',
