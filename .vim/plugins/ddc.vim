@@ -7,7 +7,7 @@ inoremap <silent><expr> <TAB>
 " <S-TAB>: completion back.
 inoremap <expr><S-TAB>  pumvisible() ? '<C-p>' : '<C-h>'
 
-call ddc#custom#patch_global('sources', ['around', 'file', 'neosnippet', 'skkeleton'])
+call ddc#custom#patch_global('sources', ['around', 'file', 'neosnippet', 'skkeleton', 'nvim-lsp'])
 call ddc#custom#patch_global('sourceOptions', {
     \ '_': {
         \ 'ignoreCase': v:true,
@@ -28,6 +28,10 @@ call ddc#custom#patch_global('sourceOptions', {
         \ 'mark': 'F',
         \ 'isVolatile': v:true,
         \ 'forceCompletionPattern': '\S/\S*',
+    \ },
+    \ 'nvim-lsp': {
+        \ 'mark': 'lsp',
+        \ 'forceCompletionPattern': '\.\w*|:\w*|->\w*',
     \ },
     \ 'skkeleton': {
         \ 'mark': 'SKK',
