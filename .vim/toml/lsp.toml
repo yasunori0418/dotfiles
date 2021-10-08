@@ -2,7 +2,4 @@
 repo = 'neovim/nvim-lspconfig'
 depends = 'ddc.vim'
 hook_source = '''
-    lua << EOF
-        require'lspconfig'.pyls.setup{}
-    EOF
 '''
