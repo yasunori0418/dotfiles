@@ -2,4 +2,5 @@
 repo = 'neovim/nvim-lspconfig'
 depends = 'ddc.vim'
 hook_source = '''
+    lspfile ~/dotfiles/.vim/lsp_configs.lua
 '''
