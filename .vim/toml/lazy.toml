@@ -18,6 +18,9 @@ on_event = 'CmdwinEnter'
 repo = 'skanehira/denops-translate.vim'
 on_cmd = ['Translate', 'Translate!']
 
+[[plugins]]
+repo = 'lambdalisue/suda.vim'
+on_cmd = ['SudaRead', 'SudaWrite']
 
 [[plugins]]
 repo = 'majutsushi/tagbar'
