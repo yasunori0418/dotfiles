@@ -7,6 +7,9 @@ hook_source = '''
 '''
 
 [[plugins]]
+repo = 'Shougo/pum.vim'
+
+[[plugins]]
 repo = 'Shougo/ddc-around'
 on_source ='ddc.vim'
 
