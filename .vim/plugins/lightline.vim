@@ -1,6 +1,8 @@
 set noshowmode
 let g:lightline = {}
 
+autocmd User skkeleton-mode-changed redrawstatus
+
 " Colorscheme{{{
 
 let g:lightline.colorscheme = 'iceberg'
@@ -154,15 +156,7 @@ function! g:LightlineSkkeleton() abort
         return ''
     endif
 
-    if lightline#mode() == 'INSERT'
-        if skkeleton#mode() == 'hira'
-            return 'あ﫦'
-        elseif skkeleton#mode() == 'kata'
-            return 'ア﫦'
-        else
-            return 'Aa﫦'
-        endif
-    elseif lightline#mode() == 'COMMAND'
+    if lightline#mode() == 'INSERT' || lightline#mode() == 'COMMAND'
         if skkeleton#mode() == 'hira'
             return 'あ﫦'
         elseif skkeleton#mode() == 'kata'
@@ -174,8 +168,6 @@ function! g:LightlineSkkeleton() abort
         return ''
     endif
 
-    autocmd User skkeleton-mode-changed redrawstatus
-
 endfunction
 
 " }}}
@@ -185,25 +177,15 @@ endfunction
 
 function! g:LightlineMode() abort
 
-    if lightline#mode() == 'INSERT'
+    if lightline#mode() == 'INSERT' || lightline#mode() == 'COMMAND'
         if get(g:, 'loaded_skkeleton') == 0
             return lightline#mode()
-        else
-            if skkeleton#mode() != ''
-                return 'INSERT-SKK'
-            else
-                return lightline#mode()
-            endif
         endif
-    elseif lightline#mode() == 'COMMAND'
-        if get(g:, 'loaded_skkeleton') == 0
-            return lightline#mode()
+
+        if skkeleton#mode() != ''
+            return lightline#mode() .. '-SKK'
         else
-            if skkeleton#mode() != ''
-                return 'COMMAND-SKK'
-            else
-                return lightline#mode()
-            endif
+           return lightline#mode()
         endif
     else
         return lightline#mode()
