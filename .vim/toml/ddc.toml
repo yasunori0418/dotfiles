@@ -1,6 +1,6 @@
 [[plugins]]
 repo = 'Shougo/ddc.vim'
-depends = ['denops.vim', 'pum.vim']
+depends = 'denops.vim'
 on_event = 'InsertEnter'
 hook_source = '''
     source ~/dotfiles/.vim/plugins/ddc.vim
@@ -28,10 +28,6 @@ on_source ='ddc.vim'
 [[plugins]]
 repo = 'LumaKernel/ddc-file'
 on_source ='ddc.vim'
-
-[[plugins]]
-repo = 'Shougo/ddc-converter_remove_overlap'
-on_source = 'ddc.toml'
 
 [[plugins]]
 repo = 'Shougo/ddc-nvim-lsp'
