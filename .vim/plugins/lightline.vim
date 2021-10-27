@@ -174,7 +174,7 @@ function! g:LightlineSkkeleton() abort
         return ''
     endif
 
-    autocmd User skkeleton-mode-changed call lightline#update()
+    autocmd User skkeleton-mode-changed redrawstatus
 
 endfunction
 
