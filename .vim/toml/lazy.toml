@@ -6,17 +6,17 @@ on_cmd = ['h', 'help']
 repo = 'markonm/traces.vim'
 on_event = 'CmdwinEnter'
 
-# [[plugins]] # Translate, Japanese to English
-# repo = 'skanehira/translate.vim'
-# on_cmd = 'Translate'
-# hook_source = '''
-#     " Pop up the translated content
-#     let g:translate_popup_window = 1
-# '''
+[[plugins]] # Translate, Japanese to English
+repo = 'skanehira/translate.vim'
+on_cmd = 'Translate'
+hook_source = '''
+    " Pop up the translated content
+    let g:translate_popup_window = 1
+'''
 
-[[plugins]]
-repo = 'skanehira/denops-translate.vim'
-on_cmd = ['Translate', 'Translate!']
+#[[plugins]]
+#repo = 'skanehira/denops-translate.vim'
+#on_cmd = 'Translate'
 
 [[plugins]]
 repo = 'lambdalisue/suda.vim'
