@@ -10,10 +10,9 @@ function! s:skkeleton_init() abort
     " Load merged dictionary.
     call skkeleton#config({
         \ 'eggLikeNewline': v:true,
-        \ 'globalJisyo': expand('$HOME/.skk/dictionary/SKK-JISYO.merge'),
-        \ 'userJisyo': expand('$HOME/.skk/skkeleton/skkeleton')
+        \ 'userJisyo': '~/.skk/skkeleton/skkeleton'
         \ })
-    
+
     " L2X keymaping.
     call skkeleton#register_kanatable('rom', {
         \ 'jj': 'escape',
