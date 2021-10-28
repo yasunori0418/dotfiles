@@ -1,6 +1,6 @@
 [[plugins]]
 repo = 'Shougo/ddc.vim'
-depends = 'denops.vim'
+depends = ['denops.vim', 'pum.vim']
 on_event = 'InsertEnter'
 hook_source = '''
     source ~/dotfiles/.vim/plugins/ddc.vim
