@@ -34,8 +34,6 @@ call ddc#custom#patch_global('sourceParams', {
     \ })
 
 " Keymaping{{{
-inoremap <silent><expr> <C-l> ddc#map#complete_common_string()
-
 " <TAB>: completion.
 inoremap <silent><expr> <TAB>
     \ pumvisible() ? '<C-n>' :
