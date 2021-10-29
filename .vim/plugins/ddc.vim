@@ -45,7 +45,8 @@ inoremap <silent><expr> <TAB>
 inoremap <S-TAB> <Cmd>call pum#map#insert_relative(-1)<CR>
 inoremap <C-n> <Cmd>call pum#map#select_relative(+1)<CR>
 inoremap <C-p> <Cmd>call pum#map#select_relative(-1)<CR>
-inoremap <CR> <Cmd>call pum#map#confirm()<CR>
+" inoremap <CR> pum#visible() ? '<Cmd>call pum#map#confirm()<CR>' : <CR>
+inoremap <C-y> <Cmd>call pum#map#confirm()<CR>
 inoremap <C-e> <Cmd>call pum#map#cancel()<CR>
 
 " }}}
