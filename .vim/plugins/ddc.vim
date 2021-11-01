@@ -1,6 +1,6 @@
 call ddc#custom#patch_global('sources', ['around', 'file', 'rg', 'neosnippet'])
 
-" ddc source settings.{{{
+" ddc source settings.
 call ddc#custom#patch_global('sourceOptions', {
     \ '_': {
         \ 'ignoreCase': v:true,
@@ -48,11 +48,15 @@ call ddc#custom#patch_global('sourceParams', {
         \ 'maxSize': 500,
     \ },
     \ })
-" }}}
 
 " Keymaping{{{
 
 " Use pum.vim
+call ddc#custom#patch_global('autoCompleteEvents', [
+      \ 'InsertEnter', 'TextChangedI', 'TextChangedP',
+      \ 'CmdlineEnter', 'CmdlineChanged',
+      \ ])
+
 call ddc#custom#patch_global('completionMenu', 'pum.vim')
 
 inoremap <silent><expr> <TAB>
