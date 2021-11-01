@@ -1,4 +1,4 @@
-call ddc#custom#patch_global('sources', ['around', 'file', 'neosnippet', 'skkeleton'])
+call ddc#custom#patch_global('sources', ['around', 'file', 'neosnippet'])
 
 call ddc#custom#patch_global('sourceOptions', {
     \ '_': {
