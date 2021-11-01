@@ -1,5 +1,6 @@
-call ddc#custom#patch_global('sources', ['around', 'file', 'neosnippet'])
+call ddc#custom#patch_global('sources', ['around', 'file', 'rg', 'neosnippet'])
 
+" ddc source settings.{{{
 call ddc#custom#patch_global('sourceOptions', {
     \ '_': {
         \ 'ignoreCase': v:true,
@@ -19,6 +20,18 @@ call ddc#custom#patch_global('sourceOptions', {
         \ 'mark': 'ns',
         \ 'dup': v:true,
     \ },
+    \ 'nvim-lsp': {
+        \ 'mark': 'lsp',
+        \ 'forceCompletionPattern': '\.\w*|:\w*|->\w*',
+    \ },
+    \ 'cmdline': {'mark': 'cmdline'},
+    \ 'cmdline-history': {'mark': 'history'},
+    \ 'necovim': {'mark': 'necovim'},
+    \ 'rg': {
+        \ 'mark': 'ripgrep',
+        \ 'matchers': ['matcher_head', 'matcher_length'],
+        \ 'minAutoCompleteLength': 4,
+    \ },
     \ })
 
 call ddc#custom#patch_global('sourceOptions', {
@@ -35,6 +48,7 @@ call ddc#custom#patch_global('sourceParams', {
         \ 'maxSize': 500,
     \ },
     \ })
+" }}}
 
 " Keymaping{{{
 

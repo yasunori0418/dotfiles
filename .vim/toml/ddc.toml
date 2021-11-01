@@ -30,6 +30,29 @@ repo = 'LumaKernel/ddc-file'
 on_source ='ddc.vim'
 
 [[plugins]]
+repo = 'Shoug/ddc-rg'
+on_source = 'ddc.vim'
+
+[[plugins]]
+repo = 'Shougo/ddc-cmdline'
+on_source = 'ddc.vim'
+
+[[plugins]]
+repo = 'Shougo/ddc-cmdline_history'
+on_source = 'ddc.vim'
+
+[[plugins]]
+repo = 'Shougo/neco-vim'
+on_ft = ['vim', 'toml', 'markdown']
+depends = 'ddc.vim'
+hook_source = '''
+    call ddc#custom#patch_filetype(
+        \ ['vim'], 'sources', 
+        \ ['necovim', 'around', 'neosnippet', 'file', 'rg'],
+        \ )
+'''
+
+[[plugins]]
 repo = 'Shougo/ddc-nvim-lsp'
 on_source = 'nvim-lspconfig'
 
