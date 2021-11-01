@@ -102,10 +102,10 @@ set softtabstop=4
 set laststatus=2
 
 " Command line completion.
-set wildmenu
+" set wildmenu
 
 " Command history.
-set history=5000
+" set history=5000
 " }}} 
 
 " Invisible characters{{{
