@@ -26,7 +26,7 @@ set ambiwidth=single
 set autoread
 
 " Move the cursor one character ahead of the end of the line
-set virtualedit=onemore
+" set virtualedit=onemore
 
 " Use clipboard.
 set clipboard+=unnamed
