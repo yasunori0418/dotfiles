@@ -33,7 +33,7 @@ repo = 'LumaKernel/ddc-file'
 on_source ='ddc.vim'
 
 [[plugins]]
-repo = 'Shoug/ddc-rg'
+repo = 'Shougo/ddc-rg'
 on_source = 'ddc.vim'
 
 [[plugins]]
@@ -41,7 +41,7 @@ repo = 'Shougo/ddc-cmdline'
 on_source = 'ddc.vim'
 
 [[plugins]]
-repo = 'Shougo/ddc-cmdline_history'
+repo = 'Shougo/ddc-cmdline-history'
 on_source = 'ddc.vim'
 
 [[plugins]]
