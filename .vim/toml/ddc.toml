@@ -56,6 +56,16 @@ hook_source = '''
 '''
 
 [[plugins]]
+repo = 'neovim/nvim-lspconfig'
+depends = ['impatient.nvim', 'ddc.vim']
+on_ft = ['python']
+hook_source = '''
+lua << EOF
+require('lspconfig').pyright.setup{}
+EOF
+'''
+
+[[plugins]]
 repo = 'Shougo/ddc-nvim-lsp'
 on_source = 'nvim-lspconfig'
 
