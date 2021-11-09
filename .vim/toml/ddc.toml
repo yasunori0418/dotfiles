@@ -69,12 +69,12 @@ EOF
 repo = 'Shougo/ddc-nvim-lsp'
 on_source = 'nvim-lspconfig'
 
-#[[plugins]]
-#repo = 'matsui54/ddc-nvim-lsp-doc'
-#on_source = 'ddc-nvim-lsp'
-#hook_source = '''
-#    call ddc_nvim_lsp_doc#enable()
-#'''
+[[plugins]]
+repo = 'matsui54/ddc-nvim-lsp-doc'
+on_source = 'ddc-nvim-lsp'
+hook_source = '''
+    call ddc_nvim_lsp_doc#enable()
+'''
 
 [[plugins]]
 repo = 'Shougo/neosnippet'
