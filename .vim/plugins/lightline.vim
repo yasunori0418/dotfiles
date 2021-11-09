@@ -5,7 +5,7 @@ autocmd User skkeleton-mode-changed redrawstatus
 
 " Colorscheme{{{
 
-let g:lightline.colorscheme = 'iceberg'
+let g:lightline.colorscheme = 'nightfox'
 
 " }}}
 
