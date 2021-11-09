@@ -108,3 +108,8 @@ hook_add = '''
 [[plugins]]
 repo = 'cohama/lexima.vim'
 on_event = 'InsertEnter'
+
+[[plugins]]
+repo = 'itchyny/vim-cursorword'
+on_event = 'BufRead'
+
