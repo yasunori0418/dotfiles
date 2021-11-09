@@ -32,7 +32,7 @@ set autoread
 set clipboard+=unnamed
 
 " Colorscheme.
-colorscheme iceberg
+" colorscheme iceberg
 " }}}
 
 " Display{{{

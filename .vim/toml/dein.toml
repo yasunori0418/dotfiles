@@ -1,8 +1,25 @@
 [[plugins]] # Dark power plugin manager
 repo = 'Shougo/dein.vim'
 
-[[plugins]] # Color scheme for editor
-repo = 'cocopon/iceberg.vim'
+# [[plugins]] # Color scheme for editor
+# repo = 'cocopon/iceberg.vim'
+
+[[plugins]]
+repo = 'EdenEast/nightfox.nvim'
+hook_source = '''
+    lua << EOF
+    local nightfox = require('nightfox')
+    nightfox.setup({
+        fox = 'nightfox',
+        style = {
+            comments = 'italic',
+        },
+    })
+
+    -- Load colorscheme.
+    nightfox.load()
+    EOF
+'''
 
 [[plugins]]
 repo = 'lewis6991/impatient.nvim'
