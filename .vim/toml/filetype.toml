@@ -1,10 +1,10 @@
-[[plugins]]
-repo = 'cespare/vim-toml'
-on_ft = 'toml'
-
-[[plugins]]
-repo = 'tbastos/vim-lua'
-on_ft = 'lua'
+#[[plugins]]
+#repo = 'cespare/vim-toml'
+#on_ft = 'toml'
+#
+#[[plugins]]
+#repo = 'tbastos/vim-lua'
+#on_ft = 'lua'
 
 [[plugins]]
 repo = 'mattn/emmet-vim'
