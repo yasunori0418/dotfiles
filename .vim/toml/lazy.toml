@@ -72,6 +72,7 @@ hook_add = '''
 
 [[plugins]]
 repo = 'Shougo/defx.nvim'
+on_cmd = 'Defx'
 hook_add = '''
     nnoremap [defx] <Nop>
     nmap <Space>f [defx]
