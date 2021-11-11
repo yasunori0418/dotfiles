@@ -113,6 +113,7 @@ if [[ $(command -v nvim-gtk) ]]; then
     alias gvim='nvim-gtk'
 fi
 
+# Alias of Nvui custom args.
 if [[ $(command -v nvui) ]]; then
     alias nvui='nvui --ext_multigrid --ext_popupmenu --ext_cmdline --detached --'
 fi
