@@ -4,6 +4,14 @@
     {
       "pattern": "https?://mail.google.com/*",
       "passKeys": ""
+    },
+    {
+      "pattern": "https?://www.e-typing.ne.jp/*",
+      "passKeys": ""
+    },
+    {
+      "pattern": "https?://typingx0.net/*",
+      "passKeys": ""
     }
   ],
   "filterLinkHints": false,
