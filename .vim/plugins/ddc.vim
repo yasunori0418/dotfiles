@@ -20,9 +20,9 @@ call ddc#custom#patch_global('sourceOptions', {
         \ 'mark': 'ns',
         \ 'dup': v:true,
     \ },
-    \ 'nvim-lsp': {
+    \ 'vim-lsp': {
         \ 'mark': 'lsp',
-        \ 'forceCompletionPattern': '\.\w*|:\w*|->\w*',
+        \ 'matchers': ['matcher_head'],
     \ },
     \ 'cmdline': {'mark': 'cmdline'},
     \ 'cmdline-history': {'mark': 'history'},
@@ -44,7 +44,7 @@ call ddc#custom#patch_global('sourceOptions', {
     \ })
 
 call ddc#custom#patch_filetype('python', 'sources',
-    \ ['nvim-lsp', 'neosnippet', 'around', 'file', 'rg'],
+    \ ['vim-lsp', 'neosnippet', 'around', 'file', 'rg'],
     \ )
 
 call ddc#custom#patch_filetype('vim', 'sources',

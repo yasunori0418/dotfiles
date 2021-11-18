@@ -21,8 +21,12 @@ repo = 'mattn/vim-lsp-settings'
 on_source = 'vim-lsp'
 
 [[plugins]]
-repo = 'Shougo/ddc-nvim-lsp'
+repo = 'shun/ddc-vim-lsp'
 on_source = 'vim-lsp'
+
+# [[plugins]]
+# repo = 'Shougo/ddc-nvim-lsp'
+# on_source = 'vim-lsp'
 
 # [[plugins]]
 # repo = 'matsui54/ddc-nvim-lsp-doc'
