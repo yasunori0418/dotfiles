@@ -46,6 +46,8 @@ endif
 
 " }}}
 
+
+
 " Nvui settings.{{{
 if exists('g:nvui')
     " Font and size settings when using GUI
@@ -84,4 +86,6 @@ if exists('g:nvui')
     " }}}
 
 endif
+
 " }}
+
