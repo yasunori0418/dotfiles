@@ -44,11 +44,11 @@ call ddc#custom#patch_global('sourceOptions', {
     \ })
 
 call ddc#custom#patch_filetype('python', 'sources',
-    \ ['nvim-lsp', 'neosnippet', 'around', 'rg', 'file'],
+    \ ['nvim-lsp', 'neosnippet', 'around', 'file', 'rg'],
     \ )
 
 call ddc#custom#patch_filetype('vim', 'sources',
-    \ ['nvim-lsp', 'necovim', 'around', 'neosnippet', 'file', 'rg'],
+    \ ['necovim', 'neosnippet', 'around', 'file', 'rg'],
     \ )
 
 
