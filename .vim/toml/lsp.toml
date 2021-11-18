@@ -1,0 +1,32 @@
+# [[plugins]]
+# repo = 'neovim/nvim-lspconfig'
+# depends = ['impatient.nvim', 'ddc.vim']
+# on_ft = ['python']
+# hook_source = '''
+# lua << EOF
+# require('lspconfig').pyright.setup{}
+# EOF
+# '''
+
+[[plugins]]
+repo = 'prabirshrestha/vim-lsp'
+depends = 'ddc.vim'
+on_ft = ['python', 'vim']
+hook_source = '''
+    let g:lsp_use_lua = v:true
+'''
+
+[[plugins]]
+repo = 'mattn/vim-lsp-settings'
+on_source = 'vim-lsp'
+
+[[plugins]]
+repo = 'Shougo/ddc-nvim-lsp'
+on_source = 'vim-lsp'
+
+# [[plugins]]
+# repo = 'matsui54/ddc-nvim-lsp-doc'
+# on_source = 'ddc-nvim-lsp'
+# hook_source = '''
+#     call ddc_nvim_lsp_doc#enable()
+# '''
