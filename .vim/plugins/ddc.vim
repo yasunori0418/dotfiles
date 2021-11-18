@@ -47,6 +47,11 @@ call ddc#custom#patch_filetype('python', 'sources',
     \ ['nvim-lsp', 'neosnippet', 'around', 'rg', 'file'],
     \ )
 
+call ddc#custom#patch_filetype('vim', 'sources',
+    \ ['nvim-lsp', 'necovim', 'around', 'neosnippet', 'file', 'rg'],
+    \ )
+
+
 call ddc#custom#patch_global('sourceParams', {
     \ 'around': {
         \ 'maxSize': 500,
