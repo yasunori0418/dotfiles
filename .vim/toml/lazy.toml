@@ -4,7 +4,7 @@ on_cmd = ['h', 'help']
 
 [[plugins]] # Preview of replacement results
 repo = 'markonm/traces.vim'
-on_event = 'CmdwinEnter'
+on_event= 'CmdlineEnter'
 
 [[plugins]] # Translate, Japanese to English
 repo = 'skanehira/translate.vim'
