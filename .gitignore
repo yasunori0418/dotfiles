@@ -1,5 +1,8 @@
 # Input mode test file.
-.vim/text
+# .vim/text
 
 # Python test file.
-.vim/test.py
+# .vim/test.py
+
+# Vim test files.
+.vim/tests/
