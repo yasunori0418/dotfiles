@@ -114,3 +114,37 @@ on_event = 'InsertEnter'
 repo = 'itchyny/vim-cursorword'
 on_event = 'BufRead'
 
+[[plugins]]
+repo = 'airblade/vim-gitgutter'
+on_event = 'BufRead'
+
+[[plugins]]
+repo = 'Yggdroot/indentLine'
+on_event = 'BufRead'
+
+[[plugins]]
+repo = 'tpope/vim-surround'
+on_event = 'BufRead'
+
+[[plugins]]
+repo = 'tpope/vim-fugitive'
+on_event = 'VimEnter'
+hook_add = '''
+    nnoremap [fugitive] <Nop>
+    nmap <Space>g [fugitive]
+    nnoremap [fugitive]s <cmd>Git<CR>
+    nnoremap [fugitive]a <cmd>Gwrite<CR>
+    nnoremap [fugitive]d <cmd>Gdiff<CR>
+    nnoremap [fugitive]b <cmd>Gblame<CR>
+    nnoremap [fugitive]c <cmd>Git commit -v<CR>
+    nnoremap [fugitive]C <cmd>!git branch<CR>:Git checkout<Space>
+    nnoremap [fugitive]B :Git checkout -b<Space>
+    nnoremap [fugitive]D <cmd>!git branch<CR>:Git checkout -d<Space>
+    nnoremap [fugitive]l <cmd>Git log<CR>
+    nnoremap [fugitive]L <cmd>Git lol<CR>
+    nnoremap [fugitive]t <cmd>Deol --command tig -split="floating"<CR>
+    nnoremap [fugitive]M <cmd>!git branch<CR>:Git merge<Space>
+    nnoremap [fugitive]m <cmd>Denite menu:fugitive_cmd<CR>
+    nnoremap [fugitive]ps <cmd>Git push<CR>
+    nnoremap [fugitive]pl <cmd>Git pull<CR>
+'''

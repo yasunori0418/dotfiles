@@ -4,23 +4,6 @@ repo = 'Shougo/dein.vim'
 # [[plugins]] # Color scheme for editor
 # repo = 'cocopon/iceberg.vim'
 
-[[plugins]]
-repo = 'sainnhe/edge'
-hook_add = '''
-    let g:edge_style = 'aura'
-    let g:edge_enable_italic = 1
-    " let g:edge_disable_italic_comment = 1
-    " let g:edge_transparent_background = 1
-    let g:edge_diagnostic_text_highlight = 1
-    let g:edge_diagnostic_line_highlight = 1
-    let g:edge_diagnostic_virtual_text = 'colored'
-    let g:edge_better_performance = 1
-    let g:edge_show_eob = 0
-    " let g:edge_current_word = 'underline'
-
-    colorscheme edge
-'''
-
 # [[plugins]]
 # repo = 'EdenEast/nightfox.nvim'
 # hook_add = '''
@@ -41,9 +24,20 @@ hook_add = '''
 # '''
 
 [[plugins]]
-repo = 'lewis6991/impatient.nvim'
-hook_source = '''
-  lua require('impatient')
+repo = 'sainnhe/edge'
+hook_add = '''
+    let g:edge_style = 'aura'
+    let g:edge_enable_italic = 1
+    " let g:edge_disable_italic_comment = 1
+    " let g:edge_transparent_background = 1
+    let g:edge_diagnostic_text_highlight = 1
+    let g:edge_diagnostic_line_highlight = 1
+    let g:edge_diagnostic_virtual_text = 'colored'
+    let g:edge_better_performance = 1
+    let g:edge_show_eob = 0
+    " let g:edge_current_word = 'underline'
+
+    colorscheme edge
 '''
 
 [[plugins]] # Modern and light status line.
@@ -53,38 +47,11 @@ hook_add = '''
 '''
 
 [[plugins]]
-repo = 'Shougo/neosnippet-snippets'
-
-[[plugins]]
-repo = 'airblade/vim-gitgutter'
-
-[[plugins]]
-repo = 'Yggdroot/indentLine'
-
-[[plugins]]
-repo = 'tpope/vim-surround'
+repo = 'lewis6991/impatient.nvim'
+hook_source = '''
+  lua require('impatient')
+'''
 
 [[plugins]]
 repo = 'vim-denops/denops.vim'
 
-[[plugins]]
-repo = 'tpope/vim-fugitive'
-hook_add = '''
-    nnoremap [fugitive] <Nop>
-    nmap <Space>g [fugitive]
-    nnoremap [fugitive]s <cmd>Git<CR>
-    nnoremap [fugitive]a <cmd>Gwrite<CR>
-    nnoremap [fugitive]d <cmd>Gdiff<CR>
-    nnoremap [fugitive]b <cmd>Gblame<CR>
-    nnoremap [fugitive]c <cmd>Git commit -v<CR>
-    nnoremap [fugitive]C <cmd>!git branch<CR>:Git checkout<Space>
-    nnoremap [fugitive]B :Git checkout -b<Space>
-    nnoremap [fugitive]D <cmd>!git branch<CR>:Git checkout -d<Space>
-    nnoremap [fugitive]l <cmd>Git log<CR>
-    nnoremap [fugitive]L <cmd>Git lol<CR>
-    nnoremap [fugitive]t <cmd>Deol --command tig -split="floating"<CR>
-    nnoremap [fugitive]M <cmd>!git branch<CR>:Git merge<Space>
-    nnoremap [fugitive]m <cmd>Denite menu:fugitive_cmd<CR>
-    nnoremap [fugitive]ps <cmd>Git push<CR>
-    nnoremap [fugitive]pl <cmd>Git pull<CR>
-'''

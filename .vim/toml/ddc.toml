@@ -11,6 +11,7 @@ hook_add = '''
 
 [[plugins]]
 repo = 'Shougo/pum.vim'
+on_event = 'BufRead'
 
 [[plugins]]
 repo = 'Shougo/ddc-around'
@@ -57,6 +58,10 @@ hook_source = '''
 '''
 on_ft = 'snippet'
 depends = 'neosnippet-snippets'
+
+[[plugins]]
+repo = 'Shougo/neosnippet-snippets'
+on_event = 'VimEnter'
 
 [[plugins]]
 repo = 'vim-skk/skkeleton'
