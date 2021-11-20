@@ -37,7 +37,7 @@ on_source = 'vim-lsp'
 
 [[plugins]]
 repo = 'matsui54/denops-popup-preview.vim'
-on_source = 'ddc-nvim-lsp'
+on_source = 'ddc-vim-lsp'
 hook_source = '''
     call popup_preview#enable()
 '''
