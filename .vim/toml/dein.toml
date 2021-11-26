@@ -4,41 +4,41 @@ repo = 'Shougo/dein.vim'
 # [[plugins]] # Color scheme for editor
 # repo = 'cocopon/iceberg.vim'
 
-# [[plugins]]
-# repo = 'EdenEast/nightfox.nvim'
-# hook_add = '''
-# lua << EOF
-# local nightfox = require('nightfox')
-# nightfox.setup({
-#     fox = 'nightfox',
-#     transparent = false,
-#     terminal_colors = true,
-#     styles = {
-#         comments = 'italic',
-#     },
-# })
-# 
-# -- Load colorscheme.
-# nightfox.load()
-# EOF
-# '''
-
 [[plugins]]
-repo = 'sainnhe/edge'
+repo = 'EdenEast/nightfox.nvim'
 hook_add = '''
-    let g:edge_style = 'aura'
-    let g:edge_enable_italic = 1
-    " let g:edge_disable_italic_comment = 1
-    " let g:edge_transparent_background = 1
-    let g:edge_diagnostic_text_highlight = 1
-    let g:edge_diagnostic_line_highlight = 1
-    let g:edge_diagnostic_virtual_text = 'colored'
-    let g:edge_better_performance = 1
-    let g:edge_show_eob = 0
-    " let g:edge_current_word = 'underline'
+lua << EOF
+local nightfox = require('nightfox')
+nightfox.setup({
+    fox = 'nightfox',
+    transparent = false,
+    terminal_colors = true,
+    styles = {
+        comments = 'italic',
+    },
+})
 
-    colorscheme edge
+-- Load colorscheme.
+nightfox.load()
+EOF
 '''
+
+# [[plugins]]
+# repo = 'sainnhe/edge'
+# hook_add = '''
+#     let g:edge_style = 'aura'
+#     let g:edge_enable_italic = 1
+#     " let g:edge_disable_italic_comment = 1
+#     " let g:edge_transparent_background = 1
+#     let g:edge_diagnostic_text_highlight = 1
+#     let g:edge_diagnostic_line_highlight = 1
+#     let g:edge_diagnostic_virtual_text = 'colored'
+#     let g:edge_better_performance = 1
+#     let g:edge_show_eob = 0
+#     " let g:edge_current_word = 'underline'
+# 
+#     colorscheme edge
+# '''
 
 [[plugins]] # Modern and light status line.
 repo = 'itchyny/lightline.vim'
