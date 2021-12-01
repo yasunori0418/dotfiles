@@ -8,6 +8,14 @@
 # EOF
 # '''
 
+# [[plugins]]
+# repo = 'Shougo/ddc-nvim-lsp'
+# on_source = 'nvim-lspconfig'
+
+# [[plugins]]
+# repo = 'matsui54/ddc-nvim-lsp-doc'
+# on_source = 'ddc-nvim-lsp'
+
 [[plugins]]
 repo = 'prabirshrestha/vim-lsp'
 depends = 'ddc.vim'
@@ -26,22 +34,3 @@ on_source = 'vim-lsp'
 hook_source = '''
     source ~/dotfiles/.vim/plugins/lsp.vim
 '''
-
-# [[plugins]]
-# repo = 'Shougo/ddc-nvim-lsp'
-# on_source = 'vim-lsp'
-
-[[plugins]]
-repo = 'matsui54/ddc-nvim-lsp-doc'
-on_source = 'ddc-vim-lsp'
-# hook_source = plugins/lsp.vim
-
-[[plugins]]
-repo = 'matsui54/denops-popup-preview.vim'
-on_source = 'ddc-vim-lsp'
-# hook_source = plugins/lsp.vim
-
-[[plugins]]
-repo = 'ray-x/lsp_signature.nvim'
-on_source = 'ddc-vim-lsp'
-# hook_source = plugins/lsp.vim
