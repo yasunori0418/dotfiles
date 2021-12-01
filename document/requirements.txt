@@ -1,5 +1,5 @@
 vim
-neovim-nightly
+neovim
 nvui
 nvim-gtk
 neovide
@@ -22,3 +22,9 @@ ttf-cica
 ttf-hackgen-nerd
 Xfce4-power-manager
 xfce4-appfinder
+textlint
+textlint-rule-preset-ja-technical-writing
+textlint-rule-prh
+textlint-filter-rule-comments
+textlint-filter-rule-allowlist
+textlint-plugin-markdown
