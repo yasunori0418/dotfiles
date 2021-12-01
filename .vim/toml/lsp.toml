@@ -41,7 +41,7 @@ repo = 'matsui54/denops-popup-preview.vim'
 on_source = 'ddc-vim-lsp'
 # hook_source = plugins/lsp.vim
 
-# [[plugins]]
-# repo = 'ray-x/lsp_signature.nvim'
-# on_source = 'ddc-vim-lsp'
+[[plugins]]
+repo = 'ray-x/lsp_signature.nvim'
+on_source = 'ddc-vim-lsp'
 # hook_source = plugins/lsp.vim
