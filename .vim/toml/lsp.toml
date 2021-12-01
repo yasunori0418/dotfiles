@@ -34,7 +34,3 @@ on_source = 'vim-lsp'
 hook_source = '''
     source ~/dotfiles/.vim/plugins/lsp.vim
 '''
-
-[[plugins]]
-repo = 'dense-analysis/ale'
-on_source = 'markdown'
