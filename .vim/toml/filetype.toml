@@ -40,7 +40,7 @@ hook_source = '''
 
 [[plugins]]
 repo = 'dense-analysis/ale'
-on_source = ['markdown']
+on_ft = ['markdown']
 hook_source = '''
     let g:ale_sign_column_always = 1
     let g:ale_linters = {
