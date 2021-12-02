@@ -37,13 +37,3 @@ hook_source = '''
         autocmd FileType json set foldmethod=syntax
     augroup END
 '''
-
-[[plugins]]
-repo = 'dense-analysis/ale'
-on_ft = ['markdown']
-hook_source = '''
-    let g:ale_sign_column_always = 1
-    let g:ale_linters = {
-        \ 'markdown': ['textlint'],
-        \ }
-'''
