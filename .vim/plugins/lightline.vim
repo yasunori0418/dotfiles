@@ -124,6 +124,13 @@ let g:lightline.component_expand = {}
 " }}}
 
 
+" Component_expand_type{{{
+
+let g:lightline.component_expand_type = {}
+
+" }}}
+
+
 " LightlineUpdate_Command{{{
 
 command! -bar LightlineUpdate source ~/dotfiles/.vim/plugins/lightline.vim|
