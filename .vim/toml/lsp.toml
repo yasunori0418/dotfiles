@@ -35,21 +35,3 @@ hook_source = '''
     source ~/dotfiles/.vim/plugins/lsp.vim
 '''
 
-[[plugins]]
-repo = 'dense-analysis/ale'
-on_ft = ['markdown', 'python']
-hook_source = '''
-    let g:ale_sign_column_always = 1
-    let g:ale_linters = {
-        \ 'markdown': ['textlint'],
-        \ 'python': ['vim-lsp']
-        \ }
-'''
-
-[[plugins]]
-repo = 'rhysd/vim-lsp-ale'
-on_source = ['vim-lsp', 'ale']
-
-[[plugins]]
-repo = 'maximbaz/lightline-ale'
-on_source = 'ale'
