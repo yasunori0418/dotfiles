@@ -48,7 +48,7 @@ call ddc#custom#patch_filetype('python', 'sources',
     \ )
 
 call ddc#custom#patch_filetype('vim', 'sources',
-    \ ['necovim', 'neosnippet', 'around', 'file', 'rg'],
+    \ ['vim-lsp', 'necovim', 'neosnippet', 'around', 'file', 'rg'],
     \ )
 
 
