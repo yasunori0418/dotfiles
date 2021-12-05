@@ -32,7 +32,10 @@ hook_source = '''
     source ~/dotfiles/.vim/plugins/lsp.vim
 '''
 
-
 [[plugins]]
 repo ='tsuyoshicho/vim-efm-langserver-settings'
+on_source = 'vim-lsp'
+
+[[plugins]]
+repo = 'halkn/lightline-lsp'
 on_source = 'vim-lsp'
