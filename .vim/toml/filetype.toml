@@ -37,3 +37,13 @@ hook_source = '''
         autocmd FileType json set foldmethod=syntax
     augroup END
 '''
+
+[[plugins]]
+repo = 'kat0h/dps-bufpreview.vim'
+on_ft = 'markdown'
+hook_source = '''
+    "Open bufpreview by chromium browser. 
+    let g:bufpreview_browser = 'chromium'
+
+    nmap <silent> <F9> <Cmd>PreviewMarkdownToggle<CR>
+'''
