@@ -19,8 +19,8 @@ let g:lightline.active.left = [
     \ ['git_branch', 'filename', 'modified'],
     \ ]
 let g:lightline.active.right = [
-    \ ['lineinfo'],
-    \ ['percent'],
+    \ ['lsp_errors', 'lsp_warnings', 'lsp_ok'],
+    \ ['percent', 'lineinfo'],
     \ ['fileformat', 'fileencoding', 'filetype'],
     \ ]
 
@@ -120,6 +120,9 @@ let g:lightline.component_function.mode = 'g:LightlineMode'
 " Component_expand{{{
 
 let g:lightline.component_expand = {}
+let g:lightline.component_expand.lsp_ok = 'lightline_lsp#ok'
+let g:lightline.component_expand.lsp_errors = 'lightline_lsp#errors'
+let g:lightline.component_expand.lsp_warnings = 'lightline_lsp#warnings'
 
 " }}}
 
@@ -127,6 +130,9 @@ let g:lightline.component_expand = {}
 " Component_expand_type{{{
 
 let g:lightline.component_expand_type = {}
+let g:lightline.component_expand_type.lsp_ok = 'middle'
+let g:lightline.component_expand_type.lsp_errors = 'error'
+let g:lightline.component_expand_type.lsp_warnings = 'warning'
 
 " }}}
 
