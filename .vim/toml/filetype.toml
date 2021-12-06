@@ -39,11 +39,13 @@ hook_source = '''
 '''
 
 [[plugins]]
-repo = 'kat0h/dps-bufpreview.vim'
+repo = 'kat0h/bufpreview.vim'
 on_ft = 'markdown'
 hook_source = '''
     "Open bufpreview by chromium browser. 
     let g:bufpreview_browser = 'chromium'
 
-    nmap <silent> <F9> <Cmd>PreviewMarkdownToggle<CR>
+    autocmd FileType markdown :PreviewMarkdown
+
+    " nmap <silent> <F9> <Cmd>PreviewMarkdownToggle<CR>
 '''
