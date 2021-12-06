@@ -104,9 +104,9 @@ alias c='clear'
 alias cc='c &&'
 
 # Neovimをvimで起動できるようにする
-if [[ $(command -v nvim) ]]; then
-    alias vim='nvim'
-fi
+# if [[ $(command -v nvim) ]]; then
+#     alias vim='nvim'
+# fi
 
 if [[ $(command -v nvim-gtk) ]]; then
     export NVIM_GTK_NO_WINDOW_DECORATION=1
