@@ -45,7 +45,7 @@ hook_source = '''
     "Open bufpreview by chromium browser. 
     let g:bufpreview_browser = 'chromium'
 
-    autocmd FileType markdown :PreviewMarkdown
+    " autocmd FileType markdown :PreviewMarkdown
 
-    " nmap <silent> <F9> <Cmd>PreviewMarkdownToggle<CR>
+    nmap <silent> <F9> <Cmd>PreviewMarkdownToggle<CR>
 '''
