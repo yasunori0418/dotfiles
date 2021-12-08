@@ -1,0 +1,19 @@
+[user]
+	name = yasunori-kirin0418
+	email = yasunori.kirin0418@gmail.com
+[color]
+	ui = auto
+	diff = auto
+	status = auto
+	branch = auto
+	interactive = auto
+[core]
+	editor = nvim
+[pull]
+	rebase = false
+[init]
+	defaultbranch = main
+[push]
+	default = current
+[alias]
+	lol = log --graph --decorate --pretty=oneline --all --abbrev-commit
