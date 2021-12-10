@@ -49,3 +49,7 @@ hook_source = '''
 
     nmap <silent> <F9> <Cmd>PreviewMarkdownToggle<CR>
 '''
+
+[[plugins]]
+repo = 'mattn/vim-maketable'
+on_ft = 'markdown'
