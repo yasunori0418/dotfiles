@@ -58,13 +58,15 @@ let g:lightline.tab.inactive = ['tabnum', 'filename', 'modified']
 
 if &ambiwidth =~ 'single'
 
-    let g:lightline.separator = {}
-    let g:lightline.separator.left = ' '
-    let g:lightline.separator.right = ' '
+    let g:lightline.separator = {
+        \ 'left': ' ',
+        \ 'right': ' ',
+        \ }
 
-    let g:lightline.subseparator = {}
-    let g:lightline.subseparator.left = ' '
-    let g:lightline.subseparator.right = ' '
+    let g:lightline.subseparator = {
+        \ 'left': ' ',
+        \ 'right': ' ',
+        \ }
 
 endif
 
@@ -109,30 +111,33 @@ let g:lightline.component = {
 
 " Component_function{{{
 
-let g:lightline.component_function = {}
-let g:lightline.component_function.git_branch = 'g:LightlineFugitive'
-let g:lightline.component_function.skk_mode = 'g:LightlineSkkeleton'
-let g:lightline.component_function.mode = 'g:LightlineMode'
+let g:lightline.component_function = {
+    \ 'git_branch': 'g:LightlineFugitive',
+    \ 'skk_mode': 'g:LightlineSkkeleton',
+    \ 'mode': 'g:LightlineMode',
+    \ }
 
 " }}}
 
 
 " Component_expand{{{
 
-let g:lightline.component_expand = {}
-let g:lightline.component_expand.lsp_ok = 'lightline_lsp#ok'
-let g:lightline.component_expand.lsp_errors = 'lightline_lsp#errors'
-let g:lightline.component_expand.lsp_warnings = 'lightline_lsp#warnings'
+let g:lightline.component_expand = {
+    \ 'lsp_ok': 'lightline_lsp#ok',
+    \ 'lsp_errors': 'lightline_lsp#errors',
+    \ 'lsp_warnings': 'lightline_lsp#warnings',
+    \ }
 
 " }}}
 
 
 " Component_expand_type{{{
 
-let g:lightline.component_expand_type = {}
-let g:lightline.component_expand_type.lsp_ok = 'middle'
-let g:lightline.component_expand_type.lsp_errors = 'error'
-let g:lightline.component_expand_type.lsp_warnings = 'warning'
+let g:lightline.component_expand_type = {
+    \ 'lsp_ok': 'middle',
+    \ 'lsp_errors': 'error',
+    \ 'lsp_warnings': 'warning',
+    \ }
 
 " }}}
 
