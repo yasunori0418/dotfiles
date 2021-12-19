@@ -1,4 +1,6 @@
-nnoremap : <Cmd>call Cmdline_pre()<CR>:
+" US keyboard layout.
+nnoremap ; <Cmd>call Cmdline_pre()<CR>:
+xnoremap ; <Cmd>call Cmdline_pre()<CR>:
 
 function! Cmdline_pre() abort
     call dein#source('ddc.vim')

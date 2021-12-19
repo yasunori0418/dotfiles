@@ -4,7 +4,7 @@ nnoremap <Space>w :w<CR>
 
 " US Keyboard layout mapping.
 " Exchange Colon and Semi-Colon.
-nnoremap ; :
+" nnoremap ; :
 nnoremap : ;
 
 " }}}
@@ -21,7 +21,7 @@ inoremap <silent> jj <ESC>
 " Visual Mode:{{{
 
 " Exchange Colon and Semi-Colon.
-xnoremap ; :
+" xnoremap ; :
 xnoremap : ;
 
 " }}}
