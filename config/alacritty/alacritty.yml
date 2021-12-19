@@ -89,7 +89,7 @@ font:
     #   - (macOS) Menlo
     #   - (Linux/BSD) monospace
     #   - (Windows) Consolas
-    family: HackGenNerd Console
+    family: Cica
 
     # The `style` can be specified to pick a specific face.
     style: Regular
@@ -100,21 +100,21 @@ font:
     #
     # If the bold family is not specified, it will fall back to the
     # value specified for the normal font.
-    family: HackGenNerd Console
+    family: Cica
 
     # The `style` can be specified to pick a specific face.
     style: Bold
 
   # Italic font face
-  #italic:
+  italic:
     # Font family
     #
     # If the italic family is not specified, it will fall back to the
     # value specified for the normal font.
-    #family: HackGenNerd
+    family: Cica
 
     # The `style` can be specified to pick a specific face.
-    #style: Italic
+    style: Italic
 
   # Bold italic font face
   #bold_italic:
@@ -122,13 +122,13 @@ font:
     #
     # If the bold italic family is not specified, it will fall back to the
     # value specified for the normal font.
-    #family: HackGenNerd
+    family: Cica
 
     # The `style` can be specified to pick a specific face.
-    #style: Bold Italic
+    style: Bold Italic
 
   # Point size
-  size: 14.0
+  size: 10.0
 
   # Offset is the extra space around each character. `offset.y` can be thought
   # of as modifying the line spacing, and `offset.x` as modifying the letter
