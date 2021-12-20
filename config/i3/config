@@ -85,7 +85,9 @@ bindsym $mod+Shift+f exec --no-startup-id thunar
 bindsym $mod+Shift+e exec --no-startup-id rofi -show power
 
 # kill focused window
+bindsym $alt+XF86LaunchB kill
 bindsym $alt+F4 kill
+bindsym $mod+Shift+q kill
 
 
 # change focus
