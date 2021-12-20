@@ -117,7 +117,7 @@ font:
     style: Italic
 
   # Bold italic font face
-  #bold_italic:
+  bold_italic:
     # Font family
     #
     # If the bold italic family is not specified, it will fall back to the
@@ -128,7 +128,7 @@ font:
     style: Bold Italic
 
   # Point size
-  size: 10.0
+  size: 12.0
 
   # Offset is the extra space around each character. `offset.y` can be thought
   # of as modifying the line spacing, and `offset.x` as modifying the letter
@@ -145,9 +145,9 @@ font:
   #  y: 0
 
 # If `true`, bold text is drawn using the bright color variants.
-#draw_bold_text_with_bright_colors: false
+draw_bold_text_with_bright_colors: true
 
-# Colors (Tomorrow Night)
+# Colors (Tomorrow Night) {{{
 #colors:
   # Default colors
   #primary:
@@ -284,34 +284,40 @@ font:
   #
   #indexed_colors: []
 
-# Colors (Iceberg Dark)
-colors:
-  # Default colors
-  primary:
-    background: '#161821'
-    foreground: '#d2d4de'
+# }}}
 
-  # Normal colors
-  normal:
-    black:   '#161821'
-    red:     '#e27878'
-    green:   '#b4be82'
-    yellow:  '#e2a478'
-    blue:    '#84a0c6'
-    magenta: '#a093c7'
-    cyan:    '#89b8c2'
-    white:   '#c6c8d1'
+# Colors (Iceberg Dark) {{{
+# colors:
+#   # Default colors
+#   primary:
+#     background: '#161821'
+#     foreground: '#d2d4de'
+#
+#   # Normal colors
+#   normal:
+#     black:   '#161821'
+#     red:     '#e27878'
+#     green:   '#b4be82'
+#     yellow:  '#e2a478'
+#     blue:    '#84a0c6'
+#     magenta: '#a093c7'
+#     cyan:    '#89b8c2'
+#     white:   '#c6c8d1'
+#
+#   # Bright colors
+#   bright:
+#     black:   '#6b7089'
+#     red:     '#e98989'
+#     green:   '#c0ca8e'
+#     yellow:  '#e9b189'
+#     blue:    '#91acd1'
+#     magenta: '#ada0d3'
+#     cyan:    '#95c4ce'
+#     white:   '#d2d4de'
+# }}}
 
-  # Bright colors
-  bright:
-    black:   '#6b7089'
-    red:     '#e98989'
-    green:   '#c0ca8e'
-    yellow:  '#e9b189'
-    blue:    '#91acd1'
-    magenta: '#ada0d3'
-    cyan:    '#95c4ce'
-    white:   '#d2d4de'
+import:
+  - ~/.config/alacritty/colorscheme/duskfox.yml
 
 # Bell
 #
