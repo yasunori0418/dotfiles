@@ -10,11 +10,13 @@ hook_add = '''
 lua << EOF
 local nightfox = require('nightfox')
 nightfox.setup({
-    fox = 'nightfox',
+    fox = 'duskfox',
     transparent = false,
     terminal_colors = true,
     styles = {
         comments = 'italic',
+        keywords = 'bold',
+        functions = 'italic,bold',
     },
 })
 
