@@ -54,6 +54,3 @@ hook_source = '''
   lua require('impatient')
 '''
 
-[[plugins]]
-repo = 'vim-denops/denops.vim'
-
