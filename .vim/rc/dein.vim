@@ -21,8 +21,18 @@ endif
 " }}}
 
 
+" dein options {{{
+
+let g:dein#install_progress_type = 'title'
+let g:dein#enable_notification = v:true
+let g:dein#auto_recache = v:true
+let g:dein#lazy_rplugins = v:true
+
+" }}}
+
+
 " Begin settings {{{
-if dein#load_state(s:dein_dir)
+if dein#min#load_state(s:dein_dir)
     call dein#begin(s:dein_dir)
 
     " .toml files
