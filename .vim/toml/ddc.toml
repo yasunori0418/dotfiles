@@ -74,3 +74,16 @@ hook_add = '''
 hook_source = '''
     source ~/dotfiles/.vim/plugins/skkeleton.vim
 '''
+
+[[plugins]]
+repo = 'kat0h/bufpreview.vim'
+depends = 'denops.vim'
+on_ft = 'markdown'
+hook_source = '''
+    "Open bufpreview by chromium browser. 
+    let g:bufpreview_browser = 'chromium'
+
+    " autocmd FileType markdown :PreviewMarkdown
+
+    nmap <silent> <F9> <Cmd>PreviewMarkdownToggle<CR>
+'''
