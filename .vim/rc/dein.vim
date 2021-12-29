@@ -10,6 +10,7 @@ let s:dein_dir = expand('~/.cache/dein')
 let s:dein_repo = s:dein_dir . '/repos/github.com/Shougo/dein.vim'
 " }}}
 
+
 " dein installation check {{{
 if &runtimepath !~# '/dein.vim'
     if !isdirectory(s:dein_repo)
@@ -18,6 +19,7 @@ if &runtimepath !~# '/dein.vim'
     execute 'set runtimepath^=' . s:dein_repo
 endif
 " }}}
+
 
 " Begin settings {{{
 if dein#load_state(s:dein_dir)
@@ -28,7 +30,7 @@ if dein#load_state(s:dein_dir)
     let s:dein_toml = s:toml_dir . '/dein.toml'
     let s:dein_lazy_toml = s:toml_dir . '/lazy.toml'
     let s:dein_ft_toml = s:toml_dir . '/filetype.toml'
-    let s:dein_ddc_toml = s:toml_dir . '/ddc.toml'
+    let s:dein_ddc_toml = s:toml_dir . '/denops.toml'
     let s:dein_lsp_toml = s:toml_dir . '/lsp.toml'
 
     " read toml and cache
@@ -43,6 +45,7 @@ if dein#load_state(s:dein_dir)
     call dein#save_state()
 endif
 " }}}
+
 
 " Plugin installation check {{{
 if dein#check_install()
