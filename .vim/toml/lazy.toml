@@ -61,7 +61,7 @@ hook_source = '''
 hook_add = '''
     nnoremap [denite] <Nop>
     nmap <Space>d [denite]
-    nnoremap [denite]a <cmd>Denite file buffer file:new<CR>
+    nnoremap [denite]a <cmd>Denite file/rec buffer file:new<CR>
     nnoremap [denite]b <cmd>Denite buffer<CR>
     nnoremap [denite]h <cmd>Denite help -start-filter<CR>
     nnoremap [denite]r <cmd>Denite register<CR>
@@ -136,6 +136,7 @@ hook_add = '''
     nnoremap [fugitive]a <cmd>Gwrite<CR>
     nnoremap [fugitive]d <cmd>Gdiff<CR>
     nnoremap [fugitive]b <cmd>Gblame<CR>
+    nnoremap [fugitive]R <cmd>Gread<CR>
     nnoremap [fugitive]c <cmd>Git commit -v<CR>
     nnoremap [fugitive]C <cmd>!git branch<CR>:Git checkout<Space>
     nnoremap [fugitive]B :Git checkout -b<Space>
