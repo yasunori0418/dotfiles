@@ -16,7 +16,7 @@ let s:dein_repo = s:dein_dir . '/repos/github.com/Shougo/dein.vim'
 " vim settings directory. {{{
 
 " vim setting directory.
-let g:base_dir = fnamemodify(resolve(expand('<sfile>')), ':h') .. '/'
+let g:base_dir = fnamemodify(expand('<sfile>'), ':h') .. '/'
 
 " vimrcs directory.
 let s:vimrcs_dir = g:base_dir .. 'rc/'
@@ -42,7 +42,7 @@ endif
 
 let g:dein#install_progress_type = 'title'
 let g:dein#enable_notification = v:true
-" let g:dein#auto_recache = v:true
+let g:dein#auto_recache = v:true
 let g:dein#lazy_rplugins = v:true
 
 " }}}
@@ -62,11 +62,11 @@ if dein#min#load_state(s:dein_dir)
     call dein#begin(s:dein_dir)
 
     " toml files.{{{
-    let s:dein_toml = s:toml_dir .. '/dein.toml'
-    let s:dein_lazy_toml = s:toml_dir .. '/lazy.toml'
-    let s:dein_ft_toml = s:toml_dir .. '/filetype.toml'
-    let s:dein_denops_toml = s:toml_dir .. '/denops.toml'
-    let s:dein_lsp_toml = s:toml_dir .. '/lsp.toml'
+    let s:dein_toml = s:toml_dir .. 'dein.toml'
+    let s:dein_lazy_toml = s:toml_dir .. 'lazy.toml'
+    let s:dein_ft_toml = s:toml_dir .. 'filetype.toml'
+    let s:dein_denops_toml = s:toml_dir .. 'denops.toml'
+    let s:dein_lsp_toml = s:toml_dir .. 'lsp.toml'
 
     " read toml and cache
     call dein#load_toml(s:dein_toml, {'lazy': 0})
