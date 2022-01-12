@@ -28,8 +28,8 @@ set autoread
 " Move the cursor one character ahead of the end of the line
 " set virtualedit=onemore
 
-" Use clipboard.
-set clipboard+=unnamed
+" Use the clipboard on linux systems.
+set clipboard+=unnamedplus
 
 " Colorscheme.
 " colorscheme iceberg
