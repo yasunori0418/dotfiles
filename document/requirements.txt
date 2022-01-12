@@ -30,3 +30,4 @@ textlint-filter-rule-allowlist
 textlint-plugin-markdown
 efm-langserver
 xclip
+clipcat

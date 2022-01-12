@@ -32,6 +32,7 @@ exec_always --no-startup-id $HOME/.config/polybar/launch.sh
 exec_always --no-startup-id nitrogen --restore
 exec_always --no-startup-id dunst
 exec_always --no-startup-id light-locker
+exec_always --no-startup-id clipcatd
 exec --no-startup-id xfce4-clipman
 exec --no-startup-id dex -ae i3
 exec --no-startup-id nm-applet
@@ -78,6 +79,12 @@ bindsym $mod+b exec --no-startup-id XMODIFIERS=alacritty alacritty -e alter-syst
 # start rofi (launcher)
 bindsym $mod+d exec --no-startup-id rofi -show drun
 
+# start clipcat-menu insert on rofi
+bindsym $mod+i exec --no-startup-id clipcat-menu insert
+
+# start clipcat-menu remove on rofi
+bindsym $mod+o exec --no-startup-id clipcat-menu remove
+
 # start file manager
 bindsym $mod+Shift+f exec --no-startup-id thunar
 
@@ -85,7 +92,7 @@ bindsym $mod+Shift+f exec --no-startup-id thunar
 bindsym $mod+Shift+e exec --no-startup-id rofi -show power
 
 # kill focused window
-bindsym $alt+XF86LaunchB kill
+# bindsym $alt+XF86LaunchB kill
 bindsym $alt+F4 kill
 bindsym $mod+Shift+q kill
 
@@ -147,10 +154,10 @@ bindsym $mod+w layout tabbed
 bindsym $mod+e layout toggle split
 
 # toggle tiling / floating
-bindsym $mod+Shift+space floating toggle
+# bindsym $mod+Shift+space floating toggle
 
 # change focus between tiling / floating windows
-bindsym $mod+space focus mode_toggle
+# bindsym $mod+space focus mode_toggle
 
 # focus the parent container
 bindsym $mod+a focus parent

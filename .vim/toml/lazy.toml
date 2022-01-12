@@ -149,3 +149,7 @@ hook_add = '''
     nnoremap [fugitive]ps <cmd>Git push<CR>
     nnoremap [fugitive]pl <cmd>Git pull<CR>
 '''
+
+[[plugins]]
+repo = 'thinca/vim-quickrun'
+on_cmd = 'QuickRun'
