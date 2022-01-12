@@ -32,6 +32,7 @@ exec_always --no-startup-id $HOME/.config/polybar/launch.sh
 exec_always --no-startup-id nitrogen --restore
 exec_always --no-startup-id dunst
 exec_always --no-startup-id light-locker
+exec_always --no-startup-id clipcatd
 exec --no-startup-id xfce4-clipman
 exec --no-startup-id dex -ae i3
 exec --no-startup-id nm-applet
