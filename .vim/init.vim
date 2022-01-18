@@ -45,6 +45,14 @@ let g:dein#enable_notification = v:true
 let g:dein#auto_recache = v:true
 let g:dein#lazy_rplugins = v:true
 
+" GitHub apt token file.
+let s:github_pat = g:base_dir .. 'github_pat'
+if filereadable(s:github_pat)
+    let g:dein#install_github_api_token = readfile(s:github_pat)[0]
+else
+    echo 'Not found github_pat.'
+endif
+
 " }}}
 
 
