@@ -94,6 +94,7 @@ endif
 " Plugin installation check {{{
 if dein#check_install()
     call dein#install()
+    call dein#check_update(v:true)
 endif
 " }}}
 
