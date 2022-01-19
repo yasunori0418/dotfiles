@@ -157,7 +157,7 @@ command! -bar LightlineUpdate source ~/dotfiles/.vim/plugins/lightline.vim|
 function! g:LightlineFugitive() abort
 
     if &ft !~? 'help\|denite\|defx\|tagbar' && exists('*FugitiveHead') && FugitiveStatusline() != ''
-        return '' . FugitiveHead()
+        return ' ' . FugitiveHead()
     else
         return ''
     endif
