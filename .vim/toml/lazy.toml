@@ -48,9 +48,9 @@ hook_add = '''
     nmap <F8> :TagbarToggle<CR>
 '''
 
-[[plugins]]
-repo = 'wsdjeg/dein-ui.vim'
-on_cmd = 'DeinUpdate'
+# [[plugins]]
+# repo = 'wsdjeg/dein-ui.vim'
+# on_cmd = 'DeinUpdate'
 
 [[plugins]]
 repo = 'Shougo/denite.nvim'
