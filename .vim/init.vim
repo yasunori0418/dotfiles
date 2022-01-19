@@ -101,6 +101,29 @@ command! DeinUpdate call dein#check_update(v:true)
 " }}}
 
 
+" dein.vim remove plugins.{{{
+function! s:dein_check_uninstall() abort
+    let l:remove_plugins = dein#check_clean()
+    if len(l:remove_plugins) > 0
+        for l:remove_plugin in l:remove_plugins
+            echo l:remove_plugin
+        endfor
+        echo 'Would you like to remove those plugins?'
+        if input('[Y/n]') == 'y'
+            call map(l:remove_plugins, "delete(v:val, 'rf')")
+            call dein#recache_runtimepath()
+            echo 'Remove Plugins ...done!'
+        else 
+            echo 'Remove Plugins ...abort!'
+        endif
+    else
+        echo 'None remove plugins!'
+    endif
+endfunction
+
+command! DeinRemove call s:dein_check_uninstall()
+" }}}
+
 " ファイル形式別プラグインの有効
 filetype plugin indent on
 " シンタックスハイライトの有効
