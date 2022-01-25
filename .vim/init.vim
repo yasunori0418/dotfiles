@@ -23,7 +23,7 @@ let s:vimrcs_dir = g:base_dir .. 'rc/'
 
 " plugins toml-file directory.
 let s:toml_dir = g:base_dir ..'toml/'
-
+let s:toml_files = systemlist('ls ' .. s:toml_dir .. '*.toml')
 " }}}
 
 
@@ -67,23 +67,31 @@ if dein#min#load_state(s:dein_dir)
 
     call dein#begin(s:dein_dir)
 
-    " toml files.{{{
-    let s:dein_toml = s:toml_dir .. 'dein.toml'
-    let s:dein_lazy_toml = s:toml_dir .. 'lazy.toml'
-    let s:dein_ft_toml = s:toml_dir .. 'filetype.toml'
-    let s:dein_denops_toml = s:toml_dir .. 'denops.toml'
-    let s:dein_ddc_toml = s:toml_dir .. 'ddc.toml'
-    let s:dein_ddu_toml = s:toml_dir .. 'ddu.toml'
-    let s:dein_lsp_toml = s:toml_dir .. 'lsp.toml'
+    for toml_file in s:toml_files
+        if toml_file == s:toml_dir .. 'dein.toml'
+            call dein#load_toml(toml_file, {'lazy': 0})
+        else
+            call dein#load_toml(toml_file, {'lazy': 1})
+        endif
+    endfor
 
-    " read toml and cache
-    call dein#load_toml(s:dein_toml, {'lazy': 0})
-    call dein#load_toml(s:dein_lazy_toml, {'lazy': 1})
-    call dein#load_toml(s:dein_ft_toml, {'lazy': 1})
-    call dein#load_toml(s:dein_denops_toml, {'lazy': 1})
-    call dein#load_toml(s:dein_ddc_toml, {'lazy': 1})
-    call dein#load_toml(s:dein_ddu_toml, {'lazy': 1})
-    call dein#load_toml(s:dein_lsp_toml, {'lazy': 1})
+    " toml files.{{{
+    " let s:dein_toml = s:toml_dir .. 'dein.toml'
+    " let s:dein_lazy_toml = s:toml_dir .. 'lazy.toml'
+    " let s:dein_ft_toml = s:toml_dir .. 'filetype.toml'
+    " let s:dein_denops_toml = s:toml_dir .. 'denops.toml'
+    " let s:dein_ddc_toml = s:toml_dir .. 'ddc.toml'
+    " let s:dein_ddu_toml = s:toml_dir .. 'ddu.toml'
+    " let s:dein_lsp_toml = s:toml_dir .. 'lsp.toml'
+
+    " " read toml and cache
+    " call dein#load_toml(s:dein_toml, {'lazy': 0})
+    " call dein#load_toml(s:dein_lazy_toml, {'lazy': 1})
+    " call dein#load_toml(s:dein_ft_toml, {'lazy': 1})
+    " call dein#load_toml(s:dein_denops_toml, {'lazy': 1})
+    " call dein#load_toml(s:dein_ddc_toml, {'lazy': 1})
+    " call dein#load_toml(s:dein_ddu_toml, {'lazy': 1})
+    " call dein#load_toml(s:dein_lsp_toml, {'lazy': 1})
     " }}}
 
     " end settings
