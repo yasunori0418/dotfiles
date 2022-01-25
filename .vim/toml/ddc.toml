@@ -1,0 +1,50 @@
+[[plugins]]
+repo = 'Shougo/pum.vim'
+
+[[plugins]]
+repo = 'Shougo/ddc.vim'
+depends = ['denops.vim', 'pum.vim']
+on_event = 'InsertEnter'
+hook_source = '''
+    source ~/dotfiles/.vim/plugins/ddc.vim
+'''
+hook_add = '''
+    source ~/dotfiles/.vim/plugins/cmddc.vim
+'''
+
+[[plugins]]
+repo = 'Shougo/ddc-around'
+on_source ='ddc.vim'
+
+[[plugins]]
+repo = 'Shougo/ddc-matcher_head'
+on_source ='ddc.vim'
+
+[[plugins]]
+repo = 'Shougo/ddc-matcher_length'
+on_source ='ddc.vim'
+
+[[plugins]]
+repo = 'Shougo/ddc-sorter_rank'
+on_source ='ddc.vim'
+
+[[plugins]]
+repo = 'LumaKernel/ddc-file'
+on_source ='ddc.vim'
+
+[[plugins]]
+repo = 'Shougo/ddc-rg'
+on_source = 'ddc.vim'
+
+[[plugins]]
+repo = 'Shougo/ddc-cmdline'
+on_source = 'ddc.vim'
+
+[[plugins]]
+repo = 'Shougo/ddc-cmdline-history'
+on_source = 'ddc.vim'
+
+[[plugins]]
+repo = 'Shougo/neco-vim'
+on_ft = ['vim', 'toml']
+depends = ['denops.vim', 'ddc.vim', 'pum.vim']

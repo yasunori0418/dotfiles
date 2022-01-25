@@ -72,6 +72,8 @@ if dein#min#load_state(s:dein_dir)
     let s:dein_lazy_toml = s:toml_dir .. 'lazy.toml'
     let s:dein_ft_toml = s:toml_dir .. 'filetype.toml'
     let s:dein_denops_toml = s:toml_dir .. 'denops.toml'
+    let s:dein_ddc_toml = s:toml_dir .. 'ddc.toml'
+    let s:dein_ddu_toml = s:toml_dir .. 'ddu.toml'
     let s:dein_lsp_toml = s:toml_dir .. 'lsp.toml'
 
     " read toml and cache
