@@ -102,7 +102,8 @@ function! s:dein_check_uninstall() abort
             echo l:remove_plugin
         endfor
         echo 'Would you like to remove those plugins?'
-        if input('[Y/n]') == 'y'
+        echon '[Y/n]'
+        if getcharstr() == 'y'
             call map(l:remove_plugins, "delete(v:val, 'rf')")
             call dein#recache_runtimepath()
             echo 'Remove Plugins ...done!'
@@ -110,7 +111,7 @@ function! s:dein_check_uninstall() abort
             echo 'Remove Plugins ...abort!'
         endif
     else
-        echo 'None remove plugins!'
+        echo 'There are no plugins to remove.'
     endif
 endfunction
 
