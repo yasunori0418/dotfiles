@@ -1,8 +1,6 @@
 set noshowmode
 let g:lightline = {}
 
-autocmd User skkeleton-mode-changed redrawstatus
-
 " Colorscheme{{{
 
 let g:lightline.colorscheme = 'nightfox'

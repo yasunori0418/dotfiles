@@ -1,3 +1,5 @@
+autocmd User skkeleton-mode-changed redrawstatus
+
 function! s:skkeleton_init() abort
     " Load merged dictionary.
     call skkeleton#config({
