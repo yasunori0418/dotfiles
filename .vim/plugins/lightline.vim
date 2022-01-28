@@ -172,11 +172,15 @@ function! g:LightlineSkkeleton() abort
         return ''
     endif
 
-    if lightline#mode() == 'INSERT' || lightline#mode() == 'COMMAND'
-        if skkeleton#mode() == 'hira'
-            return 'あ﫦'
-        elseif skkeleton#mode() == 'kata'
-            return 'ア﫦'
+    if lightline#mode() ==# 'INSERT' || lightline#mode() ==# 'COMMAND'
+        if skkeleton#mode() ==# 'hira'
+            return 'あぁ﫦'
+        elseif skkeleton#mode() ==# 'kata'
+            return 'アァ﫦'
+        elseif skkeleton#mode() ==# 'hankata'
+            return 'ｱｧ﫦'
+        elseif skkeleton#mode() ==# 'zenkaku'
+            return 'Ａａ﫦'
         else
             return 'Aa﫦'
         endif
