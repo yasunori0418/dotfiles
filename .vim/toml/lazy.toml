@@ -2,6 +2,10 @@
 repo = 'vim-jp/vimdoc-ja'
 on_cmd = ['h', 'help']
 
+[[plugins]]
+repo = 'mattn/learn-vimscript'
+on_cmd = ['h', 'help']
+
 [[plugins]] # Preview of replacement results
 repo = 'markonm/traces.vim'
 on_event= 'CmdlineEnter'
