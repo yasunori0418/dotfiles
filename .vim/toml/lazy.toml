@@ -3,8 +3,8 @@ repo = 'vim-jp/vimdoc-ja'
 on_cmd = ['h', 'help']
 
 [[plugins]]
-repo = 'mattn/learn-vimscript'
-on_cmd = ['h', 'help']
+repo = 'yasunori-kirin0418/lightline-skk'
+on_source = 'skkeleton'
 
 [[plugins]] # Preview of replacement results
 repo = 'markonm/traces.vim'
