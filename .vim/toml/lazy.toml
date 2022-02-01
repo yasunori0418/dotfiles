@@ -1,7 +1,3 @@
-[[plugins]] # Japanese localization of help
-repo = 'vim-jp/vimdoc-ja'
-on_cmd = ['h', 'help']
-
 [[plugins]]
 repo = 'yasunori-kirin0418/lightline-skk'
 on_source = 'skkeleton'
