@@ -197,7 +197,7 @@ endfunction
 
 function! g:LightlineMode() abort
 
-    if lightline#mode() == 'INSERT' || lightline#mode() == 'COMMAND'
+    if lightline#mode() == 'INSERT' || lightline#mode() == 'COMMAND' || lightline#mode() == 'REPLACE'
         if get(g:, 'loaded_skkeleton') == 0
             return lightline#mode()
         endif
