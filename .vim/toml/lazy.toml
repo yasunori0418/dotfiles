@@ -1,6 +1,12 @@
 [[plugins]]
 repo = 'yasunori-kirin0418/lightline-skk'
 on_source = 'skkeleton'
+hook_source = '''
+    let g:lightline_skk_mode = {
+        \ 'hiragana': 'あぁ﫦',
+        \ }
+'''
+
 
 [[plugins]] # Preview of replacement results
 repo = 'markonm/traces.vim'
