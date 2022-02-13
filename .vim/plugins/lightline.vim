@@ -112,7 +112,7 @@ let g:lightline.component = {
 let g:lightline.component_function = {
     \ 'git_branch': 'g:LightlineFugitive',
     \ 'mode': 'g:LightlineMode',
-    \ 'skk_mode': 'g:lightline#skkeleton#mode',
+    \ 'skk_mode': 'lightline_skk#mode',
     \ }
 
 " }}}
