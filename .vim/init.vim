@@ -76,7 +76,7 @@ if dein#min#load_state(s:dein_dir)
     endfor
 
     " Test local plugins
-    call dein#local('~/Project', {'lazy': 1, 'on_source': 'skkeleton'}, ['lightline-skk'])
+    " call dein#local('~/Project', {'lazy': 1, 'on_source': 'skkeleton'}, ['lightline-skk'])
 
     " end settings
     call dein#end()
