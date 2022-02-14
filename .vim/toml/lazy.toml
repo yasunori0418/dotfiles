@@ -2,12 +2,18 @@
 repo = 'yasunori-kirin0418/lightline-skk'
 on_source = 'skkeleton'
 hook_source = '''
-    call g:lightline_skk#option('display',{
+    call lightline_skk#option('display', {
     \ 'hiragana': 'あぁ﫦',
     \ 'katakana': 'アァ﫦',
     \ 'hankaku-katakana': 'ｱｧ﫦',
     \ 'zenkaku-alphabet': 'Ａａ﫦',
     \ 'alphabet': 'Aa﫦',
+    \ })
+
+    call lightline_skk#option('enable_mode', {
+    \ 'INSERT': v:true,
+    \ 'COMMAND': v:true,
+    \ 'REPLACE': v:true,
     \ })
 '''
 
