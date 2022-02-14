@@ -1,5 +1,5 @@
 [[plugins]]
-repo = 'yasunori-kirin0418/lightline-skk'
+repo = 'yasunori-kirin0418/lightline_skk.vim'
 on_source = 'skkeleton'
 hook_source = '''
     call lightline_skk#option('display', {
