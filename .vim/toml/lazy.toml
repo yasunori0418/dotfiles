@@ -9,12 +9,6 @@ hook_source = '''
     \ 'zenkaku-alphabet': 'Ａａ﫦',
     \ 'alphabet': 'Aa﫦',
     \ })
-
-    call lightline_skk#option('enable_mode', {
-    \ 'INSERT': v:true,
-    \ 'COMMAND': v:true,
-    \ 'REPLACE': v:true,
-    \ })
 '''
 
 [[plugins]] # Preview of replacement results
