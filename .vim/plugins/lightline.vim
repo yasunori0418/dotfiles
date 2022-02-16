@@ -1,8 +1,6 @@
 set noshowmode
 let g:lightline = {}
 
-autocmd User skkeleton-mode-changed redrawstatus
-
 " Colorscheme{{{
 
 let g:lightline.colorscheme = 'nightfox'
@@ -59,13 +57,13 @@ let g:lightline.tab.inactive = ['tabnum', 'filename', 'modified']
 if &ambiwidth =~ 'single'
 
     let g:lightline.separator = {
-        \ 'left': ' ',
-        \ 'right': ' ',
+        \ 'left': ' ',
+        \ 'right': ' ',
         \ }
 
     let g:lightline.subseparator = {
-        \ 'left': ' ',
-        \ 'right': ' ',
+        \ 'left': ' ',
+        \ 'right': ' ',
         \ }
 
 endif
@@ -113,8 +111,8 @@ let g:lightline.component = {
 
 let g:lightline.component_function = {
     \ 'git_branch': 'g:LightlineFugitive',
-    \ 'skk_mode': 'g:LightlineSkkeleton',
     \ 'mode': 'g:LightlineMode',
+    \ 'skk_mode': 'lightline_skk#mode',
     \ }
 
 " }}}
@@ -174,11 +172,15 @@ function! g:LightlineSkkeleton() abort
         return ''
     endif
 
-    if lightline#mode() == 'INSERT' || lightline#mode() == 'COMMAND'
-        if skkeleton#mode() == 'hira'
-            return 'あ﫦'
-        elseif skkeleton#mode() == 'kata'
-            return 'ア﫦'
+    if lightline#mode() ==# 'INSERT' || lightline#mode() ==# 'COMMAND'
+        if skkeleton#mode() ==# 'hira'
+            return 'あぁ﫦'
+        elseif skkeleton#mode() ==# 'kata'
+            return 'アァ﫦'
+        elseif skkeleton#mode() ==# 'hankata'
+            return 'ｱｧ﫦'
+        elseif skkeleton#mode() ==# 'zenkaku'
+            return 'Ａａ﫦'
         else
             return 'Aa﫦'
         endif
@@ -195,7 +197,7 @@ endfunction
 
 function! g:LightlineMode() abort
 
-    if lightline#mode() == 'INSERT' || lightline#mode() == 'COMMAND'
+    if lightline#mode() == 'INSERT' || lightline#mode() == 'COMMAND' || lightline#mode() == 'REPLACE'
         if get(g:, 'loaded_skkeleton') == 0
             return lightline#mode()
         endif

@@ -4,6 +4,12 @@ repo = 'Shougo/dein.vim'
 # [[plugins]] # Color scheme for editor
 # repo = 'cocopon/iceberg.vim'
 
+[[plugins]] # Japanese localization of help
+repo = 'vim-jp/vimdoc-ja'
+
+[[plugins]]
+repo = 'mattn/learn-vimscript'
+
 [[plugins]]
 repo = 'EdenEast/nightfox.nvim'
 hook_add = '''

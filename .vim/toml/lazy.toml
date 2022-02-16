@@ -1,6 +1,15 @@
-[[plugins]] # Japanese localization of help
-repo = 'vim-jp/vimdoc-ja'
-on_cmd = ['h', 'help']
+[[plugins]]
+repo = 'yasunori-kirin0418/lightline_skk.vim'
+on_source = 'skkeleton'
+hook_source = '''
+    call lightline_skk#option('display', {
+    \ 'hiragana': 'あぁ﫦',
+    \ 'katakana': 'アァ﫦',
+    \ 'hankaku-katakana': 'ｱｧ﫦',
+    \ 'zenkaku-alphabet': 'Ａａ﫦',
+    \ 'alphabet': 'Aa﫦',
+    \ })
+'''
 
 [[plugins]] # Preview of replacement results
 repo = 'markonm/traces.vim'
@@ -24,7 +33,7 @@ require'nvim-treesitter.configs'.setup {
     ensure_installed = 'maintained',
     highlight = {
         enable = true,
-        disable = {},
+        disable = { 'vim' },
     },
     indent = {
         enable = true,

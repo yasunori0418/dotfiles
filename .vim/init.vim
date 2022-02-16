@@ -75,6 +75,9 @@ if dein#min#load_state(s:dein_dir)
         endif
     endfor
 
+    " Test local plugins
+    " call dein#local('~/Project', {'lazy': 1, 'on_source': 'skkeleton'}, ['lightline-skk'])
+
     " end settings
     call dein#end()
     call dein#save_state()
@@ -102,7 +105,8 @@ function! s:dein_check_uninstall() abort
             echo l:remove_plugin
         endfor
         echo 'Would you like to remove those plugins?'
-        if input('[Y/n]') == 'y'
+        echon '[Y/n]'
+        if getcharstr() == 'y'
             call map(l:remove_plugins, "delete(v:val, 'rf')")
             call dein#recache_runtimepath()
             echo 'Remove Plugins ...done!'
@@ -110,7 +114,7 @@ function! s:dein_check_uninstall() abort
             echo 'Remove Plugins ...abort!'
         endif
     else
-        echo 'None remove plugins!'
+        echo 'There are no plugins to remove.'
     endif
 endfunction
 

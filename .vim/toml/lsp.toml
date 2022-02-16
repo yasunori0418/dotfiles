@@ -19,7 +19,7 @@
 [[plugins]]
 repo = 'prabirshrestha/vim-lsp'
 depends = 'ddc.vim'
-on_ft = ['python', 'markdown', 'vim']
+on_ft = ['python', 'markdown']
 
 [[plugins]]
 repo = 'mattn/vim-lsp-settings'
