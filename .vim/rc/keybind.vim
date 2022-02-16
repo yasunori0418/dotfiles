@@ -14,10 +14,6 @@ nnoremap x "_x
 nnoremap s "_s
 
 
-" Super Space keybind.
-nnoremap [Space] <Nop>
-nmap <Space> [Space]
-
 " }}}
 
 
