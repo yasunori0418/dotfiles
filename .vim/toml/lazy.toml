@@ -69,7 +69,7 @@ hook_source = '''
 '''
 hook_add = '''
     nnoremap [denite] <Nop>
-    nmap <Space>d [denite]
+    nmap [Space]d [denite]
     nnoremap [denite]a <cmd>Denite file buffer file:new<CR>
     nnoremap [denite]b <cmd>Denite buffer<CR>
     nnoremap [denite]h <cmd>Denite help -start-filter<CR>
@@ -84,7 +84,7 @@ repo = 'Shougo/defx.nvim'
 on_cmd = 'Defx'
 hook_add = '''
     nnoremap [defx] <Nop>
-    nmap <Space>f [defx]
+    nmap [Space]f [defx]
     nnoremap [defx]a <cmd>Defx -search=`expand('%:p')` `expand('%:p:h')`<CR>
 '''
 hook_source = '''
@@ -108,7 +108,7 @@ repo = 'Shougo/deol.nvim'
 on_cmd = 'Deol'
 hook_add = '''
     nnoremap [term] <Nop>
-    nmap <Space>t [term]
+    nmap [Space]t [term]
     nnoremap [term]d <cmd>Deol -split=floating -winheight=25<CR>
 
     " Exit deol buffer with <ESC>
@@ -140,7 +140,7 @@ repo = 'tpope/vim-fugitive'
 on_event = 'VimEnter'
 hook_add = '''
     nnoremap [fugitive] <Nop>
-    nmap <Space>g [fugitive]
+    nmap [Space]g [fugitive]
     nnoremap [fugitive]s <cmd>Git<CR>
     nnoremap [fugitive]a <cmd>Gwrite<CR>
     nnoremap [fugitive]d <cmd>Gdiff<CR>
