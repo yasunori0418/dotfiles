@@ -12,6 +12,12 @@ nnoremap : ;
 " Do not save the things erased by x and s in the register.
 nnoremap x "_x
 nnoremap s "_s
+
+
+" Super Space keybind.
+nnoremap [Space] <Nop>
+nmap <Space> [Space]
+
 " }}}
 
 
