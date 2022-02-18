@@ -75,7 +75,7 @@ call ddu#custom#patch_local('plugin-list', {
     \ 'sources': [{'name': 'dein'}],
     \ })
 
-call ddu#custom#patch_local('HOME', {
+call ddu#custom#patch_local('home', {
     \ 'uiParams': {
     \     'ff': {
     \         'startFilter': v:true,

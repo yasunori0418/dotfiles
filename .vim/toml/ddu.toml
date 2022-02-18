@@ -4,13 +4,13 @@ depends = 'denops.vim'
 on_func = 'ddu#start()'
 hook_add = '''
     nnoremap [ddu] <Nop>
-    nmap <Space>D [ddu]
-    nnoremap [ddu]c <Cmd>call ddu#start({'name': 'current'})<CR>
+    nmap <Space>d [ddu]
+    nnoremap [ddu]a <Cmd>call ddu#start({'name': 'current'})<CR>
     nnoremap [ddu]d <Cmd>call ddu#start({'name': 'dotfiles'})<CR>
-    nnoremap [ddu]h <Cmd>call ddu#start({'name': 'help'})<CR>
+    " nnoremap [ddu]h <Cmd>call ddu#start({'name': 'help'})<CR>
     nnoremap [ddu]b <Cmd>call ddu#start({'name': 'buffer'})<CR>
     nnoremap [ddu]p <Cmd>call ddu#start({'name': 'plugin-list'})<CR>
-    nnoremap [ddu]~ <Cmd>call ddu#start({'name': 'HOME'})<CR>
+    nnoremap [ddu]~ <Cmd>call ddu#start({'name': 'home'})<CR>
     nnoremap [ddu]r <Cmd>call ddu#start({'name': 'register'})<CR>
 '''
 hook_source = '''
