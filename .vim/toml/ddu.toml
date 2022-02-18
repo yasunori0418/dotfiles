@@ -1,0 +1,66 @@
+[[plugins]]
+repo = 'Shougo/ddu.vim'
+depends = 'denops.vim'
+on_func = 'ddu#start()'
+hook_add = '''
+    nnoremap [ddu] <Nop>
+    nmap <Space>D [ddu]
+    nnoremap [ddu]c <Cmd>call ddu#start({'name': 'current'})<CR>
+    nnoremap [ddu]d <Cmd>call ddu#start({'name': 'dotfiles'})<CR>
+    " nnoremap [ddu]h <Cmd>call ddu#start({'name': 'help'})<CR>
+    nnoremap [ddu]b <Cmd>call ddu#start({'name': 'buffer'})<CR>
+    nnoremap [ddu]p <Cmd>call ddu#start({'name': 'plugin-list'})<CR>
+    nnoremap [ddu]~ <Cmd>call ddu#start({'name': 'HOME'})<CR>
+    nnoremap [ddu]r <Cmd>call ddu#start({'name': 'register'})<CR>
+'''
+hook_source = '''
+    source ~/dotfiles/.vim/plugins/ddu.vim
+'''
+
+[[plugins]]
+repo = 'Shougo/ddu-ui-ff'
+on_source = 'ddu.vim'
+
+[[plugins]]
+repo = 'Shougo/ddu-kind-file'
+on_source = 'ddu.vim'
+
+[[plugins]]
+repo = 'Shougo/ddu-kind-word'
+on_source = 'ddu.vim'
+
+[[plugins]]
+repo = 'Shougo/ddu-source-file'
+on_source = 'ddu.vim'
+
+[[plugins]]
+repo = 'Shougo/ddu-source-file_rec'
+on_source = 'ddu.vim'
+
+# [[plugins]]
+# repo = 'matsui54/ddu-source-help'
+# on_source = 'ddu.vim'
+
+[[plugins]]
+repo = 'shun/ddu-source-buffer'
+on_source = 'ddu.vim'
+
+[[plugins]]
+repo = 'Shougo/ddu-source-action'
+on_source = 'ddu.vim'
+
+[[plugins]]
+repo = 'Shougo/ddu-source-register'
+on_source = 'ddu.vim'
+
+[[plugins]]
+repo = 'Shougo/ddu-filter-matcher_substring'
+on_source = 'ddu.vim'
+
+[[plugins]]
+repo = 'Shougo/ddu-filter-matcher_hidden'
+on_source = 'ddu.vim'
+
+[[plugins]]
+repo = 'Shougo/ddu-filter-matcher_relative'
+on_source = 'ddu.vim'
