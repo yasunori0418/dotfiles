@@ -5,7 +5,7 @@ on_func = 'ddu#start()'
 hook_add = '''
     nnoremap [ddu] <Nop>
     nmap <Space>d [ddu]
-    nnonameremap [ddu]a <Cmd>call ddu#start({'name': 'current'})<CR>
+    nnoremap [ddu]a <Cmd>call ddu#start({'name': 'current'})<CR>
     nnoremap [ddu]d <Cmd>call ddu#start({'name': 'dotfiles'})<CR>
     " nnoremap [ddu]h <Cmd>call ddu#start({'name': 'help'})<CR>
     nnoremap [ddu]b <Cmd>call ddu#start({'name': 'buffer'})<CR>
