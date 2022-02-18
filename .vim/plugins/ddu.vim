@@ -17,9 +17,6 @@ call ddu#custom#patch_global({
     \     'dein': {
     \         'defaultAction': 'cd'
     \         },
-    \     'help': {
-    \         'defaultAction': 'open',
-    \         },
     \     },
     \ 'kindOptions': {
     \     'file': {
