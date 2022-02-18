@@ -15,7 +15,10 @@ call ddu#custom#patch_global({
     \         'matchers': [ 'matcher_substring' ],
     \         },
     \     'dein': {
-    \         'defaultAction': 'cd'
+    \         'defaultAction': 'cd',
+    \         },
+    \     'help': {
+    \         'defaultAction': 'open',
     \         },
     \     },
     \ 'kindOptions': {
@@ -50,14 +53,14 @@ call ddu#custom#patch_local('dotfiles', {
     \ 'sources': [{'name': 'file_rec'}],
     \ })
 
-" call ddu#custom#patch_local('help', {
-"     \ 'uiParams': {
-"     \     'ff': {
-"     \         'startFilter': v:true,
-"     \         }
-"     \     },
-"     \ 'sources': [{'name': 'help'}],
-"     \ })
+call ddu#custom#patch_local('help', {
+    \ 'uiParams': {
+    \     'ff': {
+    \         'startFilter': v:true,
+    \         },
+    \     },
+    \ 'sources': [{'name': 'help'}],
+    \ })
 
 call ddu#custom#patch_local('buffer', {
     \ 'sources': [{'name': 'buffer'}],
