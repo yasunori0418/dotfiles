@@ -115,23 +115,14 @@ function! s:ddu_ff_keybind() abort
     nnoremap <buffer><silent> s
     \ <Cmd>call ddu#ui#ff#do_action('itemAction',
     \ {'name': 'open', 'params': {'command': 'split'}})<CR>
-    nnoremap <buffer><silent> S
-    \ <Cmd>call ddu#ui#ff#do_action('itemAction',
-    \ {'name': 'open', 'params': {'command': 'splitswitch'}})<CR>
     nnoremap <buffer><silent> v
     \ <Cmd>call ddu#ui#ff#do_action('itemAction',
     \ {'name': 'open', 'params': {'command': 'vsplit'}})<CR>
-    nnoremap <buffer><silent> V
-    \ <Cmd>call ddu#ui#ff#do_action('itemAction',
-    \ {'name': 'open', 'params': {'command': 'vsplitswitch'}})<CR>
 
     " Open file with another tab.
     nnoremap <buffer><silent> t
     \ <Cmd>call ddu#ui#ff#do_action('itemAction',
-    \ {'name': 'open', 'command': 'tabopen'})<CR>
-    nnoremap <buffer><silent> t
-    \ <Cmd>call ddu#ui#ff#do_action('itemAction',
-    \ {'name': 'open', 'command': 'tabswitch'})<CR>
+    \ {'name': 'open', 'params': {'command': 'tabedit'}})<CR>
 
     " Open filter Window.
     nnoremap <buffer><silent> i
