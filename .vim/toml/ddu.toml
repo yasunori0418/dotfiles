@@ -21,6 +21,8 @@ hook_source = '''
 repo = 'Shougo/ddu-ui-ff'
 on_source = 'ddu.vim'
 
+## ddu-kind {{{
+
 [[plugins]]
 repo = 'Shougo/ddu-kind-file'
 on_source = 'ddu.vim'
@@ -28,6 +30,10 @@ on_source = 'ddu.vim'
 [[plugins]]
 repo = 'Shougo/ddu-kind-word'
 on_source = 'ddu.vim'
+
+## }}}
+
+## ddu-source {{{
 
 [[plugins]]
 repo = 'Shougo/ddu-source-file'
@@ -53,6 +59,12 @@ on_source = 'ddu.vim'
 repo = 'Shougo/ddu-source-register'
 on_source = 'ddu.vim'
 
+
+## }}}
+
+
+## ddu-filter {{{
+
 [[plugins]]
 repo = 'Shougo/ddu-filter-matcher_substring'
 on_source = 'ddu.vim'
@@ -64,3 +76,5 @@ on_source = 'ddu.vim'
 [[plugins]]
 repo = 'Shougo/ddu-filter-matcher_relative'
 on_source = 'ddu.vim'
+
+## }}}
