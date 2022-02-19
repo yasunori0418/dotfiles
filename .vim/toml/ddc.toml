@@ -47,4 +47,3 @@ on_source = 'ddc.vim'
 [[plugins]]
 repo = 'Shougo/neco-vim'
 on_ft = ['vim', 'toml']
-depends = ['denops.vim', 'ddc.vim', 'pum.vim']
