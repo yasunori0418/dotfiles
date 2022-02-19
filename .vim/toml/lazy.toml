@@ -1,31 +1,5 @@
 [[plugins]]
-repo = 'yasunori-kirin0418/lightline_skk.vim'
-on_source = 'skkeleton'
-hook_source = '''
-    call lightline_skk#option('display', {
-    \ 'hiragana': 'あぁ﫦',
-    \ 'katakana': 'アァ﫦',
-    \ 'hankaku-katakana': 'ｱｧ﫦',
-    \ 'zenkaku-alphabet': 'Ａａ﫦',
-    \ 'alphabet': 'Aa﫦',
-    \ })
-'''
-
-[[plugins]] # Preview of replacement results
-repo = 'markonm/traces.vim'
-on_event= 'CmdlineEnter'
-
-[[plugins]] # Translate, Japanese to English
-repo = 'skanehira/translate.vim'
-on_cmd = 'Translate'
-hook_source = '''
-    " Pop up the translated content
-    let g:translate_popup_window = 1
-'''
-
-[[plugins]]
 repo = 'nvim-treesitter/nvim-treesitter'
-on_event = 'BufRead'
 hook_post_update = 'TSUpdate'
 hook_source = '''
 lua <<EOF
@@ -42,9 +16,67 @@ require'nvim-treesitter.configs'.setup {
 EOF
 '''
 
+[[plugins]]
+repo = 'EdenEast/nightfox.nvim''
+depends = 'nvim-treesitter'
+hook_source = '''
+lua << EOF
+local nightfox = require('nightfox')
+nightfox.setup({
+    fox = 'duskfox',
+    transparent = false,
+    terminal_colors = true,
+    styles = {
+        comments = 'italic',
+        keywords = 'bold',
+        functions = 'italic,bold',
+    },
+})
+
+-- Load colorscheme.
+nightfox.load()
+EOF
+'''
+
+[[plugins]]
+repo = 'itchyny/vim-gitbranch'
+
+[[plugins]] # Modern and light status line.
+repo = 'itchyny/lightline.vim'
+on_event = 'VimEnter'
+depends = ['vim-gitbranch', 'nightfox.nvim']
+hook_add = '''
+    source ~/dotfiles/.vim/plugins/lightline.vim
+'''
+
+[[plugins]]
+repo = 'yasunori-kirin0418/lightline_skk.vim'
+on_source = 'skkeleton'
+hook_source = '''
+    call lightline_skk#option('display', {
+    \ 'hiragana': 'あぁ﫦',
+    \ 'katakana': 'アァ﫦',
+    \ 'hankaku-katakana': 'ｱｧ﫦',
+    \ 'zenkaku-alphabet': 'Ａａ﫦',
+    \ 'alphabet': 'Aa﫦',
+    \ })
+'''
+
+[[plugins]] # Translate, Japanese to English
+repo = 'skanehira/translate.vim'
+on_cmd = 'Translate'
+hook_source = '''
+    " Pop up the translated content
+    let g:translate_popup_window = 1
+'''
+
 #[[plugins]]
 #repo = 'skanehira/denops-translate.vim'
 #on_cmd = 'Translate'
+
+[[plugins]] # Preview of replacement results
+repo = 'markonm/traces.vim'
+on_event= 'CmdlineEnter'
 
 [[plugins]]
 repo = 'lambdalisue/suda.vim'
@@ -56,28 +88,6 @@ on_cmd = 'TagbarToggle'
 hook_add = '''
     nmap <F8> :TagbarToggle<CR>
 '''
-
-# [[plugins]]
-# repo = 'wsdjeg/dein-ui.vim'
-# on_cmd = 'DeinUpdate'
-
-# [[plugins]]
-# repo = 'Shougo/denite.nvim'
-# on_cmd = 'Denite'
-# hook_source = '''
-#     source ~/dotfiles/.vim/plugins/denite.vim
-# '''
-# hook_add = '''
-#     nnoremap [denite] <Nop>
-#     nmap <Space>d [denite]
-#     nnoremap [denite]a <cmd>Denite file buffer file:new<CR>
-#     nnoremap [denite]b <cmd>Denite buffer<CR>
-#     nnoremap [denite]h <cmd>Denite help -start-filter<CR>
-#     nnoremap [denite]r <cmd>Denite register<CR>
-#     nnoremap [denite]g <cmd>Denite grep<CR>
-#     nnoremap [denite]m <cmd>Denite menu<CR>
-#     nnoremap [denite]dm <cmd>Denite menu:Denite_cmd<CR>
-# '''
 
 [[plugins]]
 repo = 'Shougo/defx.nvim'
