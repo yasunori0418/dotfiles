@@ -146,11 +146,20 @@ repo = 'tpope/vim-surround'
 on_event = 'BufRead'
 
 [[plugins]]
+repo = 'lambdalisue/gina.vim'
+on_cmd = 'Gina'
+hook_add = '''
+    nnoremap [gina.vim] <Nop>
+    nmap <Space>g [gina.vim]
+    nnoremap [gina.vim]s <Cmd>Gina status<CR>
+'''
+
+[[plugins]]
 repo = 'tpope/vim-fugitive'
 on_event = 'VimEnter'
 hook_add = '''
     nnoremap [fugitive] <Nop>
-    nmap <Space>g [fugitive]
+    nmap <Space>G [fugitive]
     nnoremap [fugitive]s <cmd>Git<CR>
     nnoremap [fugitive]a <cmd>Gwrite<CR>
     nnoremap [fugitive]d <cmd>Gdiff<CR>
