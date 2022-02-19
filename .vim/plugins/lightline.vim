@@ -176,7 +176,11 @@ endfunction
 " git branch {{{
 
 function! g:LightlineGitBranch() abort
-    return  ' ' .. gitbranch#name()
+    if gitbranch#name() == ''
+        return ''
+    else
+        return  ' ' .. gitbranch#name()
+    endif
 endfunction
 
 " }}}
