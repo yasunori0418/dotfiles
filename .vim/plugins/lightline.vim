@@ -110,7 +110,7 @@ let g:lightline.component = {
 " Component_function{{{
 
 let g:lightline.component_function = {
-    \ 'git_branch': 'g:LightlineFugitive',
+    \ 'git_branch': 'gitbranch#name',
     \ 'mode': 'g:LightlineMode',
     \ 'skk_mode': 'lightline_skk#mode',
     \ }
@@ -146,49 +146,6 @@ command! -bar LightlineUpdate source ~/dotfiles/.vim/plugins/lightline.vim|
     \ call lightline#init()|
     \ call lightline#colorscheme()|
     \ call lightline#update()
-
-" }}}
-
-
-" Branch name{{{
-
-function! g:LightlineFugitive() abort
-
-    if &ft !~? 'help\|denite\|defx\|tagbar' && exists('*FugitiveHead') && FugitiveStatusline() != ''
-        return ' ' . FugitiveHead()
-    else
-        return ''
-    endif
-endfunction
-
-" }}}
-
-
-" Skkeleton mode{{{
-
-function! g:LightlineSkkeleton() abort
-
-    if get(g:, 'loaded_skkeleton') == 0
-        return ''
-    endif
-
-    if lightline#mode() ==# 'INSERT' || lightline#mode() ==# 'COMMAND'
-        if skkeleton#mode() ==# 'hira'
-            return 'あぁ﫦'
-        elseif skkeleton#mode() ==# 'kata'
-            return 'アァ﫦'
-        elseif skkeleton#mode() ==# 'hankata'
-            return 'ｱｧ﫦'
-        elseif skkeleton#mode() ==# 'zenkaku'
-            return 'Ａａ﫦'
-        else
-            return 'Aa﫦'
-        endif
-    else
-        return ''
-    endif
-
-endfunction
 
 " }}}
 
