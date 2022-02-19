@@ -110,7 +110,7 @@ let g:lightline.component = {
 " Component_function{{{
 
 let g:lightline.component_function = {
-    \ 'git_branch': 'gitbranch#name',
+    \ 'git_branch': 'g:LightlineGitBranch',
     \ 'mode': 'g:LightlineMode',
     \ 'skk_mode': 'lightline_skk#mode',
     \ }
@@ -168,6 +168,15 @@ function! g:LightlineMode() abort
         return lightline#mode()
     endif
 
+endfunction
+
+" }}}
+
+
+" git branch {{{
+
+function! g:LightlineGitBranch() abort
+    return  ' ' .. gitbranch#name()
 endfunction
 
 " }}}
