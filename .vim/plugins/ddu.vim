@@ -45,12 +45,12 @@ call ddu#custom#patch_local('dotfiles', {
     \ 'uiParams': {
     \     'ff': {
     \         'startFilter': v:true,
-    \         }
+    \         },
     \     },
-    \ 'sourceParams': {
-    \     'file_rec': {'path': expand('~') .. '/dotfiles'},
-    \     },
-    \ 'sources': [{'name': 'file_rec'}],
+    \ 'sources': [{
+    \     'name': 'file_rec',
+    \     'params': {'path': expand('~') .. '/dotfiles'},
+    \     }],
     \ })
 
 call ddu#custom#patch_local('help', {
@@ -90,6 +90,13 @@ call ddu#custom#patch_local('home', {
 call ddu#custom#patch_local('register', {
     \ 'sources': [{'name': 'register'}],
     \ })
+
+" call ddu#custom#patch_local('search', {
+"     \ 'sources': [{
+"     \     'name': 'rg',
+"     \     'params': {'input': input('Pattern: ')}
+"     \     }],
+"     \ })
 
 autocmd FileType ddu-ff call s:ddu_ff_keybind()
 function! s:ddu_ff_keybind() abort

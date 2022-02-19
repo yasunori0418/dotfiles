@@ -12,6 +12,13 @@ hook_add = '''
     nnoremap [ddu]p <Cmd>call ddu#start({'name': 'plugin-list'})<CR>
     nnoremap [ddu]~ <Cmd>call ddu#start({'name': 'home'})<CR>
     nnoremap [ddu]r <Cmd>call ddu#start({'name': 'register'})<CR>
+    nnoremap [ddu]s <Cmd>call ddu#start({
+    \ 'name': 'search',
+    \ 'sources': [{
+    \     'name': 'rg',
+    \     'params': {'input': input('Pattern: ')},
+    \     }],
+    \ })<CR>
 '''
 hook_source = '''
     source ~/dotfiles/.vim/plugins/ddu.vim
@@ -32,6 +39,7 @@ repo = 'Shougo/ddu-kind-word'
 on_source = 'ddu.vim'
 
 ## }}}
+
 
 ## ddu-source {{{
 
@@ -59,6 +67,9 @@ on_source = 'ddu.vim'
 repo = 'Shougo/ddu-source-register'
 on_source = 'ddu.vim'
 
+[[plugins]]
+repo = 'shun/ddu-source-rg'
+on_source = 'ddu.vim'
 
 ## }}}
 
