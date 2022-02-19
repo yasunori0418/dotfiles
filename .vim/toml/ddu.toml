@@ -12,6 +12,13 @@ hook_add = '''
     nnoremap [ddu]p <Cmd>call ddu#start({'name': 'plugin-list'})<CR>
     nnoremap [ddu]~ <Cmd>call ddu#start({'name': 'home'})<CR>
     nnoremap [ddu]r <Cmd>call ddu#start({'name': 'register'})<CR>
+    nnoremap [ddu]s <Cmd>call ddu#start({
+    \ 'name': 'search',
+    \ 'sources': [{
+    \     'name': 'rg',
+    \     'params': {'input': input('Pattern: ')},
+    \     }],
+    \ })<CR>
 '''
 hook_source = '''
     source ~/dotfiles/.vim/plugins/ddu.vim
@@ -21,6 +28,8 @@ hook_source = '''
 repo = 'Shougo/ddu-ui-ff'
 on_source = 'ddu.vim'
 
+## ddu-kind {{{
+
 [[plugins]]
 repo = 'Shougo/ddu-kind-file'
 on_source = 'ddu.vim'
@@ -28,6 +37,11 @@ on_source = 'ddu.vim'
 [[plugins]]
 repo = 'Shougo/ddu-kind-word'
 on_source = 'ddu.vim'
+
+## }}}
+
+
+## ddu-source {{{
 
 [[plugins]]
 repo = 'Shougo/ddu-source-file'
@@ -54,6 +68,15 @@ repo = 'Shougo/ddu-source-register'
 on_source = 'ddu.vim'
 
 [[plugins]]
+repo = 'shun/ddu-source-rg'
+on_source = 'ddu.vim'
+
+## }}}
+
+
+## ddu-filter {{{
+
+[[plugins]]
 repo = 'Shougo/ddu-filter-matcher_substring'
 on_source = 'ddu.vim'
 
@@ -64,3 +87,5 @@ on_source = 'ddu.vim'
 [[plugins]]
 repo = 'Shougo/ddu-filter-matcher_relative'
 on_source = 'ddu.vim'
+
+## }}}
