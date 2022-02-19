@@ -95,6 +95,8 @@ set tabstop=4
 
 " Insert a tab with 4 minutes of half-width space.
 set softtabstop=4
+
+let g:vim_indent_count = 0
 " }}} 
 
 " Statusline{{{
