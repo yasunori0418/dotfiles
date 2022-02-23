@@ -31,6 +31,8 @@ set autoread
 " Use the clipboard on linux systems.
 set clipboard+=unnamedplus
 
+set diffopt+=vertical
+
 " Colorscheme.
 " colorscheme iceberg
 " }}}
