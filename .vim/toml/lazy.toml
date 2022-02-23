@@ -151,9 +151,16 @@ on_cmd = 'Gina'
 hook_add = '''
     nnoremap [gina] <Nop>
     nmap <Space>g [gina]
-    nnoremap [gina]s <Cmd>Gina status -s --opener=split<CR>
-    nnoremap [gina]c <Cmd>Gina commit -v<CR>
-    nnoremap [gina]l <Cmd>Gina log --opener=vsplit<CR>
+    nnoremap [gina]s <Cmd>Gina status<CR>
+    nnoremap [gina]c <Cmd>Gina commit<CR>
+    nnoremap [gina]l <Cmd>Gina log<CR>
+'''
+hook_source = '''
+    call gina#custom#command#option('status', '-s')
+    call gina#custom#command#option('status', '--opener', 'split')
+    call gina#custom#command#option('commit', '-v')
+    call gina#custom#command#option('log', '--opener', 'vsplit')
+    call gina#custom#command#option('log', '--graph')
 '''
 
 [[plugins]]
