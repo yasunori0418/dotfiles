@@ -154,6 +154,7 @@ hook_add = '''
     nnoremap [gina]s <Cmd>Gina status<CR>
     nnoremap [gina]c <Cmd>Gina commit<CR>
     nnoremap [gina]l <Cmd>Gina log<CR>
+    nnoremap [gina]b <Cmd>Gina blame<CR>
 '''
 hook_source = '''
     call gina#custom#command#option('status', '-s')
@@ -161,6 +162,7 @@ hook_source = '''
     call gina#custom#command#option('commit', '-v')
     call gina#custom#command#option('log', '--opener', 'vsplit')
     call gina#custom#command#option('log', '--graph')
+    call gina#custom#command#option('blame', '--opener', 'tabedit')
 '''
 
 [[plugins]]
