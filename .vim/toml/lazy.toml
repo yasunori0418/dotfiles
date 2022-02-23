@@ -65,6 +65,10 @@ hook_source = '''
 [[plugins]] # Translate, Japanese to English
 repo = 'skanehira/translate.vim'
 on_cmd = 'Translate'
+hook_add = '''
+    nnoremap te <Cmd>Translate<CR>
+    nnoremap tj <Cmd>Translate!<CR>
+'''
 hook_source = '''
     " Pop up the translated content
     let g:translate_popup_window = 1
