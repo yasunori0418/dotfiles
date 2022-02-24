@@ -166,6 +166,7 @@ hook_source = '''
     call gina#custom#command#option('commit', '-v')
     call gina#custom#command#option('log', '--opener', 'vsplit')
     call gina#custom#command#option('log', '--graph')
+    call gina#custom#command#option('log', '--all')
     call gina#custom#command#option('blame', '--opener', 'tabedit')
 '''
 
