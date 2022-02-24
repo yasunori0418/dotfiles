@@ -7,7 +7,23 @@ function! s:skkeleton_init() abort
 
     call skkeleton#register_kanatable('rom', {
         \ 'jj': 'escape',
+        \ 'la': ['ぁ', ''],
+        \ 'li': ['ぃ', ''],
+        \ 'lu': ['ぅ', ''],
+        \ 'le': ['ぇ', ''],
+        \ 'lo': ['ぉ', ''],
+        \ 'll': ['っ', 'l'],
+        \ 'ltu': ['っ', ''],
+        \ 'ltsu': ['っ', ''],
+        \ 'lwa': ['ゎ', ''],
+        \ 'lwe': ['ゑ', ''],
+        \ 'lwi': ['ゐ', ''],
+        \ 'lya': ['ゃ', ''],
+        \ 'lyo': ['ょ', ''],
+        \ 'lyu': ['ゅ', ''],
         \ })
+
+    call skkeleton#register_keymap('input', "x", 'disable')
 endfunction
 
 function! s:skkeleton_pre() abort
