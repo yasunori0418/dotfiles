@@ -37,3 +37,17 @@ xnoremap x "_x
 xnoremap s "_s
 
 " }}}
+
+
+" Command {{{
+
+function! s:Clear_Register() abort
+    let regs=split('abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789/-"', '\zs')
+    for r in regs
+      call setreg(r, [])
+    endfor
+endfunction
+
+command! Cleareg call s:Clear_Register()
+
+" }}}
