@@ -7,7 +7,7 @@ hook_add = '''
     nmap <Space>d [ddu]
     nnoremap [ddu]a <Cmd>call ddu#start({'name': 'current'})<CR>
     nnoremap [ddu]d <Cmd>call ddu#start({'name': 'dotfiles'})<CR>
-    " nnoremap [ddu]h <Cmd>call ddu#start({'name': 'help'})<CR>
+    nnoremap [ddu]h <Cmd>call ddu#start({'name': 'help'})<CR>
     nnoremap [ddu]b <Cmd>call ddu#start({'name': 'buffer'})<CR>
     nnoremap [ddu]p <Cmd>call ddu#start({'name': 'plugin-list'})<CR>
     nnoremap [ddu]~ <Cmd>call ddu#start({'name': 'home'})<CR>

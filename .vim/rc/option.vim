@@ -31,6 +31,8 @@ set autoread
 " Use the clipboard on linux systems.
 set clipboard+=unnamedplus
 
+set diffopt+=vertical
+
 " Colorscheme.
 " colorscheme iceberg
 " }}}
@@ -95,6 +97,8 @@ set tabstop=4
 
 " Insert a tab with 4 minutes of half-width space.
 set softtabstop=4
+
+let g:vim_indent_count = 0
 " }}} 
 
 " Statusline{{{

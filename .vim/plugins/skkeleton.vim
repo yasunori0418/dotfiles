@@ -7,7 +7,41 @@ function! s:skkeleton_init() abort
 
     call skkeleton#register_kanatable('rom', {
         \ 'jj': 'escape',
+        \ 'la': ['ぁ', ''],
+        \ 'li': ['ぃ', ''],
+        \ 'lu': ['ぅ', ''],
+        \ 'le': ['ぇ', ''],
+        \ 'lo': ['ぉ', ''],
+        \ 'll': ['っ', 'l'],
+        \ 'ltu': ['っ', ''],
+        \ 'ltsu': ['っ', ''],
+        \ 'lwa': ['ゎ', ''],
+        \ 'lwe': ['ゑ', ''],
+        \ 'lwi': ['ゐ', ''],
+        \ 'lya': ['ゃ', ''],
+        \ 'lyo': ['ょ', ''],
+        \ 'lyu': ['ゅ', ''],
         \ })
+
+    call skkeleton#register_kanatable('rom', s:disable_l())
+
+    call skkeleton#register_keymap('input', "x", 'disable')
+endfunction
+
+function! s:disable_l() abort
+
+    let s:disable_l_nexts = split('bcdfghjkmnpqrsvxzBCDFGHJKMNPQRSVXZ,./1234567890-+=`~;:[]{}()<>!@#$%^&*_\"', '\zs')
+    call add(s:disable_l_nexts, "'")
+    call map(s:disable_l_nexts, {_, val -> 'l' .. val})
+
+    let l:disable_l_dict = {}
+
+    for l:disable_l_next in s:disable_l_nexts
+        let l:disable_l_dict[l:disable_l_next] = ['', '']
+    endfor
+
+    return l:disable_l_dict
+
 endfunction
 
 function! s:skkeleton_pre() abort
