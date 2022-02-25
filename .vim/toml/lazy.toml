@@ -159,6 +159,7 @@ hook_add = '''
     nnoremap [gina]c <Cmd>Gina commit<CR>
     nnoremap [gina]l <Cmd>Gina log<CR>
     nnoremap [gina]b <Cmd>Gina blame<CR>
+    nnoremap [gina]d <Cmd>Gina patch<CR>
 '''
 hook_source = '''
     call gina#custom#command#option('status', '-s')
