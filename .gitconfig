@@ -17,3 +17,5 @@
 	default = current
 [alias]
 	lol = log --graph --all --abbrev-commit --pretty=format:'%C(bold yellow)%h%Creset -> %s%C(auto)%d%Creset %C(dim green)(%cr)%Creset%C(dim blue)<%an>%Creset'
+[merge]
+	ff = false
