@@ -66,8 +66,10 @@ hook_source = '''
 repo = 'skanehira/translate.vim'
 on_cmd = 'Translate'
 hook_add = '''
-    nnoremap te <Cmd>Translate<CR>
-    nnoremap tj <Cmd>Translate!<CR>
+    nnoremap [translate] <Nop>
+    nmap <Space>l [translate]
+    nnoremap [translate]e <Cmd>Translate<CR>
+    nnoremap [translate]j <Cmd>Translate!<CR>
 '''
 hook_source = '''
     " Pop up the translated content
