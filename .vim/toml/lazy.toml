@@ -125,7 +125,10 @@ on_cmd = 'Deol'
 hook_add = '''
     nnoremap [term] <Nop>
     nmap <Space>t [term]
-    nnoremap [term]d <cmd>Deol -split=floating -winheight=25<CR>
+    nnoremap [term]a <cmd>Deol -edit -split=floating -winheight=35 -winwidth=120<CR>
+
+    " Escape deol
+    tnoremap <Esc> <C-\><C-n>
 '''
 
 [[plugins]]
