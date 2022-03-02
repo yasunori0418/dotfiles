@@ -31,6 +31,9 @@ call ddu#custom#patch_global({
     \     'word': {
     \         'defaultAction': 'append',
     \         },
+    \     'deol': {
+    \         'defaultAction': 'switch',
+    \         },
     \     },
     \ })
 
