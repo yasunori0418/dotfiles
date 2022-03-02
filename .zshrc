@@ -35,6 +35,8 @@ autoload -Uz compinit; compinit
 
 autoload -Uz colors; colors
 
+zmodload zsh/zpty
+
 # Tabで選択できるように
 zstyle ':completion:*:default' menu select=2
 

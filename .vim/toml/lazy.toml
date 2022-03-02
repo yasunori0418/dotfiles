@@ -66,8 +66,10 @@ hook_source = '''
 repo = 'skanehira/translate.vim'
 on_cmd = 'Translate'
 hook_add = '''
-    nnoremap te <Cmd>Translate<CR>
-    nnoremap tj <Cmd>Translate!<CR>
+    nnoremap [trans] <Nop>
+    nmap <Space>l [trans]
+    nnoremap [trans]e <Cmd>Translate<CR>
+    nnoremap [trans]j <Cmd>Translate!<CR>
 '''
 hook_source = '''
     " Pop up the translated content
@@ -123,10 +125,24 @@ on_cmd = 'Deol'
 hook_add = '''
     nnoremap [term] <Nop>
     nmap <Space>t [term]
-    nnoremap [term]d <cmd>Deol -split=floating -winheight=25<CR>
+    nnoremap [term]a <Cmd>Deol -no-start-insert -split=floating -winheight=30 -winwidth=120 -toggle<CR>
+    nnoremap [term]t <Cmd>tabnew<Bar>Deol -no-start-insert<CR>
+    nnoremap [term]c <Cmd>execute 'Deol'
+        \ '-cwd=' .. fnamemodify(expand('%'), ':h')
+        \ '-no-start-insert'
+        \ '-split=floating'
+        \ '-winheight=30'
+        \ '-winwidth=120'
+        \ '-toggle'<CR>
 
-    " Exit deol buffer with <ESC>
-    tnoremap <ESC> <cmd>quit<CR>
+    " Escape deol
+    tnoremap <Esc> <C-\><C-n>
+'''
+hook_source = '''
+    " let g:deol#prompt_pattern = '^❯ \?'
+    " let g:deol#enable_ddc_completion = v:true
+    let g:deol#shell_history_path = '~/.zsh_history'
+    let g:deol#enable_dir_changed = v:false
 '''
 
 [[plugins]]
@@ -170,30 +186,6 @@ hook_source = '''
     call gina#custom#command#option('log', '--all')
     call gina#custom#command#option('blame', '--opener', 'tabedit')
     call gina#custom#command#option('patch', '--oneside')
-'''
-
-[[plugins]]
-repo = 'tpope/vim-fugitive'
-on_event = 'VimEnter'
-hook_add = '''
-    nnoremap [fugitive] <Nop>
-    nmap <Space>G [fugitive]
-    nnoremap [fugitive]s <cmd>Git<CR>
-    nnoremap [fugitive]a <cmd>Gwrite<CR>
-    nnoremap [fugitive]d <cmd>Gdiff<CR>
-    nnoremap [fugitive]b <cmd>Gblame<CR>
-    nnoremap [fugitive]R <cmd>Gread<CR>
-    nnoremap [fugitive]c <cmd>Git commit -v<CR>
-    nnoremap [fugitive]C <cmd>!git branch<CR>:Git checkout<Space>
-    nnoremap [fugitive]B :Git checkout -b<Space>
-    nnoremap [fugitive]D <cmd>!git branch<CR>:Git checkout -d<Space>
-    nnoremap [fugitive]l <cmd>Git log<CR>
-    nnoremap [fugitive]L <cmd>Git lol<CR>
-    nnoremap [fugitive]t <cmd>Deol --command tig -split="floating"<CR>
-    nnoremap [fugitive]M <cmd>!git branch<CR>:Git merge<Space>
-    nnoremap [fugitive]m <cmd>Denite menu:fugitive_cmd<CR>
-    nnoremap [fugitive]ps <cmd>Git push<CR>
-    nnoremap [fugitive]pl <cmd>Git pull<CR>
 '''
 
 [[plugins]]
