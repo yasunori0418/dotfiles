@@ -125,10 +125,16 @@ on_cmd = 'Deol'
 hook_add = '''
     nnoremap [term] <Nop>
     nmap <Space>t [term]
-    nnoremap [term]a <cmd>Deol -edit -split=floating -winheight=35 -winwidth=120<CR>
+    nnoremap [term]a <Cmd>Deol -no-start-insert -split=floating -winheight=30 -winwidth=120<CR>
+    nnoremap [term]t <Cmd>tabnew<Bar>Deol -no-start-insert<CR>
 
     " Escape deol
     tnoremap <Esc> <C-\><C-n>
+'''
+hook_source = '''
+    " let g:deol#prompt_pattern = '^❯ \?'
+    " let g:deol#enable_ddc_completion = v:true
+    let g:deol#shell_history_path = '~/.zsh_history'
 '''
 
 [[plugins]]

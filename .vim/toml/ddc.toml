@@ -47,3 +47,11 @@ on_source = 'ddc.vim'
 [[plugins]]
 repo = 'Shougo/neco-vim'
 on_ft = ['vim', 'toml']
+
+[[plugins]]
+repo = 'Shougo/ddc-zsh'
+on_source = 'ddc.vim'
+
+[[plugins]]
+repo = 'delphinus/ddc-shell-history'
+on_source = 'ddc.vim'
