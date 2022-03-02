@@ -127,6 +127,13 @@ hook_add = '''
     nmap <Space>t [term]
     nnoremap [term]a <Cmd>Deol -no-start-insert -split=floating -winheight=30 -winwidth=120<CR>
     nnoremap [term]t <Cmd>tabnew<Bar>Deol -no-start-insert<CR>
+    nnoremap [term]c <Cmd>execute
+        \ 'Deol' '-cwd=' .. fnamemodify(expand('%'), ':h')
+        \ '-no-start-insert'
+        \ '-no-auto-cd'
+        \ '-split=floating'
+        \ '-winheight=30'
+        \ '-winwidth=120'<CR>
 
     " Escape deol
     tnoremap <Esc> <C-\><C-n>
