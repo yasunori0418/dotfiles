@@ -176,6 +176,8 @@ hook_add = '''
     nnoremap [gina]l <Cmd>Gina log<CR>
     nnoremap [gina]b <Cmd>Gina blame<CR>
     nnoremap [gina]d <Cmd>Gina patch<CR>
+    nnoremap [gina]ps <Cmd>Deol git push -split=floating -winheight=30 -winwidth=120 -toggle<CR>
+    nnoremap [gina]pl <Cmd>Deol git pull -split=floating -winheight=30 -winwidth=120 -toggle<CR>
 '''
 hook_source = '''
     call gina#custom#command#option('status', '-s')
