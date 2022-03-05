@@ -141,6 +141,13 @@ hook_add = '''
         \ '-winheight=30'
         \ '-winwidth=120'
         \ '-toggle'<CR>
+    nnoremap [term]h <Cmd>Deol
+        \ -cwd=~
+        \ -no-start-insert
+        \ -split=floating
+        \ -winheight=30
+        \ -winwidth=120
+        \ -toggle<CR>
 
     " Escape deol
     tnoremap <Esc> <C-\><C-n>
