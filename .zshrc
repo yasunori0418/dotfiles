@@ -89,9 +89,9 @@ bindkey "^N" history-beginning-search-forward-end
 
 # lsコマンドのalias関連
 if [[ $(command -v exa) ]]; then
-    alias exa='exa --icons'
+    alias exa='exa --icons -F'
     alias ls='exa'
-    alias la='exa -la'
+    alias la='exa -la --git'
     alias lt='exa -T -L 3 -a -I ".git|.atom|.cache"'
     alias ltl='lt --color=always | less -r'
     alias lal='la --color=always | less -r'

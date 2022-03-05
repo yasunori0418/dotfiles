@@ -125,15 +125,29 @@ on_cmd = 'Deol'
 hook_add = '''
     nnoremap [term] <Nop>
     nmap <Space>t [term]
-    nnoremap [term]a <Cmd>Deol -no-start-insert -split=floating -winheight=30 -winwidth=120 -toggle<CR>
+    nnoremap [term]a <Cmd>Deol
+        \ -no-auto-cd
+        \ -no-start-insert
+        \ -split=floating
+        \ -winheight=30
+        \ -winwidth=120
+        \ -toggle<CR>
     nnoremap [term]t <Cmd>tabnew<Bar>Deol -no-start-insert<CR>
     nnoremap [term]c <Cmd>execute 'Deol'
         \ '-cwd=' .. fnamemodify(expand('%'), ':h')
+        \ '-no-auto-cd'
         \ '-no-start-insert'
         \ '-split=floating'
         \ '-winheight=30'
         \ '-winwidth=120'
         \ '-toggle'<CR>
+    nnoremap [term]h <Cmd>Deol
+        \ -cwd=~
+        \ -no-start-insert
+        \ -split=floating
+        \ -winheight=30
+        \ -winwidth=120
+        \ -toggle<CR>
 
     " Escape deol
     tnoremap <Esc> <C-\><C-n>
@@ -176,6 +190,8 @@ hook_add = '''
     nnoremap [gina]l <Cmd>Gina log<CR>
     nnoremap [gina]b <Cmd>Gina blame<CR>
     nnoremap [gina]d <Cmd>Gina patch<CR>
+    nnoremap [gina]ps <Cmd>Deol git push -split=floating -winheight=30 -winwidth=120 -toggle<CR>
+    nnoremap [gina]pl <Cmd>Deol git pull -split=floating -winheight=30 -winwidth=120 -toggle<CR>
 '''
 hook_source = '''
     call gina#custom#command#option('status', '-s')
