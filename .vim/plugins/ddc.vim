@@ -1,29 +1,29 @@
 call ddc#custom#patch_global('sources', ['around', 'file', 'rg', 'neosnippet'])
 
-" ddc source settings.
+" ddc source settings. {{{
 call ddc#custom#patch_global('sourceOptions', {
     \ '_': {
         \ 'ignoreCase': v:true,
         \ 'matchers': ['matcher_head'],
         \ 'sorters': ['sorter_rank'],
-    \ },
+        \ },
     \ 'around': {
         \ 'mark': 'A',
         \ 'matchers': ['matcher_head', 'matcher_length'],
-    \ },
+        \ },
     \ 'file': {
         \ 'mark': 'F',
         \ 'isVolatile': v:true,
         \ 'forceCompletionPattern': '\S/\S*',
-    \ },
+        \ },
     \ 'neosnippet': {
         \ 'mark': 'ns',
         \ 'dup': v:true,
-    \ },
+        \ },
     \ 'vim-lsp': {
         \ 'mark': 'lsp',
         \ 'matchers': ['matcher_head'],
-    \ },
+        \ },
     \ 'cmdline': {'mark': 'cmdline'},
     \ 'cmdline-history': {'mark': 'history'},
     \ 'necovim': {'mark': 'necovim'},
@@ -31,7 +31,17 @@ call ddc#custom#patch_global('sourceOptions', {
         \ 'mark': 'ripgrep',
         \ 'matchers': ['matcher_head', 'matcher_length'],
         \ 'minAutoCompleteLength': 4,
-    \ },
+        \ },
+    \ 'zsh': {
+        \ 'mark': 'zsh',
+        \ 'isVolatile': v:true,
+        \ 'forceCompletionPattern': '\S/\S*',
+        \ },
+    \ 'shell-history': {
+        \ 'mark': 'history',
+        \ 'minKeywordLength': 4,
+        \ 'maxKeywordLength': 50,
+        \ },
     \ })
 
 call ddc#custom#patch_global('sourceOptions', {
@@ -43,20 +53,29 @@ call ddc#custom#patch_global('sourceOptions', {
     \ },
     \ })
 
-call ddc#custom#patch_filetype('python', 'sources',
-    \ ['vim-lsp', 'neosnippet', 'around', 'file', 'rg'],
-    \ )
-
-call ddc#custom#patch_filetype('vim', 'sources',
-    \ ['necovim', 'neosnippet', 'around', 'file', 'rg'],
-    \ )
-
+" }}}
 
 call ddc#custom#patch_global('sourceParams', {
     \ 'around': {
         \ 'maxSize': 500,
-    \ },
+        \ },
     \ })
+
+" filetype settings of ddc-sources. {{{
+
+call ddc#custom#patch_filetype('python', 'sources',
+    \ ['vim-lsp', 'neosnippet', 'around', 'file', 'rg'],
+    \ )
+
+call ddc#custom#patch_filetype(['toml', 'vim'], 'sources',
+    \ ['necovim', 'around', 'neosnippet', 'file', 'rg'],
+    \ )
+
+" call ddc#custom#patch_filetype(['deol', 'zsh'], 'sources', 
+"     \ ['zsh', 'shell-history', 'around'],
+"     \ )
+
+" }}}
 
 " Keymaping{{{
 
@@ -79,7 +98,6 @@ inoremap <silent> <CR> pum#visible() ? '\<Cmd>call pum#map#confirm()<CR>' : '\<C
 inoremap <silent> <C-e> <Cmd>call pum#map#cancel()<CR>
 
 " }}}
-
 
 
 call ddc#enable()

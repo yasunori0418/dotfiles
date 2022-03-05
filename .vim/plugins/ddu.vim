@@ -31,12 +31,20 @@ call ddu#custom#patch_global({
     \     'word': {
     \         'defaultAction': 'append',
     \         },
+    \     'deol': {
+    \         'defaultAction': 'switch',
+    \         },
     \     },
     \ })
 
 call ddu#custom#patch_local('current', {
+    \ 'uiParams': {
+    \     'ff': {
+    \         'startFilter': v:true,
+    \         },
+    \     },
     \ 'sources': [
-    \     {'name': 'file'},
+    \     {'name': 'file_rec'},
     \     {'name': 'buffer'},
     \     ],
     \ })
@@ -147,6 +155,14 @@ function! s:ddu_ff_keybind() abort
     \ <Cmd>call ddu#ui#ff#do_action('quit')<CR>
     nnoremap <buffer><silent> <Esc>
     \ <Cmd>call ddu#ui#ff#do_action('quit')<CR>
+
+    " Wrap when moving to the beginning and end of a line
+    nnoremap <silent><buffer><expr> j
+    \ line('.') == line('$') ?
+        \ 'gg' : 'j'
+    nnoremap <silent><buffer><expr> k
+    \ line('.') == 1 ?
+        \ 'G' : 'k'
 
 endfunction
 

@@ -66,10 +66,10 @@ hook_source = '''
 repo = 'skanehira/translate.vim'
 on_cmd = 'Translate'
 hook_add = '''
-    nnoremap [translate] <Nop>
-    nmap <Space>l [translate]
-    nnoremap [translate]e <Cmd>Translate<CR>
-    nnoremap [translate]j <Cmd>Translate!<CR>
+    nnoremap [trans] <Nop>
+    nmap <Space>l [trans]
+    nnoremap [trans]e <Cmd>Translate<CR>
+    nnoremap [trans]j <Cmd>Translate!<CR>
 '''
 hook_source = '''
     " Pop up the translated content
@@ -125,10 +125,31 @@ on_cmd = 'Deol'
 hook_add = '''
     nnoremap [term] <Nop>
     nmap <Space>t [term]
-    nnoremap [term]d <cmd>Deol -split=floating -winheight=25<CR>
+    nnoremap [term]a <Cmd>Deol
+        \ -no-auto-cd
+        \ -no-start-insert
+        \ -split=floating
+        \ -winheight=30
+        \ -winwidth=120
+        \ -toggle<CR>
+    nnoremap [term]t <Cmd>tabnew<Bar>Deol -no-start-insert<CR>
+    nnoremap [term]c <Cmd>execute 'Deol'
+        \ '-cwd=' .. fnamemodify(expand('%'), ':h')
+        \ '-no-auto-cd'
+        \ '-no-start-insert'
+        \ '-split=floating'
+        \ '-winheight=30'
+        \ '-winwidth=120'
+        \ '-toggle'<CR>
 
-    " Exit deol buffer with <ESC>
-    tnoremap <ESC> <cmd>quit<CR>
+    " Escape deol
+    tnoremap <Esc> <C-\><C-n>
+'''
+hook_source = '''
+    " let g:deol#prompt_pattern = '^❯ \?'
+    " let g:deol#enable_ddc_completion = v:true
+    let g:deol#shell_history_path = '~/.zsh_history'
+    let g:deol#enable_dir_changed = v:false
 '''
 
 [[plugins]]
@@ -162,6 +183,8 @@ hook_add = '''
     nnoremap [gina]l <Cmd>Gina log<CR>
     nnoremap [gina]b <Cmd>Gina blame<CR>
     nnoremap [gina]d <Cmd>Gina patch<CR>
+    nnoremap [gina]ps <Cmd>Deol git push -split=floating -winheight=30 -winwidth=120 -toggle<CR>
+    nnoremap [gina]pl <Cmd>Deol git pull -split=floating -winheight=30 -winwidth=120 -toggle<CR>
 '''
 hook_source = '''
     call gina#custom#command#option('status', '-s')
