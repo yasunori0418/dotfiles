@@ -10,7 +10,7 @@
 [core]
 	editor = nvim
 [pull]
-	rebase = false
+	ff = only
 [init]
 	defaultbranch = main
 [push]
