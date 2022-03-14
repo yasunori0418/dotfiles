@@ -173,10 +173,14 @@ function! s:ddu_ff_filter_keybind() abort
     \ <Esc><Cmd>close<CR>
     inoremap <buffer><silent> jj
     \ <Esc><Cmd>close<CR>
+    inoremap <buffer><silent> <Esc>
+    \ <Esc><Cmd>close<CR>
 
     nnoremap <buffer><silent> <CR>
     \ <Cmd>close<CR>
     nnoremap <buffer><silent> jj
     \ <Cmd>close<CR>
+    nnoremap <buffer><silent> <Esc>
+    \ <Esc><Cmd>close<CR>
 
 endfunction
