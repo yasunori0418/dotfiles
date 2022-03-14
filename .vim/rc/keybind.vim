@@ -13,6 +13,8 @@ nnoremap : ;
 nnoremap x "_x
 nnoremap s "_s
 
+" Opens the file name under the cursor.
+nnoremap gf gF
 
 " }}}
 
