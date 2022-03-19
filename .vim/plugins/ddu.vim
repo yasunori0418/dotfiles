@@ -55,10 +55,10 @@ call ddu#custom#patch_local('dotfiles', {
     \         'startFilter': v:true,
     \         },
     \     },
-    \ 'sources': [{
-    \     'name': 'file_rec',
-    \     'params': {'path': expand('~') .. '/dotfiles'},
-    \     }],
+    \ 'sourceOptions': {
+    \     'file_rec': {'path': expand("~") .. '/dotfiles'},
+    \     },
+    \ 'sources': [{'name': 'file_rec'}],
     \ })
 
 call ddu#custom#patch_local('help', {
@@ -89,7 +89,7 @@ call ddu#custom#patch_local('home', {
     \         'startFilter': v:true,
     \         }
     \     },
-    \ 'sourceParams': {
+    \ 'sourceOptions': {
     \     'file': {'path': expand('~')},
     \     },
     \ 'sources': [{'name': 'file'}],
