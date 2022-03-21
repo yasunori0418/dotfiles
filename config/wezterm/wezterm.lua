@@ -7,4 +7,5 @@ return {
     hide_tab_bar_if_only_one_tab = true,
     color_scheme = 'duskfox',
     color_scheme_dirs = { "$HOME/.config/wezterm/colors/" },
+    window_background_opacity = 0.8,
 }
