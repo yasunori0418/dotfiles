@@ -8,4 +8,10 @@ return {
     color_scheme = 'duskfox',
     color_scheme_dirs = { "$HOME/.config/wezterm/colors/" },
     window_background_opacity = 0.8,
+    window_padding = {
+        left = 2,
+        right = 2,
+        top = 0,
+        bottom = 0,
+    },
 }
