@@ -57,13 +57,13 @@ let g:lightline.tab.inactive = ['tabnum', 'filename', 'modified']
 if &ambiwidth =~ 'single'
 
     let g:lightline.separator = {
-        \ 'left': ' ',
-        \ 'right': ' ',
+        \ 'left': '',
+        \ 'right': '',
         \ }
 
     let g:lightline.subseparator = {
-        \ 'left': ' ',
-        \ 'right': ' ',
+        \ 'left': '',
+        \ 'right': '',
         \ }
 
 endif
