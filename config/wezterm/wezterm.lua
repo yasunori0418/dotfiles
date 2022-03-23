@@ -3,14 +3,16 @@ local wezterm = require('wezterm')
 return {
     use_ime = false, --vimで日本語入力するときは、skkeletonを使っているから問題無い
 
-    font = wezterm.font("Cica"),
+    font = wezterm.font('Cica'),
     fot_size = 10.0,
+    -- Must setting when tile window manager.
     adjust_window_size_when_changing_font_size = false,
 
     hide_tab_bar_if_only_one_tab = true,
 
+    -- colorscheme settings
     color_scheme = 'duskfox',
-    color_scheme_dirs = { "$HOME/.config/wezterm/colors/" },
+    color_scheme_dirs = { '$HOME/.config/wezterm/colors/' },
 
     window_background_opacity = 0.8,
     window_padding = {
