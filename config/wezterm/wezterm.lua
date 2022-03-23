@@ -1,5 +1,47 @@
 local wezterm = require('wezterm')
 
+local my_keybinds = {
+    --{key = "c", mods = "CTRL|SHIFT", action = wezterm.action({CopyTo = "Clipboard"})},
+    --{key = "v", mods = "CTRL|SHIFT", action = wezterm.action({PasteFrom = "Clipboard"})},
+
+    -- Keybinds of Copy and Paste.
+    {key = "Insert", mods = "CTRL", action = wezterm.action({CopyTo = "PrimarySelection"})},
+    {key = "Insert", mods = "SHIFT", action = wezterm.action({PasteFrom = "PrimarySelection"})},
+    {key = "c", mods = "ALT", action = wezterm.action({CopyTo = "Clipboard"})},
+    {key = "v", mods = "ALT", action = wezterm.action({PasteFrom = "Clipboard"})},
+
+    -- Copy mode like visual mode of vim.
+    {key = "x", mods = "ALT", action = "ActivateCopyMode"},
+
+    -- Reload Configaration.
+    {key = "r", mods = "ALT", action = "ReloadConfiguration"},
+
+    -- Keybinds of change font size.
+    {key = "-", mods = "CTRL", action = "DecreaseFontSize"},
+    {key = "=", mods = "CTRL", action = "IncreaseFontSize"},
+    {key = "0", mods = "CTRL", action = "ResetFontSize"},
+
+    -- Keybinds of controlling terminal tab.
+    {key = 't', mods = 'ALT', action = wezterm.action({SpawnTab = 'CurrentPaneDomain'})},
+    {key = 't', mods = 'ALT|SHIFT', action = wezterm.action({SpawnTab = 'DefaultDomain'})},
+    {key = "w", mods = "ALT", action=wezterm.action({CloseCurrentTab = {confirm=true}})},
+    {key = "w", mods = "ALT|SHIFT", action = wezterm.action({CloseCurrentTab = {confirm = false}})},
+    {key = "[", mods = "ALT|SHIFT", action = wezterm.action({ActivateTabRelative = -1})},
+    {key = "]", mods = "ALT|SHIFT", action = wezterm.action({ActivateTabRelative = 1})},
+
+    -- Keybinds of controlling terminal pane.
+    {key = ';', mods = 'ALT', action = wezterm.action({SplitHorizontal = {domain = 'CurrentPaneDomain'}})},
+    {key = 'v', mods = 'ALT', action = wezterm.action({SplitVertical = {domain = 'CurrentPaneDomain'}})},
+    {key = "w", mods = "ALT", action = wezterm.action({CloseCurrentPane = {confirm = true}})},
+    {key = "w", mods = "ALT|SHIFT", action = wezterm.action({CloseCurrentPane = {confirm = false}})},
+    {key = "h", mods = "ALT", action = wezterm.action({ActivatePaneDirection = 'Left'})},
+    {key = "j", mods = "ALT", action = wezterm.action({ActivatePaneDirection = 'Down'})},
+    {key = "k", mods = "ALT", action = wezterm.action({ActivatePaneDirection = 'Up'})},
+    {key = "l", mods = "ALT", action = wezterm.action({ActivatePaneDirection = 'Right'})},
+    {key = "[", mods = "ALT", action = wezterm.action({ActivatePaneDirection = 'Prev'})},
+    {key = "]", mods = "ALT", action = wezterm.action({ActivatePaneDirection = 'Next'})},
+}
+
 return {
     use_ime = false, --vimで日本語入力するときは、skkeletonを使っているから問題無い
 
@@ -25,4 +67,5 @@ return {
     selection_word_boundary = " \t\n{}[]()\"'`,;:",
 
     disable_default_key_bindings = true,
+    keys = my_keybinds,
 }
