@@ -12,6 +12,7 @@ local my_keybinds = {
 
     -- Copy mode like visual mode of vim.
     {key = "x", mods = "ALT", action = "ActivateCopyMode"},
+    {key = " ", mods = "ALT", action = "QuickSelect"},
 
     -- Reload Configaration.
     {key = "r", mods = "ALT", action = "ReloadConfiguration"},
@@ -58,8 +59,8 @@ return {
 
     window_background_opacity = 0.8,
     window_padding = {
-        left = 2,
-        right = 2,
+        left = 0,
+        right = 0,
         top = 0,
         bottom = 0,
     },
@@ -68,4 +69,12 @@ return {
 
     disable_default_key_bindings = true,
     keys = my_keybinds,
+    mouse_bindings = {
+      -- Ctrl-click will open the link under the mouse cursor
+      {
+        event = {Up = {streak = 1, button = "Left"}},
+        mods = "CTRL",
+        action = "OpenLinkAtMouseCursor",
+      },
+    },
 }
