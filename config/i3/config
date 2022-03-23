@@ -57,9 +57,13 @@ set $alt Mod1
 # start calamares (installer)
 # bindsym $mod+i exec --no-startup-id sudo -E calamares
 
+# disable ime in alacritty.
+set $alacritty XMODIFIERS=alacritty alacritty
+
 # start a terminal
-# bindsym $mod+Return exec --no-startup-id kitty
-bindsym $mod+Return exec --no-startup-id XMODIFIERS=alacritty alacritty
+#bindsym $mod+Return exec --no-startup-id kitty
+#bindsym $mod+Return exec --no-startup-id $alacritty
+bindsym $mod+Return exec --no-startup-id wezterm
 
 # take a screenshot
 bindsym $mod+Shift+p exec --no-startup-id xfce4-screenshooter
@@ -71,7 +75,7 @@ bindsym $mod+Escape exec --no-startup-id light-locker-command -l
 bindsym $mod+Shift+s exec --no-startup-id alterlinux-i3-manager
 
 # system setting manager
-bindsym $mod+b exec --no-startup-id XMODIFIERS=alacritty alacritty -e alter-system-menu
+bindsym $mod+b exec --no-startup-id wezterm -e alter-system-menu
 
 # show help document
 # bindsym $mod+Shift+h exec --no-startup-id chromium /usr/share/doc/alter-i3/Document.html

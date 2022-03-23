@@ -2,7 +2,7 @@
 repo = 'nvim-treesitter/nvim-treesitter'
 hook_post_update = 'TSUpdate'
 hook_source = '''
-lua <<EOF
+lua << EOF
 require'nvim-treesitter.configs'.setup {
     ensure_installed = 'maintained',
     highlight = {
@@ -21,21 +21,40 @@ repo = 'EdenEast/nightfox.nvim''
 depends = 'nvim-treesitter'
 hook_source = '''
 lua << EOF
-local nightfox = require('nightfox')
-nightfox.setup({
-    fox = 'duskfox',
-    transparent = false,
-    terminal_colors = true,
-    styles = {
-        comments = 'italic',
-        keywords = 'bold',
-        functions = 'italic,bold',
-    },
-})
 
--- Load colorscheme.
-nightfox.load()
+local nightfox = require("nightfox")
+
+nightfox.setup({
+    options = {
+        -- Compiled file's destination location
+        compile_path = vim.fn.stdpath("cache") .. "/nightfox",
+        compile_file_suffix = "_compiled", -- Compiled file suffix
+        transparent = false,    -- Disable setting background
+        terminal_colors = true, -- Set terminal colors (vim.g.terminal_color_*)
+        dim_inactive = true,   -- Non focused panes set to alternative background
+        styles = {              -- Style to be applied to different syntax groups
+            comments = "italic",
+            functions = "bold",
+            keywords = "NONE",
+            numbers = "NONE",
+            strings = "NONE",
+            types = "NONE",
+            variables = "NONE",
+            },
+        inverse = {             -- Inverse highlight for different types
+            match_paren = false,
+            visual = true,
+            search = false,
+            },
+        modules = {             -- List of various plugins and additional options
+            },
+        },
+    })
+
+-- Load the configuration set above and apply the colorscheme
+vim.cmd("colorscheme duskfox")
 EOF
+
 '''
 
 [[plugins]]
