@@ -17,7 +17,7 @@ EOF
 '''
 
 [[plugins]]
-repo = 'EdenEast/nightfox.nvim''
+repo = 'EdenEast/nightfox.nvim'
 depends = 'nvim-treesitter'
 hook_source = '''
 source ~/dotfiles/.vim/plugins/nightfox.lua
@@ -164,9 +164,9 @@ on_event = 'BufRead'
 repo = 'Yggdroot/indentLine'
 on_event = 'BufRead'
 
-[[plugins]]
-repo = 'tpope/vim-surround'
-on_event = 'BufRead'
+# [[plugins]]
+# repo = 'tpope/vim-surround'
+# on_event = 'BufRead'
 
 [[plugins]]
 repo = 'machakann/vim-sandwich'
