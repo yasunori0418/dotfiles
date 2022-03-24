@@ -7,6 +7,7 @@ nnoremap <Space>w :w<CR>
 " Exchange Colon and Semi-Colon.
 " nnoremap ; :
 nnoremap : ;
+nnoremap q; q:
 
 
 " Do not save the things erased by x and s in the register.
