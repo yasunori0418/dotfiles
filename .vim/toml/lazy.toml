@@ -86,7 +86,11 @@ on_cmd = 'Defx'
 hook_add = '''
     nnoremap [defx] <Nop>
     nmap <Space>f [defx]
-    nnoremap [defx]a <cmd>Defx -search=`expand('%:p')` `expand('%:p:h')`<CR>
+    nnoremap [defx]a <cmd>Defx -buffer-name='Current_Directory' -search=`expand('%:p')` `expand('%:p:h')`<CR>
+    nnoremap [defx]d <cmd>Defx -buffer-name='dotfiles' `expand('~/dotfiles/')`<CR>
+    nnoremap [defx]v <cmd>Defx -buffer-name='Vim_Directory' `expand('~/dotfiles/.vim/')`<CR>
+    nnoremap [defx]p <cmd>Defx -buffer-name='Project_Directory' `expand('~/Project/')`<CR>
+    nnoremap [defx]h <cmd>Defx -buffer-name='$HOME' `expand('~/')`<CR>
 '''
 hook_source = '''
     source ~/dotfiles/.vim/plugins/defx.vim
