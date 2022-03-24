@@ -169,6 +169,10 @@ repo = 'tpope/vim-surround'
 on_event = 'BufRead'
 
 [[plugins]]
+repo = 'machakann/vim-sandwich'
+on_event = 'BufRead'
+
+[[plugins]]
 repo = 'lambdalisue/gina.vim'
 on_cmd = 'Gina'
 hook_add = '''
