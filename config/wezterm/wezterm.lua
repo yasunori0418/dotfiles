@@ -1,14 +1,14 @@
 local wezterm = require('wezterm')
 
 local my_keybinds = {
-    --{key = "c", mods = "CTRL|SHIFT", action = wezterm.action({CopyTo = "Clipboard"})},
-    --{key = "v", mods = "CTRL|SHIFT", action = wezterm.action({PasteFrom = "Clipboard"})},
 
     -- Keybinds of Copy and Paste.
+    {key = "c", mods = "CTRL|SHIFT", action = wezterm.action({CopyTo = "Clipboard"})},
+    {key = "v", mods = "CTRL|SHIFT", action = wezterm.action({PasteFrom = "Clipboard"})},
     {key = "Insert", mods = "CTRL", action = wezterm.action({CopyTo = "PrimarySelection"})},
     {key = "Insert", mods = "SHIFT", action = wezterm.action({PasteFrom = "PrimarySelection"})},
-    {key = "c", mods = "ALT", action = wezterm.action({CopyTo = "Clipboard"})},
-    {key = "v", mods = "ALT", action = wezterm.action({PasteFrom = "Clipboard"})},
+    --{key = "c", mods = "ALT", action = wezterm.action({CopyTo = "Clipboard"})},
+    --{key = "v", mods = "ALT", action = wezterm.action({PasteFrom = "Clipboard"})},
 
     -- Copy mode like visual mode of vim.
     {key = "x", mods = "ALT", action = "ActivateCopyMode"},
