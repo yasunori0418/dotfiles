@@ -9,7 +9,8 @@ hook_add = '''
     nnoremap [ddu]d <Cmd>call ddu#start({'name': 'dotfiles'})<CR>
     nnoremap [ddu]h <Cmd>call ddu#start({'name': 'help'})<CR>
     nnoremap [ddu]b <Cmd>call ddu#start({'name': 'buffer'})<CR>
-    nnoremap [ddu]p <Cmd>call ddu#start({'name': 'plugin-list'})<CR>
+    nnoremap [ddu]P <Cmd>call ddu#start({'name': 'plugin-list'})<CR>
+    nnoremap [ddu]p <Cmd>call ddu#start({'name': 'project-list'})<CR>
     nnoremap [ddu]~ <Cmd>call ddu#start({'name': 'home'})<CR>
     nnoremap [ddu]r <Cmd>call ddu#start({'name': 'register'})<CR>
     nnoremap [ddu]s <Cmd>call ddu#start({
