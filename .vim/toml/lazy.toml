@@ -170,7 +170,45 @@ on_event = 'BufRead'
 
 [[plugins]]
 repo = 'machakann/vim-sandwich'
-on_event = 'BufRead'
+on_map = { xon = '<Plug>(sandwich-'}
+hook_add = '''
+    "Disable s for vim-sandwich
+    nnoremap s <Nop>
+    xnoremap s <Nop>
+
+    let g:sandwich_no_default_key_mappings = 1
+
+    " add
+    nmap sa <Plug>(sandwich-add)
+    xmap sa <Plug>(sandwich-add)
+    omap sa <Plug>(sandwich-add)
+
+    " delete
+    nmap sd <Plug>(sandwich-delete)
+    xmap sd <Plug>(sandwich-delete)
+    nmap sdb <Plug>(sandwich-delete-auto)
+
+    " replace
+    nmap sr <Plug>(sandwich-replace)
+    xmap sr <Plug>(sandwich-replace)
+    nmap srb <Plug>(sandwich-replace-auto)
+
+    " text-objects (if you need)
+    "omap ib <Plug>(textobj-sandwich-auto-i)
+    "xmap ib <Plug>(textobj-sandwich-auto-i)
+    "omap ab <Plug>(textobj-sandwich-auto-a)
+    "xmap ab <Plug>(textobj-sandwich-auto-a)
+
+    "omap is <Plug>(textobj-sandwich-query-i)
+    "xmap is <Plug>(textobj-sandwich-query-i)
+    "omap as <Plug>(textobj-sandwich-query-a)
+    "xmap as <Plug>(textobj-sandwich-query-a)
+
+    " Black magic...
+    "nnoremap <silent> s <Cmd>call dein#source('vim-sandwich')<CR>
+    "xnoremap <silent> s <Cmd>call dein#source('vim-sandwich')<CR>
+    "onoremap <silent> s <Cmd>call dein#source('vim-sandwich')<CR>
+'''
 
 [[plugins]]
 repo = 'lambdalisue/gina.vim'

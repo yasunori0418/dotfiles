@@ -14,7 +14,7 @@ nnoremap q; q:
 nnoremap x "_x
 
 " For vim-sandwich.
-nnoremap s <Nop>
+" nnoremap s <Nop>
 
 " Opens the file name under the cursor.
 nnoremap gf gF
