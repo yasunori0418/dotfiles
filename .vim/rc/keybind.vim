@@ -7,11 +7,14 @@ nnoremap <Space>w :w<CR>
 " Exchange Colon and Semi-Colon.
 " nnoremap ; :
 nnoremap : ;
+nnoremap q; q:
 
 
 " Do not save the things erased by x and s in the register.
 nnoremap x "_x
-nnoremap s "_s
+
+" For vim-sandwich.
+" nnoremap s <Nop>
 
 " Opens the file name under the cursor.
 nnoremap gf gF

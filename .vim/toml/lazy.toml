@@ -4,10 +4,10 @@ hook_post_update = 'TSUpdate'
 hook_source = '''
 lua << EOF
 require'nvim-treesitter.configs'.setup {
-    ensure_installed = 'maintained',
+    ensure_installed = 'all',
     highlight = {
         enable = true,
-        disable = { 'vim' },
+        disable = { 'vim', 'swift' },
     },
     indent = {
         enable = true,
@@ -17,44 +17,10 @@ EOF
 '''
 
 [[plugins]]
-repo = 'EdenEast/nightfox.nvim''
+repo = 'EdenEast/nightfox.nvim'
 depends = 'nvim-treesitter'
 hook_source = '''
-lua << EOF
-
-local nightfox = require("nightfox")
-
-nightfox.setup({
-    options = {
-        -- Compiled file's destination location
-        compile_path = vim.fn.stdpath("cache") .. "/nightfox",
-        compile_file_suffix = "_compiled", -- Compiled file suffix
-        transparent = false,    -- Disable setting background
-        terminal_colors = true, -- Set terminal colors (vim.g.terminal_color_*)
-        dim_inactive = true,   -- Non focused panes set to alternative background
-        styles = {              -- Style to be applied to different syntax groups
-            comments = "italic",
-            functions = "bold",
-            keywords = "NONE",
-            numbers = "NONE",
-            strings = "NONE",
-            types = "NONE",
-            variables = "NONE",
-            },
-        inverse = {             -- Inverse highlight for different types
-            match_paren = false,
-            visual = true,
-            search = false,
-            },
-        modules = {             -- List of various plugins and additional options
-            },
-        },
-    })
-
--- Load the configuration set above and apply the colorscheme
-vim.cmd("colorscheme duskfox")
-EOF
-
+source ~/dotfiles/.vim/plugins/nightfox.lua
 '''
 
 [[plugins]]
@@ -120,7 +86,11 @@ on_cmd = 'Defx'
 hook_add = '''
     nnoremap [defx] <Nop>
     nmap <Space>f [defx]
-    nnoremap [defx]a <cmd>Defx -search=`expand('%:p')` `expand('%:p:h')`<CR>
+    nnoremap [defx]a <cmd>Defx -buffer-name='Current_Directory' -search=`expand('%:p')` `expand('%:p:h')`<CR>
+    nnoremap [defx]d <cmd>Defx -buffer-name='dotfiles' `expand('~/dotfiles/')`<CR>
+    nnoremap [defx]v <cmd>Defx -buffer-name='Vim_Directory' `expand('~/dotfiles/.vim/')`<CR>
+    nnoremap [defx]p <cmd>Defx -buffer-name='Project_Directory' `expand('~/Project/')`<CR>
+    nnoremap [defx]h <cmd>Defx -buffer-name='$HOME' `expand('~/')`<CR>
 '''
 hook_source = '''
     source ~/dotfiles/.vim/plugins/defx.vim
@@ -194,9 +164,51 @@ on_event = 'BufRead'
 repo = 'Yggdroot/indentLine'
 on_event = 'BufRead'
 
+# [[plugins]]
+# repo = 'tpope/vim-surround'
+# on_event = 'BufRead'
+
 [[plugins]]
-repo = 'tpope/vim-surround'
-on_event = 'BufRead'
+repo = 'machakann/vim-sandwich'
+on_map = { xon = '<Plug>(sandwich-'}
+hook_add = '''
+    "Disable s for vim-sandwich
+    nnoremap s <Nop>
+    xnoremap s <Nop>
+
+    let g:sandwich_no_default_key_mappings = 1
+
+    " add
+    nmap sa <Plug>(sandwich-add)
+    xmap sa <Plug>(sandwich-add)
+    omap sa <Plug>(sandwich-add)
+
+    " delete
+    nmap sd <Plug>(sandwich-delete)
+    xmap sd <Plug>(sandwich-delete)
+    nmap sdb <Plug>(sandwich-delete-auto)
+
+    " replace
+    nmap sr <Plug>(sandwich-replace)
+    xmap sr <Plug>(sandwich-replace)
+    nmap srb <Plug>(sandwich-replace-auto)
+
+    " text-objects (if you need)
+    "omap ib <Plug>(textobj-sandwich-auto-i)
+    "xmap ib <Plug>(textobj-sandwich-auto-i)
+    "omap ab <Plug>(textobj-sandwich-auto-a)
+    "xmap ab <Plug>(textobj-sandwich-auto-a)
+
+    "omap is <Plug>(textobj-sandwich-query-i)
+    "xmap is <Plug>(textobj-sandwich-query-i)
+    "omap as <Plug>(textobj-sandwich-query-a)
+    "xmap as <Plug>(textobj-sandwich-query-a)
+
+    " Black magic...
+    "nnoremap <silent> s <Cmd>call dein#source('vim-sandwich')<CR>
+    "xnoremap <silent> s <Cmd>call dein#source('vim-sandwich')<CR>
+    "onoremap <silent> s <Cmd>call dein#source('vim-sandwich')<CR>
+'''
 
 [[plugins]]
 repo = 'lambdalisue/gina.vim'

@@ -61,6 +61,18 @@ call ddu#custom#patch_local('dotfiles', {
     \ 'sources': [{'name': 'file_rec'}],
     \ })
 
+call ddu#custom#patch_local('project-list', {
+    \ 'uiParams': {
+    \     'ff': {
+    \         'startFilter': v:true,
+    \         },
+    \     },
+    \ 'sourceOptions': {
+    \     'file': {'path': expand("~") .. '/Project'},
+    \     },
+    \ 'sources': [{'name': 'file'}],
+    \ })
+
 call ddu#custom#patch_local('help', {
     \ 'uiParams': {
     \     'ff': {
