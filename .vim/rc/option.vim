@@ -103,7 +103,7 @@ let g:vim_indent_count = 0
 
 " Statusline{{{
 " Display statusline.
-set laststatus=2
+set laststatus=3
 
 " Command line completion.
 " set wildmenu
