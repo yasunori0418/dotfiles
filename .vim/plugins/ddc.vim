@@ -34,6 +34,9 @@ call ddc#custom#patch_global('sourceOptions', {
         \ 'mark': 'history',
         \ 'sorters': [],
         \ },
+    \ 'line': {
+        \ 'mark': 'line',
+        \ },
     \ 'necovim': {'mark': 'necovim'},
     \ 'rg': {
         \ 'mark': 'ripgrep',
