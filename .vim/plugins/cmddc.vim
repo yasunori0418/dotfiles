@@ -27,7 +27,7 @@ function! Cmdline_pre(mode) abort
     endif
 
     autocmd User DDCmdlineLeave ++once call Cmdline_post()
-    autocmd User InsertEnter <buffer> ++once call Cmdline_post()
+    autocmd InsertEnter <buffer> ++once call Cmdline_post()
 
     " Enable command line completion.
     call ddc#enable_cmdline_completion()
