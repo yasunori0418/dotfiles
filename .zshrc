@@ -5,15 +5,6 @@ if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]
   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
 
-# Source manjaro-zsh-configuration
-#if [[ -e /usr/share/zsh/manjaro-zsh-config ]]; then
-#  source /usr/share/zsh/manjaro-zsh-config
-#fi
-# Use manjaro zsh prompt
-#if [[ -e /usr/share/zsh/manjaro-zsh-prompt ]]; then
-#  source /usr/share/zsh/manjaro-zsh-prompt
-#fi
-
 #################################  HISTORY  #################################
 # history
 HISTFILE=$HOME/.zsh_history     # 履歴を保存するファイル
@@ -133,15 +124,6 @@ source "$HOME/.zinit/bin/zinit.zsh"
 autoload -Uz _zinit
 (( ${+_comps} )) && _comps[zinit]=_zinit
 
-# Load a few important annexes, without Turbo
-# (this is currently required for annexes)
-# zinit light-mode for \
-#     zinit-zsh/z-a-rust \
-#     zinit-zsh/z-a-as-monitor \
-#     zinit-zsh/z-a-patch-dl \
-#     zinit-zsh/z-a-bin-gem-node
-
-### End of Zinit's installer chunk
 
 # 補完
 zinit ice wait'!0' lucid atload'_zsh_autosuggest_start'
@@ -158,29 +140,13 @@ zinit light zdharma-continuum/fast-syntax-highlighting
 # Ctrl+r でコマンド履歴を検索
 zinit light zdharma-continuum/history-search-multi-word
 
-# enhancd
-# zinit ice wait'!0'
-# zinit light b4b4r07/enhancd
-
-# cat強化 - bat
-# zinit ice as"program" from"gh-r" mv"bat* -> bat" pick"bat/bat"
-# zinit light sharkdp/bat
-
-# 以下はただのエイリアス設定
-# if builtin command -v bat > /dev/null; then
-#   alias cat="bat"
-# fi
 
 # PowerLevel10k
 zinit ice depth=1
 zinit light romkatv/powerlevel10k
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
-[[ ! -f ~/dotfiles/.p10k.zsh ]] || source ~/dotfiles/.p10k.zsh
+[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
-
-# BEGIN_KITTY_SHELL_INTEGRATION
-if test -e "/usr/lib/kitty/shell-integration/kitty.zsh"; then source "/usr/lib/kitty/shell-integration/kitty.zsh"; fi
-# END_KITTY_SHELL_INTEGRATION
 
 # Pyenv settings
 eval "$(pyenv init -)"
