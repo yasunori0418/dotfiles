@@ -1,4 +1,4 @@
-call ddc#custom#patch_global('sources', ['around', 'file', 'rg', 'neosnippet'])
+call ddc#custom#patch_global('sources', ['around', 'file', 'rg'])
 
 " ddc source settings. {{{
 call ddc#custom#patch_global('sourceOptions', {
@@ -14,6 +14,7 @@ call ddc#custom#patch_global('sourceOptions', {
     \ 'file': {
         \ 'mark': 'F',
         \ 'isVolatile': v:true,
+        \ 'minAutoCompleteLength': 1000,
         \ 'forceCompletionPattern': '\S/\S*',
         \ },
     \ 'neosnippet': {
@@ -23,9 +24,16 @@ call ddc#custom#patch_global('sourceOptions', {
     \ 'vim-lsp': {
         \ 'mark': 'lsp',
         \ 'matchers': ['matcher_head'],
+        \ 'forceCompletionPattern': '\.\w*|:\w*|->\w*',
         \ },
-    \ 'cmdline': {'mark': 'cmdline'},
-    \ 'cmdline-history': {'mark': 'history'},
+    \ 'cmdline': {
+        \ 'mark': 'cmdline',
+        \ 'forceCompletionPattern': '\S/\S*',
+        \ },
+    \ 'cmdline-history': {
+        \ 'mark': 'history',
+        \ 'sorters': [],
+        \ },
     \ 'necovim': {'mark': 'necovim'},
     \ 'rg': {
         \ 'mark': 'ripgrep',
@@ -38,7 +46,7 @@ call ddc#custom#patch_global('sourceOptions', {
         \ 'forceCompletionPattern': '\S/\S*',
         \ },
     \ 'shell-history': {
-        \ 'mark': 'history',
+        \ 'mark': 'shell',
         \ 'minKeywordLength': 4,
         \ 'maxKeywordLength': 50,
         \ },
