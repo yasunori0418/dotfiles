@@ -1,5 +1,4 @@
 function! s:skkeleton_init() abort
-    " Load merged dictionary.
     call skkeleton#config({
         \ 'eggLikeNewline': v:true,
         \ 'userJisyo': '~/.skk/skkeleton/skkeleton'
@@ -12,39 +11,74 @@ function! s:skkeleton_init() abort
         \ 'z0': ["\u25CB", ''],
         \ })
 
-        " \ 'la': ['ぁ', ''],
-        " \ 'li': ['ぃ', ''],
-        " \ 'lu': ['ぅ', ''],
-        " \ 'le': ['ぇ', ''],
-        " \ 'lo': ['ぉ', ''],
-        " \ 'll': ['っ', 'l'],
-        " \ 'ltu': ['っ', ''],
-        " \ 'ltsu': ['っ', ''],
-        " \ 'lwa': ['ゎ', ''],
-        " \ 'lwe': ['ゑ', ''],
-        " \ 'lwi': ['ゐ', ''],
-        " \ 'lya': ['ゃ', ''],
-        " \ 'lyo': ['ょ', ''],
-        " \ 'lyu': ['ゅ', ''],
+    call s:L2X_Keymap()
 
-    " call skkeleton#register_kanatable('rom', s:disable_l())
-
-    " call skkeleton#register_keymap('input', "x", 'disable')
 endfunction
 
-function! s:disable_l() abort
+
+function! s:L2X_Keymap() abort
+    call skkeleton#register_kanatable('rom', s:L2X_table())
+
+    call skkeleton#register_keymap('input', "x", 'disable')
+    call skkeleton#register_keymap('input', "X", 'zenkaku')
+endfunction
+
+
+function! s:L2X_table() abort
+
+    let s:rom_table = {}
 
     let s:disable_l_nexts = split('bcdfghjkmnpqrsvxzBCDFGHJKMNPQRSVXZ,./1234567890-+=`~;:[]{}()<>!@#$%^&*_\"', '\zs')
     call add(s:disable_l_nexts, "'")
     call map(s:disable_l_nexts, {_, val -> 'l' .. val})
 
-    let l:disable_l_dict = {}
-
-    for l:disable_l_next in s:disable_l_nexts
-        let l:disable_l_dict[l:disable_l_next] = ['', '']
+    for s:disable_l_next in s:disable_l_nexts
+        let s:rom_table[s:disable_l_next] = ['', '']
     endfor
 
-    return l:disable_l_dict
+    let s:enable_l_converts = {
+        \ 'la': ['ぁ', ''],
+        \ 'li': ['ぃ', ''],
+        \ 'lu': ['ぅ', ''],
+        \ 'le': ['ぇ', ''],
+        \ 'lo': ['ぉ', ''],
+        \ 'll': ['っ', 'l'],
+        \ 'ltu': ['っ', ''],
+        \ 'ltsu': ['っ', ''],
+        \ 'lwa': ['ゎ', ''],
+        \ 'lwe': ['ゑ', ''],
+        \ 'lwi': ['ゐ', ''],
+        \ 'lya': ['ゃ', ''],
+        \ 'lyo': ['ょ', ''],
+        \ 'lyu': ['ゅ', ''],
+        \ }
+
+    for s:item in items(s:enable_l_converts)
+        let s:rom_table[s:item[0]] = s:item[1]
+    endfor
+
+    let s:disable_x_converts = {
+        \ 'xa': ['', ''],
+        \ 'xi': ['', ''],
+        \ 'xu': ['', ''],
+        \ 'xe': ['', ''],
+        \ 'xo': ['', ''],
+        \ 'xx': ['', ''],
+        \ 'xtu': ['', ''],
+        \ 'xtsu': ['', ''],
+        \ 'xwa': ['', ''],
+        \ 'xwe': ['', ''],
+        \ 'xwi': ['', ''],
+        \ 'xya': ['', ''],
+        \ 'xyo': ['', ''],
+        \ 'xyu': ['', ''],
+        \ }
+
+    for s:item in items(s:disable_x_converts)
+        let s:rom_table[s:item[0]] = s:item[1]
+    endfor
+
+    return s:rom_table
 
 endfunction
 
