@@ -3,6 +3,7 @@ nnoremap ; <Cmd>call Cmdline_pre(':')<CR>:
 xnoremap ; <Cmd>call Cmdline_pre(':')<CR>:
 
 nnoremap / <Cmd>call Cmdline_pre('/')<CR>/
+nnoremap ? <Cmd>call Cmdline_pre('?')<CR>?
 
 function! Cmdline_pre(mode) abort
     call dein#source('ddc.vim')
