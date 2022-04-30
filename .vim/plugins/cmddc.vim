@@ -11,6 +11,8 @@ function! Cmdline_pre(mode) abort
         \ pum#visible() ? '<Cmd>call pum#map#insert_relative(+1)<CR>' : 
         \ ddc#map#manual_complete()
     cnoremap <S-Tab>    <Cmd>call pum#map#insert_relative(-1)<CR>
+
+    " Note: It disables default command line completion!
     set wildchar=<C-t>
 
     " Overwrite sources.
@@ -23,7 +25,7 @@ function! Cmdline_pre(mode) abort
         call ddc#custom#patch_buffer('keywordPattern', '[0-9a-zA-Z_:#]*')
     else
         call ddc#custom#patch_buffer('sources',
-                    \ ['around', 'line'])
+            \ ['around', 'line'])
     endif
 
     autocmd User DDCmdlineLeave ++once call Cmdline_post()
@@ -37,12 +39,11 @@ endfunction
 function! Cmdline_post() abort
     " Restore sources.
     if exists('b:prev_buffer_config')
-        call ddc#custom#set_buffer(s:prev_buffer_config)
+        call ddc#custom#set_buffer(b:prev_buffer_config)
         unlet b:prev_buffer_config
     else
         call ddc#custom#set_buffer({})
     endif
 
-    cunmap <TAB>
     set wildchar=<TAB>
 endfunction

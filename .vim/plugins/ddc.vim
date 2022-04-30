@@ -28,6 +28,7 @@ call ddc#custom#patch_global('sourceOptions', {
         \ },
     \ 'cmdline': {
         \ 'mark': 'cmdline',
+        \ 'isVolatile': v:true,
         \ 'forceCompletionPattern': '\S/\S*',
         \ },
     \ 'cmdline-history': {
