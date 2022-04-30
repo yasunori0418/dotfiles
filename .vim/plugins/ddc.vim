@@ -28,11 +28,15 @@ call ddc#custom#patch_global('sourceOptions', {
         \ },
     \ 'cmdline': {
         \ 'mark': 'cmdline',
+        \ 'isVolatile': v:true,
         \ 'forceCompletionPattern': '\S/\S*',
         \ },
     \ 'cmdline-history': {
         \ 'mark': 'history',
         \ 'sorters': [],
+        \ },
+    \ 'line': {
+        \ 'mark': 'line',
         \ },
     \ 'necovim': {'mark': 'necovim'},
     \ 'rg': {
@@ -58,7 +62,7 @@ call ddc#custom#patch_global('sourceOptions', {
         \ 'matchers': ['skkeleton'],
         \ 'sorters': [],
         \ 'minAutoCompleteLength': 2,
-    \ },
+        \ },
     \ })
 
 " }}}
