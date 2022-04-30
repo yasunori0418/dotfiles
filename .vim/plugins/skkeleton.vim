@@ -3,6 +3,7 @@ function! s:skkeleton_init() abort
     call skkeleton#config({
         \ 'eggLikeNewline': v:true,
         \ 'userJisyo': '~/.skk/skkeleton/skkeleton'
+        \ 'completionRankFile': '~/.skk/skkeleton/rank.json'
         \ })
 
     call skkeleton#register_kanatable('rom', {

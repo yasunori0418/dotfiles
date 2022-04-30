@@ -62,7 +62,7 @@ call ddc#custom#patch_global('sourceOptions', {
         \ 'matchers': ['skkeleton'],
         \ 'sorters': [],
         \ 'minAutoCompleteLength': 2,
-    \ },
+        \ },
     \ })
 
 " }}}
