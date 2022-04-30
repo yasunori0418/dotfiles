@@ -3,31 +3,33 @@ function! s:skkeleton_init() abort
     call skkeleton#config({
         \ 'eggLikeNewline': v:true,
         \ 'userJisyo': '~/.skk/skkeleton/skkeleton'
-        \ 'completionRankFile': '~/.skk/skkeleton/rank.json'
         \ })
 
     call skkeleton#register_kanatable('rom', {
         \ 'jj': 'escape',
-        \ 'z\<Space>': '\u3000',
-        \ 'la': ['ぁ', ''],
-        \ 'li': ['ぃ', ''],
-        \ 'lu': ['ぅ', ''],
-        \ 'le': ['ぇ', ''],
-        \ 'lo': ['ぉ', ''],
-        \ 'll': ['っ', 'l'],
-        \ 'ltu': ['っ', ''],
-        \ 'ltsu': ['っ', ''],
-        \ 'lwa': ['ゎ', ''],
-        \ 'lwe': ['ゑ', ''],
-        \ 'lwi': ['ゐ', ''],
-        \ 'lya': ['ゃ', ''],
-        \ 'lyo': ['ょ', ''],
-        \ 'lyu': ['ゅ', ''],
+        \ "z\<Space>": ["\u3000", ''],
+        \ '~': ['～', ''],
+        \ 'z0': ["\u25CB", ''],
         \ })
 
-    call skkeleton#register_kanatable('rom', s:disable_l())
+        " \ 'la': ['ぁ', ''],
+        " \ 'li': ['ぃ', ''],
+        " \ 'lu': ['ぅ', ''],
+        " \ 'le': ['ぇ', ''],
+        " \ 'lo': ['ぉ', ''],
+        " \ 'll': ['っ', 'l'],
+        " \ 'ltu': ['っ', ''],
+        " \ 'ltsu': ['っ', ''],
+        " \ 'lwa': ['ゎ', ''],
+        " \ 'lwe': ['ゑ', ''],
+        " \ 'lwi': ['ゐ', ''],
+        " \ 'lya': ['ゃ', ''],
+        " \ 'lyo': ['ょ', ''],
+        " \ 'lyu': ['ゅ', ''],
 
-    call skkeleton#register_keymap('input', "x", 'disable')
+    " call skkeleton#register_kanatable('rom', s:disable_l())
+
+    " call skkeleton#register_keymap('input', "x", 'disable')
 endfunction
 
 function! s:disable_l() abort
