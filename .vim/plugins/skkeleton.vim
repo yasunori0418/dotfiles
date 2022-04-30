@@ -7,6 +7,7 @@ function! s:skkeleton_init() abort
 
     call skkeleton#register_kanatable('rom', {
         \ 'jj': 'escape',
+        \ 'z\<Space>': '\u3000',
         \ 'la': ['ぁ', ''],
         \ 'li': ['ぃ', ''],
         \ 'lu': ['ぅ', ''],
