@@ -21,11 +21,11 @@ function! Cmdline_pre(mode) abort
         let b:prev_buffer_config = ddc#custom#get_buffer()
     endif
     if a:mode == ':'
-        call ddc#custom#patch_buffer('sources', 
-            \ ['cmdline', 'cmdline-history', 'around'])
+        call ddc#custom#patch_buffer('cmdlineSources', 
+            \ ['cmdline', 'cmdline-history', 'file', 'around'])
         call ddc#custom#patch_buffer('keywordPattern', '[0-9a-zA-Z_:#]*')
     else
-        call ddc#custom#patch_buffer('sources',
+        call ddc#custom#patch_buffer('cmdlineSources',
             \ ['around', 'line'])
     endif
 
