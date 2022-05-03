@@ -31,8 +31,8 @@ local my_keybinds = {
     {key = "]", mods = "ALT|SHIFT", action = wezterm.action({ActivateTabRelative = 1})},
 
     -- Keybinds of controlling terminal pane.
-    {key = ';', mods = 'ALT', action = wezterm.action({SplitHorizontal = {domain = 'CurrentPaneDomain'}})},
-    {key = 'v', mods = 'ALT', action = wezterm.action({SplitVertical = {domain = 'CurrentPaneDomain'}})},
+    {key = 'v', mods = 'ALT', action = wezterm.action({SplitHorizontal = {domain = 'CurrentPaneDomain'}})},
+    {key = ';', mods = 'ALT', action = wezterm.action({SplitVertical = {domain = 'CurrentPaneDomain'}})},
     {key = "w", mods = "ALT", action = wezterm.action({CloseCurrentPane = {confirm = true}})},
     {key = "w", mods = "ALT|SHIFT", action = wezterm.action({CloseCurrentPane = {confirm = false}})},
     {key = "h", mods = "ALT", action = wezterm.action({ActivatePaneDirection = 'Left'})},
