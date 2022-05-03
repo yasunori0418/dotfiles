@@ -24,3 +24,14 @@ hook_source = '''
 
     " nmap <silent> <F9> <Cmd>PreviewMarkdownToggle<CR>
 '''
+
+[[plugins]]
+repo = 'tani/glance-vim'
+depends = 'denops.vim'
+on_ft = 'markdown'
+on_cmd = 'Glance'
+hook_source = '''
+    let g:glance#markdown_html = v:true
+    let g:glance#markdown_linkify = v:true
+    let g:glance#markdown_breakes = v:true
+'''
