@@ -22,5 +22,5 @@ hook_source = '''
 
     " autocmd FileType markdown :PreviewMarkdown
 
-    nmap <silent> <F9> <Cmd>PreviewMarkdownToggle<CR>
+    " nmap <silent> <F9> <Cmd>PreviewMarkdownToggle<CR>
 '''
