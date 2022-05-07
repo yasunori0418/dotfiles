@@ -21,10 +21,6 @@ repo = 'Shougo/ddc-line'
 on_source = 'ddc.vim'
 
 [[plugins]]
-repo = 'Shougo/ddc-input'
-on_source = 'ddc.vim'
-
-[[plugins]]
 repo = 'Shougo/ddc-matcher_head'
 on_source ='ddc.vim'
 
