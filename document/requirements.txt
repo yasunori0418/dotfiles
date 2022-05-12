@@ -6,11 +6,9 @@ neovide
 bat
 exa
 ripgrep
-pyright
 python-send2trash
 python-pynvim
 pyenv
-ctags
 trash-cli
 kitty
 deno
