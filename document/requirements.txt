@@ -12,12 +12,10 @@ pyenv
 trash-cli
 kitty
 deno
-light
 skk-tools
 libskk
 skk-jisyo
 ttf-cica
-ttf-hackgen-nerd
 Xfce4-power-manager
 xfce4-appfinder
 textlint
