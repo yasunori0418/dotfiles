@@ -3,26 +3,26 @@ repo = 'Shougo/ddu.vim'
 depends = 'denops.vim'
 on_func = 'ddu#start()'
 hook_add = '''
-    nnoremap [ddu] <Nop>
-    nmap <Space>d [ddu]
-    nnoremap [ddu]a <Cmd>call ddu#start({'name': 'current'})<CR>
-    nnoremap [ddu]d <Cmd>call ddu#start({'name': 'dotfiles'})<CR>
-    nnoremap [ddu]h <Cmd>call ddu#start({'name': 'help'})<CR>
-    nnoremap [ddu]b <Cmd>call ddu#start({'name': 'buffer'})<CR>
-    nnoremap [ddu]P <Cmd>call ddu#start({'name': 'plugin-list'})<CR>
-    nnoremap [ddu]p <Cmd>call ddu#start({'name': 'project-list'})<CR>
-    nnoremap [ddu]~ <Cmd>call ddu#start({'name': 'home'})<CR>
-    nnoremap [ddu]r <Cmd>call ddu#start({'name': 'register'})<CR>
-    nnoremap [ddu]s <Cmd>call ddu#start({
-    \ 'name': 'search',
-    \ 'sources': [{
-    \     'name': 'rg',
-    \     'params': {'input': input('Pattern: ')},
-    \     }],
-    \ })<CR>
+  nnoremap [ddu] <Nop>
+  nmap <Space>d [ddu]
+  nnoremap [ddu]a <Cmd>call ddu#start({'name': 'current'})<CR>
+  nnoremap [ddu]d <Cmd>call ddu#start({'name': 'dotfiles'})<CR>
+  nnoremap [ddu]h <Cmd>call ddu#start({'name': 'help'})<CR>
+  nnoremap [ddu]b <Cmd>call ddu#start({'name': 'buffer'})<CR>
+  nnoremap [ddu]P <Cmd>call ddu#start({'name': 'plugin-list'})<CR>
+  nnoremap [ddu]p <Cmd>call ddu#start({'name': 'project-list'})<CR>
+  nnoremap [ddu]~ <Cmd>call ddu#start({'name': 'home'})<CR>
+  nnoremap [ddu]r <Cmd>call ddu#start({'name': 'register'})<CR>
+  nnoremap [ddu]s <Cmd>call ddu#start({
+  \ 'name': 'search',
+  \ 'sources': [{
+  \     'name': 'rg',
+  \     'params': {'input': input('Pattern: ')},
+  \     }],
+  \ })<CR>
 '''
 hook_source = '''
-    source ~/dotfiles/.vim/plugins/ddu.vim
+  source ~/dotfiles/.vim/plugins/ddu.vim
 '''
 
 [[plugins]]

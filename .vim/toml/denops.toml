@@ -5,11 +5,11 @@ repo = 'vim-denops/denops.vim'
 repo = 'vim-skk/skkeleton'
 on_map = {ic = '<Plug>(skkeleton-toggle)'}
 hook_add = '''
-    imap <C-j> <Plug>(skkeleton-toggle)
-    cmap <C-j> <Plug>(skkeleton-toggle)
+  imap <C-j> <Plug>(skkeleton-toggle)
+  cmap <C-j> <Plug>(skkeleton-toggle)
 '''
 hook_source = '''
-    source ~/dotfiles/.vim/plugins/skkeleton.vim
+  source ~/dotfiles/.vim/plugins/skkeleton.vim
 '''
 
 [[plugins]]
@@ -17,12 +17,12 @@ repo = 'kat0h/bufpreview.vim'
 depends = 'denops.vim'
 on_ft = 'markdown'
 hook_source = '''
-    "Open bufpreview by chromium browser. 
-    let g:bufpreview_browser = 'chromium'
+  "Open bufpreview by chromium browser. 
+  let g:bufpreview_browser = 'chromium'
 
-    " autocmd FileType markdown :PreviewMarkdown
+  " autocmd FileType markdown :PreviewMarkdown
 
-    " nmap <silent> <F9> <Cmd>PreviewMarkdownToggle<CR>
+  " nmap <silent> <F9> <Cmd>PreviewMarkdownToggle<CR>
 '''
 
 [[plugins]]
@@ -31,7 +31,7 @@ depends = 'denops.vim'
 on_ft = 'markdown'
 on_cmd = 'Glance'
 hook_source = '''
-    let g:glance#markdown_html = v:true
-    let g:glance#markdown_linkify = v:true
-    let g:glance#markdown_breakes = v:true
+  let g:glance#markdown_html = v:true
+  let g:glance#markdown_linkify = v:true
+  let g:glance#markdown_breakes = v:true
 '''

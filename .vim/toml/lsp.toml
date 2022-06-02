@@ -29,7 +29,7 @@ on_source = 'vim-lsp'
 repo = 'shun/ddc-vim-lsp'
 on_source = 'vim-lsp'
 hook_source = '''
-    source ~/dotfiles/.vim/plugins/lsp.vim
+  source ~/dotfiles/.vim/plugins/lsp.vim
 '''
 
 [[plugins]]
