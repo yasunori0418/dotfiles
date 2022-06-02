@@ -30,10 +30,10 @@ let s:toml_files = systemlist('ls ' .. s:toml_dir .. '*.toml')
 " dein installation check {{{
 
 if &runtimepath !~# '/dein.vim'
-    if !isdirectory(s:dein_repo)
-        execute '!git clone https://github.com/Shougo/dein.vim' s:dein_repo
-    endif
-    execute 'set runtimepath^=' . s:dein_repo
+  if !isdirectory(s:dein_repo)
+    execute '!git clone https://github.com/Shougo/dein.vim' s:dein_repo
+  endif
+  execute 'set runtimepath^=' . s:dein_repo
 endif
 " }}}
 
@@ -48,7 +48,7 @@ let g:dein#lazy_rplugins = v:true
 " GitHub apt token file.
 let s:github_pat = g:base_dir .. 'github_pat'
 if filereadable(s:github_pat)
-    let g:dein#install_github_api_token = readfile(s:github_pat)[0]
+  let g:dein#install_github_api_token = readfile(s:github_pat)[0]
 endif
 
 " }}}
@@ -57,37 +57,37 @@ endif
 " Begin settings {{{
 if dein#min#load_state(s:dein_dir)
 
-    " dein inline_vimrcs setting.{{{
+  " dein inline_vimrcs setting.{{{
 
-    let g:dein#inline_vimrcs = ['option.vim', 'keybind.vim']
+  let g:dein#inline_vimrcs = ['option.vim', 'keybind.vim']
 
-    call map(g:dein#inline_vimrcs, { _, val -> s:vimrcs_dir .. val })
+  call map(g:dein#inline_vimrcs, { _, val -> s:vimrcs_dir .. val })
 
-    " }}}
+  " }}}
 
-    call dein#begin(s:dein_dir)
+  call dein#begin(s:dein_dir)
 
-    for toml_file in s:toml_files
-        if toml_file == s:toml_dir .. 'dein.toml'
-            call dein#load_toml(toml_file, {'lazy': 0})
-        else
-            call dein#load_toml(toml_file, {'lazy': 1})
-        endif
-    endfor
+  for toml_file in s:toml_files
+    if toml_file == s:toml_dir .. 'dein.toml'
+      call dein#load_toml(toml_file, {'lazy': 0})
+    else
+      call dein#load_toml(toml_file, {'lazy': 1})
+    endif
+  endfor
 
-    " Test local plugins
-    " call dein#local('~/Project', {'lazy': 1, 'on_source': 'skkeleton'}, ['lightline-skk'])
+  " Test local plugins
+  " call dein#local('~/Project', {'lazy': 1, 'on_source': 'skkeleton'}, ['lightline-skk'])
 
-    " end settings
-    call dein#end()
-    call dein#save_state()
+  " end settings
+  call dein#end()
+  call dein#save_state()
 endif
 " }}}
 
 
 " Plugin installation check {{{
 if dein#check_install()
-    call dein#install()
+  call dein#install()
 endif
 " }}}
 
@@ -99,23 +99,23 @@ command! DeinUpdate call dein#check_update(v:true)
 
 " dein.vim remove plugins.{{{
 function! s:dein_check_uninstall() abort
-    let l:remove_plugins = dein#check_clean()
-    if len(l:remove_plugins) > 0
-        for l:remove_plugin in l:remove_plugins
-            echo l:remove_plugin
-        endfor
-        echo 'Would you like to remove those plugins?'
-        echon '[Y/n]'
-        if getcharstr() == 'y'
-            call map(l:remove_plugins, "delete(v:val, 'rf')")
-            call dein#recache_runtimepath()
-            echo 'Remove Plugins ...done!'
-        else 
-            echo 'Remove Plugins ...abort!'
-        endif
-    else
-        echo 'There are no plugins to remove.'
+  let l:remove_plugins = dein#check_clean()
+  if len(l:remove_plugins) > 0
+    for l:remove_plugin in l:remove_plugins
+      echo l:remove_plugin
+    endfor
+    echo 'Would you like to remove those plugins?'
+    echon '[Y/n]'
+    if getcharstr() == 'y'
+      call map(l:remove_plugins, "delete(v:val, 'rf')")
+      call dein#recache_runtimepath()
+      echo 'Remove Plugins ...done!'
+    else 
+      echo 'Remove Plugins ...abort!'
     endif
+  else
+    echo 'There are no plugins to remove.'
+  endif
 endfunction
 
 command! DeinRemove call s:dein_check_uninstall()
