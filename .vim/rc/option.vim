@@ -126,6 +126,6 @@ set laststatus=3
 set list
 
 "Tab/End line Space/End line/No brake space.
-set listchars=tab:»-,trail:･,eol:↲,nbsp:%
+set listchars=tab:»-,trail:･,nbsp:･,eol:↲,extends:»,precedes:«
 " }}}
 
