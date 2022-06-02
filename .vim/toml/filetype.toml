@@ -18,8 +18,8 @@ hook_add = '''
         \ ."\t\t<meta http-equiv=\"X-UA-Compatible\" content=\"ie=edge\">\n"
         \ ."\t\t<title></title>\n"
         \ ."\t\t<link rel=\"stylesheet\" href=\"css/style.css\">\n"
-        \ ."</head>\n"
-        \ ."<body>\n\t${child}|\n</body>\n"
+        \ ."\t</head>\n"
+        \ ."\t<body>\n\t${child}|\n\t</body>\n"
         \ ."</html>",
         \ }
       \ }
