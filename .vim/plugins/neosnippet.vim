@@ -11,5 +11,5 @@ xmap <C-k> <Plug>(neosnippet_expand_target)
 "     \ '\<Plug>(neosnippet_expand_or_jump)' : '\<TAB>'
 
 if has('conceal')
-    set conceallevel=2 concealcursor=niv
+  set conceallevel=2 concealcursor=niv
 endif
