@@ -89,17 +89,26 @@ set smartindent
 " Insert tab with half-width space.
 set expandtab
 
+" Automatically indent when a line break occurs.
+set autoindent
+
 " The amount of blank space to insert with each command or smart indent.
-set shiftwidth=4
+set shiftwidth=2
 
-" Tab width with 4 spaces.
-set tabstop=4
+" Tab width with 2 spaces.
+set tabstop=2
 
-" Insert a tab with 4 minutes of half-width space.
-set softtabstop=4
+" Insert a tab with 2 minutes of half-width space.
+set softtabstop=2
 
 let g:vim_indent_count = 0
-" }}} 
+
+augroup filetypeIndent
+    autocmd!
+    autocmd FileType python setlocal tabstop=4 softtabstop=4 shiftwidth=4
+augroup END
+
+" }}}
 
 " Statusline{{{
 " Display statusline.
