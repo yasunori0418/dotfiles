@@ -50,7 +50,7 @@ let s:github_pat = g:base_dir .. 'github_pat'
 if filereadable(s:github_pat)
   let g:dein#install_github_api_token = readfile(s:github_pat)[0]
   let g:exists_github_pat = v:true
-elseif
+else
   let g:exists_github_pat = v:false
 endif
 
