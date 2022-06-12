@@ -30,6 +30,7 @@ let g:lightline.inactive.left = [
 let g:lightline.inactive.right = [
   \ ['lineinfo'],
   \ ['percent'],
+  \ ['filetype'],
   \ ]
 
 " }}}
