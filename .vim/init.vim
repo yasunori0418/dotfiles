@@ -49,6 +49,9 @@ let g:dein#lazy_rplugins = v:true
 let s:github_pat = g:base_dir .. 'github_pat'
 if filereadable(s:github_pat)
   let g:dein#install_github_api_token = readfile(s:github_pat)[0]
+  let g:exists_github_pat = v:true
+elseif
+  let g:exists_github_pat = v:false
 endif
 
 " }}}
@@ -93,7 +96,17 @@ endif
 
 
 " Check for plugin updates on github graphQL api.{{{
-command! DeinUpdate call dein#check_update(v:true)
+function! s:dein_update() abort
+  if g:exists_github_pat
+    echo 'exists github_pat'
+    call dein#check_update(v:true)
+  else
+    echo 'not exists github_pat'
+    call dein#update()
+  endif
+endfunction
+
+command! DeinUpdate call s:dein_update()
 " }}}
 
 
