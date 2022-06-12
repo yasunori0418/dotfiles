@@ -1,7 +1,7 @@
 function! s:skkeleton_init() abort
   call skkeleton#config({
     \ 'eggLikeNewline': v:true,
-    \ 'userJisyo': '~/.skk/skkeleton/skkeleton'
+    \ 'userJisyo': '~/.cache/nvim/skkeleton'
     \ })
 
   call skkeleton#register_kanatable('rom', {
