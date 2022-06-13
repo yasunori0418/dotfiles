@@ -3,7 +3,7 @@ let g:lightline = {}
 
 " Colorscheme{{{
 
-let g:lightline.colorscheme = 'material'
+let g:lightline.colorscheme = 'duskfox'
 
 " }}}
 
