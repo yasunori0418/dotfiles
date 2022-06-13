@@ -30,13 +30,6 @@ nnoremap [Window]q <C-W>q
 nnoremap [Window]Q <Cmd>quit!<CR>
 nnoremap [Window]o <C-W>o
 
-" Commands of buffer write.
-nnoremap [Window]w <Cmd>write<CR>
-nnoremap [Window]ww <Cmd>write<CR>
-nnoremap [Window]wu <Cmd>write<CR>
-nnoremap [Window]wa <Cmd>wall<CR>
-nnoremap [Window]wq <Cmd>wq<CR>
-
 " Commands of window split.
 nnoremap [Window]s <C-W>s
 nnoremap [Window]v <C-W>v
@@ -48,6 +41,16 @@ nnoremap [Window]- <C-W>-
 nnoremap [Window]= <C-W>=
 nnoremap [Window]< <C-W><
 nnoremap [Window]> <C-W>>
+" }}}
+
+
+" File save keybinds. {{{
+nnoremap [Save] <Nop>
+nmap <Space>s [Save]
+nnoremap [Save]a <Cmd>wall<CR>
+nnoremap [Save]q <Cmd>wq<CR>
+nnoremap [Save]w <Cmd>write<CR>
+nnoremap [Save]u <Cmd>update<CR>
 " }}}
 
 
