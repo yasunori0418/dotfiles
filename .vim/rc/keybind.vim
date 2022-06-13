@@ -10,8 +10,9 @@ nnoremap : ;
 nnoremap q; q:
 
 
-" Do not save the things erased by x and s in the register.
+" Do not save the things erased by x and c in the register.
 nnoremap x "_x
+nnoremap c "_c
 
 " For vim-sandwich.
 " nnoremap s <Nop>
@@ -37,9 +38,9 @@ inoremap <silent> jj <ESC>
 xnoremap : ;
 
 
-" Do not save the things erased by x and s in the register.
+" Do not save the things erased by x and c in the register.
 xnoremap x "_x
-xnoremap s "_s
+xnoremap c "_c
 
 " }}}
 
