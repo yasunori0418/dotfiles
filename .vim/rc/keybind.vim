@@ -1,4 +1,4 @@
-" Split window control keybind {{{
+" Window control keybind {{{
 " overwrites window command of 'CTRL-W'.
 " Use prefix [Window].
 nnoremap <C-W> <Nop>
@@ -35,6 +35,7 @@ nnoremap [Window]w <Cmd>write<CR>
 nnoremap [Window]ww <Cmd>write<CR>
 nnoremap [Window]wu <Cmd>write<CR>
 nnoremap [Window]wa <Cmd>wall<CR>
+nnoremap [Window]wq <Cmd>wq<CR>
 
 " Commands of window split.
 nnoremap [Window]s <C-W>s
