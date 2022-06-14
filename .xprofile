@@ -2,3 +2,6 @@
 export GTK_IM_MODULE=fcitx
 export QT_IM_MODULE=fcitx
 export XMODIFIERS=@im=fcitx
+
+# Qt on Gtk+ 2 theme setting.
+export QT_QPA_PLATFORMTHEME='gtk2'
