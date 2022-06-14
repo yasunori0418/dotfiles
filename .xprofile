@@ -5,6 +5,3 @@ export XMODIFIERS=@im=fcitx
 
 # Qt on Gtk+ 2 theme setting.
 export QT_QPA_PLATFORMTHEME='gtk2'
-
-# Thunar daemon autostart
-thunar --daemon
