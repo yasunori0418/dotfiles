@@ -28,4 +28,4 @@ nightfox.setup({
   })
 
 -- Load the configuration set above and apply the colorscheme
-vim.cmd("colorscheme duskfox")
+vim.cmd("colorscheme nordfox")

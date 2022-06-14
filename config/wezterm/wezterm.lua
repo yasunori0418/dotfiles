@@ -77,7 +77,7 @@ return {
     hide_tab_bar_if_only_one_tab = true,
 
     -- colorscheme settings
-    color_scheme = 'duskfox',
+    color_scheme = 'nordfox',
     color_scheme_dirs = { '$HOME/.config/wezterm/colors/' },
 
     window_background_opacity = 0.8,

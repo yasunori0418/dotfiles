@@ -3,7 +3,7 @@ let g:lightline = {}
 
 " Colorscheme{{{
 
-let g:lightline.colorscheme = 'duskfox'
+let g:lightline.colorscheme = 'nordfox'
 
 " }}}
 
@@ -17,8 +17,8 @@ let g:lightline.active.left = [
   \ ['git_branch', 'filename', 'modified'],
   \ ]
 let g:lightline.active.right = [
-  \ ['lsp_errors', 'lsp_warnings', 'lsp_ok'],
-  \ ['percent', 'lineinfo'],
+  \ ['percent', 'lsp_errors', 'lsp_warnings', 'lsp_ok'],
+  \ ['lineinfo'],
   \ ['fileformat', 'fileencoding', 'filetype'],
   \ ]
 
