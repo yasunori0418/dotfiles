@@ -104,11 +104,10 @@ inoremap <silent><expr> <TAB>
   \ (col('.') <= 1 <Bar><Bar> getline('.')[col('.') - 2] =~# '\s') ?
   \ '<TAB>' : ddc#manual_complete()
 inoremap <silent> <S-TAB> <Cmd>call pum#map#insert_relative(-1)<CR>
-inoremap <silent> <C-n> <Cmd>call pum#map#select_relative(+1)<CR>
-inoremap <silent> <C-p> <Cmd>call pum#map#select_relative(-1)<CR>
-inoremap <silent> <C-y> <Cmd>call pum#map#confirm()<CR>
+"inoremap <silent> <C-n> <Cmd>call pum#map#select_relative(+1)<CR>
+"inoremap <silent> <C-p> <Cmd>call pum#map#select_relative(-1)<CR>
+"inoremap <silent> <C-y> <Cmd>call pum#map#confirm()<CR>
 inoremap <silent> <C-e> <Cmd>call pum#map#cancel()<CR>
-inoremap <silent><expr> <C-l> ddc#map#extend()
 
 " }}}
 
