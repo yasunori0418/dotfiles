@@ -1,4 +1,5 @@
 export EDITOR=/usr/bin/nvim
+export TERMINAL=/usr/bin/wezterm
 #export BROWSER=/usr/bin/google-chrome-stable
 export PATH=$PATH:$HOME/bin
 export XDG_CONFIG_HOME=$HOME/.config
