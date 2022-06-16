@@ -78,7 +78,8 @@ nnoremap gf gF
 " Insert Mode:{{{
 
 " Exit insert mode.
-inoremap <silent> jj <ESC>
+inoremap jj <ESC>
+inoremap <C-l> <Del>
 
 " }}}
 
