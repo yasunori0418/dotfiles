@@ -1,0 +1,22 @@
+configuration {
+  modi: [window,run,drun,filebrowser];
+  font: "Cica 14";
+  show-icons: true;
+  icon-theme: "Nordzy-dark";
+  sidebar-mode: true;
+  display-window: " Window";
+  display-run: "  Run";
+  display-drun: " Application";
+  display-filebrowser: " Filebrowser";
+  timeout {
+      action: "kb-cancel";
+      delay:  10;
+  }
+  filebrowser {
+      directory: "$HOME";
+      directories-first: true;
+      sorting-method:    "name";
+  }
+}
+
+@theme "nord"
