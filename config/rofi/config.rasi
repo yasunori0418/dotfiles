@@ -1,6 +1,6 @@
 configuration {
   modi: [window, run, drun, filebrowser];
-  font: "Cica 14";
+  font: "Cica 16";
   show-icons: true;
   icon-theme: "Nordzy-dark";
   sidebar-mode: true;
