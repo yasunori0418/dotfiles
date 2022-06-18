@@ -93,7 +93,7 @@ bindsym $mod+o exec --no-startup-id clipcat-menu remove
 bindsym $mod+Shift+f exec --no-startup-id thunar
 
 # power menu
-bindsym $mod+Shift+e exec --no-startup-id rofi -show power
+bindsym $mod+Shift+e exec --no-startup-id rofi -modi power:~/.config/rofi/power.sh -show power
 
 # kill focused window
 # bindsym $alt+XF86LaunchB kill

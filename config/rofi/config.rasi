@@ -1,5 +1,5 @@
 configuration {
-  modi: [window,run,drun,filebrowser];
+  modi: [window, run, drun, filebrowser];
   font: "Cica 14";
   show-icons: true;
   icon-theme: "Nordzy-dark";
