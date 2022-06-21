@@ -72,6 +72,9 @@ nnoremap c "_c
 " Opens the file name under the cursor.
 nnoremap gf gF
 
+" Disable highlights from search results.
+nnoremap <Space>n <Cmd>nohlsearch<CR>
+
 " }}}
 
 
