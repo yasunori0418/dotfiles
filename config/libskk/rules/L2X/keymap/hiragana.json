@@ -1,0 +1,15 @@
+{
+  "include": [
+    "default/hiragana"
+  ],
+  "define": {
+    "keymap": {
+      ";": "start-preedit-no-delete",
+      "l": null,
+      "L": null,
+      "x": "set-input-mode-latin",
+      "X": "set-mode-wide-latin",
+      "\\": null
+    }
+  }
+}

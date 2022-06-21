@@ -1,0 +1,17 @@
+[Groups/0]
+# Group Name
+Name=デフォルト
+# Layout
+Default Layout=us
+# Default Input Method
+DefaultIM=skk
+
+[Groups/0/Items/0]
+# Name
+Name=skk
+# Layout
+Layout=us
+
+[GroupOrder]
+0=デフォルト
+
