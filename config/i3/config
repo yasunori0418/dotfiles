@@ -58,11 +58,11 @@ set $alt Mod1
 # bindsym $mod+i exec --no-startup-id sudo -E calamares
 
 # disable ime in alacritty.
-set $alacritty XMODIFIERS=alacritty alacritty
+#set $alacritty XMODIFIERS=alacritty alacritty
+#bindsym $mod+Return exec --no-startup-id $alacritty
 
 # start a terminal
 #bindsym $mod+Return exec --no-startup-id kitty
-#bindsym $mod+Return exec --no-startup-id $alacritty
 bindsym $mod+Return exec --no-startup-id wezterm
 
 # take a screenshot
@@ -93,7 +93,7 @@ bindsym $mod+o exec --no-startup-id clipcat-menu remove
 bindsym $mod+Shift+f exec --no-startup-id thunar
 
 # power menu
-bindsym $mod+Shift+e exec --no-startup-id rofi -modi power:~/bin/rofi-power-menu -show power -font "HackGenNerd 16"
+bindsym $mod+Shift+e exec rofi -show power -font "HackGenNerd Console 16" -modi "power:~/bin/rofi-power-menu" -no-sidebar-mode
 
 # kill focused window
 # bindsym $alt+XF86LaunchB kill
