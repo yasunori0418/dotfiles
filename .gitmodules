@@ -1,0 +1,3 @@
+[submodule "config/libskk/rules/SKK_Keymap_L2X"]
+	path = config/libskk/rules/SKK_Keymap_L2X
+	url = git@github.com:yasunori-kirin0418/SKK_Keymap_L2X.git
