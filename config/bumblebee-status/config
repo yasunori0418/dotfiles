@@ -1,0 +1,19 @@
+[core]
+modules = title, cpu2, memory, nic, battery, date, time, arch_update, spacer:logo
+autohide = arch_update
+theme = nord-powerline
+
+[module-parameters]
+cpu2.interval = 5s
+cpu2.layout = cpu2.cpuload cpu2.coresload cpu2.temp
+cpu2.temp_pattern = temp1_input
+memory.interval = 10s
+battery.interval = 1m
+nic.states = ^down
+date.format = %Y/%m/%d - %a
+time.format = %H:%M:%S
+title.scroll = true
+title.scrolling.width = 32
+title.scrolling.makewide = true
+title.scrolling.bounce = true
+logo.text =   
