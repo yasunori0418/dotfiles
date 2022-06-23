@@ -8,6 +8,7 @@ cpu2.interval = 5s
 cpu2.layout = cpu2.cpuload cpu2.coresload cpu2.temp
 cpu2.temp_pattern = temp1_input
 memory.interval = 10s
+memory.format = {percent:05.02f}%
 battery.interval = 1m
 nic.states = ^down
 date.format = %Y/%m/%d - %a
