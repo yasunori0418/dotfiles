@@ -1,5 +1,5 @@
 configuration {
-  modi: [window, run, drun, filebrowser];
+  modi: [window, run, drun];
   font: "Cica 16";
   show-icons: true;
   icon-theme: "Nordzy-dark";
@@ -10,7 +10,7 @@ configuration {
   display-filebrowser: " Filebrowser";
   timeout {
       action: "kb-cancel";
-      delay:  10;
+      delay:  60;
   }
   filebrowser {
       directory: "$HOME";
