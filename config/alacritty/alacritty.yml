@@ -156,7 +156,7 @@ font:
     style: Bold Italic
 
   # Point size
-  size: 12.0
+  size: 10.0
 
   # Offset is the extra space around each character. `offset.y` can be thought
   # of as modifying the line spacing, and `offset.x` as modifying the letter
@@ -329,7 +329,7 @@ font:
 # }}}
 
 import:
-  - ~/.config/alacritty/colorscheme/duskfox.yml
+  - ~/.config/alacritty/colorscheme/nordfox.yml
 
 color:
   transparent_background_colors: true
@@ -392,7 +392,7 @@ cursor:
     #   - ▇ Block
     #   - _ Underline
     #   - | Beam
-    shape: Beam
+    shape: Block
 
     # Cursor blinking state
     #
