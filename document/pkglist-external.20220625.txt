@@ -1,0 +1,16 @@
+bumblebee-status
+clipcat
+google-chrome
+libsixel
+light-git
+nordic-darker-standard-buttons-theme
+nordic-darker-theme
+nordzy-cursors
+nordzy-icon-theme-git
+paru
+qt5-styleplugins
+rofi-power-menu
+slack-desktop
+ttf-cica
+ttf-font-icons
+ttf-hackgen
