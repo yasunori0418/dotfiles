@@ -92,6 +92,10 @@ else
     alias ll='ls -lG'
 fi
 
+if [[ $(command -v bat) ]]; then
+    alias bat='bat --theme Nord'
+fi
+
 # clearコマンドのalias関連
 alias c='clear'
 alias cc='c &&'
