@@ -172,6 +172,7 @@ for_window [class="Pavucontrol"]      floating enable border normal
 for_window [class="lsp-plugins"]      floating enable border normal
 for_window [class="Lxappearance"]     floating enable border normal
 for_window [class="Blueman-manager"]  floating enable border normal
+for_window [class="Xfce4-appfinder"]  floating enable border normal
 for_window [window_role="browser"]    move container to workspace $ws2, workspace $ws2, layout tabbed
 
 # reload the configuration file
