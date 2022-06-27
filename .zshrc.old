@@ -1,0 +1,288 @@
+# Start configuration added by Zim install {{{
+#
+# User configuration sourced by interactive shells
+#
+
+# -----------------
+# Zsh configuration
+# -----------------
+
+#
+# History
+#
+
+# Remove older command from the history if a duplicate is to be added.
+setopt HIST_IGNORE_ALL_DUPS
+
+#
+# Input/output
+#
+
+# Set editor default keymap to emacs (`-e`) or vi (`-v`)
+bindkey -e
+
+# Prompt for spelling correction of commands.
+#setopt CORRECT
+
+# Customize spelling correction prompt.
+#SPROMPT='zsh: correct %F{red}%R%f to %F{green}%r%f [nyae]? '
+
+# Remove path separator from WORDCHARS.
+WORDCHARS=${WORDCHARS//[\/]}
+
+# -----------------
+# Zim configuration
+# -----------------
+
+# Use degit instead of git as the default tool to install and update modules.
+#zstyle ':zim:zmodule' use 'degit'
+
+# --------------------
+# Module configuration
+# --------------------
+
+#
+# git
+#
+
+# Set a custom prefix for the generated aliases. The default prefix is 'G'.
+#zstyle ':zim:git' aliases-prefix 'g'
+
+#
+# input
+#
+
+# Append `../` to your input for each `.` you type after an initial `..`
+#zstyle ':zim:input' double-dot-expand yes
+
+#
+# termtitle
+#
+
+# Set a custom terminal title format using prompt expansion escape sequences.
+# See http://zsh.sourceforge.net/Doc/Release/Prompt-Expansion.html#Simple-Prompt-Escapes
+# If none is provided, the default '%n@%m: %~' is used.
+#zstyle ':zim:termtitle' format '%1~'
+
+#
+# zsh-autosuggestions
+#
+
+# Disable automatic widget re-binding on each precmd. This can be set when
+# zsh-users/zsh-autosuggestions is the last module in your ~/.zimrc.
+ZSH_AUTOSUGGEST_MANUAL_REBIND=1
+
+# Customize the style that the suggestions are shown with.
+# See https://github.com/zsh-users/zsh-autosuggestions/blob/master/README.md#suggestion-highlight-style
+#ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=242'
+
+#
+# zsh-syntax-highlighting
+#
+
+# Set what highlighters will be used.
+# See https://github.com/zsh-users/zsh-syntax-highlighting/blob/master/docs/highlighters.md
+ZSH_HIGHLIGHT_HIGHLIGHTERS=(main brackets)
+
+# Customize the main highlighter styles.
+# See https://github.com/zsh-users/zsh-syntax-highlighting/blob/master/docs/highlighters/main.md#how-to-tweak-it
+#typeset -A ZSH_HIGHLIGHT_STYLES
+#ZSH_HIGHLIGHT_STYLES[comment]='fg=242'
+
+# ------------------
+# Initialize modules
+# ------------------
+
+ZIM_HOME=${ZDOTDIR:-${HOME}}/.zim
+# Download zimfw plugin manager if missing.
+if [[ ! -e ${ZIM_HOME}/zimfw.zsh ]]; then
+  if (( ${+commands[curl]} )); then
+    curl -fsSL --create-dirs -o ${ZIM_HOME}/zimfw.zsh \
+        https://github.com/zimfw/zimfw/releases/latest/download/zimfw.zsh
+  else
+    mkdir -p ${ZIM_HOME} && wget -nv -O ${ZIM_HOME}/zimfw.zsh \
+        https://github.com/zimfw/zimfw/releases/latest/download/zimfw.zsh
+  fi
+fi
+# Install missing modules, and update ${ZIM_HOME}/init.zsh if missing or outdated.
+if [[ ! ${ZIM_HOME}/init.zsh -nt ${ZDOTDIR:-${HOME}}/.zimrc ]]; then
+  source ${ZIM_HOME}/zimfw.zsh init -q
+fi
+# Initialize modules.
+source ${ZIM_HOME}/init.zsh
+
+# ------------------------------
+# Post-init module configuration
+# ------------------------------
+
+#
+# zsh-history-substring-search
+#
+
+zmodload -F zsh/terminfo +p:terminfo
+# Bind ^[[A/^[[B manually so up/down works both before and after zle-line-init
+for key ('^[[A' '^P' ${terminfo[kcuu1]}) bindkey ${key} history-substring-search-up
+for key ('^[[B' '^N' ${terminfo[kcud1]}) bindkey ${key} history-substring-search-down
+for key ('k') bindkey -M vicmd ${key} history-substring-search-up
+for key ('j') bindkey -M vicmd ${key} history-substring-search-down
+unset key
+# }}} End configuration added by Zim install
+
+# Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
+# Initialization code that may require console input (password prompts, [y/n]
+# confirmations, etc.) must go above this block; everything else may go below.
+#if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
+#  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
+#fi
+
+#################################  HISTORY  #################################
+# history
+#HISTFILE=$HOME/.zsh_history     # 履歴を保存するファイル
+#HISTSIZE=100000                 # メモリ上に保存する履歴のサイズ
+#SAVEHIST=1000000                # 上述のファイルに保存する履歴のサイズ
+#
+## share .zshhistory
+#setopt inc_append_history       # 実行時に履歴をファイルにに追加していく
+#setopt share_history            # 履歴を他のシェルとリアルタイム共有する
+#
+#setopt hist_ignore_all_dups     # ヒストリーに重複を表示しない
+#setopt hist_save_no_dups        # 重複するコマンドが保存されるとき、古い方を削除する。
+#setopt extended_history         # コマンドのタイムスタンプをHISTFILEに記録する
+#setopt hist_expire_dups_first   # HISTFILEのサイズがHISTSIZEを超える場合は、最初に重複を削除します
+#
+#
+## enable completion
+#autoload -Uz compinit; compinit
+#
+#autoload -Uz colors; colors
+#
+#zmodload zsh/zpty
+#
+## Tabで選択できるように
+#zstyle ':completion:*:default' menu select=2
+#
+## 補完で大文字にもマッチ
+#zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}'
+#
+## ファイル補完候補に色を付ける
+#zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
+#
+## ディレクトリ名の補完で末尾の / を自動的に付加し、次の補完に備える
+#setopt auto_param_slash
+#
+## カッコを自動補完
+#setopt auto_param_keys
+#
+## ファイル名の展開でディレクトリにマッチした場合 末尾に / を付加
+#setopt mark_dirs
+#
+## 補完キー連打で順に補完候補を自動で補完
+#setopt auto_menu
+#
+## スペルミス訂正
+#setopt correct
+#
+## コマンドラインでも # 以降をコメントと見なす
+#setopt interactive_comments
+#
+## コマンドラインの引数で --prefix=/usr などの = 以降でも補完できる
+#setopt magic_equal_subst
+#
+## 語の途中でもカーソル位置で補完
+#setopt complete_in_word
+#
+## 日本語ファイル名を表示可能にする
+#setopt print_eight_bit
+#
+## ディレクトリ名だけでcdする
+#setopt auto_cd
+#
+## ビープ音を消す
+#setopt no_beep
+#
+## コマンドを途中まで入力後、historyから絞り込み
+#autoload -Uz history-search-end
+#zle -N history-beginning-search-backward-end history-search-end
+#zle -N history-beginning-search-forward-end history-search-end
+#bindkey "^P" history-beginning-search-backward-end
+#bindkey "^N" history-beginning-search-forward-end
+
+
+# lsコマンドのalias関連
+if [[ $(command -v exa) ]]; then
+    alias exa='exa --icons -F'
+    alias ls='exa'
+    alias la='exa -la --git'
+    alias lt='exa -T -L 3 -a -I ".git|.atom|.cache"'
+    alias ltl='lt --color=always | less -r'
+    alias lal='la --color=always | less -r'
+else
+    alias ls='ls --color=auto -G'
+    alias la='ls -lAG'
+    alias ll='ls -lG'
+fi
+
+if [[ $(command -v bat) ]]; then
+    alias bat='bat --theme Nord'
+fi
+
+# clearコマンドのalias関連
+alias c='clear'
+alias cc='c &&'
+
+# Neovimをnvで起動できるようにする
+if [[ $(command -v nvim) ]]; then
+    alias nv='nvim'
+fi
+
+if [[ $(command -v nvim-gtk) ]]; then
+    export NVIM_GTK_NO_WINDOW_DECORATION=1
+    alias gvim='nvim-gtk'
+fi
+
+# Alias of Nvui custom args.
+if [[ $(command -v nvui) ]]; then
+    alias nvui='nvui --ext_multigrid --ext_popupmenu --ext_cmdline --detached --'
+fi
+
+# Pyenv settings
+if [[ -d $HOME/.pyenv ]]; then
+  eval "$(pyenv init -)"
+fi
+
+#### Added by Zinit's installer
+#if [[ ! -f $HOME/.zinit/bin/zinit.zsh ]]; then
+#    print -P "%F{33}▓▒░ %F{220}Installing %F{33}DHARMA%F{220} Initiative Plugin Manager (%F{33}zdharma/zinit%F{220})…%f"
+#    command mkdir -p "$HOME/.zinit" && command chmod g-rwX "$HOME/.zinit"
+#    command git clone https://github.com/zdharma-continuum/zinit "$HOME/.zinit/bin" && \
+#        print -P "%F{33}▓▒░ %F{34}Installation successful.%f%b" || \
+#        print -P "%F{160}▓▒░ The clone has failed.%f%b"
+#fi
+#
+#source "$HOME/.zinit/bin/zinit.zsh"
+#autoload -Uz _zinit
+#(( ${+_comps} )) && _comps[zinit]=_zinit
+#
+#
+## 補完
+#zinit ice wait'!0' lucid atload'_zsh_autosuggest_start'
+#zinit light zsh-users/zsh-autosuggestions
+#
+## 補完強化
+#zinit ice wait'!0'
+#zinit light zsh-users/zsh-completions
+#
+## シンタックスハイライト
+#zinit ice wait'!0'
+#zinit light zdharma-continuum/fast-syntax-highlighting
+#
+## Ctrl+r でコマンド履歴を検索
+#zinit light zdharma-continuum/history-search-multi-word
+#
+#
+## PowerLevel10k
+#zinit ice depth=1
+#zinit light romkatv/powerlevel10k
+## To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
+#[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+
