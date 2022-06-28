@@ -167,15 +167,16 @@ bindsym $mod+Shift+0 move container to workspace number $ws10
 # }}}
 
 # software floating settings
-for_window [window_role="pop-up"]     floating enable border normal
-for_window [class="Pavucontrol"]      floating enable border normal
-for_window [class="lsp-plugins"]      floating enable border normal
-for_window [class="Lxappearance"]     floating enable border normal
-for_window [class="Blueman-manager"]  floating enable border normal
-for_window [class="Xfce4-appfinder"]  floating enable border normal
-for_window [window_role="browser"]    move container to workspace $ws2, workspace $ws2, layout tabbed
-for_window [class="discord"]          move container to workspace $ws3, workspace $ws3, layout tabbed
-for_window [class="Slack"]          move container to workspace $ws3, workspace $ws3, layout tabbed
+for_window [window_role="pop-up"]           floating enable border normal
+for_window [class="Pavucontrol"]            floating enable border normal
+for_window [class="lsp-plugins"]            floating enable border normal
+for_window [class="Lxappearance"]           floating enable border normal
+for_window [class="Blueman-manager"]        floating enable border normal
+for_window [class="Xfce4-appfinder"]        floating enable border normal
+for_window [class="Gnome-system-monitor"]   floating enable border normal
+for_window [window_role="browser"]          move container to workspace $ws2, workspace $ws2, layout tabbed
+for_window [class="discord"]                move container to workspace $ws3, workspace $ws3, layout tabbed
+for_window [class="Slack"]                  move container to workspace $ws3, workspace $ws3, layout tabbed
 
 # reload the configuration file
 bindsym $mod+Shift+c reload
