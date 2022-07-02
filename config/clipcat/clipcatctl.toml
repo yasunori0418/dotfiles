@@ -1,3 +1,0 @@
-server_host = '127.0.0.1'
-server_port = 45045
-log_level = 'INFO'
