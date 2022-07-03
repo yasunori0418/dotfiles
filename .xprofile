@@ -7,3 +7,6 @@ export XMODIFIERS=@im=fcitx
 export QT_QPA_PLATFORMTHEME='gtk2'
 
 export CM_LAUNCHER=rofi
+
+# Always use multigrid mode on neovide
+export NEOVIDE_MULTIGRID=neovide
