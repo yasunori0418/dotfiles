@@ -9,7 +9,7 @@ EnumerateSkipFirst=False
 1=Alt+grave
 
 [Hotkey/AltTriggerKeys]
-0=Shift_L
+0=Control+Control_R
 
 [Hotkey/EnumerateForwardKeys]
 0=Control+Shift_L
