@@ -14,7 +14,7 @@ let g:neovide_refresh_rate = 60
 "let g:neovide_fullscreen = v:true
 
 " Transparency background.
-let g:neovide_transparency=0.8
+"let g:neovide_transparency = 0.8
 
 " No idle
 let g:neovide_no_idle = v:true

@@ -164,6 +164,10 @@ if [[ $(command -v nvim) ]]; then
     alias nv='nvim'
 fi
 
+if [[ $(command -v neovide) ]]; then
+    alias neovide='neovide --multigrid'
+fi
+
 # Pyenv settings
 if [[ -d $HOME/.pyenv ]]; then
   eval "$(pyenv init -)"

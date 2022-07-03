@@ -6,7 +6,5 @@ export XMODIFIERS=@im=fcitx
 # Qt on Gtk+ 2 theme setting.
 export QT_QPA_PLATFORMTHEME='gtk2'
 
+# Clipmenu
 export CM_LAUNCHER=rofi
-
-# Always use multigrid mode on neovide
-export NEOVIDE_MULTIGRID=neovide
