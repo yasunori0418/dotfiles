@@ -64,7 +64,7 @@ DefaultPageSize=5
 # XKB オプションより優先する
 OverrideXkbOption=False
 # カスタム XKB オプション
-CustomXkbOption=ctrl:nocaps
+CustomXkbOption=ctrl:swapcaps
 # Force Enabled Addons
 EnabledAddons=
 # Force Disabled Addons
