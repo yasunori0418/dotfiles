@@ -1,9 +1,9 @@
 [[plugins]]
 repo = 'mattn/emmet-vim'
-on_ft = ['html', 'css']
+on_ft = ['html', 'css', 'php']
 hook_add = '''
   let g:user_emmet_install_global = 0
-  autocmd FileType html,css EmmetInstall
+  autocmd FileType html,css,php EmmetInstall
   let g:user_emmet_settings = {
     \ 'variables': {
       \ 'lang': "ja"
