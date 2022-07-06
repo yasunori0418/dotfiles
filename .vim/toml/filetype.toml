@@ -22,7 +22,12 @@ hook_add = '''
         \ ."\t<body>\n\t${child}|\n\t</body>\n"
         \ ."</html>",
         \ }
-      \ }
+      \ },
+      \ 'php': {
+        \ 'snippets': {
+          \ 'php:s': "<?php\n?>"
+          \ }
+        \ }
     \ }
 '''
 

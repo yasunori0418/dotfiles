@@ -106,6 +106,7 @@ let g:vim_indent_count = 0
 augroup filetypeIndent
     autocmd!
     autocmd FileType python setlocal tabstop=4 softtabstop=4 shiftwidth=4
+    autocmd FileType php setlocal tabstop=4 softtabstop=4 shiftwidth=4
 augroup END
 
 " }}}
