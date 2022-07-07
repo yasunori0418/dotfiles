@@ -98,6 +98,8 @@ bindsym $mod+Shift+$right  move right
 
 # Switch workspace
 bindsym $mod+Ctrl+$left   workspace prev
+bindsym $mod+Ctrl+$down   workspace prev
+bindsym $mod+Ctrl+$up     workspace next
 bindsym $mod+Ctrl+$right  workspace next
 
 # split in horizontal orientation
