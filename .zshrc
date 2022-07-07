@@ -165,7 +165,7 @@ if [[ $(command -v nvim) ]]; then
 fi
 
 if [[ $(command -v neovide) ]]; then
-    alias neovide='neovide --multigrid'
+    alias nvg='neovide --multigrid'
 fi
 
 # Pyenv settings
