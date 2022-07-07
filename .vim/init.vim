@@ -137,7 +137,7 @@ function! s:dein_check_uninstall() abort
   endif
 endfunction
 
-command! DeinRemove call s:dein_check_uninstall()
+command! DeinDelete call s:dein_check_uninstall()
 " }}}
 
 " ファイル形式別プラグインの有効
