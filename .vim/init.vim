@@ -12,7 +12,6 @@ let s:dein_repo = s:dein_dir . '/repos/github.com/Shougo/dein.vim'
 
 " }}}
 
-
 " vim settings directory. {{{
 
 " vim setting directory.
@@ -26,7 +25,6 @@ let s:toml_dir = g:base_dir ..'toml/'
 let s:toml_files = systemlist('ls ' .. s:toml_dir .. '*.toml')
 " }}}
 
-
 " dein installation check {{{
 
 if &runtimepath !~# '/dein.vim'
@@ -36,7 +34,6 @@ if &runtimepath !~# '/dein.vim'
   execute 'set runtimepath^=' . s:dein_repo
 endif
 " }}}
-
 
 " dein options {{{
 
@@ -55,7 +52,6 @@ else
 endif
 
 " }}}
-
 
 " Begin settings {{{
 if dein#min#load_state(s:dein_dir)
@@ -93,13 +89,11 @@ if dein#min#load_state(s:dein_dir)
 endif
 " }}}
 
-
 " Plugin installation check {{{
 if dein#check_install()
   call dein#install()
 endif
 " }}}
-
 
 " Check for plugin updates on github graphQL api.{{{
 function! s:dein_update() abort
@@ -114,7 +108,6 @@ endfunction
 
 command! DeinUpdate call s:dein_update()
 " }}}
-
 
 " dein.vim remove plugins.{{{
 function! s:dein_check_uninstall() abort
@@ -138,6 +131,10 @@ function! s:dein_check_uninstall() abort
 endfunction
 
 command! DeinDelete call s:dein_check_uninstall()
+" }}}
+
+" dein cache scripts cleanup {{{
+command! DeinRecache call dein#recache_runtimepath()
 " }}}
 
 " ファイル形式別プラグインの有効
