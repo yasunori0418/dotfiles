@@ -170,7 +170,7 @@ fi
 
 # Pyenv settings
 if [[ -d $HOME/.pyenv ]]; then
-  eval "$(pyenv init -)"
+    eval "$(pyenv init -)"
 fi
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
