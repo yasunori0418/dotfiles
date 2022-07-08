@@ -1,0 +1,10 @@
+[Unit]
+Description=shared deno server of denops.vim
+
+[Service]
+#Type=simple
+ExecStart=/usr/bin/deno run -A --allow-net --no-check %h/.cache/dein/repos/github.com/vim-denops/denops.vim/denops/@denops-private/cli.ts
+Restart=always
+
+[Install]
+WantedBy=defautl.target
