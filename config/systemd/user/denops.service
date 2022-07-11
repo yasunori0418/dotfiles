@@ -7,4 +7,4 @@ ExecStart=/usr/bin/deno run -A --allow-net --no-check %h/.cache/dein/repos/githu
 Restart=always
 
 [Install]
-WantedBy=defautl.target
+WantedBy=default.target
