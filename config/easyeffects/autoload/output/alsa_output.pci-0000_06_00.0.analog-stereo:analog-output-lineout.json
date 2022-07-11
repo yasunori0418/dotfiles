@@ -1,0 +1,6 @@
+{
+    "device": "alsa_output.pci-0000_06_00.0.analog-stereo",
+    "device-description": "Sound Core3D [Sound Blaster Recon3D / Z-Series] (SB1570 SB Audigy Fx) アナログステレオ",
+    "device-profile": "analog-output-lineout",
+    "preset-name": "eargasm_explosion"
+}
