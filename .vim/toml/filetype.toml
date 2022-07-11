@@ -25,7 +25,8 @@ hook_add = '''
       \ },
       \ 'php': {
         \ 'snippets': {
-          \ 'php:s': "<?php\n?>"
+          \ 'php:s': "<?php  ?>",
+          \ 'php:e': "<?=  ?>",
           \ }
         \ }
     \ }
