@@ -186,6 +186,7 @@ for_window [class="Gnome-system-monitor"]   floating enable border normal
 for_window [class="Peek"]                   floating enable border normal
 for_window [class="Solaar"]                 floating enable border normal
 for_window [class="Gufw.py"]                floating enable border normal
+for_window [class="easyeffects"]            floating enable border normal
 # }}}
 
 # Launch software in a specific workspace {{{
@@ -198,7 +199,6 @@ for_window [class="Slack"]                  move container to workspace $ws4, wo
 for_window [class="GitKraken"]              move container to workspace $ws5, workspace $ws5
 for_window [class="Thunar"]                 move container to workspace $ws6, workspace $ws6
 for_window [class="cantata"]                move container to workspace $ws7, workspace $ws7, layout tabbed
-for_window [class="easyeffects"]            move container to workspace $ws7, workspace $ws7, layout tabbed
 # }}}
 
 # reload the configuration file
