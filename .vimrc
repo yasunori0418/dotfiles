@@ -1,3 +1,6 @@
+if &compatible
+  set nocompatible
+endif
 
 " Editor-Settings{{{
 " Encoding{{{
@@ -106,7 +109,10 @@ let g:vim_indent_count = 0
 
 augroup filetypeIndent
     autocmd!
+    autocmd FileType html   setlocal tabstop=2 softtabstop=2 shiftwidth=2
+    autocmd FileType css    setlocal tabstop=2 softtabstop=2 shiftwidth=2
     autocmd FileType python setlocal tabstop=4 softtabstop=4 shiftwidth=4
+    autocmd FileType php    setlocal tabstop=4 softtabstop=4 shiftwidth=4
 augroup END
 
 " }}}
@@ -116,10 +122,10 @@ augroup END
 set laststatus=2
 
 " Command line completion.
-" set wildmenu
+set wildmenu
 
 " Command history.
-" set history=5000
+set history=5000
 " }}} 
 
 " Invisible characters{{{
@@ -140,5 +146,5 @@ xnoremap : ;
 inoremap jj <Esc>
 nnoremap <Space>w <Cmd>write<CR>
 
-filetype plugin on
+filetype plugin indent on
 syntax on
