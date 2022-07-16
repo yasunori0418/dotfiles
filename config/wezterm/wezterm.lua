@@ -67,7 +67,7 @@ wezterm.on("format-tab-title", function(tab, tabs, panes, config, hover, max_wid
 end)
 
 return {
-  use_ime = true, --vimで日本語入力するときは、skkeletonを使っているから問題無い
+  use_ime = false, --vimで日本語入力するときは、skkeletonを使っているから問題無い
 
   font = wezterm.font('Cica'),
   fot_size = 10.0,
