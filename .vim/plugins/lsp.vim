@@ -18,3 +18,12 @@ let g:lsp_document_code_action_signs_hint = {'text': ''}
 
 " let g:lsp_diagnostics_virtual_text_prefix = ''
 " let g:lsp_tree_incoming_prefix = ''
+"
+let g:lsp_log_file = ''
+"
+"let g:lsp_settings = {
+"  \ 'efm-langserver': {
+"    \ 'disabled': 0,
+"    \ 'allowlist': ['markdown'],
+"    \ }
+"  \ }
