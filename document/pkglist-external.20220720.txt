@@ -13,7 +13,6 @@ paru
 php80
 qt5-styleplugins
 rofi-power-menu
-rtl8812au-dkms-git
 slack-desktop
 ttf-cica
 ttf-font-icons

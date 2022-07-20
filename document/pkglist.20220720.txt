@@ -135,7 +135,6 @@ iempluginsuite
 imagemagick
 imagemagick-doc
 infamousplugins
-intel-ucode
 ir.lv2
 iwd
 jaaa
