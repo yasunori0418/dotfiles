@@ -10,7 +10,6 @@ nordzy-cursors
 nordzy-icon-theme-git
 nvui
 paru
-php80
 qt5-styleplugins
 rofi-power-menu
 slack-desktop
