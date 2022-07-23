@@ -2,7 +2,6 @@
 	name = yasunori-kirin0418
 	email = yasunori.kirin0418@gmail.com
 	signingkey = B171BF3CFEE141A6
-  signingkey = 73BC374CEC312FE9
 [color]
 	ui = auto
 	diff = auto
