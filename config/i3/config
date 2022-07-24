@@ -181,6 +181,7 @@ for_window [class="Pavucontrol"]            floating enable border normal
 for_window [class="lsp-plugins"]            floating enable border normal
 for_window [class="Lxappearance"]           floating enable border normal
 for_window [class="Blueman-manager"]        floating enable border normal
+for_window [class="Blueberry.py"]           floating enable border normal
 for_window [class="Xfce4-appfinder"]        floating enable border normal
 for_window [class="Gnome-system-monitor"]   floating enable border normal
 for_window [class="Peek"]                   floating enable border normal
