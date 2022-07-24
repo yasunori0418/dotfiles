@@ -8,6 +8,9 @@ fi
 # Stop Beep
 setopt no_beep
 
+# GPG key settings
+export GPG_TTY=$(tty)
+
 # Start configuration added by Zim install {{{
 #
 # User configuration sourced by interactive shells
