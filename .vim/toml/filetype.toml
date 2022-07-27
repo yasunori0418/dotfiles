@@ -51,3 +51,13 @@ hook_source = '''
 [[plugins]]
 repo = 'mattn/vim-maketable'
 on_ft = 'markdown'
+
+[[plugins]]
+repo = 'previm/previm'
+on_ft = 'markdown'
+hook_add = '''
+  let g:previm_open_cmd = 'chromium'
+'''
+hook_source = '''
+  let g:previm_enable_realtime = 1
+'''
