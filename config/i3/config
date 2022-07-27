@@ -145,7 +145,7 @@ set $ws4 "4| "
 set $ws5 "5| "
 set $ws6 "6| "
 set $ws7 "7| "
-set $ws8 "8"
+set $ws8 "8| "
 set $ws9 "9"
 set $ws10 "10"
 
@@ -200,6 +200,7 @@ for_window [class="Slack"]                  move container to workspace $ws4, wo
 for_window [class="GitKraken"]              move container to workspace $ws5, workspace $ws5
 for_window [class="Thunar"]                 move container to workspace $ws6, workspace $ws6
 for_window [class="cantata"]                move container to workspace $ws7, workspace $ws7, layout tabbed
+for_window [class="Mysql-workbench-bin"]    move container to workspace $ws8, workspace $ws8, layout tabbed
 # }}}
 
 # reload the configuration file
