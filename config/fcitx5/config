@@ -1,21 +1,26 @@
 [Hotkey]
 # トリガーキーを押すたびに切り替える
 EnumerateWithTriggerKeys=True
+# 次の入力メソッドに切り替える
+EnumerateForwardKeys=
+# 前の入力メソッドに切り替える
+EnumerateBackwardKeys=
 # 切り替え時は第1入力メソッドをスキップする
-EnumerateSkipFirst=False
+EnumerateSkipFirst=True
+# デフォルトの前ページ
+PrevPage=
+# デフォルトの次ページ
+NextPage=
+# デフォルトの前候補
+PrevCandidate=
+# デフォルトの次候補
+NextCandidate=
 
 [Hotkey/TriggerKeys]
-0=Control+space
-1=Alt+grave
+0=Shift+space
 
 [Hotkey/AltTriggerKeys]
 0=Control+Control_R
-
-[Hotkey/EnumerateForwardKeys]
-0=Control+Shift_L
-
-[Hotkey/EnumerateBackwardKeys]
-0=Control+Shift_R
 
 [Hotkey/EnumerateGroupForwardKeys]
 0=Super+space
@@ -24,22 +29,10 @@ EnumerateSkipFirst=False
 0=Shift+Super+space
 
 [Hotkey/ActivateKeys]
-0=Hangul_Hanja
+0=Alt+grave
 
 [Hotkey/DeactivateKeys]
-0=Hangul_Romaja
-
-[Hotkey/PrevPage]
-0=Up
-
-[Hotkey/NextPage]
-0=Down
-
-[Hotkey/PrevCandidate]
-0=Shift+Tab
-
-[Hotkey/NextCandidate]
-0=Tab
+0=Alt+grave
 
 [Hotkey/TogglePreedit]
 0=Control+Alt+P
