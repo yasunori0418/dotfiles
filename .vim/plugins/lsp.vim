@@ -21,9 +21,12 @@ let g:lsp_document_code_action_signs_hint = {'text': ''}
 "
 let g:lsp_log_file = ''
 "
-"let g:lsp_settings = {
-"  \ 'efm-langserver': {
-"    \ 'disabled': 0,
-"    \ 'allowlist': ['markdown'],
-"    \ }
-"  \ }
+let g:lsp_settings = {
+  \ 'efm-langserver': {
+    \ 'disabled': 0,
+    \ 'allowlist': ['markdown'],
+    \ }
+  \ }
+
+" Not show install server suggestion message.
+let g:lsp_settings_enable_suggestions = 0
