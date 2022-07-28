@@ -104,11 +104,12 @@ set softtabstop=2
 let g:vim_indent_count = 0
 
 augroup filetypeIndent
-    autocmd!
-    autocmd FileType html   setlocal tabstop=2 softtabstop=2 shiftwidth=2
-    autocmd FileType css    setlocal tabstop=2 softtabstop=2 shiftwidth=2
-    autocmd FileType python setlocal tabstop=4 softtabstop=4 shiftwidth=4
-    autocmd FileType php    setlocal tabstop=4 softtabstop=4 shiftwidth=4
+  autocmd!
+  autocmd FileType html   setlocal tabstop=2 softtabstop=2 shiftwidth=2
+  autocmd FileType css    setlocal tabstop=2 softtabstop=2 shiftwidth=2
+  autocmd FileType python setlocal tabstop=4 softtabstop=4 shiftwidth=4
+  autocmd FileType php    setlocal tabstop=4 softtabstop=4 shiftwidth=4
+  autocmd BufNewFile,BufRead *.blade.php set filetype=html
 augroup END
 
 " }}}
