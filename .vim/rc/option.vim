@@ -109,7 +109,6 @@ augroup filetypeIndent
   autocmd FileType css    setlocal tabstop=2 softtabstop=2 shiftwidth=2
   autocmd FileType python setlocal tabstop=4 softtabstop=4 shiftwidth=4
   autocmd FileType php    setlocal tabstop=4 softtabstop=4 shiftwidth=4
-  autocmd BufNewFile,BufRead *.blade.php set filetype=html
 augroup END
 
 " }}}
