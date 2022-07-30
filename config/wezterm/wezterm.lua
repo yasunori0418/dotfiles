@@ -70,7 +70,7 @@ return {
   use_ime = false, --vimで日本語入力するときは、skkeletonを使っているから問題無い
 
   font = wezterm.font('Cica'),
-  fot_size = 10.0,
+  font_size = 12.0,
   -- Must setting when tile window manager.
   adjust_window_size_when_changing_font_size = false,
 
