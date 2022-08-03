@@ -14,7 +14,7 @@ let g:lightline.colorscheme = 'nordfox'
 let g:lightline.active = {}
 let g:lightline.active.left = [
   \ ['mode', 'paste', 'skk_mode'], 
-  \ ['git_branch', 'filename', 'modified'],
+  \ ['git_branch', 'absolutepath', 'filename', 'modified'],
   \ ]
 let g:lightline.active.right = [
   \ ['percent', 'lsp_errors', 'lsp_warnings', 'lsp_ok'],
