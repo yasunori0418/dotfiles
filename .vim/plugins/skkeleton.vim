@@ -30,7 +30,7 @@ function! s:L2X_table() abort
 
   let s:disable_l_nexts = split('bcdfghjkmnpqrsvxzBCDFGHJKMNPQRSVXZ,./1234567890-+=`~;:[]{}()<>!@#$%^&*_\"', '\zs')
   call add(s:disable_l_nexts, "'")
-  call map(s:disable_l_nexts, {_, val -> 'l' .. val})
+  call map(s:disable_l_nexts, {_, val -> 'l' . val})
 
   for s:disable_l_next in s:disable_l_nexts
     let s:rom_table[s:disable_l_next] = ['', '']
