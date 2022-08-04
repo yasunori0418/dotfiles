@@ -32,7 +32,7 @@ exec_always --no-startup-id clipmenud
 exec --no-startup-id fcitx5
 exec --no-startup-id picom -b
 exec --no-startup-id thunar --daemon
-exec --no-startup-id feh --bg-scale ~/Pictures/Nordic-darker.jpg
+exec --no-startup-id feh --bg-scale ~/Pictures/wall_paper/Nordic-darker.jpg
 exec --no-startup-id xfce4-power-manager
 exec --no-startup-id wezterm
 
