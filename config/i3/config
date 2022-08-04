@@ -58,7 +58,7 @@ bindsym $mod+Shift+Return exec --no-startup-id $alacritty
 
 # Screenshot shortcut key
 #bindsym $mod+Shift+p exec --no-startup-id scrot ~/Pictures/%Y-%m-%d-%T-scrot.png
-bindsym $mod+Print exec --no-startup-id scrot ~/Pictures/%Y-%m-%d-%T-scrot.png
+bindsym $mod+Print exec --no-startup-id xfce4-screenshooter -f
 bindsym $mod+Shift+Print exec --no-startup-id xfce4-screenshooter -w
 bindsym $mod+Ctrl+Print exec --no-startup-id xfce4-screenshooter -r
 
