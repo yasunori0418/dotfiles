@@ -93,6 +93,9 @@ function! s:skkeleton_post() abort
   call ddc#custom#set_buffer(s:prev_buffer_config)
 endfunction
 
-autocmd User skkeleton-initialize-pre call s:skkeleton_init()
-autocmd User skkeleton-enable-pre call s:skkeleton_pre()
-autocmd User skkeleton-disable-pre call s:skkeleton_post()
+augroup skkeleton_autocmds
+  autocmd!
+  autocmd User skkeleton-initialize-pre call s:skkeleton_init()
+  autocmd User skkeleton-enable-pre call s:skkeleton_pre()
+  autocmd User skkeleton-disable-pre call s:skkeleton_post()
+augroup END
