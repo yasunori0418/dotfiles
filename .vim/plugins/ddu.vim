@@ -56,7 +56,7 @@ call ddu#custom#patch_local('dotfiles', {
     \ },
   \ },
   \ 'sourceOptions': {
-    \ 'file_rec': {'path': expand("~") .. '/dotfiles'},
+    \ 'file_rec': {'path': expand('~') . '/dotfiles'},
     \ },
   \ 'sources': [{'name': 'file_rec'}],
   \ })
@@ -68,7 +68,7 @@ call ddu#custom#patch_local('project-list', {
     \ },
   \ },
   \ 'sourceOptions': {
-    \ 'file': {'path': expand("~") .. '/Project'},
+    \ 'file': {'path': expand('~') . '/Project'},
     \ },
   \ 'sources': [{'name': 'file'}],
   \ })
@@ -118,7 +118,6 @@ call ddu#custom#patch_local('register', {
 "     \     }],
 "     \ })
 
-autocmd FileType ddu-ff call s:ddu_ff_keybind()
 function! s:ddu_ff_keybind() abort
 
   " Edit file.
@@ -178,7 +177,6 @@ function! s:ddu_ff_keybind() abort
 
 endfunction
 
-autocmd FileType ddu-ff-filter call s:ddu_ff_filter_keybind()
 function! s:ddu_ff_filter_keybind() abort
 
   inoremap <buffer><silent> <CR>
@@ -196,3 +194,8 @@ function! s:ddu_ff_filter_keybind() abort
   \ <Esc><Cmd>close<CR>
 
 endfunction
+
+augroup ddu_settings
+  autocmd FileType ddu-ff-filter call s:ddu_ff_filter_keybind()
+  autocmd FileType ddu-ff call s:ddu_ff_keybind()
+augroup END
