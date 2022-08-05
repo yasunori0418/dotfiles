@@ -3,6 +3,8 @@
 " Use utf-8 to overall encoding.
 set encoding=utf-8
 
+scriptencoding utf-8
+
 " Use utf-8 when file write.
 set fileencoding=utf-8
 
@@ -103,14 +105,6 @@ set softtabstop=2
 
 let g:vim_indent_count = 0
 
-augroup filetypeIndent
-  autocmd!
-  autocmd FileType html   setlocal tabstop=2 softtabstop=2 shiftwidth=2
-  autocmd FileType css    setlocal tabstop=2 softtabstop=2 shiftwidth=2
-  autocmd FileType python setlocal tabstop=4 softtabstop=4 shiftwidth=4
-  autocmd FileType php    setlocal tabstop=4 softtabstop=4 shiftwidth=4
-augroup END
-
 " }}}
 
 " Statusline{{{
@@ -132,3 +126,20 @@ set list
 set listchars=tab:»-,space:･,trail:･,nbsp:%,eol:↲,extends:»,precedes:«
 " }}}
 
+" User settings auto command group. {{{
+
+augroup user_filename_filetype
+  autocmd!
+  autocmd BufNewFile,BufRead *.blade.* setlocal filetype=html
+  autocmd BufNewFile,BufRead .textlintrc setlocal filetype=json
+augroup END
+
+augroup user_filetype_indent
+  autocmd!
+  autocmd FileType html   setlocal tabstop=2 softtabstop=2 shiftwidth=2
+  autocmd FileType css    setlocal tabstop=2 softtabstop=2 shiftwidth=2
+  autocmd FileType python setlocal tabstop=4 softtabstop=4 shiftwidth=4
+  autocmd FileType php    setlocal tabstop=4 softtabstop=4 shiftwidth=4
+augroup END
+
+" }}}
