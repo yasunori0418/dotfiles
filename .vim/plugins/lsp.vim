@@ -1,14 +1,14 @@
 " Performance improvements using lua.
-"let g:lsp_use_lua = v:true
+let g:lsp_use_lua = v:true
 
 " enable signs
-"let g:lsp_signs_enabled = 1
+let g:lsp_signs_enabled = 1
 
 " Not use virtual text.
 "let g:lsp_diagnostics_virtual_text_enabled = 0
 
 " Use echo from cmdline.
-"let g:lsp_diagnostics_echo_cursor = 1
+let g:lsp_diagnostics_echo_cursor = 1
 
 " diagnostics signs
 "let g:lsp_diagnostics_signs_error = {'text': '✗'}
@@ -35,7 +35,7 @@ if efm_langserver_settings#config_enable()
   let s:efm_args = extend(s:efm_args, ['-c', efm_langserver_settings#config_path()])
 endif
 
-let g:efm_langserver_settings#debug = 5
+"let g:efm_langserver_settings#debug = 5
 
 if efm_langserver_settings#debug_enable()
   let s:efm_args = extend(s:efm_args, ['-logfile', efm_langserver_settings#debug_path()])
