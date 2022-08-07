@@ -1,0 +1,11 @@
+{
+  "plugins": {
+    "prefix": "plugins",
+    "body": [
+      "[[plugins]]",
+      "repo = '${VIM:getreg('+')}'",
+      "$1"
+    ],
+    "description": "dark plugin manager of vim."
+  }
+}
