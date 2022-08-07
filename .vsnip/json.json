@@ -10,7 +10,7 @@
       "\t\t\"${3:contents}\"$4",
       "\t],",
       "\t\"description\": \"${5:description}\"",
-      "}$6"
+      "}$0"
     ],
     "description": "snippet template"
   },
@@ -18,7 +18,7 @@
     "scope": "json",
     "prefix": ["body", "b"],
     "body": [
-      ",\n\"${1:contents}\"$2"
+      ",\n\"${1:contents}\"$0"
     ],
     "description": "add contents line"
   }

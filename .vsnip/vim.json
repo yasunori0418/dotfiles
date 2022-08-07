@@ -4,7 +4,7 @@
     "prefix": "if",
     "body": [
       "if ${1:condition}",
-      "\t${2:target}",
+      "\t${0:target}",
       "endif"
     ],
     "description": "if ~ endif"
@@ -16,7 +16,7 @@
       "if ${1:condition}",
       "\t${2:target}",
       "else",
-      "\t${3:target}",
+      "\t${0:target}",
       "endif"
     ],
     "description": "if ~ else ~ endif"
@@ -30,7 +30,7 @@
       "elseif ${3:condition}",
       "\t${4:target}",
       "else",
-      "\t${4:target}",
+      "\t${0:target}",
       "endif"
     ],
     "description": "if ~ elseif ~ else ~ endif"
@@ -39,8 +39,8 @@
     "scope": "vim",
     "prefix": "for",
     "body": [
-      "for ${1:var} in ${2:list}",
-      "\t${3:target}",
+      "for ${2:var} in ${1:list}",
+      "\t${0:target}",
       "endfor"
     ],
     "description": "for in endfor"
@@ -50,7 +50,7 @@
     "prefix": "while",
     "body": [
       "while ${1:condition}",
-      "\t${2:target}",
+      "\t${0:target}",
       "endwhile"
     ],
     "description": "while ~ endwhile"
@@ -60,7 +60,7 @@
     "prefix": "func",
     "body": [
       "function! ${1:func_name}(${2:arg}) abort",
-      "\t${3:target}",
+      "\t${0:target}",
       "endfunction"
     ],
     "description": "function endfunctioin"
@@ -72,7 +72,7 @@
       "try",
       "\t${1:target}",
       "catch /${2:pattern}/",
-      "\t${3:handling}",
+      "\t${0:handling}",
       "endtry"
     ],
     "description": "try catch endtry"
@@ -84,24 +84,16 @@
       "try",
       "\t${1:target}",
       "finally",
-      "\t${2:handling}",
+      "\t${0:handling}",
       "endtry"
     ],
     "description": "try finally endtry"
-  },
-  "catch_pattern": {
-    "scope": "vim",
-    "prefix": "catch",
-    "body": [
-      "catch /${1:pattern${2|empty, E484, Vim(cmdname)|}}/"
-    ],
-    "description": "catch /pattern/"
   },
   "echomsg": {
     "scope": "vim",
     "prefix": "log",
     "body": [
-      "echomsg '${1:target}'"
+      "echomsg '${0:target}'"
     ],
     "description": "leave in log"
   },
@@ -109,7 +101,7 @@
     "scope": "vim",
     "prefix": "cmd",
     "body": [
-      "commnd! ${1:cmd_name} call ${2:func_name}"
+      "commnd! ${1:cmd_name} call ${0:func_name}"
     ],
     "description": "Make command"
   },
@@ -119,7 +111,7 @@
     "body": [
       "augroup ${1:augroup_name}",
       "\tautocmd!",
-      "\tautocmd ${2:event}",
+      "\tautocmd ${0:event}",
       "augroup END"
     ],
     "description": "augroup"
@@ -128,7 +120,7 @@
     "scope": "vim",
     "prefix": "autocmd",
     "body": [
-      "\tautocmd ${1:event}"
+      "\tautocmd ${0:event}"
     ],
     "description": "autocmd"
   },
@@ -137,7 +129,7 @@
     "prefix": "lua",
     "body": [
       "lua <<EOF",
-      "${1:lua_lang}",
+      "${0:lua_lang}",
       "EOF"
     ],
     "description": "lua inline code"
