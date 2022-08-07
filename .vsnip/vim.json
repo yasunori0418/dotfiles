@@ -120,7 +120,7 @@
       "augroup ${1:augroup_name}",
       "\tautocmd!",
       "\tautocmd ${2:event}",
-      "augroup END"j
+      "augroup END"
     ],
     "description": "augroup"
   },
