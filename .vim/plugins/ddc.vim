@@ -1,4 +1,4 @@
-call ddc#custom#patch_global('sources', ['around', 'file', 'rg'])
+call ddc#custom#patch_global('sources', ['vsnip', 'around', 'file', 'rg'])
 
 " ddc source settings. {{{
 call ddc#custom#patch_global('sourceOptions', {
@@ -75,12 +75,12 @@ call ddc#custom#patch_global('sourceParams', {
 
 " filetype settings of ddc-sources. {{{
 
-call ddc#custom#patch_filetype('python', 'sources',
+call ddc#custom#patch_filetype(['python', 'php'], 'sources',
   \ ['vim-lsp', 'vsnip', 'around', 'file', 'rg'],
   \ )
 
 call ddc#custom#patch_filetype(['toml', 'vim'], 'sources',
-  \ ['necovim', 'around', 'vsnip', 'file', 'rg'],
+  \ ['necovim', 'vsnip', 'around', 'file', 'rg'],
   \ )
 
 " call ddc#custom#patch_filetype(['deol', 'zsh'], 'sources', 
