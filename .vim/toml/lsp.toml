@@ -26,7 +26,7 @@ depends = ['vim-lsp']
 [[plugins]]
 repo = 'mattn/vim-lsp-settings'
 depends = ['vim-efm-langserver-settings']
-on_ft = ['python', 'markdown', 'php', 'vim']
+on_ft = ['python', 'markdown', 'php', 'vim', 'lua']
 hook_source = '''
   source ~/dotfiles/.vim/plugins/lsp.vim
 '''

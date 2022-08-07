@@ -75,7 +75,7 @@ call ddc#custom#patch_global('sourceParams', {
 
 " filetype settings of ddc-sources. {{{
 
-call ddc#custom#patch_filetype(['python', 'php'], 'sources',
+call ddc#custom#patch_filetype(['python', 'php', 'lua'], 'sources',
   \ ['vim-lsp', 'vsnip', 'around', 'file', 'rg'],
   \ )
 
