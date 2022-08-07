@@ -48,7 +48,7 @@ hook_source = '''
 '''
 
 [[plugins]] # Translate, Japanese to English
-repo = 'skanehira/translate.vim'
+repo = 'skanehira/denops-translate.vim'
 on_cmd = 'Translate'
 hook_add = '''
   nnoremap [trans] <Nop>
@@ -56,14 +56,6 @@ hook_add = '''
   nnoremap [trans]e <Cmd>Translate<CR>
   nnoremap [trans]j <Cmd>Translate!<CR>
 '''
-hook_source = '''
-  " Pop up the translated content
-  let g:translate_popup_window = 1
-'''
-
-#[[plugins]]
-#repo = 'skanehira/denops-translate.vim'
-#on_cmd = 'Translate'
 
 [[plugins]] # Preview of replacement results
 repo = 'markonm/traces.vim'
