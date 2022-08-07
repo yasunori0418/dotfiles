@@ -1,0 +1,25 @@
+{
+  "tmp": {
+    "scope": "json",
+    "prefix": ["tmp", "t"],
+    "body": [
+      ",\n\"${1:snippet_name}\": {",
+      "\t\"scope\": \"$TM_FILENAME_BASE\",",
+      "\t\"prefix\": \"${2:trigger}\",",
+      "\t\"body\": [",
+      "\t\t\"${3:contents}\"$4",
+      "\t],",
+      "\t\"description\": \"${5:description}\"",
+      "}$6"
+    ],
+    "description": "snippet template"
+  },
+  "body": {
+    "scope": "json",
+    "prefix": ["body", "b"],
+    "body": [
+      ",\n\"${1:contents}\"$2"
+    ],
+    "description": "add contents line"
+  }
+}
