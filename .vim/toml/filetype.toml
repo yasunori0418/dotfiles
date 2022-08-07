@@ -21,16 +21,16 @@ hook_add = '''
         \ ."\t</head>\n"
         \ ."\t<body>\n\t${child}|\n\t</body>\n"
         \ ."</html>",
-        \ 'laravel:c': "{{ | }}",
-        \ 'laravel:e': "{!! | !!}",
+        \ 'lrl:c': "{{ | }}",
+        \ 'lrl:e': "{!! | !!}",
         \ }
       \ },
       \ 'php': {
         \ 'snippets': {
           \ 'php:s': "<?php | ?>",
           \ 'php:e': "<?= | ?>",
-          \ 'laravel:c': "{{ | }}",
-          \ 'laravel:e': "{!! | !!}",
+          \ 'lrl:c': "{{ | }}",
+          \ 'lrl:e': "{!! | !!}",
           \ }
         \ }
     \ }
