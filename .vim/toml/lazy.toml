@@ -57,20 +57,9 @@ hook_add = '''
   nnoremap [trans]j <Cmd>Translate!<CR>
 '''
 
-[[plugins]] # Preview of replacement results
-repo = 'markonm/traces.vim'
-on_event= 'CmdlineEnter'
-
 [[plugins]]
 repo = 'lambdalisue/suda.vim'
 on_cmd = ['SudaRead', 'SudaWrite']
-
-[[plugins]]
-repo = 'majutsushi/tagbar'
-on_cmd = 'TagbarToggle'
-hook_add = '''
-  nmap <F8> :TagbarToggle<CR>
-'''
 
 [[plugins]]
 repo = 'Shougo/defx.nvim'
@@ -235,18 +224,6 @@ hook_source = '''
 [[plugins]]
 repo = 'thinca/vim-quickrun'
 on_cmd = 'QuickRun'
-
-#[[plugins]]
-#repo = 'Shougo/neosnippet'
-#on_event = 'InsertEnter'
-#hook_source = '''
-#  source ~/dotfiles/.vim/plugins/neosnippet.vim
-#'''
-#on_ft = 'snippet'
-#depends = ['neosnippet-snippets']
-#
-#[[plugins]]
-#repo = 'Shougo/neosnippet-snippets'
 
 [[plugins]]
 repo = 'previm/previm'
