@@ -12,6 +12,8 @@ hook_add = '''
   source ~/dotfiles/.vim/plugins/cmddc.vim
 '''
 
+# ddc-source {{{
+
 [[plugins]]
 repo = 'Shougo/ddc-around'
 on_source = 'ddc.vim'
@@ -19,18 +21,6 @@ on_source = 'ddc.vim'
 [[plugins]]
 repo = 'Shougo/ddc-line'
 on_source = 'ddc.vim'
-
-[[plugins]]
-repo = 'Shougo/ddc-matcher_head'
-on_source ='ddc.vim'
-
-[[plugins]]
-repo = 'Shougo/ddc-matcher_length'
-on_source ='ddc.vim'
-
-[[plugins]]
-repo = 'Shougo/ddc-sorter_rank'
-on_source ='ddc.vim'
 
 [[plugins]]
 repo = 'LumaKernel/ddc-file'
@@ -59,3 +49,36 @@ on_source = 'ddc.vim'
 [[plugins]]
 repo = 'delphinus/ddc-shell-history'
 on_source = 'ddc.vim'
+
+# }}}
+
+# ddc-filter {{{
+
+[[plugins]]
+repo = 'Shougo/ddc-matcher_head'
+on_source ='ddc.vim'
+
+[[plugins]]
+repo = 'Shougo/ddc-matcher_length'
+on_source ='ddc.vim'
+
+[[plugins]]
+repo = 'Shougo/ddc-sorter_rank'
+on_source ='ddc.vim'
+
+# }}}
+
+# Snippet plugins. {{{
+
+[[plugins]]
+repo = 'hrsh7th/vim-vsnip'
+hook_source = '''
+  source ~/dotfiles/.vim/plugins/vsnip.vim
+'''
+
+[[plugins]]
+repo = 'hrsh7th/vim-vsnip-integ'
+depends = 'vim-vsnip'
+on_source = 'ddc.vim'
+
+# }}}

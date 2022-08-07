@@ -17,8 +17,8 @@ call ddc#custom#patch_global('sourceOptions', {
     \ 'minAutoCompleteLength': 1000,
     \ 'forceCompletionPattern': '\S/\S*',
     \ },
-  \ 'neosnippet': {
-    \ 'mark': 'ns',
+  \ 'vsnip': {
+    \ 'mark': 'vsnip',
     \ 'dup': v:true,
     \ },
   \ 'vim-lsp': {
@@ -76,11 +76,11 @@ call ddc#custom#patch_global('sourceParams', {
 " filetype settings of ddc-sources. {{{
 
 call ddc#custom#patch_filetype('python', 'sources',
-  \ ['vim-lsp', 'neosnippet', 'around', 'file', 'rg'],
+  \ ['vim-lsp', 'vsnip', 'around', 'file', 'rg'],
   \ )
 
 call ddc#custom#patch_filetype(['toml', 'vim'], 'sources',
-  \ ['necovim', 'around', 'neosnippet', 'file', 'rg'],
+  \ ['necovim', 'around', 'vsnip', 'file', 'rg'],
   \ )
 
 " call ddc#custom#patch_filetype(['deol', 'zsh'], 'sources', 

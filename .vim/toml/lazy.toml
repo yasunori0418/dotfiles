@@ -244,17 +244,17 @@ hook_source = '''
 repo = 'thinca/vim-quickrun'
 on_cmd = 'QuickRun'
 
-[[plugins]]
-repo = 'Shougo/neosnippet'
-on_event = 'InsertEnter'
-hook_source = '''
-  source ~/dotfiles/.vim/plugins/neosnippet.vim
-'''
-on_ft = 'snippet'
-depends = ['neosnippet-snippets']
-
-[[plugins]]
-repo = 'Shougo/neosnippet-snippets'
+#[[plugins]]
+#repo = 'Shougo/neosnippet'
+#on_event = 'InsertEnter'
+#hook_source = '''
+#  source ~/dotfiles/.vim/plugins/neosnippet.vim
+#'''
+#on_ft = 'snippet'
+#depends = ['neosnippet-snippets']
+#
+#[[plugins]]
+#repo = 'Shougo/neosnippet-snippets'
 
 [[plugins]]
 repo = 'previm/previm'
