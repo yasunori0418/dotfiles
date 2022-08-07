@@ -3,7 +3,7 @@
     "prefix": "plugins",
     "body": [
       "[[plugins]]",
-      "repo = '${VIM:getreg('+')}'",
+      "repo = '$CLIPBOARD'",
       "$1"
     ],
     "description": "dark plugin manager of vim."
