@@ -1,3 +1,6 @@
 [submodule "config/libskk/rules/SKK_Keymap_L2X"]
 	path = config/libskk/rules/SKK_Keymap_L2X
 	url = git@github.com:yasunori-kirin0418/SKK_Keymap_L2X.git
+[submodule ".vsnip"]
+	path = .vsnip
+	url = git@github.com:rafamadriz/friendly-snippets.git
