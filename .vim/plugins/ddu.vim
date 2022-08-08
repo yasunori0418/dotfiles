@@ -1,14 +1,14 @@
+" Global source Options {{{
 call ddu#custom#patch_global({
-  \ 'ui': 'ff',
-    \ 'uiParams': {
-      \ 'ff': {
-      \ 'previewFloating': v:true,
-      \ 'split': 'floating',
-      \ 'prompt': '',
-      \ 'filterSplitDirection': 'floating',
-      \ 'displaySourceName': 'long',
-      \ },
+  \ 'uiParams': {
+    \ 'ff': {
+    \ 'previewFloating': v:true,
+    \ 'split': 'floating',
+    \ 'prompt': '',
+    \ 'filterSplitDirection': 'floating',
+    \ 'displaySourceName': 'long',
     \ },
+  \ },
   \ 'sourceOptions': {
     \ '_': {
       \ 'ignoreCase': v:true,
@@ -37,7 +37,11 @@ call ddu#custom#patch_global({
     \ },
   \ })
 
+" }}}
+
+"ui fuzzy finder presets {{{
 call ddu#custom#patch_local('current', {
+  \ 'ui': 'ff',
   \ 'uiParams': {
     \ 'ff': {
     \ 'startFilter': v:true,
@@ -50,6 +54,7 @@ call ddu#custom#patch_local('current', {
   \ })
 
 call ddu#custom#patch_local('dotfiles', {
+  \ 'ui': 'ff',
   \ 'uiParams': {
     \ 'ff': {
     \ 'startFilter': v:true,
@@ -62,6 +67,7 @@ call ddu#custom#patch_local('dotfiles', {
   \ })
 
 call ddu#custom#patch_local('project-list', {
+  \ 'ui': 'ff',
   \ 'uiParams': {
     \ 'ff': {
     \ 'startFilter': v:true,
@@ -74,6 +80,7 @@ call ddu#custom#patch_local('project-list', {
   \ })
 
 call ddu#custom#patch_local('help', {
+  \ 'ui': 'ff',
   \ 'uiParams': {
     \ 'ff': {
     \ 'startFilter': v:true,
@@ -83,10 +90,12 @@ call ddu#custom#patch_local('help', {
   \ })
 
 call ddu#custom#patch_local('buffer', {
+  \ 'ui': 'ff',
   \ 'sources': [{'name': 'buffer'}],
   \ })
 
 call ddu#custom#patch_local('plugin-list', {
+  \ 'ui': 'ff',
   \ 'uiParams': {
     \ 'ff': {
     \ 'startFilter': v:true,
@@ -96,6 +105,7 @@ call ddu#custom#patch_local('plugin-list', {
   \ })
 
 call ddu#custom#patch_local('home', {
+  \ 'ui': 'ff',
   \ 'uiParams': {
     \ 'ff': {
     \ 'startFilter': v:true,
@@ -118,8 +128,10 @@ call ddu#custom#patch_local('register', {
 "     \     }],
 "     \ })
 
-function! s:ddu_ff_keybind() abort
+" }}}
 
+" fuzzy finder keybinds {{{
+function! s:ddu_ff_keybind() abort
   " Edit file.
   nnoremap <buffer><silent> <CR>
   \ <Cmd>call ddu#ui#ff#do_action('itemAction')<CR>
@@ -174,11 +186,11 @@ function! s:ddu_ff_keybind() abort
   nnoremap <silent><buffer><expr> k
   \ line('.') == 1 ?
     \ 'G' : 'k'
-
 endfunction
+" }}}
 
+" fuzzy finder filter keybinds {{{
 function! s:ddu_ff_filter_keybind() abort
-
   inoremap <buffer><silent> <CR>
   \ <Esc><Cmd>close<CR>
   inoremap <buffer><silent> jj
@@ -192,10 +204,13 @@ function! s:ddu_ff_filter_keybind() abort
   \ <Cmd>close<CR>
   nnoremap <buffer><silent> <Esc>
   \ <Esc><Cmd>close<CR>
-
 endfunction
+" }}}
 
+" ddu auto commands {{{
 augroup ddu_settings
+  autocmd!
   autocmd FileType ddu-ff-filter call s:ddu_ff_filter_keybind()
   autocmd FileType ddu-ff call s:ddu_ff_keybind()
 augroup END
+" }}}
