@@ -18,6 +18,7 @@
 	default = current
 [alias]
 	lol = log --graph --all --abbrev-commit --pretty=format:'%C(bold yellow)%h%Creset -> %s%C(auto)%d%Creset %C(dim green)(%cr)%Creset%C(dim blue)<%an>%Creset'
+	root = !git rev-parse --show-superproject-working-tree --show-toplevel | head -1
 [merge]
 	ff = false
 [commit]
