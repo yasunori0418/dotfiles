@@ -17,7 +17,7 @@ PrevCandidate=
 NextCandidate=
 
 [Hotkey/TriggerKeys]
-0=Shift+space
+0=Control+space
 
 [Hotkey/AltTriggerKeys]
 0=Control+Control_R
@@ -29,7 +29,7 @@ NextCandidate=
 0=Shift+Super+space
 
 [Hotkey/ActivateKeys]
-0=Alt+grave
+0=Alt+backslash
 
 [Hotkey/DeactivateKeys]
 0=Alt+grave
