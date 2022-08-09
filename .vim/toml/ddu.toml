@@ -1,25 +1,30 @@
+## ddu core plugins {{{
 [[plugins]]
 repo = 'Shougo/ddu.vim'
 depends = 'denops.vim'
 on_func = 'ddu#start()'
 hook_add = '''
-  nnoremap [ddu] <Nop>
-  nmap <Space>d [ddu]
-  nnoremap [ddu]a <Cmd>call ddu#start({'name': 'current'})<CR>
-  nnoremap [ddu]d <Cmd>call ddu#start({'name': 'dotfiles'})<CR>
-  nnoremap [ddu]h <Cmd>call ddu#start({'name': 'help'})<CR>
-  nnoremap [ddu]b <Cmd>call ddu#start({'name': 'buffer'})<CR>
-  nnoremap [ddu]P <Cmd>call ddu#start({'name': 'plugin-list'})<CR>
-  nnoremap [ddu]p <Cmd>call ddu#start({'name': 'project-list'})<CR>
-  nnoremap [ddu]~ <Cmd>call ddu#start({'name': 'home'})<CR>
-  nnoremap [ddu]r <Cmd>call ddu#start({'name': 'register'})<CR>
-  nnoremap [ddu]s <Cmd>call ddu#start({
-  \ 'name': 'search',
+  nnoremap [ff] <Nop>
+  nmap <Space>d [ff]
+  nnoremap [ff]a <Cmd>call ddu#start({'name': 'current-ff'})<CR>
+  nnoremap [ff]d <Cmd>call ddu#start({'name': 'dotfiles-ff'})<CR>
+  nnoremap [ff]h <Cmd>call ddu#start({'name': 'help-ff'})<CR>
+  nnoremap [ff]b <Cmd>call ddu#start({'name': 'buffer-ff'})<CR>
+  nnoremap [ff]P <Cmd>call ddu#start({'name': 'plugin-list-ff'})<CR>
+  nnoremap [ff]p <Cmd>call ddu#start({'name': 'project-list-ff'})<CR>
+  nnoremap [ff]~ <Cmd>call ddu#start({'name': 'home-ff'})<CR>
+  nnoremap [ff]r <Cmd>call ddu#start({'name': 'register-ff'})<CR>
+  nnoremap [ff]s <Cmd>call ddu#start({
+  \ 'name': 'search-ff',
   \ 'sources': [{
-  \     'name': 'rg',
-  \     'params': {'input': input('Pattern: ')},
-  \     }],
+    \ 'name': 'rg',
+    \ 'params': {'input': input('Pattern: ')},
+    \ }],
   \ })<CR>
+
+  nnoremap [filer] <Nop>
+  nmap <Space>F [filer]
+  nnoremap [filer]a <Cmd>call ddu#start({'name': 'current-filer'})<CR>
 '''
 hook_source = '''
   source ~/dotfiles/.vim/plugins/ddu.vim
@@ -28,6 +33,12 @@ hook_source = '''
 [[plugins]]
 repo = 'Shougo/ddu-ui-ff'
 on_source = 'ddu.vim'
+
+[[plugins]]
+repo = 'Shougo/ddu-ui-filer'
+on_source = 'ddu.vim'
+
+## }}}
 
 ## ddu-kind {{{
 
@@ -40,7 +51,6 @@ repo = 'Shougo/ddu-kind-word'
 on_source = 'ddu.vim'
 
 ## }}}
-
 
 ## ddu-source {{{
 
@@ -74,7 +84,6 @@ on_source = 'ddu.vim'
 
 ## }}}
 
-
 ## ddu-filter {{{
 
 [[plugins]]
@@ -90,3 +99,11 @@ repo = 'Shougo/ddu-filter-matcher_relative'
 on_source = 'ddu.vim'
 
 ## }}}
+
+## ddu-column {{{
+
+[[plugins]]
+repo = 'Shougo/ddu-column-filename'
+on_source = 'ddu.vim'
+
+# }}}

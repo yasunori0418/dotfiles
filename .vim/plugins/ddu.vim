@@ -1,18 +1,37 @@
 " Global source Options {{{
 call ddu#custom#patch_global({
+  \ 'uiOptions': {
+    \ 'filer': {
+      \ 'toggle': v:true,
+      \ },
+    \ },
   \ 'uiParams': {
     \ 'ff': {
-    \ 'previewFloating': v:true,
-    \ 'split': 'floating',
-    \ 'prompt': '',
-    \ 'filterSplitDirection': 'floating',
-    \ 'displaySourceName': 'long',
-    \ },
+      \ 'previewFloating': v:true,
+      \ 'split': 'floating',
+      \ 'prompt': '',
+      \ 'filterSplitDirection': 'floating',
+      \ 'displaySourceName': 'long',
+      \ },
+    \ 'filer': {
+      \ 'split': 'vertical',
+      \ },
   \ },
   \ 'sourceOptions': {
     \ '_': {
       \ 'ignoreCase': v:true,
       \ 'matchers': [ 'matcher_substring' ],
+      \ },
+    \ 'file': {
+      \ 'matchers': [
+        \ 'matcher_substring',
+        \ 'matcher_hidden',
+        \ ],
+      \ },
+    \ 'file_rec': {
+      \ 'matchers': [
+        \ 'matcher_substring',
+        \ ],
       \ },
     \ 'dein': {
       \ 'defaultAction': 'cd',
@@ -21,8 +40,8 @@ call ddu#custom#patch_global({
       \ 'defaultAction': 'open',
       \ },
     \ },
-    \ 'kindOptions': {
-      \ 'file': {
+  \ 'kindOptions': {
+    \ 'file': {
       \ 'defaultAction': 'open',
       \ },
     \ 'action': {
@@ -35,25 +54,29 @@ call ddu#custom#patch_global({
       \ 'defaultAction': 'switch',
       \ },
     \ },
+  \ 'actionOptions': {
+    \ 'narrow': {
+      \ 'quit': v:false,
+      \ },
+    \ }
   \ })
 
 " }}}
 
-"ui fuzzy finder presets {{{
-call ddu#custom#patch_local('current', {
+" UI:ff presets {{{
+call ddu#custom#patch_local('current-ff', {
   \ 'ui': 'ff',
   \ 'uiParams': {
     \ 'ff': {
-    \ 'startFilter': v:true,
+      \ 'startFilter': v:true,
+      \ },
     \ },
-  \ },
   \ 'sources': [
-    \ {'name': 'file_rec'},
-    \ {'name': 'buffer'},
-    \ ],
+      \ {'name': 'file_rec'},
+      \ ],
   \ })
 
-call ddu#custom#patch_local('dotfiles', {
+call ddu#custom#patch_local('dotfiles-ff', {
   \ 'ui': 'ff',
   \ 'uiParams': {
     \ 'ff': {
@@ -61,12 +84,12 @@ call ddu#custom#patch_local('dotfiles', {
     \ },
   \ },
   \ 'sourceOptions': {
-    \ 'file_rec': {'path': expand('~') . '/dotfiles'},
+    \ 'file_rec': {'path': expand('~/dotfiles')},
     \ },
   \ 'sources': [{'name': 'file_rec'}],
   \ })
 
-call ddu#custom#patch_local('project-list', {
+call ddu#custom#patch_local('project-list-ff', {
   \ 'ui': 'ff',
   \ 'uiParams': {
     \ 'ff': {
@@ -74,12 +97,12 @@ call ddu#custom#patch_local('project-list', {
     \ },
   \ },
   \ 'sourceOptions': {
-    \ 'file': {'path': expand('~') . '/Project'},
+    \ 'file': {'path': expand('~/Project')},
     \ },
   \ 'sources': [{'name': 'file'}],
   \ })
 
-call ddu#custom#patch_local('help', {
+call ddu#custom#patch_local('help-ff', {
   \ 'ui': 'ff',
   \ 'uiParams': {
     \ 'ff': {
@@ -89,12 +112,12 @@ call ddu#custom#patch_local('help', {
   \ 'sources': [{'name': 'help'}],
   \ })
 
-call ddu#custom#patch_local('buffer', {
+call ddu#custom#patch_local('buffer-ff', {
   \ 'ui': 'ff',
   \ 'sources': [{'name': 'buffer'}],
   \ })
 
-call ddu#custom#patch_local('plugin-list', {
+call ddu#custom#patch_local('plugin-list-ff', {
   \ 'ui': 'ff',
   \ 'uiParams': {
     \ 'ff': {
@@ -104,7 +127,7 @@ call ddu#custom#patch_local('plugin-list', {
   \ 'sources': [{'name': 'dein'}],
   \ })
 
-call ddu#custom#patch_local('home', {
+call ddu#custom#patch_local('home-ff', {
   \ 'ui': 'ff',
   \ 'uiParams': {
     \ 'ff': {
@@ -117,7 +140,8 @@ call ddu#custom#patch_local('home', {
   \ 'sources': [{'name': 'file'}],
   \ })
 
-call ddu#custom#patch_local('register', {
+call ddu#custom#patch_local('register-ff', {
+  \ 'ui': 'ff',
   \ 'sources': [{'name': 'register'}],
   \ })
 
@@ -130,7 +154,7 @@ call ddu#custom#patch_local('register', {
 
 " }}}
 
-" fuzzy finder keybinds {{{
+" UI:ff keybinds {{{
 function! s:ddu_ff_keybind() abort
   " Edit file.
   nnoremap <buffer><silent> <CR>
@@ -187,9 +211,8 @@ function! s:ddu_ff_keybind() abort
   \ line('.') == 1 ?
     \ 'G' : 'k'
 endfunction
-" }}}
 
-" fuzzy finder filter keybinds {{{
+" UI:ff-filter keybinds
 function! s:ddu_ff_filter_keybind() abort
   inoremap <buffer><silent> <CR>
   \ <Esc><Cmd>close<CR>
@@ -205,6 +228,22 @@ function! s:ddu_ff_filter_keybind() abort
   nnoremap <buffer><silent> <Esc>
   \ <Esc><Cmd>close<CR>
 endfunction
+" }}}
+
+" UI:filer presets {{{
+
+call ddu#custom#patch_local('current-filer', {
+  \ 'ui': 'filer',
+  \ 'sources': [
+    \ {'name': 'file'}
+    \ ],
+  \ 'sourceOptions': {
+    \ '_': {
+      \ 'columns': ['filename'],
+      \ },
+    \ },
+  \ })
+
 " }}}
 
 " ddu auto commands {{{
