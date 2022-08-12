@@ -103,7 +103,7 @@ on_source = 'ddu.vim'
 ## ddu-column {{{
 
 [[plugins]]
-repo = 'Shougo/ddu-column-filename'
+repo = 'ryota2357/ddu-column-icon_filename'
 on_source = 'ddu.vim'
 
 # }}}
