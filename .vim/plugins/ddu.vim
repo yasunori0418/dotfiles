@@ -351,14 +351,17 @@ function! s:ddu_filer_keybind() abort
   nnoremap <buffer> *
     \ <Cmd>call ddu#ui#filer#do_action('toggleAllItems')<CR>
 
-nnoremap <buffer> >
-  \ <Cmd>call ddu#ui#filer#do_action('updateOptions', {
-    \ 'sourceOptions': {
-      \ 'file': {
-        \ 'matchers': ToggleHidden('file'),
-        \ },
-      \},
-    \})<CR>
+  nnoremap <buffer> >
+    \ <Cmd>call ddu#ui#filer#do_action('updateOptions', {
+      \ 'sourceOptions': {
+        \ 'file': {
+          \ 'matchers': ToggleHidden('file'),
+          \ },
+        \},
+      \})<CR>
+
+  nnoremap <buffer> <C-l>
+    \ <Cmd>call ddu#ui#filer#do_action('checkItems')<CR>
 
   nnoremap <buffer> q
     \ <Cmd>call ddu#ui#filer#do_action('quit')<CR>
@@ -436,6 +439,7 @@ augroup ddu_settings
   autocmd FileType ddu-ff-filter call s:ddu_ff_filter_keybind()
   autocmd FileType ddu-ff call s:ddu_ff_keybind()
   autocmd FileType ddu-filer call s:ddu_filer_keybind()
+  autocmd TabEnter,CursorHold,FocusGained <buffer> call ddu#ui#filer#do_action('checkItems')
 augroup END
 
 " }}}
