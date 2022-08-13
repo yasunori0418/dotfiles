@@ -23,7 +23,7 @@ hook_add = '''
   \ })<CR>
 
   nnoremap [filer] <Nop>
-  nmap <Space>F [filer]
+  nmap <Space>f [filer]
   nnoremap [filer]a <Cmd>call ddu#start({'name': 'current-filer'})<CR>
 '''
 hook_source = '''
