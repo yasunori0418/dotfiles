@@ -100,6 +100,10 @@ on_source = 'ddu.vim'
 repo = 'shun/ddu-source-rg'
 on_source = 'ddu.vim'
 
+[[plugins]]
+repo = 'matsui54/ddu-source-dein_update'
+on_source = 'ddu.vim'
+
 ## }}}
 
 ## ddu-filter {{{

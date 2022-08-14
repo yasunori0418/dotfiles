@@ -33,6 +33,14 @@ call ddu#custom#patch_global({
     \ 'help': {
       \ 'defaultAction': 'open',
       \ },
+    \ 'dein_update': {
+      \ 'matchers': ['matcher_dein_update'],
+      \ },
+    \ },
+  \ 'sourceParams': {
+    \ 'dein_update': {
+      \ 'useGraphQL': v:true,
+      \ },
     \ },
   \ 'kindOptions': {
     \ 'file': {
@@ -47,9 +55,14 @@ call ddu#custom#patch_global({
     \ 'deol': {
       \ 'defaultAction': 'switch',
       \ },
+    \ 'dein_update': {
+      \ 'defaultAction': 'viewDiff',
+      \ },
     \ },
   \ 'actionOptions': {
     \ 'narrow': {'quit': v:false},
+    \ 'echo': {'quit': v:false},
+    \ 'echoDiff': {'quit': v:false},
     \ },
   \ 'columnParams': {
     \ 'icon_filename': {
@@ -142,6 +155,11 @@ call ddu#custom#patch_local('home-ff', {
 call ddu#custom#patch_local('register-ff', {
   \ 'ui': 'ff',
   \ 'sources': [{'name': 'register'}],
+  \ })
+
+call ddu#custom#patch_local('dein_update', {
+  \ 'ui': 'ff',
+  \ 'sources': [{'name': 'dein_update'}],
   \ })
 
 " }}}
