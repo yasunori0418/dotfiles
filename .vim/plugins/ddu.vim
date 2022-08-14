@@ -233,6 +233,13 @@ call ddu#custom#patch_local('current-filer', {
     \ },
   \ })
 
+call ddu#custom#patch_local('project_root-filer', {
+  \ 'ui': 'filer',
+  \ 'sources': [{'name': 'file'}],
+  \ 'actionOptions': {
+    \ 'narrow': {'quit': v:false},
+    \ },
+  \ })
 " }}}
 
 " UI:filer keybinds {{{
@@ -300,7 +307,7 @@ function! s:ddu_filer_keybind() abort
   " Yank path the file or directory.
   nnoremap <buffer> y
     \ <Cmd>call ddu#ui#filer#do_action('itemAction', {'name': 'yank'})<CR>
-    \ <Cmd>echo 'Yanke path the ' . '"' . getreg('+') . '"'<CR>
+    \ <Cmd>echo 'Yanke path the "' . getreg('+') . '"'<CR>
 
   " Change current directory.
   nnoremap <buffer> c
@@ -374,7 +381,7 @@ endfunction
 
 " }}}
 
-" Custom keybinds functions for UI:filer. {{{
+" UI:filer functions of custom keybind. {{{
 " Moving directory paths. {{{
 let g:ddu_filer_prev_dir = []
 function! Filer_parent_dir() abort
