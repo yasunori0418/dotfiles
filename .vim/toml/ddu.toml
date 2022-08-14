@@ -41,6 +41,8 @@ nnoremap [filer]r <Cmd>call ddu#start({
     \ 'file': {'path': systemlist('git root')[0]},
     \ },
   \ })<CR>
+nnoremap [filer]d <Cmd>call ddu#start({'name': 'dotfiles-filer'})<CR>
+nnoremap [filer]h <Cmd>call ddu#start({'name': 'home-filer'})<CR>
 '''
 hook_source = '''
 source ~/dotfiles/.vim/plugins/ddu.vim

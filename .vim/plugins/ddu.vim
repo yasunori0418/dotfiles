@@ -48,6 +48,9 @@ call ddu#custom#patch_global({
       \ 'defaultAction': 'switch',
       \ },
     \ },
+  \ 'actionOptions': {
+    \ 'narrow': {'quit': v:false},
+    \ },
   \ 'columnParams': {
     \ 'icon_filename': {
       \ 'span': 2,
@@ -228,16 +231,30 @@ endfunction
 call ddu#custom#patch_local('current-filer', {
   \ 'ui': 'filer',
   \ 'sources': [{'name': 'file'}],
-  \ 'actionOptions': {
-    \ 'narrow': {'quit': v:false},
-    \ },
   \ })
 
 call ddu#custom#patch_local('project_root-filer', {
   \ 'ui': 'filer',
   \ 'sources': [{'name': 'file'}],
-  \ 'actionOptions': {
-    \ 'narrow': {'quit': v:false},
+  \ })
+
+call ddu#custom#patch_local('dotfiles-filer', {
+  \ 'ui': 'filer',
+  \ 'sources': [{'name': 'file'}],
+  \ 'sourceOptions': {
+    \ 'file': {
+      \ 'path': expand('~/dotfiles'),
+      \ },
+    \ },
+  \ })
+
+call ddu#custom#patch_local('home-filer', {
+  \ 'ui': 'filer',
+  \ 'sources': [{'name': 'file'}],
+  \ 'sourceOptions': {
+    \ 'file': {
+      \ 'path': expand('~'),
+      \ },
     \ },
   \ })
 " }}}
