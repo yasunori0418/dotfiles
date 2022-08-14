@@ -26,6 +26,8 @@ nnoremap [ff]s <Cmd>call ddu#start({
     \ 'params': {'input': input('Pattern: ')},
     \ }],
   \ })<CR>
+nnoremap [ff]m <Cmd>call ddu#start({'name': 'mark_list-ff'})<CR>
+command! DeinUpdateFF call ddu#start({'name': 'dein_update-ff'})
 
 nnoremap [filer] <Nop>
 nmap <Space>f [filer]
@@ -102,6 +104,10 @@ on_source = 'ddu.vim'
 
 [[plugins]]
 repo = 'matsui54/ddu-source-dein_update'
+on_source = 'ddu.vim'
+
+[[plugins]]
+repo = 'k-ota106/ddu-source-marks'
 on_source = 'ddu.vim'
 
 ## }}}

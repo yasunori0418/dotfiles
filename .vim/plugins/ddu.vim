@@ -41,6 +41,9 @@ call ddu#custom#patch_global({
     \ 'dein_update': {
       \ 'useGraphQL': v:true,
       \ },
+    \ 'marks': {
+      \ 'jumps': v:true,
+      \ },
     \ },
   \ 'kindOptions': {
     \ 'file': {
@@ -157,9 +160,14 @@ call ddu#custom#patch_local('register-ff', {
   \ 'sources': [{'name': 'register'}],
   \ })
 
-call ddu#custom#patch_local('dein_update', {
+call ddu#custom#patch_local('dein_update-ff', {
   \ 'ui': 'ff',
   \ 'sources': [{'name': 'dein_update'}],
+  \ })
+
+call ddu#custom#patch_local('mark_list-ff', {
+  \ 'ui': 'ff',
+  \ 'sources': [{'name': 'marks'}],
   \ })
 
 " }}}

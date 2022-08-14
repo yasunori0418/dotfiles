@@ -107,7 +107,6 @@ function! s:dein_update() abort
 endfunction
 
 command! DeinUpdate call s:dein_update()
-command! DeinUpdateFF call ddu#start({'name': 'dein_update'})
 " }}}
 
 " dein.vim remove plugins.{{{
