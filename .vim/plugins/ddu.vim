@@ -1,4 +1,4 @@
-" Global source Options {{{
+" Global option and param {{{
 call ddu#custom#patch_global({
   \ 'uiOptions': {
     \ 'filer': {
@@ -62,16 +62,14 @@ call ddu#custom#patch_global({
 " }}}
 
 " UI:ff presets {{{
-call ddu#custom#patch_local('current-ff', {
+call ddu#custom#patch_local('project_root-ff', {
   \ 'ui': 'ff',
   \ 'uiParams': {
     \ 'ff': {
       \ 'startFilter': v:true,
       \ },
     \ },
-  \ 'sources': [
-      \ {'name': 'file_rec'},
-      \ ],
+  \ 'sources': [{'name': 'file_rec'}],
   \ })
 
 call ddu#custom#patch_local('dotfiles-ff', {
@@ -143,63 +141,65 @@ call ddu#custom#patch_local('register-ff', {
   \ 'sources': [{'name': 'register'}],
   \ })
 
-" call ddu#custom#patch_local('search', {
-"     \ 'sources': [{
-"     \     'name': 'rg',
-"     \     'params': {'input': input('Pattern: ')}
-"     \     }],
-"     \ })
-
 " }}}
 
 " UI:ff keybinds {{{
 "
 function! s:ddu_ff_keybind() abort
 
-  " Edit file.
-  nnoremap <buffer><silent> <CR>
+  " Open file keybinds. {{{
+  nnoremap <buffer> <CR>
     \ <Cmd>call ddu#ui#ff#do_action('itemAction', {'name': 'open', 'params': {'command': 'drop'}})<CR>
 
-  " Multiple selection.
-  nnoremap <buffer><silent> <Space>
-    \ <Cmd>call ddu#ui#ff#do_action('toggleSelectItem')<CR>
-
-  " Open selection menu.
-  nnoremap <buffer><silent> a
-    \ <Cmd>call ddu#ui#ff#do_action('chooseAction')<CR>
-
-  " Open file with split window.
-  nnoremap <buffer><silent> s
+  " Open file with horizontal window.
+  nnoremap <buffer> s
     \ <Cmd>call ddu#ui#ff#do_action('itemAction',
     \ {'name': 'open', 'params': {'command': 'split'}})<CR>
-  nnoremap <buffer><silent> v
+
+  " Open file with vertical window.
+  nnoremap <buffer> v
     \ <Cmd>call ddu#ui#ff#do_action('itemAction',
     \ {'name': 'open', 'params': {'command': 'vsplit'}})<CR>
 
   " Open file with another tab.
-  nnoremap <buffer><silent> t
+  nnoremap <buffer> t
     \ <Cmd>call ddu#ui#ff#do_action('itemAction',
     \ {'name': 'open', 'params': {'command': 'tabedit'}})<CR>
 
+  " }}}
+
+  " Multiple selection.
+  nnoremap <buffer> <Space>
+    \ <Cmd>call ddu#ui#ff#do_action('toggleSelectItem')<CR>
+  nnoremap <buffer> *
+    \ <Cmd>cal ddu#ui#ff#do_action('toggleAllItems')<CR>
+
+  " Open selection menu.
+  nnoremap <buffer> a
+    \ <Cmd>call ddu#ui#ff#do_action('chooseAction')<CR>
+
   " Open filter Window.
-  nnoremap <buffer><silent> i
+  nnoremap <buffer> i
     \ <Cmd>call ddu#ui#ff#do_action('openFilterWindow')<CR>
 
   " Open preview window.
-  nnoremap <buffer><silent> p
+  nnoremap <buffer> p
     \ <Cmd>call ddu#ui#ff#do_action('preview')<CR>
 
+  nnoremap <buffer> <C-l>
+    \ <Cmd>call ddu#ui#ff#do_action('refreshItems')<CR>
+
   " Close ddu window.
-  nnoremap <buffer><silent> q
+  nnoremap <buffer> q
     \ <Cmd>call ddu#ui#ff#do_action('quit')<CR>
-  nnoremap <buffer><silent> <Esc>
+  nnoremap <buffer> <Esc>
     \ <Cmd>call ddu#ui#ff#do_action('quit')<CR>
 
   " Wrap when moving to the beginning and end of a line
-  nnoremap <silent><buffer><expr> j
+  nnoremap <buffer><expr> j
     \ line('.') == line('$') ?
     \ 'gg' : 'j'
-  nnoremap <silent><buffer><expr> k
+  nnoremap <buffer><expr> k
     \ line('.') == 1 ?
     \ 'G' : 'k'
 
@@ -207,18 +207,18 @@ endfunction
 
 " UI:ff-filter keybinds
 function! s:ddu_ff_filter_keybind() abort
-  inoremap <buffer><silent> <CR>
+  inoremap <buffer> <CR>
     \ <Esc><Cmd>close<CR>
-  inoremap <buffer><silent> jj
+  inoremap <buffer> jj
     \ <Esc><Cmd>close<CR>
-  inoremap <buffer><silent> <Esc>
+  inoremap <buffer> <Esc>
     \ <Esc><Cmd>close<CR>
 
-  nnoremap <buffer><silent> <CR>
+  nnoremap <buffer> <CR>
     \ <Cmd>close<CR>
-  nnoremap <buffer><silent> jj
+  nnoremap <buffer> jj
     \ <Cmd>close<CR>
-  nnoremap <buffer><silent> <Esc>
+  nnoremap <buffer> <Esc>
     \ <Esc><Cmd>close<CR>
 endfunction
 " }}}
@@ -232,13 +232,6 @@ call ddu#custom#patch_local('current-filer', {
     \ 'narrow': {'quit': v:false},
     \ },
   \ })
-
-
-  "\ 'uiParams': {
-  "  \ 'filer': {
-  "    \ 'search': expand('#' . b:ddu_ui_filer_prev_bufnr . ':p'),
-  "    \ },
-  "  \ },
 
 " }}}
 
@@ -261,6 +254,10 @@ function! s:ddu_filer_keybind() abort
   " Open file with horizontal split.
   nnoremap <buffer> s
     \ <Cmd>call ddu#ui#filer#do_action('itemAction', {'name': 'open', 'params': {'command': 'split'}})<CR>
+
+  " Open file with another tab window.
+  nnoremap <buffer> s
+    \ <Cmd>call ddu#ui#filer#do_action('itemAction', {'name': 'open', 'params': {'command': 'tabedit'}})<CR>
   " }}}
 
   " Operation of file or directory {{{

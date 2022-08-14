@@ -6,7 +6,12 @@ on_func = 'ddu#start()'
 hook_add = '''
 nnoremap [ff] <Nop>
 nmap <Space>d [ff]
-nnoremap [ff]a <Cmd>call ddu#start({'name': 'current-ff'})<CR>
+nnoremap [ff]a <Cmd>call ddu#start({
+  \ 'name': 'project_root-ff',
+  \ 'sourceOptions': {
+    \ 'file_rec': {'path': systemlist('git root')[0]},
+    \ },
+  \ })<CR>
 nnoremap [ff]d <Cmd>call ddu#start({'name': 'dotfiles-ff'})<CR>
 nnoremap [ff]h <Cmd>call ddu#start({'name': 'help-ff'})<CR>
 nnoremap [ff]b <Cmd>call ddu#start({'name': 'buffer-ff'})<CR>
