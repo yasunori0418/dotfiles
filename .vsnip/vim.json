@@ -101,7 +101,7 @@
     "scope": "vim",
     "prefix": "cmd",
     "body": [
-      "commnd! ${1:cmd_name} call ${0:func_name}"
+      "command! ${1:cmd_name} call ${0:func_name}"
     ],
     "description": "Make command"
   },
