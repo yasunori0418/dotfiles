@@ -168,10 +168,6 @@ function! s:ddu_ff_keybind() abort
   nnoremap <buffer><silent> a
     \ <Cmd>call ddu#ui#ff#do_action('chooseAction')<CR>
 
-  " Move directory.
-  nnoremap <buffer><silent> c
-    \ <Cmd>call ddu#ui#ff#do_action('itemAction', {'name': 'cd'})<CR>
-
   " Open file with split window.
   nnoremap <buffer><silent> s
     \ <Cmd>call ddu#ui#ff#do_action('itemAction',
@@ -316,19 +312,26 @@ function! s:ddu_filer_keybind() abort
   nnoremap <buffer> c
     \ <Cmd>call Filer_change_dir()<CR>
 
-  " Move to parent path.
+  " Move to parent directory.
   nnoremap <buffer> h
     \ <Cmd>call Filer_parent_dir()<CR>
 
+  " Move to previous directory.
   nnoremap <buffer> l
     \ <Cmd>call Filer_prev_dir()<CR>
 
+  " Move to first directory.
   nnoremap <buffer> f
     \ <Cmd>call Filer_first_dir()<CR>
+
+  " Move to directory of inputed path.
+  nnoremap <buffer> I
+    \ <Cmd>call Filer_input_dir()<CR>
 
   " Move to home path.
   nnoremap <buffer> ~
     \ <Cmd>call ddu#ui#filer#do_action('itemAction', {'name': 'narrow', 'params': {'path': expand('~')}})<CR>
+
   " }}}
 
   " Other filer keybinds... {{{
@@ -414,6 +417,14 @@ function! Filer_first_dir() abort
   let index_max_value = len(g:ddu_filer_prev_dir) - 1
   call remove(g:ddu_filer_prev_dir, 0, index_max_value)
   call ddu#ui#filer#do_action('itemAction', {'name': 'narrow', 'params': {'path': first_dir}})
+endfunction
+
+function! Filer_input_dir() abort
+  if !empty(g:ddu_filer_prev_dir)
+    call remove(g:ddu_filer_prev_dir, 0, len(g:ddu_filer_prev_dir) - 1)
+  endif
+  let input_dir = fnamemodify(input('New cwd: ', b:ddu_ui_filer_path, 'dir'), ':p')
+  call ddu#ui#filer#do_action('name': 'narrow', 'params': {'path': input_dir})
 endfunction
 " }}}
 
