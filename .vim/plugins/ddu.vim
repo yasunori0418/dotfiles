@@ -25,11 +25,7 @@ call ddu#custom#patch_global({
       \ 'matchers': ['matcher_substring'],
       \ },
     \ 'file': {
-      \ 'matchers': ['matcher_substring'],
       \ 'columns': ['icon_filename'],
-      \ },
-    \ 'file_rec': {
-      \ 'matchers': ['matcher_substring'],
       \ },
     \ 'dein': {
       \ 'defaultAction': 'cd',
@@ -427,7 +423,7 @@ function! ToggleHidden(name)
   let source_options = get(current, 'sourceOptions', {})
   let source_options_name = get(source_options, a:name, {})
   let matchers = get(source_options_name, 'matchers', [])
-  return index(matchers, 'matcher_hidden') >= 0 ? ['matcher_substring'] : ['matcher_substring', 'matcher_hidden']
+  return empty(matchers) ? ['matcher_hidden'] : []
 endfunction
 
 " }}}
