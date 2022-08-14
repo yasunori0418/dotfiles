@@ -224,3 +224,7 @@ hook_source = '''
 [[plugins]]
 repo = 'thinca/vim-quickrun'
 on_cmd = 'QuickRun'
+
+[[plugins]]
+repo = 'jacquesbh/vim-showmarks'
+on_cmd = ['DoShowMarks', 'NoShowMarks']
