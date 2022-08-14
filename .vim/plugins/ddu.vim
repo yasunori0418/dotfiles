@@ -227,9 +227,6 @@ endfunction
 
 call ddu#custom#patch_local('current-filer', {
   \ 'ui': 'filer',
-  \ 'sourceOptions': {
-    \ 'file': {'path': expand('%:p:h')},
-    \ },
   \ 'sources': [{'name': 'file'}],
   \ 'actionOptions': {
     \ 'narrow': {'quit': v:false},
