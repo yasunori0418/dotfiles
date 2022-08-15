@@ -31,7 +31,7 @@ repo = 'itchyny/lightline.vim'
 on_event = 'VimEnter'
 depends = ['vim-gitbranch', 'nightfox.nvim']
 hook_add = '''
-  source ~/dotfiles/.vim/plugins/lightline.vim
+source ~/dotfiles/.vim/plugins/lightline.vim
 '''
 
 [[plugins]]
