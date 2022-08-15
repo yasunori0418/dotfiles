@@ -6,8 +6,6 @@ function! Search_repo_root() abort
   return repo_root
 endfunction
 
-
-
 nnoremap [ff] <Nop>
 nmap <Space>d [ff]
 nnoremap [ff]a <Cmd>call ddu#start({

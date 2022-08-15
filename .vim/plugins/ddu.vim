@@ -177,8 +177,11 @@ call ddu#custom#patch_local('mark_list-ff', {
 function! s:ddu_ff_keybind() abort
 
   " Open file keybinds. {{{
-  nnoremap <buffer> <CR>
+  nnoremap <buffer><silent> <CR>
     \ <Cmd>call ddu#ui#ff#do_action('itemAction', {'name': 'open', 'params': {'command': 'drop'}})<CR>
+
+  nnoremap <buffer> o
+    \ <Cmd>call ddu#ui#ff#do_action('itemAction')<CR>
 
   " Open file with horizontal window.
   nnoremap <buffer> s
