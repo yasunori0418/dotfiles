@@ -81,7 +81,7 @@ call ddu#custom#patch_global({
 " }}}
 
 " UI:ff presets {{{
-call ddu#custom#patch_local('project_root-ff', {
+call ddu#custom#patch_local('current-ff', {
   \ 'ui': 'ff',
   \ 'uiParams': {
     \ 'ff': {
@@ -255,11 +255,6 @@ endfunction
 " UI:filer presets {{{
 
 call ddu#custom#patch_local('current-filer', {
-  \ 'ui': 'filer',
-  \ 'sources': [{'name': 'file'}],
-  \ })
-
-call ddu#custom#patch_local('project_root-filer', {
   \ 'ui': 'filer',
   \ 'sources': [{'name': 'file'}],
   \ })
