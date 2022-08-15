@@ -44,6 +44,11 @@ call ddu#custom#patch_global({
     \ 'marks': {
       \ 'jumps': v:true,
       \ },
+    \ 'rg': {
+      \ 'arg': [
+        \ '--ignore-case', '--column', '--no-heading', '--color', 'never',
+        \ ],
+      \ },
     \ },
   \ 'kindOptions': {
     \ 'file': {
