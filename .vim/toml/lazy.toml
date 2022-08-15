@@ -38,23 +38,23 @@ hook_add = '''
 repo = 'yasunori-kirin0418/lightline_skk.vim'
 on_source = 'skkeleton'
 hook_source = '''
-  call lightline_skk#option('display', {
-  \ 'hiragana': 'あぁ﫦',
-  \ 'katakana': 'アァ﫦',
-  \ 'hankaku-katakana': 'ｱｧ﫦',
-  \ 'zenkaku-alphabet': 'Ａａ﫦',
-  \ 'alphabet': 'Aa﫦',
-  \ })
+call lightline_skk#option('display', {
+\ 'hiragana': 'あぁ﫦',
+\ 'katakana': 'アァ﫦',
+\ 'hankaku-katakana': 'ｱｧ﫦',
+\ 'zenkaku-alphabet': 'Ａａ﫦',
+\ 'alphabet': 'Aa﫦',
+\ })
 '''
 
 [[plugins]] # Translate, Japanese to English
 repo = 'skanehira/denops-translate.vim'
 on_cmd = 'Translate'
 hook_add = '''
-  nnoremap [trans] <Nop>
-  nmap <Space>l [trans]
-  nnoremap [trans]e <Cmd>Translate<CR>
-  nnoremap [trans]j <Cmd>Translate!<CR>
+nnoremap [trans] <Nop>
+nmap <Space>l [trans]
+nnoremap [trans]e <Cmd>Translate<CR>
+nnoremap [trans]j <Cmd>Translate!<CR>
 '''
 
 [[plugins]]
@@ -62,71 +62,43 @@ repo = 'lambdalisue/suda.vim'
 on_cmd = ['SudaRead', 'SudaWrite']
 
 [[plugins]]
-repo = 'Shougo/defx.nvim'
-on_cmd = 'Defx'
-hook_add = '''
-  nnoremap [defx] <Nop>
-  nmap <Space>F [defx]
-  nnoremap [defx]a <cmd>Defx -buffer-name='Current_Directory' -search=`expand('%:p')` `expand('%:p:h')`<CR>
-  nnoremap [defx]d <cmd>Defx -buffer-name='dotfiles' `expand('~/dotfiles/')`<CR>
-  nnoremap [defx]v <cmd>Defx -buffer-name='Vim_Directory' `expand('~/dotfiles/.vim/')`<CR>
-  nnoremap [defx]p <cmd>Defx -buffer-name='Project_Directory' `expand('~/Project/')`<CR>
-  nnoremap [defx]h <cmd>Defx -buffer-name='$HOME' `expand('~/')`<CR>
-'''
-hook_source = '''
-  source ~/dotfiles/.vim/plugins/defx.vim
-'''
-
-[[plugins]]
-repo = 'ryanoasis/vim-devicons'
-on_ft = 'defx'
-
-[[plugins]]
-repo = 'kristijanhusak/defx-icons'
-on_ft = 'defx'
-
-[[plugins]]
-repo = 'kristijanhusak/defx-git'
-on_ft = 'defx'
-
-[[plugins]]
 repo = 'Shougo/deol.nvim'
 on_cmd = 'Deol'
 hook_add = '''
-  nnoremap [term] <Nop>
-  nmap <Space>t [term]
-  nnoremap [term]a <Cmd>Deol
-    \ -no-auto-cd
-    \ -no-start-insert
-    \ -split=floating
-    \ -winheight=30
-    \ -winwidth=120
-    \ -toggle<CR>
-  nnoremap [term]t <Cmd>tabnew<Bar>Deol -no-start-insert<CR>
-  nnoremap [term]c <Cmd>execute 'Deol'
-    \ '-cwd=' .. fnamemodify(expand('%'), ':h')
-    \ '-no-auto-cd'
-    \ '-no-start-insert'
-    \ '-split=floating'
-    \ '-winheight=30'
-    \ '-winwidth=120'
-    \ '-toggle'<CR>
-  nnoremap [term]h <Cmd>Deol
-    \ -cwd=~
-    \ -no-start-insert
-    \ -split=floating
-    \ -winheight=30
-    \ -winwidth=120
-    \ -toggle<CR>
+nnoremap [term] <Nop>
+nmap <Space>t [term]
+nnoremap [term]a <Cmd>Deol
+  \ -no-auto-cd
+  \ -no-start-insert
+  \ -split=floating
+  \ -winheight=30
+  \ -winwidth=120
+  \ -toggle<CR>
+nnoremap [term]t <Cmd>tabnew<Bar>Deol -no-start-insert<CR>
+nnoremap [term]c <Cmd>execute 'Deol'
+  \ '-cwd=' . fnamemodify(expand('%'), ':h')
+  \ '-no-auto-cd'
+  \ '-no-start-insert'
+  \ '-split=floating'
+  \ '-winheight=30'
+  \ '-winwidth=120'
+  \ '-toggle'<CR>
+nnoremap [term]h <Cmd>Deol
+  \ -cwd=~
+  \ -no-start-insert
+  \ -split=floating
+  \ -winheight=30
+  \ -winwidth=120
+  \ -toggle<CR>
 
-  " Escape deol
-  tnoremap <Esc> <C-\><C-n>
+" Escape deol
+tnoremap <Esc> <C-\><C-n>
 '''
 hook_source = '''
-  " let g:deol#prompt_pattern = '^❯ \?'
-  " let g:deol#enable_ddc_completion = v:true
-  let g:deol#shell_history_path = '~/.zsh_history'
-  let g:deol#enable_dir_changed = v:false
+" let g:deol#prompt_pattern = '^❯ \?'
+" let g:deol#enable_ddc_completion = v:true
+let g:deol#shell_history_path = '~/.zsh_history'
+let g:deol#enable_dir_changed = v:false
 '''
 
 [[plugins]]
@@ -135,7 +107,7 @@ on_event = 'InsertEnter'
 
 [[plugins]]
 repo = 'itchyny/vim-cursorword'
-on_event = 'BufRead'
+on_event = 'BufEnter'
 
 [[plugins]]
 repo = 'airblade/vim-gitgutter'
@@ -145,80 +117,76 @@ on_event = 'BufRead'
 repo = 'nathanaelkane/vim-indent-guides'
 on_event = 'VimEnter'
 hook_source = '''
-  let g:indent_guides_enable_on_vim_startup = 1
-  let g:indent_guides_default_mapping = 0
-  let g:indent_guides_exclude_filetypes = ['help', 'ddu-ff-filter', 'ddu-ff', 'ddu-filer', 'defx', 'deol', '']
+let g:indent_guides_enable_on_vim_startup = 1
+let g:indent_guides_default_mapping = 0
+let g:indent_guides_exclude_filetypes = ['help', 'ddu-ff-filter', 'ddu-ff', 'ddu-filer', 'deol']
 '''
-
-# [[plugins]]
-# repo = 'tpope/vim-surround'
-# on_event = 'BufRead'
 
 [[plugins]]
 repo = 'machakann/vim-sandwich'
 on_map = { xon = '<Plug>(sandwich-'}
 hook_add = '''
-  "Disable s for vim-sandwich
-  nnoremap s <Nop>
-  xnoremap s <Nop>
+"Disable s for vim-sandwich
+nnoremap s <Nop>
+xnoremap s <Nop>
 
-   let g:sandwich_no_default_key_mappings = 1
+let g:sandwich_no_default_key_mappings = 1
 
-  " add
-  nmap sa <Plug>(sandwich-add)
-  xmap sa <Plug>(sandwich-add)
-  omap sa <Plug>(sandwich-add)
+" add
+nmap sa <Plug>(sandwich-add)
+xmap sa <Plug>(sandwich-add)
+omap sa <Plug>(sandwich-add)
 
-  " delete
-  nmap sd <Plug>(sandwich-delete)
-  xmap sd <Plug>(sandwich-delete)
-  nmap sdb <Plug>(sandwich-delete-auto)
+" delete
+nmap sd <Plug>(sandwich-delete)
+xmap sd <Plug>(sandwich-delete)
+nmap sdb <Plug>(sandwich-delete-auto)
 
-  " replace
-  nmap sr <Plug>(sandwich-replace)
-  xmap sr <Plug>(sandwich-replace)
-  nmap srb <Plug>(sandwich-replace-auto)
+" replace
+nmap sr <Plug>(sandwich-replace)
+xmap sr <Plug>(sandwich-replace)
+nmap srb <Plug>(sandwich-replace-auto)
 
-  " text-objects (if you need)
-  "omap ib <Plug>(textobj-sandwich-auto-i)
-  "xmap ib <Plug>(textobj-sandwich-auto-i)
-  "omap ab <Plug>(textobj-sandwich-auto-a)
-  "xmap ab <Plug>(textobj-sandwich-auto-a)
+" text-objects (if you need)
+"omap ib <Plug>(textobj-sandwich-auto-i)
+"xmap ib <Plug>(textobj-sandwich-auto-i)
+"omap ab <Plug>(textobj-sandwich-auto-a)
+"xmap ab <Plug>(textobj-sandwich-auto-a)
 
-  "omap is <Plug>(textobj-sandwich-query-i)
-  "xmap is <Plug>(textobj-sandwich-query-i)
-  "omap as <Plug>(textobj-sandwich-query-a)
-  "xmap as <Plug>(textobj-sandwich-query-a)
+"omap is <Plug>(textobj-sandwich-query-i)
+"xmap is <Plug>(textobj-sandwich-query-i)
+"omap as <Plug>(textobj-sandwich-query-a)
+"xmap as <Plug>(textobj-sandwich-query-a)
 
-  " Black magic...
-  "nnoremap <silent> s <Cmd>call dein#source('vim-sandwich')<CR>
-  "xnoremap <silent> s <Cmd>call dein#source('vim-sandwich')<CR>
-  "onoremap <silent> s <Cmd>call dein#source('vim-sandwich')<CR>
+" Black magic...
+"nnoremap <silent> s <Cmd>call dein#source('vim-sandwich')<CR>
+"xnoremap <silent> s <Cmd>call dein#source('vim-sandwich')<CR>
+"onoremap <silent> s <Cmd>call dein#source('vim-sandwich')<CR>
 '''
 
 [[plugins]]
 repo = 'lambdalisue/gina.vim'
 on_cmd = 'Gina'
 hook_add = '''
-  nnoremap [gina] <Nop>
-  nmap <Space>g [gina]
-  nnoremap [gina]s <Cmd>Gina status<CR>
-  nnoremap [gina]c <Cmd>Gina commit<CR>
-  nnoremap [gina]l <Cmd>Gina log<CR>
-  nnoremap [gina]b <Cmd>Gina blame<CR>
-  nnoremap [gina]d <Cmd>Gina patch<CR>
-  nnoremap [gina]ps <Cmd>Deol git push -split=floating -winheight=30 -winwidth=120 -toggle<CR>
-  nnoremap [gina]pl <Cmd>Deol git pull -split=floating -winheight=30 -winwidth=120 -toggle<CR>
+nnoremap [gina] <Nop>
+nmap <Space>g [gina]
+nnoremap [gina]s <Cmd>Gina status<CR>
+nnoremap [gina]c <Cmd>Gina commit<CR>
+nnoremap [gina]l <Cmd>Gina log<CR>
+nnoremap [gina]b <Cmd>Gina blame<CR>
+nnoremap [gina]d <Cmd>Gina patch<CR>
+nnoremap [gina]ps <Cmd>Deol git push -split=floating -winheight=30 -winwidth=120 -toggle<CR>
+nnoremap [gina]pl <Cmd>Deol git pull -split=floating -winheight=30 -winwidth=120 -toggle<CR>
 '''
 hook_source = '''
-  call gina#custom#command#option('status', '-s')
-  call gina#custom#command#option('status', '--opener', 'split')
-  call gina#custom#command#option('commit', '-v')
-  call gina#custom#command#option('log', '--opener', 'vsplit')
-  call gina#custom#command#option('log', '--graph')
-  call gina#custom#command#option('log', '--all')
-  call gina#custom#command#option('blame', '--opener', 'tabedit')
-  call gina#custom#command#option('patch', '--oneside')
+call gina#custom#command#option('status', '-s')
+call gina#custom#command#option('status', '--opener', 'split')
+call gina#custom#command#option('commit', '-v')
+call gina#custom#command#option('log', '--opener', 'vsplit')
+call gina#custom#command#option('log', '--graph')
+call gina#custom#command#option('log', '--all')
+call gina#custom#command#option('blame', '--opener', 'tabedit')
+call gina#custom#command#option('patch', '--oneside')
 '''
 
 [[plugins]]
