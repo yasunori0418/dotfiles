@@ -6,7 +6,7 @@ function! Search_repo_root() abort
   return repo_root
 endfunction
 
-echo Search_repo_root()
+
 
 nnoremap [ff] <Nop>
 nmap <Space>d [ff]
