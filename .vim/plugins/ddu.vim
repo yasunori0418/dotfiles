@@ -178,10 +178,10 @@ function! s:ddu_ff_keybind() abort
 
   " Open file keybinds. {{{
   nnoremap <buffer><silent> <CR>
-    \ <Cmd>call ddu#ui#ff#do_action('itemAction', {'name': 'open', 'params': {'command': 'drop'}})<CR>
+    \ <Cmd>call ddu#ui#ff#do_action('itemAction')<CR>
 
   nnoremap <buffer> o
-    \ <Cmd>call ddu#ui#ff#do_action('itemAction')<CR>
+    \ <Cmd>call ddu#ui#ff#do_action('itemAction', {'name': 'open', 'params': {'command': 'drop'}})<CR>
 
   " Open file with horizontal window.
   nnoremap <buffer> s
