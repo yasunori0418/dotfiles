@@ -130,16 +130,18 @@ set listchars=tab:»-,space:･,trail:･,nbsp:%,eol:↲,extends:»,precedes:«
 
 augroup user_filename_filetype
   autocmd!
-  autocmd BufNewFile,BufRead *.blade.* setlocal filetype=html
-  autocmd BufNewFile,BufRead .textlintrc setlocal filetype=json
+  autocmd BufNewFile,BufRead *.blade.*    setlocal filetype=html
+  autocmd BufNewFile,BufRead .textlintrc  setlocal filetype=json
 augroup END
 
 augroup user_filetype_indent
   autocmd!
-  autocmd FileType html   setlocal tabstop=2 softtabstop=2 shiftwidth=2
-  autocmd FileType css    setlocal tabstop=2 softtabstop=2 shiftwidth=2
-  autocmd FileType python setlocal tabstop=4 softtabstop=4 shiftwidth=4
-  autocmd FileType php    setlocal tabstop=4 softtabstop=4 shiftwidth=4
+  autocmd FileType html       setlocal tabstop=2 softtabstop=2 shiftwidth=2
+  autocmd FileType css        setlocal tabstop=2 softtabstop=2 shiftwidth=2
+  autocmd FileType python     setlocal tabstop=4 softtabstop=4 shiftwidth=4
+  autocmd FileType php        setlocal tabstop=4 softtabstop=4 shiftwidth=4
+  autocmd FileType xml        setlocal tabstop=4 softtabstop=4 shiftwidth=4
+  autocmd FileType markdown   setlocal tabstop=4 softtabstop=4 shiftwidth=4
 augroup END
 
 " }}}
