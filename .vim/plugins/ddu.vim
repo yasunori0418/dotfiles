@@ -267,6 +267,11 @@ call ddu#custom#patch_local('current-filer', {
   \ 'sources': [{'name': 'file'}],
   \ })
 
+call ddu#custom#patch_local('project_root-filer', {
+  \ 'ui': 'filer',
+  \ 'sources': [{'name': 'file'}],
+  \ })
+
 call ddu#custom#patch_local('dotfiles-filer', {
   \ 'ui': 'filer',
   \ 'sources': [{'name': 'file'}],

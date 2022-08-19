@@ -39,10 +39,16 @@ command! DeinUpdateFF call ddu#start({'name': 'dein_update-ff'})
 
 nnoremap [filer] <Nop>
 nmap <Space>f [filer]
-nnoremap [filer]a <Cmd>call ddu#start({
-  \ 'name': 'current-filer',
+nnoremap [filer]r <Cmd>call ddu#start({
+  \ 'name': 'project_root-filer',
   \ 'sourceOptions': {
     \ 'file': {'path': Search_repo_root()},
+    \ },
+  \ })<CR>
+nnoremap [filer]a <Cmd>call ddu#start({
+  \ 'name': 'current-filer', 
+  \ 'sourceOptions': {
+    \ 'file': {'path': expand('%:p:h')},
     \ },
   \ })<CR>
 nnoremap [filer]d <Cmd>call ddu#start({'name': 'dotfiles-filer'})<CR>
