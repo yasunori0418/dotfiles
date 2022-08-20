@@ -91,9 +91,6 @@ set smartindent
 " Insert tab with half-width space.
 set expandtab
 
-" Automatically indent when a line break occurs.
-set autoindent
-
 " The amount of blank space to insert with each command or smart indent.
 set shiftwidth=2
 
@@ -111,11 +108,6 @@ let g:vim_indent_count = 0
 " Display statusline.
 set laststatus=3
 
-" Command line completion.
-" set wildmenu
-
-" Command history.
-" set history=5000
 " }}} 
 
 " Invisible characters{{{
