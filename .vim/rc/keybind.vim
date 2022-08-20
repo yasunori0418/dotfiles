@@ -43,7 +43,6 @@ nnoremap [Window]< <C-W><
 nnoremap [Window]> <C-W>>
 " }}}
 
-
 " File save keybinds. {{{
 nnoremap [Save] <Nop>
 nmap <Space>s [Save]
@@ -52,7 +51,6 @@ nnoremap [Save]q <Cmd>wq<CR>
 nnoremap [Save]w <Cmd>write<CR>
 nnoremap [Save]u <Cmd>update<CR>
 " }}}
-
 
 " Normal Mode:{{{
 " US Keyboard layout mapping.
@@ -77,7 +75,6 @@ nnoremap <Space>n <Cmd>nohlsearch<CR>
 
 " }}}
 
-
 " Insert Mode:{{{
 
 " Exit insert mode.
@@ -85,7 +82,6 @@ inoremap jj <ESC>
 inoremap <C-l> <Del>
 
 " }}}
-
 
 " Visual Mode:{{{
 
@@ -99,7 +95,6 @@ xnoremap x "_x
 xnoremap c "_c
 
 " }}}
-
 
 " Command {{{
 

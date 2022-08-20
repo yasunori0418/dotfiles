@@ -15,7 +15,7 @@ set fileencodings=utf-8,sjis,iso-2022-jp,euc-jp
 " }}}
 
 " Automatic line feed code recognition.
-set fileformats=unix,dos,mac
+set fileformats=unix,dos
 
 " Disable backup.
 set nobackup
@@ -35,10 +35,12 @@ set autoread
 " Use the clipboard on linux systems.
 set clipboard+=unnamedplus
 
+" diff vertical view
 set diffopt+=vertical
 
-" Colorscheme.
-" colorscheme iceberg
+" no beep
+set visualbell t_vb=
+
 " }}}
 
 " Display{{{
@@ -50,6 +52,10 @@ set relativenumber
 
 " Display current row cursorline.
 set cursorline
+
+set icon
+
+set iconstring=''
 
 " True color terminal settings.
 if exists('+termguicolors')
@@ -93,9 +99,6 @@ set smartindent
 " Insert tab with half-width space.
 set expandtab
 
-" Automatically indent when a line break occurs.
-set autoindent
-
 " The amount of blank space to insert with each command or smart indent.
 set shiftwidth=2
 
@@ -136,7 +139,6 @@ set history=5000
 "set listchars=tab:»-,space:･,trail:･,nbsp:%,eol:↲,extends:»,precedes:«
 " }}}
 
-set visualbell t_vb=
 
 nnoremap ; :
 nnoremap : ;
