@@ -199,7 +199,7 @@ nnoremap [Save]u <Cmd>update<CR>
 " Normal Mode:{{{
 " US Keyboard layout mapping.
 " Exchange Colon and Semi-Colon.
-" nnoremap ; :
+nnoremap ; :
 nnoremap : ;
 nnoremap q; q:
 
@@ -230,7 +230,7 @@ inoremap <C-l> <Del>
 " Visual Mode:{{{
 
 " Exchange Colon and Semi-Colon.
-" xnoremap ; :
+ xnoremap ; :
 xnoremap : ;
 
 
