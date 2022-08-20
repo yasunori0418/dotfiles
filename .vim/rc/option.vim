@@ -13,7 +13,7 @@ set fileencodings=utf-8,sjis,iso-2022-jp,euc-jp
 " }}}
 
 " Automatic line feed code recognition.
-set fileformats=unix,dos,mac
+set fileformats=unix,dos
 
 " Disable backup.
 set nobackup
