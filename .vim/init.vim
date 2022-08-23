@@ -96,17 +96,20 @@ endif
 " }}}
 
 " Check for plugin updates on github graphQL api.{{{
-function! s:dein_update() abort
-  if g:exists_github_pat
+function! s:dein_update(bang_flg) abort
+  if g:exists_github_pat && a:bang_flg == 0
     echo 'exists github_pat'
     call dein#check_update(v:true)
+  elseif a:bang_flg
+    echo 'use bang flag'
+    call dein#update()
   else
     echo 'not exists github_pat'
     call dein#update()
   endif
 endfunction
 
-command! DeinUpdate call s:dein_update()
+command! -bang DeinUpdate call s:dein_update(<bang>0)
 " }}}
 
 " dein.vim remove plugins.{{{
