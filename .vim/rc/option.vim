@@ -27,16 +27,11 @@ set ambiwidth=single
 " Automatically load the file being edited
 set autoread
 
-" Move the cursor one character ahead of the end of the line
-" set virtualedit=onemore
-
 " Use the clipboard on linux systems.
 set clipboard+=unnamedplus
 
 set diffopt+=vertical
 
-" Colorscheme.
-" colorscheme iceberg
 " }}}
 
 " Display{{{
