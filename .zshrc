@@ -146,21 +146,21 @@ unset key
 # lsコマンドのalias関連
 # ls command aliases.
 if [[ $(command -v exa) ]]; then
-    alias exa='exa --icons -F'
-    alias ls='exa'
-    alias la='exa -la --git'
-    alias lt='exa -T -L 3 -a -I ".git|.atom|.cache"'
-    alias ltl='lt --color=always | less -r'
-    alias lal='la --color=always | less -r'
+  alias exa='exa --icons -F'
+  alias ls='exa'
+  alias la='exa -la --git'
+  alias lt='exa -T -L 3 -a -I ".git|.atom|.cache"'
+  alias ltl='lt --color=always | less -r'
+  alias lal='la --color=always | less -r'
 else
-    alias ls='ls --color=auto -G'
-    alias la='ls -lAG'
-    alias ll='ls -lG'
+  alias ls='ls --color=auto -G'
+  alias la='ls -lAG'
+  alias ll='ls -lG'
 fi
 
 # bat command
 if [[ $(command -v bat) ]]; then
-    alias bat='bat --theme Nord'
+  alias bat='bat --theme Nord'
 fi
 
 # clear command aliases.
@@ -169,16 +169,16 @@ alias cc='c &&'
 
 # Neovim alias
 if [[ $(command -v nvim) ]]; then
-    alias nv='nvim'
+  alias nv='nvim'
 fi
 
 if [[ $(command -v neovide) ]]; then
-    alias nvg='neovide --multigrid'
+  alias nvg='neovide --multigrid'
 fi
 
 # Pyenv settings
 if [[ -d $HOME/.pyenv ]]; then
-    eval "$(pyenv init -)"
+  eval "$(pyenv init -)"
 fi
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
