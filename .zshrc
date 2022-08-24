@@ -172,6 +172,10 @@ if [[ $(command -v nvim) ]]; then
   alias nv='nvim --listen ~/.cache/nvim/server.pipe'
 fi
 
+if [[ $(command -v nvr) ]]; then
+  alias nvr='nvr --servername ~/.cache/nvim/server.pipe'
+fi
+
 if [[ $(command -v neovide) ]]; then
   alias nvg='neovide --multigrid'
 fi
