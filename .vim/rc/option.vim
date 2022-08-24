@@ -30,6 +30,7 @@ set autoread
 " Use the clipboard on linux systems.
 set clipboard+=unnamedplus
 
+" open diff mode vertically
 set diffopt+=vertical
 
 " }}}
