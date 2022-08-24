@@ -7,7 +7,7 @@ require'nvim-treesitter.configs'.setup {
   ensure_installed = 'all',
   highlight = {
     enable = true,
-    disable = { 'vim', 'swift' },
+    disable = { 'swift' },
   },
   indent = {
     enable = true,
