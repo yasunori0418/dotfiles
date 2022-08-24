@@ -169,7 +169,7 @@ alias cc='c &&'
 
 # Neovim alias
 if [[ $(command -v nvim) ]]; then
-  alias nv='nvim'
+  alias nv='nvim --listen ~/.cache/nvim/server.pipe'
 fi
 
 if [[ $(command -v neovide) ]]; then
