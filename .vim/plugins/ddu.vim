@@ -1,3 +1,4 @@
+" ddu configs.
 " Global option and param {{{
 call ddu#custom#patch_global({
   \ 'uiOptions': {
@@ -314,7 +315,7 @@ function! s:ddu_filer_keybind() abort
     \ <Cmd>call ddu#ui#filer#do_action('itemAction', {'name': 'open', 'params': {'command': 'split'}})<CR>
 
   " Open file with another tab window.
-  nnoremap <buffer> s
+  nnoremap <buffer> t
     \ <Cmd>call ddu#ui#filer#do_action('itemAction', {'name': 'open', 'params': {'command': 'tabedit'}})<CR>
   " }}}
 

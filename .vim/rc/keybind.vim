@@ -1,3 +1,4 @@
+" keybinds
 " Window control keybind {{{
 " overwrites window command of 'CTRL-W'.
 " Use prefix [Window].
