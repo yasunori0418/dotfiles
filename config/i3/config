@@ -34,6 +34,7 @@ exec --no-startup-id picom -b
 exec --no-startup-id thunar --daemon
 exec --no-startup-id feh --bg-scale ~/Pictures/wall_paper/Nordic-darker.jpg
 exec --no-startup-id xfce4-power-manager
+exec --no-startup-id blueman-applet
 exec --no-startup-id wezterm
 
 # use these keys for focus, movement, and resize directions when reaching for
