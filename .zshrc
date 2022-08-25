@@ -170,6 +170,8 @@ alias cc='c &&'
 # Neovim alias
 if [[ $(command -v nvim) ]]; then
   alias nv='nvim --listen ~/.cache/nvim/server.pipe'
+  alias nvr='nvim --server ~/.cache/nvim/server.pipe --remote'
+  alias nvrt='nvim --server ~/.cache/nvim/server.pipe --remote-tab'
 fi
 
 if [[ $(command -v neovide) ]]; then
