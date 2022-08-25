@@ -412,6 +412,13 @@ function! s:ddu_filer_keybind() abort
         \},
       \})<CR>
 
+  nnoremap <buffer> / <Cmd>call ddu#start({
+    \ 'name': 'current-ff',
+    \ 'sourceOptions': {
+      \ 'file_rec': {'path': fnamemodify(b:ddu_ui_filer_path, ':p:h')},
+      \ },
+    \ })<CR>
+
   nnoremap <buffer> <C-l>
     \ <Cmd>call ddu#ui#filer#do_action('checkItems')<CR>
 
