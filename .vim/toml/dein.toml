@@ -4,8 +4,11 @@ repo = 'Shougo/dein.vim'
 # [[plugins]] # Color scheme for editor
 # repo = 'cocopon/iceberg.vim'
 
-[[plugins]] # Japanese localization of help
+[[plugins]] # Japanese localization of help for vim
 repo = 'vim-jp/vimdoc-ja'
+
+[[plugins]] # Japanese localization of help for nvim
+repo = 'nekowasabi/nvimdoc-ja'
 
 [[plugins]]
 repo = 'mattn/learn-vimscript'
