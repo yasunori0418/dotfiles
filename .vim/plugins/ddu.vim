@@ -442,46 +442,46 @@ endfunction
 
 " UI:filer functions of custom keybind. {{{
 " Moving directory paths. {{{
-let g:ddu_filer_prev_dir = []
+let g:ddu_ui_filer_prev_dirs = []
 function! Filer_parent_dir() abort
   if b:ddu_ui_filer_path == '/'
     echo 'Cannot go back because it is the root directory.'
     return
   endif
-  call add(g:ddu_filer_prev_dir, b:ddu_ui_filer_path)
+  call add(g:ddu_ui_filer_prev_dirs, b:ddu_ui_filer_path)
   call ddu#ui#filer#do_action('itemAction', {'name': 'narrow', 'params': {'path': '..'}})
 endfunction
 
 function! Filer_change_dir() abort
-  call add(g:ddu_filer_prev_dir, b:ddu_ui_filer_path)
+  call add(g:ddu_ui_filer_prev_dirs, b:ddu_ui_filer_path)
   call ddu#ui#filer#do_action('itemAction', {'name': 'narrow'})
 endfunction
 
 function! Filer_prev_dir() abort
-  if empty(g:ddu_filer_prev_dir)
+  if empty(g:ddu_ui_filer_prev_dirs)
     echo 'Not found previous directory.'
     return
   endif
-  let prev_dir_count = len(g:ddu_filer_prev_dir) - 1
-  let prev_dir_path = g:ddu_filer_prev_dir[prev_dir_count]
-  call remove(g:ddu_filer_prev_dir, prev_dir_count)
+  let prev_dir_count = len(g:ddu_ui_filer_prev_dirs) - 1
+  let prev_dir_path = g:ddu_ui_filer_prev_dirs[prev_dir_count]
+  call remove(g:ddu_ui_filer_prev_dirs, prev_dir_count)
   call ddu#ui#filer#do_action('itemAction', {'name': 'narrow', 'params': {'path': prev_dir_path}})
 endfunction
 
 function! Filer_first_dir() abort
-  if empty(g:ddu_filer_prev_dir)
+  if empty(g:ddu_ui_filer_prev_dirs)
     echo "Maybe here is the first directory..."
     return
   endif
-  let first_dir = g:ddu_filer_prev_dir[0]
-  let index_max_value = len(g:ddu_filer_prev_dir) - 1
-  call remove(g:ddu_filer_prev_dir, 0, index_max_value)
+  let first_dir = g:ddu_ui_filer_prev_dirs[0]
+  let index_max_value = len(g:ddu_ui_filer_prev_dirs) - 1
+  call remove(g:ddu_ui_filer_prev_dirs, 0, index_max_value)
   call ddu#ui#filer#do_action('itemAction', {'name': 'narrow', 'params': {'path': first_dir}})
 endfunction
 
 function! Filer_input_dir() abort
-  if !empty(g:ddu_filer_prev_dir)
-    call remove(g:ddu_filer_prev_dir, 0, len(g:ddu_filer_prev_dir) - 1)
+  if !empty(g:ddu_ui_filer_prev_dirs)
+    call remove(g:ddu_ui_filer_prev_dirs, 0, len(g:ddu_ui_filer_prev_dirs) - 1)
   endif
   let input_dir = fnamemodify(input('New cwd: ', b:ddu_ui_filer_path, 'dir'), ':p')
   call ddu#ui#filer#do_action('itemAction', {'name': 'narrow', 'params': {'path': input_dir}})
