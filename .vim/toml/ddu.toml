@@ -1,3 +1,4 @@
+
 ## ddu core plugins {{{
 [[plugins]]
 repo = 'Shougo/ddu.vim'
