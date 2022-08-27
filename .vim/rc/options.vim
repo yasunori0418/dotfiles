@@ -22,6 +22,12 @@ set nobackup
 " Don't make swap file.
 set noswapfile
 
+if has('persistent_undo')
+  let s:undo_path = expand('~/.cache/nvim/undo')
+  execute 'set undodir=' . s:undo_path
+  set undofile
+endif
+
 " East asia ambigunous charactor width problem.
 set ambiwidth=single
 
@@ -55,6 +61,7 @@ endif
 
 " Transparency of pop-up menus such as completion
 set pumblend=30
+highlight PmenuSel blend=0
 " }}}
 
 " Folding{{{
