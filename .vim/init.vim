@@ -134,7 +134,7 @@ command! DeinDelete call s:dein_check_uninstall()
 " }}}
 
 " dein cache scripts cleanup {{{
-command! DeinRecache call dein#recache_runtimepath()
+command! -bar DeinRecache call dein#recache_runtimepath() | qall
 " }}}
 
 " ファイル形式別プラグインの有効
