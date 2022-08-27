@@ -42,29 +42,6 @@ source ~/dotfiles/.vim/plugins/lightline.vim
 '''
 
 [[plugins]]
-repo = 'yasunori-kirin0418/lightline_skk.vim'
-on_source = 'skkeleton'
-hook_source = '''
-call lightline_skk#option('display', {
-\ 'hiragana': 'あぁ﫦',
-\ 'katakana': 'アァ﫦',
-\ 'hankaku-katakana': 'ｱｧ﫦',
-\ 'zenkaku-alphabet': 'Ａａ﫦',
-\ 'alphabet': 'Aa﫦',
-\ })
-'''
-
-[[plugins]] # Translate, Japanese to English
-repo = 'skanehira/denops-translate.vim'
-on_cmd = 'Translate'
-hook_add = '''
-nnoremap [trans] <Nop>
-nmap <Space>l [trans]
-nnoremap [trans]e <Cmd>Translate<CR>
-nnoremap [trans]j <Cmd>Translate!<CR>
-'''
-
-[[plugins]]
 repo = 'lambdalisue/suda.vim'
 on_cmd = ['SudaRead', 'SudaWrite']
 
