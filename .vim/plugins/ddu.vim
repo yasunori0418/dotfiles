@@ -484,7 +484,7 @@ function! Filer_input_dir() abort
     call remove(g:ddu_filer_prev_dir, 0, len(g:ddu_filer_prev_dir) - 1)
   endif
   let input_dir = fnamemodify(input('New cwd: ', b:ddu_ui_filer_path, 'dir'), ':p')
-  call ddu#ui#filer#do_action('name': 'narrow', 'params': {'path': input_dir})
+  call ddu#ui#filer#do_action('itemAction', {'name': 'narrow', 'params': {'path': input_dir}})
 endfunction
 " }}}
 
