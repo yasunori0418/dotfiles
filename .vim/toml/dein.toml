@@ -9,27 +9,3 @@ repo = 'vim-jp/vimdoc-ja'
 
 [[plugins]]
 repo = 'mattn/learn-vimscript'
-
-# [[plugins]]
-# repo = 'sainnhe/edge'
-# hook_add = '''
-#     let g:edge_style = 'aura'
-#     let g:edge_enable_italic = 1
-#     " let g:edge_disable_italic_comment = 1
-#     " let g:edge_transparent_background = 1
-#     let g:edge_diagnostic_text_highlight = 1
-#     let g:edge_diagnostic_line_highlight = 1
-#     let g:edge_diagnostic_virtual_text = 'colored'
-#     let g:edge_better_performance = 1
-#     let g:edge_show_eob = 0
-#     " let g:edge_current_word = 'underline'
-# 
-#     colorscheme edge
-# '''
-
-[[plugins]]
-repo = 'lewis6991/impatient.nvim'
-hook_source = '''
-  lua require('impatient')
-'''
-
