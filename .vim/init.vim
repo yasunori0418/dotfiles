@@ -58,7 +58,7 @@ if dein#min#load_state(s:dein_dir)
 
   " dein inline_vimrcs setting.{{{
 
-  let g:dein#inline_vimrcs = ['option.vim', 'keybind.vim']
+  let g:dein#inline_vimrcs = ['options.vim', 'keybinds.vim']
 
   " Use neovide
   if exists("g:neovide")
