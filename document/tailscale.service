@@ -1,9 +1,0 @@
-[Unit]
-Description = Start tailscale.
-
-[Service]
-Type = oneshot
-ExecStart = /usr/bin/tailscaled
-
-[Install]
-WantedBy=multi-user.target
