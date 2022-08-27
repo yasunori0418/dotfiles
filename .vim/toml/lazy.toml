@@ -6,7 +6,7 @@ hook_source = '''
 
 [[plugins]]
 repo = 'nvim-treesitter/nvim-treesitter'
-depends = 'impatient.nvim'
+depends = ['impatient.nvim']
 hook_post_update = 'TSUpdate'
 hook_source = '''
 lua << EOF
@@ -100,7 +100,7 @@ on_event = 'BufRead'
 
 [[plugins]]
 repo = 'nathanaelkane/vim-indent-guides'
-on_event = 'VimEnter'
+on_event = 'BufEnter'
 hook_source = '''
 let g:indent_guides_enable_on_vim_startup = 1
 let g:indent_guides_default_mapping = 0
