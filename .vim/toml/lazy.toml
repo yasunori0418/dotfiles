@@ -1,5 +1,12 @@
 [[plugins]]
+repo = 'lewis6991/impatient.nvim'
+hook_source = '''
+  lua require('impatient')
+'''
+
+[[plugins]]
 repo = 'nvim-treesitter/nvim-treesitter'
+depends = 'impatient.nvim'
 hook_post_update = 'TSUpdate'
 hook_source = '''
 lua << EOF
