@@ -115,8 +115,23 @@ let g:indent_guides_exclude_filetypes = ['help', 'ddu-ff-filter', 'ddu-ff', 'ddu
 '''
 
 [[plugins]]
+repo = 'hrsh7th/vim-eft'
+on_map = { nxo = '<Plug>(eft-' }
+hook_add = '''
+nmap f <Plug>(eft-f-repeatable)
+xmap f <Plug>(eft-f-repeatable)
+omap f <Plug>(eft-f-repeatable)
+nmap F <Plug>(eft-F-repeatable)
+xmap F <Plug>(eft-F-repeatable)
+omap F <Plug>(eft-F-repeatable)
+'''
+hook_source = '''
+let g:eft_ignorecase = v:true
+'''
+
+[[plugins]]
 repo = 'machakann/vim-sandwich'
-on_map = { xon = '<Plug>(sandwich-'}
+on_map = { nxo = '<Plug>(sandwich-'}
 hook_add = '''
 "Disable s for vim-sandwich
 nnoremap s <Nop>
