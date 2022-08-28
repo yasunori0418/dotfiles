@@ -133,10 +133,6 @@ let g:eft_ignorecase = v:true
 repo = 'machakann/vim-sandwich'
 on_map = { nxo = '<Plug>(sandwich-'}
 hook_add = '''
-"Disable s for vim-sandwich
-nnoremap s <Nop>
-xnoremap s <Nop>
-
 let g:sandwich_no_default_key_mappings = 1
 
 " add

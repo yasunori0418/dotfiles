@@ -109,3 +109,19 @@ endfunction
 command! Cleareg call s:Clear_Register()
 
 " }}}
+
+" Nop keys {{{
+" Disable s for vim-sandwich
+nnoremap s <Nop>
+xnoremap s <Nop>
+nnoremap S <Nop>
+xnoremap S <Nop>
+
+" Invalid because it does not move with t and T.
+nnoremap t <Nop>
+xnoremap t <Nop>
+nnoremap T <Nop>
+xnoremap T <Nop>
+
+nnoremap m <Nop>
+" }}}
