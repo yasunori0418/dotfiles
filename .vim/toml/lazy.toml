@@ -42,6 +42,13 @@ source ~/dotfiles/.vim/plugins/lightline.vim
 '''
 
 [[plugins]]
+repo = 'rcarriga/nvim-notify'
+on_lua = 'notify'
+on_source = '''
+lua vim.notify = require('notify')
+'''
+
+[[plugins]]
 repo = 'lambdalisue/suda.vim'
 on_cmd = ['SudaRead', 'SudaWrite']
 
