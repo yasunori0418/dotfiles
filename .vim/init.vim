@@ -41,6 +41,7 @@ let g:dein#install_progress_type = 'floating'
 let g:dein#enable_notification = v:true
 let g:dein#auto_recache = v:true
 let g:dein#lazy_rplugins = v:true
+let g:dein#install_check_remote_threshold = 24 * 60 * 60
 
 " GitHub apt token file.
 let s:github_pat = g:base_dir .. 'github_pat'
