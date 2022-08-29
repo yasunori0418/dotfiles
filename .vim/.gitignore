@@ -1,3 +1,6 @@
 # github api token.
 # Use dein#install_github_api_token
-.vim/github_pat
+github_pat
+
+# Not tracking log stratup log files
+*log*
