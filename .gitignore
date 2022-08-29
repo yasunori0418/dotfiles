@@ -1,12 +1,3 @@
-# Input mode test file.
-# .vim/text
-
-# Python test file.
-# .vim/test.py
-
-# Vim test files.
-.vim/tests/
-
 # github api token.
 # Use dein#install_github_api_token
 .vim/github_pat
