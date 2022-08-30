@@ -1,4 +1,8 @@
 
+" Disable default plugins {{{
+let g:did_load_ftplugin = 1
+" " }}}
+
 " Editor-Settings {{{
 " Encoding{{{
 " Use utf-8 to overall encoding.
