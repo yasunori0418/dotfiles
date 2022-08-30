@@ -2,7 +2,7 @@
 repo = 'vim-denops/denops.vim'
 on_event = 'CursorHold'
 hook_add = '''
-  let g:denops_server_addr = '127.0.0.1:32123'
+let g:denops_server_addr = '127.0.0.1:32123'
 '''
 
 [[plugins]]
@@ -10,11 +10,11 @@ repo = 'vim-skk/skkeleton'
 depends = ['denops.vim']
 on_map = {ic = '<Plug>(skkeleton-toggle)'}
 hook_add = '''
-  imap <C-j> <Plug>(skkeleton-toggle)
-  cmap <C-j> <Plug>(skkeleton-toggle)
+imap <C-j> <Plug>(skkeleton-toggle)
+cmap <C-j> <Plug>(skkeleton-toggle)
 '''
 hook_source = '''
-  source ~/dotfiles/.vim/plugins/skkeleton.vim
+source ~/dotfiles/.vim/plugins/skkeleton.vim
 '''
 
 [[plugins]]
