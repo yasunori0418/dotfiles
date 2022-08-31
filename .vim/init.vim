@@ -15,14 +15,17 @@ let s:dein_repo = s:dein_dir . '/repos/github.com/Shougo/dein.vim'
 " vim settings directory. {{{
 
 " vim setting directory.
-let g:base_dir = fnamemodify(expand('<sfile>'), ':h') .. '/'
+let g:base_dir = fnamemodify(expand('<sfile>'), ':h') . '/'
 
 " vimrcs directory.
-let s:vimrcs_dir = g:base_dir .. 'rc/'
+let s:vimrcs_dir = g:base_dir . 'rc/'
 
 " plugins toml-file directory.
-let s:toml_dir = g:base_dir ..'toml/'
-let s:toml_files = systemlist('ls ' .. s:toml_dir .. '*.toml')
+let s:toml_dir = g:base_dir . 'toml/'
+let s:dein_toml = 'dein.toml'
+let s:lazy_toml = 'lazy.toml'
+let s:ddc_toml = 'ddc.toml'
+let s:ddu_toml = 'ddu.toml'
 " }}}
 
 " dein installation check {{{
@@ -73,13 +76,10 @@ if dein#min#load_state(s:dein_dir)
 
   call dein#begin(s:dein_dir)
 
-  for toml_file in s:toml_files
-    if toml_file == s:toml_dir .. 'dein.toml'
-      call dein#load_toml(toml_file, {'lazy': 0})
-    else
-      call dein#load_toml(toml_file, {'lazy': 1})
-    endif
-  endfor
+  call dein#load_toml(s:toml_dir . s:dein_toml,   {'lazy': 0})
+  call dein#load_toml(s:toml_dir . s:lazy_toml,   {'lazy': 1})
+  call dein#load_toml(s:toml_dir . s:ddc_toml,    {'lazy': 1})
+  call dein#load_toml(s:toml_dir . s:ddu_toml,    {'lazy': 1})
 
   " end settings
   call dein#end()
