@@ -1,6 +1,21 @@
 
 " Disable default plugins {{{
-let g:did_load_ftplugin = 1
+let g:did_install_default_menus = v:true
+let g:did_install_syntax_menu   = v:true
+let g:did_indent_on             = v:true
+let g:did_load_ftplugin         = v:true
+let g:loaded_2html_plugin       = v:true
+let g:loaded_gzip               = v:true
+let g:loaded_man                = v:true
+let g:loaded_matchit            = v:true
+let g:loaded_matchparen         = v:true
+let g:loaded_netrwPlugin        = v:true
+let g:loaded_shada_plugin       = v:true
+let g:loaded_spellfile_plugin   = v:true
+let g:loaded_tarPlugin          = v:true
+let g:loaded_tutor_mode_plugin  = v:true
+let g:loaded_zipPlugin          = v:true
+let g:skip_loading_mswin        = v:true
 " " }}}
 
 " Editor-Settings {{{
