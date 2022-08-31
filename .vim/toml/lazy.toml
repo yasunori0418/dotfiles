@@ -207,3 +207,48 @@ on_cmd = ['DoShowMarks', 'NoShowMarks']
 [[plugins]]
 repo = 'tweekmonster/helpful.vim'
 on_cmd = 'HelpfulVersion'
+
+# denops depends plugins {{{
+[[plugins]]
+repo = 'vim-denops/denops.vim'
+on_event = 'CursorHold'
+hook_add = '''
+let g:denops_server_addr = '127.0.0.1:32123'
+'''
+
+[[plugins]]
+repo = 'vim-skk/skkeleton'
+depends = ['denops.vim']
+on_map = {ic = '<Plug>(skkeleton-toggle)'}
+hook_add = '''
+imap <C-j> <Plug>(skkeleton-toggle)
+cmap <C-j> <Plug>(skkeleton-toggle)
+'''
+hook_source = '''
+source ~/dotfiles/.vim/plugins/skkeleton.vim
+'''
+
+[[plugins]]
+repo = 'yasunori-kirin0418/lightline_skk.vim'
+on_source = 'skkeleton'
+hook_source = '''
+call lightline_skk#option('display', {
+\ 'hiragana': 'あぁ﫦',
+\ 'katakana': 'アァ﫦',
+\ 'hankaku-katakana': 'ｱｧ﫦',
+\ 'zenkaku-alphabet': 'Ａａ﫦',
+\ 'alphabet': 'Aa﫦',
+\ })
+'''
+
+[[plugins]] # Translate, Japanese to English
+repo = 'skanehira/denops-translate.vim'
+depends = ['denops.vim']
+on_cmd = 'Translate'
+hook_add = '''
+nnoremap [trans] <Nop>
+nmap <Space>l [trans]
+nnoremap [trans]e <Cmd>Translate<CR>
+nnoremap [trans]j <Cmd>Translate!<CR>
+'''
+# }}}
