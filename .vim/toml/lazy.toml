@@ -208,7 +208,7 @@ on_cmd = ['DoShowMarks', 'NoShowMarks']
 repo = 'tweekmonster/helpful.vim'
 on_cmd = 'HelpfulVersion'
 
-# denops depends plugins {{{
+# plugins depends for denops {{{
 [[plugins]]
 repo = 'vim-denops/denops.vim'
 on_event = 'CursorHold'
@@ -251,4 +251,63 @@ nmap <Space>l [trans]
 nnoremap [trans]e <Cmd>Translate<CR>
 nnoremap [trans]j <Cmd>Translate!<CR>
 '''
+# }}}
+
+# filetype plugin {{{
+[[plugins]]
+repo = 'mattn/emmet-vim'
+on_ft = ['html', 'css', 'php']
+hook_add = '''
+source ~/dotfiles/.vim/plugins/emmet.vim
+'''
+
+[[plugins]]
+repo = 'elzr/vim-json'
+on_ft = 'json'
+hook_source = '''
+augroup json_autocmd
+  autocmd!
+  autocmd FileType json setlocal autoindent
+  autocmd FileType json setlocal formatoptions=tcq2l
+  autocmd FileType json setlocal textwidth=78 shiftwidth=2
+  autocmd FileType json setlocal softtabstop=2 tabstop=2
+  autocmd FileType json setlocal expandtab
+  autocmd FileType json setlocal foldmethod=syntax
+augroup END
+'''
+
+# Markdown plugins {{{
+
+[[plugins]]
+repo = 'mattn/vim-maketable'
+on_ft = 'markdown'
+
+[[plugins]]
+repo = 'previm/previm'
+depends = 'open-browser.vim'
+on_ft = 'markdown'
+on_cmd = 'PrevimOpen'
+hook_add = '''
+nnoremap [previm] <Nop>
+nmap <Space>p [previm]
+nnoremap [previm]o <Cmd>PrevimOpen<CR>
+nnoremap [previm]r <Cmd>call previm#refresh()<CR>
+'''
+hook_source = '''
+let g:previm_enable_realtime = 1
+let g:previm_disable_default_css = 1
+let g:previm_custom_css_path = expand('~/dotfiles/tmp/previm_markdown.css')
+let g:previm_plantuml_imageprefix = 'http://localhost:58080/png/'
+'''
+
+[[plugins]]
+repo = 'tyru/open-browser.vim'
+hook_add = '''
+" open-browser.vim
+let g:netrw_nogx = 1 " disable netrw's gx mapping.
+nmap gx <Plug>(openbrowser-smart-search)
+vmap gx <Plug>(openbrowser-smart-search)
+'''
+# }}}
+
 # }}}
