@@ -10,6 +10,7 @@
 	interactive = auto
 [core]
 	editor = nvim
+	filemode = false
 [pull]
 	ff = only
 [init]
