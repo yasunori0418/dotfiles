@@ -8,6 +8,7 @@ lua require('impatient')
 repo = 'nathom/filetype.nvim'
 depends = ['impatient.nvim']
 
+# Color scheme {{{
 [[plugins]]
 repo = 'nvim-treesitter/nvim-treesitter'
 depends = ['filetype.nvim']
@@ -33,6 +34,8 @@ depends = ['nvim-treesitter']
 hook_source = '''
 source ~/dotfiles/.vim/plugins/nightfox.lua
 '''
+
+# }}}
 
 [[plugins]]
 repo = 'itchyny/vim-gitbranch'
@@ -153,22 +156,6 @@ nmap sdb <Plug>(sandwich-delete-auto)
 nmap sr <Plug>(sandwich-replace)
 xmap sr <Plug>(sandwich-replace)
 nmap srb <Plug>(sandwich-replace-auto)
-
-" text-objects (if you need)
-"omap ib <Plug>(textobj-sandwich-auto-i)
-"xmap ib <Plug>(textobj-sandwich-auto-i)
-"omap ab <Plug>(textobj-sandwich-auto-a)
-"xmap ab <Plug>(textobj-sandwich-auto-a)
-
-"omap is <Plug>(textobj-sandwich-query-i)
-"xmap is <Plug>(textobj-sandwich-query-i)
-"omap as <Plug>(textobj-sandwich-query-a)
-"xmap as <Plug>(textobj-sandwich-query-a)
-
-" Black magic...
-"nnoremap <silent> s <Cmd>call dein#source('vim-sandwich')<CR>
-"xnoremap <silent> s <Cmd>call dein#source('vim-sandwich')<CR>
-"onoremap <silent> s <Cmd>call dein#source('vim-sandwich')<CR>
 '''
 
 [[plugins]]
