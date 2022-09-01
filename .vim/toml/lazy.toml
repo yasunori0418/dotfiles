@@ -37,6 +37,8 @@ source ~/dotfiles/.vim/plugins/nightfox.lua
 
 # }}}
 
+# lightline {{{
+
 [[plugins]]
 repo = 'itchyny/vim-gitbranch'
 
@@ -48,11 +50,19 @@ hook_add = '''
 source ~/dotfiles/.vim/plugins/lightline.vim
 '''
 
+# }}}
+
 [[plugins]]
 repo = 'rcarriga/nvim-notify'
-on_lua = 'notify'
-on_source = '''
-lua vim.notify = require('notify')
+on_source = 'nightfox.nvim'
+hook_source = '''
+lua << EOF
+require('notify').setup({
+  stages = 'slide',
+  background_color = 'NormalFloat',
+})
+vim.notify = require('notify')
+EOF
 '''
 
 [[plugins]]
