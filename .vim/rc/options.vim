@@ -1,5 +1,6 @@
 
 " Disable default plugins {{{
+" Fast Startup Settings!!
 let g:did_install_default_menus = v:true
 let g:did_install_syntax_menu   = v:true
 let g:did_indent_on             = v:true
@@ -19,7 +20,7 @@ let g:loaded_tarPlugin          = v:true
 let g:loaded_tutor_mode_plugin  = v:true
 let g:loaded_zipPlugin          = v:true
 let g:skip_loading_mswin        = v:true
-" " }}}
+" }}}
 
 " Editor-Settings {{{
 " Encoding{{{
