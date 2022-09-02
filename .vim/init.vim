@@ -46,15 +46,6 @@ let g:dein#auto_recache = v:true
 let g:dein#lazy_rplugins = v:true
 let g:dein#install_check_remote_threshold = 24 * 60 * 60
 
-" GitHub apt token file.
-let s:github_pat = g:base_dir .. 'github_pat'
-if filereadable(s:github_pat)
-  let g:dein#install_github_api_token = readfile(s:github_pat)[0]
-  let g:exists_github_pat = v:true
-else
-  let g:exists_github_pat = v:false
-endif
-
 " }}}
 
 " Begin settings {{{
@@ -91,51 +82,6 @@ endif
 if dein#check_install()
   call dein#install()
 endif
-" }}}
-
-" Check for plugin updates on github graphQL api.{{{
-function! s:dein_update(bang_flg) abort
-  if g:exists_github_pat && a:bang_flg == 0
-    echo 'exists github_pat'
-    call dein#check_update(v:true)
-  elseif a:bang_flg
-    echo 'use bang flag'
-    call dein#update()
-  else
-    echo 'not exists github_pat'
-    call dein#update()
-  endif
-endfunction
-
-command! -bang DeinUpdate call s:dein_update(<bang>0)
-" }}}
-
-" dein.vim remove plugins.{{{
-function! s:dein_check_uninstall() abort
-  let l:remove_plugins = dein#check_clean()
-  if len(l:remove_plugins) > 0
-    for l:remove_plugin in l:remove_plugins
-      echo l:remove_plugin
-    endfor
-    echo 'Would you like to remove those plugins?'
-    echon '[Y/n]'
-    if getcharstr() == 'y'
-      call map(l:remove_plugins, "delete(v:val, 'rf')")
-      call dein#recache_runtimepath()
-      echo 'Remove Plugins ...done!'
-    else 
-      echo 'Remove Plugins ...abort!'
-    endif
-  else
-    echo 'There are no plugins to remove.'
-  endif
-endfunction
-
-command! DeinDelete call s:dein_check_uninstall()
-" }}}
-
-" dein cache scripts cleanup {{{
-command! -bar DeinRecache call dein#recache_runtimepath() | qall
 " }}}
 
 " ファイル形式別プラグインの有効

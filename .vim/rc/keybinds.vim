@@ -99,6 +99,7 @@ xnoremap c "_c
 
 " Command {{{
 
+" Clean Register command {{{
 function! s:Clear_Register() abort
     let regs=split('abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789/-"', '\zs')
     for r in regs
@@ -107,6 +108,61 @@ function! s:Clear_Register() abort
 endfunction
 
 command! Cleareg call s:Clear_Register()
+" }}}
+
+" Check for plugin updates on github graphQL api.{{{
+" GitHub apt token file.
+let s:github_pat = g:base_dir . 'github_pat'
+if filereadable(s:github_pat)
+  let g:dein#install_github_api_token = readfile(s:github_pat)[0]
+  let s:exists_github_pat = v:true
+else
+  let s:exists_github_pat = v:false
+endif
+
+function! s:dein_update(bang_flg) abort
+  if s:exists_github_pat && a:bang_flg == 0
+    lua vim.notify('exists github_pat', 'info')
+    call dein#check_update(v:true)
+  elseif a:bang_flg
+    lua vim.notify('use bang flag', 'info')
+    call dein#update()
+  else
+    lua vim.notify('not exists github_pat', 'info')
+    call dein#update()
+  endif
+endfunction
+
+command! -bang DeinUpdate call s:dein_update(<bang>0)
+" }}}
+
+" dein.vim remove plugins.{{{
+function! s:dein_check_uninstall() abort
+  let remove_plugins = dein#check_clean()
+  if len(l:remove_plugins) > 0
+    for remove_plugin in remove_plugins
+      echo remove_plugin
+    endfor
+    echo 'Would you like to remove those plugins?'
+    echon '[Y/n]'
+    if getcharstr() == 'y'
+      call map(remove_plugins, "delete(v:val, 'rf')")
+      call dein#recache_runtimepath()
+      echo 'Remove Plugins ...done!'
+    else 
+      echo 'Remove Plugins ...abort!'
+    endif
+  else
+    echo 'There are no plugins to remove.'
+  endif
+endfunction
+
+command! DeinDelete call s:dein_check_uninstall()
+" }}}
+
+" dein cache scripts cleanup {{{
+command! -bar DeinRecache call dein#recache_runtimepath() | qall
+" }}}
 
 " }}}
 
