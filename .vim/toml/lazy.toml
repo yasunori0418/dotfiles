@@ -44,7 +44,7 @@ repo = 'itchyny/vim-gitbranch'
 
 [[plugins]] # Modern and light status line.
 repo = 'itchyny/lightline.vim'
-on_event = 'VimEnter'
+on_event = ['CursorHold', 'CursorMoved', 'InsertEnter', 'CmdlineEnter']
 depends = ['vim-gitbranch', 'nightfox.nvim']
 hook_add = '''
 source ~/dotfiles/.vim/plugins/lightline.vim
@@ -116,15 +116,15 @@ on_event = 'InsertEnter'
 
 [[plugins]]
 repo = 'itchyny/vim-cursorword'
-on_event = 'BufEnter'
+on_source = 'nightfox.nvim'
 
 [[plugins]]
 repo = 'airblade/vim-gitgutter'
-on_event = 'BufRead'
+on_source = 'nightfox.nvim'
 
 [[plugins]]
 repo = 'nathanaelkane/vim-indent-guides'
-on_event = 'BufEnter'
+on_source = 'nightfox.nvim'
 hook_source = '''
 let g:indent_guides_enable_on_vim_startup = 1
 let g:indent_guides_default_mapping = 0
@@ -196,10 +196,6 @@ call gina#custom#command#option('patch', '--oneside')
 [[plugins]]
 repo = 'thinca/vim-quickrun'
 on_cmd = 'QuickRun'
-
-[[plugins]]
-repo = 'jacquesbh/vim-showmarks'
-on_cmd = ['DoShowMarks', 'NoShowMarks']
 
 [[plugins]]
 repo = 'tweekmonster/helpful.vim'
