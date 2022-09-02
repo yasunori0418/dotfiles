@@ -7,7 +7,6 @@ let g:lightline.colorscheme = 'nordfox'
 
 " }}}
 
-
 " Statusline{{{
 
 " active
@@ -34,7 +33,6 @@ let g:lightline.inactive.right = [
 
 " }}}
 
-
 " Tabline{{{
 
 let g:lightline.tabline = {}
@@ -50,7 +48,6 @@ let g:lightline.tab.active = ['tabnum', 'filename', 'modified']
 let g:lightline.tab.inactive = ['tabnum', 'filename', 'modified']
 
 " }}}
-
 
 " Separator{{{
 
@@ -70,42 +67,11 @@ endif
 
 " }}}
 
-
-" Component_default{{{
-
-let g:lightline.component = {}
-let g:lightline.component = {
-  \ 'mode': '%{lightline#mode()}',
-  \ 'absolutepath': '%F',
-  \ 'relativepath': '%f',
-  \ 'filename': '%t',
-  \ 'modified': '%M',
-  \ 'bufnum': '%n',
-  \ 'paste': '%{&paste?"PASTE":""}',
-  \ 'readonly': '%R',
-  \ 'charvalue': '%b',
-  \ 'charvaluehex': '%B',
-  \ 'fileencoding': '%{&fenc!=#""?&fenc:&enc}',
-  \ 'fileformat': '%{&ff}',
-  \ 'filetype': '%{&ft!=#""?&ft:"no ft"}',
-  \ 'percent': '%3p%%',
-  \ 'percentwin': '%P',
-  \ 'spell': '%{&spell?&spelllang:""}',
-  \ 'lineinfo': '%3l:%-2c',
-  \ 'line': '%l',
-  \ 'column': '%c',
-  \ 'close': '%999X X ',
-  \ 'winnr': '%{winnr()}' }
-
-" }}}
-
-
 " Component{{{
 
 " let g:lightline.component.git_branch = '%{FugitiveStatusline()}'
 
 " }}}
-
 
 " Component_function{{{
 
@@ -117,7 +83,6 @@ let g:lightline.component_function = {
 
 " }}}
 
-
 " Component_expand{{{
 
 let g:lightline.component_expand = {
@@ -127,7 +92,6 @@ let g:lightline.component_expand = {
   \ }
 
 " }}}
-
 
 " Component_expand_type{{{
 
@@ -139,7 +103,6 @@ let g:lightline.component_expand_type = {
 
 " }}}
 
-
 " LightlineUpdate_Command{{{
 
 command! -bar LightlineUpdate source ~/dotfiles/.vim/plugins/lightline.vim|
@@ -148,7 +111,6 @@ command! -bar LightlineUpdate source ~/dotfiles/.vim/plugins/lightline.vim|
   \ call lightline#update()
 
 " }}}
-
 
 " Custom Lightline mode{{{
 
@@ -171,7 +133,6 @@ function! g:LightlineMode() abort
 endfunction
 
 " }}}
-
 
 " git branch {{{
 
