@@ -130,12 +130,6 @@ let g:vim_indent_count = 0
 
 " }}}
 
-" Statusline{{{
-" Display statusline.
-set laststatus=3
-
-" }}} 
-
 " Invisible characters{{{
 " Invisible characters
 set list

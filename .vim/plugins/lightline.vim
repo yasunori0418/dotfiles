@@ -1,4 +1,5 @@
 set noshowmode
+set laststatus=3
 let g:lightline = {}
 
 " Colorscheme{{{
