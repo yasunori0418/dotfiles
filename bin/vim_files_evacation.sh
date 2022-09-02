@@ -28,7 +28,6 @@ nvim_evacation_files=( \
   runtime/plugin/tohtml.vim \
   runtime/plugin/tutor.vim \
   runtime/plugin/zipPlugin.vim \
-  runtime/ftplugin.vim \
   runtime/menu.vim \
   runtime/mswin.vim \
   archlinux.vim)
