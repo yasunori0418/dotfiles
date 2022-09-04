@@ -9,3 +9,6 @@ repo = 'vim-jp/vimdoc-ja'
 
 [[plugins]]
 repo = 'mattn/learn-vimscript'
+
+[[plugins]]
+repo = 'nathom/filetype.nvim'

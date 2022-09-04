@@ -4,14 +4,10 @@ hook_source = '''
 lua require('impatient')
 '''
 
-[[plugins]]
-repo = 'nathom/filetype.nvim'
-depends = ['impatient.nvim']
-
 # Color scheme {{{
 [[plugins]]
 repo = 'nvim-treesitter/nvim-treesitter'
-depends = ['filetype.nvim']
+depends = ['impatient.nvim']
 hook_post_update = 'TSUpdate'
 hook_source = '''
 lua << EOF
