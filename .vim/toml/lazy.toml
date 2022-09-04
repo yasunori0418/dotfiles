@@ -129,9 +129,15 @@ hook_source = '''
 let g:indent_guides_default_mapping = 0
 let g:indent_guides_exclude_filetypes = ['help', 'ddu-ff-filter', 'ddu-ff', 'ddu-filer', 'deol']
 '''
-hook_post_source = '''
-IndentGuidesEnable
+hook_post_source = 'IndentGuidesEnable'
+
+[[plugins]]
+repo = 'monkoose/matchparen.nvim'
+on_source = 'nightfox.nvim'
+hook_source = '''
+lua require('matchparen').setup()
 '''
+hook_post_source = 'MatchParenEnable'
 
 [[plugins]]
 repo = 'hrsh7th/vim-eft'
