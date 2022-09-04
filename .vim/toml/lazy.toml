@@ -204,7 +204,6 @@ on_cmd = 'HelpfulVersion'
 # plugins depends for denops {{{
 [[plugins]]
 repo = 'vim-denops/denops.vim'
-on_event = 'CursorHold'
 hook_add = '''
 let g:denops_server_addr = '127.0.0.1:32123'
 '''
@@ -243,6 +242,30 @@ nnoremap [trans] <Nop>
 nmap <Space>l [trans]
 nnoremap [trans]e <Cmd>Translate<CR>
 nnoremap [trans]j <Cmd>Translate!<CR>
+'''
+
+[[plugins]]
+repo = 'skanehira/denops-silicon.vim'
+depends = ['denops.vim']
+on_cmd = 'Silicon'
+hook_source = '''
+let g:silicon_options = {
+  \ 'font': 'Cica',
+  \  'no_line_number': v:false,
+  \  'no_round_corner': v:false,
+  \  'no_window_controls': v:true,
+  \  'background_color': '#434C5E',
+  \  'line_offset': 1,
+  \  'line_pad': 2,
+  \  'pad_horiz': 80,
+  \  'pad_vert': 100,
+  \  'shadow_blur_radius': 10,
+  \  'shadow_color': '#2E3440',
+  \  'shadow_offset_x': 5,
+  \  'shadow_offset_y': 5,
+  \  'tab_width': &tabstop,
+  \  'theme': 'Nord',
+  \ }
 '''
 # }}}
 
