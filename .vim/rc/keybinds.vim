@@ -42,6 +42,12 @@ nnoremap [Window]- <C-W>-
 nnoremap [Window]= <C-W>=
 nnoremap [Window]< <C-W><
 nnoremap [Window]> <C-W>>
+
+" Another window size controls.
+nnoremap <S-Left>  <C-w><<CR>
+nnoremap <S-Right> <C-w>><CR>
+nnoremap <S-Up>    <C-w>-<CR>
+nnoremap <S-Down>  <C-w>+<CR>
 " }}}
 
 " File save keybinds. {{{
@@ -186,4 +192,14 @@ nnoremap T <Nop>
 xnoremap T <Nop>
 
 nnoremap m <Nop>
+
+" kill arrow key move
+noremap <Left>   <Nop>
+noremap <Down>   <Nop>
+noremap <Up>     <Nop>
+noremap <Right>  <Nop>
+noremap! <Left>   <Nop>
+noremap! <Down>   <Nop>
+noremap! <Up>     <Nop>
+noremap! <Right>  <Nop>
 " }}}
