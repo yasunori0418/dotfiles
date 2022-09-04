@@ -19,7 +19,6 @@ nvim_evacation_files=( \
   runtime/plugin/gzip.vim \
   runtime/plugin/health.vim \
   runtime/plugin/man.vim \
-  runtime/plugin/matchit.vim \
   runtime/plugin/matchparen.vim \
   runtime/plugin/netrwPlugin.vim \
   runtime/plugin/shada.vim \
