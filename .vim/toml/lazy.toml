@@ -46,7 +46,7 @@ repo = 'itchyny/vim-gitbranch'
 repo = 'itchyny/lightline.vim'
 on_event = ['CursorHold', 'CursorMoved', 'InsertEnter', 'CmdlineEnter']
 depends = ['vim-gitbranch', 'nightfox.nvim']
-hook_add = '''
+hook_source = '''
 source ~/dotfiles/.vim/plugins/lightline.vim
 '''
 
