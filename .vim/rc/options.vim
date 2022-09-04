@@ -27,6 +27,7 @@ let g:loaded_getscriptPlugin    = v:true
 
 " Disable other plugins
 let g:loaded_man                = v:true
+let g:loaded_matchit            = v:true
 let g:loaded_matchparen         = v:true
 let g:loaded_shada_plugin       = v:true
 let g:loaded_spellfile_plugin   = v:true
