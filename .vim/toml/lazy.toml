@@ -1,3 +1,4 @@
+
 # Color scheme {{{
 [[plugins]]
 repo = 'nvim-treesitter/nvim-treesitter'
@@ -58,6 +59,7 @@ EOF
 repo = 'lambdalisue/suda.vim'
 on_cmd = ['SudaRead', 'SudaWrite']
 
+# Deol {{{
 [[plugins]]
 repo = 'Shougo/deol.nvim'
 on_cmd = 'Deol'
@@ -99,16 +101,16 @@ let g:deol#enable_dir_changed = v:false
 let g:deol#nvim_server = '~/.cache/nvim/server.pipe'
 '''
 
+# }}}
+
+# Coding support plugins {{{
+
 [[plugins]]
 repo = 'cohama/lexima.vim'
 on_event = 'InsertEnter'
 
 [[plugins]]
 repo = 'itchyny/vim-cursorword'
-on_source = 'nightfox.nvim'
-
-[[plugins]]
-repo = 'airblade/vim-gitgutter'
 on_source = 'nightfox.nvim'
 
 [[plugins]]
@@ -127,21 +129,6 @@ hook_source = '''
 lua require('matchparen').setup()
 '''
 hook_post_source = 'MatchParenEnable'
-
-[[plugins]]
-repo = 'hrsh7th/vim-eft'
-on_map = { nxo = '<Plug>(eft-' }
-hook_add = '''
-nmap f <Plug>(eft-f-repeatable)
-xmap f <Plug>(eft-f-repeatable)
-omap f <Plug>(eft-f-repeatable)
-nmap F <Plug>(eft-F-repeatable)
-xmap F <Plug>(eft-F-repeatable)
-omap F <Plug>(eft-F-repeatable)
-'''
-hook_source = '''
-let g:eft_ignorecase = v:true
-'''
 
 [[plugins]]
 repo = 'machakann/vim-sandwich'
@@ -164,6 +151,28 @@ nmap sr <Plug>(sandwich-replace)
 xmap sr <Plug>(sandwich-replace)
 nmap srb <Plug>(sandwich-replace-auto)
 '''
+
+# }}}
+
+[[plugins]]
+repo = 'hrsh7th/vim-eft'
+on_map = { nxo = '<Plug>(eft-' }
+hook_add = '''
+nmap f <Plug>(eft-f-repeatable)
+xmap f <Plug>(eft-f-repeatable)
+omap f <Plug>(eft-f-repeatable)
+nmap F <Plug>(eft-F-repeatable)
+xmap F <Plug>(eft-F-repeatable)
+omap F <Plug>(eft-F-repeatable)
+'''
+hook_source = '''
+let g:eft_ignorecase = v:true
+'''
+
+# Git plugins {{{
+[[plugins]]
+repo = 'airblade/vim-gitgutter'
+on_source = 'nightfox.nvim'
 
 [[plugins]]
 repo = 'lambdalisue/gina.vim'
@@ -189,6 +198,8 @@ call gina#custom#command#option('log', '--all')
 call gina#custom#command#option('blame', '--opener', 'tabedit')
 call gina#custom#command#option('patch', '--oneside')
 '''
+
+# }}}
 
 [[plugins]]
 repo = 'thinca/vim-quickrun'
