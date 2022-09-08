@@ -248,7 +248,7 @@ Description="キーボード - ウクライナ語 - クリミア・タタール�
 Language=crh
 Label=crh
 
-[keyboard-ua-pe6]
+[keyboard-ua-sun_type6]
 Description="キーボード - ウクライナ語 - ウクライナ語 (Sun Type 6/7)"
 Language=uk
 Label=ua
@@ -493,6 +493,11 @@ Description="キーボード - ロシア語 - Russian (Engineering, Latin)"
 Language=ru
 Label=us
 
+[keyboard-ru-winkeys-p]
+Description="キーボード - ロシア語 - Russian (Programmer)"
+Language=ru
+Label=winkeys-p
+
 [keyboard-trans]
 Description="キーボード - International Phonetic Alphabet"
 Language=
@@ -512,6 +517,11 @@ Label=fa
 Description="キーボード - ペルシア語 - Persian (with Persian keypad)"
 Language=fa
 Label=ir
+
+[keyboard-ir-azb]
+Description="キーボード - ペルシア語 - Azerbaijani (Iran)"
+Language=azb
+Label=azb
 
 [keyboard-ir-ku]
 Description="キーボード - ペルシア語 - クルド語 (イラン、ラテン Q)"
@@ -644,7 +654,7 @@ Language=et
 Label=ee
 
 [keyboard-ee-sun_type6]
-Description="キーボード - エストニア語 - (Sun Type 6/7)"
+Description="キーボード - エストニア語 - エストニア語 (Sun Type 6/7)"
 Language=et
 Label=ee
 
@@ -1134,7 +1144,7 @@ Language=hr
 Label=hr
 
 [keyboard-hr-unicodeus]
-Description="キーボード - クロアチア語 - tian (US, with Croatian digraphs)"
+Description="キーボード - クロアチア語 - Croatian (US, with Croatian digraphs)"
 Language=hr
 Label=hr
 
@@ -1813,6 +1823,11 @@ Description="キーボード - ベラルーシ語 - Belarusian (intl.)"
 Language=be
 Label=by
 
+[keyboard-by-phonetic]
+Description="キーボード - ベラルーシ語 - Belarusian (phonetic)"
+Language=be
+Label=by
+
 [keyboard-br]
 Description="キーボード - ポルトガル語 (ブラジル)"
 Language=pt
@@ -1953,28 +1968,33 @@ Description="キーボード - Indian - Ol Chiki"
 Language=sat
 Label=sat
 
-[keyboard-in-tam_tamilnet]
+[keyboard-in-tamilnet]
 Description="キーボード - Indian - Tamil (TamilNet '99)"
 Language=ta
 Label=ta
 
-[keyboard-in-tam_tamilnet_with_tam_nums]
+[keyboard-in-tamilnet_tamilnumbers]
 Description="キーボード - Indian - Tamil (TamilNet '99 with Tamil numerals)"
 Language=ta
 Label=ta
 
-[keyboard-in-tam_tamilnet_TAB]
+[keyboard-in-tamilnet_TAB]
 Description="キーボード - Indian - Tamil (TamilNet '99, TAB encoding)"
 Language=ta
 Label=ta
 
-[keyboard-in-tam_tamilnet_TSCII]
+[keyboard-in-tamilnet_TSCII]
 Description="キーボード - Indian - Tamil (TamilNet '99, TSCII encoding)"
 Language=ta
 Label=ta
 
 [keyboard-in-tam]
-Description="キーボード - Indian - Tamil (InScript)"
+Description="キーボード - Indian - Tamil (InScript, with Arabic numerals)"
+Language=ta
+Label=ta
+
+[keyboard-in-tam_tamilnumbers]
+Description="キーボード - Indian - Tamil (InScript, with Tamil numerals)"
 Language=ta
 Label=ta
 
@@ -2089,7 +2109,7 @@ Language=de
 Label=be
 
 [keyboard-be-wang]
-Description="キーボード - ベルギー語 - elgian (Wang 724 AZERTY)"
+Description="キーボード - ベルギー語 - Belgian (Wang 724 AZERTY)"
 Language=de
 Label=be
 
@@ -2464,17 +2484,7 @@ Language=fr
 Label=fr
 
 [keyboard-ca-multix]
-Description="キーボード - フランス語 (カナダ) - Canadian (intl.)"
-Language=fr
-Label=ca
-
-[keyboard-ca-multi]
-Description="キーボード - フランス語 (カナダ) - Canadian (intl., 1st part)"
-Language=fr
-Label=ca
-
-[keyboard-ca-multi-2gr]
-Description="キーボード - フランス語 (カナダ) - Canadian (intl., 2nd part)"
+Description="キーボード - フランス語 (カナダ) - Canadian (CSA)"
 Language=fr
 Label=ca
 
@@ -2828,13 +2838,18 @@ Description="キーボード - Indonesian (Latin) - Javanese"
 Language=jax
 Label=id
 
-[keyboard-id-phonetic]
-Description="キーボード - Indonesian (Latin) - Indonesian (Arab Pegon, phonetic)"
+[keyboard-id-melayu-phonetic]
+Description="キーボード - Indonesian (Latin) - Indonesian (Arab Melayu, phonetic)"
 Language=id
 Label=id
 
-[keyboard-id-phoneticx]
-Description="キーボード - Indonesian (Latin) - Indonesian (Arab Pegon, extended phonetic)"
+[keyboard-id-melayu-phoneticx]
+Description="キーボード - Indonesian (Latin) - Indonesian (Arab Melayu, extended phonetic)"
+Language=id
+Label=id
+
+[keyboard-id-pegon-phonetic]
+Description="キーボード - Indonesian (Latin) - Indonesian (Arab Pegon, phonetic)"
 Language=id
 Label=id
 
@@ -3104,7 +3119,7 @@ Language=hu
 Label=hu
 
 [keyboard-hu-101_qwerty_comma_dead]
-Description="キーボード - ハンガリー語 - Hungarian (QWERTY, 101-key, comma, dead keys)"
+Description="キーボード - ハンガリー語 - )"
 Language=hu
 Label=hu
 
@@ -3403,11 +3418,6 @@ Description="キーボード - スペイン語 (ラテンアメリカ) - Spanish
 Language=es
 Label=latam
 
-[keyboard-latam-colemak-gaming]
-Description="キーボード - スペイン語 (ラテンアメリカ) - Spanish (Latin American, Colemak for gaming)"
-Language=es
-Label=latam
-
 [keyboard-mt]
 Description="キーボード - マルタ語"
 Language=mt
@@ -3514,7 +3524,7 @@ Language=pl
 Label=pl
 
 [keyboard-pl-csb]
-Description="キーボード - ポーランド語 - ashubian"
+Description="キーボード - ポーランド語 - カシューブ語"
 Language=csb
 Label=pl
 
