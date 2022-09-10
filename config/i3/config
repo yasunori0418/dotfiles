@@ -75,7 +75,7 @@ bindsym $mod+slash exec --no-startup-id rofi -show window
 bindsym $mod+semicolon exec --no-startup-id rofi -show run
 
 # Power menu
-bindsym $mod+Shift+e exec rofi -show power -font "HackGenNerd Console 16" -modi "power:rofi-power-menu" -no-sidebar-mode
+bindsym $mod+Shift+e exec rofi -show power -font "HackGen Console NF 14" -modi "power:rofi-power-menu" -no-sidebar-mode
 
 # Calc
 bindsym $mod+c exec rofi -modi calc -show calc -no-sidebar-mode
@@ -249,7 +249,7 @@ bindsym $mod+r mode "Resize"
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
 bar {
-  font pango:HackGen Console NF 13
+  font pango:HackGen Console NF 10
   position top
   status_command bumblebee-status
   #status_command i3status
