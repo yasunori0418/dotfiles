@@ -165,8 +165,10 @@ set listchars=tab:»-,space:･,trail:･,nbsp:%,eol:↲,extends:»,precedes:«
 
 augroup user_filename_filetype
   autocmd!
-  autocmd BufNewFile,BufRead *.blade.*    setlocal filetype=html
-  autocmd BufNewFile,BufRead .textlintrc  setlocal filetype=json
+  autocmd BufNewFile,BufRead *.blade.*                      setlocal filetype=html
+  autocmd BufNewFile,BufRead .textlintrc                    setlocal filetype=json
+  autocmd BufNewFile,BufRead ~/.config/i3/config            setlocal filetype=i3config
+  autocmd BufNewFile,BufRead ~/dotfiles/config/i3/config    setlocal filetype=i3config
 augroup END
 
 augroup user_filetype_indent
