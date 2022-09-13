@@ -19,8 +19,8 @@ endfunction
 function! s:L2X_Keymap() abort
   call skkeleton#register_kanatable('rom', s:L2X_table())
 
-  call skkeleton#register_keymap('input', "x", 'disable')
-  call skkeleton#register_keymap('input', "X", 'zenkaku')
+  call skkeleton#register_keymap('input', 'x', 'disable')
+  call skkeleton#register_keymap('input', 'X', 'zenkaku')
 endfunction
 
 
@@ -98,4 +98,5 @@ augroup skkeleton_autocmds
   autocmd User skkeleton-initialize-pre call s:skkeleton_init()
   autocmd User skkeleton-enable-pre call s:skkeleton_pre()
   autocmd User skkeleton-disable-pre call s:skkeleton_post()
+  autocmd InsertLeave * redraw
 augroup END
