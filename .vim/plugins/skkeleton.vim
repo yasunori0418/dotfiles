@@ -98,5 +98,5 @@ augroup skkeleton_autocmds
   autocmd User skkeleton-initialize-pre call s:skkeleton_init()
   autocmd User skkeleton-enable-pre call s:skkeleton_pre()
   autocmd User skkeleton-disable-pre call s:skkeleton_post()
-  autocmd InsertLeave * redraw
+  autocmd InsertLeave * mode
 augroup END
