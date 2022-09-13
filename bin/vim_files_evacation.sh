@@ -4,7 +4,7 @@ if [ "$EUID" -ne 0 ]; then
   exit 1
 fi
 
-evacation_dir=/usr/share/vimfiles_evacation
+evacation_dir=/usr/local/share/vimfiles_evacation
 
 etc_nvim_dir=/etc/xdg/nvim/
 etc_nvim_evacation_dir=$evacation_dir/etc/xdg/
