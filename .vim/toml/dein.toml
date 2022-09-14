@@ -15,6 +15,6 @@ repo = 'nathom/filetype.nvim'
 
 [[plugins]]
 repo = 'lewis6991/impatient.nvim'
-hook_source = '''
+hook_add = '''
 lua require('impatient')
 '''
