@@ -30,6 +30,7 @@ nvim_evacation_files=( \
   runtime/plugin/zipPlugin.vim \
   runtime/menu.vim \
   runtime/mswin.vim \
+  runtime/ftoff.vim \
   archlinux.vim)
 
 # Check exists evacation directory.
