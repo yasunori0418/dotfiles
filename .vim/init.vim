@@ -56,12 +56,12 @@ if dein#min#load_state(s:dein_dir)
   let g:dein#inline_vimrcs = ['options.vim', 'keybinds.vim']
 
   " Use neovide
-  if exists("g:neovide")
+  if exists('g:neovide')
     call add(g:dein#inline_vimrcs, 'neovide.vim')
   endif
 
 
-  call map(g:dein#inline_vimrcs, { _, val -> s:vimrcs_dir .. val })
+  call map(g:dein#inline_vimrcs, { _, val -> s:vimrcs_dir . val })
 
   " }}}
 
