@@ -122,13 +122,13 @@ let g:indent_guides_exclude_filetypes = ['help', 'ddu-ff-filter', 'ddu-ff', 'ddu
 '''
 hook_post_source = 'IndentGuidesEnable'
 
-[[plugins]]
-repo = 'monkoose/matchparen.nvim'
-on_source = 'nightfox.nvim'
-hook_source = '''
-lua require('matchparen').setup()
-'''
-hook_post_source = 'MatchParenEnable'
+#[[plugins]]
+#repo = 'monkoose/matchparen.nvim'
+#on_source = 'nightfox.nvim'
+#hook_source = '''
+#lua require('matchparen').setup()
+#'''
+#hook_post_source = 'MatchParenEnable'
 
 [[plugins]]
 repo = 'machakann/vim-sandwich'
@@ -208,6 +208,10 @@ on_cmd = 'QuickRun'
 [[plugins]]
 repo = 'tweekmonster/helpful.vim'
 on_cmd = 'HelpfulVersion'
+
+[[plugins]]
+repo = 'turbio/bracey.vim'
+on_cmd = 'Bracey'
 
 # plugins depends for denops {{{
 [[plugins]]
