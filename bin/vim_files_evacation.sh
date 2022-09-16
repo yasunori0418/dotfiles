@@ -31,8 +31,6 @@ nvim_evacation_files=( \
   runtime/menu.vim \
   runtime/mswin.vim \
   runtime/ftoff.vim \
-  runtime/filetype.vim \
-  runtime/filetype.lua \
   archlinux.vim)
 
 # Check exists evacation directory.
