@@ -99,7 +99,6 @@ let g:lightline.component_function = {
 " Component_expand{{{
 
 let g:lightline.component_expand = {
-  \ 'tags': 'lightline#tabs',
   \ 'lsp_ok': 'lightline_lsp#ok',
   \ 'lsp_errors': 'lightline_lsp#errors',
   \ 'lsp_warnings': 'lightline_lsp#warnings',
@@ -110,7 +109,6 @@ let g:lightline.component_expand = {
 " Component_expand_type{{{
 
 let g:lightline.component_expand_type = {
-  \ 'tabs': 'tabsel',
   \ 'lsp_ok': 'middle',
   \ 'lsp_errors': 'error',
   \ 'lsp_warnings': 'warning',
