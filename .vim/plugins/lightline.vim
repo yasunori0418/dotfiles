@@ -18,8 +18,7 @@ let g:lightline.active.left = [
   \ ['git_branch', 'relativepath', 'modified'],
   \ ]
 let g:lightline.active.right = [
-  \ ['percent', 'lsp_errors', 'lsp_warnings', 'lsp_ok'],
-  \ ['lineinfo'],
+  \ ['percent', 'lineinfo'],
   \ ['fileformat', 'fileencoding', 'filetype'],
   \ ]
 
@@ -42,18 +41,30 @@ let g:lightline.tabline.left = [
   \ ['tabs'],
   \ ]
 let g:lightline.tabline.right = [
-  \ ['close'],
+  \ ['lsp_errors', 'lsp_warnings', 'lsp_ok'],
   \ ]
 
 let g:lightline.tab = {}
 let g:lightline.tab.active = ['tabnum', 'filename', 'modified']
-let g:lightline.tab.inactive = ['tabnum', 'filename', 'modified']
+let g:lightline.tab.inactive = ['tabnum', 'filename']
 
 " }}}
 
 " Separator{{{
 
-if &ambiwidth =~ 'single'
+if &ambiwidth =~# 'single'
+
+  let g:lightline.separator = {
+    \ 'left': ' ',
+    \ 'right': ' ',
+    \ }
+
+  let g:lightline.subseparator = {
+    \ 'left': ' ',
+    \ 'right': ' ',
+    \ }
+
+else
 
   let g:lightline.separator = {
     \ 'left': '',
@@ -88,6 +99,7 @@ let g:lightline.component_function = {
 " Component_expand{{{
 
 let g:lightline.component_expand = {
+  \ 'tags': 'lightline#tabs',
   \ 'lsp_ok': 'lightline_lsp#ok',
   \ 'lsp_errors': 'lightline_lsp#errors',
   \ 'lsp_warnings': 'lightline_lsp#warnings',
@@ -98,6 +110,7 @@ let g:lightline.component_expand = {
 " Component_expand_type{{{
 
 let g:lightline.component_expand_type = {
+  \ 'tabs': 'tabsel',
   \ 'lsp_ok': 'middle',
   \ 'lsp_errors': 'error',
   \ 'lsp_warnings': 'warning',
@@ -118,13 +131,13 @@ command! -bar LightlineUpdate source ~/dotfiles/.vim/plugins/lightline.vim|
 
 function! g:LightlineMode() abort
 
-  if lightline#mode() == 'INSERT' || lightline#mode() == 'COMMAND' || lightline#mode() == 'REPLACE'
+  if lightline#mode() ==# 'INSERT' || lightline#mode() ==# 'COMMAND' || lightline#mode() ==# 'REPLACE'
     if get(g:, 'loaded_skkeleton') == 0
       return lightline#mode()
     endif
 
-    if skkeleton#mode() != ''
-      return lightline#mode() .. '-SKK'
+    if skkeleton#mode() !=# ''
+      return lightline#mode() . '-SKK'
     else
       return lightline#mode()
     endif
@@ -139,10 +152,14 @@ endfunction
 " git branch {{{
 
 function! g:LightlineGitBranch() abort
-  if gitbranch#name() == ''
+  if gitbranch#name() ==# ''
     return ''
   else
-    return  ' ' .. gitbranch#name()
+    if &ambiwidth =~# 'single'
+      return ' ' . gitbranch#name()
+    else
+      return '' . gitbranch#name()
+    endif
   endif
 endfunction
 
