@@ -1,4 +1,5 @@
 set noshowmode
+set showtabline=2
 set laststatus=3
 let g:lightline = {}
 
