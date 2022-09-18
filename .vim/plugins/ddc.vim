@@ -111,5 +111,4 @@ inoremap <silent> <C-e> <Cmd>call pum#map#cancel()<CR>
 
 " }}}
 
-
 call ddc#enable()

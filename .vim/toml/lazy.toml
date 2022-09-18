@@ -21,9 +21,7 @@ require('nvim-treesitter.configs').setup {
 [[plugins]]
 repo = 'nvim-treesitter/playground'
 depends = 'nvim-treesitter'
-on_cmd = '''
-TSPlaygroundToggle
-'''
+on_cmd = 'TSPlaygroundToggle'
 lua_source = '''
 require('nvim-treesitter.configs').setup {
   playground = {
@@ -50,23 +48,217 @@ require('nvim-treesitter.configs').setup {
 [[plugins]]
 repo = 'EdenEast/nightfox.nvim'
 depends = ['nvim-treesitter']
+lua_source = '''
+local nightfox = require("nightfox")
+
+nightfox.setup({
+  options = {
+    -- Compiled file's destination location
+    compile_path = vim.fn.stdpath("cache") .. "/nightfox",
+    compile_file_suffix = "_compiled", -- Compiled file suffix
+    transparent = false,    -- Disable setting background
+    terminal_colors = false, -- Set terminal colors (vim.g.terminal_color_*)
+    dim_inactive = true,   -- Non focused panes set to alternative background
+    styles = {              -- Style to be applied to different syntax groups
+      comments = "italic",
+      functions = "bold",
+      keywords = "NONE",
+      numbers = "NONE",
+      strings = "NONE",
+      types = "NONE",
+      variables = "NONE",
+      },
+    inverse = {             -- Inverse highlight for different types
+      match_paren = false,
+      visual = true,
+      search = false,
+      },
+    modules = {             -- List of various plugins and additional options
+      },
+    },
+  })
+'''
 hook_source = '''
-source ~/dotfiles/.vim/plugins/nightfox.lua
+" Load the configuration set above and apply the colorscheme
+colorscheme nordfox
+'''
+hook_post_source = '''
+if isdirectory(expand('~/.cache/nvim/nightfox'))
+  if !exists(system('ls ~/.cache/nvim/nightfox'))
+    NightfoxCompile
+  endif
+else
+  NightfoxCompile
+endif
 '''
 
 # }}}
 
 # lightline {{{
 
-[[plugins]]
-repo = 'itchyny/vim-gitbranch'
-
 [[plugins]] # Modern and light status line.
 repo = 'itchyny/lightline.vim'
 on_event = ['CursorHold', 'CursorMoved', 'InsertEnter', 'CmdlineEnter']
 depends = ['vim-gitbranch', 'nightfox.nvim']
 hook_source = '''
-source ~/dotfiles/.vim/plugins/lightline.vim
+set noshowmode
+set showtabline=2
+set laststatus=3
+let g:lightline = {}
+
+" Colorscheme{{{
+
+let g:lightline.colorscheme = 'nordfox'
+
+" }}}
+
+" Statusline{{{
+
+" active
+let g:lightline.active = {}
+let g:lightline.active.left = [
+  \ ['mode', 'paste', 'skk_mode'], 
+  \ ['git_branch', 'relativepath', 'modified'],
+  \ ]
+let g:lightline.active.right = [
+  \ ['percent', 'lineinfo'],
+  \ ['fileformat', 'fileencoding', 'filetype'],
+  \ ]
+
+" inactive
+let g:lightline.inactive = {}
+let g:lightline.inactive.left = [
+  \ ['filename']
+  \ ]
+let g:lightline.inactive.right = [
+  \ ['lineinfo'],
+  \ ['percent'],
+  \ ]
+
+" }}}
+
+" Tabline{{{
+
+let g:lightline.tabline = {}
+let g:lightline.tabline.left = [
+  \ ['tabs'],
+  \ ]
+let g:lightline.tabline.right = [
+  \ ['lsp_errors', 'lsp_warnings', 'lsp_ok'],
+  \ ]
+
+let g:lightline.tab = {}
+let g:lightline.tab.active = ['tabnum', 'filename', 'modified']
+let g:lightline.tab.inactive = ['tabnum', 'filename']
+
+" }}}
+
+" Separator{{{
+
+if &ambiwidth =~# 'single'
+
+  let g:lightline.separator = {
+    \ 'left': ' ',
+    \ 'right': ' ',
+    \ }
+
+  let g:lightline.subseparator = {
+    \ 'left': ' ',
+    \ 'right': ' ',
+    \ }
+
+else
+
+  let g:lightline.separator = {
+    \ 'left': '',
+    \ 'right': '',
+    \ }
+
+  let g:lightline.subseparator = {
+    \ 'left': '',
+    \ 'right': '',
+    \ }
+
+endif
+
+" }}}
+
+" Component_function{{{
+
+let g:lightline.component_function = {
+  \ 'git_branch': 'g:LightlineGitBranch',
+  \ 'mode': 'g:LightlineMode',
+  \ 'skk_mode': 'lightline_skk#mode',
+  \ }
+
+" }}}
+
+" Component_expand{{{
+
+let g:lightline.component_expand = {
+  \ 'lsp_ok': 'lightline_lsp#ok',
+  \ 'lsp_errors': 'lightline_lsp#errors',
+  \ 'lsp_warnings': 'lightline_lsp#warnings',
+  \ }
+
+" }}}
+
+" Component_expand_type{{{
+
+let g:lightline.component_expand_type = {
+  \ 'lsp_ok': 'middle',
+  \ 'lsp_errors': 'error',
+  \ 'lsp_warnings': 'warning',
+  \ }
+
+" }}}
+
+" LightlineUpdate_Command{{{
+
+command! -bar LightlineUpdate source ~/dotfiles/.vim/plugins/lightline.vim|
+  \ call lightline#init()|
+  \ call lightline#colorscheme()|
+  \ call lightline#update()
+
+" }}}
+
+" Custom Lightline mode{{{
+
+function! g:LightlineMode() abort
+
+  if lightline#mode() ==# 'INSERT' || lightline#mode() ==# 'COMMAND' || lightline#mode() ==# 'REPLACE'
+    if get(g:, 'loaded_skkeleton') == 0
+      return lightline#mode()
+    endif
+
+    if skkeleton#mode() !=# ''
+      return lightline#mode() . '-SKK'
+    else
+      return lightline#mode()
+    endif
+  else
+    return lightline#mode()
+  endif
+
+endfunction
+
+" }}}
+
+" git branch {{{
+
+function! g:LightlineGitBranch() abort
+  if gitbranch#name() ==# ''
+    return ''
+  else
+    if &ambiwidth =~# 'single'
+      return ' ' . gitbranch#name()
+    else
+      return '' . gitbranch#name()
+    endif
+  endif
+endfunction
+
+" }}}
 '''
 
 # }}}
@@ -190,15 +382,19 @@ hook_source = '''
 let g:indent_guides_default_mapping = 0
 let g:indent_guides_exclude_filetypes = ['help', 'ddu-ff-filter', 'ddu-ff', 'ddu-filer', 'deol']
 '''
-hook_post_source = 'IndentGuidesEnable'
+hook_post_source = '''
+IndentGuidesEnable
+'''
 
 [[plugins]]
 repo = 'monkoose/matchparen.nvim'
 on_source = 'nightfox.nvim'
-hook_source = '''
-lua require('matchparen').setup()
+lua_source = '''
+require('matchparen').setup()
 '''
-hook_post_source = 'MatchParenEnable'
+hook_post_source = '''
+MatchParenEnable
+'''
 
 [[plugins]]
 repo = 'machakann/vim-sandwich'
@@ -225,6 +421,9 @@ nmap srb <Plug>(sandwich-replace-auto)
 # }}}
 
 # Git plugins {{{
+[[plugins]]
+repo = 'itchyny/vim-gitbranch'
+
 [[plugins]]
 repo = 'airblade/vim-gitgutter'
 on_source = 'nightfox.nvim'
@@ -265,14 +464,117 @@ let g:denops_server_addr = '127.0.0.1:32123'
 
 [[plugins]]
 repo = 'vim-skk/skkeleton'
-depends = ['denops.vim']
+depends = 'denops.vim'
 on_map = {ic = '<Plug>(skkeleton-toggle)'}
 hook_add = '''
 imap <C-j> <Plug>(skkeleton-toggle)
 cmap <C-j> <Plug>(skkeleton-toggle)
 '''
 hook_source = '''
-source ~/dotfiles/.vim/plugins/skkeleton.vim
+" skkeleton default settings {{{
+function! s:skkeleton_init() abort
+  call skkeleton#config({
+    \ 'eggLikeNewline': v:true,
+    \ 'userJisyo': '~/.cache/nvim/skkeleton'
+    \ })
+
+  call skkeleton#register_kanatable('rom', {
+    \ 'jj': 'escape',
+    \ "z\<Space>": ["\u3000", ''],
+    \ '~': ['～', ''],
+    \ 'z0': ["\u25CB", ''],
+    \ })
+
+  call s:L2X_Keymap()
+
+endfunction
+
+function! s:skkeleton_pre() abort
+  " Overwrite sources
+  let s:prev_buffer_config = ddc#custom#get_buffer()
+  call ddc#custom#patch_buffer('sources', ['skkeleton'])
+endfunction
+
+function! s:skkeleton_post() abort
+  " Restore sources
+  call ddc#custom#set_buffer(s:prev_buffer_config)
+endfunction
+" }}}
+
+" L2X keymap settings {{{
+function! s:L2X_Keymap() abort
+  call skkeleton#register_kanatable('rom', s:L2X_table())
+
+  call skkeleton#register_keymap('input', 'x', 'disable')
+  call skkeleton#register_keymap('input', 'X', 'zenkaku')
+endfunction
+
+function! s:L2X_table() abort
+
+  let s:rom_table = {}
+
+  let s:disable_l_nexts = split('bcdfghjkmnpqrsvxzBCDFGHJKMNPQRSVXZ,./1234567890-+=`~;:[]{}()<>!@#$%^&*_\"', '\zs')
+  call add(s:disable_l_nexts, "'")
+  call map(s:disable_l_nexts, {_, val -> 'l' . val})
+
+  for s:disable_l_next in s:disable_l_nexts
+    let s:rom_table[s:disable_l_next] = ['', '']
+  endfor
+
+  let s:enable_l_converts = {
+    \ 'la': ['ぁ', ''],
+    \ 'li': ['ぃ', ''],
+    \ 'lu': ['ぅ', ''],
+    \ 'le': ['ぇ', ''],
+    \ 'lo': ['ぉ', ''],
+    \ 'll': ['っ', 'l'],
+    \ 'ltu': ['っ', ''],
+    \ 'ltsu': ['っ', ''],
+    \ 'lwa': ['ゎ', ''],
+    \ 'lwe': ['ゑ', ''],
+    \ 'lwi': ['ゐ', ''],
+    \ 'lya': ['ゃ', ''],
+    \ 'lyo': ['ょ', ''],
+    \ 'lyu': ['ゅ', ''],
+    \ }
+
+  for s:item in items(s:enable_l_converts)
+    let s:rom_table[s:item[0]] = s:item[1]
+  endfor
+
+  let s:disable_x_converts = {
+    \ 'xa': ['', ''],
+    \ 'xi': ['', ''],
+    \ 'xu': ['', ''],
+    \ 'xe': ['', ''],
+    \ 'xo': ['', ''],
+    \ 'xx': ['', ''],
+    \ 'xtu': ['', ''],
+    \ 'xtsu': ['', ''],
+    \ 'xwa': ['', ''],
+    \ 'xwe': ['', ''],
+    \ 'xwi': ['', ''],
+    \ 'xya': ['', ''],
+    \ 'xyo': ['', ''],
+    \ 'xyu': ['', ''],
+    \ }
+
+  for s:item in items(s:disable_x_converts)
+    let s:rom_table[s:item[0]] = s:item[1]
+  endfor
+
+  return s:rom_table
+
+endfunction
+"}}}
+
+augroup skkeleton_autocmds
+  autocmd!
+  autocmd User skkeleton-initialize-pre call s:skkeleton_init()
+  autocmd User skkeleton-enable-pre call s:skkeleton_pre()
+  autocmd User skkeleton-disable-pre call s:skkeleton_post()
+  autocmd InsertLeave * mode
+augroup END
 '''
 
 [[plugins]]
@@ -290,7 +592,7 @@ call lightline_skk#option('display', {
 
 [[plugins]] # Translate, Japanese to English
 repo = 'skanehira/denops-translate.vim'
-depends = ['denops.vim']
+depends = 'denops.vim'
 on_cmd = 'Translate'
 hook_add = '''
 nnoremap [trans] <Nop>
@@ -301,7 +603,7 @@ nnoremap [trans]j <Cmd>Translate!<CR>
 
 [[plugins]]
 repo = 'skanehira/denops-silicon.vim'
-depends = ['denops.vim']
+depends = 'denops.vim'
 on_cmd = 'Silicon'
 hook_source = '''
 let g:silicon_options = {
@@ -325,12 +627,46 @@ let g:silicon_options = {
 # }}}
 
 # filetype plugins {{{
+
+# emmet settings {{{
 [[plugins]]
 repo = 'mattn/emmet-vim'
 on_ft = ['html', 'css', 'php']
 hook_add = '''
-source ~/dotfiles/.vim/plugins/emmet.vim
+let g:user_emmet_install_global = 0
+autocmd FileType html,css,php EmmetInstall
+let g:user_emmet_settings = {
+  \ 'variables': {
+    \ 'lang': "ja"
+    \ },
+  \ 'html': {
+    \ 'snippets': {
+      \ 'html:5': "<!DOCTYPE html>\n"
+      \ ."<html lang=\"${lang}\">\n"
+      \ ."\t<head>\n"
+      \ ."\t\t<meta charset=\"${charset}\">\n"
+      \ ."\t\t<meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n"
+      \ ."\t\t<meta http-equiv=\"X-UA-Compatible\" content=\"ie=edge\">\n"
+      \ ."\t\t<title></title>\n"
+      \ ."\t\t<link rel=\"stylesheet\" href=\"css/style.css\">\n"
+      \ ."\t</head>\n"
+      \ ."\t<body>\n\t${child}|\n\t</body>\n"
+      \ ."</html>",
+      \ 'lrl:s': "{{ | }}",
+      \ 'lrl:e': "{!! | !!}",
+      \ }
+    \ },
+    \ 'php': {
+      \ 'snippets': {
+        \ 'php:s': "<?php | ?>",
+        \ 'php:e': "<?= | ?>",
+        \ 'lrl:s': "{{ | }}",
+        \ 'lrl:e': "{!! | !!}",
+        \ }
+      \ }
+  \ }
 '''
+# }}}
 
 [[plugins]]
 repo = 'elzr/vim-json'
@@ -414,7 +750,63 @@ repo = 'mattn/vim-lsp-settings'
 depends = ['vim-efm-langserver-settings']
 on_ft = ['python', 'markdown', 'php', 'vim', 'lua']
 hook_source = '''
-  source ~/dotfiles/.vim/plugins/lsp.vim
+" Performance improvements using lua.
+let g:lsp_use_lua = v:true
+
+" enable signs
+let g:lsp_signs_enabled = 1
+
+" Not use virtual text.
+"let g:lsp_diagnostics_virtual_text_enabled = 0
+
+" Use echo from cmdline.
+let g:lsp_diagnostics_echo_cursor = 1
+
+" diagnostics signs
+"let g:lsp_diagnostics_signs_error = {'text': '✗'}
+"let g:lsp_diagnostics_signs_warning = {'text': ''}
+"let g:lsp_diagnostics_signs_information = {'text': ''}
+"let g:lsp_diagnostics_signs_hint = {'text': ''}
+
+" Document code action sign.
+"let g:lsp_document_code_action_signs_hint = {'text': ''}
+
+"let g:lsp_diagnostics_virtual_text_prefix = ''
+"let g:lsp_tree_incoming_prefix = ''
+
+" output lsp log file
+let g:lsp_log_verbose = 0
+"let g:lsp_log_file = expand('~/vim-lsp.log')
+
+" efm-langserver settings {{{
+
+" https://github.com/nakatanakatana/dotfiles
+" for efm-langserver-settings
+let s:efm_args = []
+if efm_langserver_settings#config_enable()
+  let s:efm_args = extend(s:efm_args, ['-c', efm_langserver_settings#config_path()])
+endif
+
+"let g:efm_langserver_settings#debug = 5
+
+if efm_langserver_settings#debug_enable()
+  let s:efm_args = extend(s:efm_args, ['-logfile', efm_langserver_settings#debug_path()])
+  let s:efm_args = extend(s:efm_args, ['-loglevel', efm_langserver_settings#debug_enable()])
+endif
+
+let g:lsp_settings = {
+  \ 'efm-langserver': {
+    \ 'disabled': v:false,
+    \ 'args': s:efm_args,
+    \ 'allowlist': efm_langserver_settings#whitelist(),
+    \ 'blocklist': efm_langserver_settings#blacklist(),
+    \ }
+  \ }
+
+" }}}
+
+" Not show install server suggestion message.
+let g:lsp_settings_enable_suggestions = 0
 '''
 
 [[plugins]]
