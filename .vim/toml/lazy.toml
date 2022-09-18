@@ -2,10 +2,11 @@
 # Color scheme {{{
 [[plugins]]
 repo = 'nvim-treesitter/nvim-treesitter'
-hook_post_update = 'TSUpdate'
-hook_source = '''
-lua << EOF
-require'nvim-treesitter.configs'.setup {
+hook_post_update = '''
+TSUpdate
+'''
+lua_source = '''
+require('nvim-treesitter.configs').setup {
   ensure_installed = 'all',
   highlight = {
     enable = true,
@@ -15,7 +16,35 @@ require'nvim-treesitter.configs'.setup {
     enable = true,
   },
 }
-EOF
+'''
+
+[[plugins]]
+repo = 'nvim-treesitter/playground'
+depends = 'nvim-treesitter'
+on_cmd = '''
+TSPlaygroundToggle
+'''
+lua_source = '''
+require('nvim-treesitter.configs').setup {
+  playground = {
+    enable = true,
+    disable = {},
+    updatetime = 25,
+    persist_queries = true,
+    keybindings = {
+      toggle_query_editor = 'o',
+      toggle_hl_groups = 'i',
+      toggle_injected_languages = 't',
+      toggle_anonymous_nodes = 'a',
+      toggle_language_display = 'I',
+      focus_language = 'f',
+      unfocus_language = 'F',
+      update = 'R',
+      goto_node = '<CR>',
+      show_help = '?',
+    },
+  }
+}
 '''
 
 [[plugins]]
@@ -45,16 +74,23 @@ source ~/dotfiles/.vim/plugins/lightline.vim
 # Editor support plugins {{{
 
 [[plugins]]
-repo = 'rcarriga/nvim-notify'
+repo = 'Shougo/context_filetype.vim'
 on_source = 'nightfox.nvim'
 hook_source = '''
-lua << EOF
+let g:context_filetype#ignore_patterns = {
+  \ 'toml': ['^\s*#\s*'],
+  \ }
+'''
+
+[[plugins]]
+repo = 'rcarriga/nvim-notify'
+on_source = 'nightfox.nvim'
+lua_source = '''
 require('notify').setup({
   stages = 'slide',
-  background_color = 'NormalFloat',
+ background_color = 'NormalFloat',
 })
 vim.notify = require('notify')
-EOF
 '''
 
 [[plugins]]

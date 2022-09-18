@@ -3,7 +3,7 @@ repo = 'Shougo/pum.vim'
 
 [[plugins]]
 repo = 'Shougo/ddc.vim'
-depends = ['denops.vim', 'pum.vim']
+depends = ['context_filetype.vim', 'denops.vim', 'pum.vim']
 on_event = 'InsertEnter'
 hook_add = '''
 source ~/dotfiles/.vim/plugins/cmddc.vim
