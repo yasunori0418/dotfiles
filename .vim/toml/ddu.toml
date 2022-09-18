@@ -100,9 +100,6 @@ call ddu#custom#patch_global({
     \ 'help': {
       \ 'defaultAction': 'open',
       \ },
-    \ 'dein_update': {
-      \ 'matchers': ['matcher_dein_update'],
-      \ },
     \ },
   \ 'sourceParams': {
     \ 'dein_update': {
@@ -129,9 +126,6 @@ call ddu#custom#patch_global({
       \ },
     \ 'deol': {
       \ 'defaultAction': 'switch',
-      \ },
-    \ 'dein_update': {
-      \ 'defaultAction': 'viewDiff',
       \ },
     \ },
   \ 'actionOptions': {
@@ -230,16 +224,6 @@ call ddu#custom#patch_local('home-ff', {
 call ddu#custom#patch_local('register-ff', {
   \ 'ui': 'ff',
   \ 'sources': [{'name': 'register'}],
-  \ })
-
-call ddu#custom#patch_local('dein_update-ff', {
-  \ 'ui': 'ff',
-  \ 'sources': [{'name': 'dein_update'}],
-  \ })
-
-call ddu#custom#patch_local('mark_list-ff', {
-  \ 'ui': 'ff',
-  \ 'sources': [{'name': 'marks'}],
   \ })
 
 " }}}
@@ -642,14 +626,6 @@ on_source = 'ddu.vim'
 
 [[plugins]]
 repo = 'shun/ddu-source-rg'
-on_source = 'ddu.vim'
-
-[[plugins]]
-repo = 'matsui54/ddu-source-dein_update'
-on_source = 'ddu.vim'
-
-[[plugins]]
-repo = 'k-ota106/ddu-source-marks'
 on_source = 'ddu.vim'
 
 ## }}}
