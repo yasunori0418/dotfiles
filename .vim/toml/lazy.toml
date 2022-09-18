@@ -42,6 +42,8 @@ source ~/dotfiles/.vim/plugins/lightline.vim
 
 # }}}
 
+# Editor support plugins {{{
+
 [[plugins]]
 repo = 'rcarriga/nvim-notify'
 on_source = 'nightfox.nvim'
@@ -58,6 +60,20 @@ EOF
 [[plugins]]
 repo = 'lambdalisue/suda.vim'
 on_cmd = ['SudaRead', 'SudaWrite']
+
+[[plugins]]
+repo = 'thinca/vim-quickrun'
+on_cmd = 'QuickRun'
+
+[[plugins]]
+repo = 'tweekmonster/helpful.vim'
+on_cmd = 'HelpfulVersion'
+
+[[plugins]]
+repo = 'turbio/bracey.vim'
+on_cmd = 'Bracey'
+
+# }}}
 
 # Deol {{{
 [[plugins]]
@@ -108,6 +124,24 @@ let g:deol#nvim_server = '~/.cache/nvim/server.pipe'
 [[plugins]]
 repo = 'cohama/lexima.vim'
 on_event = 'InsertEnter'
+hook_add = '''
+let g:lexima_ctrlh_as_backspace = 1
+'''
+
+[[plugins]]
+repo = 'hrsh7th/vim-eft'
+on_map = { nxo = '<Plug>(eft-' }
+hook_add = '''
+nmap f <Plug>(eft-f-repeatable)
+xmap f <Plug>(eft-f-repeatable)
+omap f <Plug>(eft-f-repeatable)
+nmap F <Plug>(eft-F-repeatable)
+xmap F <Plug>(eft-F-repeatable)
+omap F <Plug>(eft-F-repeatable)
+'''
+hook_source = '''
+let g:eft_ignorecase = v:true
+'''
 
 [[plugins]]
 repo = 'itchyny/vim-cursorword'
@@ -122,13 +156,13 @@ let g:indent_guides_exclude_filetypes = ['help', 'ddu-ff-filter', 'ddu-ff', 'ddu
 '''
 hook_post_source = 'IndentGuidesEnable'
 
-#[[plugins]]
-#repo = 'monkoose/matchparen.nvim'
-#on_source = 'nightfox.nvim'
-#hook_source = '''
-#lua require('matchparen').setup()
-#'''
-#hook_post_source = 'MatchParenEnable'
+[[plugins]]
+repo = 'monkoose/matchparen.nvim'
+on_source = 'nightfox.nvim'
+hook_source = '''
+lua require('matchparen').setup()
+'''
+hook_post_source = 'MatchParenEnable'
 
 [[plugins]]
 repo = 'machakann/vim-sandwich'
@@ -153,21 +187,6 @@ nmap srb <Plug>(sandwich-replace-auto)
 '''
 
 # }}}
-
-[[plugins]]
-repo = 'hrsh7th/vim-eft'
-on_map = { nxo = '<Plug>(eft-' }
-hook_add = '''
-nmap f <Plug>(eft-f-repeatable)
-xmap f <Plug>(eft-f-repeatable)
-omap f <Plug>(eft-f-repeatable)
-nmap F <Plug>(eft-F-repeatable)
-xmap F <Plug>(eft-F-repeatable)
-omap F <Plug>(eft-F-repeatable)
-'''
-hook_source = '''
-let g:eft_ignorecase = v:true
-'''
 
 # Git plugins {{{
 [[plugins]]
@@ -201,19 +220,7 @@ call gina#custom#command#option('patch', '--oneside')
 
 # }}}
 
-[[plugins]]
-repo = 'thinca/vim-quickrun'
-on_cmd = 'QuickRun'
-
-[[plugins]]
-repo = 'tweekmonster/helpful.vim'
-on_cmd = 'HelpfulVersion'
-
-[[plugins]]
-repo = 'turbio/bracey.vim'
-on_cmd = 'Bracey'
-
-# plugins depends for denops {{{
+# denops plugins {{{
 [[plugins]]
 repo = 'vim-denops/denops.vim'
 hook_add = '''
@@ -281,7 +288,7 @@ let g:silicon_options = {
 '''
 # }}}
 
-# filetype plugin {{{
+# filetype plugins {{{
 [[plugins]]
 repo = 'mattn/emmet-vim'
 on_ft = ['html', 'css', 'php']
@@ -340,7 +347,7 @@ vmap gx <Plug>(openbrowser-smart-search)
 
 # }}}
 
-# LSP relative plugins {{{
+# LSP plugins {{{
 # [[plugins]]
 # repo = 'neovim/nvim-lspconfig'
 # depends = ['impatient.nvim', 'ddc.vim']
