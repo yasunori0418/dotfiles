@@ -298,14 +298,6 @@ repo = 'tweekmonster/helpful.vim'
 on_cmd = 'HelpfulVersion'
 
 [[plugins]]
-repo = '4513ECHO/vim-readme-viewer'
-on_cmd = 'DeinReadme'
-on_source = 'ddu.vim'
-hook_add = '''
-let g:readme_viewer#plugin_manager = 'dein.vim'
-'''
-
-[[plugins]]
 repo = 'turbio/bracey.vim'
 on_cmd = 'Bracey'
 
