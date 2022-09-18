@@ -127,6 +127,9 @@ call ddu#custom#patch_global({
     \ 'deol': {
       \ 'defaultAction': 'switch',
       \ },
+    \ 'readme_viewer': {
+      \ 'defaultAction': 'open',
+      \ },
     \ },
   \ 'actionOptions': {
     \ 'narrow': {'quit': v:false},
@@ -190,7 +193,10 @@ call ddu#custom#patch_local('help-ff', {
       \ 'startFilter': v:true,
       \ },
     \ },
-  \ 'sources': [{'name': 'help'}],
+  \ 'sources': [
+    \ {'name': 'help'},
+    \ {'name': 'readme_viewer'},
+    \ ],
   \ })
 
 call ddu#custom#patch_local('buffer-ff', {
