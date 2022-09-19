@@ -431,41 +431,11 @@ imap <C-j> <Plug>(skkeleton-toggle)
 cmap <C-j> <Plug>(skkeleton-toggle)
 '''
 hook_source = '''
-" skkeleton default settings {{{
-function! s:skkeleton_init() abort
-  call skkeleton#config({
-    \ 'eggLikeNewline': v:true,
-    \ 'userJisyo': '~/.cache/nvim/skkeleton'
-    \ })
-
-  call skkeleton#register_kanatable('rom', {
-    \ 'jj': 'escape',
-    \ "z\<Space>": ["\u3000", ''],
-    \ '~': ['～', ''],
-    \ 'z0': ["\u25CB", ''],
-    \ })
-
-  call vimrc#L2X_Keymap()
-
-endfunction
-
-function! s:skkeleton_pre() abort
-  " Overwrite sources
-  let s:prev_buffer_config = ddc#custom#get_buffer()
-  call ddc#custom#patch_buffer('sources', ['skkeleton'])
-endfunction
-
-function! s:skkeleton_post() abort
-  " Restore sources
-  call ddc#custom#set_buffer(s:prev_buffer_config)
-endfunction
-" }}}
-
 augroup skkeleton_autocmds
   autocmd!
-  autocmd User skkeleton-initialize-pre call s:skkeleton_init()
-  autocmd User skkeleton-enable-pre call s:skkeleton_pre()
-  autocmd User skkeleton-disable-pre call s:skkeleton_post()
+  autocmd User skkeleton-initialize-pre call vimrc#skkeleton_init()
+  autocmd User skkeleton-enable-pre call vimrc#skkeleton_pre()
+  autocmd User skkeleton-disable-pre call vimrc#skkeleton_post()
   autocmd InsertLeave * mode
 augroup END
 '''

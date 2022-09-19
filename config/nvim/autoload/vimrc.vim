@@ -81,6 +81,36 @@ endfunction
 
 " }}}
 
+" skkeleton default settings {{{
+function! vimrc#skkeleton_init() abort
+  call skkeleton#config({
+    \ 'eggLikeNewline': v:true,
+    \ 'userJisyo': '~/.cache/nvim/skkeleton'
+    \ })
+
+  call skkeleton#register_kanatable('rom', {
+    \ 'jj': 'escape',
+    \ "z\<Space>": ["\u3000", ''],
+    \ '~': ['～', ''],
+    \ 'z0': ["\u25CB", ''],
+    \ })
+
+  call vimrc#L2X_Keymap()
+
+endfunction
+
+function! vimrc#skkeleton_pre() abort
+  " Overwrite sources
+  let s:prev_buffer_config = ddc#custom#get_buffer()
+  call ddc#custom#patch_buffer('sources', ['skkeleton'])
+endfunction
+
+function! vimrc#skkeleton_post() abort
+  " Restore sources
+  call ddc#custom#set_buffer(s:prev_buffer_config)
+endfunction
+" }}}
+
 " skkeleton L2X function. {{{
 function! vimrc#L2X_Keymap() abort
   call skkeleton#register_kanatable('rom', vimrc#L2X_table())
