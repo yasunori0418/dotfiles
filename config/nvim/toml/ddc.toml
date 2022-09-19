@@ -98,11 +98,11 @@ call ddc#custom#patch_global('sourceParams', {
 " filetype settings of ddc-sources. {{{
 
 call ddc#custom#patch_filetype(['python', 'php', 'lua'], 'sources',
-  \ ['vim-lsp', 'vsnip', 'around', 'file', 'rg'],
+  \ ['nvim-lsp', 'vim-lsp', 'vsnip', 'around', 'file', 'rg'],
   \ )
 
 call ddc#custom#patch_filetype(['toml', 'vim'], 'sources',
-  \ ['necovim', 'vsnip', 'around', 'file', 'rg'],
+  \ ['necovim', 'nvim-lsp', 'vsnip', 'around', 'file', 'rg'],
   \ )
 
 " }}}
