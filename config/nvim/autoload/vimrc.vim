@@ -22,10 +22,10 @@ function! vimrc#dein_update(bang_flg) abort
 endfunction
 
 function! vimrc#clear_register() abort
-    let regs=split('abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789/-"', '\zs')
-    for r in regs
-      call setreg(r, [])
-    endfor
+  let regs=split('abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789/-"', '\zs')
+  for r in regs
+    call setreg(r, [])
+  endfor
 endfunction
 
 function! vimrc#dein_check_uninstall() abort
@@ -36,7 +36,7 @@ function! vimrc#dein_check_uninstall() abort
     endfor
     echo 'Would you like to remove those plugins?'
     echon '[Y/n]'
-    if getcharstr() == 'y'
+    if getcharstr() ==? 'y'
       call map(remove_plugins, "delete(v:val, 'rf')")
       call dein#recache_runtimepath()
       echo 'Remove Plugins ...done!'
