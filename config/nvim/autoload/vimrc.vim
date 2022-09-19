@@ -1,3 +1,11 @@
+function! vimrc#clear_register() abort
+  let regs=split('abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789/-"', '\zs')
+  for r in regs
+    call setreg(r, [])
+  endfor
+endfunction
+
+" dein commands {{{
 function! vimrc#is_github_pat() abort
   let s:github_pat = g:base_dir . 'github_pat'
   if filereadable(s:github_pat)
@@ -21,13 +29,6 @@ function! vimrc#dein_update(bang_flg) abort
   endif
 endfunction
 
-function! vimrc#clear_register() abort
-  let regs=split('abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789/-"', '\zs')
-  for r in regs
-    call setreg(r, [])
-  endfor
-endfunction
-
 function! vimrc#dein_check_uninstall() abort
   let remove_plugins = dein#check_clean()
   if len(l:remove_plugins) > 0
@@ -47,4 +48,35 @@ function! vimrc#dein_check_uninstall() abort
     echo 'There are no plugins to remove.'
   endif
 endfunction
+" }}}
 
+" component function. {{{
+function! vimrc#lightline_git_branch() abort
+  if gitbranch#name() ==# ''
+    return ''
+  else
+    if &ambiwidth =~# 'single'
+      return ' ' . gitbranch#name()
+    else
+      return '' . gitbranch#name()
+    endif
+  endif
+endfunction
+
+function! vimrc#lightline_custom_mode() abort
+  if lightline#mode() ==# 'INSERT' || lightline#mode() ==# 'COMMAND' || lightline#mode() ==# 'REPLACE'
+    if get(g:, 'loaded_skkeleton') == 0
+      return lightline#mode()
+    endif
+
+    if skkeleton#mode() !=# ''
+      return lightline#mode() . '-SKK'
+    else
+      return lightline#mode()
+    endif
+  else
+    return lightline#mode()
+  endif
+endfunction
+
+" }}}
