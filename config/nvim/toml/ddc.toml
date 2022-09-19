@@ -21,55 +21,44 @@ call ddc#custom#patch_global('sourceOptions', {
   \ '_': {
     \ 'ignoreCase': v:true,
     \ 'matchers': ['matcher_head'],
-    \ 'sorters': ['sorter_rank'],
-    \ },
+    \ 'sorters': ['sorter_rank']},
   \ 'around': {
     \ 'mark': 'A',
-    \ 'matchers': ['matcher_head', 'matcher_length'],
-    \ },
+    \ 'matchers': ['matcher_head', 'matcher_length']},
   \ 'file': {
     \ 'mark': 'F',
     \ 'isVolatile': v:true,
     \ 'minAutoCompleteLength': 1000,
-    \ 'forceCompletionPattern': '\S/\S*',
-    \ },
+    \ 'forceCompletionPattern': '\S/\S*'},
   \ 'vsnip': {
     \ 'mark': 'vsnip',
-    \ 'dup': v:true,
-    \ },
+    \ 'dup': v:true},
   \ 'vim-lsp': {
-    \ 'mark': 'lsp',
+    \ 'mark': 'vim-lsp',
     \ 'matchers': ['matcher_head'],
-    \ 'forceCompletionPattern': '\.\w*|:\w*|->\w*',
-    \ },
+    \ 'forceCompletionPattern': '\.\w*|:\w*|->\w*'},
   \ 'cmdline': {
     \ 'mark': 'cmdline',
     \ 'isVolatile': v:true,
-    \ 'forceCompletionPattern': '\S/\S*',
-    \ },
+    \ 'forceCompletionPattern': '\S/\S*'},
   \ 'cmdline-history': {
     \ 'mark': 'history',
-    \ 'sorters': [],
-    \ },
+    \ 'sorters': []},
   \ 'line': {
-    \ 'mark': 'line',
-    \ },
+    \ 'mark': 'line', },
   \ 'necovim': {'mark': 'necovim'},
   \ 'rg': {
     \ 'mark': 'ripgrep',
     \ 'matchers': ['matcher_head', 'matcher_length'],
-    \ 'minAutoCompleteLength': 4,
-    \ },
+    \ 'minAutoCompleteLength': 4},
   \ 'zsh': {
     \ 'mark': 'zsh',
     \ 'isVolatile': v:true,
-    \ 'forceCompletionPattern': '\S/\S*',
-    \ },
+    \ 'forceCompletionPattern': '\S/\S*'},
   \ 'shell-history': {
     \ 'mark': 'shell',
     \ 'minKeywordLength': 4,
-    \ 'maxKeywordLength': 50,
-    \ },
+    \ 'maxKeywordLength': 50},
   \ })
 
 call ddc#custom#patch_global('sourceOptions', {
@@ -77,14 +66,12 @@ call ddc#custom#patch_global('sourceOptions', {
     \ 'mark': 'SKK',
     \ 'matchers': ['skkeleton'],
     \ 'sorters': [],
-    \ 'minAutoCompleteLength': 2,
-    \ },
+    \ 'minAutoCompleteLength': 2},
   \ })
 
 call ddc#custom#patch_global('sourceParams', {
   \ 'around': {
-    \ 'maxSize': 500,
-    \ },
+    \ 'maxSize': 500},
   \ })
 
 " }}}
