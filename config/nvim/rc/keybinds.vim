@@ -1,4 +1,33 @@
 " keybinds
+" Nop keys {{{
+" Disable s for vim-sandwich
+nnoremap s <Nop>
+xnoremap s <Nop>
+nnoremap S <Nop>
+xnoremap S <Nop>
+
+" Invalid because it does not move with t and T.
+nnoremap t <Nop>
+xnoremap t <Nop>
+nnoremap T <Nop>
+xnoremap T <Nop>
+
+nnoremap m <Nop>
+
+nnoremap <Space> <Nop>
+xnoremap <Space> <Nop>
+
+" kill arrow key move
+noremap <Left>   <Nop>
+noremap <Down>   <Nop>
+noremap <Up>     <Nop>
+noremap <Right>  <Nop>
+noremap! <Left>   <Nop>
+noremap! <Down>   <Nop>
+noremap! <Up>     <Nop>
+noremap! <Right>  <Nop>
+" }}}
+
 " Window control keybind {{{
 " overwrites window command of 'CTRL-W'.
 " Use prefix [Window].
@@ -176,30 +205,4 @@ command! DeinDelete call s:dein_check_uninstall()
 command! -bar DeinRecache call dein#recache_runtimepath() | qall
 " }}}
 
-" }}}
-
-" Nop keys {{{
-" Disable s for vim-sandwich
-nnoremap s <Nop>
-xnoremap s <Nop>
-nnoremap S <Nop>
-xnoremap S <Nop>
-
-" Invalid because it does not move with t and T.
-nnoremap t <Nop>
-xnoremap t <Nop>
-nnoremap T <Nop>
-xnoremap T <Nop>
-
-nnoremap m <Nop>
-
-" kill arrow key move
-noremap <Left>   <Nop>
-noremap <Down>   <Nop>
-noremap <Up>     <Nop>
-noremap <Right>  <Nop>
-noremap! <Left>   <Nop>
-noremap! <Down>   <Nop>
-noremap! <Up>     <Nop>
-noremap! <Right>  <Nop>
 " }}}
