@@ -620,7 +620,7 @@ on_source = 'ddu.vim'
 
 [[plugins]]
 repo = '4513ECHO/vim-readme-viewer'
-on_cmd = 'DeinReadme'
+on_cmd = 'ReadmeOpen'
 on_source = 'ddu.vim'
 hook_add = '''
 let g:readme_viewer#plugin_manager = 'dein.vim'
