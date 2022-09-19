@@ -80,3 +80,68 @@ function! vimrc#lightline_custom_mode() abort
 endfunction
 
 " }}}
+
+" skkeleton L2X function. {{{
+function! vimrc#L2X_Keymap() abort
+  call skkeleton#register_kanatable('rom', vimrc#L2X_table())
+
+  call skkeleton#register_keymap('input', 'x', 'disable')
+  call skkeleton#register_keymap('input', 'X', 'zenkaku')
+endfunction
+
+function! vimrc#L2X_table() abort
+
+  let s:rom_table = {}
+  let s:disable_l_nexts = split('bcdfghjkmnpqrsvxzBCDFGHJKMNPQRSVXZ,./1234567890-+=`~;:[]{}()<>!@#$%^&*_\"', '\zs')
+  call add(s:disable_l_nexts, "'")
+  call map(s:disable_l_nexts, {_, val -> 'l' . val})
+
+  for s:disable_l_next in s:disable_l_nexts
+    let s:rom_table[s:disable_l_next] = ['', '']
+  endfor
+
+  let s:enable_l_converts = {
+    \ 'la': ['ぁ', ''],
+    \ 'li': ['ぃ', ''],
+    \ 'lu': ['ぅ', ''],
+    \ 'le': ['ぇ', ''],
+    \ 'lo': ['ぉ', ''],
+    \ 'll': ['っ', 'l'],
+    \ 'ltu': ['っ', ''],
+    \ 'ltsu': ['っ', ''],
+    \ 'lwa': ['ゎ', ''],
+    \ 'lwe': ['ゑ', ''],
+    \ 'lwi': ['ゐ', ''],
+    \ 'lya': ['ゃ', ''],
+    \ 'lyo': ['ょ', ''],
+    \ 'lyu': ['ゅ', ''],
+    \ }
+
+  for s:item in items(s:enable_l_converts)
+    let s:rom_table[s:item[0]] = s:item[1]
+  endfor
+
+  let s:disable_x_converts = {
+    \ 'xa': ['', ''],
+    \ 'xi': ['', ''],
+    \ 'xu': ['', ''],
+    \ 'xe': ['', ''],
+    \ 'xo': ['', ''],
+    \ 'xx': ['', ''],
+    \ 'xtu': ['', ''],
+    \ 'xtsu': ['', ''],
+    \ 'xwa': ['', ''],
+    \ 'xwe': ['', ''],
+    \ 'xwi': ['', ''],
+    \ 'xya': ['', ''],
+    \ 'xyo': ['', ''],
+    \ 'xyu': ['', ''],
+    \ }
+
+  for s:item in items(s:disable_x_converts)
+    let s:rom_table[s:item[0]] = s:item[1]
+  endfor
+
+  return s:rom_table
+endfunction
+" }}}
