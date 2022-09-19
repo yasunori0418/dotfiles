@@ -37,6 +37,12 @@ call ddc#custom#patch_global('sourceOptions', {
     \ 'mark': 'vsnip',
     \ 'dup': v:true,
     \ },
+  \ 'nvim-lsp': {
+    \ 'mark': 'lsp',
+    \ 'matchers': ['matcher_head'],
+    \ 'forceCompletionPattern': '\.\w*|:\w*|->\w*',
+    \ 'dup': 'force',
+    \ },
   \ 'vim-lsp': {
     \ 'mark': 'lsp',
     \ 'matchers': ['matcher_head'],
