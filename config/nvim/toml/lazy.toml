@@ -494,10 +494,10 @@ let g:silicon_options = {
 # emmet settings {{{
 [[plugins]]
 repo = 'mattn/emmet-vim'
-on_ft = ['html', 'css', 'php']
+on_ft = ['html', 'css', 'scss', 'php']
 hook_add = '''
 let g:user_emmet_install_global = 0
-autocmd FileType html,css,php EmmetInstall
+autocmd FileType html,css,scss,php EmmetInstall
 let g:user_emmet_settings = {
   \ 'variables': {
     \ 'lang': "ja"
