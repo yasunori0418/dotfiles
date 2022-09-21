@@ -18,10 +18,10 @@ nnoremap <Space> <Nop>
 xnoremap <Space> <Nop>
 
 " kill arrow key move
-noremap <Left>   <Nop>
-noremap <Down>   <Nop>
-noremap <Up>     <Nop>
-noremap <Right>  <Nop>
+noremap <Left>    <Nop>
+noremap <Down>    <Nop>
+noremap <Up>      <Nop>
+noremap <Right>   <Nop>
 noremap! <Left>   <Nop>
 noremap! <Down>   <Nop>
 noremap! <Up>     <Nop>
