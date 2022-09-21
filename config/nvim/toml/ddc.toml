@@ -227,7 +227,11 @@ repo = 'neovim/nvim-lspconfig'
 depends = ['impatient.nvim', 'ddc.vim']
 on_ft = ['python', 'lua', 'markdown', 'php']
 lua_source = '''
-require('lspconfig').pyright.setup{}
+nvim_lsp = require('lspconfig')
+nvim_lsp.pyright.setup{}
+nvim_lsp.efm.setup{
+  filetypes = { 'markdown' },
+}
 '''
 
 [[plugins]]
