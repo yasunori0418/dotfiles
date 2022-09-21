@@ -203,8 +203,8 @@ function! vimrc#cmdline_pre(mode) abort
 
   augroup ddc_cmdline_autocmd
     autocmd!
-    autocmd User DDCmdlineLeave ++once call Cmdline_post()
-    autocmd InsertEnter <buffer> ++once call Cmdline_post()
+    autocmd User DDCmdlineLeave ++once call vimrc#cmdline_post()
+    autocmd InsertEnter <buffer> ++once call vimrc#cmdline_post()
   augroup END
 
   " Enable command line completion.
