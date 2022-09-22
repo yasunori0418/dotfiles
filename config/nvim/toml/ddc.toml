@@ -107,7 +107,7 @@ call ddc#custom#patch_filetype(['python', 'php', 'lua'], 'sources',
   \ )
 
 call ddc#custom#patch_filetype(['toml', 'vim'], 'sources',
-  \ ['necovim', 'nvim-lsp', 'vsnip', 'around', 'file', 'rg'],
+  \ ['necovim', 'vsnip', 'around', 'file', 'rg'],
   \ )
 
 " }}}
