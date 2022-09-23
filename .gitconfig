@@ -22,6 +22,9 @@
 	root = rev-parse --show-superproject-working-tree --show-toplevel
 [merge]
 	ff = false
+	conflictstyle = diff3
 [commit]
 	verbose = true
 	gpgsign = false
+[mergetool]
+	prompt = false
