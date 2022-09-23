@@ -14,12 +14,12 @@
 font pango:Noto Sans CJK JP 11
 
 # Hide window title bar.
-default_border pixel 1
-default_floating_border pixel 1
+default_border none
+default_floating_border normal
 
 # gaps each window
-gaps outer 7
-gaps inner 7
+gaps outer 5
+gaps inner 5
 smart_gaps on
 
 # This font is widely installed, provides lots of unicode glyphs, right-to-left
