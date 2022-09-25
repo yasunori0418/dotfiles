@@ -138,6 +138,14 @@ xnoremap c "_c
 
 " }}}
 
+" Command line keybinds {{{
+cnoremap <C-a> <Home>
+cnoremap <C-e> <End>
+cnoremap <C-b> <Left>
+cnoremap <C-f> <Right>
+cnoremap <C-l> <Del>
+" }}}
+
 " Command {{{
 
 command! Cleareg call vimrc#clear_register()
