@@ -198,6 +198,9 @@ on_source = 'ddc.vim'
 
 # LSP plugins {{{
 [[plugins]]
+repo = 'tsuyoshicho/vim-efm-langserver-settings'
+
+[[plugins]]
 repo = 'neovim/nvim-lspconfig'
 depends = ['vim-efm-langserver-settings']
 on_source = 'ddc.vim'
@@ -264,7 +267,11 @@ call popup_preview#enable()
 '''
 
 [[plugins]]
-repo = 'tsuyoshicho/vim-efm-langserver-settings'
+repo = 'matsui54/denops-signature_help'
+on_source = 'ddc-nvim-lsp'
+hook_source = '''
+call signature_help#enable()
+'''
 
 #" efm-langserver settings {{{
 #
