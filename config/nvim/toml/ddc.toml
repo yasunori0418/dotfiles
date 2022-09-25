@@ -14,7 +14,7 @@ nnoremap / <Cmd>call vimrc#cmdline_pre('/')<CR>/
 nnoremap ? <Cmd>call vimrc#cmdline_pre('?')<CR>?
 '''
 hook_source = '''
-call ddc#custom#patch_global('sources', ['vsnip', 'around', 'file', 'rg'])
+call ddc#custom#patch_global('sources', ['nvim-lsp', 'vsnip', 'around', 'file', 'rg'])
 
 " ddc source settings. {{{
 call ddc#custom#patch_global('sourceOptions', {
@@ -85,13 +85,13 @@ call ddc#custom#patch_global('sourceParams', {
 
 " filetype settings of ddc-sources. {{{
 
-call ddc#custom#patch_filetype(['python', 'php', 'lua'], 'sources',
-  \ ['nvim-lsp', 'vsnip', 'around', 'file', 'rg'],
-  \ )
+"call ddc#custom#patch_filetype(['python', 'php', 'lua', 'markdown', 'vim', 'toml'], 'sources',
+"  \ ['nvim-lsp', 'vsnip', 'around', 'file', 'rg'],
+"  \ )
 
-call ddc#custom#patch_filetype(['toml', 'vim'], 'sources',
-  \ ['necovim', 'vsnip', 'around', 'file', 'rg'],
-  \ )
+"call ddc#custom#patch_filetype(['toml'], 'sources',
+"  \ ['necovim', 'vsnip', 'around', 'file', 'rg'],
+"  \ )
 
 " }}}
 
@@ -199,8 +199,8 @@ on_source = 'ddc.vim'
 # LSP plugins {{{
 [[plugins]]
 repo = 'neovim/nvim-lspconfig'
-depends = ['ddc.vim', 'vim-efm-langserver-settings']
-on_ft = ['python', 'lua', 'markdown', 'php', 'vim']
+depends = ['vim-efm-langserver-settings']
+on_source = 'ddc.vim'
 lua_source = '''
 lsp_bin = vim.fn.stdpath('data') .. '/mason/bin/'
 nvim_lsp = require('lspconfig')
@@ -210,6 +210,15 @@ nvim_lsp.efm.setup({
 })
 nvim_lsp.intelephense.setup({
   cmd = { lsp_bin .. 'intelephense', '--stdio' },
+})
+nvim_lsp.sumneko_lua.setup({
+  cmd = { lsp_bin .. 'lua-language-server' },
+})
+nvim_lsp.pyright.setup({
+  cmd = { lsp_bin .. 'pyright-langserver', '--stdio' },
+})
+nvim_lsp.vimls.setup({
+  cmd = { lsp_bin .. 'vim-language-server', '--stdio' },
 })
 '''
 
@@ -235,6 +244,10 @@ lua_source = '''
 require('mason-lspconfig').setup({
   ensure_installed = {
     'efm',
+    'intelephense',
+    'lua-language-server',
+    'pyright',
+    'vim-language-server',
   },
 })
 '''
@@ -242,6 +255,13 @@ require('mason-lspconfig').setup({
 [[plugins]]
 repo = 'Shougo/ddc-nvim-lsp'
 on_source = 'nvim-lspconfig'
+
+[[plugins]]
+repo = 'matsui54/denops-popup-preview.vim'
+on_source = 'ddc-nvim-lsp'
+hook_source = '''
+call popup_preview#enable()
+'''
 
 [[plugins]]
 repo = 'tsuyoshicho/vim-efm-langserver-settings'
