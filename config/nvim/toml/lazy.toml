@@ -347,6 +347,7 @@ let g:indent_guides_exclude_filetypes = [
   \ 'ddu-filer',
   \ 'deol',
   \ 'mason',
+  \ 'lspinfo',
   \ ]
 '''
 hook_post_source = '''
