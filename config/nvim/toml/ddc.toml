@@ -199,10 +199,44 @@ on_source = 'ddc.vim'
 # LSP plugins {{{
 [[plugins]]
 repo = 'neovim/nvim-lspconfig'
-depends = ['ddc.vim']
-on_ft = ['python', 'lua', 'markdown', 'php']
+depends = ['ddc.vim', 'vim-efm-langserver-settings']
+on_ft = ['python', 'lua', 'markdown', 'php', 'vim']
 lua_source = '''
+lsp_bin = vim.fn.stdpath('data') .. '/mason/bin/'
 nvim_lsp = require('lspconfig')
+nvim_lsp.efm.setup({
+  cmd = { lsp_bin .. 'efm-langserver', '-c', vim.fn['efm_langserver_settings#config_path']() },
+  filetypes = vim.fn['efm_langserver_settings#whitelist'](),
+})
+nvim_lsp.intelephense.setup({
+  cmd = { lsp_bin .. 'intelephense', '--stdio' },
+})
+'''
+
+[[plugins]]
+repo = 'williamboman/mason.nvim'
+depends = 'mason-lspconfig.nvim'
+on_cmd = ['Mason', 'MasonLog', 'MasonInstall', 'MasonUninstall', 'MasonUninstall']
+lua_source = '''
+require('mason').setup({
+  ui = {
+    icons = {
+      package_installed   = '',
+      package_pending     = '',
+      package_uninstalled = '✗',
+    }
+  }
+})
+'''
+
+[[plugins]]
+repo = 'williamboman/mason-lspconfig.nvim'
+lua_source = '''
+require('mason-lspconfig').setup({
+  ensure_installed = {
+    'efm',
+  },
+})
 '''
 
 [[plugins]]
@@ -211,7 +245,6 @@ on_source = 'nvim-lspconfig'
 
 [[plugins]]
 repo = 'tsuyoshicho/vim-efm-langserver-settings'
-depends = ['nvim-lsp']
 
 #" efm-langserver settings {{{
 #
