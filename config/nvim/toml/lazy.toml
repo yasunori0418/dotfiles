@@ -340,7 +340,14 @@ repo = 'nathanaelkane/vim-indent-guides'
 on_source = 'nightfox.nvim'
 hook_source = '''
 let g:indent_guides_default_mapping = 0
-let g:indent_guides_exclude_filetypes = ['help', 'ddu-ff-filter', 'ddu-ff', 'ddu-filer', 'deol']
+let g:indent_guides_exclude_filetypes = [
+  \ 'help',
+  \ 'ddu-ff-filter',
+  \ 'ddu-ff',
+  \ 'ddu-filer',
+  \ 'deol',
+  \ 'mason',
+  \ ]
 '''
 hook_post_source = '''
 IndentGuidesEnable
