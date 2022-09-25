@@ -37,12 +37,6 @@ call ddc#custom#patch_global('sourceOptions', {
     \ 'mark': 'vsnip',
     \ 'dup': v:true,
     \ },
-  \ 'nvim-lsp': {
-    \ 'mark': 'lsp',
-    \ 'matchers': ['matcher_head'],
-    \ 'forceCompletionPattern': '\.\w*|:\w*|->\w*',
-    \ 'dup': 'force',
-    \ },
   \ 'vim-lsp': {
     \ 'mark': 'lsp',
     \ 'matchers': ['matcher_head'],
@@ -222,21 +216,21 @@ on_source = 'ddc.vim'
 # }}}
 
 # LSP plugins {{{
-[[plugins]]
-repo = 'neovim/nvim-lspconfig'
-depends = ['impatient.nvim', 'ddc.vim']
-on_ft = ['python', 'lua', 'markdown', 'php']
-lua_source = '''
-nvim_lsp = require('lspconfig')
-nvim_lsp.pyright.setup{}
-nvim_lsp.efm.setup{
-  filetypes = { 'markdown' },
-}
-'''
-
-[[plugins]]
-repo = 'Shougo/ddc-nvim-lsp'
-on_source = 'nvim-lspconfig'
+#[[plugins]]
+#repo = 'neovim/nvim-lspconfig'
+#depends = ['impatient.nvim', 'ddc.vim']
+#on_ft = ['python', 'lua', 'markdown', 'php']
+#lua_source = '''
+#nvim_lsp = require('lspconfig')
+#nvim_lsp.pyright.setup{}
+#nvim_lsp.efm.setup{
+#  filetypes = { 'markdown' },
+#}
+#'''
+#
+#[[plugins]]
+#repo = 'Shougo/ddc-nvim-lsp'
+#on_source = 'nvim-lspconfig'
 
 # [[plugins]]
 # repo = 'matsui54/ddc-nvim-lsp-doc'
