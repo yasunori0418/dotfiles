@@ -554,6 +554,10 @@ augroup json_autocmd
 augroup END
 '''
 
+[[plugins]]
+repo = 'aklt/plantuml-syntax'
+on_ft = 'plantuml'
+
 # Markdown plugins {{{
 
 [[plugins]]
