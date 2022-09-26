@@ -166,10 +166,11 @@ set listchars=tab:»-,space:･,trail:･,nbsp:%,eol:↲,extends:»,precedes:«
 
 augroup user_filename_filetype
   autocmd!
+  autocmd BufNewFile,BufRead *.php                setlocal filetype=php
   autocmd BufNewFile,BufRead *.blade.*            setlocal filetype=html
+  autocmd BufNewFile,BufRead *.uml                setlocal filetype=plantuml
   autocmd BufNewFile,BufRead .textlintrc          setlocal filetype=json
   autocmd BufNewFile,BufRead */i3/config          setlocal filetype=i3config
-  autocmd BufNewFile,BufRead *.php                setlocal filetype=php
 augroup END
 
 augroup user_filetype_indent
