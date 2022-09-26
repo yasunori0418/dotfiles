@@ -14,7 +14,7 @@ nnoremap / <Cmd>call vimrc#cmdline_pre('/')<CR>/
 nnoremap ? <Cmd>call vimrc#cmdline_pre('?')<CR>?
 '''
 hook_source = '''
-call ddc#custom#patch_global('sources', ['vsnip', 'around', 'file', 'rg'])
+call ddc#custom#patch_global('sources', ['nvim-lsp', 'vsnip', 'around', 'file', 'rg'])
 
 " ddc source settings. {{{
 call ddc#custom#patch_global('sourceOptions', {
@@ -37,9 +37,8 @@ call ddc#custom#patch_global('sourceOptions', {
     \ 'mark': 'vsnip',
     \ 'dup': v:true,
     \ },
-  \ 'vim-lsp': {
+  \ 'nvim-lsp': {
     \ 'mark': 'lsp',
-    \ 'matchers': ['matcher_head'],
     \ 'forceCompletionPattern': '\.\w*|:\w*|->\w*',
     \ },
   \ 'cmdline': {
@@ -59,16 +58,6 @@ call ddc#custom#patch_global('sourceOptions', {
     \ 'mark': 'ripgrep',
     \ 'matchers': ['matcher_head', 'matcher_length'],
     \ 'minAutoCompleteLength': 4,
-    \ },
-  \ 'zsh': {
-    \ 'mark': 'zsh',
-    \ 'isVolatile': v:true,
-    \ 'forceCompletionPattern': '\S/\S*',
-    \ },
-  \ 'shell-history': {
-    \ 'mark': 'shell',
-    \ 'minKeywordLength': 4,
-    \ 'maxKeywordLength': 50,
     \ },
   \ })
 
@@ -96,13 +85,13 @@ call ddc#custom#patch_global('sourceParams', {
 
 " filetype settings of ddc-sources. {{{
 
-call ddc#custom#patch_filetype(['python', 'php', 'lua'], 'sources',
-  \ ['nvim-lsp', 'vim-lsp', 'vsnip', 'around', 'file', 'rg'],
-  \ )
+"call ddc#custom#patch_filetype(['python', 'php', 'lua', 'markdown', 'vim', 'toml'], 'sources',
+"  \ ['nvim-lsp', 'vsnip', 'around', 'file', 'rg'],
+"  \ )
 
-call ddc#custom#patch_filetype(['toml', 'vim'], 'sources',
-  \ ['necovim', 'vsnip', 'around', 'file', 'rg'],
-  \ )
+"call ddc#custom#patch_filetype(['toml'], 'sources',
+"  \ ['necovim', 'vsnip', 'around', 'file', 'rg'],
+"  \ )
 
 " }}}
 
@@ -121,7 +110,7 @@ inoremap <silent><expr> <TAB>
   \ (col('.') <= 1 <Bar><Bar> getline('.')[col('.') - 2] =~# '\s') ?
   \ '<TAB>' : ddc#manual_complete()
 inoremap <silent> <S-TAB> <Cmd>call pum#map#insert_relative(-1)<CR>
-inoremap <silent> <C-e> <Cmd>call pum#map#cancel()<CR>
+inoremap <silent> <C-q> <Cmd>call pum#map#cancel()<CR>
 
 " }}}
 
@@ -157,14 +146,6 @@ on_source = 'ddc.vim'
 [[plugins]]
 repo = 'Shougo/neco-vim'
 on_ft = ['vim', 'toml']
-
-[[plugins]]
-repo = 'Shougo/ddc-zsh'
-on_source = 'ddc.vim'
-
-[[plugins]]
-repo = 'delphinus/ddc-shell-history'
-on_source = 'ddc.vim'
 
 # }}}
 
@@ -216,103 +197,110 @@ on_source = 'ddc.vim'
 # }}}
 
 # LSP plugins {{{
-#[[plugins]]
-#repo = 'neovim/nvim-lspconfig'
-#depends = ['impatient.nvim', 'ddc.vim']
-#on_ft = ['python', 'lua', 'markdown', 'php']
-#lua_source = '''
-#nvim_lsp = require('lspconfig')
-#nvim_lsp.pyright.setup{}
-#nvim_lsp.efm.setup{
-#  filetypes = { 'markdown' },
-#}
-#'''
-#
-#[[plugins]]
-#repo = 'Shougo/ddc-nvim-lsp'
-#on_source = 'nvim-lspconfig'
-
-# [[plugins]]
-# repo = 'matsui54/ddc-nvim-lsp-doc'
-# on_source = 'ddc-nvim-lsp'
-
-[[plugins]]
-repo = 'prabirshrestha/vim-lsp'
-
 [[plugins]]
 repo = 'tsuyoshicho/vim-efm-langserver-settings'
-depends = ['vim-lsp']
 
 [[plugins]]
-repo = 'mattn/vim-lsp-settings'
+repo = 'neovim/nvim-lspconfig'
 depends = ['vim-efm-langserver-settings']
-on_ft = ['python', 'markdown', 'php', 'vim', 'lua']
-hook_source = '''
-" Performance improvements using lua.
-let g:lsp_use_lua = v:true
-
-" enable signs
-let g:lsp_signs_enabled = 1
-
-" Not use virtual text.
-"let g:lsp_diagnostics_virtual_text_enabled = 0
-
-" Use echo from cmdline.
-let g:lsp_diagnostics_echo_cursor = 1
-
-" diagnostics signs
-"let g:lsp_diagnostics_signs_error = {'text': '✗'}
-"let g:lsp_diagnostics_signs_warning = {'text': ''}
-"let g:lsp_diagnostics_signs_information = {'text': ''}
-"let g:lsp_diagnostics_signs_hint = {'text': ''}
-
-" Document code action sign.
-"let g:lsp_document_code_action_signs_hint = {'text': ''}
-
-"let g:lsp_diagnostics_virtual_text_prefix = ''
-"let g:lsp_tree_incoming_prefix = ''
-
-" output lsp log file
-let g:lsp_log_verbose = 0
-"let g:lsp_log_file = expand('~/vim-lsp.log')
-
-" efm-langserver settings {{{
-
-" https://github.com/nakatanakatana/dotfiles
-" for efm-langserver-settings
-let s:efm_args = []
-if efm_langserver_settings#config_enable()
-  let s:efm_args = extend(s:efm_args, ['-c', efm_langserver_settings#config_path()])
-endif
-
-"let g:efm_langserver_settings#debug = 5
-
-if efm_langserver_settings#debug_enable()
-  let s:efm_args = extend(s:efm_args, ['-logfile', efm_langserver_settings#debug_path()])
-  let s:efm_args = extend(s:efm_args, ['-loglevel', efm_langserver_settings#debug_enable()])
-endif
-
-let g:lsp_settings = {
-  \ 'efm-langserver': {
-    \ 'disabled': v:false,
-    \ 'args': s:efm_args,
-    \ 'allowlist': efm_langserver_settings#whitelist(),
-    \ 'blocklist': efm_langserver_settings#blacklist(),
-    \ }
-  \ }
-
-" }}}
-
-" Not show install server suggestion message.
-let g:lsp_settings_enable_suggestions = 0
+on_source = 'ddc.vim'
+lua_source = '''
+lsp_bin = vim.fn.stdpath('data') .. '/mason/bin/'
+nvim_lsp = require('lspconfig')
+nvim_lsp.efm.setup({
+  cmd = { lsp_bin .. 'efm-langserver', '-c', vim.fn['efm_langserver_settings#config_path']() },
+  filetypes = vim.fn['efm_langserver_settings#whitelist'](),
+})
+nvim_lsp.marksman.setup({
+  cmd = { lsp_bin .. 'marksman', 'server' },
+})
+nvim_lsp.intelephense.setup({
+  cmd = { lsp_bin .. 'intelephense', '--stdio' },
+})
+nvim_lsp.sumneko_lua.setup({
+  cmd = { lsp_bin .. 'lua-language-server' },
+})
+nvim_lsp.pyright.setup({
+  cmd = { lsp_bin .. 'pyright-langserver', '--stdio' },
+})
+nvim_lsp.vimls.setup({
+  cmd = { lsp_bin .. 'vim-language-server', '--stdio' },
+})
 '''
 
 [[plugins]]
-repo = 'shun/ddc-vim-lsp'
-on_source = ['ddc.vim']
+repo = 'williamboman/mason.nvim'
+depends = 'mason-lspconfig.nvim'
+on_cmd = ['Mason', 'MasonLog', 'MasonInstall', 'MasonUninstall', 'MasonUninstall']
+lua_source = '''
+require('mason').setup({
+  ui = {
+    icons = {
+      package_installed   = '',
+      package_pending     = '',
+      package_uninstalled = '✗',
+    }
+  }
+})
+'''
 
 [[plugins]]
-repo = 'halkn/lightline-lsp'
-on_source = ['vim-lsp']
+repo = 'williamboman/mason-lspconfig.nvim'
+lua_source = '''
+require('mason-lspconfig').setup({
+  ensure_installed = {
+    'efm',
+    'intelephense',
+    'lua-language-server',
+    'pyright',
+    'vim-language-server',
+    'marksman',
+  },
+})
+'''
 
+[[plugins]]
+repo = 'Shougo/ddc-nvim-lsp'
+on_source = 'nvim-lspconfig'
+
+[[plugins]]
+repo = 'matsui54/denops-popup-preview.vim'
+on_source = 'ddc-nvim-lsp'
+hook_source = '''
+call popup_preview#enable()
+'''
+
+[[plugins]]
+repo = 'matsui54/denops-signature_help'
+on_source = 'ddc-nvim-lsp'
+hook_source = '''
+call signature_help#enable()
+'''
+
+#" efm-langserver settings {{{
+#
+#" https://github.com/nakatanakatana/dotfiles
+#" for efm-langserver-settings
+#let s:efm_args = []
+#if efm_langserver_settings#config_enable()
+#  let s:efm_args = extend(s:efm_args, ['-c', efm_langserver_settings#config_path()])
+#endif
+#
+#"let g:efm_langserver_settings#debug = 5
+#
+#if efm_langserver_settings#debug_enable()
+#  let s:efm_args = extend(s:efm_args, ['-logfile', efm_langserver_settings#debug_path()])
+#  let s:efm_args = extend(s:efm_args, ['-loglevel', efm_langserver_settings#debug_enable()])
+#endif
+#
+#let g:lsp_settings = {
+#  \ 'efm-langserver': {
+#    \ 'disabled': v:false,
+#    \ 'args': s:efm_args,
+#    \ 'allowlist': efm_langserver_settings#whitelist(),
+#    \ 'blocklist': efm_langserver_settings#blacklist(),
+#    \ }
+#  \ }
+#
+#" }}}
 # }}}

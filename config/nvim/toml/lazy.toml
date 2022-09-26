@@ -340,7 +340,15 @@ repo = 'nathanaelkane/vim-indent-guides'
 on_source = 'nightfox.nvim'
 hook_source = '''
 let g:indent_guides_default_mapping = 0
-let g:indent_guides_exclude_filetypes = ['help', 'ddu-ff-filter', 'ddu-ff', 'ddu-filer', 'deol']
+let g:indent_guides_exclude_filetypes = [
+  \ 'help',
+  \ 'ddu-ff-filter',
+  \ 'ddu-ff',
+  \ 'ddu-filer',
+  \ 'deol',
+  \ 'mason',
+  \ 'lspinfo',
+  \ ]
 '''
 hook_post_source = '''
 IndentGuidesEnable
@@ -545,6 +553,10 @@ augroup json_autocmd
   autocmd FileType json setlocal foldmethod=syntax
 augroup END
 '''
+
+[[plugins]]
+repo = 'aklt/plantuml-syntax'
+on_ft = 'plantuml'
 
 # Markdown plugins {{{
 
