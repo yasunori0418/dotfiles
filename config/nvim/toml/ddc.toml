@@ -85,13 +85,13 @@ call ddc#custom#patch_global('sourceParams', {
 
 " filetype settings of ddc-sources. {{{
 
-"call ddc#custom#patch_filetype(['python', 'php', 'lua', 'markdown', 'vim', 'toml'], 'sources',
-"  \ ['nvim-lsp', 'vsnip', 'around', 'file', 'rg'],
-"  \ )
+call ddc#custom#patch_filetype(['python', 'php', 'lua', 'markdown'], 'sources',
+  \ ['nvim-lsp', 'vsnip', 'around', 'file', 'rg'],
+  \ )
 
-"call ddc#custom#patch_filetype(['toml'], 'sources',
-"  \ ['necovim', 'vsnip', 'around', 'file', 'rg'],
-"  \ )
+call ddc#custom#patch_filetype(['toml', 'vim'], 'sources',
+  \ ['necovim', 'vsnip', 'around', 'file', 'rg'],
+  \ )
 
 " }}}
 
@@ -223,9 +223,6 @@ nvim_lsp.sumneko_lua.setup({
 nvim_lsp.pyright.setup({
   cmd = { lsp_bin .. 'pyright-langserver', '--stdio' },
 })
-nvim_lsp.vimls.setup({
-  cmd = { lsp_bin .. 'vim-language-server', '--stdio' },
-})
 '''
 
 [[plugins]]
@@ -253,7 +250,6 @@ require('mason-lspconfig').setup({
     'intelephense',
     'lua-language-server',
     'pyright',
-    'vim-language-server',
     'marksman',
   },
 })
