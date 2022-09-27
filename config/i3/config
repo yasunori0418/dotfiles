@@ -30,6 +30,7 @@ smart_gaps on
 exec_always --no-startup-id light-locker
 exec_always --no-startup-id dunst
 exec_always --no-startup-id clipmenud
+exec_always --no-startup-id i3-msg for_window [class="^.*"] border none
 exec --no-startup-id fcitx5
 exec --no-startup-id picom -b
 exec --no-startup-id thunar --daemon
