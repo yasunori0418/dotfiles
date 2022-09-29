@@ -1,0 +1,10 @@
+[Unit]
+Description=useless mouse point controller.
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/keynav
+Restart=always
+
+[Install]
+WantedBy=default.target
