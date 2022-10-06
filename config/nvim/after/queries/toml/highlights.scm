@@ -1,5 +1,5 @@
 ;; https://github.com/Shougo/shougo-s-github
-;; Original setting from ↑.
+;; Original setting get from ↑.
 ((pair
   (bare_key) @_key
   (string) @none)

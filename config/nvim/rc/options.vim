@@ -181,6 +181,7 @@ augroup user_filetype_indent
   autocmd FileType php        setlocal tabstop=4 softtabstop=4 shiftwidth=4
   autocmd FileType xml        setlocal tabstop=4 softtabstop=4 shiftwidth=4
   autocmd FileType markdown   setlocal tabstop=4 softtabstop=4 shiftwidth=4
+  autocmd FileType dockerfile setlocal tabstop=4 softtabstop=4 shiftwidth=4
 augroup END
 
 " }}}
