@@ -338,6 +338,16 @@ Description="キーボード - ロシア語 - ロシア語 (タイプライタ�
 Language=ru
 Label=ru
 
+[keyboard-ru-ruchey_ru]
+Description="キーボード - ロシア語 - Russian (engineering, RU)"
+Language=ru
+Label=ru
+
+[keyboard-ru-ruchey_en]
+Description="キーボード - ロシア語 - Russian (engineering, EN)"
+Language=ru
+Label=en
+
 [keyboard-ru-legacy]
 Description="キーボード - ロシア語 - ロシア語 (legacy)"
 Language=ru
@@ -482,16 +492,6 @@ Label=ru
 Description="キーボード - ロシア語 - Russian (Polyglot and Reactionary)"
 Language=ru
 Label=ru
-
-[keyboard-ru-ruchey_cyrillic]
-Description="キーボード - ロシア語 - Russian (Engineering, Cyrillic)"
-Language=ru
-Label=ru
-
-[keyboard-ru-ruchey_latin]
-Description="キーボード - ロシア語 - Russian (Engineering, Latin)"
-Language=ru
-Label=us
 
 [keyboard-ru-winkeys-p]
 Description="キーボード - ロシア語 - Russian (Programmer)"
@@ -1574,7 +1574,7 @@ Language=si
 Label=si
 
 [keyboard-lk-tam_unicode]
-Description="キーボード - シンハラ語 (表音) - Tamil (Sri Lanka, TamilNet '99)"
+Description="キーボード - シンハラ語 (表音) - (Sri Lanka, TamilNet '99)"
 Language=ta
 Label=ta
 
