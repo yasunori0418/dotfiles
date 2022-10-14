@@ -14,10 +14,10 @@ export VOLTA_HOME="$HOME/.volta"
 export PATH="$VOLTA_HOME/bin:$PATH"
 
 # Guix package manager
-export GUIX_LOCPATH="$HOME/.guix-profile/lib/locale"
-export GUIX_PROFILE="$HOME/.guix-profile"
-source $GUIX_PROFILE/etc/profile
-export PATH="$GUIX_PROFILE/bin:$PATH"
+#export GUIX_LOCPATH="$HOME/.guix-profile/lib/locale"
+#export GUIX_PROFILE="$HOME/.guix-profile"
+#source $GUIX_PROFILE/etc/profile
+#export PATH="$GUIX_PROFILE/bin:$PATH"
 
 # Docker rootless config
 export DOCKER_HOST=unix://$XDG_RUNTIME_DIR/docker.sock
