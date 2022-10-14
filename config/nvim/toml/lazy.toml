@@ -10,10 +10,6 @@ require('nvim-treesitter.configs').setup {
   ensure_installed = 'all',
   highlight = {
     enable = true,
-    disable = { 'help' },
-  },
-  indent = {
-    enable = true,
   },
 }
 '''
@@ -98,7 +94,8 @@ endif
 
 [[plugins]] # Modern and light status line.
 repo = 'itchyny/lightline.vim'
-on_event = ['CursorHold', 'CursorMoved', 'InsertEnter', 'CmdlineEnter']
+#on_event = ['CursorHold', 'CursorMoved', 'InsertEnter', 'CmdlineEnter']
+on_event = ['VimEnter']
 depends = ['vim-gitbranch', 'nightfox.nvim']
 hook_source = '''
 set noshowmode
