@@ -195,6 +195,7 @@ for_window [class="Solaar"]                 floating enable border normal
 for_window [class="Gufw.py"]                floating enable border normal
 for_window [class="easyeffects"]            floating enable border normal
 for_window [class="Nm-connection-editor"]   floating enable border normal
+for_window [class="SimpleScreenRecorder"]   floating enable border normal
 # }}}
 
 # Launch software in a specific workspace {{{
