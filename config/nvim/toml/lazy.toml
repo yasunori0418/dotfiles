@@ -345,6 +345,7 @@ let g:indent_guides_exclude_filetypes = [
   \ 'deol',
   \ 'mason',
   \ 'lspinfo',
+  \ 'gitter',
   \ ]
 '''
 hook_post_source = '''
@@ -498,6 +499,7 @@ repo = '4513ECHO/denops-gitter.vim'
 on_event = 'CmdlineEnter'
 hook_add = '''
 let g:gitter#token = vimrc#read_pat(g:base_dir . 'gitter_pat')[1]
+command! OpenReadingVimrc tabnew gitter://room/vim-jp/reading-vimrc
 '''
 
 # }}}
