@@ -1,4 +1,4 @@
-;;extends
+;; extends
 ;; https://github.com/Shougo/shougo-s-github
 ;; Original setting get from ↑.
 ((pair
