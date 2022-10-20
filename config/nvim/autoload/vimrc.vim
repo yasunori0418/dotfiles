@@ -5,15 +5,22 @@ function! vimrc#clear_register() abort
   endfor
 endfunction
 
+function! vimrc#read_pat(path) abort
+  let s:pat_path = a:path
+  if filereadable(s:pat_path)
+    return [v:true, readfile(s:pat_path)[0]]
+  endif
+  return [v:false, 'Can not read pat file.']
+endfunction
+
 " dein commands {{{
 function! vimrc#is_github_pat() abort
-  let s:github_pat = g:base_dir . 'github_pat'
-  if filereadable(s:github_pat)
-    let g:dein#install_github_api_token = readfile(s:github_pat)[0]
+  let l:result_read_pat = vimrc#read_pat(g:base_dir . 'github_pat')
+  if l:result_read_pat[0]
+    let g:dein#install_github_api_token = l:result_read_pat[1]
     return v:true
-  else
-    return v:false
   endif
+  return v:false
 endfunction
 
 function! vimrc#dein_update(bang_flg) abort

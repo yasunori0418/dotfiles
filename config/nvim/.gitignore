@@ -1,6 +1,6 @@
 # github api token.
-# Use dein#install_github_api_token
-github_pat
+# gitter api token.
+*_pat
 
 # Not tracking log stratup log files
 *log*
