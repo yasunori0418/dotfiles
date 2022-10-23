@@ -100,6 +100,8 @@ function! vimrc#skkeleton_init() abort
     \ "z\<Space>": ["\u3000", ''],
     \ '~': ['～', ''],
     \ 'z0': ["\u25CB", ''],
+    \ '(': ['（', ''],
+    \ ')': ['）', ''],
     \ })
 
   call vimrc#L2X_Keymap()
