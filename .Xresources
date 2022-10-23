@@ -8,7 +8,7 @@ Xft.hintstyle:  hintslight
 Xft.lcdfilter:  lcddefault
 
 !ターミナルテーマ
-#include "dotfiles/Xresources.d/theme/iceberg"
+#include "dotfiles/config/Xresources.d/theme/iceberg"
 
 !非アクティブ時に画面を暗くする。
 *fading:    40
