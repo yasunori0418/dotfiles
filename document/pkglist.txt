@@ -1,3 +1,4 @@
+# bases
 base
 base-devel
 linux-zen
@@ -9,61 +10,75 @@ iwd
 networkmanager
 man-db
 man-pages
-amd-ucode or intel-ucode
 archlinux-keyring
-xf86-video-amdgpu or xf86-video-intel
-カスタムカーネルを使用してNvidiaのドライバーをインストールするならnvidia-dkmsが使える。
-そうでないなら、nouveauや公式からドライバーをインストールしてください。
+
+amd-ucode or intel-ucode
+
+# system
+acpi
+pacman-contrib
+xdg-user-dirs
+xf86-input-synaptics
+gvfs
+
+# GUI
 xorg
-picom
 qt5-base
 gtk4
 gtk-engine-murrine
 gtk-engines
 lxappearance-gtk3
-acpi
+xf86-video-amdgpu | xf86-video-intel | xf86-video-nouveau | nvidia-dkms
+
+# desktop
 i3-gaps
+picom
 lightdm
-lightdm-webkit2-greeter
+lightdm-gtk-greeter
 light-locker
+rofi
+fcitx5-im
+fcitx5-skk
+fcitx5-mozc
+thunar
+geeqie
+mupdf
+network-manager-applet
+vivaldi
+vivaldi-ffmpeg-codecs
+vlc
+xfce4-appfinder
+xfce4-power-manager
+dunst
+rofi-calc
+feh
+pavucontrol
+
+# sound
 pipewire
 pipewire-alsa
 pipewire-pulse
 pipewire-jack
 wireplumber
-pacman-contrib
 easyeffects
+
+# develop
 neovim
 neovide
 deno
 wezrterm
 alacritty
-python
-python-pynvim
-python-send2trash
-pyenv
-rofi
-fcitx5-im
-fcitx5-skk
-fcitx5-mozc
 docker
 docker-compose
-php7
+python
+pyenv
 mariadb
-peek
+npm
 openssh
 tailscale
-zip
-unarchiver
-unzip
-thunar
-geeqie
-mupdf
-network-manager-applet
-npm
-vivaldi
-vivaldi-ffmpeg-codecs
 github-cli
+
+# font
 otf-font-awesome
 otf-ipaexfont
 otf-ipmjfont
@@ -71,32 +86,30 @@ ttf-dejavu
 ttf-font-awesome
 ttf-roboto
 ttf-ubuntu-font-family
-vlc
-xfce4-appfinder
-xfce4-power-manager
-xdg-user-dirs
-xf86-input-synaptics
+noto-fonts
+noto-fonts-cjk
+noto-fonts-emoji
+gnu-free-fonts
+
+# library
+python-send2trash
+peek
+zip
+unarchiver
+unzip
 bluez
 bluez-utils
 bluez-qt
-gvfs
 ufw
 gufw
-dunst
-rofi-calc
-feh
+ruby
 go
 rust
 exa
 bat
 clipmenu
-noto-fonts
-noto-fonts-cjk
-noto-fonts-emoji
 fzf
-gnu-free-fonts
 gnome-system-monitor
 gnome-themes-extra
 imagemagick
 imagemagick-doc
-pavucontrol
