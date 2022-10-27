@@ -4,7 +4,7 @@ repo = 'Shougo/pum.vim'
 [[plugins]]
 repo = 'Shougo/ddc.vim'
 depends = ['context_filetype.vim', 'denops.vim', 'pum.vim']
-on_event = 'InsertEnter'
+on_event = ['InsertEnter', 'CmdlineEnter', 'CursorHold']
 hook_add = '''
 " US keyboard layout.
 nnoremap ; <Cmd>call vimrc#cmdline_pre(':')<CR>:
@@ -14,25 +14,39 @@ nnoremap / <Cmd>call vimrc#cmdline_pre('/')<CR>/
 nnoremap ? <Cmd>call vimrc#cmdline_pre('?')<CR>?
 '''
 hook_source = '''
-call ddc#custom#patch_global('sources', ['nvim-lsp', 'vsnip', 'around', 'file', 'rg'])
+" UI settings {{{
+
+" Use pum.vim
+call ddc#custom#patch_global('autoCompleteEvents', [
+  \ 'InsertEnter', 'TextChangedI', 'TextChangedP',
+  \ 'CmdlineEnter', 'CmdlineChanged', 'TextChangedT',
+  \ ])
+
+call ddc#custom#patch_global('ui', 'pum')
+
+" }}}
 
 " ddc source settings. {{{
+call ddc#custom#patch_global('sources', ['vsnip', 'around', 'file', 'rg'])
+
+call ddc#custom#patch_global('cmdlineSources',
+  \ ['cmdline', 'cmdline-history', 'file', 'around', 'input'],
+  \ )
+
 call ddc#custom#patch_global('sourceOptions', {
   \ '_': {
     \ 'ignoreCase': v:true,
-    \ 'matchers': ['matcher_head'],
+    \ 'matchers': ['matcher_fuzzy'],
     \ 'sorters': ['sorter_rank'],
     \ },
-  \ 'around': {
-    \ 'mark': 'A',
-    \ 'matchers': ['matcher_head', 'matcher_length'],
-    \ },
+  \ 'around': {'mark': 'A'},
   \ 'file': {
     \ 'mark': 'F',
     \ 'isVolatile': v:true,
     \ 'minAutoCompleteLength': 1000,
     \ 'forceCompletionPattern': '\S/\S*',
     \ },
+  \ 'omni': {'mark': 'O'},
   \ 'vsnip': {
     \ 'mark': 'vsnip',
     \ 'dup': v:true,
@@ -40,24 +54,28 @@ call ddc#custom#patch_global('sourceOptions', {
   \ 'nvim-lsp': {
     \ 'mark': 'lsp',
     \ 'forceCompletionPattern': '\.\w*|:\w*|->\w*',
+    \ 'dup': 'force',
     \ },
   \ 'cmdline': {
-    \ 'mark': 'cmdline',
-    \ 'isVolatile': v:true,
+    \ 'mark': 'cmd',
     \ 'forceCompletionPattern': '\S/\S*',
+    \ 'dup': 'force',
     \ },
   \ 'cmdline-history': {
-    \ 'mark': 'history',
+    \ 'mark': 'cmd-history',
     \ 'sorters': [],
     \ },
-  \ 'line': {
-    \ 'mark': 'line',
+  \ 'line': { 'mark': 'line', },
+  \ 'input': {
+    \ 'mark': 'input',
+    \ 'forceCompletionPattern': '\S/\S*',
+    \ 'isVolatile': v:true,
+    \ 'dup': 'force',
     \ },
-  \ 'necovim': {'mark': 'necovim'},
+  \ 'necovim': {'mark': 'vim'},
   \ 'rg': {
     \ 'mark': 'ripgrep',
-    \ 'matchers': ['matcher_head', 'matcher_length'],
-    \ 'minAutoCompleteLength': 4,
+    \ 'minAutoCompleteLength': 5,
     \ },
   \ })
 
@@ -67,6 +85,7 @@ call ddc#custom#patch_global('sourceOptions', {
     \ 'matchers': ['skkeleton'],
     \ 'sorters': [],
     \ 'minAutoCompleteLength': 2,
+    \ 'isVolatile': v:true,
     \ },
   \ })
 
@@ -74,22 +93,17 @@ call ddc#custom#patch_global('sourceParams', {
   \ 'around': {
     \ 'maxSize': 500,
     \ },
-  \ 'nvim-lsp': {
-    \ 'kindLabels': {
-      \ 'Class': 'c'
-      \ },
-    \ },
   \ })
 
 " }}}
 
 " filetype settings of ddc-sources. {{{
 
-call ddc#custom#patch_filetype(['python', 'php', 'lua', 'markdown'], 'sources',
+call ddc#custom#patch_filetype(['python', 'php', 'lua'], 'sources',
   \ ['nvim-lsp', 'vsnip', 'around', 'file', 'rg'],
   \ )
 
-call ddc#custom#patch_filetype(['toml', 'vim'], 'sources',
+call ddc#custom#patch_filetype(['toml', 'vim', 'lua'], 'sources',
   \ ['necovim', 'vsnip', 'around', 'file', 'rg'],
   \ )
 
@@ -97,25 +111,32 @@ call ddc#custom#patch_filetype(['toml', 'vim'], 'sources',
 
 " Keymaping{{{
 
-" Use pum.vim
-call ddc#custom#patch_global('autoCompleteEvents', [
-  \ 'InsertEnter', 'TextChangedI', 'TextChangedP',
-  \ 'CmdlineEnter', 'CmdlineChanged',
-  \ ])
-
-call ddc#custom#patch_global('completionMenu', 'pum.vim')
-
+" Insert-Mode
 inoremap <silent><expr> <TAB>
   \ pum#visible() ? '<Cmd>call pum#map#insert_relative(+1)<CR>' :
   \ (col('.') <= 1 <Bar><Bar> getline('.')[col('.') - 2] =~# '\s') ?
-  \ '<TAB>' : ddc#manual_complete()
+  \ '<TAB>' : ddc#map#manual_complete()
 inoremap <silent> <S-TAB> <Cmd>call pum#map#insert_relative(-1)<CR>
-inoremap <silent> <C-q> <Cmd>call pum#map#cancel()<CR>
+inoremap <silent><expr> <C-e>
+  \ pum#visible() ? '<Cmd>call pum#map#cancel()<CR>' : '<C-o>$'
+
+" Cmdline-Mode
+cnoremap <expr> <TAB>
+  \ pum#visible() ? '<Cmd>call pum#map#insert_relative(+1)<CR>' :
+  \ exists('b:prev_buffer_config') ?
+  \ ddc#map#manual_complete() : nr2char(&wildcharm)
+cnoremap <silent> <S-TAB> <Cmd>call pum#map#insert_relative(-1)<CR>
+cnoremap <silent><expr> <C-e>
+  \ pum#visible() ? '<Cmd>call pum#map#cancel()<CR>' : '<C-o>$'
 
 " }}}
 
 call ddc#enable()
 '''
+
+[[plugins]]
+repo = 'Shougo/ddc-ui-pum'
+on_source = 'ddc.vim'
 
 # ddc-source {{{
 
@@ -147,6 +168,14 @@ on_source = 'ddc.vim'
 repo = 'Shougo/neco-vim'
 on_ft = ['vim', 'toml']
 
+[[plugins]]
+repo = 'Shougo/ddc-input'
+on_source = 'ddc.vim'
+
+[[plugins]]
+repo = 'Shougo/ddc-source-omni'
+on_source = 'ddc.vim'
+
 # }}}
 
 # ddc-filter {{{
@@ -162,6 +191,10 @@ on_source ='ddc.vim'
 [[plugins]]
 repo = 'Shougo/ddc-sorter_rank'
 on_source ='ddc.vim'
+
+[[plugins]]
+repo = 'tani/ddc-fuzzy'
+on_source = 'ddc.vim'
 
 # }}}
 
@@ -259,44 +292,18 @@ require('mason-lspconfig').setup({
 repo = 'Shougo/ddc-nvim-lsp'
 on_source = 'nvim-lspconfig'
 
-[[plugins]]
-repo = 'matsui54/denops-popup-preview.vim'
-on_source = 'ddc-nvim-lsp'
-hook_source = '''
-call popup_preview#enable()
-'''
+#[[plugins]]
+#repo = 'matsui54/denops-popup-preview.vim'
+#on_source = 'ddc-nvim-lsp'
+#hook_source = '''
+#call popup_preview#enable()
+#'''
 
-[[plugins]]
-repo = 'matsui54/denops-signature_help'
-on_source = 'ddc-nvim-lsp'
-hook_source = '''
-call signature_help#enable()
-'''
+#[[plugins]]
+#repo = 'matsui54/denops-signature_help'
+#on_source = 'ddc-nvim-lsp'
+#hook_source = '''
+#call signature_help#enable()
+#'''
 
-#" efm-langserver settings {{{
-#
-#" https://github.com/nakatanakatana/dotfiles
-#" for efm-langserver-settings
-#let s:efm_args = []
-#if efm_langserver_settings#config_enable()
-#  let s:efm_args = extend(s:efm_args, ['-c', efm_langserver_settings#config_path()])
-#endif
-#
-#"let g:efm_langserver_settings#debug = 5
-#
-#if efm_langserver_settings#debug_enable()
-#  let s:efm_args = extend(s:efm_args, ['-logfile', efm_langserver_settings#debug_path()])
-#  let s:efm_args = extend(s:efm_args, ['-loglevel', efm_langserver_settings#debug_enable()])
-#endif
-#
-#let g:lsp_settings = {
-#  \ 'efm-langserver': {
-#    \ 'disabled': v:false,
-#    \ 'args': s:efm_args,
-#    \ 'allowlist': efm_langserver_settings#whitelist(),
-#    \ 'blocklist': efm_langserver_settings#blacklist(),
-#    \ }
-#  \ }
-#
-#" }}}
 # }}}

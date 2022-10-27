@@ -120,7 +120,7 @@ inoremap <C-l> <Del>
 " Add Emacs-like keybindings to insert mode.
 " When one line only...
 inoremap <C-a> <C-o>^
-inoremap <C-e> <C-o>$
+" inoremap <C-e> <C-o>$ ~/dotfiles/config/nvim/toml/ddc.toml:122
 inoremap <C-f> <C-G>U<Right>
 inoremap <C-b> <C-G>U<Left>
 " }}}
