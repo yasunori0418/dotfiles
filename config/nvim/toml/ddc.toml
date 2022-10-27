@@ -116,7 +116,8 @@ inoremap <silent><expr> <TAB>
   \ pum#visible() ? '<Cmd>call pum#map#insert_relative(+1)<CR>' :
   \ (col('.') <= 1 <Bar><Bar> getline('.')[col('.') - 2] =~# '\s') ?
   \ '<TAB>' : ddc#map#manual_complete()
-inoremap <silent> <S-TAB> <Cmd>call pum#map#insert_relative(-1)<CR>
+inoremap <S-TAB> <Cmd>call pum#map#insert_relative(-1)<CR>
+inoremap <C-y> <Cmd>call pum#map#confirm()<CR>
 inoremap <silent><expr> <C-e>
   \ pum#visible() ? '<Cmd>call pum#map#cancel()<CR>' : '<C-o>$'
 
@@ -125,7 +126,8 @@ cnoremap <expr> <TAB>
   \ pum#visible() ? '<Cmd>call pum#map#insert_relative(+1)<CR>' :
   \ exists('b:prev_buffer_config') ?
   \ ddc#map#manual_complete() : nr2char(&wildcharm)
-cnoremap <silent> <S-TAB> <Cmd>call pum#map#insert_relative(-1)<CR>
+cnoremap <S-TAB> <Cmd>call pum#map#insert_relative(-1)<CR>
+cnoremap <C-y> <Cmd>call pum#map#confirm()<CR>
 cnoremap <silent><expr> <C-e>
   \ pum#visible() ? '<Cmd>call pum#map#cancel()<CR>' : '<C-o>$'
 
