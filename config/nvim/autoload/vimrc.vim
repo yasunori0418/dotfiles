@@ -88,6 +88,8 @@ endfunction
 
 " }}}
 
+" skkeleton functions {{{
+
 " skkeleton default settings {{{
 function! vimrc#skkeleton_init() abort
   call skkeleton#config({
@@ -185,22 +187,24 @@ function! vimrc#L2X_table() abort
 endfunction
 " }}}
 
+" }}}
+
 " Command line keybinds {{{
 function! vimrc#cmdline_pre(mode) abort
-  call dein#source('ddc.vim')
-
-  cnoremap <expr> <TAB>
-    \ pum#visible() ? '<Cmd>call pum#map#insert_relative(+1)<CR>' : 
-    \ ddc#map#manual_complete()
-  cnoremap <S-Tab> <Cmd>call pum#map#insert_relative(-1)<CR>
-
   " Note: It disables default command line completion!
   set wildchar=<C-t>
+  set wildcharm=<C-t>
+
+  cnoremap <expr><buffer> <TAB>
+    \ pum#visible() ? '<Cmd>call pum#map#insert_relative(+1)<CR>' : 
+    \ exists('b:prev_buffer_config') ? ddc#map#manual_complete() : "\<C-t>"
+  cnoremap <S-Tab> <Cmd>call pum#map#insert_relative(-1)<CR>
 
   " Overwrite sources.
   if !exists('b:prev_buffer_config')
     let b:prev_buffer_config = ddc#custom#get_buffer()
   endif
+
   if a:mode ==# ':'
     call ddc#custom#patch_buffer('cmdlineSources', 
       \ ['cmdline', 'cmdline-history', 'file', 'around'])
@@ -218,10 +222,11 @@ function! vimrc#cmdline_pre(mode) abort
 
   " Enable command line completion.
   call ddc#enable_cmdline_completion()
-  call ddc#enable()
 endfunction
 
 function! vimrc#cmdline_post() abort
+  silent! cunmap <buffer> <Tab>
+
   " Restore sources.
   if exists('b:prev_buffer_config')
     call ddc#custom#set_buffer(b:prev_buffer_config)
@@ -230,6 +235,6 @@ function! vimrc#cmdline_post() abort
     call ddc#custom#set_buffer({})
   endif
 
-  set wildchar=<TAB>
+  set wildcharm=<TAB>
 endfunction
 " }}}
