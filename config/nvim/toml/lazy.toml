@@ -513,6 +513,7 @@ repo = 'mattn/emmet-vim'
 on_ft = ['html', 'css', 'scss', 'php']
 hook_add = '''
 let g:user_emmet_install_global = 0
+let g:user_emmet_leader_key = '<C-k>'
 autocmd FileType html,css,scss,php EmmetInstall
 let g:user_emmet_settings = {
   \ 'variables': {
