@@ -16,7 +16,7 @@ font pango:Noto Sans CJK JP 11
 # Hide window title bar.
 default_border none
 default_floating_border normal
-for_window [class="^.*"] border none
+#for_window [class="^.*"] border none
 
 # gaps each window
 gaps outer 5
