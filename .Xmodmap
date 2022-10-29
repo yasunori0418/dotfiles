@@ -1,5 +1,6 @@
 !
 ! CapsLockとCtrlを入れ替える
+!https://lambdalisue.hatenablog.com/entry/2013/09/27/212118
 !
 remove Lock = Caps_Lock
 remove Control = Control_L
