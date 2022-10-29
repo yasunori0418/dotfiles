@@ -5,9 +5,13 @@ export PATH=$PATH:$HOME/bin
 export XDG_CONFIG_HOME=$HOME/.config
 
 # Pyenv enviroment variable.
-export PYENV_ROOT="$HOME/.pyenv"
-export PATH="$PYENV_ROOT/bin:$PATH"
-eval "$(pyenv init -)"
+# Pyenv settings
+if [[ -d $HOME/.pyenv ]]; then
+  export PYENV_ROOT="$HOME/.pyenv"
+  export PATH="$PYENV_ROOT/bin:$PATH"
+  eval "$(pyenv init -)"
+fi
+
 
 # volta environments
 export VOLTA_HOME="$HOME/.volta"
