@@ -96,6 +96,7 @@ gnu-free-fonts
 
 # library
 python-send2trash
+python-i3ipc
 zip
 unarchiver
 unzip
