@@ -52,7 +52,9 @@ xfce4-power-manager
 dunst
 rofi-calc
 feh
-pavucontrol
+peek
+gnome-system-monitor
+gnome-themes-extra
 
 # sound
 pipewire
@@ -61,6 +63,7 @@ pipewire-pulse
 pipewire-jack
 wireplumber
 easyeffects
+pavucontrol
 
 # develop
 neovim
@@ -93,7 +96,6 @@ gnu-free-fonts
 
 # library
 python-send2trash
-peek
 zip
 unarchiver
 unzip
@@ -109,7 +111,5 @@ exa
 bat
 clipmenu
 fzf
-gnome-system-monitor
-gnome-themes-extra
 imagemagick
 imagemagick-doc
