@@ -27,14 +27,16 @@ smart_gaps on
 # text rendering and scalability on retina/hidpi displays (thanks to pango).
 #font pango:DejaVu Sans Mono 8
 
-exec_always --no-startup-id light-locker
+set $wallpaper ~/Pictures/wallpaper/Nordic-darker.png
+
+exec_always --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork --ignore-empty-password -i $wallpaper
 exec_always --no-startup-id dunst
 exec_always --no-startup-id clipmenud
 exec_always --no-startup-id i3-msg for_window [class="^.*"] border none
 exec --no-startup-id fcitx5
 exec --no-startup-id picom -b
 exec --no-startup-id thunar --daemon
-exec --no-startup-id feh --bg-scale ~/Pictures/wallpaper/Nordic-darker.jpg
+exec --no-startup-id feh --bg-scale $wallpaper
 exec --no-startup-id xfce4-power-manager
 exec --no-startup-id blueman-applet
 exec --no-startup-id wezterm
