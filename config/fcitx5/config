@@ -29,10 +29,10 @@ NextCandidate=
 0=Shift+Super+space
 
 [Hotkey/ActivateKeys]
-0=Alt+backslash
+0=Alt+grave
 
 [Hotkey/DeactivateKeys]
-0=Alt+grave
+0=Alt+backslash
 
 [Hotkey/TogglePreedit]
 0=Control+Alt+P
@@ -47,7 +47,7 @@ PreeditEnabledByDefault=True
 # 入力メソッドを切り替える際に入力メソッドの情報を表示する
 ShowInputMethodInformation=True
 # フォーカスを変更する際に入力メソッドの情報を表示する
-showInputMethodInformationWhenFocusIn=False
+showInputMethodInformationWhenFocusIn=True
 # 入力メソッドの情報をコンパクトに表示する
 CompactInputMethodInformation=True
 # 第1入力メソッドの情報を表示する
