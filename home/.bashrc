@@ -83,4 +83,3 @@ alias lal='ls -laA | less -R'
 # clear
 alias c='clear'
 alias cc='c &&'
-
