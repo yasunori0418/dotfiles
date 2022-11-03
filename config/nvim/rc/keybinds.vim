@@ -131,10 +131,20 @@ inoremap <C-b> <C-G>U<Left>
 " xnoremap ; :
 xnoremap : ;
 
-
 " Do not save the things erased by x and c in the register.
 xnoremap x "_x
 xnoremap c "_c
+
+xnoremap a' 2i'
+xnoremap a" 2i"
+xnoremap a` 2i`
+
+" }}}
+
+" Operator Mode:{{{
+onoremap a' 2i'
+onoremap a" 2i"
+onoremap a` 2i`
 
 " }}}
 
