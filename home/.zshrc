@@ -146,16 +146,17 @@ unset key
 # lsコマンドのalias関連
 # ls command aliases.
 if [[ $(command -v exa) ]]; then
-  alias exa='exa --icons -F'
+  alias exa='exa --icons -F --git'
   alias ls='exa'
-  alias la='exa -la --git'
-  alias lt='exa -T -L 3 -a -I ".git|.atom|.cache"'
-  alias ltl='lt --color=always | less -r'
-  alias lal='la --color=always | less -r'
+  alias ll='exa -l'
+  alias la='exa -la'
+  alias lt='exa -T -L 3 -a -I ".git|.atom|.cache" --color=always | less -R'
+  alias lal='la --color=always | less -R'
 else
-  alias ls='ls --color=auto -G'
-  alias la='ls -lAG'
-  alias ll='ls -lG'
+  alias ls='ls --color=always'
+  alias la='ls -laA'
+  alias ll='ls -lA'
+  alias la='ls -laA | less -R'
 fi
 
 # bat command
