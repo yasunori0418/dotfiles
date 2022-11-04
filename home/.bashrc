@@ -30,7 +30,7 @@ right_prompt() {
   printf "%*s" $(($COLUMNS - 2)) $prompt_strings
 }
 # Prompt string
-PS1='\[$(tput sc; tput setaf 6; right_prompt; tput rc; tput setaf 4; tput bold)\]\w\[$(tput sgr0; tput setaf 2)\]$(__git_ps1 " << %s >>")\n\[$(tput setaf 7)\]\$ '
+PS1='\n\[$(tput sc; tput setaf 6; right_prompt; tput rc; tput setaf 4; tput bold)\]\w\[$(tput sgr0; tput setaf 2)\]$(__git_ps1 " << %s >>")\n\[$(tput setaf 7)\]\$ '
 
 # bash options
 # https://linuxjm.osdn.jp/html/GNU_bash/man1/bash.1.html
