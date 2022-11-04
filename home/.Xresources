@@ -1,29 +1,25 @@
 !xftフォント設定
-Xft.dpi:  96
+Xft.dpi:        95
 Xft.antialias:  true
-Xft.hinting:  true
-Xft.rgba:  rgb
-Xft.autohint:  false
+Xft.hinting:    true
+Xft.rgba:       rgba
+Xft.autohint:   false
 Xft.hintstyle:  hintslight
 Xft.lcdfilter:  lcddefault
 
 !ターミナルテーマ
-#include "dotfiles/config/Xresources.d/theme/iceberg"
+#include ".Xresources.d/theme/iceberg-dark"
 
 !非アクティブ時に画面を暗くする。
 *fading:    40
 *fadeColor: black
 
-!フォント設定
-!URxvt.font: xft:HackGenNerd Console
-
-!Powerlevel10kデフォルトフォント
-URxvt.font:  xft:MesloLGS NF:pixelsize=20,\
-    xft:HackGenNerd Console:pixelsize=20
+! フォント設定
+URxvt.font: xft:Hack Nerd Font Mono:size=12, xft:Cica:size=12
 
 !文字間隔・行間隔
-URxvt.letterSpace:  0
-URxvt.lineSpace:  2
+URxvt.letterSpace:  -1
+URxvt.lineSpace:  0
 
 !透過処理
 URxvt*depth:    32
@@ -39,13 +35,13 @@ URxvt*pointerBlank:  true
 
 !プロンプトカーソル
 URxvt*cursorBlink:  true
-URxvt*cursorUnderline:  true
+URxvt*cursorBlock:  true
 
 !ビジュアルベル
 URxvt.visualBell:  true
 
 !日本語入力
-URxvt.inputMethod:  fcitx
+!URxvt.inputMethod:  fcitx
 
 !バッファ行数
 URxvt.saveLines:5000
