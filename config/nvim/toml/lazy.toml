@@ -115,7 +115,7 @@ let g:lightline.colorscheme = 'nordfox'
 let g:lightline.active = {}
 let g:lightline.active.left = [
   \ ['mode', 'paste', 'skk_mode'], 
-  \ ['git_branch', 'relativepath', 'modified'],
+  \ ['relativepath', 'modified'],
   \ ]
 let g:lightline.active.right = [
   \ ['percent', 'lineinfo'],
@@ -141,7 +141,7 @@ let g:lightline.tabline.left = [
   \ ['tabs'],
   \ ]
 let g:lightline.tabline.right = [
-  \ ['lsp_errors', 'lsp_warnings', 'lsp_ok'],
+  \ ['git_branch'],
   \ ]
 
 let g:lightline.tab = {}
