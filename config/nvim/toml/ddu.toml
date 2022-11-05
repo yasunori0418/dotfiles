@@ -365,7 +365,7 @@ ddu-filer = '''
 " Directory is expanded in tree type.
 " If you select a file that is already open, go to the open screen.
 nnoremap <buffer><expr> <CR>
-  \ ddu#ui#filer#is_directory() ?
+  \ ddu#ui#filer#is_tree() ?
   \ "<Cmd>call ddu#ui#filer#do_action('expandItem', {'mode': 'toggle'})<CR>" :
   \ "<Cmd>call ddu#ui#filer#do_action('itemAction', {'name': 'open', 'params': {'command': 'drop'}})<CR>"
 
