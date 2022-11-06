@@ -4,11 +4,13 @@ downgrade
 google-chrome
 gyazo
 light-git
+ly-git
 nordic-darker-standard-buttons-theme
 nordic-darker-theme
 nordic-theme-git
 nordzy-cursors
 nordzy-icon-theme-git
+paru
 qt5-styleplugins
 rofi-power-menu
 rtl8812au-dkms-git
