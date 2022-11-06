@@ -22,6 +22,7 @@ xf86-input-synaptics
 gvfs
 ntfs-3g
 btrfs-progs
+fuse-overlayfs
 
 # GUI
 xorg
