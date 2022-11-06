@@ -64,6 +64,7 @@ pipewire-jack
 wireplumber
 easyeffects
 pavucontrol
+alsa-utils
 
 # develop
 neovim
@@ -103,6 +104,8 @@ unzip
 bluez
 bluez-utils
 bluez-qt
+bluez-tools
+blueberry
 ufw
 gufw
 ruby
