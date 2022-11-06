@@ -23,6 +23,7 @@ gvfs
 ntfs-3g
 btrfs-progs
 fuse-overlayfs
+slirp4netns
 
 # GUI
 xorg
