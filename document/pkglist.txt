@@ -71,6 +71,7 @@ bluez-utils
 bluez-qt
 bluez-tools
 blueberry
+blueman
 
 # develop
 neovim
