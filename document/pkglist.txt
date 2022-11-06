@@ -20,6 +20,8 @@ pacman-contrib
 xdg-user-dirs
 xf86-input-synaptics
 gvfs
+ntfs-3g
+btrfs-progs
 
 # GUI
 xorg
@@ -32,10 +34,9 @@ xf86-video-amdgpu | xf86-video-intel | xf86-video-nouveau | nvidia-dkms
 
 # desktop
 i3-gaps
+python-i3ipc
+i3lock
 picom
-lightdm
-lightdm-gtk-greeter
-light-locker
 rofi
 fcitx5-im
 fcitx5-skk
@@ -47,7 +48,6 @@ network-manager-applet
 vivaldi
 vivaldi-ffmpeg-codecs
 vlc
-xfce4-appfinder
 xfce4-power-manager
 dunst
 rofi-calc
@@ -62,9 +62,13 @@ pipewire-alsa
 pipewire-pulse
 pipewire-jack
 wireplumber
-easyeffects
 pavucontrol
 alsa-utils
+bluez
+bluez-utils
+bluez-qt
+bluez-tools
+blueberry
 
 # develop
 neovim
@@ -96,16 +100,10 @@ noto-fonts-emoji
 gnu-free-fonts
 
 # library
-python-send2trash
-python-i3ipc
+trash-cli
 zip
 unarchiver
 unzip
-bluez
-bluez-utils
-bluez-qt
-bluez-tools
-blueberry
 ufw
 gufw
 ruby
