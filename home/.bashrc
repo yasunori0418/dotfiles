@@ -75,11 +75,17 @@ set -o physical
 
 ## Aliases
 # ls
-alias ls='ls --color=always'
+alias ls='ls --color=always -F'
 alias la='ls -laA'
-alias ll='ls -laAG'
-alias lal='ls -laA | less -R'
+alias lal='ls -laA | less'
 
 # clear
 alias c='clear'
 alias cc='c &&'
+
+# cd
+function custom_cd() {
+  \cd $@ ; cc la
+}
+
+alias cd=custom_cd
