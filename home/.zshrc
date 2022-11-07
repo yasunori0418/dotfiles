@@ -150,13 +150,13 @@ if [[ $(command -v exa) ]]; then
   alias ls='exa'
   alias ll='exa -l'
   alias la='exa -la'
-  alias lt='exa -T -L 3 -a -I ".git|.atom|.cache" --color=always | less -R'
-  alias lal='la --color=always | less -R'
+  alias lt='exa -T -L 3 -a -I ".git|.atom|.cache" --color=always | less'
+  alias lal='la --color=always | less'
 else
   alias ls='ls --color=always'
   alias la='ls -laA'
   alias ll='ls -lA'
-  alias la='ls -laA | less -R'
+  alias la='ls -laA | less'
 fi
 
 # bat command
