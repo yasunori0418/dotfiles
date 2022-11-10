@@ -146,10 +146,10 @@ unset key
 # lsコマンドのalias関連
 # ls command aliases.
 if [[ $(command -v exa) ]]; then
-  alias exa='exa --icons -F --git'
+  alias exa='exa --icons -F'
   alias ls='exa'
-  alias ll='exa -l'
-  alias la='exa -la'
+  alias ll='exa -l --git'
+  alias la='ll -a'
   alias lt='exa -T -L 3 -a -I ".git|.atom|.cache" --color=always | less'
   alias lal='la --color=always | less'
 else
