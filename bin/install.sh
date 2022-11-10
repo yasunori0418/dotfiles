@@ -1,5 +1,5 @@
 #! /usr/bin/env bash
 
-ln -sv ~/dotfiles/home/.?* ~/
-ln -sv ~/dotfiles/bin ~/
-ln -sv ~/dotfiles/config/* ~/.config/
+ln -svf ~/dotfiles/home/.?* ~/
+ln -svf ~/dotfiles/bin ~/
+ln -svf ~/dotfiles/config/* ~/.config/
