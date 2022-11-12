@@ -159,10 +159,10 @@ else
   alias la='ls -laA | less'
 fi
 
-# bat command
-if [[ $(command -v bat) ]]; then
-  alias bat='bat --theme Nord'
-fi
+## bat command
+#if [[ $(command -v bat) ]]; then
+#  alias bat='bat --theme Nord'
+#fi
 
 # clear command aliases.
 alias c='clear'
