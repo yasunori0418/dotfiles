@@ -34,3 +34,6 @@ export PATH="$VOLTA_HOME/bin:$PATH"
 
 # Docker rootless config
 export DOCKER_HOST=unix://$XDG_RUNTIME_DIR/docker.sock
+
+# ssh-agent socket
+export SSH_AUTH_SOCK="${XDG_RUNTIME_DIR}/ssh-agent.socket"
