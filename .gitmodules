@@ -4,6 +4,3 @@
 [submodule ".vsnip/friendly-snippets"]
 	path = home/.vsnip/friendly-snippets
 	url = https://github.com/rafamadriz/friendly-snippets.git
-[submodule "home/nord-dircolors"]
-	path = home/nord-dircolors
-	url = https://github.com/arcticicestudio/nord-dircolors.git
