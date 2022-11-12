@@ -8,6 +8,12 @@ export LESS="--ignore-case \
   --window=-4 \
   --tabs=4"
 
+if [[ $(command -v vivid) ]];then
+  export LS_COLORS=`vivid generate nord`
+else
+  eval `dircolors ~/.dir_colors`
+fi
+
 export EDITOR=/usr/bin/nvim
 export TERMINAL=/usr/bin/wezterm
 #export BROWSER=/usr/bin/google-chrome-stable
