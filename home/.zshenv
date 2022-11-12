@@ -1,4 +1,12 @@
-export LESS='--ignore-case --quit-if-one-screen --no-init --LONG-PROMPT --RAW-CONTROL-CHARS --hilite-search --HILITE-UNREAD --window=-4 --tabs=4'
+export LESS="--ignore-case \
+  --quit-if-one-screen \
+  --no-init \
+  --LONG-PROMPT \
+  --RAW-CONTROL-CHARS \
+  --hilite-search \
+  --HILITE-UNREAD \
+  --window=-4 \
+  --tabs=4"
 
 export EDITOR=/usr/bin/nvim
 export TERMINAL=/usr/bin/wezterm
@@ -13,7 +21,6 @@ if [[ -d $HOME/.pyenv ]]; then
   export PATH="$PYENV_ROOT/bin:$PATH"
   eval "$(pyenv init -)"
 fi
-
 
 # volta environments
 export VOLTA_HOME="$HOME/.volta"
