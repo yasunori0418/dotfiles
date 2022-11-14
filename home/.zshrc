@@ -163,6 +163,12 @@ fi
 alias c='clear'
 alias cc='c &&'
 
+function custom_cd() {
+  \cd $@ ; cc la
+}
+
+alias cd=custom_cd
+
 # Neovim alias
 if [[ $(command -v nvim) ]]; then
   alias nv='nvim --listen ~/.cache/nvim/server.pipe'
