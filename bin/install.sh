@@ -11,3 +11,6 @@ ln -svf ~/dotfiles/modules/friendly-snippets ~/dotfiles/home/.vsnip/friendly-sni
 ln -svf ~/dotfiles/home/.?* ~/
 ln -svf ~/dotfiles/bin ~/
 ln -svf ~/dotfiles/config/* ~/.config/
+
+source ~/.zshenv
+source ~/.zshrc
