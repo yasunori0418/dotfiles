@@ -1,3 +1,7 @@
+#
+# ~/.zshenv
+#
+
 export LESS="--ignore-case \
   --quit-if-one-screen \
   --no-init \
@@ -7,6 +11,8 @@ export LESS="--ignore-case \
   --HILITE-UNREAD \
   --window=-4 \
   --tabs=4"
+
+[[ -n $(toe -a | cut -f1 | grep 'xterm-256color') ]] && export TERM='xterm-256color'
 
 if [[ $(command -v vivid) ]];then
   export LS_COLORS=`vivid generate nord`
