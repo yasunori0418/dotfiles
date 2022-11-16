@@ -12,7 +12,7 @@ ln -svf ~/dotfiles/home/.?* ~/
 ln -svf ~/dotfiles/bin ~/
 ln -svf ~/dotfiles/config/* ~/.config/
 
-source ~/.zshenv
-source ~/.zshrc
+zsh -c source ~/.zshenv
+zsh -c source ~/.zshrc
 
 nvim -c q!
