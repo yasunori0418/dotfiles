@@ -14,3 +14,5 @@ ln -svf ~/dotfiles/config/* ~/.config/
 
 source ~/.zshenv
 source ~/.zshrc
+
+nvim -c q!
