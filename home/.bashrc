@@ -24,13 +24,56 @@ GIT_PS1_SHOWCONFLICTSTATE=yes
 GIT_PS1_DESCRIBE_STYLE=default
 # }}}
 
-# https://wiki.archlinux.jp/index.php/Bash/%E3%83%97%E3%83%AD%E3%83%B3%E3%83%97%E3%83%88%E3%81%AE%E3%82%AB%E3%82%B9%E3%82%BF%E3%83%9E%E3%82%A4%E3%82%BA#.E3.83.86.E3.82.AD.E3.82.B9.E3.83.88.E3.82.92.E5.8F.B3.E3.81.AB.E6.95.B4.E5.88.97
-right_prompt() {
-  local prompt_strings=`whoami`@`uname -n`
-  printf "%*s" $(($COLUMNS - 2)) $prompt_strings
+# tput colors {{{
+BG_BLACK="$(tput setab 0)"
+BG_RED="$(tput setab 1)"
+BG_GREEN="$(tput setab 2)"
+BG_YELLOW="$(tput setab 3)"
+BG_BLUE="$(tput setab 4)"
+BG_MAGENTA="$(tput setab 5)"
+BG_CYAN="$(tput setab 6)"
+BG_WHITE="$(tput setab 7)"
+
+FG_BLACK="$(tput setaf 0)"
+FG_RED="$(tput setaf 1)"
+FG_GREEN="$(tput setaf 2)"
+FG_YELLOW="$(tput setaf 3)"
+FG_BLUE="$(tput setaf 4)"
+FG_MAGENTA="$(tput setaf 5)"
+FG_CYAN="$(tput setaf 6)"
+FG_WHITE="$(tput setaf 7)"
+
+RESET="$(tput sgr0)"
+BOLD="$(tput bold)"
+INVIS="$(tput invis)"
+# }}}
+
+exitstatus()
+{
+  if [[ $? == 0 ]]; then
+    echo ${FG_YELLOW}'(`·ω´·)'${RESET}
+  else
+    echo ${FG_WHITE}${BG_RED}'(´·ω·`)'${RESET}
+  fi
 }
+
+right_prompt() {
+  local user_name="${FG_RED}`whoami`${RESET}"
+  local host_name="${FG_RED}`uname -n`${RESET}"
+  local time="${FG_MAGENTA}`date +"%Y-%m-%d_%T"`${RESET}"
+  local prompt_strings="${user_name}@${host_name}_${time}"
+  printf "%*s" $COLUMNS $prompt_strings
+}
+
+left_prompt() {
+  local current_dir=${FG_BLUE}${BOLD}`pwd | sed -e "s|$HOME|~|";`${RESET}
+  local prompt_strings=${current_dir}
+  printf $prompt_strings
+}
+
 # Prompt string
-PS1='\n\[$(tput sc; tput setaf 6; right_prompt; tput rc; tput setaf 4; tput bold)\]\w\[$(tput sgr0; tput setaf 2)\]$(__git_ps1 " << %s >>")\n\[$(tput setaf 7)\]\$ '
+#PS1='\n\[$(tput sc; right_prompt; tput rc; tput setaf 4; tput bold)\]\w\[$(tput sgr0; tput setaf 2)\]$(__git_ps1 " << %s >>")\n\[$(tput setaf 7)\]\$ '
+PS1='\n\[`tput sc; right_prompt; tput rc; left_prompt`\]${FG_GREEN}$(__git_ps1 " << %s >>")\n${RESET}\$$(exitstatus)>'
 
 # bash options
 # https://linuxjm.osdn.jp/html/GNU_bash/man1/bash.1.html
