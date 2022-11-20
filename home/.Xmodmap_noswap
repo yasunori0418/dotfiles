@@ -1,10 +1,10 @@
 !
 ! CapsLockとCtrlを入れ替える
-!https://lambdalisue.hatenablog.com/entry/2013/09/27/212118
+! https://lambdalisue.hatenablog.com/entry/2013/09/27/212118
 !
 remove Lock = Caps_Lock
 remove Control = Control_L
-keysym Caps_Lock = Control_L
-keysym Control_L = Caps_Lock
+keysym Caps_Lock = Caps_Lock
+keysym Control_L = Control_L
 add Lock = Caps_Lock
 add Control = Control_L
