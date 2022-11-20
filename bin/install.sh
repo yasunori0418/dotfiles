@@ -13,3 +13,5 @@ ln -svf ~/dotfiles/bin ~/
 ln -svf ~/dotfiles/config/* ~/.config/
 
 nvim -c q!
+
+exit
