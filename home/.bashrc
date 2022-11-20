@@ -25,55 +25,71 @@ GIT_PS1_DESCRIBE_STYLE=default
 # }}}
 
 # tput colors {{{
-BG_BLACK="$(tput setab 0)"
-BG_RED="$(tput setab 1)"
-BG_GREEN="$(tput setab 2)"
-BG_YELLOW="$(tput setab 3)"
-BG_BLUE="$(tput setab 4)"
-BG_MAGENTA="$(tput setab 5)"
-BG_CYAN="$(tput setab 6)"
-BG_WHITE="$(tput setab 7)"
+BG_BLACK=`tput setab 0`
+BG_RED=`tput setab 1`
+BG_GREEN=`tput setab 2`
+BG_YELLOW=`tput setab 3`
+BG_BLUE=`tput setab 4`
+BG_MAGENTA=`tput setab 5`
+BG_CYAN=`tput setab 6`
+BG_WHITE=`tput setab 7`
 
-FG_BLACK="$(tput setaf 0)"
-FG_RED="$(tput setaf 1)"
-FG_GREEN="$(tput setaf 2)"
-FG_YELLOW="$(tput setaf 3)"
-FG_BLUE="$(tput setaf 4)"
-FG_MAGENTA="$(tput setaf 5)"
-FG_CYAN="$(tput setaf 6)"
-FG_WHITE="$(tput setaf 7)"
+FG_BLACK=`tput setaf 0`
+FG_RED=`tput setaf 1`
+FG_GREEN=`tput setaf 2`
+FG_YELLOW=`tput setaf 3`
+FG_BLUE=`tput setaf 4`
+FG_MAGENTA=`tput setaf 5`
+FG_CYAN=`tput setaf 6`
+FG_WHITE=`tput setaf 7`
 
-RESET="$(tput sgr0)"
-BOLD="$(tput bold)"
-INVIS="$(tput invis)"
+RESET=`tput sgr0`
+BOLD=`tput bold`
+INVIS=`tput invis`
+ITALIC=`tput sitm`
 # }}}
 
-exitstatus()
-{
-  if [[ $? == 0 ]]; then
-    echo ${FG_YELLOW}'(`·ω´·)'${RESET}
-  else
-    echo ${FG_WHITE}${BG_RED}'(´·ω·`)'${RESET}
-  fi
-}
-
-right_prompt() {
+# archlinux.wiki Bash/プロンプトのカスタマイズ
+__right_prompt() {
   local user_name="${FG_RED}`whoami`${RESET}"
   local host_name="${FG_RED}`uname -n`${RESET}"
   local time="${FG_MAGENTA}`date +"%Y-%m-%d_%T"`${RESET}"
-  local prompt_strings="${user_name}@${host_name}_${time}"
-  printf "%*s" $COLUMNS $prompt_strings
+  local prompt_strings="${user_name}@${host_name}"
+  printf "%*s %s" ${COLUMNS} ${prompt_strings} ${time}
 }
 
-left_prompt() {
+__left_prompt() {
   local current_dir=${FG_BLUE}${BOLD}`pwd | sed -e "s|$HOME|~|";`${RESET}
-  local prompt_strings=${current_dir}
-  printf $prompt_strings
+  printf "%s" ${current_dir}
+}
+
+# https://www.ryotosaito.com/blog/?p=455
+PROMPT_COMMAND=__prompt_cmd
+__prompt_cmd() {
+  local status=$?
+  local -A err_code=(
+    [1]='error'     [2]='builtin error' [126]='not executable'  [127]='command not found'
+    [128]='SIGHUP'  [129]='SIGINT'      [130]='SIGQUIT'         [131]='SIGILL'
+    [132]='SIGTRAP' [133]='SIGABRT'     [134]='SIGEMT'          [135]='SIGFPE'
+    [136]='SIGKILL' [137]='SIGBUS'      [138]='SIGSEGV'         [139]='SIGSYS'
+    [140]='SIGPIPE' [141]='SIGALRM'     [142]='SIGTERM'         [143]='SIGURG'
+    [144]='SIGSTOP' [145]='SIGTSTP'     [146]='SIGCONT'         [147]='SIGCHLD'
+    [148]='SIGTTIN' [149]='SIGTTOU'     [150]='SIGIO'           [151]='SIGXCPU'
+    [152]='SIGXFSZ' [153]='SIGVTALRM'   [154]='SIGPROF'         [155]='SIGWINCH' 
+    [156]='SIGINFO' [157]='SIGUSR1'     [158]='SIGUSR2'
+  )
+
+  PS1="\n\[`tput sc; __right_prompt; tput rc; __left_prompt`\]${FG_GREEN}$(__git_ps1 ' << %s >>')\n${RESET}\$"
+
+  if [[ $status -ne 0 ]]; then
+    PS1+=" ${FG_WHITE}${BG_RED}${ITALIC}|${status}:${err_code[${status}]}|${RESET}"
+  fi
+
+  PS1+=' >'
 }
 
 # Prompt string
 #PS1='\n\[$(tput sc; right_prompt; tput rc; tput setaf 4; tput bold)\]\w\[$(tput sgr0; tput setaf 2)\]$(__git_ps1 " << %s >>")\n\[$(tput setaf 7)\]\$ '
-PS1='\n\[`tput sc; right_prompt; tput rc; left_prompt`\]${FG_GREEN}$(__git_ps1 " << %s >>")\n${RESET}\$$(exitstatus)>'
 
 # bash options
 # https://linuxjm.osdn.jp/html/GNU_bash/man1/bash.1.html
