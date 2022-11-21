@@ -63,10 +63,12 @@ __left_prompt() {
   printf "%s" ${current_dir}
 }
 
-# https://www.ryotosaito.com/blog/?p=455
 PROMPT_COMMAND=__prompt_cmd
 __prompt_cmd() {
   local status=$?
+  local git_branch=${FG_GREEN}`__git_ps1 ' << %s >>'`${RESET}
+
+  # https://www.ryotosaito.com/blog/?p=455
   local -A err_code=(
     [1]='error'     [2]='builtin error' [126]='not executable'  [127]='command not found'
     [128]='SIGHUP'  [129]='SIGINT'      [130]='SIGQUIT'         [131]='SIGILL'
@@ -79,13 +81,13 @@ __prompt_cmd() {
     [156]='SIGINFO' [157]='SIGUSR1'     [158]='SIGUSR2'
   )
 
-  PS1="\n\[`tput sc; __right_prompt; tput rc; __left_prompt`\]${FG_GREEN}$(__git_ps1 ' << %s >>')\n${RESET}\$"
+  PS1="\n\[`tput sc; __right_prompt; tput rc; __left_prompt`\]${git_branch}\n"
 
   if [[ $status -ne 0 ]]; then
     PS1+=" ${FG_WHITE}${BG_RED}${ITALIC}|${status}:${err_code[${status}]}|${RESET}"
   fi
 
-  PS1+=' >'
+  PS1+=' \$>'
 }
 
 # Prompt string
