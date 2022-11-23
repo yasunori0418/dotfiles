@@ -95,17 +95,13 @@ nnoremap [Save]u <Cmd>update<CR>
 " Normal Mode:{{{
 " US Keyboard layout mapping.
 " Exchange Colon and Semi-Colon.
-" nnoremap ; :
+"nnoremap ; :
 nnoremap : ;
 nnoremap q; q:
-
 
 " Do not save the things erased by x and c in the register.
 nnoremap x "_x
 nnoremap c "_c
-
-" For vim-sandwich.
-" nnoremap s <Nop>
 
 " Opens the file name under the cursor.
 nnoremap gf gF
@@ -132,7 +128,7 @@ inoremap <C-b> <C-G>U<Left>
 " Visual Mode:{{{
 
 " Exchange Colon and Semi-Colon.
-" xnoremap ; :
+"xnoremap ; :
 xnoremap : ;
 
 " Do not save the things erased by x and c in the register.

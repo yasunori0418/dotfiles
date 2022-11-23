@@ -6,12 +6,11 @@ repo = 'Shougo/ddc.vim'
 depends = ['context_filetype.vim', 'denops.vim', 'pum.vim']
 on_event = ['InsertEnter', 'CmdlineEnter', 'CursorHold']
 hook_add = '''
-" US keyboard layout.
-nnoremap ; <Cmd>call vimrc#cmdline_pre(':')<CR>:
-xnoremap ; <Cmd>call vimrc#cmdline_pre(':')<CR>:
+nnoremap ; <Cmd>call vimrc#commandline_pre(':')<CR>:
+xnoremap ; <Cmd>call vimrc#commandline_pre(':')<CR>:
 
-nnoremap / <Cmd>call vimrc#cmdline_pre('/')<CR>/
-nnoremap ? <Cmd>call vimrc#cmdline_pre('?')<CR>?
+nnoremap / <Cmd>call vimrc#commandline_pre('/')<CR>/
+nnoremap ? <Cmd>call vimrc#commandline_pre('?')<CR>?
 '''
 hook_source = '''
 " UI settings {{{
@@ -29,9 +28,15 @@ call ddc#custom#patch_global('ui', 'pum')
 " ddc source settings. {{{
 call ddc#custom#patch_global('sources', ['vsnip', 'around', 'file', 'rg'])
 
-call ddc#custom#patch_global('cmdlineSources',
-  \ ['cmdline', 'cmdline-history', 'input', 'around', ],
-  \ )
+call ddc#custom#patch_global('cmdlineSources', {
+  \ ':': ['cmdline', 'cmdline-history', 'around'],
+  \ '@': ['cmdline-history', 'input', 'file', 'around'],
+  \ '>': ['cmdline-history', 'input', 'file', 'around'],
+  \ '/': ['around', 'line'],
+  \ '?': ['around', 'line'],
+  \ '-': ['around', 'line'],
+  \ '=': ['input'],
+  \ })
 
 " Global configs.
 call ddc#custom#patch_global('sourceOptions', {
@@ -111,13 +116,16 @@ call ddc#custom#patch_filetype(['toml', 'vim', 'lua'], 'sources',
 " Keymaping{{{
 
 " Insert-Mode
-inoremap <silent><expr> <TAB>
+inoremap <expr> <TAB>
   \ pum#visible() ? '<Cmd>call pum#map#insert_relative(+1)<CR>' :
   \ (col('.') <= 1 <Bar><Bar> getline('.')[col('.') - 2] =~# '\s') ?
   \ '<TAB>' : ddc#map#manual_complete()
-inoremap <S-TAB> <Cmd>call pum#map#insert_relative(-1)<CR>
-inoremap <C-y> <Cmd>call pum#map#confirm()<CR>
-inoremap <silent><expr> <C-e>
+inoremap <S-TAB>  <Cmd>call pum#map#insert_relative(-1)<CR>
+inoremap <C-n>    <Cmd>call pum#map#select_relative(+1)<CR>
+inoremap <C-p>    <Cmd>call pum#map#select_relative(-1)<CR>
+
+inoremap <C-y>    <Cmd>call pum#map#confirm()<CR>
+inoremap <expr> <C-e>
   \ pum#visible() ? '<Cmd>call pum#map#cancel()<CR>' : '<C-o>$'
 
 " Cmdline-Mode
