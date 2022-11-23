@@ -1,146 +1,150 @@
 [[plugins]]
 repo = 'Shougo/pum.vim'
+hook_source = '''
+  call pum#set_option('max_width', 80)
+  call pum#set_option('use_complete', v:true)
+'''
 
 [[plugins]]
 repo = 'Shougo/ddc.vim'
 depends = ['context_filetype.vim', 'denops.vim', 'pum.vim']
 on_event = ['InsertEnter', 'CmdlineEnter', 'CursorHold']
 hook_add = '''
-nnoremap ; <Cmd>call vimrc#commandline_pre(':')<CR>:
-xnoremap ; <Cmd>call vimrc#commandline_pre(':')<CR>:
+  nnoremap ; <Cmd>call vimrc#commandline_pre(':')<CR>:
+  xnoremap ; <Cmd>call vimrc#commandline_pre(':')<CR>:
 
-nnoremap / <Cmd>call vimrc#commandline_pre('/')<CR>/
-nnoremap ? <Cmd>call vimrc#commandline_pre('?')<CR>?
+  nnoremap / <Cmd>call vimrc#commandline_pre('/')<CR>/
+  nnoremap ? <Cmd>call vimrc#commandline_pre('?')<CR>?
 '''
 hook_source = '''
-" UI settings {{{
+  " UI settings {{{
 
-" Use pum.vim
-call ddc#custom#patch_global('autoCompleteEvents', [
-  \ 'InsertEnter', 'TextChangedI', 'TextChangedP',
-  \ 'CmdlineEnter', 'CmdlineChanged', 'TextChangedT',
-  \ ])
+  " Use pum.vim
+  call ddc#custom#patch_global('autoCompleteEvents', [
+    \ 'InsertEnter', 'TextChangedI', 'TextChangedP',
+    \ 'CmdlineEnter', 'CmdlineChanged', 'TextChangedT',
+    \ ])
 
-call ddc#custom#patch_global('ui', 'pum')
+  call ddc#custom#patch_global('ui', 'pum')
 
-" }}}
+  " }}}
 
-" ddc source settings. {{{
-call ddc#custom#patch_global('sources', ['vsnip', 'around', 'file', 'rg'])
+  " ddc source settings. {{{
+  call ddc#custom#patch_global('sources', ['vsnip', 'around', 'file', 'rg'])
 
-call ddc#custom#patch_global('cmdlineSources', {
-  \ ':': ['cmdline', 'cmdline-history', 'around'],
-  \ '@': ['cmdline-history', 'input', 'file', 'around'],
-  \ '>': ['cmdline-history', 'input', 'file', 'around'],
-  \ '/': ['around', 'line'],
-  \ '?': ['around', 'line'],
-  \ '-': ['around', 'line'],
-  \ '=': ['input'],
-  \ })
+  call ddc#custom#patch_global('cmdlineSources', {
+    \ ':': ['cmdline', 'cmdline-history', 'around'],
+    \ '@': ['cmdline-history', 'input', 'file', 'around'],
+    \ '>': ['cmdline-history', 'input', 'file', 'around'],
+    \ '/': ['around', 'line'],
+    \ '?': ['around', 'line'],
+    \ '-': ['around', 'line'],
+    \ '=': ['input'],
+    \ })
 
-" Global configs.
-call ddc#custom#patch_global('sourceOptions', {
-  \ '_': {
-    \ 'ignoreCase': v:true,
-    \ 'matchers': ['matcher_head'],
-    \ 'sorters': ['sorter_rank'],
-    \ },
-  \ 'around': {'mark': 'A'},
-  \ })
+  " Global configs.
+  call ddc#custom#patch_global('sourceOptions', {
+    \ '_': {
+      \ 'ignoreCase': v:true,
+      \ 'matchers': ['matcher_head'],
+      \ 'sorters': ['sorter_rank'],
+      \ },
+    \ 'around': {'mark': 'A'},
+    \ })
 
-" Editor completion source options.
-call ddc#custom#patch_global('sourceOptions', {
-  \ 'file': {
-    \ 'mark': 'F',
-    \ 'isVolatile': v:true,
-    \ 'minAutoCompleteLength': 1000,
-    \ 'forceCompletionPattern': '\S/\S*',
-    \ },
-  \ 'vsnip': {
-    \ 'mark': 'vsnip',
-    \ 'dup': v:true,
-    \ },
-  \ 'nvim-lsp': {
-    \ 'mark': 'lsp',
-    \ 'forceCompletionPattern': '\.\w*|:\w*|->\w*',
-    \ 'dup': 'force',
-    \ },
-  \ 'necovim': {'mark': 'vim'},
-  \ 'rg': {
-    \ 'mark': 'ripgrep',
-    \ 'minAutoCompleteLength': 5,
-    \ },
-  \ 'skkeleton': {
-    \ 'mark': 'SKK',
-    \ 'matchers': ['skkeleton'],
-    \ 'sorters': [],
-    \ 'minAutoCompleteLength': 2,
-    \ 'isVolatile': v:true,
-    \ },
-  \ })
+  " Editor completion source options.
+  call ddc#custom#patch_global('sourceOptions', {
+    \ 'file': {
+      \ 'mark': 'F',
+      \ 'isVolatile': v:true,
+      \ 'minAutoCompleteLength': 1000,
+      \ 'forceCompletionPattern': '\S/\S*',
+      \ },
+    \ 'vsnip': {
+      \ 'mark': 'vsnip',
+      \ 'dup': v:true,
+      \ },
+    \ 'nvim-lsp': {
+      \ 'mark': 'lsp',
+      \ 'forceCompletionPattern': '\.\w*|:\w*|->\w*',
+      \ 'dup': 'force',
+      \ },
+    \ 'necovim': {'mark': 'vim'},
+    \ 'rg': {
+      \ 'mark': 'ripgrep',
+      \ 'minAutoCompleteLength': 5,
+      \ },
+    \ 'skkeleton': {
+      \ 'mark': 'SKK',
+      \ 'matchers': ['skkeleton'],
+      \ 'sorters': [],
+      \ 'minAutoCompleteLength': 2,
+      \ 'isVolatile': v:true,
+      \ },
+    \ })
 
-" Commandline completion source options.
-call ddc#custom#patch_global('sourceOptions', {
-  \ 'cmdline': {
-    \ 'mark': 'cmd',
-    \ 'forceCompletionPattern': '\S/\S*',
-    \ 'dup': 'force',
-    \ },
-  \ 'cmdline-history': {
-    \ 'mark': 'cmd-history',
-    \ 'sorters': [],
-    \ },
-  \ 'input': {
-    \ 'mark': 'input',
-    \ 'forceCompletionPattern': '\S/\S*',
-    \ 'isVolatile': v:true,
-    \ 'dup': 'force',
-    \ },
-  \ 'line': { 'mark': 'line', },
-  \ })
+  " Commandline completion source options.
+  call ddc#custom#patch_global('sourceOptions', {
+    \ 'cmdline': {
+      \ 'mark': 'cmd',
+      \ 'forceCompletionPattern': '\S/\S*',
+      \ 'dup': 'force',
+      \ },
+    \ 'cmdline-history': {
+      \ 'mark': 'cmd-history',
+      \ 'sorters': [],
+      \ },
+    \ 'input': {
+      \ 'mark': 'input',
+      \ 'forceCompletionPattern': '\S/\S*',
+      \ 'isVolatile': v:true,
+      \ 'dup': 'force',
+      \ },
+    \ 'line': { 'mark': 'line', },
+    \ })
 
-" }}}
+  " }}}
 
-" filetype settings of ddc-sources. {{{
+  " filetype settings of ddc-sources. {{{
 
-call ddc#custom#patch_filetype(['python', 'php', 'lua'], 'sources',
-  \ ['nvim-lsp', 'vsnip', 'around', 'file', 'rg'],
-  \ )
+  call ddc#custom#patch_filetype(['python', 'php', 'lua'], 'sources',
+    \ ['nvim-lsp', 'vsnip', 'around', 'file', 'rg'],
+    \ )
 
-call ddc#custom#patch_filetype(['toml', 'vim', 'lua'], 'sources',
-  \ ['necovim', 'vsnip', 'around', 'file', 'rg'],
-  \ )
+  call ddc#custom#patch_filetype(['toml', 'vim', 'lua'], 'sources',
+    \ ['necovim', 'vsnip', 'around', 'file', 'rg'],
+    \ )
 
-" }}}
+  " }}}
 
-" Keymaping{{{
+  " Keymaping{{{
 
-" Insert-Mode
-inoremap <expr> <TAB>
-  \ pum#visible() ? '<Cmd>call pum#map#insert_relative(+1)<CR>' :
-  \ (col('.') <= 1 <Bar><Bar> getline('.')[col('.') - 2] =~# '\s') ?
-  \ '<TAB>' : ddc#map#manual_complete()
-inoremap <S-TAB>  <Cmd>call pum#map#insert_relative(-1)<CR>
-inoremap <C-n>    <Cmd>call pum#map#select_relative(+1)<CR>
-inoremap <C-p>    <Cmd>call pum#map#select_relative(-1)<CR>
+  " Insert-Mode
+  inoremap <expr> <TAB>
+    \ pum#visible() ? '<Cmd>call pum#map#insert_relative(+1)<CR>' :
+    \ (col('.') <= 1 <Bar><Bar> getline('.')[col('.') - 2] =~# '\s') ?
+    \ '<TAB>' : ddc#map#manual_complete()
+  inoremap <S-TAB>  <Cmd>call pum#map#insert_relative(-1)<CR>
+  inoremap <C-n>    <Cmd>call pum#map#select_relative(+1)<CR>
+  inoremap <C-p>    <Cmd>call pum#map#select_relative(-1)<CR>
 
-inoremap <C-y>    <Cmd>call pum#map#confirm()<CR>
-inoremap <expr> <C-e>
-  \ pum#visible() ? '<Cmd>call pum#map#cancel()<CR>' : '<C-o>$'
+  inoremap <C-y>    <Cmd>call pum#map#confirm()<CR>
+  inoremap <expr> <C-e>
+    \ pum#visible() ? '<Cmd>call pum#map#cancel()<CR>' : '<C-o>$'
 
-" Cmdline-Mode
-cnoremap <expr> <TAB>
-  \ pum#visible() ? '<Cmd>call pum#map#insert_relative(+1)<CR>' :
-  \ exists('b:prev_buffer_config') ?
-  \ ddc#map#manual_complete() : nr2char(&wildcharm)
-cnoremap <S-TAB> <Cmd>call pum#map#insert_relative(-1)<CR>
-cnoremap <C-y> <Cmd>call pum#map#confirm()<CR>
-cnoremap <silent><expr> <C-e>
-  \ pum#visible() ? '<Cmd>call pum#map#cancel()<CR>' : '<C-o>$'
+  " Cmdline-Mode
+  cnoremap <expr> <TAB>
+    \ pum#visible() ? '<Cmd>call pum#map#insert_relative(+1)<CR>' :
+    \ exists('b:prev_buffer_config') ?
+    \ ddc#map#manual_complete() : nr2char(&wildcharm)
+  cnoremap <S-TAB> <Cmd>call pum#map#insert_relative(-1)<CR>
+  cnoremap <C-y> <Cmd>call pum#map#confirm()<CR>
+  cnoremap <silent><expr> <C-e>
+    \ pum#visible() ? '<Cmd>call pum#map#cancel()<CR>' : '<C-o>$'
 
-" }}}
+  " }}}
 
-call ddc#enable()
+  call ddc#enable()
 '''
 
 [[plugins]]
