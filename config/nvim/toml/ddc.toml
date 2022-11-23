@@ -10,11 +10,13 @@ repo = 'Shougo/ddc.vim'
 depends = ['context_filetype.vim', 'denops.vim', 'pum.vim']
 on_event = ['InsertEnter', 'CmdlineEnter', 'CursorHold']
 hook_add = '''
+  " Keymaping {{{
   nnoremap ; <Cmd>call vimrc#commandline_pre(':')<CR>:
   xnoremap ; <Cmd>call vimrc#commandline_pre(':')<CR>:
 
   nnoremap / <Cmd>call vimrc#commandline_pre('/')<CR>/
   nnoremap ? <Cmd>call vimrc#commandline_pre('?')<CR>?
+  " }}}
 '''
 hook_source = '''
   " UI settings {{{
