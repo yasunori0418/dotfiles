@@ -78,12 +78,11 @@ function! vimrc#lightline_custom_mode() abort
 
     if skkeleton#mode() !=# ''
       return lightline#mode() . '-SKK'
-    else
-      return lightline#mode()
     endif
-  else
-    return lightline#mode()
+
   endif
+
+  return lightline#mode()
 endfunction
 
 " }}}
