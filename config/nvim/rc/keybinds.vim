@@ -12,8 +12,12 @@ xnoremap t <Nop>
 nnoremap T <Nop>
 xnoremap T <Nop>
 
+" Not use marker.
 nnoremap m <Nop>
+nnoremap ' <Nop>
+nnoremap ` <Nop>
 
+" Default space = right
 nnoremap <Space> <Nop>
 xnoremap <Space> <Nop>
 
