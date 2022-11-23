@@ -156,36 +156,40 @@ on_source = 'ddc.vim'
 # ddc-source {{{
 
 [[plugins]]
-repo = 'Shougo/ddc-around'
+repo = 'Shougo/ddc-source-around'
 on_source = 'ddc.vim'
 
 [[plugins]]
-repo = 'Shougo/ddc-line'
+repo = 'Shougo/ddc-source-line'
 on_source = 'ddc.vim'
 
 [[plugins]]
-repo = 'LumaKernel/ddc-file'
+repo = 'LumaKernel/ddc-source-file'
 on_source ='ddc.vim'
 
 [[plugins]]
-repo = 'Shougo/ddc-rg'
+repo = 'Shougo/ddc-source-rg'
 on_source = 'ddc.vim'
 
 [[plugins]]
-repo = 'Shougo/ddc-cmdline'
+repo = 'Shougo/ddc-source-cmdline'
 on_source = 'ddc.vim'
 
 [[plugins]]
-repo = 'Shougo/ddc-cmdline-history'
+repo = 'Shougo/ddc-source-cmdline-history'
 on_source = 'ddc.vim'
+
+[[plugins]]
+repo = 'Shougo/ddc-source-input'
+on_source = 'ddc.vim'
+
+[[plugins]]
+repo = 'Shougo/ddc-source-nvim-lsp'
+on_source = 'nvim-lspconfig'
 
 [[plugins]]
 repo = 'Shougo/neco-vim'
-on_ft = ['vim', 'toml']
-
-[[plugins]]
-repo = 'Shougo/ddc-input'
-on_source = 'ddc.vim'
+on_ft = ['vim']
 
 # }}}
 
@@ -249,18 +253,18 @@ repo = 'neovim/nvim-lspconfig'
 depends = ['vim-efm-langserver-settings']
 on_source = 'ddc.vim'
 lua_source = '''
-lsp_bin = vim.fn.stdpath('data') .. '/mason/bin/'
-nvim_lsp = require('lspconfig')
-nvim_lsp.efm.setup({
-  cmd = { lsp_bin .. 'efm-langserver', '-c', vim.fn['efm_langserver_settings#config_path']() },
-  filetypes = vim.fn['efm_langserver_settings#whitelist'](),
-})
-nvim_lsp.intelephense.setup({
-  cmd = { lsp_bin .. 'intelephense', '--stdio' },
-})
-nvim_lsp.pyright.setup({
-  cmd = { lsp_bin .. 'pyright-langserver', '--stdio' },
-})
+  lsp_bin = vim.fn.stdpath('data') .. '/mason/bin/'
+  nvim_lsp = require('lspconfig')
+  nvim_lsp.efm.setup({
+    cmd = { lsp_bin .. 'efm-langserver', '-c', vim.fn['efm_langserver_settings#config_path']() },
+    filetypes = vim.fn['efm_langserver_settings#whitelist'](),
+  })
+  nvim_lsp.intelephense.setup({
+    cmd = { lsp_bin .. 'intelephense', '--stdio' },
+  })
+  nvim_lsp.pyright.setup({
+    cmd = { lsp_bin .. 'pyright-langserver', '--stdio' },
+  })
 '''
 
 [[plugins]]
@@ -268,32 +272,28 @@ repo = 'williamboman/mason.nvim'
 depends = 'mason-lspconfig.nvim'
 on_cmd = ['Mason', 'MasonLog', 'MasonInstall', 'MasonUninstall', 'MasonUninstall']
 lua_source = '''
-require('mason').setup({
-  ui = {
-    icons = {
-      package_installed   = '',
-      package_pending     = '',
-      package_uninstalled = '✗',
+  require('mason').setup({
+    ui = {
+      icons = {
+        package_installed   = '',
+        package_pending     = '',
+        package_uninstalled = '✗',
+      }
     }
-  }
-})
+  })
 '''
 
 [[plugins]]
 repo = 'williamboman/mason-lspconfig.nvim'
 lua_source = '''
-require('mason-lspconfig').setup({
-  ensure_installed = {
-    'efm',
-    'intelephense',
-    'pyright',
-  },
-})
+  require('mason-lspconfig').setup({
+    ensure_installed = {
+      'efm',
+      'intelephense',
+      'pyright',
+    },
+  })
 '''
-
-[[plugins]]
-repo = 'Shougo/ddc-nvim-lsp'
-on_source = 'nvim-lspconfig'
 
 #[[plugins]]
 #repo = 'matsui54/denops-popup-preview.vim'
