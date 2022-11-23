@@ -241,14 +241,8 @@ nvim_lsp.efm.setup({
   cmd = { lsp_bin .. 'efm-langserver', '-c', vim.fn['efm_langserver_settings#config_path']() },
   filetypes = vim.fn['efm_langserver_settings#whitelist'](),
 })
-nvim_lsp.marksman.setup({
-  cmd = { lsp_bin .. 'marksman', 'server' },
-})
 nvim_lsp.intelephense.setup({
   cmd = { lsp_bin .. 'intelephense', '--stdio' },
-})
-nvim_lsp.sumneko_lua.setup({
-  cmd = { lsp_bin .. 'lua-language-server' },
 })
 nvim_lsp.pyright.setup({
   cmd = { lsp_bin .. 'pyright-langserver', '--stdio' },
@@ -278,9 +272,7 @@ require('mason-lspconfig').setup({
   ensure_installed = {
     'efm',
     'intelephense',
-    'lua-language-server',
     'pyright',
-    'marksman',
   },
 })
 '''
