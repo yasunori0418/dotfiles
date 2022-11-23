@@ -210,7 +210,7 @@ function! vimrc#commandline_pre(mode) abort
     call ddc#custom#patch_buffer('keywordPattern', '[0-9a-zA-Z_:#-]*')
   endif
 
-  augroup user_ddc_cmdline
+  augroup user_ddc_cmdline_autocmd
     autocmd!
     autocmd User DDCCmdlineLeave ++once call vimrc#commandline_post()
     autocmd InsertEnter <buffer> ++once call vimrc#commandline_post()
