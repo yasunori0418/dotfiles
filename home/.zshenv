@@ -36,8 +36,10 @@ if [[ -d $HOME/.pyenv ]]; then
 fi
 
 # volta environments
-export VOLTA_HOME="$HOME/.volta"
-export PATH="$VOLTA_HOME/bin:$PATH"
+if [[ -d $HOME/.pyenv ]]; then
+  export VOLTA_HOME="$HOME/.volta"
+  export PATH="$VOLTA_HOME/bin:$PATH"
+fi
 
 # Guix package manager
 #export GUIX_LOCPATH="$HOME/.guix-profile/lib/locale"
