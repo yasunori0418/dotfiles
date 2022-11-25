@@ -2,9 +2,8 @@
 # Color scheme {{{
 [[plugins]]
 repo = 'nvim-treesitter/nvim-treesitter'
-hook_post_update = '''
-TSUpdate
-'''
+on_event = 'BufRead'
+hook_post_update = 'TSUpdate'
 lua_source = '''
 require('nvim-treesitter.configs').setup {
   ensure_installed = 'all',
@@ -44,6 +43,7 @@ require('nvim-treesitter.configs').setup {
 [[plugins]]
 repo = 'EdenEast/nightfox.nvim'
 depends = ['nvim-treesitter']
+on_event = 'VimEnter'
 lua_source = '''
 local nightfox = require("nightfox")
 
@@ -53,8 +53,8 @@ nightfox.setup({
     compile_path = vim.fn.stdpath("cache") .. "/nightfox",
     compile_file_suffix = "_compiled", -- Compiled file suffix
     transparent = false,    -- Disable setting background
-    terminal_colors = false, -- Set terminal colors (vim.g.terminal_color_*)
-    dim_inactive = true,   -- Non focused panes set to alternative background
+    terminal_colors = true, -- Set terminal colors (vim.g.terminal_color_*)
+    dim_inactive = false,   -- Non focused panes set to alternative background
     styles = {              -- Style to be applied to different syntax groups
       comments = "italic",
       functions = "bold",
@@ -94,11 +94,15 @@ endif
 
 [[plugins]] # Modern and light status line.
 repo = 'itchyny/lightline.vim'
-#on_event = ['CursorHold', 'CursorMoved', 'InsertEnter', 'CmdlineEnter']
-on_event = ['VimEnter']
-depends = ['vim-gitbranch', 'nightfox.nvim']
-hook_source = '''
+on_event = ['InsertEnter', 'CmdlineEnter']
+#on_event = ['VimEnter']
+depends = ['vim-gitbranch']
+hook_add = '''
+set laststatus=0
+set showtabline=0
 set noshowmode
+'''
+hook_source = '''
 set showtabline=2
 set laststatus=3
 let g:lightline = {}
