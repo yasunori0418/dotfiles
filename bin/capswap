@@ -1,11 +1,13 @@
-#! /usr/bin/env bash
+#!/usr/bin/env bash
 
-if [[ $1 -eq 'on' ]]; then
-  [[ -f ~/.Xmodmap ]] && ln -sf ~/dotfiles/home/.Xmodmap_capswap ~/.Xmodmap
-elif [[ $1 -eq 'off' ]]; then
-  [[ -f ~/.Xmodmap ]] && ln -sf ~/dotfiles/home/.Xmodmap_noswap ~/.Xmodmap
-else
-  echo "Switch swap capslock for keyboard, choice on or off."
-fi
+echo "Swap Caps_Lock and Ctrl on your keyboard?"
+read -p "Y/n: " answer
 
-xmodmap ~/.Xmodmap
+case $answer in
+  "" | [Yy]* )
+    [[ ! -f ~/.Xmodmap ]] && ln -sv ~/dotfiles/home/.Xmodmap ~/.Xmodmap && xmodmap ~/.Xmodmap
+    ;;
+  * )
+    [[ -f ~/.Xmodmap ]] && xmodmap ~/.Xmodmap && unlink ~/.Xmodmap
+    ;;
+esac
