@@ -11,7 +11,7 @@
 
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below.
-font pango:Noto Sans CJK JP 11
+font pango:Noto Sans CJK JP 12
 
 # Hide window title bar.
 default_border none
@@ -23,22 +23,17 @@ gaps outer 5
 gaps inner 5
 smart_gaps on
 
-# This font is widely installed, provides lots of unicode glyphs, right-to-left
-# text rendering and scalability on retina/hidpi displays (thanks to pango).
-#font pango:DejaVu Sans Mono 8
-
 set $wallpaper ~/Pictures/wallpaper/Nordic-darker.png
 
 exec_always --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork --ignore-empty-password -i $wallpaper
 exec_always --no-startup-id dunst
 exec_always --no-startup-id clipmenud
-exec_always --no-startup-id i3-msg for_window [class="^.*"] border none
 exec --no-startup-id fcitx5
 exec --no-startup-id picom -b
 exec --no-startup-id thunar --daemon
 exec --no-startup-id feh --bg-scale $wallpaper
 exec --no-startup-id xfce4-power-manager
-exec --no-startup-id blueman-applet
+exec --no-startup-id blueberry-tray
 exec --no-startup-id wezterm
 
 # use these keys for focus, movement, and resize directions when reaching for
@@ -51,15 +46,23 @@ set $right l
 # Mod key(windows layout)
 set $mod Mod4
 
-# exit i3 (logs you out of your X session)
-#bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -B 'Yes, exit i3' 'i3-msg exit'"
+# Alt key(windows layout)
+set $alt Mod1
 
 # Start terminal
 bindsym $mod+Return exec wezterm
 
+## Sub terminal emulators. {{{
 # disable ime in alacritty.
 set $alacritty XMODIFIERS=alacritty alacritty
 bindsym $mod+Shift+Return exec --no-startup-id $alacritty
+
+# daemon startup rxvt-unicode
+# disable ime in rxvt-unicode.
+set $alacritty XMODIFIERS=alacritty alacritty
+set $urxvt XMODIFIERS=urxvt start_urxvt
+bindsym $mod+Ctrl+Return exec --no-startup-id $urxvt
+# }}}
 
 # Screenshot shortcut key
 #bindsym $mod+Shift+p exec --no-startup-id scrot ~/Pictures/%Y-%m-%d-%T-scrot.png
@@ -111,21 +114,21 @@ bindsym $mod+Ctrl+$up     workspace next
 bindsym $mod+Ctrl+$right  workspace next
 
 # split in horizontal orientation
-bindsym $mod+b split v
+bindsym $mod+b split v, exec dunstify --appname=i3wm "Split the window" "Horizontally"
 
 # split in vertical orientation
-bindsym $mod+v split h
+bindsym $mod+v split h, exec dunstify --appname=i3wm "Split the window" "Vertically"
 
 # enter fullscreen mode for the focused container
-bindsym $mod+f fullscreen toggle
+bindsym $mod+f fullscreen toggle, exec dunstify --appname=i3wm "Change window type" "Fullscreen" "Toggle"
 
 # change container layout (stacked, tabbed, toggle split)
-bindsym $mod+s layout stacking
-bindsym $mod+w layout tabbed
-bindsym $mod+e layout toggle split
+bindsym $mod+s layout stacking, exec dunstify --appname=i3wm "Change window type" "Stack"
+bindsym $mod+w layout tabbed, exec dunstify --appname=i3wm "Change window type" "Tab"
+bindsym $mod+e layout toggle split, exec dunstify --appname=i3wm "Change window type" "Split"
 
 # toggle tiling / floating
-bindsym $mod+Shift+space floating toggle, border normal
+bindsym $mod+Shift+space floating toggle, border normal, exec dunstify --appname=i3wm "Change window type" "Floating" "Toggle"
 
 # focus the parent container
 bindsym $mod+a focus parent
@@ -134,11 +137,11 @@ bindsym $mod+a focus parent
 #bindsym $mod+d focus child
 
 # move the currently focused window to the scratchpad
-#bindsym $mod+Shift+minus move scratchpad
+bindsym $mod+Shift+minus move scratchpad
 
 # Show the next scratchpad window or hide the focused scratchpad window.
 # If there are multiple scratchpad windows, this command cycles through them.
-#bindsym $mod+minus scratchpad show
+bindsym $mod+minus scratchpad show, border normal
 
 # }}}
 
@@ -234,12 +237,6 @@ mode "Resize" {
   bindsym $down       resize grow height 10 px or 10 ppt
   bindsym $up         resize shrink height 10 px or 10 ppt
   bindsym $right      resize grow width 10 px or 10 ppt
-
-  # same bindings, but for the arrow keys
-  bindsym Left        resize shrink width 10 px or 10 ppt
-  bindsym Down        resize grow height 10 px or 10 ppt
-  bindsym Up          resize shrink height 10 px or 10 ppt
-  bindsym Right       resize grow width 10 px or 10 ppt
 
   # back to normal: Enter or Escape or $mod+r
   bindsym Return mode "default"
