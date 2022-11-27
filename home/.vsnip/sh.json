@@ -3,7 +3,7 @@
     "scope": "sh",
     "prefix": ["bang", "bash", "shebang", "#!"],
     "body": [
-      "#! /usr/bin/env bash",
+      "#!/usr/bin/env bash",
       "$0"
     ],
     "description": "shebang must write in bash script first line"
