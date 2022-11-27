@@ -1,13 +1,20 @@
 #!/usr/bin/env bash
 
-echo "Swap Caps_Lock and Ctrl on your keyboard?"
-read -p "Y/n: " answer
+if [[ -n $1 ]]; then
+  answer=$1
+else
+  echo "Swap Caps_Lock and Ctrl on your keyboard?"
+  read -p "Y/n: " answer
+fi
+
 
 case $answer in
   "" | [Yy]* )
     [[ ! -f ~/.Xmodmap ]] && ln -sv ~/dotfiles/home/.Xmodmap ~/.Xmodmap && xmodmap ~/.Xmodmap
+    echo 'Swaping Caps_Lock and Ctrl done.'
     ;;
   * )
     [[ -f ~/.Xmodmap ]] && xmodmap ~/.Xmodmap && unlink ~/.Xmodmap
+    echo 'Reverted swapping Caps_Lock and Ctrl.'
     ;;
 esac
