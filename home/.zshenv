@@ -41,6 +41,11 @@ if [[ -d $HOME/.pyenv ]]; then
   export PATH="$VOLTA_HOME/bin:$PATH"
 fi
 
+# deno environmet variable.
+if [[ -d $HOME/.deno ]]; then
+  export $PATH="$HOME/.deno/bin:$PATH"
+fi
+
 # Guix package manager
 #export GUIX_LOCPATH="$HOME/.guix-profile/lib/locale"
 #export GUIX_PROFILE="$HOME/.guix-profile"
