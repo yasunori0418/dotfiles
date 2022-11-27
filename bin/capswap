@@ -7,7 +7,6 @@ else
   read -p "Y/n: " answer
 fi
 
-
 case $answer in
   "" | [Yy]* )
     [[ ! -f ~/.Xmodmap ]] && ln -sv ~/dotfiles/home/.Xmodmap ~/.Xmodmap && xmodmap ~/.Xmodmap
