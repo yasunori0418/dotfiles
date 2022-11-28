@@ -60,11 +60,14 @@ dl_server_files() {
 ## Check if a process other than deno is running with the same PID.
 # For when the PID file remains
 has_started() {
-  process=$(ps aux | rg $(cat ${denops_server_pid}) | rg deno)
+  if [[ -f ${denops_server_pid} ]]; then
+    process=$(ps aux | rg $(cat ${denops_server_pid}) | rg deno)
 
-  if [[ -z ${process} ]]; then
-    rm ${denops_server_pid}
+    if [[ -z ${process} ]]; then
+      rm ${denops_server_pid}
+    fi
   fi
+
 }
 
 ## Start denops shared server.
