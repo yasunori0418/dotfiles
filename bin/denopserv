@@ -2,20 +2,20 @@
 
 ## Check for existence of deno.
 ## No existence then install deno.
-if [[ ! $(command -v deno) ]]; then
-  # Deno installation for one line script. 
-  # Exhibitor: https://deno.land/manual@v1.28.2/getting_started/installation
-  curl -fsSL https://deno.land/x/install/install.sh | sh
+exists_deno() {
+  if [[ ! $(command -v deno) ]]; then
+    # Deno installation for one line script. 
+    # Exhibitor: https://deno.land/manual@v1.28.2/getting_started/installation
+    curl -fsSL https://deno.land/x/install/install.sh | sh
 
-  # Reload zshenv
-  source ~/.zshenv
+    # Reload zshenv
+    source ~/.zshenv
 
-  echo "Run 'deno --version' and if you can run the command successfully, run the this script again. "
+    echo "Run 'deno --version' and if you can run the command successfully, run the this script again. "
 
-  exit
-fi
-
-################################################
+    exit
+  fi
+}
 
 # Cache directory of denops shared server.
 denops_cache_path=${HOME}/.cache/denops
@@ -112,6 +112,8 @@ stop_server() {
     exit 1
   fi
 }
+
+exists_deno
 
 if [[ -n $1 ]]; then
   answer=$1
