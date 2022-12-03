@@ -23,29 +23,29 @@ fi
 
 export EDITOR=/usr/bin/nvim
 export TERMINAL=/usr/bin/wezterm
-export XDG_CONFIG_HOME=$HOME/.config
+export XDG_CONFIG_HOME=${HOME}/.config
 
 # User local tools management directory.
-[[ ! -d ${HOME}/.locale/bin ]] && mkdir -p ${HOME}/.locale/bin
-export PATH=$PATH:$HOME/.locale/bin
+[[ ! -d "${HOME}/.local/bin" ]] && mkdir -p "${HOME}/.local/bin"
+export PATH="${PATH}:${HOME}/.local/bin"
 
 # Pyenv enviroment variable.
 # Pyenv settings
-if [[ -d $HOME/.pyenv ]]; then
-  export PYENV_ROOT="$HOME/.pyenv"
-  export PATH="$PYENV_ROOT/bin:$PATH"
+if [[ -d ${HOME}/.pyenv ]]; then
+  export PYENV_ROOT="${HOME}/.pyenv"
+  export PATH="${PATH}:${PYENV_ROOT}/bin"
   eval "$(pyenv init -)"
 fi
 
 # volta environments
-if [[ -d $HOME/.pyenv ]]; then
-  export VOLTA_HOME="$HOME/.volta"
-  export PATH="$VOLTA_HOME/bin:$PATH"
+if [[ -d ${HOME}/.pyenv ]]; then
+  export VOLTA_HOME="${HOME}/.volta"
+  export PATH="${PATH}:${VOLTA_HOME}/bin"
 fi
 
 # deno environmet variable.
-if [[ -d $HOME/.deno ]]; then
-  export $PATH="$HOME/.deno/bin:$PATH"
+if [[ -d ${HOME}/.deno ]]; then
+  export PATH="${PATH}:${HOME}/.deno/bin"
 fi
 
 # Guix package manager
@@ -55,7 +55,7 @@ fi
 #export PATH="$GUIX_PROFILE/bin:$PATH"
 
 # Docker rootless config
-export DOCKER_HOST=unix://$XDG_RUNTIME_DIR/docker.sock
+export DOCKER_HOST=unix://${XDG_RUNTIME_DIR}/docker.sock
 
 # ssh-agent socket
 export SSH_AUTH_SOCK="${XDG_RUNTIME_DIR}/ssh-agent.socket"
