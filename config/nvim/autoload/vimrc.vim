@@ -93,7 +93,8 @@ endfunction
 function! vimrc#skkeleton_init() abort
   call skkeleton#config({
     \ 'eggLikeNewline': v:true,
-    \ 'userJisyo': '~/.cache/nvim/skkeleton'
+    \ 'globalJisyo': '~/.skk/skk_dict_merged',
+    \ 'userJisyo': '~/.skk/skkeleton',
     \ })
 
   call skkeleton#register_kanatable('rom', {
