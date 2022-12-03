@@ -1,4 +1,4 @@
-#! /usr/bin/env bash
+#!/usr/bin/env bash
 
 cd $HOME
 
@@ -13,5 +13,3 @@ ln -svf ~/dotfiles/bin ~/
 ln -svf ~/dotfiles/config/* ~/.config/
 
 nvim -c q!
-
-exit
