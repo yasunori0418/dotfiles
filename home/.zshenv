@@ -27,7 +27,7 @@ export XDG_CONFIG_HOME=${HOME}/.config
 
 # User local tools management directory.
 [[ ! -d "${HOME}/.local/bin" ]] && mkdir -p "${HOME}/.local/bin"
-export PATH="${PATH}:${HOME}/.local/bin"
+export PATH="${PATH}:${HOME}/.local/bin:${HOME}/bin"
 
 # Pyenv enviroment variable.
 # Pyenv settings
