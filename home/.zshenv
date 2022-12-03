@@ -23,12 +23,11 @@ fi
 
 export EDITOR=/usr/bin/nvim
 export TERMINAL=/usr/bin/wezterm
-#export BROWSER=/usr/bin/google-chrome-stable
 export XDG_CONFIG_HOME=$HOME/.config
 
+# User local tools management directory.
 [[ ! -d ${HOME}/.locale/bin ]] && mkdir -p ${HOME}/.locale/bin
 export PATH=$PATH:$HOME/.locale/bin
-
 
 # Pyenv enviroment variable.
 # Pyenv settings
