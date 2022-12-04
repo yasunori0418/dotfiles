@@ -6,8 +6,7 @@ skktools_dir=${HOME}/.cache/skktools
 skktools=('skkdic-expr' 'skkdic-expr2' 'skkdic-sort' 'skkdic-count')
 
 install() {
-  cd ${HOME}/.cache
-  git clone https://github.com/skk-dev/skktools.git
+  git clone https://github.com/skk-dev/skktools.git $skktools_dir
 
   cd skktools
   ./configure
@@ -36,11 +35,15 @@ else
 fi
 
 case $answer in
-  "install" )
+  "" | "install" )
     install
     ;;
   "uninstall" )
     uninstall
+    ;;
+  "cancel" )
+    echo 'abort script.'
+    exit 1
     ;;
 esac
 
