@@ -122,7 +122,7 @@ hook_source = '''
   " Keymaping{{{
 
   " Insert-Mode
-  inoremap <expr> <TAB>
+  inoremap <expr>   <TAB>
     \ pum#visible() ? '<Cmd>call pum#map#insert_relative(+1)<CR>' :
     \ (col('.') <= 1 <Bar><Bar> getline('.')[col('.') - 2] =~# '\s') ?
     \ '<TAB>' : ddc#map#manual_complete()
@@ -131,11 +131,11 @@ hook_source = '''
   inoremap <C-p>    <Cmd>call pum#map#select_relative(-1)<CR>
 
   inoremap <C-y>    <Cmd>call pum#map#confirm()<CR>
-  inoremap <expr> <C-e>
+  inoremap <expr>   <C-e>
     \ pum#visible() ? '<Cmd>call pum#map#cancel()<CR>' : '<C-o>$'
 
   " Cmdline-Mode
-  cnoremap <expr> <TAB>
+  cnoremap <expr>   <TAB>
     \ pum#visible() ? '<Cmd>call pum#map#insert_relative(+1)<CR>' :
     \ exists('b:prev_buffer_config') ?
     \ ddc#map#manual_complete() : nr2char(&wildcharm)
