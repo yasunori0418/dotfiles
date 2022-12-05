@@ -15,6 +15,6 @@ repo = 'nathom/filetype.nvim'
 
 [[plugins]]
 repo = 'lewis6991/impatient.nvim'
-hook_add = '''
-lua require('impatient')
+lua_add = '''
+require('impatient').enable_profile()
 '''
