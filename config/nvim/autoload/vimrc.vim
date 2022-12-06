@@ -93,7 +93,7 @@ endfunction
 function! vimrc#skkeleton_init() abort
   call skkeleton#config({
     \ 'eggLikeNewline': v:true,
-    \ 'globalJisyo': '~/.skk/skk_dict_merged',
+    \ 'globalDictionaries': [['~/.skk/skk_dict_merged', 'euc-jp'], ['~/.skk/SKK-JISYO.emoji', 'utf-8']],
     \ 'userJisyo': '~/.skk/skkeleton',
     \ })
 
