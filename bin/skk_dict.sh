@@ -14,4 +14,5 @@ cd ${skk_dict_dir}
 
 [[ ! -d ${skk_dir} ]] && mkdir ${skk_dir}
 
-skkdic-expr2 -o ${skk_dir}/skk_dict_merged SKK-JISYO.L +  SKK-JISYO.propernoun + SKK-JISYO.jinmei + SKK-JISYO.fullname
+skkdic-expr2 -o ${skk_dir}/skk_dict_merged SKK-JISYO.L +  SKK-JISYO.propernoun + SKK-JISYO.jinmei + SKK-JISYO.fullname + SKK-JISYO.geo + SKK-JISYO.station
+cp ${skk_dict_dir}/SKK-JISYO.emoji ${skk_dir}/SKK-JISYO.emoji
