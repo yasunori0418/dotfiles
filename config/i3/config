@@ -16,7 +16,6 @@ font pango:Noto Sans CJK JP 12
 # Hide window title bar.
 default_border none
 default_floating_border normal
-#for_window [class="^.*"] border none
 
 # gaps each window
 gaps outer 5
@@ -36,7 +35,7 @@ exec --no-startup-id xfce4-power-manager
 exec --no-startup-id blueberry-tray
 exec --no-startup-id wezterm
 
-# use these keys for focus, movement, and resize directions when reaching for
+# Use these keys for focus, movement, and resize directions when reaching for
 # the arrows is not convenient
 set $left h
 set $down j
