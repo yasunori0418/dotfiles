@@ -14,4 +14,15 @@ cd ${download_dir}
 curl -OL ${iso_url} \
      -OL ${sig_url}
 
-pacman-key -v archlinux-${date_ym1}-x86_64.iso.sig
+if [[ $(command -v pacman-key) ]]; then
+  pacman-key -v archlinux-${date_ym1}-x86_64.iso.sig
+  exit 0
+fi
+
+if [[ $(command -v gpg) ]]; then
+  gpg --keyserver-options auto-key-retrieve --verify archlinux-${date_ym1}-x86_64.iso.sig
+  exit 0
+fi
+
+echo "Not fonund proof verification command"
+exit 1
