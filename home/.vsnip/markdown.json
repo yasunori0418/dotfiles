@@ -8,5 +8,13 @@
       "<!-- textlint-enable -->"
     ],
     "description": "Stop textlint rule for a time."
+  },
+  "comment": {
+    "scope": "markdown",
+    "prefix": "comment",
+    "body": [
+      "<!-- $0 -->"
+    ],
+    "description": "Comment"
   }
 }
