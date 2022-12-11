@@ -16,5 +16,13 @@
       "<!-- $0 -->"
     ],
     "description": "Comment"
+  },
+  "break": {
+    "scope": "markdown",
+    "prefix": "br",
+    "body": [
+      "<br>$0"
+    ],
+    "description": "Make br tag."
   }
 }
