@@ -90,9 +90,6 @@ __prompt_cmd() {
   PS1+=' \$>'
 }
 
-# Prompt string
-#PS1='\n\[$(tput sc; right_prompt; tput rc; tput setaf 4; tput bold)\]\w\[$(tput sgr0; tput setaf 2)\]$(__git_ps1 " << %s >>")\n\[$(tput setaf 7)\]\$ '
-
 # bash options
 # https://linuxjm.osdn.jp/html/GNU_bash/man1/bash.1.html
 shopt -s autocd
