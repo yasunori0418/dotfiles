@@ -92,7 +92,7 @@ github-cli
 # font
 otf-font-awesome
 otf-ipaexfont
-otf-ipmjfont
+otf-ipamjfont
 ttf-dejavu
 ttf-font-awesome
 ttf-roboto
