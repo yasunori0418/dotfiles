@@ -31,7 +31,7 @@ if [[ -n $1 ]]; then
   answer=$1
 else
   echo 'Install or Uninstall skktools?'
-  read -p "[Install|uninstall|cancel] :" answer
+  read -p "[Install|uninstall] :>" answer
 fi
 
 case $answer in
