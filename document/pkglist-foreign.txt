@@ -3,8 +3,8 @@ docker-rootless-extras
 downgrade
 google-chrome
 gyazo
+lemurs-git
 light-git
-ly-git
 nordic-darker-standard-buttons-theme
 nordic-darker-theme
 nordic-theme-git
