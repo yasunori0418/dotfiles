@@ -77,7 +77,7 @@ blueman
 neovim
 neovide
 deno
-wezrterm
+wezterm
 alacritty
 docker
 docker-compose
