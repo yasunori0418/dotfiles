@@ -6,9 +6,9 @@ skktools_dir=${HOME}/.cache/skktools
 skktools=('skkdic-expr' 'skkdic-expr2' 'skkdic-sort' 'skkdic-count')
 
 install() {
-  git clone https://github.com/skk-dev/skktools.git $skktools_dir
+  git clone https://github.com/skk-dev/skktools.git ${skktools_dir}
 
-  cd skktools
+  cd ${skktools_dir}
   ./configure
   make
 
