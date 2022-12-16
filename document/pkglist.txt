@@ -27,6 +27,7 @@ slirp4netns
 
 # GUI
 xorg
+xorg-xinit
 qt5-base
 gtk4
 gtk-engine-murrine
