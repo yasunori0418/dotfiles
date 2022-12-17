@@ -39,6 +39,9 @@ nnoremap <C-W> <Nop>
 nnoremap <Window> <Nop>
 nmap <Space>w <Window>
 
+" File save
+nnoremap <Window>w <Cmd>write<CR>
+
 " Commands of move between window.
 nnoremap <Window>h <C-W>h
 nnoremap <Window>j <C-W>j
