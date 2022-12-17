@@ -11,6 +11,7 @@ nordic-theme-git
 nordzy-cursors
 nordzy-icon-theme-git
 paru
+python-pulsectl
 qt5-styleplugins
 rofi-power-menu
 rtl8812au-dkms-git
