@@ -270,17 +270,17 @@ on_cmd = 'Bracey'
 repo = 'Shougo/deol.nvim'
 on_cmd = 'Deol'
 hook_add = '''
-nnoremap [term] <Nop>
-nmap <Space>t [term]
-nnoremap [term]a <Cmd>Deol
+nnoremap <term> <Nop>
+nmap <Space>s <term>
+nnoremap <term>a <Cmd>Deol
   \ -no-auto-cd
   \ -no-start-insert
   \ -split=floating
   \ -winheight=30
   \ -winwidth=120
   \ -toggle<CR>
-nnoremap [term]t <Cmd>tabnew<Bar>Deol -no-start-insert<CR>
-nnoremap [term]c <Cmd>execute 'Deol'
+nnoremap <term>t <Cmd>tabnew<Bar>Deol -no-start-insert<CR>
+nnoremap <term>c <Cmd>execute 'Deol'
   \ '-cwd=' . fnamemodify(expand('%'), ':h')
   \ '-no-auto-cd'
   \ '-no-start-insert'
@@ -288,7 +288,7 @@ nnoremap [term]c <Cmd>execute 'Deol'
   \ '-winheight=30'
   \ '-winwidth=120'
   \ '-toggle'<CR>
-nnoremap [term]h <Cmd>Deol
+nnoremap <term>h <Cmd>Deol
   \ -cwd=~
   \ -no-start-insert
   \ -split=floating
@@ -469,10 +469,8 @@ repo = 'skanehira/denops-translate.vim'
 depends = 'denops.vim'
 on_cmd = 'Translate'
 hook_add = '''
-nnoremap [trans] <Nop>
-nmap <Space>l [trans]
-nnoremap [trans]e <Cmd>Translate<CR>
-nnoremap [trans]j <Cmd>Translate!<CR>
+nnoremap te <Cmd>Translate<CR>
+nnoremap tj <Cmd>Translate!<CR>
 '''
 
 [[plugins]]
