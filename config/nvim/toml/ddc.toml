@@ -55,6 +55,16 @@ hook_source = '''
     \ 'around': {'mark': 'A'},
     \ })
 
+  "call ddc#custom#patch_global('sourceOptions', {
+  "  \ '_': {
+  "    \ 'ignoreCase': v:true,
+  "    \ 'matchers': ['matcher_fuzzy'],
+  "    \ 'sorters': ['sorter_fuzzy'],
+  "    \ 'converters': ['converter_fuzzy'],
+  "    \ },
+  "  \ 'around': {'mark': 'A'},
+  "  \ })
+
   " Editor completion source options.
   call ddc#custom#patch_global('sourceOptions', {
     \ 'file': {
