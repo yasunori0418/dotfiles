@@ -116,7 +116,7 @@ hook_source = '''
       \ isVolatile: v:true,
       \ dup: 'force',
       \ },
-    \ line: #{ 'mark': 'line', },
+    \ line: #{ mark: 'line', },
     \ })
 
   " }}}
