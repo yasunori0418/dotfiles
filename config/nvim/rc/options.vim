@@ -83,6 +83,8 @@ set clipboard+=unnamedplus
 " open diff mode vertically
 set diffopt+=vertical
 
+set shortmess+=c
+
 " jump momentarily to a matching parenthesis
 set showmatch
 set matchtime=1
