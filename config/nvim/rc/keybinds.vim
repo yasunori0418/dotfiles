@@ -160,4 +160,10 @@ command! DeinDelete call vimrc#dein_check_uninstall()
 
 command! -bar DeinRecache call dein#recache_runtimepath() | qall
 
+command! -bang DDCFuzzyFilter call vimrc#ddc_change_fileter(<bang>0, 'fuzzy')
+
+command! -bang DDCNormalFilter call vimrc#ddc_change_fileter(<bang>0, 'normal')
+
+command! DDCEchoFilter call vimrc#ddc_change_fileter(1, '')
+
 " }}}
