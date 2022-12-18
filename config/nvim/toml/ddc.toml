@@ -46,7 +46,7 @@ set shortmess+=c
     \ '=': ['input'],
     \ })
 
-  " Global configs.
+  " Normal filter
   "call ddc#custom#patch_global('sourceOptions', {
   "  \ '_': {
   "    \ 'ignoreCase': v:true,
@@ -54,9 +54,9 @@ set shortmess+=c
   "    \ 'sorters': ['sorter_rank'],
   "    \ 'converters': ['converter_remove_overlap'],
   "    \ },
-  "  \ 'around': {'mark': 'A'},
   "  \ })
 
+  " Fuzzy filter
   call ddc#custom#patch_global('sourceOptions', {
     \ '_': {
       \ 'ignoreCase': v:true,
@@ -64,11 +64,11 @@ set shortmess+=c
       \ 'sorters': ['sorter_fuzzy'],
       \ 'converters': ['converter_fuzzy'],
       \ },
-    \ 'around': {'mark': 'A'},
     \ })
 
   " Editor completion source options.
   call ddc#custom#patch_global('sourceOptions', {
+    \ 'around': {'mark': 'A'},
     \ 'file': {
       \ 'mark': 'F',
       \ 'isVolatile': v:true,
