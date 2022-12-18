@@ -48,7 +48,7 @@ hook_source = '''
   call ddc#custom#patch_global('sourceOptions', {
     \ '_': {
       \ 'ignoreCase': v:true,
-      \ 'matchers': ['matcher_head'],
+      \ 'matchers': ['matcher_head', 'matcher_length'],
       \ 'sorters': ['sorter_rank'],
       \ 'converters': ['converter_remove_overlap'],
       \ },
@@ -141,8 +141,11 @@ hook_source = '''
     \ exists('b:prev_buffer_config') ?
     \ ddc#map#manual_complete() : nr2char(&wildcharm)
   cnoremap <S-TAB>  <Cmd>call pum#map#insert_relative(-1)<CR>
-  cnoremap <C-n>    <Cmd>call pum#map#select_relative(+1)<CR>
-  cnoremap <C-p>    <Cmd>call pum#map#select_relative(-1)<CR>
+
+  cnoremap <expr>   <C-n>
+    \ pum#visible() ? '<Cmd>call pum#map#select_relative(+1)<CR>' : '<C-n>'
+  cnoremap <expr>   <C-p>
+  \ pum#visible() ? '<Cmd>call pum#map#select_relative(-1)<CR>' : '<C-p>'
 
   cnoremap <C-y>    <Cmd>call pum#map#confirm()<CR>
   cnoremap <silent><expr> <C-e>
