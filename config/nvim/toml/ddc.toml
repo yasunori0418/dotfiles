@@ -50,6 +50,7 @@ hook_source = '''
       \ 'ignoreCase': v:true,
       \ 'matchers': ['matcher_head'],
       \ 'sorters': ['sorter_rank'],
+      \ 'converters': ['converter_remove_overlap'],
       \ },
     \ 'around': {'mark': 'A'},
     \ })
@@ -209,6 +210,10 @@ on_source ='ddc.vim'
 [[plugins]]
 repo = 'Shougo/ddc-sorter_rank'
 on_source ='ddc.vim'
+
+[[plugins]]
+repo = 'Shougo/ddc-converter_remove_overlap'
+on_source = 'ddc.vim'
 
 [[plugins]]
 repo = 'tani/ddc-fuzzy'
