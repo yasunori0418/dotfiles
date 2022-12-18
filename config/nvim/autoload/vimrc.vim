@@ -242,7 +242,7 @@ function! vimrc#ddc_change_fileter(bang_flg, filter_name) abort
         \ 'matchers': ['matcher_head', 'matcher_length'],
         \ 'sorters': ['sorter_rank'],
         \ 'converters': ['converter_remove_overlap'],
-        \ }
+        \ },
       \ })
   elseif a:filter_name ==# 'fuzzy'
     call ddc#custom#patch_global('sourceOptions', {
@@ -251,7 +251,7 @@ function! vimrc#ddc_change_fileter(bang_flg, filter_name) abort
         \ 'matchers': ['matcher_fuzzy'],
         \ 'sorters': ['sorter_fuzzy'],
         \ 'converters': ['converter_fuzzy'],
-        \ }
+        \ },
       \ })
   endif
   if a:bang_flg == 1
