@@ -19,8 +19,6 @@ hook_add = '''
   " }}}
 '''
 hook_source = '''
-set shortmess+=c
-
   " UI settings {{{
 
   " Use pum.vim
@@ -33,7 +31,7 @@ set shortmess+=c
 
   " }}}
 
-  " ddc source settings. {{{
+  " ddc source options. {{{
   call ddc#custom#patch_global('sources', ['vsnip', 'around', 'file', 'rg'])
 
   call ddc#custom#patch_global('cmdlineSources', {
@@ -46,79 +44,92 @@ set shortmess+=c
     \ '=': ['input'],
     \ })
 
+  " Filters {{{
   " Normal filter
-  "call ddc#custom#patch_global('sourceOptions', {
-  "  \ '_': {
-  "    \ 'ignoreCase': v:true,
-  "    \ 'matchers': ['matcher_head', 'matcher_length'],
-  "    \ 'sorters': ['sorter_rank'],
-  "    \ 'converters': ['converter_remove_overlap'],
+  "call ddc#custom#patch_global('sourceOptions', #{
+  "  \ _: #{
+  "    \ ignoreCase: v:true,
+  "    \ matchers: ['matcher_head', 'matcher_length'],
+  "    \ sorters: ['sorter_rank'],
+  "    \ converters: ['converter_remove_overlap'],
   "    \ },
   "  \ })
 
   " Fuzzy filter
-  call ddc#custom#patch_global('sourceOptions', {
-    \ '_': {
-      \ 'ignoreCase': v:true,
-      \ 'matchers': ['matcher_fuzzy'],
-      \ 'sorters': ['sorter_fuzzy'],
-      \ 'converters': ['converter_fuzzy'],
+  call ddc#custom#patch_global('sourceOptions', #{
+    \ _: #{
+      \ ignoreCase: v:true,
+      \ matchers: ['matcher_fuzzy'],
+      \ sorters: ['sorter_fuzzy'],
+      \ converters: ['converter_fuzzy'],
       \ },
     \ })
+  " }}}
 
   " Editor completion source options.
-  call ddc#custom#patch_global('sourceOptions', {
-    \ 'around': {'mark': 'A'},
-    \ 'file': {
-      \ 'mark': 'F',
-      \ 'isVolatile': v:true,
-      \ 'minAutoCompleteLength': 1000,
-      \ 'forceCompletionPattern': '\S/\S*',
+  call ddc#custom#patch_global('sourceOptions', #{
+    \ around: #{mark: 'A'},
+    \ buffer: #{mark: 'B'},
+    \ file: #{
+      \ mark: 'F',
+      \ isVolatile: v:true,
+      \ minAutoCompleteLength: 1000,
+      \ forceCompletionPattern: '\S/\S*',
       \ },
-    \ 'vsnip': {
-      \ 'mark': 'vsnip',
-      \ 'dup': v:true,
+    \ vsnip: #{
+      \ mark: 'vsnip',
+      \ dup: v:true,
       \ },
-    \ 'nvim-lsp': {
-      \ 'mark': 'lsp',
-      \ 'forceCompletionPattern': '\.\w*|:\w*|->\w*',
-      \ 'dup': 'force',
+    \ nvim-lsp: #{
+      \ mark: 'lsp',
+      \ forceCompletionPattern: '\.\w*|:\w*|->\w*',
+      \ dup: 'force',
       \ },
-    \ 'necovim': {'mark': 'vim'},
-    \ 'rg': {
-      \ 'mark': 'ripgrep',
-      \ 'minAutoCompleteLength': 5,
+    \ necovim: #{mark: 'vim'},
+    \ rg: #{
+      \ mark: 'ripgrep',
+      \ minAutoCompleteLength: 5,
       \ },
-    \ 'skkeleton': {
-      \ 'mark': 'SKK',
-      \ 'matchers': ['skkeleton'],
-      \ 'sorters': [],
-      \ 'minAutoCompleteLength': 2,
-      \ 'isVolatile': v:true,
+    \ skkeleton: #{
+      \ mark: 'SKK',
+      \ matchers: ['skkeleton'],
+      \ sorters: [],
+      \ minAutoCompleteLength: 2,
+      \ isVolatile: v:true,
       \ },
     \ })
 
   " Commandline completion source options.
-  call ddc#custom#patch_global('sourceOptions', {
-    \ 'cmdline': {
-      \ 'mark': 'cmd',
-      \ 'forceCompletionPattern': '\S/\S*',
-      \ 'dup': 'force',
+  call ddc#custom#patch_global('sourceOptions', #{
+    \ cmdline: #{
+      \ mark: 'cmd',
+      \ forceCompletionPattern: '\S/\S*',
+      \ dup: 'force',
       \ },
-    \ 'cmdline-history': {
-      \ 'mark': 'cmd-history',
-      \ 'sorters': [],
+    \ cmdline-history: #{
+      \ mark: 'cmd-history',
+      \ sorters: [],
       \ },
-    \ 'input': {
-      \ 'mark': 'input',
-      \ 'forceCompletionPattern': '\S/\S*',
-      \ 'isVolatile': v:true,
-      \ 'dup': 'force',
+    \ input: #{
+      \ mark: 'input',
+      \ forceCompletionPattern: '\S/\S*',
+      \ isVolatile: v:true,
+      \ dup: 'force',
       \ },
-    \ 'line': { 'mark': 'line', },
+    \ line: #{ 'mark': 'line', },
     \ })
 
   " }}}
+
+" ddc source params {{{
+call ddc#custom#patch_global('sourceParams', #{
+  \ buffer: #{
+    \ requireSameFiletype: v:false,
+    \ fromAltBuf: v:true,
+    \ bufNameStyle: 'basename',
+    \ },
+  \ })
+" }}}
 
   " filetype settings of ddc-sources. {{{
 
@@ -178,6 +189,10 @@ on_source = 'ddc.vim'
 
 [[plugins]]
 repo = 'Shougo/ddc-source-around'
+on_source = 'ddc.vim'
+
+[[plugins]]
+repo = 'matsui54/ddc-buffer'
 on_source = 'ddc.vim'
 
 [[plugins]]
