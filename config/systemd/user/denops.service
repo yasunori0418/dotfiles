@@ -3,7 +3,7 @@ Description=shared deno server of denops.vim
 
 [Service]
 Type=simple
-ExecStart=/usr/bin/deno run -A --no-check --unstable %h/.cache/dein/repos/github.com/vim-denops/denops.vim/denops/@denops-private/cli.ts
+ExecStart=/usr/bin/deno run -A --no-check --no-lock --unstable %h/.cache/dein/repos/github.com/vim-denops/denops.vim/denops/@denops-private/cli.ts
 Restart=always
 
 [Install]

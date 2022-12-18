@@ -89,7 +89,7 @@ start_server() {
   fi
 
   # Redirect stderr to $denops_server_log as stdout.
-  deno run -A --no-check --unstable $server_start_script_path >${denops_server_log} 2>&1 &
+  deno run -A --no-check --no-lock --unstable $server_start_script_path >${denops_server_log} 2>&1 &
 
   # Get pid of denops shared server.
   jobs -l | awk '{print $2}' > ${denops_server_pid}
