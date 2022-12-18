@@ -19,6 +19,8 @@ hook_add = '''
   " }}}
 '''
 hook_source = '''
+set shortmess+=c
+
   " UI settings {{{
 
   " Use pum.vim
