@@ -138,7 +138,7 @@ call ddc#custom#patch_global('sourceParams', #{
     \ )
 
   call ddc#custom#patch_filetype(['toml', 'vim', 'lua'], 'sources',
-    \ ['necovim', 'vsnip', 'around', 'file', 'rg'],
+    \ ['necovim', 'vsnip', 'buffer', 'file', 'rg'],
     \ )
 
   " }}}
