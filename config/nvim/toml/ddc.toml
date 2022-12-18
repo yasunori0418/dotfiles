@@ -120,9 +120,9 @@ hook_source = '''
 
   " }}}
 
-  " Keymaping{{{
+  " Keymaping {{{
 
-  " Insert-Mode
+  " Insert-Mode {{{
   inoremap <expr>   <TAB>
     \ pum#visible() ? '<Cmd>call pum#map#insert_relative(+1)<CR>' :
     \ (col('.') <= 1 <Bar><Bar> getline('.')[col('.') - 2] =~# '\s') ?
@@ -134,8 +134,9 @@ hook_source = '''
   inoremap <C-y>    <Cmd>call pum#map#confirm()<CR>
   inoremap <expr>   <C-e>
     \ pum#visible() ? '<Cmd>call pum#map#cancel()<CR>' : '<C-o>$'
+  " }}}
 
-  " Cmdline-Mode
+  " Cmdline-Mode {{{
   cnoremap <expr>   <TAB>
     \ pum#visible() ? '<Cmd>call pum#map#insert_relative(+1)<CR>' :
     \ exists('b:prev_buffer_config') ?
@@ -150,6 +151,7 @@ hook_source = '''
   cnoremap <C-y>    <Cmd>call pum#map#confirm()<CR>
   cnoremap <silent><expr> <C-e>
     \ pum#visible() ? '<Cmd>call pum#map#cancel()<CR>' : '<C-e>'
+  " }}}
 
   " }}}
 
