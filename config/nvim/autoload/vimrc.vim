@@ -1,3 +1,5 @@
+
+" Setting helper functions. {{{
 function! vimrc#clear_register() abort
   let regs=split('abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789/-"', '\zs')
   for r in regs
@@ -12,6 +14,7 @@ function! vimrc#read_pat(path) abort
   endif
   return [v:false, 'Can not read pat file.']
 endfunction
+" }}}
 
 " dein commands {{{
 function! vimrc#is_github_pat() abort
