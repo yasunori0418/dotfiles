@@ -164,10 +164,10 @@ fi
 alias c='clear'
 alias cc='c &&'
 
+# Custom cd command
 function custom_cd() {
   \cd $@ ; cc la
 }
-
 alias cd=custom_cd
 
 # Neovim alias
@@ -180,6 +180,8 @@ fi
 if [[ $(command -v neovide) ]]; then
   alias nvg='neovide --multigrid'
 fi
+
+alias dotfiles='cd ~/dotfiles'
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
