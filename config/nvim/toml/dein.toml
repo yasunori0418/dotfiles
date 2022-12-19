@@ -18,3 +18,11 @@ repo = 'lewis6991/impatient.nvim'
 lua_add = '''
 require('impatient').enable_profile()
 '''
+
+[[plugins]]
+repo = 'delphinus/cellwidths.nvim'
+lua_add = '''
+require('cellwidths').setup {
+  name = 'cica',
+}
+'''
