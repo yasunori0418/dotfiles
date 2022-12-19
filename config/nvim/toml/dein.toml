@@ -23,6 +23,13 @@ require('impatient').enable_profile()
 repo = 'delphinus/cellwidths.nvim'
 lua_add = '''
 require('cellwidths').setup {
-  name = 'cica',
+  name = 'user/cica',
+  fallback = function(cw)
+    cw.load 'cica'
+    cw.add {
+      {0xe0b2, 0xe0b2, 1},
+      {0xe0b3, 0xe0b3, 1},
+    }
+  end,
 }
 '''
