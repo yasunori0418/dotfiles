@@ -22,14 +22,19 @@ require('impatient').enable_profile()
 [[plugins]]
 repo = 'delphinus/cellwidths.nvim'
 lua_add = '''
-require('cellwidths').setup {
-  name = 'user/cica',
-  fallback = function(cw)
-    cw.load 'cica'
-    cw.add {
-      {0xe0b2, 0xe0b2, 1},
-      {0xe0b3, 0xe0b3, 1},
-    }
-  end,
-}
+if vim.api.nvim_get_option('ambiwidth') == 'single' then
+  local cellwidths_conf =  {
+    name = 'user/cica',
+    fallback = function(cw)
+      cw.load 'cica'
+      cw.add {
+        {0xe0b2, 0xe0b2, 1},
+        {0xe0b3, 0xe0b3, 1},
+      }
+    end,
+  }
+elseif vim.api.nvim_get_option('ambiwidth') == 'double' then
+  local cellwidths_conf = { name ='cica' }
+end
+require('cellwidths').setup(cellwidths_conf)
 '''
