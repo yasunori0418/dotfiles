@@ -157,25 +157,14 @@ let g:lightline.tab.inactive = ['tabnum', 'filename']
 
 " Separator{{{
 
-if &ambiwidth =~# 'single'
-  let g:lightline.separator = {
-    \ 'left': '',
-    \ 'right': '',
-    \ }
-  let g:lightline.subseparator = {
-    \ 'left': '',
-    \ 'right': ' ',
-    \ }
-else
-  let g:lightline.separator = {
-    \ 'left': '',
-    \ 'right': ' ',
-    \ }
-  let g:lightline.subseparator = {
-    \ 'left': '',
-    \ 'right': ' ',
-    \ }
-endif
+let g:lightline.separator = {
+  \ 'left': '',
+  \ 'right': '',
+  \ }
+let g:lightline.subseparator = {
+  \ 'left': '',
+  \ 'right': ' ',
+  \ }
 
 " }}}
 
