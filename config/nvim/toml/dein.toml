@@ -30,6 +30,7 @@ if vim.api.nvim_get_option('ambiwidth') == 'single' then
       cw.add {
         {0xe0b2, 0xe0b2, 1},
         {0xe0b3, 0xe0b3, 1},
+        {0xeab5, 0xeab6, 4},
       }
     end,
   }
