@@ -137,7 +137,7 @@ call ddc#custom#patch_global('sourceParams', #{
     \ ['nvim-lsp', 'vsnip', 'around', 'file', 'rg'],
     \ )
 
-  call ddc#custom#patch_filetype(['toml', 'vim', 'lua'], 'sources',
+  call ddc#custom#patch_filetype('vim', 'sources',
     \ ['necovim', 'vsnip', 'around', 'file', 'rg'],
     \ )
 
@@ -293,18 +293,18 @@ repo = 'neovim/nvim-lspconfig'
 depends = ['vim-efm-langserver-settings']
 on_source = 'ddc.vim'
 lua_source = '''
-  lsp_bin = vim.fn.stdpath('data') .. '/mason/bin/'
-  nvim_lsp = require('lspconfig')
-  nvim_lsp.efm.setup({
-    cmd = { lsp_bin .. 'efm-langserver', '-c', vim.fn['efm_langserver_settings#config_path']() },
-    filetypes = vim.fn['efm_langserver_settings#whitelist'](),
-  })
-  nvim_lsp.intelephense.setup({
-    cmd = { lsp_bin .. 'intelephense', '--stdio' },
-  })
-  nvim_lsp.pyright.setup({
-    cmd = { lsp_bin .. 'pyright-langserver', '--stdio' },
-  })
+lsp_bin = vim.fn.stdpath('data') .. '/mason/bin/'
+nvim_lsp = require('lspconfig')
+nvim_lsp.efm.setup({
+  cmd = { lsp_bin .. 'efm-langserver', '-c', vim.fn['efm_langserver_settings#config_path']() },
+  filetypes = vim.fn['efm_langserver_settings#whitelist'](),
+})
+nvim_lsp.intelephense.setup({
+  cmd = { lsp_bin .. 'intelephense', '--stdio' },
+})
+nvim_lsp.pyright.setup({
+  cmd = { lsp_bin .. 'pyright-langserver', '--stdio' },
+})
 '''
 
 [[plugins]]
@@ -312,27 +312,27 @@ repo = 'williamboman/mason.nvim'
 depends = 'mason-lspconfig.nvim'
 on_cmd = ['Mason', 'MasonLog', 'MasonInstall', 'MasonUninstall', 'MasonUninstall']
 lua_source = '''
-  require('mason').setup({
-    ui = {
-      icons = {
-        package_installed   = '',
-        package_pending     = '',
-        package_uninstalled = '✗',
-      }
+require('mason').setup({
+  ui = {
+    icons = {
+      package_installed   = '',
+      package_pending     = '',
+      package_uninstalled = '✗',
     }
-  })
+  }
+})
 '''
 
 [[plugins]]
 repo = 'williamboman/mason-lspconfig.nvim'
 lua_source = '''
-  require('mason-lspconfig').setup({
-    ensure_installed = {
-      'efm',
-      'intelephense',
-      'pyright',
-    },
-  })
+require('mason-lspconfig').setup({
+  ensure_installed = {
+    'efm',
+    'intelephense',
+    'pyright',
+  },
+})
 '''
 
 #[[plugins]]
