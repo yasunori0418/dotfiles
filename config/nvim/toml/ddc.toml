@@ -276,7 +276,7 @@ let g:vsnip_filetypes = {}
 augroup user_vsnip_autocmd
   autocmd!
   autocmd User PumCompleteDone call vsnip_integ#on_complete_done(g:pum#completed_item)
-  autocmd InsertEnter * let g:vsnip_filetypes.toml = [context_filetype#get_filetype()]
+  autocmd InsertEnter ~/dotfiles/config/nvim/toml/*.toml let g:vsnip_filetypes.toml = [context_filetype#get_filetype()]
 augroup END
 '''
 
