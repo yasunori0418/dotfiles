@@ -292,6 +292,9 @@ hook_source = '''
 let g:deol#shell_history_path = '~/.zsh_history'
 let g:deol#enable_dir_changed = v:false
 let g:deol#nvim_server = '~/.cache/nvim/server.pipe'
+let g:deol#custom_map = {
+  \ 'edit': '',
+  \ }
 '''
 
 # }}}
