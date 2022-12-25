@@ -194,6 +194,7 @@ on_source = 'ddc.vim'
 
 # ddc-source {{{
 
+# for editing {{{
 [[plugins]]
 repo = 'Shougo/ddc-source-around'
 on_source = 'ddc.vim'
@@ -211,6 +212,17 @@ repo = 'Shougo/ddc-source-rg'
 on_source = 'ddc.vim'
 
 [[plugins]]
+repo = 'Shougo/neco-vim'
+on_ft = ['vim', 'toml']
+
+[[plugins]]
+repo = 'Shougo/ddc-source-nvim-lsp'
+on_source = 'nvim-lspconfig'
+
+# }}}
+
+# for cmdline and another {{{
+[[plugins]]
 repo = 'Shougo/ddc-source-line'
 on_source = 'ddc.vim'
 
@@ -226,13 +238,7 @@ on_source = 'ddc.vim'
 repo = 'Shougo/ddc-source-input'
 on_source = 'ddc.vim'
 
-[[plugins]]
-repo = 'Shougo/ddc-source-nvim-lsp'
-on_source = 'nvim-lspconfig'
-
-[[plugins]]
-repo = 'Shougo/neco-vim'
-on_ft = ['vim', 'toml']
+# }}}
 
 # }}}
 
