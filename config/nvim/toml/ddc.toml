@@ -203,15 +203,15 @@ repo = 'matsui54/ddc-buffer'
 on_source = 'ddc.vim'
 
 [[plugins]]
-repo = 'Shougo/ddc-source-line'
-on_source = 'ddc.vim'
-
-[[plugins]]
 repo = 'LumaKernel/ddc-source-file'
 on_source ='ddc.vim'
 
 [[plugins]]
 repo = 'Shougo/ddc-source-rg'
+on_source = 'ddc.vim'
+
+[[plugins]]
+repo = 'Shougo/ddc-source-line'
 on_source = 'ddc.vim'
 
 [[plugins]]
@@ -232,7 +232,7 @@ on_source = 'nvim-lspconfig'
 
 [[plugins]]
 repo = 'Shougo/neco-vim'
-on_ft = ['vim', 'toml', 'lua']
+on_ft = ['vim', 'toml']
 
 # }}}
 
