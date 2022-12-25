@@ -270,8 +270,8 @@ on_source = 'ddc.vim'
 [[plugins]]
 repo = 'hrsh7th/vim-vsnip'
 hook_source = '''
-imap <expr> <C-k> vsnip#available(1) ? '<Plug>(vsnip-expand-or-jump)' : '<C-k>'
-smap <expr> <C-k> vsnip#available(1) ? '<Plug>(vsnip-expand-or-jump)' : '<C-k>'
+imap <expr> <C-k> vsnip#available(1)  ? '<Plug>(vsnip-expand-or-jump)' : '<C-k>'
+smap <expr> <C-k> vsnip#available(1)  ? '<Plug>(vsnip-expand-or-jump)' : '<C-k>'
 
 " Jump forward or backward
 imap <expr> <C-n> vsnip#jumpable(1)   ? '<Plug>(vsnip-jump-next)'      : '<C-n>'
