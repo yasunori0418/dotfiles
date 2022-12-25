@@ -128,6 +128,7 @@ call ddc#custom#patch_global('sourceParams', #{
     \ fromAltBuf: v:true,
     \ bufNameStyle: 'basename',
     \ },
+  \ line: #{maxSize: 500},
   \ })
 " }}}
 
@@ -140,6 +141,12 @@ call ddc#custom#patch_global('sourceParams', #{
   call ddc#custom#patch_filetype('vim', 'sources',
     \ ['necovim', 'vsnip', 'around', 'file', 'rg'],
     \ )
+
+  call ddc#custom#patch_filetype(['ddu-ff-filter'], #{
+    \ keywordPattern: '[0-9a-zA-Z_:#-]*',
+    \ sources: ['line', 'buffer'],
+    \ specialBufferCompletion: v:true,
+    \ })
 
   " }}}
 
