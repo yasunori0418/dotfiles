@@ -295,6 +295,7 @@ let g:deol#nvim_server = '~/.cache/nvim/server.pipe'
 let g:deol#custom_map = {
   \ 'edit': '',
   \ }
+let g:deol#floating_border = 'double'
 '''
 
 # }}}
