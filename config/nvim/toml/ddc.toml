@@ -305,34 +305,40 @@ repo = 'tsuyoshicho/vim-efm-langserver-settings'
 
 [[plugins]]
 repo = 'neovim/nvim-lspconfig'
-depends = ['vim-efm-langserver-settings', 'mason.nvim']
-on_source = 'ddc.vim'
 
 [[plugins]]
 repo = 'williamboman/mason.nvim'
-depends = 'mason-lspconfig.nvim'
 lua_source = '''
-require('mason').setup({
+local mason = require('mason')
+mason.setup({
   ui = {
+    border = 'double',
     icons = {
       package_installed   = '',
       package_pending     = '',
-      package_uninstalled = '✗',
-    }
+      package_uninstalled = '✗ ',
+    },
   }
 })
 '''
 
 [[plugins]]
 repo = 'williamboman/mason-lspconfig.nvim'
+on_source = 'ddc.vim'
+depends = ['nvim-lspconfig', 'mason.nvim']
 lua_source = '''
-require('mason-lspconfig').setup({
+local mason_lspconfig = require('mason-lspconfig')
+mason_lspconfig.setup({
   ensure_installed = {
-    'efm',
-    'intelephense',
-    'pyright',
+    'sumneko_lua',
   },
+  automatic_installation = true,
 })
+
+mason_lspconfig.setup_handlers({ function(server_name)
+  local server_options = {}
+  require('lspconfig')[server_name].setup(server_options)
+end })
 '''
 
 #[[plugins]]
