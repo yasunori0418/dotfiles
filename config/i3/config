@@ -252,7 +252,7 @@ bindsym $mod+r mode "Resize"
 bar {
   font pango:HackGen Console NF 12
   position top
-  status_command bumblebee-status
+  status_command sleep 1; bumblebee-status
   #status_command i3status
 
 }
