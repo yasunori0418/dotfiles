@@ -380,6 +380,14 @@ xmap sr <Plug>(sandwich-replace)
 nmap srb <Plug>(sandwich-replace-auto)
 '''
 
+[[plugins]]
+repo = 'thinca/vim-partedit'
+on_cmd = 'Partedit'
+on_func = 'partedit#start()'
+hook_source = '''
+let g:partedit#opener = 'vsplit'
+'''
+
 # }}}
 
 # Git plugins {{{
