@@ -95,15 +95,11 @@ endif
 
 [[plugins]] # Modern and light status line.
 repo = 'itchyny/lightline.vim'
-on_event = ['InsertEnter', 'CmdlineEnter']
-#on_event = ['VimEnter']
+#on_event = ['InsertEnter', 'CmdlineEnter']
+on_event = ['VimEnter']
 depends = ['vim-gitbranch']
-hook_add = '''
-set laststatus=0
-set showtabline=0
-set noshowmode
-'''
 hook_source = '''
+set noshowmode
 set showtabline=2
 set laststatus=3
 let g:lightline = {}
@@ -212,7 +208,6 @@ command! -bar LightlineUpdate call lightline#init()| call lightline#colorscheme(
 
 [[plugins]]
 repo = 'Shougo/context_filetype.vim'
-on_source = 'nightfox.nvim'
 hook_source = '''
 let g:context_filetype#ignore_patterns = {
   \ 'toml': ['^\s*#\s*'],
@@ -382,6 +377,7 @@ nmap srb <Plug>(sandwich-replace-auto)
 
 [[plugins]]
 repo = 'thinca/vim-partedit'
+depends = 'context_filetype.vim'
 on_cmd = 'Partedit'
 on_func = 'partedit#start()'
 hook_source = '''
