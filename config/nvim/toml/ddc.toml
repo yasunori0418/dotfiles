@@ -304,7 +304,14 @@ on_source = 'ddc.vim'
 repo = 'tsuyoshicho/vim-efm-langserver-settings'
 
 [[plugins]]
+repo = 'folke/neodev.nvim'
+lua_source = '''
+require("neodev").setup({})
+'''
+
+[[plugins]]
 repo = 'neovim/nvim-lspconfig'
+depends = [ 'neodev.nvim' ]
 
 [[plugins]]
 repo = 'williamboman/mason.nvim'
@@ -328,6 +335,7 @@ on_source = 'ddc.vim'
 depends = ['nvim-lspconfig', 'mason.nvim']
 lua_source = '''
 local mason_lspconfig = require('mason-lspconfig')
+local nvim_lsp = require("lspconfig")
 mason_lspconfig.setup({
   ensure_installed = {
     'sumneko_lua',
@@ -336,8 +344,16 @@ mason_lspconfig.setup({
 })
 
 mason_lspconfig.setup_handlers({ function(server_name)
-  local server_options = {}
-  require('lspconfig')[server_name].setup(server_options)
+  local lsp_options = {}
+  --if server_name == 'sumneko_lua' then
+  --  lsp_options.settings = {
+  --    Lua = {
+  --      completion = {callSnippet = 'Replace'}
+  --    }
+  --  }
+  --end
+
+  require('lspconfig')[server_name].setup(lsp_options)
 end })
 '''
 
