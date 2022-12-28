@@ -378,8 +378,13 @@ nmap srb <Plug>(sandwich-replace-auto)
 [[plugins]]
 repo = 'thinca/vim-partedit'
 depends = 'context_filetype.vim'
-on_cmd = 'Partedit'
 on_func = 'partedit#start()'
+hook_add = '''
+nnoremap <Window>e <Cmd>call partedit#start(
+  \ context_filetype#get_range()[0][0],
+  \ context_filetype#get_range()[1][0],
+  \ #{ filetype: context_filetype#get_filetype() })<CR>
+'''
 hook_source = '''
 let g:partedit#opener = 'vsplit'
 '''
@@ -425,7 +430,7 @@ call gina#custom#command#option('patch', '--oneside')
 [[plugins]]
 repo = 'vim-denops/denops.vim'
 hook_add = '''
-"let g:denops_server_addr = '127.0.0.1:32123'
+let g:denops_server_addr = '127.0.0.1:32123'
 '''
 
 [[plugins]]
