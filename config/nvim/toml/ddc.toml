@@ -345,15 +345,15 @@ mason_lspconfig.setup({
 
 mason_lspconfig.setup_handlers({ function(server_name)
   local lsp_options = {}
-  --if server_name == 'sumneko_lua' then
-  --  lsp_options.settings = {
-  --    Lua = {
-  --      completion = {callSnippet = 'Replace'}
-  --    }
-  --  }
-  --end
+  if server_name == 'sumneko_lua' then
+    lsp_options.settings = {
+      Lua = {
+        completion = {callSnippet = 'Replace'}
+      }
+    }
+  end
 
-  require('lspconfig')[server_name].setup(lsp_options)
+  nvim_lsp[server_name].setup(lsp_options)
 end })
 '''
 
