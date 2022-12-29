@@ -21,6 +21,7 @@ require('impatient').enable_profile()
 
 [[plugins]]
 repo = 'delphinus/cellwidths.nvim'
+if = 0
 lua_add = '''
 if vim.api.nvim_get_option('ambiwidth') == 'single' then
   local cellwidths_conf =  {
