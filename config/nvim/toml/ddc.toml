@@ -306,7 +306,18 @@ repo = 'tsuyoshicho/vim-efm-langserver-settings'
 [[plugins]]
 repo = 'folke/neodev.nvim'
 lua_source = '''
-require("neodev").setup({})
+require("neodev").setup({
+  library = {
+    plugins = {
+    'nvim-treesitter',
+    'nightfox.nvim',
+    'nvim-notify',
+    'matchparen.nvim',
+    'mason.nvim',
+    'mason-lspconfig.nvim',
+    },
+  },
+})
 '''
 
 [[plugins]]
