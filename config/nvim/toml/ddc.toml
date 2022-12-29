@@ -330,7 +330,7 @@ lua_source = '''
 local mason = require('mason')
 mason.setup({
   ui = {
-    border = 'double',
+    border = 'single',
     icons = {
       package_installed   = '',
       package_pending     = '',
