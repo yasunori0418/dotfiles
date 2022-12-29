@@ -47,7 +47,6 @@ depends = ['nvim-treesitter']
 on_event = 'VimEnter'
 lua_source = '''
 local nightfox = require("nightfox")
-
 nightfox.setup({
   options = {
     -- Compiled file's destination location
@@ -348,9 +347,6 @@ repo = 'monkoose/matchparen.nvim'
 on_source = 'nightfox.nvim'
 lua_source = '''
 require('matchparen').setup()
-'''
-hook_post_source = '''
-MatchParenEnable
 '''
 
 [[plugins]]
