@@ -82,6 +82,8 @@ call ddu#custom#patch_global({
       \ 'prompt': '',
       \ 'filterSplitDirection': 'floating',
       \ 'displaySourceName': 'long',
+      \ 'floatingBorder': 'single',
+      \ 'previewFloatingBorder': 'single',
       \ },
     \ 'filer': {
       \ 'split': 'vertical',
