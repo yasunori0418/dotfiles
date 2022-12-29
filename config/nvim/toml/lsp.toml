@@ -1,0 +1,93 @@
+# LSP plugins
+## Builtin lsp core plugins {{{
+[[plugins]]
+repo = 'neovim/nvim-lspconfig'
+depends = [ 'neodev.nvim' ]
+
+[[plugins]]
+repo = 'williamboman/mason.nvim'
+lua_source = '''
+local mason = require('mason')
+mason.setup({
+  ui = {
+    border = 'single',
+    icons = {
+      package_installed   = '',
+      package_pending     = '',
+      package_uninstalled = '✗ ',
+    },
+  }
+})
+'''
+
+[[plugins]]
+repo = 'williamboman/mason-lspconfig.nvim'
+on_source = 'ddc.vim'
+depends = ['nvim-lspconfig', 'mason.nvim']
+lua_source = '''
+local mason_lspconfig = require('mason-lspconfig')
+local nvim_lsp = require("lspconfig")
+mason_lspconfig.setup({
+  ensure_installed = {
+    'sumneko_lua',
+  },
+  automatic_installation = true,
+})
+
+mason_lspconfig.setup_handlers({ function(server_name)
+  local lsp_options = {}
+  if server_name == 'sumneko_lua' then
+    lsp_options.settings = {
+      Lua = {
+        completion = {callSnippet = 'Replace'}
+      }
+    }
+  end
+
+  nvim_lsp[server_name].setup(lsp_options)
+end })
+'''
+
+# }}}
+
+# language server support plugins {{{
+[[plugins]]
+repo = 'tsuyoshicho/vim-efm-langserver-settings'
+
+[[plugins]]
+repo = 'folke/neodev.nvim'
+lua_source = '''
+require("neodev").setup({
+  library = {
+    plugins = {
+    'nvim-treesitter',
+    'nightfox.nvim',
+    'nvim-notify',
+    'matchparen.nvim',
+    'mason.nvim',
+    'mason-lspconfig.nvim',
+    },
+  },
+})
+'''
+
+# }}}
+
+# LSP extends plugins {{{
+
+# }}}
+
+#[[plugins]]
+#repo = 'matsui54/denops-popup-preview.vim'
+#on_source = 'ddc-nvim-lsp'
+#hook_source = '''
+#call popup_preview#enable()
+#'''
+
+#[[plugins]]
+#repo = 'matsui54/denops-signature_help'
+#on_source = 'ddc-nvim-lsp'
+#hook_source = '''
+#call signature_help#enable()
+#'''
+
