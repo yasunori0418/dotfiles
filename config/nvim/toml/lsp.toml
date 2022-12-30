@@ -64,6 +64,12 @@ mason_lspconfig.setup_handlers({ function(server_name)
       border = 'single',
     })
 
+  lsp.handlers['textDocument/publishDiagnostics'] = lsp.with(
+    lsp.diagnostic.on_publish_diagnostics, {
+      virtual_text = false,
+    }
+  )
+
   lspconfig[server_name].setup(lsp_options)
 end })
 '''
@@ -77,37 +83,25 @@ repo = 'tsuyoshicho/vim-efm-langserver-settings'
 [[plugins]]
 repo = 'folke/neodev.nvim'
 lua_source = '''
-require("neodev").setup({
-  library = {
-    plugins = {
-    'nvim-treesitter',
-    'nightfox.nvim',
-    'nvim-notify',
-    'matchparen.nvim',
-    'mason.nvim',
-    'mason-lspconfig.nvim',
-    },
-  },
-})
+require("neodev").setup({})
 '''
 
 # }}}
 
 # LSP extends plugins {{{
+[[plugins]]
+repo = 'matsui54/denops-popup-preview.vim'
+on_source = 'ddc-nvim-lsp'
+hook_source = '''
+call popup_preview#enable()
+'''
+
+[[plugins]]
+repo = 'matsui54/denops-signature_help'
+on_source = 'ddc-nvim-lsp'
+hook_source = '''
+call signature_help#enable()
+'''
 
 # }}}
-
-#[[plugins]]
-#repo = 'matsui54/denops-popup-preview.vim'
-#on_source = 'ddc-nvim-lsp'
-#hook_source = '''
-#call popup_preview#enable()
-#'''
-
-#[[plugins]]
-#repo = 'matsui54/denops-signature_help'
-#on_source = 'ddc-nvim-lsp'
-#hook_source = '''
-#call signature_help#enable()
-#'''
 
