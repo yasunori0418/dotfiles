@@ -26,7 +26,10 @@ on_source = 'ddc.vim'
 depends = ['nvim-lspconfig', 'mason.nvim']
 lua_source = '''
 local mason_lspconfig = require('mason-lspconfig')
-local nvim_lsp = require("lspconfig")
+local lspconfig = require("lspconfig")
+local lsp = vim.lsp -- nvim lsp api.
+local diag = vim.diagnostic -- nvim diagnostic api.
+
 mason_lspconfig.setup({
   ensure_installed = {
     'sumneko_lua',
@@ -36,15 +39,32 @@ mason_lspconfig.setup({
 
 mason_lspconfig.setup_handlers({ function(server_name)
   local lsp_options = {}
-  if server_name == 'sumneko_lua' then
-    lsp_options.settings = {
-      Lua = {
-        completion = {callSnippet = 'Replace'}
-      }
-    }
+
+  lsp_options.on_attach = function(client, bufnr)
+    local keymap_options = { noremap = true, buffer = bufnr }
+    -- About <lsp> prefix ~/dotfiles/config/nvim/rc/keybinds.vim:89
+    vim.keymap.set('n', '<lsp>k', lsp.buf.hover, keymap_options)
+    vim.keymap.set('n', '<lsp>h', lsp.buf.signature_help, keymap_options)
+    vim.keymap.set('n', '<lsp>i', lsp.buf.implementation, keymap_options)
+    vim.keymap.set('n', '<lsp>d', lsp.buf.definition, keymap_options)
+    vim.keymap.set('n', '<lsp>D', lsp.buf.declaration, keymap_options)
+    vim.keymap.set('n', '<lsp>e', diag.open_float, keymap_options)
+    vim.keymap.set('n', '<lsp>q', diag.setloclist, keymap_options)
+    vim.keymap.set('n', '[d', diag.goto_prev, keymap_options)
+    vim.keymap.set('n', ']d', diag.goto_next, keymap_options)
   end
 
-  nvim_lsp[server_name].setup(lsp_options)
+  lsp.handlers['textDocument/hover'] = lsp.with(
+    lsp.handlers.hover, {
+      border = 'single',
+    })
+
+  lsp.handlers['textDocument/signatureHelp'] = lsp.with(
+    lsp.handlers.signature_help, {
+      border = 'single',
+    })
+
+  lspconfig[server_name].setup(lsp_options)
 end })
 '''
 
