@@ -22,7 +22,7 @@ mason.setup({
 
 [[plugins]]
 repo = 'williamboman/mason-lspconfig.nvim'
-on_source = 'ddc.vim'
+on_ft = [ 'lua', 'php', 'python' ]
 depends = ['nvim-lspconfig', 'mason.nvim']
 lua_source = '''
 local mason_lspconfig = require('mason-lspconfig')
@@ -33,6 +33,8 @@ local diag = vim.diagnostic -- nvim diagnostic api.
 mason_lspconfig.setup({
   ensure_installed = {
     'sumneko_lua',
+    'intelephense',
+    'pyright',
   },
   automatic_installation = true,
 })
@@ -70,6 +72,13 @@ mason_lspconfig.setup_handlers({ function(server_name)
     }
   )
 
+  local capabilities = lsp.protocol.make_client_capabilities()
+  capabilities.textDocument.completion.completionItem.snippetSupport = true
+
+  if server_name == 'sumneko_lua' then
+    lsp_options.capabilities = capabilities
+  end
+
   lspconfig[server_name].setup(lsp_options)
 end })
 '''
@@ -91,17 +100,23 @@ require("neodev").setup({})
 # LSP extends plugins {{{
 [[plugins]]
 repo = 'matsui54/denops-popup-preview.vim'
-on_source = 'ddc-nvim-lsp'
+on_source = 'ddc-source-nvim-lsp'
 hook_source = '''
 call popup_preview#enable()
 '''
 
 [[plugins]]
 repo = 'matsui54/denops-signature_help'
-on_source = 'ddc-nvim-lsp'
+on_source = 'ddc-source-nvim-lsp'
 hook_source = '''
 call signature_help#enable()
 '''
 
-# }}}
+[[plugins]]
+repo = 'j-hui/fidget.nvim'
+on_source = 'ddc-source-nvim-lsp'
+lua_source = '''
+require('fidget').setup({})
+'''
 
+# }}}
