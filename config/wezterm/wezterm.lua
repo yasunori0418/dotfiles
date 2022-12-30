@@ -47,12 +47,29 @@ return {
   use_ime = false, --vimで日本語入力するときは、skkeletonを使っているから問題無い
 
   --font = wezterm.font('Cica'),
-  --font_size = 12.0,
   font = wezterm.font_with_fallback({
-    { family = 'HackGen35 Console NF', weight = 'Regular' },
-    { family = 'HackGen35 Console NF', weight = 'Bold' },
+    {
+      family = 'HackGen35 Console NF',
+      weight = 'Regular',
+      style = 'Normal',
+    },
+    {
+      family = 'HackGen35 Console NF',
+      weight = 'Bold',
+      style = 'Normal',
+    },
+    {
+      family = 'Cica',
+      weight = 'Regular',
+      style = 'Italic',
+    },
+    {
+      family = 'Cica',
+      weight = 'Bold',
+      style = 'Italic',
+    },
   }),
-  font_size = 11.0,
+  font_size = 12.0, -- フォントサイズは偶数でないと変になる。
   -- Must setting when tile window manager.
   adjust_window_size_when_changing_font_size = false,
 
