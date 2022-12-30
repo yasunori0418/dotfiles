@@ -86,6 +86,11 @@ nnoremap <S-Up>    <C-w>-<CR>
 nnoremap <S-Down>  <C-w>+<CR>
 " }}}
 
+" LSP keybinds prefixes{{{
+nnoremap <lsp> <Nop>
+nmap <Space>l <lsp>
+" }}}
+
 " Normal Mode:{{{
 " US Keyboard layout mapping.
 " Exchange Colon and Semi-Colon.
