@@ -84,6 +84,7 @@ call ddu#custom#patch_global({
       \ 'displaySourceName': 'long',
       \ 'floatingBorder': 'single',
       \ 'previewFloatingBorder': 'single',
+      \ 'filterFloatingPosition': 'top',
       \ },
     \ 'filer': {
       \ 'split': 'vertical',
