@@ -147,6 +147,13 @@ onoremap a` 2i`
 
 " }}}
 
+" Quickfix {{{
+nnoremap [q <Cmd>cprevious<CR>
+nnoremap ]q <Cmd>cnext<CR>
+nnoremap [Q <Cmd>cfirst<CR>
+nnoremap ]Q <Cmd>clast<CR>
+" }}}
+
 " Command line keybinds {{{
 cnoremap <C-a> <Home>
 cnoremap <C-e> <End>
