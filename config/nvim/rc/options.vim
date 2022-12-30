@@ -186,4 +186,9 @@ augroup user_filetype_indent
   autocmd FileType dockerfile setlocal tabstop=4 softtabstop=4 shiftwidth=4
 augroup END
 
+augroup user_quickfix_autocmd
+  autocmd!
+  autocmd QuickFixCmdPost *grep* cwindow
+augroup END
+
 " }}}
