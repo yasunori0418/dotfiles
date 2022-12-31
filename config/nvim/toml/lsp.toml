@@ -28,6 +28,7 @@ lua_source = '''
 local mason_lspconfig = require('mason-lspconfig')
 local lspconfig = require("lspconfig")
 local saga = require('lspsaga')
+local keymap = vim.keymap.set
 local lsp = vim.lsp -- nvim lsp api.
 local diag = vim.diagnostic -- nvim diagnostic api.
 
@@ -40,7 +41,22 @@ mason_lspconfig.setup({
   automatic_installation = true,
 })
 
-saga.init_lsp_saga()
+saga.init_lsp_saga({
+  border_style = 'single',
+  finder_action_keys = {
+    open = 'o',
+    vsplit = 'v',
+    split = 's',
+    tabe = 't',
+    quit = {'q', '<ESC>'},
+  },
+  rename_action_quit = '<ESC>',
+  rename_in_select = false,
+  show_outline = {
+    win_with = 'defx',
+    win_width = 40,
+  }
+})
 
 mason_lspconfig.setup_handlers({ function(server_name)
   local lsp_options = {}
@@ -48,15 +64,20 @@ mason_lspconfig.setup_handlers({ function(server_name)
   lsp_options.on_attach = function(client, bufnr)
     local keymap_options = { noremap = true, buffer = bufnr }
     -- About <lsp> prefix ~/dotfiles/config/nvim/rc/keybinds.vim:89
-    vim.keymap.set('n', '<lsp>k', lsp.buf.hover, keymap_options)
-    vim.keymap.set('n', '<lsp>h', lsp.buf.signature_help, keymap_options)
-    vim.keymap.set('n', '<lsp>i', lsp.buf.implementation, keymap_options)
-    vim.keymap.set('n', '<lsp>d', lsp.buf.definition, keymap_options)
-    vim.keymap.set('n', '<lsp>D', lsp.buf.declaration, keymap_options)
-    vim.keymap.set('n', '<lsp>e', diag.open_float, keymap_options)
-    vim.keymap.set('n', '<lsp>q', diag.setloclist, keymap_options)
-    vim.keymap.set('n', '[d', diag.goto_prev, keymap_options)
-    vim.keymap.set('n', ']d', diag.goto_next, keymap_options)
+    keymap('n', '<lsp>k', '<Cmd>Lspsaga hover_doc<CR>', keymap_options)
+    keymap('n', '<lsp>K', '<Cmd>Lspsaga lsp_finder<CR>', keymap_options)
+    keymap('n', '<lsp>r', '<Cmd>Lspsaga rename<CR>', keymap_options)
+    keymap('n', '<lsp>o', '<Cmd>LSoutlineToggle<CR>', keymap_options)
+    keymap({'n', 'x'}, '<lsp>c', '<Cmd>Lspsaga code_action<CR>', keymap_options)
+    keymap('n', '<lsp>h', lsp.buf.signature_help, keymap_options)
+    keymap('n', '<lsp>=', lsp.buf.formatting, keymap_options)
+    keymap('n', '<lsp>i', lsp.buf.implementation, keymap_options)
+    keymap('n', '<lsp>d', '<Cmd>Lspsaga peek_definition<CR>', keymap_options)
+    keymap('n', '<lsp>D', lsp.buf.declaration, keymap_options)
+    keymap('n', '<lsp>e', '<Cmd>Lspsaga show_line_diagnostics<CR>', keymap_options)
+    keymap('n', '<lsp>q', diag.setloclist, keymap_options)
+    keymap('n', '[d',  '<Cmd>Lspsaga diagnostic_jump_prev<CR>', keymap_options)
+    keymap('n', ']d', '<Cmd>Lspsaga diagnostic_jump_next<CR>', keymap_options)
   end
 
   lsp.handlers['textDocument/hover'] = lsp.with(
@@ -127,6 +148,7 @@ require('fidget').setup({
     spinner = 'dots',
   },
   window = {
+    border = 'single',
     relative = 'editor',
   },
 })
