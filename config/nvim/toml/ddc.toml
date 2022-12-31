@@ -10,13 +10,13 @@ repo = 'Shougo/ddc.vim'
 depends = ['context_filetype.vim', 'denops.vim', 'pum.vim']
 on_event = ['InsertEnter', 'CmdlineEnter', 'CursorHold']
 hook_add = '''
-  " Keymaping {{{
-  nnoremap ; <Cmd>call vimrc#commandline_pre(':')<CR>:
-  xnoremap ; <Cmd>call vimrc#commandline_pre(':')<CR>:
+" Keymaping {{{
+nnoremap ; <Cmd>call vimrc#commandline_pre(':')<CR>:
+xnoremap ; <Cmd>call vimrc#commandline_pre(':')<CR>:
 
-  nnoremap / <Cmd>call vimrc#commandline_pre('/')<CR>/
-  nnoremap ? <Cmd>call vimrc#commandline_pre('?')<CR>?
-  " }}}
+nnoremap / <Cmd>call vimrc#commandline_pre('/')<CR>/
+nnoremap ? <Cmd>call vimrc#commandline_pre('?')<CR>?
+" }}}
 '''
 hook_source = '''
 " UI settings {{{
@@ -179,42 +179,42 @@ call ddc#custom#patch_filetype(['ddu-ff-filter'], #{
   \ })
   " }}}
 
-  " Keymaping {{{
+" Keymaping {{{
 
-  " Insert-Mode {{{
-  inoremap <expr>   <TAB>
-    \ pum#visible() ? '<Cmd>call pum#map#insert_relative(+1)<CR>' :
-    \ (col('.') <= 1 <Bar><Bar> getline('.')[col('.') - 2] =~# '\s') ?
-    \ '<TAB>' : ddc#map#manual_complete()
-  inoremap <S-TAB>  <Cmd>call pum#map#insert_relative(-1)<CR>
-  inoremap <C-n>    <Cmd>call pum#map#select_relative(+1)<CR>
-  inoremap <C-p>    <Cmd>call pum#map#select_relative(-1)<CR>
+" Insert-Mode {{{
+inoremap <expr>   <TAB>
+  \ pum#visible() ? '<Cmd>call pum#map#insert_relative(+1)<CR>' :
+  \ (col('.') <= 1 <Bar><Bar> getline('.')[col('.') - 2] =~# '\s') ?
+  \ '<TAB>' : ddc#map#manual_complete()
+inoremap <S-TAB>  <Cmd>call pum#map#insert_relative(-1)<CR>
+inoremap <C-n>    <Cmd>call pum#map#select_relative(+1)<CR>
+inoremap <C-p>    <Cmd>call pum#map#select_relative(-1)<CR>
 
-  inoremap <C-y>    <Cmd>call pum#map#confirm()<CR>
-  inoremap <expr>   <C-e>
-    \ pum#visible() ? '<Cmd>call pum#map#cancel()<CR>' : '<C-o>$'
-  " }}}
+inoremap <C-y>    <Cmd>call pum#map#confirm()<CR>
+inoremap <expr>   <C-e>
+  \ pum#visible() ? '<Cmd>call pum#map#cancel()<CR>' : '<C-o>$'
+" }}}
 
-  " Cmdline-Mode {{{
-  cnoremap <expr>   <TAB>
-    \ pum#visible() ? '<Cmd>call pum#map#insert_relative(+1)<CR>' :
-    \ exists('b:prev_buffer_config') ?
-    \ ddc#map#manual_complete() : nr2char(&wildcharm)
-  cnoremap <S-TAB>  <Cmd>call pum#map#insert_relative(-1)<CR>
+" Cmdline-Mode {{{
+cnoremap <expr>   <TAB>
+  \ pum#visible() ? '<Cmd>call pum#map#insert_relative(+1)<CR>' :
+  \ exists('b:prev_buffer_config') ?
+  \ ddc#map#manual_complete() : nr2char(&wildcharm)
+cnoremap <S-TAB>  <Cmd>call pum#map#insert_relative(-1)<CR>
 
-  cnoremap <expr>   <C-n>
-    \ pum#visible() ? '<Cmd>call pum#map#select_relative(+1)<CR>' : '<C-n>'
-  cnoremap <expr>   <C-p>
-  \ pum#visible() ? '<Cmd>call pum#map#select_relative(-1)<CR>' : '<C-p>'
+cnoremap <expr>   <C-n>
+  \ pum#visible() ? '<Cmd>call pum#map#select_relative(+1)<CR>' : '<C-n>'
+cnoremap <expr>   <C-p>
+\ pum#visible() ? '<Cmd>call pum#map#select_relative(-1)<CR>' : '<C-p>'
 
-  cnoremap <C-y>    <Cmd>call pum#map#confirm()<CR>
-  cnoremap <silent><expr> <C-e>
-    \ pum#visible() ? '<Cmd>call pum#map#cancel()<CR>' : '<C-e>'
-  " }}}
+cnoremap <C-y>    <Cmd>call pum#map#confirm()<CR>
+cnoremap <silent><expr> <C-e>
+  \ pum#visible() ? '<Cmd>call pum#map#cancel()<CR>' : '<C-e>'
+" }}}
 
-  " }}}
+" }}}
 
-  call ddc#enable()
+call ddc#enable()
 '''
 
 [[plugins]]
