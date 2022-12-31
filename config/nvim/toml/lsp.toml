@@ -23,10 +23,11 @@ mason.setup({
 [[plugins]]
 repo = 'williamboman/mason-lspconfig.nvim'
 on_ft = [ 'toml', 'lua', 'php', 'python' ]
-depends = ['nvim-lspconfig', 'mason.nvim']
+depends = ['nvim-lspconfig', 'mason.nvim', 'lspsaga.nvim']
 lua_source = '''
 local mason_lspconfig = require('mason-lspconfig')
 local lspconfig = require("lspconfig")
+local saga = require('lspsaga')
 local lsp = vim.lsp -- nvim lsp api.
 local diag = vim.diagnostic -- nvim diagnostic api.
 
@@ -38,6 +39,8 @@ mason_lspconfig.setup({
   },
   automatic_installation = true,
 })
+
+saga.init_lsp_saga()
 
 mason_lspconfig.setup_handlers({ function(server_name)
   local lsp_options = {}
@@ -85,7 +88,7 @@ end })
 
 # }}}
 
-# Language server support plugins {{{
+## Language server support plugins {{{
 [[plugins]]
 repo = 'tsuyoshicho/vim-efm-langserver-settings'
 
@@ -95,26 +98,29 @@ lua_source = '''
 require("neodev").setup({})
 '''
 
+[[plugins]]
+repo = 'glepnir/lspsaga.nvim'
+
 # }}}
 
-# LSP extends plugins {{{
+## LSP extends plugins {{{
 [[plugins]]
 repo = 'matsui54/denops-popup-preview.vim'
-on_source = 'ddc-source-nvim-lsp'
+on_source = 'nvim-lspconfig'
 hook_source = '''
 call popup_preview#enable()
 '''
 
 [[plugins]]
 repo = 'matsui54/denops-signature_help'
-on_source = 'ddc-source-nvim-lsp'
+on_source = 'nvim-lspconfig'
 hook_source = '''
 call signature_help#enable()
 '''
 
 [[plugins]]
 repo = 'j-hui/fidget.nvim'
-on_source = 'ddc-source-nvim-lsp'
+on_source = 'nvim-lspconfig'
 lua_source = '''
 require('fidget').setup({
   text = {
