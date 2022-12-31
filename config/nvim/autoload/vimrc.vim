@@ -203,7 +203,7 @@ function! vimrc#commandline_pre(mode) abort
   cnoremap <expr><buffer> <Tab>
   \ pum#visible() ? '<Cmd>call pum#map#insert_relative(+1)<CR>' :
   \ exists('b:prev_buffer_config') ?
-  \   ddc#map#manual_complete() : "\<C-t>"
+  \ ddc#map#manual_complete() : "\<C-t>"
 
   " Overwrite sources
   if !exists('b:prev_buffer_config')
