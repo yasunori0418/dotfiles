@@ -108,12 +108,12 @@ lua_source = '''
 require("neodev").setup({})
 '''
 
-[[plugins]]
-repo = 'glepnir/lspsaga.nvim'
-
 # }}}
 
 ## LSP extends plugins {{{
+[[plugins]]
+repo = 'glepnir/lspsaga.nvim'
+
 [[plugins]]
 repo = 'matsui54/denops-popup-preview.vim'
 on_source = 'nvim-lspconfig'
