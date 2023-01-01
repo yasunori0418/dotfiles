@@ -450,6 +450,8 @@ gitsigns.setup ({
       linehl='GitSignsAddLn'
     },
   }, -- }}}
+
+  -- options {{{
   signcolumn = true,  -- Toggle with `:Gitsigns toggle_signs`
   numhl      = true, -- Toggle with `:Gitsigns toggle_numhl`
   linehl     = false, -- Toggle with `:Gitsigns toggle_linehl`
@@ -482,28 +484,28 @@ gitsigns.setup ({
   yadm = {
     enable = false
   },
+  -- }}}
 
   -- keybinds {{{
   on_attach = function(bufnr)
-
-    local function map(mode, l, r, opts)
-      opts = opts or {}
-      opts.buffer = bufnr
-      vim.keymap.set(mode, l, r, opts)
-    end
+    local keymap = vim.keymap.set
+    local keymap_options = { noremap = true, buffer = bufnr, expr = true }
 
     -- Navigation
-    map('n', ']c', function()
-      if vim.wo.diff then return ']c' end
-      vim.schedule(function() gitsigns.next_hunk() end)
-      return '<Ignore>'
-    end, {expr=true})
-
-    map('n', '[c', function()
+    keymap('n', '[c', function()
       if vim.wo.diff then return '[c' end
       vim.schedule(function() gitsigns.prev_hunk() end)
       return '<Ignore>'
-    end, {expr=true})
+    end, keymap_options)
+
+    keymap('n', ']c', function()
+      if vim.wo.diff then return ']c' end
+      vim.schedule(function() gitsigns.next_hunk() end)
+      return '<Ignore>'
+    end, keymap_options)
+
+    keymap('n', '<git>hs', '<Cmd>Gitsigns stage_hunk<CR>')
+    keymap('n', '<git>hr', '<Cmd>Gitsigns reset_hunk<CR>')
 
   end, -- }}}
 })
@@ -513,15 +515,13 @@ gitsigns.setup ({
 repo = 'lambdalisue/gina.vim'
 on_cmd = 'Gina'
 hook_add = '''
-nnoremap <gina> <Nop>
-nmap <Space>g <gina>
-nnoremap <gina>s <Cmd>Gina status<CR>
-nnoremap <gina>c <Cmd>Gina commit<CR>
-nnoremap <gina>l <Cmd>Gina log<CR>
-nnoremap <gina>b <Cmd>Gina blame<CR>
-nnoremap <gina>d <Cmd>Gina patch<CR>
-nnoremap <gina>ps <Cmd>Deol git push -split=floating -winheight=30 -winwidth=120 -toggle<CR>
-nnoremap <gina>pl <Cmd>Deol git pull -split=floating -winheight=30 -winwidth=120 -toggle<CR>
+nnoremap <git>s <Cmd>Gina status<CR>
+nnoremap <git>c <Cmd>Gina commit<CR>
+nnoremap <git>l <Cmd>Gina log<CR>
+nnoremap <git>b <Cmd>Gina blame<CR>
+nnoremap <git>d <Cmd>Gina patch<CR>
+nnoremap <git>ps <Cmd>Deol git push -split=floating -winheight=30 -winwidth=120 -toggle<CR>
+nnoremap <git>pl <Cmd>Deol git pull -split=floating -winheight=30 -winwidth=120 -toggle<CR>
 '''
 hook_source = '''
 call gina#custom#command#option('status', '-s')
