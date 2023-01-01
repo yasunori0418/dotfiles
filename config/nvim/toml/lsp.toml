@@ -27,7 +27,6 @@ depends = ['nvim-lspconfig', 'mason.nvim', 'lspsaga.nvim']
 lua_source = '''
 local mason_lspconfig = require('mason-lspconfig')
 local lspconfig = require("lspconfig")
-local saga = require('lspsaga')
 local keymap = vim.keymap.set
 local lsp = vim.lsp -- nvim lsp api.
 local diag = vim.diagnostic -- nvim diagnostic api.
@@ -39,23 +38,6 @@ mason_lspconfig.setup({
     'pyright',
   },
   automatic_installation = true,
-})
-
-saga.init_lsp_saga({
-  border_style = 'single',
-  finder_action_keys = {
-    open = 'o',
-    vsplit = 'v',
-    split = 's',
-    tabe = 't',
-    quit = { 'q', '<ESC>' },
-  },
-  rename_action_quit = '<ESC>',
-  rename_in_select = false,
-  show_outline = {
-    win_with = 'defx',
-    win_width = 40,
-  }
 })
 
 mason_lspconfig.setup_handlers({ function(server_name)
@@ -104,6 +86,26 @@ end })
 ## LSP extends plugins {{{
 [[plugins]]
 repo = 'glepnir/lspsaga.nvim'
+lua_source = '''
+local saga = require('lspsaga')
+saga.init_lsp_saga({
+  border_style = 'single',
+  finder_action_keys = {
+    open = 'o',
+    vsplit = 'v',
+    split = 's',
+    tabe = 't',
+    quit = { 'q', '<ESC>' },
+  },
+  rename_action_quit = '<ESC>',
+  rename_in_select = false,
+  show_outline = {
+    win_with = 'defx',
+    win_width = 40,
+  }
+})
+
+'''
 
 [[plugins]]
 repo = 'matsui54/denops-popup-preview.vim'
