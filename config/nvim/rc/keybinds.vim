@@ -39,6 +39,9 @@ nnoremap <C-W> <Nop>
 nnoremap <Window> <Nop>
 nmap <Space>w <Window>
 
+" }}}
+
+" Window control keybind {{{
 " File save
 nnoremap <Window>w <Cmd>write<CR>
 
@@ -86,7 +89,15 @@ nnoremap <S-Up>    <C-w>-<CR>
 nnoremap <S-Down>  <C-w>+<CR>
 " }}}
 
-" LSP keybinds prefixes{{{
+" Keybind prefixes {{{
+
+" Window control prefix {{{
+" overwrites window command of 'CTRL-W'.
+nnoremap <Window> <Nop>
+nmap <Space>w <Window>
+" }}}
+
+" LSP keybinds prefix {{{
 nnoremap <lsp> <Nop>
 nmap <Space>l <lsp>
 " }}}
