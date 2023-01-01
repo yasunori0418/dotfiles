@@ -154,19 +154,22 @@ local formatting = null_ls.builtins.formatting
 --local hover = null_ls.builtins.hover
 
 local sources = {
-    code_actions.gitsigns,
-    completion.vsnip,
-    formatting.stylua,
-    --diagnostics.luacheck,
-    diagnostics.textlint.with({
-      filetypes = { 'markdown' },
-      prefer_local = "node_modules/.bin",
-    }),
-  }
+  code_actions.gitsigns,
+  completion.vsnip,
+  formatting.stylua,
+  diagnostics.selene,
+  diagnostics.textlint.with({
+    condition = function()
+      return vim.fn.executable('textlint') > 0
+    end,
+    filetypes = { 'markdown' },
+    prefer_local = "node_modules/.bin",
+  }),
+}
 
 null_ls.setup({
-  diagnostics_format = '[#{c}] #{m} (#{s})',
   border = 'single',
+  diagnostics_format = '[#{c}] #{m} (#{s})',
   sources = sources,
 })
 '''
@@ -178,7 +181,11 @@ on_ft = [ 'lua', 'markdown' ]
 lua_source = '''
 require('mason-null-ls').setup({
   ensure_installed = nil,
-  automatic_installation = true,
+  automatic_installation = {
+    exclude = {
+      'textlint',
+    },
+  },
   automatic_setup = false,
 })
 '''
