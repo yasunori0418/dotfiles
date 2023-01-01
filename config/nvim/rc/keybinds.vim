@@ -102,6 +102,13 @@ nnoremap <lsp> <Nop>
 nmap <Space>l <lsp>
 " }}}
 
+" Git keybinds prefix {{{
+nnoremap <git>    <Nop>
+nmap     <Space>g <git>
+" }}}
+
+" }}}
+
 " Normal Mode:{{{
 " US Keyboard layout mapping.
 " Exchange Colon and Semi-Colon.
