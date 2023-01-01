@@ -349,6 +349,7 @@ let g:indent_guides_exclude_filetypes = [
   \ 'mason',
   \ 'lspinfo',
   \ 'lspsagaoutline',
+  \ 'null-ls-info',
   \ 'gitter',
   \ ]
 '''
