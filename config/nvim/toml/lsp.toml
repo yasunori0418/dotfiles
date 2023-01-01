@@ -104,7 +104,6 @@ saga.init_lsp_saga({
     win_width = 40,
   }
 })
-
 '''
 
 [[plugins]]
