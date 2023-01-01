@@ -62,7 +62,14 @@ mason_lspconfig.setup_handlers({ function(server_name)
   local lsp_options = {}
 
   lsp_options.on_attach = function(client, bufnr)
-    local keymap_options = { noremap = true, buffer = bufnr }
+    local keymap_options = {
+      noremap = true,
+      --silent = true,
+      buffer = bufnr,
+    }
+
+    print(client.name)
+
     -- About <lsp> prefix ~/dotfiles/config/nvim/rc/keybinds.vim:89
     keymap('n', '<lsp>k', '<Cmd>Lspsaga hover_doc<CR>', keymap_options)
     keymap('n', '<lsp>K', '<Cmd>Lspsaga lsp_finder<CR>', keymap_options)
@@ -74,6 +81,7 @@ mason_lspconfig.setup_handlers({ function(server_name)
     keymap('n', '<lsp>i', lsp.buf.implementation, keymap_options)
     keymap('n', '<lsp>d', '<Cmd>Lspsaga peek_definition<CR>', keymap_options)
     keymap('n', '<lsp>D', lsp.buf.declaration, keymap_options)
+    keymap('n', '<lsp>E', '<Cmd>Lspsaga show_cursor_diagnostics<CR>', keymap_options)
     keymap('n', '<lsp>e', '<Cmd>Lspsaga show_line_diagnostics<CR>', keymap_options)
     keymap('n', '<lsp>q', diag.setloclist, keymap_options)
     keymap('n', '[d', '<Cmd>Lspsaga diagnostic_jump_prev<CR>', keymap_options)
@@ -84,6 +92,7 @@ mason_lspconfig.setup_handlers({ function(server_name)
     lsp.diagnostic.on_publish_diagnostics, {
     virtual_text = false,
   })
+
 
   local capabilities = lsp.protocol.make_client_capabilities()
   capabilities.textDocument.completion.completionItem.snippetSupport = true
@@ -128,6 +137,55 @@ require('fidget').setup({
     border = 'single',
     relative = 'editor',
   },
+})
+'''
+
+# }}}
+
+## null-ls plugins {{{
+
+[[plugins]]
+repo = 'nvim-lua/plenary.nvim'
+
+[[plugins]]
+repo = 'jose-elias-alvarez/null-ls.nvim'
+depends = [ 'nvim-lspconfig', 'plenary.nvim' ]
+lua_source = '''
+local null_ls = require('null-ls')
+
+local code_actions = null_ls.builtins.code_actions
+local completion = null_ls.builtins.completion
+local diagnostics = null_ls.builtins.diagnostics
+local formatting = null_ls.builtins.formatting
+--local hover = null_ls.builtins.hover
+
+local sources = {
+    code_actions.gitsigns,
+    completion.vsnip,
+    formatting.stylua,
+    --diagnostics.luacheck,
+    diagnostics.textlint.with({
+      filetypes = { 'markdown' },
+      prefer_local = "node_modules/.bin",
+    }),
+  }
+
+null_ls.setup({
+  diagnostics_format = '[#{c}] #{m} (#{s})',
+  border = 'single',
+  sources = sources,
+})
+'''
+
+[[plugins]]
+repo = 'jay-babu/mason-null-ls.nvim'
+depends = [ 'mason.nvim', 'null-ls.nvim' ]
+on_ft = [ 'lua', 'markdown' ]
+lua_source = '''
+require('mason-null-ls').setup({
+  ensure_installed = nil,
+  automatic_installation = true,
+  automatic_setup = false,
 })
 '''
 
