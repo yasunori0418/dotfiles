@@ -77,7 +77,7 @@ mason_lspconfig.setup_handlers({ function(server_name)
     keymap('n', '<lsp>o', '<Cmd>LSoutlineToggle<CR>', keymap_options)
     keymap({ 'n', 'x' }, '<lsp>c', '<Cmd>Lspsaga code_action<CR>', keymap_options)
     keymap('n', '<lsp>h', lsp.buf.signature_help, keymap_options)
-    keymap('n', '<lsp>f', lsp.buf.formatting, keymap_options)
+    keymap('n', '<lsp>f', lsp.buf.format, keymap_options)
     keymap('n', '<lsp>i', lsp.buf.implementation, keymap_options)
     keymap('n', '<lsp>d', '<Cmd>Lspsaga peek_definition<CR>', keymap_options)
     keymap('n', '<lsp>D', lsp.buf.declaration, keymap_options)
@@ -87,12 +87,6 @@ mason_lspconfig.setup_handlers({ function(server_name)
     keymap('n', '[d', '<Cmd>Lspsaga diagnostic_jump_prev<CR>', keymap_options)
     keymap('n', ']d', '<Cmd>Lspsaga diagnostic_jump_next<CR>', keymap_options)
   end
-
-  lsp.handlers['textDocument/publishDiagnostics'] = lsp.with(
-    lsp.diagnostic.on_publish_diagnostics, {
-    virtual_text = false,
-  })
-
 
   local capabilities = lsp.protocol.make_client_capabilities()
   capabilities.textDocument.completion.completionItem.snippetSupport = true
