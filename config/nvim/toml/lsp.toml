@@ -98,18 +98,6 @@ end })
 
 # }}}
 
-## Language server support plugins {{{
-[[plugins]]
-repo = 'tsuyoshicho/vim-efm-langserver-settings'
-
-[[plugins]]
-repo = 'folke/neodev.nvim'
-lua_source = '''
-require("neodev").setup({})
-'''
-
-# }}}
-
 ## LSP extends plugins {{{
 [[plugins]]
 repo = 'glepnir/lspsaga.nvim'
@@ -141,6 +129,18 @@ require('fidget').setup({
     relative = 'editor',
   },
 })
+'''
+
+# }}}
+
+## Language server support plugins {{{
+[[plugins]]
+repo = 'tsuyoshicho/vim-efm-langserver-settings'
+
+[[plugins]]
+repo = 'folke/neodev.nvim'
+lua_source = '''
+require("neodev").setup({})
 '''
 
 # }}}
