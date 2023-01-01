@@ -30,14 +30,9 @@ noremap! <Left>   <Nop>
 noremap! <Down>   <Nop>
 noremap! <Up>     <Nop>
 noremap! <Right>  <Nop>
-" }}}
 
-" Window control keybind {{{
-" overwrites window command of 'CTRL-W'.
 " Use prefix <Window>.
 nnoremap <C-W> <Nop>
-nnoremap <Window> <Nop>
-nmap <Space>w <Window>
 
 " }}}
 
@@ -74,13 +69,6 @@ nnoremap <Window>o <C-W>o
 nnoremap <Window>s <C-W>s
 nnoremap <Window>v <C-W>v
 nnoremap <Window>n <C-W>n
-
-" Window size controls.
-"nnoremap <Window>+ <C-W>+
-"nnoremap <Window>- <C-W>-
-"nnoremap <Window>= <C-W>=
-"nnoremap <Window>< <C-W><
-"nnoremap <Window>> <C-W>>
 
 " Another window size controls.
 nnoremap <S-Left>  <C-w><<CR>
