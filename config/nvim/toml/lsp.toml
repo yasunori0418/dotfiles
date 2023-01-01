@@ -22,7 +22,7 @@ mason.setup({
 
 [[plugins]]
 repo = 'williamboman/mason-lspconfig.nvim'
-on_ft = [ 'lua', 'php', 'python' ]
+on_ft = [ 'lua', 'php', 'python', 'toml' ]
 depends = ['nvim-lspconfig', 'mason.nvim', 'lspsaga.nvim']
 lua_source = '''
 local mason_lspconfig = require('mason-lspconfig')
