@@ -34,7 +34,7 @@ noremap! <Right>  <Nop>
 
 " Window control keybind {{{
 " overwrites window command of 'CTRL-W'.
-" Use prefix [Window].
+" Use prefix <Window>.
 nnoremap <C-W> <Nop>
 nnoremap <Window> <Nop>
 nmap <Space>w <Window>
