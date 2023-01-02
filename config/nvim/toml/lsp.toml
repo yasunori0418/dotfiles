@@ -43,7 +43,7 @@ require("plugins.lsp.config")
 [[plugins]]
 repo = 'glepnir/lspsaga.nvim'
 lua_source = '''
-require("plugins.lspsaga")
+require("plugins.lsp.lspsaga")
 '''
 
 [[plugins]]
@@ -64,7 +64,7 @@ call signature_help#enable()
 repo = 'j-hui/fidget.nvim'
 on_source = 'nvim-lspconfig'
 lua_source = '''
-require('plugins.fidget')
+require('plugins.lsp.fidget')
 '''
 
 # }}}
