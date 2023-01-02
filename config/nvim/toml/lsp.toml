@@ -2,7 +2,7 @@
 ## Builtin lsp core plugins {{{
 [[plugins]]
 repo = 'neovim/nvim-lspconfig'
-depends = [ 'neodev.nvim' ]
+depends = ['neodev.nvim']
 
 [[plugins]]
 repo = 'williamboman/mason.nvim'
@@ -22,7 +22,7 @@ mason.setup({
 
 [[plugins]]
 repo = 'williamboman/mason-lspconfig.nvim'
-on_ft = [ 'lua', 'php', 'python', 'toml', 'markdown' ]
+on_ft = ['lua', 'php', 'python', 'toml', 'markdown']
 depends = ['nvim-lspconfig', 'mason.nvim', 'lspsaga.nvim']
 lua_source = '''
 local mason_lspconfig = require('mason-lspconfig')
@@ -119,15 +119,15 @@ repo = 'nvim-lua/plenary.nvim'
 
 [[plugins]]
 repo = 'jose-elias-alvarez/null-ls.nvim'
-depends = [ 'nvim-lspconfig', 'plenary.nvim' ]
+depends = ['nvim-lspconfig', 'plenary.nvim']
 lua_source = '''
 require("plugins.null_ls")
 '''
 
 [[plugins]]
 repo = 'jay-babu/mason-null-ls.nvim'
-depends = [ 'mason.nvim', 'null-ls.nvim' ]
-on_ft = [ 'lua', 'markdown' ]
+depends = ['mason.nvim', 'null-ls.nvim']
+on_ft = ['lua', 'markdown']
 lua_source = '''
 require('plugins.mason.null_ls')
 '''
