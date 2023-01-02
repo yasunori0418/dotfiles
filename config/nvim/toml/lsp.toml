@@ -50,8 +50,6 @@ mason_lspconfig.setup_handlers({ function(server_name)
       buffer = bufnr,
     }
 
-    print(client.name)
-
     -- About <lsp> prefix ~/dotfiles/config/nvim/rc/keybinds.vim:89
     keymap('n', '<lsp>k', '<Cmd>Lspsaga hover_doc<CR>', keymap_options)
     keymap('n', '<lsp>K', '<Cmd>Lspsaga lsp_finder<CR>', keymap_options)
