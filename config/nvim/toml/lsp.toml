@@ -36,6 +36,7 @@ mason_lspconfig.setup({
     'sumneko_lua',
     'intelephense',
     'pyright',
+    'taplo',
   },
   automatic_installation = true,
 })
@@ -47,7 +48,7 @@ mason_lspconfig.setup_handlers({ function(server_name)
     local keymap_options = {
       noremap = true,
       --silent = true,
-      buffer = bufnr,
+      --buffer = bufnr,
     }
 
     -- About <lsp> prefix ~/dotfiles/config/nvim/rc/keybinds.vim:89
@@ -128,15 +129,7 @@ repo = 'jay-babu/mason-null-ls.nvim'
 depends = [ 'mason.nvim', 'null-ls.nvim' ]
 on_ft = [ 'lua', 'markdown' ]
 lua_source = '''
-require('mason-null-ls').setup({
-  ensure_installed = nil,
-  automatic_installation = {
-    exclude = {
-      'textlint',
-    },
-  },
-  automatic_setup = false,
-})
+require('plugins.mason.null_ls')
 '''
 
 # }}}
