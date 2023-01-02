@@ -160,11 +160,7 @@ build = 'make'
 repo = 'rcarriga/nvim-notify'
 on_source = 'nightfox.nvim'
 lua_source = '''
-require('notify').setup({
-  stages = 'slide',
- background_color = 'NormalFloat',
-})
-vim.notify = require('notify')
+require('plugins.notify')
 '''
 
 [[plugins]]
