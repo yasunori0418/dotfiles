@@ -48,26 +48,10 @@ return {
 
   --font = wezterm.font('Cica'),
   font = wezterm.font_with_fallback({
-    {
-      family = 'HackGen35 Console NF',
-      weight = 'Regular',
-      style = 'Normal',
-    },
-    {
-      family = 'HackGen35 Console NF',
-      weight = 'Bold',
-      style = 'Normal',
-    },
-    {
-      family = 'Cica',
-      weight = 'Regular',
-      style = 'Italic',
-    },
-    {
-      family = 'Cica',
-      weight = 'Bold',
-      style = 'Italic',
-    },
+    { family = 'HackGen35 Console NF', weight = 'Regular',  style = 'Normal', },
+    { family = 'HackGen35 Console NF', weight = 'Bold',     style = 'Normal', },
+    { family = 'Cica',                 weight = 'Regular',  style = 'Italic', },
+    { family = 'Cica',                 weight = 'Bold',     style = 'Italic', },
   }),
   font_size = 12.0, -- フォントサイズは偶数でないと変になる。
   -- Must setting when tile window manager.
