@@ -34,7 +34,7 @@ nnoremap ]d <Cmd>Lspsaga diagnostic_jump_next<CR>
 " }}}
 '''
 lua_source = '''
-require("plugins.mason.lspconfig")
+require("plugins.lsp.config")
 '''
 
 # }}}
