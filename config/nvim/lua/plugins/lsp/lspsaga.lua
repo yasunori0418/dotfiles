@@ -10,7 +10,7 @@ require('lspsaga').init_lsp_saga({
   rename_action_quit = '<ESC>',
   rename_in_select = false,
   show_outline = {
-    win_with = 'defx',
     win_width = 40,
-  }
+    auto_preview = false,
+  },
 })
