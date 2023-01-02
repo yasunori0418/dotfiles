@@ -10,6 +10,8 @@ local sources = {
   code_actions.gitsigns,
   completion.vsnip,
   formatting.stylua,
+  formatting.taplo,
+  diagnostics.vint,
   diagnostics.textlint.with({
     condition = function()
       return vim.fn.executable('textlint') > 0
