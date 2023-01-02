@@ -7,7 +7,7 @@ depends = 'neodev.nvim'
 [[plugins]]
 repo = 'williamboman/mason.nvim'
 lua_source = '''
-require('plugins.mason.core')
+require('plugins.lsp.mason')
 '''
 
 [[plugins]]
