@@ -262,25 +262,10 @@ repo = 'itchyny/vim-cursorword'
 on_source = 'nightfox.nvim'
 
 [[plugins]]
-repo = 'nathanaelkane/vim-indent-guides'
+repo = 'lukas-reineke/indent-blankline.nvim'
 on_source = 'nightfox.nvim'
-hook_source = '''
-let g:indent_guides_default_mapping = 0
-let g:indent_guides_exclude_filetypes = [
-  \ 'help',
-  \ 'ddu-ff-filter',
-  \ 'ddu-ff',
-  \ 'ddu-filer',
-  \ 'deol',
-  \ 'mason',
-  \ 'lspinfo',
-  \ 'lspsagaoutline',
-  \ 'null-ls-info',
-  \ 'gitter',
-  \ ]
-'''
-hook_post_source = '''
-IndentGuidesEnable
+lua_source = '''
+require("plugins.indent-blankline")
 '''
 
 [[plugins]]
