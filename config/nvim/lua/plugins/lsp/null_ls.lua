@@ -17,7 +17,7 @@ local sources = {
       return vim.fn.executable('textlint') > 0
     end,
     filetypes = { 'markdown' },
-    prefer_local = "node_modules/.bin",
+    prefer_local = 'node_modules/.bin',
   }),
 }
 
