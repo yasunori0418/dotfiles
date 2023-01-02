@@ -59,7 +59,7 @@ repo = 'nvim-lua/plenary.nvim'
 repo = 'jose-elias-alvarez/null-ls.nvim'
 depends = ['nvim-lspconfig', 'plenary.nvim']
 lua_source = '''
-require("plugins.null_ls")
+require("plugins.lsp.null_ls")
 '''
 
 [[plugins]]
