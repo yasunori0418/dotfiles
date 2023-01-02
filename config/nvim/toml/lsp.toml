@@ -12,19 +12,8 @@ require('plugins.mason.core')
 
 [[plugins]]
 repo = 'williamboman/mason-lspconfig.nvim'
-depends = [
-  'nvim-lspconfig',
-  'mason.nvim',
-  'lspsaga.nvim'
-]
-on_ft = [
-  'lua',
-  'php',
-  'python',
-  'toml',
-  'markdown',
-  'vim'
-]
+depends = ['nvim-lspconfig', 'mason.nvim', 'lspsaga.nvim']
+on_ft = ['lua', 'php', 'python', 'toml', 'markdown', 'vim']
 hook_add = '''
 " LSP keybinds {{{
 nnoremap <lsp>k <Cmd>Lspsaga hover_doc<CR>
