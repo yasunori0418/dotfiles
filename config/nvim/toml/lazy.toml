@@ -283,6 +283,13 @@ lua_source = '''
 require('plugins.comment')
 '''
 
+[[plugins]] # vim-themis
+repo = 'thinca/vim-themis'
+on_cmd = 'StartThemis'
+hook_add = '''
+command! StartThemis call dein#source('vim-themis')
+'''
+
 [[Label]] # Git plugins
 [[plugins]] # vim-gitbranch
 repo = 'itchyny/vim-gitbranch'
