@@ -1,4 +1,5 @@
 # Lazy load plugins
+[[Label]] # Colorscheme
 [[plugins]] # nvim-treesitter
 repo = 'nvim-treesitter/nvim-treesitter'
 on_event = 'BufRead'
@@ -107,6 +108,7 @@ command! -bar LightlineUpdate call lightline#init()| call lightline#colorscheme(
 '''
 
 
+[[Label]] # Editor support plugins
 [[plugins]] # context_filetype.vim
 repo = 'Shougo/context_filetype.vim'
 hook_source = '''
@@ -186,6 +188,7 @@ let g:deol#custom_map = {
 let g:deol#floating_border = 'double'
 '''
 
+[[Label]] # Coding support plugins
 [[plugins]] # lexima.vim
 repo = 'cohama/lexima.vim'
 on_event = 'InsertEnter'
@@ -262,7 +265,7 @@ hook_source = '''
 let g:partedit#opener = 'vsplit'
 '''
 
-[[plugins]]
+[[plugins]] # Comment.nvim
 repo = 'numToStr/Comment.nvim'
 depends = 'nvim-treesitter'
 on_map = {nox = '<Plug>(comment_toggle_'}
@@ -280,6 +283,7 @@ lua_source = '''
 require('plugins.comment')
 '''
 
+[[Label]] # Git plugins
 [[plugins]] # vim-gitbranch
 repo = 'itchyny/vim-gitbranch'
 
@@ -409,6 +413,7 @@ call gina#custom#command#option('blame', '--opener', 'tabedit')
 call gina#custom#command#option('patch', '--oneside')
 '''
 
+[[Label]] # denops plugins
 [[plugins]] # denops.vim
 repo = 'vim-denops/denops.vim'
 hook_add = '''
@@ -488,6 +493,7 @@ command! OpenReadingVimrc edit gitter://room/vim-jp/reading-vimrc
 command! OpenGitterRoomList edit gitter://rooms
 '''
 
+[[Label]] # Filetype plugins
 [[plugins]] # emmet-vim
 repo = 'mattn/emmet-vim'
 on_ft = ['html', 'css', 'scss', 'php']
