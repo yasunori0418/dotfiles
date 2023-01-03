@@ -1,6 +1,5 @@
 
-## ddu core plugins {{{
-[[plugins]]
+[[plugins]] # ddu.vim
 repo = 'Shougo/ddu.vim'
 depends = 'denops.vim'
 on_func = 'ddu#start()'
@@ -13,7 +12,7 @@ function! Search_repo_root() abort
   return repo_root
 endfunction
 
-" fuzzy finder start keybinds {{{
+" fuzzy finder start keybinds
 nnoremap <ff> <Nop>
 nmap <Space>d <ff>
 
@@ -46,9 +45,8 @@ nnoremap <ff>s <Cmd>call ddu#start({
   \ })<CR>
 
 nnoremap <ff>m <Cmd>call ddu#start({'name': 'mark_list-ff'})<CR>
-" }}}
 
-" filer start keybins {{{
+" filer start keybins
 nnoremap <filer> <Nop>
 nmap <Space>f <filer>
 nnoremap <filer>r <Cmd>call ddu#start({
@@ -65,10 +63,9 @@ nnoremap <filer>a <Cmd>call ddu#start({
   \ })<CR>
 nnoremap <filer>d <Cmd>call ddu#start({'name': 'dotfiles-filer'})<CR>
 nnoremap <filer>h <Cmd>call ddu#start({'name': 'home-filer'})<CR>
-" }}}
 '''
 hook_source = '''
-" Global option and param {{{
+" Global option and param
 call ddu#custom#patch_global({
   \ 'uiOptions': {
     \ 'filer': {
@@ -153,9 +150,7 @@ call ddu#custom#patch_global({
     \ },
   \ })
 
-" }}}
-
-" UI:ff presets {{{
+" UI:ff presets
 call ddu#custom#patch_local('current-ff', {
   \ 'ui': 'ff',
   \ 'uiParams': {
@@ -238,9 +233,7 @@ call ddu#custom#patch_local('register-ff', {
   \ 'sources': [{'name': 'register'}],
   \ })
 
-" }}}
-
-" UI:filer presets {{{
+" UI:filer presets
 
 call ddu#custom#patch_local('current-filer', {
   \ 'ui': 'filer',
@@ -271,23 +264,16 @@ call ddu#custom#patch_local('home-filer', {
       \ },
     \ },
   \ })
-" }}}
-
 '''
 
-## }}}
-
-## ddu ui plugins {{{
-
-[[plugins]]
+[[plugins]] # ddu-ui-ff
 repo = 'Shougo/ddu-ui-ff'
 on_source = 'ddu.vim'
-[plugins.ftplugin]
+[plugins.ftplugin] # ddu-ui-ff keybinds
 ddu-ff = '''
-" Open file keybinds. {{{
+" Open file keybinds.
 nnoremap <buffer><silent> <CR>
   \ <Cmd>call ddu#ui#ff#do_action('itemAction')<CR>
-
 nnoremap <buffer> o
   \ <Cmd>call ddu#ui#ff#do_action('itemAction', {'name': 'open', 'params': {'command': 'drop'}})<CR>
 
@@ -307,14 +293,13 @@ nnoremap <buffer> t
   \ {'name': 'open', 'params': {'command': 'tabedit'}})<CR>
 " }}}
 
-" Multiple selection. {{{
+" Multiple selection.
 nnoremap <buffer> <Space>
   \ <Cmd>call ddu#ui#ff#do_action('toggleSelectItem')<CR>
 nnoremap <buffer> *
   \ <Cmd>cal ddu#ui#ff#do_action('toggleAllItems')<CR>
-" }}}
 
-" fuzzy finder controll keybinds {{{
+" fuzzy finder controll keybinds
 " Open selection menu.
 nnoremap <buffer> a
   \ <Cmd>call ddu#ui#ff#do_action('chooseAction')<CR>
@@ -343,19 +328,17 @@ nnoremap <buffer><expr> j
 nnoremap <buffer><expr> k
   \ line('.') == 1 ?
   \ 'G' : 'k'
-" }}}
 '''
 ddu-ff-filter = '''
-" fuzzy finder filter keybinds on insert mode {{{
+" fuzzy finder filter keybinds on insert mode
 inoremap <buffer> <CR>
   \ <Esc><Cmd>close<CR>
 inoremap <buffer> jj
   \ <Esc><Cmd>close<CR>
 inoremap <buffer> <Esc>
   \ <Esc><Cmd>close<CR>
-" }}}
 
-" fuzzy finder filter keybinds on normal mode {{{
+" fuzzy finder filter keybinds on normal mode
 nnoremap <buffer> <CR>
   \ <Cmd>close<CR>
 nnoremap <buffer> q
@@ -364,15 +347,14 @@ nnoremap <buffer> jj
   \ <Cmd>close<CR>
 nnoremap <buffer> <Esc>
   \ <Esc><Cmd>close<CR>
-" }}}
 '''
 
-[[plugins]]
+[[plugins]] # ddu-ui-filer
 repo = 'Shougo/ddu-ui-filer'
 on_source = 'ddu.vim'
-[plugins.ftplugin]
+[plugins.ftplugin] # ddu-ui-filer keybinds
 ddu-filer = '''
-" Open of file or directory. {{{
+" Open of file or directory.
 " Open file or expand directory when directory.
 " Directory is expanded in tree type.
 " If you select a file that is already open, go to the open screen.
@@ -392,9 +374,8 @@ nnoremap <buffer> s
 " Open file with another tab window.
 nnoremap <buffer> t
   \ <Cmd>call ddu#ui#filer#do_action('itemAction', {'name': 'open', 'params': {'command': 'tabedit'}})<CR>
-" }}}
 
-" Operation of file or directory {{{
+" Operation of file or directory
 " Copy file or directory.
 nnoremap <buffer> C
   \ <Cmd>call ddu#ui#filer#multi_actions([
@@ -428,9 +409,8 @@ nnoremap <buffer> [delete]D
 " make new file or directory.
 nnoremap <buffer> N
   \ <Cmd>call ddu#ui#filer#do_action('itemAction', {'name': 'newFile'})<CR>
-" }}}
 
-" Path operation in filer. {{{
+" Path operation in filer.
 " Yank path the file or directory.
 nnoremap <buffer> y
   \ <Cmd>call ddu#ui#filer#do_action('itemAction', {'name': 'yank'})<CR>
@@ -460,9 +440,7 @@ nnoremap <buffer> I
 nnoremap <buffer> ~
   \ <Cmd>call ddu#ui#filer#do_action('itemAction', {'name': 'narrow', 'params': {'path': expand('~')}})<CR>
 
-" }}}
-
-" Other filer keybinds... {{{
+" Other filer keybinds...
 " select file action.
 nnoremap <buffer> a
   \ <Cmd>call ddu#ui#filer#do_action('chooseAction')<CR>
@@ -510,10 +488,8 @@ nnoremap <silent><buffer><expr> k
   \ line('.') == 2 ?
   \ 'G' : 'k'
 
-" }}}
-
-" UI:filer functions of custom keybind. {{{
-" Moving directory paths. {{{
+" UI:filer functions of custom keybind.
+" Moving directory paths.
 
 let g:ddu_ui_filer_prev_dirs = {}
 function! Filer_parent_dir() abort
@@ -586,7 +562,6 @@ function! Filer_input_dir() abort
   let input_dir = fnamemodify(input('New cwd: ', b:ddu_ui_filer_path, 'dir'), ':p')
   call ddu#ui#filer#do_action('itemAction', {'name': 'narrow', 'params': {'path': input_dir}})
 endfunction
-" }}}
 
 " Toggle show hidden file.
 function! ToggleHidden(name)
@@ -597,40 +572,30 @@ function! ToggleHidden(name)
   return empty(matchers) ? ['matcher_hidden'] : []
 endfunction
 
-" }}}
-
 autocmd TabEnter,CursorHold,FocusGained <buffer> call ddu#ui#filer#do_action('checkItems')
 '''
 
-## }}}
-
-## ddu-kind {{{
-
-[[plugins]]
+[[plugins]] # ddu-kind-file
 repo = 'Shougo/ddu-kind-file'
 on_source = 'ddu.vim'
 
-[[plugins]]
+[[plugins]] # ddu-kind-word
 repo = 'Shougo/ddu-kind-word'
 on_source = 'ddu.vim'
 
-## }}}
-
-## ddu-source {{{
-
-[[plugins]]
+[[plugins]] # ddu-source-file
 repo = 'Shougo/ddu-source-file'
 on_source = 'ddu.vim'
 
-[[plugins]]
+[[plugins]] # ddu-source-file_rec
 repo = 'Shougo/ddu-source-file_rec'
 on_source = 'ddu.vim'
 
-[[plugins]]
+[[plugins]] # ddu-source-help
 repo = 'matsui54/ddu-source-help'
 on_source = 'ddu.vim'
 
-[[plugins]]
+[[plugins]] # vim-readme-viewer
 repo = '4513ECHO/vim-readme-viewer'
 on_cmd = 'ReadmeOpen'
 on_source = 'ddu.vim'
@@ -638,44 +603,34 @@ hook_add = '''
 let g:readme_viewer#plugin_manager = 'dein.vim'
 '''
 
-[[plugins]]
+[[plugins]] # ddu-source-buffer
 repo = 'shun/ddu-source-buffer'
 on_source = 'ddu.vim'
 
-[[plugins]]
+[[plugins]] # ddu-source-action
 repo = 'Shougo/ddu-source-action'
 on_source = 'ddu.vim'
 
-[[plugins]]
+[[plugins]] # ddu-source-register
 repo = 'Shougo/ddu-source-register'
 on_source = 'ddu.vim'
 
-[[plugins]]
+[[plugins]] # ddu-source-rg
 repo = 'shun/ddu-source-rg'
 on_source = 'ddu.vim'
 
-## }}}
-
-## ddu-filter {{{
-
-[[plugins]]
+[[plugins]] # ddu-filter-matcher_substring
 repo = 'Shougo/ddu-filter-matcher_substring'
 on_source = 'ddu.vim'
 
-[[plugins]]
+[[plugins]] # ddu-filter-matcher_hidden
 repo = 'Shougo/ddu-filter-matcher_hidden'
 on_source = 'ddu.vim'
 
-[[plugins]]
+[[plugins]] # ddu-filter-matcher_relative
 repo = 'Shougo/ddu-filter-matcher_relative'
 on_source = 'ddu.vim'
 
-## }}}
-
-## ddu-column {{{
-
-[[plugins]]
+[[plugins]] # ddu-column-icon_filename
 repo = 'ryota2357/ddu-column-icon_filename'
 on_source = 'ddu.vim'
-
-# }}}
