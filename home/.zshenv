@@ -48,6 +48,12 @@ if [[ -d ${HOME}/.deno ]]; then
   export PATH="${PATH}:${HOME}/.deno/bin"
 fi
 
+# themis environment
+themis_path=${HOME}/.cache/dein/repos/github.com/thinca/vim-themis/bin
+if [[ -d ${themis_path} ]]; then
+  export PATH="${PATH}:${themis_path}"
+fi
+
 # Guix package manager
 #export GUIX_LOCPATH="$HOME/.guix-profile/lib/locale"
 #export GUIX_PROFILE="$HOME/.guix-profile"
