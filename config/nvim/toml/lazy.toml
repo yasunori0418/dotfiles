@@ -1,4 +1,3 @@
-
 [[plugins]] # nvim-treesitter
 repo = 'nvim-treesitter/nvim-treesitter'
 on_event = 'BufRead'
@@ -118,7 +117,6 @@ let g:context_filetype#ignore_patterns = {
 [[plugins]] # vimproc.vim
 repo = 'Shougo/vimproc.vim'
 build = 'make'
-
 [[plugins]] # nvim-notify
 repo = 'rcarriga/nvim-notify'
 on_source = 'nightfox.nvim'
@@ -273,7 +271,7 @@ lua_source = '''
 local gitsigns = require('gitsigns')
 
 gitsigns.setup ({
-  signs = { -- {{{
+  signs = {
     add = {
       hl = 'GitSignsAdd',
       text = '+',
@@ -344,9 +342,7 @@ gitsigns.setup ({
   yadm = {
     enable = false
   },
-  -- }}}
 
-  -- keybinds {{{
   on_attach = function(bufnr)
     local keymap = vim.keymap.set
     local keymap_options = { noremap = true, buffer = bufnr, expr = true }
@@ -394,15 +390,11 @@ call gina#custom#command#option('blame', '--opener', 'tabedit')
 call gina#custom#command#option('patch', '--oneside')
 '''
 
-# }}}
-
-# denops plugins {{{
 [[plugins]] # denops.vim
 repo = 'vim-denops/denops.vim'
 hook_add = '''
 let g:denops_server_addr = '127.0.0.1:32123'
 '''
-
 [[plugins]] # skkeleton
 repo = 'vim-skk/skkeleton'
 depends = 'denops.vim'
@@ -477,11 +469,6 @@ command! OpenReadingVimrc edit gitter://room/vim-jp/reading-vimrc
 command! OpenGitterRoomList edit gitter://rooms
 '''
 
-# }}}
-
-# filetype plugins {{{
-
-# emmet settings {{{
 [[plugins]] # emmet-vim
 repo = 'mattn/emmet-vim'
 on_ft = ['html', 'css', 'scss', 'php']
@@ -520,7 +507,6 @@ let g:user_emmet_settings = {
       \ }
   \ }
 '''
-# }}}
 
 [[plugins]] # vim-json
 repo = 'elzr/vim-json'
