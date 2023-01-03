@@ -1,25 +1,21 @@
-[[plugins]] # Dark power plugin manager
+
+[[plugins]] # dein.vim
 repo = 'Shougo/dein.vim'
-
-# [[plugins]] # Color scheme for editor
-# repo = 'cocopon/iceberg.vim'
-
-[[plugins]] # Japanese localization of help
+[[plugins]] # vimdoc-ja
 repo = 'vim-jp/vimdoc-ja'
-
-[[plugins]]
+[[plugins]] # learn-vimscript
 repo = 'mattn/learn-vimscript'
 
-[[plugins]]
+[[plugins]] # filetype.nvim
 repo = 'nathom/filetype.nvim'
 
-[[plugins]]
+[[plugins]] # impatient.nvim
 repo = 'lewis6991/impatient.nvim'
 lua_add = '''
 require('impatient').enable_profile()
 '''
 
-[[plugins]]
+[[plugins]] # cellwidths.nvim (disable)
 repo = 'delphinus/cellwidths.nvim'
 if = 0
 lua_add = '''
