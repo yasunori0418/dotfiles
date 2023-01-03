@@ -1,14 +1,18 @@
 
-# Color scheme {{{
-[[plugins]]
+[[plugins]] # nvim-treesitter
 repo = 'nvim-treesitter/nvim-treesitter'
 on_event = 'BufRead'
 hook_post_update = 'TSUpdate'
 lua_source = '''
 require("plugins.treesitter")
 '''
+hook_source = '''
+set foldmethod=expr
+set foldexpr=nvim_treesitter#foldexpr()
+"set nofoldenable
+'''
 
-[[plugins]]
+[[plugins]] # treesitter playground
 repo = 'nvim-treesitter/playground'
 depends = 'nvim-treesitter'
 on_cmd = 'TSPlaygroundToggle'
@@ -16,7 +20,7 @@ lua_source = '''
 require("plugins.playground")
 '''
 
-[[plugins]]
+[[plugins]] # nightfox.nvim
 repo = 'EdenEast/nightfox.nvim'
 depends = ['nvim-treesitter']
 on_event = 'VimEnter'
@@ -27,11 +31,7 @@ lua_post_source = '''
 require('plugins.nightfox').compile()
 '''
 
-# }}}
-
-# lightline {{{
-
-[[plugins]] # Modern and light status line.
+[[plugins]] # lightline.vim
 repo = 'itchyny/lightline.vim'
 #on_event = ['InsertEnter', 'CmdlineEnter']
 on_event = ['VimEnter']
@@ -41,15 +41,7 @@ set noshowmode
 set showtabline=2
 set laststatus=3
 let g:lightline = {}
-
-" Colorscheme{{{
-
 let g:lightline.colorscheme = 'nordfox'
-
-" }}}
-
-" Statusline{{{
-
 " active
 let g:lightline.active = {}
 let g:lightline.active.left = [
@@ -71,10 +63,6 @@ let g:lightline.inactive.right = [
   \ ['percent'],
   \ ]
 
-" }}}
-
-" Tabline{{{
-
 let g:lightline.tabline = {}
 let g:lightline.tabline.left = [
   \ ['tabs'],
@@ -87,10 +75,6 @@ let g:lightline.tab = {}
 let g:lightline.tab.active = ['tabnum', 'filename', 'modified']
 let g:lightline.tab.inactive = ['tabnum', 'filename']
 
-" }}}
-
-" Separator{{{
-
 let g:lightline.separator = {
   \ 'left': '',
   \ 'right': '',
@@ -100,19 +84,11 @@ let g:lightline.subseparator = {
   \ 'right': ' ',
   \ }
 
-" }}}
-
-" Component_function{{{
-
 let g:lightline.component_function = {
   \ 'git_branch': 'vimrc#lightline_git_branch',
   \ 'mode': 'vimrc#lightline_custom_mode',
   \ 'skk_mode': 'lightline_skk#mode',
   \ }
-
-" }}}
-
-" Component_expand{{{
 
 let g:lightline.component_expand = {
   \ 'lsp_ok': 'lightline_lsp#ok',
@@ -120,31 +96,18 @@ let g:lightline.component_expand = {
   \ 'lsp_warnings': 'lightline_lsp#warnings',
   \ }
 
-" }}}
-
-" Component_expand_type{{{
-
 let g:lightline.component_expand_type = {
   \ 'lsp_ok': 'middle',
   \ 'lsp_errors': 'error',
   \ 'lsp_warnings': 'warning',
   \ }
 
-" }}}
-
-" LightlineUpdate_Command{{{
-
 command! -bar LightlineUpdate call lightline#init()| call lightline#colorscheme()| call lightline#update()
-
-" }}}
 
 '''
 
-# }}}
 
-# Editor support plugins {{{
-
-[[plugins]]
+[[plugins]] # context_filetype.vim
 repo = 'Shougo/context_filetype.vim'
 hook_source = '''
 let g:context_filetype#ignore_patterns = {
@@ -152,37 +115,34 @@ let g:context_filetype#ignore_patterns = {
   \ }
 '''
 
-[[plugins]]
+[[plugins]] # vimproc.vim
 repo = 'Shougo/vimproc.vim'
 build = 'make'
 
-[[plugins]]
+[[plugins]] # nvim-notify
 repo = 'rcarriga/nvim-notify'
 on_source = 'nightfox.nvim'
 lua_source = '''
 require('plugins.notify')
 '''
 
-[[plugins]]
+[[plugins]] # suda.vim
 repo = 'lambdalisue/suda.vim'
 on_cmd = ['SudaRead', 'SudaWrite']
 
-[[plugins]]
+[[plugins]] # vim-quickrun
 repo = 'thinca/vim-quickrun'
 on_cmd = 'QuickRun'
 
-[[plugins]]
+[[plugins]] # helpful.vim
 repo = 'tweekmonster/helpful.vim'
 on_cmd = 'HelpfulVersion'
 
-[[plugins]]
+[[plugins]] # bracey.vim
 repo = 'turbio/bracey.vim'
 on_cmd = 'Bracey'
 
-# }}}
-
-# Deol {{{
-[[plugins]]
+[[plugins]] # deol.nvim
 repo = 'Shougo/deol.nvim'
 on_cmd = 'Deol'
 hook_add = '''
@@ -227,18 +187,14 @@ let g:deol#custom_map = {
 let g:deol#floating_border = 'double'
 '''
 
-# }}}
-
-# Coding support plugins {{{
-
-[[plugins]]
+[[plugins]] # lexima.vim
 repo = 'cohama/lexima.vim'
 on_event = 'InsertEnter'
 hook_add = '''
 let g:lexima_ctrlh_as_backspace = 1
 '''
 
-[[plugins]]
+[[plugins]] # vim-eft
 repo = 'hrsh7th/vim-eft'
 on_map = { nxo = '<Plug>(eft-' }
 hook_add = '''
@@ -253,25 +209,25 @@ hook_source = '''
 let g:eft_ignorecase = v:true
 '''
 
-[[plugins]]
+[[plugins]] # vim-cursorword
 repo = 'itchyny/vim-cursorword'
 on_source = 'nightfox.nvim'
 
-[[plugins]]
+[[plugins]] # indent-blankline.nvim
 repo = 'lukas-reineke/indent-blankline.nvim'
 on_source = 'nightfox.nvim'
 lua_source = '''
 require("plugins.indent-blankline")
 '''
 
-[[plugins]]
+[[plugins]] # matchparen.nvim
 repo = 'monkoose/matchparen.nvim'
 on_source = 'nightfox.nvim'
 lua_source = '''
 require('matchparen').setup()
 '''
 
-[[plugins]]
+[[plugins]] # vim-sandwich
 repo = 'machakann/vim-sandwich'
 on_map = { nxo = '<Plug>(sandwich-'}
 hook_add = '''
@@ -293,7 +249,7 @@ xmap sr <Plug>(sandwich-replace)
 nmap srb <Plug>(sandwich-replace-auto)
 '''
 
-[[plugins]]
+[[plugins]] # vim-partedit
 repo = 'thinca/vim-partedit'
 depends = 'context_filetype.vim'
 on_func = 'partedit#start()'
@@ -307,14 +263,11 @@ hook_source = '''
 let g:partedit#opener = 'vsplit'
 '''
 
-# }}}
-
-# Git plugins {{{
-[[plugins]]
+[[plugins]] # vim-gitbranch
 repo = 'itchyny/vim-gitbranch'
 
-[[plugins]]
-repo = 'lewis6991/gitsigns.nvim/'
+[[plugins]] # gitsigns.nvim
+repo = 'lewis6991/gitsigns.nvim'
 on_source = 'nightfox.nvim'
 lua_source = '''
 local gitsigns = require('gitsigns')
@@ -357,9 +310,8 @@ gitsigns.setup ({
       numhl='GitSignsAddNr',
       linehl='GitSignsAddLn'
     },
-  }, -- }}}
+  },
 
-  -- options {{{
   signcolumn = true,  -- Toggle with `:Gitsigns toggle_signs`
   numhl      = true, -- Toggle with `:Gitsigns toggle_numhl`
   linehl     = false, -- Toggle with `:Gitsigns toggle_linehl`
@@ -419,7 +371,7 @@ gitsigns.setup ({
 })
 '''
 
-[[plugins]]
+[[plugins]] # gina.vim
 repo = 'lambdalisue/gina.vim'
 on_cmd = 'Gina'
 hook_add = '''
@@ -445,13 +397,13 @@ call gina#custom#command#option('patch', '--oneside')
 # }}}
 
 # denops plugins {{{
-[[plugins]]
+[[plugins]] # denops.vim
 repo = 'vim-denops/denops.vim'
 hook_add = '''
 let g:denops_server_addr = '127.0.0.1:32123'
 '''
 
-[[plugins]]
+[[plugins]] # skkeleton
 repo = 'vim-skk/skkeleton'
 depends = 'denops.vim'
 on_map = {ic = '<Plug>(skkeleton-toggle)'}
@@ -470,7 +422,7 @@ augroup skkeleton_autocmds
 augroup END
 '''
 
-[[plugins]]
+[[plugins]] # lightline_skk.vim
 repo = 'yasunori-kirin0418/lightline_skk.vim'
 on_source = 'skkeleton'
 hook_source = '''
@@ -483,7 +435,7 @@ call lightline_skk#option('display', {
 \ })
 '''
 
-[[plugins]] # Translate, Japanese to English
+[[plugins]] # denops-translate.vim
 repo = 'skanehira/denops-translate.vim'
 depends = 'denops.vim'
 on_cmd = 'Translate'
@@ -492,7 +444,7 @@ nnoremap te <Cmd>Translate<CR>
 nnoremap tj <Cmd>Translate!<CR>
 '''
 
-[[plugins]]
+[[plugins]] # denops-silicon.vim
 repo = 'skanehira/denops-silicon.vim'
 depends = 'denops.vim'
 on_cmd = 'Silicon'
@@ -516,7 +468,7 @@ let g:silicon_options = {
   \ }
 '''
 
-[[plugins]]
+[[plugins]] # denops-gitter.vim
 repo = '4513ECHO/denops-gitter.vim'
 on_event = 'CmdlineEnter'
 hook_add = '''
@@ -530,7 +482,7 @@ command! OpenGitterRoomList edit gitter://rooms
 # filetype plugins {{{
 
 # emmet settings {{{
-[[plugins]]
+[[plugins]] # emmet-vim
 repo = 'mattn/emmet-vim'
 on_ft = ['html', 'css', 'scss', 'php']
 hook_add = '''
@@ -570,7 +522,7 @@ let g:user_emmet_settings = {
 '''
 # }}}
 
-[[plugins]]
+[[plugins]] # vim-json
 repo = 'elzr/vim-json'
 on_ft = 'json'
 hook_source = '''
@@ -585,17 +537,15 @@ augroup json_autocmd
 augroup END
 '''
 
-[[plugins]]
+[[plugins]] # plantuml-syntax
 repo = 'aklt/plantuml-syntax'
 on_ft = 'plantuml'
 
-# Markdown plugins {{{
-
-[[plugins]]
+[[plugins]] # vim-maketable
 repo = 'mattn/vim-maketable'
 on_ft = 'markdown'
 
-[[plugins]]
+[[plugins]] # previm
 repo = 'previm/previm'
 depends = 'open-browser.vim'
 on_ft = 'markdown'
@@ -613,7 +563,7 @@ let g:previm_custom_css_path = expand('~/dotfiles/tmp/previm_markdown.css')
 let g:previm_plantuml_imageprefix = 'http://localhost:58080/png/'
 '''
 
-[[plugins]]
+[[plugins]] # open-browser.vim
 repo = 'tyru/open-browser.vim'
 hook_add = '''
 " open-browser.vim
@@ -621,6 +571,3 @@ let g:netrw_nogx = 1 " disable netrw's gx mapping.
 nmap gx <Plug>(openbrowser-smart-search)
 vmap gx <Plug>(openbrowser-smart-search)
 '''
-# }}}
-
-# }}}

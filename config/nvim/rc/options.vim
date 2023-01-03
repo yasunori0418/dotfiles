@@ -113,9 +113,9 @@ highlight PmenuSel blend=0
 " }}}
 
 " Folding{{{
-set foldmethod=marker
-set foldlevel=0
-set foldcolumn=3
+"set foldmethod=expr
+"set foldlevel=0
+"set foldcolumn=3
 " }}}
 
 " Search{{{
