@@ -1,21 +1,20 @@
 # LSP plugins
-## Builtin lsp core plugins {{{
-[[plugins]]
+[[plugins]] # nvim-lspconfig
 repo = 'neovim/nvim-lspconfig'
 depends = 'neodev.nvim'
 
-[[plugins]]
+[[plugins]] # mason.nvim
 repo = 'williamboman/mason.nvim'
 lua_source = '''
 require('plugins.lsp.mason')
 '''
 
-[[plugins]]
+[[plugins]] # mason-lspconfig.nvim
 repo = 'williamboman/mason-lspconfig.nvim'
 depends = ['nvim-lspconfig', 'mason.nvim', 'lspsaga.nvim']
 on_ft = ['lua', 'php', 'python', 'toml', 'markdown', 'vim']
 hook_add = '''
-" LSP keybinds {{{
+" LSP keybinds
 nnoremap <lsp>k <Cmd>Lspsaga hover_doc<CR>
 nnoremap <lsp>K <Cmd>Lspsaga lsp_finder<CR>
 nnoremap <lsp>r <Cmd>Lspsaga rename<CR>
@@ -31,57 +30,49 @@ nnoremap <lsp>E <Cmd>Lspsaga show_cursor_diagnostics<CR>
 nnoremap <lsp>q <Cmd>lua vim.diagnostic.setloclist()<CR>
 nnoremap [d <Cmd>Lspsaga diagnostic_jump_prev<CR>
 nnoremap ]d <Cmd>Lspsaga diagnostic_jump_next<CR>
-" }}}
 '''
 lua_source = '''
 require("plugins.lsp.config")
 '''
 
-# }}}
-
-## LSP extends plugins {{{
-[[plugins]]
+[[plugins]] # lspsaga.nvim
 repo = 'glepnir/lspsaga.nvim'
 lua_source = '''
 require("plugins.lsp.lspsaga")
 '''
 
-[[plugins]]
+[[plugins]] # denops-popup-preview.vim
 repo = 'matsui54/denops-popup-preview.vim'
 on_source = 'nvim-lspconfig'
 hook_source = '''
 call popup_preview#enable()
 '''
 
-[[plugins]]
+[[plugins]] # denops-signature_help
 repo = 'matsui54/denops-signature_help'
 on_source = 'nvim-lspconfig'
 hook_source = '''
 call signature_help#enable()
 '''
 
-[[plugins]]
+[[plugins]] # fidget.nvim
 repo = 'j-hui/fidget.nvim'
 on_source = 'nvim-lspconfig'
 lua_source = '''
 require('plugins.lsp.fidget')
 '''
 
-# }}}
-
-## null-ls plugins {{{
-
-[[plugins]]
+[[plugins]] # plenary.nvim(null-ls depends of this plugin) 
 repo = 'nvim-lua/plenary.nvim'
 
-[[plugins]]
+[[plugins]] # null-ls.nvim
 repo = 'jose-elias-alvarez/null-ls.nvim'
 depends = 'plenary.nvim'
 lua_source = '''
 require("plugins.lsp.null_ls")
 '''
 
-[[plugins]]
+[[plugins]] # mason-null-ls.nvim
 repo = 'jay-babu/mason-null-ls.nvim'
 depends = 'null-ls.nvim'
 on_source = 'mason-lspconfig.nvim'
@@ -89,16 +80,8 @@ lua_source = '''
 require('plugins.lsp.mason_null_ls')
 '''
 
-# }}}
-
-## Language server support plugins {{{
-[[plugins]]
-repo = 'tsuyoshicho/vim-efm-langserver-settings'
-
-[[plugins]]
+[[plugins]] # neodev.nvim
 repo = 'folke/neodev.nvim'
 lua_source = '''
 require("neodev").setup({})
 '''
-
-# }}}
