@@ -24,5 +24,13 @@
       "<br>$0"
     ],
     "description": "Make br tag."
+  },
+  "check box": {
+    "scope": "markdown",
+    "prefix": "check",
+    "body": [
+      "* [${1:checked?|x,' '}] $0"
+    ],
+    "description": "Make checkbox."
   }
 }
