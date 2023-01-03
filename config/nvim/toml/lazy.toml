@@ -1,3 +1,4 @@
+# Lazy load plugins
 [[plugins]] # nvim-treesitter
 repo = 'nvim-treesitter/nvim-treesitter'
 on_event = 'BufRead'
