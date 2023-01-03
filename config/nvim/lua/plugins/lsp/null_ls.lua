@@ -13,9 +13,6 @@ local sources = {
   formatting.taplo,
   diagnostics.vint,
   diagnostics.textlint.with({
-    condition = function()
-      return vim.fn.executable('textlint') > 0
-    end,
     filetypes = { 'markdown' },
     prefer_local = 'node_modules/.bin',
   }),
