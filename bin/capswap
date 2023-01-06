@@ -1,9 +1,18 @@
 #!/usr/bin/env bash
 
+xmodmap_exists() {
+  if [[ -f ~/.Xmodmap ]]; then
+    echo 'Exists $HOME/.Xmodmap'
+  else
+    echo 'Not exists $HOME/.Xmodmap'
+  fi
+}
+
 if [[ -n $1 ]]; then
   answer=$1
 else
   echo "Swap Caps_Lock and Ctrl on your keyboard?"
+  echo "Status: `xmodmap_exists`"
   read -p "Y/n: " answer
 fi
 
