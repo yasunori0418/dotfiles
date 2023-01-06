@@ -1,5 +1,4 @@
 
-" Setting helper functions. {{{
 function! vimrc#clear_register() abort
   let regs=split('abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789/-"', '\zs')
   for r in regs
@@ -14,9 +13,7 @@ function! vimrc#read_pat(path) abort
   endif
   return [v:false, 'Can not read pat file.']
 endfunction
-" }}}
 
-" dein commands {{{
 function! vimrc#is_github_pat() abort
   let l:result_read_pat = vimrc#read_pat(g:base_dir . 'github_pat')
   if l:result_read_pat[0]
@@ -58,9 +55,7 @@ function! vimrc#dein_check_uninstall() abort
     echo 'There are no plugins to remove.'
   endif
 endfunction
-" }}}
 
-" component function. {{{
 function! vimrc#lightline_git_branch() abort
   if gitbranch#name() ==# ''
     return ''
@@ -88,11 +83,8 @@ function! vimrc#lightline_custom_mode() abort
   return lightline#mode()
 endfunction
 
-" }}}
 
-" skkeleton functions {{{
-
-" skkeleton default settings {{{
+" skkeleton default settings
 function! vimrc#skkeleton_init() abort
   call skkeleton#config({
     \ 'eggLikeNewline': v:true,
@@ -123,9 +115,8 @@ function! vimrc#skkeleton_post() abort
   " Restore sources
   call ddc#custom#set_buffer(s:prev_buffer_config)
 endfunction
-" }}}
 
-" skkeleton L2X function. {{{
+" skkeleton L2X function.
 function! vimrc#L2X_Keymap() abort
   call skkeleton#register_kanatable('rom', vimrc#L2X_table())
   call skkeleton#register_keymap('input', 'x', 'disable')
@@ -188,11 +179,9 @@ function! vimrc#L2X_table() abort
 
   return s:rom_table
 endfunction
-" }}}
 
-" }}}
 
-" ddc extra functions {{{
+" ddc extra functions
 
 " https://github.com/Shougo/shougo-s-github/blob/master/vim/rc/ddc.toml#L190-L226
 function! vimrc#commandline_pre(mode) abort
@@ -262,4 +251,11 @@ function! vimrc#ddc_change_fileter(bang_flg, filter_name) abort
   endif
 endfunction
 
-" }}}
+" vim-molder function
+function! vimrc#molder_init() abort
+  if isdirectory(expand('%:p'))
+    call dein#source('vim-molder')
+    call molder#init()
+    autocmd! vimrc_molder
+  endif
+endfunction
