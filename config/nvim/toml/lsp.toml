@@ -43,21 +43,21 @@ require("plugins.lsp.lspsaga")
 
 [[plugins]] # denops-popup-preview.vim
 repo = 'matsui54/denops-popup-preview.vim'
-on_source = 'nvim-lspconfig'
+on_event = 'LspAttach'
 hook_source = '''
 call popup_preview#enable()
 '''
 
 [[plugins]] # denops-signature_help
 repo = 'matsui54/denops-signature_help'
-on_source = 'nvim-lspconfig'
+on_event = 'LspAttach'
 hook_source = '''
 call signature_help#enable()
 '''
 
 [[plugins]] # fidget.nvim
 repo = 'j-hui/fidget.nvim'
-on_source = 'nvim-lspconfig'
+on_event = 'LspAttach'
 lua_source = '''
 require('plugins.lsp.fidget')
 '''

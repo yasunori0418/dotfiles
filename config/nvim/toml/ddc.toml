@@ -163,7 +163,7 @@ call ddc#custom#patch_filetype(['python', 'php', 'lua'], 'sources',
   \ ['nvim-lsp', 'vsnip', 'around', 'file', 'rg'],
   \ )
 
-call ddc#custom#patch_filetype(['vim'], 'sources',
+call ddc#custom#patch_filetype(['vim', 'toml'], 'sources',
   \ ['necovim', 'vsnip', 'around', 'file', 'rg'],
   \ )
 
