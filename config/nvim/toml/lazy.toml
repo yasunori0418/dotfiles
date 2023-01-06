@@ -139,7 +139,7 @@ on_cmd = 'QuickRun'
 repo = 'mattn/vim-molder'
 hook_add = '''
 augroup vimrc_molder
-  autocmd vimrc_molder BufEnter * call vimrc#molder_init()
+  autocmd BufEnter * call vimrc#molder_init()
 augroup END
 '''
 hook_source = '''
