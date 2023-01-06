@@ -16,10 +16,10 @@ let g:loaded_vimball            = v:true
 let g:loaded_vimballPlugin      = v:true
 
 " Disable netrw plugins.
-"let g:loaded_netrw              = v:true
-"let g:loaded_netrwPlugin        = v:true
-"let g:loaded_netrwSettings      = v:true
-"let g:loaded_netrwFileHandlers  = v:true
+let g:loaded_netrw              = v:true
+let g:loaded_netrwPlugin        = v:true
+let g:loaded_netrwSettings      = v:true
+let g:loaded_netrwFileHandlers  = v:true
 
 " Disable `GetLatestVimScript`.
 let g:loaded_getscript          = v:true
