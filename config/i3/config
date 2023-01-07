@@ -58,13 +58,14 @@ bindsym $mod+Shift+Return exec --no-startup-id $alacritty
 set $urxvt XMODIFIERS=urxvt start_urxvt
 bindsym $mod+Ctrl+Return exec --no-startup-id $urxvt
 
-
 # Screenshot shortcut key
 #bindsym $mod+Shift+p exec --no-startup-id scrot ~/Pictures/%Y-%m-%d-%T-scrot.png
 bindsym $mod+Print exec --no-startup-id xfce4-screenshooter -f
 bindsym $mod+Shift+Print exec --no-startup-id xfce4-screenshooter -w
 bindsym $mod+Ctrl+Print exec --no-startup-id xfce4-screenshooter -r
 
+# Multiple monitor.
+bindsym $mod+m exec --no-startup-id multi_monitor_for_laptop.sh
 
 # Rofi launch keybinds
 # Start application launcher
@@ -79,7 +80,6 @@ bindsym $mod+Shift+e exec rofi -show power -font "HackGen Console NF 14" -modi "
 bindsym $mod+c exec rofi -modi calc -show calc -no-sidebar-mode
 # start clipcat-menu insert on rofi
 bindsym $mod+p exec --no-startup-id clipmenu
-
 
 # Window controls
 # change focus
@@ -123,7 +123,6 @@ bindsym $mod+minus scratchpad show, border normal
 
 
 # Workspace
-
 # Define names for default workspaces for which we configure key bindings later on.
 # We use variables to avoid repeating the names in multiple places.
 set $ws1 "1| "
@@ -220,7 +219,6 @@ mode "Resize" {
 }
 bindsym $mod+r mode "Resize"
 
-
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
 bar {
@@ -228,7 +226,6 @@ bar {
   position top
   status_command bumblebee-status
   #status_command i3status
-
 }
 
 #######################################################################
