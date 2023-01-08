@@ -35,3 +35,6 @@ elseif vim.api.nvim_get_option('ambiwidth') == 'double' then
 end
 require('cellwidths').setup(cellwidths_conf)
 '''
+
+[[plugins]]
+repo = 'lambdalisue/mr.vim'

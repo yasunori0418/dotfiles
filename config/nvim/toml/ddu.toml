@@ -44,7 +44,8 @@ nnoremap <ff>s <Cmd>call ddu#start({
     \ }],
   \ })<CR>
 
-nnoremap <ff>m <Cmd>call ddu#start({'name': 'mark_list-ff'})<CR>
+nnoremap <ff>m <Cmd>call ddu#start({'name': 'mrr-ff'})<CR>
+nnoremap <ff>M <Cmd>call ddu#start({'name': 'mru-ff'})<CR>
 
 " filer start keybins
 nnoremap <filer> <Nop>
@@ -231,6 +232,38 @@ call ddu#custom#patch_local('home-ff', {
 call ddu#custom#patch_local('register-ff', {
   \ 'ui': 'ff',
   \ 'sources': [{'name': 'register'}],
+  \ })
+
+call ddu#custom#patch_local('mrr-ff', #{
+  \ ui: 'ff',
+  \ uiParams: #{
+    \ ff: #{
+      \ startFilter: v:true,
+      \ },
+    \ },
+  \ sources: [#{
+    \ name: 'mr',
+    \ params: #{
+      \ kind: 'mrr',
+      \ current: v:false,
+      \ },
+    \ }],
+  \ })
+
+call ddu#custom#patch_local('mru-ff', #{
+  \ ui: 'ff',
+  \ uiParams: #{
+    \ ff: #{
+      \ startFilter: v:true,
+      \ },
+    \ },
+  \ sources: [#{
+    \ name: 'mr',
+    \ params: #{
+      \ kind: 'mru',
+      \ current: v:true,
+      \ },
+    \ }],
   \ })
 
 " UI:filer presets
@@ -617,6 +650,10 @@ on_source = 'ddu.vim'
 
 [[plugins]] # ddu-source-rg
 repo = 'shun/ddu-source-rg'
+on_source = 'ddu.vim'
+
+[[plugins]] # ddu-source-mr
+repo = 'kuuote/ddu-source-mr'
 on_source = 'ddu.vim'
 
 [[plugins]] # ddu-filter-matcher_substring
