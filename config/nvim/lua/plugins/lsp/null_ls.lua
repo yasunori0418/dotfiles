@@ -11,7 +11,6 @@ local sources = {
   completion.vsnip,
   formatting.stylua,
   formatting.taplo,
-  diagnostics.vint,
   diagnostics.textlint.with({
     filetypes = { 'markdown' },
     prefer_local = 'node_modules/.bin',

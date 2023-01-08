@@ -9,7 +9,6 @@ mason_lspconfig.setup({
     'sumneko_lua',
     'intelephense',
     'pyright',
-    'taplo',
   },
   automatic_installation = true,
 })
