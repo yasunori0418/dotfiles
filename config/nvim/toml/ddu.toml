@@ -35,7 +35,6 @@ nnoremap <ff>s <Cmd>call ddu#start({
     \ 'params': {'input': input('Pattern: ')},
     \ }],
   \ })<CR>
-
 nnoremap <ff>m <Cmd>call ddu#start({'name': 'mrr-ff'})<CR>
 nnoremap <ff>M <Cmd>call ddu#start({'name': 'mru-ff'})<CR>
 
