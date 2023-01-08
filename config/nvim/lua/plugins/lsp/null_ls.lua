@@ -16,6 +16,10 @@ local sources = {
     filetypes = { 'markdown' },
     prefer_local = 'node_modules/.bin',
   }),
+  formatting.textlint.with({
+    filetypes = { 'markdown' },
+    prefer_local = 'node_modules/.bin',
+  }),
 }
 
 null_ls.setup({
