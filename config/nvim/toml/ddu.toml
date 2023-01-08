@@ -36,7 +36,7 @@ nnoremap <ff>s <Cmd>call ddu#start({
     \ }],
   \ })<CR>
 nnoremap <ff>m <Cmd>call ddu#start({'name': 'mrr-ff'})<CR>
-nnoremap <ff>M <Cmd>call ddu#start({'name': 'mru-ff'})<CR>
+nnoremap <ff>n <Cmd>call ddu#start({'name': 'mru-ff'})<CR>
 
 " filer start keybins
 nnoremap <filer> <Nop>
