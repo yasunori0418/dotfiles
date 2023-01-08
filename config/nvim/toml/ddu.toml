@@ -4,14 +4,6 @@ repo = 'Shougo/ddu.vim'
 depends = 'denops.vim'
 on_func = 'ddu#start()'
 hook_add = '''
-function! Search_repo_root() abort
-  let repo_root = systemlist('git root')[0]
-  if v:shell_error != 0
-    return expand('%:p:h')
-  endif
-  return repo_root
-endfunction
-
 " fuzzy finder start keybinds
 nnoremap <ff> <Nop>
 nmap <Space>d <ff>
@@ -19,7 +11,7 @@ nmap <Space>d <ff>
 nnoremap <ff>a <Cmd>call ddu#start({
   \ 'name': 'current-ff',
   \ 'sourceOptions': {
-    \ 'file_rec': {'path': Search_repo_root()},
+    \ 'file_rec': {'path': vimrc#search_repo_root()},
     \ },
   \ })<CR>
 

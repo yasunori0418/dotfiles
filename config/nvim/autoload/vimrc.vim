@@ -1,4 +1,5 @@
 
+" My helper functions
 function! vimrc#clear_register() abort
   let regs=split('abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789/-"', '\zs')
   for r in regs
@@ -23,6 +24,15 @@ function! vimrc#is_github_pat() abort
   return v:false
 endfunction
 
+function! vimrc#search_repo_root() abort
+  let repo_root = systemlist('git root')[0]
+  if v:shell_error != 0
+    return expand('%:p:h')
+  endif
+  return repo_root
+endfunction
+
+" dein feature expand functions
 function! vimrc#dein_update(bang_flg) abort
   if vimrc#is_github_pat() && a:bang_flg == 0
     lua vim.notify('exists github_pat', 'info')
@@ -182,7 +192,6 @@ endfunction
 
 
 " ddc extra functions
-
 " https://github.com/Shougo/shougo-s-github/blob/master/vim/rc/ddc.toml#L190-L226
 function! vimrc#commandline_pre(mode) abort
   " NOTE: It disables default command line completion!
