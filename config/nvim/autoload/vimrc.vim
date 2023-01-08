@@ -268,3 +268,12 @@ function! vimrc#molder_init() abort
     autocmd! vimrc_molder
   endif
 endfunction
+
+function! vimrc#molder_change_cwd() abort
+  if &filetype ==# 'molder'
+    let molder_cwd = substitute(bufname('%'), expand('~'), '~', '')
+    let molder_cwd = substitute(molder_cwd, '/$', '', '')
+    call chdir(molder_cwd)
+    echomsg 'Change current working directory to [' . molder_cwd . ']'
+  endif
+endfunction
