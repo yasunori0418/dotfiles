@@ -203,7 +203,7 @@ cnoremap <expr>   <C-p>
 
 cnoremap <C-y>    <Cmd>call pum#map#confirm()<CR>
 cnoremap <silent><expr> <C-e>
-  \ pum#visible() ? '<Cmd>call pum#map#cancel()<CR>' : '<C-e>'
+  \ pum#visible() ? '<Cmd>call pum#map#cancel()<CR>' : '<END>'
 
 call ddc#enable()
 '''
