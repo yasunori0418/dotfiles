@@ -36,5 +36,8 @@ end
 require('cellwidths').setup(cellwidths_conf)
 '''
 
-[[plugins]]
+[[plugins]] # mr.vim
 repo = 'lambdalisue/mr.vim'
+hook_add = '''
+let g:mr#mru#predicates = [{ filename -> filename !~# 'COMMIT_EDITMSG' }]
+'''
