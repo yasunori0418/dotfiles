@@ -18,7 +18,7 @@ hook_add = '''
 nnoremap <lsp>k <Cmd>Lspsaga hover_doc<CR>
 nnoremap <lsp>K <Cmd>Lspsaga lsp_finder<CR>
 nnoremap <lsp>r <Cmd>Lspsaga rename<CR>
-nnoremap <lsp>o <Cmd>LSoutlineToggle<CR>
+nnoremap <lsp>o <Cmd>Lspsaga outline<CR>
 nnoremap <lsp>c <Cmd>Lspsaga code_action<CR>
 nnoremap <lsp>h <Cmd>lua vim.lsp.buf.signature_help()<CR>
 nnoremap <lsp>f <Cmd>lua vim.lsp.buf.format()<CR>
@@ -27,7 +27,7 @@ nnoremap <lsp>d <Cmd>Lspsaga peek_definition<CR>
 nnoremap <lsp>D <Cmd>lua vim.lsp.buf.declaration()<CR>
 nnoremap <lsp>e <Cmd>Lspsaga show_line_diagnostics<CR>
 nnoremap <lsp>E <Cmd>Lspsaga show_cursor_diagnostics<CR>
-nnoremap <lsp>q <Cmd>lua vim.diagnostic.setloclist()<CR>
+nnoremap <lsp>q <Cmd>Lspsaga show_buf_diagnostics<CR>
 nnoremap [d <Cmd>Lspsaga diagnostic_jump_prev<CR>
 nnoremap ]d <Cmd>Lspsaga diagnostic_jump_next<CR>
 '''
