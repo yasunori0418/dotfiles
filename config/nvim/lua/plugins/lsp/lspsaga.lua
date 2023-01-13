@@ -1,28 +1,28 @@
-require("lspsaga").setup({
+require('lspsaga').setup({
   ui = {
-    theme = "round",
-    border = "single",
+    theme = 'round',
+    border = 'single',
   },
   finder = {
-    edit = { "o", "<CR>" },
-    vsplit = "v",
-    split = "s",
-    tabe = "t",
-    quit = { "q", "<ESC>" },
+    edit = { 'o', '<CR>' },
+    vsplit = 'v',
+    split = 's',
+    tabe = 't',
+    quit = { 'q', '<ESC>' },
   },
   definition = {
-    edit = "<C-c>o",
-    vsplit = "<C-c>v",
-    split = "<C-c>s",
-    tabe = "<C-c>t",
-    quit = "q",
-    close = "<Esc>",
+    edit = '<C-c>o',
+    vsplit = '<C-c>v',
+    split = '<C-c>s',
+    tabe = '<C-c>t',
+    quit = 'q',
+    close = '<Esc>',
   },
   code_action = {
     num_shortcut = true,
     keys = {
-      quit = "q",
-      exec = "<CR>",
+      quit = 'q',
+      exec = '<CR>',
     },
   },
   lightbulb = {
