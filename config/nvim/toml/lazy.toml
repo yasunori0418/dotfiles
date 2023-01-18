@@ -10,7 +10,7 @@ require("plugins.treesitter")
 hook_source = '''
 set foldmethod=expr
 set foldexpr=nvim_treesitter#foldexpr()
-"set nofoldenable
+set nofoldenable
 '''
 
 [[plugins]] # treesitter playground
