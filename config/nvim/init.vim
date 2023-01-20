@@ -58,7 +58,7 @@ if dein#min#load_state(s:dein_dir)
   call dein#load_toml(s:toml_dir . s:ddu_toml,    {'lazy': 1})
   call dein#load_toml(s:toml_dir . s:lsp_toml,    {'lazy': 1})
 
-  call dein#local(expand('~/Project'), {}, ['*.vim'])
+  "call dein#local(expand('~/Project'), {}, ['*.vim'])
 
   " end settings
   call dein#end()
