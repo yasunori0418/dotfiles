@@ -6,7 +6,18 @@ depends = 'neodev.nvim'
 [[plugins]] # mason.nvim
 repo = 'williamboman/mason.nvim'
 lua_source = '''
-require('plugins.lsp.mason')
+-- <% partial_path: ./partial/mason.lua
+require("mason").setup({
+  ui = {
+    border = "single",
+    icons = {
+      package_installed = "",
+      package_pending = "",
+      package_uninstalled = "✗ ",
+    },
+  },
+})
+-- %>
 '''
 
 [[plugins]] # mason-lspconfig.nvim
