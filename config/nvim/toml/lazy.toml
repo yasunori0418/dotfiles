@@ -291,6 +291,10 @@ hook_source = '''
 let g:partedit#opener = 'vsplit'
 '''
 
+[[plugins]]
+repo = 'yasunori-kirin0418/partial.vim'
+on_cmd = ['PartialOpen', 'PartialEdit', 'PartialTabedit', 'PartialVsplit', 'PartialSplit', 'PartialUpdate']
+
 [[plugins]] # Comment.nvim
 repo = 'numToStr/Comment.nvim'
 depends = 'nvim-treesitter'
