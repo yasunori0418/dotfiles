@@ -5,7 +5,19 @@ repo = 'nvim-treesitter/nvim-treesitter'
 on_event = 'BufRead'
 hook_post_update = 'TSUpdate'
 lua_source = '''
-require("plugins.treesitter")
+-- <% partial_path: ./partial/treesitter.lua
+require("nvim-treesitter.configs").setup({
+  ensure_installed = "all",
+  highlight = {
+    enable = true,
+    disable = {},
+  },
+  indent = {
+    enable = true,
+    disable = {},
+  },
+})
+-- %>
 '''
 hook_source = '''
 set foldmethod=expr
@@ -18,7 +30,28 @@ repo = 'nvim-treesitter/playground'
 depends = 'nvim-treesitter'
 on_cmd = 'TSPlaygroundToggle'
 lua_source = '''
-require("plugins.playground")
+-- <% partial_path: ./partial/ts_playground.lua
+require("nvim-treesitter.configs").setup({
+  playground = {
+    enable = true,
+    disable = {},
+    updatetime = 25,
+    persist_queries = true,
+    keybindings = {
+      toggle_query_editor = "o",
+      toggle_hl_groups = "i",
+      toggle_injected_languages = "t",
+      toggle_anonymous_nodes = "a",
+      toggle_language_display = "I",
+      focus_language = "f",
+      unfocus_language = "F",
+      update = "R",
+      goto_node = "<CR>",
+      show_help = "?",
+    },
+  },
+})
+-- %>
 '''
 
 [[plugins]] # nightfox.nvim
@@ -26,10 +59,58 @@ repo = 'EdenEast/nightfox.nvim'
 depends = ['nvim-treesitter']
 on_event = 'VimEnter'
 lua_source = '''
-require("plugins.nightfox").setup()
+-- <% partial_path: ./partial/nightfox_settings.lua
+local nightfox = require("nightfox")
+local compile_path = vim.fn.stdpath("cache") .. "/nightfox"
+nightfox.setup({
+  options = {
+    -- Compiled file's destination location
+    compile_path = compile_path,
+    compile_file_suffix = "_compiled", -- Compiled file suffix
+    transparent = false, -- Disable setting background
+    terminal_colors = true, -- Set terminal colors (vim.g.terminal_color_*)
+    dim_inactive = false, -- Non focused panes set to alternative background
+    module_default = true,
+    styles = { -- Style to be applied to different syntax groups
+      comments = "italic",
+      conditionals = "NONE",
+      constants = "NONE",
+      functions = "bold",
+      keywords = "NONE",
+      numbers = "NONE",
+      operators = "NONE",
+      strings = "NONE",
+      types = "NONE",
+      variables = "NONE",
+    },
+    inverse = { -- Inverse highlight for different types
+      match_paren = false,
+      visual = true,
+      search = false,
+    },
+    modules = { -- List of various plugins and additional options
+      fidget = true,
+      lsp_saga = true,
+      notify = true,
+      treesitter = true,
+    },
+  },
+})
+vim.cmd([[colorscheme nordfox]])
+-- %>
 '''
 lua_post_source = '''
-require('plugins.nightfox').compile()
+-- <% partial_path: ./partial/nightfox_compile.lua
+local nightfox = require("nightfox")
+local compile_path = vim.fn.stdpath("cache") .. "/nightfox"
+if vim.fn.isdirectory(compile_path) then
+  if vim.fn.empty(vim.fn.systemlist("ls " .. compile_path)) > 0 then
+    nightfox.compile()
+  end
+else
+  nightfox.compile()
+end
+-- %>
 '''
 
 [[plugins]] # lightline.vim
@@ -38,6 +119,7 @@ repo = 'itchyny/lightline.vim'
 on_event = ['VimEnter']
 depends = ['vim-gitbranch']
 hook_source = '''
+" <% partial_path: ./partial/lightline.vim
 set noshowmode
 set showtabline=2
 set laststatus=3
@@ -104,7 +186,7 @@ let g:lightline.component_expand_type = {
   \ }
 
 command! -bar LightlineUpdate call lightline#init()| call lightline#colorscheme()| call lightline#update()
-
+" %>
 '''
 
 
@@ -120,11 +202,18 @@ let g:context_filetype#ignore_patterns = {
 [[plugins]] # vimproc.vim
 repo = 'Shougo/vimproc.vim'
 build = 'make'
+
 [[plugins]] # nvim-notify
 repo = 'rcarriga/nvim-notify'
 on_source = 'nightfox.nvim'
 lua_source = '''
-require('plugins.notify')
+-- <% partial_path: ./partial/notify.lua
+require("notify").setup({
+  stages = "slide",
+  background_color = "NormalFloat",
+})
+vim.notify = require("notify")
+-- %>
 '''
 
 [[plugins]] # suda.vim
@@ -245,7 +334,36 @@ on_source = 'nightfox.nvim'
 repo = 'lukas-reineke/indent-blankline.nvim'
 on_source = 'nightfox.nvim'
 lua_source = '''
-require("plugins.indent-blankline")
+-- <% partial_path: ./partial/indent_blankline.lua
+require("indent_blankline").setup({
+  char_list = { "│", "|", "¦", "┆", "┊" },
+  char_list_blankline = { "│", "|", "¦", "┆", "┊" },
+  show_current_context = true,
+  show_current_context_start = true,
+  show_current_context_start_on_current_line = true,
+  show_end_of_line = true,
+  show_first_indent_level = true,
+  show_trailing_blankline_indent = true,
+  space_char_blankline = " ",
+  strict_tabs = true,
+  use_treesitter = true,
+  filetype_exclude = {
+    "lspinfo",
+    "packer",
+    "checkhealth",
+    "help",
+    "man",
+    "",
+  },
+  buftype_exclude = {
+    "terminal",
+    "nofile",
+    "quickfix",
+    "prompt",
+  },
+  bufname_exclude = {},
+})
+-- %>
 '''
 
 [[plugins]] # matchparen.nvim
@@ -328,79 +446,80 @@ repo = 'itchyny/vim-gitbranch'
 repo = 'lewis6991/gitsigns.nvim'
 on_source = 'nightfox.nvim'
 lua_source = '''
-local gitsigns = require('gitsigns')
+-- <% partial_path: ./partial/gitsigns.lua
+local gitsigns = require("gitsigns")
 
-gitsigns.setup ({
+gitsigns.setup({
   signs = {
     add = {
-      hl = 'GitSignsAdd',
-      text = '+',
-      numhl='GitSignsAddNr',
-      linehl='GitSignsAddLn',
+      hl = "GitSignsAdd",
+      text = "+",
+      numhl = "GitSignsAddNr",
+      linehl = "GitSignsAddLn",
     },
     change = {
-      hl = 'GitSignsChange',
-      text = '│',
-      numhl='GitSignsChangeNr',
-      linehl='GitSignsChangeLn',
+      hl = "GitSignsChange",
+      text = "│",
+      numhl = "GitSignsChangeNr",
+      linehl = "GitSignsChangeLn",
     },
     delete = {
-      hl = 'GitSignsDelete',
-      text = '_',
-      numhl='GitSignsDeleteNr',
-      linehl='GitSignsDeleteLn'
+      hl = "GitSignsDelete",
+      text = "_",
+      numhl = "GitSignsDeleteNr",
+      linehl = "GitSignsDeleteLn",
     },
     topdelete = {
-      hl = 'GitSignsDelete',
-      text = '‾',
-      numhl='GitSignsDeleteNr',
-      linehl='GitSignsDeleteLn'
+      hl = "GitSignsDelete",
+      text = "‾",
+      numhl = "GitSignsDeleteNr",
+      linehl = "GitSignsDeleteLn",
     },
     changedelete = {
-      hl = 'GitSignsChange',
-      text = '~',
-      numhl='GitSignsChangeNr',
-      linehl='GitSignsChangeLn'
+      hl = "GitSignsChange",
+      text = "~",
+      numhl = "GitSignsChangeNr",
+      linehl = "GitSignsChangeLn",
     },
     untracked = {
-      hl = 'GitSignsAdd',
-      text = '┆',
-      numhl='GitSignsAddNr',
-      linehl='GitSignsAddLn'
+      hl = "GitSignsAdd",
+      text = "┆",
+      numhl = "GitSignsAddNr",
+      linehl = "GitSignsAddLn",
     },
   },
 
-  signcolumn = true,  -- Toggle with `:Gitsigns toggle_signs`
-  numhl      = true, -- Toggle with `:Gitsigns toggle_numhl`
-  linehl     = false, -- Toggle with `:Gitsigns toggle_linehl`
-  word_diff  = false, -- Toggle with `:Gitsigns toggle_word_diff`
+  signcolumn = true, -- Toggle with `:Gitsigns toggle_signs`
+  numhl = true, -- Toggle with `:Gitsigns toggle_numhl`
+  linehl = false, -- Toggle with `:Gitsigns toggle_linehl`
+  word_diff = false, -- Toggle with `:Gitsigns toggle_word_diff`
   watch_gitdir = {
     interval = 1000,
-    follow_files = true
+    follow_files = true,
   },
   attach_to_untracked = true,
   current_line_blame = false, -- Toggle with `:Gitsigns toggle_current_line_blame`
   current_line_blame_opts = {
     virt_text = true,
-    virt_text_pos = 'right_align', -- 'eol' | 'overlay' | 'right_align'
+    virt_text_pos = "right_align", -- 'eol' | 'overlay' | 'right_align'
     delay = 1000,
     ignore_whitespace = false,
   },
-  current_line_blame_formatter = '<author>, <author_time:%Y-%m-%d> - <summary>',
+  current_line_blame_formatter = "<author>, <author_time:%Y-%m-%d> - <summary>",
   sign_priority = 6,
   update_debounce = 100,
   status_formatter = nil, -- Use default
   max_file_length = 40000, -- Disable if file is longer than this (in lines)
   preview_config = {
     -- Options passed to nvim_open_win
-    border = 'single',
-    style = 'minimal',
-    relative = 'cursor',
+    border = "single",
+    style = "minimal",
+    relative = "cursor",
     row = 0,
-    col = 1
+    col = 1,
   },
   yadm = {
-    enable = false
+    enable = false,
   },
 
   on_attach = function(bufnr)
@@ -408,23 +527,31 @@ gitsigns.setup ({
     local keymap_options = { noremap = true, buffer = bufnr, expr = true }
 
     -- Navigation
-    keymap('n', '[c', function()
-      if vim.wo.diff then return '[c' end
-      vim.schedule(function() gitsigns.prev_hunk() end)
-      return '<Ignore>'
+    keymap("n", "[c", function()
+      if vim.wo.diff then
+        return "[c"
+      end
+      vim.schedule(function()
+        gitsigns.prev_hunk()
+      end)
+      return "<Ignore>"
     end, keymap_options)
 
-    keymap('n', ']c', function()
-      if vim.wo.diff then return ']c' end
-      vim.schedule(function() gitsigns.next_hunk() end)
-      return '<Ignore>'
+    keymap("n", "]c", function()
+      if vim.wo.diff then
+        return "]c"
+      end
+      vim.schedule(function()
+        gitsigns.next_hunk()
+      end)
+      return "<Ignore>"
     end, keymap_options)
 
-    keymap('n', '<git>hs', '<Cmd>Gitsigns stage_hunk<CR>')
-    keymap('n', '<git>hr', '<Cmd>Gitsigns reset_hunk<CR>')
-
+    keymap("n", "<git>hs", "<Cmd>Gitsigns stage_hunk<CR>")
+    keymap("n", "<git>hr", "<Cmd>Gitsigns reset_hunk<CR>")
   end, -- }}}
 })
+-- %>
 '''
 
 [[plugins]] # gina.vim
