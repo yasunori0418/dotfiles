@@ -175,7 +175,7 @@ call ddc#custom#patch_global('sourceParams', #{
 
 " filetype settings {{{
 
-call ddc#custom#patch_filetype(['python', 'php', 'lua'], 'sources',
+call ddc#custom#patch_filetype(['python', 'php', 'lua', 'yaml'], 'sources',
   \ ['nvim-lsp', 'vsnip', 'around', 'file', 'rg'],
   \ )
 

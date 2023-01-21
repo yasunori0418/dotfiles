@@ -24,7 +24,7 @@ require("mason").setup({
 [[plugins]] # mason-lspconfig.nvim
 repo = 'williamboman/mason-lspconfig.nvim'
 depends = ['nvim-lspconfig', 'mason.nvim', 'lspsaga.nvim']
-on_ft = ['lua', 'php', 'python', 'toml', 'markdown', 'vim']
+on_ft = ['lua', 'php', 'python', 'toml', 'markdown', 'vim', 'yaml']
 hook_add = '''
 " LSP keybinds
 nnoremap <lsp>k <Cmd>Lspsaga hover_doc<CR>
@@ -56,6 +56,7 @@ mason_lspconfig.setup({
     "sumneko_lua",
     "intelephense",
     "pyright",
+    "yamlls",
   },
   automatic_installation = true,
 })
@@ -214,11 +215,13 @@ local sources = {
   completion.vsnip,
   formatting.stylua,
   formatting.taplo,
-  diagnostics.textlint.with({
+  formatting.yamlfmt,
+  formatting.textlint.with({
     filetypes = { "markdown" },
     prefer_local = "node_modules/.bin",
   }),
-  formatting.textlint.with({
+  diagnostics.yamllint,
+  diagnostics.textlint.with({
     filetypes = { "markdown" },
     prefer_local = "node_modules/.bin",
   }),
