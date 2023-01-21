@@ -1,4 +1,6 @@
+# ddc plugins
 
+# Core plugins {{{
 [[plugins]] # pum.vim
 repo = 'Shougo/pum.vim'
 hook_source = '''
@@ -8,19 +10,26 @@ call pum#set_option(#{
   \ max_width: 90,
   \ })
 '''
+
+[[plugins]] # ddc-ui-pum
+repo = 'Shougo/ddc-ui-pum'
+on_source = 'ddc.vim'
+
 [[plugins]] # ddc.vim
 repo = 'Shougo/ddc.vim'
 depends = ['context_filetype.vim', 'denops.vim', 'pum.vim']
 on_event = ['InsertEnter', 'CmdlineEnter', 'CursorHold']
 hook_add = '''
+" keybinds into cmdline mode {{{
 nnoremap ; <Cmd>call vimrc#commandline_pre(':')<CR>:
 xnoremap ; <Cmd>call vimrc#commandline_pre(':')<CR>:
 
 nnoremap / <Cmd>call vimrc#commandline_pre('/')<CR>/
 nnoremap ? <Cmd>call vimrc#commandline_pre('?')<CR>?
+" }}}
 '''
 hook_source = '''
-" UI settings
+" UI settings {{{
 
 " Use pum.vim
 call ddc#custom#patch_global('autoCompleteEvents', [
@@ -29,8 +38,32 @@ call ddc#custom#patch_global('autoCompleteEvents', [
   \ ])
 
 call ddc#custom#patch_global('ui', 'pum')
+" }}}
 
-" ddc source options.
+" Filter settings {{{
+" Normal filter
+"call ddc#custom#patch_global('sourceOptions', #{
+"  \ _: #{
+"    \ ignoreCase: v:true,
+"    \ matchers: ['matcher_head', 'matcher_length'],
+"    \ sorters: ['sorter_rank'],
+"    \ converters: ['converter_remove_overlap'],
+"    \ },
+"  \ })
+
+" Fuzzy filter
+call ddc#custom#patch_global('sourceOptions', #{
+  \ _: #{
+    \ ignoreCase: v:true,
+    \ matchers: ['matcher_fuzzy'],
+    \ sorters: ['sorter_fuzzy'],
+    \ converters: ['converter_fuzzy'],
+    \ },
+  \ })
+
+" }}}
+
+" Source options. {{{
 call ddc#custom#patch_global('sources', ['vsnip', 'around', 'file', 'rg'])
 
 call ddc#custom#patch_global('cmdlineSources', {
@@ -43,28 +76,7 @@ call ddc#custom#patch_global('cmdlineSources', {
   \ '=': ['input'],
   \ })
 
-" Filters
-"" Normal filter
-"call ddc#custom#patch_global('sourceOptions', #{
-"  \ _: #{
-"    \ ignoreCase: v:true,
-"    \ matchers: ['matcher_head', 'matcher_length'],
-"    \ sorters: ['sorter_rank'],
-"    \ converters: ['converter_remove_overlap'],
-"    \ },
-"  \ })
-
-"" Fuzzy filter
-call ddc#custom#patch_global('sourceOptions', #{
-  \ _: #{
-    \ ignoreCase: v:true,
-    \ matchers: ['matcher_fuzzy'],
-    \ sorters: ['sorter_fuzzy'],
-    \ converters: ['converter_fuzzy'],
-    \ },
-  \ })
-
-" Editor completion source options.
+" Editor completion source options. {{{
 call ddc#custom#patch_global('sourceOptions', #{
   \ around: #{mark: 'A'},
   \ buffer: #{mark: 'B'},
@@ -96,8 +108,9 @@ call ddc#custom#patch_global('sourceOptions', #{
     \ isVolatile: v:true,
     \ },
   \ })
+" }}}
 
-" Commandline completion source options.
+" Commandline completion source options. {{{
 call ddc#custom#patch_global('sourceOptions', #{
   \ cmdline: #{
     \ mark: 'cmd',
@@ -116,8 +129,9 @@ call ddc#custom#patch_global('sourceOptions', #{
     \ },
   \ line: #{ mark: 'line', },
   \ })
+" }}}
 
-" ddc source params
+" ddc source params {{{
 call ddc#custom#patch_global('sourceParams', #{
   \ buffer: #{
     \ requireSameFiletype: v:false,
@@ -156,8 +170,10 @@ call ddc#custom#patch_global('sourceParams', #{
     \ },
   \ })
 " LSPのラベルタグの参考元: https://github.com/onsails/lspkind.nvim
+" }}}
+" }}}
 
-" filetype settings of ddc-sources.
+" filetype settings {{{
 
 call ddc#custom#patch_filetype(['python', 'php', 'lua'], 'sources',
   \ ['nvim-lsp', 'vsnip', 'around', 'file', 'rg'],
@@ -172,9 +188,9 @@ call ddc#custom#patch_filetype(['ddu-ff-filter'], #{
   \ sources: ['line', 'buffer'],
   \ specialBufferCompletion: v:true,
   \ })
-  " }}}
+" }}}
 
-" Keymaping
+" Keymaping {{{
 
 " Insert-Mode
 inoremap <expr>   <TAB>
@@ -205,13 +221,13 @@ cnoremap <C-y>    <Cmd>call pum#map#confirm()<CR>
 cnoremap <silent><expr> <C-e>
   \ pum#visible() ? '<Cmd>call pum#map#cancel()<CR>' : '<END>'
 
+" }}}
 call ddc#enable()
 '''
 
-[[plugins]] # ddc-ui-pum
-repo = 'Shougo/ddc-ui-pum'
-on_source = 'ddc.vim'
+# }}}
 
+# source plugins {{{
 [[plugins]] # ddc-source-around
 repo = 'Shougo/ddc-source-around'
 on_source = 'ddc.vim'
@@ -252,6 +268,9 @@ on_source = 'ddc.vim'
 repo = 'Shougo/ddc-source-input'
 on_source = 'ddc.vim'
 
+# }}}
+
+# filter plugins {{{
 [[plugins]] # ddc-matcher_head
 repo = 'Shougo/ddc-matcher_head'
 on_source ='ddc.vim'
@@ -272,6 +291,9 @@ on_source = 'ddc.vim'
 repo = 'tani/ddc-fuzzy'
 on_source = 'ddc.vim'
 
+# }}}
+
+# snippet plugins {{{
 [[plugins]] # vim-vsnip
 repo = 'hrsh7th/vim-vsnip'
 hook_source = '''
@@ -301,3 +323,4 @@ augroup END
 repo = 'hrsh7th/vim-vsnip-integ'
 depends = 'vim-vsnip'
 on_source = 'ddc.vim'
+# }}}

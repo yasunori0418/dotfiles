@@ -1,4 +1,5 @@
 # LSP plugins
+# Core plugins {{{
 [[plugins]] # nvim-lspconfig
 repo = 'neovim/nvim-lspconfig'
 depends = 'neodev.nvim'
@@ -76,6 +77,9 @@ mason_lspconfig.setup_handlers({
 -- %>
 '''
 
+# }}}
+
+# Support plugins {{{
 [[plugins]] # lspsaga.nvim
 repo = 'glepnir/lspsaga.nvim'
 lua_source = '''
@@ -181,6 +185,14 @@ require("fidget").setup({
 -- %>
 '''
 
+[[plugins]] # neodev.nvim
+repo = 'folke/neodev.nvim'
+lua_source = '''
+require("neodev").setup({})
+'''
+# }}}
+
+# null_ls {{{
 [[plugins]] # plenary.nvim(null-ls depends of this plugin) 
 repo = 'nvim-lua/plenary.nvim'
 
@@ -238,8 +250,4 @@ require("mason-null-ls").setup({
 -- %>
 '''
 
-[[plugins]] # neodev.nvim
-repo = 'folke/neodev.nvim'
-lua_source = '''
-require("neodev").setup({})
-'''
+# }}}

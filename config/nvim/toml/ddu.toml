@@ -1,4 +1,5 @@
-
+# ddu plugins
+# Core plugins {{{
 [[plugins]] # ddu.vim
 repo = 'Shougo/ddu.vim'
 depends = 'denops.vim'
@@ -290,12 +291,15 @@ call ddu#custom#patch_local('home-filer', {
   \ })
 '''
 
+# }}}
+
+# UI plugins {{{
 [[plugins]] # ddu-ui-ff
 repo = 'Shougo/ddu-ui-ff'
 on_source = 'ddu.vim'
 [plugins.ftplugin] # ddu-ui-ff keybinds
 ddu-ff = '''
-" Open file keybinds.
+" Open file keybinds. {{{
 nnoremap <buffer><silent> <CR>
   \ <Cmd>call ddu#ui#ff#do_action('itemAction')<CR>
 nnoremap <buffer> o
@@ -323,7 +327,7 @@ nnoremap <buffer> <Space>
 nnoremap <buffer> *
   \ <Cmd>cal ddu#ui#ff#do_action('toggleAllItems')<CR>
 
-" fuzzy finder controll keybinds
+" fuzzy finder controll keybinds {{{
 " Open selection menu.
 nnoremap <buffer> a
   \ <Cmd>call ddu#ui#ff#do_action('chooseAction')<CR>
@@ -352,9 +356,10 @@ nnoremap <buffer><expr> j
 nnoremap <buffer><expr> k
   \ line('.') == 1 ?
   \ 'G' : 'k'
+" }}}
 '''
 ddu-ff-filter = '''
-" fuzzy finder filter keybinds on insert mode
+" fuzzy finder filter keybinds on insert mode {{{
 inoremap <buffer> <CR>
   \ <Esc><Cmd>close<CR>
 inoremap <buffer> jj
@@ -371,6 +376,7 @@ nnoremap <buffer> jj
   \ <Cmd>close<CR>
 nnoremap <buffer> <Esc>
   \ <Esc><Cmd>close<CR>
+" }}}
 '''
 
 [[plugins]] # ddu-ui-filer
@@ -378,7 +384,7 @@ repo = 'Shougo/ddu-ui-filer'
 on_source = 'ddu.vim'
 [plugins.ftplugin] # ddu-ui-filer keybinds
 ddu-filer = '''
-" Open of file or directory.
+" Open of file or directory.{{{
 " Open file or expand directory when directory.
 " Directory is expanded in tree type.
 " If you select a file that is already open, go to the open screen.
@@ -398,8 +404,9 @@ nnoremap <buffer> s
 " Open file with another tab window.
 nnoremap <buffer> t
   \ <Cmd>call ddu#ui#filer#do_action('itemAction', {'name': 'open', 'params': {'command': 'tabedit'}})<CR>
+" }}}
 
-" Operation of file or directory
+" Operation of file or directory keybinds {{{
 " Copy file or directory.
 nnoremap <buffer> C
   \ <Cmd>call ddu#ui#filer#multi_actions([
@@ -439,7 +446,9 @@ nnoremap <buffer> N
 nnoremap <buffer> y
   \ <Cmd>call ddu#ui#filer#do_action('itemAction', {'name': 'yank'})<CR>
   \ <Cmd>echo 'Yanke path the "' . getreg('+') . '"'<CR>
+" }}}
 
+" Changes directory keybinds {{{
 " Change current directory.
 nnoremap <buffer> c
   \ <Cmd>call Filer_change_dir()<CR>
@@ -463,8 +472,9 @@ nnoremap <buffer> I
 " Move to home path.
 nnoremap <buffer> ~
   \ <Cmd>call ddu#ui#filer#do_action('itemAction', {'name': 'narrow', 'params': {'path': expand('~')}})<CR>
+" }}}
 
-" Other filer keybinds...
+" Other filer keybinds...{{{
 " select file action.
 nnoremap <buffer> a
   \ <Cmd>call ddu#ui#filer#do_action('chooseAction')<CR>
@@ -496,6 +506,8 @@ nnoremap <buffer> / <Cmd>call ddu#start({
     \ },
   \ })<CR>
 
+" }}}
+
 nnoremap <buffer> <C-l>
   \ <Cmd>call ddu#ui#filer#do_action('checkItems')<CR>
 
@@ -512,7 +524,7 @@ nnoremap <silent><buffer><expr> k
   \ line('.') == 2 ?
   \ 'G' : 'k'
 
-" UI:filer functions of custom keybind.
+" UI:filer functions of custom keybind. {{{
 " Moving directory paths.
 
 let g:ddu_ui_filer_prev_dirs = {}
@@ -596,9 +608,13 @@ function! ToggleHidden(name)
   return empty(matchers) ? ['matcher_hidden'] : []
 endfunction
 
+" }}}
+
 autocmd TabEnter,CursorHold,FocusGained <buffer> call ddu#ui#filer#do_action('checkItems')
 '''
+# }}}
 
+# Kind plugins {{{
 [[plugins]] # ddu-kind-file
 repo = 'Shougo/ddu-kind-file'
 on_source = 'ddu.vim'
@@ -607,6 +623,9 @@ on_source = 'ddu.vim'
 repo = 'Shougo/ddu-kind-word'
 on_source = 'ddu.vim'
 
+# }}}
+
+# Source plugins {{{
 [[plugins]] # ddu-source-file
 repo = 'Shougo/ddu-source-file'
 on_source = 'ddu.vim'
@@ -647,6 +666,9 @@ on_source = 'ddu.vim'
 repo = 'kuuote/ddu-source-mr'
 on_source = 'ddu.vim'
 
+# }}}
+
+# Filter plugins {{{
 [[plugins]] # ddu-filter-matcher_substring
 repo = 'Shougo/ddu-filter-matcher_substring'
 on_source = 'ddu.vim'
@@ -658,6 +680,7 @@ on_source = 'ddu.vim'
 [[plugins]] # ddu-filter-matcher_relative
 repo = 'Shougo/ddu-filter-matcher_relative'
 on_source = 'ddu.vim'
+# }}}
 
 [[plugins]] # ddu-column-icon_filename
 repo = 'ryota2357/ddu-column-icon_filename'
