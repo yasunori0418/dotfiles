@@ -208,6 +208,10 @@ let g:context_filetype#ignore_patterns = {
 repo = 'Shougo/vimproc.vim'
 build = 'make'
 
+[[plugins]]
+repo = 'LeafCage/vimhelpgenerator'
+on_cmd = 'VimHelpGenerator'
+
 [[plugins]] # nvim-notify
 repo = 'rcarriga/nvim-notify'
 on_source = 'nightfox.nvim'
