@@ -210,7 +210,11 @@ build = 'make'
 
 [[plugins]]
 repo = 'LeafCage/vimhelpgenerator'
-on_cmd = 'VimHelpGenerator'
+on_cmd = ['VimHelpGenerator', 'VimHelpGeneratorVirtual']
+hook_source = '''
+let g:vimhelpgenerator_author = 'yasunori-kirin0418'
+let g:vimhelpgenerator_uri = 'https://github.com/yasunori-kirin0418'
+'''
 
 [[plugins]] # nvim-notify
 repo = 'rcarriga/nvim-notify'
