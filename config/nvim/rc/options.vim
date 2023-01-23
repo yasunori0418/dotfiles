@@ -191,4 +191,9 @@ augroup user_quickfix_autocmd
   autocmd QuickFixCmdPost *grep* cwindow
 augroup END
 
+augroup user_other_settings
+  autocmd!
+  autocmd FileType help setlocal conceallevel=0
+augroup END
+
 " }}}
