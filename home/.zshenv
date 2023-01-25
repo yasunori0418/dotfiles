@@ -38,7 +38,7 @@ if [[ -d ${HOME}/.pyenv ]]; then
 fi
 
 # volta environments
-if [[ -d ${HOME}/.pyenv ]]; then
+if [[ -d ${HOME}/.volta ]]; then
   export VOLTA_HOME="${HOME}/.volta"
   export PATH="${PATH}:${VOLTA_HOME}/bin"
 fi
