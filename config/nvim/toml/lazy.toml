@@ -29,7 +29,7 @@ set foldexpr=nvim_treesitter#foldexpr()
 set nofoldenable
 augroup treesitter_fold
   autocmd!
-  autocmd FileType vim,toml,help set foldmethod=marker foldenable
+  autocmd FileType toml,help set foldmethod=marker foldenable
 augroup END
 '''
 
