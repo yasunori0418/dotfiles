@@ -322,7 +322,7 @@ let g:deol#floating_border = 'double'
 
 [[plugins]] # open-browser.vim
 repo = 'tyru/open-browser.vim'
-on_map = {'nx' = '<Plug>(openbrowser-smart-search)'}
+on_map = { 'nx' = '<Plug>(openbrowser-smart-search)' }
 hook_add = '''
 " open-browser.vim
 let g:netrw_nogx = 1 " disable netrw's gx mapping.
