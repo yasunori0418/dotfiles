@@ -5,7 +5,7 @@ repo = 'nvim-treesitter/nvim-treesitter'
 on_event = 'BufRead'
 hook_post_update = 'TSUpdate'
 lua_source = '''
--- <% ./partial/treesitter.lua
+-- <% ./dein_toml/treesitter.lua
 require("nvim-treesitter.configs").setup({
   ensure_installed = "all",
   highlight = {
@@ -38,7 +38,7 @@ repo = 'nvim-treesitter/playground'
 depends = 'nvim-treesitter'
 on_cmd = 'TSPlaygroundToggle'
 lua_source = '''
--- <% ./partial/ts_playground.lua
+-- <% ./dein_toml/ts_playground.lua
 require("nvim-treesitter.configs").setup({
   playground = {
     enable = true,
@@ -67,7 +67,7 @@ repo = 'EdenEast/nightfox.nvim'
 depends = ['nvim-treesitter']
 on_event = 'VimEnter'
 lua_source = '''
--- <% ./partial/nightfox_settings.lua
+-- <% ./dein_toml/nightfox_settings.lua
 local nightfox = require("nightfox")
 local compile_path = vim.fn.stdpath("cache") .. "/nightfox"
 nightfox.setup({
@@ -108,7 +108,7 @@ vim.cmd([[colorscheme nordfox]])
 -- %>
 '''
 lua_post_source = '''
--- <% ./partial/nightfox_compile.lua
+-- <% ./dein_toml/nightfox_compile.lua
 local nightfox = require("nightfox")
 local compile_path = vim.fn.stdpath("cache") .. "/nightfox"
 if vim.fn.isdirectory(compile_path) then
@@ -127,7 +127,7 @@ repo = 'itchyny/lightline.vim'
 on_event = ['VimEnter']
 depends = ['vim-gitbranch']
 hook_source = '''
-" <% ./partial/lightline.vim
+" <% ./dein_toml/lightline.vim
 set noshowmode
 set showtabline=2
 set laststatus=3
@@ -224,7 +224,7 @@ let g:vimhelpgenerator_uri = 'https://github.com/yasunori-kirin0418'
 repo = 'rcarriga/nvim-notify'
 on_source = 'nightfox.nvim'
 lua_source = '''
--- <% ./partial/notify.lua
+-- <% ./dein_toml/notify.lua
 require("notify").setup({
   stages = "slide",
   background_color = "NormalFloat",
@@ -362,7 +362,7 @@ on_source = 'nightfox.nvim'
 repo = 'lukas-reineke/indent-blankline.nvim'
 on_source = 'nightfox.nvim'
 lua_source = '''
--- <% ./partial/indent_blankline.lua
+-- <% ./dein_toml/indent_blankline.lua
 require("indent_blankline").setup({
   char_list = { "│", "|", "¦", "┆", "┊" },
   char_list_blankline = { "│", "|", "¦", "┆", "┊" },
@@ -449,9 +449,9 @@ on_cmd = [
   'PartialUpdate',
 ]
 hook_source = '''
-let g:partial#partial_path_prefix = ''
+let g:partial#partial_path_prefix = ' '
 let g:partial#origin_path_prefix = ' '
-let g:partial#head_symbol = ' <% '
+let g:partial#relative_base_path = '~/.cache/partial.vim'
 '''
 
 [[plugins]] # Comment.nvim
@@ -489,7 +489,7 @@ repo = 'itchyny/vim-gitbranch'
 repo = 'lewis6991/gitsigns.nvim'
 on_source = 'nightfox.nvim'
 lua_source = '''
--- <% ./partial/gitsigns.lua
+-- <% ./dein_toml/gitsigns.lua
 local gitsigns = require("gitsigns")
 
 gitsigns.setup({

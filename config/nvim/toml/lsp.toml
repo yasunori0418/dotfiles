@@ -7,7 +7,7 @@ depends = 'neodev.nvim'
 [[plugins]] # mason.nvim
 repo = 'williamboman/mason.nvim'
 lua_source = '''
--- <% ./partial/mason.lua
+-- <% ./dein_toml/mason.lua
 require("mason").setup({
   ui = {
     border = "single",
@@ -44,7 +44,7 @@ nnoremap [d <Cmd>Lspsaga diagnostic_jump_prev<CR>
 nnoremap ]d <Cmd>Lspsaga diagnostic_jump_next<CR>
 '''
 lua_source = '''
--- <% ./partial/lspconfig.lua
+-- <% ./dein_toml/lspconfig.lua
 local mason_lspconfig = require("mason-lspconfig")
 local lspconfig = require("lspconfig")
 --local keymap = vim.keymap.set
@@ -84,7 +84,7 @@ mason_lspconfig.setup_handlers({
 [[plugins]] # lspsaga.nvim
 repo = 'glepnir/lspsaga.nvim'
 lua_source = '''
--- <% ./partial/lspsaga.lua
+-- <% ./dein_toml/lspsaga.lua
 require("lspsaga").setup({
   ui = {
     theme = "round",
@@ -168,7 +168,7 @@ call signature_help#enable()
 repo = 'j-hui/fidget.nvim'
 on_event = 'LspAttach'
 lua_source = '''
--- <% ./partial/fidget.lua
+-- <% ./dein_toml/fidget.lua
 require("fidget").setup({
   text = {
     spinner = "dots",
@@ -201,7 +201,7 @@ repo = 'nvim-lua/plenary.nvim'
 repo = 'jose-elias-alvarez/null-ls.nvim'
 depends = 'plenary.nvim'
 lua_source = '''
--- <% ./partial/null_ls.lua
+-- <% ./dein_toml/null_ls.lua
 local null_ls = require("null-ls")
 
 local code_actions = null_ls.builtins.code_actions
@@ -240,7 +240,7 @@ repo = 'jay-babu/mason-null-ls.nvim'
 depends = 'null-ls.nvim'
 on_source = 'mason-lspconfig.nvim'
 lua_source = '''
--- <% ./partial/mason_null_ls.lua
+-- <% ./dein_toml/mason_null_ls.lua
 require("mason-null-ls").setup({
   ensure_installed = nil,
   automatic_installation = {
