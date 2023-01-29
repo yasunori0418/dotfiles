@@ -447,6 +447,7 @@ on_cmd = [
   'PartialSplit',
   'PartialCreate',
   'PartialUpdate',
+  'PartialSurround',
 ]
 hook_source = '''
 let g:partial#partial_path_prefix = ' '
