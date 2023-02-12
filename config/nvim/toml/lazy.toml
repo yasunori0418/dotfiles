@@ -361,6 +361,7 @@ on_source = 'nightfox.nvim'
 
 [[plugins]] # indent-blankline.nvim
 repo = 'lukas-reineke/indent-blankline.nvim'
+depends = 'nvim-treesitter'
 on_source = 'nightfox.nvim'
 lua_source = '''
 -- <% ./dein_toml/indent_blankline.lua
@@ -397,6 +398,7 @@ require("indent_blankline").setup({
 
 [[plugins]] # matchparen.nvim
 repo = 'monkoose/matchparen.nvim'
+depends = 'nvim-treesitter'
 on_source = 'nightfox.nvim'
 lua_source = '''
 require('matchparen').setup()
