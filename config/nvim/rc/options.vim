@@ -47,8 +47,6 @@ let g:loaded_rrhelper           = v:true
 " Use utf-8 to overall encoding.
 set encoding=utf-8
 
-scriptencoding utf-8
-
 " Use utf-8 when file write.
 set fileencoding=utf-8
 
@@ -76,6 +74,7 @@ set ambiwidth=single
 
 " Automatically load the file being edited
 set autoread
+set autowriteall
 
 " Use the clipboard on linux systems.
 set clipboard+=unnamedplus
@@ -92,10 +91,10 @@ set matchtime=1
 
 " Display{{{
 " Display rows number.
-set number
+set nonumber
 
 " Display relative rows number.
-set relativenumber
+set norelativenumber
 
 " Display current row cursorline.
 set cursorline
@@ -197,3 +196,5 @@ augroup user_other_settings
 augroup END
 
 " }}}
+
+" vim:fdm=marker:fen
