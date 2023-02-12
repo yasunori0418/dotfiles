@@ -329,6 +329,7 @@ let g:netrw_nogx = 1 " disable netrw's gx mapping.
 nmap gx <Plug>(openbrowser-smart-search)
 xmap gx <Plug>(openbrowser-smart-search)
 '''
+
 # }}}
 
 # Coding support plugins {{{
@@ -702,6 +703,22 @@ let g:gitter#token = vimrc#read_pat(g:base_dir . 'gitter_pat')[1]
 command! OpenReadingVimrc edit gitter://room/vim-jp/reading-vimrc
 command! OpenGitterRoomList edit gitter://rooms
 '''
+
+[[plugins]]
+repo = 'yuki-yano/fuzzy-motion.vim'
+depends = ['denops.vim', 'kensaku.vim']
+on_cmd = ['FuzzyMotion']
+hook_add = '''
+nnoremap s/ <Cmd>FuzzyMotion<CR>
+'''
+hook_source = '''
+let g:fuzzy_motion_auto_jump = v:true
+let g:fuzzy_motion_matchers = ['fzf', 'kensaku']
+'''
+
+[[plugins]]
+repo = 'lambdalisue/kensaku.vim'
+depends = 'denops.vim'
 
 # }}}
 
