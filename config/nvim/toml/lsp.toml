@@ -53,7 +53,7 @@ local lsp = vim.lsp -- nvim lsp api.
 
 mason_lspconfig.setup({
   ensure_installed = {
-    "sumneko_lua",
+    "lua_ls",
     "intelephense",
     "pyright",
     "yamlls",
@@ -68,7 +68,7 @@ mason_lspconfig.setup_handlers({
     local capabilities = lsp.protocol.make_client_capabilities()
     capabilities.textDocument.completion.completionItem.snippetSupport = true
 
-    if server_name == "sumneko_lua" then
+    if server_name == "lua_ls" then
       lsp_options.capabilities = capabilities
     end
 
