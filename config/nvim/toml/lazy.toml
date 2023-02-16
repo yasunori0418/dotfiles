@@ -330,6 +330,13 @@ nmap gx <Plug>(openbrowser-smart-search)
 xmap gx <Plug>(openbrowser-smart-search)
 '''
 
+[[plugins]]
+repo = 'glidenote/memolist.vim'
+on_cmd = ['MemoNew', 'MemoList', 'MemoNewWithMeta', 'MemoGrep']
+hook_source = '''
+let g:memolist_path = expand('~/Documents/memo')
+'''
+
 # }}}
 
 # Coding support plugins {{{
