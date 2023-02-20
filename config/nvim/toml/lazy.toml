@@ -812,4 +812,22 @@ let g:previm_custom_css_path = expand('~/dotfiles/tmp/previm_markdown.css')
 let g:previm_plantuml_imageprefix = 'http://localhost:58080/png/'
 '''
 
+[[plugins]]
+repo = 'atusy/tsnode-marker.nvim'
+on_ft = 'markdown'
+lua_hook = '''
+-- <% dein_toml/tsnode-marker.lua
+vim.api.nvim_create_augroup("FileType", {
+  group = vim.api.nvim_create_autocmd("tsnode-marker-markdown", {}),
+  pattern = "markdown",
+  callback = function(ctx)
+    require("tsnode-marker").set_automark(ctx.buf, {
+      target = { "fenced_code_block" },
+      hl_group = "DiffAdd",
+    })
+  end,
+})
+-- %>
+'''
+
 # }}}
