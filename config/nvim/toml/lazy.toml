@@ -815,15 +815,15 @@ let g:previm_plantuml_imageprefix = 'http://localhost:58080/png/'
 [[plugins]]
 repo = 'atusy/tsnode-marker.nvim'
 on_ft = 'markdown'
-lua_hook = '''
+lua_source = '''
 -- <% dein_toml/tsnode-marker.lua
-vim.api.nvim_create_augroup("FileType", {
-  group = vim.api.nvim_create_autocmd("tsnode-marker-markdown", {}),
+vim.api.nvim_create_autocmd("FileType", {
+  group = vim.api.nvim_create_augroup("tsnode-marker-markdown", {}),
   pattern = "markdown",
   callback = function(ctx)
     require("tsnode-marker").set_automark(ctx.buf, {
-      target = { "fenced_code_block" },
-      hl_group = "DiffAdd",
+      target = { "code_fence_content", "fenced_code_block_delimiter", "language" },
+      hl_group = "DiffChange",
     })
   end,
 })
