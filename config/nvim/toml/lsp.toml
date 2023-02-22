@@ -61,6 +61,10 @@ mason_lspconfig.setup({
   automatic_installation = true,
 })
 
+vim.diagnostic.config({
+  signs = false,
+})
+
 mason_lspconfig.setup_handlers({
   function(server_name)
     local lsp_options = {}
