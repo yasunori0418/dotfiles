@@ -238,4 +238,4 @@ bar {
   #status_command i3status
 }
 
-# vim:fdm=marker
+# vim:fdm=marker:fen
