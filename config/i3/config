@@ -9,6 +9,7 @@
 # layout, use the i3-config-wizard
 #
 
+# window settings {{{
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below.
 font pango:Noto Sans CJK JP 12
@@ -21,7 +22,9 @@ default_floating_border normal
 gaps outer 5
 gaps inner 5
 smart_gaps on
+# }}}
 
+# Startup {{{
 set $wallpaper ~/Pictures/wallpaper/Nordic-darker.png
 
 exec_always --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork --ignore-empty-password -i $wallpaper
@@ -34,7 +37,9 @@ exec --no-startup-id feh --bg-fill $wallpaper
 exec --no-startup-id xfce4-power-manager
 exec --no-startup-id blueberry-tray
 exec --no-startup-id wezterm
+# }}}
 
+# Keybinds {{{
 # Use these keys for focus, movement, and resize directions when reaching for
 # the arrows is not convenient
 set $left h
@@ -47,8 +52,9 @@ set $mod Mod4
 
 # Alt key(windows layout)
 set $alt Mod1
+# }}}
 
-# Terminal
+# Terminal {{{
 bindsym $mod+Return exec wezterm
 ## Sub terminal emulators. 
 # disable ime in alacritty.
@@ -57,17 +63,19 @@ bindsym $mod+Shift+Return exec --no-startup-id $alacritty
 # daemon startup rxvt-unicode
 set $urxvt XMODIFIERS=urxvt start_urxvt
 bindsym $mod+Ctrl+Return exec --no-startup-id $urxvt
+# }}}
 
-# Screenshot shortcut key
+# Screenshot shortcut key {{{
 #bindsym $mod+Shift+p exec --no-startup-id scrot ~/Pictures/%Y-%m-%d-%T-scrot.png
 bindsym $mod+Print exec --no-startup-id xfce4-screenshooter -f
 bindsym $mod+Shift+Print exec --no-startup-id xfce4-screenshooter -w
 bindsym $mod+Ctrl+Print exec --no-startup-id xfce4-screenshooter -r
+# }}}
 
 # Multiple monitor.
 bindsym $mod+m exec --no-startup-id multi_monitor_for_laptop.sh
 
-# Rofi launch keybinds
+# Rofi launch keybinds {{{
 # Start application launcher
 bindsym $mod+d exec --no-startup-id rofi -show drun
 # Start window selector
@@ -80,8 +88,9 @@ bindsym $mod+Shift+e exec rofi -show power -font "HackGen Console NF 14" -modi "
 bindsym $mod+c exec rofi -modi calc -show calc -no-sidebar-mode
 # start clipcat-menu insert on rofi
 bindsym $mod+p exec --no-startup-id clipmenu
+# }}}
 
-# Window controls
+# Window controls {{{
 # change focus
 bindsym $mod+$left   focus left
 bindsym $mod+$down   focus down
@@ -120,9 +129,9 @@ bindsym $mod+Shift+minus move scratchpad
 # Show the next scratchpad window or hide the focused scratchpad window.
 # If there are multiple scratchpad windows, this command cycles through them.
 bindsym $mod+minus scratchpad show, border normal
+# }}}
 
-
-# Workspace
+# Workspace {{{
 # Define names for default workspaces for which we configure key bindings later on.
 # We use variables to avoid repeating the names in multiple places.
 set $ws1 "1| "
@@ -159,9 +168,9 @@ bindsym $mod+Shift+7 move container to workspace number $ws7
 bindsym $mod+Shift+8 move container to workspace number $ws8
 bindsym $mod+Shift+9 move container to workspace number $ws9
 bindsym $mod+Shift+0 move container to workspace number $ws10
+# }}}
 
-
-# software floating settings
+# software floating settings {{{
 for_window [window_role="pop-up"]           floating enable border normal
 for_window [class="Pavucontrol"]            floating enable border normal
 for_window [class="lsp-plugins"]            floating enable border normal
@@ -176,8 +185,9 @@ for_window [class="Gufw.py"]                floating enable border normal
 for_window [class="easyeffects"]            floating enable border normal
 for_window [class="Nm-connection-editor"]   floating enable border normal
 for_window [class="SimpleScreenRecorder"]   floating enable border normal
+# }}}
 
-# Launch software in a specific workspace
+# Launch software in a specific workspace {{{
 for_window [window_role="browser"]          move container to workspace $ws3, workspace $ws3, layout tabbed
 for_window [class="neovide"]                move container to workspace $ws2, workspace $ws2
 for_window [class="nvui"]                   move container to workspace $ws2, workspace $ws2
@@ -188,7 +198,7 @@ for_window [class="GitKraken"]              move container to workspace $ws5, wo
 for_window [class="Thunar"]                 move container to workspace $ws6, workspace $ws6, layout tabbed
 for_window [class="cantata"]                move container to workspace $ws7, workspace $ws7, layout tabbed
 for_window [class="Mysql-workbench-bin"]    move container to workspace $ws8, workspace $ws8, layout tabbed
-
+# }}}
 
 # reload the configuration file
 bindsym $mod+Shift+c reload
@@ -197,9 +207,8 @@ bindsym $mod+Shift+r restart
 # kill focused window
 bindsym $mod+Shift+q kill
 
-
+# Resize mode configure. {{{
 # resize window (you can also use the mouse for that)
-# Resize mode configure.
 mode "Resize" {
   # These bindings trigger as soon as you enter the resize mode
 
@@ -218,6 +227,7 @@ mode "Resize" {
   bindsym $mod+r mode "default"
 }
 bindsym $mod+r mode "Resize"
+# }}}
 
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
@@ -228,14 +238,4 @@ bar {
   #status_command i3status
 }
 
-#######################################################################
-# automatically start i3-config-wizard to offer the user to create a
-# keysym-based config which used their favorite modifier (alt or windows)
-#
-# i3-config-wizard will not launch if there already is a config file
-# in ~/.config/i3/config (or $XDG_CONFIG_HOME/i3/config if set) or
-# ~/.i3/config.
-#
-# Please remove the following exec line:
-#######################################################################
-#exec i3-config-wizard
+# vim:fdm=marker
