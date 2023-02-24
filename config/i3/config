@@ -75,6 +75,10 @@ bindsym $mod+Ctrl+Print exec --no-startup-id xfce4-screenshooter -r
 # Multiple monitor.
 bindsym $mod+m exec --no-startup-id multi_monitor_for_laptop.sh
 
+# VIME - Vim Input Method Editor
+bindsym $alt+c exec XMODIFIERS=@im= ~/bin/clip.sh
+for_window [instance="Floaterm"] floating enable
+
 # Rofi launch keybinds {{{
 # Start application launcher
 bindsym $mod+d exec --no-startup-id rofi -show drun
