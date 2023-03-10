@@ -32,6 +32,17 @@ function! vimrc#search_repo_root() abort
   return repo_root
 endfunction
 
+function! vimrc#signcolumn() abort
+  silent!
+  if &number
+    set nonumber norelativenumber
+    Gitsigns toggle_linehl
+  else
+    set number relativenumber
+    Gitsigns toggle_linehl
+  endif
+endfunction
+
 " dein feature expand functions
 function! vimrc#dein_update(bang_flg) abort
   if vimrc#is_github_pat() && a:bang_flg == 0
