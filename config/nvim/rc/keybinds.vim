@@ -1,5 +1,6 @@
 " keybinds
-" Nop keys
+
+" Nop keys {{{
 " Disable s for vim-sandwich
 nnoremap s <Nop>
 xnoremap s <Nop>
@@ -33,9 +34,9 @@ noremap! <Right>  <Nop>
 
 " Use prefix <Window>.
 nnoremap <C-W> <Nop>
+" }}}
 
-
-" Window control keybind
+" Window control keybind {{{
 " File save
 nnoremap <Window>w <Cmd>write<CR>
 
@@ -75,8 +76,9 @@ nnoremap <S-Right> <C-w>><CR>
 nnoremap <S-Up>    <C-w>-<CR>
 nnoremap <S-Down>  <C-w>+<CR>
 
+" }}}
 
-" Keybind prefixes
+" Keybind prefixes {{{
 " Window control prefix
 " overwrites window command of 'CTRL-W'.
 nnoremap <Window> <Nop>
@@ -90,8 +92,9 @@ nmap <Space>l <lsp>
 nnoremap <git>    <Nop>
 nmap     <Space>g <git>
 
+" }}}
 
-" Normal Mode:
+" Normal Mode: {{{
 " US Keyboard layout mapping.
 " Exchange Colon and Semi-Colon.
 "nnoremap ; :
@@ -108,8 +111,9 @@ nnoremap gf gF
 " Disable highlights from search results.
 nnoremap <Space>n <Cmd>nohlsearch<CR>
 
+" }}}
 
-" Insert Mode:
+" Insert Mode: {{{
 " Exit insert mode.
 inoremap jj <ESC>
 inoremap <C-l> <Del>
@@ -121,7 +125,9 @@ inoremap <C-a> <C-o>^
 inoremap <C-f> <C-G>U<Right>
 inoremap <C-b> <C-G>U<Left>
 
-" Visual Mode:
+" }}}
+
+" Visual Mode: {{{
 " Exchange Colon and Semi-Colon.
 "xnoremap ; :
 xnoremap : ;
@@ -134,33 +140,41 @@ xnoremap a' 2i'
 xnoremap a" 2i"
 xnoremap a` 2i`
 
+" }}}
 
-" Operator Mode:
+" Operator Mode: {{{
 onoremap a' 2i'
 onoremap a" 2i"
 onoremap a` 2i`
 
+" }}}
 
-" Quickfix
+" Quickfix {{{
 nnoremap [q <Cmd>cprevious<CR>
 nnoremap ]q <Cmd>cnext<CR>
 nnoremap [Q <Cmd>cfirst<CR>
 nnoremap ]Q <Cmd>clast<CR>
 
-" Buffer
+" }}}
+
+" Buffer {{{
 nnoremap [b <Cmd>bprevious<CR>
 nnoremap ]b <Cmd>bnext<CR>
 nnoremap [B <Cmd>bfirst<CR>
 nnoremap ]B <Cmd>blast<CR>
 
-" Command line keybinds
+" }}}
+
+" Command line keybinds {{{
 cnoremap <C-a> <Home>
 cnoremap <C-e> <End>
 cnoremap <C-b> <Left>
 cnoremap <C-f> <Right>
 cnoremap <C-l> <Del>
 
-" Command
+" }}}
+
+" Command {{{
 command! Cleareg call vimrc#clear_register()
 
 command! -bang DeinUpdate call vimrc#dein_update(<bang>0)
@@ -174,4 +188,8 @@ command! -bang DDCFuzzyFilter call vimrc#ddc_change_fileter(<bang>0, 'fuzzy')
 command! -bang DDCNormalFilter call vimrc#ddc_change_fileter(<bang>0, 'normal')
 
 command! DDCEchoFilter call vimrc#ddc_change_fileter(1, '')
+
 command! ToggleSignColumn call vimrc#signcolumn()
+" }}}
+
+" vim:fdm=marker:fen
