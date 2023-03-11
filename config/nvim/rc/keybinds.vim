@@ -109,7 +109,8 @@ nnoremap c "_c
 nnoremap gf gF
 
 " Disable highlights from search results.
-nnoremap <Space>n <Cmd>nohlsearch<CR>
+nnoremap <ESC><ESC> <Cmd>nohlsearch<CR>
+nnoremap <Space>n <Cmd>call vimrc#signcolumn()<CR>
 
 " }}}
 
