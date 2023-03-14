@@ -179,7 +179,7 @@ augroup user_filetype_indent
   autocmd FileType html       setlocal tabstop=2 softtabstop=2 shiftwidth=2
   autocmd FileType css        setlocal tabstop=2 softtabstop=2 shiftwidth=2
   autocmd FileType python     setlocal tabstop=4 softtabstop=4 shiftwidth=4
-  autocmd FileType php        setlocal tabstop=4 softtabstop=4 shiftwidth=4
+  autocmd FileType php        setlocal tabstop=4 softtabstop=4 shiftwidth=4 noautoindent
   autocmd FileType xml        setlocal tabstop=4 softtabstop=4 shiftwidth=4
   autocmd FileType markdown   setlocal tabstop=4 softtabstop=4 shiftwidth=4
   autocmd FileType dockerfile setlocal tabstop=4 softtabstop=4 shiftwidth=4
