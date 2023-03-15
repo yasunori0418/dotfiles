@@ -36,10 +36,8 @@ function! vimrc#signcolumn() abort
   silent!
   if &number
     set nonumber norelativenumber
-    Gitsigns toggle_linehl
   else
     set number relativenumber
-    Gitsigns toggle_linehl
   endif
 endfunction
 
