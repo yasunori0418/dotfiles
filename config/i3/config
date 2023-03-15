@@ -119,7 +119,7 @@ bindsym $mod+v split h, exec dunstify --appname=i3wm "Split the window" "Vertica
 bindsym $mod+f fullscreen toggle, exec dunstify --appname=i3wm "Change window type" "Fullscreen" "Toggle"
 
 # change container layout (stacked, tabbed, toggle split)
-bindsym $mod+s layout stacking, exec dunstify --appname=i3wm "Change window type" "Stack"
+#bindsym $mod+s layout stacking, exec dunstify --appname=i3wm "Change window type" "Stack"
 bindsym $mod+w layout tabbed, exec dunstify --appname=i3wm "Change window type" "Tab"
 bindsym $mod+e layout toggle split, exec dunstify --appname=i3wm "Change window type" "Split"
 
