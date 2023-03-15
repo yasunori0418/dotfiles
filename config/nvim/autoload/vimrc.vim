@@ -36,8 +36,12 @@ function! vimrc#signcolumn() abort
   silent!
   if &number
     set nonumber norelativenumber
+    lua require('gitsigns').toggle_signs(false)
+    lua require('gitsigns').toggle_linehl(true)
   else
     set number relativenumber
+    lua require('gitsigns').toggle_signs(true)
+    lua require('gitsigns').toggle_linehl(false)
   endif
 endfunction
 
