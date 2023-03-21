@@ -184,5 +184,6 @@ fi
 alias dotfiles='cd ~/dotfiles'
 alias project='cd ~/Project'
 
+alias sync_status='watch grep -e Dirty: -e Writeback: /proc/meminfo'
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
