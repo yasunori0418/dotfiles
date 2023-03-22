@@ -21,6 +21,7 @@ let s:lazy_toml = 'lazy.toml'
 let s:ddc_toml = 'ddc.toml'
 let s:ddu_toml = 'ddu.toml'
 let s:lsp_toml = 'lsp.toml'
+let s:denops_toml = 'denops.toml'
 
 
 " dein installation check
@@ -57,6 +58,7 @@ if dein#min#load_state(s:dein_dir)
   call dein#load_toml(s:toml_dir . s:ddc_toml,    {'lazy': 1})
   call dein#load_toml(s:toml_dir . s:ddu_toml,    {'lazy': 1})
   call dein#load_toml(s:toml_dir . s:lsp_toml,    {'lazy': 1})
+  call dein#load_toml(s:toml_dir . s:denops_toml, {'lazy': 1})
 
   "call dein#local(expand('~/Project'), {}, ['*.vim'])
 
