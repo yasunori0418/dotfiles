@@ -170,6 +170,10 @@ function custom_cd() {
 }
 alias cd=custom_cd
 
+function git_root() {
+  cd `git root`
+}
+
 # Neovim alias
 if [[ $(command -v nvim) ]]; then
   alias nv='nvim --listen ~/.cache/nvim/server.pipe'
@@ -185,5 +189,6 @@ alias dotfiles='cd ~/dotfiles'
 alias project='cd ~/Project'
 
 alias sync_status='watch grep -e Dirty: -e Writeback: /proc/meminfo'
+
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
