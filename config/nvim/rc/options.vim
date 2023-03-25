@@ -91,10 +91,10 @@ set matchtime=1
 
 " Display{{{
 " Display rows number.
-set nonumber
+set number
 
 " Display relative rows number.
-set norelativenumber
+set relativenumber
 
 " Display current row cursorline.
 set cursorline
