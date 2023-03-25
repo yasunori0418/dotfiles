@@ -41,9 +41,12 @@ call lightline_skk#option('display', {
 repo = 'skanehira/denops-translate.vim'
 depends = 'denops.vim'
 on_cmd = 'Translate'
+on_map = { 'nx' = '<Plug>(Translate' }
 hook_add = '''
-nnoremap te <Cmd>Translate<CR>
-nnoremap tj <Cmd>Translate!<CR>
+nmap tx <Plug>(Translate)
+nmap tX <Plug>(Translate-exchange)
+xmap tx <Plug>(Translate)
+xmap tX <Plug>(Translate-exchange)
 '''
 
 [[plugins]] # denops-silicon.vim
