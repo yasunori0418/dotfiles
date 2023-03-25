@@ -62,10 +62,6 @@ mason_lspconfig.setup({
   automatic_installation = true,
 })
 
-vim.diagnostic.config({
-  signs = false,
-})
-
 mason_lspconfig.setup_handlers({
   function(server_name)
     local lsp_options = {}
@@ -119,10 +115,10 @@ require("lspsaga").setup({
   },
   lightbulb = {
     enable = true,
-    enable_in_insert = true,
-    sign = false,
+    enable_in_insert = false,
+    sign = true,
     sign_priority = 40,
-    virtual_text = true,
+    virtual_text = false,
   },
   rename = {
     quit = "q",
