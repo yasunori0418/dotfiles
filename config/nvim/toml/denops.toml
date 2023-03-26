@@ -73,15 +73,6 @@ let g:silicon_options = {
   \ }
 '''
 
-[[plugins]] # denops-gitter.vim
-repo = '4513ECHO/denops-gitter.vim'
-on_event = 'CmdlineEnter'
-hook_add = '''
-let g:gitter#token = vimrc#read_pat(g:base_dir . 'gitter_pat')[1]
-command! OpenReadingVimrc edit gitter://room/vim-jp/reading-vimrc
-command! OpenGitterRoomList edit gitter://rooms
-'''
-
 [[plugins]]
 repo = 'yuki-yano/fuzzy-motion.vim'
 depends = ['denops.vim', 'kensaku.vim']
