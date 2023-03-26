@@ -98,8 +98,8 @@ nmap     <Space>g <git>
 " US Keyboard layout mapping.
 " Exchange Colon and Semi-Colon.
 "nnoremap ; :
-"nnoremap : ;
-"nnoremap q; q:
+nnoremap : ;
+nnoremap q; q:
 
 " Do not save the things erased by x and c in the register.
 nnoremap x "_x

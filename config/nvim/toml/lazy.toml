@@ -357,8 +357,8 @@ omap f <Plug>(eft-f)
 nmap F <Plug>(eft-F)
 xmap F <Plug>(eft-F)
 omap F <Plug>(eft-F)
-nmap ; <Plug>(eft-repeat)
-xmap ; <Plug>(eft-repeat)
+nmap : <Plug>(eft-repeat)
+xmap : <Plug>(eft-repeat)
 '''
 hook_source = '''
 let g:eft_ignorecase = v:true
