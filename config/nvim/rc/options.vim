@@ -160,7 +160,6 @@ set listchars=tab:»-,space:･,trail:･,nbsp:%,eol:↲,extends:»,precedes:«
 
 augroup user_filename_filetype
   autocmd!
-  autocmd BufNewFile,BufRead *.php                setlocal filetype=php
   autocmd BufNewFile,BufRead *.blade.*            setlocal filetype=html
   autocmd BufNewFile,BufRead *.uml                setlocal filetype=plantuml
   autocmd BufNewFile,BufRead .textlintrc          setlocal filetype=json
