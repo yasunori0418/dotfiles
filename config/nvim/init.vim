@@ -1,7 +1,3 @@
-if &compatible
-  set nocompatible
-endif
-
 " dein base directory.
 let s:dein_dir = expand('~/.cache/dein')
 
