@@ -189,8 +189,6 @@ command! -bang DDCFuzzyFilter call vimrc#ddc_change_filter(<bang>0, 'fuzzy')
 command! -bang DDCNormalFilter call vimrc#ddc_change_filter(<bang>0, 'normal')
 
 command! DDCEchoFilter call vimrc#ddc_change_fileter(1, '')
-
-command! ToggleSignColumn call vimrc#signcolumn()
 " }}}
 
 " vim:fdm=marker:fen
