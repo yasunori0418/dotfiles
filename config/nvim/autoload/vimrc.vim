@@ -248,7 +248,7 @@ function! vimrc#commandline_post() abort
   set wildcharm=<Tab>
 endfunction
 
-function! vimrc#ddc_change_fileter(bang_flg, filter_name) abort
+function! vimrc#ddc_change_filter(bang_flg, filter_name) abort
   if a:filter_name ==# 'normal'
     call ddc#custom#patch_global('sourceOptions', {
       \ '_': {
