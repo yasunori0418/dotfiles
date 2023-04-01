@@ -23,19 +23,7 @@ nnoremap <ff>P <Cmd>call ddu#start({'name': 'plugin-list-ff'})<CR>
 nnoremap <ff>p <Cmd>call ddu#start({'name': 'project-list-ff'})<CR>
 nnoremap <ff>~ <Cmd>call ddu#start({'name': 'home-ff'})<CR>
 nnoremap <ff>r <Cmd>call ddu#start({'name': 'register-ff'})<CR>
-nnoremap <ff>s <Cmd>call ddu#start({
-  \ 'name': 'search-ff',
-  \ 'ui': 'ff',
-  \ 'uiParams': {
-    \ 'ff': {
-      \ 'startFilter': v:true,
-      \ },
-    \ },
-  \ 'sources': [{
-    \ 'name': 'rg',
-    \ 'params': {'input': input('Pattern: ')},
-    \ }],
-  \ })<CR>
+nnoremap <ff>s <Cmd>call ddu#start({'name': 'search-ff'})<CR>
 nnoremap <ff>m <Cmd>call ddu#start({'name': 'mrr-ff'})<CR>
 nnoremap <ff>n <Cmd>call ddu#start({'name': 'mru-ff'})<CR>
 
@@ -191,6 +179,22 @@ call ddu#custom#patch_local('help-ff', {
     \ {'name': 'help'},
     \ {'name': 'readme_viewer'},
     \ ],
+  \ })
+
+call ddu#custom#patch_local('search-ff', {
+  \ 'ui': 'ff',
+  \ 'uiParams': {
+    \ 'ff': {
+      \ 'ignoreEmpty': v:false,
+      \ 'autoResize': v:false,
+      \ 'startFilter': v:true,
+      \ },
+    \ },
+  \ 'volatile': v:true,
+  \ 'sources': [{
+    \ 'name': 'rg',
+    \ 'options': {'matchers': []},
+    \ }],
   \ })
 
 call ddu#custom#patch_local('buffer-ff', {
