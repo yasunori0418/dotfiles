@@ -83,8 +83,7 @@ nnoremap <S-Down>  <C-w>+<CR>
 nmap <Space>w <Plug>(Window)
 
 " LSP keybinds prefix
-nnoremap <lsp> <Nop>
-nmap <Space>l <lsp>
+nmap <Space>l <Plug>(lsp)
 
 " Git keybinds prefix
 nnoremap <git>    <Nop>
