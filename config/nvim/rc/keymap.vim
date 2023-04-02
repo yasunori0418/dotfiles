@@ -78,10 +78,8 @@ nnoremap <S-Down>  <C-w>+<CR>
 
 " }}}
 
-" Keybind prefixes {{{
+" Keymap prefixes {{{
 " Window control prefix
-" overwrites window command of 'CTRL-W'.
-"nnoremap <Window> <Nop>
 nmap <Space>w <Plug>(Window)
 
 " LSP keybinds prefix
