@@ -77,8 +77,10 @@ gitsigns.setup({
       return "<Ignore>"
     end, keymap_options)
 
-    keymap("n", "<git>hs", "<Cmd>Gitsigns stage_hunk<CR>")
-    keymap("n", "<git>hr", "<Cmd>Gitsigns reset_hunk<CR>")
+    keymap({"n", "v"}, "ghs", "<Cmd>Gitsigns stage_hunk<CR>")
+    keymap({"n", "v"}, "ghr", "<Cmd>Gitsigns reset_hunk<CR>")
+    keymap("n", "gbs", "<Cmd>Gitsigns stage_buffer<CR>")
+    keymap("n", "gbr", "<Cmd>Gitsigns reset_buffer<CR>")
   end,
 })
 -- %>
@@ -88,21 +90,21 @@ gitsigns.setup({
 repo = 'lambdalisue/gina.vim'
 on_cmd = 'Gina'
 hook_add = '''
-nnoremap <git>s <Cmd>Gina status<CR>
-nnoremap <git>c <Cmd>Gina commit<CR>
-nnoremap <git>l <Cmd>Gina log<CR>
-nnoremap <git>b <Cmd>Gina blame<CR>
-nnoremap <git>d <Cmd>Gina patch<CR>
-nnoremap <git>ps <Cmd>Deol git push -split=floating -winheight=30 -winwidth=120 -toggle<CR>
-nnoremap <git>pl <Cmd>Deol git pull -split=floating -winheight=30 -winwidth=120 -toggle<CR>
+nnoremap gBB <Cmd>Gina blame<CR>
 '''
 hook_source = '''
-call gina#custom#command#option('status', '-s')
-call gina#custom#command#option('status', '--opener', 'split')
-call gina#custom#command#option('commit', '-v')
-call gina#custom#command#option('log', '--opener', 'vsplit')
-call gina#custom#command#option('log', '--graph')
-call gina#custom#command#option('log', '--all')
 call gina#custom#command#option('blame', '--opener', 'tabedit')
-call gina#custom#command#option('patch', '--oneside')
+'''
+
+[[plugins]]
+repo = 'lambdalisue/gin.vim'
+depends = 'askpass.vim'
+on_cmd = ['Gin', 'GinBranch', 'GinCd', 'GinChaperon', 'GinDiff', 'GinLog', 'GinPatch', 'GinStatus']
+hook_add = '''
+nnoremap gs <Cmd>GinStatus<CR>
+nnoremap gC <Cmd>Gin commit<CR>
+nnoremap gB <Cmd>GinBranch<CR>
+nnoremap gl <Cmd>GinLog --graph --all --abbrev-commit --oneline<CR>
+nnoremap gpl <Cmd>Gin pull<CR>
+nnoremap gps <Cmd>Gin push --verbose --progress<CR>
 '''
