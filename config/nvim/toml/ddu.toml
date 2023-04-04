@@ -341,6 +341,10 @@ nnoremap <buffer> a
 nnoremap <buffer> i
   \ <Cmd>call ddu#ui#do_action('openFilterWindow')<CR>
 
+" Open preview window.
+nnoremap <buffer> p
+  \ <Cmd>call ddu#ui#do_action('preview')<CR>
+
 nnoremap <buffer> <C-l>
   \ <Cmd>call ddu#ui#do_action('refreshItems')<CR>
 
