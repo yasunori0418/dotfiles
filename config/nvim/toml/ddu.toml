@@ -64,8 +64,8 @@ call ddu#custom#patch_global(#{
       \ filterFloatingPosition: 'top',
       \ displaySourceName: 'long',
       \ previewFloating: v:true,
-      \ previewFloatingBorder: 'single',
-      \ previewSplit: 'vertical',
+      \ previewFloatingBorder: 'double',
+      \ previewSplit: 'horizontal',
       \ },
     \ filer: #{
       \ split: 'vertical',
