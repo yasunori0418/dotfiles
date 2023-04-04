@@ -53,14 +53,19 @@ call ddu#custom#patch_global(#{
     \ },
   \ uiParams: #{
     \ ff: #{
-      \ previewFloating: v:true,
+      \ autoAction: #{
+        \ delay: 0,
+        \ name: 'preview',
+        \ },
       \ split: 'floating',
+      \ floatingBorder: 'single',
       \ prompt: '',
       \ filterSplitDirection: 'floating',
-      \ displaySourceName: 'long',
-      \ floatingBorder: 'single',
-      \ previewFloatingBorder: 'single',
       \ filterFloatingPosition: 'top',
+      \ displaySourceName: 'long',
+      \ previewFloating: v:true,
+      \ previewFloatingBorder: 'single',
+      \ previewSplit: 'vertical',
       \ },
     \ filer: #{
       \ split: 'vertical',
@@ -336,10 +341,6 @@ nnoremap <buffer> a
 nnoremap <buffer> i
   \ <Cmd>call ddu#ui#do_action('openFilterWindow')<CR>
 
-" Open preview window.
-nnoremap <buffer> p
-  \ <Cmd>call ddu#ui#do_action('preview')<CR>
-
 nnoremap <buffer> <C-l>
   \ <Cmd>call ddu#ui#do_action('refreshItems')<CR>
 
@@ -361,21 +362,21 @@ nnoremap <buffer><expr> k
 ddu-ff-filter = '''
 " fuzzy finder filter keybinds on insert mode {{{
 inoremap <buffer> <CR>
-  \ <Esc><Cmd>call ddu#ui#do_action('closeFilterWindow')<CR>
+  \ <Esc><Cmd>call ddu#ui#multi_actions([['closeFilterWindow'], ['preview']])<CR>
 inoremap <buffer> jj
-  \ <Esc><Cmd>call ddu#ui#do_action('closeFilterWindow')<CR>
+  \ <Esc><Cmd>call ddu#ui#multi_actions([['closeFilterWindow'], ['preview']])<CR>
 inoremap <buffer> <Esc>
-  \ <Esc><Cmd>call ddu#ui#do_action('closeFilterWindow')<CR>
+  \ <Esc><Cmd>call ddu#ui#multi_actions([['closeFilterWindow'], ['preview']])<CR>
 
 " fuzzy finder filter keybinds on normal mode
 nnoremap <buffer> <CR>
-  \ <Cmd>call ddu#ui#do_action('closeFilterWindow')<CR>
+  \ <Cmd>call ddu#ui#multi_actions([['closeFilterWindow'], ['preview']])<CR>
 nnoremap <buffer> q
-  \ <Cmd>call ddu#ui#do_action('closeFilterWindow')<CR>
+  \ <Cmd>call ddu#ui#multi_actions([['closeFilterWindow'], ['preview']])<CR>
 nnoremap <buffer> jj
-  \ <Cmd>call ddu#ui#do_action('closeFilterWindow')<CR>
+  \ <Cmd>call ddu#ui#multi_actions([['closeFilterWindow'], ['preview']])<CR>
 nnoremap <buffer> <Esc>
-  \ <Cmd>call ddu#ui#do_action('closeFilterWindow')<CR>
+  \ <Cmd>call ddu#ui#multi_actions([['closeFilterWindow'], ['preview']])<CR>
 " }}}
 '''
 
