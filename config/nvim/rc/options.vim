@@ -176,6 +176,7 @@ augroup user_filetype_indent
   autocmd FileType markdown   setlocal tabstop=4 softtabstop=4 shiftwidth=4
   autocmd FileType dockerfile setlocal tabstop=4 softtabstop=4 shiftwidth=4
   autocmd FileType make       setlocal tabstop=8 softtabstop=0 shiftwidth=0 noexpandtab
+  autocmd FileType gin-*      setlocal nobuflisted
 augroup END
 
 augroup user_quickfix_autocmd
