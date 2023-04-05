@@ -5,7 +5,7 @@ repo = 'Shougo/ddu.vim'
 depends = 'denops.vim'
 on_func = 'ddu#start()'
 hook_add = '''
-" fuzzy finder start keybinds
+" fuzzy finder start keybinds {{{
 nmap <Space>d <Plug>(ddu-ff)
 
 nnoremap <Plug>(ddu-ff)a <Cmd>call ddu#start({
@@ -26,7 +26,9 @@ nnoremap <Plug>(ddu-ff)s <Cmd>call ddu#start(#{name: 'search-ff'})<CR>
 nnoremap <Plug>(ddu-ff)m <Cmd>call ddu#start(#{name: 'mrr-ff'})<CR>
 nnoremap <Plug>(ddu-ff)n <Cmd>call ddu#start(#{name: 'mru-ff'})<CR>
 
-" filer start keybins
+" }}}
+
+" filer start keybins {{{
 nmap <Space>f <Plug>(ddu-filer)
 nnoremap <Plug>(ddu-filer)r <Cmd>call ddu#start(#{
   \ name: 'project_root-filer',
@@ -42,9 +44,10 @@ nnoremap <Plug>(ddu-filer)a <Cmd>call ddu#start(#{
   \ })<CR>
 nnoremap <Plug>(ddu-filer)d <Cmd>call ddu#start(#{name: 'dotfiles-filer'})<CR>
 nnoremap <Plug>(ddu-filer)h <Cmd>call ddu#start(#{name: 'home-filer'})<CR>
+" }}}
 '''
 hook_source = '''
-" Global option and param
+" Global option and param {{{
 call ddu#custom#patch_global(#{
   \ uiOptions: #{
     \ filer: #{
@@ -132,7 +135,9 @@ call ddu#custom#patch_global(#{
     \ },
   \ })
 
-" UI:ff presets
+" }}}
+
+" UI:ff presets {{{
 call ddu#custom#patch_local('current-ff', #{
   \ ui: 'ff',
   \ uiParams: #{
@@ -262,9 +267,9 @@ call ddu#custom#patch_local('mru-ff', #{
       \ },
     \ }],
   \ })
+" }}}
 
-" UI:filer presets
-
+" UI:filer presets {{{
 call ddu#custom#patch_local('current-filer', #{
   \ ui: 'filer',
   \ sources: [#{name: 'file'}],
@@ -294,6 +299,7 @@ call ddu#custom#patch_local('home-filer', #{
       \ },
     \ },
   \ })
+" }}}
 '''
 
 # }}}
@@ -326,11 +332,12 @@ nnoremap <buffer> t
   \ #{name: 'open', params: #{command: 'tabedit'}})<CR>
 " }}}
 
-" Multiple selection.
+" Multiple selection {{{
 nnoremap <buffer> <Space>
   \ <Cmd>call ddu#ui#do_action('toggleSelectItem')<CR>
 nnoremap <buffer> *
   \ <Cmd>cal ddu#ui#do_action('toggleAllItems')<CR>
+" }}}
 
 " fuzzy finder controll keybinds {{{
 " Open selection menu.
