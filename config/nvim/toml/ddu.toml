@@ -75,7 +75,7 @@ call ddu#custom#patch_global(#{
   \ sourceOptions: #{
     \ _: #{
       \ ignoreCase: v:true,
-      \ matchers: ['matcher_substring'],
+      \ matchers: ['matcher_fuse'],
       \ },
     \ file: #{
       \ columns: ['icon_filename'],
@@ -694,6 +694,10 @@ on_source = 'ddu.vim'
 
 [[plugins]] # ddu-filter-matcher_relative
 repo = 'Shougo/ddu-filter-matcher_relative'
+on_source = 'ddu.vim'
+
+[[plugins]]
+repo = 'kuuote/ddu-filter-fuse'
 on_source = 'ddu.vim'
 # }}}
 
