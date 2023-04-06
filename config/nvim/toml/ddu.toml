@@ -95,7 +95,10 @@ call ddu#custom#patch_global(#{
       \ jumps: v:true,
       \ },
     \ rg: #{
-      \ arg: ['--ignore-case', '--column', '--no-heading', '--color', 'never'],
+      \ args: ['--json', '--ignore-case', '--column', '--no-heading', '--color', 'never'],
+      \ highlights: #{
+        \ word: 'Title',
+        \},
       \ },
     \ },
   \ kindOptions: #{
