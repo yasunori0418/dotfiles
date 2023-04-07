@@ -76,7 +76,7 @@ call ddu#custom#patch_global(#{
   \ sourceOptions: #{
     \ _: #{
       \ ignoreCase: v:true,
-      \ matchers: ['matcher_fuse'],
+      \ matchers: ['matcher_substring'],
       \ },
     \ file: #{
       \ columns: ['icon_filename'],
