@@ -535,21 +535,6 @@ let g:user_emmet_settings = {
   \ }
 '''
 
-[[plugins]] # vim-json
-repo = 'elzr/vim-json'
-on_ft = 'json'
-hook_source = '''
-augroup json_autocmd
-  autocmd!
-  autocmd FileType json setlocal autoindent
-  autocmd FileType json setlocal formatoptions=tcq2l
-  autocmd FileType json setlocal textwidth=78 shiftwidth=2
-  autocmd FileType json setlocal softtabstop=2 tabstop=2
-  autocmd FileType json setlocal expandtab
-  autocmd FileType json setlocal foldmethod=syntax
-augroup END
-'''
-
 [[plugins]] # plantuml-syntax
 repo = 'aklt/plantuml-syntax'
 on_ft = 'plantuml'
