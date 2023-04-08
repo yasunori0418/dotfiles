@@ -8,9 +8,9 @@ function! vimrc#clear_register() abort
 endfunction
 
 function! vimrc#read_pat(path) abort
-  let s:pat_path = a:path
-  if filereadable(s:pat_path)
-    return [v:true, readfile(s:pat_path)[0]]
+  let l:pat_path = a:path
+  if filereadable(l:pat_path)
+    return [v:true, readfile(l:pat_path)[0]]
   endif
   return [v:false, 'Can not read pat file.']
 endfunction
