@@ -8,17 +8,17 @@ function! vimrc#clear_register() abort
 endfunction
 
 function! vimrc#read_pat(path) abort
-  let l:pat_path = a:path
-  if filereadable(l:pat_path)
-    return [v:true, readfile(l:pat_path)[0]]
+  let pat_path = a:path
+  if filereadable(pat_path)
+    return [v:true, readfile(pat_path)[0]]
   endif
   return [v:false, 'Can not read pat file.']
 endfunction
 
 function! vimrc#is_github_pat() abort
-  let l:result_read_pat = vimrc#read_pat(g:base_dir . 'github_pat')
-  if l:result_read_pat[0]
-    let g:dein#install_github_api_token = l:result_read_pat[1]
+  let result_read_pat = vimrc#read_pat(g:base_dir . 'github_pat')
+  if result_read_pat[0]
+    let g:dein#install_github_api_token = result_read_pat[1]
     return v:true
   endif
   return v:false
@@ -61,7 +61,7 @@ endfunction
 
 function! vimrc#dein_check_uninstall() abort
   let remove_plugins = dein#check_clean()
-  if len(l:remove_plugins) > 0
+  if len(remove_plugins) > 0
     for remove_plugin in remove_plugins
       echo remove_plugin
     endfor
