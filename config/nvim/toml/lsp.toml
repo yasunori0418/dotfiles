@@ -153,7 +153,7 @@ require("lspsaga").setup({
 
 [[plugins]] # denops-popup-preview.vim
 repo = 'matsui54/denops-popup-preview.vim'
-on_event = 'LspAttach'
+on_source = 'ddc.vim'
 hook_source = '''
 call popup_preview#enable()
 '''
