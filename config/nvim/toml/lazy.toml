@@ -127,47 +127,7 @@ on_cmd = 'Bracey'
 [[plugins]] # deol.nvim
 repo = 'Shougo/deol.nvim'
 on_cmd = 'Deol'
-hook_add = '''
-nnoremap <term> <Nop>
-nmap <Space>s <term>
-nnoremap <term>a <Cmd>Deol
-  \ -no-auto-cd
-  \ -no-start-insert
-  \ -split=floating
-  \ -winheight=30
-  \ -winwidth=120
-  \ -toggle<CR>
-nnoremap <term>t <Cmd>tabnew<Bar>Deol -no-start-insert<CR>
-nnoremap <term>c <Cmd>execute 'Deol'
-  \ '-cwd=' . fnamemodify(expand('%'), ':h')
-  \ '-no-auto-cd'
-  \ '-no-start-insert'
-  \ '-split=floating'
-  \ '-winheight=30'
-  \ '-winwidth=120'
-  \ '-toggle'<CR>
-nnoremap <term>h <Cmd>Deol
-  \ -cwd=~
-  \ -no-start-insert
-  \ -split=floating
-  \ -winheight=30
-  \ -winwidth=120
-  \ -toggle<CR>
-
-" Escape deol
-tnoremap <Esc> <C-\><C-n>
-'''
-hook_source = '''
-" let g:deol#prompt_pattern = '^❯ \?'
-" let g:deol#enable_ddc_completion = v:true
-let g:deol#shell_history_path = '~/.zsh_history'
-let g:deol#enable_dir_changed = v:false
-let g:deol#nvim_server = '~/.cache/nvim/server.pipe'
-let g:deol#custom_map = {
-  \ 'edit': '',
-  \ }
-let g:deol#floating_border = 'double'
-'''
+hooks_file = '~/.config/nvim/hooks_files/deol.vim'
 
 [[plugins]] # open-browser.vim
 repo = 'tyru/open-browser.vim'
