@@ -71,6 +71,12 @@ call ddu#custom#patch_global(#{
       \ split: 'vertical',
       \ splitDirection: 'topleft',
       \ winWidth: &columns /6,
+      \ previewFloating: v:true,
+      \ previewFloatingBorder: 'double',
+      \ previewCol: &columns / 4,
+      \ previewRow: &lines / 2,
+      \ previewWidth: &columns / 2,
+      \ previewHeight: 20,
       \ },
     \ },
   \ sourceOptions: #{
@@ -433,6 +439,9 @@ nnoremap <buffer> s
 " Open file with another tab window.
 nnoremap <buffer> t
   \ <Cmd>call ddu#ui#do_action('itemAction', {'name': 'open', 'params': {'command': 'tabedit'}})<CR>
+
+nnoremap <buffer> p
+  \ <Cmd>call ddu#ui#do_action('preview')<CR>
 " }}}
 
 " Operation of file or directory keybinds {{{
