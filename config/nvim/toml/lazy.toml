@@ -244,19 +244,6 @@ hooks_file = '~/.config/nvim/hooks_files/previm.vim'
 [[plugins]]
 repo = 'atusy/tsnode-marker.nvim'
 on_ft = 'markdown'
-lua_source = '''
--- <% dein_toml/tsnode-marker.lua
-vim.api.nvim_create_autocmd("FileType", {
-  group = vim.api.nvim_create_augroup("tsnode-marker-markdown", {}),
-  pattern = "markdown",
-  callback = function(ctx)
-    require("tsnode-marker").set_automark(ctx.buf, {
-      target = { "code_fence_content", "fenced_code_block_delimiter", "language" },
-      hl_group = "DiffChange",
-    })
-  end,
-})
--- %>
-'''
+hooks_file = '~/.config/nvim/hooks_files/tsnode_marker.lua'
 
 # }}}
