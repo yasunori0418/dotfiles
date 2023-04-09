@@ -459,11 +459,10 @@ nnoremap <buffer> R
   \ <Cmd>call ddu#ui#do_action('itemAction', {'name': 'rename'})<CR>
 
 " Delete file or directory.
-nnoremap <buffer> [delete] <Nop>
-nmap <buffer> d [delete]
-nnoremap <buffer> [delete]d
+nmap <buffer> d <Plug>(delete)
+nmap <buffer> <Plug>(delete)d
   \ <Cmd>call ddu#ui#do_action('itemAction', {'name': 'trash'})<CR>
-nnoremap <buffer> [delete]D
+nmap <buffer> <Plug>(delete)D
   \ <Cmd>call ddu#ui#do_action('itemAction', {'name': 'delete'})<CR>
 
 " make new file or directory.
