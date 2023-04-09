@@ -197,16 +197,7 @@ let g:partial#relative_base_path = '~/.cache/partial.vim'
 repo = 'numToStr/Comment.nvim'
 depends = 'nvim-treesitter'
 on_map = { nox = '<Plug>(comment_toggle_' }
-hook_add = '''
-omap gc <Plug>(comment_toggle_linewise)
-omap gb <Plug>(comment_toggle_blockwise)
-nmap gc <Plug>(comment_toggle_linewise)
-nmap gb <Plug>(comment_toggle_blockwise)
-nmap <expr> gcc v:count == 0 ? '<Plug>(comment_toggle_linewise_current)' : '<Plug>(comment_toggle_linewise_count)'
-nmap <expr> gbc v:count == 0 ? '<Plug>(comment_toggle_blockwise_current)' : '<Plug>(comment_toggle_blockwise_count)'
-xmap gc <Plug>(comment_toggle_linewise_visual)
-xmap gb <Plug>(comment_toggle_blockwise_visual)
-'''
+hooks_file = '~/.config/nvim/hooks_files/comment_nvim.vim'
 lua_source = '''
 require('plugins.comment')
 '''
