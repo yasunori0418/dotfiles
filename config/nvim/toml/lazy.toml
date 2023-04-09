@@ -126,7 +126,7 @@ repo = 'itchyny/lightline.vim'
 #on_event = ['InsertEnter', 'CmdlineEnter']
 on_event = ['VimEnter']
 depends = ['vim-gitbranch']
-hooks_file = '~/dotfiles/config/nvim/hooks_files/lightline.vim'
+hooks_file = '~/.config/nvim/hooks_files/lightline.vim'
 
 # }}}
 
