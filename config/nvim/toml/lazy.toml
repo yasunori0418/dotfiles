@@ -73,13 +73,11 @@ let g:vimhelpgenerator_uri = 'https://github.com/yasunori-kirin0418'
 repo = 'rcarriga/nvim-notify'
 on_source = 'nightfox.nvim'
 lua_source = '''
--- <% ./dein_toml/notify.lua
 require("notify").setup({
   stages = "slide",
   background_color = "NormalFloat",
 })
 vim.notify = require("notify")
--- %>
 '''
 
 [[plugins]] # suda.vim
