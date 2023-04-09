@@ -65,13 +65,12 @@ function! vimrc#dein_check_uninstall() abort
     for remove_plugin in remove_plugins
       echo remove_plugin
     endfor
-    echo 'Would you like to remove those plugins?'
-    echon '[Y/n]'
-    if getcharstr() ==? 'y'
+    let choice = confirm('Would you like to remove those plugins?', "&Yes\n&no", 1)
+    if choice == 1
       call map(remove_plugins, "delete(v:val, 'rf')")
       call dein#recache_runtimepath()
       echo 'Remove Plugins ...done!'
-    else 
+    else
       echo 'Remove Plugins ...abort!'
     endif
   else
