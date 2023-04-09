@@ -77,7 +77,6 @@ bindsym $mod+m exec --no-startup-id multi_monitor_for_laptop.sh
 
 # VIME - Vim Input Method Editor
 bindsym $alt+c exec XMODIFIERS=@im= ~/bin/clip.sh
-for_window [instance="Floaterm"] floating enable
 
 # Rofi launch keybinds {{{
 # Start application launcher
@@ -182,13 +181,14 @@ for_window [class="Lxappearance"]           floating enable border normal
 for_window [class="Blueman-manager"]        floating enable border normal
 for_window [class="Blueberry.py"]           floating enable border normal
 for_window [class="Xfce4-appfinder"]        floating enable border normal
-for_window [class="Gnome-system-monitor"]   floating enable border normal
 for_window [class="Peek"]                   floating enable border normal
 for_window [class="Solaar"]                 floating enable border normal
 for_window [class="Gufw.py"]                floating enable border normal
 for_window [class="easyeffects"]            floating enable border normal
 for_window [class="Nm-connection-editor"]   floating enable border normal
 for_window [class="SimpleScreenRecorder"]   floating enable border normal
+for_window [class="Gnome-system-monitor"]   floating enable
+for_window [class="Floaterm"]               floating enable
 # }}}
 
 # Launch software in a specific workspace {{{
