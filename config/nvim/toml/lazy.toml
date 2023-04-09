@@ -104,17 +104,7 @@ let g:molder_show_hidden = v:true
 [[plugins]] # vim-molder-operations
 repo = 'mattn/vim-molder-operations'
 on_source = 'vim-molder'
-[plugins.ftplugin]
-molder = '''
-nmap <buffer> ..    <Plug>(molder-up)
-nmap <buffer> <C-l> <Plug>(molder-reload)
-nmap <buffer> N     <Plug>(molder-operations-newdir)
-nmap <buffer> D     <Plug>(molder-operations-delete)
-nmap <buffer> R     <Plug>(molder-operations-rename)
-nmap <buffer> S     <Plug>(molder-operations-shell)
-nmap <buffer> !     <Plug>(molder-operations-command)
-nmap <buffer> C <Cmd>call vimrc#molder_change_cwd()<CR>
-'''
+hooks_file = '~/.config/nvim/hooks_files/molder.vim'
 
 [[plugins]] # helpful.vim
 repo = 'tweekmonster/helpful.vim'
@@ -212,20 +202,6 @@ nmap sdb <Plug>(sandwich-delete-auto)
 nmap sr <Plug>(sandwich-replace)
 xmap sr <Plug>(sandwich-replace)
 nmap srb <Plug>(sandwich-replace-auto)
-'''
-
-[[plugins]] # vim-partedit
-repo = 'thinca/vim-partedit'
-depends = 'context_filetype.vim'
-on_func = 'partedit#start()'
-hook_add = '''
-nnoremap <Window>e <Cmd>call partedit#start(
-  \ context_filetype#get_range()[0][0],
-  \ context_filetype#get_range()[1][0],
-  \ #{ filetype: context_filetype#get_filetype() })<CR>
-'''
-hook_source = '''
-let g:partedit#opener = 'vsplit'
 '''
 
 [[plugins]]
