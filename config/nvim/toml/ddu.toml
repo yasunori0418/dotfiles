@@ -418,62 +418,62 @@ ddu-filer = '''
 " Directory is expanded in tree type.
 " If you select a file that is already open, go to the open screen.
 nnoremap <buffer><expr> <CR>
-  \ ddu#ui#filer#is_tree() ?
-  \ "<Cmd>call ddu#ui#filer#do_action('expandItem', {'mode': 'toggle'})<CR>" :
-  \ "<Cmd>call ddu#ui#filer#do_action('itemAction', {'name': 'open', 'params': {'command': 'drop'}})<CR>"
+  \ ddu#ui#get_item()['isTree'] ?
+  \ "<Cmd>call ddu#ui#do_action('expandItem', {'mode': 'toggle'})<CR>" :
+  \ "<Cmd>call ddu#ui#do_action('itemAction', {'name': 'open', 'params': {'command': 'drop'}})<CR>"
 
 " Open file with vertical split.
 nnoremap <buffer> v
-  \ <Cmd>call ddu#ui#filer#do_action('itemAction', {'name': 'open', 'params': {'command': 'vsplit'}})<CR>
+  \ <Cmd>call ddu#ui#do_action('itemAction', {'name': 'open', 'params': {'command': 'vsplit'}})<CR>
 
 " Open file with horizontal split.
 nnoremap <buffer> s
-  \ <Cmd>call ddu#ui#filer#do_action('itemAction', {'name': 'open', 'params': {'command': 'split'}})<CR>
+  \ <Cmd>call ddu#ui#do_action('itemAction', {'name': 'open', 'params': {'command': 'split'}})<CR>
 
 " Open file with another tab window.
 nnoremap <buffer> t
-  \ <Cmd>call ddu#ui#filer#do_action('itemAction', {'name': 'open', 'params': {'command': 'tabedit'}})<CR>
+  \ <Cmd>call ddu#ui#do_action('itemAction', {'name': 'open', 'params': {'command': 'tabedit'}})<CR>
 " }}}
 
 " Operation of file or directory keybinds {{{
 " Copy file or directory.
 nnoremap <buffer> C
-  \ <Cmd>call ddu#ui#filer#multi_actions([
+  \ <Cmd>call ddu#ui#multi_actions([
   \ ['itemAction', {'name': 'copy'}],
   \ ['clearSelectAllItems'],
   \ ])<CR>
 
 " Move file or directory.
 nnoremap <buffer> M
-  \ <Cmd>call ddu#ui#filer#multi_actions([
+  \ <Cmd>call ddu#ui#multi_actions([
   \ ['itemAction', {'name': 'move'}],
   \ ['clearSelectAllItems'],
   \ ])<CR>
 
 " Paste file or directory.
 nnoremap <buffer> P
-  \ <Cmd>call ddu#ui#filer#do_action('itemAction', {'name': 'paste'})<CR>
+  \ <Cmd>call ddu#ui#do_action('itemAction', {'name': 'paste'})<CR>
 
 " Rename file or directory.
 nnoremap <buffer> R
-  \ <Cmd>call ddu#ui#filer#do_action('itemAction', {'name': 'rename'})<CR>
+  \ <Cmd>call ddu#ui#do_action('itemAction', {'name': 'rename'})<CR>
 
 " Delete file or directory.
 nnoremap <buffer> [delete] <Nop>
 nmap <buffer> d [delete]
 nnoremap <buffer> [delete]d
-  \ <Cmd>call ddu#ui#filer#do_action('itemAction', {'name': 'trash'})<CR>
+  \ <Cmd>call ddu#ui#do_action('itemAction', {'name': 'trash'})<CR>
 nnoremap <buffer> [delete]D
-  \ <Cmd>call ddu#ui#filer#do_action('itemAction', {'name': 'delete'})<CR>
+  \ <Cmd>call ddu#ui#do_action('itemAction', {'name': 'delete'})<CR>
 
 " make new file or directory.
 nnoremap <buffer> N
-  \ <Cmd>call ddu#ui#filer#do_action('itemAction', {'name': 'newFile'})<CR>
+  \ <Cmd>call ddu#ui#do_action('itemAction', {'name': 'newFile'})<CR>
 
 " Path operation in filer.
 " Yank path the file or directory.
 nnoremap <buffer> y
-  \ <Cmd>call ddu#ui#filer#do_action('itemAction', {'name': 'yank'})<CR>
+  \ <Cmd>call ddu#ui#do_action('itemAction', {'name': 'yank'})<CR>
   \ <Cmd>echo 'Yanke path the "' . getreg('+') . '"'<CR>
 " }}}
 
@@ -500,33 +500,33 @@ nnoremap <buffer> I
 
 " Move to home path.
 nnoremap <buffer> ~
-  \ <Cmd>call ddu#ui#filer#do_action('itemAction', {'name': 'narrow', 'params': {'path': expand('~')}})<CR>
+  \ <Cmd>call ddu#ui#do_action('itemAction', {'name': 'narrow', 'params': {'path': expand('~')}})<CR>
 " }}}
 
 " Other filer keybinds...{{{
 " select file action.
 nnoremap <buffer> a
-  \ <Cmd>call ddu#ui#filer#do_action('chooseAction')<CR>
+  \ <Cmd>call ddu#ui#do_action('chooseAction')<CR>
 
 nnoremap <buffer> o
-  \ <Cmd>call ddu#ui#filer#do_action('expandItem', {'mode': 'toggle'})<CR>
+  \ <Cmd>call ddu#ui#do_action('expandItem', {'mode': 'toggle'})<CR>
 nnoremap <buffer> O
-  \ <Cmd>call ddu#ui#filer#do_action('expandItem', {'maxLevel': -1})<CR>
+  \ <Cmd>call ddu#ui#do_action('expandItem', {'maxLevel': -1})<CR>
 
 " multiple files selection
 nnoremap <buffer> <Space>
-  \ <Cmd>call ddu#ui#filer#do_action('toggleSelectItem')<CR>
+  \ <Cmd>call ddu#ui#do_action('toggleSelectItem')<CR>
 nnoremap <buffer> *
-  \ <Cmd>call ddu#ui#filer#do_action('toggleAllItems')<CR>
+  \ <Cmd>call ddu#ui#do_action('toggleAllItems')<CR>
 
 nnoremap <buffer> >
-  \ <Cmd>call ddu#ui#filer#do_action('updateOptions', {
+  \ <Cmd>call ddu#ui#do_action('updateOptions', {
     \ 'sourceOptions': {
       \ 'file': {
         \ 'matchers': ToggleHidden('file'),
         \ },
-      \},
-    \})<CR>
+      \ },
+    \ })<CR>
 
 nnoremap <buffer> / <Cmd>call ddu#start({
   \ 'name': 'current-ff',
@@ -535,15 +535,13 @@ nnoremap <buffer> / <Cmd>call ddu#start({
     \ },
   \ })<CR>
 
-" }}}
-
 nnoremap <buffer> <C-l>
-  \ <Cmd>call ddu#ui#filer#do_action('checkItems')<CR>
+  \ <Cmd>call ddu#ui#do_action('checkItems')<CR>
 
 nnoremap <buffer> q
-  \ <Cmd>call ddu#ui#filer#do_action('quit')<CR>
+  \ <Cmd>call ddu#ui#do_action('quit')<CR>
 nnoremap <buffer> <ESC>
-  \ <Cmd>call ddu#ui#filer#do_action('quit')<CR>
+  \ <Cmd>call ddu#ui#do_action('quit')<CR>
 
 " Wrap when moving to the beginning and end of a line
 nnoremap <silent><buffer><expr> j
@@ -552,6 +550,7 @@ nnoremap <silent><buffer><expr> j
 nnoremap <silent><buffer><expr> k
   \ line('.') == 2 ?
   \ 'G' : 'k'
+" }}}
 
 " UI:filer functions of custom keybind. {{{
 " Moving directory paths.
@@ -568,7 +567,7 @@ function! Filer_parent_dir() abort
   endif
 
   call add(g:ddu_ui_filer_prev_dirs[b:ddu_ui_name], b:ddu_ui_filer_path)
-  call ddu#ui#filer#do_action('itemAction', {'name': 'narrow', 'params': {'path': '..'}})
+  call ddu#ui#do_action('itemAction', {'name': 'narrow', 'params': {'path': '..'}})
 endfunction
 
 function! Filer_change_dir() abort
@@ -577,7 +576,7 @@ function! Filer_change_dir() abort
   endif
 
   call add(g:ddu_ui_filer_prev_dirs[b:ddu_ui_name], b:ddu_ui_filer_path)
-  call ddu#ui#filer#do_action('itemAction', {'name': 'narrow'})
+  call ddu#ui#do_action('itemAction', {'name': 'narrow'})
 endfunction
 
 function! Filer_prev_dir() abort
@@ -594,7 +593,7 @@ function! Filer_prev_dir() abort
   let prev_dir_count = len(g:ddu_ui_filer_prev_dirs[b:ddu_ui_name]) - 1
   let prev_dir_path = g:ddu_ui_filer_prev_dirs[b:ddu_ui_name][prev_dir_count]
   call remove(g:ddu_ui_filer_prev_dirs[b:ddu_ui_name], prev_dir_count)
-  call ddu#ui#filer#do_action('itemAction', {'name': 'narrow', 'params': {'path': prev_dir_path}})
+  call ddu#ui#do_action('itemAction', {'name': 'narrow', 'params': {'path': prev_dir_path}})
 endfunction
 
 function! Filer_first_dir() abort
@@ -611,7 +610,7 @@ function! Filer_first_dir() abort
   let first_dir = g:ddu_ui_filer_prev_dirs[b:ddu_ui_name][0]
   let index_max_value = len(g:ddu_ui_filer_prev_dirs[b:ddu_ui_name]) - 1
   call remove(g:ddu_ui_filer_prev_dirs[b:ddu_ui_name], 0, index_max_value)
-  call ddu#ui#filer#do_action('itemAction', {'name': 'narrow', 'params': {'path': first_dir}})
+  call ddu#ui#do_action('itemAction', {'name': 'narrow', 'params': {'path': first_dir}})
 endfunction
 
 function! Filer_input_dir() abort
@@ -625,7 +624,7 @@ function! Filer_input_dir() abort
     return
   endif
   let input_dir = fnamemodify(input('New cwd: ', b:ddu_ui_filer_path, 'dir'), ':p')
-  call ddu#ui#filer#do_action('itemAction', {'name': 'narrow', 'params': {'path': input_dir}})
+  call ddu#ui#do_action('itemAction', {'name': 'narrow', 'params': {'path': input_dir}})
 endfunction
 
 " Toggle show hidden file.
@@ -639,7 +638,7 @@ endfunction
 
 " }}}
 
-autocmd TabEnter,CursorHold,FocusGained <buffer> call ddu#ui#filer#do_action('checkItems')
+autocmd TabEnter,CursorHold,FocusGained <buffer> call ddu#ui#do_action('checkItems')
 '''
 # }}}
 
