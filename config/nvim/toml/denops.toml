@@ -96,7 +96,3 @@ on_map = { 'c' = '<Plug>(kensaku-search-replace)' }
 hook_add = '''
 cnoremap <CR> <Plug>(kensaku-search-replace)<CR>
 '''
-
-[[plugins]]
-repo = 'lambdalisue/askpass.vim'
-depends = 'denops.vim'
