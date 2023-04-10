@@ -6,20 +6,7 @@ depends = 'neodev.nvim'
 
 [[plugins]] # mason.nvim
 repo = 'williamboman/mason.nvim'
-lua_source = '''
--- <% ./dein_toml/mason.lua
-require("mason").setup({
-  ui = {
-    border = "single",
-    icons = {
-      package_installed = "",
-      package_pending = "",
-      package_uninstalled = "✗ ",
-    },
-  },
-})
--- %>
-'''
+hooks_file = '~/.config/nvim/hooks_files/mason.lua'
 
 [[plugins]] # mason-lspconfig.nvim
 repo = 'williamboman/mason-lspconfig.nvim'
