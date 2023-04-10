@@ -11,7 +11,7 @@ hooks_file = '~/.config/nvim/hooks_files/gitsigns.lua'
 repo = 'lambdalisue/gina.vim'
 on_cmd = 'Gina'
 hook_add = '''
-nnoremap gBB <Cmd>Gina blame<CR>
+nnoremap gM <Cmd>Gina blame<CR>
 '''
 hook_source = '''
 call gina#custom#command#option('blame', '--opener', 'tabedit')
