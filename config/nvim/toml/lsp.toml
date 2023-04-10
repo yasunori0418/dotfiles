@@ -56,24 +56,7 @@ call signature_help#enable()
 [[plugins]] # fidget.nvim
 repo = 'j-hui/fidget.nvim'
 on_event = 'LspAttach'
-lua_source = '''
--- <% ./dein_toml/fidget.lua
-require("fidget").setup({
-  text = {
-    spinner = "dots",
-  },
-  window = {
-    border = "single",
-    relative = "editor",
-  },
-  sources = {
-    ["null-ls"] = {
-      ignore = true,
-    },
-  },
-})
--- %>
-'''
+hooks_file = '~/.config/nvim/hooks_files/fidget.lua'
 
 [[plugins]] # neodev.nvim
 repo = 'folke/neodev.nvim'
