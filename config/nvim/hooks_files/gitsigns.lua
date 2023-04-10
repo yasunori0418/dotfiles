@@ -72,7 +72,7 @@ gitsigns.setup({
     keymap({"n", "v"}, "ghs", "<Cmd>Gitsigns stage_hunk<CR>")
     keymap({"n", "v"}, "ghr", "<Cmd>Gitsigns reset_hunk<CR>")
     keymap("n", "gbs", "<Cmd>Gitsigns stage_buffer<CR>")
-    keymap("n", "gbr", "<Cmd>Gitsigns reset_buffer<CR>")
+    keymap("n", "gbu", "<Cmd>Gitsigns undo_stage_hunk<CR>")
   end,
 })
 -- }}}
