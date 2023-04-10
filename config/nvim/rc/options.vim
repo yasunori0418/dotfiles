@@ -181,7 +181,6 @@ augroup END
 augroup user_nolisted_buffer
   autocmd!
   autocmd FileType gin-*      setlocal nobuflisted
-  autocmd BufNew,BufRead COMMIT_EDITMSG setlocal nobuflisted
 augroup END
 
 augroup user_quickfix_autocmd
