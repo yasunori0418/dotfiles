@@ -98,7 +98,7 @@ call gina#custom#command#option('blame', '--opener', 'tabedit')
 
 [[plugins]]
 repo = 'lambdalisue/gin.vim'
-depends = 'askpass.vim'
+depends = 'denops.vim'
 on_cmd = ['Gin', 'GinBranch', 'GinCd', 'GinChaperon', 'GinDiff', 'GinLog', 'GinPatch', 'GinStatus']
 hook_add = '''
 nnoremap gs <Cmd>GinStatus<CR>
