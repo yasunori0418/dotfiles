@@ -72,41 +72,7 @@ repo = 'nvim-lua/plenary.nvim'
 [[plugins]] # null-ls.nvim
 repo = 'jose-elias-alvarez/null-ls.nvim'
 depends = 'plenary.nvim'
-lua_source = '''
--- <% ./dein_toml/null_ls.lua
-local null_ls = require("null-ls")
-
-local code_actions = null_ls.builtins.code_actions
-local completion = null_ls.builtins.completion
-local diagnostics = null_ls.builtins.diagnostics
-local formatting = null_ls.builtins.formatting
---local hover = null_ls.builtins.hover
-
-local sources = {
-  code_actions.gitsigns,
-  completion.vsnip,
-  formatting.stylua,
-  formatting.taplo,
-  formatting.yamlfmt,
-  formatting.textlint.with({
-    filetypes = { "markdown" },
-    prefer_local = "node_modules/.bin",
-  }),
-  diagnostics.yamllint,
-  diagnostics.hadolint,
-  diagnostics.textlint.with({
-    filetypes = { "markdown" },
-    prefer_local = "node_modules/.bin",
-  }),
-}
-
-null_ls.setup({
-  border = "single",
-  diagnostics_format = "[#{c}] #{m} (#{s})",
-  sources = sources,
-})
--- %>
-'''
+hooks_file = '~/.config/nvim/hooks_files/null_ls.lua'
 
 [[plugins]] # mason-null-ls.nvim
 repo = 'jay-babu/mason-null-ls.nvim'
