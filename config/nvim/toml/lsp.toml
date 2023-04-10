@@ -12,6 +12,7 @@ hooks_file = '~/.config/nvim/hooks_files/mason.lua'
 repo = 'williamboman/mason-lspconfig.nvim'
 depends = ['nvim-lspconfig', 'mason.nvim', 'lspsaga.nvim']
 on_ft = ['lua', 'php', 'python', 'toml', 'markdown', 'vim', 'yaml', 'dockerfile', 'sh']
+hooks_file = '~/.config/nvim/hooks_files/mason_lspconfig.lua'
 hook_add = '''
 " LSP keybinds
 nnoremap <Plug>(lsp)k <Cmd>Lspsaga hover_doc<CR>
@@ -29,41 +30,6 @@ nnoremap <Plug>(lsp)E <Cmd>Lspsaga show_cursor_diagnostics<CR>
 nnoremap <Plug>(lsp)q <Cmd>Lspsaga show_buf_diagnostics<CR>
 nnoremap [d <Cmd>Lspsaga diagnostic_jump_prev<CR>
 nnoremap ]d <Cmd>Lspsaga diagnostic_jump_next<CR>
-'''
-lua_source = '''
--- <% ./dein_toml/lspconfig.lua
-local mason_lspconfig = require("mason-lspconfig")
-local lspconfig = require("lspconfig")
---local keymap = vim.keymap.set
-local lsp = vim.lsp -- nvim lsp api.
---local diag = vim.diagnostic -- nvim diagnostic api.
-
-mason_lspconfig.setup({
-  ensure_installed = {
-    "lua_ls",
-    "intelephense",
-    "pyright",
-    "yamlls",
-    "bashls",
-  },
-  automatic_installation = true,
-})
-
-mason_lspconfig.setup_handlers({
-  function(server_name)
-    local lsp_options = {}
-
-    local capabilities = lsp.protocol.make_client_capabilities()
-    capabilities.textDocument.completion.completionItem.snippetSupport = true
-
-    if server_name == "lua_ls" then
-      lsp_options.capabilities = capabilities
-    end
-
-    lspconfig[server_name].setup(lsp_options)
-  end,
-})
--- %>
 '''
 
 # }}}
