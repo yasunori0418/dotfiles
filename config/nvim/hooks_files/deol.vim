@@ -32,7 +32,7 @@ tnoremap <Esc> <C-\><C-n>
 " hook_source {{{
 " let g:deol#prompt_pattern = '^❯ \?'
 " let g:deol#enable_ddc_completion = v:true
-let g:deol#shell_history_path = '~/.deol_history'
+let g:deol#shell_history_path = expand('~/.zhistory')
 let g:deol#enable_dir_changed = v:false
 let g:deol#nvim_server = '~/.cache/nvim/server.pipe'
 let g:deol#custom_map = #{edit: ''}

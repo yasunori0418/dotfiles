@@ -164,7 +164,10 @@ call ddc#custom#patch_filetype(['ddu-ff-filter'], #{
   \ specialBufferCompletion: v:true,
   \ })
 
-call ddc#custom#patch_filetype(['deol'], 'sources', ['shell-history'])
+call ddc#custom#patch_filetype(['deol'], #{
+  \ sources: ['shell-history'],
+  \ specialBufferCompletion: v:true,
+  \ })
 
 " Keymaping
 " Insert-Mode
