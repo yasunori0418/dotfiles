@@ -156,7 +156,7 @@ call ddc#custom#patch_filetype(['python', 'php', 'yaml'], 'sources',
   \ )
 
 call ddc#custom#patch_filetype('lua', 'sources',
-  \ ['nvim-lsp', 'nvim-lua', 'around', 'file', 'rg'],
+  \ ['nvim-lua', 'nvim-lsp', 'around', 'file', 'rg'],
   \ )
 
 call ddc#custom#patch_filetype(['vim', 'toml'], 'sources',
