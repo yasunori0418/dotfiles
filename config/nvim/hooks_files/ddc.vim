@@ -71,6 +71,7 @@ call ddc#custom#patch_global('sourceOptions', #{
     \ forceCompletionPattern: '\.\w*|:\w*|->\w*',
     \ dup: 'force',
     \ },
+  \ nvim-lua: #{mark: 'lua'},
   \ necovim: #{mark: 'vim'},
   \ rg: #{
     \ mark: 'rg',
@@ -150,8 +151,12 @@ call ddc#custom#patch_global('sourceParams', #{
 
 
 " filetype settings
-call ddc#custom#patch_filetype(['python', 'php', 'lua', 'yaml'], 'sources',
+call ddc#custom#patch_filetype(['python', 'php', 'yaml'], 'sources',
   \ ['nvim-lsp', 'vsnip', 'around', 'file', 'rg'],
+  \ )
+
+call ddc#custom#patch_filetype('lua', 'sources',
+  \ ['nvim-lsp', 'nvim-lua', 'around', 'file', 'rg'],
   \ )
 
 call ddc#custom#patch_filetype(['vim', 'toml'], 'sources',

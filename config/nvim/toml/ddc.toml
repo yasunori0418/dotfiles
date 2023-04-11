@@ -48,6 +48,10 @@ on_ft = ['vim', 'toml', 'help']
 repo = 'Shougo/ddc-source-nvim-lsp'
 on_source = 'nvim-lspconfig'
 
+[[plugins]]
+repo = 'Shougo/ddc-source-nvim-lua'
+on_source = 'ddc.vim'
+
 [[plugins]] # ddc-source-line
 repo = 'Shougo/ddc-source-line'
 on_source = 'ddc.vim'
