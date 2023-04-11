@@ -103,6 +103,9 @@ call ddc#custom#patch_global('sourceOptions', #{
     \ dup: 'force',
     \ },
   \ line: #{ mark: 'line', },
+  \ shell-history: #{
+    \ mark: 'sh-history',
+    \ },
   \ })
 
 " ddc source params
@@ -161,6 +164,7 @@ call ddc#custom#patch_filetype(['ddu-ff-filter'], #{
   \ specialBufferCompletion: v:true,
   \ })
 
+call ddc#custom#patch_filetype(['deol'], 'sources', ['shell-history'])
 
 " Keymaping
 " Insert-Mode
