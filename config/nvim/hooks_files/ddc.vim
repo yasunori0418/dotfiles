@@ -170,8 +170,13 @@ call ddc#custom#patch_filetype(['ddu-ff-filter'], #{
   \ })
 
 call ddc#custom#patch_filetype(['deol'], #{
+  \ keywordPattern: '\w*',
   \ sources: ['shell-history'],
   \ specialBufferCompletion: v:true,
+  \ sourceOptions: #{
+    \ matchers: ['matcher_head'],
+    \ sorters: ['sorter_rank']
+    \ },
   \ })
 
 " Keymaping
