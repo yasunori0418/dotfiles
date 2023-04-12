@@ -201,10 +201,12 @@ call ddu#custom#patch_local('search-ff', #{
       \ startFilter: v:true,
       \ },
     \ },
-  \ volatile: v:true,
   \ sources: [#{
     \ name: 'rg',
-    \ options: #{matchers: []},
+    \ options: #{
+      \ matchers: [],
+      \ volatile: v:true,
+      \ },
     \ }],
   \ })
 
