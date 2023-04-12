@@ -108,6 +108,9 @@ trash-cli
 zip
 unarchiver
 unzip
+cmake
+ninja
+curl
 ufw
 gufw
 ruby
