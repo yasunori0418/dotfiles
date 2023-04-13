@@ -167,7 +167,7 @@ call ddu#custom#patch_local('project-list-ff', #{
     \ },
   \ },
   \ sourceOptions: #{
-    \ file: #{path: expand('~/Project')},
+    \ file: #{path: expand('$WORKING_DIR')},
     \ },
   \ sources: [#{name: 'file'}],
   \ })

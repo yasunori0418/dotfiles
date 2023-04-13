@@ -25,6 +25,9 @@ export EDITOR=/usr/bin/nvim
 export TERMINAL=/usr/bin/wezterm
 export XDG_CONFIG_HOME=${HOME}/.config
 
+[[ ! -d ${HOME}/dev ]] && mkdir ${HOME}/dev
+export WORKING_DIR=${HOME}/dev
+
 # User local tools management directory.
 [[ ! -d "${HOME}/.local/bin" ]] && mkdir -p "${HOME}/.local/bin"
 export PATH="${PATH}:${HOME}/.local/bin:${HOME}/bin"

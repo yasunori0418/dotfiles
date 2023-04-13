@@ -186,7 +186,7 @@ if [[ $(command -v neovide) ]]; then
 fi
 
 alias dotfiles='cd ~/dotfiles'
-alias project='cd ~/Project'
+alias project='cd ${WORKING_DIR}'
 
 alias sync_status='watch grep -e Dirty: -e Writeback: /proc/meminfo'
 
