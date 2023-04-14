@@ -111,6 +111,7 @@ unzip
 cmake
 ninja
 curl
+expect
 ufw
 gufw
 ruby
