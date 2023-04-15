@@ -4,7 +4,7 @@
 " Disable TOhtml.
 let g:loaded_2html_plugin       = v:true
 
-" Disavle archive file open and browse.
+" Disable archive file open and browse.
 let g:loaded_gzip               = v:true
 let g:loaded_tar                = v:true
 let g:loaded_tarPlugin          = v:true
