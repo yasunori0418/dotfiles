@@ -9,4 +9,8 @@ export QT_QPA_PLATFORMTHEME='gtk2'
 # Clipmenu
 export CM_LAUNCHER=rofi
 
+if [[ `uname -n` = 'yasunori-laptop' ]];then
+  ~/bin/multi_monitor_for_laptop.sh
+fi
+
 # vim:ft=sh
