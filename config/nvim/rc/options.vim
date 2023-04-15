@@ -69,7 +69,7 @@ if has('persistent_undo')
   set undofile
 endif
 
-" East asia ambigunous charactor width problem.
+" East asia ambiguous character width problem.
 set ambiwidth=single
 
 " Automatically load the file being edited

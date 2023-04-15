@@ -62,7 +62,7 @@ nnoremap <buffer> N
 " Yank path the file or directory.
 nnoremap <buffer> y
   \ <Cmd>call ddu#ui#do_action('itemAction', {'name': 'yank'})<CR>
-  \ <Cmd>echo 'Yanke path the "' . getreg('+') . '"'<CR>
+  \ <Cmd>echo 'Yank path the "' . getreg('+') . '"'<CR>
 
 
 " Changes directory keybinds
