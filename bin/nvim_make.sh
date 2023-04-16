@@ -10,7 +10,7 @@ cd ${repo}
 git pull
 
 if [[ -d ./.deps ]]; then
-  if [[ $1 = "-f" || $1 = "--force" ]]; then
+  if [[ $1 = '-f' && $1 = '--force' ]]; then
     make distclean
   else
     make clean
@@ -23,24 +23,18 @@ echo
 read -sp "Password: " pass
 echo
 
-[[ $(command -v nvim) ]] && uninstall_cmd="sudo rm -rf ${bin} ${runtime}"
-install_cmd="sudo make install"
-
-if [[ -v ${uninstall_cmd} ]]; then
-  echo "Install after uninstall of Neovim"
-  cmd="${uninstall_cmd}; ${install_cmd}"
-else
-  echo "Install of Neovim"
-  cmd="${install_cmd}"
-fi
-
+uninstall_cmd="sudo rm -rf ${bin} ${runtime}"
+echo 'Remove binary and runtime.'
 expect -c "
-  spawn ${cmd}
+  spawn ${uninstall_cmd}
   expect \"sudo\"
   send \"${pass}\n\"
   exit 0
 "
 
-which nvim
-
-# vim:ft=bash
+install_cmd="sudo make install"
+echo 'Install Neovim'
+expect -c "
+  spawn ${install_cmd}
+  exit 0
+"
