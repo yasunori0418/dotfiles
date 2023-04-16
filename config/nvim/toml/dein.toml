@@ -6,9 +6,6 @@ repo = 'vim-jp/vimdoc-ja'
 [[plugins]] # learn-vimscript
 repo = 'mattn/learn-vimscript'
 
-[[plugins]] # filetype.nvim
-repo = 'nathom/filetype.nvim'
-
 [[plugins]] # impatient.nvim
 repo = 'lewis6991/impatient.nvim'
 lua_add = '''
