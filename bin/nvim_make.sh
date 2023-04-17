@@ -10,7 +10,7 @@ cd ${repo}
 git pull
 
 if [[ -d ./.deps ]]; then
-  if [[ $1 = '-f' && $1 = '--force' ]]; then
+  if [[ $1 = '-f' || $1 = '--force' ]]; then
     make distclean
   else
     make clean
