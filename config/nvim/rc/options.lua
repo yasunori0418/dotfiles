@@ -111,20 +111,21 @@ local option_tables = {
 
 }
 
+--[[
 -- local options = {}
-
 for _, option_table in pairs(option_tables) do
   for option_key, option_value in pairs(option_table) do
-    print('option_key: ' .. option_key)
+    -- print('option_key: ' .. option_key)
     if type(option_value) == 'table' then
       for key, value in pairs(option_value) do
-        print(key .. ' => ' .. value)
+        -- print(key .. ' => ' .. value)
       end
     else
-      print(option_value)
+      -- print(option_value)
     end
   end
 end
+--]]
 
 -- Use utf-8 to overall encoding.
 vim.opt.encoding = 'utf-8'
