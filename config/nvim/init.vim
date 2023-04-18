@@ -40,7 +40,7 @@ let g:dein#install_check_remote_threshold = 24 * 60 * 60
 if dein#min#load_state(s:dein_dir)
 
   " dein inline_vimrcs setting.
-  let g:dein#inline_vimrcs = ['options.vim', 'keymap.vim', 'autocmds.vim']
+  let g:dein#inline_vimrcs = ['options.lua', 'keymap.vim', 'autocmds.vim']
 
   " Use neovide
   if exists('g:neovide')
