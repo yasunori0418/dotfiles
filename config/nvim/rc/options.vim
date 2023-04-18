@@ -52,10 +52,10 @@ set fileencoding=utf-8
 
 " Use file encodings when loaded.
 set fileencodings=utf-8,sjis,iso-2022-jp,euc-jp
-" }}}
 
 " Automatic line feed code recognition.
 set fileformats=unix,dos
+" }}}
 
 " Disable backup.
 set nobackup
@@ -100,8 +100,8 @@ set relativenumber
 set cursorline
 
 " Transparency of pop-up menus such as completion
-set pumblend=30
-highlight PmenuSel blend=0
+" set pumblend=30
+" highlight PmenuSel blend=0
 " }}}
 
 " Folding{{{
