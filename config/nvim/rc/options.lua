@@ -167,6 +167,4 @@ end
 -- vim.g.did_install_syntax_menu   = true
 -- vim.g.skip_loading_mswin        = true
 -- vim.g.did_indent_on             = true
---vim.g.did_load_filetypes        = true
---vim.g.did_load_ftplugin         = true
 -- vim.g.loaded_rrhelper           = true
