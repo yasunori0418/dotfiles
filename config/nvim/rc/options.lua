@@ -31,13 +31,13 @@ local option_tables = {
     autoread = true,
 
     -- Use the clipboard on linux systems.
-    -- clipboard = 'unnamedplus',
+    clipboard = 'unnamedplus',
 
     -- Open diff mode vertically
-    -- diffopt = 'vertical',
+    diffopt = 'vertical',
 
     -- For pum.vim
-    -- shortmess = 'c',
+    shortmess = 'c',
 
     -- jump momentarily to a matching parenthesis
     showmatch = true,
@@ -111,12 +111,7 @@ local option_tables = {
 }
 
 local option_array_pattern = [[fileencodings\|fileformats\|listchars]]
--- local option_append_pattern = [[clipboard\|diffopt\|shortmess]]
-
--- appendで既存設定に追加する系統のループはムリだった……
-vim.opt.clipboard:append('unnamedplus')
-vim.opt.diffopt:append('vertical')
-vim.opt.shortmess:append('c')
+local option_append_pattern = [[diffopt\|shortmess]]
 
 for _, option_table in pairs(option_tables) do
   for option_key, option_value in pairs(option_table) do
@@ -124,11 +119,12 @@ for _, option_table in pairs(option_tables) do
       if vim.regex(option_array_pattern):match_str(option_key) then
         vim.opt[option_key] = option_value
       end
-      -- if vim.regex(option_append_pattern):match_str(option_key) then
-        -- vim.o[option_key] = vim.o[option_key] .. option_value
-      -- end
     else
-      vim.opt[option_key] = option_value
+      if vim.regex(option_append_pattern):match_str(option_key) then
+        vim.opt[option_key]:append(option_value)
+      else
+        vim.opt[option_key] = option_value
+      end
     end
   end
 end
