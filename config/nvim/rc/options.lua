@@ -110,21 +110,12 @@ local option_tables = {
 
 }
 
-local option_array_pattern = [[fileencodings\|fileformats\|listchars]]
-local option_append_pattern = [[diffopt\|shortmess]]
-
 for _, option_table in pairs(option_tables) do
   for option_key, option_value in pairs(option_table) do
-    if type(option_value) == 'table' then
-      if vim.regex(option_array_pattern):match_str(option_key) then
-        vim.opt[option_key] = option_value
-      end
+    if vim.regex([[diffopt\|shortmess]]):match_str(option_key) then
+      vim.opt[option_key]:append(option_value)
     else
-      if vim.regex(option_append_pattern):match_str(option_key) then
-        vim.opt[option_key]:append(option_value)
-      else
-        vim.opt[option_key] = option_value
-      end
+      vim.opt[option_key] = option_value
     end
   end
 end
