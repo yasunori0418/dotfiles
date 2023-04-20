@@ -131,40 +131,45 @@ end
 
 -- Disable default plugins
 -- Fast Startup Settings!!
+local disable_pluings = {
+  -- Disable TOhtml.
+  'loaded_2html_plugin',
 
--- Disable TOhtml.
--- vim.g.loaded_2html_plugin       = true
+  -- Disable archive file open and browse.
+  'loaded_gzip',
+  'loaded_tar',
+  'loaded_tarPlugin',
+  'loaded_zip',
+  'loaded_zipPlugin',
 
--- Disable archive file open and browse.
--- vim.g.loaded_gzip               = true
--- vim.g.loaded_tar                = true
--- vim.g.loaded_tarPlugin          = true
--- vim.g.loaded_zip                = true
--- vim.g.loaded_zipPlugin          = true
+  -- Disable vimball.
+  'loaded_vimball',
+  'loaded_vimballPlugin',
 
--- Disable vimball.
--- vim.g.loaded_vimball            = true
--- vim.g.loaded_vimballPlugin      = true
+  -- Disable netrw plugins.
+  'loaded_netrw',
+  'loaded_netrwPlugin',
+  'loaded_netrwSettings',
+  'loaded_netrwFileHandlers',
 
--- Disable netrw plugins.
--- vim.g.loaded_netrw              = true
--- vim.g.loaded_netrwPlugin        = true
--- vim.g.loaded_netrwSettings      = true
--- vim.g.loaded_netrwFileHandlers  = true
+  -- Disable `GetLatestVimScript`.
+  'loaded_getscript',
+  'loaded_getscriptPlugin',
 
--- Disable `GetLatestVimScript`.
--- vim.g.loaded_getscript          = true
--- vim.g.loaded_getscriptPlugin    = true
+  -- Disable other plugins
+  'loaded_man',
+  'loaded_matchit',
+  'loaded_matchparen',
+  'loaded_shada_plugin',
+  'loaded_spellfile_plugin',
+  'loaded_tutor_mode_plugin',
+  'did_install_default_menus',
+  'did_install_syntax_menu',
+  'skip_loading_mswin',
+  'did_indent_on',
+  'loaded_rrhelper',
+}
 
--- Disable other plugins
--- vim.g.loaded_man                = true
--- vim.g.loaded_matchit            = true
--- vim.g.loaded_matchparen         = true
--- vim.g.loaded_shada_plugin       = true
--- vim.g.loaded_spellfile_plugin   = true
--- vim.g.loaded_tutor_mode_plugin  = true
--- vim.g.did_install_default_menus = true
--- vim.g.did_install_syntax_menu   = true
--- vim.g.skip_loading_mswin        = true
--- vim.g.did_indent_on             = true
--- vim.g.loaded_rrhelper           = true
+for _, disable_plugin in pairs(disable_pluings) do
+  vim.g[disable_plugin] = true
+end
