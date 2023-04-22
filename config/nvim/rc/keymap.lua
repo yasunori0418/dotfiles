@@ -47,6 +47,15 @@ local keymaps = {
   { mode = {"n"}, lhs = " n", rhs = vim.fn["vimrc#signcolumn"], opts = opts },
   { mode = {"n"}, lhs = "Q", rhs = "q", opts = opts },
   { mode = {"n"}, lhs = "q", rhs = "", opts = opts },
+  { mode = {"i"}, lhs = "jj", rhs = "<Esc>", opts = opts },
+  { mode = {"c"}, lhs = "jj", rhs = "<Esc><C-l>", opts = opts },
+  { mode = {"i", "c"}, lhs = "<C-l>", rhs = "<Del>", opts = opts },
+  { mode = {"i"}, lhs = "<C-a>", rhs = "<C-o>^", opts = opts },
+  { mode = {"i"}, lhs = "<C-f>", rhs = "<C-G>U<Right>", opts = opts },
+  { mode = {"i"}, lhs = "<C-b>", rhs = "<C-G>U<Left>", opts = opts },
+  { mode = {"c"}, lhs = "<C-a>", rhs = "<Home>", opts = opts },
+  { mode = {"c"}, lhs = "<C-f>", rhs = "<Right>", opts = opts },
+  { mode = {"c"}, lhs = "<C-b>", rhs = "<Left>", opts = opts },
 }
 
 for _, keymap in pairs(keymaps) do

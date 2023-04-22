@@ -116,15 +116,15 @@
 
 " Insert Mode: {{{
 " Exit insert mode.
-inoremap jj <ESC>
-inoremap <C-l> <Del>
+" inoremap jj <ESC>
+" inoremap <C-l> <Del>
 
 " Add Emacs-like keybindings to insert mode.
 " When one line only...
-inoremap <C-a> <C-o>^
-" inoremap <C-e> <C-o>$ ~/dotfiles/config/nvim/toml/ddc.toml:122
-inoremap <C-f> <C-G>U<Right>
-inoremap <C-b> <C-G>U<Left>
+" inoremap <C-a> <C-o>^
+" inoremap <C-e> <C-o>$
+" inoremap <C-f> <C-G>U<Right>
+" inoremap <C-b> <C-G>U<Left>
 
 " }}}
 
@@ -167,11 +167,11 @@ nnoremap ]B <Cmd>blast<CR>
 " }}}
 
 " Command line keybinds {{{
-cnoremap <C-a> <Home>
-cnoremap <C-e> <End>
-cnoremap <C-b> <Left>
-cnoremap <C-f> <Right>
-cnoremap <C-l> <Del>
+" cnoremap <C-a> <Home>
+" cnoremap <C-e> <End>
+" cnoremap <C-b> <Left>
+" cnoremap <C-f> <Right>
+" cnoremap <C-l> <Del>
 
 " }}}
 
