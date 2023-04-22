@@ -176,19 +176,19 @@
 " }}}
 
 " Command {{{
-command! Cleareg call vimrc#clear_register()
+" command! Cleareg call vimrc#clear_register()
 
-command! -bang DeinUpdate call vimrc#dein_update(<bang>0)
+" command! -bang DeinUpdate call vimrc#dein_update(<bang>0)
 
-command! DeinDelete call vimrc#dein_check_uninstall()
+" command! DeinDelete call vimrc#dein_check_uninstall()
 
-command! -bar DeinRecache call dein#recache_runtimepath() | qall
+" command! -bar DeinRecache call dein#recache_runtimepath() | qall
 
-command! -bang DDCFuzzyFilter call vimrc#ddc_change_filter(<bang>0, 'fuzzy')
+" command! -bang DDCFuzzyFilter call vimrc#ddc_change_filter(<bang>0, 'fuzzy')
 
-command! -bang DDCNormalFilter call vimrc#ddc_change_filter(<bang>0, 'normal')
+" command! -bang DDCNormalFilter call vimrc#ddc_change_filter(<bang>0, 'normal')
 
-command! DDCEchoFilter call vimrc#ddc_change_fileter(1, '')
+" command! DDCEchoFilter call vimrc#ddc_change_fileter(1, '')
 " }}}
 
 " vim:fdm=marker:fen
