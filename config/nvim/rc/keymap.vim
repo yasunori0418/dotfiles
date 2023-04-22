@@ -151,18 +151,18 @@
 " }}}
 
 " Quickfix {{{
-nnoremap [q <Cmd>cprevious<CR>
-nnoremap ]q <Cmd>cnext<CR>
-nnoremap [Q <Cmd>cfirst<CR>
-nnoremap ]Q <Cmd>clast<CR>
+" nnoremap [q <Cmd>cprevious<CR>
+" nnoremap ]q <Cmd>cnext<CR>
+" nnoremap [Q <Cmd>cfirst<CR>
+" nnoremap ]Q <Cmd>clast<CR>
 
 " }}}
 
 " Buffer {{{
-nnoremap [b <Cmd>bprevious<CR>
-nnoremap ]b <Cmd>bnext<CR>
-nnoremap [B <Cmd>bfirst<CR>
-nnoremap ]B <Cmd>blast<CR>
+" nnoremap [b <Cmd>bprevious<CR>
+" nnoremap ]b <Cmd>bnext<CR>
+" nnoremap [B <Cmd>bfirst<CR>
+" nnoremap ]B <Cmd>blast<CR>
 
 " }}}
 

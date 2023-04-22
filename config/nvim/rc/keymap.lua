@@ -14,6 +14,7 @@ local keymaps = {
   { mode = {"", "!"}, lhs = [[<Down>]], rhs = [[]], opts = opts },
   { mode = {"", "!"}, lhs = [[<Up>]], rhs = [[]], opts = opts },
   { mode = {"", "!"}, lhs = [[<Right>]], rhs = [[]], opts = opts },
+
   { mode = {"n"}, lhs = [[ w]], rhs = [[<Plug>(Window)]], opts = {} },
   { mode = {"n"}, lhs = [[<Plug>(Window)w]], rhs = [[<Cmd>write<CR>]], opts = opts },
   { mode = {"n"}, lhs = [[<Plug>(Window)h]], rhs = [[<C-W>h]], opts = opts },
@@ -32,6 +33,17 @@ local keymaps = {
   { mode = {"n"}, lhs = [[<S-Right>]], rhs = [[<C-w>>]], opts = opts },
   { mode = {"n"}, lhs = [[<S-Up>]], rhs = [[<C-w>-]], opts = opts },
   { mode = {"n"}, lhs = [[<S-Down>]], rhs = [[<C-w>+]], opts = opts },
+
+  { mode = {"n"}, lhs = [=[[q]=], rhs = [[<Cmd>cprevious<CR>]], opts = opts },
+  { mode = {"n"}, lhs = [=[]q]=], rhs = [[<Cmd>cnext<CR>]], opts = opts },
+  { mode = {"n"}, lhs = [=[[Q]=], rhs = [[<Cmd>cfirst<CR>]], opts = opts },
+  { mode = {"n"}, lhs = [=[]Q]=], rhs = [[<Cmd>clast<CR>]], opts = opts },
+
+  { mode = {"n"}, lhs = [=[[b]=], rhs = [[<Cmd>bprevious<CR>]], opts = opts },
+  { mode = {"n"}, lhs = [=[]b]=], rhs = [[<Cmd>bnext<CR>]], opts = opts },
+  { mode = {"n"}, lhs = [=[[B]=], rhs = [[<Cmd>bfirst<CR>]], opts = opts },
+  { mode = {"n"}, lhs = [=[]B]=], rhs = [[<Cmd>blast<CR>]], opts = opts },
+
   { mode = {"n"}, lhs = [=[[t]=], rhs = [[gT]], opts = opts },
   { mode = {"n"}, lhs = [=[]t]=], rhs = [[gt]], opts = opts },
   { mode = {"n"}, lhs = [=[[T]=], rhs = [[<Cmd>tabfirst<CR>]], opts = opts },
@@ -39,7 +51,9 @@ local keymaps = {
   { mode = {"n"}, lhs = [[tn]], rhs = [[<Cmd>tabnew<CR>]], opts = opts },
   { mode = {"n"}, lhs = [[tt]], rhs = [[<C-W>g<Tab>]], opts = opts },
   { mode = {"n"}, lhs = [[tT]], rhs = [[<C-W>T]], opts = opts },
+
   { mode = {"n"}, lhs = [[ l]], rhs = [[<Plug>(lsp)]], opts = {} },
+
   { mode = {"n", "x"}, lhs = [[x]], rhs = [["_x]], opts = opts },
   { mode = {"n", "x"}, lhs = [[c]], rhs = [["_c]], opts = opts },
   { mode = {"n"}, lhs = [[gf]], rhs = [[gF]], opts = opts },
@@ -56,6 +70,7 @@ local keymaps = {
   { mode = {"c"}, lhs = [[<C-a>]], rhs = [[<Home>]], opts = opts },
   { mode = {"c"}, lhs = [[<C-f>]], rhs = [[<Right>]], opts = opts },
   { mode = {"c"}, lhs = [[<C-b>]], rhs = [[<Left>]], opts = opts },
+
   { mode = {"x", "o"}, lhs = [[a']], rhs = [[2i']], opts = opts },
   { mode = {"x", "o"}, lhs = [[a"]], rhs = [[2i"]], opts = opts },
   { mode = {"x", "o"}, lhs = [[a`]], rhs = [[2i`]], opts = opts },
