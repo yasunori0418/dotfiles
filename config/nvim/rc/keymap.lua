@@ -1,6 +1,7 @@
-local opts = { silent = true, noremap = true }
+local opts = { silent = true }
 
 local keymaps = {
+  -- { mode = {}, lhs = "", rhs = "", opts = {} },
   { mode = {"n", "x"}, lhs = "s", rhs = "", opts = opts },
   { mode = {"n", "x"}, lhs = "S", rhs = "", opts = opts },
   { mode = {"n", "x"}, lhs = "t", rhs = "", opts = opts },
@@ -41,7 +42,9 @@ local keymaps = {
   { mode = {"n"}, lhs = " l", rhs = "<Plug>(lsp)", opts = {} },
   { mode = {"n", "x"}, lhs = "x", rhs = "\"_x", opts = opts },
   { mode = {"n", "x"}, lhs = "c", rhs = "\"_c", opts = opts },
-  { mode = {"n"}, lhs = "gf", rhs = "gF", opts = {} },
+  { mode = {"n"}, lhs = "gf", rhs = "gF", opts = opts },
+  { mode = {"n"}, lhs = "<ESC><ESC>", rhs = "<Cmd>nohlsearch<CR>", opts = opts },
+  { mode = {"n"}, lhs = " n", rhs = vim.fn["vimrc#signcolumn"], opts = opts },
 }
 
 for _, keymap in pairs(keymaps) do

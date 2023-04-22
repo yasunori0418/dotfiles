@@ -106,8 +106,8 @@
 " nnoremap gf gF
 
 " Disable highlights from search results.
-nnoremap <ESC><ESC> <Cmd>nohlsearch<CR>
-nnoremap <Space>n <Cmd>call vimrc#signcolumn()<CR>
+" nnoremap <ESC><ESC> <Cmd>nohlsearch<CR>
+" nnoremap <Space>n <Cmd>call vimrc#signcolumn()<CR>
 
 nnoremap Q q
 nnoremap q <Nop>
@@ -131,11 +131,11 @@ inoremap <C-b> <C-G>U<Left>
 " Visual Mode: {{{
 " Exchange Colon and Semi-Colon.
 "xnoremap ; :
-xnoremap : ;
+" xnoremap : ;
 
 " Do not save the things erased by x and c in the register.
-xnoremap x "_x
-xnoremap c "_c
+" xnoremap x "_x
+" xnoremap c "_c
 
 xnoremap a' 2i'
 xnoremap a" 2i"
