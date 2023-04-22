@@ -15,11 +15,16 @@ local option_tables = {
   },
 
   editor_options = {
-    -- Disable backup.
-    backup = false,
+    -- backup.
+    backup = true,
+    backupdir = vim.fn.stdpath('cache') .. '/backup',
 
-    -- Don't make swapfile.
-    swapfile = false,
+    -- swapfile.
+    swapfile = true,
+    directory = vim.fn.stdpath('cache') .. '/swap',
+
+    -- 早くなるんか…？
+    ttyfast = true,
 
     -- UNDOをどうぞ
     undodir = vim.fn.stdpath('cache') .. '/undo',
