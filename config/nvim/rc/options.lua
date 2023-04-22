@@ -38,8 +38,7 @@ local option_tables = {
     -- Use the clipboard on linux systems.
     clipboard = 'unnamedplus',
 
-    -- Open diff mode vertically
-    diffopt = 'vertical',
+    diffopt = 'vertical,algorithm:histogram,indent-heuristic',
 
     -- For pum.vim
     shortmess = 'c',
