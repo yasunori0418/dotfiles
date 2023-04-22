@@ -2,35 +2,35 @@
 
 " Nop keys {{{
 " Disable s for vim-sandwich
-nnoremap s <Nop>
-xnoremap s <Nop>
-nnoremap S <Nop>
-xnoremap S <Nop>
+" nnoremap s <Nop>
+" xnoremap s <Nop>
+" nnoremap S <Nop>
+" xnoremap S <Nop>
 
 " Invalid because it does not move with t and T.
-nnoremap t <Nop>
-xnoremap t <Nop>
-nnoremap T <Nop>
-xnoremap T <Nop>
+" nnoremap t <Nop>
+" xnoremap t <Nop>
+" nnoremap T <Nop>
+" xnoremap T <Nop>
 
 " Not use marker.
-nnoremap m <Nop>
-nnoremap ' <Nop>
-nnoremap ` <Nop>
+" nnoremap m <Nop>
+" nnoremap ' <Nop>
+" nnoremap ` <Nop>
 
 " Default space = right
-nnoremap <Space> <Nop>
-xnoremap <Space> <Nop>
+" nnoremap <Space> <Nop>
+" xnoremap <Space> <Nop>
 
 " kill arrow key move
-noremap <Left>    <Nop>
-noremap <Down>    <Nop>
-noremap <Up>      <Nop>
-noremap <Right>   <Nop>
-noremap! <Left>   <Nop>
-noremap! <Down>   <Nop>
-noremap! <Up>     <Nop>
-noremap! <Right>  <Nop>
+" noremap <Left>    <Nop>
+" noremap <Down>    <Nop>
+" noremap <Up>      <Nop>
+" noremap <Right>   <Nop>
+" noremap! <Left>   <Nop>
+" noremap! <Down>   <Nop>
+" noremap! <Up>     <Nop>
+" noremap! <Right>  <Nop>
 
 " Use prefix <Window>.
 "nnoremap <C-W> <Nop>
