@@ -45,6 +45,8 @@ local keymaps = {
   { mode = {"n"}, lhs = "gf", rhs = "gF", opts = opts },
   { mode = {"n"}, lhs = "<ESC><ESC>", rhs = "<Cmd>nohlsearch<CR>", opts = opts },
   { mode = {"n"}, lhs = " n", rhs = vim.fn["vimrc#signcolumn"], opts = opts },
+  { mode = {"n"}, lhs = "Q", rhs = "q", opts = opts },
+  { mode = {"n"}, lhs = "q", rhs = "", opts = opts },
 }
 
 for _, keymap in pairs(keymaps) do

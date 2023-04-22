@@ -109,8 +109,8 @@
 " nnoremap <ESC><ESC> <Cmd>nohlsearch<CR>
 " nnoremap <Space>n <Cmd>call vimrc#signcolumn()<CR>
 
-nnoremap Q q
-nnoremap q <Nop>
+" nnoremap Q q
+" nnoremap q <Nop>
 
 " }}}
 
