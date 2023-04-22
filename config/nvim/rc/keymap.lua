@@ -2,6 +2,8 @@ local opts = { silent = true }
 
 local keymaps = {
   -- { mode = {}, lhs = [[]], rhs = [[]], opts = opts },
+
+  -- disables
   { mode = {"n", "x"}, lhs = [[s]], rhs = [[]], opts = opts },
   { mode = {"n", "x"}, lhs = [[S]], rhs = [[]], opts = opts },
   { mode = {"n", "x"}, lhs = [[t]], rhs = [[]], opts = opts },
@@ -15,6 +17,7 @@ local keymaps = {
   { mode = {"", "!"}, lhs = [[<Up>]], rhs = [[]], opts = opts },
   { mode = {"", "!"}, lhs = [[<Right>]], rhs = [[]], opts = opts },
 
+  -- window
   { mode = {"n"}, lhs = [[ w]], rhs = [[<Plug>(Window)]], opts = {} },
   { mode = {"n"}, lhs = [[<Plug>(Window)w]], rhs = [[<Cmd>write<CR>]], opts = opts },
   { mode = {"n"}, lhs = [[<Plug>(Window)h]], rhs = [[<C-W>h]], opts = opts },
@@ -34,16 +37,19 @@ local keymaps = {
   { mode = {"n"}, lhs = [[<S-Up>]], rhs = [[<C-w>-]], opts = opts },
   { mode = {"n"}, lhs = [[<S-Down>]], rhs = [[<C-w>+]], opts = opts },
 
+  -- quickfix
   { mode = {"n"}, lhs = [=[[q]=], rhs = [[<Cmd>cprevious<CR>]], opts = opts },
   { mode = {"n"}, lhs = [=[]q]=], rhs = [[<Cmd>cnext<CR>]], opts = opts },
   { mode = {"n"}, lhs = [=[[Q]=], rhs = [[<Cmd>cfirst<CR>]], opts = opts },
   { mode = {"n"}, lhs = [=[]Q]=], rhs = [[<Cmd>clast<CR>]], opts = opts },
 
+  -- buffer
   { mode = {"n"}, lhs = [=[[b]=], rhs = [[<Cmd>bprevious<CR>]], opts = opts },
   { mode = {"n"}, lhs = [=[]b]=], rhs = [[<Cmd>bnext<CR>]], opts = opts },
   { mode = {"n"}, lhs = [=[[B]=], rhs = [[<Cmd>bfirst<CR>]], opts = opts },
   { mode = {"n"}, lhs = [=[]B]=], rhs = [[<Cmd>blast<CR>]], opts = opts },
 
+  -- tab
   { mode = {"n"}, lhs = [=[[t]=], rhs = [[gT]], opts = opts },
   { mode = {"n"}, lhs = [=[]t]=], rhs = [[gt]], opts = opts },
   { mode = {"n"}, lhs = [=[[T]=], rhs = [[<Cmd>tabfirst<CR>]], opts = opts },
@@ -52,12 +58,13 @@ local keymaps = {
   { mode = {"n"}, lhs = [[tt]], rhs = [[<C-W>g<Tab>]], opts = opts },
   { mode = {"n"}, lhs = [[tT]], rhs = [[<C-W>T]], opts = opts },
 
+  -- keymap prefix for lsp plugins
   { mode = {"n"}, lhs = [[ l]], rhs = [[<Plug>(lsp)]], opts = {} },
 
   { mode = {"n", "x"}, lhs = [[x]], rhs = [["_x]], opts = opts },
   { mode = {"n", "x"}, lhs = [[c]], rhs = [["_c]], opts = opts },
   { mode = {"n"}, lhs = [[gf]], rhs = [[gF]], opts = opts },
-  { mode = {"n"}, lhs = [[<ESC><ESC>]], rhs = [[<Cmd>nohlsearch<CR>]], opts = opts },
+  { mode = {"n"}, lhs = [[<C-l>]], rhs = [[<Cmd>nohlsearch<Bar>diffupdate<CR>]], opts = opts },
   { mode = {"n"}, lhs = [[ n]], rhs = vim.fn['vimrc#signcolumn'], opts = opts },
   { mode = {"n"}, lhs = [[Q]], rhs = [[q]], opts = opts },
   { mode = {"n"}, lhs = [[q]], rhs = "", opts = opts },
