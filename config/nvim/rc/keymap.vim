@@ -137,16 +137,16 @@
 " xnoremap x "_x
 " xnoremap c "_c
 
-xnoremap a' 2i'
-xnoremap a" 2i"
-xnoremap a` 2i`
+" xnoremap a' 2i'
+" xnoremap a" 2i"
+" xnoremap a` 2i`
 
 " }}}
 
 " Operator Mode: {{{
-onoremap a' 2i'
-onoremap a" 2i"
-onoremap a` 2i`
+" onoremap a' 2i'
+" onoremap a" 2i"
+" onoremap a` 2i`
 
 " }}}
 
