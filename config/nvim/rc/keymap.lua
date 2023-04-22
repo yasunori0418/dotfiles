@@ -38,6 +38,7 @@ local keymaps = {
   { mode = {"n"}, lhs = "tn", rhs = "<Cmd>tabnew<CR>", opts = opts },
   { mode = {"n"}, lhs = "tt", rhs = "<C-W>g<Tab>", opts = opts },
   { mode = {"n"}, lhs = "tT", rhs = "<C-W>T", opts = opts },
+  { mode = {"n"}, lhs = " l", rhs = "<Plug>(lsp)", opts = {} },
 }
 
 for _, keymap in pairs(keymaps) do

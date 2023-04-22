@@ -83,11 +83,11 @@
 " nmap <Space>w <Plug>(Window)
 
 " LSP keybinds prefix
-nmap <Space>l <Plug>(lsp)
+" nmap <Space>l <Plug>(lsp)
 
 " Git keybinds prefix
-nnoremap <git>    <Nop>
-nmap     <Space>g <git>
+" nnoremap <git>    <Nop>
+" nmap     <Space>g <git>
 
 " }}}
 
