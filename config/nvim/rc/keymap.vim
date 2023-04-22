@@ -38,49 +38,49 @@
 
 " Window control keybind {{{
 " File save
-nnoremap <Plug>(Window)w <Cmd>write<CR>
+" nnoremap <Plug>(Window)w <Cmd>write<CR>
 
 " Commands of move between window.
-nnoremap <Plug>(Window)h <C-W>h
-nnoremap <Plug>(Window)j <C-W>j
-nnoremap <Plug>(Window)k <C-W>k
-nnoremap <Plug>(Window)l <C-W>l
+" nnoremap <Plug>(Window)h <C-W>h
+" nnoremap <Plug>(Window)j <C-W>j
+" nnoremap <Plug>(Window)k <C-W>k
+" nnoremap <Plug>(Window)l <C-W>l
 
 " Commands of move window.
-nnoremap <Plug>(Window)H <C-W>H
-nnoremap <Plug>(Window)J <C-W>J
-nnoremap <Plug>(Window)K <C-W>K
-nnoremap <Plug>(Window)L <C-W>L
+" nnoremap <Plug>(Window)H <C-W>H
+" nnoremap <Plug>(Window)J <C-W>J
+" nnoremap <Plug>(Window)K <C-W>K
+" nnoremap <Plug>(Window)L <C-W>L
 
 " Tab page controls.
-nnoremap [t gT
-nnoremap ]t gt
-nnoremap [T <Cmd>tabfirst<CR>
-nnoremap ]T <Cmd>tablast<CR>
-nnoremap tt <C-W>g<Tab>
-nnoremap tT <C-W>T
-nnoremap tn <Cmd>tabnew<CR>
+" nnoremap [t gT
+" nnoremap ]t gt
+" nnoremap [T <Cmd>tabfirst<CR>
+" nnoremap ]T <Cmd>tablast<CR>
+" nnoremap tt <C-W>g<Tab>
+" nnoremap tT <C-W>T
+" nnoremap tn <Cmd>tabnew<CR>
 
 " Commands of close window.
-nnoremap <Plug>(Window)q <C-W>q
-nnoremap <Plug>(Window)o <C-W>o
+" nnoremap <Plug>(Window)q <C-W>q
+" nnoremap <Plug>(Window)o <C-W>o
 
 " Commands of window split.
-nnoremap <Plug>(Window)s <C-W>s
-nnoremap <Plug>(Window)v <C-W>v
-nnoremap <Plug>(Window)n <C-W>n
+" nnoremap <Plug>(Window)s <C-W>s
+" nnoremap <Plug>(Window)v <C-W>v
+" nnoremap <Plug>(Window)n <C-W>n
 
 " Another window size controls.
-nnoremap <S-Left>  <C-w><<CR>
-nnoremap <S-Right> <C-w>><CR>
-nnoremap <S-Up>    <C-w>-<CR>
-nnoremap <S-Down>  <C-w>+<CR>
+" nnoremap <S-Left>  <C-w><
+" nnoremap <S-Right> <C-w>>
+" nnoremap <S-Up>    <C-w>-
+" nnoremap <S-Down>  <C-w>+
 
 " }}}
 
 " Keymap prefixes {{{
 " Window control prefix
-nmap <Space>w <Plug>(Window)
+" nmap <Space>w <Plug>(Window)
 
 " LSP keybinds prefix
 nmap <Space>l <Plug>(lsp)
