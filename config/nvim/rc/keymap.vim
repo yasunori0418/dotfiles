@@ -99,11 +99,11 @@
 "nnoremap q; q:
 
 " Do not save the things erased by x and c in the register.
-nnoremap x "_x
-nnoremap c "_c
+" nnoremap x "_x
+" nnoremap c "_c
 
 " Opens the file name under the cursor.
-nnoremap gf gF
+" nnoremap gf gF
 
 " Disable highlights from search results.
 nnoremap <ESC><ESC> <Cmd>nohlsearch<CR>

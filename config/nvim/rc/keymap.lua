@@ -39,6 +39,9 @@ local keymaps = {
   { mode = {"n"}, lhs = "tt", rhs = "<C-W>g<Tab>", opts = opts },
   { mode = {"n"}, lhs = "tT", rhs = "<C-W>T", opts = opts },
   { mode = {"n"}, lhs = " l", rhs = "<Plug>(lsp)", opts = {} },
+  { mode = {"n", "x"}, lhs = "x", rhs = "\"_x", opts = opts },
+  { mode = {"n", "x"}, lhs = "c", rhs = "\"_c", opts = opts },
+  { mode = {"n"}, lhs = "gf", rhs = "gF", opts = {} },
 }
 
 for _, keymap in pairs(keymaps) do
