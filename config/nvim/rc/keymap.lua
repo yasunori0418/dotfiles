@@ -19,7 +19,8 @@ local keymaps = {
 
   -- window
   { mode = {"n"}, lhs = [[ w]], rhs = [[<Plug>(Window)]], opts = {} },
-  { mode = {"n"}, lhs = [[<Plug>(Window)w]], rhs = [[<Cmd>write<CR>]], opts = opts },
+  { mode = {"n"}, lhs = [[<Plug>(Window)w]], rhs = [[<Cmd>update<CR>]], opts = opts },
+  { mode = {"n"}, lhs = [[<Plug>(Window)W]], rhs = [[<Cmd>write<CR>]], opts = opts },
   { mode = {"n"}, lhs = [[<Plug>(Window)h]], rhs = [[<C-W>h]], opts = opts },
   { mode = {"n"}, lhs = [[<Plug>(Window)j]], rhs = [[<C-W>j]], opts = opts },
   { mode = {"n"}, lhs = [[<Plug>(Window)k]], rhs = [[<C-W>k]], opts = opts },
