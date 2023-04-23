@@ -64,7 +64,7 @@ local keymaps = {
   { mode = {"n", "x"}, lhs = [[x]], rhs = [["_x]], opts = opts },
   { mode = {"n", "x"}, lhs = [[c]], rhs = [["_c]], opts = opts },
   { mode = {"n"}, lhs = [[gf]], rhs = [[gF]], opts = opts },
-  { mode = {"n"}, lhs = [[<C-l>]], rhs = [[<Cmd>nohlsearch<Bar>diffupdate<CR>]], opts = opts },
+  { mode = {"n"}, lhs = [[<C-l>]], rhs = [[<Cmd>nohlsearch<Bar>diffupdate<CR><C-l>]], opts = opts },
   { mode = {"n"}, lhs = [[ n]], rhs = vim.fn['vimrc#signcolumn'], opts = opts },
   { mode = {"n"}, lhs = [[Q]], rhs = [[q]], opts = opts },
   { mode = {"n"}, lhs = [[q]], rhs = "", opts = opts },
