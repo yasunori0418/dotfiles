@@ -1,0 +1,12 @@
+[Unit]
+Description=Swap capslock to ctrl_l for Keychron K8 by xremap.
+
+[Service]
+Type=simple
+KillMode=process
+ExecStart=/usr/bin/xremap --device 'Keychron K8' %h/.config/xremap/swap_caps.yaml
+ExecStop=/usr/bin/killall xremap
+Restart=always
+
+[Install]
+WantedBy=default.target
