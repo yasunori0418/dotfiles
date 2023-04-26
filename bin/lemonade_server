@@ -1,0 +1,81 @@
+#!/usr/bin/env bash
+
+lemonade_cache_path=${HOME}/.cache/lemonade
+[[ ! -d ${lemonade_cache_path} ]] && mkdir -p ${lemonade_cache_path}
+
+lemonade_server_log=${lemonade_cache_path}/lemonade_server.log
+lemonade_server_pid=${lemonade_cache_path}/lemonade_server.pid
+
+# lemonade server > ${cache_dir}/log 2>&1 &
+
+has_started() {
+  if [[ -f ${lemonade_server_pid} ]]; then
+    process=$(ps aux | rg `cat ${lemonade_server_pid}` | rg lemonade)
+
+    if [[ -z ${process} ]]; then
+      rm ${lemonade_server_pid}
+    fi
+  fi
+}
+
+start_server() {
+  has_started
+  # Don't start multiple shared servers.
+  if [[ -f ${lemonade_server_pid} ]]; then
+    echo "Already started lemonade server."
+    exit 1
+  fi
+
+  # Redirect stderr to $lemonade_server_log as stdout.
+  lemonade server >${lemonade_server_log} 2>&1 &
+
+  # Get pid of lemonade server.
+  jobs -l | awk '{print $2}' > ${lemonade_server_pid}
+
+  echo "Start lemonade server in"
+  echo "PID: `cat ${lemonade_server_pid}`."
+  echo "Check ${lemonade_server_log} for lemonade server logs."
+}
+
+stop_server() {
+  has_started
+  if [[ -f ${lemonade_server_pid} ]]; then
+    kill `cat ${lemonade_server_pid}`
+    rm ${lemonade_server_pid}
+    echo "Stoped lemonade server."
+  else
+    echo "Not found ${lemonade_server_pid}"
+    echo "Started lemonade server?"
+    exit 1
+  fi
+}
+
+if [[ -n $1 ]]; then
+  answer=$1
+else
+  echo "Starting lemonade server?"
+  if [[ -f ${lemonade_server_pid} ]]; then
+    echo "Shared server status: Started"
+  else
+    echo "Shared server status: Stoped"
+  fi
+  read -p "[Y|n|c] :>" answer
+fi
+
+case $answer in
+  "" | "on" | "start" | [Yy]* )
+    start_server
+    ;;
+  "off" | "stop" | [Nn]* )
+    stop_server
+    ;;
+  "Cancel" | [Cc]* )
+    echo "Aborted this script."
+    exit 1
+    ;;
+  "--help" | "-h" )
+    echo "help text"
+    ;;
+esac
+
+# vim:ft=bash

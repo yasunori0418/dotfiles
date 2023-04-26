@@ -28,3 +28,5 @@
 	gpgsign = false
 [mergetool]
 	prompt = false
+[diff]
+	algorithm = histogram

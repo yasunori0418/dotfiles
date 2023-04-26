@@ -1,0 +1,6 @@
+---
+modmap:
+  - name: swap_capslock
+    remap:
+      Capslock: Ctrl_L
+      Ctrl_L: Capslock
