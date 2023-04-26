@@ -12,10 +12,10 @@ local keymaps = {
   { mode = {"n", "x"}, lhs = [[']], rhs = [[<Nop>]], opts = opts },
   { mode = {"n", "x"}, lhs = [[`]], rhs = [[<Nop>]], opts = opts },
   { mode = {"n", "x"}, lhs = [[ ]], rhs = [[<Nop>]], opts = opts },
-  { mode = {"", "!"}, lhs = [[<Left>]], rhs = [[<Nop>]], opts = opts },
-  { mode = {"", "!"}, lhs = [[<Down>]], rhs = [[<Nop>]], opts = opts },
-  { mode = {"", "!"}, lhs = [[<Up>]], rhs = [[<Nop>]], opts = opts },
-  { mode = {"", "!"}, lhs = [[<Right>]], rhs = [[<Nop>]], opts = opts },
+  -- { mode = {"", "!"}, lhs = [[<Left>]], rhs = [[<Nop>]], opts = opts },
+  -- { mode = {"", "!"}, lhs = [[<Down>]], rhs = [[<Nop>]], opts = opts },
+  -- { mode = {"", "!"}, lhs = [[<Up>]], rhs = [[<Nop>]], opts = opts },
+  -- { mode = {"", "!"}, lhs = [[<Right>]], rhs = [[<Nop>]], opts = opts },
 
   -- window
   { mode = {"n"}, lhs = [[ w]], rhs = [[<Plug>(Window)]], opts = {} },
