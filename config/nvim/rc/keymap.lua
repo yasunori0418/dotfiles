@@ -1,4 +1,4 @@
-local opts = { silent = true }
+local opts = { silent = true, noremap = true }
 
 local keymaps = {
   -- { mode = {}, lhs = [[]], rhs = [[]], opts = opts },
