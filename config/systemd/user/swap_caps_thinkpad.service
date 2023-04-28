@@ -1,0 +1,12 @@
+[Unit]
+Description=Swap capslock to ctrl_l for Thinkpad by xremap.
+
+[Service]
+Type=simple
+KillMode=process
+ExecStart=/usr/bin/xremap --device 'AT Translated Set 2 keyboard' %h/.config/xremap/swap_caps.yaml
+ExecStop=/usr/bin/killall xremap
+Restart=always
+
+[Install]
+WantedBy=default.target
