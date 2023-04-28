@@ -12,10 +12,10 @@ local keymaps = {
   { mode = {"n", "x"}, lhs = [[']], rhs = [[<Nop>]], opts = opts },
   { mode = {"n", "x"}, lhs = [[`]], rhs = [[<Nop>]], opts = opts },
   { mode = {"n", "x"}, lhs = [[ ]], rhs = [[<Nop>]], opts = opts },
-  -- { mode = {"", "!"}, lhs = [[<Left>]], rhs = [[<Nop>]], opts = opts },
-  -- { mode = {"", "!"}, lhs = [[<Down>]], rhs = [[<Nop>]], opts = opts },
-  -- { mode = {"", "!"}, lhs = [[<Up>]], rhs = [[<Nop>]], opts = opts },
-  -- { mode = {"", "!"}, lhs = [[<Right>]], rhs = [[<Nop>]], opts = opts },
+  { mode = {"", "!"}, lhs = [[<Left>]], rhs = [[<Nop>]], opts = opts },
+  { mode = {"", "!"}, lhs = [[<Down>]], rhs = [[<Nop>]], opts = opts },
+  { mode = {"", "!"}, lhs = [[<Up>]], rhs = [[<Nop>]], opts = opts },
+  { mode = {"", "!"}, lhs = [[<Right>]], rhs = [[<Nop>]], opts = opts },
 
   -- window
   { mode = {"n"}, lhs = [[ w]], rhs = [[<Plug>(Window)]], opts = {} },
@@ -72,12 +72,14 @@ local keymaps = {
   { mode = {"i"}, lhs = [[jj]], rhs = [[<Esc>]], opts = opts },
   { mode = {"c"}, lhs = [[jj]], rhs = [[<Esc><C-l>]], opts = opts },
   { mode = {"i", "c"}, lhs = [[<C-l>]], rhs = [[<Del>]], opts = opts },
+
+  -- Emacs like
   { mode = {"i"}, lhs = [[<C-a>]], rhs = [[<C-o>^]], opts = opts },
   { mode = {"i"}, lhs = [[<C-f>]], rhs = [[<C-G>U<Right>]], opts = opts },
   { mode = {"i"}, lhs = [[<C-b>]], rhs = [[<C-G>U<Left>]], opts = opts },
-  { mode = {"c"}, lhs = [[<C-a>]], rhs = [[<Home>]], opts = opts },
-  { mode = {"c"}, lhs = [[<C-f>]], rhs = [[<Right>]], opts = opts },
-  { mode = {"c"}, lhs = [[<C-b>]], rhs = [[<Left>]], opts = opts },
+  { mode = {"c"}, lhs = [[<C-a>]], rhs = [[<Home>]], opts = {} },
+  { mode = {"c"}, lhs = [[<C-f>]], rhs = [[<Right>]], opts = {} },
+  { mode = {"c"}, lhs = [[<C-b>]], rhs = [[<Left>]], opts = {} },
 
   { mode = {"x", "o"}, lhs = [[a']], rhs = [[2i']], opts = opts },
   { mode = {"x", "o"}, lhs = [[a"]], rhs = [[2i"]], opts = opts },
