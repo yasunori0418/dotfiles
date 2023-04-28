@@ -51,6 +51,11 @@ if [[ -d ${HOME}/.deno ]]; then
   export PATH="${PATH}:${HOME}/.deno/bin"
 fi
 
+# if installed binary by rust-cargo
+if [[ -d ${HOME}/.cargo/bin ]]; then
+  export PATH="${PATH}:${HOME}/.cargo/bin"
+fi
+
 # themis environment
 themis_path=${HOME}/.cache/dein/repos/github.com/thinca/vim-themis/bin
 if [[ -d ${themis_path} ]]; then
