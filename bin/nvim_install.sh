@@ -18,6 +18,8 @@ cd ${neovim_repo}
 
 make install
 
+chown -Rc yasunori:yasunori ${neovim_repo}
+
 if [[ `command -v nvim` ]]; then
   nvim --version
   exit 0
