@@ -76,7 +76,7 @@ if dein.load_state(dein_dir) == 1 then
   dein.save_state()
 end
 
-if not dein.check_install() == 0 then
+if dein.check_install() then
   dein.install()
 end
 
