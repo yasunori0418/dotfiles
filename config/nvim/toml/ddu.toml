@@ -4,7 +4,7 @@
 repo = 'Shougo/ddu.vim'
 depends = 'denops.vim'
 on_func = 'ddu#start()'
-hooks_file = '~/.config/nvim/hooks_files/ddu.vim'
+hooks_file = '~/.config/nvim/hooks/ddu.vim'
 
 # }}}
 
@@ -12,12 +12,12 @@ hooks_file = '~/.config/nvim/hooks_files/ddu.vim'
 [[plugins]] # ddu-ui-ff
 repo = 'Shougo/ddu-ui-ff'
 on_source = 'ddu.vim'
-hooks_file = '~/.config/nvim/hooks_files/ddu_ff.vim'
+hooks_file = '~/.config/nvim/hooks/ddu_ff.vim'
 
 [[plugins]] # ddu-ui-filer
 repo = 'Shougo/ddu-ui-filer'
 on_source = 'ddu.vim'
-hooks_file = '~/.config/nvim/hooks_files/ddu_filer.vim'
+hooks_file = '~/.config/nvim/hooks/ddu_filer.vim'
 # }}}
 
 # Kind plugins {{{

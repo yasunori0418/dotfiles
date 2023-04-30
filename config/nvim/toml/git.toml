@@ -5,7 +5,7 @@ repo = 'itchyny/vim-gitbranch'
 [[plugins]] # gitsigns.nvim
 repo = 'lewis6991/gitsigns.nvim'
 on_source = 'nightfox.nvim'
-hooks_file = '~/.config/nvim/hooks_files/gitsigns.lua'
+hooks_file = '~/.config/nvim/hooks/gitsigns.lua'
 
 [[plugins]] # gina.vim
 repo = 'lambdalisue/gina.vim'
@@ -21,4 +21,4 @@ call gina#custom#command#option('blame', '--opener', 'tabedit')
 repo = 'lambdalisue/gin.vim'
 depends = 'denops.vim'
 on_cmd = ['Gin', 'GinBranch', 'GinCd', 'GinChaperon', 'GinDiff', 'GinLog', 'GinPatch', 'GinStatus']
-hooks_file = '~/.config/nvim/hooks_files/gin.vim'
+hooks_file = '~/.config/nvim/hooks/gin.vim'

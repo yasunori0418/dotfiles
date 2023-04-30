@@ -19,7 +19,7 @@ on_source = 'ddc.vim'
 repo = 'Shougo/ddc.vim'
 depends = ['context_filetype.vim', 'denops.vim', 'pum.vim']
 on_event = ['InsertEnter', 'CmdlineEnter', 'CursorHold']
-hooks_file = '~/.config/nvim/hooks_files/ddc.vim'
+hooks_file = '~/.config/nvim/hooks/ddc.vim'
 
 # }}}
 
@@ -96,7 +96,7 @@ on_source = 'ddc.vim'
 # snippet plugins {{{
 [[plugins]] # vim-vsnip
 repo = 'hrsh7th/vim-vsnip'
-hooks_file = '~/.config/nvim/hooks_files/vsnip.vim'
+hooks_file = '~/.config/nvim/hooks/vsnip.vim'
 
 [[plugins]] # vim-vsnip-integ
 repo = 'hrsh7th/vim-vsnip-integ'

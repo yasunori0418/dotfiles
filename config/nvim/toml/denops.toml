@@ -10,25 +10,25 @@ repo = 'vim-skk/skkeleton'
 depends = 'denops.vim'
 on_map = { ic = '<Plug>(skkeleton-toggle)' }
 build = 'bash $HOME/dotfiles/bin/skk_dict.sh'
-hooks_file = '~/.config/nvim/hooks_files/skkeleton.vim'
+hooks_file = '~/.config/nvim/hooks/skkeleton.vim'
 
 [[plugins]] # lightline_skk.vim
 repo = 'yasunori-kirin0418/lightline_skk.vim'
 on_source = 'skkeleton'
-hooks_file = '~/.config/nvim/hooks_files/lightline_skk.vim'
+hooks_file = '~/.config/nvim/hooks/lightline_skk.vim'
 
 [[plugins]] # denops-translate.vim
 repo = 'skanehira/denops-translate.vim'
 depends = 'denops.vim'
 on_cmd = 'Translate'
 on_map = { 'nx' = '<Plug>(Translate' }
-hooks_file = '~/.config/nvim/hooks_files/translate.vim'
+hooks_file = '~/.config/nvim/hooks/translate.vim'
 
 [[plugins]] # denops-silicon.vim
 repo = 'skanehira/denops-silicon.vim'
 depends = 'denops.vim'
 on_cmd = 'Silicon'
-hooks_file = '~/.config/nvim/hooks_files/silicon.vim'
+hooks_file = '~/.config/nvim/hooks/silicon.vim'
 
 [[plugins]]
 repo = 'yuki-yano/fuzzy-motion.vim'
