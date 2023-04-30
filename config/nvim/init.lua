@@ -44,7 +44,7 @@ end
 local dein = require("dein")
 
 if vim.g.neovide then
-  table.insert(inline_vimrcs, "neovide.vim")
+  table.insert(inline_vimrcs, "neovide.lua")
 end
 
 for index, inline_vimrc in pairs(inline_vimrcs) do
