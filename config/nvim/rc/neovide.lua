@@ -16,11 +16,12 @@ local neovide_config = {
   cursor_trail_length = 0.3,
   cursor_trail_size = 0.3,
   cursor_antialiasing = true,
-  cursor_vfx_mode = "pixiedust",
+  cursor_vfx_mode = "railgun",
   hide_mouse_when_typing = true,
   underline_automatic_scaling = true,
   floating_blur_amount_x = 2.0,
   floating_blur_amount_y = 2.0,
+  profiler = false,
 }
 
 for config_name, value in pairs(neovide_config) do
