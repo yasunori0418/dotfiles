@@ -21,15 +21,15 @@ depends = ['nvim-treesitter']
 on_event = 'VimEnter'
 hooks_file = '~/.config/nvim/hooks/nightfox.lua'
 
+# }}}
+
+# Editor support plugins {{{
 [[plugins]] # lightline.vim
 repo = 'itchyny/lightline.vim'
 on_event = ['VimEnter']
 depends = ['vim-gitbranch']
-hooks_file = '~/.config/nvim/hooks/lightline.vim'
+hooks_file = '~/.config/nvim/hooks/lightline.lua'
 
-# }}}
-
-# Editor support plugins {{{
 [[plugins]] # context_filetype.vim
 repo = 'Shougo/context_filetype.vim'
 hook_source = '''
