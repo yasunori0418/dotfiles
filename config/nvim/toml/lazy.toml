@@ -196,7 +196,7 @@ command! StartThemis call dein#source('vim-themis')
 [[plugins]] # emmet-vim
 repo = 'mattn/emmet-vim'
 on_ft = ['html', 'css', 'scss', 'php']
-hooks_file = '~/.config/nvim/hooks/emmet.vim'
+hooks_file = '~/.config/nvim/hooks/emmet.lua'
 
 [[plugins]] # plantuml-syntax
 repo = 'aklt/plantuml-syntax'
