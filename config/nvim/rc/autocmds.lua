@@ -1,63 +1,52 @@
-local augroup = vim.api.nvim_create_augroup
-local autocmd = vim.api.nvim_create_autocmd
+local vimrc = vim.api.nvim_create_augroup("vimrc", { clear = true })
 
-local vimrc = augroup('vimrc', {clear = true})
-
-local autocmds = {
+require("user.utils").autocmds_set({
   {
-    events = {'BufNewFile', 'BufRead'},
+    events = { "BufNewFile", "BufRead" },
     group = vimrc,
-    pattern = {'.textlintrc'},
+    pattern = { ".textlintrc" },
     callback = function()
-      vim.opt_local.filetype = 'json'
-    end
+      vim.opt_local.filetype = "json"
+    end,
   },
   {
-    events = {'BufNewFile', 'BufRead'},
+    events = { "BufNewFile", "BufRead" },
     group = vimrc,
-    pattern = {'*.blade.*'},
+    pattern = { "*.blade.*" },
     callback = function()
-      vim.opt_local.filetype = 'html'
-    end
+      vim.opt_local.filetype = "html"
+    end,
   },
   {
-    events = {'BufNewFile', 'BufRead'},
+    events = { "BufNewFile", "BufRead" },
     group = vimrc,
-    pattern = {'*.uml'},
+    pattern = { "*.uml" },
     callback = function()
-      vim.opt_local.filetype = 'plantuml'
-    end
+      vim.opt_local.filetype = "plantuml"
+    end,
   },
   {
-    events = {'BufNewFile', 'BufRead'},
+    events = { "BufNewFile", "BufRead" },
     group = vimrc,
-    pattern = {'*/i3/config'},
+    pattern = { "*/i3/config" },
     callback = function()
-      vim.opt_local.filetype = 'i3config'
-    end
+      vim.opt_local.filetype = "i3config"
+    end,
   },
   {
-    events = {'FileType'},
+    events = { "FileType" },
     group = vimrc,
-    pattern = {'gin-*'},
+    pattern = { "gin-*" },
     callback = function()
       vim.opt_local.buflisted = true
-    end
+    end,
   },
   {
-    events = {'QuickFixCmdPost'},
+    events = { "QuickFixCmdPost" },
     group = vimrc,
-    pattern = {'*grep*'},
+    pattern = { "*grep*" },
     callback = function()
-      vim.cmd [[cwindow]]
-    end
+      vim.cmd([[cwindow]])
+    end,
   },
-}
-
-for _, item in pairs(autocmds) do
-  autocmd(item.events, {
-    group = item.group,
-    pattern = item.pattern,
-    callback = item.callback,
-  })
-end
+})
