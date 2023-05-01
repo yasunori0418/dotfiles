@@ -1,6 +1,6 @@
 local opts = { silent = true, noremap = true }
 
-local keymaps = {
+require('user.utils').keymaps_set{
   -- { mode = {}, lhs = [[]], rhs = [[]], opts = opts },
 
   -- disables
@@ -85,7 +85,3 @@ local keymaps = {
   { mode = {"x", "o"}, lhs = [[a"]], rhs = [[2i"]], opts = opts },
   { mode = {"x", "o"}, lhs = [[a`]], rhs = [[2i`]], opts = opts },
 }
-
-for _, keymap in pairs(keymaps) do
-  vim.keymap.set(keymap.mode, keymap.lhs, keymap.rhs, keymap.opts)
-end
