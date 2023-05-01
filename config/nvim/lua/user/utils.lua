@@ -1,6 +1,6 @@
 local M = {}
 
----全体のautocmd設定共通のaugroup_id
+---全体共通設定のaugroup_id
 ---@return integer
 M.vimrc_augroup = vim.api.nvim_create_augroup('vimrc', {clear = false})
 
