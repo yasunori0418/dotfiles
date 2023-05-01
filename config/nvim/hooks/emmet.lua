@@ -4,6 +4,7 @@ vim.g.user_emmet_install_global = false
 -- vim.g.user_emmet_leader_key = "<C-y>"
 
 vim.api.nvim_create_autocmd('FileType', {
+  group = require('user.utils').vimrc_augroup,
   pattern = {'html', 'css', 'scss'},
   callback = function()
     vim.cmd[[EmmetInstall]]
