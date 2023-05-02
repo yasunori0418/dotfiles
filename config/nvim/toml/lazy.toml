@@ -170,9 +170,6 @@ repo = 'numToStr/Comment.nvim'
 depends = 'nvim-treesitter'
 on_map = { nox = '<Plug>(comment_toggle_' }
 hooks_file = '~/.config/nvim/hooks/comment_nvim.lua'
-lua_source = '''
-require('plugins.comment')
-'''
 
 [[plugins]] # vim-themis
 repo = 'thinca/vim-themis'
