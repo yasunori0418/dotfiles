@@ -5,15 +5,6 @@ repo = 'nvim-treesitter/nvim-treesitter'
 on_event = 'BufRead'
 hook_post_update = 'TSUpdate'
 hooks_file = '~/.config/nvim/hooks/treesitter.lua'
-hook_source = '''
-set foldmethod=expr
-set foldexpr=nvim_treesitter#foldexpr()
-set nofoldenable
-augroup treesitter_fold
-  autocmd!
-  autocmd FileType toml,help set foldmethod=marker foldenable
-augroup END
-'''
 
 [[plugins]] # nightfox.nvim
 repo = 'EdenEast/nightfox.nvim'
