@@ -31,7 +31,7 @@ M.autocmds_set = function (autocmds)
 end
 
 ---複数のキーマップを定義する。
----@param keymaps { mode: table|string, lhs: string, rhs: string|function, ops: table|nil }
+---@param keymaps { mode: table|string, lhs: string, rhs: string|function, opts: table|nil }
 M.keymaps_set = function(keymaps)
   for _, keymap in pairs(keymaps) do
     vim.keymap.set(keymap.mode, keymap.lhs, keymap.rhs, keymap.opts)
