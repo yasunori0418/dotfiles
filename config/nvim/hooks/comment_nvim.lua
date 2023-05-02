@@ -5,10 +5,10 @@ local keymaps_set = require('user.utils').keymaps_set
 local opt = { silent = true, noremap = false }
 local opt_expr = { silent = true, noremap = false, expr = true }
 keymaps_set{
-  { mode = {"o", "n"},  lhs = [[gc]],   rhs = [[<Plug>(comment_toggle_linewise)]],          opts = opt },
-  { mode = {"o", "n"},  lhs = [[gb]],   rhs = [[<Plug>(comment_toggle_blockwise)]],         opts = opt },
-  { mode = {"x"},       lhs = [[gc]],   rhs = [[<Plug>(comment_toggle_linewise_visual)]],   opts = opt },
-  { mode = {"x"},       lhs = [[gb]],   rhs = [[<Plug>(comment_toggle_blockwise)]],         opts = opt },
+  { mode = {"n"}, lhs = [[gc]], rhs = [[<Plug>(comment_toggle_linewise)]],          opts = opt },
+  { mode = {"n"}, lhs = [[gb]], rhs = [[<Plug>(comment_toggle_blockwise)]],         opts = opt },
+  { mode = {"x"}, lhs = [[gc]], rhs = [[<Plug>(comment_toggle_linewise_visual)]],   opts = opt },
+  { mode = {"x"}, lhs = [[gb]], rhs = [[<Plug>(comment_toggle_blockwise)]],         opts = opt },
   {
     mode = {"n"},
     lhs = [[gcc]],
