@@ -39,4 +39,10 @@ M.keymaps_set = function(keymaps)
 end
 
 
+---luaには三項演算子というような代物等はなく…
+---@param expression { condition: function|boolean, truth: function|string, untruth: function|string }
+M.conditional_operator = function(expression)
+  return expression.condition and expression.truth or expression.untruth
+end
+
 return M
