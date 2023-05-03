@@ -169,6 +169,7 @@ let g:partial#relative_base_path = '~/.cache/partial.vim'
 repo = 'numToStr/Comment.nvim'
 depends = 'nvim-treesitter'
 on_map = { nox = '<Plug>(comment_toggle_' }
+on_event = ['CursorHold']
 hooks_file = '~/.config/nvim/hooks/comment_nvim.lua'
 
 [[plugins]] # vim-themis

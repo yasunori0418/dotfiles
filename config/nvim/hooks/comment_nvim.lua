@@ -4,6 +4,7 @@ local co = require('user.utils').conditional_operator
 local opt = { silent = true, noremap = false }
 local opt_expr = { silent = true, noremap = false, expr = true }
 
+-- 基本マッピングの発火でプラグインを読み込むために、ここで設定する。
 require('user.utils').keymaps_set{
   { mode = {"o", "n"},  lhs = [[gc]],   rhs = [[<Plug>(comment_toggle_linewise)]],          opts = opt },
   { mode = {"o", "n"},  lhs = [[gb]],   rhs = [[<Plug>(comment_toggle_blockwise)]],         opts = opt },
@@ -34,4 +35,16 @@ require('user.utils').keymaps_set{
     opts = opt_expr,
   },
 }
+-- }}}
+
+-- lua_source {{{
+
+require('Comment').setup({
+  mappings = {
+    basic = false,
+    -- クッ…デフォルト設定を許容するしかないのか…。
+    extra = true,
+  },
+})
+
 -- }}}
