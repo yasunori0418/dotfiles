@@ -22,7 +22,7 @@ repo = 'skanehira/denops-translate.vim'
 depends = 'denops.vim'
 on_cmd = 'Translate'
 on_map = { 'nx' = '<Plug>(Translate' }
-hooks_file = '~/.config/nvim/hooks/translate.vim'
+hooks_file = '~/.config/nvim/hooks/translate.lua'
 
 [[plugins]] # denops-silicon.vim
 repo = 'skanehira/denops-silicon.vim'
