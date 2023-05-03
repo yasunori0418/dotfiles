@@ -28,7 +28,7 @@ hooks_file = '~/.config/nvim/hooks/translate.vim'
 repo = 'skanehira/denops-silicon.vim'
 depends = 'denops.vim'
 on_cmd = 'Silicon'
-hooks_file = '~/.config/nvim/hooks/silicon.vim'
+hooks_file = '~/.config/nvim/hooks/silicon.lua'
 
 [[plugins]]
 repo = 'yuki-yano/fuzzy-motion.vim'
