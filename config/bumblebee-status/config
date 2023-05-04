@@ -1,5 +1,5 @@
 [core]
-modules = title, cpu2, memory, nic, datetime, pulseout, battery, dunstctl, arch_update, indicator, spacer:logo, error
+modules = title, cpu2, memory, nic, datetime, amixer, battery, dunstctl, arch_update, indicator, spacer:logo, error
 autohide = arch_update, indicator, error
 theme = iceberg-dark-powerline
 
@@ -20,7 +20,6 @@ title.scrolling.makewide = true
 title.scrolling.bounce = true
 logo.text = 
 indicator.include = Capslock
-pulsectl.autostart = true
 battery.showpowerconsumption = true
 
 # vim:ft=confini
