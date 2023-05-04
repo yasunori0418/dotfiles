@@ -119,10 +119,7 @@ let g:lexima_ctrlh_as_backspace = 1
 [[plugins]] # vim-eft
 repo = 'hrsh7th/vim-eft'
 on_map = { nxo = '<Plug>(eft-' }
-hooks_file = '~/.config/nvim/hooks/eft.vim'
-hook_source = '''
-let g:eft_ignorecase = v:true
-'''
+hooks_file = '~/.config/nvim/hooks/eft.lua'
 
 [[plugins]] # vim-cursorword
 repo = 'itchyny/vim-cursorword'
