@@ -11,7 +11,7 @@ hooks_file = '~/.config/nvim/hooks/gitsigns.lua'
 repo = 'lambdalisue/gina.vim'
 on_cmd = 'Gina'
 hook_add = '''
-nnoremap gM <Cmd>Gina blame<CR>
+nnoremap <Plug>(git)B <Cmd>Gina blame<CR>
 '''
 hook_source = '''
 call gina#custom#command#option('blame', '--opener', 'tabedit')
@@ -21,4 +21,4 @@ call gina#custom#command#option('blame', '--opener', 'tabedit')
 repo = 'lambdalisue/gin.vim'
 depends = 'denops.vim'
 on_cmd = ['Gin', 'GinBranch', 'GinCd', 'GinChaperon', 'GinDiff', 'GinLog', 'GinPatch', 'GinStatus']
-hooks_file = '~/.config/nvim/hooks/gin.vim'
+hooks_file = '~/.config/nvim/hooks/gin.lua'
