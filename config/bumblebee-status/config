@@ -1,6 +1,6 @@
 [core]
 modules = title, cpu2, memory, nic, datetime, amixer, battery, dunstctl, arch_update, indicator, spacer:logo, error
-autohide = arch_update, indicator, error
+autohide = battery, arch_update, indicator, error
 theme = iceberg-dark-powerline
 
 [module-parameters]
