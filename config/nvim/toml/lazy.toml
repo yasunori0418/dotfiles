@@ -142,7 +142,7 @@ require('matchparen').setup()
 [[plugins]] # vim-sandwich
 repo = 'machakann/vim-sandwich'
 on_map = { nxo = '<Plug>(sandwich-' }
-hooks_file = '~/.config/nvim/hooks/sandwich.vim'
+hooks_file = '~/.config/nvim/hooks/sandwich.lua'
 
 [[plugins]]
 repo = 'yasunori-kirin0418/partial.vim'
