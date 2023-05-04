@@ -62,19 +62,11 @@ on_cmd = 'QuickRun'
 
 [[plugins]] # vim-molder
 repo = 'mattn/vim-molder'
-hook_add = '''
-augroup vimrc_molder
-  autocmd BufEnter * call vimrc#molder_init()
-augroup END
-'''
-hook_source = '''
-let g:molder_show_hidden = v:true
-'''
+hooks_file = '~/.config/nvim/hooks/molder.lua'
 
 [[plugins]] # vim-molder-operations
 repo = 'mattn/vim-molder-operations'
 on_source = 'vim-molder'
-hooks_file = '~/.config/nvim/hooks/molder.vim'
 
 [[plugins]] # helpful.vim
 repo = 'tweekmonster/helpful.vim'
