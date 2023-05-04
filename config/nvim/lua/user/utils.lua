@@ -10,9 +10,11 @@ M.vimrc_augroup = vim.api.nvim_create_augroup('vimrc', {clear = false})
 ---@param events table|string
 ---@param pattern table|string
 ---@param callback function|string
-M.autocmd_set = function (events, pattern, callback)
+---@param group? string|integer
+M.autocmd_set = function (events, pattern, callback, group)
+  group = group or M.vimrc_augroup
   autocmd(events, {
-    group = M.vimrc_augroup,
+    group = group,
     pattern = pattern,
     callback = callback,
   })
