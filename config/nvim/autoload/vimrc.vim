@@ -143,6 +143,7 @@ function! vimrc#L2X_Keymap() abort
   call skkeleton#register_kanatable('rom', vimrc#L2X_table())
   call skkeleton#register_keymap('input', 'x', 'disable')
   call skkeleton#register_keymap('input', 'X', 'zenkaku')
+  call skkeleton#register_kanatable('rom', {'<s-x>': 'zenkaku'})
   call skkeleton#register_kanatable('rom', {'<s-l>': ['L', '']}, v:false)
 endfunction
 
