@@ -79,7 +79,7 @@ on_cmd = 'Bracey'
 [[plugins]] # deol.nvim
 repo = 'Shougo/deol.nvim'
 on_cmd = 'Deol'
-hooks_file = '~/.config/nvim/hooks/deol.vim'
+hooks_file = '~/.config/nvim/hooks/deol.lua'
 
 [[plugins]] # open-browser.vim
 repo = 'tyru/open-browser.vim'
