@@ -219,21 +219,24 @@ vim.fn['ddc#custom#patch_filetype']({'deol'}, {
 
 -- Keymaping
 -- Insert-Mode
--- require('user.utils').keymaps_set{
---   {
---     mode = "i",
---     lhs = [[<Tab>]],
---     rhs = function()
---       local current_col = vim.fn.col('.')
---       local current_cursor_word = string.sub(vim.fn.getline('.'), current_col - 1, current_col - 1)
---       if vim.fn['pum#visible']() ~= 0 then
---         vim.fn['pum#map#insert_relative'](1)
---       elseif (current_col <= 1 or vim.regex([[\s]]):match_str(vim.fn.getline('.')[vim.fn.col('.') - 2])) then
---       end
---     end,
---     opts = { expr = true }
---   },
--- }
+require('user.utils').keymaps_set{
+  {
+    mode = "i",
+    lhs = [[<Tab>]],
+    rhs = function()
+      local current_col = vim.fn.col('.')
+      local current_cursor_before = string.sub(vim.fn.getline('.'), current_col - 1, current_col - 1)
+      if vim.fn['pum#visible']() ~= 0 then
+        vim.fn['pum#map#insert_relative'](1)
+      elseif (current_col <= 1 or vim.regex([[\s]]):match_str(current_cursor_before)) then
+        return [[<Tab>]]
+      else
+        vim.fn['ddc#map#manual_complete']()
+      end
+    end,
+    opts = { expr = true }
+  },
+}
 -- inoremap <expr>   <TAB>
 --   \ pum#visible() ? '<Cmd>call pum#map#insert_relative(+1)<CR>' :
 --   \ (col('.') <= 1 <Bar><Bar> getline('.')[col('.') - 2] =~# '\s') ?
