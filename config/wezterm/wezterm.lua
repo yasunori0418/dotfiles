@@ -53,7 +53,7 @@ return {
     { family = "Cica", weight = "Regular", style = "Italic" },
     { family = "Cica", weight = "Bold", style = "Italic" },
   }),
-  font_size = 12.0, -- フォントサイズは偶数でないと変になる。
+  font_size = 16.0, -- フォントサイズは偶数でないと変になる。
   -- Must setting when tile window manager.
   adjust_window_size_when_changing_font_size = false,
 
