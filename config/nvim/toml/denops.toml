@@ -10,7 +10,7 @@ repo = 'vim-skk/skkeleton'
 depends = 'denops.vim'
 on_map = { ic = '<Plug>(skkeleton-toggle)' }
 build = 'bash $HOME/dotfiles/bin/skk_dict.sh'
-hooks_file = '~/.config/nvim/hooks/skkeleton.vim'
+hooks_file = '~/.config/nvim/hooks/skkeleton.lua'
 
 [[plugins]] # lightline_skk.vim
 repo = 'yasunori-kirin0418/lightline_skk.vim'
