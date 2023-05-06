@@ -172,33 +172,15 @@ vim.fn['ddc#custom#patch_global']('sourceParams', {
 
 -- filetype settings
 vim.fn['ddc#custom#patch_filetype']({'python', 'php', 'yaml'}, {
-  sources = {
-    'nvim-lsp',
-    'vsnip',
-    'around',
-    'file',
-    'rg'
-  }
+  sources = vim.fn.extendnew(global_source, {'nvim-lsp'}, 0)
 })
 
 vim.fn['ddc#custom#patch_filetype']('lua', {
-  sources = {
-    'nvim-lua',
-    'nvim-lsp',
-    'around',
-    'file',
-    'rg',
-  },
+  sources = vim.fn.extendnew(global_source, {'nvim-lua', 'nvim-lsp'}, 0),
 })
 
 vim.fn['ddc#custom#patch_filetype']({'vim', 'toml'}, {
-  sources = {
-    'necovim',
-    'vsnip',
-    'around',
-    'file',
-    'rg',
-  },
+  sources = vim.fn.extendnew(global_source, {'necovim'}, 0),
 })
 
 vim.fn['ddc#custom#patch_filetype']({'ddu-ff-filter'}, {
@@ -223,10 +205,10 @@ local expr_opt = { expr = true, noremap = true, silent = true }
 local opt = { noremap = true, silent = true }
 require('user.utils').keymaps_set{
   {
-    -- 
+    -- pum#visibleデバック用
     mode = "i",
     lhs = [[<F2>]],
-    rhs = function ()
+    rhs = function()
       print(vim.inspect(vim.fn['pum#visible']()))
     end,
     opts = opt,
