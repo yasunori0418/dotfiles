@@ -219,36 +219,54 @@ vim.fn['ddc#custom#patch_filetype']({'deol'}, {
 
 -- Keymaping
 -- Insert-Mode
-local co = require('user.utils').conditional_operator
+local expr_opt = { expr = true, noremap = true, silent = true }
+local opt = { noremap = true, silent = true }
 require('user.utils').keymaps_set{
+  {
+    -- 
+    mode = "i",
+    lhs = [[<F2>]],
+    rhs = function ()
+      print(vim.inspect(vim.fn['pum#visible']()))
+    end,
+    opts = opt,
+  },
   {
     mode = "i",
     lhs = [[<C-n>]],
     rhs = function()
-      co{
-        c = vim.fn['pum#visible']() ~= 0,
-        t = vim.fn['pum#map#select_relative'](1),
-        f = [[<Down>]],
-      }
+      if vim.fn['pum#visible']() then
+        vim.fn['pum#map#select_relative'](1)
+      else
+        vim.fn['ddc#map#manual_complete']()
+      end
     end,
-    opts = { expr = true, noremap = true }
+    opts = expr_opt,
   },
   {
     mode = "i",
     lhs = [[<C-p>]],
     rhs = function()
-      co{
-        c = vim.fn['pum#visible']() ~= 0,
-        t = vim.fn['pum#map#select_relative'](-1),
-        f = [[<Up>]],
-      }
+      if vim.fn['pum#visible']() then
+        vim.fn['pum#map#select_relative'](-1)
+      else
+        vim.fn['ddc#map#manual_complete']()
+      end
     end,
-    opts = { expr = true, noremap = true }
+    opts = expr_opt,
   },
-  -- {
-  --   mode = "i",
-  --   lhs = [[]]
-  -- }
+  {
+    mode = "i",
+    lhs = [[<CR>]],
+    rhs = function ()
+      if vim.fn['pum#visible']() then
+        vim.fn['pum#map#confirm']()
+      else
+        vim.fn['lexima#expand']('<CR>', 'i')
+      end
+    end,
+    opts = expr_opt,
+  },
 }
 -- inoremap <S-TAB>  <Cmd>call pum#map#insert_relative(-1)<CR>
 -- inoremap <C-n>    <Cmd>call pum#map#select_relative(+1)<CR>
