@@ -50,9 +50,7 @@ depends = 'denops.vim'
 repo = 'lambdalisue/kensaku-search.vim'
 depends = 'kensaku.vim'
 on_map = { 'c' = '<Plug>(kensaku-search-replace)' }
-hook_add = '''
-cnoremap <CR> <Plug>(kensaku-search-replace)<CR>
-'''
+# マッピングの設定はddc.lua
 
 [[plugins]]
 repo = 'kat0h/bufpreview.vim'

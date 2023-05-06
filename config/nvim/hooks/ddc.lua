@@ -263,12 +263,12 @@ require('user.utils').keymaps_set{
   },
   {
     mode = "c",
-    lhs = [[<C-y>]],
+    lhs = [[<CR>]],
     rhs = function()
       if vim.fn['pum#visible']() then
         vim.fn['pum#map#confirm']()
       else
-        return [[<CR>]]
+        return [[<Plug>(kensaku-search-replace)<CR>]]
       end
     end,
     opts = expr_opt,
