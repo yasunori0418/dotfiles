@@ -261,12 +261,31 @@ require('user.utils').keymaps_set{
     end,
     opts = expr_opt,
   },
+  -- {
+  --   mode = "c",
+  --   lhs = [[<CR>]],
+  --   rhs = function()
+  --     if vim.fn['pum#visible']() then
+  --       vim.fn['pum#map#confirm']()
+  --     else
+  --       return vim.fn['lexima#expand']('<CR>', ':')
+  --     end
+  --   end,
+  --   opts = expr_opt,
+  -- },
+  -- {
+  --   mode = "c",
+  --   lhs = [[<BS>]],
+  --   rhs = function()
+  --     if vim.fn['pum#visible']() then
+  --       vim.fn['pum#map#cancel']()
+  --     else
+  --       return vim.fn['lexima#expand']('<END>', ':')
+  --     end
+  --   end,
+  --   opts = expr_opt,
+  -- },
 }
--- inoremap <S-TAB>  <Cmd>call pum#map#insert_relative(-1)<CR>
--- inoremap <C-n>    <Cmd>call pum#map#select_relative(+1)<CR>
--- inoremap <C-p>    <Cmd>call pum#map#select_relative(-1)<CR>
---
--- inoremap <C-y>    <Cmd>call pum#map#confirm()<CR>
 -- inoremap <expr>   <C-e>
 --   \ pum#visible() ? '<Cmd>call pum#map#cancel()<CR>' : '<C-o>$'
 

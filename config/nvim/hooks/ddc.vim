@@ -180,25 +180,25 @@
 " inoremap <C-n>    <Cmd>call pum#map#select_relative(+1)<CR>
 " inoremap <C-p>    <Cmd>call pum#map#select_relative(-1)<CR>
 
-inoremap <C-y>    <Cmd>call pum#map#confirm()<CR>
-inoremap <expr>   <C-e>
-  \ pum#visible() ? '<Cmd>call pum#map#cancel()<CR>' : '<C-o>$'
+" inoremap <C-y>    <Cmd>call pum#map#confirm()<CR>
+" inoremap <expr>   <C-e>
+"   \ pum#visible() ? '<Cmd>call pum#map#cancel()<CR>' : '<C-o>$'
 
 " Cmdline-Mode
-cnoremap <expr>   <TAB>
-  \ pum#visible() ? '<Cmd>call pum#map#insert_relative(+1)<CR>' :
-  \ exists('b:prev_buffer_config') ?
-  \ ddc#map#manual_complete() : nr2char(&wildcharm)
-cnoremap <S-TAB>  <Cmd>call pum#map#insert_relative(-1)<CR>
+" cnoremap <expr>   <TAB>
+"   \ pum#visible() ? '<Cmd>call pum#map#insert_relative(+1)<CR>' :
+"   \ exists('b:prev_buffer_config') ?
+"   \ ddc#map#manual_complete() : nr2char(&wildcharm)
+" cnoremap <S-TAB>  <Cmd>call pum#map#insert_relative(-1)<CR>
 
-cnoremap <expr>   <C-n>
-  \ pum#visible() ? '<Cmd>call pum#map#select_relative(+1)<CR>' : '<C-n>'
-cnoremap <expr>   <C-p>
-\ pum#visible() ? '<Cmd>call pum#map#select_relative(-1)<CR>' : '<C-p>'
+" cnoremap <expr>   <C-n>
+"   \ pum#visible() ? '<Cmd>call pum#map#select_relative(+1)<CR>' : '<C-n>'
+" cnoremap <expr>   <C-p>
+" \ pum#visible() ? '<Cmd>call pum#map#select_relative(-1)<CR>' : '<C-p>'
 
-cnoremap <C-y>    <Cmd>call pum#map#confirm()<CR>
-cnoremap <silent><expr> <C-e>
-  \ pum#visible() ? '<Cmd>call pum#map#cancel()<CR>' : '<END>'
+" cnoremap <C-y>    <Cmd>call pum#map#confirm()<CR>
+" cnoremap <silent><expr> <C-e>
+"   \ pum#visible() ? '<Cmd>call pum#map#cancel()<CR>' : '<END>'
 
 
 call ddc#enable()
