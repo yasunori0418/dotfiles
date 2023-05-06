@@ -201,5 +201,5 @@
 "   \ pum#visible() ? '<Cmd>call pum#map#cancel()<CR>' : '<END>'
 
 
-call ddc#enable()
+" call ddc#enable()
 " }}}
