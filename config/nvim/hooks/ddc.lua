@@ -201,7 +201,7 @@ vim.fn['ddc#custom#patch_filetype']({'deol'}, {
 
 -- Keymaping
 -- Insert-Mode
-local expr_opt = { expr = true, noremap = true, silent = true }
+local expr_opt = { expr = true, noremap = true }
 local opt = { noremap = true, silent = true }
 require('user.utils').keymaps_set{
   {
@@ -214,7 +214,7 @@ require('user.utils').keymaps_set{
     opts = opt,
   },
   {
-    mode = "i",
+    mode = {"i", "c"},
     lhs = [[<C-n>]],
     rhs = function()
       if vim.fn['pum#visible']() then
@@ -226,7 +226,7 @@ require('user.utils').keymaps_set{
     opts = expr_opt,
   },
   {
-    mode = "i",
+    mode = {"i", "c"},
     lhs = [[<C-p>]],
     rhs = function()
       if vim.fn['pum#visible']() then
@@ -240,11 +240,23 @@ require('user.utils').keymaps_set{
   {
     mode = "i",
     lhs = [[<CR>]],
-    rhs = function ()
+    rhs = function()
       if vim.fn['pum#visible']() then
         vim.fn['pum#map#confirm']()
       else
         return vim.fn['lexima#expand']('<lt>CR>', 'i')
+      end
+    end,
+    opts = expr_opt,
+  },
+  {
+    mode = "i",
+    lhs = [[<BS>]],
+    rhs = function()
+      if vim.fn['pum#visible']() then
+        vim.fn['pum#map#cancel']()
+      else
+        return vim.fn['lexima#expand']('<lt>BS>', 'i')
       end
     end,
     opts = expr_opt,
