@@ -262,7 +262,7 @@ require('user.utils').keymaps_set{
       if vim.fn['pum#visible']() then
         vim.fn['pum#map#confirm']()
       else
-        vim.fn['lexima#expand']('<lt>CR>', 'i')
+        return vim.fn['lexima#expand']('<lt>CR>', 'i')
       end
     end,
     opts = expr_opt,
