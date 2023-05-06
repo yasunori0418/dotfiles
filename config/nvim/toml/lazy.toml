@@ -104,7 +104,11 @@ let g:memolist_path = expand('~/Documents/memo')
 [[plugins]] # lexima.vim
 repo = 'cohama/lexima.vim'
 hook_add = '''
-let g:lexima_ctrlh_as_backspace = 1
+let g:lexima_no_default_rules = v:true
+let g:lexima_ctrlh_as_backspace = v:true
+'''
+hook_source = '''
+call lexima#set_default_rules()
 '''
 
 [[plugins]] # vim-eft
