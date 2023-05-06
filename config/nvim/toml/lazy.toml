@@ -103,7 +103,6 @@ let g:memolist_path = expand('~/Documents/memo')
 # Coding support plugins {{{
 [[plugins]] # lexima.vim
 repo = 'cohama/lexima.vim'
-on_event = 'InsertEnter'
 hook_add = '''
 let g:lexima_ctrlh_as_backspace = 1
 '''
