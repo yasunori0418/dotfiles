@@ -96,7 +96,7 @@ on_source = 'ddc.vim'
 # snippet plugins {{{
 [[plugins]] # vim-vsnip
 repo = 'hrsh7th/vim-vsnip'
-hooks_file = '~/.config/nvim/hooks/vsnip.vim'
+hooks_file = '~/.config/nvim/hooks/vsnip.lua'
 
 [[plugins]] # vim-vsnip-integ
 repo = 'hrsh7th/vim-vsnip-integ'
