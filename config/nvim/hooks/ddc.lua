@@ -199,20 +199,18 @@ vim.fn['ddc#custom#patch_filetype']({'deol'}, {
   },
 })
 
+---ddc手動補完のソース指定を楽チンにするやつ
+-- https://github.com/4513ECHO/dotfiles/blob/73f2f46/config/nvim/dein/settings/ddc.vim#L163-L175
+---@param ... string ddc-source name
+local ddc_complete = function(...)
+  vim.fn['ddc#map#manual_complete']({ sources = {...} })
+end
+
 -- Keymaping
 -- Insert-Mode
 local expr_opt = { expr = true, noremap = true }
 local opt = { noremap = true, silent = true }
 require('user.utils').keymaps_set{
-  {
-    -- pum#visibleデバック用
-    mode = "i",
-    lhs = [[<F2>]],
-    rhs = function()
-      print(vim.inspect(vim.fn['pum#visible']()))
-    end,
-    opts = opt,
-  },
   {
     mode = {"i", "c"},
     lhs = [[<C-n>]],
@@ -285,6 +283,55 @@ require('user.utils').keymaps_set{
     end,
     opts = expr_opt,
   },
+  {
+    mode = "i",
+    lhs = [[<C-x><C-l>]],
+    rhs = function()
+      ddc_complete('line')
+    end,
+    opts = opt,
+  },
+  {
+    mode = "i",
+    lhs = [[<C-x><C-n>]],
+    rhs = function()
+      ddc_complete('around', 'buffer', 'rg')
+    end,
+    opts = opt,
+  },
+  {
+    mode = "i",
+    lhs = [[<C-x><C-f>]],
+    rhs = function()
+      ddc_complete('file')
+    end,
+    opts = opt,
+  },
+  {
+    mode = "i",
+    lhs = [[<C-x><C-d>]],
+    rhs = function()
+      ddc_complete('nvim-lsp')
+    end,
+    opts = opt,
+  },
+  {
+    mode = "i",
+    lhs = [[<C-x><C-v>]],
+    rhs = function()
+      ddc_complete('necovim', 'nvim-lua', 'cmdline')
+    end,
+    opts = opt,
+  },
+  {
+    mode = "i",
+    lhs = [[<C-x><C-u>]],
+    rhs = function()
+      vim.fn['ddc#map#manual_complete']()
+    end,
+    opts = opt,
+  },
 }
+
 vim.fn['ddc#enable']()
 -- }}}
