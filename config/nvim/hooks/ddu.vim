@@ -1,29 +1,29 @@
 " hook_add {{{
 " fuzzy finder start keybinds
-nmap <Space>d <Plug>(ddu-ff)
+" nmap <Space>d <Plug>(ddu-ff)
 
-nmap <Plug>(ddu-ff)a <Cmd>call ddu#start({
-  \ 'name': 'current-ff',
-  \ 'sourceOptions': {
-    \ 'file_rec': {'path': vimrc#search_repo_root()},
-    \ },
-  \ })<CR>
+" nmap <Plug>(ddu-ff)a <Cmd>call ddu#start({
+"   \ 'name': 'current-ff',
+"   \ 'sourceOptions': {
+"     \ 'file_rec': {'path': vimrc#search_repo_root()},
+"     \ },
+"   \ })<CR>
 
-nmap <Plug>(ddu-ff)d <Cmd>call ddu#start(#{name: 'dotfiles-ff'})<CR>
-nmap <Plug>(ddu-ff)h <Cmd>call ddu#start(#{name: 'help-ff'})<CR>
-nmap <Plug>(ddu-ff)b <Cmd>call ddu#start(#{name: 'buffer-ff'})<CR>
-nmap <Plug>(ddu-ff)P <Cmd>call ddu#start(#{name: 'plugin-list-ff'})<CR>
-nmap <Plug>(ddu-ff)p <Cmd>call ddu#start(#{name: 'project-list-ff'})<CR>
-nmap <Plug>(ddu-ff)~ <Cmd>call ddu#start(#{name: 'home-ff'})<CR>
-nmap <Plug>(ddu-ff)r <Cmd>call ddu#start(#{name: 'register-ff'})<CR>
-nmap <Plug>(ddu-ff)s <Cmd>call ddu#start(#{name: 'search-ff'})<CR>
-nmap <Plug>(ddu-ff)m <Cmd>call ddu#start(#{name: 'mrr-ff'})<CR>
-nmap <Plug>(ddu-ff)n <Cmd>call ddu#start(#{name: 'mru-ff'})<CR>
-nmap <Plug>(ddu-ff)C <Cmd>call ddu#start(#{name: 'highlight-ff'})<CR>
+" nmap <Plug>(ddu-ff)d <Cmd>call ddu#start(#{name: 'dotfiles-ff'})<CR>
+" nmap <Plug>(ddu-ff)h <Cmd>call ddu#start(#{name: 'help-ff'})<CR>
+" nmap <Plug>(ddu-ff)b <Cmd>call ddu#start(#{name: 'buffer-ff'})<CR>
+" nmap <Plug>(ddu-ff)P <Cmd>call ddu#start(#{name: 'plugin-list-ff'})<CR>
+" nmap <Plug>(ddu-ff)p <Cmd>call ddu#start(#{name: 'project-list-ff'})<CR>
+" nmap <Plug>(ddu-ff)~ <Cmd>call ddu#start(#{name: 'home-ff'})<CR>
+" nmap <Plug>(ddu-ff)r <Cmd>call ddu#start(#{name: 'register-ff'})<CR>
+" nmap <Plug>(ddu-ff)s <Cmd>call ddu#start(#{name: 'search-ff'})<CR>
+" nmap <Plug>(ddu-ff)m <Cmd>call ddu#start(#{name: 'mrr-ff'})<CR>
+" nmap <Plug>(ddu-ff)n <Cmd>call ddu#start(#{name: 'mru-ff'})<CR>
+" nmap <Plug>(ddu-ff)C <Cmd>call ddu#start(#{name: 'highlight-ff'})<CR>
 
 
 " filer start keybins
-nmap <Space>f <Plug>(ddu-filer)
+" nmap <Space>f <Plug>(ddu-filer)
 nmap <Plug>(ddu-filer)a <Cmd>call ddu#start(#{
   \ name: 'project_root-filer',
   \ sourceOptions: #{

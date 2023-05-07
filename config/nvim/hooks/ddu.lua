@@ -1,5 +1,115 @@
 -- lua_add {{{
 -- fuzzy finder start keybinds
+local opt = { noremap = false }
+require('user.utils').keymaps_set{
+  -- ddu start prefixes
+  { mode = "n", lhs = [[ d]], rhs = [[<Plug>(ddu-ff)]], opts = opt },
+  { mode = "n", lhs = [[ f]], rhs = [[<Plug>(ddu-filer)]], opts = opt },
+
+  -- ddu-ui-ff starter
+  {
+    mode = "n",
+    lhs = [[<Plug>(ddu-ff)a]],
+    rhs = function()
+      vim.fn['ddu#start']{
+        name = 'current-ff',
+        sourceOptions = {
+          file_rec = {
+            path = vim.fn['vimrc#search_repo_root']()
+          },
+        },
+      }
+    end,
+    opts = opt
+  },
+  {
+    mode = "n",
+    lhs = [[<Plug>(ddu-ff)d]],
+    rhs = function ()
+      vim.fn['ddu#start']{ name = 'dotfiles-ff' }
+    end,
+    opts = opt
+  },
+  {
+    mode = "n",
+    lhs = [[<Plug>(ddu-ff)h]],
+    rhs = function ()
+      vim.fn['ddu#start']{ name = 'help-ff' }
+    end,
+    opts = opt
+  },
+  {
+    mode = "n",
+    lhs = [[<Plug>(ddu-ff)b]],
+    rhs = function ()
+      vim.fn['ddu#start']{ name = 'buffer-ff' }
+    end,
+    opts = opt
+  },
+  {
+    mode = "n",
+    lhs = [[<Plug>(ddu-ff)P]],
+    rhs = function ()
+      vim.fn['ddu#start']{ name = 'plugin-list-ff' }
+    end,
+    opts = opt
+  },
+  {
+    mode = "n",
+    lhs = [[<Plug>(ddu-ff)p]],
+    rhs = function ()
+      vim.fn['ddu#start']{ name = 'project-list-ff' }
+    end,
+    opts = opt
+  },
+  {
+    mode = "n",
+    lhs = [[<Plug>(ddu-ff)~]],
+    rhs = function ()
+      vim.fn['ddu#start']{ name = 'home-ff' }
+    end,
+    opts = opt
+  },
+  {
+    mode = "n",
+    lhs = [[<Plug>(ddu-ff)r]],
+    rhs = function ()
+      vim.fn['ddu#start']{ name = 'register-ff' }
+    end,
+    opts = opt
+  },
+  {
+    mode = "n",
+    lhs = [[<Plug>(ddu-ff)s]],
+    rhs = function ()
+      vim.fn['ddu#start']{ name = 'search-ff' }
+    end,
+    opts = opt
+  },
+  {
+    mode = "n",
+    lhs = [[<Plug>(ddu-ff)m]],
+    rhs = function ()
+      vim.fn['ddu#start']{ name = 'mrr-ff' }
+    end,
+    opts = opt
+  },
+  {
+    mode = "n",
+    lhs = [[<Plug>(ddu-ff)n]],
+    rhs = function ()
+      vim.fn['ddu#start']{ name = 'mru-ff' }
+    end,
+    opts = opt
+  },
+  {
+    mode = "n",
+    lhs = [[<Plug>(ddu-ff)C]],
+    rhs = function ()
+      vim.fn['ddu#start']{ name = 'highlight-ff' }
+    end,
+    opts = opt
+  },
 -- nmap <Space>d <Plug>(ddu-ff)
 
 -- nmap <Plug>(ddu-ff)a <Cmd>call ddu#start({
