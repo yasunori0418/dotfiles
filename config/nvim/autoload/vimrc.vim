@@ -203,51 +203,6 @@ function! vimrc#L2X_table() abort
   return s:rom_table
 endfunction
 
-
-" ddc extra functions
-" https://github.com/Shougo/shougo-s-github/blob/master/vim/rc/ddc.toml#L190-L226
-function! vimrc#commandline_pre(mode) abort
-  " NOTE: It disables default command line completion!
-  set wildchar=<C-t>
-  set wildcharm=<C-t>
-
-  cnoremap <expr><buffer> <Tab>
-  \ pum#visible() ? '<Cmd>call pum#map#insert_relative(+1)<CR>' :
-  \ exists('b:prev_buffer_config') ?
-  \ ddc#map#manual_complete() : "\<C-t>"
-
-  " Overwrite sources
-  if !exists('b:prev_buffer_config')
-    let b:prev_buffer_config = ddc#custom#get_buffer()
-  endif
-
-  if a:mode ==# ':'
-    call ddc#custom#patch_buffer('keywordPattern', '[0-9a-zA-Z_:#-]*')
-  endif
-
-  augroup user_ddc_cmdline_autocmd
-    autocmd!
-    autocmd User DDCCmdlineLeave ++once call vimrc#commandline_post()
-    autocmd InsertEnter <buffer> ++once call vimrc#commandline_post()
-  augroup END
-
-  call ddc#enable_cmdline_completion()
-endfunction
-
-function! vimrc#commandline_post() abort
-  silent! cunmap <buffer> <Tab>
-
-  " Restore sources
-  if exists('b:prev_buffer_config')
-    call ddc#custom#set_buffer(b:prev_buffer_config)
-    unlet b:prev_buffer_config
-  else
-    call ddc#custom#set_buffer({})
-  endif
-
-  set wildcharm=<Tab>
-endfunction
-
 function! vimrc#ddc_change_filter(bang_flg, filter_name) abort
   if a:filter_name ==# 'normal'
     call ddc#custom#patch_global('sourceOptions', {
