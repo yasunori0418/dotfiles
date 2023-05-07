@@ -80,9 +80,11 @@ require('user.utils').keymaps_set{
   { mode = {"i"}, lhs = [[<C-a>]], rhs = [[<C-o>^]], opts = opts },
   { mode = {"i"}, lhs = [[<C-f>]], rhs = [[<C-G>U<Right>]], opts = opts },
   { mode = {"i"}, lhs = [[<C-b>]], rhs = [[<C-G>U<Left>]], opts = opts },
+  { mode = {"i"}, lhs = [[<C-e>]], rhs = [[<C-G>U<End>]], opts = opts },
   { mode = {"c"}, lhs = [[<C-a>]], rhs = [[<Home>]], opts = { noremap = true } },
   { mode = {"c"}, lhs = [[<C-f>]], rhs = [[<Right>]], opts = { noremap = true } },
   { mode = {"c"}, lhs = [[<C-b>]], rhs = [[<Left>]], opts = { noremap = true } },
+  { mode = {"c"}, lhs = [[<C-e>]], rhs = [[<End>]], opts = { noremap = true } },
 
   { mode = {"x", "o"}, lhs = [[a']], rhs = [[2i']], opts = opts },
   { mode = {"x", "o"}, lhs = [[a"]], rhs = [[2i"]], opts = opts },
