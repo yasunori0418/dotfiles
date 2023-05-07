@@ -220,7 +220,7 @@ require('user.utils').keymaps_set{
       if vim.fn['pum#visible']() then
         vim.fn['pum#map#select_relative'](1)
       else
-        vim.fn['ddc#map#manual_complete']()
+        return [[<Down>]]
       end
     end,
     opts = expr_opt,
@@ -232,7 +232,7 @@ require('user.utils').keymaps_set{
       if vim.fn['pum#visible']() then
         vim.fn['pum#map#select_relative'](-1)
       else
-        vim.fn['ddc#map#manual_complete']()
+        return [[<Up>]]
       end
     end,
     opts = expr_opt,
