@@ -329,6 +329,14 @@ require('user.utils').keymaps_set{
   },
   {
     mode = "i",
+    lhs = [[<C-x><C-s>]],
+    rhs = function()
+      ddc_complete('vsnip')
+    end,
+    opts = opt,
+  },
+  {
+    mode = "i",
     lhs = [[<C-x><C-u>]],
     rhs = function()
       vim.fn['ddc#map#manual_complete']()
