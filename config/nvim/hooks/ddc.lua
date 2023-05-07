@@ -36,11 +36,15 @@ vim.fn['ddc#custom#patch_global']{
   ui = 'pum',
   sources = global_source,
   autoCompleteEvents = {
-    'InsertEnter', 'TextChangedI', 'TextChangedP',
-    'CmdlineEnter', 'CmdlineChanged', 'TextChangedT',
+    'InsertEnter',
+    'TextChangedI',
+    'TextChangedP',
+    'CmdlineEnter',
+    'CmdlineChanged',
+    'TextChangedT',
   },
   cmdlineSources = {
-    [':'] = {'cmdline-history', 'cmdline', 'around'},
+    [':'] = {'cmdline', 'cmdline-history', 'around'},
     ['@'] = {'cmdline-history', 'input', 'file', 'around'},
     ['>'] = {'cmdline-history', 'input', 'file', 'around'},
     ['/'] = {'around', 'line'},
