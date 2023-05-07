@@ -11,7 +11,7 @@ hooks_file = '~/.config/nvim/hooks/mason.lua'
 [[plugins]] # mason-lspconfig.nvim
 repo = 'williamboman/mason-lspconfig.nvim'
 depends = ['nvim-lspconfig', 'mason.nvim', 'lspsaga.nvim']
-on_ft = ['lua', 'php', 'python', 'toml', 'markdown', 'vim', 'yaml', 'dockerfile', 'sh']
+on_source = 'ddc.vim'
 hooks_file = '~/.config/nvim/hooks/mason_lspconfig.lua'
 hook_add = '''
 " LSP keybinds
