@@ -161,104 +161,118 @@ require("user.utils").keymaps_set({
 -- }}}
 
 -- lua_source {{{
+local ui_options = {
+  filer = {
+    toggle = true,
+  },
+}
+
+local ui_params = {
+  ff = {
+    split = [[floating]],
+    floatingBorder = [[single]],
+    prompt = [[]],
+    filterSplitDirection = [[floating]],
+    filterFloatingPosition = [[top]],
+    displaySourceName = [[long]],
+    previewFloating = true,
+    previewFloatingBorder = [[double]],
+    previewSplit = [[horizontal]],
+  },
+  filer = {
+    split = [[vertical]],
+    splitDirection = [[topleft]],
+    winWidth = vim.opt.columns:get() / 6,
+    previewFloating = true,
+    previewFloatingBorder = [[double]],
+    previewCol = vim.opt.columns:get() / 4,
+    previewRow = vim.opt.lines:get() / 2,
+    previewWidth = vim.opt.columns:get() / 2,
+    previewHeight = 20,
+  },
+}
+
+local source_options = {
+  _ = {
+    ignoreCase = true,
+    matchers = { "matcher_substring" },
+  },
+  file = {
+    columns = { "icon_filename" },
+  },
+  dein = {
+    defaultAction = [[cd]],
+  },
+  help = {
+    defaultAction = [[open]],
+  },
+}
+
+local source_params = {
+  dein_update = {
+    useGraphQL = true,
+  },
+  marks = {
+    jumps = true,
+  },
+  rg = {
+    args = {
+      [[--json]],
+      [[--ignore-case]],
+      [[--column]],
+      [[--no-heading]],
+      [[--color]],
+      [[never]],
+    },
+    highlights = {
+      word = [[Title]],
+    },
+  },
+}
+
+local kind_options = {
+  file = {
+    defaultAction = [[open]],
+  },
+  action = {
+    defaultAction = [[do]],
+  },
+  word = {
+    defaultAction = [[append]],
+  },
+  deol = {
+    defaultAction = [[switch]],
+  },
+  readme_viewer = {
+    defaultAction = [[open]],
+  },
+}
+
+local action_options = {
+  narrow = { quit = false },
+  echo = { quit = false },
+  echoDiff = { quit = false },
+}
+
+local column_params = {
+  icon_filename = {
+    span = 2,
+    iconWidth = 2,
+    defaultIcon = {
+      icon = [[]],
+    },
+  },
+}
+
 -- Global option and param
 vim.fn["ddu#custom#patch_global"]({
-  uiOptions = {
-    filer = {
-      toggle = true,
-    },
-  },
-  uiParams = {
-    ff = {
-      split = [[floating]],
-      floatingBorder = [[single]],
-      prompt = [[]],
-      filterSplitDirection = [[floating]],
-      filterFloatingPosition = [[top]],
-      displaySourceName = [[long]],
-      previewFloating = true,
-      previewFloatingBorder = [[double]],
-      previewSplit = [[horizontal]],
-    },
-    filer = {
-      split = [[vertical]],
-      splitDirection = [[topleft]],
-      winWidth = vim.opt.columns:get() / 6,
-      previewFloating = true,
-      previewFloatingBorder = [[double]],
-      previewCol = vim.opt.columns:get() / 4,
-      previewRow = vim.opt.lines:get() / 2,
-      previewWidth = vim.opt.columns:get() / 2,
-      previewHeight = 20,
-    },
-  },
-  sourceOptions = {
-    _ = {
-      ignoreCase = true,
-      matchers = { "matcher_substring" },
-    },
-    file = {
-      columns = { "icon_filename" },
-    },
-    dein = {
-      defaultAction = [[cd]],
-    },
-    help = {
-      defaultAction = [[open]],
-    },
-  },
-  sourceParams = {
-    dein_update = {
-      useGraphQL = true,
-    },
-    marks = {
-      jumps = true,
-    },
-    rg = {
-      args = {
-        [[--json]],
-        [[--ignore-case]],
-        [[--column]],
-        [[--no-heading]],
-        [[--color]],
-        [[never]],
-      },
-      highlights = {
-        word = [[Title]],
-      },
-    },
-  },
-  kindOptions = {
-    file = {
-      defaultAction = [[open]],
-    },
-    action = {
-      defaultAction = [[do]],
-    },
-    word = {
-      defaultAction = [[append]],
-    },
-    deol = {
-      defaultAction = [[switch]],
-    },
-    readme_viewer = {
-      defaultAction = [[open]],
-    },
-  },
-  actionOptions = {
-    narrow = { quit = false },
-    echo = { quit = false },
-    echoDiff = { quit = false },
-  },
-  columnParams = {
-    icon_filename = {
-      span = 2,
-      iconWidth = 2,
-      defaultIcon = {
-        icon = [[]],
-      },
-    },
-  },
+  uiOptions = ui_options,
+  uiParams = ui_params,
+  sourceOptions = source_options,
+  sourceParams = source_params,
+  kindOptions = kind_options,
+  actionOptions = action_options,
+  columnParams = column_params,
 })
 
 -- UI:ff presets
