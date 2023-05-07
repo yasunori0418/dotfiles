@@ -24,20 +24,20 @@
 
 " filer start keybins
 " nmap <Space>f <Plug>(ddu-filer)
-nmap <Plug>(ddu-filer)a <Cmd>call ddu#start(#{
-  \ name: 'project_root-filer',
-  \ sourceOptions: #{
-    \ file: #{path: vimrc#search_repo_root()},
-    \ },
-  \ })<CR>
-nmap <Plug>(ddu-filer)f <Cmd>call ddu#start(#{
-  \ name: 'current-filer', 
-  \ sourceOptions: #{
-    \ file: #{path: expand('%:p:h')},
-    \ },
-  \ })<CR>
-nmap <Plug>(ddu-filer)d <Cmd>call ddu#start(#{name: 'dotfiles-filer'})<CR>
-nmap <Plug>(ddu-filer)h <Cmd>call ddu#start(#{name: 'home-filer'})<CR>
+" nmap <Plug>(ddu-filer)a <Cmd>call ddu#start(#{
+"   \ name: 'project_root-filer',
+"   \ sourceOptions: #{
+"     \ file: #{path: vimrc#search_repo_root()},
+"     \ },
+"   \ })<CR>
+" nmap <Plug>(ddu-filer)f <Cmd>call ddu#start(#{
+"   \ name: 'current-filer', 
+"   \ sourceOptions: #{
+"     \ file: #{path: expand('%:p:h')},
+"     \ },
+"   \ })<CR>
+" nmap <Plug>(ddu-filer)d <Cmd>call ddu#start(#{name: 'dotfiles-filer'})<CR>
+" nmap <Plug>(ddu-filer)h <Cmd>call ddu#start(#{name: 'home-filer'})<CR>
 " }}}
 
 " hook_source {{{

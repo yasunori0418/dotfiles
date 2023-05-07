@@ -110,6 +110,55 @@ require('user.utils').keymaps_set{
     end,
     opts = opt
   },
+
+  -- ddu-ui-filer starter
+  {
+    mode = "n",
+    lhs = [[<Plug>(ddu-filer)a]],
+    rhs = function ()
+      vim.fn['ddu#start']{
+        name = 'project_root-filer',
+        sourceOptions = {
+          file = {
+            path = vim.fn['vimrc#search_repo_root']()
+          },
+        },
+      }
+    end,
+    opts = opt
+  },
+  {
+    mode = "n",
+    lhs = [[<Plug>(ddu-filer)f]],
+    rhs = function ()
+      vim.fn['ddu#start']{
+        name = 'current-filer',
+        sourceOptions = {
+          file = {
+            path = vim.fn.expand('%:p:h'),
+          },
+        },
+      }
+    end,
+    opts = opt
+  },
+  {
+    mode = "n",
+    lhs = [[<Plug>(ddu-filer)d]],
+    rhs = function ()
+      vim.fn['ddu#start']{ name = 'dotfiles-filer' }
+    end,
+    opts = opt
+  },
+  {
+    mode = "n",
+    lhs = [[<Plug>(ddu-filer)~]],
+    rhs = function ()
+      vim.fn['ddu#start']{ name = 'home-filer' }
+    end,
+    opts = opt
+  },
+}
 -- nmap <Space>d <Plug>(ddu-ff)
 
 -- nmap <Plug>(ddu-ff)a <Cmd>call ddu#start({
