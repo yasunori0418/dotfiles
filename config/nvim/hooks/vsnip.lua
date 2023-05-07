@@ -1,7 +1,7 @@
 -- lua_source {{{
 vim.g.vsnip_extra_mapping = false
-vim.g.vsnip_snippet_dir = vim.g.base_dir .. 'snippet/vsnip'
-vim.g.vsnip_snippet_dirs = { vim.g.base_dir .. 'snippet/vsnip/friendly-snippets/snippets', }
+vim.g.vsnip_snippet_dir = vim.g.base_dir .. '/snippet/vsnip'
+vim.g.vsnip_snippet_dirs = { vim.g.base_dir .. '/snippet/vsnip/friendly-snippets/snippets', }
 vim.g.vsnip_filetypes = vim.empty_dict()
 
 local utils = require('user.utils')
