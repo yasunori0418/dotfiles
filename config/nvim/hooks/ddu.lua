@@ -1,9 +1,8 @@
 -- lua_add {{{
--- fuzzy finder start keybinds
 local opt = { noremap = false }
-require('user.utils').keymaps_set{
+require("user.utils").keymaps_set({
   -- ddu start prefixes
-  { mode = "n", lhs = [[ d]], rhs = [[<Plug>(ddu-ff)]], opts = opt },
+  { mode = "n", lhs = [[ d]], rhs = [[<Plug>(ddu-ff)]],    opts = opt },
   { mode = "n", lhs = [[ f]], rhs = [[<Plug>(ddu-filer)]], opts = opt },
 
   -- ddu-ui-ff starter
@@ -11,288 +10,256 @@ require('user.utils').keymaps_set{
     mode = "n",
     lhs = [[<Plug>(ddu-ff)a]],
     rhs = function()
-      vim.fn['ddu#start']{
-        name = 'current-ff',
+      vim.fn["ddu#start"]({
+        name = "current-ff",
         sourceOptions = {
           file_rec = {
-            path = vim.fn['vimrc#search_repo_root']()
+            path = vim.fn["vimrc#search_repo_root"](),
           },
         },
-      }
+      })
     end,
-    opts = opt
+    opts = opt,
   },
   {
     mode = "n",
     lhs = [[<Plug>(ddu-ff)d]],
-    rhs = function ()
-      vim.fn['ddu#start']{ name = 'dotfiles-ff' }
+    rhs = function()
+      vim.fn["ddu#start"]({ name = "dotfiles-ff" })
     end,
-    opts = opt
+    opts = opt,
   },
   {
     mode = "n",
     lhs = [[<Plug>(ddu-ff)h]],
-    rhs = function ()
-      vim.fn['ddu#start']{ name = 'help-ff' }
+    rhs = function()
+      vim.fn["ddu#start"]({ name = "help-ff" })
     end,
-    opts = opt
+    opts = opt,
   },
   {
     mode = "n",
     lhs = [[<Plug>(ddu-ff)b]],
-    rhs = function ()
-      vim.fn['ddu#start']{ name = 'buffer-ff' }
+    rhs = function()
+      vim.fn["ddu#start"]({ name = "buffer-ff" })
     end,
-    opts = opt
+    opts = opt,
   },
   {
     mode = "n",
     lhs = [[<Plug>(ddu-ff)P]],
-    rhs = function ()
-      vim.fn['ddu#start']{ name = 'plugin-list-ff' }
+    rhs = function()
+      vim.fn["ddu#start"]({ name = "plugin-list-ff" })
     end,
-    opts = opt
+    opts = opt,
   },
   {
     mode = "n",
     lhs = [[<Plug>(ddu-ff)p]],
-    rhs = function ()
-      vim.fn['ddu#start']{ name = 'project-list-ff' }
+    rhs = function()
+      vim.fn["ddu#start"]({ name = "project-list-ff" })
     end,
-    opts = opt
+    opts = opt,
   },
   {
     mode = "n",
     lhs = [[<Plug>(ddu-ff)~]],
-    rhs = function ()
-      vim.fn['ddu#start']{ name = 'home-ff' }
+    rhs = function()
+      vim.fn["ddu#start"]({ name = "home-ff" })
     end,
-    opts = opt
+    opts = opt,
   },
   {
     mode = "n",
     lhs = [[<Plug>(ddu-ff)r]],
-    rhs = function ()
-      vim.fn['ddu#start']{ name = 'register-ff' }
+    rhs = function()
+      vim.fn["ddu#start"]({ name = "register-ff" })
     end,
-    opts = opt
+    opts = opt,
   },
   {
     mode = "n",
     lhs = [[<Plug>(ddu-ff)s]],
-    rhs = function ()
-      vim.fn['ddu#start']{ name = 'search-ff' }
+    rhs = function()
+      vim.fn["ddu#start"]({ name = "search-ff" })
     end,
-    opts = opt
+    opts = opt,
   },
   {
     mode = "n",
     lhs = [[<Plug>(ddu-ff)m]],
-    rhs = function ()
-      vim.fn['ddu#start']{ name = 'mrr-ff' }
+    rhs = function()
+      vim.fn["ddu#start"]({ name = "mrr-ff" })
     end,
-    opts = opt
+    opts = opt,
   },
   {
     mode = "n",
     lhs = [[<Plug>(ddu-ff)n]],
-    rhs = function ()
-      vim.fn['ddu#start']{ name = 'mru-ff' }
+    rhs = function()
+      vim.fn["ddu#start"]({ name = "mru-ff" })
     end,
-    opts = opt
+    opts = opt,
   },
   {
     mode = "n",
     lhs = [[<Plug>(ddu-ff)C]],
-    rhs = function ()
-      vim.fn['ddu#start']{ name = 'highlight-ff' }
+    rhs = function()
+      vim.fn["ddu#start"]({ name = "highlight-ff" })
     end,
-    opts = opt
+    opts = opt,
   },
 
   -- ddu-ui-filer starter
   {
     mode = "n",
     lhs = [[<Plug>(ddu-filer)a]],
-    rhs = function ()
-      vim.fn['ddu#start']{
-        name = 'project_root-filer',
+    rhs = function()
+      vim.fn["ddu#start"]({
+        name = "project_root-filer",
         sourceOptions = {
           file = {
-            path = vim.fn['vimrc#search_repo_root']()
+            path = vim.fn["vimrc#search_repo_root"](),
           },
         },
-      }
+      })
     end,
-    opts = opt
+    opts = opt,
   },
   {
     mode = "n",
     lhs = [[<Plug>(ddu-filer)f]],
-    rhs = function ()
-      vim.fn['ddu#start']{
-        name = 'current-filer',
+    rhs = function()
+      vim.fn["ddu#start"]({
+        name = "current-filer",
         sourceOptions = {
           file = {
-            path = vim.fn.expand('%:p:h'),
+            path = vim.fn.expand("%:p:h"),
           },
         },
-      }
+      })
     end,
-    opts = opt
+    opts = opt,
   },
   {
     mode = "n",
     lhs = [[<Plug>(ddu-filer)d]],
-    rhs = function ()
-      vim.fn['ddu#start']{ name = 'dotfiles-filer' }
+    rhs = function()
+      vim.fn["ddu#start"]({ name = "dotfiles-filer" })
     end,
-    opts = opt
+    opts = opt,
   },
   {
     mode = "n",
     lhs = [[<Plug>(ddu-filer)~]],
-    rhs = function ()
-      vim.fn['ddu#start']{ name = 'home-filer' }
+    rhs = function()
+      vim.fn["ddu#start"]({ name = "home-filer" })
     end,
-    opts = opt
+    opts = opt,
   },
-}
--- nmap <Space>d <Plug>(ddu-ff)
-
--- nmap <Plug>(ddu-ff)a <Cmd>call ddu#start({
---   \ 'name': 'current-ff',
---   \ 'sourceOptions': {
---     \ 'file_rec': {'path': vimrc#search_repo_root()},
---     \ },
---   \ })<CR>
-
--- nmap <Plug>(ddu-ff)d <Cmd>call ddu#start(#{name: 'dotfiles-ff'})<CR>
--- nmap <Plug>(ddu-ff)h <Cmd>call ddu#start(#{name: 'help-ff'})<CR>
--- nmap <Plug>(ddu-ff)b <Cmd>call ddu#start(#{name: 'buffer-ff'})<CR>
--- nmap <Plug>(ddu-ff)P <Cmd>call ddu#start(#{name: 'plugin-list-ff'})<CR>
--- nmap <Plug>(ddu-ff)p <Cmd>call ddu#start(#{name: 'project-list-ff'})<CR>
--- nmap <Plug>(ddu-ff)~ <Cmd>call ddu#start(#{name: 'home-ff'})<CR>
--- nmap <Plug>(ddu-ff)r <Cmd>call ddu#start(#{name: 'register-ff'})<CR>
--- nmap <Plug>(ddu-ff)s <Cmd>call ddu#start(#{name: 'search-ff'})<CR>
--- nmap <Plug>(ddu-ff)m <Cmd>call ddu#start(#{name: 'mrr-ff'})<CR>
--- nmap <Plug>(ddu-ff)n <Cmd>call ddu#start(#{name: 'mru-ff'})<CR>
--- nmap <Plug>(ddu-ff)C <Cmd>call ddu#start(#{name: 'highlight-ff'})<CR>
-
-
--- filer start keybins
--- nmap <Space>f <Plug>(ddu-filer)
--- nmap <Plug>(ddu-filer)a <Cmd>call ddu#start(#{
---   \ name: 'project_root-filer',
---   \ sourceOptions: #{
---     \ file: #{path: vimrc#search_repo_root()},
---     \ },
---   \ })<CR>
--- nmap <Plug>(ddu-filer)f <Cmd>call ddu#start(#{
---   \ name: 'current-filer', 
---   \ sourceOptions: #{
---     \ file: #{path: expand('%:p:h')},
---     \ },
---   \ })<CR>
--- nmap <Plug>(ddu-filer)d <Cmd>call ddu#start(#{name: 'dotfiles-filer'})<CR>
--- nmap <Plug>(ddu-filer)h <Cmd>call ddu#start(#{name: 'home-filer'})<CR>
+})
 -- }}}
 
 -- lua_source {{{
 -- Global option and param
--- call ddu#custom#patch_global(#{
---   \ uiOptions: #{
---     \ filer: #{
---       \ toggle: v:true,
---       \ },
---     \ },
---   \ uiParams: #{
---     \ ff: #{
---       \ split: 'floating',
---       \ floatingBorder: 'single',
---       \ prompt: '',
---       \ filterSplitDirection: 'floating',
---       \ filterFloatingPosition: 'top',
---       \ displaySourceName: 'long',
---       \ previewFloating: v:true,
---       \ previewFloatingBorder: 'double',
---       \ previewSplit: 'horizontal',
---       \ },
---     \ filer: #{
---       \ split: 'vertical',
---       \ splitDirection: 'topleft',
---       \ winWidth: &columns /6,
---       \ previewFloating: v:true,
---       \ previewFloatingBorder: 'double',
---       \ previewCol: &columns / 4,
---       \ previewRow: &lines / 2,
---       \ previewWidth: &columns / 2,
---       \ previewHeight: 20,
---       \ },
---     \ },
---   \ sourceOptions: #{
---     \ _: #{
---       \ ignoreCase: v:true,
---       \ matchers: ['matcher_substring'],
---       \ },
---     \ file: #{
---       \ columns: ['icon_filename'],
---       \ },
---     \ dein: #{
---       \ defaultAction: 'cd',
---       \ },
---     \ help: #{
---       \ defaultAction: 'open',
---       \ },
---     \ },
---   \ sourceParams: #{
---     \ dein_update: #{
---       \ useGraphQL: v:true,
---       \ },
---     \ marks: #{
---       \ jumps: v:true,
---       \ },
---     \ rg: #{
---       \ args: ['--json', '--ignore-case', '--column', '--no-heading', '--color', 'never'],
---       \ highlights: #{
---         \ word: 'Title',
---         \},
---       \ },
---     \ },
---   \ kindOptions: #{
---     \ file: #{
---       \ defaultAction: 'open',
---       \ },
---     \ action: #{
---       \ defaultAction: 'do',
---       \ },
---     \ word: #{
---       \ defaultAction: 'append',
---       \ },
---     \ deol: #{
---       \ defaultAction: 'switch',
---       \ },
---     \ readme_viewer: #{
---       \ defaultAction: 'open',
---       \ },
---     \ },
---   \ actionOptions: #{
---     \ narrow: #{quit: v:false},
---     \ echo: #{quit: v:false},
---     \ echoDiff: #{quit: v:false},
---     \ },
---   \ columnParams: #{
---     \ icon_filename: #{
---       \ span: 2,
---       \ iconWidth: 2,
---       \ defaultIcon: #{
---         \ icon: '',
---         \ },
---       \ },
---     \ },
---   \ })
-
+vim.fn["ddu#custom#patch_global"]({
+  uiOptions = {
+    filer = {
+      toggle = true,
+    },
+  },
+  uiParams = {
+    ff = {
+      split = [[floating]],
+      floatingBorder = [[single]],
+      prompt = [[]],
+      filterSplitDirection = [[floating]],
+      filterFloatingPosition = [[top]],
+      displaySourceName = [[long]],
+      previewFloating = true,
+      previewFloatingBorder = [[double]],
+      previewSplit = [[horizontal]],
+    },
+    filer = {
+      split = [[vertical]],
+      splitDirection = [[topleft]],
+      winWidth = vim.opt.columns:get() / 6,
+      previewFloating = true,
+      previewFloatingBorder = [[double]],
+      previewCol = vim.opt.columns:get() / 4,
+      previewRow = vim.opt.lines:get() / 2,
+      previewWidth = vim.opt.columns:get() / 2,
+      previewHeight = 20,
+    },
+  },
+  sourceOptions = {
+    _ = {
+      ignoreCase = true,
+      matchers = { "matcher_substring" },
+    },
+    file = {
+      columns = { "icon_filename" },
+    },
+    dein = {
+      defaultAction = [[cd]],
+    },
+    help = {
+      defaultAction = [[open]],
+    },
+  },
+  sourceParams = {
+    dein_update = {
+      useGraphQL = true,
+    },
+    marks = {
+      jumps = true,
+    },
+    rg = {
+      args = {
+        [[--json]],
+        [[--ignore-case]],
+        [[--column]],
+        [[--no-heading]],
+        [[--color]],
+        [[never]],
+      },
+      highlights = {
+        word = [[Title]],
+      },
+    },
+  },
+  kindOptions = {
+    file = {
+      defaultAction = [[open]],
+    },
+    action = {
+      defaultAction = [[do]],
+    },
+    word = {
+      defaultAction = [[append]],
+    },
+    deol = {
+      defaultAction = [[switch]],
+    },
+    readme_viewer = {
+      defaultAction = [[open]],
+    },
+  },
+  actionOptions = {
+    narrow = { quit = false },
+    echo = { quit = false },
+    echoDiff = { quit = false },
+  },
+  columnParams = {
+    icon_filename = {
+      span = 2,
+      iconWidth = 2,
+      defaultIcon = {
+        icon = [[]],
+      },
+    },
+  },
+})
 
 -- UI:ff presets
 -- call ddu#custom#patch_local('current-ff', #{
