@@ -335,32 +335,32 @@ vim.fn['ddu#custom#patch_local']('help-ff', {
   },
 })
 
--- vim.fn['ddu#custom#patch_local']('search-ff', {
---   ui = 'ff',
---   uiParams = {
---     ff = {
---       autoAction = {
---         delay = 0,
---         name = [[preview]],
---       },
---       winRow = vim.opt.lines:get() / 4 - 10,
---       previewRow = vim.opt.lines:get() - 4,
---       previewHeight = 24,
---       ignoreEmpty = false,
---       autoResize = false,
---       startFilter = true,
---     },
---   },
---   sources = {
---     {
---       name = 'rg',
---       options = {
---         matchers = vim.empty_dict(),
---         volatile = true,
---       },
---     }
---   },
--- })
+vim.fn['ddu#custom#patch_local']('search-ff', {
+  ui = 'ff',
+  uiParams = {
+    ff = {
+      autoAction = {
+        delay = 0,
+        name = [[preview]],
+      },
+      winRow = vim.opt.lines:get() / 4 - 10,
+      previewRow = vim.opt.lines:get() - 4,
+      previewHeight = 24,
+      ignoreEmpty = false,
+      autoResize = false,
+      startFilter = true,
+    },
+  },
+  sources = {
+    {
+      name = 'rg',
+      options = {
+        matchers = {},
+        volatile = true,
+      },
+    }
+  },
+})
 
 vim.fn['ddu#custom#patch_local']('buffer-ff', {
   ui = 'ff',

@@ -49,30 +49,30 @@
 "     \ ],
 "   \ })
 "
-call ddu#custom#patch_local('search-ff', #{
-  \ ui: 'ff',
-  \ uiParams: #{
-    \ ff: #{
-      \ autoAction: #{
-        \ delay: 0,
-        \ name: 'preview',
-        \ },
-      \ winRow: &lines / 4 - 10,
-      \ previewRow: &lines - 4,
-      \ previewHeight: 24,
-      \ ignoreEmpty: v:false,
-      \ autoResize: v:false,
-      \ startFilter: v:true,
-      \ },
-    \ },
-  \ sources: [#{
-    \ name: 'rg',
-    \ options: #{
-      \ matchers: [],
-      \ volatile: v:true,
-      \ },
-    \ }],
-  \ })
+" call ddu#custom#patch_local('search-ff', #{
+"   \ ui: 'ff',
+"   \ uiParams: #{
+"     \ ff: #{
+"       \ autoAction: #{
+"         \ delay: 0,
+"         \ name: 'preview',
+"         \ },
+"       \ winRow: &lines / 4 - 10,
+"       \ previewRow: &lines - 4,
+"       \ previewHeight: 24,
+"       \ ignoreEmpty: v:false,
+"       \ autoResize: v:false,
+"       \ startFilter: v:true,
+"       \ },
+"     \ },
+"   \ sources: [#{
+"     \ name: 'rg',
+"     \ options: #{
+"       \ matchers: [],
+"       \ volatile: v:true,
+"       \ },
+"     \ }],
+"   \ })
 "
 " call ddu#custom#patch_local('buffer-ff', #{
 "   \ ui: 'ff',
