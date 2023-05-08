@@ -27,16 +27,7 @@ utils.autocmds_set{
 local opt_expr = { noremap = false, expr = true }
 utils.keymaps_set{
   {
-    mode = {"i", "s"},
-    lhs = [[<F2>]],
-    rhs = function()
-      print(vim.fn['vsnip#jumpable'](1))
-      print(vim.fn['vsnip#jumpable'](-1))
-    end,
-    opts = opt_expr,
-  },
-  {
-    mode = {"i", "s"},
+    mode = "s",
     lhs = [[<Tab>]],
     rhs = function()
       if vim.fn['vsnip#jumpable'](1) then
@@ -48,13 +39,37 @@ utils.keymaps_set{
     opts = opt_expr
   },
   {
-    mode = {"i", "s"},
+    mode = "s",
     lhs = [[<S-Tab>]],
     rhs = function()
       if vim.fn['vsnip#jumpable'](1) then
         return [[<Plug>(vsnip-jump-prev)]]
       else
         return [[<S-Tab>]]
+      end
+    end,
+    opts = opt_expr,
+  },
+  {
+    mode = "i",
+    lhs = [[<Tab>]],
+    rhs = function()
+      if vim.fn['vsnip#jumpable'](1) then
+        return [[<Plug>(vsnip-jump-next)]]
+      else
+        return vim.fn['lexima#expand']('<lt>Tab>', 'i')
+      end
+    end,
+    opts = opt_expr
+  },
+  {
+    mode = "i",
+    lhs = [[<S-Tab>]],
+    rhs = function()
+      if vim.fn['vsnip#jumpable'](1) then
+        return [[<Plug>(vsnip-jump-prev)]]
+      else
+        return vim.fn['lexima#expand']('<lt>S-Tab>', 'i')
       end
     end,
     opts = opt_expr,
