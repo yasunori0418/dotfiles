@@ -335,6 +335,10 @@ vim.fn['ddu#custom#patch_local']('help-ff', {
   },
 })
 
+local lines = vim.opt.lines:get()
+local columns = vim.opt.columns:get()
+local win_width = math.floor(columns / 3)
+local win_height = lines - 5
 vim.fn['ddu#custom#patch_local']('search-ff', {
   ui = 'ff',
   uiParams = {
@@ -343,9 +347,22 @@ vim.fn['ddu#custom#patch_local']('search-ff', {
         delay = 0,
         name = [[preview]],
       },
-      winRow = vim.opt.lines:get() / 4 - 10,
-      previewRow = vim.opt.lines:get() - 4,
-      previewHeight = 24,
+      filterFloatingPosition = [[bottom]],
+      previewCol = (columns - win_width) / 2 + 3,
+      previewRow = 0,
+      previewHeight = win_height + 1,
+      previewWindowOptions = {
+        { "&signcolumn", "no" },
+        { "&foldcolumn", 0 },
+        { "&foldenable", 0 },
+        { "&number", 0 },
+        { "&relativenumber", 0 },
+        { "&wrap", 0 },
+      },
+      winCol = 1,
+      winRow = math.floor(lines / 2 - 20),
+      winHeight = win_height,
+      winWidth = win_width,
       ignoreEmpty = false,
       autoResize = false,
       startFilter = true,
