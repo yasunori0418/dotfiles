@@ -28,15 +28,6 @@ local opt_expr = { noremap = false, expr = true }
 utils.keymaps_set{
   {
     mode = {"i", "s"},
-    lhs = [[<F2>]],
-    rhs = function()
-      print(vim.fn['vsnip#jumpable'](1))
-      print(vim.fn['vsnip#jumpable'](-1))
-    end,
-    opts = opt_expr,
-  },
-  {
-    mode = {"i", "s"},
     lhs = [[<Tab>]],
     rhs = function()
       if vim.fn['vsnip#jumpable'](1) then
