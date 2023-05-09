@@ -77,10 +77,12 @@ require('user.utils').keymaps_set{
   { mode = {"i", "c"}, lhs = [[<C-l>]], rhs = [[<Del>]], opts = opts },
 
   -- Emacs like
-  { mode = {"i"}, lhs = [[<C-a>]], rhs = [[<C-o>^]], opts = opts },
-  { mode = {"i"}, lhs = [[<C-f>]], rhs = [[<C-G>U<Right>]], opts = opts },
-  { mode = {"i"}, lhs = [[<C-b>]], rhs = [[<C-G>U<Left>]], opts = opts },
-  { mode = {"i"}, lhs = [[<C-e>]], rhs = [[<C-G>U<End>]], opts = opts },
+  -- 言う程、インサートモードで使わんのよね…
+  -- <C-f/b>はスニペットジャンプに使ってます
+  -- { mode = {"i"}, lhs = [[<C-f>]], rhs = [[<C-G>U<Right>]], opts = opts },
+  -- { mode = {"i"}, lhs = [[<C-b>]], rhs = [[<C-G>U<Left>]], opts = opts },
+  -- { mode = {"i"}, lhs = [[<C-a>]], rhs = [[<C-o>^]], opts = opts },
+  -- { mode = {"i"}, lhs = [[<C-e>]], rhs = [[<C-G>U<End>]], opts = opts },
   { mode = {"c"}, lhs = [[<C-a>]], rhs = [[<Home>]], opts = { noremap = true } },
   { mode = {"c"}, lhs = [[<C-f>]], rhs = [[<Right>]], opts = { noremap = true } },
   { mode = {"c"}, lhs = [[<C-b>]], rhs = [[<Left>]], opts = { noremap = true } },
