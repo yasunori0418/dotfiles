@@ -349,7 +349,7 @@ vim.fn['ddu#custom#patch_local']('search-ff', {
       },
       filterFloatingPosition = [[bottom]],
       previewCol = columns - win_width,
-      previewRow = 0,
+      -- previewRow = 0,
       previewWidth = columns - win_width - 5,
       -- previewSplitがverticalならwinWidthにひっぱられるので不要
       -- previewHeight = win_height + 1,
