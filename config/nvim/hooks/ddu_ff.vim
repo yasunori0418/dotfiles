@@ -61,8 +61,8 @@ nnoremap <buffer><expr> k
 
 " ddu-ff-filter {{{
 " fuzzy finder filter keybinds on insert mode
-" inoremap <buffer> <CR>
-"   \ <Esc><Cmd>call ddu#ui#do_action('closeFilterWindow')<CR>
+inoremap <buffer> <CR>
+  \ <Esc><Cmd>call ddu#ui#do_action('closeFilterWindow')<CR>
 inoremap <buffer> jj
   \ <Esc><Cmd>call ddu#ui#do_action('closeFilterWindow')<CR>
 inoremap <buffer> <Esc>
