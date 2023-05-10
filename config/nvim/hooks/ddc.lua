@@ -240,51 +240,15 @@ require('user.utils').keymaps_set{
     opts = expr_opt,
   },
   {
-    mode = "i",
-    lhs = [[<CR>]],
-    rhs = function()
-      if vim.fn['pum#visible']() then
-        vim.fn['pum#map#confirm']()
-      else
-        return vim.fn['lexima#expand']('<lt>CR>', 'i')
-      end
-    end,
+    mode = {"i", "c"},
+    lhs = [[<C-y>]],
+    rhs = vim.fn['pum#map#confirm'],
     opts = expr_opt,
   },
   {
-    mode = "i",
-    lhs = [[<BS>]],
-    rhs = function()
-      if vim.fn['pum#visible']() then
-        vim.fn['pum#map#cancel']()
-      else
-        return vim.fn['lexima#expand']('<lt>BS>', 'i')
-      end
-    end,
-    opts = expr_opt,
-  },
-  {
-    mode = "c",
-    lhs = [[<CR>]],
-    rhs = function()
-      if vim.fn['pum#visible']() then
-        vim.fn['pum#map#confirm']()
-      else
-        return [[<Plug>(kensaku-search-replace)<CR>]]
-      end
-    end,
-    opts = expr_opt,
-  },
-  {
-    mode = "c",
-    lhs = [[<BS>]],
-    rhs = function()
-      if vim.fn['pum#visible']() then
-        vim.fn['pum#map#cancel']()
-      else
-        return [[<BS>]]
-      end
-    end,
+    mode = {"i", "c"},
+    lhs = [[<C-e>]],
+    rhs = vim.fn['pum#map#cancel'],
     opts = expr_opt,
   },
   {
