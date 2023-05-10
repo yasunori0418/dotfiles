@@ -12,7 +12,10 @@ hooks_file = '~/.config/nvim/hooks/ddu.lua'
 [[plugins]] # ddu-ui-ff
 repo = 'Shougo/ddu-ui-ff'
 on_source = 'ddu.vim'
-hooks_file = '~/.config/nvim/hooks/ddu_ff.vim'
+hooks_file = [
+  '~/.config/nvim/hooks/ddu_ff.vim',
+  '~/.config/nvim/hooks/ddu_ff.lua',
+]
 
 [[plugins]] # ddu-ui-filer
 repo = 'Shougo/ddu-ui-filer'
