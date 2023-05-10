@@ -1,81 +1,248 @@
 -- lua_ddu-ff {{{
 -- Open file keybinds.
--- nnoremap <buffer><silent> <CR>
---   \ <Cmd>call ddu#ui#ff#do_action('itemAction')<CR>
--- nnoremap <buffer> o
---   \ <Cmd>call ddu#ui#ff#do_action('itemAction', {'name': 'open', 'params': {'command': 'drop'}})<CR>
-
--- Open file with horizontal window.
--- nnoremap <buffer> s
---   \ <Cmd>call ddu#ui#do_action('itemAction',
---   \ #{name: 'open', params: #{command: 'split'}})<CR>
-
--- Open file with vertical window.
--- nnoremap <buffer> v
---   \ <Cmd>call ddu#ui#do_action('itemAction',
---   \ #{name: 'open', params: #{command: 'vsplit'}})<CR>
-
--- Open file with another tab.
--- nnoremap <buffer> t
---   \ <Cmd>call ddu#ui#do_action('itemAction',
---   \ #{name: 'open', params: #{command: 'tabedit'}})<CR>
-
-
--- Multiple selection
--- nnoremap <buffer> <Space>
---   \ <Cmd>call ddu#ui#do_action('toggleSelectItem')<CR>
--- nnoremap <buffer> *
---   \ <Cmd>cal ddu#ui#do_action('toggleAllItems')<CR>
-
-
--- fuzzy finder controll keybinds
--- Open selection menu.
--- nnoremap <buffer> a
---   \ <Cmd>call ddu#ui#do_action('chooseAction')<CR>
-
--- Open filter Window.
--- nnoremap <buffer> i
---   \ <Cmd>call ddu#ui#do_action('openFilterWindow')<CR>
-
--- Open preview window.
--- nnoremap <buffer> p
---   \ <Cmd>call ddu#ui#do_action('preview')<CR>
-
--- nnoremap <buffer> <C-l>
---   \ <Cmd>call ddu#ui#do_action('refreshItems')<CR>
-
--- Close ddu window.
--- nnoremap <buffer> q
---   \ <Cmd>call ddu#ui#do_action('quit')<CR>
--- nnoremap <buffer> <Esc>
---   \ <Cmd>call ddu#ui#do_action('quit')<CR>
-
--- Wrap when moving to the beginning and end of a line
--- nnoremap <buffer><expr> j
---   \ line('.') == line('$') ?
---   \ 'gg' : 'j'
--- nnoremap <buffer><expr> k
-  -- \ line('.') == 1 ?
-  -- \ 'G' : 'k'
+local ff_opt = { silent = true, buffer = true, noremap = true }
+local ff_opt_expr = { silent = true, buffer = true, expr = true, noremap = true }
+require('user.utils').keymaps_set({
+  {
+    mode = "n",
+    lhs = [[<CR>]],
+    rhs = function()
+      vim.fn['ddu#ui#ff#do_action']('itemAction')
+    end,
+    opts = ff_opt,
+  },
+  {
+    mode = "n",
+    lhs = [[o]],
+    rhs = function()
+      vim.fn['du#ui#ff#do_action']('itemAction', {
+        name = [[open]],
+        params = {
+          command = [[drop]]
+        }
+      })
+    end,
+    opts = ff_opt,
+  },
+  {
+    mode = "n",
+    lhs = [[s]],
+    rhs = function()
+      vim.fn['ddu#ui#do_action']('itemAction', {
+        name = [[open]],
+        params = { command = [[split]] }
+      })
+    end,
+    opts = ff_opt,
+  },
+  {
+    mode = "n",
+    lhs = [[v]],
+    rhs = function()
+      vim.fn['ddu#ui#do_action']('itemAction', {
+        name = [[open]],
+        params = { command = [[vsplit]] }
+      })
+    end,
+    opts = ff_opt,
+  },
+  {
+    mode = "n",
+    lhs = [[t]],
+    rhs = function()
+      vim.fn['ddu#ui#do_action']('itemAction', {
+        name = [[open]],
+        params = { command = [[tabedit]] }
+      })
+    end,
+    opts = ff_opt,
+  },
+  {
+    mode = "n",
+    lhs = [[ ]],
+    rhs = function()
+      vim.fn['ddu#ui#do_action']('toggleSelectItem')
+      vim.fn['ddu#ui#do_action']('refreshItems')
+    end,
+    opts = ff_opt,
+  },
+  {
+    mode = "n",
+    lhs = [[*]],
+    rhs = function()
+      vim.fn['ddu#ui#do_action']('toggleAllItems')
+      vim.fn['ddu#ui#do_action']('refreshItems')
+    end,
+    opts = ff_opt,
+  },
+  {
+    mode = "n",
+    lhs = [[a]],
+    rhs = function()
+      vim.fn['ddu#ui#do_action']('chooseAction')
+    end,
+    opts = ff_opt,
+  },
+  {
+    mode = "n",
+    lhs = [[i]],
+    rhs = function()
+      vim.fn['ddu#ui#do_action']('openFilterWindow')
+    end,
+    opts = ff_opt,
+  },
+  {
+    mode = "n",
+    lhs = [[<C-l>]],
+    rhs = function()
+      vim.fn['ddu#ui#do_action']('refreshItems')
+    end,
+    opts = ff_opt,
+  },
+  {
+    mode = "n",
+    lhs = [[p]],
+    rhs = function()
+      vim.fn['ddu#ui#do_action']('preview')
+    end,
+    opts = ff_opt,
+  },
+  {
+    mode = "n",
+    lhs = [[q]],
+    rhs = function()
+      vim.fn['ddu#ui#do_action']('quit')
+    end,
+    opts = ff_opt,
+  },
+  {
+    mode = "n",
+    lhs = [[<ESC>]],
+    rhs = function()
+      vim.fn['ddu#ui#do_action']('quit')
+    end,
+    opts = ff_opt
+  },
+  {
+    mode = "n",
+    lhs = [[j]],
+    rhs = function()
+      if vim.fn.line('.') == vim.fn.line('$') then
+        return [[gg]]
+      else
+        return [[j]]
+      end
+    end,
+    opts = ff_opt_expr,
+  },
+  {
+    mode = "n",
+    lhs = [[k]],
+    rhs = function()
+      if vim.fn.line('.') == 1 then
+        return [[G]]
+      else
+        return [[k]]
+      end
+    end,
+    opts = ff_opt_expr,
+  },
+  -- {
+  --   mode = "n",
+  --   lhs = [[]],
+  --   rhs = function()
+  --   end,
+  --   opts = opt
+  -- },
+  -- {
+  --   mode = "n",
+  --   lhs = [[]],
+  --   rhs = function()
+  --   end,
+  --   opts = opt
+  -- },
+  -- {
+  --   mode = "n",
+  --   lhs = [[]],
+  --   rhs = function()
+  --   end,
+  --   opts = opt
+  -- },
+  -- {
+  --   mode = "n",
+  --   lhs = [[]],
+  --   rhs = function()
+  --   end,
+  --   opts = opt
+  -- },
+  -- {
+  --   mode = "n",
+  --   lhs = [[]],
+  --   rhs = function()
+  --   end,
+  --   opts = opt
+  -- },
+  -- {
+  --   mode = "n",
+  --   lhs = [[]],
+  --   rhs = function()
+  --   end,
+  --   opts = opt
+  -- },
+})
 -- }}}
 
 -- lua_ddu-ff-filter {{{
--- fuzzy finder filter keybinds on insert mode
--- inoremap <buffer> <CR>
---   \ <Esc><Cmd>call ddu#ui#do_action('closeFilterWindow')<CR>
--- inoremap <buffer> jj
---   \ <Esc><Cmd>call ddu#ui#do_action('closeFilterWindow')<CR>
--- inoremap <buffer> <Esc>
---   \ <Esc><Cmd>call ddu#ui#do_action('closeFilterWindow')<CR>
+local filter_opt = { buffer = true, noremap = true }
+require('user.utils').keymaps_set({
+  {
+    mode = "i",
+    lhs = [[<CR>]],
+    rhs = function()
+      vim.cmd([[<ESC><Cmd>call ddu#ui#do_action('closeFilterWindow')<CR>]])
+    end,
+    opts = filter_opt,
+  },
+  {
+    mode = "i",
+    lhs = [[<ECS>]],
+    rhs = function()
+      vim.cmd([[<ESC><Cmd>call ddu#ui#do_action('closeFilterWindow')<CR>]])
+    end,
+    opts = filter_opt,
+  },
 
--- fuzzy finder filter keybinds on normal mode
--- nnoremap <buffer> <CR>
---   \ <Cmd>call ddu#ui#do_action('closeFilterWindow')<CR>
--- nnoremap <buffer> q
---   \ <Cmd>call ddu#ui#do_action('closeFilterWindow')<CR>
--- nnoremap <buffer> jj
---   \ <Cmd>call ddu#ui#do_action('closeFilterWindow')<CR>
--- nnoremap <buffer> <Esc>
---   \ <Cmd>call ddu#ui#do_action('closeFilterWindow')<CR>
-
+  {
+    mode = "n",
+    lhs = [[q]],
+    rhs = function()
+      vim.fn['ddu#ui#do_action']('closeFilterWindow')
+    end,
+    opts = filter_opt,
+  },
+  {
+    mode = "n",
+    lhs = [[<CR>]],
+    rhs = function()
+      vim.fn['ddu#ui#do_action']('closeFilterWindow')
+    end,
+    opts = filter_opt,
+  },
+  {
+    mode = "n",
+    lhs = [[jj]],
+    rhs = function()
+      vim.fn['ddu#ui#do_action']('closeFilterWindow')
+    end,
+    opts = filter_opt,
+  },
+  {
+    mode = "n",
+    lhs = [[<ESC>]],
+    rhs = function()
+      vim.fn['ddu#ui#do_action']('closeFilterWindow')
+    end,
+    opts = filter_opt,
+  },
+})
 -- }}}
