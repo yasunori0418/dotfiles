@@ -51,7 +51,7 @@ repo = 'lambdalisue/kensaku-search.vim'
 depends = 'kensaku.vim'
 on_map = { 'c' = '<Plug>(kensaku-search-replace)' }
 lua_add = '''
-vim.keymap.set("c", [[<CR>]], [[<Plug>(kensaku-search-replace)]], {noremap = false})
+vim.keymap.set("c", [[<CR>]], [[<Plug>(kensaku-search-replace)<CR>]], {noremap = false})
 '''
 
 [[plugins]]
