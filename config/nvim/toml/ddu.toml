@@ -4,10 +4,7 @@
 repo = 'Shougo/ddu.vim'
 depends = 'denops.vim'
 on_func = 'ddu#start()'
-hooks_file = [
-  '~/.config/nvim/hooks/ddu.vim',
-  '~/.config/nvim/hooks/ddu.lua',
-]
+hooks_file = '~/.config/nvim/hooks/ddu.lua'
 
 # }}}
 
