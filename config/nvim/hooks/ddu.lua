@@ -473,34 +473,42 @@ vim.fn['ddu#custom#patch_local']('highlight-ff', {
 
 
 -- -- UI:filer presets
--- call ddu#custom#patch_local('current-filer', {
---   ui = 'filer',
---   sources = [{name = 'file'}],
---   })
---
--- call ddu#custom#patch_local('project_root-filer', {
---   ui = 'filer',
---   sources = [{name = 'file'}],
---   })
---
--- call ddu#custom#patch_local('dotfiles-filer', {
---   ui = 'filer',
---   sources = [{name = 'file'}],
---   sourceOptions = {
---     file = {
---       path = expand('~/dotfiles'),
---       },
---     },
---   })
---
--- call ddu#custom#patch_local('home-filer', {
---   ui = 'filer',
---   sources = [{name = 'file'}],
---   sourceOptions = {
---     file = {
---       path = expand('~'),
---       },
---     },
---   })
+vim.fn['ddu#custom#patch_local']('current-filer', {
+  ui = 'filer',
+  sources = {
+    { name = 'file' }
+  },
+})
+
+vim.fn['ddu#custom#patch_local']('project_root-filer', {
+  ui = 'filer',
+  sources = {
+    { name = 'file' }
+  },
+})
+
+vim.fn['ddu#custom#patch_local']('dotfiles-filer', {
+  ui = 'filer',
+  sources = {
+    { name = 'file' }
+  },
+  sourceOptions = {
+    file = {
+      path = vim.env.HOME .. '/dotfiles'
+    },
+  },
+})
+
+vim.fn['ddu#custom#patch_local']('home-filer', {
+  ui = 'filer',
+  sources = {
+    { name = 'file' }
+  },
+  sourceOptions = {
+    file = {
+      path = vim.env.HOME,
+    },
+  },
+})
 
 -- }}}
