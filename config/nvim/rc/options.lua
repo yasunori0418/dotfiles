@@ -46,6 +46,11 @@ local option_tables = {
     -- jump momentarily to a matching parenthesis
     showmatch = true,
     matchtime = 1,
+
+    -- disable wildmode
+    wildchar = 0,
+    wildcharm = 0,
+    wildmenu = false,
   },
 
   display_options = {
