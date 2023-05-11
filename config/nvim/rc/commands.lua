@@ -6,11 +6,11 @@ command('Cleareg',
   end,
   {})
 
-command('DeinUpdate',
-  function(opts)
-    vim.fn['vimrc#dein_update'](opts.bang)
-  end,
-  { bang = true })
+-- command('DeinUpdate',
+--   function(opts)
+--     vim.fn['vimrc#dein_update'](opts.bang)
+--   end,
+--   { bang = true })
 
 command('DeinDelete',
   function()

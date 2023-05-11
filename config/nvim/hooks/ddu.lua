@@ -166,6 +166,25 @@ require("user.utils").keymaps_set({
     opts = opt,
   },
 })
+
+vim.api.nvim_create_user_command(
+  'DeinUpdate',
+  function(opts)
+    local use_graph_ql = false
+    if opts.bang then
+      use_graph_ql = false
+    else
+      use_graph_ql = vim.fn['vimrc#is_github_pat']()
+    end
+    vim.fn['ddu#start']({
+      name ='dein_update-ff',
+      sourceParams = {
+        dein_update = { useGraphQL = use_graph_ql }
+      },
+    })
+  end,
+  { bang = true }
+)
 -- }}}
 
 -- lua_source {{{
@@ -214,6 +233,9 @@ local source_options = {
   help = {
     defaultAction = [[open]],
   },
+  dein_update = {
+    matchers = {'matcher_dein_update'},
+  }
 }
 
 local source_params = {
@@ -254,6 +276,9 @@ local kind_options = {
   readme_viewer = {
     defaultAction = [[open]],
   },
+  dein_update = {
+    defaultAction = [[viewDiff]],
+  }
 }
 
 local action_options = {
@@ -489,6 +514,12 @@ vim.fn['ddu#custom#patch_local']('highlight-ff', {
   },
 })
 
+vim.fn['ddu#custom#patch_local']('dein_update-ff', {
+  ui = 'ff',
+  sources = {
+    { name = 'dein_update' },
+  },
+})
 
 -- -- UI:filer presets
 vim.fn['ddu#custom#patch_local']('current-filer', {

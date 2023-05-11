@@ -53,7 +53,7 @@ end
 
 -- dein options
 dein.setup({
-  install_progress_type = "floating",
+  install_progress_type = "none",
   enable_notification = true,
   auto_recache = true,
   lazy_rplugins = true,
