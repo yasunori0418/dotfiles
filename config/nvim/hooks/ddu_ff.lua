@@ -163,34 +163,6 @@ require('user.utils').keymaps_set({
     end,
     opts = ff_opt,
   },
-  -- {
-  --   mode = "n",
-  --   lhs = [[]],
-  --   rhs = function()
-  --   end,
-  --   opts = opt
-  -- },
-  -- {
-  --   mode = "n",
-  --   lhs = [[]],
-  --   rhs = function()
-  --   end,
-  --   opts = opt
-  -- },
-  -- {
-  --   mode = "n",
-  --   lhs = [[]],
-  --   rhs = function()
-  --   end,
-  --   opts = opt
-  -- },
-  -- {
-  --   mode = "n",
-  --   lhs = [[]],
-  --   rhs = function()
-  --   end,
-  --   opts = opt
-  -- },
 })
 -- }}}
 
