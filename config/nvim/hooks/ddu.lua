@@ -81,7 +81,7 @@ require("user.utils").keymaps_set({
     mode = "n",
     lhs = [[<Plug>(ddu-ff)s]],
     rhs = function()
-      vim.fn["ddu#start"]({ name = "search-ff" })
+      vim.fn["ddu#start"]({ name = "ripgrep-ff" })
     end,
     opts = opt,
   },
@@ -339,7 +339,7 @@ local lines = vim.opt.lines:get()
 local columns = vim.opt.columns:get()
 local win_width = math.floor(columns / 3)
 local win_height = lines - 5
-vim.fn['ddu#custom#patch_local']('search-ff', {
+vim.fn['ddu#custom#patch_local']('ripgrep-ff', {
   ui = 'ff',
   uiParams = {
     ff = {
