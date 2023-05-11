@@ -198,7 +198,17 @@ require('user.utils').keymaps_set({
     mode = "i",
     lhs = [[<CR>]],
     rhs = function()
-      vim.cmd([[<ESC><Cmd>call ddu#ui#do_action('closeFilterWindow')<CR>]])
+      vim.cmd('stopinsert')
+      vim.fn['ddu#ui#do_action']('closeFilterWindow')
+    end,
+    opts = filter_opt,
+  },
+  {
+    mode = "i",
+    lhs = [[jj]],
+    rhs = function()
+      vim.cmd('stopinsert')
+      vim.fn['ddu#ui#do_action']('closeFilterWindow')
     end,
     opts = filter_opt,
   },
@@ -206,7 +216,8 @@ require('user.utils').keymaps_set({
     mode = "i",
     lhs = [[<ECS>]],
     rhs = function()
-      vim.cmd([[<ESC><Cmd>call ddu#ui#do_action('closeFilterWindow')<CR>]])
+      vim.cmd('stopinsert')
+      vim.fn['ddu#ui#do_action']('closeFilterWindow')
     end,
     opts = filter_opt,
   },
@@ -230,7 +241,7 @@ require('user.utils').keymaps_set({
   },
   {
     mode = "n",
-    lhs = [[jj]],
+    lhs = [[j]],
     rhs = function()
       vim.fn['ddu#ui#do_action']('closeFilterWindow')
     end,
