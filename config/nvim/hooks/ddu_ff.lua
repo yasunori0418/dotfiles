@@ -154,13 +154,15 @@ require('user.utils').keymaps_set({
     end,
     opts = ff_opt,
   },
-  -- {
-  --   mode = "n",
-  --   lhs = [[]],
-  --   rhs = function()
-  --   end,
-  --   opts = opt
-  -- },
+  {
+    mode = "n",
+    lhs = [[y]],
+    rhs = function()
+      vim.fn['ddu#ui#do_action']('yank')
+      print('Yank path the "' .. vim.fn.getreg('+') .. '"')
+    end,
+    opts = ff_opt,
+  },
   -- {
   --   mode = "n",
   --   lhs = [[]],
