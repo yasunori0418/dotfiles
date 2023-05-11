@@ -38,7 +38,7 @@ require("user.utils").autocmds_set({
     group = vimrc,
     pattern = { "gin-*" },
     callback = function()
-      vim.opt_local.buflisted = true
+      vim.opt_local.buflisted = false
     end,
   },
   {
