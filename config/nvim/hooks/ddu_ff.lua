@@ -59,7 +59,7 @@ require('user.utils').keymaps_set({
   },
   {
     mode = "n",
-    lhs = [[ ]],
+    lhs = [[  ]],
     rhs = function()
       vim.fn['ddu#ui#do_action']('toggleSelectItem')
     end,
