@@ -220,7 +220,7 @@ require('user.utils').keymaps_set{
     lhs = [[<C-n>]],
     rhs = function()
       if vim.fn['pum#visible']() then
-        vim.fn['pum#map#select_relative'](1)
+        vim.fn['pum#map#insert_relative'](1)
       else
         return [[<Down>]]
       end
@@ -232,7 +232,7 @@ require('user.utils').keymaps_set{
     lhs = [[<C-p>]],
     rhs = function()
       if vim.fn['pum#visible']() then
-        vim.fn['pum#map#select_relative'](-1)
+        vim.fn['pum#map#insert_relative'](-1)
       else
         return [[<Up>]]
       end
