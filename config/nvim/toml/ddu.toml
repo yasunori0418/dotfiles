@@ -40,6 +40,10 @@ on_source = 'ddu.vim'
 repo = 'Shougo/ddu-source-file_rec'
 on_source = 'ddu.vim'
 
+[[plugins]]
+repo = 'Shougo/ddu-source-line'
+on_source = 'ddu.vim'
+
 [[plugins]] # ddu-source-help
 repo = 'matsui54/ddu-source-help'
 on_source = 'ddu.vim'

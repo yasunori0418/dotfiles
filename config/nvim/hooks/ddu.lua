@@ -103,6 +103,14 @@ require("user.utils").keymaps_set({
   },
   {
     mode = "n",
+    lhs = [[<Plug>(ddu-ff)/]],
+    rhs = function()
+      vim.fn["ddu#start"]({ name = "search_line-ff" })
+    end,
+    opts = opt,
+  },
+  {
+    mode = "n",
     lhs = [[<Plug>(ddu-ff)C]],
     rhs = function()
       vim.fn["ddu#start"]({ name = "highlight-ff" })
@@ -380,6 +388,16 @@ vim.fn['ddu#custom#patch_local']('ripgrep-ff', {
       },
     }
   },
+})
+
+vim.fn['ddu#custom#patch_local']('search_line-ff', {
+  ui = 'ff',
+  uiParams = {
+    ff = { startFilter = true },
+  },
+  sources = {
+    { name = 'line' }
+  }
 })
 
 vim.fn['ddu#custom#patch_local']('buffer-ff', {
