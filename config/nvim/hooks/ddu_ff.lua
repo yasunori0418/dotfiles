@@ -62,7 +62,6 @@ require('user.utils').keymaps_set({
     lhs = [[ ]],
     rhs = function()
       vim.fn['ddu#ui#do_action']('toggleSelectItem')
-      vim.fn['ddu#ui#do_action']('refreshItems')
     end,
     opts = ff_opt,
   },
@@ -71,7 +70,6 @@ require('user.utils').keymaps_set({
     lhs = [[*]],
     rhs = function()
       vim.fn['ddu#ui#do_action']('toggleAllItems')
-      vim.fn['ddu#ui#do_action']('refreshItems')
     end,
     opts = ff_opt,
   },
