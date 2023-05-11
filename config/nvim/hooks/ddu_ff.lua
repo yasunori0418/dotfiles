@@ -195,6 +195,7 @@ require('user.utils').keymaps_set({
 -- lua_ddu-ff-filter {{{
 local filter_opt = { buffer = true, noremap = true }
 require('user.utils').keymaps_set({
+  -- filter insert mode
   {
     mode = "i",
     lhs = [[<CR>]],
@@ -212,6 +213,7 @@ require('user.utils').keymaps_set({
     opts = filter_opt,
   },
 
+  -- filter normal mode
   {
     mode = "n",
     lhs = [[q]],
