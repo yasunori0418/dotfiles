@@ -145,13 +145,15 @@ require('user.utils').keymaps_set({
     end,
     opts = ff_opt_expr,
   },
-  -- {
-  --   mode = "n",
-  --   lhs = [[]],
-  --   rhs = function()
-  --   end,
-  --   opts = opt
-  -- },
+  {
+    mode = "n",
+    lhs = [[<C-q>]],
+    rhs = function()
+      vim.fn['ddu#ui#do_action']('toggleAllItems')
+      vim.fn['ddu#ui#do_action']('itemAction', { name = [[quickfix]] })
+    end,
+    opts = ff_opt,
+  },
   -- {
   --   mode = "n",
   --   lhs = [[]],
