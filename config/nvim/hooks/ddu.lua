@@ -167,24 +167,6 @@ require("user.utils").keymaps_set({
   },
 })
 
-vim.api.nvim_create_user_command(
-  'DeinUpdate',
-  function(opts)
-    local use_graph_ql = false
-    if opts.bang then
-      use_graph_ql = false
-    else
-      use_graph_ql = vim.fn['vimrc#is_github_pat']()
-    end
-    vim.fn['ddu#start']({
-      name ='dein_update-ff',
-      sourceParams = {
-        dein_update = { useGraphQL = use_graph_ql }
-      },
-    })
-  end,
-  { bang = true }
-)
 -- }}}
 
 -- lua_source {{{
@@ -514,12 +496,26 @@ vim.fn['ddu#custom#patch_local']('highlight-ff', {
   },
 })
 
-vim.fn['ddu#custom#patch_local']('dein_update-ff', {
-  ui = 'ff',
-  sources = {
-    { name = 'dein_update' },
-  },
-})
+vim.api.nvim_create_user_command(
+  'DeinUpdate',
+  function(opts)
+    local use_graph_ql = false
+    if opts.bang then
+      use_graph_ql = vim.fn['vimrc#is_github_pat']()
+    end
+    vim.fn['ddu#start']({
+      name ='dein_update-ff',
+      ui = 'ff',
+      sources = {
+        {
+          name = 'dein_update',
+          params = { useGraphQL = use_graph_ql },
+        },
+      },
+    })
+  end,
+  { bang = true }
+)
 
 -- -- UI:filer presets
 vim.fn['ddu#custom#patch_local']('current-filer', {
