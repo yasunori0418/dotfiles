@@ -18,7 +18,7 @@ hooks_file = '~/.config/nvim/hooks/ddu_ff.lua'
 [[plugins]] # ddu-ui-filer
 repo = 'Shougo/ddu-ui-filer'
 on_source = 'ddu.vim'
-hooks_file = '~/.config/nvim/hooks/ddu_filer.vim'
+hooks_file = '~/.config/nvim/hooks/ddu_filer.lua'
 # }}}
 
 # Kind plugins {{{
