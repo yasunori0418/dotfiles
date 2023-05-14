@@ -3,15 +3,16 @@ local opt = { buffer = true, noremap = true }
 local opt_expr = { buffer = true, expr = true, noremap = true }
 
 local do_action = vim.fn['ddu#ui#do_action']
-local multi_actions = vim.fn['ddu#ui#multi_actionsdo_action']
+local multi_actions = vim.fn['ddu#ui#multi_actions']
+local get_item = vim.fn['ddu#ui#get_item']
 
-vim.g.ddu_ui_filer_prev_dirs = vim.empty_dict()
+-- vim.g.ddu_ui_filer_prev_dirs = vim.empty_dict()
 require('user.utils').keymaps_set({
-  {
+  { -- if directory then expand. if file then open.
     mode = "n",
     lhs = [[<CR>]],
     rhs = function()
-      if vim.fn['ddu#ui#get_item']()['isTree'] then
+      if get_item()['isTree'] then
         do_action('expandItem', { mode = 'toggle' })
       else
         do_action('itemAction', {
@@ -22,7 +23,7 @@ require('user.utils').keymaps_set({
     end,
     opts = opt_expr,
   },
-  {
+  { -- open select item with vertical split.
     mode = "n",
     lhs = [[v]],
     rhs = function()
@@ -33,7 +34,7 @@ require('user.utils').keymaps_set({
     end,
     opts = opt,
   },
-  {
+  { -- open select item with horizontal split
     mode = "n",
     lhs = [[s]],
     rhs = function()
@@ -44,7 +45,7 @@ require('user.utils').keymaps_set({
     end,
     opts = opt,
   },
-  {
+  { -- open select item with tabedit.
     mode = "n",
     lhs = [[t]],
     rhs = function()
@@ -55,111 +56,7 @@ require('user.utils').keymaps_set({
     end,
     opts = opt,
   },
-  {
-    mode = "n",
-    lhs = [[p]],
-    rhs = function()
-      do_action('preview')
-    end,
-    opts = opt,
-  },
-  {
-    mode = "n",
-    lhs = [[C]],
-    rhs = function()
-      multi_actions({
-        { 'itemAction', { name = 'copy' } },
-        { 'clearSelectAllItems' },
-      })
-    end,
-    opts = opt,
-  },
-  {
-    mode = "n",
-    lhs = [[M]],
-    rhs = function()
-      multi_actions({
-        { 'itemAction', { name = 'move' } },
-        { 'clearSelectAllItems' },
-      })
-    end,
-    opts = opt,
-  },
-  {
-    mode = "n",
-    lhs = [[P]],
-    rhs = function()
-      do_action('itemAction', { name = 'paste' })
-    end,
-    opts = opt,
-  },
-  {
-    mode = "n",
-    lhs = [[R]],
-    rhs = function()
-      do_action('itemAction', { name = 'rename' })
-    end,
-    opts = opt,
-  },
-  {
-    mode = "n",
-    lhs = [[ d]],
-    rhs = [[<Plug>(delete)]],
-    opts = opt,
-  },
-  {
-    mode = "n",
-    lhs = [[<Plug>(delete)d]],
-    rhs = function()
-      do_action('itemAction', { name = 'trash' })
-    end,
-    opts = opt,
-  },
-  {
-    mode = "n",
-    lhs = [[<Plug>(delete)D]],
-    rhs = function()
-      do_action('itemAction', { name = 'delete' })
-    end,
-    opts = opt,
-  },
-  {
-    mode = "n",
-    lhs = [[N]],
-    rhs = function()
-      do_action('itemAction', { name = 'newFile' })
-    end,
-    opts = opt,
-  },
-  {
-    mode = "n",
-    lhs = [[y]],
-    rhs = function()
-      do_action('itemAction', { name = 'yank' })
-      print('Yank path the "' .. vim.fn.getreg('+') .. '"')
-    end,
-    opts = opt,
-  },
-  {
-    mode = "n",
-    lhs = [[~]],
-    rhs = function()
-      do_action('itemAction', {
-        name = 'narrow',
-        params = { path = vim.env.HOME }
-      })
-    end,
-    opts = opt,
-  },
-  {
-    mode = "n",
-    lhs = [[a]],
-    rhs = function()
-      do_action('chooseAction')
-    end,
-    opts = opt,
-  },
-  {
+  { -- expand directory at selected.
     mode = "n",
     lhs = [[o]],
     rhs = function()
@@ -167,7 +64,7 @@ require('user.utils').keymaps_set({
     end,
     opts = opt,
   },
-  {
+  { -- expand all directories recursively
     mode = "n",
     lhs = [[O]],
     rhs = function()
@@ -175,7 +72,25 @@ require('user.utils').keymaps_set({
     end,
     opts = opt,
   },
-  {
+
+  -- support
+  { -- preview file... not working?
+    mode = "n",
+    lhs = [[p]],
+    rhs = function()
+      do_action('preview')
+    end,
+    opts = opt,
+  },
+  { -- show select action list
+    mode = "n",
+    lhs = [[a]],
+    rhs = function()
+      do_action('chooseAction')
+    end,
+    opts = opt,
+  },
+  { -- select item
     mode = "n",
     lhs = [[  ]],
     rhs = function()
@@ -183,7 +98,7 @@ require('user.utils').keymaps_set({
     end,
     opts = opt,
   },
-  {
+  { -- select all item
     mode = "n",
     lhs = [[*]],
     rhs = function()
@@ -191,7 +106,7 @@ require('user.utils').keymaps_set({
     end,
     opts = opt,
   },
-  {
+  { -- close filer window.
     mode = "n",
     lhs = [[q]],
     rhs = function()
@@ -199,7 +114,7 @@ require('user.utils').keymaps_set({
     end,
     opts = opt,
   },
-  {
+  { -- close filer window.
     mode = "n",
     lhs = [[<Esc>]],
     rhs = function()
@@ -207,7 +122,7 @@ require('user.utils').keymaps_set({
     end,
     opts = opt,
   },
-  {
+  { -- jump first line when last line.
     mode = "n",
     lhs = [[j]],
     rhs = function()
@@ -219,7 +134,7 @@ require('user.utils').keymaps_set({
     end,
     opts = opt_expr,
   },
-  {
+  { -- jump last line when first line.
     mode = "n",
     lhs = [[k]],
     rhs = function()
@@ -230,6 +145,97 @@ require('user.utils').keymaps_set({
       end
     end,
     opts = opt_expr,
+  },
+
+  -- file controll
+  { -- copy file_or_directory
+    mode = "n",
+    lhs = [[C]],
+    rhs = function()
+      multi_actions({
+        { 'itemAction', { name = 'copy' } },
+        { 'clearSelectAllItems' },
+      })
+    end,
+    opts = opt,
+  },
+  { -- move file_or_directory
+    mode = "n",
+    lhs = [[M]],
+    rhs = function()
+      multi_actions({
+        { 'itemAction', { name = 'move' } },
+        { 'clearSelectAllItems' },
+      })
+    end,
+    opts = opt,
+  },
+  { -- paste file_or_directory
+    mode = "n",
+    lhs = [[P]],
+    rhs = function()
+      do_action('itemAction', { name = 'paste' })
+    end,
+    opts = opt,
+  },
+  { -- rename
+    mode = "n",
+    lhs = [[R]],
+    rhs = function()
+      do_action('itemAction', { name = 'rename' })
+    end,
+    opts = opt,
+  },
+  { -- delete command prefix
+    mode = "n",
+    lhs = [[ d]],
+    rhs = [[<Plug>(delete)]],
+    opts = opt,
+  },
+  { -- mv `target_file_directory` $TRASH
+    mode = "n",
+    lhs = [[<Plug>(delete)d]],
+    rhs = function()
+      do_action('itemAction', { name = 'trash' })
+    end,
+    opts = opt,
+  },
+  { -- rm `target_file_directory`
+    mode = "n",
+    lhs = [[<Plug>(delete)D]],
+    rhs = function()
+      do_action('itemAction', { name = 'delete' })
+    end,
+    opts = opt,
+  },
+  { -- Create new file or directory
+    mode = "n",
+    lhs = [[N]],
+    rhs = function()
+      do_action('itemAction', { name = 'newFile' })
+    end,
+    opts = opt,
+  },
+  { -- yank path
+    mode = "n",
+    lhs = [[y]],
+    rhs = function()
+      do_action('itemAction', { name = 'yank' })
+      print('Yank path the "' .. vim.fn.getreg('+') .. '"')
+    end,
+    opts = opt,
+  },
+
+  { -- cd $HOME
+    mode = "n",
+    lhs = [[~]],
+    rhs = function()
+      do_action('itemAction', {
+        name = 'narrow',
+        params = { path = vim.env.HOME }
+      })
+    end,
+    opts = opt,
   },
 
   -- ディレクトリ移動系
