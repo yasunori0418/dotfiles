@@ -191,6 +191,46 @@ require('user.utils').keymaps_set({
     end,
     opts = opt,
   },
+  {
+    mode = "n",
+    lhs = [[q]],
+    rhs = function()
+      do_action('quit')
+    end,
+    opts = opt,
+  },
+  {
+    mode = "n",
+    lhs = [[<Esc>]],
+    rhs = function()
+      do_action('quit')
+    end,
+    opts = opt,
+  },
+  {
+    mode = "n",
+    lhs = [[j]],
+    rhs = function()
+      if vim.fn.line('.') == vim.fn.line('$') then
+        return [[ggj]]
+      else
+        return [[j]]
+      end
+    end,
+    opts = opt_expr,
+  },
+  {
+    mode = "n",
+    lhs = [[k]],
+    rhs = function()
+      if vim.fn.line('.') == 2 then
+        return [[G]]
+      else
+        return [[k]]
+      end
+    end,
+    opts = opt_expr,
+  },
 
   -- ディレクトリ移動系
   -- { -- Filer_parent_dir
