@@ -85,6 +85,11 @@ on_source = 'ddu.vim'
 repo = 'matsui54/ddu-source-dein_update'
 on_source = 'ddu.vim'
 
+[[plugins]]
+repo = 'Shougo/ddu-source-path_history'
+on_source = 'ddu.vim'
+
+
 
 # }}}
 
