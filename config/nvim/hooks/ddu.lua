@@ -295,7 +295,7 @@ vim.fn["ddu#custom#patch_global"]({
 
 vim.fn['ddu#custom#action']('kind', 'file', 'uiCd',
   function(args)
-    print(args.items)
+    vim.print(args)
   end
 )
 

@@ -359,6 +359,42 @@ require('user.utils').keymaps_set({
   --   end,
   --   opts = opt,
   -- },
+  {
+    mode = "n",
+    lhs = [[T]],
+    rhs = function()
+      do_action('itemAction', { name = 'uiCd' })
+    end,
+    opts = opt,
+  },
+  -- {
+  --   mode = "n",
+  --   lhs = [[]],
+  --   rhs = function()
+  --   end,
+  --   opts = opt,
+  -- },
+  -- {
+  --   mode = "n",
+  --   lhs = [[]],
+  --   rhs = function()
+  --   end,
+  --   opts = opt,
+  -- },
+  -- {
+  --   mode = "n",
+  --   lhs = [[]],
+  --   rhs = function()
+  --   end,
+  --   opts = opt,
+  -- },
+  -- {
+  --   mode = "n",
+  --   lhs = [[]],
+  --   rhs = function()
+  --   end,
+  --   opts = opt,
+  -- },
   -- {
   --   mode = "n",
   --   lhs = [[]],
