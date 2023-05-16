@@ -217,7 +217,10 @@ local source_options = {
   },
   dein_update = {
     matchers = {'matcher_dein_update'},
-  }
+  },
+  path_history = {
+    defaultAction = [[uiCd]],
+  },
 }
 
 local source_params = {
@@ -289,6 +292,12 @@ vim.fn["ddu#custom#patch_global"]({
   actionOptions = action_options,
   columnParams = column_params,
 })
+
+vim.fn['ddu#custom#action']('kind', 'file', 'uiCd',
+  function(args)
+    print(args.items)
+  end
+)
 
 -- UI:ff presets
 vim.fn['ddu#custom#patch_local']('current-ff', {
