@@ -147,7 +147,7 @@ require('user.utils').keymaps_set({
     opts = opt_expr,
   },
 
-  -- file controll
+  -- controll
   { -- copy file_or_directory
     mode = "n",
     lhs = [[C]],
@@ -213,6 +213,14 @@ require('user.utils').keymaps_set({
     lhs = [[N]],
     rhs = function()
       do_action('itemAction', { name = 'newFile' })
+    end,
+    opts = opt,
+  },
+  { -- undo
+    mode = "n",
+    lhs = [[u]],
+    rhs = function()
+      do_action('itemAction', { name = 'undo' })
     end,
     opts = opt,
   },
