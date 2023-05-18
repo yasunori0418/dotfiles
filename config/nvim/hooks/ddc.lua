@@ -215,7 +215,7 @@ end
 local expr_opt = { expr = true, noremap = true }
 local opt = { noremap = true, silent = true }
 require('user.utils').keymaps_set{
-  {
+  { -- {i, c}_<C-n>
     mode = {"i", "c"},
     lhs = [[<C-n>]],
     rhs = function()
@@ -227,7 +227,7 @@ require('user.utils').keymaps_set{
     end,
     opts = expr_opt,
   },
-  {
+  { -- {i, c}_<C-p>
     mode = {"i", "c"},
     lhs = [[<C-p>]],
     rhs = function()
@@ -239,19 +239,37 @@ require('user.utils').keymaps_set{
     end,
     opts = expr_opt,
   },
-  {
+  { -- {i, c}_<C-y>
     mode = {"i", "c"},
     lhs = [[<C-y>]],
     rhs = vim.fn['pum#map#confirm'],
-    opts = expr_opt,
+    opts = opt,
   },
-  {
-    mode = {"i", "c"},
+  { -- i_<C-e>
+    mode = "i",
     lhs = [[<C-e>]],
-    rhs = vim.fn['pum#map#cancel'],
+    rhs = function()
+      if vim.fn['pum#visible']() then
+        vim.fn['pum#map#cancel']()
+      else
+        return [[<C-G>U<End>]]
+      end
+    end,
     opts = expr_opt,
   },
-  {
+  { -- c_<C-e>
+    mode = "c",
+    lhs = [[<C-e>]],
+    rhs = function()
+      if vim.fn['pum#visible']() then
+        vim.fn['pum#map#cancel']()
+      else
+        return [[<END>]]
+      end
+    end,
+    opts = expr_opt,
+  },
+  { -- i_<C-x><C-l> manual_complete line
     mode = "i",
     lhs = [[<C-x><C-l>]],
     rhs = function()
@@ -259,15 +277,15 @@ require('user.utils').keymaps_set{
     end,
     opts = opt,
   },
-  {
+  { -- i_<C-x><C-n> manual_complete around, rg, buffer
     mode = "i",
     lhs = [[<C-x><C-n>]],
     rhs = function()
-      ddc_complete('around', 'buffer', 'rg')
+      ddc_complete('around', 'rg', 'buffer')
     end,
     opts = opt,
   },
-  {
+  { -- i_<C-x><C-f> manual_complete file
     mode = "i",
     lhs = [[<C-x><C-f>]],
     rhs = function()
@@ -275,7 +293,7 @@ require('user.utils').keymaps_set{
     end,
     opts = opt,
   },
-  {
+  { -- i_<C-x><C-d> manual_complete lsp
     mode = "i",
     lhs = [[<C-x><C-d>]],
     rhs = function()
@@ -283,7 +301,7 @@ require('user.utils').keymaps_set{
     end,
     opts = opt,
   },
-  {
+  { -- i_<C-x><C-v> manual_complete necovim, nvim-lua, cmdline
     mode = "i",
     lhs = [[<C-x><C-v>]],
     rhs = function()
@@ -291,7 +309,7 @@ require('user.utils').keymaps_set{
     end,
     opts = opt,
   },
-  {
+  { -- i_<C-x><C-f> manual_complete vsnip
     mode = "i",
     lhs = [[<C-x><C-s>]],
     rhs = function()
@@ -299,7 +317,7 @@ require('user.utils').keymaps_set{
     end,
     opts = opt,
   },
-  {
+  { -- i_<C-x><C-u> manual_complete
     mode = "i",
     lhs = [[<C-x><C-u>]],
     rhs = function()
