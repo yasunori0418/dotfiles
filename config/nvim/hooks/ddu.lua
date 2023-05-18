@@ -295,7 +295,11 @@ vim.fn["ddu#custom#patch_global"]({
 
 vim.fn['ddu#custom#action']('kind', 'file', 'uiCd',
   function(args)
-    vim.print(args)
+    local directory = vim.fn.fnamemodify(args.items[0].action.path, ':h')
+    vim.fn['ddu#ui#do_action']('itemAction', {
+      name = 'narrow',
+      params = { path = directory }
+    })
   end
 )
 
