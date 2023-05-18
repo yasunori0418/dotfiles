@@ -245,7 +245,66 @@ require('user.utils').keymaps_set({
     end,
     opts = opt,
   },
-
+  { -- path_history-filer
+    mode = "n",
+    lhs = [[H]],
+    rhs = function()
+      vim.fn['ddu#start']({ name = 'path_history-filer' })
+    end,
+    opts = opt,
+  },
+  {
+    mode = "n",
+    lhs = [[..]],
+    rhs = function()
+      do_action('itemAction', {
+        name = 'narrow',
+        params = { path = [[..]] }
+      })
+    end,
+    opts = opt,
+  },
+  {
+    mode = "n",
+    lhs = [[c]],
+    rhs = function()
+      do_action('itemAction', {
+        name = 'narrow',
+        params = {
+          path = get_item().action.path
+        }
+      })
+    end,
+    opts = opt,
+  },
+  -- {
+  --   mode = "n",
+  --   lhs = [[]],
+  --   rhs = function()
+  --   end,
+  --   opts = opt,
+  -- },
+  -- {
+  --   mode = "n",
+  --   lhs = [[]],
+  --   rhs = function()
+  --   end,
+  --   opts = opt,
+  -- },
+  -- {
+  --   mode = "n",
+  --   lhs = [[]],
+  --   rhs = function()
+  --   end,
+  --   opts = opt,
+  -- },
+  -- {
+  --   mode = "n",
+  --   lhs = [[]],
+  --   rhs = function()
+  --   end,
+  --   opts = opt,
+  -- },
   -- ディレクトリ移動系
   -- { -- Filer_parent_dir
   --   mode = "n",
@@ -348,65 +407,6 @@ require('user.utils').keymaps_set({
   --       name = 'narrow',
   --       params = { path = input_dir }
   --     })
-  --   end,
-  --   opts = opt,
-  -- },
-  -- {
-  --   mode = "n",
-  --   lhs = [[l]],
-  --   rhs = function()
-  --     do_action('cursorNext')
-  --   end,
-  --   opts = opt,
-  -- },
-  -- {
-  --   mode = "n",
-  --   lhs = [[h]],
-  --   rhs = function()
-  --     do_action('cursorPrevious')
-  --   end,
-  --   opts = opt,
-  -- },
-  {
-    mode = "n",
-    lhs = [[T]],
-    rhs = function()
-      do_action('itemAction', { name = 'uiCd' })
-    end,
-    opts = opt,
-  },
-  -- {
-  --   mode = "n",
-  --   lhs = [[]],
-  --   rhs = function()
-  --   end,
-  --   opts = opt,
-  -- },
-  -- {
-  --   mode = "n",
-  --   lhs = [[]],
-  --   rhs = function()
-  --   end,
-  --   opts = opt,
-  -- },
-  -- {
-  --   mode = "n",
-  --   lhs = [[]],
-  --   rhs = function()
-  --   end,
-  --   opts = opt,
-  -- },
-  -- {
-  --   mode = "n",
-  --   lhs = [[]],
-  --   rhs = function()
-  --   end,
-  --   opts = opt,
-  -- },
-  -- {
-  --   mode = "n",
-  --   lhs = [[]],
-  --   rhs = function()
   --   end,
   --   opts = opt,
   -- },
