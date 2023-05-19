@@ -53,8 +53,8 @@ on_source = 'ddu.vim'
 repo = '4513ECHO/vim-readme-viewer'
 on_cmd = 'ReadmeOpen'
 on_source = 'ddu.vim'
-hook_add = '''
-let g:readme_viewer#plugin_manager = 'dein.vim'
+lua_add = '''
+vim.g['readme_viewer#plugin_manager'] = [[dein.vim]]
 '''
 
 [[plugins]] # ddu-source-buffer
@@ -88,8 +88,6 @@ on_source = 'ddu.vim'
 [[plugins]]
 repo = 'Shougo/ddu-source-path_history'
 on_source = 'ddu.vim'
-
-
 
 # }}}
 
