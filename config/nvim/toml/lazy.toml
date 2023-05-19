@@ -100,13 +100,7 @@ vim.g['memolist_path'] = vim.fn.expand('~/Documents/memo')
 # Coding support plugins {{{
 [[plugins]] # lexima.vim
 repo = 'cohama/lexima.vim'
-hook_add = '''
-let g:lexima_no_default_rules = v:true
-let g:lexima_ctrlh_as_backspace = v:true
-'''
-hook_source = '''
-call lexima#set_default_rules()
-'''
+hooks_file = '~/dotfiles/config/nvim/hooks/lexima.lua'
 
 [[plugins]] # vim-eft
 repo = 'hrsh7th/vim-eft'
