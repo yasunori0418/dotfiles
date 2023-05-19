@@ -1,8 +1,8 @@
 # denops plugins
 [[plugins]] # denops.vim
 repo = 'vim-denops/denops.vim'
-hook_add = '''
-let g:denops_server_addr = '127.0.0.1:32123'
+lua_add = '''
+vim.g['denops_server_addr'] = [[127.0.0.1:32123]]
 '''
 
 [[plugins]] # skkeleton
