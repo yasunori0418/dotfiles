@@ -575,7 +575,7 @@ vim.fn['ddu#custom#patch_local']('home-filer', {
 })
 
 vim.fn['ddu#custom#patch_local']('path_history-filer', {
-  ui = 'filer',
+  ui = 'ff',
   sources = {
     { name = 'path_history' }
   },
