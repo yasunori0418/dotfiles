@@ -34,9 +34,9 @@ vim.g['context_filetype#ignore_patterns'] = {
 [[plugins]]
 repo = 'LeafCage/vimhelpgenerator'
 on_cmd = ['VimHelpGenerator', 'VimHelpGeneratorVirtual']
-hook_source = '''
-let g:vimhelpgenerator_author = 'yasunori-kirin0418'
-let g:vimhelpgenerator_uri = 'https://github.com/yasunori-kirin0418'
+lua_source = '''
+vim.g['vimhelpgenerator_author'] = [[yasunori-kirin0418]]
+vim.g['vimhelpgenerator_uri'] = [[https://github.com/yasunori-kirin0418]]
 '''
 
 [[plugins]] # nvim-notify
