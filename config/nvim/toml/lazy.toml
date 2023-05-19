@@ -23,10 +23,12 @@ hooks_file = '~/.config/nvim/hooks/lightline.lua'
 
 [[plugins]] # context_filetype.vim
 repo = 'Shougo/context_filetype.vim'
-hook_source = '''
-let g:context_filetype#ignore_patterns = {
-  \ 'toml': ['^\s*#\s*'],
-  \ }
+lua_source = '''
+vim.g.['context_filetype#ignore_patterns'] = {
+  toml = {
+    [[^\s*#\s*]],
+  }
+}
 '''
 
 [[plugins]] # vimproc.vim
