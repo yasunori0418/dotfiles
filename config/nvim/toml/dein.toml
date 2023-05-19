@@ -1,13 +1,13 @@
 
 [[plugins]] # dein.vim
 repo = 'Shougo/dein.vim'
+
 [[plugins]] # vimdoc-ja
 repo = 'vim-jp/vimdoc-ja'
+
 [[plugins]] # learn-vimscript
 repo = 'mattn/learn-vimscript'
 
 [[plugins]] # mr.vim
 repo = 'lambdalisue/mr.vim'
-hook_add = '''
-let g:mr#mru#predicates = [{ filename -> filename !~# 'COMMIT_EDITMSG' }]
-'''
+hooks_file = '~/dotfiles/config/nvim/hooks/mr.lua'
