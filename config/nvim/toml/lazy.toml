@@ -91,8 +91,8 @@ vim.keymap.set({"n", "x"}, [[gx]], [[<Plug>(openbrowser-smart-search)]], { norem
 [[plugins]]
 repo = 'glidenote/memolist.vim'
 on_cmd = ['MemoNew', 'MemoList', 'MemoNewWithMeta', 'MemoGrep']
-hook_source = '''
-let g:memolist_path = expand('~/Documents/memo')
+lua_source = '''
+vim.g['memolist_path'] = vim.fn.expand('~/Documents/memo')
 '''
 
 # }}}
