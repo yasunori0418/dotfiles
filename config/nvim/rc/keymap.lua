@@ -74,7 +74,7 @@ require('user.utils').keymaps_set{
   { mode = {"n"}, lhs = [[q]], rhs = "", opts = opts },
   { mode = {"i"}, lhs = [[jj]], rhs = [[<Esc>]], opts = opts },
   { mode = {"c"}, lhs = [[jj]], rhs = [[<Esc><C-l>]], opts = opts },
-  { mode = {"i", "c"}, lhs = [[<C-l>]], rhs = [[<Del>]], opts = opts },
+  { mode = {"i", "c"}, lhs = [[<C-l>]], rhs = [[<Del>]], opts = { noremap = true } },
 
   -- Emacs like
   -- 言う程、インサートモードで使わんのよね…
