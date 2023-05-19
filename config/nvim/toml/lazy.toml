@@ -130,24 +130,6 @@ repo = 'machakann/vim-sandwich'
 on_map = { nxo = '<Plug>(sandwich-' }
 hooks_file = '~/.config/nvim/hooks/sandwich.lua'
 
-[[plugins]]
-repo = 'yasunori-kirin0418/partial.vim'
-on_cmd = [
-  'PartialOpen',
-  'PartialEdit',
-  'PartialTabedit',
-  'PartialVsplit',
-  'PartialSplit',
-  'PartialCreate',
-  'PartialUpdate',
-  'PartialSurround',
-]
-hook_source = '''
-let g:partial#partial_path_prefix = ' '
-let g:partial#origin_path_prefix = ' '
-let g:partial#relative_base_path = '~/.cache/partial.vim'
-'''
-
 [[plugins]] # Comment.nvim
 repo = 'numToStr/Comment.nvim'
 depends = 'nvim-treesitter'
