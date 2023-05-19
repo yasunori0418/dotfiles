@@ -31,10 +31,6 @@ vim.g.['context_filetype#ignore_patterns'] = {
 }
 '''
 
-[[plugins]] # vimproc.vim
-repo = 'Shougo/vimproc.vim'
-build = 'make'
-
 [[plugins]]
 repo = 'LeafCage/vimhelpgenerator'
 on_cmd = ['VimHelpGenerator', 'VimHelpGeneratorVirtual']
