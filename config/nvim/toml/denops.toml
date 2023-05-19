@@ -59,6 +59,6 @@ repo = 'kat0h/bufpreview.vim'
 depends = ['denops.vim', 'open-browser.vim']
 build = 'deno task prepare'
 on_cmd = ['PreviewMarkdown', 'PreviewMarkdownToggle']
-hook_source = '''
-let g:bufpreview_server_port = '11223'
+lua_source = '''
+vim.g['bufpreview_server_port'] = '11223'
 '''
