@@ -3,12 +3,12 @@
 # Core plugins {{{
 [[plugins]] # pum.vim
 repo = 'Shougo/pum.vim'
-hook_source = '''
-call pum#set_option(#{
-  \ border: 'single',
-  \ scrollbar_char: '┃',
-  \ max_width: 90,
-  \ })
+lua_source = '''
+vim.fn['pum#set_option']({
+  border = [[single]],
+  scrollbar_char = [[┃]],
+  max_width = 90,
+})
 '''
 
 [[plugins]] # ddc-ui-pum
