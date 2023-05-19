@@ -34,12 +34,12 @@ hooks_file = '~/.config/nvim/hooks/silicon.lua'
 repo = 'yuki-yano/fuzzy-motion.vim'
 depends = ['denops.vim', 'kensaku.vim']
 on_cmd = ['FuzzyMotion']
-hook_add = '''
-nnoremap s/ <Cmd>FuzzyMotion<CR>
+lua_add = '''
+vim.keymap.set("n", [[s/]], [[<Cmd>FuzzyMotion<CR>]], { noremap = true })
 '''
-hook_source = '''
-let g:fuzzy_motion_auto_jump = v:true
-let g:fuzzy_motion_matchers = ['fzf', 'kensaku']
+lua_source = '''
+vim.g['fuzzy_motion_auto_jump'] = true
+vim.g['fuzzy_motion_matchers'] = { 'fzf', 'kensaku' }
 '''
 
 [[plugins]]
