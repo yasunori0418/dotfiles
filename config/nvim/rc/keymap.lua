@@ -83,7 +83,7 @@ require('user.utils').keymaps_set{
   -- { mode = {"i"}, lhs = [[<C-b>]], rhs = [[<C-G>U<Left>]], opts = opts },
   -- { mode = {"i"}, lhs = [[<C-e>]], rhs = [[<C-G>U<End>]], opts = opts },
   -- { mode = {"c"}, lhs = [[<C-e>]], rhs = [[<End>]], opts = { noremap = true } },
-  -- 一部の設定はddcのキーマップを確認
+  -- 行頭/行末ジャンプは設定はddcのキーマップを確認
   { mode = {"i"}, lhs = [[<C-a>]], rhs = [[<C-o>^]], opts = opts },
   { mode = {"c"}, lhs = [[<C-a>]], rhs = [[<Home>]], opts = { noremap = true } },
   { mode = {"c"}, lhs = [[<C-f>]], rhs = [[<Right>]], opts = { noremap = true } },
@@ -92,4 +92,6 @@ require('user.utils').keymaps_set{
   { mode = {"x", "o"}, lhs = [[a']], rhs = [[2i']], opts = opts },
   { mode = {"x", "o"}, lhs = [[a"]], rhs = [[2i"]], opts = opts },
   { mode = {"x", "o"}, lhs = [[a`]], rhs = [[2i`]], opts = opts },
+  { mode = {"x", "o"}, lhs = [[i ]], rhs = [[iW]], opts = opts },
+  { mode = {"x", "o"}, lhs = [[a ]], rhs = [[aW]], opts = opts },
 }
