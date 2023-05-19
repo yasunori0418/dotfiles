@@ -82,11 +82,10 @@ hooks_file = '~/.config/nvim/hooks/deol.lua'
 [[plugins]] # open-browser.vim
 repo = 'tyru/open-browser.vim'
 on_map = { 'nx' = '<Plug>(openbrowser-smart-search)' }
-hook_add = '''
-" open-browser.vim
-let g:netrw_nogx = 1 " disable netrw's gx mapping.
-nmap gx <Plug>(openbrowser-smart-search)
-xmap gx <Plug>(openbrowser-smart-search)
+lua_add = '''
+-- open-browser.vim
+vim.g['netrw_nogx'] = 1 -- disable netrw's gx mapping.
+vim.keymap.set({"n", "x"}, [[gx]], [[<Plug>(openbrowser-smart-search)]], { noremap = false })
 '''
 
 [[plugins]]
