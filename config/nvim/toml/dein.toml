@@ -1,3 +1,4 @@
+# Non-lazy plugins
 [[plugins]] # dein.vim
 repo = 'Shougo/dein.vim'
 
