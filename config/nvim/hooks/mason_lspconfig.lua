@@ -10,7 +10,7 @@ mason_lspconfig.setup({
     "lua_ls",
     "intelephense",
     "pyright",
-    "yamlls",
+    -- "yamlls",
     "bashls",
   },
   automatic_installation = true,
