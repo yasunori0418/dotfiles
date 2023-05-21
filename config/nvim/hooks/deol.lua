@@ -4,25 +4,28 @@ local utils = require('user.utils')
 ---@param path? string default: vim.fn.getcwd()
 ---@param split? string default: 'floating'
 ---@return table
-local function deol_create_option(path, split)
+local deol_create_option = function(path, split)
   path = path or vim.fn.getcwd()
   split = split or 'floating'
+
+  local winheight = ''
+  if vim.regex([[floating\|horizontal]]):match_str(split) then
+    winheight = '-winheight=' .. vim.fn.float2nr(vim.opt.lines:get() / 1.5)
+  end
+
+  local winwidth = ''
+  if vim.regex([[floating\|vertical]]):match_str(split) then
+    winwidth = '-winwidth=' .. vim.fn.float2nr(vim.opt.columns:get() / 1.5)
+  end
+
   local deol_opt = {
     'Deol',
     '-no-auto-cd',
     '-no-start-insert',
     '-cwd=' .. path,
     '-split=' .. split,
-    utils.conditional_operator{
-      c = vim.regex([[floating\|horizontal]]):match_str(split),
-      t = '-winheight=' .. vim.fn.float2nr(vim.opt.lines:get() / 1.5),
-      f = ''
-    },
-    utils.conditional_operator{
-      c = vim.regex([[floating\|vertical]]):match_str(split),
-      t = '-winwidth=' .. vim.fn.float2nr(vim.opt.columns:get() / 1.5),
-      f = '',
-    },
+    winwidth,
+    winheight,
     '-toggle',
   }
   return vim.fn.map(
@@ -32,6 +35,7 @@ local function deol_create_option(path, split)
     end
   )
 end
+
 local opt = { silent = true, noremap = true }
 utils.keymaps_set{
   { mode = "t", lhs = [[<Esc>]], rhs = [[<C-\><C-n>]], opts = opt },

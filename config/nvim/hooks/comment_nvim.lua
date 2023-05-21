@@ -1,6 +1,4 @@
 -- lua_add {{{
-local co = require('user.utils').conditional_operator
-
 local opt = { silent = true, noremap = false }
 local opt_expr = { silent = true, noremap = false, expr = true }
 
@@ -14,11 +12,11 @@ require('user.utils').keymaps_set{
     mode = {"n"},
     lhs = [[gcc]],
     rhs = function()
-      return co{
-        c = vim.v.count == 0,
-        t = [[<Plug>(comment_toggle_linewise_current)]],
-        f = [[<Plug>(comment_toggle_linewise_count)]]
-      }
+      if vim.v.count == 0 then
+        return [[<Plug>(comment_toggle_linewise_current)]]
+      else
+        return [[<Plug>(comment_toggle_linewise_count)]]
+      end
     end,
     opts = opt_expr,
   },
@@ -26,11 +24,11 @@ require('user.utils').keymaps_set{
     mode = {"n"},
     lhs = [[gbc]],
     rhs = function()
-      return co{
-        c = vim.v.count == 0,
-        t = [[<Plug>(comment_toggle_blockwise_current)]],
-        f = [[<Plug>(comment_toggle_blockwise_count)]]
-      }
+      if vim.v.count == 0 then
+        return [[<Plug>(comment_toggle_blockwise_current)]]
+      else
+        return [[<Plug>(comment_toggle_blockwise_count)]]
+      end
     end,
     opts = opt_expr,
   },
