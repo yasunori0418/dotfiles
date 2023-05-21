@@ -15,7 +15,7 @@ hooks_file = '~/.config/nvim/hooks/nightfox.lua'
 [[plugins]]
 repo = 'nvim-tree/nvim-web-devicons'
 lua_source = '''
-require('nvim-web-devicons').setup
+require('nvim-web-devicons').setup()
 '''
 
 # }}}
