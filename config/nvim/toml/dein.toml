@@ -10,7 +10,7 @@ repo = 'mattn/learn-vimscript'
 
 [[plugins]] # mr.vim
 repo = 'lambdalisue/mr.vim'
-hooks_file = '~/dotfiles/config/nvim/hooks/mr.lua'
+hooks_file = '$BASE_DIR/hooks/mr.lua'
 
 [[plugins]]
 repo = 'nvim-tree/nvim-web-devicons'

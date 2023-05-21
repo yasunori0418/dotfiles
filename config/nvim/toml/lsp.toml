@@ -6,20 +6,20 @@ depends = 'neodev.nvim'
 
 [[plugins]] # mason.nvim
 repo = 'williamboman/mason.nvim'
-hooks_file = '~/.config/nvim/hooks/mason.lua'
+hooks_file = '$BASE_DIR/hooks/mason.lua'
 
 [[plugins]] # mason-lspconfig.nvim
 repo = 'williamboman/mason-lspconfig.nvim'
 depends = ['nvim-lspconfig', 'mason.nvim', 'lspsaga.nvim']
 on_source = 'ddc.vim'
-hooks_file = '~/.config/nvim/hooks/mason_lspconfig.lua'
+hooks_file = '$BASE_DIR/hooks/mason_lspconfig.lua'
 
 # }}}
 
 # Support plugins {{{
 [[plugins]] # lspsaga.nvim
 repo = 'glepnir/lspsaga.nvim'
-hooks_file = '~/.config/nvim/hooks/lspsaga.lua'
+hooks_file = '$BASE_DIR/hooks/lspsaga.lua'
 
 [[plugins]] # denops-popup-preview.vim
 repo = 'matsui54/denops-popup-preview.vim'
@@ -38,7 +38,7 @@ vim.fn['signature_help#enable']()
 [[plugins]] # fidget.nvim
 repo = 'j-hui/fidget.nvim'
 on_event = 'LspAttach'
-hooks_file = '~/.config/nvim/hooks/fidget.lua'
+hooks_file = '$BASE_DIR/hooks/fidget.lua'
 
 [[plugins]] # neodev.nvim
 repo = 'folke/neodev.nvim'
@@ -54,12 +54,12 @@ repo = 'nvim-lua/plenary.nvim'
 [[plugins]] # null-ls.nvim
 repo = 'jose-elias-alvarez/null-ls.nvim'
 depends = 'plenary.nvim'
-hooks_file = '~/.config/nvim/hooks/null_ls.lua'
+hooks_file = '$BASE_DIR/hooks/null_ls.lua'
 
 [[plugins]] # mason-null-ls.nvim
 repo = 'jay-babu/mason-null-ls.nvim'
 depends = 'null-ls.nvim'
 on_source = 'mason-lspconfig.nvim'
-hooks_file = '~/.config/nvim/hooks/mason_null_ls.lua'
+hooks_file = '$BASE_DIR/hooks/mason_null_ls.lua'
 
 # }}}
