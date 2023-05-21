@@ -13,7 +13,7 @@ build = 'bash $HOME/dotfiles/bin/skk_dict.sh'
 hooks_file = '$BASE_DIR/hooks/skkeleton.lua'
 
 [[plugins]] # lightline_skk.vim
-repo = 'yasunori-kirin0418/lightline_skk.vim'
+repo = 'yasunori0418/lightline_skk.vim'
 on_source = 'skkeleton'
 hooks_file = '$BASE_DIR/hooks/lightline_skk.lua'
 

@@ -24,7 +24,7 @@ echo -e "\n\n\n\n\n\n\n\n\n\n"
 
 cd $HOME
 
-git clone --recursive https://github.com/yasunori-kirin0418/dotfiles.git
+git clone --recursive https://github.com/yasunori0418/dotfiles.git
 
 ln -svf ~/dotfiles/modules/nord-dircolors/src/dir_colors ~/dotfiles/home/.dir_colors
 bash ~/dotfiles/modules/SKK_Keymap_L2X/install.sh
