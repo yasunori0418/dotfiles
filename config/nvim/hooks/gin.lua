@@ -7,7 +7,12 @@ require('user.utils').keymaps_set{
   { mode = {"n"}, lhs = [[<Plug>(git)ps]], rhs = [[<Cmd>Gin push<CR>]], opts = opt },
   { mode = {"n"}, lhs = [[<Plug>(git)c]], rhs = [[<Cmd>Gin commit<CR>]], opts = opt },
   { mode = {"n"}, lhs = [[<Plug>(git)b]], rhs = [[<Cmd>GinBranch<CR>]], opts = opt },
+  { mode = {"n"}, lhs = [[<Plug>(git)B]], rhs = [[<Cmd>Gina blame<CR>]], opts = opt },
 }
+-- }}}
+
+-- lua_source {{{
+vim.fn['gina#custom#command#option']('blame', '--opener', 'tabedit')
 -- }}}
 
 -- lua_gin-log {{{

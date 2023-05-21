@@ -107,6 +107,12 @@ on_source = 'ddu.vim'
 [[plugins]]
 repo = 'kuuote/ddu-filter-fuse'
 on_source = 'ddu.vim'
+
+[[plugins]]
+repo = 'uga-rosa/ddu-filter-converter_devicon'
+depends = 'nvim-web-devicons'
+on_source = 'ddu.vim'
+
 # }}}
 
 [[plugins]] # ddu-column-icon_filename
