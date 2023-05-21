@@ -11,3 +11,9 @@ repo = 'mattn/learn-vimscript'
 [[plugins]] # mr.vim
 repo = 'lambdalisue/mr.vim'
 hooks_file = '~/dotfiles/config/nvim/hooks/mr.lua'
+
+[[plugins]]
+repo = 'nvim-tree/nvim-web-devicons'
+lua_source = '''
+require('nvim-web-devicons').setup()
+'''

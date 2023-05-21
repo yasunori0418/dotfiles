@@ -110,7 +110,6 @@ on_source = 'ddu.vim'
 
 [[plugins]]
 repo = 'uga-rosa/ddu-filter-converter_devicon'
-depends = 'nvim-web-devicons'
 on_source = 'ddu.vim'
 
 # }}}

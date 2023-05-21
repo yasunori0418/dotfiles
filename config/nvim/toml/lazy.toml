@@ -12,12 +12,6 @@ depends = ['nvim-treesitter']
 on_event = 'VimEnter'
 hooks_file = '~/.config/nvim/hooks/nightfox.lua'
 
-[[plugins]]
-repo = 'nvim-tree/nvim-web-devicons'
-lua_source = '''
-require('nvim-web-devicons').setup()
-'''
-
 # }}}
 
 # Editor support plugins {{{
