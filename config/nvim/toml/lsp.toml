@@ -24,15 +24,15 @@ hooks_file = '~/.config/nvim/hooks/lspsaga.lua'
 [[plugins]] # denops-popup-preview.vim
 repo = 'matsui54/denops-popup-preview.vim'
 on_source = 'ddc.vim'
-hook_source = '''
-call popup_preview#enable()
+lua_source = '''
+vim.fn['popup_preview#enable']()
 '''
 
 [[plugins]] # denops-signature_help
 repo = 'matsui54/denops-signature_help'
 on_event = 'LspAttach'
-hook_source = '''
-call signature_help#enable()
+lua_source = '''
+vim.fn['signature_help#enable']()
 '''
 
 [[plugins]] # fidget.nvim
