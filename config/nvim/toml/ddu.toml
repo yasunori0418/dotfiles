@@ -113,3 +113,10 @@ repo = 'uga-rosa/ddu-filter-converter_devicon'
 on_source = 'ddu.vim'
 
 # }}}
+
+# Column plugins {{{
+[[plugins]] # ddu-column-icon_filename
+repo = 'ryota2357/ddu-column-icon_filename'
+on_source = 'ddu.vim'
+
+# }}}

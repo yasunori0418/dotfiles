@@ -207,9 +207,10 @@ local source_options = {
     matchers = { "matcher_substring" },
     converters = { "converter_devicon" },
   },
-  -- file = {
-    -- columns = { "icon_filename" },
-  -- },
+  file = {
+    columns = { "icon_filename" },
+    converters = {},
+  },
   dein = {
     defaultAction = [[cd]],
   },
@@ -273,6 +274,16 @@ local action_options = {
   echoDiff = { quit = false },
 }
 
+local column_params = {
+  icon_filename = {
+    span = 2,
+    iconWidth = 2,
+    defaultIcon = {
+      icon = [[]],
+    },
+  },
+}
+
 -- Global option and param
 vim.fn["ddu#custom#patch_global"]({
   uiOptions = ui_options,
@@ -281,6 +292,7 @@ vim.fn["ddu#custom#patch_global"]({
   sourceParams = source_params,
   kindOptions = kind_options,
   actionOptions = action_options,
+  columnParams = column_params,
 })
 
 vim.fn['ddu#custom#action']('kind', 'file', 'uiCd',
