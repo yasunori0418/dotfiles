@@ -41,10 +41,4 @@ M.keymaps_set = function(keymaps)
 end
 
 
----luaには三項演算子というような代物等はなく…
----@param expression { c: function|boolean, t: function|string, f: function|string }
-M.conditional_operator = function(expression)
-  return expression.c and expression.t or expression.f
-end
-
 return M
