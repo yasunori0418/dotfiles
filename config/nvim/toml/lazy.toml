@@ -84,7 +84,7 @@ repo = 'tyru/open-browser.vim'
 on_map = { 'nx' = '<Plug>(openbrowser-smart-search)' }
 lua_add = '''
 -- open-browser.vim
-vim.g['netrw_nogx'] = 1 -- disable netrw's gx mapping.
+vim.g.netrw_nogx = 1 -- disable netrw's gx mapping.
 vim.keymap.set({"n", "x"}, [[gx]], [[<Plug>(openbrowser-smart-search)]], { noremap = false })
 '''
 
@@ -92,7 +92,7 @@ vim.keymap.set({"n", "x"}, [[gx]], [[<Plug>(openbrowser-smart-search)]], { norem
 repo = 'glidenote/memolist.vim'
 on_cmd = ['MemoNew', 'MemoList', 'MemoNewWithMeta', 'MemoGrep']
 lua_source = '''
-vim.g['memolist_path'] = vim.fn.expand('~/Documents/memo')
+vim.g.memolist_path = vim.fn.expand('~/Documents/memo')
 '''
 
 # }}}

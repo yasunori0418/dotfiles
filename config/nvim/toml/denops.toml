@@ -2,7 +2,7 @@
 [[plugins]] # denops.vim
 repo = 'vim-denops/denops.vim'
 lua_add = '''
-vim.g['denops_server_addr'] = [[127.0.0.1:32123]]
+vim.g.denops_server_addr = [[127.0.0.1:32123]]
 '''
 
 [[plugins]] # skkeleton
@@ -60,5 +60,5 @@ depends = ['denops.vim', 'open-browser.vim']
 build = 'deno task prepare'
 on_cmd = ['PreviewMarkdown', 'PreviewMarkdownToggle']
 lua_source = '''
-vim.g['bufpreview_server_port'] = '11223'
+vim.g.bufpreview_server_port = '11223'
 '''

@@ -11,6 +11,7 @@ local dein_repo = dein_dir .. "/repos/github.com/Shougo/dein.vim"
 
 -- my neovim config directory.
 vim.g.base_dir = vim.fn.fnamemodify(vim.env.MYVIMRC, ":h")
+vim.env.BASE_DIR = vim.g.base_dir
 
 -- vimrc files written by lua script.
 local vimrcs_dir = vim.g.base_dir .. "/rc/"
