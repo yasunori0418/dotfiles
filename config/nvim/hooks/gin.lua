@@ -1,6 +1,7 @@
 -- lua_add {{{
 local opt = {silent = true, noremap = true}
 require('user.utils').keymaps_set{
+  { mode = {"n"}, lhs = [[<C-g>]], rhs = [[<Plug>(git)]], opts = {} },
   { mode = {"n"}, lhs = [[<Plug>(git)s]], rhs = [[<Cmd>GinStatus<CR>]], opts = opt },
   { mode = {"n"}, lhs = [[<Plug>(git)l]], rhs = [[<Cmd>GinLog ++opener=vsplit --graph --all --abbrev-commit --oneline<CR>]], opts = opt },
   { mode = {"n"}, lhs = [[<Plug>(git)pl]], rhs = [[<Cmd>Gin pull<CR>]], opts = opt },

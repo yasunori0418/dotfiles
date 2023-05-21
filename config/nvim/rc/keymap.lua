@@ -17,12 +17,8 @@ require('user.utils').keymaps_set{
   { mode = {"", "!"}, lhs = [[<Up>]], rhs = [[<Nop>]], opts = opts },
   { mode = {"", "!"}, lhs = [[<Right>]], rhs = [[<Nop>]], opts = opts },
 
-  -- keymap prefix for lsp plugins
-  { mode = {"n"}, lhs = [[ l]], rhs = [[<Plug>(lsp)]], opts = {} },
-  { mode = {"n"}, lhs = [[<C-g>]], rhs = [[<Plug>(git)]], opts = {} },
-  { mode = {"n"}, lhs = [[ w]], rhs = [[<Plug>(Window)]], opts = {} },
-
   -- window
+  { mode = {"n"}, lhs = [[ w]], rhs = [[<Plug>(Window)]], opts = {} },
   { mode = {"n"}, lhs = [[<Plug>(Window)w]], rhs = [[<Cmd>update<CR>]], opts = opts },
   { mode = {"n"}, lhs = [[<Plug>(Window)W]], rhs = [[<Cmd>write<CR>]], opts = opts },
   { mode = {"n"}, lhs = [[<Plug>(Window)h]], rhs = [[<C-W>h]], opts = opts },
