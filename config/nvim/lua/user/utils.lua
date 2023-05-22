@@ -70,7 +70,7 @@ end
 ---@return string
 M.search_repo_root = function()
   local result = io.popen('git root', 'r'):read('*l')
-  if result ~= nil then
+  if result then
     return result
   end
   return vim.fn.expand('%:p:h')
