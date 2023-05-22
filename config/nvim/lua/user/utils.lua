@@ -1,9 +1,10 @@
-local autocmd = vim.api.nvim_create_autocmd
 local M = {}
+local autocmd = vim.api.nvim_create_autocmd
 
 ---全体共通設定のaugroup_id
 ---@return integer
 M.vimrc_augroup = vim.api.nvim_create_augroup('vimrc', {clear = false})
+
 
 ---autocmd単発用
 ---自動でvimrcグループにセットする
@@ -20,6 +21,7 @@ M.autocmd_set = function (events, pattern, callback, group)
   })
 end
 
+
 ---複数のautocmdを定義する
 ---@param autocmds { events: string|table, pattern: table|string, group: integer, callback: function|string }
 M.autocmds_set = function (autocmds)
@@ -32,6 +34,7 @@ M.autocmds_set = function (autocmds)
   end
 end
 
+
 ---複数のキーマップを定義する。
 ---@param keymaps { mode: table|string, lhs: string, rhs: string|function, opts: table|nil }
 M.keymaps_set = function(keymaps)
@@ -40,5 +43,23 @@ M.keymaps_set = function(keymaps)
   end
 end
 
+
+---1行で書かれているAPI Tokenのファイルを読み込む
+---@params path string -- Tokenファイルがあるパスを指定する。
+---@return table { result: bool, token: string }
+M.load_token = function(path)
+  local token = io.open(path, 'r'):read()
+  if token ~= nil then
+    return {
+      result = true,
+      token = token,
+    }
+  else
+    return {
+      result = false,
+      token = 'Can not read pat file.',
+    }
+  end
+end
 
 return M

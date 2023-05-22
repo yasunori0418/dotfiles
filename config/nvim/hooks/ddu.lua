@@ -521,7 +521,7 @@ vim.api.nvim_create_user_command(
   function(opts)
     local use_graph_ql = false
     if opts.bang then
-      use_graph_ql = vim.fn['vimrc#is_github_pat']()
+      use_graph_ql = require('user.plugins.dein').check_github_token()
     end
     vim.fn['ddu#start']({
       name ='dein_update-ff',
