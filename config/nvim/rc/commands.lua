@@ -1,11 +1,5 @@
 local command = vim.api.nvim_create_user_command
 
-command('Cleareg',
-  function()
-    vim.fn['vimrc#clear_register']()
-  end,
-  {})
-
 command('DeinDelete',
   function()
     vim.fn['vimrc#dein_check_uninstall']()
