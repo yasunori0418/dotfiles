@@ -1,6 +1,7 @@
 -- lua_add {{{
 local opt = { noremap = false }
-require("user.utils").keymaps_set({
+local utils = require('user.utils')
+utils.keymaps_set({
   -- ddu start prefixes
   { mode = "n", lhs = [[ d]], rhs = [[<Plug>(ddu-ff)]],    opts = opt },
   { mode = "n", lhs = [[ f]], rhs = [[<Plug>(ddu-filer)]], opts = opt },
@@ -14,7 +15,7 @@ require("user.utils").keymaps_set({
         name = "current-ff",
         sourceOptions = {
           file_rec = {
-            path = vim.fn["vimrc#search_repo_root"](),
+            path = utils.search_repo_root(),
           },
         },
       })
@@ -127,7 +128,7 @@ require("user.utils").keymaps_set({
         name = "project_root-filer",
         sourceOptions = {
           file = {
-            path = vim.fn["vimrc#search_repo_root"](),
+            path = utils.search_repo_root(),
           },
         },
       })
