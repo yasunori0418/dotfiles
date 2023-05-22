@@ -1,13 +1,5 @@
 
 " My helper functions
-function! vimrc#search_repo_root() abort
-  let repo_root = systemlist('git root')[0]
-  if v:shell_error != 0
-    return expand('%:p:h')
-  endif
-  return repo_root
-endfunction
-
 function! vimrc#signcolumn() abort
   silent!
   if &number
