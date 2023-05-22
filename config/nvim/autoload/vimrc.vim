@@ -1,22 +1,5 @@
 
 " My helper functions
-function! vimrc#read_pat(path) abort
-  let pat_path = a:path
-  if filereadable(pat_path)
-    return [v:true, readfile(pat_path)[0]]
-  endif
-  return [v:false, 'Can not read pat file.']
-endfunction
-
-function! vimrc#is_github_pat() abort
-  let result_read_pat = vimrc#read_pat(g:base_dir . '/github_pat')
-  if result_read_pat[0]
-    let g:dein#install_github_api_token = result_read_pat[1]
-    return v:true
-  endif
-  return v:false
-endfunction
-
 function! vimrc#search_repo_root() abort
   let repo_root = systemlist('git root')[0]
   if v:shell_error != 0
