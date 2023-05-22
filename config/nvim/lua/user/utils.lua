@@ -48,7 +48,7 @@ end
 ---@params path string -- Tokenファイルがあるパスを指定する。
 ---@return table { result: bool, token: string }
 M.load_token = function(path)
-  local token = io.open(path, 'r'):read()
+  local token = io.open(path, 'r'):read('*l')
   if token ~= nil then
     return {
       result = true,
@@ -61,5 +61,20 @@ M.load_token = function(path)
     }
   end
 end
+
+
+---現在のディレクトリからリポジトリルートのパスを取得する。
+---gitconfigにて`git root`の定義が必須
+---Gitリポジトリのルートパスまたは、
+---Gitリポジトリでなければ、現在バッファーのディレクトリを返す
+---@return string
+M.search_repo_root = function()
+  local result = io.popen('git root', 'r'):read('*l')
+  if result ~= nil then
+    return result
+  end
+  return vim.fn.expand('%:p:h')
+end
+
 
 return M
