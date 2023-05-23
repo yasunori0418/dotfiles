@@ -65,7 +65,7 @@ require('user.utils').keymaps_set{
 
   { mode = {"n"}, lhs = [[gf]], rhs = [[gF]], opts = opts },
   { mode = {"n"}, lhs = [[<C-l>]], rhs = [[<Cmd>nohlsearch<Bar>diffupdate<CR><C-l>]], opts = opts },
-  { mode = {"n"}, lhs = [[ n]], rhs = vim.fn['vimrc#signcolumn'], opts = opts },
+  { mode = {"n"}, lhs = [[ n]], rhs = require('user.utils').toggle_view, opts = opts },
   { mode = {"n"}, lhs = [[Q]], rhs = [[q]], opts = opts },
   { mode = {"n"}, lhs = [[q]], rhs = "", opts = opts },
   { mode = {"i"}, lhs = [[jj]], rhs = [[<Esc>]], opts = opts },
