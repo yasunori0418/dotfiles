@@ -65,6 +65,13 @@ vim.g.lightline = {
   component_function = component_function,
 }
 
--- command! -bar LightlineUpdate call lightline#init()| call lightline#colorscheme()| call lightline#update()
-
+vim.api.nvim_create_user_command(
+  'LightlineUpdate',
+  function()
+    vim.fn['lightline#init']()
+    vim.fn['lightline#colorscheme']()
+    vim.fn['lightline#update']()
+  end,
+  {}
+)
 -- }}}
