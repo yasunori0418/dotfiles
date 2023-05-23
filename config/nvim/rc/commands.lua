@@ -1,4 +1,5 @@
 local command = vim.api.nvim_create_user_command
+local dein = require('dein')
 
 command('DeinDelete',
   function()
@@ -8,7 +9,7 @@ command('DeinDelete',
 
 command('DeinRecache',
   function()
-    vim.fn['dein#recache_runtimepath']()
+    dein.recache_runtimepath()
     vim.cmd 'qall'
   end,
   {})
