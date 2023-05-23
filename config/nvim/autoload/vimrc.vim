@@ -1,18 +1,4 @@
 
-" My helper functions
-function! vimrc#signcolumn() abort
-  silent!
-  if &number
-    set nonumber norelativenumber
-    lua require('gitsigns').toggle_signs(false)
-    lua require('gitsigns').toggle_linehl(true)
-  else
-    set number relativenumber
-    lua require('gitsigns').toggle_signs(true)
-    lua require('gitsigns').toggle_linehl(false)
-  endif
-endfunction
-
 " dein feature expand functions
 function! vimrc#dein_update(bang_flg) abort
   if vimrc#is_github_pat() && a:bang_flg == 0
