@@ -3,7 +3,7 @@ local dein = require('dein')
 
 command('DeinDelete',
   function()
-    vim.fn['vimrc#dein_check_uninstall']()
+    require('user.plugins.dein').check_uninstall()
   end,
   {})
 
