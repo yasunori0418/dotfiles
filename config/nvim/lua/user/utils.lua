@@ -77,4 +77,23 @@ M.search_repo_root = function()
 end
 
 
+---signcolumnをtoggleする。
+M.toggle_view = function()
+  local gitsigns = require('gitsigns')
+  if vim.opt.number:get() then
+    vim.opt.number = false
+    vim.opt.relativenumber = false
+    vim.opt.laststatus = 0
+    vim.opt.showtabline = 0
+    gitsigns.toggle_signs(false)
+  else
+    vim.opt.number = true
+    vim.opt.relativenumber = true
+    vim.opt.laststatus = 3
+    vim.opt.showtabline = 2
+    gitsigns.toggle_signs(true)
+  end
+end
+
+
 return M
