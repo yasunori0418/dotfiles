@@ -1,24 +1,4 @@
 
-" dein feature expand functions
-function! vimrc#dein_check_uninstall() abort
-  let remove_plugins = dein#check_clean()
-  if len(remove_plugins) > 0
-    for remove_plugin in remove_plugins
-      echo remove_plugin
-    endfor
-    let choice = confirm('Would you like to remove those plugins?', "&Yes\n&no", 1)
-    if choice == 1
-      call map(remove_plugins, "delete(v:val, 'rf')")
-      call dein#recache_runtimepath()
-      echo 'Remove Plugins ...done!'
-    else
-      echo 'Remove Plugins ...abort!'
-    endif
-  else
-    echo 'There are no plugins to remove.'
-  endif
-endfunction
-
 function! vimrc#lightline_git_branch() abort
   if gitbranch#name() ==# ''
     return ''
