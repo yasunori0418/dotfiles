@@ -1,18 +1,5 @@
 
 " dein feature expand functions
-function! vimrc#dein_update(bang_flg) abort
-  if vimrc#is_github_pat() && a:bang_flg == 0
-    lua vim.notify('exists github_pat', 'info')
-    call dein#check_update(v:true)
-  elseif a:bang_flg
-    lua vim.notify('use bang flag', 'info')
-    call dein#update()
-  else
-    lua vim.notify('not exists github_pat', 'info')
-    call dein#update()
-  endif
-endfunction
-
 function! vimrc#dein_check_uninstall() abort
   let remove_plugins = dein#check_clean()
   if len(remove_plugins) > 0
