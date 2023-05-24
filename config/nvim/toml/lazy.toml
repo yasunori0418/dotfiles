@@ -137,6 +137,11 @@ on_map = { nox = '<Plug>(comment_toggle_' }
 on_event = ['CursorHold']
 hooks_file = '$BASE_DIR/hooks/comment_nvim.lua'
 
+[[plugins]]
+repo = 'yioneko/nvim-yati'
+on_source = 'nvim-treesitter'
+
+
 [[plugins]] # vim-themis
 repo = 'thinca/vim-themis'
 on_cmd = 'StartThemis'

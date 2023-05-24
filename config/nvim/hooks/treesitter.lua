@@ -10,5 +10,13 @@ require("nvim-treesitter.configs").setup({
       'vimdoc',
     },
   },
+  indent = {
+    enable = false
+  },
+  yati = {
+    enable = true,
+    default_lazy = true,
+    default_fallback = "auto",
+  },
 })
 -- }}}
