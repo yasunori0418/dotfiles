@@ -10,11 +10,5 @@ require("nvim-treesitter.configs").setup({
       'vimdoc',
     },
   },
-  indent = {
-    enable = true,
-    disable = {
-      'vimdoc',
-    },
-  },
 })
 -- }}}
