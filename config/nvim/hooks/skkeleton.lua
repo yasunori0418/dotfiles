@@ -4,13 +4,15 @@ vim.keymap.set({"i", "c"}, [[<C-j>]], [[<Plug>(skkeleton-toggle)]], {noremap = f
 
 -- lua_source {{{
 local skkeleton_autocmds = vim.api.nvim_create_augroup('skkeleton_autocmds', { clear = true })
+local skkeleton = require('user.plugins.skkeleton')
+
 require('user.utils').autocmds_set{
   { -- skkeleton-initialize-pre
     events = "User",
     pattern = "skkeleton-initialize-pre",
     group = skkeleton_autocmds,
     callback = function()
-      vim.fn['vimrc#skkeleton_init']()
+      skkeleton.init()
     end,
   },
   { -- skkeleton-enable-pre
