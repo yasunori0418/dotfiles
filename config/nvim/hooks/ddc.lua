@@ -102,9 +102,8 @@ vim.fn['ddc#custom#patch_global']('sourceOptions', {
     },
   skkeleton = {
     mark = 'SKK',
-    matchers = {'skkeleton'},
-    sorters = vim.empty_dict(),
-    minAutoCompleteLength = 2,
+    matchers = { 'skkeleton' },
+    sorters = { 'sorter_rank' },
     isVolatile = true,
     },
   })
