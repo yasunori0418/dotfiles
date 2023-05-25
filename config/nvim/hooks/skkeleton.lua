@@ -13,7 +13,7 @@ require('user.utils').autocmds_set{
       vim.fn['vimrc#skkeleton_init']()
     end,
   },
-  {
+  { -- skkeleton-enable-pre
     events = "User",
     pattern = "skkeleton-enable-pre",
     group = skkeleton_autocmds,
@@ -21,7 +21,7 @@ require('user.utils').autocmds_set{
       vim.fn['vimrc#skkeleton_pre']()
     end,
   },
-  {
+  { -- skkeleton-disable-pre
     events = "User",
     pattern = "skkeleton-disable-pre",
     group = skkeleton_autocmds,
@@ -29,7 +29,7 @@ require('user.utils').autocmds_set{
       vim.fn['vimrc#skkeleton_post']()
     end,
   },
-  {
+  { -- redrawing(mode) on InsertLeave
     events = "InsertLeave",
     pattern = "*",
     group = skkeleton_autocmds,
