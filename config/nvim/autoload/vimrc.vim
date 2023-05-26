@@ -25,15 +25,6 @@ function! vimrc#lightline_custom_mode() abort
   return lightline#mode()
 endfunction
 
-" vim-molder function
-function! vimrc#molder_init() abort
-  if isdirectory(expand('%:p'))
-    call dein#source('vim-molder')
-    call molder#init()
-    autocmd! vimrc_molder
-  endif
-endfunction
-
 function! vimrc#molder_change_cwd() abort
   if &filetype ==# 'molder'
     let molder_cwd = substitute(bufname('%'), expand('~'), '~', '')
