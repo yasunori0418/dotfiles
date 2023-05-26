@@ -23,6 +23,6 @@ require('user.utils').keymaps_set{
   { mode = {"n"}, lhs = [[R]], rhs = [[<Plug>(molder-operations-rename)]], opts = opt },
   { mode = {"n"}, lhs = [[S]], rhs = [[<Plug>(molder-operations-shell)]], opts = opt },
   { mode = {"n"}, lhs = [[!]], rhs = [[<Plug>(molder-operations-command)]], opts = opt },
-  { mode = {"n"}, lhs = [[C]], rhs = vim.fn['vimrc#molder_change_cwd'], opts = opt },
+  { mode = {"n"}, lhs = [[C]], rhs = require('user.plugins.molder').cd, opts = opt },
 }
 -- }}}
