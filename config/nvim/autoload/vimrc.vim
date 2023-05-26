@@ -24,12 +24,3 @@ function! vimrc#lightline_custom_mode() abort
 
   return lightline#mode()
 endfunction
-
-function! vimrc#molder_change_cwd() abort
-  if &filetype ==# 'molder'
-    let molder_cwd = substitute(bufname('%'), expand('~'), '~', '')
-    let molder_cwd = substitute(molder_cwd, '/$', '', '')
-    call chdir(molder_cwd)
-    echomsg 'Change current working directory to [' . molder_cwd . ']'
-  endif
-endfunction
