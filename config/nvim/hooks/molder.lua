@@ -3,7 +3,7 @@ require('user.utils').autocmd_set(
   "BufEnter",
   "*",
   function()
-    vim.fn["vimrc#molder_init"]()
+    require('user.plugins.molder').init()
   end,
   vim.api.nvim_create_augroup('vimrc_molder', { clear = true })
 )
