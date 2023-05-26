@@ -25,31 +25,6 @@ function! vimrc#lightline_custom_mode() abort
   return lightline#mode()
 endfunction
 
-function! vimrc#ddc_change_filter(bang_flg, filter_name) abort
-  if a:filter_name ==# 'normal'
-    call ddc#custom#patch_global('sourceOptions', {
-      \ '_': {
-        \ 'ignoreCase': v:true,
-        \ 'matchers': ['matcher_head', 'matcher_length'],
-        \ 'sorters': ['sorter_rank'],
-        \ 'converters': ['converter_remove_overlap'],
-        \ },
-      \ })
-  elseif a:filter_name ==# 'fuzzy'
-    call ddc#custom#patch_global('sourceOptions', {
-      \ '_': {
-        \ 'ignoreCase': v:true,
-        \ 'matchers': ['matcher_fuzzy'],
-        \ 'sorters': ['sorter_fuzzy'],
-        \ 'converters': ['converter_fuzzy'],
-        \ },
-      \ })
-  endif
-  if a:bang_flg == 1
-    echo ddc#custom#get_global()['sourceOptions']['_']
-  endif
-endfunction
-
 " vim-molder function
 function! vimrc#molder_init() abort
   if isdirectory(expand('%:p'))
