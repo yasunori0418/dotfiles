@@ -10,17 +10,13 @@ hooks_file = '$BASE_DIR/hooks/mason.lua'
 
 [[plugins]] # mason-lspconfig.nvim
 repo = 'williamboman/mason-lspconfig.nvim'
-depends = ['nvim-lspconfig', 'mason.nvim', 'lspsaga.nvim']
+depends = ['nvim-lspconfig', 'mason.nvim']
 on_source = 'ddc.vim'
 hooks_file = '$BASE_DIR/hooks/mason_lspconfig.lua'
 
 # }}}
 
 # Support plugins {{{
-[[plugins]] # lspsaga.nvim
-repo = 'glepnir/lspsaga.nvim'
-hooks_file = '$BASE_DIR/hooks/lspsaga.lua'
-
 [[plugins]] # denops-popup-preview.vim
 repo = 'matsui54/denops-popup-preview.vim'
 on_source = 'ddc.vim'
