@@ -23,9 +23,7 @@ require('user.utils').keymaps_set({
 -- lua_source {{{
 local mason_lspconfig = require("mason-lspconfig")
 local lspconfig = require("lspconfig")
---local keymap = vim.keymap.set
 local lsp = vim.lsp -- nvim lsp api.
---local diag = vim.diagnostic -- nvim diagnostic api.
 
 mason_lspconfig.setup({
   ensure_installed = {
