@@ -12,13 +12,10 @@ local sources = {
   completion.vsnip,
   formatting.stylua,
   formatting.taplo,
-  -- formatting.yamlfmt,
   formatting.textlint.with({
     filetypes = { "markdown" },
     prefer_local = "node_modules/.bin",
   }),
-  -- diagnostics.yamllint,
-  -- diagnostics.hadolint,
   diagnostics.textlint.with({
     filetypes = { "markdown" },
     prefer_local = "node_modules/.bin",
