@@ -1,22 +1,18 @@
 -- lua_add {{{
 local opt = { noremap = true, silent = true }
-require('user.utils').keymaps_set({
-  { mode = {"n"}, lhs = [[ l]], rhs = [[<Plug>(lsp)]], opts = {} },
-  { mode = {"n"}, lhs = [[<Plug>(lsp)k]], rhs = [[<Cmd>Lspsaga hover_doc<CR>]], opts = opt },
-  { mode = {"n"}, lhs = [[<Plug>(lsp)K]], rhs = [[<Cmd>Lspsaga lsp_finder<CR>]], opts = opt },
-  { mode = {"n"}, lhs = [[<Plug>(lsp)r]], rhs = [[<Cmd>Lspsaga rename<CR>]], opts = opt },
-  { mode = {"n"}, lhs = [[<Plug>(lsp)o]], rhs = [[<Cmd>Lspsaga outline<CR>]], opts = opt },
-  { mode = {"n"}, lhs = [[<Plug>(lsp)c]], rhs = [[<Cmd>Lspsaga code_action<CR>]], opts = opt },
-  { mode = {"n"}, lhs = [[<Plug>(lsp)h]], rhs = vim.lsp.buf.signature_help, opts = opt },
-  { mode = {"n"}, lhs = [[<Plug>(lsp)f]], rhs = vim.lsp.buf.format, opts = opt },
-  { mode = {"n"}, lhs = [[<Plug>(lsp)i]], rhs = vim.lsp.buf.implementation, opts = opt },
-  { mode = {"n"}, lhs = [[<Plug>(lsp)e]], rhs = [[<Cmd>Lspsaga show_line_diagnostics<CR>]], opts = opt },
-  { mode = {"n"}, lhs = [[<Plug>(lsp)E]], rhs = [[<Cmd>Lspsaga show_cursor_diagnostics<CR>]], opts = opt },
-  { mode = {"n"}, lhs = [[<Plug>(lsp)q]], rhs = [[<Cmd>Lspsaga show_buf_diagnostics<CR>]], opts = opt },
-  { mode = {"n"}, lhs = [[gd]], rhs = [[<Cmd>Lspsaga peek_definition<CR>]], opts = opt },
-  { mode = {"n"}, lhs = [[gD]], rhs = vim.lsp.buf.declaration, opts = opt },
-  { mode = {"n"}, lhs = [=[[d]=], rhs = [[<Cmd>Lspsaga diagnostic_jump_prev<CR>]], opts = opt },
-  { mode = {"n"}, lhs = [=[]d]=], rhs = [[<Cmd>Lspsaga diagnostic_jump_next<CR>]], opts = opt },
+local lsp_function = vim.lsp
+local diagnostic = vim.diagnostic
+require("user.utils").keymaps_set({
+  { mode = { "n" }, lhs = [[K]],    rhs = lsp_function.buf.hover,          opts = opt },
+  { mode = { "n" }, lhs = [[ma]],   rhs = lsp_function.buf.code_action,    opts = opt },
+  { mode = { "n" }, lhs = [[mr]],   rhs = lsp_function.buf.rename,         opts = opt },
+  { mode = { "n" }, lhs = [[gq]],   rhs = lsp_function.buf.format,         opts = opt },
+  { mode = { "n" }, lhs = [[gi]],   rhs = lsp_function.buf.implementation, opts = opt },
+  { mode = { "n" }, lhs = [[gd]],   rhs = lsp_function.buf.definition,     opts = opt },
+  { mode = { "n" }, lhs = [[gD]],   rhs = lsp_function.buf.declaration,    opts = opt },
+  { mode = { "n" }, lhs = [[ge]],   rhs = diagnostic.open_float,           opts = opt },
+  { mode = { "n" }, lhs = [=[[d]=], rhs = diagnostic.goto_prev,            opts = opt },
+  { mode = { "n" }, lhs = [=[]d]=], rhs = diagnostic.goto_next,            opts = opt },
 })
 -- }}}
 
@@ -30,8 +26,6 @@ mason_lspconfig.setup({
     "lua_ls",
     "intelephense",
     "pyright",
-    -- "yamlls",
-    "bashls",
   },
   automatic_installation = true,
 })
