@@ -39,6 +39,8 @@ local option_table = {
   -- For pum.vim
   shortmess = 'c',
 
+  more = false,
+
   -- jump momentarily to a matching parenthesis
   showmatch = true,
   matchtime = 1,
