@@ -3,7 +3,7 @@ local opt = { noremap = true, silent = true }
 local lsp_function = vim.lsp
 local diagnostic = vim.diagnostic
 require("user.utils").keymaps_set({
-  { mode = { "n" }, lhs = [[K]],    rhs = lsp_function.buf.hover,          opts = opt },
+  { mode = { "n" }, lhs = [[mk]],   rhs = lsp_function.buf.hover,          opts = opt },
   { mode = { "n" }, lhs = [[ma]],   rhs = lsp_function.buf.code_action,    opts = opt },
   { mode = { "n" }, lhs = [[mr]],   rhs = lsp_function.buf.rename,         opts = opt },
   { mode = { "n" }, lhs = [[gq]],   rhs = lsp_function.buf.format,         opts = opt },
