@@ -1,5 +1,7 @@
 -- lua_ddu-ff {{{
--- Open file keybinds.
+local do_action = vim.fn['ddu#ui#do_action']
+local line = vim.fn.line
+
 local ff_opt = { silent = true, buffer = true, noremap = true }
 local ff_opt_expr = { silent = true, buffer = true, expr = true, noremap = true }
 require('user.utils').keymaps_set({
@@ -7,7 +9,7 @@ require('user.utils').keymaps_set({
     mode = "n",
     lhs = [[<CR>]],
     rhs = function()
-      vim.fn['ddu#ui#ff#do_action']('itemAction')
+      do_action('itemAction')
     end,
     opts = ff_opt,
   },
@@ -15,7 +17,7 @@ require('user.utils').keymaps_set({
     mode = "n",
     lhs = [[o]],
     rhs = function()
-      vim.fn['du#ui#ff#do_action']('itemAction', {
+      do_action('itemAction', {
         name = [[open]],
         params = {
           command = [[drop]]
@@ -28,7 +30,7 @@ require('user.utils').keymaps_set({
     mode = "n",
     lhs = [[s]],
     rhs = function()
-      vim.fn['ddu#ui#do_action']('itemAction', {
+      do_action('itemAction', {
         name = [[open]],
         params = { command = [[split]] }
       })
@@ -39,7 +41,7 @@ require('user.utils').keymaps_set({
     mode = "n",
     lhs = [[v]],
     rhs = function()
-      vim.fn['ddu#ui#do_action']('itemAction', {
+      do_action('itemAction', {
         name = [[open]],
         params = { command = [[vsplit]] }
       })
@@ -50,7 +52,7 @@ require('user.utils').keymaps_set({
     mode = "n",
     lhs = [[t]],
     rhs = function()
-      vim.fn['ddu#ui#do_action']('itemAction', {
+      do_action('itemAction', {
         name = [[open]],
         params = { command = [[tabedit]] }
       })
@@ -61,7 +63,7 @@ require('user.utils').keymaps_set({
     mode = "n",
     lhs = [[  ]],
     rhs = function()
-      vim.fn['ddu#ui#do_action']('toggleSelectItem')
+      do_action('toggleSelectItem')
     end,
     opts = ff_opt,
   },
@@ -69,7 +71,7 @@ require('user.utils').keymaps_set({
     mode = "n",
     lhs = [[*]],
     rhs = function()
-      vim.fn['ddu#ui#do_action']('toggleAllItems')
+      do_action('toggleAllItems')
     end,
     opts = ff_opt,
   },
@@ -77,7 +79,7 @@ require('user.utils').keymaps_set({
     mode = "n",
     lhs = [[a]],
     rhs = function()
-      vim.fn['ddu#ui#do_action']('chooseAction')
+      do_action('chooseAction')
     end,
     opts = ff_opt,
   },
@@ -85,7 +87,7 @@ require('user.utils').keymaps_set({
     mode = "n",
     lhs = [[i]],
     rhs = function()
-      vim.fn['ddu#ui#do_action']('openFilterWindow')
+      do_action('openFilterWindow')
     end,
     opts = ff_opt,
   },
@@ -93,7 +95,7 @@ require('user.utils').keymaps_set({
     mode = "n",
     lhs = [[<C-l>]],
     rhs = function()
-      vim.fn['ddu#ui#do_action']('refreshItems')
+      do_action('refreshItems')
     end,
     opts = ff_opt,
   },
@@ -101,7 +103,7 @@ require('user.utils').keymaps_set({
     mode = "n",
     lhs = [[p]],
     rhs = function()
-      vim.fn['ddu#ui#do_action']('preview')
+      do_action('preview')
     end,
     opts = ff_opt,
   },
@@ -109,7 +111,7 @@ require('user.utils').keymaps_set({
     mode = "n",
     lhs = [[q]],
     rhs = function()
-      vim.fn['ddu#ui#do_action']('quit')
+      do_action('quit')
     end,
     opts = ff_opt,
   },
@@ -117,7 +119,7 @@ require('user.utils').keymaps_set({
     mode = "n",
     lhs = [[<ESC>]],
     rhs = function()
-      vim.fn['ddu#ui#do_action']('quit')
+      do_action('quit')
     end,
     opts = ff_opt
   },
@@ -125,7 +127,7 @@ require('user.utils').keymaps_set({
     mode = "n",
     lhs = [[j]],
     rhs = function()
-      if vim.fn.line('.') == vim.fn.line('$') then
+      if line('.') == line('$') then
         return [[gg]]
       else
         return [[j]]
@@ -137,7 +139,7 @@ require('user.utils').keymaps_set({
     mode = "n",
     lhs = [[k]],
     rhs = function()
-      if vim.fn.line('.') == 1 then
+      if line('.') == 1 then
         return [[G]]
       else
         return [[k]]
@@ -149,8 +151,8 @@ require('user.utils').keymaps_set({
     mode = "n",
     lhs = [[<C-q>]],
     rhs = function()
-      vim.fn['ddu#ui#do_action']('toggleAllItems')
-      vim.fn['ddu#ui#do_action']('itemAction', { name = [[quickfix]] })
+      do_action('toggleAllItems')
+      do_action('itemAction', { name = [[quickfix]] })
     end,
     opts = ff_opt,
   },
@@ -158,7 +160,7 @@ require('user.utils').keymaps_set({
     mode = "n",
     lhs = [[y]],
     rhs = function()
-      vim.fn['ddu#ui#do_action']('yank')
+      do_action('yank')
       print('Yank path the "' .. vim.fn.getreg('+') .. '"')
     end,
     opts = ff_opt,
@@ -167,6 +169,7 @@ require('user.utils').keymaps_set({
 -- }}}
 
 -- lua_ddu-ff-filter {{{
+local do_action = vim.fn['ddu#ui#do_action']
 local filter_opt = { buffer = true, noremap = true }
 require('user.utils').keymaps_set({
   -- filter insert mode
@@ -175,7 +178,7 @@ require('user.utils').keymaps_set({
     lhs = [[<CR>]],
     rhs = function()
       vim.cmd('stopinsert')
-      vim.fn['ddu#ui#do_action']('closeFilterWindow')
+      do_action('closeFilterWindow')
     end,
     opts = filter_opt,
   },
@@ -184,7 +187,7 @@ require('user.utils').keymaps_set({
     lhs = [[jj]],
     rhs = function()
       vim.cmd('stopinsert')
-      vim.fn['ddu#ui#do_action']('closeFilterWindow')
+      do_action('closeFilterWindow')
     end,
     opts = filter_opt,
   },
@@ -193,7 +196,7 @@ require('user.utils').keymaps_set({
     lhs = [[<ECS>]],
     rhs = function()
       vim.cmd('stopinsert')
-      vim.fn['ddu#ui#do_action']('closeFilterWindow')
+      do_action('closeFilterWindow')
     end,
     opts = filter_opt,
   },
@@ -203,7 +206,7 @@ require('user.utils').keymaps_set({
     mode = "n",
     lhs = [[q]],
     rhs = function()
-      vim.fn['ddu#ui#do_action']('closeFilterWindow')
+      do_action('closeFilterWindow')
     end,
     opts = filter_opt,
   },
@@ -211,7 +214,7 @@ require('user.utils').keymaps_set({
     mode = "n",
     lhs = [[<CR>]],
     rhs = function()
-      vim.fn['ddu#ui#do_action']('closeFilterWindow')
+      do_action('closeFilterWindow')
     end,
     opts = filter_opt,
   },
@@ -219,7 +222,7 @@ require('user.utils').keymaps_set({
     mode = "n",
     lhs = [[j]],
     rhs = function()
-      vim.fn['ddu#ui#do_action']('closeFilterWindow')
+      do_action('closeFilterWindow')
     end,
     opts = filter_opt,
   },
@@ -227,7 +230,7 @@ require('user.utils').keymaps_set({
     mode = "n",
     lhs = [[<ESC>]],
     rhs = function()
-      vim.fn['ddu#ui#do_action']('closeFilterWindow')
+      do_action('closeFilterWindow')
     end,
     opts = filter_opt,
   },
