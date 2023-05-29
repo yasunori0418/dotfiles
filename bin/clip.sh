@@ -3,7 +3,7 @@
 # パク…参考にさせてもらいます。
 # https://gist.github.com/kuuote/4b2feda31d80fc8266fc562fc7f89c7f
 #
-clip_file=/tmp/clip
+clip_file=/tmp/clip.md
 [[ -f ${clip_file} ]] && rm ${clip_file}
 touch ${clip_file}
 wezterm start --class Floaterm nvim --listen ~/.cache/nvim/server.pipe ${clip_file} || exit 1
