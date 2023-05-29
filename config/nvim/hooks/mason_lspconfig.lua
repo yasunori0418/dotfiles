@@ -1,32 +1,10 @@
--- lua_add {{{
-local opt = { noremap = true, silent = true }
-local lsp_function = vim.lsp
-local diagnostic = vim.diagnostic
-require("user.utils").keymaps_set({
-  { mode = { "n" }, lhs = [[mk]],   rhs = lsp_function.buf.hover,          opts = opt },
-  { mode = { "n" }, lhs = [[ma]],   rhs = lsp_function.buf.code_action,    opts = opt },
-  { mode = { "n" }, lhs = [[mr]],   rhs = lsp_function.buf.rename,         opts = opt },
-  { mode = { "n" }, lhs = [[gi]],   rhs = lsp_function.buf.implementation, opts = opt },
-  { mode = { "n" }, lhs = [[gd]],   rhs = lsp_function.buf.definition,     opts = opt },
-  { mode = { "n" }, lhs = [[gD]],   rhs = lsp_function.buf.declaration,    opts = opt },
-  { mode = { "n" }, lhs = [[ge]],   rhs = diagnostic.open_float,           opts = opt },
-  { mode = { "n" }, lhs = [=[[d]=], rhs = diagnostic.goto_prev,            opts = opt },
-  { mode = { "n" }, lhs = [=[]d]=], rhs = diagnostic.goto_next,            opts = opt },
-  {
-    mode = { "n" },
-    lhs = [[gq]],
-    rhs = function()
-      lsp_function.buf.format({ timeout_ms = 5000 })
-    end,
-    opts = opt,
-  },
-})
--- }}}
-
 -- lua_source {{{
 local mason_lspconfig = require("mason-lspconfig")
 local lspconfig = require("lspconfig")
 local lsp = vim.lsp -- nvim lsp api.
+local diagnostic = vim.diagnostic
+local utils = require("user.utils")
+local user_lsp = require("user.lsp")
 
 mason_lspconfig.setup({
   ensure_installed = {
@@ -36,6 +14,27 @@ mason_lspconfig.setup({
   },
   automatic_installation = true,
 })
+
+user_lsp.on_attach(function(_, buffer)
+  local opt = { noremap = true, silent = true, buffer = buffer }
+  utils.keymaps_set({
+    { mode = { "n" }, lhs = [[K]],    rhs = lsp.buf.hover,          opts = opt },
+    { mode = { "n" }, lhs = [[ma]],   rhs = lsp.buf.code_action,    opts = opt },
+    { mode = { "n" }, lhs = [[gr]],   rhs = lsp.buf.rename,         opts = opt },
+    { mode = { "n" }, lhs = [[gd]],   rhs = lsp.buf.definition,     opts = opt },
+    { mode = { "n" }, lhs = [[ge]],   rhs = diagnostic.open_float,  opts = opt },
+    { mode = { "n" }, lhs = [=[[d]=], rhs = diagnostic.goto_prev,   opts = opt },
+    { mode = { "n" }, lhs = [=[]d]=], rhs = diagnostic.goto_next,   opts = opt },
+    {
+      mode = { "n" },
+      lhs = [[gq]],
+      rhs = function()
+        lsp.buf.format({ timeout_ms = 5000 })
+      end,
+      opts = opt,
+    },
+  })
+end)
 
 mason_lspconfig.setup_handlers({
   function(server_name)
