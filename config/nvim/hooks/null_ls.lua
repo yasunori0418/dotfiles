@@ -15,10 +15,16 @@ local sources = {
   formatting.textlint.with({
     filetypes = { "markdown" },
     prefer_local = "node_modules/.bin",
+    condition = function()
+      return vim.fn.executable("node_modules/.bin/textlint") > 0
+    end,
   }),
   diagnostics.textlint.with({
     filetypes = { "markdown" },
     prefer_local = "node_modules/.bin",
+    condition = function()
+      return vim.fn.executable("node_modules/.bin/textlint") > 0
+    end,
   }),
 }
 
