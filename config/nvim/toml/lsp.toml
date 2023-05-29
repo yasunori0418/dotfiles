@@ -6,6 +6,7 @@ depends = 'neodev.nvim'
 
 [[plugins]] # mason.nvim
 repo = 'williamboman/mason.nvim'
+hook_post_update = 'MasonUpdate'
 hooks_file = '$BASE_DIR/hooks/mason.lua'
 
 [[plugins]] # mason-lspconfig.nvim
