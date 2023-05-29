@@ -1,5 +1,7 @@
 local M = {}
 
+local lsp = vim.lsp
+
 ---LSPが動くバッファーに対しての設定をするヘルパー
 ---[参考リンク]:(https://zenn.dev/ryoppippi/articles/8aeedded34c914)
 ---
@@ -21,6 +23,12 @@ M.on_attach = function(on_attach)
     end,
     desc = 'Execute autocmd on LspAttach',
   })
+end
+
+---フォーマット時のtimeout対応
+---5000msだけ待ってやる
+M.format = function()
+  lsp.buf.format({ timeout_ms = 5000 })
 end
 
 return M

@@ -18,21 +18,14 @@ mason_lspconfig.setup({
 user_lsp.on_attach(function(_, buffer)
   local opt = { noremap = true, silent = true, buffer = buffer }
   utils.keymaps_set({
-    { mode = { "n" }, lhs = [[K]],    rhs = lsp.buf.hover,          opts = opt },
-    { mode = { "n" }, lhs = [[ma]],   rhs = lsp.buf.code_action,    opts = opt },
-    { mode = { "n" }, lhs = [[gr]],   rhs = lsp.buf.rename,         opts = opt },
-    { mode = { "n" }, lhs = [[gd]],   rhs = lsp.buf.definition,     opts = opt },
-    { mode = { "n" }, lhs = [[ge]],   rhs = diagnostic.open_float,  opts = opt },
-    { mode = { "n" }, lhs = [=[[d]=], rhs = diagnostic.goto_prev,   opts = opt },
-    { mode = { "n" }, lhs = [=[]d]=], rhs = diagnostic.goto_next,   opts = opt },
-    {
-      mode = { "n" },
-      lhs = [[gq]],
-      rhs = function()
-        lsp.buf.format({ timeout_ms = 5000 })
-      end,
-      opts = opt,
-    },
+    { mode = { "n" }, lhs = [[K]],    rhs = lsp.buf.hover,         opts = opt },
+    { mode = { "n" }, lhs = [[ma]],   rhs = lsp.buf.code_action,   opts = opt },
+    { mode = { "n" }, lhs = [[gq]],   rhs = user_lsp.format,       opts = opt },
+    { mode = { "n" }, lhs = [[gr]],   rhs = lsp.buf.rename,        opts = opt },
+    { mode = { "n" }, lhs = [[gd]],   rhs = lsp.buf.definition,    opts = opt },
+    { mode = { "n" }, lhs = [[ge]],   rhs = diagnostic.open_float, opts = opt },
+    { mode = { "n" }, lhs = [=[[d]=], rhs = diagnostic.goto_prev,  opts = opt },
+    { mode = { "n" }, lhs = [=[]d]=], rhs = diagnostic.goto_next,  opts = opt },
   })
 end)
 
