@@ -11,7 +11,6 @@ local sources = {
   code_actions.gitsigns,
   completion.vsnip,
   formatting.stylua,
-  formatting.taplo,
   formatting.textlint.with({
     filetypes = { "markdown" },
     prefer_local = "node_modules/.bin",
