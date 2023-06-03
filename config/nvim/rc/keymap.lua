@@ -143,7 +143,7 @@ require("user.utils").keymaps_set({
     rhs = [[<Nop>]],
     opts = noremap_silent,
   },
-  { -- disable arrow key "↓"
+  { -- disable arrow key "←"
     mode = { "", "!" },
     lhs = [[<Right>]],
     rhs = [[<Nop>]],
