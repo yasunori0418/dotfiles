@@ -77,6 +77,78 @@ require("user.utils").keymaps_set({
     rhs = [[<Nop>]],
     opts = noremap_silent,
   },
+  { -- disable of "s"
+    mode = { "n", "x" },
+    lhs = [[s]],
+    rhs = [[<Nop>]],
+    opts = noremap_silent,
+  },
+  { -- disable of "S"
+    mode = { "n", "x" },
+    lhs = [[S]],
+    rhs = [[<Nop>]],
+    opts = noremap_silent,
+  },
+  { -- disable of "t"
+    mode = { "n", "x" },
+    lhs = [[t]],
+    rhs = [[<Nop>]],
+    opts = noremap_silent,
+  },
+  { -- disable of "T"
+    mode = { "n", "x" },
+    lhs = [[T]],
+    rhs = [[<Nop>]],
+    opts = noremap_silent,
+  },
+  { -- disable of marker
+    mode = { "n", "x" },
+    lhs = [[m]],
+    rhs = [[<Nop>]],
+    opts = noremap_silent,
+  },
+  { -- disable of marker
+    mode = { "n", "x" },
+    lhs = [[']],
+    rhs = [[<Nop>]],
+    opts = noremap_silent,
+  },
+  { -- disable of marker
+    mode = { "n", "x" },
+    lhs = [[`]],
+    rhs = [[<Nop>]],
+    opts = noremap_silent,
+  },
+  { -- disable move left after space
+    mode = { "n", "x" },
+    lhs = [[ ]],
+    rhs = [[<Nop>]],
+    opts = noremap_silent,
+  },
+  { -- disable arrow key "→"
+    mode = { "", "!" },
+    lhs = [[<Left>]],
+    rhs = [[<Nop>]],
+    opts = noremap_silent,
+  },
+  { -- disable arrow key "↓"
+    mode = { "", "!" },
+    lhs = [[<Down>]],
+    rhs = [[<Nop>]],
+    opts = noremap_silent,
+  },
+  { -- disable arrow key "↑"
+    mode = { "", "!" },
+    lhs = [[<Up>]],
+    rhs = [[<Nop>]],
+    opts = noremap_silent,
+  },
+  { -- disable arrow key "↓"
+    mode = { "", "!" },
+    lhs = [[<Right>]],
+    rhs = [[<Nop>]],
+    opts = noremap_silent,
+  },
 
   -- window
   { mode = { "n" }, lhs = [[ w]], rhs = [[<Plug>(Window)]], opts = {} },
