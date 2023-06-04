@@ -267,25 +267,25 @@ require("user.utils").keymaps_set({
   },
 
   -- quickfix
-  {
+  { -- cprevious
     mode = { "n" },
     lhs = [=[[q]=],
     rhs = [[<Cmd>cprevious<CR>]],
     opts = noremap_silent,
   },
-  {
+  { -- cnext
     mode = { "n" },
     lhs = [=[]q]=],
     rhs = [[<Cmd>cnext<CR>]],
     opts = noremap_silent,
   },
-  {
+  { -- cfirst
     mode = { "n" },
     lhs = [=[[Q]=],
     rhs = [[<Cmd>cfirst<CR>]],
     opts = noremap_silent,
   },
-  {
+  { -- clast
     mode = { "n" },
     lhs = [=[]Q]=],
     rhs = [[<Cmd>clast<CR>]],
