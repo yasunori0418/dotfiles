@@ -319,43 +319,43 @@ require("user.utils").keymaps_set({
   },
 
   -- tab
-  {
+  { -- tabprevious
     mode = { "n" },
     lhs = [=[[t]=],
     rhs = [[gT]],
     opts = noremap_silent,
   },
-  {
+  { -- tabnext
     mode = { "n" },
     lhs = [=[]t]=],
     rhs = [[gt]],
     opts = noremap_silent,
   },
-  {
+  { -- tabfirst
     mode = { "n" },
     lhs = [=[[T]=],
     rhs = [[<Cmd>tabfirst<CR>]],
     opts = noremap_silent,
   },
-  {
+  { -- tablast
     mode = { "n" },
     lhs = [=[]T]=],
     rhs = [[<Cmd>tablast<CR>]],
     opts = noremap_silent,
   },
-  {
+  { -- tabnew
     mode = { "n" },
     lhs = [[tn]],
     rhs = [[<Cmd>tabnew<CR>]],
     opts = noremap_silent,
   },
-  {
+  { -- move to last access tab
     mode = { "n" },
     lhs = [[tt]],
     rhs = [[<C-W>g<Tab>]],
     opts = noremap_silent,
   },
-  {
+  { -- Ctrl-W_T
     mode = { "n" },
     lhs = [[tT]],
     rhs = [[<C-W>T]],
