@@ -293,25 +293,25 @@ require("user.utils").keymaps_set({
   },
 
   -- buffer
-  {
+  { -- bprevious
     mode = { "n" },
     lhs = [=[[b]=],
     rhs = [[<Cmd>bprevious<CR>]],
     opts = noremap_silent,
   },
-  {
+  { -- bnext
     mode = { "n" },
     lhs = [=[]b]=],
     rhs = [[<Cmd>bnext<CR>]],
     opts = noremap_silent,
   },
-  {
+  { -- bfirst
     mode = { "n" },
     lhs = [=[[B]=],
     rhs = [[<Cmd>bfirst<CR>]],
     opts = noremap_silent,
   },
-  {
+  { -- blast
     mode = { "n" },
     lhs = [=[]B]=],
     rhs = [[<Cmd>blast<CR>]],
