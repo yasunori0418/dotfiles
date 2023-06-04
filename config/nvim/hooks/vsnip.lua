@@ -30,8 +30,10 @@ utils.keymaps_set{
     mode = {"i", "s"},
     lhs = [[<C-f>]],
     rhs = function()
-      if vim.fn['vsnip#jumpable'](1) then
+      if vim.fn['vsnip#jumpable'](1) > 0 then
         return [[<Plug>(vsnip-jump-next)]]
+      else
+        return [[<C-G>U<Right>]]
       end
     end,
     opts = opt_expr
@@ -40,8 +42,10 @@ utils.keymaps_set{
     mode = {"i", "s"},
     lhs = [[<C-b>]],
     rhs = function()
-      if vim.fn['vsnip#jumpable'](1) then
+      if vim.fn['vsnip#jumpable'](-1) > 0 then
         return [[<Plug>(vsnip-jump-prev)]]
+      else
+        return [[<C-G>U<Left>]]
       end
     end,
     opts = opt_expr,
