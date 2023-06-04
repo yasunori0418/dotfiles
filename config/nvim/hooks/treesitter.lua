@@ -20,3 +20,9 @@ require("nvim-treesitter.configs").setup({
   },
 })
 -- }}}
+
+-- lua_post_update {{{
+vim.opt.more = false
+vim.cmd([[TSUpdate]])
+vim.opt.more = true
+-- }}}

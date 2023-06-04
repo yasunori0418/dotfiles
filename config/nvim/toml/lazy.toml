@@ -3,7 +3,6 @@
 [[plugins]] # nvim-treesitter
 repo = 'nvim-treesitter/nvim-treesitter'
 on_event = 'BufRead'
-hook_post_update = 'TSUpdate'
 hooks_file = '$BASE_DIR/hooks/treesitter.lua'
 
 [[plugins]] # nightfox.nvim
