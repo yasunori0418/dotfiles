@@ -362,62 +362,56 @@ require("user.utils").keymaps_set({
     opts = noremap_silent,
   },
 
-  -- xとかcでレジスターに入るのウザいよね…
-  {
+  -- useful keymaps
+  { -- xとかcでレジスターに入るのウザいよね…
     mode = { "n", "x" },
     lhs = [[x]],
     rhs = [["_x]],
     opts = noremap_silent,
   },
-  {
+  { -- xとかcでレジスターに入るのウザいよね…
     mode = { "n", "x" },
     lhs = [[c]],
     rhs = [["_c]],
     opts = noremap_silent,
   },
-  {
+  { -- gfもgFもやってること変わらんのよね…
     mode = { "n" },
     lhs = [[gf]],
     rhs = [[gF]],
     opts = noremap_silent,
   },
-  {
+  { -- redrawもnohlsearchもやりたいことの目的が同じという事実
     mode = { "n" },
     lhs = [[<C-l>]],
     rhs = [[<Cmd>nohlsearch<Bar>diffupdate<CR><C-l>]],
     opts = noremap_silent,
   },
-  {
+  { -- 読む用・書く用
     mode = { "n" },
     lhs = [[ n]],
     rhs = require("user.utils").toggle_view,
     opts = noremap_silent,
   },
-  {
+  { -- qって結構誤爆するんだよね…
     mode = { "n" },
-    lhs = [[Q]],
+    lhs = [[<C-Q>]],
     rhs = [[q]],
     opts = noremap_silent,
   },
-  {
+  { -- ↑を見てこいカルロ
     mode = { "n" },
     lhs = [[q]],
     rhs = "",
     opts = noremap_silent,
   },
-  {
-    mode = { "i" },
-    lhs = [[jj]],
-    rhs = [[<Esc>]],
-    opts = noremap_silent,
-  },
-  {
-    mode = { "c" },
+  { -- よく見るやつ。icで使えるようにしてみる
+    mode = { "i", "c" },
     lhs = [[jj]],
     rhs = [[<Esc><C-l>]],
     opts = noremap_silent,
   },
-  {
+  { -- Ctrl-lで<Del>
     mode = { "i", "c" },
     lhs = [[<C-l>]],
     rhs = [[<Del>]],
@@ -456,31 +450,33 @@ require("user.utils").keymaps_set({
     rhs = [[<Left>]],
     opts = noremap,
   },
-  {
+
+  -- operator
+  { -- a'
     mode = { "x", "o" },
     lhs = [[a']],
     rhs = [[2i']],
     opts = noremap_silent,
   },
-  {
+  { -- a"
     mode = { "x", "o" },
     lhs = [[a"]],
     rhs = [[2i"]],
     opts = noremap_silent,
   },
-  {
+  { -- a`
     mode = { "x", "o" },
     lhs = [[a`]],
     rhs = [[2i`]],
     opts = noremap_silent,
   },
-  {
+  { -- i<Space>
     mode = { "x", "o" },
     lhs = [[i ]],
     rhs = [[iW]],
     opts = noremap_silent,
   },
-  {
+  { -- a<Space>
     mode = { "x", "o" },
     lhs = [[a ]],
     rhs = [[aW]],
