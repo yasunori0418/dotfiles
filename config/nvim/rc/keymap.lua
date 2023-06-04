@@ -151,110 +151,115 @@ require("user.utils").keymaps_set({
   },
 
   -- window
-  { mode = { "n" }, lhs = [[ w]], rhs = [[<Plug>(Window)]], opts = {} },
-  {
+  { -- key prefix of window control
+    mode = { "n" },
+    lhs = [[ w]],
+    rhs = [[<Plug>(Window)]],
+    opts = {}
+  },
+  { -- save current buffer
     mode = { "n" },
     lhs = [[<Plug>(Window)w]],
     rhs = [[<Cmd>update<CR>]],
     opts = noremap_silent,
   },
-  {
+  { -- save current buffer
     mode = { "n" },
     lhs = [[<Plug>(Window)W]],
     rhs = [[<Cmd>write<CR>]],
     opts = noremap_silent,
   },
-  {
+  { -- Ctrl-W_h
     mode = { "n" },
     lhs = [[<Plug>(Window)h]],
     rhs = [[<C-W>h]],
     opts = noremap_silent,
   },
-  {
+  { -- Ctrl-W_j
     mode = { "n" },
     lhs = [[<Plug>(Window)j]],
     rhs = [[<C-W>j]],
     opts = noremap_silent,
   },
-  {
+  { -- Ctrl-W_k
     mode = { "n" },
     lhs = [[<Plug>(Window)k]],
     rhs = [[<C-W>k]],
     opts = noremap_silent,
   },
-  {
+  { -- Ctrl-W_l
     mode = { "n" },
     lhs = [[<Plug>(Window)l]],
     rhs = [[<C-W>l]],
     opts = noremap_silent,
   },
-  {
+  { -- Ctrl-W_H
     mode = { "n" },
     lhs = [[<Plug>(Window)H]],
     rhs = [[<C-W>H]],
     opts = noremap_silent,
   },
-  {
+  { -- Ctrl-W_J
     mode = { "n" },
     lhs = [[<Plug>(Window)J]],
     rhs = [[<C-W>J]],
     opts = noremap_silent,
   },
-  {
+  { -- Ctrl-W_K
     mode = { "n" },
     lhs = [[<Plug>(Window)K]],
     rhs = [[<C-W>K]],
     opts = noremap_silent,
   },
-  {
+  { -- Ctrl-W_L
     mode = { "n" },
     lhs = [[<Plug>(Window)L]],
     rhs = [[<C-W>L]],
     opts = noremap_silent,
   },
-  {
+  { -- Ctrl-W_q
     mode = { "n" },
     lhs = [[<Plug>(Window)q]],
     rhs = [[<C-W>q]],
     opts = noremap_silent,
   },
-  {
+  { -- Ctrl-W_s
     mode = { "n" },
     lhs = [[<Plug>(Window)s]],
     rhs = [[<C-W>s]],
     opts = noremap_silent,
   },
-  {
+  { -- Ctrl-W_v
     mode = { "n" },
     lhs = [[<Plug>(Window)v]],
     rhs = [[<C-W>v]],
     opts = noremap_silent,
   },
-  {
+  { -- Ctrl-W_n
     mode = { "n" },
     lhs = [[<Plug>(Window)n]],
     rhs = [[<C-W>n]],
     opts = noremap_silent,
   },
-  {
+  { -- Ctrl-W_<
     mode = { "n" },
     lhs = [[<S-Left>]],
     rhs = [[<C-w><]],
     opts = noremap_silent,
   },
-  {
+  { -- Ctrl-W_>
     mode = { "n" },
     lhs = [[<S-Right>]],
     rhs = [[<C-w>>]],
     opts = noremap_silent,
   },
-  {
+  { -- Ctrl-W_-
     mode = { "n" },
     lhs = [[<S-Up>]],
     rhs = [[<C-w>-]],
     opts = noremap_silent,
   },
-  {
+  { -- Ctrl-W_+
     mode = { "n" },
     lhs = [[<S-Down>]],
     rhs = [[<C-w>+]],
