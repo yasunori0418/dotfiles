@@ -1,6 +1,6 @@
 -- lua_add {{{
 local opt = { noremap = false }
-local utils = require('user.utils')
+local utils = require("user.utils")
 utils.keymaps_set({
   -- ddu start prefixes
   { mode = "n", lhs = [[ d]], rhs = [[<Plug>(ddu-ff)]],    opts = opt },
@@ -219,7 +219,7 @@ local source_options = {
     defaultAction = [[open]],
   },
   dein_update = {
-    matchers = {'matcher_dein_update'},
+    matchers = { "matcher_dein_update" },
   },
   path_history = {
     defaultAction = [[uiCd]],
@@ -266,7 +266,7 @@ local kind_options = {
   },
   dein_update = {
     defaultAction = [[viewDiff]],
-  }
+  },
 }
 
 local action_options = {
@@ -296,36 +296,34 @@ vim.fn["ddu#custom#patch_global"]({
   columnParams = column_params,
 })
 
-vim.fn['ddu#custom#action']('kind', 'file', 'uiCd',
-  function(args)
-    local path = args.items[1].action.path
-    local directory = path
-    if vim.fn.isdirectory(directory) == 0 then
-      directory = vim.fn.fnamemodify(directory, ':h')
-    end
-    vim.print(directory)
-    vim.fn['ddu#ui#do_action']([[itemAction]], {
-      name = [[narrow]],
-      params = { path = directory }
-    })
+vim.fn["ddu#custom#action"]("kind", "file", "uiCd", function(args)
+  local path = args.items[1].action.path
+  local directory = path
+  if vim.fn.isdirectory(directory) == 0 then
+    directory = vim.fn.fnamemodify(directory, ":h")
   end
-)
+  vim.print(directory)
+  vim.fn["ddu#ui#do_action"]([[itemAction]], {
+    name = [[narrow]],
+    params = { path = directory },
+  })
+end)
 
 -- UI:ff presets
-vim.fn['ddu#custom#patch_local']('current-ff', {
-  ui = 'ff',
+vim.fn["ddu#custom#patch_local"]("current-ff", {
+  ui = "ff",
   uiParams = {
     ff = {
       startFilter = true,
     },
   },
   sources = {
-    { name = 'file_rec' },
+    { name = "file_rec" },
   },
 })
 
-vim.fn['ddu#custom#patch_local']('dotfiles-ff', {
-  ui = 'ff',
+vim.fn["ddu#custom#patch_local"]("dotfiles-ff", {
+  ui = "ff",
   uiParams = {
     ff = {
       startFilter = true,
@@ -333,16 +331,16 @@ vim.fn['ddu#custom#patch_local']('dotfiles-ff', {
   },
   sourceOptions = {
     file_rec = {
-      path = vim.fn.expand('~/dotfiles')
+      path = vim.fn.expand("~/dotfiles"),
     },
   },
   sources = {
-    { name = 'file_rec' }
+    { name = "file_rec" },
   },
 })
 
-vim.fn['ddu#custom#patch_local']('project-list-ff', {
-  ui = 'ff',
+vim.fn["ddu#custom#patch_local"]("project-list-ff", {
+  ui = "ff",
   uiParams = {
     ff = {
       startFilter = true,
@@ -354,20 +352,20 @@ vim.fn['ddu#custom#patch_local']('project-list-ff', {
     },
   },
   sources = {
-    { name = 'file' },
+    { name = "file" },
   },
 })
 
-vim.fn['ddu#custom#patch_local']('help-ff', {
-  ui = 'ff',
+vim.fn["ddu#custom#patch_local"]("help-ff", {
+  ui = "ff",
   uiParams = {
     ff = {
       startFilter = true,
-      },
     },
+  },
   sources = {
-    { name = 'help' },
-    { name = 'readme_viewer' },
+    { name = "help" },
+    { name = "readme_viewer" },
   },
 })
 
@@ -375,8 +373,8 @@ local lines = vim.opt.lines:get()
 local columns = vim.opt.columns:get()
 local win_width = math.floor(columns / 3)
 local win_height = lines - 5
-vim.fn['ddu#custom#patch_local']('ripgrep-ff', {
-  ui = 'ff',
+vim.fn["ddu#custom#patch_local"]("ripgrep-ff", {
+  ui = "ff",
   uiParams = {
     ff = {
       autoAction = {
@@ -391,12 +389,12 @@ vim.fn['ddu#custom#patch_local']('ripgrep-ff', {
       -- previewHeight = win_height + 1,
       previewSplit = [[vertical]],
       previewWindowOptions = {
-        { "&signcolumn", "no" },
-        { "&foldcolumn", 0 },
-        { "&foldenable", 0 },
-        { "&number", 0 },
+        { "&signcolumn",     "no" },
+        { "&foldcolumn",     0 },
+        { "&foldenable",     0 },
+        { "&number",         0 },
         { "&relativenumber", 0 },
-        { "&wrap", 0 },
+        { "&wrap",           0 },
       },
       winCol = 1,
       winRow = math.floor(lines / 2 - 20),
@@ -409,86 +407,86 @@ vim.fn['ddu#custom#patch_local']('ripgrep-ff', {
   },
   sources = {
     {
-      name = 'rg',
+      name = "rg",
       options = {
         matchers = {},
         volatile = true,
       },
-    }
+    },
   },
 })
 
-vim.fn['ddu#custom#patch_local']('search_line-ff', {
-  ui = 'ff',
+vim.fn["ddu#custom#patch_local"]("search_line-ff", {
+  ui = "ff",
   uiParams = {
     ff = { startFilter = true },
   },
   sources = {
-    { name = 'line' }
-  }
-})
-
-vim.fn['ddu#custom#patch_local']('buffer-ff', {
-  ui = 'ff',
-  sources = {
-    { name = 'buffer' },
+    { name = "line" },
   },
 })
 
-vim.fn['ddu#custom#patch_local']('plugin-list-ff', {
-  ui = 'ff',
+vim.fn["ddu#custom#patch_local"]("buffer-ff", {
+  ui = "ff",
+  sources = {
+    { name = "buffer" },
+  },
+})
+
+vim.fn["ddu#custom#patch_local"]("plugin-list-ff", {
+  ui = "ff",
   uiParams = {
     ff = {
       startFilter = true,
-    }
+    },
   },
   sources = {
-    { name = 'dein' },
+    { name = "dein" },
   },
 })
 
-vim.fn['ddu#custom#patch_local']('home-ff', {
-  ui = 'ff',
+vim.fn["ddu#custom#patch_local"]("home-ff", {
+  ui = "ff",
   uiParams = {
     ff = {
       startFilter = true,
     },
   },
   sourceOptions = {
-    file = {path = vim.env.HOME},
+    file = { path = vim.env.HOME },
   },
   sources = {
-    { name = 'file' },
+    { name = "file" },
   },
 })
 
-vim.fn['ddu#custom#patch_local']('register-ff', {
-  ui = 'ff',
+vim.fn["ddu#custom#patch_local"]("register-ff", {
+  ui = "ff",
   sources = {
-    { name = 'register' }
+    { name = "register" },
   },
 })
 
-vim.fn['ddu#custom#patch_local']('mrr-ff', {
-  ui = 'ff',
+vim.fn["ddu#custom#patch_local"]("mrr-ff", {
+  ui = "ff",
   uiParams = {
     ff = {
       startFilter = true,
-      },
     },
+  },
   sources = {
     {
-      name = 'mr',
+      name = "mr",
       params = {
-        kind = 'mrr',
+        kind = "mrr",
         current = false,
       },
     },
   },
 })
 
-vim.fn['ddu#custom#patch_local']('mru-ff', {
-  ui = 'ff',
+vim.fn["ddu#custom#patch_local"]("mru-ff", {
+  ui = "ff",
   uiParams = {
     ff = {
       startFilter = true,
@@ -496,79 +494,75 @@ vim.fn['ddu#custom#patch_local']('mru-ff', {
   },
   sources = {
     {
-      name = 'mr',
+      name = "mr",
       params = {
-        kind = 'mru',
+        kind = "mru",
         current = true,
       },
     },
   },
 })
 
-vim.fn['ddu#custom#patch_local']('highlight-ff', {
-  ui = 'ff',
+vim.fn["ddu#custom#patch_local"]("highlight-ff", {
+  ui = "ff",
   uiParams = {
     ff = {
       startFilter = true,
     },
   },
   sources = {
-    { name = 'highlight' }
+    { name = "highlight" },
   },
 })
 
-vim.api.nvim_create_user_command(
-  'DeinUpdate',
-  function(opts)
-    local use_graph_ql = false
-    if opts.bang then
-      use_graph_ql = require('user.plugins.dein').check_github_token()
-    end
-    vim.fn['ddu#start']({
-      name ='dein_update-ff',
-      ui = 'ff',
-      sources = {
-        {
-          name = 'dein_update',
-          params = { useGraphQL = use_graph_ql },
-        },
+vim.api.nvim_create_user_command("DeinUpdate", function(opts)
+  local use_graph_ql = false
+  if opts.bang then
+    use_graph_ql = require("user.plugins.dein").check_github_token()
+  end
+  vim.fn["ddu#start"]({
+    name = "dein_update-ff",
+    ui = "ff",
+    sources = {
+      {
+        name = "dein_update",
+        params = { useGraphQL = use_graph_ql },
       },
-    })
-  end,
-  { bang = true }
-)
+    },
+  })
+end, { bang = true })
 
 -- -- UI:filer presets
-vim.fn['ddu#custom#patch_local']('current-filer', {
-  ui = 'filer',
+vim.fn["ddu#custom#patch_local"]("current-filer", {
+  ui = "filer",
   sources = {
-    { name = 'file' }
+    { name = "file" },
   },
 })
 
-vim.fn['ddu#custom#patch_local']('project_root-filer', {
-  ui = 'filer',
+vim.fn["ddu#custom#patch_local"]("project_root-filer", {
+  ui = "filer",
   sources = {
-    { name = 'file' }
+    { name = "file" },
   },
 })
 
-vim.fn['ddu#custom#patch_local']('dotfiles-filer', {
-  ui = 'filer',
+vim.fn["ddu#custom#patch_local"]("dotfiles-filer", {
+  ui = "filer",
   sources = {
-    { name = 'file' }
+    { name = "file" },
   },
   sourceOptions = {
     file = {
-      path = vim.env.HOME .. '/dotfiles'
+      path = vim.env.HOME .. "/dotfiles",
     },
   },
 })
 
-vim.fn['ddu#custom#patch_local']('home-filer', {
-  ui = 'filer',
+vim.fn["ddu#custom#patch_local"]("home-filer", {
+  ui = "filer",
   sources = {
-    { name = 'file' }
+    { name = "file" },
   },
   sourceOptions = {
     file = {
@@ -577,10 +571,10 @@ vim.fn['ddu#custom#patch_local']('home-filer', {
   },
 })
 
-vim.fn['ddu#custom#patch_local']('path_history-filer', {
-  ui = 'ff',
+vim.fn["ddu#custom#patch_local"]("path_history-filer", {
+  ui = "ff",
   sources = {
-    { name = 'path_history' }
+    { name = "path_history" },
   },
 })
 
