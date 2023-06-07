@@ -24,6 +24,7 @@ fi
 export EDITOR=/usr/bin/nvim
 export TERMINAL=/usr/bin/wezterm
 export XDG_CONFIG_HOME=${HOME}/.config
+export XDG_CACHE_HOME=${HOME}/.cache
 
 [[ ! -d ${HOME}/dev ]] && mkdir ${HOME}/dev
 export WORKING_DIR=${HOME}/dev
