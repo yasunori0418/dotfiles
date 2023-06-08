@@ -3,17 +3,17 @@ local gitsigns = require("gitsigns")
 
 gitsigns.setup({
   signs = {
-    add =           { hl = "GitSignsAdd",     text = "+", numhl = "GitSignsAddNr",    linehl = "GitSignsAddLn"    },
-    change =        { hl = "GitSignsChange",  text = "│", numhl = "GitSignsChangeNr", linehl = "GitSignsChangeLn" },
-    delete =        { hl = "GitSignsDelete",  text = "_", numhl = "GitSignsDeleteNr", linehl = "GitSignsDeleteLn" },
-    topdelete =     { hl = "GitSignsDelete",  text = "‾", numhl = "GitSignsDeleteNr", linehl = "GitSignsDeleteLn" },
-    changedelete =  { hl = "GitSignsChange",  text = "~", numhl = "GitSignsChangeNr", linehl = "GitSignsChangeLn" },
-    untracked =     { hl = "GitSignsAdd",     text = "┆", numhl = "GitSignsAddNr",    linehl = "GitSignsAddLn"    },
+    add = { hl = "GitSignsAdd", text = "+", numhl = "GitSignsAddNr", linehl = "GitSignsAddLn" },
+    change = { hl = "GitSignsChange", text = "│", numhl = "GitSignsChangeNr", linehl = "GitSignsChangeLn" },
+    delete = { hl = "GitSignsDelete", text = "_", numhl = "GitSignsDeleteNr", linehl = "GitSignsDeleteLn" },
+    topdelete = { hl = "GitSignsDelete", text = "‾", numhl = "GitSignsDeleteNr", linehl = "GitSignsDeleteLn" },
+    changedelete = { hl = "GitSignsChange", text = "~", numhl = "GitSignsChangeNr", linehl = "GitSignsChangeLn" },
+    untracked = { hl = "GitSignsAdd", text = "┆", numhl = "GitSignsAddNr", linehl = "GitSignsAddLn" },
   },
 
   signcolumn = true, -- Toggle with `:Gitsigns toggle_signs`
-  numhl = true, -- Toggle with `:Gitsigns toggle_numhl`
-  linehl = false, -- Toggle with `:Gitsigns toggle_linehl`
+  numhl = true,     -- Toggle with `:Gitsigns toggle_numhl`
+  linehl = false,   -- Toggle with `:Gitsigns toggle_linehl`
   word_diff = false, -- Toggle with `:Gitsigns toggle_word_diff`
   watch_gitdir = {
     interval = 1000,
@@ -69,10 +69,10 @@ gitsigns.setup({
       return "<Ignore>"
     end, keymap_options)
 
-    keymap({"n", "v"}, "ghs", "<Cmd>Gitsigns stage_hunk<CR>")
-    keymap({"n", "v"}, "ghr", "<Cmd>Gitsigns reset_hunk<CR>")
+    keymap({ "n", "v" }, "ghs", "<Cmd>Gitsigns stage_hunk<CR>")
+    keymap({ "n", "v" }, "ghr", "<Cmd>Gitsigns reset_hunk<CR>")
+    keymap({ "n", "v" }, "ghu", "<Cmd>Gitsigns undo_stage_hunk<CR>")
     keymap("n", "gbs", "<Cmd>Gitsigns stage_buffer<CR>")
-    keymap("n", "gbu", "<Cmd>Gitsigns undo_stage_hunk<CR>")
   end,
 })
 -- }}}
