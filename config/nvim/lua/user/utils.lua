@@ -69,7 +69,7 @@ end
 ---Gitリポジトリでなければ、現在バッファーのディレクトリを返す
 ---@return string
 M.search_repo_root = function()
-  local result = io.popen('git root', 'r'):read('*l')
+  local result = io.popen('git root 2> /dev/null', 'r'):read('*l')
   if result then
     return result
   end
