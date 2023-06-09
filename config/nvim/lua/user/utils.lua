@@ -90,7 +90,7 @@ M.toggle_view = function()
     vim.opt.number = true
     vim.opt.relativenumber = true
     vim.opt.laststatus = 3
-    vim.opt.showtabline = 2
+    vim.opt.showtabline = 1
     gitsigns.toggle_signs(true)
   end
 end
