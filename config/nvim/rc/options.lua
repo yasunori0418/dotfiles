@@ -57,6 +57,9 @@ local option_table = {
   -- Display current row cursorline.
   cursorline = true,
 
+  -- disable ruler display.
+  ruler = false,
+
   -- Smart indent.
   smartindent = true,
   autoindent = true,
