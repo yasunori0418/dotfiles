@@ -16,6 +16,7 @@ fi
 # https://superuser.com/questions/759759/writing-a-service-that-depends-on-xorg
 systemctl --user import-environment \
   PATH \
-  XDG_SESSION_ID
+  XDG_SESSION_ID \
+  QT_QPA_PLATFORMTHEME
 systemctl --no-block --user start xsession.target
 # vim:ft=sh
