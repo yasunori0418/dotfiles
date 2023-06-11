@@ -46,13 +46,13 @@ local my_keybinds = {
 return {
   use_ime = false, --vimで日本語入力するときは、skkeletonを使っているから問題無い
 
-  --font = wezterm.font('Cica'),
-  font = wezterm.font_with_fallback({
-    { family = "HackGen35 Console NF", weight = "Regular", style = "Normal" },
-    { family = "HackGen35 Console NF", weight = "Bold", style = "Normal" },
-    { family = "Cica", weight = "Regular", style = "Italic" },
-    { family = "Cica", weight = "Bold", style = "Italic" },
-  }),
+  font = wezterm.font("HackGen35 Console NF"),
+  -- font = wezterm.font_with_fallback({
+  --   { family = "HackGen35 Console NF", weight = "Regular", style = "Normal" },
+  --   { family = "HackGen35 Console NF", weight = "Bold", style = "Normal" },
+  --   { family = "Cica", weight = "Regular", style = "Italic" },
+  --   { family = "Cica", weight = "Bold", style = "Italic" },
+  -- }),
   font_size = 16.0, -- フォントサイズは偶数でないと変になる。
   -- Must setting when tile window manager.
   adjust_window_size_when_changing_font_size = false,
