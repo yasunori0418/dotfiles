@@ -3,6 +3,7 @@ Description=Minimalistic polkit authentication agent.
 PartOf=graphical-session.target
 
 [Service]
+Type=simple
 ExecStart=/usr/bin/polkit-dumb-agent
 Restart=always
 
