@@ -10,7 +10,6 @@
 [core]
 	editor = nvim
 	filemode = false
-	symlinks = true
 [pull]
 	ff = only
 [init]
