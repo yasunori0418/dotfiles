@@ -4,6 +4,7 @@ PartOf=graphical-session.target
 
 [Service]
 ExecStart=/usr/bin/polkit-dumb-agent
+Restart=always
 
 [Install]
 WantedBy=xsession.target
