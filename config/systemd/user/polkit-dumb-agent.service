@@ -6,6 +6,4 @@ PartOf=graphical-session.target
 ExecStart=/usr/bin/polkit-dumb-agent
 
 [Install]
-WantedBy=xsession.target
-# xsession starts when xprofile is loaded
-# ~/.xprofile:21
+WantedBy=graphical-session.target
