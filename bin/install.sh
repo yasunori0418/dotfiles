@@ -28,7 +28,8 @@ git clone --recursive https://github.com/yasunori0418/dotfiles.git
 
 ln -svf ~/dotfiles/modules/nord-dircolors/src/dir_colors ~/dotfiles/home/.dir_colors
 bash ~/dotfiles/modules/SKK_Keymap_L2X/install.sh
-ln -svf ~/dotfiles/modules/friendly-snippets ~/dotfiles/home/.vsnip/friendly-snippets
+ln -svf ~/dotfiles/modules/friendly-snippets ~/dotfiles/config/nvim/snippet/vsnip/friendly-snippets
+ln -svf ~/dotfiles/modules/rofi-power-menu/rofi-power-menu ~/dotfiles/bin/rofi-power-menu
 
 ln -svf ~/dotfiles/home/.?* ~/
 ln -svf ~/dotfiles/bin ~/
