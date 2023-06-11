@@ -36,6 +36,7 @@ vim.fn['signature_help#enable']()
 [[plugins]] # fidget.nvim
 repo = 'j-hui/fidget.nvim'
 on_event = 'LspAttach'
+rev = 'legacy'
 hooks_file = '$BASE_DIR/hooks/fidget.lua'
 
 [[plugins]] # neodev.nvim
