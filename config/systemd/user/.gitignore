@@ -1,3 +1,4 @@
 default.target.wants/
 sockets.target.wants/
+graphical-session.target.wants/
 dbus.service

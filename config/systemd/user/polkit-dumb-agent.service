@@ -1,0 +1,8 @@
+[Unit]
+Description=Minimalistic polkit authentication agent.
+
+[Service]
+ExecStart=/usr/bin/polkit-dumb-agent
+
+[Install]
+WantedBy=graphical-session.target
