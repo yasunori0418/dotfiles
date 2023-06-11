@@ -1,3 +1,4 @@
 config/libskk/rules/SKK_Keymap_L2X
 home/.vsnip/friendly-snippets
 home/.dir_colors
+bin/rofi-power-menu
