@@ -1,8 +1,11 @@
 [Unit]
 Description=Minimalistic polkit authentication agent.
+PartOf=graphical-session.target
 
 [Service]
 ExecStart=/usr/bin/polkit-dumb-agent
 
 [Install]
-WantedBy=graphical-session.target
+WantedBy=xsession.target
+# xsession starts when xprofile is loaded
+# ~/.xprofile:21
