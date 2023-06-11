@@ -6,4 +6,4 @@ PartOf=graphical-session.target
 ExecStart=/usr/bin/polkit-dumb-agent
 
 [Install]
-WantedBy=graphical-session.target
+WantedBy=xsession.target

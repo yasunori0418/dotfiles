@@ -18,4 +18,5 @@ systemctl --user import-environment \
   PATH \
   XDG_SESSION_ID \
   QT_QPA_PLATFORMTHEME
+systemctl --user start xsession.target
 # vim:ft=sh
