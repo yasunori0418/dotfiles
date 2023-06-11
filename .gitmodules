@@ -7,3 +7,6 @@
 [submodule "modules/SKK_Keymap_L2X"]
 	path = modules/SKK_Keymap_L2X
 	url = https://github.com/yasunori-kirin0418/SKK_Keymap_L2X.git
+[submodule "modules/rofi-power-menu"]
+	path = modules/rofi-power-menu
+	url = https://github.com/jluttine/rofi-power-menu.git
