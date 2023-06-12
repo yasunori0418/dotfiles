@@ -13,3 +13,6 @@ repo = 'mattn/learn-vimscript'
 [[plugins]] # mr.vim
 repo = 'lambdalisue/mr.vim'
 hooks_file = '$BASE_DIR/hooks/mr.lua'
+
+[[plugins]]
+repo = 'tani/vim-artemis'
