@@ -8,7 +8,7 @@ hooks_file = '$BASE_DIR/hooks/treesitter.lua'
 [[plugins]] # nightfox.nvim
 repo = 'EdenEast/nightfox.nvim'
 depends = ['nvim-treesitter']
-on_event = ['CursorHold', 'InsertEnter', 'CmdlineEnter']
+on_event = ['CursorHold', 'InsertEnter', 'CmdlineEnter', 'CursorMoved']
 hooks_file = '$BASE_DIR/hooks/nightfox.lua'
 
 # }}}
