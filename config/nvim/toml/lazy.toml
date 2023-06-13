@@ -8,7 +8,7 @@ hooks_file = '$BASE_DIR/hooks/treesitter.lua'
 [[plugins]] # nightfox.nvim
 repo = 'EdenEast/nightfox.nvim'
 depends = ['nvim-treesitter']
-on_event = 'VimEnter'
+on_event = ['CursorHold', 'InsertEnter', 'CmdlineEnter']
 hooks_file = '$BASE_DIR/hooks/nightfox.lua'
 
 # }}}
@@ -16,7 +16,7 @@ hooks_file = '$BASE_DIR/hooks/nightfox.lua'
 # Editor support plugins {{{
 [[plugins]] # lightline.vim
 repo = 'itchyny/lightline.vim'
-on_event = ['VimEnter']
+on_event = ['WinNew', 'CursorHold', 'InsertEnter', 'CmdlineEnter']
 depends = ['vim-gitbranch']
 hooks_file = '$BASE_DIR/hooks/lightline.lua'
 
