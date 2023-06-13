@@ -176,7 +176,7 @@ vim.fn["ddc#custom#patch_filetype"]({ "python", "php" }, {
 })
 
 vim.fn["ddc#custom#patch_filetype"]("lua", {
-  sources = vim.fn.extendnew(global_source, { "nvim-lua", "nvim-lsp", "necovim" }, 0),
+  sources = vim.fn.extendnew(global_source, { "nvim-lua", "nvim-lsp" }, 0),
 })
 
 vim.fn["ddc#custom#patch_filetype"]({ "vim", "toml" }, {
