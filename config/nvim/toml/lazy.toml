@@ -94,6 +94,14 @@ lua_source = '''
 vim.g.memolist_path = vim.fn.expand('~/Documents/memo')
 '''
 
+[[plugins]]
+repo = 'dstein64/vim-startuptime'
+on_cmd = 'StartupTime'
+lua_source = '''
+vim.g.startuptime_tries = 10
+vim.g.startuptime_event_width = 0
+'''
+
 # }}}
 
 # Coding support plugins {{{
