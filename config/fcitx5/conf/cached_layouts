@@ -218,16 +218,6 @@ Description="キーボード - ウクライナ語 - ウクライナ語 (legacy)"
 Language=uk
 Label="ua (legacy)"
 
-[keyboard-ua-rstu]
-Description="キーボード - ウクライナ語 - ウクライナ語 (標準 RSTU)"
-Language=uk
-Label="ua (rstu)"
-
-[keyboard-ua-rstu_ru]
-Description="キーボード - ウクライナ語 - ロシア語 (ウクライナ、標準 RSTU)"
-Language=ru
-Label="ua (rstu_ru)"
-
 [keyboard-ua-homophonic]
 Description="キーボード - ウクライナ語 - ウクライナ語 (homophonic)"
 Language=uk
@@ -289,7 +279,7 @@ Language=sk
 Label=sk
 
 [keyboard-sk-bksl]
-Description="キーボード - スロバキア語 - Slovak (extended backslash)"
+Description="キーボード - スロバキア語 - Slovak (extra backslash)"
 Language=sk
 Label="sk (bksl)"
 
@@ -299,7 +289,7 @@ Language=sk
 Label="sk (qwerty)"
 
 [keyboard-sk-qwerty_bksl]
-Description="キーボード - スロバキア語 - Slovak (QWERTY, extended backslash)"
+Description="キーボード - スロバキア語 - Slovak (QWERTY, extra backslash)"
 Language=sk
 Label="sk (qwerty_bksl)"
 
@@ -454,7 +444,7 @@ Language=cu
 Label="ru (chu)"
 
 [keyboard-ru-ruu]
-Description="キーボード - ロシア語 - ロシア語 (ウクライナ語・ベラルーシ語配列付き)"
+Description="キーボード - ロシア語 - Russian (plus Ukrainian and Belarusian letters)"
 Language=ru
 Label="ru (ruu)"
 
@@ -499,9 +489,14 @@ Language=ru
 Label=winkeys-p
 
 [keyboard-ru-typo]
-Description="キーボード - ロシア語 - Russian (typographic)"
+Description="キーボード - ロシア語 - Russian (plus typographic symbols)"
 Language=ru
 Label="ru (typo)"
+
+[keyboard-ru-rtu]
+Description="キーボード - ロシア語 - Russian (plus Tatar letters)"
+Language=ru
+Label="ru (rtu)"
 
 [keyboard-trans]
 Description="キーボード - International Phonetic Alphabet"
@@ -522,6 +517,11 @@ Label=fa
 Description="キーボード - ペルシア語 - Persian (with Persian keypad)"
 Language=fa
 Label="ir (pes_keypad)"
+
+[keyboard-ir-winkeys]
+Description="キーボード - ペルシア語 - Persian (Windows)"
+Language=fa
+Label="ir (winkeys)"
 
 [keyboard-ir-azb]
 Description="キーボード - ペルシア語 - Azerbaijani (Iran)"
@@ -547,11 +547,6 @@ Label="ku (ku_alt)"
 Description="キーボード - ペルシア語 - クルド語 (イラン、アラビア語ラテン)"
 Language=ku
 Label="ku (ku_ara)"
-
-[keyboard-ir-ave]
-Description="キーボード - ペルシア語 - Avestan"
-Language=ae
-Label="ir (ave)"
 
 [keyboard-ng]
 Description="キーボード - 英語 (ナイジェリア)"
@@ -628,11 +623,6 @@ Description="キーボード - スペイン語 - カタロニア語 (スペイ�
 Language=ca
 Label="ca (cat)"
 
-[keyboard-es-mac]
-Description="キーボード - スペイン語 - スペイン語 (Macintosh)"
-Language=es
-Label="es (mac)"
-
 [keyboard-es-sun_type6]
 Description="キーボード - スペイン語 - スペイン語 (Sun Type 6/7)"
 Language=es
@@ -694,7 +684,7 @@ Language=cs
 Label=cs
 
 [keyboard-cz-bksl]
-Description="キーボード - チェコ語 - Czech (with <\\|> key)"
+Description="キーボード - チェコ語 - Czech (extra backslash)"
 Language=cs
 Label="cz (bksl)"
 
@@ -704,7 +694,7 @@ Language=cs
 Label="cz (qwerty)"
 
 [keyboard-cz-qwerty_bksl]
-Description="キーボード - チェコ語 - Czech (QWERTY, extended backslash)"
+Description="キーボード - チェコ語 - Czech (QWERTY, extra backslash)"
 Language=cs
 Label="cz (qwerty_bksl)"
 
@@ -724,9 +714,19 @@ Language=cs
 Label="cz (dvorak-ucw)"
 
 [keyboard-cz-rus]
-Description="キーボード - チェコ語 - Russian (Czech, phonetic)"
+Description="キーボード - チェコ語 - Russian (Czechia, phonetic)"
 Language=ru
 Label="ru (rus)"
+
+[keyboard-cz-winkeys]
+Description="キーボード - チェコ語 - Czech (QWERTZ, Windows flavour)"
+Language=cs
+Label="cz (winkeys)"
+
+[keyboard-cz-winkeys-qwerty]
+Description="キーボード - チェコ語 - Czech (QWERTY, Windows flavour)"
+Language=cs
+Label="cz (winkeys-qwerty)"
 
 [keyboard-cz-sun_type6]
 Description="キーボード - チェコ語 - チェコ語 (Sun Type 6/7)"
@@ -738,20 +738,15 @@ Description="キーボード - チェコ語 - Czech (programming)"
 Language=cs
 Label="cz (prog)"
 
-[keyboard-cz-typo]
-Description="キーボード - チェコ語 - Czech (typographic)"
+[keyboard-cz-prog_typo]
+Description="キーボード - チェコ語 - Czech (programming, typographic)"
 Language=cs
-Label="cz (typo)"
+Label="cz (prog_typo)"
 
 [keyboard-cz-coder]
 Description="キーボード - チェコ語 - Czech (coder)"
 Language=cs
 Label="cz (coder)"
-
-[keyboard-cz-prog_typo]
-Description="キーボード - チェコ語 - Czech (programming, typographic)"
-Language=cs
-Label="cz (prog_typo)"
 
 [keyboard-cz-colemak-ucw]
 Description="キーボード - チェコ語 - Czech (US, Colemak, UCW support)"
@@ -854,7 +849,7 @@ Language=ro
 Label=md
 
 [keyboard-md-gag]
-Description="キーボード - Moldavian - Moldavian (Gagauz)"
+Description="キーボード - Moldavian - Gagauz (Moldova)"
 Language=gag
 Label=gag
 
@@ -908,15 +903,25 @@ Description="キーボード - 英語 (US) - English (Colemak-DH)"
 Language=en
 Label="us (colemak_dh)"
 
-[keyboard-us-colemak_dh_iso]
-Description="キーボード - 英語 (US) - English (Colemak-DH ISO)"
+[keyboard-us-colemak_dh_wide]
+Description="キーボード - 英語 (US) - English (Colemak-DH Wide)"
 Language=en
-Label="us (colemak_dh_iso)"
+Label="us (colemak_dh_wide)"
 
 [keyboard-us-colemak_dh_ortho]
 Description="キーボード - 英語 (US) - English (Colemak-DH Ortholinear)"
 Language=en
 Label="us (colemak_dh_ortho)"
+
+[keyboard-us-colemak_dh_iso]
+Description="キーボード - 英語 (US) - English (Colemak-DH ISO)"
+Language=en
+Label="us (colemak_dh_iso)"
+
+[keyboard-us-colemak_dh_wide_iso]
+Description="キーボード - 英語 (US) - English (Colemak-DH Wide ISO)"
+Language=en
+Label="us (colemak_dh_wide_iso)"
 
 [keyboard-us-dvorak]
 Description="キーボード - 英語 (US) - 英語 (Dvorak)"
@@ -1024,7 +1029,7 @@ Language=crd
 Label="us (crd)"
 
 [keyboard-us-cz_sk_de]
-Description="キーボード - 英語 (US) - Czech Slovak and German (US)"
+Description="キーボード - 英語 (US) - Czech, Slovak and German (US)"
 Language=en
 Label="us (cz_sk_de)"
 
@@ -1334,7 +1339,7 @@ Language=ur
 Label="pk (urd-navees)"
 
 [keyboard-au]
-Description="キーボード - English (Australian)"
+Description="キーボード - English (Australia)"
 Language=en
 Label=en
 
@@ -1442,11 +1447,6 @@ Label="ara (basic_ext)"
 Description="キーボード - アラビア語 - Arabic (Eastern Arabic numerals, extensions in the 4th level)"
 Language=ar
 Label="ara (basic_ext_digits)"
-
-[keyboard-ara-uga]
-Description="キーボード - アラビア語 - Ugaritic instead of Arabic"
-Language=ar
-Label="ara (uga)"
 
 [keyboard-ara-ergoarabic]
 Description="キーボード - アラビア語 - Arabic (ErgoArabic)"
@@ -1858,6 +1858,11 @@ Description="キーボード - ポルトガル語 (ブラジル) - Portuguese (B
 Language=pt
 Label="br (nativo)"
 
+[keyboard-br-rus]
+Description="キーボード - ポルトガル語 (ブラジル) - Russian (Brazil, phonetic)"
+Language=ru
+Label="ru (rus)"
+
 [keyboard-br-nativo-us]
 Description="キーボード - ポルトガル語 (ブラジル) - Portuguese (Brazil, Nativo for US keyboards)"
 Language=pt
@@ -1962,6 +1967,11 @@ Label="ml (mal_lalitha)"
 Description="キーボード - Indian - Malayalam (enhanced InScript, with rupee)"
 Language=ml
 Label="ml (mal_enhanced)"
+
+[keyboard-in-mal_poorna]
+Description="キーボード - Indian - Malayalam (Poorna, extended InScript)"
+Language=ml
+Label="ml (mal_poorna)"
 
 [keyboard-in-ori]
 Description="キーボード - Indian - オリヤー語"
@@ -3438,6 +3448,26 @@ Description="キーボード - スペイン語 (ラテンアメリカ) - Spanish
 Language=es
 Label="latam (colemak)"
 
+[keyboard-ancient]
+Description="キーボード - Ancient"
+Language=got
+Label=xx
+
+[keyboard-ancient-got]
+Description="キーボード - Ancient - Gothic"
+Language=got
+Label="ancient (got)"
+
+[keyboard-ancient-uga]
+Description="キーボード - Ancient - Ugaritic"
+Language=uga
+Label="ancient (uga)"
+
+[keyboard-ancient-ave]
+Description="キーボード - Ancient - Avestan"
+Language=ae
+Label="ancient (ave)"
+
 [keyboard-mt]
 Description="キーボード - マルタ語"
 Language=mt
@@ -3460,7 +3490,7 @@ Label="mt (alt-gb)"
 
 [keyboard-custom]
 Description="キーボード - A user-defined custom Layout"
-Language=
+Language=und
 Label=custom
 
 [keyboard-no]
@@ -3507,6 +3537,16 @@ Label="no (mac_nodeadkeys)"
 Description="キーボード - ノルウェー語 - ノルウェー語 (Colemak)"
 Language=no
 Label="no (colemak)"
+
+[keyboard-no-colemak_dh]
+Description="キーボード - ノルウェー語 - Norwegian (Colemak-DH)"
+Language=no
+Label="no (colemak_dh)"
+
+[keyboard-no-colemak_dh_wide]
+Description="キーボード - ノルウェー語 - Norwegian (Colemak-DH Wide)"
+Language=no
+Label="no (colemak_dh_wide)"
 
 [keyboard-no-sun_type6]
 Description="キーボード - ノルウェー語 - ノルウェー語 (Sun Type 6/7)"
