@@ -16,3 +16,7 @@ hooks_file = '$BASE_DIR/hooks/mr.lua'
 
 [[plugins]]
 repo = 'tani/vim-artemis'
+
+[[plugins]]
+repo = 'EtiamNullam/deferred-clipboard.nvim'
+hooks_file = '$BASE_DIR/hooks/clipboard.lua'
