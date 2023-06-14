@@ -30,14 +30,6 @@ vim.g['context_filetype#ignore_patterns'] = {
 }
 '''
 
-[[plugins]]
-repo = 'LeafCage/vimhelpgenerator'
-on_cmd = ['VimHelpGenerator', 'VimHelpGeneratorVirtual']
-lua_source = '''
-vim.g.vimhelpgenerator_author = [[yasunori0418]]
-vim.g.vimhelpgenerator_uri = [[https://github.com/yasunori0418]]
-'''
-
 [[plugins]] # nvim-notify
 repo = 'rcarriga/nvim-notify'
 on_source = 'nightfox.nvim'
@@ -87,21 +79,6 @@ vim.g.netrw_nogx = 1 -- disable netrw's gx mapping.
 vim.keymap.set({"n", "x"}, [[gx]], [[<Plug>(openbrowser-smart-search)]], { noremap = false })
 '''
 
-[[plugins]]
-repo = 'glidenote/memolist.vim'
-on_cmd = ['MemoNew', 'MemoList', 'MemoNewWithMeta', 'MemoGrep']
-lua_source = '''
-vim.g.memolist_path = vim.fn.expand('~/Documents/memo')
-'''
-
-[[plugins]]
-repo = 'dstein64/vim-startuptime'
-on_cmd = 'StartupTime'
-lua_source = '''
-vim.g.startuptime_tries = 10
-vim.g.startuptime_event_width = 0
-'''
-
 # }}}
 
 # Coding support plugins {{{
@@ -147,14 +124,6 @@ hooks_file = '$BASE_DIR/hooks/comment_nvim.lua'
 [[plugins]]
 repo = 'yioneko/nvim-yati'
 on_source = 'nvim-treesitter'
-
-
-[[plugins]] # vim-themis
-repo = 'thinca/vim-themis'
-on_cmd = 'StartThemis'
-hook_add = '''
-command! StartThemis call dein#source('vim-themis')
-'''
 
 # }}}
 
