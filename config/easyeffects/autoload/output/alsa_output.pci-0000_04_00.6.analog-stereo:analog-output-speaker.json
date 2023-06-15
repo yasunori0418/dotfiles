@@ -1,6 +1,0 @@
-{
-    "device": "alsa_output.pci-0000_04_00.6.analog-stereo",
-    "device-description": "Family 17h/19h HD Audio Controller アナログステレオ",
-    "device-profile": "analog-output-speaker",
-    "preset-name": "eargasm_explosion"
-}
