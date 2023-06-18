@@ -4,7 +4,6 @@ repo = 'itchyny/vim-gitbranch'
 
 [[plugins]] # gitsigns.nvim
 repo = 'lewis6991/gitsigns.nvim'
-on_source = 'nightfox.nvim'
 hooks_file = '$BASE_DIR/hooks/gitsigns.lua'
 
 [[plugins]] # gina.vim

@@ -1,3 +1,25 @@
+-- lua_add {{{
+vim.api.nvim_create_autocmd({ "BufNewFile", "BufRead" }, {
+  pattern = "*",
+  callback = function(args)
+    local current_file = vim.fn.fnamemodify(args.file, ":p")
+    local is_diff_file = false
+    local repo_root = require("user.utils").search_repo_root()
+    local diff_files = vim.fn.systemlist("git diff --name-only 2> /dev/null")
+    for _, diff_file in pairs(diff_files) do
+      if repo_root .. "/" .. diff_file == current_file then
+        is_diff_file = true
+      end
+    end
+
+    if vim.wo.diff or is_diff_file then
+      require("dein").source("gitsigns.nvim")
+      vim.api.nvim_del_autocmd(args.id)
+    end
+  end,
+})
+-- }}}
+
 -- lua_source {{{
 local gitsigns = require("gitsigns")
 
