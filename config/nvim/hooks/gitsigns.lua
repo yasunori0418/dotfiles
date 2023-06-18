@@ -1,5 +1,5 @@
 -- lua_add {{{
-vim.api.nvim_create_autocmd({ "BufNewFile", "BufRead" }, {
+vim.api.nvim_create_autocmd({ "BufNewFile", "BufRead", "BufWritePost" }, {
   pattern = "*",
   callback = function(args)
     local current_file = vim.fn.fnamemodify(args.file, ":p")
