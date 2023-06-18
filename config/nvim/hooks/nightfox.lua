@@ -77,7 +77,7 @@ vim.cmd([[colorscheme nordfox]])
 -- }}}
 
 -- lua_post_source {{{
-if vim.fn.isdirectory(vim.fn.stdpath("cache") .. "/nightfox") then
+if vim.fn.isdirectory(vim.fn.stdpath("cache") .. "/nightfox") > 0 then
   if vim.fn.empty(vim.fn.systemlist("ls " .. vim.fn.stdpath("cache") .. "/nightfox")) > 0 then
     require("nightfox").compile()
   end
