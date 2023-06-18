@@ -1,10 +1,5 @@
 # Lazy load plugins
 # Colorscheme {{{
-[[plugins]] # nvim-treesitter
-repo = 'nvim-treesitter/nvim-treesitter'
-on_event = 'BufRead'
-hooks_file = '$BASE_DIR/hooks/treesitter.lua'
-
 [[plugins]] # nightfox.nvim
 repo = 'EdenEast/nightfox.nvim'
 depends = ['nvim-treesitter']
@@ -95,35 +90,10 @@ hooks_file = '$BASE_DIR/hooks/eft.lua'
 repo = 'itchyny/vim-cursorword'
 on_source = 'nightfox.nvim'
 
-[[plugins]] # indent-blankline.nvim
-repo = 'lukas-reineke/indent-blankline.nvim'
-depends = 'nvim-treesitter'
-on_source = 'nightfox.nvim'
-hooks_file = '$BASE_DIR/hooks/indent_blankline.lua'
-
-[[plugins]] # matchparen.nvim
-repo = 'monkoose/matchparen.nvim'
-depends = 'nvim-treesitter'
-on_source = 'nightfox.nvim'
-lua_source = '''
-require('matchparen').setup()
-'''
-
 [[plugins]] # vim-sandwich
 repo = 'machakann/vim-sandwich'
 on_map = { nxo = '<Plug>(sandwich-' }
 hooks_file = '$BASE_DIR/hooks/sandwich.lua'
-
-[[plugins]] # Comment.nvim
-repo = 'numToStr/Comment.nvim'
-depends = 'nvim-treesitter'
-on_map = { nox = '<Plug>(comment_toggle_' }
-on_event = ['CursorHold']
-hooks_file = '$BASE_DIR/hooks/comment_nvim.lua'
-
-[[plugins]]
-repo = 'yioneko/nvim-yati'
-on_source = 'nvim-treesitter'
 
 # }}}
 

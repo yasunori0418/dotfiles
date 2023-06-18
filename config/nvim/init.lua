@@ -38,6 +38,7 @@ local toml_files = {
   "lazy.toml",
   "lsp.toml",
   "tools.toml",
+  "treesitter.toml",
 }
 
 if not vim.regex("/dein.vim"):match_str(vim.o.runtimepath) then
