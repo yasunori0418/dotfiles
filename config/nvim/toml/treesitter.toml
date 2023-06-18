@@ -5,26 +5,22 @@ hooks_file = '$BASE_DIR/hooks/treesitter.lua'
 
 [[plugins]] # indent-blankline.nvim
 repo = 'lukas-reineke/indent-blankline.nvim'
-depends = 'nvim-treesitter'
-on_source = 'nightfox.nvim'
+on_source = 'nvim-treesitter'
 hooks_file = '$BASE_DIR/hooks/indent_blankline.lua'
 
 [[plugins]] # matchparen.nvim
 repo = 'monkoose/matchparen.nvim'
-depends = 'nvim-treesitter'
-on_source = 'nightfox.nvim'
+on_source = 'nvim-treesitter'
 lua_source = '''
 require('matchparen').setup()
 '''
 
 [[plugins]] # Comment.nvim
 repo = 'numToStr/Comment.nvim'
-depends = 'nvim-treesitter'
 on_map = { nox = '<Plug>(comment_toggle_' }
-on_event = ['CursorHold']
+on_event = ['CursorHold', 'InsertEnter']
 hooks_file = '$BASE_DIR/hooks/comment_nvim.lua'
 
 [[plugins]] #nvim-yati
 repo = 'yioneko/nvim-yati'
 on_source = 'nvim-treesitter'
-
