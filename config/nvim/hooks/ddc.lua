@@ -1,27 +1,7 @@
 -- lua_add {{{
-local commandline_post = function()
-  if vim.b.prev_buffer_config then
-    vim.fn["ddc#custom#set_buffer"](vim.b.prev_buffer_config)
-    vim.b.prev_buffer_config = nil
-  end
-end
-local commandline_pre = function()
-  vim.b.prev_buffer_config = vim.fn["ddc#custom#get_buffer"]()
-  vim.api.nvim_create_autocmd("User", {
-    group = require("user.utils").vimrc_augroup,
-    pattern = "DDCCmdlineLeave",
-    callback = function()
-      commandline_post()
-    end,
-    once = true,
-  })
-  vim.fn["ddc#enable_cmdline_completion"]()
-end
-
-require("user.utils").autocmd_set("CmdlineEnter", "*", function()
-  commandline_pre()
+require('user.utils').autocmd_set("CmdlineEnter", "*", function()
+  require('user.plugins.ddc').commandline_pre()
 end)
-
 -- }}}
 
 -- lua_source {{{
