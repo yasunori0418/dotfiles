@@ -28,3 +28,4 @@ on_source = 'nvim-treesitter'
 [[plugins]]
 repo = 'RRethy/vim-illuminate'
 on_source = 'nvim-treesitter'
+hooks_file = '$BASE_DIR/hooks/illuminate.lua'
