@@ -86,10 +86,6 @@ repo = 'hrsh7th/vim-eft'
 on_map = { nxo = '<Plug>(eft-' }
 hooks_file = '$BASE_DIR/hooks/eft.lua'
 
-[[plugins]] # vim-cursorword
-repo = 'itchyny/vim-cursorword'
-on_source = 'nightfox.nvim'
-
 [[plugins]] # vim-sandwich
 repo = 'machakann/vim-sandwich'
 on_map = { nxo = '<Plug>(sandwich-' }
