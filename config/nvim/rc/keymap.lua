@@ -378,7 +378,7 @@ require("user.utils").keymaps_set({
   { -- gfもgFもやってること変わらんのよね…
     mode = { "n" },
     lhs = [[gf]],
-    rhs = [[gF]],
+    rhs = [[<C-w>gF]],
     opts = noremap_silent,
   },
   { -- redrawもnohlsearchもやりたいことの目的が同じという事実
