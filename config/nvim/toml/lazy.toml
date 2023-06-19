@@ -1,13 +1,4 @@
 # Lazy load plugins
-# Colorscheme {{{
-[[plugins]] # nightfox.nvim
-repo = 'EdenEast/nightfox.nvim'
-depends = ['nvim-treesitter']
-on_event = 'VimEnter'
-hooks_file = '$BASE_DIR/hooks/nightfox.lua'
-
-# }}}
-
 # Editor support plugins {{{
 [[plugins]] # lightline.vim
 repo = 'itchyny/lightline.vim'

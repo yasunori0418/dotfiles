@@ -1,8 +1,9 @@
--- lua_source {{{
+-- lua_add {{{
+local nightfox_cache = vim.fn.stdpath("cache") .. "/nightfox"
 require("nightfox").setup({
   options = {
     -- Compiled file's destination location
-    compile_path = vim.fn.stdpath("cache") .. "/nightfox",
+    compile_path = nightfox_cache,
     compile_file_suffix = "_compiled", -- Compiled file suffix
     transparent = false, -- Disable setting background
     terminal_colors = true, -- Set terminal colors (vim.g.terminal_color_*)
@@ -73,15 +74,6 @@ require("nightfox").setup({
     },
   },
 })
-vim.cmd([[colorscheme nordfox]])
--- }}}
 
--- lua_post_source {{{
-if vim.fn.isdirectory(vim.fn.stdpath("cache") .. "/nightfox") > 0 then
-  if vim.fn.empty(vim.fn.systemlist("ls " .. vim.fn.stdpath("cache") .. "/nightfox")) > 0 then
-    require("nightfox").compile()
-  end
-else
-  require("nightfox").compile()
-end
+vim.cmd([[colorscheme nordfox]])
 -- }}}

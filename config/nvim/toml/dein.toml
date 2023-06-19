@@ -16,3 +16,7 @@ hooks_file = '$BASE_DIR/hooks/mr.lua'
 
 [[plugins]]
 repo = 'tani/vim-artemis'
+
+[[plugins]] # nightfox.nvim
+repo = 'EdenEast/nightfox.nvim'
+hooks_file = '$BASE_DIR/hooks/nightfox.lua'
