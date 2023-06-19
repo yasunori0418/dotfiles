@@ -43,7 +43,7 @@ require("nightfox").setup({
       gitsigns = true,
       glyph_palette = false,
       hop = false,
-      illuminate = false,
+      illuminate = true,
       indent_blanklines = true,
       leap = false,
       lightspeed = false,

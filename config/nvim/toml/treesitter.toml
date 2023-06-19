@@ -24,3 +24,7 @@ hooks_file = '$BASE_DIR/hooks/comment_nvim.lua'
 [[plugins]] #nvim-yati
 repo = 'yioneko/nvim-yati'
 on_source = 'nvim-treesitter'
+
+[[plugins]]
+repo = 'RRethy/vim-illuminate'
+on_source = 'nvim-treesitter'
