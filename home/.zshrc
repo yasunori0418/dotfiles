@@ -192,5 +192,7 @@ alias sync_status='watch grep -e Dirty: -e Writeback: /proc/meminfo'
 
 alias capswap='systemctl --user start swap_caps_k8.service'
 
+alias denops_restart='systemctl --user restart denops'
+
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
