@@ -1,6 +1,6 @@
 -- lua_add {{{
 require('user.utils').autocmd_set("CmdlineEnter", "*", function()
-  require('user.plugins.ddc').commandline_pre()
+  require('user.plugins.ddc').cmdline_completion()
 end)
 -- }}}
 
