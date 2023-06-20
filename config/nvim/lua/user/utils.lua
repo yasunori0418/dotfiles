@@ -77,7 +77,7 @@ M.search_repo_root = function()
 end
 
 
----signcolumnをtoggleする。
+---signcolumnの表示をtoggleする。
 M.toggle_view = function()
   local gitsigns = require('gitsigns')
   if vim.opt.number:get() then
