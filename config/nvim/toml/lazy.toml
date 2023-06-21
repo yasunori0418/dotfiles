@@ -77,6 +77,10 @@ repo = 'hrsh7th/vim-eft'
 on_map = { nxo = '<Plug>(eft-' }
 hooks_file = '$BASE_DIR/hooks/eft.lua'
 
+[[plugins]]
+repo = 'folke/flash.nvim'
+
+
 [[plugins]] # vim-sandwich
 repo = 'machakann/vim-sandwich'
 on_map = { nxo = '<Plug>(sandwich-' }
