@@ -76,9 +76,12 @@ hooks_file = '$BASE_DIR/hooks/lexima.lua'
 repo = 'hrsh7th/vim-eft'
 on_map = { nxo = '<Plug>(eft-' }
 hooks_file = '$BASE_DIR/hooks/eft.lua'
+if = 0
 
 [[plugins]]
 repo = 'folke/flash.nvim'
+on_lua = 'flash'
+hooks_file = '$BASE_DIR/hooks/flash.lua'
 
 
 [[plugins]] # vim-sandwich
