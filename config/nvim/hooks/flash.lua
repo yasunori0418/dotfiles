@@ -4,13 +4,27 @@ local opt = { silent = true, noremap = true }
 require("user.utils").keymaps_set({
   {
     mode = { "n", "x", "o" },
-    lhs = [[S]],
+    lhs = [[ss]],
     rhs = function()
       require("flash").jump({
         search = {
           forward = true,
           wrap = true,
-          multi_window = false,
+          multi_window = true,
+        },
+      })
+    end,
+    opts = opt,
+  },
+  {
+    mode = { "n", "x", "o" },
+    lhs = [[sv]],
+    rhs = function()
+      require("flash").treesitter({
+        search = {
+          forward = true,
+          wrap = true,
+          multi_window = true,
         },
       })
     end,
@@ -27,7 +41,7 @@ require("flash.config").setup({
   labels = "asdfghjklqwertyuiopzxcvbnm",
   search = {
     -- search/jump in all windows
-    multi_window = true,
+    multi_window = false,
     -- search direction
     forward = true,
     -- when `false`, find only matches in the given direction
@@ -42,8 +56,8 @@ require("flash.config").setup({
     --     return "\\<" .. str
     --   end,
     -- behave like `incsearch`
-    incremental = false,
-    filetype_exclude = { "notify", "noice" },
+    incremental = true,
+    filetype_exclude = { "notify" },
   },
   jump = {
     -- save location in the jumplist
@@ -57,7 +71,7 @@ require("flash.config").setup({
     -- clear highlight after jump
     nohlsearch = false,
     -- automatically jump when there is only one match
-    autojump = false,
+    autojump = true,
   },
   highlight = {
     label = {
