@@ -81,6 +81,7 @@ if = 0
 [[plugins]]
 repo = 'folke/flash.nvim'
 on_lua = 'flash'
+on_event = ['CursorHold', 'CmdlineEnter']
 hooks_file = '$BASE_DIR/hooks/flash.lua'
 
 
