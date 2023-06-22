@@ -9,27 +9,13 @@ require("user.utils").keymaps_set({
       require("flash").jump({
         search = {
           forward = true,
-          wrap = false,
+          wrap = true,
           multi_window = false,
         },
       })
     end,
     opts = opt,
   },
-  -- {
-  --   mode = { "n", "x", "o" },
-  --   lhs = [[F]],
-  --   rhs = function()
-  --     require("flash").jump({
-  --       search = {
-  --         forward = false,
-  --         wrap = false,
-  --         multi_window = false,
-  --       },
-  --     })
-  --   end,
-  --   opts = opt,
-  -- },
 })
 
 -- }}}
