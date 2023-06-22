@@ -72,12 +72,10 @@ vim.keymap.set({"n", "x"}, [[gx]], [[<Plug>(openbrowser-smart-search)]], { norem
 repo = 'cohama/lexima.vim'
 hooks_file = '$BASE_DIR/hooks/lexima.lua'
 
-[[plugins]]
-repo = 'folke/flash.nvim'
-on_lua = 'flash'
-on_event = ['CursorHold', 'CmdlineEnter']
-hooks_file = '$BASE_DIR/hooks/flash.lua'
-
+[[plugins]] # vim-eft
+repo = 'hrsh7th/vim-eft'
+on_map = { nxo = '<Plug>(eft-' }
+hooks_file = '$BASE_DIR/hooks/eft.lua'
 
 [[plugins]] # vim-sandwich
 repo = 'machakann/vim-sandwich'

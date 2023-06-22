@@ -18,13 +18,13 @@ require("user.utils").keymaps_set({
     opts = noremap_silent,
   },
   { -- disable of "t"
-    mode = { "n", "x" },
+    mode = { "n", "x", "o" },
     lhs = [[t]],
     rhs = [[<Nop>]],
     opts = noremap_silent,
   },
   { -- disable of "T"
-    mode = { "n", "x" },
+    mode = { "n", "x", "o" },
     lhs = [[T]],
     rhs = [[<Nop>]],
     opts = noremap_silent,
