@@ -1,11 +1,9 @@
 local M = {}
---local vimx = require('artemis')
---local ddc_custom = vimx.fn.ddc.custom
+local vimx = require('artemis')
+local ddc_custom = vimx.fn.ddc.custom
 
---local patch_global = ddc_custom.patch_global
---local get_global = ddc_custom.get_global
-local patch_global = vim.fn['ddc#custom#patch_global']
-local get_global = vim.fn['ddc#custom#get_global']
+local patch_global = ddc_custom.patch_global
+local get_global = ddc_custom.get_global
 
 M.change_filter = function(bang, filter_name)
   if filter_name == 'normal' then
