@@ -48,6 +48,15 @@ if not vim.regex("/dein.vim"):match_str(vim.o.runtimepath) then
   vim.opt.runtimepath:prepend(dein_repo)
 end
 
+-- artemisが初回にインストールされてないと怒ってくるので回避策
+local artemis_repo = dein_dir .. "/repos/github.com/tani/vim-artemis"
+if not vim.regex("/vim-artemis"):match_str(vim.o.runtimepath) then
+  if vim.fn.isdirectory(artemis_repo) ~= 1 then
+    os.execute("git clone https://github.com/tani/vim-artemis " .. artemis_repo)
+  end
+  vim.opt.runtimepath:append(artemis_repo)
+end
+
 -- loading dein module
 local dein = require("dein")
 
