@@ -95,5 +95,18 @@ M.toggle_view = function()
   end
 end
 
+---ディレクトリ内からファイルリストを取得して、
+---全ての要素をフルパスにした物を配列にして返す
+---@param base_dir string
+---@param config_dir_name string
+---@return string[]
+M.gather_files = function(base_dir, config_dir_name)
+  local config_dir = base_dir .. "/" .. config_dir_name
+  return vim.iter(vim.fn.systemlist("ls " .. config_dir))
+      :map(function(file_name)
+        return vim.g.base_dir .. "/" .. file_name
+      end)
+      :totable()
+end
 
 return M
