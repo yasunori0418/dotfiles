@@ -1,11 +1,13 @@
 local M = {}
 local utils = require('user.utils')
-local vimx = require('artemis')
+--local vimx = require('artemis')
 
-local ddc = vimx.fn.ddc
-local ddc_custom = vimx.fn.ddc.custom
-local set_buffer = ddc_custom.set_buffer
-local get_buffer = ddc_custom.get_buffer
+--local ddc = vimx.fn.ddc
+--local ddc_custom = vimx.fn.ddc.custom
+--local set_buffer = ddc_custom.set_buffer
+--local get_buffer = ddc_custom.get_buffer
+local set_buffer = vim.fn['ddc#custom#set_buffer']
+local get_buffer = vim.fn['ddc_custom.get_buffer']
 
 local commandline_post = function()
   if vim.b.prev_buffer_config then
@@ -24,7 +26,7 @@ M.commandline_pre = function()
     end,
     once = true,
   })
-  ddc.enable_cmdline_completion()
+  vim.fn['ddc#enable_cmdline_completion']()
 end
 
 
