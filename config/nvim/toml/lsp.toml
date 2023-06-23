@@ -52,7 +52,7 @@ repo = 'nvim-lua/plenary.nvim'
 
 [[plugins]] # null-ls.nvim
 repo = 'jose-elias-alvarez/null-ls.nvim'
-depends = 'plenary.nvim'
+depends = ['plenary.nvim', 'gitsigns.nvim']
 hooks_file = '$BASE_DIR/hooks/null_ls.lua'
 
 [[plugins]] # mason-null-ls.nvim
