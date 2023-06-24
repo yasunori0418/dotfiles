@@ -101,10 +101,10 @@ end
 ---@param config_dir_name string
 ---@return string[]
 M.gather_files = function(base_dir, config_dir_name)
-  local config_dir = base_dir .. "/" .. config_dir_name
-  return vim.iter(vim.fn.systemlist("ls " .. config_dir))
+  local config_dir = vim.fs.joinpath(base_dir, config_dir_name)
+  return vim.iter(vim.fs.dir(config_dir))
       :map(function(file_name)
-        return config_dir .. "/" .. file_name
+        return vim.fs.joinpath(config_dir, file_name)
       end)
       :totable()
 end
