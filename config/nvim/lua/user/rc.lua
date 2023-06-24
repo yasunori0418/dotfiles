@@ -56,14 +56,15 @@ end
 ---NVIM_APPNAMEが設定されていない場合は、デフォルトの`nvim`になる
 M.setup = function()
   local nvim_appname = vim.env.NVIM_APPNAME or "nvim"
+  local joinpath = vim.fs.joinpath
   M.dein_dir = nil
   if nvim_appname == "nvim" then
-    M.dein_dir = vim.env.XDG_CACHE_HOME .. "/dein"
+    M.dein_dir = joinpath(vim.env.XDG_CACHE_HOME, "dein")
   else
-    M.dein_dir = vim.env.XDG_CACHE_HOME .. "/" .. nvim_appname .. "_dein"
+    M.dein_dir = joinpath(vim.env.XDG_CACHE_HOME, nvim_appname .. "_dein")
   end
 
-  vim.g.base_dir = vim.env.XDG_CONFIG_HOME .. "/" .. nvim_appname
+  vim.g.base_dir = joinpath(vim.env.XDG_CONFIG_HOME, nvim_appname)
   vim.env.BASE_DIR = vim.g.base_dir
 
   init_plugin("Shougo/dein.vim")
