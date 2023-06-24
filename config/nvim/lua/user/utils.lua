@@ -99,14 +99,24 @@ end
 ---全ての要素をフルパスにした物を配列にして返す
 ---@param base_dir string
 ---@param config_dir_name string
----@return string[]
+---@return Iter
 M.gather_files = function(base_dir, config_dir_name)
   local config_dir = vim.fs.joinpath(base_dir, config_dir_name)
   return vim.iter(vim.fs.dir(config_dir))
       :map(function(file_name)
         return vim.fs.joinpath(config_dir, file_name)
       end)
-      :totable()
+end
+
+---gather_filesから特定のファイルパスを削除する。
+---@param gather_files Iter
+---@param file_name string
+---@return Iter
+M.remove_file_from_gather_files = function(gather_files, file_name)
+  gather_files:filter(function(file_path)
+    return vim.fn.fnamemodify(file_path, ':t') ~= file_name
+  end)
+  return gather_files
 end
 
 return M
