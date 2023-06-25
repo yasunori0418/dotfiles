@@ -67,6 +67,12 @@ M.setup = function()
   vim.g.base_dir = joinpath(vim.env.XDG_CONFIG_HOME, nvim_appname)
   vim.env.BASE_DIR = vim.g.base_dir
 
+  vim.g.rc_dir = joinpath(vim.g.base_dir, 'rc')
+  vim.g.snippet_dir = joinpath(vim.g.base_dir, 'snippet')
+  vim.g.toml_dir = joinpath(vim.g.base_dir, 'toml')
+  vim.g.hooks_dir = joinpath(vim.g.base_dir, 'hooks')
+  vim.env.HOOKS_DIR = vim.g.hooks_dir
+
   init_plugin("Shougo/dein.vim")
   init_plugin("tani/vim-artemis")
 
