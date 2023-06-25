@@ -9,9 +9,10 @@ command('DeinDelete',
   {}
 )
 
-command('DeinRecache',
+command('Recache',
   function()
     dein.recache_runtimepath()
+    vim.loader.reset()
     vim.cmd 'qall'
   end,
   {}
