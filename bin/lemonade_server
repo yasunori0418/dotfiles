@@ -4,7 +4,7 @@ lemonade_cache_path=${HOME}/.cache/lemonade
 [[ ! -d ${lemonade_cache_path} ]] && mkdir -p ${lemonade_cache_path}
 
 lemonade_server_log=${lemonade_cache_path}/lemonade_server.log
-lemonade_server_pid=${lemonade_cache_path}/lemonade_server.pid
+lemonade_server_pid=/tmp/lemonade_server.pid
 
 # lemonade server > ${cache_dir}/log 2>&1 &
 
