@@ -151,7 +151,7 @@ vim.fn["ddc#custom#patch_global"]("sourceParams", {
 })
 
 -- filetype settings
-vim.fn["ddc#custom#patch_filetype"]({ "python", "php" }, {
+vim.fn["ddc#custom#patch_filetype"]({ "python", "php", "typescript" }, {
   sources = vim.fn.extendnew(global_source, { "nvim-lsp" }, 0),
 })
 
