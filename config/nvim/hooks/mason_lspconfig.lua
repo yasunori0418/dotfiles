@@ -11,7 +11,7 @@ mason_lspconfig.setup({
     "lua_ls",
     "intelephense",
     "pyright",
-    "vtsls",
+    "denols",
   },
   automatic_installation = true,
 })
