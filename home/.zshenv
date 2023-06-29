@@ -79,8 +79,8 @@ export SSH_AUTH_SOCK="${XDG_RUNTIME_DIR}/ssh-agent.socket"
 [[ $(command -v bat) ]] && export BAT_THEME=Nord
 
 # Joplin
-joplin_path=${HOME}/.joplin
-if [[ ! -d ${joplin_path} ]]; then
-  curl -Ss https://raw.githubusercontent.com/laurent22/joplin/dev/Joplin_install_and_update.sh | bash
-fi
-export PATH="${PATH}:${joplin_path}"
+#joplin_path=${HOME}/.joplin
+#if [[ ! -d ${joplin_path} ]]; then
+#  curl -Ss https://raw.githubusercontent.com/laurent22/joplin/dev/Joplin_install_and_update.sh | bash
+#fi
+#export PATH="${PATH}:${joplin_path}"
