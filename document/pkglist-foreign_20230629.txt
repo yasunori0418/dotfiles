@@ -3,7 +3,6 @@ docker-rootless-extras
 downgrade
 google-chrome
 gyazo
-joplin
 lemonade-git
 light-git
 lightdm-mini-greeter
@@ -16,7 +15,6 @@ polkit-dumb-agent-git
 postman-bin
 python-pulsectl
 qt5-styleplugins
-rtl8812au-dkms-git
 simplescreenrecorder
 slack-desktop
 trashy

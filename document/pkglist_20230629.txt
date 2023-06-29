@@ -120,8 +120,6 @@ noto-fonts-cjk
 noto-fonts-emoji
 npm
 ntfs-3g
-nvidia-dkms
-nvidia-settings
 obsidian
 obsidian-icon-theme
 onefetch
