@@ -84,7 +84,9 @@ hooks_file = '$BASE_DIR/hooks/sandwich.lua'
 
 [[plugins]]
 repo = 'monaqa/dial.nvim'
-
+on_lua = ['dial.map', 'dial.augend', 'dial.config']
+on_cmd = ['DialIncrement', 'DialDecrement']
+hooks_file = '$HOOKS_DIR/dial.lua'
 # }}}
 
 # Filetype plugins {{{
