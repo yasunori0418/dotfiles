@@ -82,6 +82,9 @@ repo = 'machakann/vim-sandwich'
 on_map = { nxo = '<Plug>(sandwich-' }
 hooks_file = '$BASE_DIR/hooks/sandwich.lua'
 
+[[plugins]]
+repo = 'monaqa/dial.nvim'
+
 # }}}
 
 # Filetype plugins {{{
