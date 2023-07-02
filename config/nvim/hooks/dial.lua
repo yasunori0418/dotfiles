@@ -68,6 +68,14 @@ utils.keymaps_set({
     end,
     opts = opt,
   },
+  {
+    mode = "n",
+    lhs = [[<C-c>]],
+    rhs = function()
+      require(dial_map).manipulate("increment", "normal", "code_case")
+    end,
+    opts = opt,
+  }
 })
 -- }}}
 
@@ -90,6 +98,11 @@ config.augends:register_group({
       word = false,
       cyclic = true,
     }),
+  },
+  code_case = {
+    augend.case.new({
+      types = { "camelCase", "snake_case", "kebab-case", "PascalCase" }
+    })
   },
 })
 -- }}}
