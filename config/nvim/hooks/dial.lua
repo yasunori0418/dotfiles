@@ -78,6 +78,8 @@ local config = require("dial.config")
 config.augends:register_group({
   default = {
     augend.constant.alias.bool,
+    augend.constant.alias.ja_weekday_full,
+    augend.constant.alias.ja_weekday,
     augend.constant.new({
       elements = { "and", "or" },
       word = true,
