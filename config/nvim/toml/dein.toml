@@ -1,4 +1,4 @@
-hooks_file = '$BASE_DIR/hooks/deinft.lua'
+hooks_file = '$HOOKS_DIR/deinft.lua'
 
 # Non-lazy plugins
 [[plugins]] # dein.vim
@@ -12,11 +12,11 @@ repo = 'mattn/learn-vimscript'
 
 [[plugins]] # mr.vim
 repo = 'lambdalisue/mr.vim'
-hooks_file = '$BASE_DIR/hooks/mr.lua'
+hooks_file = '$HOOKS_DIR/mr.lua'
 
 [[plugins]]
 repo = 'tani/vim-artemis'
 
 [[plugins]] # nightfox.nvim
 repo = 'EdenEast/nightfox.nvim'
-hooks_file = '$BASE_DIR/hooks/nightfox.lua'
+hooks_file = '$HOOKS_DIR/nightfox.lua'

@@ -7,14 +7,14 @@ depends = 'neodev.nvim'
 [[plugins]] # mason.nvim
 repo = 'williamboman/mason.nvim'
 hook_post_update = 'MasonUpdate'
-hooks_file = '$BASE_DIR/hooks/mason.lua'
+hooks_file = '$HOOKS_DIR/mason.lua'
 
 [[plugins]] # mason-lspconfig.nvim
 repo = 'williamboman/mason-lspconfig.nvim'
 depends = ['nvim-lspconfig', 'mason.nvim']
 on_source = 'ddc.vim'
 on_ft = ['lua', 'pyhton', 'php', 'markdown', 'typescript']
-hooks_file = '$BASE_DIR/hooks/mason_lspconfig.lua'
+hooks_file = '$HOOKS_DIR/mason_lspconfig.lua'
 
 # }}}
 
@@ -37,7 +37,7 @@ vim.fn['signature_help#enable']()
 repo = 'j-hui/fidget.nvim'
 on_event = 'LspAttach'
 rev = 'legacy'
-hooks_file = '$BASE_DIR/hooks/fidget.lua'
+hooks_file = '$HOOKS_DIR/fidget.lua'
 
 [[plugins]] # neodev.nvim
 repo = 'folke/neodev.nvim'
@@ -53,12 +53,12 @@ repo = 'nvim-lua/plenary.nvim'
 [[plugins]] # null-ls.nvim
 repo = 'jose-elias-alvarez/null-ls.nvim'
 depends = ['plenary.nvim', 'gitsigns.nvim']
-hooks_file = '$BASE_DIR/hooks/null_ls.lua'
+hooks_file = '$HOOKS_DIR/null_ls.lua'
 
 [[plugins]] # mason-null-ls.nvim
 repo = 'jay-babu/mason-null-ls.nvim'
 depends = 'null-ls.nvim'
 on_source = 'mason-lspconfig.nvim'
-hooks_file = '$BASE_DIR/hooks/mason_null_ls.lua'
+hooks_file = '$HOOKS_DIR/mason_null_ls.lua'
 
 # }}}

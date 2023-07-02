@@ -4,7 +4,7 @@ repo = 'itchyny/vim-gitbranch'
 
 [[plugins]] # gitsigns.nvim
 repo = 'lewis6991/gitsigns.nvim'
-hooks_file = '$BASE_DIR/hooks/gitsigns.lua'
+hooks_file = '$HOOKS_DIR/gitsigns.lua'
 
 [[plugins]] # gina.vim
 repo = 'lambdalisue/gina.vim'
@@ -13,4 +13,4 @@ repo = 'lambdalisue/gina.vim'
 repo = 'lambdalisue/gin.vim'
 depends = ['denops.vim', 'gina.vim']
 on_cmd = ['Gin', 'GinBranch', 'GinCd', 'GinChaperon', 'GinDiff', 'GinLog', 'GinPatch', 'GinStatus']
-hooks_file = '$BASE_DIR/hooks/gin.lua'
+hooks_file = '$HOOKS_DIR/gin.lua'

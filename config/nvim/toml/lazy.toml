@@ -4,7 +4,7 @@
 repo = 'itchyny/lightline.vim'
 on_event = ['WinNew', 'CursorHold', 'InsertEnter', 'CmdlineEnter']
 depends = ['vim-gitbranch']
-hooks_file = '$BASE_DIR/hooks/lightline.lua'
+hooks_file = '$HOOKS_DIR/lightline.lua'
 
 [[plugins]] # context_filetype.vim
 repo = 'Shougo/context_filetype.vim'
@@ -37,7 +37,7 @@ on_cmd = 'QuickRun'
 
 [[plugins]] # vim-molder
 repo = 'mattn/vim-molder'
-hooks_file = '$BASE_DIR/hooks/molder.lua'
+hooks_file = '$HOOKS_DIR/molder.lua'
 
 [[plugins]] # vim-molder-operations
 repo = 'mattn/vim-molder-operations'
@@ -54,7 +54,7 @@ on_cmd = 'Bracey'
 [[plugins]] # deol.nvim
 repo = 'Shougo/deol.nvim'
 on_cmd = 'Deol'
-hooks_file = '$BASE_DIR/hooks/deol.lua'
+hooks_file = '$HOOKS_DIR/deol.lua'
 
 [[plugins]] # open-browser.vim
 repo = 'tyru/open-browser.vim'
@@ -75,17 +75,17 @@ on_cmd = 'Qfreplace'
 # Coding support plugins {{{
 [[plugins]] # lexima.vim
 repo = 'cohama/lexima.vim'
-hooks_file = '$BASE_DIR/hooks/lexima.lua'
+hooks_file = '$HOOKS_DIR/lexima.lua'
 
 [[plugins]] # vim-eft
 repo = 'hrsh7th/vim-eft'
 on_map = { nxo = '<Plug>(eft-' }
-hooks_file = '$BASE_DIR/hooks/eft.lua'
+hooks_file = '$HOOKS_DIR/eft.lua'
 
 [[plugins]] # vim-sandwich
 repo = 'machakann/vim-sandwich'
 on_map = { nxo = '<Plug>(sandwich-' }
-hooks_file = '$BASE_DIR/hooks/sandwich.lua'
+hooks_file = '$HOOKS_DIR/sandwich.lua'
 
 [[plugins]]
 repo = 'monaqa/dial.nvim'
@@ -98,7 +98,7 @@ hooks_file = '$HOOKS_DIR/dial.lua'
 [[plugins]] # emmet-vim
 repo = 'mattn/emmet-vim'
 on_ft = ['html', 'css', 'scss', 'php']
-hooks_file = '$BASE_DIR/hooks/emmet.lua'
+hooks_file = '$HOOKS_DIR/emmet.lua'
 
 [[plugins]] # plantuml-syntax
 repo = 'aklt/plantuml-syntax'
@@ -113,11 +113,11 @@ repo = 'previm/previm'
 depends = 'open-browser.vim'
 on_ft = 'markdown'
 on_cmd = 'PrevimOpen'
-hooks_file = '$BASE_DIR/hooks/previm.lua'
+hooks_file = '$HOOKS_DIR/previm.lua'
 
 [[plugins]]
 repo = 'atusy/tsnode-marker.nvim'
 on_ft = 'markdown'
-hooks_file = '$BASE_DIR/hooks/tsnode_marker.lua'
+hooks_file = '$HOOKS_DIR/tsnode_marker.lua'
 
 # }}}
