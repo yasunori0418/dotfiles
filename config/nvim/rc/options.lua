@@ -1,3 +1,5 @@
+local joinpath = vim.fs.joinpath
+local cache = vim.fn.stdpath('cache')
 local option_table = {
   -- Use utf-8 to overall encoding.
   encoding = 'utf-8',
@@ -13,18 +15,18 @@ local option_table = {
 
   -- backup.
   backup = true,
-  backupdir = vim.fn.stdpath('cache') .. '/backup',
+  backupdir = joinpath(cache, 'backup'),
 
   -- swapfile.
   swapfile = true,
-  directory = vim.fn.stdpath('cache') .. '/swap',
+  directory = joinpath(cache, 'swap'),
+
+  -- UNDOをどうぞ
+  undodir = joinpath(cache, 'undo'),
+  undofile = true,
 
   -- 早くなるんか…？
   ttyfast = true,
-
-  -- UNDOをどうぞ
-  undodir = vim.fn.stdpath('cache') .. '/undo',
-  undofile = true,
 
   -- East asia ambiguous character width problem.
   ambiwidth = 'single',
