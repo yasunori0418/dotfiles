@@ -72,10 +72,10 @@ utils.keymaps_set({
     mode = "n",
     lhs = [[<C-c>]],
     rhs = function()
-      require(dial_map).manipulate("increment", "normal", "code_case")
+      require(dial_map).manipulate("increment", "normal", "case")
     end,
     opts = opt,
-  }
+  },
 })
 -- }}}
 
@@ -99,7 +99,7 @@ config.augends:register_group({
       cyclic = true,
     }),
   },
-  code_case = {
+  case = {
     augend.case.new({
       types = { "camelCase", "snake_case", "kebab-case", "PascalCase" }
     })
