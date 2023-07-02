@@ -72,5 +72,14 @@ utils.keymaps_set({
 -- }}}
 
 -- lua_source {{{
-
+local augend = require("dial.augend")
+require("dial.config").augends:register_group({
+  default = {
+    augend.constant.new({
+      elements = { "true", "false" },
+      word = true,
+      cyclic = true,
+    }),
+  },
+})
 -- }}}
