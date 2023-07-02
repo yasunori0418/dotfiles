@@ -1,5 +1,5 @@
 -- lua_add {{{
-local utils = require('user.utils')
+local utils = require("user.utils")
 local opt = { silent = true, noremap = true }
 local dial_map = "dial.map"
 
@@ -24,7 +24,7 @@ utils.keymaps_set({
     mode = "n",
     lhs = [[g<C-a>]],
     rhs = function()
-      require(dial_map).manipulate("decrement", "gnormal")
+      require(dial_map).manipulate("increment", "gnormal")
     end,
     opts = opt,
   },
@@ -37,7 +37,7 @@ utils.keymaps_set({
     opts = opt,
   },
   {
-    mode = "x",
+    mode = "v",
     lhs = [[<C-a>]],
     rhs = function()
       require(dial_map).manipulate("increment", "visual")
@@ -45,7 +45,7 @@ utils.keymaps_set({
     opts = opt,
   },
   {
-    mode = "x",
+    mode = "v",
     lhs = [[<C-x>]],
     rhs = function()
       require(dial_map).manipulate("decrement", "visual")
@@ -53,15 +53,15 @@ utils.keymaps_set({
     opts = opt,
   },
   {
-    mode = "x",
+    mode = "v",
     lhs = [[g<C-a>]],
     rhs = function()
-      require(dial_map).manipulate("decrement", "gvisual")
+      require(dial_map).manipulate("increment", "gvisual")
     end,
     opts = opt,
   },
   {
-    mode = "x",
+    mode = "v",
     lhs = [[g<C-x>]],
     rhs = function()
       require(dial_map).manipulate("decrement", "gvisual")
