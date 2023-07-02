@@ -19,7 +19,7 @@ on_source = 'ddc.vim'
 repo = 'Shougo/ddc.vim'
 depends = ['context_filetype.vim', 'denops.vim', 'pum.vim', 'lexima.vim']
 on_event = ['InsertEnter', 'CmdlineEnter', 'CursorHold']
-hooks_file = '$BASE_DIR/hooks/ddc.lua'
+hooks_file = '$HOOKS_DIR/ddc.lua'
 
 # }}}
 
@@ -96,7 +96,7 @@ on_source = 'ddc.vim'
 # snippet plugins {{{
 [[plugins]] # vim-vsnip
 repo = 'hrsh7th/vim-vsnip'
-hooks_file = '$BASE_DIR/hooks/vsnip.lua'
+hooks_file = '$HOOKS_DIR/vsnip.lua'
 
 [[plugins]] # vim-vsnip-integ
 repo = 'hrsh7th/vim-vsnip-integ'
