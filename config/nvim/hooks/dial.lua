@@ -80,6 +80,11 @@ require("dial.config").augends:register_group({
       word = true,
       cyclic = true,
     }),
+    augend.constant.new({
+      elements = { "and", "or" },
+      word = true,
+      cyclic = true,
+    }),
   },
 })
 -- }}}
