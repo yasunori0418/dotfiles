@@ -1,48 +1,36 @@
 -- lua_source {{{
-vim.g.vsnip_extra_mapping = false
-vim.g.vsnip_snippet_dir = vim.g.base_dir .. '/snippet/vsnip'
-vim.g.vsnip_snippet_dirs = { vim.g.base_dir .. '/snippet/vsnip/friendly-snippets/snippets', }
-vim.g.vsnip_filetypes = vim.empty_dict()
+local joinpath = vim.fs.joinpath
+local utils = require("user.utils")
 
-local utils = require('user.utils')
-utils.autocmds_set{
-  {
-    group = utils.vimrc_augroup,
-    events = 'User',
-    pattern = 'PumCompleteDone',
-    callback = function()
-      vim.fn['vsnip_integ#on_complete_done'](vim.g['pum#completed_item'])
-    end,
-  },
-  {
-    group = utils.vimrc_augroup,
-    events = 'InsertEnter',
-    pattern = '~/dotfiles/config/nvim/toml/*.toml',
-    callback = function()
-      vim.g.vsnip_filetypes.toml = { vim.fn['context_filetype#get_filetype']() }
-    end,
-  },
-}
+vim.g.vsnip_extra_mapping = false
+vim.g.vsnip_snippet_dir = joinpath(vim.g.snippet_dir, "vsnip")
+vim.g.vsnip_snippet_dirs = { joinpath(vim.g.vsnip_snippet_dir, "vsnip", "friendly-snippets", "snippets") }
+vim.g.vsnip_filetypes = vim.empty_dict()
+vim.g.vsnip_integ_create_autocmd = false
+
+utils.autocmd_set("InsertEnter", "~/dotfiles/config/nvim/toml/*.toml", function()
+  vim.g.vsnip_filetypes.toml = { vim.fn["context_filetype#get_filetype"]() }
+end)
 
 local opt_expr = { noremap = false, expr = true }
-utils.keymaps_set{
+utils.keymaps_set({
   {
-    mode = {"i", "s"},
+    mode = { "i", "s" },
     lhs = [[<C-f>]],
     rhs = function()
-      if vim.fn['vsnip#jumpable'](1) > 0 then
+      if vim.fn["vsnip#jumpable"](1) > 0 then
         return [[<Plug>(vsnip-jump-next)]]
       else
         return [[<C-G>U<Right>]]
       end
     end,
-    opts = opt_expr
+    opts = opt_expr,
   },
   {
-    mode = {"i", "s"},
+    mode = { "i", "s" },
     lhs = [[<C-b>]],
     rhs = function()
-      if vim.fn['vsnip#jumpable'](-1) > 0 then
+      if vim.fn["vsnip#jumpable"](-1) > 0 then
         return [[<Plug>(vsnip-jump-prev)]]
       else
         return [[<C-G>U<Left>]]
@@ -50,5 +38,5 @@ utils.keymaps_set{
     end,
     opts = opt_expr,
   },
-}
+})
 -- }}}
