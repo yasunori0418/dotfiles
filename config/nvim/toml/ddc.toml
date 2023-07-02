@@ -68,6 +68,10 @@ on_source = 'ddc.vim'
 repo = 'Shougo/ddc-source-input'
 on_source = 'ddc.vim'
 
+[[plugins]]
+repo = 'uga-rosa/ddc-source-vsnip'
+on_source = 'ddc.vim'
+
 # }}}
 
 # filter plugins {{{
