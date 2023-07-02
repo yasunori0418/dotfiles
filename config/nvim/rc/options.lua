@@ -25,6 +25,9 @@ local option_table = {
   undodir = joinpath(cache, 'undo'),
   undofile = true,
 
+  grepprg = [[rg --vimgrep --no-heading $*]],
+  grepformat = [[%f:%l:%c:%m]],
+
   -- 早くなるんか…？
   ttyfast = true,
 
