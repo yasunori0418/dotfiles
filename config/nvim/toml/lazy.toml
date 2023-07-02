@@ -65,6 +65,11 @@ vim.g.netrw_nogx = 1 -- disable netrw's gx mapping.
 vim.keymap.set({"n", "x"}, [[gx]], [[<Plug>(openbrowser-smart-search)]], { noremap = false })
 '''
 
+[[plugins]]
+repo = 'thinca/vim-qfreplace'
+on_cmd = 'Qfreplace'
+
+
 # }}}
 
 # Coding support plugins {{{
