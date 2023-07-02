@@ -4,7 +4,7 @@ local opt = { silent = true, noremap = true }
 local dial_map = "dial.map"
 
 utils.keymaps_set({
-  {
+  { -- Ctrl-a
     mode = "n",
     lhs = [[<C-a>]],
     rhs = function()
@@ -12,7 +12,7 @@ utils.keymaps_set({
     end,
     opts = opt,
   },
-  {
+  { -- Ctrl-x
     mode = "n",
     lhs = [[<C-x>]],
     rhs = function()
@@ -20,7 +20,7 @@ utils.keymaps_set({
     end,
     opts = opt,
   },
-  {
+  { -- g_Ctrl-a
     mode = "n",
     lhs = [[g<C-a>]],
     rhs = function()
@@ -28,7 +28,7 @@ utils.keymaps_set({
     end,
     opts = opt,
   },
-  {
+  { -- g_Ctrl-x
     mode = "n",
     lhs = [[g<C-x>]],
     rhs = function()
@@ -36,7 +36,7 @@ utils.keymaps_set({
     end,
     opts = opt,
   },
-  {
+  { -- v_Ctrl-a
     mode = "v",
     lhs = [[<C-a>]],
     rhs = function()
@@ -44,7 +44,7 @@ utils.keymaps_set({
     end,
     opts = opt,
   },
-  {
+  { -- v_Ctrl-x
     mode = "v",
     lhs = [[<C-x>]],
     rhs = function()
@@ -52,7 +52,7 @@ utils.keymaps_set({
     end,
     opts = opt,
   },
-  {
+  { -- v_g_Ctrl-a
     mode = "v",
     lhs = [[g<C-a>]],
     rhs = function()
@@ -60,7 +60,7 @@ utils.keymaps_set({
     end,
     opts = opt,
   },
-  {
+  { -- v_g_Ctrl-x
     mode = "v",
     lhs = [[g<C-x>]],
     rhs = function()
@@ -68,7 +68,7 @@ utils.keymaps_set({
     end,
     opts = opt,
   },
-  {
+  { -- vimの中でCtrl-cとか使わないよね？(煽り)
     mode = "n",
     lhs = [[<C-c>]],
     rhs = function()
