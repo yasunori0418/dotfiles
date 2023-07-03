@@ -69,6 +69,13 @@ vim.keymap.set({"n", "x"}, [[gx]], [[<Plug>(openbrowser-smart-search)]], { norem
 repo = 'thinca/vim-qfreplace'
 on_cmd = 'Qfreplace'
 
+[[plugins]]
+repo = 'uga-rosa/ccc.nvim'
+on_ft = ['css', 'html', 'conf']
+on_cmd = ['CccPick', 'CccConvert', 'CccHighlighterToggle']
+on_source = 'mason-lspconfig.nvim'
+hooks_file = '$HOOKS_DIR/ccc.lua'
+
 
 # }}}
 
