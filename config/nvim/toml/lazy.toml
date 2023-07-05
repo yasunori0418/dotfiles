@@ -120,7 +120,7 @@ repo = 'previm/previm'
 depends = 'open-browser.vim'
 on_ft = 'markdown'
 on_cmd = 'PrevimOpen'
-hooks_file = '$HOOKS_DIR/previm.lua'
+hooks_file = '$HOOKS_DIR/previm/previm.lua'
 
 [[plugins]]
 repo = 'atusy/tsnode-marker.nvim'
