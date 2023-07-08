@@ -49,7 +49,7 @@ repo = 'Shougo/ddc-source-nvim-lsp'
 on_source = 'nvim-lspconfig'
 
 [[plugins]]
-repo = 'Shougo/ddc-source-nvim-lua'
+repo = 'uga-rosa/ddc-source-nvim-lua'
 on_source = 'ddc.vim'
 
 [[plugins]] # ddc-source-line

@@ -72,7 +72,10 @@ vim.fn["ddc#custom#patch_global"]("sourceOptions", {
     forceCompletionPattern = [[\.\w*|:\w*|->\w*]],
     dup = "force",
   },
-  ["nvim-lua"] = { mark = "lua" },
+  ["nvim-lua"] = {
+    mark = "lua",
+    forceCompletionPattern = [[\.]],
+  },
   necovim = { mark = "vim" },
   rg = {
     mark = "rg",
