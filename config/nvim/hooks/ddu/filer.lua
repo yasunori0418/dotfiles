@@ -2,21 +2,21 @@
 local opt = { buffer = true, noremap = true }
 local opt_expr = { buffer = true, expr = true, noremap = true }
 
-local do_action = vim.fn['ddu#ui#do_action']
-local multi_actions = vim.fn['ddu#ui#multi_actions']
-local get_item = vim.fn['ddu#ui#get_item']
+local do_action = vim.fn["ddu#ui#do_action"]
+local multi_actions = vim.fn["ddu#ui#multi_actions"]
+local get_item = vim.fn["ddu#ui#get_item"]
 
-require('user.utils').keymaps_set({
+require("user.utils").keymaps_set({
   { -- if directory then expand. if file then open.
     mode = "n",
     lhs = [[<CR>]],
     rhs = function()
-      if get_item()['isTree'] then
+      if get_item()["isTree"] then
         do_action([[expandItem]], { mode = [[toggle]] })
       else
         do_action([[itemAction]], {
           name = [[open]],
-          params = { command = [[drop]] }
+          params = { command = [[drop]] },
         })
       end
     end,
@@ -28,7 +28,7 @@ require('user.utils').keymaps_set({
     rhs = function()
       do_action([[itemAction]], {
         name = [[open]],
-        params = { command = [[vsplit]] }
+        params = { command = [[vsplit]] },
       })
     end,
     opts = opt,
@@ -39,7 +39,7 @@ require('user.utils').keymaps_set({
     rhs = function()
       do_action([[itemAction]], {
         name = [[open]],
-        params = { command = [[split]] }
+        params = { command = [[split]] },
       })
     end,
     opts = opt,
@@ -50,7 +50,7 @@ require('user.utils').keymaps_set({
     rhs = function()
       do_action([[itemAction]], {
         name = [[open]],
-        params = { command = [[tabedit]] }
+        params = { command = [[tabedit]] },
       })
     end,
     opts = opt,
@@ -59,7 +59,7 @@ require('user.utils').keymaps_set({
     mode = "n",
     lhs = [[o]],
     rhs = function()
-      do_action([[expandItem]], {mode = [[toggle]]})
+      do_action([[expandItem]], { mode = [[toggle]] })
     end,
     opts = opt,
   },
@@ -67,7 +67,7 @@ require('user.utils').keymaps_set({
     mode = "n",
     lhs = [[O]],
     rhs = function()
-      do_action([[expandItem]], {maxLevel = -1})
+      do_action([[expandItem]], { maxLevel = -1 })
     end,
     opts = opt,
   },
@@ -152,7 +152,7 @@ require('user.utils').keymaps_set({
     lhs = [[C]],
     rhs = function()
       multi_actions({
-        { [[itemAction]], { name = [[copy]] } },
+        { [[itemAction]],         { name = [[copy]] } },
         { [[clearSelectAllItems]] },
       })
     end,
@@ -163,7 +163,7 @@ require('user.utils').keymaps_set({
     lhs = [[M]],
     rhs = function()
       multi_actions({
-        { [[itemAction]], { name = [[move]] } },
+        { [[itemAction]],         { name = [[move]] } },
         { [[clearSelectAllItems]] },
       })
     end,
@@ -239,7 +239,7 @@ require('user.utils').keymaps_set({
     rhs = function()
       do_action([[itemAction]], {
         name = [[narrow]],
-        params = { path = vim.env.HOME }
+        params = { path = vim.env.HOME },
       })
     end,
     opts = opt,
@@ -248,7 +248,7 @@ require('user.utils').keymaps_set({
     mode = "n",
     lhs = [[H]],
     rhs = function()
-      vim.fn['ddu#start']({ name = [[path_history-filer]] })
+      vim.fn["ddu#start"]({ name = [[path_history-filer]] })
     end,
     opts = opt,
   },
@@ -258,7 +258,7 @@ require('user.utils').keymaps_set({
     rhs = function()
       do_action([[itemAction]], {
         name = [[narrow]],
-        params = { path = [[..]] }
+        params = { path = [[..]] },
       })
     end,
     opts = opt,
