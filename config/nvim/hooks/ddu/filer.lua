@@ -15,7 +15,10 @@ require("user.utils").keymaps_set({
       if get_item()["isTree"] then
         sync_action([[expandItem]], { mode = [[toggle]] })
       else
-        async_action([[itemAction]], { name = [[open]] })
+        async_action([[itemAction]], {
+          name = [[open]],
+          params = { command = [[drop]] },
+        })
       end
     end,
     opts = opt_expr,
