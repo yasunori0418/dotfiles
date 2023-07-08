@@ -3,6 +3,7 @@ local opt = { buffer = true, noremap = true }
 local opt_expr = { buffer = true, expr = true, noremap = true }
 
 local do_action = vim.fn["ddu#ui#do_action"]
+local async_action = vim.fn["ddu#ui#async_action"]
 local multi_actions = vim.fn["ddu#ui#multi_actions"]
 local get_item = vim.fn["ddu#ui#get_item"]
 
@@ -14,10 +15,7 @@ require("user.utils").keymaps_set({
       if get_item()["isTree"] then
         do_action([[expandItem]], { mode = [[toggle]] })
       else
-        do_action([[itemAction]], {
-          name = [[open]],
-          params = { command = [[drop]] },
-        })
+        async_action([[itemAction]], { name = [[open]] })
       end
     end,
     opts = opt_expr,
