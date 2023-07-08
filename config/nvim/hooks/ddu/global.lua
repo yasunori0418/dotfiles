@@ -377,16 +377,16 @@ vim.fn["ddu#custom#patch_local"]("ripgrep-ff", {
   ui = "ff",
   uiParams = {
     ff = {
+      startAutoAction = true,
       autoAction = {
         delay = 0,
         name = [[preview]],
       },
       filterFloatingPosition = [[bottom]],
       previewCol = columns - win_width,
-      -- previewRow = 0,
-      previewWidth = columns - win_width - 5,
-      -- previewSplitがverticalならwinWidthにひっぱられるので不要
-      -- previewHeight = win_height + 1,
+      previewRow = 0,
+      previewWidth = columns - win_width - 3,
+      previewHeight = win_height + 2,
       previewSplit = [[vertical]],
       previewWindowOptions = {
         { "&signcolumn",     "no" },
