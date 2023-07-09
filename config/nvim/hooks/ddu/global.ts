@@ -6,6 +6,7 @@ import {
 import { ConfigArguments } from "https://deno.land/x/ddu_vim@v3.2.7/base/config.ts";
 // import { Denops, fn } from "https://deno.land/x/ddu_vim@v3.2.7/deps.ts";
 // import { ActionData } from "https://deno.land/x/ddu_kind_file@v0.5.2/file.ts";
+import * as opt from "https://deno.land/x/denops_std@v5.0.1/option/mod.ts"
 
 // type Params = Record<string, unknown>;
 
