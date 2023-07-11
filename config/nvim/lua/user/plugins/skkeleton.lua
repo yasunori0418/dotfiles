@@ -79,7 +79,6 @@ M.init = function()
 
   skkeleton.register_kanatable("rom", {
     ["jj"] = "escape",
-    ["z "] = { "　", "" },
     ["~"] = { "～", "" },
     ["z0"] = { "○", "" },
     ["("] = { "（", "" },
