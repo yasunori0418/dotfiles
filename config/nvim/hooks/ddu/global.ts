@@ -43,6 +43,29 @@ export class Config extends BaseConfig {
           previewWidth: Math.floor(winWidth / 2),
           previewHeight: 20,
         },
+        sourceOptions: {
+          _: {
+            ignoreCase: true,
+            matchers: [ "matcher_substring" ],
+            converters: [ "converter_devicon" ],
+          },
+          file: {
+            columns: [ "icon_filename" ],
+            converters: {},
+          },
+          dein: {
+            defaultAction: "cd",
+          },
+          help: {
+            defaultAction: "open",
+          },
+          dein_update: {
+            matchers: [ "matcher_dein_update" ],
+          },
+          path_history: {
+            defaultAction: "uiCd",
+          },
+        }
       },
     });
     return Promise.resolve();
