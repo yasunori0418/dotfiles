@@ -87,6 +87,26 @@ export class Config extends BaseConfig {
             },
           },
         },
+        kindOptions: {
+          file: {
+            defaultAction: "open",
+          },
+          action: {
+            defaultAction: "do",
+          },
+          word: {
+            defaultAction: "append",
+          },
+          deol: {
+            defaultAction: "switch",
+          },
+          readme_viewer: {
+            defaultAction: "open",
+          },
+          dein_update: {
+            defaultAction: "viewDiff",
+          },
+        }
       },
     });
     return Promise.resolve();
