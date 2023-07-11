@@ -65,7 +65,28 @@ export class Config extends BaseConfig {
           path_history: {
             defaultAction: "uiCd",
           },
-        }
+        },
+        sourceParams: {
+          dein_update: {
+            useGraphQL: true,
+          },
+          marks: {
+            jumps: true,
+          },
+          rg: {
+            args: [
+              "--json",
+              "--ignore-case",
+              "--column",
+              "--no-heading",
+              "--color",
+              "never",
+            ],
+            highlights: {
+              word: "Title",
+            },
+          },
+        },
       },
     });
     return Promise.resolve();
