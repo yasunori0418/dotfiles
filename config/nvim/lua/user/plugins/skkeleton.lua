@@ -1,10 +1,7 @@
-local M = {}
-local config = vim.fn["skkeleton#config"]
-local register_kanatable = vim.fn["skkeleton#register_kanatable"]
-local register_keymap = vim.fn["skkeleton#register_keymap"]
-local ddc_custom_get_buffer = vim.fn["ddc#custom#get_buffer"]
-local ddc_custom_set_buffer = vim.fn["ddc#custom#set_buffer"]
-local ddc_custom_patch_buffer = vim.fn["ddc#custom#patch_buffer"]
+local vimx = require('artemis')
+
+local skkeleton = vimx.fn.skkeleton
+local ddc_custom = vimx.fn.ddc.custom
 
 local l2x_rom = function()
   local rom = {}
@@ -56,19 +53,21 @@ local l2x_rom = function()
 end
 
 local l2x_maps = function()
-  register_kanatable("rom", l2x_rom())
-  register_keymap("input", "x", "disable")
-  register_keymap("input", "X", "zenkaku")
-  register_kanatable("rom", {
+  skkeleton.register_kanatable("rom", l2x_rom())
+  skkeleton.register_keymap("input", "x", "disable")
+  skkeleton.register_keymap("input", "X", "zenkaku")
+  skkeleton.register_kanatable("rom", {
     ["<s-x>"] = "zenkaku",
   })
-  register_kanatable("rom", {
+  skkeleton.register_kanatable("rom", {
     ["<s-l>"] = { "L", "" },
   }, true)
 end
 
+local M = {}
+
 M.init = function()
-  config({
+  skkeleton.config({
     eggLikeNewline = true,
     globalDictionaries = {
       { [[~/.skk/skk_dict_merged]], [[euc-jp]] },
@@ -78,7 +77,7 @@ M.init = function()
     completionRankFile = [[~/.skk/rank.json]],
   })
 
-  register_kanatable("rom", {
+  skkeleton.register_kanatable("rom", {
     ["jj"] = "escape",
     ["z "] = { "　", "" },
     ["~"] = { "～", "" },
@@ -90,12 +89,12 @@ M.init = function()
 end
 
 M.pre = function()
-  vim.b.prev_buffer_config = ddc_custom_get_buffer()
-  ddc_custom_patch_buffer("sources", { "skkeleton" })
+  vim.b.prev_buffer_config = ddc_custom.get_buffer()
+  ddc_custom.patch_buffer("sources", { "skkeleton" })
 end
 
 M.post = function()
-  ddc_custom_set_buffer(vim.b.prev_buffer_config)
+  ddc_custom.set_buffer(vim.b.prev_buffer_config)
   vim.b.prev_buffer_config = {}
 end
 
