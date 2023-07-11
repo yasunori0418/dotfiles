@@ -78,8 +78,9 @@ hooks_file = '$HOOKS_DIR/ccc.lua'
 
 [[plugins]]
 repo = 'hrsh7th/nvim-insx'
-on_lua = 'insx'
+on_event = ['InsertEnter', 'CmdlineEnter']
 hooks_file = '$HOOKS_DIR/insx.lua'
+if = false
 
 # }}}
 
