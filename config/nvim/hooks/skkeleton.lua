@@ -39,13 +39,5 @@ require('user.utils').autocmds_set{
       vim.cmd[[mode]]
     end,
   },
-  {
-    events = "User",
-    pattern = "DenopsPluginPost:skkeleton",
-    group = skkeleton_autocmds,
-    callback = function()
-      vim.fn["skkeleton#initialize"]()
-    end,
-  }
 }
 -- }}}
