@@ -90,7 +90,6 @@ end
 M.pre = function()
   vim.b.prev_buffer_config = ddc_custom.get_buffer()
   ddc_custom.patch_buffer("sources", { "skkeleton" })
-  skkeleton.initialize()
 end
 
 M.post = function()
