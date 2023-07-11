@@ -99,3 +99,4 @@ M.post = function()
 end
 
 return M
+-- $HOOKS_DIR/skkeleton.lua
