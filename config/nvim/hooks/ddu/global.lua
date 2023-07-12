@@ -372,7 +372,7 @@ vim.fn["ddu#custom#patch_local"]("help-ff", {
 local lines = vim.opt.lines:get()
 local columns = vim.opt.columns:get()
 local win_width = math.floor(columns / 3)
-local win_height = lines - 5
+local win_height = lines - 3
 vim.fn["ddu#custom#patch_local"]("ripgrep-ff", {
   ui = "ff",
   uiParams = {
@@ -385,8 +385,8 @@ vim.fn["ddu#custom#patch_local"]("ripgrep-ff", {
       filterFloatingPosition = [[bottom]],
       previewCol = columns - win_width,
       previewRow = 0,
-      previewWidth = columns - win_width - 3,
-      previewHeight = win_height + 2,
+      previewWidth = columns - win_width - 5,
+      previewHeight = win_height,
       previewSplit = [[vertical]],
       previewWindowOptions = {
         { "&signcolumn",     "no" },
@@ -397,8 +397,8 @@ vim.fn["ddu#custom#patch_local"]("ripgrep-ff", {
         { "&wrap",           0 },
       },
       winCol = 1,
-      winRow = math.floor(lines / 2 - 20),
-      winHeight = win_height,
+      winRow = 0,
+      winHeight = lines - 3,
       winWidth = win_width,
       ignoreEmpty = false,
       autoResize = false,
