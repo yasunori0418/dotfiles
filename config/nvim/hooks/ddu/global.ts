@@ -108,6 +108,20 @@ export class Config extends BaseConfig {
           defaultAction: "viewDiff",
         },
       },
+      actionOptions: {
+        narrow: { quit: false },
+        echo: { quit: false },
+        echoDiff: { quit: false },
+      },
+      columnParams: {
+        icon_filename: {
+          span: 2,
+          iconWidth: 2,
+          defaultIcon: {
+            icon: "",
+          },
+        },
+      },
     });
     return Promise.resolve();
   }
