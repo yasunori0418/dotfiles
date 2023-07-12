@@ -43,70 +43,70 @@ export class Config extends BaseConfig {
           previewWidth: Math.floor(winWidth / 2),
           previewHeight: 20,
         },
-        sourceOptions: {
-          _: {
-            ignoreCase: true,
-            matchers: [ "matcher_substring" ],
-            converters: [ "converter_devicon" ],
-          },
-          file: {
-            columns: [ "icon_filename" ],
-            converters: {},
-          },
-          dein: {
-            defaultAction: "cd",
-          },
-          help: {
-            defaultAction: "open",
-          },
-          dein_update: {
-            matchers: [ "matcher_dein_update" ],
-          },
-          path_history: {
-            defaultAction: "uiCd",
+      },
+      sourceOptions: {
+        _: {
+          ignoreCase: true,
+          matchers: [ "matcher_substring" ],
+          converters: [ "converter_devicon" ],
+        },
+        file: {
+          columns: [ "icon_filename" ],
+          converters: [],
+        },
+        dein: {
+          defaultAction: "cd",
+        },
+        help: {
+          defaultAction: "open",
+        },
+        dein_update: {
+          matchers: [ "matcher_dein_update" ],
+        },
+        path_history: {
+          defaultAction: "uiCd",
+        },
+      },
+      sourceParams: {
+        dein_update: {
+          useGraphQL: true,
+        },
+        marks: {
+          jumps: true,
+        },
+        rg: {
+          args: [
+            "--json",
+            "--ignore-case",
+            "--column",
+            "--no-heading",
+            "--color",
+            "never",
+          ],
+          highlights: {
+            word: "Title",
           },
         },
-        sourceParams: {
-          dein_update: {
-            useGraphQL: true,
-          },
-          marks: {
-            jumps: true,
-          },
-          rg: {
-            args: [
-              "--json",
-              "--ignore-case",
-              "--column",
-              "--no-heading",
-              "--color",
-              "never",
-            ],
-            highlights: {
-              word: "Title",
-            },
-          },
+      },
+      kindOptions: {
+        file: {
+          defaultAction: "open",
         },
-        kindOptions: {
-          file: {
-            defaultAction: "open",
-          },
-          action: {
-            defaultAction: "do",
-          },
-          word: {
-            defaultAction: "append",
-          },
-          deol: {
-            defaultAction: "switch",
-          },
-          readme_viewer: {
-            defaultAction: "open",
-          },
-          dein_update: {
-            defaultAction: "viewDiff",
-          },
-        }
+        action: {
+          defaultAction: "do",
+        },
+        word: {
+          defaultAction: "append",
+        },
+        deol: {
+          defaultAction: "switch",
+        },
+        readme_viewer: {
+          defaultAction: "open",
+        },
+        dein_update: {
+          defaultAction: "viewDiff",
+        },
       },
     });
     return Promise.resolve();
