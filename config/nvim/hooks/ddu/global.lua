@@ -171,9 +171,11 @@ utils.keymaps_set({
 -- }}}
 
 -- lua_source {{{
+local joinpath = vim.fs.joinpath
+local ddu_hooks = joinpath(vim.g.hooks_dir, 'ddu')
 vim.fn["ddu#custom#load_config"](
   -- $HOOKS_DIR/ddu/global.ts
-  vim.fs.joinpath(vim.g.hooks_dir, 'ddu', 'global.ts')
+  joinpath(ddu_hooks, 'global.ts')
 )
 
 vim.fn["ddu#custom#action"]("kind", "file", "uiCd", function(args)
