@@ -178,18 +178,18 @@ vim.fn["ddu#custom#load_config"](
   joinpath(ddu_hooks, 'global.ts')
 )
 
-vim.fn["ddu#custom#action"]("kind", "file", "uiCd", function(args)
-  local path = args.items[1].action.path
-  local directory = path
-  if vim.fn.isdirectory(directory) == 0 then
-    directory = vim.fn.fnamemodify(directory, ":h")
-  end
-  vim.print(directory)
-  vim.fn["ddu#ui#do_action"]([[itemAction]], {
-    name = [[narrow]],
-    params = { path = directory },
-  })
-end)
+-- vim.fn["ddu#custom#action"]("kind", "file", "uiCd", function(args)
+--   local path = args.items[1].action.path
+--   local directory = path
+--   if vim.fn.isdirectory(directory) == 0 then
+--     directory = vim.fn.fnamemodify(directory, ":h")
+--   end
+--   vim.print(directory)
+--   vim.fn["ddu#ui#do_action"]([[itemAction]], {
+--     name = [[narrow]],
+--     params = { path = directory },
+--   })
+-- end)
 
 -- UI:ff presets
 vim.fn["ddu#custom#patch_local"]("current-ff", {

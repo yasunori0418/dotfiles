@@ -1,14 +1,14 @@
 import {
-  // ActionArguments,
-  // ActionFlags,
+  ActionArguments,
+  ActionFlags,
   BaseConfig,
 } from "https://deno.land/x/ddu_vim@v3.2.7/types.ts";
 import { ConfigArguments } from "https://deno.land/x/ddu_vim@v3.2.7/base/config.ts";
-// import { Denops, fn } from "https://deno.land/x/ddu_vim@v3.2.7/deps.ts";
-// import { ActionData } from "https://deno.land/x/ddu_kind_file@v0.5.2/file.ts";
+import { Denops, fn } from "https://deno.land/x/ddu_vim@v3.2.7/deps.ts";
+import { ActionData } from "https://deno.land/x/ddu_kind_file@v0.5.2/file.ts";
 import * as opt from "https://deno.land/x/denops_std@v5.0.1/option/mod.ts"
 
-// type Params = Record<string, unknown>;
+type Params = Record<string, unknown>;
 
 export class Config extends BaseConfig {
   override async config(args: ConfigArguments): Promise<void> {
@@ -88,6 +88,20 @@ export class Config extends BaseConfig {
       kindOptions: {
         file: {
           defaultAction: "open",
+          actions: {
+            uiCd: async (args: ActionArguments<Params>): Promise<ActionFlags> => {
+              const action = args.items[0].action as ActionData;
+
+              await args.denops.call("ddu#ui#do_action", {
+                name: "narrow",
+                params: {
+                  path: action.path,
+                },
+              });
+
+              return Promise.resolve(ActionFlags.None);
+            },
+          },
         },
         action: {
           defaultAction: "do",
