@@ -69,10 +69,7 @@ export class Config extends BaseConfig {
       },
       sourceParams: {
         dein_update: {
-          useGraphQL: true,
-        },
-        marks: {
-          jumps: true,
+          useGraphQL: false,
         },
         rg: {
           args: [
