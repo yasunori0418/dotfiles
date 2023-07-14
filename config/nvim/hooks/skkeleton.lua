@@ -41,5 +41,5 @@ require('user.utils').autocmds_set{
   },
 }
 
-vim.fn["skkeleton#initialize"]()
+-- vim.fn["skkeleton#initialize"]()
 -- }}}
