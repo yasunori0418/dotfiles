@@ -134,6 +134,19 @@ export class Config extends BaseConfig {
         },
       },
     });
+
+    args.contextBuilder.patchLocal("current-ff", {
+      ui: "ff",
+      uiParams: {
+        ff: {
+          startFilter: true,
+        },
+      },
+      sources: [
+        { name: "file_rec" },
+      ]
+    });
+
     return Promise.resolve();
   }
 }
