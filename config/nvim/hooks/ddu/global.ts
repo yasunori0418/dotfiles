@@ -92,7 +92,7 @@ export class Config extends BaseConfig {
             uiCd: async (args: ActionArguments<Params>): Promise<ActionFlags> => {
               const action = args.items[0].action as ActionData;
 
-              await args.denops.call("ddu#ui#do_action", {
+              await args.denops.call("ddu#ui#sync_action", "itemAction", {
                 name: "narrow",
                 params: {
                   path: action.path,
