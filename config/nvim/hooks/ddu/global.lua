@@ -179,22 +179,22 @@ vim.fn["ddu#custom#load_config"](
 )
 
 -- UI:ff presets
-vim.fn["ddu#custom#patch_local"]("dotfiles-ff", {
-  ui = "ff",
-  uiParams = {
-    ff = {
-      startFilter = true,
-    },
-  },
-  sourceOptions = {
-    file_rec = {
-      path = vim.fn.expand("~/dotfiles"),
-    },
-  },
-  sources = {
-    { name = "file_rec" },
-  },
-})
+-- vim.fn["ddu#custom#patch_local"]("dotfiles-ff", {
+--   ui = "ff",
+--   uiParams = {
+--     ff = {
+--       startFilter = true,
+--     },
+--   },
+--   sourceOptions = {
+--     file_rec = {
+--       path = vim.fn.expand("~/dotfiles"),
+--     },
+--   },
+--   sources = {
+--     { name = "file_rec" },
+--   },
+-- })
 
 vim.fn["ddu#custom#patch_local"]("project-list-ff", {
   ui = "ff",

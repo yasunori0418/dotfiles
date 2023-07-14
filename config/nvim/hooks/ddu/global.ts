@@ -147,6 +147,23 @@ export class Config extends BaseConfig {
       ]
     });
 
+    args.contextBuilder.patchLocal("dotfiles-ff", {
+      ui: "ff",
+      uiParams: {
+        ff: {
+          startFilter: true,
+        },
+      },
+      sourceOptions: {
+        file_rec: {
+          path: await args.denops.call("expand", "~/dotfiles"),
+        },
+      },
+      sources: [
+        { name: "file_rec" },
+      ],
+    });
+
     return Promise.resolve();
   }
 }
