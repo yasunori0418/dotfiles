@@ -154,13 +154,13 @@ export class Config extends BaseConfig {
           startFilter: true,
         },
       },
-      sourceOptions: {
-        file_rec: {
-          path: await args.denops.call("expand", "~/dotfiles"),
-        },
-      },
       sources: [
-        { name: "file_rec" },
+        {
+          name: "file_rec",
+          options: {
+            path: await args.denops.call("expand", "~/dotfiles"),
+          },
+        },
       ],
     });
 
