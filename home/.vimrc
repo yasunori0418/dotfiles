@@ -113,11 +113,11 @@ set softtabstop=2
 let g:vim_indent_count = 0
 
 augroup filetypeIndent
-    autocmd!
-    autocmd FileType html   setlocal tabstop=2 softtabstop=2 shiftwidth=2
-    autocmd FileType css    setlocal tabstop=2 softtabstop=2 shiftwidth=2
-    autocmd FileType python setlocal tabstop=4 softtabstop=4 shiftwidth=4
-    autocmd FileType php    setlocal tabstop=4 softtabstop=4 shiftwidth=4
+  autocmd!
+  autocmd FileType html   setlocal tabstop=2 softtabstop=2 shiftwidth=2
+  autocmd FileType css    setlocal tabstop=2 softtabstop=2 shiftwidth=2
+  autocmd FileType python setlocal tabstop=4 softtabstop=4 shiftwidth=4
+  autocmd FileType php    setlocal tabstop=4 softtabstop=4 shiftwidth=4
 augroup END
 
 " }}}
@@ -162,12 +162,14 @@ nnoremap [Window]K <C-W>K
 nnoremap [Window]L <C-W>L
 
 " Tab page controls.
-nnoremap [Window]th <C-W>gT
-nnoremap [Window]tl <C-W>gt
-nnoremap [Window]tt <C-W>g<Tab>
-nnoremap [Window]tT <C-W>T
-nnoremap [Window]tn <Cmd>tabnew<CR>
-nnoremap [Window]tN <Cmd>-tabnew<CR>
+nnoremap [t gT
+nnoremap ]t gt
+nnoremap [T <Cmd>tabfirst<CR>
+nnoremap ]T <Cmd>tablast<CR>
+nnoremap tn <Cmd>tabnew<CR>
+nnoremap tN <Cmd>-tabnew<CR>
+nnoremap tt <C-W>g<Tab>
+nnoremap tT <C-W>T
 
 " Commands of close window.
 nnoremap [Window]q <C-W>q
@@ -199,9 +201,9 @@ nnoremap [Save]u <Cmd>update<CR>
 " Normal Mode:{{{
 " US Keyboard layout mapping.
 " Exchange Colon and Semi-Colon.
-nnoremap ; :
-nnoremap : ;
-nnoremap q; q:
+" nnoremap ; :
+" nnoremap : ;
+" nnoremap q; q:
 
 
 " Do not save the things erased by x and c in the register.
@@ -212,10 +214,10 @@ nnoremap c "_c
 " nnoremap s <Nop>
 
 " Opens the file name under the cursor.
-nnoremap gf gF
+nnoremap gf <C-w>gF
 
 " Disable highlights from search results.
-nnoremap <Space>n <Cmd>nohlsearch<CR>
+nnoremap <C-l> <Cmd>nohlsearch<Bar>diffupdate<CR><C-l>
 
 " }}}
 
@@ -230,8 +232,8 @@ inoremap <C-l> <Del>
 " Visual Mode:{{{
 
 " Exchange Colon and Semi-Colon.
- xnoremap ; :
-xnoremap : ;
+" xnoremap ; :
+" xnoremap : ;
 
 
 " Do not save the things erased by x and c in the register.
