@@ -49,11 +49,11 @@ export class Config extends BaseConfig {
       sourceOptions: {
         _: {
           ignoreCase: true,
-          matchers: [ "matcher_substring" ],
-          converters: [ "converter_devicon" ],
+          matchers: ["matcher_substring"],
+          converters: ["converter_devicon"],
         },
         file: {
-          columns: [ "icon_filename" ],
+          columns: ["icon_filename"],
           converters: [],
         },
         dein: {
@@ -63,7 +63,7 @@ export class Config extends BaseConfig {
           defaultAction: "open",
         },
         dein_update: {
-          matchers: [ "matcher_dein_update" ],
+          matchers: ["matcher_dein_update"],
         },
         path_history: {
           defaultAction: "uiCd",
@@ -91,7 +91,9 @@ export class Config extends BaseConfig {
         file: {
           defaultAction: "open",
           actions: {
-            uiCd: async (args: ActionArguments<Params>): Promise<ActionFlags> => {
+            uiCd: async (
+              args: ActionArguments<Params>,
+            ): Promise<ActionFlags> => {
               const action = args.items[0].action as ActionData;
 
               await args.denops.call("ddu#ui#sync_action", "itemAction", {
@@ -146,7 +148,7 @@ export class Config extends BaseConfig {
       },
       sources: [
         { name: "file_rec" },
-      ]
+      ],
     });
 
     args.contextBuilder.patchLocal("dotfiles-ff", {
