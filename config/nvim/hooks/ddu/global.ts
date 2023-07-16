@@ -152,10 +152,10 @@ export class Config extends BaseConfig {
         merge: {
           filters: [
             {
-              name: 'matcher_kensaku',
+              name: "matcher_kensaku",
               weight: 2.0,
             },
-            'matcher_fuse',
+            "matcher_fuse",
           ],
           unique: true,
         },
