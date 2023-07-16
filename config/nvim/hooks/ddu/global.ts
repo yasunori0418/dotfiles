@@ -139,6 +139,27 @@ export class Config extends BaseConfig {
         echo: { quit: false },
         echoDiff: { quit: false },
       },
+      filterParams: {
+        matcher_substring: {
+          highlightMatched: "Search",
+        },
+        matcher_kensaku: {
+          highlightMatched: "Search",
+        },
+        matcher_fuse: {
+          threshold: 0.6,
+        },
+        merge: {
+          filters: [
+            {
+              name: 'matcher_kensaku',
+              weight: 2.0,
+            },
+            'matcher_fuse',
+          ],
+          unique: true,
+        },
+      },
       columnParams: {
         icon_filename: {
           span: 2,
