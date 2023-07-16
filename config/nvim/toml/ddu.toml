@@ -116,6 +116,10 @@ on_source = 'ddu.vim'
 repo = 'Milly/ddu-filter-merge'
 on_source = 'ddu.vim'
 
+[[plugins]]
+repo = 'Milly/ddu-filter-kensaku'
+on_source = 'ddu.vim'
+
 # }}}
 
 # Column plugins {{{
