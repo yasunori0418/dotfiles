@@ -225,16 +225,6 @@ vim.fn["ddu#custom#patch_local"]("ripgrep-ff", {
   },
 })
 
-vim.fn["ddu#custom#patch_local"]("search_line-ff", {
-  ui = "ff",
-  uiParams = {
-    ff = { startFilter = true },
-  },
-  sources = {
-    { name = "line" },
-  },
-})
-
 vim.fn["ddu#custom#patch_local"]("buffer-ff", {
   ui = "ff",
   sources = {

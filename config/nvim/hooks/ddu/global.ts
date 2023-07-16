@@ -211,6 +211,18 @@ export class Config extends BaseConfig {
       ],
     });
 
+    args.contextBuilder.patchLocal("search_line-ff", {
+      ui: "ff",
+      uiParams: {
+        ff: { startFilter: true },
+      },
+      sources: [
+        {
+          name: "line",
+        },
+      ],
+    });
+
     return Promise.resolve();
   }
 }
