@@ -4,7 +4,7 @@ import {
   BaseConfig,
 } from "https://deno.land/x/ddu_vim@v3.4.2/types.ts";
 import { ConfigArguments } from "https://deno.land/x/ddu_vim@v3.4.2/base/config.ts";
-import { Denops, fn } from "https://deno.land/x/ddu_vim@v3.2.7/deps.ts";
+import { Denops, fn } from "https://deno.land/x/ddu_vim@v3.4.2/deps.ts";
 import { ActionData } from "https://deno.land/x/ddu_kind_file@v0.5.3/file.ts";
 import * as opt from "https://deno.land/x/denops_std@v5.0.1/option/mod.ts";
 
