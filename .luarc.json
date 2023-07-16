@@ -1,3 +1,9 @@
 {
-    "workspace.checkThirdParty": false
+    "workspace.checkThirdParty": false,
+    "workspace.library": [
+        "/home/yasunori/.cache/dein/repos/github.com/folke/neodev.nvim/types/nightly",
+        "/usr/local/share/nvim/runtime/lua",
+        "/home/yasunori/dotfiles/config/nvim/lua",
+        "${3rd}/luv/library"
+    ]
 }
