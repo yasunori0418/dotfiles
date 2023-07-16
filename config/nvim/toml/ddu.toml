@@ -112,6 +112,10 @@ on_source = 'ddu.vim'
 repo = 'uga-rosa/ddu-filter-converter_devicon'
 on_source = 'ddu.vim'
 
+[[plugins]]
+repo = 'Milly/ddu-filter-merge'
+on_source = 'ddu.vim'
+
 # }}}
 
 # Column plugins {{{
