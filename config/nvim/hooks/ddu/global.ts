@@ -162,7 +162,7 @@ export class Config extends BaseConfig {
         {
           name: "file_rec",
           options: {
-            path: await args.denops.call("expand", "~/dotfiles"),
+            path: expandHome("~/dotfiles"),
           },
         },
       ],
