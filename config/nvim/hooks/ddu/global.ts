@@ -10,6 +10,8 @@ import * as opt from "https://deno.land/x/denops_std@v5.0.1/option/mod.ts";
 
 type Params = Record<string, unknown>;
 
+const expandHome = (path: string):string => path.replace(/^~/, Deno.env.get('HOME') || '');
+
 export class Config extends BaseConfig {
   override async config(args: ConfigArguments): Promise<void> {
     const winWidth = await opt.columns.get(args.denops);
