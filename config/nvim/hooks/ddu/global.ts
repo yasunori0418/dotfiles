@@ -274,6 +274,23 @@ export class Config extends BaseConfig {
       ],
     })
 
+    args.contextBuilder.patchLocal("home-ff", {
+      ui: "ff",
+      uiParams: {
+        ff: {
+          startFilter: true,
+        },
+      },
+      sources: [
+        {
+          name: "file",
+          options: {
+            path: Deno.env.get("HOME"),
+          },
+        },
+      ],
+    });
+
     return Promise.resolve();
   }
 }
