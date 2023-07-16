@@ -16,8 +16,9 @@ const expandHome = (path: string): string => {
 
 export class Config extends BaseConfig {
   override async config(args: ConfigArguments): Promise<void> {
-    const winWidth = await opt.columns.get(args.denops);
-    const winHeight = await opt.lines.get(args.denops);
+    const winWidth: number = await opt.columns.get(args.denops);
+    const winHeight: number = await opt.lines.get(args.denops);
+
     args.contextBuilder.patchGlobal({
       uiOptions: {
         filer: {
