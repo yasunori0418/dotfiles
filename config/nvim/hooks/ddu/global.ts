@@ -257,6 +257,23 @@ export class Config extends BaseConfig {
       ],
     });
 
+    args.contextBuilder.patchLocal("plugin-list-ff", {
+      ui: "ff",
+      uiParams: {
+        ff: {
+          startFilter: true,
+        },
+      },
+      sources: [
+        {
+          name: "dein",
+          options: {
+            defaultAction: "cdOpen",
+          },
+        },
+      ],
+    })
+
     return Promise.resolve();
   }
 }
