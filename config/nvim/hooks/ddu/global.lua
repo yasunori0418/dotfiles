@@ -225,13 +225,6 @@ vim.fn["ddu#custom#patch_local"]("ripgrep-ff", {
   },
 })
 
-vim.fn["ddu#custom#patch_local"]("buffer-ff", {
-  ui = "ff",
-  sources = {
-    { name = "buffer" },
-  },
-})
-
 vim.fn["ddu#custom#patch_local"]("plugin-list-ff", {
   ui = "ff",
   uiParams = {

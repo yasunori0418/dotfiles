@@ -249,6 +249,13 @@ export class Config extends BaseConfig {
       ],
     });
 
+    args.contextBuilder.patchLocal("buffer-ff", {
+      ui: "ff",
+      sources: [
+        { name: "buffer" },
+      ],
+    });
+
     return Promise.resolve();
   }
 }
