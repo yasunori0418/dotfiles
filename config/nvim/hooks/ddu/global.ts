@@ -197,6 +197,20 @@ export class Config extends BaseConfig {
       ],
     });
 
+    args.contextBuilder.patchLocal("help-ff", {
+      ui: "ff",
+      uiParams: {
+        ff: {
+          startFilter: true,
+        },
+      },
+      sync: true,
+      sources: [
+        { name: "help" },
+        { name: "readme_viewer" },
+      ],
+    });
+
     return Promise.resolve();
   }
 }

@@ -178,19 +178,6 @@ vim.fn["ddu#custom#load_config"](
   joinpath(ddu_hooks, 'global.ts')
 )
 
-vim.fn["ddu#custom#patch_local"]("help-ff", {
-  ui = "ff",
-  uiParams = {
-    ff = {
-      startFilter = true,
-    },
-  },
-  sources = {
-    { name = "help" },
-    { name = "readme_viewer" },
-  },
-})
-
 local lines = vim.opt.lines:get()
 local columns = vim.opt.columns:get()
 local win_width = math.floor(columns / 3)
