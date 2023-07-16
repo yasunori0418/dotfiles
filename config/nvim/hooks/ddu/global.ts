@@ -242,6 +242,9 @@ export class Config extends BaseConfig {
       sources: [
         {
           name: "line",
+          options: {
+            matchers: ["matcher_fuse"],
+          },
         },
       ],
     });
