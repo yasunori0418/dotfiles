@@ -272,7 +272,7 @@ export class Config extends BaseConfig {
           },
         },
       ],
-    })
+    });
 
     args.contextBuilder.patchLocal("home-ff", {
       ui: "ff",
@@ -287,6 +287,15 @@ export class Config extends BaseConfig {
           options: {
             path: Deno.env.get("HOME"),
           },
+        },
+      ],
+    });
+
+    args.contextBuilder.patchLocal("register-ff", {
+      ui: "ff",
+      sources: [
+        {
+          name: "register"
         },
       ],
     });
