@@ -178,23 +178,6 @@ vim.fn["ddu#custom#load_config"](
   joinpath(ddu_hooks, 'global.ts')
 )
 
-vim.fn["ddu#custom#patch_local"]("project-list-ff", {
-  ui = "ff",
-  uiParams = {
-    ff = {
-      startFilter = true,
-    },
-  },
-  sourceOptions = {
-    file = {
-      path = vim.env.WORKING_DIR,
-    },
-  },
-  sources = {
-    { name = "file" },
-  },
-})
-
 vim.fn["ddu#custom#patch_local"]("help-ff", {
   ui = "ff",
   uiParams = {
