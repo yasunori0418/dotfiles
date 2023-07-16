@@ -155,7 +155,9 @@ export class Config extends BaseConfig {
               name: "matcher_kensaku",
               weight: 2.0,
             },
-            "matcher_fuse",
+            {
+              name: "matcher_fuse",
+            },
           ],
           unique: true,
         },
