@@ -107,6 +107,15 @@ export class Config extends BaseConfig {
 
               return Promise.resolve(ActionFlags.None);
             },
+            cdOpen: async (
+              args: ActionArguments<Params>,
+            ): Promise<ActionFlags> => {
+              const action = args.items[0].action as ActionData;
+              await args.denops.call('chdir', action.path)
+              await args.denops.cmd('edit .')
+
+              return Promise.resolve(ActionFlags.None);
+            },
           },
         },
         action: {
@@ -182,6 +191,7 @@ export class Config extends BaseConfig {
           name: "file",
           options: {
             path: Deno.env.get("WORKING_DIR"),
+            defaultAction: "cdOpen",
           },
         },
       ],
