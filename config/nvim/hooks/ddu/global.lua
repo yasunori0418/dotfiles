@@ -225,22 +225,9 @@ vim.fn["ddu#custom#patch_local"]("ripgrep-ff", {
   },
 })
 
-vim.api.nvim_create_user_command("DeinUpdate", function(opts)
-  local use_graph_ql = false
-  if opts.bang then
-    use_graph_ql = require("user.plugins.dein").check_github_token()
-  end
-  vim.fn["ddu#start"]({
-    name = "dein_update-ff",
-    ui = "ff",
-    sources = {
-      {
-        name = "dein_update",
-        params = { useGraphQL = use_graph_ql },
-      },
-    },
-  })
-end, { bang = true })
+vim.api.nvim_create_user_command("DeinUpdate", function()
+  vim.fn["ddu#start"]({name = "dein_update-ff"})
+end, {})
 
 -- -- UI:filer presets
 vim.fn["ddu#custom#patch_local"]("current-filer", {

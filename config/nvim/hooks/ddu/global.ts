@@ -351,6 +351,15 @@ export class Config extends BaseConfig {
       ],
     });
 
+    args.contextBuilder.patchLocal("dein_update-ff", {
+      ui: "ff",
+      sources: [
+        {
+          name: "dein_update",
+        },
+      ],
+    });
+
     return Promise.resolve();
   }
 }
