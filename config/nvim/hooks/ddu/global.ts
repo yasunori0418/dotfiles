@@ -396,7 +396,7 @@ export class Config extends BaseConfig {
       ui: "ff",
       uiParams: {
         ff: {
-          startFilter: true,
+          startFilter: false,
         },
       },
       sources: [
