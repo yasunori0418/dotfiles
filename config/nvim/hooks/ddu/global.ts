@@ -34,7 +34,7 @@ export class Config extends BaseConfig {
           filterFloatingPosition: "top",
           displaySourceName: "long",
           previewFloating: true,
-          previewFloatingBorder: "double",
+          previewFloatingBorder: "single",
           previewSplit: "horizontal",
           previewWindowOptions: [
             ["&signcolumn", "no"],
