@@ -225,18 +225,6 @@ vim.fn["ddu#custom#patch_local"]("ripgrep-ff", {
   },
 })
 
-vim.fn["ddu#custom#patch_local"]("highlight-ff", {
-  ui = "ff",
-  uiParams = {
-    ff = {
-      startFilter = true,
-    },
-  },
-  sources = {
-    { name = "highlight" },
-  },
-})
-
 vim.api.nvim_create_user_command("DeinUpdate", function(opts)
   local use_graph_ql = false
   if opts.bang then

@@ -339,6 +339,18 @@ export class Config extends BaseConfig {
       ],
     });
 
+    args.contextBuilder.patchLocal("highlight-ff", {
+      ui: "ff",
+      uiParams: {
+        ff: {
+          startFilter: true,
+        },
+      },
+      sources: [
+        { name: "highlight" },
+      ],
+    });
+
     return Promise.resolve();
   }
 }
