@@ -37,13 +37,13 @@ async function ffUiSize(
   let previewWidth!: number;
 
   if (previewSplit === "horizontal") {
-    winRow = 1;
+    winRow = -1;
     winCol = 0;
     winHeight = Math.floor(lines / 3);
     winWidth = columns - FRAME_SIZE - 1;
-    previewRow = lines - winHeight;
+    previewRow = lines - FRAME_SIZE;
     previewCol = 0;
-    previewHeight = previewRow - (FRAME_SIZE * 2 + 1);
+    previewHeight = (lines - winHeight) - (FRAME_SIZE * 3);
     previewWidth = winWidth;
   } else if (previewSplit === "vertical") {
     winRow = 0;
