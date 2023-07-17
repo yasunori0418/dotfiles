@@ -36,6 +36,14 @@ export class Config extends BaseConfig {
           previewFloating: true,
           previewFloatingBorder: "double",
           previewSplit: "horizontal",
+          previewWindowOptions: [
+            ["&signcolumn", "no"],
+            ["&foldcolumn", 0],
+            ["&foldenable", 0],
+            ["&number", 0],
+            ["&relativenumber", 0],
+            ["&wrap", 0],
+          ],
         },
         filer: {
           split: "vertical",
