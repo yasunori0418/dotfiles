@@ -178,45 +178,6 @@ vim.fn["ddu#custom#load_config"](
   joinpath(ddu_hooks, 'global.ts')
 )
 
--- local lines = vim.opt.lines:get()
--- local columns = vim.opt.columns:get()
--- local win_width = math.floor(columns / 3)
--- local win_height = lines - 3
--- vim.fn["ddu#custom#patch_local"]("ripgrep-ff", {
---   ui = "ff",
---   uiParams = {
---     ff = {
---       startAutoAction = true,
---       autoAction = {
---         delay = 0,
---         name = [[preview]],
---       },
---       filterFloatingPosition = [[bottom]],
---       previewCol = columns - win_width,
---       previewRow = 0,
---       previewWidth = columns - win_width - 5,
---       previewHeight = win_height,
---       previewSplit = [[vertical]],
---       winCol = 1,
---       winRow = 0,
---       winHeight = lines - 3,
---       winWidth = win_width,
---       ignoreEmpty = false,
---       autoResize = false,
---       startFilter = true,
---     },
---   },
---   sources = {
---     {
---       name = "rg",
---       options = {
---         matchers = {},
---         volatile = true,
---       },
---     },
---   },
--- })
-
 vim.api.nvim_create_user_command("DeinUpdate", function()
   vim.fn["ddu#start"]({name = "dein_update-ff"})
 end, {})
