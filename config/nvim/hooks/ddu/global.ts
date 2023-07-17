@@ -310,6 +310,9 @@ export class Config extends BaseConfig {
       sources: [
         {
           name: "mr",
+          options: {
+            defaultAction: "cdOpen",
+          },
           params: {
             kind: "mrr",
             current: false,
