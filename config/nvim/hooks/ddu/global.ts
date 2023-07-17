@@ -321,6 +321,24 @@ export class Config extends BaseConfig {
       ],
     });
 
+    args.contextBuilder.patchLocal("mru-ff", {
+      ui: "ff",
+      uiParams: {
+        ff: {
+          startFilter: true,
+        },
+      },
+      sources: [
+        {
+          name: "mr",
+          params: {
+            kind: "mru",
+            current: true,
+          },
+        },
+      ],
+    });
+
     return Promise.resolve();
   }
 }
