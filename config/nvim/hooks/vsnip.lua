@@ -4,7 +4,12 @@ local utils = require("user.utils")
 
 vim.g.vsnip_extra_mapping = false
 vim.g.vsnip_snippet_dir = joinpath(vim.g.snippet_dir, "vsnip")
-vim.g.vsnip_snippet_dirs = { joinpath(vim.g.vsnip_snippet_dir, "vsnip", "friendly-snippets", "snippets") }
+
+local friendly_snippets_dir = joinpath(vim.g.vsnip_snippet_dir, "friendly-snippets/", "snippets/")
+vim.g.vsnip_snippet_dirs = {
+  friendly_snippets_dir,
+  joinpath(friendly_snippets_dir, "javascript/"),
+}
 vim.g.vsnip_filetypes = vim.empty_dict()
 vim.g.vsnip_integ_create_autocmd = false
 
