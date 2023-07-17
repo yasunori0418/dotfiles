@@ -4,15 +4,78 @@ import {
   BaseConfig,
 } from "https://deno.land/x/ddu_vim@v3.4.2/types.ts";
 import { ConfigArguments } from "https://deno.land/x/ddu_vim@v3.4.2/base/config.ts";
+import { Params as FfUiParams } from "https://deno.land/x/ddu_ui_ff@v1.0.4/ff.ts";
 // import { Denops, fn } from "https://deno.land/x/ddu_vim@v3.4.2/deps.ts";
 import { ActionData } from "https://deno.land/x/ddu_kind_file@v0.5.3/file.ts";
 import * as opt from "https://deno.land/x/denops_std@v5.0.1/option/mod.ts";
 
 type Params = Record<string, unknown>;
+type PartialFfUiParams = Partial<FfUiParams>;
 
 const expandHome = (path: string): string => {
   return path.replace(/^~/, Deno.env.get("HOME") || "");
 };
+
+async function ffUiSize(
+  args: ConfigArguments,
+  previewSplit: "horizontal" | "vertical",
+  filterFloatingPosition: "top" | "bottom",
+  isAutoPreview: boolean,
+): Promise<PartialFfUiParams> {
+  const denops = args.denops;
+  const FRAME_SIZE = 2;
+  const columns = await opt.columns.get(denops);
+  const lines = await opt.lines.get(denops);
+
+  let winRow!: number;
+  let winCol!: number;
+  let winHeight!: number;
+  let winWidth!: number;
+  let previewRow!: number;
+  let previewCol!: number;
+  let previewHeight!: number;
+  let previewWidth!: number;
+
+  if (previewSplit === "horizontal") {
+    winRow = 1;
+    winCol = 0;
+    winHeight = Math.floor(lines / 3);
+    winWidth = columns - FRAME_SIZE - 1;
+    previewRow = lines - winHeight;
+    previewCol = 0;
+    previewHeight = previewRow - (FRAME_SIZE * 2 + 1);
+    previewWidth = winWidth;
+  } else if (previewSplit === "vertical") {
+    winRow = 0;
+    winCol = 1;
+    winHeight = lines - FRAME_SIZE - 1;
+    winWidth = Math.floor(columns / 3);
+    previewRow = 0;
+    previewCol = columns - winWidth;
+    previewHeight = winHeight;
+    previewWidth = columns - winWidth - (FRAME_SIZE * 2 + 1);
+  }
+
+  return {
+    startAutoAction: isAutoPreview,
+    autoAction: {
+      delay: 0,
+      name: "preview",
+    },
+    autoResize: false,
+    startFilter: true,
+    filterFloatingPosition: filterFloatingPosition,
+    previewSplit: previewSplit,
+    previewRow: previewRow,
+    previewCol: previewCol,
+    previewHeight: previewHeight,
+    previewWidth: previewWidth,
+    winRow: winRow,
+    winCol: winCol,
+    winHeight: winHeight,
+    winWidth: winWidth,
+  };
+}
 
 export class Config extends BaseConfig {
   override async config(args: ConfigArguments): Promise<void> {
@@ -364,6 +427,27 @@ export class Config extends BaseConfig {
       sources: [
         {
           name: "dein_update",
+        },
+      ],
+    });
+
+    args.contextBuilder.patchLocal("ripgrep-ff", {
+      ui: "ff",
+      uiParams: {
+        ff: await ffUiSize(
+          args,
+          "horizontal",
+          "top",
+          true,
+        ),
+      },
+      sources: [
+        {
+          name: "rg",
+          options: {
+            matchers: [],
+            volatile: true,
+          },
         },
       ],
     });
