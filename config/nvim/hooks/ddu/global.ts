@@ -295,7 +295,25 @@ export class Config extends BaseConfig {
       ui: "ff",
       sources: [
         {
-          name: "register"
+          name: "register",
+        },
+      ],
+    });
+
+    args.contextBuilder.patchLocal("mrr-ff", {
+      ui: "ff",
+      uiParams: {
+        ff: {
+          startFilter: true,
+        },
+      },
+      sources: [
+        {
+          name: "mr",
+          params: {
+            kind: "mrr",
+            current: false,
+          },
         },
       ],
     });
