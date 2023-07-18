@@ -182,30 +182,6 @@ vim.api.nvim_create_user_command("DeinUpdate", function()
   vim.fn["ddu#start"]({name = "dein_update-ff"})
 end, {})
 
-vim.fn["ddu#custom#patch_local"]("dotfiles-filer", {
-  ui = "filer",
-  sources = {
-    { name = "file" },
-  },
-  sourceOptions = {
-    file = {
-      path = vim.env.HOME .. "/dotfiles",
-    },
-  },
-})
-
-vim.fn["ddu#custom#patch_local"]("home-filer", {
-  ui = "filer",
-  sources = {
-    { name = "file" },
-  },
-  sourceOptions = {
-    file = {
-      path = vim.env.HOME,
-    },
-  },
-})
-
 vim.fn["ddu#custom#patch_local"]("path_history-filer", {
   ui = "ff",
   sources = {

@@ -463,6 +463,30 @@ export class Config extends BaseConfig {
       ],
     });
 
+    args.contextBuilder.patchLocal("home-filer", {
+      ui: "filer",
+      sources: [
+        {
+          name: "file",
+          options: {
+            path: Deno.env.get("HOME"),
+          },
+        },
+      ],
+    });
+
+    args.contextBuilder.patchLocal("dotfiles-filer", {
+      ui: "filer",
+      sources: [
+        {
+          name: "file",
+          options: {
+            path: expandHome("~/dotfiles"),
+          },
+        },
+      ],
+    });
+
     return Promise.resolve();
   }
 }
