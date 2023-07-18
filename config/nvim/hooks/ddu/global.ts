@@ -19,7 +19,6 @@ const expandHome = (path: string): string => {
 async function ffUiSize(
   args: ConfigArguments,
   previewSplit: "horizontal" | "vertical",
-  filterFloatingPosition: "top" | "bottom",
   isAutoPreview: boolean,
 ): Promise<PartialFfUiParams> {
   const denops = args.denops;
@@ -35,6 +34,7 @@ async function ffUiSize(
   let previewCol!: number;
   let previewHeight!: number;
   let previewWidth!: number;
+  let filterFloatingPosition!: "top" | "bottom";
 
   if (previewSplit === "horizontal") {
     winRow = -1;
@@ -45,6 +45,7 @@ async function ffUiSize(
     previewCol = 0;
     previewHeight = (lines - winHeight) - (FRAME_SIZE * 3);
     previewWidth = winWidth;
+    filterFloatingPosition = "top";
   } else if (previewSplit === "vertical") {
     winRow = 0;
     winCol = 1;
@@ -54,6 +55,7 @@ async function ffUiSize(
     previewCol = columns - winWidth;
     previewHeight = winHeight;
     previewWidth = columns - winWidth - (FRAME_SIZE * 2 + 1);
+    filterFloatingPosition = "bottom";
   }
 
   return {
@@ -444,7 +446,6 @@ export class Config extends BaseConfig {
         ff: await ffUiSize(
           args,
           "horizontal",
-          "top",
           true,
         ),
       },
