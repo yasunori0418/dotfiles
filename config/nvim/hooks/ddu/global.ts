@@ -454,6 +454,13 @@ export class Config extends BaseConfig {
       ],
     });
 
+    args.contextBuilder.patchLocal("path_history-ff", {
+      ui: "ff",
+      sources: [
+        { name: "path_history" },
+      ],
+    });
+
     // UI: filer
 
     args.contextBuilder.patchLocal("current-filer", {

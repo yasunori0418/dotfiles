@@ -248,7 +248,7 @@ require("user.utils").keymaps_set({
     mode = "n",
     lhs = [[H]],
     rhs = function()
-      vim.fn["ddu#start"]({ name = [[path_history-filer]] })
+      vim.fn["ddu#start"]({ name = [[path_history-ff]] })
     end,
     opts = opt,
   },
