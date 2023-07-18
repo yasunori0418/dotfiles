@@ -109,6 +109,11 @@ export class Config extends BaseConfig {
           ],
         },
         filer: {
+          startAutoAction: true,
+          autoAction: {
+            delay: 0,
+            name: "preview",
+          },
           split: "vertical",
           splitDirection: "topleft",
           winWidth: Math.floor(winWidth / 6),
@@ -117,7 +122,7 @@ export class Config extends BaseConfig {
           previewCol: Math.floor(winWidth / 4),
           previewRow: Math.floor(winHeight / 2),
           previewWidth: Math.floor(winWidth / 2),
-          previewHeight: 20,
+          previewHeight: winHeight,
         },
       },
       sourceOptions: {
