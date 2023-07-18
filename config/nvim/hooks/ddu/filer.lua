@@ -2,7 +2,7 @@
 local opt = { buffer = true, noremap = true }
 local opt_expr = { buffer = true, expr = true, noremap = true }
 
-local sync_action = vim.fn["ddu#ui#sync_action"]
+local do_action = vim.fn["ddu#ui#do_action"]
 local multi_actions = vim.fn["ddu#ui#multi_actions"]
 local get_item = vim.fn["ddu#ui#get_item"]
 
@@ -12,9 +12,9 @@ require("user.utils").keymaps_set({
     lhs = [[<CR>]],
     rhs = function()
       if get_item()["isTree"] then
-        sync_action([[expandItem]], { mode = [[toggle]] })
+        do_action([[expandItem]], { mode = [[toggle]] })
       else
-        sync_action([[itemAction]], {
+        do_action([[itemAction]], {
           name = [[open]],
           params = { command = [[drop]] },
         })
@@ -26,7 +26,7 @@ require("user.utils").keymaps_set({
     mode = "n",
     lhs = [[v]],
     rhs = function()
-      sync_action([[itemAction]], {
+      do_action([[itemAction]], {
         name = [[open]],
         params = { command = [[vsplit]] },
       })
@@ -37,7 +37,7 @@ require("user.utils").keymaps_set({
     mode = "n",
     lhs = [[s]],
     rhs = function()
-      sync_action([[itemAction]], {
+      do_action([[itemAction]], {
         name = [[open]],
         params = { command = [[split]] },
       })
@@ -48,7 +48,7 @@ require("user.utils").keymaps_set({
     mode = "n",
     lhs = [[t]],
     rhs = function()
-      sync_action([[itemAction]], {
+      do_action([[itemAction]], {
         name = [[open]],
         params = { command = [[tabedit]] },
       })
@@ -59,7 +59,7 @@ require("user.utils").keymaps_set({
     mode = "n",
     lhs = [[o]],
     rhs = function()
-      sync_action([[expandItem]], { mode = [[toggle]] })
+      do_action([[expandItem]], { mode = [[toggle]] })
     end,
     opts = opt,
   },
@@ -67,7 +67,7 @@ require("user.utils").keymaps_set({
     mode = "n",
     lhs = [[O]],
     rhs = function()
-      sync_action([[expandItem]], { maxLevel = -1 })
+      do_action([[expandItem]], { maxLevel = -1 })
     end,
     opts = opt,
   },
@@ -77,7 +77,7 @@ require("user.utils").keymaps_set({
     mode = "n",
     lhs = [[p]],
     rhs = function()
-      sync_action([[preview]])
+      do_action([[preview]])
     end,
     opts = opt,
   },
@@ -85,7 +85,7 @@ require("user.utils").keymaps_set({
     mode = "n",
     lhs = [[a]],
     rhs = function()
-      sync_action([[chooseAction]])
+      do_action([[chooseAction]])
     end,
     opts = opt,
   },
@@ -93,7 +93,7 @@ require("user.utils").keymaps_set({
     mode = "n",
     lhs = [[  ]],
     rhs = function()
-      sync_action([[toggleSelectItem]])
+      do_action([[toggleSelectItem]])
     end,
     opts = opt,
   },
@@ -101,7 +101,7 @@ require("user.utils").keymaps_set({
     mode = "n",
     lhs = [[*]],
     rhs = function()
-      sync_action([[toggleAllItems]])
+      do_action([[toggleAllItems]])
     end,
     opts = opt,
   },
@@ -109,7 +109,7 @@ require("user.utils").keymaps_set({
     mode = "n",
     lhs = [[q]],
     rhs = function()
-      sync_action([[quit]])
+      do_action([[quit]])
     end,
     opts = opt,
   },
@@ -117,7 +117,7 @@ require("user.utils").keymaps_set({
     mode = "n",
     lhs = [[<Esc>]],
     rhs = function()
-      sync_action([[quit]])
+      do_action([[quit]])
     end,
     opts = opt,
   },
@@ -173,7 +173,7 @@ require("user.utils").keymaps_set({
     mode = "n",
     lhs = [[P]],
     rhs = function()
-      sync_action([[itemAction]], { name = [[paste]] })
+      do_action([[itemAction]], { name = [[paste]] })
     end,
     opts = opt,
   },
@@ -181,7 +181,7 @@ require("user.utils").keymaps_set({
     mode = "n",
     lhs = [[R]],
     rhs = function()
-      sync_action([[itemAction]], { name = [[rename]] })
+      do_action([[itemAction]], { name = [[rename]] })
     end,
     opts = opt,
   },
@@ -195,7 +195,7 @@ require("user.utils").keymaps_set({
     mode = "n",
     lhs = [[<Plug>(delete)d]],
     rhs = function()
-      sync_action([[itemAction]], { name = [[trash]] })
+      do_action([[itemAction]], { name = [[trash]] })
     end,
     opts = opt,
   },
@@ -203,7 +203,7 @@ require("user.utils").keymaps_set({
     mode = "n",
     lhs = [[<Plug>(delete)D]],
     rhs = function()
-      sync_action([[itemAction]], { name = [[delete]] })
+      do_action([[itemAction]], { name = [[delete]] })
     end,
     opts = opt,
   },
@@ -211,7 +211,7 @@ require("user.utils").keymaps_set({
     mode = "n",
     lhs = [[N]],
     rhs = function()
-      sync_action([[itemAction]], { name = [[newFile]] })
+      do_action([[itemAction]], { name = [[newFile]] })
     end,
     opts = opt,
   },
@@ -219,7 +219,7 @@ require("user.utils").keymaps_set({
     mode = "n",
     lhs = [[u]],
     rhs = function()
-      sync_action([[itemAction]], { name = [[undo]] })
+      do_action([[itemAction]], { name = [[undo]] })
     end,
     opts = opt,
   },
@@ -227,7 +227,7 @@ require("user.utils").keymaps_set({
     mode = "n",
     lhs = [[y]],
     rhs = function()
-      sync_action([[itemAction]], { name = [[yank]] })
+      do_action([[itemAction]], { name = [[yank]] })
       print([[Yank path the "]] .. vim.fn.getreg([[+]]) .. [["]])
     end,
     opts = opt,
@@ -237,7 +237,7 @@ require("user.utils").keymaps_set({
     mode = "n",
     lhs = [[~]],
     rhs = function()
-      sync_action([[itemAction]], {
+      do_action([[itemAction]], {
         name = [[narrow]],
         params = { path = vim.env.HOME },
       })
@@ -256,7 +256,7 @@ require("user.utils").keymaps_set({
     mode = "n",
     lhs = [[..]],
     rhs = function()
-      sync_action([[itemAction]], {
+      do_action([[itemAction]], {
         name = [[narrow]],
         params = { path = [[..]] },
       })
@@ -267,7 +267,7 @@ require("user.utils").keymaps_set({
     mode = "n",
     lhs = [[c]],
     rhs = function()
-      sync_action([[itemAction]], { name = [[narrow]] })
+      do_action([[itemAction]], { name = [[narrow]] })
     end,
     opts = opt,
   },
