@@ -245,6 +245,8 @@ export class Config extends BaseConfig {
       },
     });
 
+    // UI: fuzzy-finder
+
     args.contextBuilder.patchLocal("current-ff", {
       ui: "ff",
       uiParams: {
@@ -451,6 +453,8 @@ export class Config extends BaseConfig {
         },
       ],
     });
+
+    // UI: filer
 
     return Promise.resolve();
   }
