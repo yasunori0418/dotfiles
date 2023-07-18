@@ -106,7 +106,7 @@ require('user.utils').keymaps_set({
     mode = "n",
     lhs = [[p]],
     rhs = function()
-      do_action('preview')
+      do_action('togglePreview')
     end,
     opts = ff_opt,
   },
