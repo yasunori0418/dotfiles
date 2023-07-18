@@ -125,7 +125,7 @@ utils.keymaps_set({
     lhs = [[<Plug>(ddu-filer)a]],
     rhs = function()
       vim.fn["ddu#start"]({
-        name = "project_root-filer",
+        name = "current-filer",
         sourceOptions = {
           file = {
             path = utils.search_repo_root(),
@@ -181,13 +181,6 @@ vim.fn["ddu#custom#load_config"](
 vim.api.nvim_create_user_command("DeinUpdate", function()
   vim.fn["ddu#start"]({name = "dein_update-ff"})
 end, {})
-
-vim.fn["ddu#custom#patch_local"]("project_root-filer", {
-  ui = "filer",
-  sources = {
-    { name = "file" },
-  },
-})
 
 vim.fn["ddu#custom#patch_local"]("dotfiles-filer", {
   ui = "filer",
