@@ -456,6 +456,13 @@ export class Config extends BaseConfig {
 
     // UI: filer
 
+    args.contextBuilder.patchLocal("current-filer", {
+      ui: "filer",
+      sources: [
+        { name: "file" },
+      ],
+    });
+
     return Promise.resolve();
   }
 }

@@ -182,14 +182,6 @@ vim.api.nvim_create_user_command("DeinUpdate", function()
   vim.fn["ddu#start"]({name = "dein_update-ff"})
 end, {})
 
--- -- UI:filer presets
-vim.fn["ddu#custom#patch_local"]("current-filer", {
-  ui = "filer",
-  sources = {
-    { name = "file" },
-  },
-})
-
 vim.fn["ddu#custom#patch_local"]("project_root-filer", {
   ui = "filer",
   sources = {
