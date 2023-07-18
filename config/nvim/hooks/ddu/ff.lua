@@ -5,7 +5,8 @@ local line = vim.fn.line
 local ff_opt = { silent = true, buffer = true, noremap = true }
 local ff_opt_expr = { silent = true, buffer = true, expr = true, noremap = true }
 require('user.utils').keymaps_set({
-  {
+  -- Open
+  { -- defaultAction
     mode = "n",
     lhs = [[<CR>]],
     rhs = function()
@@ -13,7 +14,7 @@ require('user.utils').keymaps_set({
     end,
     opts = ff_opt,
   },
-  {
+  { -- :drop
     mode = "n",
     lhs = [[o]],
     rhs = function()
@@ -26,7 +27,7 @@ require('user.utils').keymaps_set({
     end,
     opts = ff_opt,
   },
-  {
+  { -- :split
     mode = "n",
     lhs = [[s]],
     rhs = function()
@@ -37,7 +38,7 @@ require('user.utils').keymaps_set({
     end,
     opts = ff_opt,
   },
-  {
+  { -- :vsplit
     mode = "n",
     lhs = [[v]],
     rhs = function()
@@ -48,7 +49,7 @@ require('user.utils').keymaps_set({
     end,
     opts = ff_opt,
   },
-  {
+  { -- :tabedit
     mode = "n",
     lhs = [[t]],
     rhs = function()
@@ -59,7 +60,9 @@ require('user.utils').keymaps_set({
     end,
     opts = ff_opt,
   },
-  {
+
+  -- Support
+  { -- toggleSelectItem
     mode = "n",
     lhs = [[  ]],
     rhs = function()
@@ -67,7 +70,7 @@ require('user.utils').keymaps_set({
     end,
     opts = ff_opt,
   },
-  {
+  { -- toggleAllItems
     mode = "n",
     lhs = [[*]],
     rhs = function()
@@ -75,7 +78,7 @@ require('user.utils').keymaps_set({
     end,
     opts = ff_opt,
   },
-  {
+  { -- chooseAction
     mode = "n",
     lhs = [[a]],
     rhs = function()
@@ -83,7 +86,7 @@ require('user.utils').keymaps_set({
     end,
     opts = ff_opt,
   },
-  {
+  { -- openFilterWindow
     mode = "n",
     lhs = [[i]],
     rhs = function()
@@ -91,7 +94,7 @@ require('user.utils').keymaps_set({
     end,
     opts = ff_opt,
   },
-  {
+  { -- refreshItems
     mode = "n",
     lhs = [[<C-l>]],
     rhs = function()
@@ -99,7 +102,7 @@ require('user.utils').keymaps_set({
     end,
     opts = ff_opt,
   },
-  {
+  { -- preview
     mode = "n",
     lhs = [[p]],
     rhs = function()
@@ -107,7 +110,7 @@ require('user.utils').keymaps_set({
     end,
     opts = ff_opt,
   },
-  {
+  { -- quit
     mode = "n",
     lhs = [[q]],
     rhs = function()
@@ -115,7 +118,7 @@ require('user.utils').keymaps_set({
     end,
     opts = ff_opt,
   },
-  {
+  { -- quit
     mode = "n",
     lhs = [[<ESC>]],
     rhs = function()
@@ -123,7 +126,7 @@ require('user.utils').keymaps_set({
     end,
     opts = ff_opt
   },
-  {
+  { -- 末尾に行ったら一番上にジャンプする
     mode = "n",
     lhs = [[j]],
     rhs = function()
@@ -135,7 +138,7 @@ require('user.utils').keymaps_set({
     end,
     opts = ff_opt_expr,
   },
-  {
+  { -- 一番上に行ったら一番下にジャンプする
     mode = "n",
     lhs = [[k]],
     rhs = function()
@@ -147,7 +150,7 @@ require('user.utils').keymaps_set({
     end,
     opts = ff_opt_expr,
   },
-  {
+  { -- 全てをquickfix送り
     mode = "n",
     lhs = [[<C-q>]],
     rhs = function()
@@ -156,7 +159,7 @@ require('user.utils').keymaps_set({
     end,
     opts = ff_opt,
   },
-  {
+  { -- 対象のパスをyankする
     mode = "n",
     lhs = [[y]],
     rhs = function()
