@@ -129,13 +129,14 @@ export class Config extends BaseConfig {
       },
       sourceOptions: {
         _: {
-          ignoreCase: true,
           matchers: ["matcher_substring"],
-          converters: ["converter_devicon"],
         },
         file: {
           columns: ["icon_filename"],
-          converters: [],
+        },
+        file_rec: {
+          ignoreCase: true,
+          converters: ["converter_devicon"],
         },
         dein: {
           defaultAction: "cd",
