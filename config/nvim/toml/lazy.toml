@@ -70,6 +70,10 @@ repo = 'thinca/vim-qfreplace'
 on_cmd = 'Qfreplace'
 
 [[plugins]]
+repo = 'itchyny/vim-qfedit'
+on_event = 'QuickFixCmdPost'
+
+[[plugins]]
 repo = 'uga-rosa/ccc.nvim'
 on_ft = ['css', 'html', 'conf']
 on_cmd = ['CccPick', 'CccConvert', 'CccHighlighterToggle']
