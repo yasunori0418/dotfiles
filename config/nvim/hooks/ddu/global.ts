@@ -5,12 +5,14 @@ import {
 } from "https://deno.land/x/ddu_vim@v3.4.3/types.ts";
 import { ConfigArguments } from "https://deno.land/x/ddu_vim@v3.4.3/base/config.ts";
 import { Params as FfUiParams } from "https://deno.land/x/ddu_ui_ff@v1.1.0/ff.ts";
+import { Params as FilerUiParams } from "https://deno.land/x/ddu_ui_filer@v1.1.0/filer.ts";
 // import { Denops, fn } from "https://deno.land/x/ddu_vim@v3.4.3/deps.ts";
 import { ActionData } from "https://deno.land/x/ddu_kind_file@v0.5.3/file.ts";
 import * as opt from "https://deno.land/x/denops_std@v5.0.1/option/mod.ts";
 
 type Params = Record<string, unknown>;
 type PartialFfUiParams = Partial<FfUiParams>;
+type PartialFilerUiParams = Partial<FilerUiParams>;
 
 const expandHome = (path: string): string => {
   return path.replace(/^~/, Deno.env.get("HOME") || "");
@@ -79,11 +81,46 @@ async function ffUiSize(
   };
 }
 
+async function filerUiSize(
+  args: ConfigArguments,
+): Promise<PartialFilerUiParams> {
+  const denops = args.denops;
+  const FRAME_SIZE = 2;
+  const columns = await opt.columns.get(denops);
+  const lines = await opt.lines.get(denops);
+
+  const winWidth = Math.floor(columns / 5);
+  const winHeight = lines - FRAME_SIZE - 1;
+
+  return {
+    split: "floating",
+    splitDirection: "topleft",
+    sort: 'filename',
+    sortTreesFirst: true,
+    floatingBorder: "single",
+    winCol: 0,
+    winRow: 1,
+    winWidth: winWidth,
+    winHeight: winHeight,
+    previewFloating: true,
+    previewFloatingBorder: "single",
+    previewRow: 0,
+    previewCol: columns - winWidth - FRAME_SIZE,
+    previewHeight: winHeight + 1,
+    previewWidth: columns - winWidth - (FRAME_SIZE * 2 + 1),
+    previewWindowOptions: [
+      ["&signcolumn", "no"],
+      ["&foldcolumn", 0],
+      ["&foldenable", 0],
+      ["&number", 0],
+      ["&relativenumber", 0],
+      ["&wrap", 0],
+    ],
+  };
+}
+
 export class Config extends BaseConfig {
   override async config(args: ConfigArguments): Promise<void> {
-    const winWidth: number = await opt.columns.get(args.denops);
-    const winHeight: number = await opt.lines.get(args.denops);
-
     args.contextBuilder.patchGlobal({
       uiOptions: {
         filer: {
@@ -111,23 +148,10 @@ export class Config extends BaseConfig {
           ],
         },
         filer: {
-          split: "vertical",
-          splitDirection: "topleft",
-          winWidth: Math.floor(winWidth / 6),
-          previewFloating: true,
-          previewFloatingBorder: "single",
-          previewCol: Math.floor(winWidth / 4) + 4,
-          previewRow: Math.floor(winHeight / 2),
-          previewWidth:  winWidth - Math.floor(winWidth / 6) - 2,
-          previewHeight: winHeight - 3,
-          previewWindowOptions: [
-            ["&signcolumn", "no"],
-            ["&foldcolumn", 0],
-            ["&foldenable", 0],
-            ["&number", 0],
-            ["&relativenumber", 0],
-            ["&wrap", 0],
-          ],
+          ...{
+            displayRoot: false,
+          },
+          ...await filerUiSize(args),
         },
       },
       sourceOptions: {
