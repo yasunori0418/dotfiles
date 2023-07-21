@@ -95,8 +95,6 @@ async function filerUiSize(
   return {
     split: "floating",
     splitDirection: "topleft",
-    sort: 'filename',
-    sortTreesFirst: true,
     floatingBorder: "single",
     winCol: 0,
     winRow: 1,
@@ -108,14 +106,6 @@ async function filerUiSize(
     previewCol: columns - winWidth - FRAME_SIZE,
     previewHeight: winHeight + 1,
     previewWidth: columns - winWidth - (FRAME_SIZE * 2 + 1),
-    previewWindowOptions: [
-      ["&signcolumn", "no"],
-      ["&foldcolumn", 0],
-      ["&foldenable", 0],
-      ["&number", 0],
-      ["&relativenumber", 0],
-      ["&wrap", 0],
-    ],
   };
 }
 
@@ -149,7 +139,17 @@ export class Config extends BaseConfig {
         },
         filer: {
           ...{
+            sort: "filename",
+            sortTreesFirst: true,
             displayRoot: false,
+            previewWindowOptions: [
+              ["&signcolumn", "no"],
+              ["&foldcolumn", 0],
+              ["&foldenable", 0],
+              ["&number", 0],
+              ["&relativenumber", 0],
+              ["&wrap", 0],
+            ],
           },
           ...await filerUiSize(args),
         },
