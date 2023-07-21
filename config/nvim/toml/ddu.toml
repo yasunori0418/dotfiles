@@ -89,6 +89,18 @@ on_source = 'ddu.vim'
 repo = 'Shougo/ddu-source-path_history'
 on_source = 'ddu.vim'
 
+[[plugins]]
+repo = 'tennashi/ddu-source-git'
+on_source = 'ddu.vim'
+
+[[plugins]]
+repo = 'kuuote/ddu-source-git_status'
+on_source = 'ddu.vim'
+
+[[plugins]]
+repo = 'kuuote/ddu-source-git_diff'
+on_source = 'ddu.vim'
+
 # }}}
 
 # Filter plugins {{{
