@@ -126,7 +126,7 @@ require("user.utils").keymaps_set({
     lhs = [[j]],
     rhs = function()
       if vim.fn.line([[.]]) == vim.fn.line([[$]]) then
-        return [[ggj]]
+        return [[gg]]
       else
         return [[j]]
       end
@@ -137,7 +137,7 @@ require("user.utils").keymaps_set({
     mode = "n",
     lhs = [[k]],
     rhs = function()
-      if vim.fn.line([[.]]) == 2 then
+      if vim.fn.line([[.]]) == 1 then
         return [[G]]
       else
         return [[k]]
