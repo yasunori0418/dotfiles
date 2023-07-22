@@ -97,9 +97,12 @@ gitsigns.setup({
       return "<Ignore>"
     end, keymap_options)
 
-    keymap({ "n", "x" }, "ghs", "<Cmd>Gitsigns stage_hunk<CR>")
-    keymap({ "n", "x" }, "ghr", "<Cmd>Gitsigns reset_hunk<CR>")
-    keymap({ "n", "x" }, "ghu", "<Cmd>Gitsigns undo_stage_hunk<CR>")
+    keymap("n", "ghs", "<Cmd>Gitsigns stage_hunk<CR>")
+    keymap("n", "ghr", "<Cmd>Gitsigns reset_hunk<CR>")
+    keymap("n", "ghu", "<Cmd>Gitsigns undo_stage_hunk<CR>")
+    keymap("x", "ghs", ":Gitsigns stage_hunk<CR>")
+    keymap("x", "ghr", ":Gitsigns reset_hunk<CR>")
+    keymap("x", "ghu", ":Gitsigns undo_stage_hunk<CR>")
     keymap("n", "gbs", "<Cmd>Gitsigns stage_buffer<CR>")
     keymap("n", "gbr", "<Cmd>Gitsigns reset_buffer<CR>")
     keymap("n", "gbu", "<Cmd>Gitsigns undo_stage_hunk<CR>")
