@@ -118,6 +118,14 @@ utils.keymaps_set({
     end,
     opts = opt,
   },
+  {
+    mode = "n",
+    lhs = [[<Plug>(git)g]],
+    rhs = function()
+      vim.fn["ddu#start"]({ name = "git-ff" })
+    end,
+    opts = opt,
+  },
 
   -- ddu-ui-filer starter
   { -- project_root-filer
