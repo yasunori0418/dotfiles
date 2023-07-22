@@ -180,6 +180,12 @@ export class Config extends BaseConfig {
         path_history: {
           defaultAction: "uiCd",
         },
+        git_status: {
+          converters: [
+            "converter_hl_dir",
+            "converter_git_status",
+          ],
+        }
       },
       sourceParams: {
         dein_update: {
