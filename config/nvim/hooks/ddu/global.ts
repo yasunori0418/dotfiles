@@ -18,7 +18,7 @@ const expandHome = (path: string): string => {
   return path.replace(/^~/, Deno.env.get("HOME") || "");
 };
 
-async function ffUiSize(
+async function grepUiSize(
   args: ConfigArguments,
   previewSplit: "horizontal" | "vertical",
   isAutoPreview: boolean,
@@ -471,7 +471,7 @@ export class Config extends BaseConfig {
     args.contextBuilder.patchLocal("ripgrep-ff", {
       ui: "ff",
       uiParams: {
-        ff: await ffUiSize(
+        ff: await grepUiSize(
           args,
           "horizontal",
           true,
