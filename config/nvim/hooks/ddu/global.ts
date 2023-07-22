@@ -240,6 +240,18 @@ export class Config extends BaseConfig {
         dein_update: {
           defaultAction: "viewDiff",
         },
+        git_tag: {
+          defaultAction: "switch",
+        },
+        git_branch: {
+          defaultAction: "switch",
+        },
+        git_index: {
+          defaultAction: "commitAll",
+        },
+        git_working_tree: {
+          defaultAction: "add",
+        },
       },
       actionOptions: {
         narrow: { quit: false },
