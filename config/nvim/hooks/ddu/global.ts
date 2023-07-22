@@ -163,7 +163,10 @@ export class Config extends BaseConfig {
         },
         file_rec: {
           ignoreCase: true,
-          converters: ["converter_devicon"],
+          converters: [
+            "converter_devicon",
+            "converter_hl_dir",
+          ],
         },
         dein: {
           defaultAction: "cd",
