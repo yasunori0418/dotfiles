@@ -185,7 +185,7 @@ export class Config extends BaseConfig {
             "converter_hl_dir",
             "converter_git_status",
           ],
-        }
+        },
       },
       sourceParams: {
         dein_update: {
@@ -248,6 +248,9 @@ export class Config extends BaseConfig {
         },
         dein_update: {
           defaultAction: "viewDiff",
+        },
+        git_status: {
+          defaultAction: "open",
         },
       },
       actionOptions: {
