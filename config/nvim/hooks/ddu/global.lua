@@ -118,11 +118,19 @@ utils.keymaps_set({
     end,
     opts = opt,
   },
-  {
+  { -- git_status-ff
     mode = "n",
     lhs = [[<Plug>(git)g]],
     rhs = function()
-      vim.fn["ddu#start"]({ name = "git-ff" })
+      vim.fn["ddu#start"]({ name = "git_status-ff" })
+    end,
+    opts = opt,
+  },
+  { -- git_diff-ff
+    mode = "n",
+    lhs = [[<Plug>(git)d]],
+    rhs = function()
+      vim.fn["ddu#start"]({ name = "git_diff-ff" })
     end,
     opts = opt,
   },
