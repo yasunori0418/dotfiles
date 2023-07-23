@@ -507,12 +507,18 @@ export class Config extends BaseConfig {
       ],
     });
 
-    args.contextBuilder.patchLocal("git-ff", {
+    args.contextBuilder.patchLocal("git_status-ff", {
       ui: "ff",
       sources: [
         {
           name: "git_status",
         },
+      ],
+    });
+
+    args.contextBuilder.patchLocal("git_diff-ff", {
+      ui: "ff",
+      sources: [
         {
           name: "git_diff",
         },
