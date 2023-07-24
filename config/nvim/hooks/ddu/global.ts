@@ -280,6 +280,13 @@ export class Config extends BaseConfig {
           ],
           unique: true,
         },
+        converter_hl_dir: {
+          hlGroup: [
+            "Directory",
+            "Number",
+            "Type",
+          ]
+        },
       },
       columnParams: {
         icon_filename: {
