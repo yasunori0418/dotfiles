@@ -183,6 +183,7 @@ export class Config extends BaseConfig {
         git_status: {
           converters: [
             "converter_hl_dir",
+            "converter_devicon",
             "converter_git_status",
           ],
         },
