@@ -193,6 +193,11 @@ export class Config extends BaseConfig {
             "converter_hl_dir",
           ],
         },
+        buffer: {
+          converters: [
+            "converter_hl_dir",
+          ],
+        },
       },
       sourceParams: {
         dein_update: {
