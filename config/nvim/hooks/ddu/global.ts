@@ -186,6 +186,12 @@ export class Config extends BaseConfig {
             "converter_git_status",
           ],
         },
+        mr: {
+          converters: [
+            "converter_devicon",
+            "converter_hl_dir",
+          ],
+        },
       },
       sourceParams: {
         dein_update: {
@@ -285,7 +291,7 @@ export class Config extends BaseConfig {
             "Directory",
             "Number",
             "Type",
-          ]
+          ],
         },
       },
       columnParams: {
