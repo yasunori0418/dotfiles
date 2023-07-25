@@ -92,6 +92,11 @@ async function filerUiSize(
   const winWidth = Math.floor(columns / 5);
   const winHeight = lines - FRAME_SIZE - 1;
 
+  const previewCol = columns - winWidth - FRAME_SIZE;
+  const previewRow = 0;
+  const previewHeight = winHeight + 1;
+  const previewWidth = columns - winWidth - (FRAME_SIZE * 2 + 1);
+
   return {
     split: "floating",
     splitDirection: "topleft",
@@ -102,10 +107,10 @@ async function filerUiSize(
     winHeight: winHeight,
     previewFloating: true,
     previewFloatingBorder: "single",
-    previewRow: 0,
-    previewCol: columns - winWidth - FRAME_SIZE,
-    previewHeight: winHeight + 1,
-    previewWidth: columns - winWidth - (FRAME_SIZE * 2 + 1),
+    previewRow: previewRow,
+    previewCol: previewCol,
+    previewHeight: previewHeight,
+    previewWidth: previewWidth,
   };
 }
 
