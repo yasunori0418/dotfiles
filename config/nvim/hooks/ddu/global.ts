@@ -249,7 +249,7 @@ export class Config extends BaseConfig {
               args: ActionArguments<Params>,
             ): Promise<ActionFlags> => {
               const action = args.items[0].action as ActionData;
-              console.log(action);
+
               await args.denops.call("ddu#start", {
                 name: "git_diff-ff",
                 sourceOptions: {
