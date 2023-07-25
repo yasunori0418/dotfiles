@@ -21,7 +21,6 @@ const expandHome = (path: string): string => {
 async function grepUiSize(
   args: ConfigArguments,
   previewSplit: "horizontal" | "vertical",
-  isAutoPreview: boolean,
 ): Promise<PartialFfUiParams> {
   const denops = args.denops;
   const FRAME_SIZE = 2;
@@ -36,7 +35,6 @@ async function grepUiSize(
   let previewCol!: number;
   let previewHeight!: number;
   let previewWidth!: number;
-  let filterFloatingPosition!: "top" | "bottom";
 
   if (previewSplit === "horizontal") {
     winRow = -1;
@@ -47,7 +45,6 @@ async function grepUiSize(
     previewCol = 0;
     previewHeight = (lines - winHeight) - (FRAME_SIZE * 3);
     previewWidth = winWidth;
-    filterFloatingPosition = "top";
   } else if (previewSplit === "vertical") {
     winRow = 0;
     winCol = 1;
@@ -57,27 +54,19 @@ async function grepUiSize(
     previewCol = columns - winWidth;
     previewHeight = winHeight;
     previewWidth = columns - winWidth - (FRAME_SIZE * 2 + 1);
-    filterFloatingPosition = "bottom";
   }
 
   return {
-    startAutoAction: isAutoPreview,
-    autoAction: {
-      delay: 0,
-      name: "preview",
-    },
-    autoResize: false,
-    startFilter: true,
-    filterFloatingPosition: filterFloatingPosition,
+    winRow: winRow,
+    winCol: winCol,
+    winHeight: winHeight,
+    winWidth: winWidth,
+    previewFloating: true,
     previewSplit: previewSplit,
     previewRow: previewRow,
     previewCol: previewCol,
     previewHeight: previewHeight,
     previewWidth: previewWidth,
-    winRow: winRow,
-    winCol: winCol,
-    winHeight: winHeight,
-    winWidth: winWidth,
   };
 }
 
@@ -89,6 +78,8 @@ async function filerUiSize(
   const columns = await opt.columns.get(denops);
   const lines = await opt.lines.get(denops);
 
+  const winRow = 1;
+  const winCol = 0;
   const winWidth = Math.floor(columns / 5);
   const winHeight = lines - FRAME_SIZE - 1;
 
@@ -96,17 +87,15 @@ async function filerUiSize(
   const previewRow = 0;
   const previewHeight = winHeight + 1;
   const previewWidth = columns - winWidth - (FRAME_SIZE * 2 + 1);
+  const previewSplit = "vertical";
 
   return {
-    split: "floating",
-    splitDirection: "topleft",
-    floatingBorder: "single",
-    winCol: 0,
-    winRow: 1,
+    winRow: winRow,
+    winCol: winCol,
     winWidth: winWidth,
     winHeight: winHeight,
     previewFloating: true,
-    previewFloatingBorder: "single",
+    previewSplit: previewSplit,
     previewRow: previewRow,
     previewCol: previewCol,
     previewHeight: previewHeight,
@@ -144,9 +133,13 @@ export class Config extends BaseConfig {
         },
         filer: {
           ...{
+            split: "floating",
+            splitDirection: "topleft",
+            floatingBorder: "single",
             sort: "filename",
             sortTreesFirst: true,
             displayRoot: false,
+            previewFloatingBorder: "single",
             previewWindowOptions: [
               ["&signcolumn", "no"],
               ["&foldcolumn", 0],
@@ -507,11 +500,19 @@ export class Config extends BaseConfig {
     args.contextBuilder.patchLocal("ripgrep-ff", {
       ui: "ff",
       uiParams: {
-        ff: await grepUiSize(
-          args,
-          "horizontal",
-          true,
-        ),
+        ff: {
+          ...{
+            startAutoAction: true,
+            autoAction: {
+              delay: 0,
+              name: "preview",
+            },
+            autoResize: false,
+            startFilter: true,
+            filterFloatingPosition: "top",
+          },
+          ...await grepUiSize(args, "horizontal"),
+        }
       },
       sources: [
         {
