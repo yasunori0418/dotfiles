@@ -558,6 +558,11 @@ export class Config extends BaseConfig {
 
     args.contextBuilder.patchLocal("git_diff-ff", {
       ui: "ff",
+      uiParams: {
+        ff: {
+          ...await uiSize(args, 1, "vertical"),
+        },
+      },
       sources: [
         {
           name: "git_diff",
