@@ -46,8 +46,12 @@ async function uiSize(
   let previewHeight!: number;
   let previewWidth!: number;
 
+  const splitWindowLength = (length: number): number => {
+    return Math.floor(length * splitRaitio);
+  }
+
   if (previewSplit === "horizontal") {
-    winHeight = Math.floor(lines / splitRaitio);
+    winHeight = splitWindowLength(lines);
     winWidth = columns - FRAME_SIZE - 1;
     previewRow = lines - FRAME_SIZE;
     previewCol = 0;
@@ -55,7 +59,7 @@ async function uiSize(
     previewWidth = winWidth;
   } else if (previewSplit === "vertical") {
     winHeight = lines - FRAME_SIZE - 1;
-    winWidth = Math.floor(columns / splitRaitio);
+    winWidth = splitWindowLength(columns);
     previewRow = 0;
     previewCol = columns - FRAME_SIZE;
     previewHeight = winHeight;
@@ -122,7 +126,7 @@ export class Config extends BaseConfig {
               ["&wrap", 0],
             ],
           },
-          ...await uiSize(args, 5, "vertical"),
+          ...await uiSize(args, 0.2, "vertical"),
         },
       },
       sourceOptions: {
@@ -490,7 +494,7 @@ export class Config extends BaseConfig {
             startFilter: true,
             filterFloatingPosition: "top",
           },
-          ...await uiSize(args, 3, "horizontal"),
+          ...await uiSize(args, 0.3, "horizontal"),
         }
       },
       sources: [
@@ -524,7 +528,7 @@ export class Config extends BaseConfig {
             autoResize: false,
             filterFloatingPosition: "bottom",
           },
-          ...await uiSize(args, 2, "vertical"),
+          ...await uiSize(args, 0.5, "vertical"),
         },
       },
       sources: [
