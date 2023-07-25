@@ -244,6 +244,24 @@ export class Config extends BaseConfig {
         },
         git_status: {
           defaultAction: "open",
+          actions: {
+            gitDiff: async (
+              args: ActionArguments<Params>,
+            ): Promise<ActionFlags> => {
+              const action = args.items[0].action as ActionData;
+              console.log(action);
+              await args.denops.call("ddu#start", {
+                name: "git_diff-ff",
+                sourceOptions: {
+                  git_diff: {
+                    path: action.path,
+                  },
+                },
+              });
+
+              return Promise.resolve(ActionFlags.None);
+            },
+          }
         },
       },
       actionOptions: {
@@ -543,6 +561,9 @@ export class Config extends BaseConfig {
       sources: [
         {
           name: "git_diff",
+          params: {
+            onlyFile: true,
+          },
         },
       ],
     });
