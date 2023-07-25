@@ -36,9 +36,9 @@ async function uiSize(
   const FRAME_SIZE = 2;
   const columns = await opt.columns.get(denops);
   const lines = await opt.lines.get(denops);
+  const winRow = -1;
+  const winCol = 0;
 
-  let winRow!: number;
-  let winCol!: number;
   let winHeight!: number;
   let winWidth!: number;
   let previewRow!: number;
@@ -47,8 +47,6 @@ async function uiSize(
   let previewWidth!: number;
 
   if (previewSplit === "horizontal") {
-    winRow = -1;
-    winCol = 0;
     winHeight = Math.floor(lines / splitRaitio);
     winWidth = columns - FRAME_SIZE - 1;
     previewRow = lines - FRAME_SIZE;
@@ -56,12 +54,10 @@ async function uiSize(
     previewHeight = (lines - winHeight) - (FRAME_SIZE * 3);
     previewWidth = winWidth;
   } else if (previewSplit === "vertical") {
-    winRow = 1;
-    winCol = 0;
     winHeight = lines - FRAME_SIZE - 1;
     winWidth = Math.floor(columns / splitRaitio);
     previewRow = 0;
-    previewCol = columns - winWidth - FRAME_SIZE;
+    previewCol = columns - FRAME_SIZE;
     previewHeight = winHeight;
     previewWidth = columns - winWidth - (FRAME_SIZE * 3);
   }
@@ -511,6 +507,20 @@ export class Config extends BaseConfig {
 
     args.contextBuilder.patchLocal("git_status-ff", {
       ui: "ff",
+      uiParams: {
+        ff: {
+          ...{
+            startAutoAction: true,
+            autoAction: {
+              delay: 0,
+              name: "preview",
+            },
+            autoResize: false,
+            filterFloatingPosition: "bottom",
+          },
+          ...await uiSize(args, 2, "vertical"),
+        },
+      },
       sources: [
         {
           name: "git_status",
