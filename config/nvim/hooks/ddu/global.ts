@@ -4,24 +4,34 @@ import {
   BaseConfig,
 } from "https://deno.land/x/ddu_vim@v3.4.3/types.ts";
 import { ConfigArguments } from "https://deno.land/x/ddu_vim@v3.4.3/base/config.ts";
-import { Params as FfUiParams } from "https://deno.land/x/ddu_ui_ff@v1.1.0/ff.ts";
-import { Params as FilerUiParams } from "https://deno.land/x/ddu_ui_filer@v1.1.0/filer.ts";
 // import { Denops, fn } from "https://deno.land/x/ddu_vim@v3.4.3/deps.ts";
 import { ActionData } from "https://deno.land/x/ddu_kind_file@v0.5.3/file.ts";
 import * as opt from "https://deno.land/x/denops_std@v5.0.1/option/mod.ts";
 
 type Params = Record<string, unknown>;
-type PartialFfUiParams = Partial<FfUiParams>;
-type PartialFilerUiParams = Partial<FilerUiParams>;
 
 const expandHome = (path: string): string => {
   return path.replace(/^~/, Deno.env.get("HOME") || "");
 };
 
-async function grepUiSize(
+type DduUiSize = {
+  winRow: number;
+  winCol: number;
+  winWidth: number;
+  winHeight: number;
+  previewFloating: boolean;
+  previewSplit: "vertical" | "horizontal";
+  previewRow: number;
+  previewCol: number;
+  previewHeight: number;
+  previewWidth: number;
+};
+
+async function uiSize(
   args: ConfigArguments,
+  splitRaitio: number,
   previewSplit: "horizontal" | "vertical",
-): Promise<PartialFfUiParams> {
+): Promise<DduUiSize> {
   const denops = args.denops;
   const FRAME_SIZE = 2;
   const columns = await opt.columns.get(denops);
@@ -39,55 +49,22 @@ async function grepUiSize(
   if (previewSplit === "horizontal") {
     winRow = -1;
     winCol = 0;
-    winHeight = Math.floor(lines / 3);
+    winHeight = Math.floor(lines / splitRaitio);
     winWidth = columns - FRAME_SIZE - 1;
     previewRow = lines - FRAME_SIZE;
     previewCol = 0;
     previewHeight = (lines - winHeight) - (FRAME_SIZE * 3);
     previewWidth = winWidth;
   } else if (previewSplit === "vertical") {
-    winRow = 0;
-    winCol = 1;
+    winRow = 1;
+    winCol = 0;
     winHeight = lines - FRAME_SIZE - 1;
-    winWidth = Math.floor(columns / 3);
+    winWidth = Math.floor(columns / splitRaitio);
     previewRow = 0;
-    previewCol = columns - winWidth;
+    previewCol = columns - winWidth - FRAME_SIZE;
     previewHeight = winHeight;
-    previewWidth = columns - winWidth - (FRAME_SIZE * 2 + 1);
+    previewWidth = columns - winWidth - (FRAME_SIZE * 3);
   }
-
-  return {
-    winRow: winRow,
-    winCol: winCol,
-    winHeight: winHeight,
-    winWidth: winWidth,
-    previewFloating: true,
-    previewSplit: previewSplit,
-    previewRow: previewRow,
-    previewCol: previewCol,
-    previewHeight: previewHeight,
-    previewWidth: previewWidth,
-  };
-}
-
-async function filerUiSize(
-  args: ConfigArguments,
-): Promise<PartialFilerUiParams> {
-  const denops = args.denops;
-  const FRAME_SIZE = 2;
-  const columns = await opt.columns.get(denops);
-  const lines = await opt.lines.get(denops);
-
-  const winRow = 1;
-  const winCol = 0;
-  const winWidth = Math.floor(columns / 5);
-  const winHeight = lines - FRAME_SIZE - 1;
-
-  const previewCol = columns - winWidth - FRAME_SIZE;
-  const previewRow = 0;
-  const previewHeight = winHeight + 1;
-  const previewWidth = columns - winWidth - (FRAME_SIZE * 2 + 1);
-  const previewSplit = "vertical";
 
   return {
     winRow: winRow,
@@ -149,7 +126,7 @@ export class Config extends BaseConfig {
               ["&wrap", 0],
             ],
           },
-          ...await filerUiSize(args),
+          ...await uiSize(args, 5, "vertical"),
         },
       },
       sourceOptions: {
@@ -511,7 +488,7 @@ export class Config extends BaseConfig {
             startFilter: true,
             filterFloatingPosition: "top",
           },
-          ...await grepUiSize(args, "horizontal"),
+          ...await uiSize(args, 3, "horizontal"),
         }
       },
       sources: [
