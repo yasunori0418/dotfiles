@@ -169,6 +169,12 @@ export class Config extends BaseConfig {
             "converter_hl_dir",
           ],
         },
+        rg: {
+          converters: [
+            "converter_devicon",
+            "converter_hl_dir",
+          ],
+        },
       },
       sourceParams: {
         dein_update: {
