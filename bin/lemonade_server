@@ -59,7 +59,7 @@ else
   else
     echo "Shared server status: Stoped"
   fi
-  read -p "[Y|n|c] :>" answer
+  read -p "[Yes|no|log|cancel] :>" answer
 fi
 
 case $answer in
@@ -68,6 +68,9 @@ case $answer in
     ;;
   "off" | "stop" | [Nn]* )
     stop_server
+    ;;
+  "log" )
+    tail -f ${lemonade_server_log}
     ;;
   "Cancel" | [Cc]* )
     echo "Aborted this script."
