@@ -5,13 +5,10 @@ import {
   ConfigArguments,
   ActionData,
   uiSize,
+  expandHome,
 } from "./helper/deps.ts";
 
 type Params = Record<string, unknown>;
-
-const expandHome = (path: string): string => {
-  return path.replace(/^~/, Deno.env.get("HOME") || "");
-};
 
 export class Config extends BaseConfig {
   override async config(args: ConfigArguments): Promise<void> {

@@ -3,6 +3,10 @@ import {
   opt,
 } from "./deps.ts";
 
+export const expandHome = (path: string): string => {
+  return path.replace(/^~/, Deno.env.get("HOME") || "");
+};
+
 type DduUiSize = {
   winRow: number;
   winCol: number;
