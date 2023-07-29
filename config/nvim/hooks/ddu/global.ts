@@ -503,6 +503,29 @@ export class Config extends BaseConfig {
       ],
     });
 
+    args.contextBuilder.patchLocal("git_log-ff", {
+      ui: "ff",
+      uiParams: {
+        ff: {
+          ...{
+            startAutoAction: true,
+            autoAction: {
+              delay: 0,
+              name: "preview",
+            },
+            autoResize: false,
+            filterFloatingPosition: "bottom",
+          },
+          ...await uiSize(args, 0.5, "vertical"),
+        },
+      },
+      sources: [
+        {
+          name: "git_log",
+        },
+      ],
+    });
+
     // UI: filer
 
     args.contextBuilder.patchLocal("current-filer", {
