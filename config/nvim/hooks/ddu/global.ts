@@ -1,11 +1,11 @@
 import {
   ActionArguments,
+  ActionData,
   ActionFlags,
   BaseConfig,
   ConfigArguments,
-  ActionData,
-  uiSize,
   expandHome,
+  uiSize,
 } from "./helper/deps.ts";
 
 type Params = Record<string, unknown>;
@@ -191,7 +191,7 @@ export class Config extends BaseConfig {
 
               return Promise.resolve(ActionFlags.None);
             },
-          }
+          },
         },
       },
       actionOptions: {
@@ -443,7 +443,7 @@ export class Config extends BaseConfig {
             filterFloatingPosition: "top",
           },
           ...await uiSize(args, 0.3, "horizontal"),
-        }
+        },
       },
       sources: [
         {
