@@ -118,9 +118,11 @@ utils.keymaps_set({
     end,
     opts = opt,
   },
+
+  -- git control by ddu
   { -- git_status-ff
     mode = "n",
-    lhs = [[<Plug>(git)g]],
+    lhs = [[<Plug>(git)s]],
     rhs = function()
       vim.fn["ddu#start"]({ name = "git_status-ff" })
     end,
@@ -128,9 +130,9 @@ utils.keymaps_set({
   },
   { -- git_diff-ff
     mode = "n",
-    lhs = [[<Plug>(git)d]],
+    lhs = [[<Plug>(git)l]],
     rhs = function()
-      vim.fn["ddu#start"]({ name = "git_diff-ff" })
+      vim.fn["ddu#start"]({ name = "git_log-ff" })
     end,
     opts = opt,
   },
