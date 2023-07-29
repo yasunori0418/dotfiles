@@ -5,6 +5,7 @@ import {
   BaseConfig,
   ConfigArguments,
   expandHome,
+  GitCommitActionData,
   uiSize,
 } from "./helper/deps.ts";
 
@@ -185,6 +186,27 @@ export class Config extends BaseConfig {
                 sourceOptions: {
                   git_diff: {
                     path: action.path,
+                  },
+                },
+              });
+
+              return Promise.resolve(ActionFlags.None);
+            },
+          },
+        },
+        git_commit: {
+          defaultAction: "yank",
+          actions: {
+            diffTree: async (
+              args: ActionArguments<Params>,
+            ): Promise<ActionFlags> => {
+              const action = args.items[0].action as GitCommitActionData;
+
+              await args.denops.call("ddu#start", {
+                name: "git_diff_tree-ff",
+                sourceParams: {
+                  git_diff_tree: {
+                    commitHash: action.hash,
                   },
                 },
               });
@@ -499,6 +521,20 @@ export class Config extends BaseConfig {
           params: {
             onlyFile: true,
           },
+        },
+      ],
+    });
+
+    args.contextBuilder.patchLocal("git_diff_tree-ff", {
+      ui: "ff",
+      uiParams: {
+        ff: {
+          ...await uiSize(args, 0.5, "vertical"),
+        },
+      },
+      sources: [
+        {
+          name: "git_diff_tree",
         },
       ],
     });
