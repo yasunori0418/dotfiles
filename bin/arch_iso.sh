@@ -2,11 +2,18 @@
 
 # latest arch iso downloader
 
-date_ym1=`date +'%Y.%m.01'`
+set -e -u -o pipefail
+
+date_ym1=$(date +'%Y.%m.01')
+readonly date_ym1
 file_name="archlinux-${date_ym1}-x86_64.iso"
+readonly file_name
 iso_url="http://ftp.jaist.ac.jp/pub/Linux/ArchLinux/iso/${date_ym1}/${file_name}"
+readonly iso_url
 sig_url="${iso_url}.sig"
+readonly sig_url
 download_dir=${HOME}/Downloads/arch_iso_${date_ym1}
+readonly download_dir
 
 [[ ! -d ${download_dir} ]] && mkdir -p ${download_dir}
 cd ${download_dir}
