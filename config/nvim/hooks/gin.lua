@@ -7,18 +7,18 @@ require("user.utils").keymaps_set({
     rhs = [[<Plug>(git)]],
     opts = {},
   },
-  {
-    mode = { "n" },
-    lhs = [[<Plug>(git)s]],
-    rhs = [[<Cmd>GinStatus<CR>]],
-    opts = opt,
-  },
-  {
-    mode = { "n" },
-    lhs = [[<Plug>(git)l]],
-    rhs = [[<Cmd>GinLog ++opener=vsplit --graph --all --abbrev-commit --oneline<CR>]],
-    opts = opt,
-  },
+  -- {
+  --   mode = { "n" },
+  --   lhs = [[<Plug>(git)s]],
+  --   rhs = [[<Cmd>GinStatus<CR>]],
+  --   opts = opt,
+  -- },
+  -- {
+  --   mode = { "n" },
+  --   lhs = [[<Plug>(git)l]],
+  --   rhs = [[<Cmd>GinLog ++opener=vsplit --graph --all --abbrev-commit --oneline<CR>]],
+  --   opts = opt,
+  -- },
   {
     mode = { "n" },
     lhs = [[<Plug>(git)pl]],
@@ -37,12 +37,12 @@ require("user.utils").keymaps_set({
     rhs = [[<Cmd>Gin commit<CR>]],
     opts = opt,
   },
-  {
-    mode = { "n" },
-    lhs = [[<Plug>(git)b]],
-    rhs = [[<Cmd>GinBranch<CR>]],
-    opts = opt,
-  },
+  -- {
+  --   mode = { "n" },
+  --   lhs = [[<Plug>(git)b]],
+  --   rhs = [[<Cmd>GinBranch<CR>]],
+  --   opts = opt,
+  -- },
   {
     mode = { "n" },
     lhs = [[<Plug>(git)B]],
