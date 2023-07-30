@@ -110,6 +110,16 @@ export class Config extends BaseConfig {
             "converter_hl_dir",
           ],
         },
+        git_branch: {
+          columns: [
+            "git_branch_head",
+            "git_branch_remote",
+            "git_branch_name",
+            "git_branch_upstream",
+            "git_branch_author",
+            "git_branch_date",
+          ],
+        },
       },
       sourceParams: {
         dein_update: {
@@ -127,6 +137,9 @@ export class Config extends BaseConfig {
           highlights: {
             word: "Search",
           },
+        },
+        git_branch: {
+          remote: false,
         },
       },
       kindOptions: {
@@ -214,6 +227,9 @@ export class Config extends BaseConfig {
               return Promise.resolve(ActionFlags.None);
             },
           },
+        },
+        git_branch: {
+          defaultAction: "switch",
         },
       },
       actionOptions: {
@@ -567,6 +583,20 @@ export class Config extends BaseConfig {
       sources: [
         {
           name: "git_log",
+        },
+      ],
+    });
+
+    args.contextBuilder.patchLocal("git_branch-ff", {
+      ui: "ff",
+      uiParams: {
+        ff: {
+          ...await uiSize(args, 1, "vertical"),
+        },
+      },
+      sources: [
+        {
+          name: "git_branch",
         },
       ],
     });
