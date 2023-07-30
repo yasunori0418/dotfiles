@@ -1,20 +1,16 @@
 ## References: https://zenn.dev/kawarimidoll/articles/c68204d248c107
 name: Denopendabot
 on:
-  workflow_dispatch:
   schedule:
     - cron: "0 0 * * *" # modify to your convenient time
-
 jobs:
-  update:
+  udd:
     name: Update
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
       - uses: denoland/setup-deno@v1
-        run: >
-          deno run -A https://deno.land/x/udd/main.ts
-          $(find . -name "deps.ts")
+        run: deno run -A https://deno.land/x/udd/main.ts $(find . -name "deps.ts")
       - name: Create Pull Request
         uses: peter-evans/create-pull-request@v3
         with:
