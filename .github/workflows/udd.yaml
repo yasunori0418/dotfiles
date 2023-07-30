@@ -1,15 +1,29 @@
+## References: https://zenn.dev/kawarimidoll/articles/c68204d248c107
 name: Denopendabot
 on:
   workflow_dispatch:
   schedule:
     - cron: "0 0 * * *" # modify to your convenient time
+
 jobs:
   update:
     name: Update
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
-      - uses: hasundue/denopendabot@0.16.3 # @denopendabot hasundue/denopendabot
+      - uses: denoland/setup-deno@v1
+        run: >
+          deno run -A https://deno.land/x/udd/main.ts
+          $(find . -name "deps.ts")
+      - name: Create Pull Request
+        uses: peter-evans/create-pull-request@v3
         with:
-          user-token: ${{ secrets.GITHUB_TOKEN }} # needed for updating workflows
-          base-branch: master
+          commit-message: "chore(deps): update deno dependencies"
+          title: Update Deno Dependencies
+          body: >
+            Automated updates by [deno-udd](https://github.com/hayd/deno-udd)
+            and [create-pull-request](https://github.com/peter-evans/create-pull-request)
+            GitHub action
+          branch: udd-update_deno_dependencies
+          author: GitHub <noreply@github.com>
+          delete-branch: true
