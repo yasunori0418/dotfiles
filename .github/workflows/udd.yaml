@@ -13,5 +13,3 @@ jobs:
         with:
           user-token: ${{ secrets.GITHUB_TOKEN }} # needed for updating workflows
           base-branch: master
-          include:
-            - config/nvim/hooks/ddu/helper/deps.ts
