@@ -1,0 +1,17 @@
+name: Denopendabot
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "0 0 * * *" # modify to your convenient time
+jobs:
+  update:
+    name: Update
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: hasundue/denopendabot@0.16.3 # @denopendabot hasundue/denopendabot
+        with:
+          user-token: ${{ secrets.GITHUB_TOKEN }} # needed for updating workflows
+          base-branch: master
+          include:
+            - config/nvim/hooks/ddu/helper/deps.ts
