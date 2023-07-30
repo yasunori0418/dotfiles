@@ -125,7 +125,7 @@ export class Config extends BaseConfig {
             "never",
           ],
           highlights: {
-            word: "Title",
+            word: "Search",
           },
         },
       },
