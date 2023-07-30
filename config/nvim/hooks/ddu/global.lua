@@ -128,7 +128,7 @@ utils.keymaps_set({
     end,
     opts = opt,
   },
-  { -- git_diff-ff
+  { -- git_log-ff
     mode = "n",
     lhs = [[<Plug>(git)l]],
     rhs = function()
