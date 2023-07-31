@@ -12,3 +12,6 @@ export type { ActionData } from "https://deno.land/x/ddu_kind_file@v0.5.3/file.t
 export type {
   ActionData as GitCommitActionData
 } from "https://raw.githubusercontent.com/kyoh86/ddu-source-git_log/main/denops/%40ddu-kinds/git_commit.ts";
+export type {
+  ActionData as GitBranchActionData
+} from "https://raw.githubusercontent.com/kyoh86/ddu-source-git_branch/main/denops/%40ddu-kinds/git_branch.ts"

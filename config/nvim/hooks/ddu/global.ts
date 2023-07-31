@@ -6,6 +6,7 @@ import {
   ConfigArguments,
   expandHome,
   GitCommitActionData,
+  GitBranchActionData,
   uiSize,
 } from "./helper/deps.ts";
 
