@@ -5,8 +5,8 @@ import {
   BaseConfig,
   ConfigArguments,
   expandHome,
-  GitCommitActionData,
   GitBranchActionData,
+  GitCommitActionData,
   uiSize,
 } from "./helper/deps.ts";
 
@@ -231,6 +231,28 @@ export class Config extends BaseConfig {
         },
         git_branch: {
           defaultAction: "switch",
+          actions: {
+            create: async (
+              args: ActionArguments<Params>,
+            ): Promise<ActionFlags> => {
+              const action = args.items[0].action as GitBranchActionData;
+              const denops = args.denops;
+
+              const branch_name = String(
+                await denops.call("input", "Create branch name you entered => "),
+              );
+
+              await new Deno.Command("git", {
+                cwd: action.cwd,
+                args: [
+                  "branch",
+                  branch_name,
+                ],
+              }).output();
+
+              return Promise.resolve(ActionFlags.None);
+            },
+          },
         },
       },
       actionOptions: {
