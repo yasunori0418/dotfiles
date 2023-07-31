@@ -86,12 +86,6 @@ on_event = ['InsertEnter', 'CmdlineEnter']
 hooks_file = '$HOOKS_DIR/insx.lua'
 if = false
 
-[[plugins]]
-repo = 'folke/which-key.nvim'
-on_event = 'CursorHold'
-lua_source = '''
-require("which-key").setup({})
-'''
 # }}}
 
 # Coding support plugins {{{
