@@ -408,11 +408,6 @@ export class Config extends BaseConfig {
 
     args.contextBuilder.patchLocal("mrr-ff", {
       ui: "ff",
-      uiParams: {
-        ff: {
-          startFilter: false,
-        },
-      },
       sources: [
         {
           name: "mr",
@@ -421,7 +416,6 @@ export class Config extends BaseConfig {
           },
           params: {
             kind: "mrr",
-            current: false,
           },
         },
       ],
@@ -429,17 +423,14 @@ export class Config extends BaseConfig {
 
     args.contextBuilder.patchLocal("mru-ff", {
       ui: "ff",
-      uiParams: {
-        ff: {
-          startFilter: false,
-        },
-      },
       sources: [
         {
           name: "mr",
+          options: {
+            matchers: ["matcher_relative"],
+          },
           params: {
             kind: "mru",
-            current: true,
           },
         },
       ],
