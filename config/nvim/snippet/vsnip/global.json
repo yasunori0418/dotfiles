@@ -3,7 +3,7 @@
     "scope": "global",
     "prefix": "shebang",
     "body": [
-      "#! /usr/bin/env $0"
+      "#!/usr/bin/env $0"
     ],
     "description": "shebang must write in script first line."
   }
