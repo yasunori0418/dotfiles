@@ -119,6 +119,11 @@ config.augends:register_group({
       word = false,
       cyclic = true,
     }),
+    augend.constant.new({
+      elements = { "yes", "no" },
+      word = true,
+      cyclic = true,
+    }),
   },
   case = {
     augend.case.new({
