@@ -574,6 +574,11 @@ export class Config extends BaseConfig {
       sources: [
         {
           name: "git_log",
+          params: {
+            args: [
+              "--all",
+            ],
+          },
         },
       ],
     });
