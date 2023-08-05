@@ -577,6 +577,8 @@ export class Config extends BaseConfig {
           params: {
             args: [
               "--all",
+              "--topo-order",
+              "--graph",
             ],
           },
         },
