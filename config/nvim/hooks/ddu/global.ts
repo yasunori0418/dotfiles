@@ -575,7 +575,7 @@ export class Config extends BaseConfig {
         {
           name: "git_log",
           params: {
-            commitOrder: "--topo-order",
+            commitOrdering: "topo",
             showGraph: true,
             showAll: true,
           },
