@@ -597,6 +597,33 @@ export class Config extends BaseConfig {
       ],
     });
 
+    args.contextBuilder.patchLocal("github_issue-ff", {
+      ui: "ff",
+      uiParams: {
+        ff: {
+          ...{
+            startAutoAction: true,
+            autoAction: {
+              delay: 0,
+              name: "preview",
+            },
+            autoResize: false,
+            startFilter: false,
+            filterFloatingPosition: "bottom",
+          },
+          ...await uiSize(args, 0.5, "vertical"),
+        },
+      },
+      sources: [
+        {
+          name: "github_repo_issue",
+        },
+        {
+          name: "github_my_issue",
+        },
+      ],
+    });
+
     // UI: filer
 
     args.contextBuilder.patchLocal("current-filer", {

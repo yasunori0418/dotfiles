@@ -145,6 +145,21 @@ utils.keymaps_set({
     opts = opt,
   },
 
+  { -- github_prefix
+    mode = "n",
+    lhs = [[<Plug>(git)h]],
+    rhs = [[<Plug>(github)]],
+    opts = opt,
+  },
+  { -- github_search-ff
+    mode = "n",
+    lhs = [[<Plug>(github)i]],
+    rhs = function()
+      vim.fn["ddu#start"]({ name = "github_issue-ff" })
+    end,
+    opts = opt,
+  },
+
   -- ddu-ui-filer starter
   { -- project_root-filer
     mode = "n",
@@ -205,7 +220,7 @@ vim.fn["ddu#custom#load_config"](
 )
 
 vim.api.nvim_create_user_command("DeinUpdate", function()
-  vim.fn["ddu#start"]({name = "dein_update-ff"})
+  vim.fn["ddu#start"]({ name = "dein_update-ff" })
 end, {})
 
 -- }}}
