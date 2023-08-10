@@ -136,7 +136,7 @@ utils.keymaps_set({
     end,
     opts = opt,
   },
-  { -- git_log-ff
+  { -- git_branch-ff
     mode = "n",
     lhs = [[<Plug>(git)b]],
     rhs = function()
