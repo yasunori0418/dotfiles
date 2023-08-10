@@ -1,9 +1,0 @@
-#!/bin/bash
-
-if [ -z "$1" ]
-then
-	arg1=8
-else
-	arg1=$1
-fi
-cat /dev/urandom | base64 | fold -w $arg1 | head -n 1
