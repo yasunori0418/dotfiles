@@ -10,11 +10,11 @@ help: ## subcommand list and description.
 
 # cloneしたら最初に実行すると幸せになれます…。
 init: ## expand config files.
-	@bash script/install.sh
+	@bash ./scripts/install.sh
 
 nvim: ## building neovim head.
-	@./script/nvim_make.sh
-	@sudo ./script/nvim_install.sh
+	@./scripts/nvim_make.sh
+	@sudo ./scripts/nvim_install.sh
 
 true_color: ## 24-bit-color.sh
 	@curl -s \
