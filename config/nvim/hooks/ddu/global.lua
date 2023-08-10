@@ -198,10 +198,10 @@ utils.keymaps_set({
 
 -- lua_source {{{
 local joinpath = vim.fs.joinpath
-local ddu_hooks = joinpath(vim.g.hooks_dir, 'ddu')
+local ddu_hooks = joinpath(vim.g.hooks_dir, "ddu")
 vim.fn["ddu#custom#load_config"](
-  -- $HOOKS_DIR/ddu/config.ts
-  joinpath(ddu_hooks, 'config.ts')
+-- $HOOKS_DIR/ddu/config.ts
+  joinpath(ddu_hooks, "config.ts")
 )
 
 vim.api.nvim_create_user_command("DeinUpdate", function()
