@@ -8,3 +8,7 @@ help: ## subcommand list and description.
 # cloneしたら最初に実行すると幸せになれます…。
 init: ## expand config files.
 	@bash script/install.sh
+
+nvim: ## building neovim head.
+	@./script/nvim_make.sh
+	@sudo ./script/nvim_install.sh
