@@ -90,3 +90,10 @@ go_bin=${HOME}/go/bin
 if [[ -d ${go_bin} ]]; then
   export PATH="${PATH}:${go_bin}"
 fi
+
+# rtx
+if [[ $(command -v rtx) ]]; then
+  eval "$(~/bin/rtx activate zsh)"
+  export RTX_DATA_DIR=$HOME/.rtx
+  export RTX_CACHE_DIR=$RTX_DATA_DIR/cache
+fi
