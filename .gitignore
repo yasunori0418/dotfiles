@@ -2,7 +2,8 @@ modules/rofi-power-menu
 modules/friendly-snippets
 modules/SKK_Keymap_L2X
 modules/nord-dircolors
+modules/rtx
 config/libskk/rules/L2X
-home/.vsnip/friendly-snippets
 home/.dir_colors
 bin/rofi-power-menu
+bin/rtx

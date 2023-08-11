@@ -23,3 +23,6 @@ true_color: ## 24-bit-color.sh
 
 arch_iso: ## Download Arch Linux iso image at latest, and verification.
 	@./scripts/arch_iso.sh
+
+rtx: ## Download rtx of Polyglot runtime manager.
+	@./scripts/rtx_install.sh
