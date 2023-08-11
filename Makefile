@@ -20,3 +20,6 @@ true_color: ## 24-bit-color.sh
 	@curl -s \
 	https://gist.githubusercontent.com/lifepillar/09a44b8cf0f9397465614e622979107f/raw/24-bit-color.sh \
 	| bash
+
+arch_iso: ## Download Arch Linux iso image at latest, and verification.
+	@./scripts/arch_iso.sh
