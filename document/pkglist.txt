@@ -171,6 +171,7 @@ unixodbc
 unzip
 usbutils
 veracrypt
+vim
 vivaldi
 vivaldi-ffmpeg-codecs
 vivid
@@ -180,6 +181,7 @@ wezterm
 wget
 which
 wireplumber
+wpa_supplicant
 xdg-user-dirs
 xf86-input-evdev
 xf86-input-synaptics

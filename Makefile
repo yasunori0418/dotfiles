@@ -30,5 +30,5 @@ rtx: ## Download rtx of Polyglot runtime manager.
 pkglist: ## Update Arch Linux package list.
 	@yay -Qeqn | rg -v "nvidia|amd" > ./document/pkglist.txt
 	@yay -Qeqm | rg -v "rtl8812au|epsonscan" > ./document/pkglist-foreign.txt
-	@yay -Qeq | rg "nvidia|rtl8812au|epsonscan" > ./document/pkglist-desktop.txt
+	# @yay -Qeq | rg "nvidia|rtl8812au|epsonscan" > ./document/pkglist-desktop.txt
 	@yay -Qeq | rg "amd" > ./document/pkglist-laptop.txt
