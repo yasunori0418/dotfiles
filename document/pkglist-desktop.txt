@@ -1,0 +1,4 @@
+epsonscan2
+nvidia-dkms
+nvidia-settings
+rtl8812au-dkms-git
