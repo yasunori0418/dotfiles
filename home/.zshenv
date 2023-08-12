@@ -3,7 +3,8 @@
 # ~/.zshenv
 #
 
-export LESS="--ignore-case \
+export LESS="\
+  --ignore-case \
   --quit-if-one-screen \
   --no-init \
   --LONG-PROMPT \
@@ -13,12 +14,12 @@ export LESS="--ignore-case \
   --window=-4 \
   --tabs=4"
 
-[[ -n $(toe -a | cut -f1 | grep 'xterm-256color') ]] && export TERM='xterm-256color'
+[[ -n $(toe -a | cut -f1 | grep xterm-256color) ]] && export TERM=xterm-256color
 
 if [[ $(command -v vivid) ]];then
-  export LS_COLORS=`vivid generate nord`
+  export LS_COLORS="$(vivid generate nord)"
 else
-  eval `dircolors ~/.dir_colors`
+  eval "$(dircolors ~/.dir_colors)"
 fi
 
 export EDITOR=/usr/bin/nvim
@@ -30,37 +31,38 @@ export XDG_CACHE_HOME=${HOME}/.cache
 export WORKING_DIR=${HOME}/dev
 
 # User local tools management directory.
-[[ ! -d "${HOME}/.local/bin" ]] && mkdir -p "${HOME}/.local/bin"
-export PATH="${PATH}:${HOME}/.local/bin:${HOME}/bin"
+[[ ! -d ${HOME}/.local/bin ]] && mkdir -p ${HOME}/.local/bin
+export PATH=${PATH}:${HOME}/.local/bin:${HOME}/bin
+
 
 # Pyenv enviroment variable.
 # Pyenv settings
 if [[ -d ${HOME}/.pyenv ]]; then
-  export PYENV_ROOT="${HOME}/.pyenv"
-  export PATH="${PATH}:${PYENV_ROOT}/bin"
+  export PYENV_ROOT=${HOME}/.pyenv
+  export PATH=${PATH}:${PYENV_ROOT}/bin
   eval "$(pyenv init -)"
 fi
 
 # volta environments
 if [[ -d ${HOME}/.volta ]]; then
-  export VOLTA_HOME="${HOME}/.volta"
-  export PATH="${PATH}:${VOLTA_HOME}/bin"
+  export VOLTA_HOME=${HOME}/.volta
+  export PATH=${PATH}:${VOLTA_HOME}/bin
 fi
 
 # deno environmet variable.
 if [[ -d ${HOME}/.deno ]]; then
-  export PATH="${PATH}:${HOME}/.deno/bin"
+  export PATH=${PATH}:${HOME}/.deno/bin
 fi
 
 # if installed binary by rust-cargo
 if [[ -d ${HOME}/.cargo/bin ]]; then
-  export PATH="${PATH}:${HOME}/.cargo/bin"
+  export PATH=${PATH}:${HOME}/.cargo/bin
 fi
 
 # themis environment
 themis_path=${HOME}/.cache/dein/repos/github.com/thinca/vim-themis/bin
 if [[ -d ${themis_path} ]]; then
-  export PATH="${PATH}:${themis_path}"
+  export PATH=${PATH}:${themis_path}
 fi
 
 # Guix package manager
@@ -73,7 +75,7 @@ fi
 export DOCKER_HOST=unix://${XDG_RUNTIME_DIR}/docker.sock
 
 # ssh-agent socket
-export SSH_AUTH_SOCK="${XDG_RUNTIME_DIR}/ssh-agent.socket"
+export SSH_AUTH_SOCK=${XDG_RUNTIME_DIR}/ssh-agent.socket
 
 # bat theme
 [[ $(command -v bat) ]] && export BAT_THEME=Nord
@@ -88,13 +90,5 @@ export SSH_AUTH_SOCK="${XDG_RUNTIME_DIR}/ssh-agent.socket"
 # go package
 go_bin=${HOME}/go/bin
 if [[ -d ${go_bin} ]]; then
-  export PATH="${PATH}:${go_bin}"
-fi
-
-# rtx
-if [[ $(command -v rtx) ]]; then
-  eval "$(~/bin/rtx activate zsh)"
-  export RTX_DATA_DIR=$HOME/.rtx
-  export RTX_CACHE_DIR=$RTX_DATA_DIR/cache
-  export RTX_CONFIG_FILE=$XDG_CONFIG_HOME/rtx/config.toml
+  export PATH=${PATH}:${go_bin}
 fi
