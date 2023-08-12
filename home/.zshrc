@@ -146,7 +146,7 @@ unset key
 
 # lsコマンドのalias関連
 # ls command aliases.
-if [[ $(command -v exa) ]]; then
+if [[ $(which exa) ]]; then
   alias exa='exa --icons -F'
   alias ls='exa'
   alias ll='exa -l --git'

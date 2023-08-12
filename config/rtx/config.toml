@@ -1,0 +1,4 @@
+[tools]
+exa = "latest"
+ripgrep = 'latest'
+bat = 'latest'

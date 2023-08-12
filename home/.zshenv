@@ -34,6 +34,13 @@ export WORKING_DIR=${HOME}/dev
 [[ ! -d ${HOME}/.local/bin ]] && mkdir -p ${HOME}/.local/bin
 export PATH=${PATH}:${HOME}/.local/bin:${HOME}/bin
 
+# rtx
+if [[ $(command -v rtx) ]]; then
+  export RTX_DATA_DIR=$HOME/.rtx
+  export RTX_CACHE_DIR=$RTX_DATA_DIR/cache
+  export RTX_CONFIG_FILE=$XDG_CONFIG_HOME/rtx/config.toml
+  eval "$(rtx activate zsh)"
+fi
 
 # Pyenv enviroment variable.
 # Pyenv settings
@@ -78,7 +85,9 @@ export DOCKER_HOST=unix://${XDG_RUNTIME_DIR}/docker.sock
 export SSH_AUTH_SOCK=${XDG_RUNTIME_DIR}/ssh-agent.socket
 
 # bat theme
-[[ $(command -v bat) ]] && export BAT_THEME=Nord
+# which bat
+command -v bat
+[[ $(which bat) ]] && export BAT_THEME=Nord
 
 # Joplin
 #joplin_path=${HOME}/.joplin
