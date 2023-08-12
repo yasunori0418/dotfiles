@@ -26,3 +26,9 @@ arch_iso: ## Download Arch Linux iso image at latest, and verification.
 
 rtx: ## Download rtx of Polyglot runtime manager.
 	@./scripts/rtx_install.sh
+
+pkglist: ## Update Arch Linux package list.
+	@yay -Qeqn | rg -v "nvidia|amd" > ./document/pkglist.txt
+	@yay -Qeqm | rg -v "rtl8812au|epsonscan" > ./document/pkglist-foreign.txt
+	@yay -Qeq | rg "nvidia|rtl8812au|epsonscan" > ./document/pkglist-desktop.txt
+	@yay -Qeq | rg "amd" > ./document/pkglist-laptop.txt
