@@ -17,6 +17,7 @@ python-pulsectl
 qt5-styleplugins
 simplescreenrecorder
 slack-desktop
+stoplight-studio-appimage
 trashy
 ttf-cica
 ttf-font-icons
