@@ -96,4 +96,5 @@ if [[ $(command -v rtx) ]]; then
   eval "$(~/bin/rtx activate zsh)"
   export RTX_DATA_DIR=$HOME/.rtx
   export RTX_CACHE_DIR=$RTX_DATA_DIR/cache
+  export RTX_CONFIG_FILE=$XDG_CONFIG_HOME/rtx/config.toml
 fi
