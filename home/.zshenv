@@ -85,8 +85,6 @@ export DOCKER_HOST=unix://${XDG_RUNTIME_DIR}/docker.sock
 export SSH_AUTH_SOCK=${XDG_RUNTIME_DIR}/ssh-agent.socket
 
 # bat theme
-# which bat
-command -v bat
 [[ $(which bat) ]] && export BAT_THEME=Nord
 
 # Joplin
