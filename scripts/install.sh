@@ -22,18 +22,6 @@ echo ' |___/                                    '
 
 echo -e "\n\n\n\n\n\n\n\n\n\n"
 
-git clone https://github.com/yasunori0418/SKK_Keymap_L2X.git modules/SKK_Keymap_L2X
-git clone https://github.com/rafamadriz/friendly-snippets.git modules/friendly-snippets
-git clone https://github.com/jluttine/rofi-power-menu.git modules/rofi-power-menu
-git clone https://github.com/arcticicestudio/nord-dircolors.git modules/nord-dircolors
-
-ln -svf ~/dotfiles/modules/SKK_Keymap_L2X ~/dotfiles/config/libskk/rules/L2X
-ln -svf ~/dotfiles/modules/nord-dircolors/src/dir_colors ~/dotfiles/home/.dir_colors
-ln -svf ~/dotfiles/modules/friendly-snippets ~/dotfiles/config/nvim/snippet/vsnip/friendly-snippets
-ln -svf ~/dotfiles/modules/rofi-power-menu/rofi-power-menu ~/dotfiles/bin/rofi-power-menu
-
 ln -svf ~/dotfiles/home/.?* ~/
 ln -svf ~/dotfiles/bin ~/
 ln -svf ~/dotfiles/config/* ~/.config/
-
-nvim -c q!
