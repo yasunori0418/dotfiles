@@ -14,7 +14,6 @@ init: ## expand config files.
 
 nvim: ## building neovim head.
 	@./scripts/nvim_make.sh
-	@sudo ./scripts/nvim_install.sh
 
 true_color: ## 24-bit-color.sh
 	@curl -s \
