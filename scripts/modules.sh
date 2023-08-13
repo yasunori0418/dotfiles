@@ -2,6 +2,7 @@
 
 # パイプの結果を変数に格納するために必須
 shopt -s lastpipe
+set -e -u -o pipefail
 
 export GHQ_ROOT=${HOME}/src/dotfiles
 declare -r dotfiles=${HOME}/dotfiles
