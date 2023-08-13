@@ -21,15 +21,9 @@ ghq get -u --parallel ${!modules[@]}
 for module in ${!modules[@]}; do
   # ghq getしてきた物からパスを生成
 
-  # ":"区切りになっているので、1つ目のフィールドをリンク元として変数に格納
   echo ${GHQ_ROOT}/github.com/${module}/${modules[${module}]} \
-    | cut -d ":" -f 1 \
-    | declare target=$(cat)
-
-  # ":"区切りになっているので、2つ目のフィールドをリンク先として変数に格納
-  echo ${modules[${module}]} \
-    | cut -d ":" -f 2 \
-    | declare link=$(cat)
+    | awk -F ':' '{print $1,$2}' \
+    | declare targets=$(cat)
 
   ln -svf ${target} ${link}
 done
