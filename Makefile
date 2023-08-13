@@ -29,3 +29,9 @@ rtx: ## Download rtx of Polyglot runtime manager.
 
 pkglist: ## Update Arch Linux package list.
 	@./scripts/update_pkglist.sh
+
+path: ## List up for $PATH
+	@printenv \
+	| rg '^PATH' \
+	| sed -e 's/PATH=//' \
+	| sed -e 's/:/\n/g'
