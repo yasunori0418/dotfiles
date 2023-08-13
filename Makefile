@@ -31,7 +31,7 @@ path: ## List up for $PATH
 	| sed -e 's/:/\n/g'
 
 repolist: ## Update ghq management of repository list.
-	@ghq list | rg -v '^dotfiles' > ./document/repolist.txt
+	@ghq list > ./document/repolist.txt
 
 repoget: ## Get and update ghq management repositories.
 	@cat ./document/repolist.txt | ghq get -u --parallel
