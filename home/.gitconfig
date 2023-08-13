@@ -29,3 +29,5 @@
 	prompt = false
 [diff]
 	algorithm = histogram
+[ghq]
+	root = ~/src
