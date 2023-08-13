@@ -1,8 +1,8 @@
 [tools]
 exa = "latest"
-ripgrep = 'latest'
-bat = 'latest'
-deno = 'latest'
-ghq = 'latest'
+ripgrep = "latest"
+bat = "latest"
+deno = "latest"
+ghq = "latest"
 duf = "latest"
 dust = "latest"
