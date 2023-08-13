@@ -1,8 +1,6 @@
 #!/usr/bin/env bash
 
 repo=${WORKING_DIR}/neovim
-bin=/usr/local/bin/nvim
-runtime=/usr/local/share/nvim
 
 [[ ! -d ${repo} ]] && git clone https://github.com/neovim/neovim.git ${repo}
 cd ${repo}
