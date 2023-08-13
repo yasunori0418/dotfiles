@@ -1,11 +1,13 @@
 #!/usr/bin/env bash
 
-repo=${WORKING_DIR}/neovim
+repo=$(ghq list -p | rg neovim)
+readonly repo
 
-[[ ! -d ${repo} ]] && git clone https://github.com/neovim/neovim.git ${repo}
+install_prefix=${HOME}/.local/nvim
+readonly install_prefix
+
+ghq get -u https://github.com/neovim/neovim.git
 cd ${repo}
-
-git pull
 
 if [[ -d ./.deps ]]; then
   if [[ $1 = '-f' || $1 = '--force' ]]; then
@@ -15,4 +17,17 @@ if [[ -d ./.deps ]]; then
   fi
 fi
 
-make CMAKE_BUILD_TYPE=Release
+rm -rf ${install_prefix}
+
+make \
+  CMAKE_INSTALL_PREFIX=${install_prefix} \
+  CMAKE_BUILD_TYPE=Release \
+  install
+
+if [[ $(command -v nvim) ]]; then
+  nvim -V1 -v
+  exit 0
+else
+  echo "Failure install of neovim."
+  exit 1
+fi
