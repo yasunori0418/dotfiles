@@ -11,6 +11,7 @@ usql = "latest"
 jq = "latest"
 yq = "latest"
 peco = "latest"
+fzf = "latest"
 
 [settings]
 # plugins can read the versions files used by other version managers (if enabled by the plugin)
