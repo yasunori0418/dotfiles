@@ -22,7 +22,6 @@ trashy
 ttf-cica
 ttf-font-icons
 ttf-hackgen
-usql
 xfce-polkit
 xmind
 xremap-x11-bin
