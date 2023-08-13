@@ -20,7 +20,7 @@ make install
 
 chown -Rc yasunori ${neovim_repo}
 
-if [[ `command -v nvim` ]]; then
+if [[ $(command -v nvim) ]]; then
   nvim --version
   exit 0
 else
