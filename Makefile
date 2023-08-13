@@ -35,3 +35,8 @@ repolist: ## Update ghq management of repository list.
 
 repoget: ## Get and update ghq management repositories.
 	@cat ./document/repolist.txt | ghq get -u --parallel
+
+# cloneしたら最初に実行すると幸せになれます…。
+init: ## expand config files.
+	@make rtx
+	@bash ./scripts/install.sh
