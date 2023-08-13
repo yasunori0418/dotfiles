@@ -4,7 +4,7 @@
 shopt -s lastpipe
 set -e -u -o pipefail
 
-export GHQ_ROOT=${HOME}/src/dotfiles
+export GHQ_ROOT=${HOME}/.cache/dotfiles
 declare -r dotfiles=${HOME}/dotfiles
 declare -r local_bin=${HOME}/.local/bin
 
