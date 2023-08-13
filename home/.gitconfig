@@ -31,5 +31,6 @@
 	algorithm = histogram
 [ghq]
 	root = ~/src
+	user = yasunori0418
 [url "git@github.com:"]
 	insteadOf = https://github.com/
