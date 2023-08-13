@@ -1,4 +1,5 @@
 epsonscan2
+intel-ucode
 nvidia-dkms
 nvidia-settings
 rtl8812au-dkms-git

@@ -74,7 +74,6 @@ gzip
 i3-wm
 i3lock
 imagemagick
-intel-ucode
 iwd
 jdk-openjdk
 jp2a
