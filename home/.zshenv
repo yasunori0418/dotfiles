@@ -34,6 +34,8 @@ export WORKING_DIR=${HOME}/dev
 [[ ! -d ${HOME}/.local/bin ]] && mkdir -p ${HOME}/.local/bin
 export PATH=${PATH}:${HOME}/.local/bin:${HOME}/bin
 
+[[ -d ${HOME}/.local/nvim/bin ]] && export PATH=${PATH}:${HOME}/.local/nvim/bin
+
 # rtx
 if [[ $(command -v rtx) ]]; then
   export RTX_DATA_DIR=$HOME/.rtx
