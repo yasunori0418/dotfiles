@@ -8,6 +8,8 @@ duf = "latest"
 dust = "latest"
 fd = "latest"
 usql = "latest"
+jq = "latest"
+yq = "latest"
 
 [settings]
 # plugins can read the versions files used by other version managers (if enabled by the plugin)
