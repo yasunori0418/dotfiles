@@ -87,7 +87,7 @@ bindsym $mod+slash exec --no-startup-id rofi -show window
 # Quick command launcher.
 bindsym $mod+semicolon exec --no-startup-id rofi -show run
 # Power menu
-bindsym $mod+Shift+e exec rofi -show power -font "HackGen Console NF 14" -modi "power:~/bin/rofi-power-menu" -no-sidebar-mode
+bindsym $mod+Shift+e exec rofi -show power -font "HackGen Console NF 14" -modi "power:~/.local/bin/rofi-power-menu" -no-sidebar-mode
 # Calc
 bindsym $mod+c exec rofi -modi calc -show calc -no-sidebar-mode
 # start clipcat-menu insert on rofi
