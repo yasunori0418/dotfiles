@@ -16,13 +16,13 @@ declare -Ar modules=(
   ["arcticicestudio/nord-dircolors"]="src/dir_colors:${dotfiles}/home/.dir_colors"
 )
 
-# export GHQ_ROOT=${HOME}/.cache/dotfiles
-# ghq get -u --parallel ${!modules[@]}
+declare -r cache=${HOME}/.cache/dotfiles/github.com
 
 for module in ${!modules[@]}; do
-  # ghq getしてきた物からパスを生成
+  git clone https://github.com/${modules[${module}]}.git ${cache}/${modules[${module}]}
 
-  echo ${GHQ_ROOT}/github.com/${module}/${modules[${module}]} \
+  # ghq getしてきた物からパスを生成
+  echo ${cache}/${modules[${module}]} \
     | awk -F ':' '{print $1,$2}' \
     | declare targets=$(cat)
 
