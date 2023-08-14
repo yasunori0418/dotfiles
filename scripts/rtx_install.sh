@@ -2,10 +2,8 @@
 
 set -e -u -o pipefail
 
-declare -r cache=${HOME}/.cache
-declare -r bin=${HOME}/.local/bin
-declare -r dl_file=${cache}/rtx.tar.gz
-declare -r rtx_bin=${cache}/rtx/bin/rtx
+declare -r install_prefix=${HOME}/.local
+declare -r dl_file=${install_prefix}/rtx.tar.gz
 declare -r latest_releases=https://api.github.com/repos/jdxcode/rtx/releases/latest
 
 curl -s ${latest_releases} \
@@ -15,8 +13,6 @@ curl -s ${latest_releases} \
   | grep linux-x64.tar.gz \
   | xargs curl -L > ${dl_file}
 
-cd ${cache}
+cd ${install_prefix}
 tar zxvf ${dl_file}
 rm ${dl_file}
-
-ln -svf ${rtx_bin} ${bin}
