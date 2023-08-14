@@ -19,7 +19,7 @@ declare -Ar modules=(
 declare -r cache=${HOME}/.cache/dotfiles/github.com
 
 for module in ${!modules[@]}; do
-  git clone https://github.com/${modules[${module}]}.git ${cache}/${modules[${module}]}
+  git clone https://github.com/${modules[${module}]}.git ${cache}/${module}
 
   # ghq getしてきた物からパスを生成
   echo ${cache}/${modules[${module}]} \
