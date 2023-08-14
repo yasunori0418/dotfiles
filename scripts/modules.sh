@@ -16,13 +16,14 @@ declare -Ar modules=(
   ["arcticicestudio/nord-dircolors"]="src/dir_colors:${dotfiles}/home/.dir_colors"
 )
 
-declare -r cache=${HOME}/.cache/dotfiles/github.com
+declare -r cache=${HOME}/.cache/dotfiles
+declare -r host=github.com
 
 for module in ${!modules[@]}; do
-  git clone https://github.com/${modules[${module}]}.git ${cache}/${module}
+  git clone https://${host}/${module}.git ${cache}/${host}/${module}
 
   # ghq getしてきた物からパスを生成
-  echo ${cache}/${modules[${module}]} \
+  echo ${cache}/${host}/${module}/${modules[${module}]} \
     | awk -F ':' '{print $1,$2}' \
     | declare targets=$(cat)
 
