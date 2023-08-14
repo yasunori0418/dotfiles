@@ -6,7 +6,7 @@ repo = 'Shougo/pum.vim'
 lua_source = '''
 vim.fn['pum#set_option']({
   border = [[single]],
-  scrollbar_char = [[┃]],
+  -- scrollbar_char = [[┃]],
   max_width = 90,
 })
 '''
