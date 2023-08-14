@@ -4,7 +4,6 @@
 shopt -s lastpipe
 set -e -u -o pipefail
 
-export GHQ_ROOT=${HOME}/.cache/dotfiles
 declare -r dotfiles=${HOME}/dotfiles
 declare -r local_bin=${HOME}/.local/bin
 
@@ -17,7 +16,8 @@ declare -Ar modules=(
   ["arcticicestudio/nord-dircolors"]="src/dir_colors:${dotfiles}/home/.dir_colors"
 )
 
-ghq get -u --parallel ${!modules[@]}
+# export GHQ_ROOT=${HOME}/.cache/dotfiles
+# ghq get -u --parallel ${!modules[@]}
 
 for module in ${!modules[@]}; do
   # ghq getしてきた物からパスを生成
