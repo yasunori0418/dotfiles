@@ -237,5 +237,23 @@ require('user.utils').keymaps_set({
     end,
     opts = filter_opt,
   },
+
+  -- ui cursor move in filter
+  {
+    mode = {"i"},
+    lhs = [[<C-n>]],
+    rhs = function()
+      do_action("cursorNext")
+    end,
+    opts = filter_opt,
+  },
+  {
+    mode = {"i"},
+    lhs = [[<C-p>]],
+    rhs = function()
+      do_action("cursorPrevious")
+    end,
+    opts = filter_opt,
+  },
 })
 -- }}}
