@@ -16,18 +16,23 @@ export LESS="\
 
 [[ -n $(toe -a | cut -f1 | grep xterm-256color) ]] && export TERM=xterm-256color
 
-[[ ! -d ${HOME}/dev ]] && mkdir ${HOME}/dev
-export WORKING_DIR=${HOME}/dev
+[[ ! -d ${HOME}/.local/dotfiles ]] && mkdir ${HOME}/.local/dotfiles
+export DOTFILES_DATA=${HOME}/.local/dotfiles
+export DOTFILES=${HOME}/dotfiles
 
 # User local tools management directory.
 [[ ! -d ${HOME}/.local/bin ]] && mkdir -p ${HOME}/.local/bin
-export PATH=${HOME}/.local/bin:${HOME}/.local/nvim/bin:${HOME}/.local/rtx/bin:${HOME}/bin:${PATH}
-export EDITOR=${HOME}/.local/nvim/bin/nvim
+export PATH=${HOME}/.local/bin:${PATH}
+export PATH=${HOME}/bin:${PATH}
+
+export PATH=${DOTFILES_DATA}/nvim/bin:${PATH}
+export EDITOR=${DOTFILES_DATA}/nvim/bin/nvim
 export TERMINAL=/usr/bin/wezterm
 export XDG_CONFIG_HOME=${HOME}/.config
 export XDG_CACHE_HOME=${HOME}/.cache
 
 # rtx
+export PATH=${DOTFILES_DATA}/rtx/bin:${PATH}
 export RTX_DATA_DIR=${HOME}/.rtx
 export RTX_CACHE_DIR=${RTX_DATA_DIR}/cache
 export RTX_CONFIG_FILE=${XDG_CONFIG_HOME}/rtx/config.toml
