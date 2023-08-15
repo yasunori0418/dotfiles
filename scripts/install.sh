@@ -22,6 +22,6 @@ echo ' |___/                                    '
 
 echo -e "\n\n\n\n\n\n\n\n\n\n"
 
-ln -svf ~/dotfiles/home/.?* ~/
-ln -svf ~/dotfiles/bin ~/
-ln -svf ~/dotfiles/config/* ~/.config/
+ln -snvf ~/dotfiles/home/.?* ~/
+ln -snvf ~/dotfiles/bin ~/
+ln -snvf ~/dotfiles/config/* ~/.config/
