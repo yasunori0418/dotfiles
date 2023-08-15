@@ -35,7 +35,7 @@ repoget: ## Get and update ghq management repositories.
 
 # cloneしたら最初に実行すると幸せになれます…。
 init: ## expand config files.
-	@mkdir -p ${HOME}/.local/dotfiles
+	@mkdir -p ${HOME}/.local/{bin,dotfiles}
 	@./scripts/rtx_install.sh
 	@./scripts/get_modules.sh
 	@ln -svf ~/dotfiles/home/.?* ~/
