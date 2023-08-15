@@ -6,6 +6,8 @@ set -e -u -o pipefail
 
 declare -r dotfiles=${HOME}/dotfiles
 declare -r local_bin=${HOME}/.local/bin
+declare -r local_data=${HOME}/.local/dotfiles
+declare -r host=github.com
 
 declare -Ar modules=(
   # key => {ユーザー名}/{リポジトリ名}
@@ -16,14 +18,11 @@ declare -Ar modules=(
   ["arcticicestudio/nord-dircolors"]="src/dir_colors:${dotfiles}/home/.dir_colors"
 )
 
-declare -r cache=${HOME}/.cache/dotfiles
-declare -r host=github.com
-
 for module in ${!modules[@]}; do
-  git clone https://${host}/${module}.git ${cache}/${host}/${module}
+  git clone https://${host}/${module}.git ${local_data}/${host}/${module}
 
   # ghq getしてきた物からパスを生成
-  echo ${cache}/${host}/${module}/${modules[${module}]} \
+  echo ${local_data}/${host}/${module}/${modules[${module}]} \
     | awk -F ':' '{print $1,$2}' \
     | declare targets=$(cat)
 
