@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+set -e -u -o pipefail
+
 echo '     _       _    __ _ _           '
 echo '  __| | ___ | |_ / _(_) | ___  ___ '
 echo ' / _` |/ _ \| __| |_| | |/ _ \/ __|'
@@ -22,6 +24,6 @@ echo ' |___/                                    '
 
 echo -e "\n\n\n\n\n\n\n\n\n\n"
 
-ln -snvf ~/dotfiles/home/.?* ~/
+ln -snvf ~/dotfiles/home/.* ~/
 ln -snvf ~/dotfiles/bin ~/
 ln -snvf ~/dotfiles/config/* ~/.config/

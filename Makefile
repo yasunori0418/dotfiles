@@ -38,9 +38,7 @@ init: ## expand config files.
 	@mkdir -p ${HOME}/.local/{bin,dotfiles}
 	@./scripts/rtx_install.sh
 	@./scripts/get_modules.sh
-	@ln -snvf ~/dotfiles/home/.?* ~/
-	@ln -snvf ~/dotfiles/bin ~/
-	@ln -snvf ~/dotfiles/config/* ~/.config/
+	@./scripts/install.sh
 	@source ~/.zshenv
 	@source ~/.zshrc
 	@rtx install
