@@ -1,7 +1,8 @@
 #!/usr/bin/env bash
 
-declare -r repo=$(ghq list -p | rg neovim)
+set -e -u -o pipefail
 
+declare -r repo=$(ghq list -p | rg neovim)
 declare -r install_prefix=${HOME}/.local/dotfiles/nvim
 
 ghq get -u https://github.com/neovim/neovim.git
