@@ -309,24 +309,6 @@ export class Config extends BaseConfig {
       ],
     });
 
-    args.contextBuilder.patchLocal("project-list-ff", {
-      ui: "ff",
-      uiParams: {
-        ff: {
-          startFilter: true,
-        },
-      },
-      sources: [
-        {
-          name: "file",
-          options: {
-            path: Deno.env.get("WORKING_DIR"),
-            defaultAction: "cdOpen",
-          },
-        },
-      ],
-    });
-
     args.contextBuilder.patchLocal("help-ff", {
       ui: "ff",
       uiParams: {
