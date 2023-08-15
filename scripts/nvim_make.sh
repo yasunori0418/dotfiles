@@ -16,7 +16,7 @@ if [[ -d ./.deps ]]; then
   fi
 fi
 
-rm -rf ${install_prefix}
+[[ -d ${install_prefix} ]] && rm -rf ${install_prefix}
 
 make \
   CMAKE_INSTALL_PREFIX=${install_prefix} \
