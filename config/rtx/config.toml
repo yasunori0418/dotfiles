@@ -12,6 +12,9 @@ jq = "latest"
 yq = "latest"
 peco = "latest"
 fzf = "latest"
+rust = "1.71.1"
+pnpm = "8.7.0-1"
+rye = "0.11.0"
 
 [settings]
 # plugins can read the versions files used by other version managers (if enabled by the plugin)
