@@ -15,6 +15,7 @@ fzf = "latest"
 rust = "1.71.1"
 pnpm = "8.7.0-1"
 rye = "0.11.0"
+node = "20.5.1"
 
 [settings]
 # plugins can read the versions files used by other version managers (if enabled by the plugin)
@@ -41,7 +42,7 @@ raw = false         # set to true to directly pipe plugins to stdin/stdout/stder
 
 shorthands_file = '~/.config/rtx/shorthands.toml' # path to the shorthands file, see `RTX_SHORTHANDS_FILE`
 disable_default_shorthands = false                # disable the default shorthands, see `RTX_DISABLE_DEFAULT_SHORTHANDS`
-disable_tools = ['node']                          # disable specific tools, generally used to turn off core tools
+disable_tools = []                                # disable specific tools, generally used to turn off core tools
 
 experimental = false # enable experimental features
 log_level = 'debug' # log verbosity, see `RTX_LOG_LEVEL`
