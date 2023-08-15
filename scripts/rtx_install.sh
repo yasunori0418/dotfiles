@@ -2,7 +2,7 @@
 
 set -e -u -o pipefail
 
-declare -r install_prefix=${HOME}/.local
+declare -r install_prefix=${HOME}/.local/dotfiles
 declare -r dl_file=${install_prefix}/rtx.tar.gz
 declare -r latest_releases=https://api.github.com/repos/jdxcode/rtx/releases/latest
 

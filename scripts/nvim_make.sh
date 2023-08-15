@@ -1,10 +1,8 @@
 #!/usr/bin/env bash
 
-repo=$(ghq list -p | rg neovim)
-readonly repo
+declare -r repo=$(ghq list -p | rg neovim)
 
-install_prefix=${HOME}/.local/nvim
-readonly install_prefix
+declare -r install_prefix=${HOME}/.local/dotfiles/nvim
 
 ghq get -u https://github.com/neovim/neovim.git
 cd ${repo}
