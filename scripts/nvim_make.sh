@@ -9,19 +9,14 @@ ghq get -u https://github.com/neovim/neovim.git
 cd ${repo}
 
 if [[ -d ./.deps ]]; then
-  if [[ $1 = '-f' || $1 = '--force' ]]; then
-    make distclean
-  else
-    make clean
-  fi
+  make clean
 fi
 
 [[ -d ${install_prefix} ]] && rm -rf ${install_prefix}
 
-make \
-  CMAKE_INSTALL_PREFIX=${install_prefix} \
-  CMAKE_BUILD_TYPE=Release \
-  install
+make CMAKE_INSTALL_PREFIX=${install_prefix} CMAKE_BUILD_TYPE=Release
+
+make install
 
 if [[ $(command -v nvim) ]]; then
   nvim -V1 -v
