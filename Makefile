@@ -41,8 +41,3 @@ init: ## expand config files.
 	@ln -snvf ~/dotfiles/home/.??* ~/
 	@ln -snvf ~/dotfiles/bin ~/
 	@ln -snvf ~/dotfiles/config/* ~/.config/
-	@zsh -c 'source ~/.zshenv'
-	@zsh -c 'source ~/.zshrc'
-	@rtx install
-	@make nvim
-	@nvim -c 'sleep! 10 | q!'
