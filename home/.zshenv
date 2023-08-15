@@ -16,12 +16,10 @@ export LESS="\
 
 [[ -n $(toe -a | cut -f1 | grep xterm-256color) ]] && export TERM=xterm-256color
 
-[[ ! -d ${HOME}/.local/dotfiles ]] && mkdir ${HOME}/.local/dotfiles
 export DOTFILES_DATA=${HOME}/.local/dotfiles
 export DOTFILES=${HOME}/dotfiles
 
 # User local tools management directory.
-[[ ! -d ${HOME}/.local/bin ]] && mkdir -p ${HOME}/.local/bin
 export PATH=${HOME}/.local/bin:${PATH}
 export PATH=${HOME}/bin:${PATH}
 
