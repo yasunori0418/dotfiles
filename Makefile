@@ -38,9 +38,11 @@ init: ## expand config files.
 	@mkdir -p ${HOME}/.local/{bin,dotfiles}
 	@./scripts/rtx_install.sh
 	@./scripts/get_modules.sh
-	@./scripts/install.sh
-	@source ~/.zshenv
-	@source ~/.zshrc
+	@ln -snvf ~/dotfiles/home/.??* ~/
+	@ln -snvf ~/dotfiles/bin ~/
+	@ln -snvf ~/dotfiles/config/* ~/.config/
+	@zsh -c 'source ~/.zshenv'
+	@zsh -c 'source ~/.zshrc'
 	@rtx install
 	@make nvim
 	@nvim -c 'sleep! 10 | q!'
