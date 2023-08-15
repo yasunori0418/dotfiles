@@ -18,9 +18,6 @@ true_color: ## 24-bit-color.sh
 arch_iso: ## Download Arch Linux iso image at latest, and verification.
 	@./scripts/arch_iso.sh
 
-rtx: ## Download rtx of Polyglot runtime manager.
-	@./scripts/rtx_install.sh
-
 pkglist: ## Update Arch Linux package list.
 	@./scripts/update_pkglist.sh
 
@@ -38,5 +35,13 @@ repoget: ## Get and update ghq management repositories.
 
 # cloneしたら最初に実行すると幸せになれます…。
 init: ## expand config files.
-	@make rtx
-	@bash ./scripts/install.sh
+	@mkdir -p ${HOME}/.local/dotfiles
+	@./scripts/rtx_install.sh
+	@./scripts/get_modules.sh
+	@ln -svf ~/dotfiles/home/.?* ~/
+	@ln -svf ~/dotfiles/bin ~/
+	@ln -svf ~/dotfiles/config/* ~/.config/
+	@source ~/.zshenv
+	@source ~/.zshrc
+	@make nvim
+	@nvim -c 'sleep! 10 | q!'
