@@ -14,9 +14,7 @@ fi
 
 [[ -d ${install_prefix} ]] && rm -rf ${install_prefix}
 
-make CMAKE_INSTALL_PREFIX=${install_prefix} CMAKE_BUILD_TYPE=Release
-
-make install
+make CMAKE_INSTALL_PREFIX=${install_prefix} CMAKE_BUILD_TYPE=Release install
 
 if [[ $(command -v nvim) ]]; then
   nvim -V1 -v
