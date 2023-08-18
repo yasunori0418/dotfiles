@@ -38,7 +38,15 @@ repolist: ## Update ghq management of repository list.
 
 .PHONY := repoget
 repoget: ## Get and update ghq management repositories.
-	@cat ./document/repolist.txt | ghq get -u --parallel
+	@cat ./document/repolist.txt | ghq get -p -u --parallel
+
+.PHONY := work_repolist
+work_repolist: ## Update ghq management of repository list.
+	@./scripts/work_repolist.sh view
+
+.PHONY := work_repoget
+work_repoget: ## Get and update ghq management repositories.
+	@./scripts/work_repolist.sh
 
 .PHONY := init
 init: ## expand config files.
