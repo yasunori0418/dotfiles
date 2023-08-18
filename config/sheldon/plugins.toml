@@ -12,7 +12,7 @@
 
 shell = "zsh"
 
-# setup p10k add config ~/.zshrc
+# Add powerlevel10k config for ~/.zshrc
 [plugins.powerlevel10k]
 github = "romkatv/powerlevel10k"
 apply = ["source"]
