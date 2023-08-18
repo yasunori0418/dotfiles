@@ -37,3 +37,13 @@ apply = ["defer"]
 [plugins.zsh-syntax-highlighting]
 github = 'zsh-users/zsh-syntax-highlighting'
 apply = ['defer']
+
+[plugins.sync_configs]
+local = '~/.zsh/sync'
+use = ['*.zsh']
+apply = ['source']
+
+[plugins.defer_configs]
+local = '~/.zsh/defer'
+use = ['*.zsh']
+apply = ['defer']
