@@ -58,6 +58,40 @@ setopt MULTIBYTE
 setopt NOMATCH
 setopt NULL_GLOB
 setopt NUMERIC_GLOB_SORT
+unsetopt RC_EXPAND_PARAM
+setopt REMATCH_PCRE
+unsetopt SH_GLOB
+setopt UNSET
+unsetopt WARN_CREATE_GLOBAL
+unsetopt WARN_NESTED_VAR
 
 ## History
 setopt APPEND_HISTORY
+setopt BANG_HIST
+setopt EXTENDED_HISTORY
+setopt HIST_ALLOW_CLOBBER
+setopt HIST_BEEP
+setopt HIST_EXPIRE_DUPS_FIRST
+setopt HIST_FCNTL_LOCK
+setopt HIST_FIND_NO_DUPS
+setopt HIST_IGNORE_ALL_DUPS
+setopt HIST_IGNORE_DUPS
+setopt HIST_IGNORE_SPACE
+unsetopt HIST_LEX_WORDS
+setopt HIST_NO_FUNCTIONS
+unsetopt HIST_NO_STORE
+setopt HIST_REDUCE_BLANKS
+setopt HIST_SAVE_BY_COPY
+setopt HIST_SAVE_NO_DUPS
+setopt HIST_VERIFY
+setopt INC_APPEND_HISTORY
+setopt INC_APPEND_HISTORY_TIME
+setopt SHARE_HISTORY
+
+## Initialisation
+unsetopt ALL_EXPORT
+unsetopt GLOBAL_EXPORT
+setopt GLOBAL_RCS
+setopt RCS
+
+## Input/Output
