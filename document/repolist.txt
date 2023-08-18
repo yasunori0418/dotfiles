@@ -1,3 +1,4 @@
+aur.archlinux.org/yay
 github.com/neovim/neovim
 github.com/yasunori0418/Qiita_document
 github.com/yasunori0418/did
