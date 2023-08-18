@@ -21,6 +21,7 @@ catimg
 chafa
 clipmenu
 cmake
+code
 coin-or-mp
 colordiff
 composer
@@ -47,14 +48,12 @@ findutils
 flex
 font-manager
 fuse-overlayfs
-fzf
 gawk
 gcc
 geeqie
 gettext
 gimp
 git
-github-cli
 glow
 gnome-system-monitor
 gnome-themes-extra
@@ -77,7 +76,6 @@ imagemagick
 iwd
 jdk-openjdk
 jp2a
-jq
 jre-openjdk
 kio
 libcaca
