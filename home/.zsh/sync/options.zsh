@@ -1,0 +1,63 @@
+# https://zsh.sourceforge.io/Doc/Release/Options.html#Options
+## Change Directories
+setopt AUTO_CD
+setopt AUTO_PUSHD
+unsetopt CDABLE_VARS
+setopt CHASE_DOTS
+setopt CHASE_LINKS
+unsetopt POSIX_CD
+setopt PUSHD_IGNORE_DUPS
+setopt PUSHD_MINUS
+setopt PUSHD_SILENT
+
+## Completion
+setopt ALWAYS_LAST_PROMPT
+setopt ALWAYS_TO_END
+setopt AUTO_LIST
+setopt AUTO_MENU
+setopt AUTO_NAME_DIRS
+setopt AUTO_PARAM_KEYS
+setopt AUTO_PARAM_SLASH
+setopt AUTO_REMOVE_SLASH
+setopt BASH_AUTO_LIST
+setopt COMPLETE_ALIASES
+setopt COMPLETE_IN_WORD
+setopt GLOB_COMPLETE
+setopt HASH_LIST_ALL
+setopt LIST_AMBIGUOUS
+unsetopt LIST_BEEP
+setopt LIST_PACKED
+setopt LIST_ROWS_FIRST
+setopt LIST_TYPES
+setopt MENU_COMPLETE
+setopt REC_EXACT
+
+## Expansion and Globbing
+setopt BAD_PATTERN
+setopt BARE_GLOB_QUAL
+setopt BRACE_CCL
+setopt CASE_GLOB
+setopt CASE_MATCH
+setopt CASE_PATHS
+setopt CSH_NULL_GLOB
+setopt EQUALS
+setopt EXTENDED_GLOB
+unsetopt FORCE_FLOAT
+setopt GLOB
+setopt GLOB_ASSIGN
+setopt GLOB_DOTS
+setopt GLOB_STAR_SHORT
+setopt GLOB_SUBST
+setopt HIST_SUBST_PATTERN
+unsetopt IGNORE_BRACES
+unsetopt IGNORE_CLOSE_BRACES
+setopt KSH_GLOB
+setopt MAGIC_EQUAL_SUBST
+setopt MARK_DIRS
+setopt MULTIBYTE
+setopt NOMATCH
+setopt NULL_GLOB
+setopt NUMERIC_GLOB_SORT
+
+## History
+setopt APPEND_HISTORY
