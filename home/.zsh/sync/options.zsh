@@ -95,3 +95,26 @@ setopt GLOBAL_RCS
 setopt RCS
 
 ## Input/Output
+setopt ALIASES
+setopt CLOBBER
+unsetopt CLOBBER_EMPTY
+setopt CORRECT
+setopt CORRECT_ALL
+unsetopt DVORAK
+setopt FLOW_CONTROL
+unsetopt IGNORE_EOF
+setopt INTERACTIVE_COMMENTS
+setopt HASH_CMDS
+setopt HASH_DIRS
+unsetopt HASH_EXECUTABLES_ONLY
+unsetopt MAIL_WARNING
+unsetopt PATH_DIRS
+unsetopt PATH_SCRIPT
+setopt PRINT_EIGHT_BIT
+setopt PRINT_EXIT_VALUE
+unsetopt RC_QUOTES
+unsetopt RM_STAR_SILENT
+unsetopt SHORT_LOOPS
+setopt SUN_KEYBOARD_HACK
+
+## Job Control
