@@ -3,7 +3,7 @@ local joinpath = vim.fs.joinpath
 local utils = require("user.utils")
 
 vim.g.vsnip_extra_mapping = false
-vim.g.vsnip_snippet_dir = joinpath(vim.g.snippet_dir, "vsnip")
+vim.g.vsnip_snippet_dir = vim.g.snippet_dir
 
 local friendly_snippets_dir = joinpath(vim.g.vsnip_snippet_dir, "friendly-snippets")
 vim.g.vsnip_snippet_dirs = {
