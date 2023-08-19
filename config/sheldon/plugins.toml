@@ -30,6 +30,10 @@ inline = 'autoload -Uz compinit && zsh-defer compinit'
 [plugins.colors]
 inline = 'autoload -Uz colors && zsh-defer colors'
 
+[plugins.edit-command-line]
+inline = 'autoload -Uz edit-command-line && zle -N edit-command-line'
+# ~/.zsh/defer/bindkey.zsh
+
 [plugins.sync_configs]
 local = '~/.zsh/sync'
 use = ['*.zsh']
