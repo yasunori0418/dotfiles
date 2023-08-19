@@ -156,4 +156,6 @@ unsetopt OVERSTRIKE
 # setopt VI # setting by ../defer/bindkey.zsh
 setopt ZLE
 
-
+# initial setting bindkeys
+bindkey -d # Reset bindkeys
+bindkey -e # emacs keybind
