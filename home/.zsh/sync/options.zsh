@@ -118,3 +118,21 @@ unsetopt SHORT_LOOPS
 setopt SUN_KEYBOARD_HACK
 
 ## Job Control
+unsetopt AUTO_CONTINUE
+unsetopt AUTO_RESUME
+setopt BG_NICE
+setopt CHECK_JOBS
+setopt CHECK_RUNNING_JOBS
+unsetopt HUP
+setopt LONG_LIST_JOBS
+setopt MONITOR
+setopt NOTIFY
+setopt POSIX_JOBS
+
+## Prompting
+setopt PROMPT_BANG
+unsetopt PROMPT_CR # when use p10k, must be unset
+unsetopt PROMPT_SP # when use p10k, must be unset
+setopt PROMPT_PERCENT
+setopt PROMPT_SUBST
+setopt TRANSIENT_RPROMPT
