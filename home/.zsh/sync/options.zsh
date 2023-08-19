@@ -1,4 +1,15 @@
 # https://zsh.sourceforge.io/Doc/Release/Options.html#Options
+#
+################################
+#
+# skip options
+# * Scripts and Functions
+# * Shell Emulation
+# * Shell State
+# * Option Aliases
+#
+################################
+#
 ## Change Directories
 setopt AUTO_CD
 setopt AUTO_PUSHD
@@ -136,3 +147,13 @@ unsetopt PROMPT_SP # when use p10k, must be unset
 setopt PROMPT_PERCENT
 setopt PROMPT_SUBST
 setopt TRANSIENT_RPROMPT
+
+## Zle
+unsetopt BEEP
+setopt COMBINING_CHARS
+# unsetopt EMACS # setting by ../defer/bindkey.zsh
+unsetopt OVERSTRIKE
+# setopt VI # setting by ../defer/bindkey.zsh
+setopt ZLE
+
+
