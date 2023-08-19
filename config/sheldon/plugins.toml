@@ -55,3 +55,8 @@ apply = ["defer"]
 [plugins.zsh-syntax-highlighting]
 github = 'zsh-users/zsh-syntax-highlighting'
 apply = ['defer']
+
+[plugins.zeno]
+github = 'yuki-yano/zeno.zsh'
+use = ['{{ name }}.zsh']
+apply = ['defer']
