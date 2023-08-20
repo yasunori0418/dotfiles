@@ -3,18 +3,11 @@
 ## Change Directories
 setopt AUTO_CD
 setopt AUTO_PUSHD
-unsetopt CDABLE_VARS
-setopt CHASE_DOTS
-setopt CHASE_LINKS
-unsetopt POSIX_CD
-setopt PUSHD_IGNORE_DUPS
-setopt PUSHD_MINUS
 setopt PUSHD_SILENT
+setopt PUSHD_IGNORE_DUPS
 
 ## Zle
 unsetopt BEEP
-setopt COMBINING_CHARS
-unsetopt OVERSTRIKE
 setopt ZLE
 
 # initial setting bindkeys
