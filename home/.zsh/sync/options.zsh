@@ -31,6 +31,7 @@ setopt GLOB
 setopt MULTIBYTE
 
 setopt EXTENDED_GLOB
+setopt NUMERIC_GLOB_SORT
 
 ## History
 # defaults
