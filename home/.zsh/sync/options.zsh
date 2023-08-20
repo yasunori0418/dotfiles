@@ -23,25 +23,25 @@ setopt PUSHD_SILENT
 
 ## Completion
 setopt ALWAYS_LAST_PROMPT
-setopt ALWAYS_TO_END
+unsetopt ALWAYS_TO_END
 setopt AUTO_LIST
 setopt AUTO_MENU
-setopt AUTO_NAME_DIRS
+unsetopt AUTO_NAME_DIRS
 setopt AUTO_PARAM_KEYS
 setopt AUTO_PARAM_SLASH
 setopt AUTO_REMOVE_SLASH
-setopt BASH_AUTO_LIST
-setopt COMPLETE_ALIASES
-setopt COMPLETE_IN_WORD
-setopt GLOB_COMPLETE
+unsetopt BASH_AUTO_LIST
+unsetopt COMPLETE_ALIASES
+unsetopt COMPLETE_IN_WORD
+unsetopt GLOB_COMPLETE
 setopt HASH_LIST_ALL
 setopt LIST_AMBIGUOUS
-unsetopt LIST_BEEP
-setopt LIST_PACKED
-setopt LIST_ROWS_FIRST
+setopt LIST_BEEP
+unsetopt LIST_PACKED
+unsetopt LIST_ROWS_FIRST
 setopt LIST_TYPES
-setopt MENU_COMPLETE
-setopt REC_EXACT
+unsetopt MENU_COMPLETE
+unsetopt REC_EXACT
 
 ## Expansion and Globbing
 setopt BAD_PATTERN
