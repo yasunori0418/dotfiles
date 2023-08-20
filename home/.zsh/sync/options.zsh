@@ -23,6 +23,15 @@ setopt LIST_TYPES
 setopt LIST_PACKED
 setopt MENU_COMPLETE
 
+## Expantion and Globbing
+# defaults
+setopt CASE_GLOB
+setopt CASE_MATCH
+setopt GLOB
+setopt MULTIBYTE
+
+setopt EXTENDED_GLOB
+
 ## History
 # defaults
 setopt APPEND_HISTORY
