@@ -8,6 +8,7 @@ setopt PUSHD_SILENT
 setopt PUSHD_IGNORE_DUPS
 
 ## Completion
+# defaults
 setopt ALWAYS_LAST_PROMPT
 setopt AUTO_LIST
 setopt AUTO_MENU
@@ -18,6 +19,28 @@ setopt HASH_LIST_ALL
 setopt LIST_AMBIGUOUS
 unsetopt LIST_BEEP
 setopt LIST_TYPES
+
+setopt LIST_PACKED
+setopt MENU_COMPLETE
+
+## History
+# defaults
+setopt APPEND_HISTORY
+unsetopt HIST_BEEP
+setopt HIST_SAVE_BY_COPY
+
+setopt INC_APPEND_HISTORY
+setopt HIST_REDUCE_BLANKS
+setopt HIST_NO_STORE
+setopt HIST_NO_FUNCTIONS
+setopt HIST_IGNORE_SPACE
+setopt HIST_IGNORE_DUPS
+setopt HIST_IGNORE_ALL_DUPS
+
+## Job Control
+setopt LONG_LIST_JOBS
+setopt CHECK_JOBS
+setopt AUTO_RESUME
 
 ## Zle
 unsetopt BEEP
