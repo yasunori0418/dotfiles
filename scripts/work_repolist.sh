@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-export ghq_root=${HOME}/work
+export GHQ_ROOT=${HOME}/work
 declare -r gist_id=$(\
   gh gist list \
   | rg work_repolist \
