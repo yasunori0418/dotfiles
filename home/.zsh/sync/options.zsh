@@ -3,6 +3,7 @@
 ################################
 #
 # skip options
+# * Expansion and Globbing
 # * Scripts and Functions
 # * Shell Emulation
 # * Shell State
@@ -44,37 +45,37 @@ unsetopt MENU_COMPLETE
 unsetopt REC_EXACT
 
 ## Expansion and Globbing
-setopt BAD_PATTERN
-setopt BARE_GLOB_QUAL
-setopt BRACE_CCL
-setopt CASE_GLOB
-setopt CASE_MATCH
-setopt CASE_PATHS
-setopt CSH_NULL_GLOB
-setopt EQUALS
-setopt EXTENDED_GLOB
-unsetopt FORCE_FLOAT
-setopt GLOB
-setopt GLOB_ASSIGN
-setopt GLOB_DOTS
-setopt GLOB_STAR_SHORT
-setopt GLOB_SUBST
-setopt HIST_SUBST_PATTERN
-unsetopt IGNORE_BRACES
-unsetopt IGNORE_CLOSE_BRACES
-setopt KSH_GLOB
-setopt MAGIC_EQUAL_SUBST
-setopt MARK_DIRS
-setopt MULTIBYTE
-setopt NOMATCH
-setopt NULL_GLOB
-setopt NUMERIC_GLOB_SORT
-unsetopt RC_EXPAND_PARAM
-setopt REMATCH_PCRE
-unsetopt SH_GLOB
-setopt UNSET
-unsetopt WARN_CREATE_GLOBAL
-unsetopt WARN_NESTED_VAR
+# unsetopt BAD_PATTERN
+# unsetopt BARE_GLOB_QUAL
+# unsetopt BRACE_CCL
+# setopt CASE_GLOB
+# setopt CASE_MATCH
+# unsetopt CASE_PATHS
+# unsetopt CSH_NULL_GLOB
+# unsetopt EQUALS
+# unsetopt EXTENDED_GLOB
+# unsetopt FORCE_FLOAT
+# setopt GLOB
+# unsetopt GLOB_ASSIGN
+# unsetopt GLOB_DOTS
+# unsetopt GLOB_STAR_SHORT
+# unsetopt GLOB_SUBST
+# unsetopt HIST_SUBST_PATTERN
+# unsetopt IGNORE_BRACES
+# unsetopt IGNORE_CLOSE_BRACES
+# unsetopt KSH_GLOB
+# unsetopt MAGIC_EQUAL_SUBST
+# unsetopt MARK_DIRS
+# setopt MULTIBYTE
+# unsetopt NOMATCH
+# unsetopt NULL_GLOB
+# unsetopt NUMERIC_GLOB_SORT
+# unsetopt RC_EXPAND_PARAM
+# unsetopt REMATCH_PCRE
+# unsetopt SH_GLOB
+# setopt UNSET
+# unsetopt WARN_CREATE_GLOBAL
+# unsetopt WARN_NESTED_VAR
 
 ## History
 setopt APPEND_HISTORY
