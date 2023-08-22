@@ -15,10 +15,11 @@ fi
 [[ -d ${install_prefix} ]] && rm -rf ${install_prefix}
 
 if [[ ${UID} == 0 ]]; then
-  make CMAKE_BUILD_TYPE=Release install
+  make CMAKE_BUILD_TYPE=Release
 else
-  make CMAKE_INSTALL_PREFIX=${install_prefix} CMAKE_BUILD_TYPE=Release install
+  make CMAKE_INSTALL_PREFIX=${install_prefix} CMAKE_BUILD_TYPE=Release
 fi
+make install
 
 if [[ $(command -v nvim) ]]; then
   nvim -V1 -v
