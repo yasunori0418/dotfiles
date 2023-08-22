@@ -56,21 +56,6 @@ setopt AUTO_RESUME
 unsetopt BEEP
 setopt ZLE
 
-## 
-# ヒストリの一覧を読みやすい形に変更
-HISTTIMEFORMAT="[%Y/%M/%D %H:%M:%S] "
-
-# ヒストリーサイズ設定
-HISTFILE=${HOME}/.zhistory
-HISTSIZE=1000000
-SAVEHIST=1000000
-
-# 補完リストが多いときに尋ねない
-LISTMAX=1000
-
-# "|,:"を単語の一部とみなさない
-WORDCHARS="$WORDCHARS|:"
-
 # initial setting bindkeys
 bindkey -d # Reset bindkeys
 bindkey -e # emacs keybind

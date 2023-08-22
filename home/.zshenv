@@ -45,6 +45,20 @@ export SSH_AUTH_SOCK=${XDG_RUNTIME_DIR}/ssh-agent.socket
 # bat theme
 export BAT_THEME=Nord
 
+# ヒストリの一覧を読みやすい形に変更
+export HISTTIMEFORMAT="[%Y/%M/%D %H:%M:%S] "
+
+# ヒストリーサイズ設定
+export HISTFILE=${HOME}/.zhistory
+export HISTSIZE=1000000
+export SAVEHIST=1000000
+
+# 補完リストが多いときに尋ねない
+export LISTMAX=100
+
+# "|,:"を単語の一部とみなさない
+export WORDCHARS="${WORDCHARS}|:"
+
 # ls colors
 if [[ $(command -v vivid) ]];then
   export LS_COLORS="$(vivid generate nord)"
