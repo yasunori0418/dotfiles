@@ -59,6 +59,8 @@ setopt AUTO_RESUME
 unsetopt BEEP
 setopt ZLE
 
+ZSH_HIGHLIGHT_HIGHLIGHTERS=(main brackets cursor line)
+
 # initial setting bindkeys
 bindkey -d # Reset bindkeys
 bindkey -e # emacs keybind
