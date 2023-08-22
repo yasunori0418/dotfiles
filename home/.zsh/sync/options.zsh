@@ -61,6 +61,8 @@ setopt ZLE
 
 ZSH_HIGHLIGHT_HIGHLIGHTERS=(main brackets cursor line)
 
+zmodload -F zsh/terminfo +p:terminfo
+
 # initial setting bindkeys
 bindkey -d # Reset bindkeys
 bindkey -e # emacs keybind
