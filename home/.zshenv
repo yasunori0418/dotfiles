@@ -24,7 +24,7 @@ export PATH=${HOME}/.local/bin:${PATH}
 export PATH=${HOME}/bin:${PATH}
 
 export PATH=${DOTFILES_DATA}/nvim/bin:${PATH}
-export EDITOR=${DOTFILES_DATA}/nvim/bin/nvim
+export EDITOR=$(which nvim)
 export TERMINAL=/usr/bin/wezterm
 export XDG_CONFIG_HOME=${HOME}/.config
 export XDG_CACHE_HOME=${HOME}/.cache
