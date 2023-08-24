@@ -1,0 +1,16 @@
+snippets:
+  - name: git status
+    keyword: gs
+    snippet: git status --short --branch
+
+  - name: git commit
+    keyword: gc
+    snippet: git commit
+
+  - name: git commit --all
+    keyword: gca
+    snippet: git commit --all
+
+  - name: git diff
+    keyword: gd
+    snippet: git diff
