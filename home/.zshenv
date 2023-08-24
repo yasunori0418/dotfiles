@@ -66,6 +66,17 @@ else
   eval "$(dircolors ~/.dir_colors)"
 fi
 
+# zeno.zsh
+
+# git file preview with color
+export ZENO_GIT_CAT="bat --color=always"
+
+# git folder preview with color
+export ZENO_GIT_TREE="exa --tree"
+
+# if disable builtin completion
+export ZENO_DISABLE_BUILTIN_COMPLETION=1
+
 ### extras environment variable ###
 
 # Pyenv enviroment variable.
