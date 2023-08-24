@@ -14,3 +14,11 @@ snippets:
   - name: git diff
     keyword: gd
     snippet: git diff
+
+  - name: git push
+    keyword: gps
+    snippet: git push
+
+  - name: git pull
+    keyword: gpl
+    snippet: git pull
