@@ -1,17 +1,18 @@
 ## Remove keybinds of default.
 bindkey -rpM emacs "^X"
 bindkey -rpM emacs "^["
-bindkey -r "^G"
-bindkey -r "^?"
-bindkey -r "^V"
-bindkey -r "^Q"
-bindkey -r "^S"
-bindkey -r "^T"
-bindkey -r "^Y"
-bindkey -r "^@"
-bindkey -r "^_"
-bindkey -r "^J"
-bindkey -r "^O"
+bindkey -rM  emacs "^G"
+bindkey -rM  emacs "^?"
+bindkey -rM  emacs "^V"
+bindkey -rM  emacs "^Q"
+bindkey -rM  emacs "^S"
+bindkey -rM  emacs "^T"
+bindkey -rM  emacs "^Y"
+bindkey -rM  emacs "^@"
+bindkey -rM  emacs "^_"
+bindkey -rM  emacs "^J"
+bindkey -rM  emacs "^O"
+bindkey -rM  emacs "^R"
 
 ## Remaining keybinds of default.
 # bindkey "^A" beginning-of-line
@@ -26,7 +27,6 @@ bindkey -r "^O"
 # bindkey "^M" accept-line
 # bindkey "^N" down-line-or-history
 # bindkey "^P" up-line-or-history
-# bindkey "^R" history-incremental-search-backward
 # bindkey "^U" kill-whole-line
 # bindkey "^W" backward-kill-word
 
