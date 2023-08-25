@@ -18,6 +18,7 @@ local = '~/.zsh'
 use = ['{{ name }}.zsh']
 apply = ['source']
 
+
 [plugins.powerlevel10k]
 github = "romkatv/powerlevel10k"
 apply = ["source"]
@@ -57,6 +58,10 @@ apply = ["defer"]
 github = 'zsh-users/zsh-completions'
 apply = ["defer"]
 
+[plugins.docker-completion]
+remote = "https://raw.githubusercontent.com/docker/compose/1.29.2/contrib/completion/zsh/_docker-compose"
+apply = ["fpath"]
+
 [plugins.zsh-syntax-highlighting]
 github = 'zdharma-continuum/fast-syntax-highlighting'
 apply = ['defer']
@@ -65,6 +70,7 @@ apply = ['defer']
 github = 'yuki-yano/zeno.zsh'
 use = ['{{ name }}.zsh']
 apply = ['defer']
+
 
 # For powerlevel10k
 [plugins.post]
