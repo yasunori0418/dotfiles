@@ -7,12 +7,13 @@ bindkey -rM  emacs "^V"
 bindkey -rM  emacs "^Q"
 bindkey -rM  emacs "^S"
 bindkey -rM  emacs "^T"
-bindkey -rM  emacs "^Y"
 bindkey -rM  emacs "^@"
-bindkey -rM  emacs "^_"
 bindkey -rM  emacs "^J"
 bindkey -rM  emacs "^O"
 bindkey -rM  emacs "^R"
+
+# keybinds for deol
+bindkey "^[[200~" bracketed-paste
 
 ## Remaining keybinds of default.
 # bindkey "^A" beginning-of-line
@@ -29,6 +30,8 @@ bindkey -rM  emacs "^R"
 # bindkey "^P" up-line-or-history
 # bindkey "^U" kill-whole-line
 # bindkey "^W" backward-kill-word
+# bindkey "^Y" yank
+# bindkey "^_" undo
 
 ################################################################
 #                 Additional keybinds                          #
