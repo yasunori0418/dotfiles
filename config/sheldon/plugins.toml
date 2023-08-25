@@ -66,6 +66,11 @@ apply = ["fpath"]
 remote = "https://raw.github.com/git/git/master/contrib/completion/git-completion.zsh"
 apply = ["fpath"]
 
+[plugins.rtx-completion]
+local = "~/.zsh/fpath"
+use = ['{{ name }}.zsh']
+apply = ['defer']
+
 [plugins.zsh-syntax-highlighting]
 github = 'zdharma-continuum/fast-syntax-highlighting'
 apply = ['defer']
