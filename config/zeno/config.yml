@@ -56,3 +56,10 @@ completions:
     callback: "awk -F ' ' '{print $1}'"
     options:
       --prompt: "'rtx plugins> '"
+
+  - name: yay(pacman) packages catalog
+    patterns:
+      - "^yay -S(|y) $"
+    sourceCommand: "yay -Ssq"
+    options:
+      --prompt: "'rtx packages> '"
