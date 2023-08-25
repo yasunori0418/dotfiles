@@ -62,6 +62,10 @@ apply = ["defer"]
 remote = "https://raw.githubusercontent.com/docker/compose/1.29.2/contrib/completion/zsh/_docker-compose"
 apply = ["fpath"]
 
+[plugins.git-completion]
+remote = "https://raw.github.com/git/git/master/contrib/completion/git-completion.zsh"
+apply = ["fpath"]
+
 [plugins.zsh-syntax-highlighting]
 github = 'zdharma-continuum/fast-syntax-highlighting'
 apply = ['defer']
