@@ -22,3 +22,9 @@ snippets:
   - name: git pull
     keyword: gpl
     snippet: git pull
+
+completions:
+  - name: change directory.
+    patterns:
+      - "^cd $"
+    sourceCommand: "fd . --type d --color always"
