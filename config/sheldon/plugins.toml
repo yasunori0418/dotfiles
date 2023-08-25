@@ -12,7 +12,12 @@
 
 shell = "zsh"
 
-# Add powerlevel10k config for ~/.zshrc
+# For powerlevel10k
+[plugins.init]
+local = '~/.zsh'
+use = ['{{ name }}.zsh']
+apply = ['source']
+
 [plugins.powerlevel10k]
 github = "romkatv/powerlevel10k"
 apply = ["source"]
@@ -32,7 +37,6 @@ inline = 'autoload -Uz colors && zsh-defer colors'
 
 [plugins.edit-command-line]
 inline = 'autoload -Uz edit-command-line && zle -N edit-command-line'
-# ~/.zsh/defer/bindkey.zsh
 
 [plugins.sync_configs]
 local = '~/.zsh/sync'
@@ -61,3 +65,9 @@ apply = ['defer']
 github = 'yuki-yano/zeno.zsh'
 use = ['{{ name }}.zsh']
 apply = ['defer']
+
+# For powerlevel10k
+[plugins.post]
+local = '~/.zsh'
+use = ['{{ name }}.zsh']
+apply = ['source']
