@@ -40,7 +40,7 @@ local opt = { silent = true, noremap = true }
 utils.keymaps_set{
   {
     mode = "t",
-    lhs = [[<Esc>]],
+    lhs = [[<Esc><Esc>]],
     rhs = [[<C-\><C-n>]],
     opts = opt
   },
