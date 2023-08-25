@@ -27,7 +27,7 @@ completions:
   - name: change directory.
     patterns:
       - "^cd $"
-    sourceCommand: "fd . --hidden --type d --color always"
+    sourceCommand: "fd . --hidden --type d --exclude '.git' --color always"
     options:
       --prompt: "'Chdir> '"
       --preview: "cd {} && ls -a | sed '/^[.]*$/d'"
@@ -35,7 +35,7 @@ completions:
   - name: change parent directory.
     patterns:
       - "^cd ../$"
-    sourceCommand: "fd . '../' --hidden --type d --color always"
+    sourceCommand: "fd . '../' --hidden --type d --exclude '.git' --color always"
     callback: "sed 's/^\\.\\.\\///'"
     options:
       --prompt: "'Chdir> '"
@@ -44,7 +44,7 @@ completions:
   - name: git staging
     patterns:
       - "^git (rm|add) $"
-    sourceCommand: "fd . --hidden --type f --color always"
+    sourceCommand: "fd . --hidden --type f --exclude '.git' --color always"
     options:
       --prompt: "'git staging> '"
       --preview: "bat {}"
