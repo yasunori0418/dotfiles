@@ -48,3 +48,11 @@ completions:
     options:
       --prompt: "'git staging> '"
       --preview: "bat {}"
+
+  - name: rtx plugins catalog
+    patterns:
+      - "^rtx (i|install) $"
+    sourceCommand: "rtx plugins ls-remote"
+    callback: "awk -F ' ' '{print $1}'"
+    options:
+      --prompt: "'rtx plugins> '"
