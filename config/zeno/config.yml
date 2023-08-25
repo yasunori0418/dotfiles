@@ -41,10 +41,10 @@ completions:
       --prompt: "'Chdir> '"
       --preview: "cd {} && ls -a | sed '/^[.]*$/d'"
 
-  - name: git remove
+  - name: git staging
     patterns:
-      - "^git rm $"
+      - "^git (rm|add) $"
     sourceCommand: "fd . --hidden --type f --color always"
     options:
-      --prompt: "'git rm> '"
+      --prompt: "'git staging> '"
       --preview: "bat {}"
