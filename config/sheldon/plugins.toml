@@ -1,0 +1,73 @@
+# `sheldon` configuration file
+# ----------------------------
+#
+# You can modify this file directly or you can use one of the following
+# `sheldon` commands which are provided to assist in editing the config file:
+#
+# - `sheldon add` to add a new plugin to the config file
+# - `sheldon edit` to open up the config file in the default editor
+# - `sheldon remove` to remove a plugin from the config file
+#
+# See the documentation for more https://github.com/rossmacarthur/sheldon#readme
+
+shell = "zsh"
+
+# For powerlevel10k
+[plugins.init]
+local = '~/.zsh'
+use = ['{{ name }}.zsh']
+apply = ['source']
+
+[plugins.powerlevel10k]
+github = "romkatv/powerlevel10k"
+apply = ["source"]
+
+[plugins.zsh-defer]
+github = "romkatv/zsh-defer"
+apply = ["source"]
+
+[templates]
+defer = "{% for file in files %}zsh-defer source \"{{ file }}\"\n{% endfor %}"
+
+[plugins.compinit]
+inline = 'autoload -Uz compinit && zsh-defer compinit -u'
+
+[plugins.colors]
+inline = 'autoload -Uz colors && zsh-defer colors'
+
+[plugins.edit-command-line]
+inline = 'autoload -Uz edit-command-line && zle -N edit-command-line'
+
+[plugins.sync_configs]
+local = '~/.zsh/sync'
+use = ['*.zsh']
+apply = ['source']
+
+[plugins.defer_configs]
+local = '~/.zsh/defer'
+use = ['*.zsh']
+apply = ['defer']
+
+[plugins.zsh-autosuggestions]
+github = "zsh-users/zsh-autosuggestions"
+use = ['{{ name }}.zsh']
+apply = ["defer"]
+
+[plugins.zsh-completions]
+github = 'zsh-users/zsh-completions'
+apply = ["defer"]
+
+[plugins.zsh-syntax-highlighting]
+github = 'zdharma-continuum/fast-syntax-highlighting'
+apply = ['defer']
+
+[plugins.zeno]
+github = 'yuki-yano/zeno.zsh'
+use = ['{{ name }}.zsh']
+apply = ['defer']
+
+# For powerlevel10k
+[plugins.post]
+local = '~/.zsh'
+use = ['{{ name }}.zsh']
+apply = ['source']

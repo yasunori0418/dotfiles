@@ -1,0 +1,42 @@
+snippets:
+  - name: git status
+    keyword: gs
+    snippet: git status --short --branch
+
+  - name: git commit
+    keyword: gc
+    snippet: git commit
+
+  - name: git commit --all
+    keyword: gca
+    snippet: git commit --all
+
+  - name: git diff
+    keyword: gd
+    snippet: git diff
+
+  - name: git push
+    keyword: gps
+    snippet: git push
+
+  - name: git pull
+    keyword: gpl
+    snippet: git pull
+
+completions:
+  - name: change directory.
+    patterns:
+      - "^cd $"
+    sourceCommand: "fd . --type d --color always"
+    options:
+      --prompt: "'Chdir> '"
+      --preview: "cd {} && ls -a | sed '/^[.]*$/d'"
+
+  - name: change parent directory.
+    patterns:
+      - "^cd ../$"
+    sourceCommand: "fd . '../' --type d --color always"
+    callback: "sed 's/^\\.\\.\\///'"
+    options:
+      --prompt: "'Chdir> '"
+      --preview: "cd {} && ls -a | sed '/^[.]*$/d'"

@@ -38,8 +38,18 @@ end
 
 local opt = { silent = true, noremap = true }
 utils.keymaps_set{
-  { mode = "t", lhs = [[<Esc>]], rhs = [[<C-\><C-n>]], opts = opt },
-  { mode = "n", lhs = [[ s]], rhs = [[<Plug>(term)]], opts = {} },
+  {
+    mode = "t",
+    lhs = [[<Esc>]],
+    rhs = [[<C-\><C-n>]],
+    opts = opt
+  },
+  {
+    mode = "n",
+    lhs = [[ s]],
+    rhs = [[<Plug>(term)]],
+    opts = {}
+  },
   {
     mode = "n",
     lhs = [[<Plug>(term)a]],

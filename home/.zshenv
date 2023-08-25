@@ -24,7 +24,7 @@ export PATH=${HOME}/.local/bin:${PATH}
 export PATH=${HOME}/bin:${PATH}
 
 export PATH=${DOTFILES_DATA}/nvim/bin:${PATH}
-export EDITOR=${DOTFILES_DATA}/nvim/bin/nvim
+export EDITOR=$(which nvim)
 export TERMINAL=/usr/bin/wezterm
 export XDG_CONFIG_HOME=${HOME}/.config
 export XDG_CACHE_HOME=${HOME}/.cache
@@ -45,12 +45,37 @@ export SSH_AUTH_SOCK=${XDG_RUNTIME_DIR}/ssh-agent.socket
 # bat theme
 export BAT_THEME=Nord
 
+# ヒストリの一覧を読みやすい形に変更
+export HISTTIMEFORMAT="[%Y/%M/%D %H:%M:%S] "
+
+# ヒストリーサイズ設定
+export HISTFILE=${HOME}/.zhistory
+export HISTSIZE=1000000
+export SAVEHIST=1000000
+
+# 補完リストが多いときに尋ねない
+export LISTMAX=100
+
+# "|,:"を単語の一部とみなさない
+export WORDCHARS="${WORDCHARS}|:"
+
 # ls colors
 if [[ $(command -v vivid) ]];then
   export LS_COLORS="$(vivid generate nord)"
 else
   eval "$(dircolors ~/.dir_colors)"
 fi
+
+# zeno.zsh
+
+# git file preview with color
+export ZENO_GIT_CAT="bat --color=always"
+
+# git folder preview with color
+export ZENO_GIT_TREE="exa --tree"
+
+# if disable builtin completion
+export ZENO_DISABLE_BUILTIN_COMPLETION=1
 
 ### extras environment variable ###
 
