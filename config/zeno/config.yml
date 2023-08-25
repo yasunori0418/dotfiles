@@ -62,4 +62,13 @@ completions:
       - "^yay -S(|y) $"
     sourceCommand: "yay -Ssq"
     options:
-      --prompt: "'rtx packages> '"
+      --prompt: "'archlinux packages> '"
+      --preview: "LANG=C yay -Si {}"
+
+  - name: yay(pacman) packages remove catalog
+    patterns:
+      - "^yay -Rs $"
+    sourceCommand: "yay -Qsq"
+    options:
+      --prompt: "'archlinux packages> '"
+      --preview: "LANG=C yay -Si {}"
