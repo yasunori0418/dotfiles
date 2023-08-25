@@ -28,3 +28,15 @@ completions:
     patterns:
       - "^cd $"
     sourceCommand: "fd . --type d --color always"
+    options:
+      --prompt: "'Chdir> '"
+      --preview: "cd {} && ls -a | sed '/^[.]*$/d'"
+
+  - name: change parent directory.
+    patterns:
+      - "^cd ../$"
+    sourceCommand: "fd . '../' --type d --color always"
+    callback: "sed 's/^\\.\\.\\///'"
+    options:
+      --prompt: "'Chdir> '"
+      --preview: "cd {} && ls -a | sed '/^[.]*$/d'"
