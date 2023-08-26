@@ -585,6 +585,20 @@ export class Config extends BaseConfig {
       ],
     });
 
+    args.contextBuilder.patchLocal("ghq-ff", {
+      ui: "ff",
+      uiParams: {
+        ff: {
+          startFilter: true,
+        },
+      },
+      sources: [
+        {
+          name: "ghq",
+        }
+      ]
+    });
+
     // UI: filer
 
     args.contextBuilder.patchLocal("current-filer", {
