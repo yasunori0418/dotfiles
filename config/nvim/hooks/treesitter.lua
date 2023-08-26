@@ -3,7 +3,26 @@ vim.opt.foldmethod = "expr"
 vim.opt.foldexpr = "v:lua.vim.treesitter.foldexpr()"
 vim.opt.foldenable = false
 require("nvim-treesitter.configs").setup({
-  ensure_installed = "all",
+  ensure_installed = {
+    "bash",
+    "git_config",
+    "git_rebase",
+    "gitcommit",
+    "gitignore",
+    "lua",
+    "luadoc",
+    "dockerfile",
+    "make",
+    "markdown",
+    "markdown_inline",
+    "python",
+    "toml",
+    "typescript",
+    "vim",
+    "yaml",
+  },
+  -- Automatically install missing parsers when entering buffer
+  auto_install = true,
   highlight = {
     enable = true,
     disable = {
