@@ -5,13 +5,14 @@ vim.opt.foldenable = false
 require("nvim-treesitter.configs").setup({
   ensure_installed = {
     "bash",
+    "diff",
+    "dockerfile",
     "git_config",
     "git_rebase",
     "gitcommit",
     "gitignore",
     "lua",
     "luadoc",
-    "dockerfile",
     "make",
     "markdown",
     "markdown_inline",
