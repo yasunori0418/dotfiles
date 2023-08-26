@@ -2,7 +2,6 @@
 bindkey -rpM emacs "^X"
 bindkey -rpM emacs "^["
 bindkey -rM  emacs "^G"
-bindkey -rM  emacs "^?"
 bindkey -rM  emacs "^V"
 bindkey -rM  emacs "^Q"
 bindkey -rM  emacs "^S"
@@ -12,8 +11,7 @@ bindkey -rM  emacs "^J"
 bindkey -rM  emacs "^O"
 bindkey -rM  emacs "^R"
 
-# keybinds for deol
-bindkey "^[[200~" bracketed-paste
+bindkey "^[[200~" bracketed-paste # keybinds for deol
 
 ## Remaining keybinds of default.
 # bindkey "^A" beginning-of-line
@@ -32,6 +30,7 @@ bindkey "^[[200~" bracketed-paste
 # bindkey "^W" backward-kill-word
 # bindkey "^Y" yank
 # bindkey "^_" undo
+# bindkey "^?" backward-delete-char # これがbackspaceらしい
 
 ################################################################
 #                 Additional keybinds                          #
