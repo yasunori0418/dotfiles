@@ -117,6 +117,10 @@ on_source = 'ddu.vim'
 repo = '4513ECHO/ddu-source-ghq'
 on_source = 'ddu.vim'
 
+[[plugins]]
+repo = 'uga-rosa/ddu-source-lsp'
+on_source = 'ddu.vim'
+
 # }}}
 
 # Filter plugins {{{
