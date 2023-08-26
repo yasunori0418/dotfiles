@@ -75,7 +75,7 @@ export class Config extends BaseConfig {
           ],
         },
         dein: {
-          defaultAction: "cd",
+          defaultAction: "cdOpen",
         },
         help: {
           defaultAction: "open",
