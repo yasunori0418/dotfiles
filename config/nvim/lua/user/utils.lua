@@ -3,8 +3,7 @@ local autocmd = vim.api.nvim_create_autocmd
 
 ---全体共通設定のaugroup_id
 ---@return integer
-M.vimrc_augroup = vim.api.nvim_create_augroup('vimrc', {clear = false})
-
+M.vimrc_augroup = vim.api.nvim_create_augroup("vimrc", { clear = false })
 
 ---autocmd単発用
 ---自動でvimrcグループにセットする
@@ -12,7 +11,7 @@ M.vimrc_augroup = vim.api.nvim_create_augroup('vimrc', {clear = false})
 ---@param pattern table|string
 ---@param callback function|string
 ---@param group? string|integer
-M.autocmd_set = function (events, pattern, callback, group)
+M.autocmd_set = function(events, pattern, callback, group)
   group = group or M.vimrc_augroup
   autocmd(events, {
     group = group,
@@ -21,10 +20,9 @@ M.autocmd_set = function (events, pattern, callback, group)
   })
 end
 
-
 ---複数のautocmdを定義する
 ---@param autocmds { events: string|table, pattern: table|string, group: integer, callback: function|string }
-M.autocmds_set = function (autocmds)
+M.autocmds_set = function(autocmds)
   for _, item in pairs(autocmds) do
     autocmd(item.events, {
       group = item.group,
@@ -34,7 +32,6 @@ M.autocmds_set = function (autocmds)
   end
 end
 
-
 ---複数のキーマップを定義する。
 ---@param keymaps { mode: table|string, lhs: string, rhs: string|function, opts: table|nil }
 M.keymaps_set = function(keymaps)
@@ -43,12 +40,11 @@ M.keymaps_set = function(keymaps)
   end
 end
 
-
 ---1行で書かれているAPI Tokenのファイルを読み込む
 ---@params path string -- Tokenファイルがあるパスを指定する。
 ---@return table { result: bool, token: string }
 M.load_token = function(path)
-  local token = io.open(path, 'r'):read('*l')
+  local token = io.open(path, "r"):read("*l")
   if token ~= nil then
     return {
       result = true,
@@ -57,11 +53,10 @@ M.load_token = function(path)
   else
     return {
       result = false,
-      token = 'Can not read pat file.',
+      token = "Can not read pat file.",
     }
   end
 end
-
 
 ---現在のディレクトリからリポジトリルートのパスを取得する。
 ---gitconfigにて`git root`の定義が必須
@@ -69,17 +64,16 @@ end
 ---Gitリポジトリでなければ、現在バッファーのディレクトリを返す
 ---@return string
 M.search_repo_root = function()
-  local result = io.popen('git root 2> /dev/null', 'r'):read('*l')
+  local result = io.popen("git root 2> /dev/null", "r"):read("*l")
   if result then
     return result
   end
-  return vim.fn.expand('%:p:h')
+  return vim.fn.expand("%:p:h")
 end
-
 
 ---signcolumnの表示をtoggleする。
 M.toggle_view = function()
-  local gitsigns = require('gitsigns')
+  local gitsigns = require("gitsigns")
   if vim.opt.number:get() then
     vim.opt.number = false
     vim.opt.relativenumber = false
@@ -102,10 +96,9 @@ end
 ---@return Iter
 M.gather_files = function(base_dir, config_dir_name)
   local config_dir = vim.fs.joinpath(base_dir, config_dir_name)
-  return vim.iter(vim.fs.dir(config_dir))
-      :map(function(file_name)
-        return vim.fs.joinpath(config_dir, file_name)
-      end)
+  return vim.iter(vim.fs.dir(config_dir)):map(function(file_name)
+    return vim.fs.joinpath(config_dir, file_name)
+  end)
 end
 
 ---gather_filesから特定のファイルパスを削除する。
@@ -114,7 +107,7 @@ end
 ---@return Iter
 M.remove_file_from_gather_files = function(gather_files, file_name)
   gather_files:filter(function(file_path)
-    return vim.fn.fnamemodify(file_path, ':t') ~= file_name
+    return vim.fn.fnamemodify(file_path, ":t") ~= file_name
   end)
   return gather_files
 end
