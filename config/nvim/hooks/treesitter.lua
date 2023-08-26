@@ -30,6 +30,9 @@ require("nvim-treesitter.configs").setup({
     "vim",
     "yaml",
   },
+  ignore_install = {
+    "vimdoc",
+  },
   -- Install parsers synchronously (only applied to `ensure_installed`)
   -- Settings for load reduction.
   sync_install = true,
