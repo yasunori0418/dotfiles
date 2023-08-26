@@ -49,6 +49,10 @@ on_source = 'ddu.vim'
 repo = 'matsui54/ddu-source-help'
 on_source = 'ddu.vim'
 
+[[plugins]]
+repo = 'matsui54/ddu-source-file_external'
+on_source = 'ddu.vim'
+
 [[plugins]] # vim-readme-viewer
 repo = '4513ECHO/vim-readme-viewer'
 on_cmd = 'ReadmeOpen'
