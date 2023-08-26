@@ -109,6 +109,10 @@ on_source = 'ddu.vim'
 repo = 'kyoh86/ddu-source-git_diff_tree'
 on_source = 'ddu.vim'
 
+[[plugins]]
+repo = '4513ECHO/ddu-source-ghq'
+on_source = 'ddu.vim'
+
 # }}}
 
 # Filter plugins {{{

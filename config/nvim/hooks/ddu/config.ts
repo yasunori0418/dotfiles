@@ -120,6 +120,9 @@ export class Config extends BaseConfig {
             "git_branch_date",
           ],
         },
+        ghq: {
+          defaultAction: "cdOpen"
+        },
       },
       sourceParams: {
         dein_update: {
@@ -140,6 +143,9 @@ export class Config extends BaseConfig {
         },
         git_branch: {
           remote: false,
+        },
+        ghq: {
+          display: "relative",
         },
       },
       kindOptions: {
