@@ -30,18 +30,36 @@ user_lsp.on_attach(function(_, buffer)
   })
 end)
 
+local capabilities = lsp.protocol.make_client_capabilities()
+capabilities.textDocument.completion.completionItem.snippetSupport = true
+
 mason_lspconfig.setup_handlers({
   function(server_name)
     local lsp_options = {}
 
-    local capabilities = lsp.protocol.make_client_capabilities()
-    capabilities.textDocument.completion.completionItem.snippetSupport = true
-
-    if server_name == "lua_ls" then
-      lsp_options.capabilities = capabilities
-    end
+    lsp_options.capabilities = capabilities
 
     lspconfig[server_name].setup(lsp_options)
+  end,
+
+  lua_ls = function()
+    lspconfig.lua_ls.setup({
+      capabilities = capabilities,
+      settings = {
+        Lua = {
+          workspace = {
+            checkThirdParty = false,
+            library = vim.api.nvim_get_runtime_file("lua", true),
+            maxPreload = 1000,
+          },
+          completion = {
+            callSnippet = "Both",
+            enable = true,
+            keywordSnippet = "Both",
+          },
+        },
+      },
+    })
   end,
 })
 -- }}}
