@@ -2,11 +2,13 @@
 
 set -e -u -o pipefail
 
-declare -r repo=$(ghq list -p | rg neovim)
+declare -r ghq_root=$(ghq root)
+declare -r host=github.com
+declare -r repo=neovim/neovim
 declare -r install_prefix=${HOME}/.local/dotfiles/nvim
 
-ghq get -u https://github.com/neovim/neovim.git
-cd ${repo}
+ghq get -u https://${host}/${repo}.git
+cd ${ghq_root}/${host}/${repo}
 
 if [[ -d ./.deps ]]; then
   make clean
