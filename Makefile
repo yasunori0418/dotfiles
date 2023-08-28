@@ -50,7 +50,8 @@ work_repoget: ## Get and update ghq management repositories.
 
 .PHONY := init
 init: ## expand config files.
-	@mkdir -p ${HOME}/.local/{bin,dotfiles}
+	@mkdir -p ${HOME}/.local/bin
+	@mkdir -p ${HOME}/.local/dotfiles
 	@./scripts/rtx_install.sh
 	@./scripts/get_modules.sh
 	@ln -snvf ~/dotfiles/home/.??* ~/
