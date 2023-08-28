@@ -70,7 +70,9 @@ M.init = function()
   skkeleton.config({
     eggLikeNewline = true,
     globalDictionaries = {
-      { [[~/.skk/skk_dict_merged]], [[euc-jp]] },
+      { [[~/.skk/SKK-JISYO.L]], [[euc-jp]] },
+      { [[~/.skk/SKK-JISYO.propernoun]], [[euc-jp]] },
+      { [[~/.skk/SKK-JISYO.jawiki]], [[euc-jp]] },
       { [[~/.skk/SKK-JISYO.emoji]], [[utf-8]] },
     },
     userJisyo = [[~/.skk/skkeleton]],
