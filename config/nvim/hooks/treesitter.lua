@@ -3,14 +3,7 @@ vim.opt.foldmethod = "expr"
 vim.opt.foldexpr = "v:lua.vim.treesitter.foldexpr()"
 vim.opt.foldenable = false
 
-local parser_install_dir = vim.fn.stdpath("data") .. "/parsers"
-if vim.fn.isdirectory(parser_install_dir) == 0 then
-  vim.fn.mkdir(parser_install_dir, "p")
-end
-
-vim.opt.runtimepath:append(parser_install_dir)
 require("nvim-treesitter.configs").setup({
-  parser_install_dir = parser_install_dir,
   ensure_installed = {
     "bash",
     "diff",
