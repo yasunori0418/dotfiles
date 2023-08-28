@@ -6,7 +6,7 @@ declare -r install_prefix=${HOME}/.local/dotfiles
 declare -r dl_file=${install_prefix}/rtx.tar.gz
 declare -r latest_releases=https://api.github.com/repos/jdxcode/rtx/releases/latest
 
-curl -s ${latest_releases} \
+curl -sL ${latest_releases} \
   | grep browser_download_url \
   | cut -d ":" -f 2,3 \
   | tr -d \" \
