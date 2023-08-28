@@ -1,9 +1,5 @@
 #!/usr/bin/env bash
 
-if [[ ! $(command -v skkdic-expr2) ]]; then
-  skktools.sh install
-fi
-
 # SKK Openlabメンテナンスの辞書
 openlab_dict=${XDG_CACHE_HOME}/skk_dict
 [[ ! -d ${openlab_dict} ]] && git clone https://github.com/skk-dev/dict.git ${openlab_dict}
@@ -19,10 +15,7 @@ git pull
 skk_dir=${HOME}/.skk
 [[ ! -d ${skk_dir} ]] && mkdir ${skk_dir}
 
-skkdic-expr2 -o \
-${skk_dir}/skk_dict_merged \
-${openlab_dict}/SKK-JISYO.L \
-+ ${openlab_dict}/SKK-JISYO.propernoun \
-+ ${jawiki_dict}/SKK-JISYO.jawiki
-
-cp ${openlab_dict}/SKK-JISYO.emoji ${skk_dir}/SKK-JISYO.emoji
+cp ${openlab_dict}/SKK-JISYO.L ${skk_dir}/
+cp ${openlab_dict}/SKK-JISYO.propernoun ${skk_dir}/
+cp ${jawiki_dict}/SKK-JISYO.jawiki ${skk_dir}/
+cp ${openlab_dict}/SKK-JISYO.emoji ${skk_dir}/
