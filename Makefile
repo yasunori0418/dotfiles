@@ -6,9 +6,13 @@ help: ## subcommand list and description.
 	@grep -E '^[a-zA-Z_-]+:.*?## .*$$' $(MAKEFILE_LIST) \
 	| awk 'BEGIN {FS = ":.*?## "}; {printf "\033[36m%-30s\033[0m %s\n", $$1, $$2}'
 
-.PHONY := nvim
+.PHONY := nvim-build
 nvim-build: ## building neovim head.
 	@./scripts/nvim_make.sh
+
+.PHONY := nvim-night
+nvim-night: ## download neovim at version nightly build.
+	@./scripts/nvim_night.sh
 
 .PHONY := true_color
 true_color: ## 24-bit-color.sh
