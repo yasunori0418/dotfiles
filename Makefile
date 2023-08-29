@@ -7,7 +7,7 @@ help: ## subcommand list and description.
 	| awk 'BEGIN {FS = ":.*?## "}; {printf "\033[36m%-30s\033[0m %s\n", $$1, $$2}'
 
 .PHONY := nvim
-nvim: ## building neovim head.
+nvim-build: ## building neovim head.
 	@./scripts/nvim_make.sh
 
 .PHONY := true_color
