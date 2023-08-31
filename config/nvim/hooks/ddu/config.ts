@@ -602,6 +602,15 @@ export class Config extends BaseConfig {
       ]
     });
 
+    args.contextBuilder.patchLocal("lsp_definition-ff", {
+      ui: "ff",
+      sources: [
+        {
+          name: "lsp_definition",
+        },
+      ],
+    });
+
     // UI: filer
 
     args.contextBuilder.patchLocal("current-filer", {

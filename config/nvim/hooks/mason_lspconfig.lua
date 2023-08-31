@@ -5,6 +5,7 @@ local lsp = vim.lsp -- nvim lsp api.
 local diagnostic = vim.diagnostic
 local utils = require("user.utils")
 local user_lsp = require("user.lsp")
+local vimx = require("artemis")
 
 mason_lspconfig.setup({
   ensure_installed = {
@@ -23,7 +24,16 @@ user_lsp.on_attach(function(_, buffer)
     { mode = { "n" }, lhs = [[ma]],   rhs = lsp.buf.code_action,   opts = opt },
     { mode = { "n" }, lhs = [[gq]],   rhs = user_lsp.format,       opts = opt },
     { mode = { "n" }, lhs = [[gr]],   rhs = lsp.buf.rename,        opts = opt },
-    { mode = { "n" }, lhs = [[gd]],   rhs = lsp.buf.definition,    opts = opt },
+    {
+      mode = { "n" },
+      lhs = [[gd]],
+      rhs = function()
+        vimx.fn.ddu.start({
+          name = "lsp_definition-ff",
+        })
+      end,
+      opts = opt
+    },
     { mode = { "n" }, lhs = [[ge]],   rhs = diagnostic.open_float, opts = opt },
     { mode = { "n" }, lhs = [=[[d]=], rhs = diagnostic.goto_prev,  opts = opt },
     { mode = { "n" }, lhs = [=[]d]=], rhs = diagnostic.goto_next,  opts = opt },
