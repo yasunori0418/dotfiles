@@ -15,3 +15,14 @@ rm ${dl_file}
 
 [[ -d ${install_prefix}/nvim ]] && rm -rf ${install_prefix}/nvim
 mv ${install_prefix}/nvim-linux64 ${install_prefix}/nvim
+rm -rf nvim/lib
+
+echo -e '\n\n\n'
+
+if [[ $(command -v nvim) ]]; then
+  nvim -V1 -v
+  exit 0
+else
+  echo "Failure install of neovim."
+  exit 1
+fi
