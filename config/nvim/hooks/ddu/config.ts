@@ -121,7 +121,7 @@ export class Config extends BaseConfig {
           ],
         },
         ghq: {
-          defaultAction: "cdOpen"
+          defaultAction: "cdOpen",
         },
       },
       sourceParams: {
@@ -598,8 +598,8 @@ export class Config extends BaseConfig {
       sources: [
         {
           name: "ghq",
-        }
-      ]
+        },
+      ],
     });
 
     args.contextBuilder.patchLocal("lsp_definition-ff", {
