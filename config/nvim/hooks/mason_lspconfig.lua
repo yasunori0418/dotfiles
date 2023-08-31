@@ -29,7 +29,7 @@ user_lsp.on_attach(function(_, buffer)
       lhs = [[gd]],
       rhs = function()
         vimx.fn.ddu.start({
-          name = "lsp_definition-ff",
+          name = "lsp/def_ref-ff",
         })
       end,
       opts = opt
