@@ -237,6 +237,9 @@ export class Config extends BaseConfig {
         git_branch: {
           defaultAction: "switch",
         },
+        lsp: {
+          defaultAction: "open",
+        },
       },
       actionOptions: {
         narrow: { quit: false },
