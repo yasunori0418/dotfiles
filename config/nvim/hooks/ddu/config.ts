@@ -123,6 +123,18 @@ export class Config extends BaseConfig {
         ghq: {
           defaultAction: "cdOpen",
         },
+        lsp_definition: {
+          converters: [
+            "converter_devicon",
+            "converter_hl_dir",
+          ],
+        },
+        lsp_references: {
+          converters: [
+            "converter_devicon",
+            "converter_hl_dir",
+          ],
+        },
       },
       sourceParams: {
         dein_update: {
