@@ -7,7 +7,7 @@ utils.keymaps_set({
   { mode = "n", lhs = [[ f]], rhs = [[<Plug>(ddu-filer)]], opts = opt },
 
   -- ddu-ui-ff starter
-  { -- current-ff
+  { -- current
     mode = "n",
     lhs = [[<Plug>(ddu-ff)a]],
     rhs = function()
@@ -22,7 +22,7 @@ utils.keymaps_set({
     end,
     opts = opt,
   },
-  { -- dorfiles-ff
+  { -- dorfiles
     mode = "n",
     lhs = [[<Plug>(ddu-ff)d]],
     rhs = function()
@@ -30,7 +30,7 @@ utils.keymaps_set({
     end,
     opts = opt,
   },
-  { -- help-ff
+  { -- help
     mode = "n",
     lhs = [[<Plug>(ddu-ff)h]],
     rhs = function()
@@ -38,7 +38,7 @@ utils.keymaps_set({
     end,
     opts = opt,
   },
-  { -- buffer-ff
+  { -- buffer
     mode = "n",
     lhs = [[<Plug>(ddu-ff)b]],
     rhs = function()
@@ -46,7 +46,7 @@ utils.keymaps_set({
     end,
     opts = opt,
   },
-  { -- plugin-list-ff
+  { -- plugin-list
     mode = "n",
     lhs = [[<Plug>(ddu-ff)P]],
     rhs = function()
@@ -54,7 +54,7 @@ utils.keymaps_set({
     end,
     opts = opt,
   },
-  { -- home-ff
+  { -- home
     mode = "n",
     lhs = [[<Plug>(ddu-ff)~]],
     rhs = function()
@@ -62,7 +62,7 @@ utils.keymaps_set({
     end,
     opts = opt,
   },
-  { -- register-ff
+  { -- register
     mode = "n",
     lhs = [[<Plug>(ddu-ff)r]],
     rhs = function()
@@ -70,7 +70,7 @@ utils.keymaps_set({
     end,
     opts = opt,
   },
-  { -- ripgrep-ff live grep
+  { -- ripgrep live grep
     mode = "n",
     lhs = [[<Plug>(ddu-ff)s]],
     rhs = function()
@@ -78,7 +78,7 @@ utils.keymaps_set({
     end,
     opts = opt,
   },
-  { -- mrr-ff most recent repositories
+  { -- mrr most recent repositories
     mode = "n",
     lhs = [[<Plug>(ddu-ff)m]],
     rhs = function()
@@ -86,7 +86,7 @@ utils.keymaps_set({
     end,
     opts = opt,
   },
-  { -- mru-ff most recent used files
+  { -- mru most recent used files
     mode = "n",
     lhs = [[<Plug>(ddu-ff)n]],
     rhs = function()
@@ -94,7 +94,7 @@ utils.keymaps_set({
     end,
     opts = opt,
   },
-  { -- search_line-ff
+  { -- search_line
     mode = "n",
     lhs = [[<Plug>(ddu-ff)/]],
     rhs = function()
@@ -102,7 +102,7 @@ utils.keymaps_set({
     end,
     opts = opt,
   },
-  { -- hightlight-ff
+  { -- hightlight
     mode = "n",
     lhs = [[<Plug>(ddu-ff)C]],
     rhs = function()
@@ -112,7 +112,7 @@ utils.keymaps_set({
   },
 
   -- git control by ddu
-  { -- git_status-ff
+  { -- git_status
     mode = "n",
     lhs = [[<Plug>(git)s]],
     rhs = function()
@@ -120,7 +120,7 @@ utils.keymaps_set({
     end,
     opts = opt,
   },
-  { -- git_log-ff
+  { -- git_log
     mode = "n",
     lhs = [[<Plug>(git)l]],
     rhs = function()
@@ -128,7 +128,7 @@ utils.keymaps_set({
     end,
     opts = opt,
   },
-  { -- git_branch-ff
+  { -- git_branch
     mode = "n",
     lhs = [[<Plug>(git)b]],
     rhs = function()
@@ -136,7 +136,7 @@ utils.keymaps_set({
     end,
     opts = opt,
   },
-  {
+  { -- ghq
     mode = "n",
     lhs = [[<Plug>(git)q]],
     rhs = function()
