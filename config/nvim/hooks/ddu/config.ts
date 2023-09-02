@@ -135,6 +135,16 @@ export class Config extends BaseConfig {
             "converter_hl_dir",
           ],
         },
+        lsp_documentSymbol: {
+          converters: [
+            "converter_lsp_symbol",
+          ],
+        },
+        lsp_workspaceSymbol: {
+          converters: [
+            "converter_lsp_symbol",
+          ],
+        },
       },
       sourceParams: {
         dein_update: {
