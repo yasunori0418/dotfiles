@@ -14,16 +14,19 @@ require("user.utils").keymaps_set({
     end,
     opts = ff_opt,
   },
-  { -- :drop
+  { -- expand directory at selected.
     mode = "n",
     lhs = [[o]],
     rhs = function()
-      do_action("itemAction", {
-        name = [[open]],
-        params = {
-          command = [[drop]],
-        },
-      })
+      do_action([[expandItem]], { mode= [[toggle]] })
+    end,
+    opts = ff_opt,
+  },
+  { -- expand all directories recursively
+    mode = "n",
+    lhs = [[O]],
+    rhs = function()
+      do_action([[expandItem]], { maxLevel = -1 })
     end,
     opts = ff_opt,
   },
