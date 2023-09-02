@@ -234,7 +234,7 @@ export class Config extends BaseConfig {
               const action = args.items[0].action as GitCommitActionData;
 
               await args.denops.call("ddu#start", {
-                name: "git_diff_tree-ff",
+                name: "git_diff_tree",
                 sourceParams: {
                   git_diff_tree: {
                     commitHash: action.hash,
