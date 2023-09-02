@@ -12,7 +12,7 @@ utils.keymaps_set({
     lhs = [[<Plug>(ddu-ff)a]],
     rhs = function()
       vim.fn["ddu#start"]({
-        name = "current-ff",
+        name = "current",
         sourceOptions = {
           file_rec = {
             path = utils.search_repo_root(),
@@ -26,7 +26,7 @@ utils.keymaps_set({
     mode = "n",
     lhs = [[<Plug>(ddu-ff)d]],
     rhs = function()
-      vim.fn["ddu#start"]({ name = "dotfiles-ff" })
+      vim.fn["ddu#start"]({ name = "dotfiles" })
     end,
     opts = opt,
   },
@@ -34,7 +34,7 @@ utils.keymaps_set({
     mode = "n",
     lhs = [[<Plug>(ddu-ff)h]],
     rhs = function()
-      vim.fn["ddu#start"]({ name = "help-ff" })
+      vim.fn["ddu#start"]({ name = "help" })
     end,
     opts = opt,
   },
@@ -42,7 +42,7 @@ utils.keymaps_set({
     mode = "n",
     lhs = [[<Plug>(ddu-ff)b]],
     rhs = function()
-      vim.fn["ddu#start"]({ name = "buffer-ff" })
+      vim.fn["ddu#start"]({ name = "buffer" })
     end,
     opts = opt,
   },
@@ -50,7 +50,7 @@ utils.keymaps_set({
     mode = "n",
     lhs = [[<Plug>(ddu-ff)P]],
     rhs = function()
-      vim.fn["ddu#start"]({ name = "plugin-list-ff" })
+      vim.fn["ddu#start"]({ name = "plugin-list" })
     end,
     opts = opt,
   },
@@ -58,7 +58,7 @@ utils.keymaps_set({
     mode = "n",
     lhs = [[<Plug>(ddu-ff)p]],
     rhs = function()
-      vim.fn["ddu#start"]({ name = "project-list-ff" })
+      vim.fn["ddu#start"]({ name = "project-list" })
     end,
     opts = opt,
   },
@@ -66,7 +66,7 @@ utils.keymaps_set({
     mode = "n",
     lhs = [[<Plug>(ddu-ff)~]],
     rhs = function()
-      vim.fn["ddu#start"]({ name = "home-ff" })
+      vim.fn["ddu#start"]({ name = "home" })
     end,
     opts = opt,
   },
@@ -74,7 +74,7 @@ utils.keymaps_set({
     mode = "n",
     lhs = [[<Plug>(ddu-ff)r]],
     rhs = function()
-      vim.fn["ddu#start"]({ name = "register-ff" })
+      vim.fn["ddu#start"]({ name = "register" })
     end,
     opts = opt,
   },
@@ -82,7 +82,7 @@ utils.keymaps_set({
     mode = "n",
     lhs = [[<Plug>(ddu-ff)s]],
     rhs = function()
-      vim.fn["ddu#start"]({ name = "ripgrep-ff" })
+      vim.fn["ddu#start"]({ name = "ripgrep" })
     end,
     opts = opt,
   },
@@ -90,7 +90,7 @@ utils.keymaps_set({
     mode = "n",
     lhs = [[<Plug>(ddu-ff)m]],
     rhs = function()
-      vim.fn["ddu#start"]({ name = "mrr-ff" })
+      vim.fn["ddu#start"]({ name = "mrr" })
     end,
     opts = opt,
   },
@@ -98,7 +98,7 @@ utils.keymaps_set({
     mode = "n",
     lhs = [[<Plug>(ddu-ff)n]],
     rhs = function()
-      vim.fn["ddu#start"]({ name = "mru-ff" })
+      vim.fn["ddu#start"]({ name = "mru" })
     end,
     opts = opt,
   },
@@ -106,7 +106,7 @@ utils.keymaps_set({
     mode = "n",
     lhs = [[<Plug>(ddu-ff)/]],
     rhs = function()
-      vim.fn["ddu#start"]({ name = "search_line-ff" })
+      vim.fn["ddu#start"]({ name = "search_line" })
     end,
     opts = opt,
   },
@@ -114,7 +114,7 @@ utils.keymaps_set({
     mode = "n",
     lhs = [[<Plug>(ddu-ff)C]],
     rhs = function()
-      vim.fn["ddu#start"]({ name = "highlight-ff" })
+      vim.fn["ddu#start"]({ name = "highlight" })
     end,
     opts = opt,
   },
@@ -124,7 +124,7 @@ utils.keymaps_set({
     mode = "n",
     lhs = [[<Plug>(git)s]],
     rhs = function()
-      vim.fn["ddu#start"]({ name = "git_status-ff" })
+      vim.fn["ddu#start"]({ name = "git_status" })
     end,
     opts = opt,
   },
@@ -132,7 +132,7 @@ utils.keymaps_set({
     mode = "n",
     lhs = [[<Plug>(git)l]],
     rhs = function()
-      vim.fn["ddu#start"]({ name = "git_log-ff" })
+      vim.fn["ddu#start"]({ name = "git_log" })
     end,
     opts = opt,
   },
@@ -140,7 +140,7 @@ utils.keymaps_set({
     mode = "n",
     lhs = [[<Plug>(git)b]],
     rhs = function()
-      vim.fn["ddu#start"]({ name = "git_branch-ff" })
+      vim.fn["ddu#start"]({ name = "git_branch" })
     end,
     opts = opt,
   },
@@ -148,7 +148,7 @@ utils.keymaps_set({
     mode = "n",
     lhs = [[<Plug>(git)q]],
     rhs = function()
-      vim.fn["ddu#start"]({ name = "ghq-ff" })
+      vim.fn["ddu#start"]({ name = "ghq" })
     end,
     opts = opt,
   },
@@ -213,7 +213,7 @@ vim.fn["ddu#custom#load_config"](
 )
 
 vim.api.nvim_create_user_command("DeinUpdate", function()
-  vim.fn["ddu#start"]({name = "dein_update-ff"})
+  vim.fn["ddu#start"]({name = "dein_update"})
 end, {})
 
 -- }}}

@@ -301,7 +301,7 @@ export class Config extends BaseConfig {
 
     // UI: fuzzy-finder
 
-    args.contextBuilder.patchLocal("current-ff", {
+    args.contextBuilder.patchLocal("current", {
       ui: "ff",
       uiParams: {
         ff: {
@@ -313,7 +313,7 @@ export class Config extends BaseConfig {
       ],
     });
 
-    args.contextBuilder.patchLocal("dotfiles-ff", {
+    args.contextBuilder.patchLocal("dotfiles", {
       ui: "ff",
       uiParams: {
         ff: {
@@ -330,7 +330,7 @@ export class Config extends BaseConfig {
       ],
     });
 
-    args.contextBuilder.patchLocal("help-ff", {
+    args.contextBuilder.patchLocal("help", {
       ui: "ff",
       uiParams: {
         ff: {
@@ -344,7 +344,7 @@ export class Config extends BaseConfig {
       ],
     });
 
-    args.contextBuilder.patchLocal("search_line-ff", {
+    args.contextBuilder.patchLocal("search_line", {
       ui: "ff",
       uiParams: {
         ff: { startFilter: true },
@@ -359,14 +359,14 @@ export class Config extends BaseConfig {
       ],
     });
 
-    args.contextBuilder.patchLocal("buffer-ff", {
+    args.contextBuilder.patchLocal("buffer", {
       ui: "ff",
       sources: [
         { name: "buffer" },
       ],
     });
 
-    args.contextBuilder.patchLocal("plugin-list-ff", {
+    args.contextBuilder.patchLocal("plugin-list", {
       ui: "ff",
       uiParams: {
         ff: {
@@ -383,7 +383,7 @@ export class Config extends BaseConfig {
       ],
     });
 
-    args.contextBuilder.patchLocal("home-ff", {
+    args.contextBuilder.patchLocal("home", {
       ui: "ff",
       uiParams: {
         ff: {
@@ -400,7 +400,7 @@ export class Config extends BaseConfig {
       ],
     });
 
-    args.contextBuilder.patchLocal("register-ff", {
+    args.contextBuilder.patchLocal("register", {
       ui: "ff",
       sources: [
         {
@@ -409,7 +409,7 @@ export class Config extends BaseConfig {
       ],
     });
 
-    args.contextBuilder.patchLocal("mrr-ff", {
+    args.contextBuilder.patchLocal("mrr", {
       ui: "ff",
       sources: [
         {
@@ -424,7 +424,7 @@ export class Config extends BaseConfig {
       ],
     });
 
-    args.contextBuilder.patchLocal("mru-ff", {
+    args.contextBuilder.patchLocal("mru", {
       ui: "ff",
       sources: [
         {
@@ -439,7 +439,7 @@ export class Config extends BaseConfig {
       ],
     });
 
-    args.contextBuilder.patchLocal("highlight-ff", {
+    args.contextBuilder.patchLocal("highlight", {
       ui: "ff",
       uiParams: {
         ff: {
@@ -451,7 +451,7 @@ export class Config extends BaseConfig {
       ],
     });
 
-    args.contextBuilder.patchLocal("dein_update-ff", {
+    args.contextBuilder.patchLocal("dein_update", {
       ui: "ff",
       sources: [
         {
@@ -460,7 +460,7 @@ export class Config extends BaseConfig {
       ],
     });
 
-    args.contextBuilder.patchLocal("ripgrep-ff", {
+    args.contextBuilder.patchLocal("ripgrep", {
       ui: "ff",
       uiParams: {
         ff: {
@@ -488,14 +488,14 @@ export class Config extends BaseConfig {
       ],
     });
 
-    args.contextBuilder.patchLocal("path_history-ff", {
+    args.contextBuilder.patchLocal("path_history", {
       ui: "ff",
       sources: [
         { name: "path_history" },
       ],
     });
 
-    args.contextBuilder.patchLocal("git_status-ff", {
+    args.contextBuilder.patchLocal("git_status", {
       ui: "ff",
       uiParams: {
         ff: {
@@ -518,7 +518,7 @@ export class Config extends BaseConfig {
       ],
     });
 
-    args.contextBuilder.patchLocal("git_diff-ff", {
+    args.contextBuilder.patchLocal("git_diff", {
       ui: "ff",
       uiParams: {
         ff: {
@@ -535,7 +535,7 @@ export class Config extends BaseConfig {
       ],
     });
 
-    args.contextBuilder.patchLocal("git_diff_tree-ff", {
+    args.contextBuilder.patchLocal("git_diff_tree", {
       ui: "ff",
       uiParams: {
         ff: {
@@ -558,7 +558,7 @@ export class Config extends BaseConfig {
       ],
     });
 
-    args.contextBuilder.patchLocal("git_log-ff", {
+    args.contextBuilder.patchLocal("git_log", {
       ui: "ff",
       uiParams: {
         ff: {
@@ -586,7 +586,7 @@ export class Config extends BaseConfig {
       ],
     });
 
-    args.contextBuilder.patchLocal("git_branch-ff", {
+    args.contextBuilder.patchLocal("git_branch", {
       ui: "ff",
       uiParams: {
         ff: {
@@ -600,7 +600,7 @@ export class Config extends BaseConfig {
       ],
     });
 
-    args.contextBuilder.patchLocal("ghq-ff", {
+    args.contextBuilder.patchLocal("ghq", {
       ui: "ff",
       uiParams: {
         ff: {
@@ -614,7 +614,7 @@ export class Config extends BaseConfig {
       ],
     });
 
-    args.contextBuilder.patchLocal("lsp:definition-ff", {
+    args.contextBuilder.patchLocal("lsp:definition", {
       ui: "ff",
       uiParams: {
         ff: {
@@ -637,7 +637,7 @@ export class Config extends BaseConfig {
       ],
     });
 
-    args.contextBuilder.patchLocal("lsp:references-ff", {
+    args.contextBuilder.patchLocal("lsp:references", {
       ui: "ff",
       uiParams: {
         ff: {
