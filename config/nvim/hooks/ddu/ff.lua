@@ -18,7 +18,7 @@ require("user.utils").keymaps_set({
     mode = "n",
     lhs = [[o]],
     rhs = function()
-      do_action([[expandItem]], { mode= [[toggle]] })
+      do_action([[expandItem]], { mode = [[toggle]] })
     end,
     opts = ff_opt,
   },
