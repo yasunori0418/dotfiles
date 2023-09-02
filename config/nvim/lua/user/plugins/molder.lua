@@ -1,6 +1,6 @@
 local M = {}
 
-M.init = function()
+function M.init()
   if vim.fn.isdirectory(vim.fn.expand('%:p')) ~= 0 then
     require('dein').source('vim-molder')
     vim.fn['molder#init']()
