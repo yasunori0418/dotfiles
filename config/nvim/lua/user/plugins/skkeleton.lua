@@ -3,7 +3,7 @@ local vimx = require('artemis')
 local skkeleton = vimx.fn.skkeleton
 local ddc_custom = vimx.fn.ddc.custom
 
-local l2x_rom = function()
+local function l2x_rom()
   local rom = {}
   local disable_l_nexts = vim.fn.split(
     [=[bcdfghjkmnpqrsvxzBCDFGHJKMNPQRSVXZ,./1234567890-+=`~;:[]{}()<>!@#$%^&*_\"']=],
@@ -52,7 +52,7 @@ local l2x_rom = function()
   return rom
 end
 
-local l2x_maps = function()
+local function l2x_maps()
   skkeleton.register_kanatable("rom", l2x_rom())
   skkeleton.register_keymap("input", "x", "disable")
   skkeleton.register_keymap("input", "X", "zenkaku")
@@ -66,7 +66,7 @@ end
 
 local M = {}
 
-M.init = function()
+function M.init()
   skkeleton.config({
     eggLikeNewline = true,
     globalDictionaries = {
@@ -89,12 +89,12 @@ M.init = function()
   l2x_maps()
 end
 
-M.pre = function()
+function M.pre()
   vim.b.prev_buffer_config = ddc_custom.get_buffer()
   ddc_custom.patch_buffer("sources", { "skkeleton" })
 end
 
-M.post = function()
+function M.post()
   ddc_custom.set_buffer(vim.b.prev_buffer_config)
   vim.b.prev_buffer_config = {}
 end
