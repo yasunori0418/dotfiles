@@ -173,14 +173,14 @@ require("user.utils").keymaps_set({
 
 -- lua_ddu-ff-filter {{{
 local filter_opt = { buffer = true, noremap = true }
-require('user.utils').keymaps_set({
+require("user.utils").keymaps_set({
   -- filter insert mode
   {
     mode = "i",
     lhs = [[<CR>]],
     rhs = function()
-      vim.cmd('stopinsert')
-      vim.fn["ddu#ui#ff#do_action"]('closeFilterWindow')
+      vim.cmd.stopinsert()
+      vim.fn["ddu#ui#ff#do_action"]("closeFilterWindow")
     end,
     opts = filter_opt,
   },
@@ -188,8 +188,8 @@ require('user.utils').keymaps_set({
     mode = "i",
     lhs = [[jj]],
     rhs = function()
-      vim.cmd('stopinsert')
-      vim.fn["ddu#ui#ff#do_action"]('closeFilterWindow')
+      vim.cmd.stopinsert()
+      vim.fn["ddu#ui#ff#do_action"]("closeFilterWindow")
     end,
     opts = filter_opt,
   },
@@ -197,8 +197,8 @@ require('user.utils').keymaps_set({
     mode = "i",
     lhs = [[<ECS>]],
     rhs = function()
-      vim.cmd('stopinsert')
-      vim.fn["ddu#ui#ff#do_action"]('closeFilterWindow')
+      vim.cmd.stopinsert()
+      vim.fn["ddu#ui#ff#do_action"]("closeFilterWindow")
     end,
     opts = filter_opt,
   },
@@ -208,7 +208,7 @@ require('user.utils').keymaps_set({
     mode = "n",
     lhs = [[q]],
     rhs = function()
-      vim.fn["ddu#ui#ff#do_action"]('closeFilterWindow')
+      vim.fn["ddu#ui#ff#do_action"]("closeFilterWindow")
     end,
     opts = filter_opt,
   },
@@ -216,7 +216,7 @@ require('user.utils').keymaps_set({
     mode = "n",
     lhs = [[<CR>]],
     rhs = function()
-      vim.fn["ddu#ui#ff#do_action"]('closeFilterWindow')
+      vim.fn["ddu#ui#ff#do_action"]("closeFilterWindow")
     end,
     opts = filter_opt,
   },
@@ -224,7 +224,7 @@ require('user.utils').keymaps_set({
     mode = "n",
     lhs = [[j]],
     rhs = function()
-      vim.fn["ddu#ui#ff#do_action"]('closeFilterWindow')
+      vim.fn["ddu#ui#ff#do_action"]("closeFilterWindow")
     end,
     opts = filter_opt,
   },
@@ -232,7 +232,7 @@ require('user.utils').keymaps_set({
     mode = "n",
     lhs = [[<ESC>]],
     rhs = function()
-      vim.fn["ddu#ui#ff#do_action"]('closeFilterWindow')
+      vim.fn["ddu#ui#ff#do_action"]("closeFilterWindow")
     end,
     opts = filter_opt,
   },
