@@ -20,10 +20,11 @@ mason_lspconfig.setup({
 user_lsp.on_attach(function(_, buffer)
   local opt = { noremap = true, silent = true, buffer = buffer }
   utils.keymaps_set({
-    { mode = { "n" }, lhs = [[K]],    rhs = lsp.buf.hover,         opts = opt },
-    { mode = { "n" }, lhs = [[ma]],   rhs = lsp.buf.code_action,   opts = opt },
-    { mode = { "n" }, lhs = [[gq]],   rhs = user_lsp.format,       opts = opt },
-    { mode = { "n" }, lhs = [[mr]],   rhs = lsp.buf.rename,        opts = opt },
+    { mode = { "n" }, lhs = [[ l]],           rhs = [[<Plug>(lsp)]],     opts = opt },
+    { mode = { "n" }, lhs = [[K]],            rhs = lsp.buf.hover,       opts = opt },
+    { mode = { "n" }, lhs = [[<Plug>(lsp)a]], rhs = lsp.buf.code_action, opts = opt },
+    { mode = { "n" }, lhs = [[<Plug>(lsp)q]], rhs = user_lsp.format,     opts = opt },
+    { mode = { "n" }, lhs = [[<Plug>(lsp)r]], rhs = lsp.buf.rename,      opts = opt },
     {
       mode = { "n" },
       lhs = [[gd]],
@@ -32,7 +33,7 @@ user_lsp.on_attach(function(_, buffer)
           name = "lsp:definition",
         })
       end,
-      opts = opt
+      opts = opt,
     },
     {
       mode = { "n" },
@@ -42,7 +43,7 @@ user_lsp.on_attach(function(_, buffer)
           name = "lsp:declaration",
         })
       end,
-      opts = opt
+      opts = opt,
     },
     {
       mode = { "n" },
@@ -52,7 +53,7 @@ user_lsp.on_attach(function(_, buffer)
           name = "lsp:typeDefinition",
         })
       end,
-      opts = opt
+      opts = opt,
     },
     {
       mode = { "n" },
@@ -62,7 +63,7 @@ user_lsp.on_attach(function(_, buffer)
           name = "lsp:implementation",
         })
       end,
-      opts = opt
+      opts = opt,
     },
     {
       mode = { "n" },
@@ -72,7 +73,27 @@ user_lsp.on_attach(function(_, buffer)
           name = "lsp:references",
         })
       end,
-      opts = opt
+      opts = opt,
+    },
+    {
+      mode = "n",
+      lhs = [[<Plug>(lsp)s]],
+      rhs = function()
+        vimx.fn.ddu.start({
+          name = "lsp:documentSymbol",
+        })
+      end,
+      opts = opt,
+    },
+    {
+      mode = "n",
+      lhs = [[<Plug>(lsp)S]],
+      rhs = function()
+        vimx.fn.ddu.start({
+          name = "lsp:workspaceSymbol",
+        })
+      end,
+      opts = opt,
     },
     { mode = { "n" }, lhs = [[ge]],   rhs = diagnostic.open_float, opts = opt },
     { mode = { "n" }, lhs = [=[[d]=], rhs = diagnostic.goto_prev,  opts = opt },
