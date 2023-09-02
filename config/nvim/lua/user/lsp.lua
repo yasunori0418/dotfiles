@@ -6,7 +6,7 @@ local lsp = vim.lsp
 ---[参考リンク]:(https://zenn.dev/ryoppippi/articles/8aeedded34c914)
 ---
 ---@param on_attach fun(client: any|nil, buffer: number|nil)
-M.on_attach = function(on_attach)
+function M.on_attach(on_attach)
   vim.api.nvim_create_autocmd('LspAttach', {
     group = require('user.utils').vimrc_augroup,
     callback = function(args)
