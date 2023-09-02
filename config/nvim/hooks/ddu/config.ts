@@ -614,29 +614,40 @@ export class Config extends BaseConfig {
       ],
     });
 
-    args.contextBuilder.patchLocal("lsp:definition", {
-      ui: "ff",
-      sync: true,
-      uiParams: {
-        ff: {
-          ...{
-            startAutoAction: true,
-            autoAction: {
-              delay: 0,
-              name: "preview",
+    const lsp_definition_methods: string[] = [
+      "declaration",
+      "definition",
+      "typeDefinition",
+      "implementation",
+    ];
+    lsp_definition_methods.forEach(async (method: string) => {
+      args.contextBuilder.patchLocal(`lsp:${method}`, {
+        ui: "ff",
+        sync: true,
+        uiParams: {
+          ff: {
+            ...{
+              startAutoAction: true,
+              autoAction: {
+                delay: 0,
+                name: "preview",
+              },
+              autoResize: false,
+              filterFloatingPosition: "bottom",
+              immediateAction: "open",
             },
-            autoResize: false,
-            filterFloatingPosition: "bottom",
-            immediateAction: "open",
+            ...await uiSize(args, 0.5, "vertical"),
           },
-          ...await uiSize(args, 0.5, "vertical"),
         },
-      },
-      sources: [
-        {
-          name: "lsp_definition",
-        },
-      ],
+        sources: [
+          {
+            name: "lsp_definition",
+            params: {
+              method: `textDocument/${method}`,
+            },
+          },
+        ],
+      });
     });
 
     args.contextBuilder.patchLocal("lsp:references", {

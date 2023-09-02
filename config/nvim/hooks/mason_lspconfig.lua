@@ -36,6 +36,36 @@ user_lsp.on_attach(function(_, buffer)
     },
     {
       mode = { "n" },
+      lhs = [[gD]],
+      rhs = function()
+        vimx.fn.ddu.start({
+          name = "lsp:declaration",
+        })
+      end,
+      opts = opt
+    },
+    {
+      mode = { "n" },
+      lhs = [[gt]],
+      rhs = function()
+        vimx.fn.ddu.start({
+          name = "lsp:typeDefinition",
+        })
+      end,
+      opts = opt
+    },
+    {
+      mode = { "n" },
+      lhs = [[gi]],
+      rhs = function()
+        vimx.fn.ddu.start({
+          name = "lsp:implementation",
+        })
+      end,
+      opts = opt
+    },
+    {
+      mode = { "n" },
       lhs = [[gr]],
       rhs = function()
         vimx.fn.ddu.start({
