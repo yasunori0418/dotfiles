@@ -54,14 +54,6 @@ utils.keymaps_set({
     end,
     opts = opt,
   },
-  { -- project-list-ff
-    mode = "n",
-    lhs = [[<Plug>(ddu-ff)p]],
-    rhs = function()
-      vim.fn["ddu#start"]({ name = "project-list" })
-    end,
-    opts = opt,
-  },
   { -- home-ff
     mode = "n",
     lhs = [[<Plug>(ddu-ff)~]],
