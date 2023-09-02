@@ -616,6 +616,7 @@ export class Config extends BaseConfig {
 
     args.contextBuilder.patchLocal("lsp:definition", {
       ui: "ff",
+      sync: true,
       uiParams: {
         ff: {
           ...{
@@ -626,6 +627,7 @@ export class Config extends BaseConfig {
             },
             autoResize: false,
             filterFloatingPosition: "bottom",
+            immediateAction: "open",
           },
           ...await uiSize(args, 0.5, "vertical"),
         },
