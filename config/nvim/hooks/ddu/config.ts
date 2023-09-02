@@ -213,7 +213,7 @@ export class Config extends BaseConfig {
               const action = args.items[0].action as ActionData;
 
               await args.denops.call("ddu#start", {
-                name: "git_diff",
+                name: "git:diff",
                 sourceOptions: {
                   git_diff: {
                     path: action.path,
@@ -234,7 +234,7 @@ export class Config extends BaseConfig {
               const action = args.items[0].action as GitCommitActionData;
 
               await args.denops.call("ddu#start", {
-                name: "git_diff_tree",
+                name: "git:diff_tree",
                 sourceParams: {
                   git_diff_tree: {
                     commitHash: action.hash,
@@ -495,7 +495,7 @@ export class Config extends BaseConfig {
       ],
     });
 
-    args.contextBuilder.patchLocal("git_status", {
+    args.contextBuilder.patchLocal("git:status", {
       ui: "ff",
       uiParams: {
         ff: {
@@ -518,7 +518,7 @@ export class Config extends BaseConfig {
       ],
     });
 
-    args.contextBuilder.patchLocal("git_diff", {
+    args.contextBuilder.patchLocal("git:diff", {
       ui: "ff",
       uiParams: {
         ff: {
@@ -535,7 +535,7 @@ export class Config extends BaseConfig {
       ],
     });
 
-    args.contextBuilder.patchLocal("git_diff_tree", {
+    args.contextBuilder.patchLocal("git:diff_tree", {
       ui: "ff",
       uiParams: {
         ff: {
@@ -558,7 +558,7 @@ export class Config extends BaseConfig {
       ],
     });
 
-    args.contextBuilder.patchLocal("git_log", {
+    args.contextBuilder.patchLocal("git:log", {
       ui: "ff",
       uiParams: {
         ff: {
@@ -586,7 +586,7 @@ export class Config extends BaseConfig {
       ],
     });
 
-    args.contextBuilder.patchLocal("git_branch", {
+    args.contextBuilder.patchLocal("git:branch", {
       ui: "ff",
       uiParams: {
         ff: {
