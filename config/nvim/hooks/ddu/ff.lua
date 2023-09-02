@@ -172,7 +172,6 @@ require('user.utils').keymaps_set({
 -- }}}
 
 -- lua_ddu-ff-filter {{{
-local do_action = vim.fn['ddu#ui#do_action']
 local filter_opt = { buffer = true, noremap = true }
 require('user.utils').keymaps_set({
   -- filter insert mode
@@ -181,7 +180,7 @@ require('user.utils').keymaps_set({
     lhs = [[<CR>]],
     rhs = function()
       vim.cmd('stopinsert')
-      do_action('closeFilterWindow')
+      vim.fn["ddu#ui#ff#do_action"]('closeFilterWindow')
     end,
     opts = filter_opt,
   },
@@ -190,7 +189,7 @@ require('user.utils').keymaps_set({
     lhs = [[jj]],
     rhs = function()
       vim.cmd('stopinsert')
-      do_action('closeFilterWindow')
+      vim.fn["ddu#ui#ff#do_action"]('closeFilterWindow')
     end,
     opts = filter_opt,
   },
@@ -199,7 +198,7 @@ require('user.utils').keymaps_set({
     lhs = [[<ECS>]],
     rhs = function()
       vim.cmd('stopinsert')
-      do_action('closeFilterWindow')
+      vim.fn["ddu#ui#ff#do_action"]('closeFilterWindow')
     end,
     opts = filter_opt,
   },
@@ -209,7 +208,7 @@ require('user.utils').keymaps_set({
     mode = "n",
     lhs = [[q]],
     rhs = function()
-      do_action('closeFilterWindow')
+      vim.fn["ddu#ui#ff#do_action"]('closeFilterWindow')
     end,
     opts = filter_opt,
   },
@@ -217,7 +216,7 @@ require('user.utils').keymaps_set({
     mode = "n",
     lhs = [[<CR>]],
     rhs = function()
-      do_action('closeFilterWindow')
+      vim.fn["ddu#ui#ff#do_action"]('closeFilterWindow')
     end,
     opts = filter_opt,
   },
@@ -225,7 +224,7 @@ require('user.utils').keymaps_set({
     mode = "n",
     lhs = [[j]],
     rhs = function()
-      do_action('closeFilterWindow')
+      vim.fn["ddu#ui#ff#do_action"]('closeFilterWindow')
     end,
     opts = filter_opt,
   },
@@ -233,7 +232,7 @@ require('user.utils').keymaps_set({
     mode = "n",
     lhs = [[<ESC>]],
     rhs = function()
-      do_action('closeFilterWindow')
+      vim.fn["ddu#ui#ff#do_action"]('closeFilterWindow')
     end,
     opts = filter_opt,
   },
