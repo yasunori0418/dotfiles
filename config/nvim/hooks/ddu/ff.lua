@@ -171,6 +171,14 @@ require("user.utils").keymaps_set({
     end,
     opts = ff_opt,
   },
+  {
+    mode = "n",
+    lhs = [[<F2>]],
+    rhs = function()
+      vim.print(vim.fn["ddu#ui#get_item"]())
+    end,
+    opts = ff_opt,
+  },
 })
 -- }}}
 
