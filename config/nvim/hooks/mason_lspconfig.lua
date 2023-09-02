@@ -23,7 +23,7 @@ user_lsp.on_attach(function(_, buffer)
     { mode = { "n" }, lhs = [[K]],    rhs = lsp.buf.hover,         opts = opt },
     { mode = { "n" }, lhs = [[ma]],   rhs = lsp.buf.code_action,   opts = opt },
     { mode = { "n" }, lhs = [[gq]],   rhs = user_lsp.format,       opts = opt },
-    { mode = { "n" }, lhs = [[gr]],   rhs = lsp.buf.rename,        opts = opt },
+    { mode = { "n" }, lhs = [[mr]],   rhs = lsp.buf.rename,        opts = opt },
     {
       mode = { "n" },
       lhs = [[gd]],
@@ -34,6 +34,12 @@ user_lsp.on_attach(function(_, buffer)
       end,
       opts = opt
     },
+    {
+      mode = { "n" },
+      lhs = [[gr]],
+      rhs = function()
+        vimx.fn.ddu.start({
+          name = "lsp:references-ff",
         })
       end,
       opts = opt

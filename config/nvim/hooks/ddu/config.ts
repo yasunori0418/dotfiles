@@ -634,6 +634,26 @@ export class Config extends BaseConfig {
         {
           name: "lsp_definition",
         },
+      ],
+    });
+
+    args.contextBuilder.patchLocal("lsp:references-ff", {
+      ui: "ff",
+      uiParams: {
+        ff: {
+          ...{
+            startAutoAction: true,
+            autoAction: {
+              delay: 0,
+              name: "preview",
+            },
+            autoResize: false,
+            filterFloatingPosition: "bottom",
+          },
+          ...await uiSize(args, 0.5, "vertical"),
+        },
+      },
+      sources: [
         {
           name: "lsp_references",
         },
