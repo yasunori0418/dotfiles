@@ -213,7 +213,7 @@ export class Config extends BaseConfig {
               const action = args.items[0].action as ActionData;
 
               await args.denops.call("ddu#start", {
-                name: "git_diff-ff",
+                name: "git_diff",
                 sourceOptions: {
                   git_diff: {
                     path: action.path,
