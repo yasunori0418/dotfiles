@@ -614,7 +614,7 @@ export class Config extends BaseConfig {
       ],
     });
 
-    args.contextBuilder.patchLocal("lsp/def_ref-ff", {
+    args.contextBuilder.patchLocal("lsp:definition-ff", {
       ui: "ff",
       uiParams: {
         ff: {
