@@ -27,7 +27,7 @@ end
 
 ---フォーマット時のtimeout対応
 ---5000msだけ待ってやる
-M.format = function()
+function M.format()
   lsp.buf.format({ timeout_ms = 5000 })
 end
 
