@@ -7,14 +7,14 @@ local ddc_custom = vimx.fn.ddc.custom
 local set_buffer = ddc_custom.set_buffer
 local get_buffer = ddc_custom.get_buffer
 
-local commandline_post = function()
+local function commandline_post()
   if vim.b.prev_buffer_config then
     set_buffer(vim.b.prev_buffer_config)
     vim.b.prev_buffer_config = nil
   end
 end
 
-M.commandline_pre = function()
+function M.commandline_pre()
   vim.b.prev_buffer_config = get_buffer()
   vim.api.nvim_create_autocmd("User", {
     group = utils.vimrc_augroup,
