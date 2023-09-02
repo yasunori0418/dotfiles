@@ -683,6 +683,52 @@ export class Config extends BaseConfig {
       ],
     });
 
+    args.contextBuilder.patchLocal("lsp:documentSymbol", {
+      ui: "ff",
+      uiParams: {
+        ff: {
+          ...{
+            startAutoAction: true,
+            autoAction: {
+              delay: 0,
+              name: "preview",
+            },
+            autoResize: false,
+            filterFloatingPosition: "bottom",
+          },
+          ...await uiSize(args, 0.5, "vertical"),
+        },
+      },
+      sources: [
+        {
+          name: "lsp_documentSymbol",
+        },
+      ],
+    });
+
+    args.contextBuilder.patchLocal("lsp:workspaceSymbol", {
+      ui: "ff",
+      uiParams: {
+        ff: {
+          ...{
+            startAutoAction: true,
+            autoAction: {
+              delay: 0,
+              name: "preview",
+            },
+            autoResize: false,
+            filterFloatingPosition: "bottom",
+          },
+          ...await uiSize(args, 0.5, "vertical"),
+        },
+      },
+      sources: [
+        {
+          name: "lsp_workspaceSymbol",
+        },
+      ],
+    });
+
     // UI: filer
 
     args.contextBuilder.patchLocal("current-filer", {
