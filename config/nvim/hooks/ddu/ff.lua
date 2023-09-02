@@ -1,16 +1,16 @@
 -- lua_ddu-ff {{{
-local do_action = vim.fn['ddu#ui#do_action']
+local do_action = vim.fn["ddu#ui#do_action"]
 local line = vim.fn.line
 
 local ff_opt = { silent = true, buffer = true, noremap = true }
 local ff_opt_expr = { silent = true, buffer = true, expr = true, noremap = true }
-require('user.utils').keymaps_set({
+require("user.utils").keymaps_set({
   -- Open
   { -- defaultAction
     mode = "n",
     lhs = [[<CR>]],
     rhs = function()
-      do_action('itemAction')
+      do_action("itemAction")
     end,
     opts = ff_opt,
   },
@@ -18,11 +18,11 @@ require('user.utils').keymaps_set({
     mode = "n",
     lhs = [[o]],
     rhs = function()
-      do_action('itemAction', {
+      do_action("itemAction", {
         name = [[open]],
         params = {
-          command = [[drop]]
-        }
+          command = [[drop]],
+        },
       })
     end,
     opts = ff_opt,
@@ -31,9 +31,9 @@ require('user.utils').keymaps_set({
     mode = "n",
     lhs = [[s]],
     rhs = function()
-      do_action('itemAction', {
+      do_action("itemAction", {
         name = [[open]],
-        params = { command = [[split]] }
+        params = { command = [[split]] },
       })
     end,
     opts = ff_opt,
@@ -42,9 +42,9 @@ require('user.utils').keymaps_set({
     mode = "n",
     lhs = [[v]],
     rhs = function()
-      do_action('itemAction', {
+      do_action("itemAction", {
         name = [[open]],
-        params = { command = [[vsplit]] }
+        params = { command = [[vsplit]] },
       })
     end,
     opts = ff_opt,
@@ -53,9 +53,9 @@ require('user.utils').keymaps_set({
     mode = "n",
     lhs = [[t]],
     rhs = function()
-      do_action('itemAction', {
+      do_action("itemAction", {
         name = [[open]],
-        params = { command = [[tabedit]] }
+        params = { command = [[tabedit]] },
       })
     end,
     opts = ff_opt,
@@ -66,7 +66,7 @@ require('user.utils').keymaps_set({
     mode = "n",
     lhs = [[  ]],
     rhs = function()
-      do_action('toggleSelectItem')
+      do_action("toggleSelectItem")
     end,
     opts = ff_opt,
   },
@@ -74,7 +74,7 @@ require('user.utils').keymaps_set({
     mode = "n",
     lhs = [[*]],
     rhs = function()
-      do_action('toggleAllItems')
+      do_action("toggleAllItems")
     end,
     opts = ff_opt,
   },
@@ -82,7 +82,7 @@ require('user.utils').keymaps_set({
     mode = "n",
     lhs = [[a]],
     rhs = function()
-      do_action('chooseAction')
+      do_action("chooseAction")
     end,
     opts = ff_opt,
   },
@@ -90,7 +90,7 @@ require('user.utils').keymaps_set({
     mode = "n",
     lhs = [[i]],
     rhs = function()
-      do_action('openFilterWindow')
+      do_action("openFilterWindow")
     end,
     opts = ff_opt,
   },
@@ -98,7 +98,7 @@ require('user.utils').keymaps_set({
     mode = "n",
     lhs = [[<C-l>]],
     rhs = function()
-      do_action('refreshItems')
+      do_action("refreshItems")
     end,
     opts = ff_opt,
   },
@@ -106,7 +106,7 @@ require('user.utils').keymaps_set({
     mode = "n",
     lhs = [[p]],
     rhs = function()
-      do_action('togglePreview')
+      do_action("togglePreview")
     end,
     opts = ff_opt,
   },
@@ -114,7 +114,7 @@ require('user.utils').keymaps_set({
     mode = "n",
     lhs = [[q]],
     rhs = function()
-      do_action('quit')
+      do_action("quit")
     end,
     opts = ff_opt,
   },
@@ -122,15 +122,15 @@ require('user.utils').keymaps_set({
     mode = "n",
     lhs = [[<ESC>]],
     rhs = function()
-      do_action('quit')
+      do_action("quit")
     end,
-    opts = ff_opt
+    opts = ff_opt,
   },
   { -- 末尾に行ったら一番上にジャンプする
     mode = "n",
     lhs = [[j]],
     rhs = function()
-      if line('.') == line('$') then
+      if line(".") == line("$") then
         return [[gg]]
       else
         return [[j]]
@@ -142,7 +142,7 @@ require('user.utils').keymaps_set({
     mode = "n",
     lhs = [[k]],
     rhs = function()
-      if line('.') == 1 then
+      if line(".") == 1 then
         return [[G]]
       else
         return [[k]]
@@ -154,8 +154,8 @@ require('user.utils').keymaps_set({
     mode = "n",
     lhs = [[<C-q>]],
     rhs = function()
-      do_action('toggleAllItems')
-      do_action('itemAction', { name = [[quickfix]] })
+      do_action("toggleAllItems")
+      do_action("itemAction", { name = [[quickfix]] })
     end,
     opts = ff_opt,
   },
@@ -163,8 +163,8 @@ require('user.utils').keymaps_set({
     mode = "n",
     lhs = [[y]],
     rhs = function()
-      do_action('yank')
-      print('Yank path the "' .. vim.fn.getreg('+') .. '"')
+      do_action("yank")
+      print('Yank path the "' .. vim.fn.getreg("+") .. '"')
     end,
     opts = ff_opt,
   },
