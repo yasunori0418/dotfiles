@@ -70,3 +70,28 @@ export async function uiSize(
   };
 }
 
+type DduDummySource = {
+  name: string;
+  params: {
+    word: string;
+    hlGroup: string;
+  };
+};
+
+export function separator(
+  word: string,
+  hlGroup:
+    | "ErrorMsg" // #BF616A
+    | "Type" // #EBCB8B
+    | "Keyword" // #A3BE8C
+    | "String" // #B48EAD
+   = "Type",
+): DduDummySource {
+  return {
+    name: word,
+    params: {
+      word: word,
+      hlGroup: hlGroup,
+    },
+  };
+}
