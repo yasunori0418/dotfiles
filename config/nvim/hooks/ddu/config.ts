@@ -645,6 +645,7 @@ export class Config extends BaseConfig {
               autoResize: false,
               filterFloatingPosition: "bottom",
               immediateAction: "open",
+              ignoreEmpty: true,
             },
             ...await uiSize(args, 0.5, "vertical"),
           },
@@ -672,6 +673,7 @@ export class Config extends BaseConfig {
             },
             autoResize: false,
             filterFloatingPosition: "bottom",
+            ignoreEmpty: true,
           },
           ...await uiSize(args, 0.5, "vertical"),
         },
@@ -685,7 +687,7 @@ export class Config extends BaseConfig {
 
     const lsp_symbol_scope = [
       "document",
-      "workspace"
+      "workspace",
     ];
     lsp_symbol_scope.forEach(async (scope) => {
       args.contextBuilder.patchLocal(`lsp:${scope}Symbol`, {
@@ -700,6 +702,7 @@ export class Config extends BaseConfig {
               },
               autoResize: false,
               filterFloatingPosition: "bottom",
+              ignoreEmpty: true,
             },
             ...await uiSize(args, 0.5, "vertical"),
           },
