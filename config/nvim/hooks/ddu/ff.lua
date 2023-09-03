@@ -1,5 +1,5 @@
 -- lua_ddu-ff {{{
-local ddu_helper = require('user.plugins.ddu')
+local ddu_helper = require("user.plugins.ddu")
 local do_action = vim.fn["ddu#ui#do_action"]
 local line = vim.fn.line
 
