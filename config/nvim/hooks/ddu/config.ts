@@ -147,7 +147,7 @@ export class Config extends BaseConfig {
         },
         lsp_codeAction: {
           defaultAction: "apply",
-        }
+        },
       },
       sourceParams: {
         dein_update: {
@@ -750,6 +750,31 @@ export class Config extends BaseConfig {
           },
         ],
       });
+    });
+
+    args.contextBuilder.patchLocal("lsp:codeAction", {
+      ui: "ff",
+      uiParams: {
+        ff: {
+          ...{
+            startAutoAction: true,
+            autoAction: {
+              delay: 0,
+              name: "preview",
+            },
+            autoResize: false,
+            filterFloatingPosition: "bottom",
+            ignoreEmpty: true,
+            displayTree: true,
+          },
+          ...await uiSize(args, 0.5, "vertical"),
+        },
+      },
+      sources: [
+        {
+          name: "lsp_codeAction",
+        },
+      ],
     });
 
     // UI: filer

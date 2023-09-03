@@ -20,11 +20,11 @@ mason_lspconfig.setup({
 user_lsp.on_attach(function(_, buffer)
   local opt = { noremap = true, silent = true, buffer = buffer }
   utils.keymaps_set({
-    { mode = { "n" }, lhs = [[ l]],           rhs = [[<Plug>(lsp)]],     opts = opt },
-    { mode = { "n" }, lhs = [[K]],            rhs = lsp.buf.hover,       opts = opt },
-    { mode = { "n" }, lhs = [[<Plug>(lsp)a]], rhs = lsp.buf.code_action, opts = opt },
-    { mode = { "n" }, lhs = [[<Plug>(lsp)q]], rhs = user_lsp.format,     opts = opt },
-    { mode = { "n" }, lhs = [[<Plug>(lsp)r]], rhs = lsp.buf.rename,      opts = opt },
+    { mode = { "n", "x" }, lhs = [[ l]],           rhs = [[<Plug>(lsp)]],     opts = opt },
+    { mode = { "n" },      lhs = [[K]],            rhs = lsp.buf.hover,       opts = opt },
+    { mode = { "n" },      lhs = [[<Plug>(lsp)a]], rhs = lsp.buf.code_action, opts = opt },
+    { mode = { "n" },      lhs = [[<Plug>(lsp)q]], rhs = user_lsp.format,     opts = opt },
+    { mode = { "n" },      lhs = [[<Plug>(lsp)r]], rhs = lsp.buf.rename,      opts = opt },
     { -- lsp:definition
       mode = { "n" },
       lhs = [[gd]],
@@ -133,6 +133,12 @@ user_lsp.on_attach(function(_, buffer)
           name = "lsp:subtypes",
         })
       end,
+      opts = opt,
+    },
+    {
+      mode = { "n", "x" },
+      lhs = [[<Plug>(lsp)a]],
+      rhs = [[<Cmd>call ddu#start(#{name: "lsp:codeAction"})<CR>]],
       opts = opt,
     },
     { mode = { "n" }, lhs = [[ge]],   rhs = diagnostic.open_float, opts = opt },
