@@ -1,7 +1,4 @@
-import {
-  ConfigArguments,
-  opt,
-} from "./deps.ts";
+import { ConfigArguments, opt } from "./deps.ts";
 
 export const expandHome = (path: string): string => {
   return path.replace(/^~/, Deno.env.get("HOME") || "");
