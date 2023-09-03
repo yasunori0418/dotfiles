@@ -88,7 +88,7 @@ export function separator(
    = "Type",
 ): DduDummySource {
   return {
-    name: word,
+    name: "dummy",
     params: {
       word: word,
       hlGroup: hlGroup,
