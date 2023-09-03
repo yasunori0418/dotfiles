@@ -3,7 +3,7 @@ local M = {}
 
 ---初回起動時にプラグインのダウンロードとruntimepathに追加する
 ---@param repo string user_name/plugin_name
-local init_plugin = function(repo)
+local function init_plugin(repo)
   local repo_dir = M.dein_dir .. "/repos/github.com/" .. repo
   local plugin_name = vim.fn.split(repo, "/")[2]
   if not vim.regex("/" .. plugin_name):match_str(vim.o.runtimepath) then
@@ -15,7 +15,7 @@ local init_plugin = function(repo)
 end
 
 ---dein.vimの読み込み処理
-local dein_setup = function()
+local function dein_setup()
   local dein = require("dein")
   local utils = require('user.utils')
   local inline_vimrcs = utils.gather_files(vim.g.base_dir, "rc")
@@ -54,7 +54,7 @@ end
 ---init.luaで呼び出すdein.vimの初期設定
 ---NVIM_APPNAMEを使ってプロファイルとして分離してみる
 ---NVIM_APPNAMEが設定されていない場合は、デフォルトの`nvim`になる
-M.setup = function()
+function M.setup()
   local nvim_appname = vim.env.NVIM_APPNAME or "nvim"
   local joinpath = vim.fs.joinpath
   M.dein_dir = nil

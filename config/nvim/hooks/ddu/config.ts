@@ -121,7 +121,35 @@ export class Config extends BaseConfig {
           ],
         },
         ghq: {
-          defaultAction: "cdOpen"
+          defaultAction: "cdOpen",
+        },
+        lsp_definition: {
+          converters: [
+            "converter_devicon",
+            "converter_hl_dir",
+          ],
+        },
+        lsp_references: {
+          converters: [
+            "converter_devicon",
+            "converter_hl_dir",
+          ],
+        },
+        lsp_documentSymbol: {
+          converters: [
+            "converter_lsp_symbol",
+          ],
+        },
+        lsp_workspaceSymbol: {
+          converters: [
+            "converter_lsp_symbol",
+          ],
+        },
+        lsp_codeAction: {
+          defaultAction: "apply",
+        },
+        lsp_diagnostic: {
+          defaultAction: "open",
         },
       },
       sourceParams: {
@@ -201,7 +229,7 @@ export class Config extends BaseConfig {
               const action = args.items[0].action as ActionData;
 
               await args.denops.call("ddu#start", {
-                name: "git_diff-ff",
+                name: "git:diff",
                 sourceOptions: {
                   git_diff: {
                     path: action.path,
@@ -222,7 +250,7 @@ export class Config extends BaseConfig {
               const action = args.items[0].action as GitCommitActionData;
 
               await args.denops.call("ddu#start", {
-                name: "git_diff_tree-ff",
+                name: "git:diff_tree",
                 sourceParams: {
                   git_diff_tree: {
                     commitHash: action.hash,
@@ -236,6 +264,9 @@ export class Config extends BaseConfig {
         },
         git_branch: {
           defaultAction: "switch",
+        },
+        lsp: {
+          defaultAction: "open",
         },
       },
       actionOptions: {
@@ -286,7 +317,7 @@ export class Config extends BaseConfig {
 
     // UI: fuzzy-finder
 
-    args.contextBuilder.patchLocal("current-ff", {
+    args.contextBuilder.patchLocal("current", {
       ui: "ff",
       uiParams: {
         ff: {
@@ -298,7 +329,7 @@ export class Config extends BaseConfig {
       ],
     });
 
-    args.contextBuilder.patchLocal("dotfiles-ff", {
+    args.contextBuilder.patchLocal("dotfiles", {
       ui: "ff",
       uiParams: {
         ff: {
@@ -315,7 +346,7 @@ export class Config extends BaseConfig {
       ],
     });
 
-    args.contextBuilder.patchLocal("help-ff", {
+    args.contextBuilder.patchLocal("help", {
       ui: "ff",
       uiParams: {
         ff: {
@@ -329,7 +360,7 @@ export class Config extends BaseConfig {
       ],
     });
 
-    args.contextBuilder.patchLocal("search_line-ff", {
+    args.contextBuilder.patchLocal("search_line", {
       ui: "ff",
       uiParams: {
         ff: { startFilter: true },
@@ -344,14 +375,14 @@ export class Config extends BaseConfig {
       ],
     });
 
-    args.contextBuilder.patchLocal("buffer-ff", {
+    args.contextBuilder.patchLocal("buffer", {
       ui: "ff",
       sources: [
         { name: "buffer" },
       ],
     });
 
-    args.contextBuilder.patchLocal("plugin-list-ff", {
+    args.contextBuilder.patchLocal("plugin-list", {
       ui: "ff",
       uiParams: {
         ff: {
@@ -368,7 +399,7 @@ export class Config extends BaseConfig {
       ],
     });
 
-    args.contextBuilder.patchLocal("home-ff", {
+    args.contextBuilder.patchLocal("home", {
       ui: "ff",
       uiParams: {
         ff: {
@@ -385,7 +416,7 @@ export class Config extends BaseConfig {
       ],
     });
 
-    args.contextBuilder.patchLocal("register-ff", {
+    args.contextBuilder.patchLocal("register", {
       ui: "ff",
       sources: [
         {
@@ -394,7 +425,7 @@ export class Config extends BaseConfig {
       ],
     });
 
-    args.contextBuilder.patchLocal("mrr-ff", {
+    args.contextBuilder.patchLocal("mrr", {
       ui: "ff",
       sources: [
         {
@@ -409,7 +440,7 @@ export class Config extends BaseConfig {
       ],
     });
 
-    args.contextBuilder.patchLocal("mru-ff", {
+    args.contextBuilder.patchLocal("mru", {
       ui: "ff",
       sources: [
         {
@@ -424,7 +455,7 @@ export class Config extends BaseConfig {
       ],
     });
 
-    args.contextBuilder.patchLocal("highlight-ff", {
+    args.contextBuilder.patchLocal("highlight", {
       ui: "ff",
       uiParams: {
         ff: {
@@ -436,7 +467,7 @@ export class Config extends BaseConfig {
       ],
     });
 
-    args.contextBuilder.patchLocal("dein_update-ff", {
+    args.contextBuilder.patchLocal("dein_update", {
       ui: "ff",
       sources: [
         {
@@ -445,7 +476,7 @@ export class Config extends BaseConfig {
       ],
     });
 
-    args.contextBuilder.patchLocal("ripgrep-ff", {
+    args.contextBuilder.patchLocal("ripgrep", {
       ui: "ff",
       uiParams: {
         ff: {
@@ -473,14 +504,14 @@ export class Config extends BaseConfig {
       ],
     });
 
-    args.contextBuilder.patchLocal("path_history-ff", {
+    args.contextBuilder.patchLocal("path_history", {
       ui: "ff",
       sources: [
         { name: "path_history" },
       ],
     });
 
-    args.contextBuilder.patchLocal("git_status-ff", {
+    args.contextBuilder.patchLocal("git:status", {
       ui: "ff",
       uiParams: {
         ff: {
@@ -503,7 +534,7 @@ export class Config extends BaseConfig {
       ],
     });
 
-    args.contextBuilder.patchLocal("git_diff-ff", {
+    args.contextBuilder.patchLocal("git:diff", {
       ui: "ff",
       uiParams: {
         ff: {
@@ -520,7 +551,7 @@ export class Config extends BaseConfig {
       ],
     });
 
-    args.contextBuilder.patchLocal("git_diff_tree-ff", {
+    args.contextBuilder.patchLocal("git:diff_tree", {
       ui: "ff",
       uiParams: {
         ff: {
@@ -543,7 +574,7 @@ export class Config extends BaseConfig {
       ],
     });
 
-    args.contextBuilder.patchLocal("git_log-ff", {
+    args.contextBuilder.patchLocal("git:log", {
       ui: "ff",
       uiParams: {
         ff: {
@@ -571,7 +602,7 @@ export class Config extends BaseConfig {
       ],
     });
 
-    args.contextBuilder.patchLocal("git_branch-ff", {
+    args.contextBuilder.patchLocal("git:branch", {
       ui: "ff",
       uiParams: {
         ff: {
@@ -585,7 +616,7 @@ export class Config extends BaseConfig {
       ],
     });
 
-    args.contextBuilder.patchLocal("ghq-ff", {
+    args.contextBuilder.patchLocal("ghq", {
       ui: "ff",
       uiParams: {
         ff: {
@@ -595,8 +626,181 @@ export class Config extends BaseConfig {
       sources: [
         {
           name: "ghq",
-        }
-      ]
+        },
+      ],
+    });
+
+    const lsp_definition_methods: string[] = [
+      "declaration",
+      "definition",
+      "typeDefinition",
+      "implementation",
+    ];
+    lsp_definition_methods.forEach(async (method: string) => {
+      args.contextBuilder.patchLocal(`lsp:${method}`, {
+        ui: "ff",
+        sync: true,
+        uiParams: {
+          ff: {
+            ...{
+              startAutoAction: true,
+              autoAction: {
+                delay: 0,
+                name: "preview",
+              },
+              autoResize: false,
+              filterFloatingPosition: "bottom",
+              immediateAction: "open",
+              ignoreEmpty: true,
+            },
+            ...await uiSize(args, 0.5, "vertical"),
+          },
+        },
+        sources: [
+          {
+            name: "lsp_definition",
+            params: {
+              method: `textDocument/${method}`,
+            },
+          },
+        ],
+      });
+    });
+
+    args.contextBuilder.patchLocal("lsp:references", {
+      ui: "ff",
+      uiParams: {
+        ff: {
+          ...{
+            startAutoAction: true,
+            autoAction: {
+              delay: 0,
+              name: "preview",
+            },
+            autoResize: false,
+            filterFloatingPosition: "bottom",
+            ignoreEmpty: true,
+          },
+          ...await uiSize(args, 0.5, "vertical"),
+        },
+      },
+      sources: [
+        {
+          name: "lsp_references",
+        },
+      ],
+    });
+
+    const lsp_symbol_scope = [
+      "document",
+      "workspace",
+    ];
+    lsp_symbol_scope.forEach(async (scope) => {
+      args.contextBuilder.patchLocal(`lsp:${scope}Symbol`, {
+        ui: "ff",
+        uiParams: {
+          ff: {
+            ...{
+              startAutoAction: true,
+              autoAction: {
+                delay: 0,
+                name: "preview",
+              },
+              autoResize: false,
+              filterFloatingPosition: "bottom",
+              ignoreEmpty: true,
+            },
+            ...await uiSize(args, 0.5, "vertical"),
+          },
+        },
+        sources: [
+          {
+            name: `lsp_${scope}Symbol`,
+          },
+        ],
+      });
+    });
+
+    const lsp_hierarchy_methods = [
+      "callHierarchy/incomingCalls",
+      "callHierarchy/outgoingCalls",
+      "typeHierarchy/supertypes",
+      "typeHierarchy/ssupertypesubtypes",
+    ];
+    lsp_hierarchy_methods.forEach(async (method) => {
+      args.contextBuilder.patchLocal(`lsp:${method.split("/")[1]}`, {
+        ui: "ff",
+        uiParams: {
+          ff: {
+            ...{
+              startAutoAction: true,
+              autoAction: {
+                delay: 0,
+                name: "preview",
+              },
+              autoResize: false,
+              filterFloatingPosition: "bottom",
+              ignoreEmpty: true,
+              displayTree: true,
+            },
+            ...await uiSize(args, 0.5, "vertical"),
+          },
+        },
+        sources: [
+          {
+            name: `lsp_${method.split("/")[0]}`,
+            params: { method: method },
+          },
+        ],
+      });
+    });
+
+    args.contextBuilder.patchLocal("lsp:codeAction", {
+      ui: "ff",
+      uiParams: {
+        ff: {
+          ...{
+            startAutoAction: true,
+            autoAction: {
+              delay: 0,
+              name: "preview",
+            },
+            autoResize: false,
+            filterFloatingPosition: "bottom",
+            ignoreEmpty: true,
+          },
+          ...await uiSize(args, 0.5, "vertical"),
+        },
+      },
+      sources: [
+        {
+          name: "lsp_codeAction",
+        },
+      ],
+    });
+
+    args.contextBuilder.patchLocal("lsp:diagnostics", {
+      ui: "ff",
+      uiParams: {
+        ff: {
+          ...{
+            startAutoAction: true,
+            autoAction: {
+              delay: 0,
+              name: "preview",
+            },
+            autoResize: false,
+            filterFloatingPosition: "bottom",
+            ignoreEmpty: true,
+          },
+          ...await uiSize(args, 0.5, "vertical"),
+        },
+      },
+      sources: [
+        {
+          name: "lsp_diagnostic",
+        },
+      ],
     });
 
     // UI: filer

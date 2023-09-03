@@ -54,6 +54,7 @@ require("user.utils").keymaps_set({
 
 -- lua_source {{{
 vim.fn["gina#custom#command#option"]("blame", "--opener", "tabedit")
+vim.g.gin_proxy_apply_without_confirm = 1
 -- }}}
 
 -- lua_gin-log {{{

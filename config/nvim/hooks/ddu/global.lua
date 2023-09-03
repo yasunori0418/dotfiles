@@ -7,12 +7,12 @@ utils.keymaps_set({
   { mode = "n", lhs = [[ f]], rhs = [[<Plug>(ddu-filer)]], opts = opt },
 
   -- ddu-ui-ff starter
-  { -- current-ff
+  { -- current
     mode = "n",
     lhs = [[<Plug>(ddu-ff)a]],
     rhs = function()
       vim.fn["ddu#start"]({
-        name = "current-ff",
+        name = "current",
         sourceOptions = {
           file_rec = {
             path = utils.search_repo_root(),
@@ -22,133 +22,125 @@ utils.keymaps_set({
     end,
     opts = opt,
   },
-  { -- dorfiles-ff
+  { -- dorfiles
     mode = "n",
     lhs = [[<Plug>(ddu-ff)d]],
     rhs = function()
-      vim.fn["ddu#start"]({ name = "dotfiles-ff" })
+      vim.fn["ddu#start"]({ name = "dotfiles" })
     end,
     opts = opt,
   },
-  { -- help-ff
+  { -- help
     mode = "n",
     lhs = [[<Plug>(ddu-ff)h]],
     rhs = function()
-      vim.fn["ddu#start"]({ name = "help-ff" })
+      vim.fn["ddu#start"]({ name = "help" })
     end,
     opts = opt,
   },
-  { -- buffer-ff
+  { -- buffer
     mode = "n",
     lhs = [[<Plug>(ddu-ff)b]],
     rhs = function()
-      vim.fn["ddu#start"]({ name = "buffer-ff" })
+      vim.fn["ddu#start"]({ name = "buffer" })
     end,
     opts = opt,
   },
-  { -- plugin-list-ff
+  { -- plugin-list
     mode = "n",
     lhs = [[<Plug>(ddu-ff)P]],
     rhs = function()
-      vim.fn["ddu#start"]({ name = "plugin-list-ff" })
+      vim.fn["ddu#start"]({ name = "plugin-list" })
     end,
     opts = opt,
   },
-  { -- project-list-ff
-    mode = "n",
-    lhs = [[<Plug>(ddu-ff)p]],
-    rhs = function()
-      vim.fn["ddu#start"]({ name = "project-list-ff" })
-    end,
-    opts = opt,
-  },
-  { -- home-ff
+  { -- home
     mode = "n",
     lhs = [[<Plug>(ddu-ff)~]],
     rhs = function()
-      vim.fn["ddu#start"]({ name = "home-ff" })
+      vim.fn["ddu#start"]({ name = "home" })
     end,
     opts = opt,
   },
-  { -- register-ff
+  { -- register
     mode = "n",
     lhs = [[<Plug>(ddu-ff)r]],
     rhs = function()
-      vim.fn["ddu#start"]({ name = "register-ff" })
+      vim.fn["ddu#start"]({ name = "register" })
     end,
     opts = opt,
   },
-  { -- ripgrep-ff live grep
+  { -- ripgrep live grep
     mode = "n",
     lhs = [[<Plug>(ddu-ff)s]],
     rhs = function()
-      vim.fn["ddu#start"]({ name = "ripgrep-ff" })
+      vim.fn["ddu#start"]({ name = "ripgrep" })
     end,
     opts = opt,
   },
-  { -- mrr-ff most recent repositories
+  { -- mrr most recent repositories
     mode = "n",
     lhs = [[<Plug>(ddu-ff)m]],
     rhs = function()
-      vim.fn["ddu#start"]({ name = "mrr-ff" })
+      vim.fn["ddu#start"]({ name = "mrr" })
     end,
     opts = opt,
   },
-  { -- mru-ff most recent used files
+  { -- mru most recent used files
     mode = "n",
     lhs = [[<Plug>(ddu-ff)n]],
     rhs = function()
-      vim.fn["ddu#start"]({ name = "mru-ff" })
+      vim.fn["ddu#start"]({ name = "mru" })
     end,
     opts = opt,
   },
-  { -- search_line-ff
+  { -- search_line
     mode = "n",
     lhs = [[<Plug>(ddu-ff)/]],
     rhs = function()
-      vim.fn["ddu#start"]({ name = "search_line-ff" })
+      vim.fn["ddu#start"]({ name = "search_line" })
     end,
     opts = opt,
   },
-  { -- hightlight-ff
+  { -- hightlight
     mode = "n",
     lhs = [[<Plug>(ddu-ff)C]],
     rhs = function()
-      vim.fn["ddu#start"]({ name = "highlight-ff" })
+      vim.fn["ddu#start"]({ name = "highlight" })
     end,
     opts = opt,
   },
 
   -- git control by ddu
-  { -- git_status-ff
+  { -- git:status
     mode = "n",
     lhs = [[<Plug>(git)s]],
     rhs = function()
-      vim.fn["ddu#start"]({ name = "git_status-ff" })
+      vim.fn["ddu#start"]({ name = "git:status" })
     end,
     opts = opt,
   },
-  { -- git_log-ff
+  { -- git:log
     mode = "n",
     lhs = [[<Plug>(git)l]],
     rhs = function()
-      vim.fn["ddu#start"]({ name = "git_log-ff" })
+      vim.fn["ddu#start"]({ name = "git:log" })
     end,
     opts = opt,
   },
-  { -- git_branch-ff
+  { -- git_branch
     mode = "n",
     lhs = [[<Plug>(git)b]],
     rhs = function()
-      vim.fn["ddu#start"]({ name = "git_branch-ff" })
+      vim.fn["ddu#start"]({ name = "git:branch" })
     end,
     opts = opt,
   },
-  {
+  { -- ghq
     mode = "n",
     lhs = [[<Plug>(git)q]],
     rhs = function()
-      vim.fn["ddu#start"]({ name = "ghq-ff" })
+      vim.fn["ddu#start"]({ name = "ghq" })
     end,
     opts = opt,
   },
@@ -213,7 +205,7 @@ vim.fn["ddu#custom#load_config"](
 )
 
 vim.api.nvim_create_user_command("DeinUpdate", function()
-  vim.fn["ddu#start"]({name = "dein_update-ff"})
+  vim.fn["ddu#start"]({name = "dein_update"})
 end, {})
 
 -- }}}

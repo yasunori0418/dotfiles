@@ -11,7 +11,7 @@ M.vimrc_augroup = vim.api.nvim_create_augroup("vimrc", { clear = false })
 ---@param pattern table|string
 ---@param callback function|string
 ---@param group? string|integer
-M.autocmd_set = function(events, pattern, callback, group)
+function M.autocmd_set(events, pattern, callback, group)
   group = group or M.vimrc_augroup
   autocmd(events, {
     group = group,
@@ -22,7 +22,7 @@ end
 
 ---複数のautocmdを定義する
 ---@param autocmds { events: string|table, pattern: table|string, group: integer, callback: function|string }
-M.autocmds_set = function(autocmds)
+function M.autocmds_set(autocmds)
   for _, item in pairs(autocmds) do
     autocmd(item.events, {
       group = item.group,
@@ -34,7 +34,7 @@ end
 
 ---複数のキーマップを定義する。
 ---@param keymaps { mode: table|string, lhs: string, rhs: string|function, opts: table|nil }
-M.keymaps_set = function(keymaps)
+function M.keymaps_set(keymaps)
   for _, keymap in pairs(keymaps) do
     vim.keymap.set(keymap.mode, keymap.lhs, keymap.rhs, keymap.opts)
   end
@@ -43,7 +43,7 @@ end
 ---1行で書かれているAPI Tokenのファイルを読み込む
 ---@params path string -- Tokenファイルがあるパスを指定する。
 ---@return table { result: bool, token: string }
-M.load_token = function(path)
+function M.load_token(path)
   local token = io.open(path, "r"):read("*l")
   if token ~= nil then
     return {
@@ -62,8 +62,8 @@ end
 ---gitconfigにて`git root`の定義が必須
 ---Gitリポジトリのルートパスまたは、
 ---Gitリポジトリでなければ、現在バッファーのディレクトリを返す
----@return string
-M.search_repo_root = function()
+---@return string|string[]
+function M.search_repo_root()
   local result = io.popen("git root 2> /dev/null", "r"):read("*l")
   if result then
     return result
@@ -72,7 +72,7 @@ M.search_repo_root = function()
 end
 
 ---signcolumnの表示をtoggleする。
-M.toggle_view = function()
+function M.toggle_view()
   local gitsigns = require("gitsigns")
   if vim.opt.number:get() then
     vim.opt.number = false
@@ -94,7 +94,7 @@ end
 ---@param base_dir string
 ---@param config_dir_name string
 ---@return Iter
-M.gather_files = function(base_dir, config_dir_name)
+function M.gather_files(base_dir, config_dir_name)
   local config_dir = vim.fs.joinpath(base_dir, config_dir_name)
   return vim.iter(vim.fs.dir(config_dir)):map(function(file_name)
     return vim.fs.joinpath(config_dir, file_name)
@@ -105,7 +105,7 @@ end
 ---@param gather_files Iter
 ---@param file_name string
 ---@return Iter
-M.remove_file_from_gather_files = function(gather_files, file_name)
+function M.remove_file_from_gather_files(gather_files, file_name)
   gather_files:filter(function(file_path)
     return vim.fn.fnamemodify(file_path, ":t") ~= file_name
   end)

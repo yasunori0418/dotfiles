@@ -3,5 +3,3 @@ github.com/neovim/neovim
 github.com/yasunori0418/Qiita_document
 github.com/yasunori0418/did
 github.com/yasunori0418/dotfiles
-github.com/yasunori0418/secret_config
-github.com/yasunori0418/tech_doc

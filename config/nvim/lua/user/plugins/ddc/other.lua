@@ -5,7 +5,7 @@ local ddc_custom = vimx.fn.ddc.custom
 local patch_global = ddc_custom.patch_global
 local get_global = ddc_custom.get_global
 
-M.change_filter = function(bang, filter_name)
+function M.change_filter(bang, filter_name)
   if filter_name == 'normal' then
     patch_global('sourceOptions', {
       _ = {

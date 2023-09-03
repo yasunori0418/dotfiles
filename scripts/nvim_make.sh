@@ -23,6 +23,8 @@ else
 fi
 make install
 
+rm -rf ${install_prefix}/lib
+
 if [[ $(command -v nvim) ]]; then
   nvim -V1 -v
   exit 0
