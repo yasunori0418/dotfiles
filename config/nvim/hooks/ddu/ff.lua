@@ -1,10 +1,29 @@
 -- lua_ddu-ff {{{
+local ddu_helper = require('user.plugins.ddu')
 local do_action = vim.fn["ddu#ui#do_action"]
 local line = vim.fn.line
 
 local ff_opt = { silent = true, buffer = true, noremap = true }
 local ff_opt_expr = { silent = true, buffer = true, expr = true, noremap = true }
 require("user.utils").keymaps_set({
+  -- dummy source jump of cursor
+  { -- j
+    mode = "n",
+    lhs = [[j]],
+    rhs = function()
+      ddu_helper.move_ignore_dummy(1)
+    end,
+    opts = ff_opt,
+  },
+  { -- k
+    mode = "n",
+    lhs = [[k]],
+    rhs = function()
+      ddu_helper.move_ignore_dummy(-1)
+    end,
+    opts = ff_opt,
+  },
+
   -- Open
   { -- defaultAction
     mode = "n",
