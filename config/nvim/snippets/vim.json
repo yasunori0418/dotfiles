@@ -1,17 +1,70 @@
 {
+  "augroup": {
+    "body": [
+      "augroup ${1:augroup_name}",
+      "\tautocmd!",
+      "\tautocmd ${0:event}",
+      "augroup END"
+    ],
+    "description": "augroup",
+    "prefix": "augroup",
+    "scope": "vim"
+  },
+  "autocmd": {
+    "body": [
+      "\tautocmd ${0:event}"
+    ],
+    "description": "autocmd",
+    "prefix": "autocmd",
+    "scope": "vim"
+  },
+  "command": {
+    "body": [
+      "command! ${1:cmd_name} call ${0:func_name}"
+    ],
+    "description": "Make command",
+    "prefix": "cmd",
+    "scope": "vim"
+  },
+  "echomsg": {
+    "body": [
+      "echomsg '${0:target}'"
+    ],
+    "description": "leave in log",
+    "prefix": "log",
+    "scope": "vim"
+  },
+  "for": {
+    "body": [
+      "for ${2:var} in ${1:list}",
+      "\t${0:target}",
+      "endfor"
+    ],
+    "description": "for in endfor",
+    "prefix": "for",
+    "scope": "vim"
+  },
+  "function": {
+    "body": [
+      "function! ${1:func_name}(${2:arg}) abort",
+      "\t${0:target}",
+      "endfunction"
+    ],
+    "description": "function endfunctioin",
+    "prefix": "func",
+    "scope": "vim"
+  },
   "if": {
-    "scope": "vim",
-    "prefix": "if",
     "body": [
       "if ${1:condition}",
       "\t${0:target}",
       "endif"
     ],
-    "description": "if ~ endif"
+    "description": "if ~ endif",
+    "prefix": "if",
+    "scope": "vim"
   },
   "if else": {
-    "scope": "vim",
-    "prefix": "if else",
     "body": [
       "if ${1:condition}",
       "\t${2:target}",
@@ -19,11 +72,11 @@
       "\t${0:target}",
       "endif"
     ],
-    "description": "if ~ else ~ endif"
+    "description": "if ~ else ~ endif",
+    "prefix": "if else",
+    "scope": "vim"
   },
   "if elseif": {
-    "scope": "vim",
-    "prefix": "if elseif",
     "body": [
       "if ${1:condition}",
       "\t${2:target}",
@@ -33,41 +86,21 @@
       "\t${0:target}",
       "endif"
     ],
-    "description": "if ~ elseif ~ else ~ endif"
+    "description": "if ~ elseif ~ else ~ endif",
+    "prefix": "if elseif",
+    "scope": "vim"
   },
-  "for": {
-    "scope": "vim",
-    "prefix": "for",
+  "lua": {
     "body": [
-      "for ${2:var} in ${1:list}",
-      "\t${0:target}",
-      "endfor"
+      "lua <<EOF",
+      "${0:lua_lang}",
+      "EOF"
     ],
-    "description": "for in endfor"
-  },
-  "while": {
-    "scope": "vim",
-    "prefix": "while",
-    "body": [
-      "while ${1:condition}",
-      "\t${0:target}",
-      "endwhile"
-    ],
-    "description": "while ~ endwhile"
-  },
-  "function": {
-    "scope": "vim",
-    "prefix": "func",
-    "body": [
-      "function! ${1:func_name}(${2:arg}) abort",
-      "\t${0:target}",
-      "endfunction"
-    ],
-    "description": "function endfunctioin"
+    "description": "lua inline code",
+    "prefix": "lua",
+    "scope": "vim"
   },
   "try": {
-    "scope": "vim",
-    "prefix": "try",
     "body": [
       "try",
       "\t${1:target}",
@@ -75,11 +108,11 @@
       "\t${0:handling}",
       "endtry"
     ],
-    "description": "try catch endtry"
+    "description": "try catch endtry",
+    "prefix": "try",
+    "scope": "vim"
   },
   "tryfinally": {
-    "scope": "vim",
-    "prefix": "tryf",
     "body": [
       "try",
       "\t${1:target}",
@@ -87,51 +120,18 @@
       "\t${0:handling}",
       "endtry"
     ],
-    "description": "try finally endtry"
+    "description": "try finally endtry",
+    "prefix": "tryf",
+    "scope": "vim"
   },
-  "echomsg": {
-    "scope": "vim",
-    "prefix": "log",
+  "while": {
     "body": [
-      "echomsg '${0:target}'"
+      "while ${1:condition}",
+      "\t${0:target}",
+      "endwhile"
     ],
-    "description": "leave in log"
-  },
-  "command": {
-    "scope": "vim",
-    "prefix": "cmd",
-    "body": [
-      "command! ${1:cmd_name} call ${0:func_name}"
-    ],
-    "description": "Make command"
-  },
-  "augroup": {
-    "scope": "vim",
-    "prefix": "augroup",
-    "body": [
-      "augroup ${1:augroup_name}",
-      "\tautocmd!",
-      "\tautocmd ${0:event}",
-      "augroup END"
-    ],
-    "description": "augroup"
-  },
-  "autocmd": {
-    "scope": "vim",
-    "prefix": "autocmd",
-    "body": [
-      "\tautocmd ${0:event}"
-    ],
-    "description": "autocmd"
-  },
-  "lua": {
-    "scope": "vim",
-    "prefix": "lua",
-    "body": [
-      "lua <<EOF",
-      "${0:lua_lang}",
-      "EOF"
-    ],
-    "description": "lua inline code"
+    "description": "while ~ endwhile",
+    "prefix": "while",
+    "scope": "vim"
   }
 }
