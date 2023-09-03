@@ -145,6 +145,9 @@ export class Config extends BaseConfig {
             "converter_lsp_symbol",
           ],
         },
+        lsp_codeAction: {
+          defaultAction: "apply",
+        }
       },
       sourceParams: {
         dein_update: {
