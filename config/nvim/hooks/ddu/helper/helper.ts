@@ -38,7 +38,7 @@ export async function uiSize(
 
   const splitWindowLength = (length: number): number => {
     return Math.floor(length * splitRaitio);
-  }
+  };
 
   if (previewSplit === "horizontal") {
     winHeight = splitWindowLength(lines);
