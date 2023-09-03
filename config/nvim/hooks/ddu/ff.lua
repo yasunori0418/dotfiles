@@ -171,7 +171,7 @@ require("user.utils").keymaps_set({
     end,
     opts = ff_opt,
   },
-  {
+  { -- debug print of current item.
     mode = "n",
     lhs = [[<F2>]],
     rhs = function()
