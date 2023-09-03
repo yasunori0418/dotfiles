@@ -693,6 +693,75 @@ export class Config extends BaseConfig {
       ],
     });
 
+    args.contextBuilder.patchLocal("lsp:definition_all", {
+      ui: "ff",
+      uiParams: {
+        ff: {
+          ...{
+            startAutoAction: true,
+            autoAction: {
+              delay: 0,
+              name: "preview",
+            },
+            autoResize: false,
+            filterFloatingPosition: "bottom",
+            ignoreEmpty: true,
+          },
+          ...await uiSize(args, 0.5, "vertical"),
+        },
+      },
+      sources: [
+        separator(">>Definition<<"),
+        {
+          name: "lsp_definition",
+          params: {
+            method: "textDocument/definition",
+          },
+        },
+        separator(">>Declaration<<"),
+        {
+          name: "lsp_definition",
+          params: {
+            method: "textDocument/declaration",
+          },
+        },
+        separator(">>Type Definition<<"),
+        {
+          name: "lsp_definition",
+          params: {
+            method: "textDocument/typeDefinition",
+          },
+        },
+        separator(">>Implementation<<"),
+        {
+          name: "lsp_definition",
+          params: {
+            method: "textDocument/implementation",
+          },
+        },
+      ],
+    });
+
+    args.contextBuilder.patchLocal("lsp:finder", {
+      ui: "ff",
+      sources: [
+        separator(">>Definition<<"),
+        {
+          name: "lsp_definition",
+          params: {
+            method: "textDocument/definition",
+          },
+        },
+        separator(">>References<<"),
+        {
+          name: "lsp_references",
+          params: {
+            includeDeclaration: false,
+          },
+        },
+      ]
+    })
+
     const lsp_symbol_scope = [
       "document",
       "workspace",

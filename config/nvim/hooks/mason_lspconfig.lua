@@ -25,6 +25,26 @@ user_lsp.on_attach(function(_, buffer)
     { mode = { "n" },      lhs = [[<Plug>(lsp)a]], rhs = lsp.buf.code_action, opts = opt },
     { mode = { "n" },      lhs = [[<Plug>(lsp)q]], rhs = user_lsp.format,     opts = opt },
     { mode = { "n" },      lhs = [[<Plug>(lsp)r]], rhs = lsp.buf.rename,      opts = opt },
+    {
+      mode = { "n" },
+      lhs = [[<Plug>(lsp)D]],
+      rhs = function()
+        vimx.fn.ddu.start({
+          name = "lsp:definition_all",
+        })
+      end,
+      opts = opt,
+    },
+    {
+      mode = { "n" },
+      lhs = [[<Plug>(lsp)f]],
+      rhs = function()
+        vimx.fn.ddu.start({
+          name = "lsp:finder",
+        })
+      end,
+      opts = opt,
+    },
     { -- lsp:definition
       mode = { "n" },
       lhs = [[gd]],
