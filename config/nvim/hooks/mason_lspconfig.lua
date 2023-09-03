@@ -25,7 +25,7 @@ user_lsp.on_attach(function(_, buffer)
     { mode = { "n" }, lhs = [[<Plug>(lsp)a]], rhs = lsp.buf.code_action, opts = opt },
     { mode = { "n" }, lhs = [[<Plug>(lsp)q]], rhs = user_lsp.format,     opts = opt },
     { mode = { "n" }, lhs = [[<Plug>(lsp)r]], rhs = lsp.buf.rename,      opts = opt },
-    {
+    { -- lsp:definition
       mode = { "n" },
       lhs = [[gd]],
       rhs = function()
@@ -35,7 +35,7 @@ user_lsp.on_attach(function(_, buffer)
       end,
       opts = opt,
     },
-    {
+    { -- lsp:declaration
       mode = { "n" },
       lhs = [[gD]],
       rhs = function()
@@ -45,7 +45,7 @@ user_lsp.on_attach(function(_, buffer)
       end,
       opts = opt,
     },
-    {
+    { -- lsp:typeDefinition
       mode = { "n" },
       lhs = [[gt]],
       rhs = function()
@@ -55,7 +55,7 @@ user_lsp.on_attach(function(_, buffer)
       end,
       opts = opt,
     },
-    {
+    { -- lsp:implementation
       mode = { "n" },
       lhs = [[gi]],
       rhs = function()
@@ -65,7 +65,7 @@ user_lsp.on_attach(function(_, buffer)
       end,
       opts = opt,
     },
-    {
+    { -- lsp:references
       mode = { "n" },
       lhs = [[gr]],
       rhs = function()
@@ -75,7 +75,7 @@ user_lsp.on_attach(function(_, buffer)
       end,
       opts = opt,
     },
-    {
+    { -- lsp:documentSymbol
       mode = "n",
       lhs = [[<Plug>(lsp)s]],
       rhs = function()
@@ -85,7 +85,7 @@ user_lsp.on_attach(function(_, buffer)
       end,
       opts = opt,
     },
-    {
+    { -- lsp:workspaceSymbol
       mode = "n",
       lhs = [[<Plug>(lsp)S]],
       rhs = function()
