@@ -23,6 +23,3 @@ end, { bang = true })
 command("DDCEchoFilter", function()
   ddc_change_filter(1, "")
 end, {})
-  end,
-  {}
-)
