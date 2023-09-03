@@ -148,6 +148,9 @@ export class Config extends BaseConfig {
         lsp_codeAction: {
           defaultAction: "apply",
         },
+        lsp_diagnostic: {
+          defaultAction: "open",
+        },
       },
       sourceParams: {
         dein_update: {
@@ -764,6 +767,7 @@ export class Config extends BaseConfig {
             },
             autoResize: false,
             filterFloatingPosition: "bottom",
+            ignoreEmpty: true,
           },
           ...await uiSize(args, 0.5, "vertical"),
         },
@@ -771,6 +775,30 @@ export class Config extends BaseConfig {
       sources: [
         {
           name: "lsp_codeAction",
+        },
+      ],
+    });
+
+    args.contextBuilder.patchLocal("lsp:diagnostics", {
+      ui: "ff",
+      uiParams: {
+        ff: {
+          ...{
+            startAutoAction: true,
+            autoAction: {
+              delay: 0,
+              name: "preview",
+            },
+            autoResize: false,
+            filterFloatingPosition: "bottom",
+            ignoreEmpty: true,
+          },
+          ...await uiSize(args, 0.5, "vertical"),
+        },
+      },
+      sources: [
+        {
+          name: "lsp_diagnostic",
         },
       ],
     });

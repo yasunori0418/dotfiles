@@ -141,6 +141,16 @@ user_lsp.on_attach(function(_, buffer)
       rhs = [[<Cmd>call ddu#start(#{name: "lsp:codeAction"})<CR>]],
       opts = opt,
     },
+    {
+      mode = "n",
+      lhs = [[<Plug>(lsp)d]],
+      rhs = function()
+        vimx.fn.ddu.start({
+          name = "lsp:diagnostics",
+        })
+      end,
+      opts = opt,
+    },
     { mode = { "n" }, lhs = [[ge]],   rhs = diagnostic.open_float, opts = opt },
     { mode = { "n" }, lhs = [=[[d]=], rhs = diagnostic.goto_prev,  opts = opt },
     { mode = { "n" }, lhs = [=[]d]=], rhs = diagnostic.goto_next,  opts = opt },
