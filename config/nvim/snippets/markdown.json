@@ -1,7 +1,7 @@
 {
   "textlint off on": {
     "scope": "markdown",
-    "prefix": ["textlint-off-on", "tloo"],
+    "prefix": ["textlint-off-on", "tl"],
     "body": [
       "<!-- textlint-disable -->",
       "$0",

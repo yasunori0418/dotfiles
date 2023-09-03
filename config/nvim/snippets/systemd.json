@@ -1,7 +1,5 @@
 {
   "service": {
-    "scope": "systemd",
-    "prefix": "service",
     "body": [
       "[Unit]",
       "Description=${1}",
@@ -13,6 +11,8 @@
       "[Install]",
       "WantedBy=default.target"
     ],
-    "description": "Systemd service template."
+    "description": "Systemd service template.",
+    "prefix": "service",
+    "scope": "systemd"
   }
 }
