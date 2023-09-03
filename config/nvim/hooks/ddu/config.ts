@@ -712,6 +712,40 @@ export class Config extends BaseConfig {
       });
     });
 
+    const lsp_hierarchy_methods = [
+      "callHierarchy/incomingCalls",
+      "callHierarchy/outgoingCalls",
+      "typeHierarchy/supertypes",
+      "typeHierarchy/ssupertypesubtypes",
+    ];
+    lsp_hierarchy_methods.forEach(async (method) => {
+      args.contextBuilder.patchLocal(`lsp:${method.split("/")[1]}`, {
+        ui: "ff",
+        uiParams: {
+          ff: {
+            ...{
+              startAutoAction: true,
+              autoAction: {
+                delay: 0,
+                name: "preview",
+              },
+              autoResize: false,
+              filterFloatingPosition: "bottom",
+              ignoreEmpty: true,
+              displayTree: true,
+            },
+            ...await uiSize(args, 0.5, "vertical"),
+          },
+        },
+        sources: [
+          {
+            name: `lsp_${method.split("/")[0]}`,
+            params: { method: method },
+          },
+        ],
+      });
+    });
+
     // UI: filer
 
     args.contextBuilder.patchLocal("current-filer", {

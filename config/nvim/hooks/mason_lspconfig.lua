@@ -95,6 +95,46 @@ user_lsp.on_attach(function(_, buffer)
       end,
       opts = opt,
     },
+    { -- lsp:incomingCalls
+      mode = "n",
+      lhs = [[<Plug>(lsp)c]],
+      rhs = function()
+        vimx.fn.ddu.start({
+          name = "lsp:incomingCalls",
+        })
+      end,
+      opts = opt,
+    },
+    { -- lsp:outgoingCalls
+      mode = "n",
+      lhs = [[<Plug>(lsp)C]],
+      rhs = function()
+        vimx.fn.ddu.start({
+          name = "lsp:outgoingCalls",
+        })
+      end,
+      opts = opt,
+    },
+    { -- lsp:supertypes
+      mode = "n",
+      lhs = [[<Plug>(lsp)t]],
+      rhs = function()
+        vimx.fn.ddu.start({
+          name = "lsp:supertypes",
+        })
+      end,
+      opts = opt,
+    },
+    { -- lsp:subtypes
+      mode = "n",
+      lhs = [[<Plug>(lsp)T]],
+      rhs = function()
+        vimx.fn.ddu.start({
+          name = "lsp:subtypes",
+        })
+      end,
+      opts = opt,
+    },
     { mode = { "n" }, lhs = [[ge]],   rhs = diagnostic.open_float, opts = opt },
     { mode = { "n" }, lhs = [=[[d]=], rhs = diagnostic.goto_prev,  opts = opt },
     { mode = { "n" }, lhs = [=[]d]=], rhs = diagnostic.goto_next,  opts = opt },
