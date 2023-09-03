@@ -1,36 +1,39 @@
 {
+  "break": {
+    "body": [
+      "<br>$0"
+    ],
+    "description": "Make br tag.",
+    "prefix": "br",
+    "scope": "markdown"
+  },
+  "check box": {
+    "body": [
+      "* [${1:checked?|x,' '}] $0"
+    ],
+    "description": "Make checkbox.",
+    "prefix": "check",
+    "scope": "markdown"
+  },
+  "comment": {
+    "body": [
+      "<!-- $0 -->"
+    ],
+    "description": "Comment",
+    "prefix": "comment",
+    "scope": "markdown"
+  },
   "textlint off on": {
-    "scope": "markdown",
-    "prefix": ["textlint-off-on", "tl"],
     "body": [
       "<!-- textlint-disable -->",
       "$0",
       "<!-- textlint-enable -->"
     ],
-    "description": "Stop textlint rule for a time."
-  },
-  "comment": {
-    "scope": "markdown",
-    "prefix": "comment",
-    "body": [
-      "<!-- $0 -->"
+    "description": "Stop textlint rule for a time.",
+    "prefix": [
+      "textlint-off-on",
+      "tl"
     ],
-    "description": "Comment"
-  },
-  "break": {
-    "scope": "markdown",
-    "prefix": "br",
-    "body": [
-      "<br>$0"
-    ],
-    "description": "Make br tag."
-  },
-  "check box": {
-    "scope": "markdown",
-    "prefix": "check",
-    "body": [
-      "* [${1:checked?|x,' '}] $0"
-    ],
-    "description": "Make checkbox."
+    "scope": "markdown"
   }
 }

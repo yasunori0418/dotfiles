@@ -1,11 +1,11 @@
 {
   "plugins": {
-    "prefix": "plugins",
     "body": [
       "[[plugins]]",
       "repo = '$CLIPBOARD'",
       "$0"
     ],
-    "description": "dark plugin manager of vim."
+    "description": "dark plugin manager of vim.",
+    "prefix": "plugins"
   }
 }

@@ -63,3 +63,13 @@ on_cmd = ['PreviewMarkdown', 'PreviewMarkdownToggle']
 lua_source = '''
 vim.g.bufpreview_server_port = '11223'
 '''
+
+[[plugins]]
+repo = 'kuuote/jsonyaml.vim'
+depends = ['denops.vim']
+lazy = false
+
+[[plugins]]
+repo = 'yukimemi/jsontoml.vim'
+depends = ['denops.vim']
+lazy = false
