@@ -67,9 +67,11 @@ vim.g.bufpreview_server_port = '11223'
 [[plugins]]
 repo = 'kuuote/jsonyaml.vim'
 depends = ['denops.vim']
-lazy = false
+on_cmd = ['JY', 'YJ']
+hooks_file = '$HOOKS_DIR/jsonyaml.lua'
 
 [[plugins]]
 repo = 'yukimemi/jsontoml.vim'
 depends = ['denops.vim']
-lazy = false
+on_cmd = ['JT', 'TJ']
+hooks_file = '$HOOKS_DIR/jsontoml.lua'
