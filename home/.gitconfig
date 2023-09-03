@@ -39,3 +39,9 @@
 [url "git@github.com:"]
 	pushInsteadOf = https://github.com/
 	pushInsteadOf = git@github.com:
+
+[url "https://aur.archlinux.org/"]
+	insteadOf = git@aur.archlinux.org:
+[url "git@aur.archlinux.org:"]
+	pushInsteadOf = https://aur.archlinux.org/
+	pushInsteadOf = git@aur.archlinux.org:
