@@ -12,16 +12,12 @@ cd ${ghq_root}/${host}/${repo}
 
 if [[ -d ./.deps ]]; then
   make clean
+  git restore .
 fi
 
 [[ -d ${install_prefix} ]] && rm -rf ${install_prefix}
 
-if [[ ${UID} == 0 ]]; then
-  make CMAKE_BUILD_TYPE=Release
-else
-  make CMAKE_INSTALL_PREFIX=${install_prefix} CMAKE_BUILD_TYPE=Release
-fi
-make install
+make CMAKE_INSTALL_PREFIX=${install_prefix} CMAKE_BUILD_TYPE=Release install
 
 rm -rf ${install_prefix}/lib
 
