@@ -683,50 +683,33 @@ export class Config extends BaseConfig {
       ],
     });
 
-    args.contextBuilder.patchLocal("lsp:documentSymbol", {
-      ui: "ff",
-      uiParams: {
-        ff: {
-          ...{
-            startAutoAction: true,
-            autoAction: {
-              delay: 0,
-              name: "preview",
+    const lsp_symbol_scope = [
+      "document",
+      "workspace"
+    ];
+    lsp_symbol_scope.forEach(async (scope) => {
+      args.contextBuilder.patchLocal(`lsp:${scope}Symbol`, {
+        ui: "ff",
+        uiParams: {
+          ff: {
+            ...{
+              startAutoAction: true,
+              autoAction: {
+                delay: 0,
+                name: "preview",
+              },
+              autoResize: false,
+              filterFloatingPosition: "bottom",
             },
-            autoResize: false,
-            filterFloatingPosition: "bottom",
+            ...await uiSize(args, 0.5, "vertical"),
           },
-          ...await uiSize(args, 0.5, "vertical"),
         },
-      },
-      sources: [
-        {
-          name: "lsp_documentSymbol",
-        },
-      ],
-    });
-
-    args.contextBuilder.patchLocal("lsp:workspaceSymbol", {
-      ui: "ff",
-      uiParams: {
-        ff: {
-          ...{
-            startAutoAction: true,
-            autoAction: {
-              delay: 0,
-              name: "preview",
-            },
-            autoResize: false,
-            filterFloatingPosition: "bottom",
+        sources: [
+          {
+            name: `lsp_${scope}Symbol`,
           },
-          ...await uiSize(args, 0.5, "vertical"),
-        },
-      },
-      sources: [
-        {
-          name: "lsp_workspaceSymbol",
-        },
-      ],
+        ],
+      });
     });
 
     // UI: filer
