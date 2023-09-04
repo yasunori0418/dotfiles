@@ -15,7 +15,7 @@ rust = "latest"
 pnpm = "latest"
 node = "latest"
 github-cli = "latest"
-glow = "1.5.1"
+glow = "latest"
 
 [settings]
 # plugins can read the versions files used by other version managers (if enabled by the plugin)
