@@ -204,6 +204,7 @@ export class Config extends BaseConfig {
           cmd: [
             "rg",
             "--files",
+            "--hidden",
             "--glob",
             "!.git",
             "--color",
