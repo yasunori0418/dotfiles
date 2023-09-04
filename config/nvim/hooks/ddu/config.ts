@@ -366,7 +366,7 @@ export class Config extends BaseConfig {
         },
       },
       sources: [
-        { name: "file_fd" },
+        { name: "file_rg" },
       ],
     });
 
