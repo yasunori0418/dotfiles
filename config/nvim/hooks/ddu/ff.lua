@@ -23,6 +23,30 @@ require("user.utils").keymaps_set({
     end,
     opts = ff_opt,
   },
+  { -- 末尾に行ったら一番上にジャンプする
+    mode = "n",
+    lhs = [[j]],
+    rhs = function()
+      if line(".") == line("$") then
+        return [[gg]]
+      else
+        return [[j]]
+      end
+    end,
+    opts = ff_opt_expr,
+  },
+  { -- 一番上に行ったら一番下にジャンプする
+    mode = "n",
+    lhs = [[k]],
+    rhs = function()
+      if line(".") == 1 then
+        return [[G]]
+      else
+        return [[k]]
+      end
+    end,
+    opts = ff_opt_expr,
+  },
 
   -- Open
   { -- defaultAction
@@ -147,30 +171,6 @@ require("user.utils").keymaps_set({
       do_action("quit")
     end,
     opts = ff_opt,
-  },
-  { -- 末尾に行ったら一番上にジャンプする
-    mode = "n",
-    lhs = [[j]],
-    rhs = function()
-      if line(".") == line("$") then
-        return [[gg]]
-      else
-        return [[j]]
-      end
-    end,
-    opts = ff_opt_expr,
-  },
-  { -- 一番上に行ったら一番下にジャンプする
-    mode = "n",
-    lhs = [[k]],
-    rhs = function()
-      if line(".") == 1 then
-        return [[G]]
-      else
-        return [[k]]
-      end
-    end,
-    opts = ff_opt_expr,
   },
   { -- 全てをquickfix送り
     mode = "n",
