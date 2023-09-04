@@ -14,6 +14,9 @@ type Params = Record<string, unknown>;
 
 export class Config extends BaseConfig {
   override async config(args: ConfigArguments): Promise<void> {
+    args.setAlias("source", "file_fd", "file_external");
+    args.setAlias("source", "file_rg", "file_external");
+
     args.contextBuilder.patchGlobal({
       uiOptions: {
         filer: {
@@ -69,6 +72,20 @@ export class Config extends BaseConfig {
           columns: ["icon_filename"],
         },
         file_rec: {
+          ignoreCase: true,
+          converters: [
+            "converter_devicon",
+            "converter_hl_dir",
+          ],
+        },
+        file_fd: {
+          ignoreCase: true,
+          converters: [
+            "converter_devicon",
+            "converter_hl_dir",
+          ],
+        },
+        file_rg: {
           ignoreCase: true,
           converters: [
             "converter_devicon",
@@ -169,6 +186,29 @@ export class Config extends BaseConfig {
           highlights: {
             word: "Search",
           },
+        },
+        file_fd: {
+          cmd: [
+            "fd",
+            ".",
+            "--hidden",
+            "--exclude",
+            ".git",
+            "--type",
+            "f",
+            "--color",
+            "never",
+          ],
+        },
+        file_rg: {
+          cmd: [
+            "rg",
+            "--files",
+            "--glob",
+            "!.git",
+            "--color",
+            "never",
+          ],
         },
         git_branch: {
           remote: false,
@@ -326,7 +366,7 @@ export class Config extends BaseConfig {
         },
       },
       sources: [
-        { name: "file_rec" },
+        { name: "file_fd" },
       ],
     });
 
