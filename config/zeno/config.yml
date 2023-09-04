@@ -32,15 +32,6 @@ completions:
       --prompt: "'Chdir> '"
       --preview: "cd {} && ls -a | sed '/^[.]*$/d'"
 
-  - name: change parent directory.
-    patterns:
-      - "^cd ../$"
-    sourceCommand: "fd . '../' --hidden --type d --exclude '.git' --color always"
-    callback: "sed 's/^\\.\\.\\///'"
-    options:
-      --prompt: "'Chdir> '"
-      --preview: "cd {} && ls -a | sed '/^[.]*$/d'"
-
   - name: git staging
     patterns:
       - "^git (rm|add) $"
