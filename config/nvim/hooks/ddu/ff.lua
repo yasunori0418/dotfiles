@@ -4,14 +4,17 @@ local do_action = vim.fn["ddu#ui#do_action"]
 local line = vim.fn.line
 
 local ff_opt = { silent = true, buffer = true, noremap = true }
-local ff_opt_expr = { silent = true, buffer = true, expr = true, noremap = true }
 require("user.utils").keymaps_set({
   -- dummy source jump of cursor
   { -- j
     mode = "n",
     lhs = [[j]],
     rhs = function()
-      ddu_helper.move_ignore_dummy(1)
+      if line(".") == line("$") then
+        vim.cmd("normal! gg")
+      else
+        ddu_helper.move_ignore_dummy(1)
+      end
     end,
     opts = ff_opt,
   },
@@ -19,33 +22,13 @@ require("user.utils").keymaps_set({
     mode = "n",
     lhs = [[k]],
     rhs = function()
-      ddu_helper.move_ignore_dummy(-1)
+      if line(".") == 1 then
+        vim.cmd("normal! G")
+      else
+        ddu_helper.move_ignore_dummy(-1)
+      end
     end,
     opts = ff_opt,
-  },
-  { -- 末尾に行ったら一番上にジャンプする
-    mode = "n",
-    lhs = [[j]],
-    rhs = function()
-      if line(".") == line("$") then
-        return [[gg]]
-      else
-        return [[j]]
-      end
-    end,
-    opts = ff_opt_expr,
-  },
-  { -- 一番上に行ったら一番下にジャンプする
-    mode = "n",
-    lhs = [[k]],
-    rhs = function()
-      if line(".") == 1 then
-        return [[G]]
-      else
-        return [[k]]
-      end
-    end,
-    opts = ff_opt_expr,
   },
 
   -- Open
