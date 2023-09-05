@@ -14,7 +14,7 @@ repo = 'williamboman/mason-lspconfig.nvim'
 depends = ['nvim-lspconfig', 'mason.nvim']
 on_source = 'ddc.vim'
 on_ft = ['lua', 'pyhton', 'php', 'markdown', 'typescript']
-hooks_file = '$HOOKS_DIR/mason_lspconfig.lua'
+hooks_file = '$HOOKS_DIR/lspconfig.lua'
 
 # }}}
 
