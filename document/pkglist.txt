@@ -134,7 +134,6 @@ pipewire-pulse
 pkgconf
 postgresql-libs
 pstoedit
-pyenv
 python-i3ipc
 python-keyrings-alt
 qrencode
