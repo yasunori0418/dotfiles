@@ -42,7 +42,7 @@ completions:
 
   - name: rtx plugins catalog
     patterns:
-      - "^rtx (i|install) $"
+      - "^rtx (plugins |)(i|install) $"
     sourceCommand: "rtx plugins ls-remote"
     callback: "awk -F ' ' '{print $1}'"
     options:
