@@ -56,7 +56,7 @@ completions:
       --prompt: "'archlinux packages> '"
       --preview: "LANG=C yay -Si {}"
 
-  - name: yay(pacman) packages remove catalog
+  - name: yay(pacman) packages remove
     patterns:
       - "^yay -Rs $"
     sourceCommand: "yay -Qsq"
