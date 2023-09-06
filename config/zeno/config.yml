@@ -63,3 +63,11 @@ completions:
     options:
       --prompt: "'archlinux packages> '"
       --preview: "LANG=C yay -Si {}"
+
+  - name: yay(pacman) packages show infomation
+    patterns:
+      - "^yay -Si $"
+    sourceCommand: "yay -Ssq"
+    options:
+      --prompt: "'archlinux packages> '"
+      --preview: "LANG=C yay -Si {}"
