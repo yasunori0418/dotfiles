@@ -47,9 +47,31 @@ require("user.utils").keymaps_set({
   },
 })
 
+local filetype_foldmethod = {
+  toml = "", -- foldmethod = marker
+  help = "", -- foldmethod = marker
+}
+
 ufo.setup({
-  provider_selector = function(_, _, _) -- (bufnr, filetype, buftype)
-    return {'treesitter', 'indent'}
+  open_fold_hl_timeout = 150,
+  close_fold_kinds = {'imports', 'comment'},
+  preview = {
+    win_config = {
+      border = {'', '─', '', '', '', '─', '', ''},
+      winhighlight = 'Normal:Folded',
+      winblend = 0
+    },
+    mappings = {
+      scrollU = '<C-u>',
+      scrollD = '<C-d>',
+      scrollE = '<C-e>',
+      scrollY = '<C-y>',
+      jumpTop = '[',
+      jumpBot = ']'
+    }
+  },
+  provider_selector = function(_, filetype, _) -- (bufnr, filetype, buftype)
+    return filetype_foldmethod[filetype] or {'lsp', 'treesitter', 'indent'}
   end
 })
 
