@@ -33,18 +33,6 @@ require("user.utils").keymaps_set({
     rhs = ufo.closeFoldsWith,
     opts = {},
   },
-  { -- zj
-    mode = "n",
-    lhs = [[zj]],
-    rhs = ufo.goNextClosedFold,
-    opts = {},
-  },
-  { -- zk
-    mode = "n",
-    lhs = [[zk]],
-    rhs = ufo.goPreviousClosedFold,
-    opts = {},
-  },
 })
 
 ufo.setup({
