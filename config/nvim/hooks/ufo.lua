@@ -34,6 +34,17 @@ require("user.utils").keymaps_set({
     rhs = ufo.closeFoldsWith,
     opts = opt,
   },
+  { -- <Tab> folded contents preview
+    mode = "n",
+    lhs = [[<Tab>]],
+    rhs = function()
+      local winid = ufo.peekFoldedLinesUnderCursor()
+      if not winid then
+        vim.api.nvim_feedkeys([[<Tab>]], "n", true)
+      end
+    end,
+    opts = opt,
+  },
 })
 
 ufo.setup({
