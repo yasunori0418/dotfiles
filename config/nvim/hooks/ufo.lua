@@ -67,7 +67,8 @@ ufo.setup({
       scrollE = '<C-e>',
       scrollY = '<C-y>',
       jumpTop = '[',
-      jumpBot = ']'
+      jumpBot = ']',
+      close = 'q',
     }
   },
   provider_selector = function(_, filetype, _) -- (bufnr, filetype, buftype)
