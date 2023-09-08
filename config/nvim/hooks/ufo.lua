@@ -54,26 +54,26 @@ local filetype_foldmethod = {
 
 ufo.setup({
   open_fold_hl_timeout = 150,
-  close_fold_kinds = {'imports', 'comment'},
+  close_fold_kinds = { "imports", "comment" },
   preview = {
     win_config = {
-      border = {'', '─', '', '', '', '─', '', ''},
-      winhighlight = 'Normal:Folded',
-      winblend = 0
+      border = { "", "─", "", "", "", "─", "", "" },
+      winhighlight = "Normal:Folded",
+      winblend = 0,
     },
     mappings = {
-      scrollU = '<C-u>',
-      scrollD = '<C-d>',
-      scrollE = '<C-e>',
-      scrollY = '<C-y>',
-      jumpTop = '[',
-      jumpBot = ']',
-      close = 'q',
-    }
+      scrollU = "<C-u>",
+      scrollD = "<C-d>",
+      scrollE = "<C-e>",
+      scrollY = "<C-y>",
+      jumpTop = "[",
+      jumpBot = "]",
+      close = "q",
+    },
   },
   provider_selector = function(_, filetype, _) -- (bufnr, filetype, buftype)
-    return filetype_foldmethod[filetype] or {'lsp', 'treesitter', 'indent'}
-  end
+    return filetype_foldmethod[filetype]
+  end,
 })
 
 -- }}}
