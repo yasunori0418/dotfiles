@@ -8,30 +8,31 @@ vim.opt.foldenable = true
 
 local ufo = require("ufo")
 
+local opt = { noremap = true, silent = true }
 require("user.utils").keymaps_set({
   { -- zR
     mode = "n",
     lhs = [[zR]],
     rhs = ufo.openAllFolds,
-    opts = {},
+    opts = opt,
   },
   { -- zM
     mode = "n",
     lhs = [[zM]],
     rhs = ufo.closeAllFolds,
-    opts = {},
+    opts = opt,
   },
   { -- zr
     mode = "n",
     lhs = [[zr]],
     rhs = ufo.openFoldsExceptKinds,
-    opts = {},
+    opts = opt,
   },
   { -- zm
     mode = "n",
     lhs = [[zm]],
     rhs = ufo.closeFoldsWith,
-    opts = {},
+    opts = opt,
   },
 })
 
