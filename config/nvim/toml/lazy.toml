@@ -65,32 +65,32 @@ vim.g.netrw_nogx = 1 -- disable netrw's gx mapping.
 vim.keymap.set({"n", "x"}, [[gx]], [[<Plug>(openbrowser-smart-search)]], { noremap = false })
 '''
 
-[[plugins]]
+[[plugins]] # vim-qfreplace
 repo = 'thinca/vim-qfreplace'
 on_cmd = 'Qfreplace'
 
-[[plugins]]
+[[plugins]] # vim-qfedit
 repo = 'itchyny/vim-qfedit'
 on_event = 'QuickFixCmdPost'
 
-[[plugins]]
+[[plugins]] # ccc.nvim
 repo = 'uga-rosa/ccc.nvim'
 on_ft = ['css', 'html', 'conf']
 on_cmd = ['CccPick', 'CccConvert', 'CccHighlighterToggle']
 on_source = 'mason-lspconfig.nvim'
 hooks_file = '$HOOKS_DIR/ccc.lua'
 
-[[plugins]]
+[[plugins]] # nvim-insx
 repo = 'hrsh7th/nvim-insx'
 on_event = ['InsertEnter', 'CmdlineEnter']
 hooks_file = '$HOOKS_DIR/insx.lua'
 if = false
 
-[[plugins]]
+[[plugins]] # promise-async
 repo = 'kevinhwang91/promise-async'
 on_lua = ['async', 'promise']
 
-[[plugins]]
+[[plugins]] # nvim-ufo
 repo = 'kevinhwang91/nvim-ufo'
 depends = 'promise-async'
 on_source = 'nvim-treesitter'
@@ -113,7 +113,7 @@ repo = 'machakann/vim-sandwich'
 on_map = { nxo = '<Plug>(sandwich-' }
 hooks_file = '$HOOKS_DIR/sandwich.lua'
 
-[[plugins]]
+[[plugins]] # dial.nvim
 repo = 'monaqa/dial.nvim'
 on_lua = ['dial.map', 'dial.augend', 'dial.config']
 on_cmd = ['DialIncrement', 'DialDecrement']
@@ -141,7 +141,7 @@ on_ft = 'markdown'
 on_cmd = 'PrevimOpen'
 hooks_file = '$HOOKS_DIR/previm/previm.lua'
 
-[[plugins]]
+[[plugins]] # tsnode-marker.nvim
 repo = 'atusy/tsnode-marker.nvim'
 on_ft = 'markdown'
 hooks_file = '$HOOKS_DIR/tsnode_marker.lua'
