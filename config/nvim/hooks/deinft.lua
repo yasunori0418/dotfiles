@@ -45,13 +45,13 @@ vim.opt_local.shiftwidth = 4
 
 -- lua_help {{{
 vim.opt_local.conceallevel = 0
--- vim.opt_local.foldmethod = "marker"
--- vim.opt_local.foldenable = true
+vim.opt_local.foldmethod = "marker"
+vim.opt_local.foldenable = true
 -- }}}
 
 -- lua_toml {{{
--- vim.opt_local.foldmethod = "marker"
--- vim.opt_local.foldenable = true
+vim.opt_local.foldmethod = "marker"
+vim.opt_local.foldenable = true
 -- }}}
 
 -- lua_qf {{{
