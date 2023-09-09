@@ -316,7 +316,7 @@ export class Config extends BaseConfig {
           defaultAction: "open",
         },
         "nvim-notify": {
-          defaultAction: "open",
+          defaultAction: "yank",
           actions: {
             yank: async (
               args: ActionArguments<Params>,
