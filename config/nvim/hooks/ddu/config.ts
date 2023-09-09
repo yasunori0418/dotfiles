@@ -944,6 +944,15 @@ export class Config extends BaseConfig {
       ],
     });
 
+    args.contextBuilder.patchLocal("notify", {
+      ui: "ff",
+      sources: [
+        {
+          name: "nvim-notify",
+        },
+      ],
+    });
+
     // UI: filer
 
     args.contextBuilder.patchLocal("current-filer", {
