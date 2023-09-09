@@ -5,9 +5,13 @@ import {
   BaseConfig,
   ConfigArguments,
   expandHome,
+  fn,
   GitCommitActionData,
+  Notification,
+  NvimNotifyActionData,
   separator,
   uiSize,
+  vars,
 } from "./helper/deps.ts";
 
 type Params = Record<string, unknown>;
