@@ -2,6 +2,7 @@ export {
   ActionFlags,
   BaseConfig,
 } from "https://deno.land/x/ddu_vim@v3.6.0/types.ts";
+export { fn, op } from "https://deno.land/x/ddu_vim@v3.6.0/deps.ts";
 export * as opt from "https://deno.land/x/denops_std@v5.0.1/option/mod.ts";
 export * from "./helper.ts";
 
