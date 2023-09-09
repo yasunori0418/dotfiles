@@ -802,8 +802,8 @@ export class Config extends BaseConfig {
             includeDeclaration: false,
           },
         },
-      ]
-    })
+      ],
+    });
 
     const lsp_symbol_scope = [
       "document",
