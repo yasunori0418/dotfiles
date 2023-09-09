@@ -14,6 +14,7 @@ type Params = Record<string, unknown>;
 
 export class Config extends BaseConfig {
   override async config(args: ConfigArguments): Promise<void> {
+    const denops = args.denops;
     args.setAlias("source", "file_fd", "file_external");
     args.setAlias("source", "file_rg", "file_external");
 
@@ -227,7 +228,7 @@ export class Config extends BaseConfig {
             ): Promise<ActionFlags> => {
               const action = args.items[0].action as ActionData;
 
-              await args.denops.call("ddu#ui#do_action", "itemAction", {
+              await denops.call("ddu#ui#do_action", "itemAction", {
                 name: "narrow",
                 params: {
                   path: action.path,
@@ -240,8 +241,8 @@ export class Config extends BaseConfig {
               args: ActionArguments<Params>,
             ): Promise<ActionFlags> => {
               const action = args.items[0].action as ActionData;
-              await args.denops.call("chdir", action.path);
-              await args.denops.cmd("edit .");
+              await denops.call("chdir", action.path);
+              await denops.cmd("edit .");
 
               return Promise.resolve(ActionFlags.None);
             },
@@ -270,7 +271,7 @@ export class Config extends BaseConfig {
             ): Promise<ActionFlags> => {
               const action = args.items[0].action as ActionData;
 
-              await args.denops.call("ddu#start", {
+              await denops.call("ddu#start", {
                 name: "git:diff",
                 sourceOptions: {
                   git_diff: {
@@ -291,7 +292,7 @@ export class Config extends BaseConfig {
             ): Promise<ActionFlags> => {
               const action = args.items[0].action as GitCommitActionData;
 
-              await args.denops.call("ddu#start", {
+              await denops.call("ddu#start", {
                 name: "git:diff_tree",
                 sourceParams: {
                   git_diff_tree: {
