@@ -946,6 +946,11 @@ export class Config extends BaseConfig {
 
     args.contextBuilder.patchLocal("notify", {
       ui: "ff",
+      uiParams: {
+        ff: {
+          ignoreEmpty: true,
+        }
+      },
       sources: [
         {
           name: "nvim-notify",
