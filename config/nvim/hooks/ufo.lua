@@ -1,7 +1,6 @@
 -- lua_source {{{
 -- The following settings must be made in nvim-ufo.
 vim.opt.foldmethod = "manual"
-vim.opt.foldcolumn = "2"
 vim.opt.foldlevel = 99
 vim.opt.foldlevelstart = 99
 vim.opt.foldenable = true
