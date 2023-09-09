@@ -315,6 +315,28 @@ export class Config extends BaseConfig {
         lsp: {
           defaultAction: "open",
         },
+        "nvim-notify": {
+          defaultAction: "open",
+          actions: {
+            yank: async (
+              args: ActionArguments<Params>,
+            ): Promise<ActionFlags> => {
+              const action = args.items[0].action as NvimNotifyActionData;
+              const notification = action.notification as Notification;
+              const message = notification.message.join(" ");
+
+              await fn.setreg(denops, '"', message, "v");
+              await fn.setreg(
+                denops,
+                await vars.v.get(denops, "register"),
+                message,
+                "v",
+              );
+
+              return Promise.resolve(ActionFlags.Persist);
+            },
+          },
+        },
       },
       actionOptions: {
         narrow: { quit: false },
