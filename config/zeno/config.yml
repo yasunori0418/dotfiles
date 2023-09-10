@@ -71,3 +71,12 @@ completions:
     options:
       --prompt: "'archlinux packages> '"
       --preview: "LANG=C yay -Si {}"
+
+  - name: gist edit
+    patterns:
+      - "^gh gist edit $"
+    sourceCommand: "gh gist list"
+    callback: "awk -F ' ' '{print $1}'"
+    options:
+      --prompt: "'gist list> '"
+      --preview: "gh gist view {}"
