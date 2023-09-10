@@ -78,5 +78,13 @@ completions:
     sourceCommand: "gh gist list"
     callback: "awk -F ' ' '{print $1}'"
     options:
-      --prompt: "'gist list> '"
+      --prompt: "'gist> '"
       --preview: "gh gist view {}"
+
+  - name: gist view
+    patterns:
+      - "^gh gist view $"
+    sourceCommand: "gh gist list"
+    callback: "awk -F ' ' '{print $1}'"
+    options:
+      --prompt: "'gist> '"
