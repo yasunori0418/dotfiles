@@ -212,5 +212,18 @@ mason_lspconfig.setup_handlers({
       },
     })
   end,
+
+  pyright = function()
+    lspconfig.pyright.setup({
+      capabilities = capabilities,
+      settings = {
+        python = {
+          exclude = { ".venv" },
+          venvPath = ".",
+          venv = ".venv",
+        },
+      },
+    })
+  end,
 })
 -- }}}
