@@ -17,7 +17,7 @@ mason_lspconfig.setup({
   automatic_installation = true,
 })
 
-user_lsp.on_attach(function(_, buffer)
+user_lsp.on_attach(function(client, buffer)
   local opt = { noremap = true, silent = true, buffer = buffer }
   utils.keymaps_set({
     { mode = { "n", "x" }, lhs = [[ l]],           rhs = [[<Plug>(lsp)]],     opts = opt },
@@ -175,6 +175,13 @@ user_lsp.on_attach(function(_, buffer)
     { mode = { "n" }, lhs = [=[[d]=], rhs = diagnostic.goto_prev,  opts = opt },
     { mode = { "n" }, lhs = [=[]d]=], rhs = diagnostic.goto_next,  opts = opt },
   })
+
+  local function inlay_hint()
+    if client.supports_method("textDocument/inlayHint") then
+      lsp.inlay_hint(buffer, true)
+    end
+  end
+  pcall(inlay_hint)
 end)
 
 local capabilities = lsp.protocol.make_client_capabilities()
