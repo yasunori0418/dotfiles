@@ -208,6 +208,9 @@ mason_lspconfig.setup_handlers({
             enable = true,
             keywordSnippet = "Both",
           },
+          hint = {
+            enable = true,
+          },
         },
       },
     })
