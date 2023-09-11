@@ -25,7 +25,7 @@ user_lsp.on_attach(function(_, buffer)
     { mode = { "n" },      lhs = [[<Plug>(lsp)a]], rhs = lsp.buf.code_action, opts = opt },
     { mode = { "n" },      lhs = [[<Plug>(lsp)q]], rhs = user_lsp.format,     opts = opt },
     { mode = { "n" },      lhs = [[<Plug>(lsp)r]], rhs = lsp.buf.rename,      opts = opt },
-    {
+    { -- ddu lsp:definition_all
       mode = { "n" },
       lhs = [[<Plug>(lsp)D]],
       rhs = function()
@@ -35,7 +35,7 @@ user_lsp.on_attach(function(_, buffer)
       end,
       opts = opt,
     },
-    {
+    { -- ddu lsp:finder
       mode = { "n" },
       lhs = [[<Plug>(lsp)f]],
       rhs = function()
@@ -155,13 +155,13 @@ user_lsp.on_attach(function(_, buffer)
       end,
       opts = opt,
     },
-    {
+    { -- ddu lsp:codeAction
       mode = { "n", "x" },
       lhs = [[<Plug>(lsp)a]],
       rhs = [[<Cmd>call ddu#start(#{name: "lsp:codeAction"})<CR>]],
       opts = opt,
     },
-    {
+    { -- ddu lsp:diagnostics
       mode = "n",
       lhs = [[<Plug>(lsp)d]],
       rhs = function()
