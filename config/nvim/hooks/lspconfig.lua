@@ -176,12 +176,7 @@ user_lsp.on_attach(function(client, buffer)
     { mode = { "n" }, lhs = [=[]d]=], rhs = diagnostic.goto_next,  opts = opt },
   })
 
-  local function inlay_hint()
-    if client.supports_method("textDocument/inlayHint") then
-      lsp.inlay_hint(buffer, true)
-    end
-  end
-  pcall(inlay_hint)
+  pcall(lsp.inlay_hint, buffer, nil)
 end)
 
 local capabilities = lsp.protocol.make_client_capabilities()
