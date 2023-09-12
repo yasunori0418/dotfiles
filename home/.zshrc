@@ -35,6 +35,11 @@ if [[ ! -r ${rtx_cache} || ${RTX_CONFIG_FILE} -nt ${rtx_cache} ]]; then
 fi
 source ${rtx_cache}
 
+pyenv_cache=${XDG_CACHE_HOME}/pyenv.zsh
+if [[ ! -r ${pyenv_cache} ]]; then
+  pyenv init - > ${pyenv_cache}
+fi
+source ${pyenv_cache}
 
 sheldon_cache=${XDG_CACHE_HOME}/sheldon.zsh
 sheldon_toml=${XDG_CONFIG_HOME}/sheldon/plugins.toml

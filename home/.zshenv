@@ -83,7 +83,6 @@ export ZENO_DISABLE_BUILTIN_COMPLETION=1
 if [[ -d ${HOME}/.pyenv ]]; then
   export PYENV_ROOT=${HOME}/.pyenv
   export PATH=${PATH}:${PYENV_ROOT}/bin
-  eval "$(pyenv init -)"
 fi
 
 # if installed binary by rust-cargo
