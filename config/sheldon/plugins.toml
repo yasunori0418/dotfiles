@@ -28,7 +28,7 @@ github = "romkatv/zsh-defer"
 apply = ["source"]
 
 [templates]
-defer = "{% for file in files %}zsh-defer source \"{{ file }}\"\n{% endfor %}"
+defer = "{{ hooks | get: \"pre\" | nl }}{% for file in files %}zsh-defer source \"{{ file }}\"\n{% endfor %}{{ hooks | get: \"post\" | nl }}"
 
 [plugins.compinit]
 inline = 'autoload -Uz compinit && zsh-defer compinit -u'
