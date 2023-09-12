@@ -1,4 +1,3 @@
-#!/usr/bin/env zsh
 #
 # ~/.zshenv
 #
@@ -86,19 +85,16 @@ if [[ -d ${HOME}/.pyenv ]]; then
 fi
 
 # if installed binary by rust-cargo
-cargo_bin=${HOME}/.cargo/bin
-if [[ -d ${cargo_bin} ]]; then
-  export PATH=${PATH}:${cargo_bin}
+if [[ -d ${HOME}/.cargo/bin ]]; then
+  export PATH=${PATH}:${HOME}/.cargo/bin
 fi
 
 # themis environment
-themis_path=${HOME}/.cache/dein/repos/github.com/thinca/vim-themis/bin
-if [[ -d ${themis_path} ]]; then
-  export PATH=${PATH}:${themis_path}
+if [[ -d ${HOME}/.cache/dein/repos/github.com/thinca/vim-themis/bin ]]; then
+  export PATH=${PATH}:${HOME}/.cache/dein/repos/github.com/thinca/vim-themis/bin
 fi
 
 # go package
-go_bin=${HOME}/go/bin
-if [[ -d ${go_bin} ]]; then
-  export PATH=${PATH}:${go_bin}
+if [[ -d ${HOME}/go/bin ]]; then
+  export PATH=${PATH}:${HOME}/go/bin
 fi
