@@ -12,13 +12,6 @@
 
 shell = "zsh"
 
-# For powerlevel10k
-[plugins.init]
-local = '~/.zsh'
-use = ['{{ name }}.zsh']
-apply = ['source']
-
-
 [plugins.powerlevel10k]
 github = "romkatv/powerlevel10k"
 apply = ["source"]
@@ -79,10 +72,3 @@ apply = ['defer']
 github = 'yuki-yano/zeno.zsh'
 use = ['{{ name }}.zsh']
 apply = ['defer']
-
-
-# For powerlevel10k
-[plugins.post]
-local = '~/.zsh'
-use = ['{{ name }}.zsh']
-apply = ['source']
