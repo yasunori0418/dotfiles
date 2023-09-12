@@ -12,6 +12,8 @@ function source {
 }
 
 ensure_zcompiled ${HOME}/.zshrc
+ensure_zcompiled ${HOME}/.zshenv
+
 
 if [[ ! $(command -v sheldon) ]]; then
   curl --proto '=https' -fLsS https://rossmacarthur.github.io/install/crate.sh \
