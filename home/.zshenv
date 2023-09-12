@@ -34,7 +34,6 @@ export PATH=${DOTFILES_DATA}/rtx/bin:${PATH}
 export RTX_DATA_DIR=${HOME}/.rtx
 export RTX_CACHE_DIR=${RTX_DATA_DIR}/cache
 export RTX_CONFIG_FILE=${XDG_CONFIG_HOME}/rtx/config.toml
-eval "$(rtx activate zsh)"
 
 # Docker rootless config
 export DOCKER_HOST=unix://${XDG_RUNTIME_DIR}/docker.sock

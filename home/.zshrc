@@ -28,6 +28,14 @@ fi
 ensure_zcompiled ${HOME}/.zshrc
 ensure_zcompiled ${HOME}/.zshenv
 
+
+rtx_cache=${XDG_CACHE_HOME}/rtx.zsh
+if [[ ! -r ${rtx_cache} || ${RTX_CONFIG_FILE} -nt ${rtx_cache} ]]; then
+  rtx activate zsh > ${rtx_cache}
+fi
+source ${rtx_cache}
+
+
 sheldon_cache=${XDG_CACHE_HOME}/sheldon.zsh
 sheldon_toml=${XDG_CONFIG_HOME}/sheldon/plugins.toml
 
