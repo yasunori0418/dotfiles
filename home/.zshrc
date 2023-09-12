@@ -14,6 +14,15 @@ function source {
 ensure_zcompiled ${HOME}/.zshrc
 ensure_zcompiled ${HOME}/.zshenv
 
+sheldon_cache=${XDG_CACHE_HOME}/sheldon.zsh
+sheldon_toml=${XDG_CONFIG_HOME}/sheldon/plugins.toml
+
+if [[ ! -r ${sheldon_cache} || ${sheldon_toml} -nt ${sheldon_cache} ]]; then
+  sheldon source > ${sheldon_cache}
+fi
+
+source ${sheldon_cache}
+unset sheldon_cache sheldon_toml
 
 if [[ ! $(command -v sheldon) ]]; then
   curl --proto '=https' -fLsS https://rossmacarthur.github.io/install/crate.sh \
