@@ -1,10 +1,3 @@
-# Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
-# Initialization code that may require console input (password prompts, [y/n]
-# confirmations, etc.) must go above this block; everything else may go below.
-if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
-  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
-fi
-
 # sheldonが無かったらインストールする
 if [[ ! $(command -v sheldon) ]]; then
   curl --proto '=https' -fLsS https://rossmacarthur.github.io/install/crate.sh \
@@ -13,17 +6,24 @@ fi
 
 # https://zenn.dev/fuzmare/articles/zsh-plugin-manager-cache
 function ensure_zcompiled {
-  local compiled=${1}.zwc
-  if [[ ! -r ${compiled} || ${1} -nt ${compiled} ]]; then
-    echo Comiling ${1}
-    zcompile ${1}
+  local compiled="$1.zwc"
+  if [[ ! -r "$compiled" || "$1" -nt "$compiled" ]]; then
+    echo Comiling $1
+    zcompile $1
   fi
 }
 
 function source {
-  ensure_zcompiled ${1}
-  builtin source ${1}
+  ensure_zcompiled $1
+  builtin source $1
 }
+
+# Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
+# Initialization code that may require console input (password prompts, [y/n]
+# confirmations, etc.) must go above this block; everything else may go below.
+if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
+  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
+fi
 
 ensure_zcompiled ${HOME}/.zshrc
 ensure_zcompiled ${HOME}/.zshenv
