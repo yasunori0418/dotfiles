@@ -1,7 +1,7 @@
 function ensure_zcompiled {
-  local compiled="${1}.zwc"
+  local compiled=${1}.zwc
   if [[ ! -r ${compiled} || ${1} -nt ${compiled} ]]; then
-    echo "Comiling ${1}"
+    echo Comiling ${1}
     zcompile ${1}
   fi
 }
