@@ -49,7 +49,7 @@ if [[ ! -r ${sheldon_cache} || ${sheldon_toml} -nt ${sheldon_cache} ]]; then
 fi
 
 source ${sheldon_cache}
-unset sheldon_cache sheldon_toml
+unset sheldon_cache sheldon_toml rtx_cache pyenv_cache
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
