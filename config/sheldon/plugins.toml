@@ -12,16 +12,15 @@
 
 shell = "zsh"
 
-[plugins.powerlevel10k]
-github = "romkatv/powerlevel10k"
-apply = ["source"]
-
 [plugins.zsh-defer]
 github = "romkatv/zsh-defer"
 apply = ["source"]
 
 [templates]
 defer = "{{ hooks | get: \"pre\" | nl }}{% for file in files %}zsh-defer source \"{{ file }}\"\n{% endfor %}{{ hooks | get: \"post\" | nl }}"
+[plugins.powerlevel10k]
+github = "romkatv/powerlevel10k"
+apply = ["source"]
 
 [plugins.compinit]
 inline = 'autoload -Uz compinit && zsh-defer compinit -u'
