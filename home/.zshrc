@@ -28,13 +28,6 @@ fi
 ensure_zcompiled ${HOME}/.zshrc
 ensure_zcompiled ${HOME}/.zshenv
 
-
-rtx_cache=${XDG_CACHE_HOME}/rtx.zsh
-if [[ ! -r ${rtx_cache} || ${RTX_CONFIG_FILE} -nt ${rtx_cache} ]]; then
-  rtx activate zsh > ${rtx_cache}
-fi
-source ${rtx_cache}
-
 sheldon_cache=${XDG_CACHE_HOME}/sheldon.zsh
 sheldon_toml=${XDG_CONFIG_HOME}/sheldon/plugins.toml
 
@@ -43,7 +36,7 @@ if [[ ! -r ${sheldon_cache} || ${sheldon_toml} -nt ${sheldon_cache} ]]; then
 fi
 
 source ${sheldon_cache}
-unset sheldon_cache sheldon_toml rtx_cache
+unset sheldon_cache sheldon_toml
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
