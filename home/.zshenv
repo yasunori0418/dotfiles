@@ -33,3 +33,9 @@ export DOCKER_HOST=unix://${XDG_RUNTIME_DIR}/docker.sock
 
 # ssh-agent socket
 export SSH_AUTH_SOCK=${XDG_RUNTIME_DIR}/ssh-agent.socket
+
+# rtx
+export PATH=${DOTFILES_DATA}/rtx/bin:${PATH}
+export RTX_DATA_DIR=${HOME}/.rtx
+export RTX_CACHE_DIR=${RTX_DATA_DIR}/cache
+export RTX_CONFIG_FILE=${XDG_CONFIG_HOME}/rtx/config.toml
