@@ -16,7 +16,6 @@ pnpm = "latest"
 node = "latest"
 github-cli = "latest"
 glow = "latest"
-pdm = "latest"
 
 [settings]
 # plugins can read the versions files used by other version managers (if enabled by the plugin)
