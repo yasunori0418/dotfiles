@@ -12,6 +12,11 @@
 
 shell = "zsh"
 
+[plugins.sync_configs]
+local = '~/.zsh/sync'
+use = ['*.zsh']
+apply = ['source']
+
 [plugins.zsh-defer]
 github = "romkatv/zsh-defer"
 apply = ["source"]
@@ -30,11 +35,6 @@ inline = 'autoload -Uz colors && zsh-defer colors'
 
 [plugins.edit-command-line]
 inline = 'autoload -Uz edit-command-line && zle -N edit-command-line'
-
-[plugins.sync_configs]
-local = '~/.zsh/sync'
-use = ['*.zsh']
-apply = ['source']
 
 [plugins.zsh-autosuggestions]
 github = "zsh-users/zsh-autosuggestions"
