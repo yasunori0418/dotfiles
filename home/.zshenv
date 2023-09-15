@@ -66,13 +66,6 @@ fi
 
 ### extras environment variable ###
 
-# Pyenv enviroment variable.
-# Pyenv settings
-if [[ -d ${HOME}/.pyenv ]]; then
-  export PYENV_ROOT=${HOME}/.pyenv
-  export PATH=${PATH}:${PYENV_ROOT}/bin
-fi
-
 # if installed binary by rust-cargo
 if [[ -d ${HOME}/.cargo/bin ]]; then
   export PATH=${PATH}:${HOME}/.cargo/bin
