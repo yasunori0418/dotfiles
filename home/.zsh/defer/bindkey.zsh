@@ -38,10 +38,3 @@ bindkey "^[[200~" bracketed-paste # keybinds for deol
 
 bindkey "^O" edit-command-line
 bindkey "^[[Z" reverse-menu-complete  # Shift-Tabで補完候補を逆順する("\e[Z"でも動作する)
-
-# zeno keybinds
-bindkey " "  zeno-auto-snippet
-bindkey "^I" zeno-completion
-bindkey "^R" zeno-history-selection
-bindkey '^X' zeno-insert-snippet
-bindkey '^G' zeno-ghq-cd
