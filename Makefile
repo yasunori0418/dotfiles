@@ -21,6 +21,10 @@ true_color: ## 24-bit-color.sh
 	| bash
 	@./scripts/termcolors
 
+.PHONY := zsh_bench
+zsh_bench: ## zsh bench mark with hyperfine used.
+	@hyperfine -w 5 -r 50 'zsh -i -c exit'
+
 .PHONY := arch_iso
 arch_iso: ## Download Arch Linux iso image at latest, and verification.
 	@./scripts/arch_iso.sh
