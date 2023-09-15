@@ -4,7 +4,10 @@ if [[ -d ${HOME}/.pyenv ]]; then
   export PYENV_ROOT=${HOME}/.pyenv
   export PATH=${PATH}:${PYENV_ROOT}/bin
 
-  # Load pyenv-virtualenv automatically by adding
-  # the following to ~/.zshrc:
-  eval "$(pyenv virtualenv-init -)"
+  pyenv_cache=${XDG_CACHE_HOME}/pyenv.zsh
+  if [[ ! -r ${pyenv_cache} ]]; then
+    pyenv init - > ${pyenv_cache}
+    pyenv virtualenv-init - >> ${pyenv_cache}
+  fi
+  source ${pyenv_cache}
 fi

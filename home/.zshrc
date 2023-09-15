@@ -35,12 +35,6 @@ if [[ ! -r ${rtx_cache} || ${RTX_CONFIG_FILE} -nt ${rtx_cache} ]]; then
 fi
 source ${rtx_cache}
 
-pyenv_cache=${XDG_CACHE_HOME}/pyenv.zsh
-if [[ ! -r ${pyenv_cache} ]]; then
-  pyenv init - > ${pyenv_cache}
-fi
-source ${pyenv_cache}
-
 sheldon_cache=${XDG_CACHE_HOME}/sheldon.zsh
 sheldon_toml=${XDG_CONFIG_HOME}/sheldon/plugins.toml
 
@@ -49,7 +43,7 @@ if [[ ! -r ${sheldon_cache} || ${sheldon_toml} -nt ${sheldon_cache} ]]; then
 fi
 
 source ${sheldon_cache}
-unset sheldon_cache sheldon_toml rtx_cache pyenv_cache
+unset sheldon_cache sheldon_toml rtx_cache
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
