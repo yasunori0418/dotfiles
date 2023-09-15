@@ -30,7 +30,6 @@ ensure_zcompiled ${HOME}/.zshenv
 
 sheldon_cache=${XDG_CACHE_HOME}/sheldon.zsh
 sheldon_toml=${XDG_CONFIG_HOME}/sheldon/plugins.toml
-
 if [[ ! -r ${sheldon_cache} || ${sheldon_toml} -nt ${sheldon_cache} ]]; then
   sheldon source > ${sheldon_cache}
 fi
