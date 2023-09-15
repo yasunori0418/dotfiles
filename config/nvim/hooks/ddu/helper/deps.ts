@@ -9,7 +9,7 @@ export * from "./helper.ts";
 // Type definitions.
 export type { ActionArguments } from "https://deno.land/x/ddu_vim@v3.6.0/types.ts";
 export type { ConfigArguments } from "https://deno.land/x/ddu_vim@v3.6.0/base/config.ts";
-export type { ActionData } from "https://deno.land/x/ddu_kind_file@v0.7.0/file.ts";
+export type { ActionData } from "https://deno.land/x/ddu_kind_file@v0.7.1/file.ts";
 
 export type {
   ActionData as GitCommitActionData,
