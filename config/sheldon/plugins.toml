@@ -37,11 +37,6 @@ local = '~/.zsh/sync'
 use = ['*.zsh']
 apply = ['source']
 
-[plugins.defer_configs]
-local = '~/.zsh/defer'
-use = ['*.zsh']
-apply = ['defer']
-
 [plugins.zsh-autosuggestions]
 github = "zsh-users/zsh-autosuggestions"
 use = ['{{ name }}.zsh']
@@ -71,4 +66,9 @@ apply = ['defer']
 [plugins.zeno]
 github = 'yuki-yano/zeno.zsh'
 use = ['{{ name }}.zsh']
+apply = ['defer']
+
+[plugins.defer_configs]
+local = '~/.zsh/defer'
+use = ['*.zsh']
 apply = ['defer']
