@@ -9,11 +9,11 @@ export class Config extends BaseConfig {
     args.contextBuilder.patchGlobal({
       ui: "pum",
       autoCompleteEvents: [
+        "CmdlineChanged",
+        "CmdlineEnter",
         "InsertEnter",
         "TextChangedI",
         "TextChangedP",
-        "CmdlineEnter",
-        "CmdlineChanged",
         "TextChangedT",
       ],
     });
