@@ -7,12 +7,10 @@ ghq = "latest"
 fd = "latest"
 usql = "latest"
 jq = "latest"
-yq = "latest"
 fzf = "latest"
 rust = "latest"
 node = "latest"
 github-cli = "latest"
-glow = "latest"
 
 [settings]
 # plugins can read the versions files used by other version managers (if enabled by the plugin)
