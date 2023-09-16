@@ -7,8 +7,7 @@ import {
 
 export class Config extends BaseConfig {
   override /* async */ config(args: ConfigArguments): Promise<void> {
-
-    const main_sources: UserSource[] = ["vsnip", "around", "file", "rg"]
+    const main_sources: UserSource[] = ["vsnip", "around", "file", "rg"];
 
     args.contextBuilder.patchGlobal({
       ui: "pum",
