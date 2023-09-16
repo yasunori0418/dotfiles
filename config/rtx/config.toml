@@ -1,5 +1,4 @@
 [tools]
-exa = "latest"
 ripgrep = "latest"
 bat = "latest"
 deno = "latest"
@@ -11,6 +10,7 @@ fzf = "latest"
 rust = "latest"
 node = "latest"
 github-cli = "latest"
+eza = "latest"
 
 [settings]
 # plugins can read the versions files used by other version managers (if enabled by the plugin)

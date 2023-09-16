@@ -1,10 +1,10 @@
 # ls command aliases.
-if [[ $(which exa) ]]; then
-  alias exa='exa --icons -F'
-  alias ls='exa'
-  alias ll='exa -l --git'
+if [[ $(which eza) ]]; then
+  alias eza='eza --icons -F'
+  alias ls='eza'
+  alias ll='eza -l --git'
   alias la='ll -a'
-  alias lt='exa -T -L 3 -a -I ".git|.atom|.cache" --color=always | less'
+  alias lt='eza -T -L 3 -a -I ".git|.atom|.cache" --color=always | less'
   alias lal='la --color=always | less'
 else
   alias ls='ls --color=always'
