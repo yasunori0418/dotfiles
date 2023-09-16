@@ -16,47 +16,6 @@ vim.fn["ddc#custom#load_config"](
   joinpath(ddc_hooks, "config.ts")
 )
 
--- ddc source params
-vim.fn["ddc#custom#patch_global"]("sourceParams", {
-  buffer = {
-    requireSameFiletype = false,
-    fromAltBuf = true,
-    bufNameStyle = "basename",
-  },
-  line = { maxSize = 500 },
-  ["nvim-lsp"] = {
-    kindLabels = {
-      --[[LSPのラベルタグの参考元:
-        https://github.com/onsails/lspkind.nvim]]
-      Text = [[ Text]],
-      Method = [[ Method]],
-      Function = [[󰊕 Function]],
-      Constructor = [[ Constructor]],
-      Field = [[ Field]],
-      Variable = [[ Variable]],
-      Class = [[ Class]],
-      Interface = [[ Interface]],
-      Module = [[ Module]],
-      Property = [[ Property]],
-      Unit = [[ Unit]],
-      Value = [[ Value]],
-      Enum = [[ Enum]],
-      Keyword = [[ Keyword]],
-      Snippet = [[ Snippet]],
-      Color = [[ Color]],
-      File = [[ File]],
-      Reference = [[ Reference]],
-      Folder = [[ Folder]],
-      EnumMember = [[ EnumMember]],
-      Constant = [[ Constant]],
-      Struct = [[ Struct]],
-      Event = [[ Event]],
-      Operator = [[ Operator]],
-      TypeParameter = [[ TypeParameter]],
-    },
-  },
-})
-
 -- filetype settings
 vim.fn["ddc#custom#patch_filetype"]({ "python", "php", "typescript" }, {
   sources = vim.fn.extendnew(global_source, { "nvim-lsp" }, 0),

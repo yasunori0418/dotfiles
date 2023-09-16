@@ -81,6 +81,14 @@ export class Config extends BaseConfig {
           mark: "sh-history",
         },
       },
+      sourceParams: {
+        buffer: {
+          requireSameFiletype: false,
+          fromAltBuf: true,
+          bufNameStyle: "basename",
+        },
+        line: { maxSize: 500 },
+      },
     });
 
     return Promise.resolve();
