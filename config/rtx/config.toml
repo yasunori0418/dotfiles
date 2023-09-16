@@ -16,7 +16,7 @@ eza = "latest"
 # plugins can read the versions files used by other version managers (if enabled by the plugin)
 # for example, .nvmrc in the case of node's nvm
 legacy_version_file = true                     # enabled by default (unlike asdf)
-legacy_version_file_disable_tools = ['python'] # disable for specific tools
+legacy_version_file_disable_tools = [] # disable for specific tools
 
 # configure `rtx install` to always keep the downloaded archive
 always_keep_download = false        # deleted after install by default
