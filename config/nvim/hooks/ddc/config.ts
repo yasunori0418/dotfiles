@@ -1,14 +1,18 @@
 import {
   BaseConfig,
   type ConfigArguments,
+  type UserSource,
   // fn,
 } from "./helper/deps.ts";
 
 export class Config extends BaseConfig {
   override /* async */ config(args: ConfigArguments): Promise<void> {
+
+    const main_sources: UserSource[] = ["vsnip", "around", "file", "rg"]
+
     args.contextBuilder.patchGlobal({
       ui: "pum",
-      sources: ["vsnip", "around", "file", "rg"],
+      sources: main_sources,
       specialBufferCompletion: true,
       autoCompleteEvents: [
         "CmdlineChanged",
