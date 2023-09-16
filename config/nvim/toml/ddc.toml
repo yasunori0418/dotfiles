@@ -19,7 +19,7 @@ on_source = 'ddc.vim'
 repo = 'Shougo/ddc.vim'
 depends = ['context_filetype.vim', 'denops.vim', 'pum.vim', 'lexima.vim']
 on_event = ['InsertEnter', 'CmdlineEnter', 'CursorHold']
-hooks_file = '$HOOKS_DIR/ddc.lua'
+hooks_file = '$HOOKS_DIR/ddc/hook.lua'
 
 # }}}
 
