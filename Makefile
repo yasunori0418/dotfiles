@@ -56,14 +56,6 @@ work_repolist: ## Update ghq management of repository list.
 work_repoget: ## Get and update ghq management repositories.
 	@./scripts/work_repolist.sh
 
-.PHONY := pyenv-get
-pyenv-get: ## install pyenv
-	@curl https://pyenv.run | bash
-
-.PHONY := pyenv-remove
-pyenv-remove: ## uninstall pyenv
-	@rm -rf ~/.pyenv
-
 .PHONY := init
 init: ## expand config files.
 	@mkdir -p ${HOME}/.local/bin
