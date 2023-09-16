@@ -25,6 +25,14 @@ export class Config extends BaseConfig {
         "-": ["around", "line"],
         "=": ["input"],
       },
+      sourceOptions: {
+        _: {
+          ignoreCase: true,
+          matchers: ["matcher_fuzzy"],
+          sorters: ["sorter_fuzzy"],
+          converters: ["converter_fuzzy"],
+        },
+      },
     });
 
     return Promise.resolve();
