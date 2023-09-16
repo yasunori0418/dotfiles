@@ -16,6 +16,15 @@ export class Config extends BaseConfig {
         "TextChangedP",
         "TextChangedT",
       ],
+      cmdlineSources: {
+        ":": ["cmdline", "cmdline-history", "around"],
+        "@": ["cmdline-history", "input", "file", "around"],
+        ">": ["cmdline-history", "input", "file", "around"],
+        "/": ["around", "line"],
+        "?": ["around", "line"],
+        "-": ["around", "line"],
+        "=": ["input"],
+      },
     });
 
     return Promise.resolve();
