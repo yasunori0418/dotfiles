@@ -8,12 +8,8 @@ export class Config extends BaseConfig {
   override /* async */ config(args: ConfigArguments): Promise<void> {
     args.contextBuilder.patchGlobal({
       ui: "pum",
-      uiParams: {
-        pum: {
-          insert: true,
-        },
-      },
       sources: ["vsnip", "around", "file", "rg"],
+      specialBufferCompletion: true,
       autoCompleteEvents: [
         "CmdlineChanged",
         "CmdlineEnter",
