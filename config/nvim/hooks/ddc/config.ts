@@ -12,7 +12,6 @@ export class Config extends BaseConfig {
     args.contextBuilder.patchGlobal({
       ui: "pum",
       sources: main_sources,
-      specialBufferCompletion: true,
       autoCompleteEvents: [
         "CmdlineChanged",
         "CmdlineEnter",
@@ -116,6 +115,11 @@ export class Config extends BaseConfig {
     args.contextBuilder.patchFiletype("vim", {
       sources: ["necovim", ...main_sources],
     });
+
+    // args.contextBuilder.patchFiletype("deol", {
+    //   specialBufferCompletion: true,
+    //   sources: [],
+    // });
 
     return Promise.resolve();
   }
