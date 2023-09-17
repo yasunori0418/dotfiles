@@ -81,6 +81,9 @@ export class Config extends BaseConfig {
           isVolatile: true,
           dup: "force",
         },
+        "shell-native": {
+          mark: "sh",
+        },
         "shell-history": {
           mark: "sh-history",
         },
@@ -92,6 +95,9 @@ export class Config extends BaseConfig {
           bufNameStyle: "basename",
         },
         line: { maxSize: 500 },
+        "shell-native": {
+          shell: "zsh",
+        },
       },
     });
 
