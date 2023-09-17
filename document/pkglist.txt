@@ -153,6 +153,7 @@ sudo
 tailscale
 texinfo
 thunar
+tk
 tree
 ttf-bigblueterminal-nerd
 ttf-dejavu
