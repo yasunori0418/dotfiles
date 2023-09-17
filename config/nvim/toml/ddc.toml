@@ -72,20 +72,24 @@ on_source = 'ddc.vim'
 repo = 'uga-rosa/ddc-source-vsnip'
 on_source = 'ddc.vim'
 
+[[plugins]]
+repo = 'Shougo/ddc-source-shell-native'
+on_source = 'ddc.vim'
+
 # }}}
 
 # filter plugins {{{
 [[plugins]] # ddc-matcher_head
 repo = 'Shougo/ddc-matcher_head'
-on_source ='ddc.vim'
+on_source = 'ddc.vim'
 
 [[plugins]] # ddc-matcher_length
 repo = 'Shougo/ddc-matcher_length'
-on_source ='ddc.vim'
+on_source = 'ddc.vim'
 
 [[plugins]] # ddc-sorter_rank
 repo = 'Shougo/ddc-sorter_rank'
-on_source ='ddc.vim'
+on_source = 'ddc.vim'
 
 [[plugins]] # ddc-converter_remove_overlap
 repo = 'Shougo/ddc-converter_remove_overlap'
