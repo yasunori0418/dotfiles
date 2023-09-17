@@ -113,6 +113,10 @@ export class Config extends BaseConfig {
       sources: ["nvim-lua", "nvim-lsp", ...main_sources],
     });
 
+    args.contextBuilder.patchFiletype("vim", {
+      sources: ["necovim", ...main_sources],
+    });
+
     return Promise.resolve();
   }
 }

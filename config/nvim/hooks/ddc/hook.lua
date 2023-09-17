@@ -7,8 +7,6 @@ end)
 -- lua_source {{{
 
 -- Source options.
-local global_source = { "vsnip", "around", "file", "rg" }
-
 local joinpath = vim.fs.joinpath
 local ddc_hooks = joinpath(vim.g.hooks_dir, "ddc")
 vim.fn["ddc#custom#load_config"](
@@ -17,10 +15,6 @@ vim.fn["ddc#custom#load_config"](
 )
 
 -- filetype settings
-vim.fn["ddc#custom#patch_filetype"]({ "vim", "toml" }, {
-  sources = vim.fn.extendnew(global_source, { "necovim" }, 0),
-})
-
 vim.fn["ddc#custom#patch_filetype"]({ "ddu-ff-filter" }, {
   keywordPattern = [=[[0-9a-zA-Z_:#-]*]=],
   sources = { "line", "buffer" },
