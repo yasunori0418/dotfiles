@@ -1,8 +1,8 @@
 import {
   BaseConfig,
   type ConfigArguments,
-  type UserSource,
   // fn,
+  type UserSource,
 } from "./helper/deps.ts";
 
 export class Config extends BaseConfig {
@@ -95,6 +95,20 @@ export class Config extends BaseConfig {
         line: { maxSize: 500 },
       },
     });
+
+    // lsp
+    for (
+      const filetype of [
+        "python",
+        "php",
+        "typescript",
+      ]
+    ) {
+      args.contextBuilder.patchFiletype(filetype, {
+        sources: ["nvim-lsp", ...main_sources],
+      });
+    }
+
     return Promise.resolve();
   }
 }
