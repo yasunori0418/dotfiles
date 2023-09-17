@@ -99,8 +99,10 @@ utils.keymaps_set{
 -- }}}
 
 -- lua_source {{{
-vim.g['deol#shell_history_path'] = vim.fn.expand('~/.zhistory')
+vim.g['deol#external_history_path'] = vim.fn.expand('~/.zhistory')
 vim.g['deol#nvim_server'] = '~/.cache/nvim/server.pipe'
 vim.g['deol#custom_map'] = {edit = ''}
 vim.g['deol#floating_border'] = 'single'
+vim.g['deol#enable_dir_changed'] = false
+vim.g['deol#prompt_pattern'] = '❯ '
 -- }}}
