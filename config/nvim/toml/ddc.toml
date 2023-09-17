@@ -34,7 +34,7 @@ on_source = 'ddc.vim'
 
 [[plugins]] # ddc-source-file
 repo = 'LumaKernel/ddc-source-file'
-on_source ='ddc.vim'
+on_source = 'ddc.vim'
 
 [[plugins]] # ddc-source-rg
 repo = 'Shougo/ddc-source-rg'
