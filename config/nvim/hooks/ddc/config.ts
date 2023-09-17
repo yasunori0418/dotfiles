@@ -109,6 +109,10 @@ export class Config extends BaseConfig {
       });
     }
 
+    args.contextBuilder.patchFiletype("lua", {
+      sources: ["nvim-lua", "nvim-lsp", ...main_sources],
+    });
+
     return Promise.resolve();
   }
 }

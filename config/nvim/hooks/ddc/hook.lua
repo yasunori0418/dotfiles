@@ -17,10 +17,6 @@ vim.fn["ddc#custom#load_config"](
 )
 
 -- filetype settings
-vim.fn["ddc#custom#patch_filetype"]("lua", {
-  sources = vim.fn.extendnew(global_source, { "nvim-lua", "nvim-lsp" }, 0),
-})
-
 vim.fn["ddc#custom#patch_filetype"]({ "vim", "toml" }, {
   sources = vim.fn.extendnew(global_source, { "necovim" }, 0),
 })
