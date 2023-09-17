@@ -83,6 +83,8 @@ export class Config extends BaseConfig {
         },
         "shell-native": {
           mark: "sh",
+          isVolatile: true,
+          forceCompletionPattern: "\\S/\\S*",
         },
         "shell-history": {
           mark: "sh-history",
@@ -128,6 +130,7 @@ export class Config extends BaseConfig {
       sourceOptions: {
         _: {
           keywordPattern: "[0-9a-zA-Z_./#:-]*",
+          minAutoCompleteLength: 1,
         },
       },
     });
