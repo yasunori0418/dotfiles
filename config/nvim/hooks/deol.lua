@@ -38,19 +38,19 @@ end
 
 local opt = { silent = true, noremap = true }
 utils.keymaps_set{
-  {
+  { -- leave term insert mode.
     mode = "t",
     lhs = [[<Esc><Esc>]],
     rhs = [[<C-\><C-n>]],
     opts = opt
   },
-  {
+  { -- term prefix
     mode = "n",
     lhs = [[ s]],
     rhs = [[<Plug>(term)]],
     opts = {}
   },
-  {
+  { -- project root term
     mode = "n",
     lhs = [[<Plug>(term)a]],
     rhs = function()
@@ -61,7 +61,7 @@ utils.keymaps_set{
     end,
     opts = opt,
   },
-  {
+  { -- current buffer term
     mode = "n",
     lhs = [[<Plug>(term)c]],
     rhs = function()
@@ -72,7 +72,7 @@ utils.keymaps_set{
     end,
     opts = opt,
   },
-  {
+  { -- $HOME term
     mode = "n",
     lhs = [[<Plug>(term)~]],
     rhs = function()
@@ -83,11 +83,11 @@ utils.keymaps_set{
     end,
     opts = opt,
   },
-  {
+  { -- tab term
     mode = "n",
     lhs = [[<Plug>(term)t]],
     rhs = function ()
-      vim.cmd[[tabnew]]
+      vim.cmd.tabnew()
       vim.cmd{
         cmd = 'execute',
         args = deol_create_option(vim.fn.getcwd(), '')
