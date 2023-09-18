@@ -136,6 +136,8 @@ require("user.utils").keymaps_set({
     end,
     opts = opt,
   },
+
+  -- deol completion keymapping
   { -- t_<C-t> これはリファレンス実装。意図は分かっていない…
     mode = "t",
     lhs = [[<C-t>]],
