@@ -52,7 +52,7 @@ on_source = 'nvim-lspconfig'
 repo = 'uga-rosa/ddc-nvim-lsp-setup'
 on_source = 'ddc-source-nvim-lsp'
 lua_source = '''
-require("ddc-nvim-lsp-setup").setup()
+require("ddc_nvim_lsp_setup").setup()
 '''
 
 [[plugins]]
