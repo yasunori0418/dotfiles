@@ -17,7 +17,7 @@ mason_lspconfig.setup({
   automatic_installation = true,
 })
 
-user_lsp.on_attach(function(client, buffer)
+user_lsp.on_attach(function(_, buffer)
   local opt = { noremap = true, silent = true, buffer = buffer }
   utils.keymaps_set({
     { mode = { "n", "x" }, lhs = [[ l]],           rhs = [[<Plug>(lsp)]],     opts = opt },
