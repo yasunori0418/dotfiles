@@ -95,44 +95,6 @@ utils.keymaps_set{
     end,
     opts = opt,
   },
-  { -- これはリファレンス実装。意図は分かっていない…
-    mode = "t",
-    lhs = [[<C-t>]],
-    rhs = [[<Tab>]],
-    opts = opt,
-  },
-  { -- completion select
-    mode = "t",
-    lhs = [[<Tab>]],
-    rhs = function()
-      if vim.fn["pum#visible"]() then
-        vim.fn["pum#map#select_relative"](1)
-      else
-        vim.api.nvim_feedkeys([[<Tab>]], "n", true)
-      end
-    end,
-    opts = opt,
-  },
-  { -- completion select with reverse curosor move
-    mode = "t",
-    lhs = [[<S-Tab>]],
-    rhs = function()
-      if vim.fn["pum#visible"]() then
-        vim.fn["pum#map#select_relative"](-1)
-      else
-        vim.api.nvim_feedkeys([[<S-Tab>]], "n", true)
-      end
-    end,
-    opts = opt,
-  },
-  { -- completion confirm
-    mode = "t",
-    lhs = [[<C-y>]],
-    rhs = function()
-      vim.fn["pum#map#confirm"]()
-    end,
-    opts = opt,
-  },
 }
 -- }}}
 

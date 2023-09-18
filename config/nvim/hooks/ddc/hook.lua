@@ -136,6 +136,44 @@ require("user.utils").keymaps_set({
     end,
     opts = opt,
   },
+  { -- t_<C-t> これはリファレンス実装。意図は分かっていない…
+    mode = "t",
+    lhs = [[<C-t>]],
+    rhs = [[<Tab>]],
+    opts = opt,
+  },
+  { -- t_<Tab> completion select
+    mode = "t",
+    lhs = [[<Tab>]],
+    rhs = function()
+      if vim.fn["pum#visible"]() then
+        vim.fn["pum#map#select_relative"](1)
+      else
+        vim.api.nvim_feedkeys([[<Tab>]], "n", true)
+      end
+    end,
+    opts = opt,
+  },
+  { -- t_<S-Tab> completion select with reverse curosor move
+    mode = "t",
+    lhs = [[<S-Tab>]],
+    rhs = function()
+      if vim.fn["pum#visible"]() then
+        vim.fn["pum#map#select_relative"](-1)
+      else
+        vim.api.nvim_feedkeys([[<S-Tab>]], "n", true)
+      end
+    end,
+    opts = opt,
+  },
+  { -- t_<C-y> completion confirm
+    mode = "t",
+    lhs = [[<C-y>]],
+    rhs = function()
+      vim.fn["pum#map#confirm"]()
+    end,
+    opts = opt,
+  },
 })
 
 vim.fn["ddc#enable_terminal_completion"]()
