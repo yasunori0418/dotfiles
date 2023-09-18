@@ -120,7 +120,7 @@ require("user.utils").keymaps_set({
     end,
     opts = opt,
   },
-  { -- i_<C-x><C-f> manual_complete vsnip
+  { -- i_<C-x><C-s> manual_complete vsnip
     mode = "i",
     lhs = [[<C-x><C-s>]],
     rhs = function()
