@@ -49,6 +49,13 @@ repo = 'Shougo/ddc-source-nvim-lsp'
 on_source = 'nvim-lspconfig'
 
 [[plugins]]
+repo = 'uga-rosa/ddc-nvim-lsp-setup'
+on_source = 'ddc-source-nvim-lsp'
+lua_source = '''
+require("ddc-nvim-lsp-setup").setup()
+'''
+
+[[plugins]]
 repo = 'uga-rosa/ddc-source-nvim-lua'
 on_source = 'ddc.vim'
 
