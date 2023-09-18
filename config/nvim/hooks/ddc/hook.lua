@@ -14,13 +14,6 @@ vim.fn["ddc#custom#load_config"](
   joinpath(ddc_hooks, "config.ts")
 )
 
--- filetype settings
-vim.fn["ddc#custom#patch_filetype"]({ "ddu-ff-filter" }, {
-  keywordPattern = [=[[0-9a-zA-Z_:#-]*]=],
-  sources = { "line", "buffer" },
-  specialBufferCompletion = true,
-})
-
 ---ddc手動補完のソース指定を楽チンにするやつ
 -- https://github.com/4513ECHO/dotfiles/blob/73f2f46/config/nvim/dein/settings/ddc.vim#L163-L175
 ---@param ... string ddc-source name

@@ -135,6 +135,16 @@ export class Config extends BaseConfig {
       },
     });
 
+    args.contextBuilder.patchFiletype("ddu-ff-filter", {
+      specialBufferCompletion: true,
+      sources: ["line", "buffer"],
+      sourceOptions: {
+        _: {
+          keywordPattern: "[0-9a-zA-Z_:#-]*",
+        },
+      },
+    });
+
     return Promise.resolve();
   }
 }
