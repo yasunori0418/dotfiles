@@ -5,7 +5,7 @@ repo = 'Shougo/ddu.vim'
 depends = 'denops.vim'
 on_func = 'ddu#start()'
 on_cmd = 'DeinUpdate'
-hooks_file = '$HOOKS_DIR/ddu/global.lua'
+hooks_file = '$HOOKS_DIR/ddu/hook.lua'
 
 # }}}
 
