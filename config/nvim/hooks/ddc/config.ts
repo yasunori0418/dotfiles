@@ -1,13 +1,13 @@
 import {
   BaseConfig,
   type ConfigArguments,
-  // fn,
   type UserSource,
 } from "./helper/deps.ts";
 
 export class Config extends BaseConfig {
-  override /* async */ config(args: ConfigArguments): Promise<void> {
+  override config(args: ConfigArguments): Promise<void> {
     const main_sources: UserSource[] = ["vsnip", "around", "file", "rg"];
+    const denops = args.denops;
 
     args.contextBuilder.patchGlobal({
       ui: "pum",
@@ -51,8 +51,9 @@ export class Config extends BaseConfig {
         },
         "nvim-lsp": {
           mark: "LSP",
-          forceCompletionPattern: "\\.\\w*|::\\w*|->\\w*",
-          dup: "force",
+          forceCompletionPattern: "\\k+",
+          dup: "keep",
+          sorters: ['sorter_lsp-kind'],
         },
         "nvim-lua": {
           mark: "lua",
@@ -99,6 +100,14 @@ export class Config extends BaseConfig {
         line: { maxSize: 500 },
         "shell-native": {
           shell: "zsh",
+        },
+        "nvim-lsp": {
+          enableResolveItem: true,
+          enableAdditionalTextEdit: true,
+          confirmBehavior: "replace",
+          snippetEngine: async (body: string) => {
+            await denops.call("vsnip#anonymous", body);
+          },
         },
       },
     });
