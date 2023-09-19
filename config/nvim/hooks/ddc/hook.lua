@@ -180,6 +180,18 @@ require("user.utils").keymaps_set({
     end,
     opts = expr_opt,
   },
+  { -- t_<C-y> completion cancel
+    mode = "t",
+    lhs = [[<C-i>]],
+    rhs = function()
+      if vim.fn["pum#visible"]() then
+        vim.fn["pum#map#cancel"]()
+      else
+        return [[<C-i>]]
+      end
+    end,
+    opts = expr_opt,
+  },
 })
 
 vim.fn["ddc#enable_terminal_completion"]()
