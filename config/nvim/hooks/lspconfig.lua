@@ -179,12 +179,7 @@ user_lsp.on_attach(function(_, buffer)
   pcall(lsp.inlay_hint, buffer, nil)
 end)
 
-local capabilities = lsp.protocol.make_client_capabilities()
-capabilities.textDocument.completion.completionItem.snippetSupport = true
-capabilities.textDocument.foldingRange = {
-  dynamicRegistration = false,
-  lineFoldingOnly = true,
-}
+local capabilities = require("ddc_nvim_lsp").make_client_capabilities()
 
 mason_lspconfig.setup_handlers({
   function(server_name)
