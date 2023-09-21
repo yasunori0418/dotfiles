@@ -180,6 +180,10 @@ user_lsp.on_attach(function(_, buffer)
 end)
 
 local capabilities = require("ddc_nvim_lsp").make_client_capabilities()
+capabilities.textDocument.foldingRange = {
+  dynamicRegistration = false,
+  lineFoldingOnly = true,
+}
 
 mason_lspconfig.setup_handlers({
   function(server_name)
