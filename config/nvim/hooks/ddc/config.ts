@@ -1,6 +1,9 @@
 import {
+  autocmd,
   BaseConfig,
   type ConfigArguments,
+  lambda,
+  op,
   type UserSource,
 } from "./helper/deps.ts";
 
@@ -199,11 +202,28 @@ export class Config extends BaseConfig {
       },
     });
 
-    // lsp
+    // Lsp
+    const lsp_completion = lambda.register(
+      denops,
+      async () => {
+        const filetype = await op.filetype.get(denops);
+        const add_sources = ["nvim-lsp"];
+        if (filetype === "lua") add_sources.unshift("nvim-lua");
+        args.contextBuilder.patchFiletype(filetype, {
+          sources: [
+            ...add_sources,
+            ...main_sources,
+          ],
+        });
+      },
+    );
 
-    args.contextBuilder.patchFiletype("lua", {
-      sources: ["nvim-lua", "nvim-lsp", ...main_sources],
-    });
+    autocmd.define(
+      denops,
+      "LspAttach",
+      "*",
+      `call denops#notify("${denops.name}", "${lsp_completion}", [])`,
+    );
 
     args.contextBuilder.patchFiletype("vim", {
       sources: ["necovim", ...main_sources],
