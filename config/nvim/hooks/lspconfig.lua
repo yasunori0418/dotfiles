@@ -17,7 +17,7 @@ mason_lspconfig.setup({
   automatic_installation = true,
 })
 
-user_lsp.on_attach(function(client, buffer)
+user_lsp.on_attach(function(_, buffer)
   local opt = { noremap = true, silent = true, buffer = buffer }
   utils.keymaps_set({
     { mode = { "n", "x" }, lhs = [[ l]],           rhs = [[<Plug>(lsp)]],     opts = opt },
@@ -179,8 +179,7 @@ user_lsp.on_attach(function(client, buffer)
   pcall(lsp.inlay_hint, buffer, nil)
 end)
 
-local capabilities = lsp.protocol.make_client_capabilities()
-capabilities.textDocument.completion.completionItem.snippetSupport = true
+local capabilities = require("ddc_nvim_lsp").make_client_capabilities()
 capabilities.textDocument.foldingRange = {
   dynamicRegistration = false,
   lineFoldingOnly = true,
@@ -202,7 +201,7 @@ mason_lspconfig.setup_handlers({
         Lua = {
           workspace = {
             checkThirdParty = false,
-            library = vim.api.nvim_get_runtime_file("lua", true),
+            -- library = vim.api.nvim_get_runtime_file("lua", true),
             maxPreload = 1000,
           },
           completion = {
@@ -212,6 +211,9 @@ mason_lspconfig.setup_handlers({
           },
           hint = {
             enable = true,
+          },
+          diagnostics = {
+            globals = { "vim" },
           },
         },
       },
@@ -230,5 +232,29 @@ mason_lspconfig.setup_handlers({
       },
     })
   end,
+
+  denols = function()
+    lspconfig.denols.setup({
+      capabilities = capabilities,
+      settings = {
+        deno = {
+          enable = true,
+          unstable = true,
+          lint = true,
+          suggest = {
+            completeFunctionCalls = true,
+            autoImports = false,
+            imports = {
+              hosts = {
+                ["https://deno.land"] = true,
+                ["https://crux.land"] = true,
+                ["https://x.nest.land"] = true,
+              },
+            },
+          },
+        },
+      },
+    })
+  end
 })
 -- }}}

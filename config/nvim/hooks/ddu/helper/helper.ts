@@ -1,4 +1,4 @@
-import { ConfigArguments, opt } from "./deps.ts";
+import { ConfigArguments, op } from "./deps.ts";
 
 export const expandHome = (path: string): string => {
   return path.replace(/^~/, Deno.env.get("HOME") || "");
@@ -24,8 +24,8 @@ export async function uiSize(
 ): Promise<DduUiSize> {
   const denops = args.denops;
   const FRAME_SIZE = 2;
-  const columns = await opt.columns.get(denops);
-  const lines = await opt.lines.get(denops);
+  const columns = await op.columns.get(denops);
+  const lines = await op.lines.get(denops);
   const winRow = -1;
   const winCol = 0;
 

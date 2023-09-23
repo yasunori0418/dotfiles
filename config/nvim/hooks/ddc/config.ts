@@ -1,13 +1,16 @@
 import {
+  autocmd,
   BaseConfig,
   type ConfigArguments,
-  // fn,
+  lambda,
+  op,
   type UserSource,
 } from "./helper/deps.ts";
 
 export class Config extends BaseConfig {
-  override /* async */ config(args: ConfigArguments): Promise<void> {
+  override config(args: ConfigArguments): Promise<void> {
     const main_sources: UserSource[] = ["vsnip", "around", "file", "rg"];
+    const denops = args.denops;
 
     args.contextBuilder.patchGlobal({
       ui: "pum",
@@ -51,8 +54,9 @@ export class Config extends BaseConfig {
         },
         "nvim-lsp": {
           mark: "LSP",
-          forceCompletionPattern: "\\.\\w*|::\\w*|->\\w*",
-          dup: "force",
+          forceCompletionPattern: "\\.|:\\s*|->\\s*",
+          dup: "keep",
+          sorters: ["sorter_lsp-kind", "converter_kind_labels"],
         },
         "nvim-lua": {
           mark: "lua",
@@ -100,25 +104,126 @@ export class Config extends BaseConfig {
         "shell-native": {
           shell: "zsh",
         },
+        "nvim-lsp": {
+          enableResolveItem: true,
+          enableAdditionalTextEdit: true,
+          confirmBehavior: "replace",
+          snippetEngine: async (body: string) => {
+            await denops.call("vsnip#anonymous", body);
+          },
+        },
+      },
+      filterParams: {
+        "sorter_lsp-kind": {
+          priority: [
+            "Snippet",
+            "Method",
+            "Function",
+            "Constructor",
+            "Field",
+            "Variable",
+            "Class",
+            "Interface",
+            "Module",
+            "Property",
+            "Unit",
+            "Value",
+            "Enum",
+            "Keyword",
+            "Color",
+            "File",
+            "Reference",
+            "Folder",
+            "EnumMember",
+            "Constant",
+            "Struct",
+            "Event",
+            "Operator",
+            "TypeParameter",
+            "Text",
+          ],
+        },
+        converter_kind_labels: {
+          kindLabels: {
+            Text: "Text ",
+            Method: "Method ",
+            Function: "Function ",
+            Constructor: "Constructor ",
+            Field: "Field ",
+            Variable: "Variable ",
+            Class: "Class ",
+            Interface: "Interface ",
+            Module: "Module ",
+            Property: "Property ",
+            Unit: "Unit ",
+            Value: "Value ",
+            Enum: "Enum ",
+            Keyword: "Keyword ",
+            Snippet: "Snippet ",
+            Color: "Color ",
+            File: "File ",
+            Reference: "Reference ",
+            Folder: "Folder ",
+            EnumMember: "EnumMember ",
+            Constant: "Constant ",
+            Struct: "Struct ",
+            Event: "Event ",
+            Operator: "Operator ",
+            TypeParameter: "TypeParameter ",
+          },
+          kindHlGroups: {
+            Text: "String",
+            Method: "Function",
+            Function: "Function",
+            Constructor: "Function",
+            Field: "Identifier",
+            Variable: "Identifier",
+            Class: "Structure",
+            Interface: "Structure",
+            Module: "Function",
+            Property: "Identifier",
+            Unit: "Identifier",
+            Value: "String",
+            Enum: "Structure",
+            Keyword: "Identifier",
+            Snippet: "Structure",
+            Color: "Structure",
+            File: "Structure",
+            Reference: "Function",
+            Folder: "Structure",
+            EnumMember: "Structure",
+            Constant: "String",
+            Struct: "Structure",
+            Event: "Function",
+            Operator: "Identifier",
+            TypeParameter: "Identifier",
+          },
+        },
       },
     });
 
-    // lsp
-    for (
-      const filetype of [
-        "python",
-        "php",
-        "typescript",
-      ]
-    ) {
-      args.contextBuilder.patchFiletype(filetype, {
-        sources: ["nvim-lsp", ...main_sources],
-      });
-    }
+    // Lsp
+    const lsp_completion = lambda.register(
+      denops,
+      async () => {
+        const filetype = await op.filetype.get(denops);
+        const add_sources = ["nvim-lsp"];
+        if (filetype === "lua") add_sources.unshift("nvim-lua");
+        args.contextBuilder.patchFiletype(filetype, {
+          sources: [
+            ...add_sources,
+            ...main_sources,
+          ],
+        });
+      },
+    );
 
-    args.contextBuilder.patchFiletype("lua", {
-      sources: ["nvim-lua", "nvim-lsp", ...main_sources],
-    });
+    autocmd.define(
+      denops,
+      "LspAttach",
+      "*",
+      `call denops#notify("${denops.name}", "${lsp_completion}", [])`,
+    );
 
     args.contextBuilder.patchFiletype("vim", {
       sources: ["necovim", ...main_sources],

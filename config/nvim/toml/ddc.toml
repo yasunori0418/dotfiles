@@ -18,7 +18,7 @@ on_source = 'ddc.vim'
 [[plugins]] # ddc.vim
 repo = 'Shougo/ddc.vim'
 depends = ['context_filetype.vim', 'denops.vim', 'pum.vim', 'lexima.vim']
-on_event = ['InsertEnter', 'CmdlineEnter', 'CursorHold']
+on_event = ['InsertEnter', 'CmdlineEnter', 'CursorHold', 'LspAttach']
 hooks_file = '$HOOKS_DIR/ddc/hook.lua'
 
 # }}}
@@ -47,6 +47,13 @@ on_ft = ['vim', 'toml', 'help']
 [[plugins]] # ddc-source-nvim-lsp
 repo = 'Shougo/ddc-source-nvim-lsp'
 on_source = 'nvim-lspconfig'
+
+[[plugins]]
+repo = 'uga-rosa/ddc-nvim-lsp-setup'
+on_source = 'ddc-source-nvim-lsp'
+lua_source = '''
+require("ddc_nvim_lsp_setup").setup()
+'''
 
 [[plugins]]
 repo = 'uga-rosa/ddc-source-nvim-lua'

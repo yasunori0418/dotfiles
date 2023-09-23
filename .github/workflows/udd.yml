@@ -17,7 +17,7 @@ jobs:
         uses: denoland/setup-deno@v1
 
       - name: Run Update Deno Dependencies
-        run: deno run -A https://deno.land/x/udd/main.ts ./config/nvim/hooks/ddu/helper/deps.ts
+        run: deno run -A https://deno.land/x/udd/main.ts ./config/nvim/hooks/{ddu,ddc}/helper/deps.ts
 
       - name: Create Pull Request
         uses: peter-evans/create-pull-request@v3

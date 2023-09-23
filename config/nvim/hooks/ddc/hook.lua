@@ -151,10 +151,10 @@ require("user.utils").keymaps_set({
       if vim.fn["pum#visible"]() then
         vim.fn["pum#map#select_relative"](1)
       else
-        vim.api.nvim_feedkeys([[<Tab>]], "n", true)
+        return [[<Tab>]]
       end
     end,
-    opts = opt,
+    opts = expr_opt,
   },
   { -- t_<S-Tab> completion select with reverse curosor move
     mode = "t",
@@ -163,18 +163,34 @@ require("user.utils").keymaps_set({
       if vim.fn["pum#visible"]() then
         vim.fn["pum#map#select_relative"](-1)
       else
-        vim.api.nvim_feedkeys([[<S-Tab>]], "n", true)
+        return [[<S-Tab>]]
       end
     end,
-    opts = opt,
+    opts = expr_opt,
   },
   { -- t_<C-y> completion confirm
     mode = "t",
     lhs = [[<C-y>]],
     rhs = function()
-      vim.fn["pum#map#confirm"]()
+      if vim.fn["pum#visible"]() then
+        vim.fn["pum#map#confirm"]()
+      else
+        return [[<C-y>]]
+      end
     end,
-    opts = opt,
+    opts = expr_opt,
+  },
+  { -- t_<C-y> completion cancel
+    mode = "t",
+    lhs = [[<C-i>]],
+    rhs = function()
+      if vim.fn["pum#visible"]() then
+        vim.fn["pum#map#cancel"]()
+      else
+        return [[<C-i>]]
+      end
+    end,
+    opts = expr_opt,
   },
 })
 
