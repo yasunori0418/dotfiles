@@ -165,5 +165,3 @@ local disable_pluings = {
 for _, disable_plugin in pairs(disable_pluings) do
   vim.g[disable_plugin] = true
 end
-
-vim.opt.shada = nil
