@@ -201,7 +201,7 @@ mason_lspconfig.setup_handlers({
         Lua = {
           workspace = {
             checkThirdParty = false,
-            library = vim.api.nvim_get_runtime_file("lua", true),
+            -- library = vim.api.nvim_get_runtime_file("lua", true),
             maxPreload = 1000,
           },
           completion = {
@@ -211,6 +211,9 @@ mason_lspconfig.setup_handlers({
           },
           hint = {
             enable = true,
+          },
+          diagnostics = {
+            globals = { "vim" },
           },
         },
       },
