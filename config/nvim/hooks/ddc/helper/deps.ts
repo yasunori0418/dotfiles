@@ -6,6 +6,7 @@ export {
 export type { UserSource } from "https://deno.land/x/ddc_vim@v4.0.5/types.ts";
 
 export {
+  autocmd,
   fn,
   op,
   vars,
