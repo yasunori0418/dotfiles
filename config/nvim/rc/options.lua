@@ -97,6 +97,8 @@ local option_table = {
   -- When the search progresses to the end of the file, search again from the beginning of the file.
   wrapscan = true,
 
+  history = 100,
+
   -- Invisible characters
   list = true,
 
