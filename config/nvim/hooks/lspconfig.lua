@@ -232,5 +232,29 @@ mason_lspconfig.setup_handlers({
       },
     })
   end,
+
+  denols = function()
+    lspconfig.denols.setup({
+      capabilities = capabilities,
+      settings = {
+        deno = {
+          enable = true,
+          unstable = true,
+          lint = true,
+          suggest = {
+            completeFunctionCalls = true,
+            autoImports = false,
+            imports = {
+              hosts = {
+                ["https://deno.land"] = true,
+                ["https://crux.land"] = true,
+                ["https://x.nest.land"] = true,
+              },
+            },
+          },
+        },
+      },
+    })
+  end
 })
 -- }}}
