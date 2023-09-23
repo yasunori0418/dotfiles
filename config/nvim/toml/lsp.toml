@@ -45,23 +45,3 @@ lua_source = '''
 require("neodev").setup({})
 '''
 # }}}
-
-# null_ls {{{
-[[plugins]] # plenary.nvim(null-ls depends of this plugin) 
-repo = 'nvim-lua/plenary.nvim'
-if = 0
-
-[[plugins]] # null-ls.nvim
-repo = 'jose-elias-alvarez/null-ls.nvim'
-depends = ['plenary.nvim', 'gitsigns.nvim']
-hooks_file = '$HOOKS_DIR/null_ls.lua'
-if = 0
-
-[[plugins]] # mason-null-ls.nvim
-repo = 'jay-babu/mason-null-ls.nvim'
-depends = 'null-ls.nvim'
-on_source = 'mason-lspconfig.nvim'
-hooks_file = '$HOOKS_DIR/mason_null_ls.lua'
-if = 0
-
-# }}}
