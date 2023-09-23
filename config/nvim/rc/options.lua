@@ -159,6 +159,7 @@ local disable_pluings = {
   'skip_loading_mswin',
   'did_indent_on',
   'loaded_rrhelper',
+  'loaded_python3_provider',
 }
 
 for _, disable_plugin in pairs(disable_pluings) do
