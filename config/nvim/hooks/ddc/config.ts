@@ -200,17 +200,6 @@ export class Config extends BaseConfig {
     });
 
     // lsp
-    for (
-      const filetype of [
-        "python",
-        "php",
-        "typescript",
-      ]
-    ) {
-      args.contextBuilder.patchFiletype(filetype, {
-        sources: ["nvim-lsp", ...main_sources],
-      });
-    }
 
     args.contextBuilder.patchFiletype("lua", {
       sources: ["nvim-lua", "nvim-lsp", ...main_sources],
