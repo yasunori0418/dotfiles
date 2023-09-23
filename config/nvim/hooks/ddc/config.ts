@@ -52,7 +52,7 @@ export class Config extends BaseConfig {
         "nvim-lsp": {
           mark: "LSP",
           forceCompletionPattern: "\\.|:\\s*|->\\s*",
-          dup: "force",
+          dup: "keep",
           sorters: ["sorter_lsp-kind", "converter_kind_labels"],
         },
         "nvim-lua": {
