@@ -9,9 +9,6 @@ repo = 'williamboman/mason.nvim'
 hook_post_update = 'MasonUpdate'
 hooks_file = '$HOOKS_DIR/mason.lua'
 
-[[plugins]]
-repo = 'jay-babu/mason-null-ls.nvim'
-
 [[plugins]] # mason-lspconfig.nvim
 repo = 'williamboman/mason-lspconfig.nvim'
 depends = ['nvim-lspconfig', 'mason.nvim']
