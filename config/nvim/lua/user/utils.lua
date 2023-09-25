@@ -112,4 +112,16 @@ function M.remove_file_from_gather_files(gather_files, file_name)
   return gather_files
 end
 
+---luaのモジュール名前空間を解決する。
+---@param base_module string
+---@param ... string
+---@return string
+function M.resolve_module_namespace(base_module, ...)
+  local result = base_module
+  for _, module in ipairs({ ... }) do
+    result = result .. "." .. module
+  end
+  return result
+end
+
 return M
