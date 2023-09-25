@@ -1,10 +1,11 @@
 local M = {}
 local utils = require('user.utils')
 
----get any configs from efmls-configs-nvim
 ---@alias kind
 ---| "formatters" # `require('efmls-configs.formatters')`
 ---| "linters" # `require('efmls-configs.linters')`
+
+---get any configs from efmls-configs-nvim
 ---@param kind kind # Which select of formatters or linters
 ---@param name string # Tool name for supported by efmls-configs.
 ---@return table # tool config for efm-langserver.
