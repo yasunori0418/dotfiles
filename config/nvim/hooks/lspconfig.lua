@@ -6,6 +6,7 @@ local diagnostic = vim.diagnostic
 local utils = require("user.utils")
 local user_lsp = require("user.lsp")
 local vimx = require("artemis")
+local efm_languages = require("user.plugins.efm").languages
 
 mason_lspconfig.setup({
   ensure_installed = {
@@ -260,7 +261,7 @@ mason_lspconfig.setup_handlers({
 
   efm = function()
     lspconfig.efm.setup({
-      filetypes = {},
+      filetypes = vim.tbl_keys(efm_languages),
       init_options = {
         documentFormatting = true,
         rangeFormatting = true,
@@ -270,7 +271,10 @@ mason_lspconfig.setup_handlers({
         completion = true,
       },
       capabilities = capabilities,
-      settings = {},
+      settings = {
+        rootMarkers = { ".git/" },
+        languages = efm_languages,
+      },
     })
   end,
 })

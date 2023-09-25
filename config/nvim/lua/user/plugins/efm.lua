@@ -1,3 +1,4 @@
+local M = {}
 local utils = require('user.utils')
 
 ---get any configs from efmls-configs-nvim
@@ -13,7 +14,7 @@ local function config_require(kind, name)
   )
 end
 
-return {
+M.languages = {
   python = {
     config_require("formatters", "black"),
     config_require("linters", "flake8"),
@@ -48,3 +49,5 @@ return {
     config_require("linters", "gitlint"),
   },
 }
+
+return M
