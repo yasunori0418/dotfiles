@@ -6,7 +6,43 @@ local diagnostic = vim.diagnostic
 local utils = require("user.utils")
 local user_lsp = require("user.lsp")
 local vimx = require("artemis")
-local efm_languages = require("user.plugins.efm").languages
+local efm = require("user.plugins.efm")
+
+efm.setup({
+  python = {
+    { kind = "formatters", name = "black", },
+    { kind = "linters",    name = "flake8", },
+  },
+  lua = {
+    { kind = "formatters", name = "stylua", },
+    { kind = "linters",    name = "luacheck", },
+  },
+  markdown = {
+    { kind = "linters", name = "textlint", },
+    { kind = "linters", name = "markdownlint", },
+  },
+  vim = {
+    { kind = "linters", name = "vint", },
+  },
+  json = {
+    { kind = "formatters", name = "jq", },
+    { kind = "linters",    name = "jq", },
+  },
+  yaml = {
+    { kind = "linters",    name = "yamllint", },
+    { kind = "formatters", name = "yq", },
+  },
+  php = {
+    { kind = "linters",    name = "phpstan", },
+    { kind = "formatters", name = "pint", },
+  },
+  dockerfile = {
+    { kind = "linters", name = "hadolint", },
+  },
+  gitcommit = {
+    { kind = "linters", name = "gitlint", },
+  },
+})
 
 mason_lspconfig.setup({
   ensure_installed = {
@@ -261,7 +297,7 @@ mason_lspconfig.setup_handlers({
 
   efm = function()
     lspconfig.efm.setup({
-      filetypes = vim.tbl_keys(efm_languages),
+      filetypes = efm.filetypes,
       init_options = {
         documentFormatting = true,
         rangeFormatting = true,
@@ -273,7 +309,7 @@ mason_lspconfig.setup_handlers({
       capabilities = capabilities,
       settings = {
         rootMarkers = { ".git/" },
-        languages = efm_languages,
+        languages = efm.languages,
       },
     })
   end,
