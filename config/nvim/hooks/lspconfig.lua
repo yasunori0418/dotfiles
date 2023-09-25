@@ -13,6 +13,7 @@ mason_lspconfig.setup({
     "intelephense",
     "pyright",
     "denols",
+    "efm",
   },
   automatic_installation = true,
 })
