@@ -24,6 +24,18 @@ local function register_tools(kind, name)
   })
 end
 
+---make filetype config.
+---@param filetype string
+---@param kind kind # Which select of formatters or linters
+---@param name string # Tool name for supported by efmls-configs.
+---@return table # tool config for efm-langserver.
+local function filetype_config(filetype, kind, name)
+  local result = {}
+  result[filetype] = config_require(kind, name)
+  register_tools(kind, name)
+  return result
+end
+
 M.languages = {
   python = {
     config_require("formatters", "black"),
