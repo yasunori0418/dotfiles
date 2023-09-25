@@ -45,3 +45,7 @@ lua_source = '''
 require("neodev").setup({})
 '''
 # }}}
+
+[[plugins]] # efm-langserver-settings
+repo = 'tsuyoshicho/vim-efm-langserver-settings'
+on_source = ['nvim-lspconfig']
