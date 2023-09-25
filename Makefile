@@ -25,6 +25,10 @@ true_color: ## 24-bit-color.sh
 zsh_bench: ## zsh bench mark with hyperfine used.
 	@hyperfine -w 5 -r 50 'zsh -i -c exit'
 
+.PHONY := nvim_bench
+nvim_bench: ## neovim bench mark with vim-startuptime used.
+	@vim-startuptime -vimpath nvim -count 100 | head -6
+
 .PHONY := arch_iso
 arch_iso: ## Download Arch Linux iso image at latest, and verification.
 	@./scripts/arch_iso.sh
