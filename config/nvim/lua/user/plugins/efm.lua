@@ -1,5 +1,7 @@
 local M = {}
 local utils = require('user.utils')
+M.tools = {}
+M.languages = {}
 
 ---@alias kind
 ---| "formatters" # `require('efmls-configs.formatters')`
