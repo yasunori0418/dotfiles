@@ -15,6 +15,15 @@ local function config_require(kind, name)
   )
 end
 
+---@param kind kind # Which select of formatters or linters
+---@param name string # Tool name for supported by efmls-configs.
+local function register_tools(kind, name)
+  table.insert(M.tools, {
+    kind = kind,
+    name = name,
+  })
+end
+
 M.languages = {
   python = {
     config_require("formatters", "black"),
