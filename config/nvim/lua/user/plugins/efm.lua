@@ -41,8 +41,10 @@ end
 function M.setup(options)
   M.filetypes = vim.tbl_keys(options)
   for _, filetype in pairs(M.filetypes) do
-    local config = filetype_config(filetype, options[filetype])
-    table.insert(M.languages, config)
+    table.insert(
+      M.languages,
+      filetype_config(filetype, options[filetype])
+    )
   end
 end
 
