@@ -256,6 +256,22 @@ mason_lspconfig.setup_handlers({
         },
       },
     })
-  end
+  end,
+
+  efm = function()
+    lspconfig.efm.setup({
+      filetypes = {},
+      init_options = {
+        documentFormatting = true,
+        rangeFormatting = true,
+        hover = true,
+        documentSymbol = true,
+        codeAction = true,
+        completion = true,
+      },
+      capabilities = capabilities,
+      settings = {},
+    })
+  end,
 })
 -- }}}
