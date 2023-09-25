@@ -178,7 +178,7 @@ user_lsp.on_attach(function(_, buffer)
     { mode = { "n" }, lhs = [=[]d]=], rhs = diagnostic.goto_next,  opts = opt },
   })
 
-  pcall(lsp.inlay_hint, buffer, nil)
+  -- pcall(lsp.inlay_hint, buffer, nil)
 end)
 
 local capabilities = require("ddc_nvim_lsp").make_client_capabilities()
