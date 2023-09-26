@@ -39,9 +39,6 @@ efm.setup({
   dockerfile = {
     { kind = "linters", name = "hadolint", },
   },
-  gitcommit = {
-    { kind = "linters", name = "gitlint", },
-  },
 })
 
 mason_lspconfig.setup({
