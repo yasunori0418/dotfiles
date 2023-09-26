@@ -1,5 +1,5 @@
 local M = {}
-local utils = require('user.utils')
+local utils = require("user.utils")
 
 ---@type string[]
 M.tools = {}
@@ -21,24 +21,17 @@ M.languages = {}
 ---@param tool_config ToolConfig
 ---@return table # tool config for efm-langserver.
 local function config_require(tool_config)
-  return require(
-    utils.resolve_module_namespace(
-      "efmls-configs",
-      tool_config.kind,
-      tool_config.name))
+  return require(utils.resolve_module_namespace("efmls-configs", tool_config.kind, tool_config.name))
 end
 
 ---make filetype config.
 ---@param tool_configs ToolConfig[]
----@return table # tool config for efm-langserver.
 local function filetype_config(filetype, tool_configs)
-  local result = {}
-  result[filetype] = {}
+  M.languages[filetype] = {}
   for _, tool_config in ipairs(tool_configs) do
-    table.insert(result[filetype], config_require(tool_config))
+    table.insert(M.languages[filetype], config_require(tool_config))
     table.insert(M.tools, tool_config.name)
   end
-  return result
 end
 
 ---mason ensure_installed
@@ -59,12 +52,10 @@ end
 function M.setup(options)
   M.filetypes = vim.tbl_keys(options)
   for _, filetype in pairs(M.filetypes) do
-    table.insert(
-      M.languages,
-      filetype_config(filetype, options[filetype])
-    )
+    filetype_config(filetype, options[filetype])
   end
   ensure_installed()
+  vim.print(M.languages)
 end
 
 return M
