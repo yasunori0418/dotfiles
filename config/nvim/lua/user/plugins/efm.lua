@@ -55,7 +55,6 @@ function M.setup(options)
     filetype_config(filetype, options[filetype])
   end
   ensure_installed()
-  vim.print(M.languages)
 end
 
 return M
