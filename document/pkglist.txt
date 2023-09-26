@@ -91,6 +91,8 @@ lightdm
 linux-firmware
 linux-zen
 linux-zen-headers
+lua-sec
+luarocks
 lxappearance-gtk3
 m4
 make
