@@ -253,6 +253,10 @@ mason_lspconfig.setup_handlers({
           diagnostics = {
             globals = { "vim" },
           },
+          format = {
+            -- because use stylua from efm.
+            enable = false,
+          },
         },
       },
     })
