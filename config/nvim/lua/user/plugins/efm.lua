@@ -7,6 +7,9 @@ M.tools = {}
 ---@type string[]
 M.filetypes = {}
 
+---@type boolean
+M.auto_installs = true
+
 M.languages = {}
 
 ---@alias kind
@@ -30,9 +33,11 @@ end
 local function filetype_config(filetype, tool_configs)
     M.languages[filetype] = {}
     for _, tool_config in ipairs(tool_configs) do
-        if tool_config.auto_install == nil then
-            tool_config.auto_install = true
-        end
+        setmetatable(tool_config, {
+            __index = {
+                auto_install = true,
+            }
+        })
         table.insert(M.languages[filetype], config_require(tool_config))
         if tool_config.auto_install then
             table.insert(M.tools, tool_config.name)
@@ -46,7 +51,7 @@ local function ensure_installed()
     registry.refresh(function()
         for _, tool in ipairs(M.tools) do
             local pkg = registry.get_package(tool)
-            if not pkg:is_installed() then
+            if not pkg:is_installed() and M.auto_installs then
                 vim.notify(
                     "Install tool: \"" .. tool .. "\"",
                     vim.log.levels.INFO
@@ -61,9 +66,15 @@ end
 ---@param options table
 function M.setup(options)
     vim.notify = require("notify")
-    M.filetypes = vim.tbl_keys(options)
+    setmetatable(options, {
+        __index = {
+            auto_installs = true,
+        }
+    })
+    M.auto_installs = options.auto_installs
+    M.filetypes = vim.tbl_keys(options.filetypes)
     for _, filetype in ipairs(M.filetypes) do
-        filetype_config(filetype, options[filetype])
+        filetype_config(filetype, options.filetypes[filetype])
     end
     ensure_installed()
 end
