@@ -1,5 +1,5 @@
 -- lua_source {{{
-require("indent_blankline").setup({
+require("ibl").setup({
   char_list = { "│", "|", "¦", "┆", "┊" },
   char_list_blankline = { "│", "|", "¦", "┆", "┊" },
   show_current_context = true,
