@@ -1,30 +1,55 @@
 -- lua_source {{{
-require("indent_blankline").setup({
-  char_list = { "│", "|", "¦", "┆", "┊" },
-  char_list_blankline = { "│", "|", "¦", "┆", "┊" },
-  show_current_context = true,
-  show_current_context_start = true,
-  show_current_context_start_on_current_line = true,
-  show_end_of_line = true,
-  show_first_indent_level = true,
-  show_trailing_blankline_indent = true,
-  space_char_blankline = " ",
-  strict_tabs = true,
-  use_treesitter = true,
-  filetype_exclude = {
-    "lspinfo",
-    "packer",
-    "checkhealth",
-    "help",
-    "man",
-    "",
+
+local highlight = {
+  "NordRed",
+  "NordYellow",
+  "NordBlue",
+  "NordOrange",
+  "NordGreen",
+  "NordCyan",
+}
+local hooks = require("ibl.hooks")
+-- create the highlight groups in the highlight setup hook, so they are reset
+-- every time the colorscheme changes
+hooks.register(hooks.type.HIGHLIGHT_SETUP, function()
+  vim.api.nvim_set_hl(0, "NordRed", { fg = "#BF616A" })
+  vim.api.nvim_set_hl(0, "NordYellow", { fg = "#EBCB8B" })
+  vim.api.nvim_set_hl(0, "NordBlue", { fg = "#5E81AC" })
+  vim.api.nvim_set_hl(0, "NordOrange", { fg = "#D08770" })
+  vim.api.nvim_set_hl(0, "NordGreen", { fg = "#A3BE8C" })
+  vim.api.nvim_set_hl(0, "NordCyan", { fg = "#B48EAD" })
+end)
+
+require("ibl").setup({
+  enable = true,
+  debounce = 100,
+  viewport_buffer = { min = 30, max = 500 },
+  indent = {
+    char = "┊",
+    highlight = highlight,
+    smart_indent_cap = true,
   },
-  buftype_exclude = {
-    "terminal",
-    "nofile",
-    "quickfix",
-    "prompt",
+  whitespace = {
+    remove_blankline_trail = true,
   },
-  bufname_exclude = {},
+  scope = {
+    enable = false,
+  },
+  exclude = {
+    filetypes = {
+      "",
+      "checkhealth",
+      "gitcommit",
+      "help",
+      "lspinfo",
+      "man",
+    },
+    buftypes = {
+      "nofile",
+      "prompt",
+      "quickfix",
+      "terminal",
+    },
+  },
 })
 -- }}}
