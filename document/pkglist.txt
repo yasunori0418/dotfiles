@@ -77,7 +77,7 @@ iwd
 jdk-openjdk
 jp2a
 jre-openjdk
-kio
+kio5
 libcaca
 libfido2
 libmythes
@@ -91,6 +91,8 @@ lightdm
 linux-firmware
 linux-zen
 linux-zen-headers
+lua-sec
+luarocks
 lxappearance-gtk3
 m4
 make

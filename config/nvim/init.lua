@@ -1,9 +1,9 @@
 -- Enables the experimental Lua module loader
 if vim.loader then
-  vim.loader.enable()
+    vim.loader.enable()
 end
 
-require('user.rc').setup()
+require("user.rc").setup()
 
-vim.cmd[[filetype plugin indent on]]
-vim.cmd[[syntax enable]]
+vim.cmd([[filetype plugin indent on]])
+vim.cmd([[syntax enable]])

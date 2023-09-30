@@ -44,4 +44,8 @@ repo = 'folke/neodev.nvim'
 lua_source = '''
 require("neodev").setup({})
 '''
+
+[[plugins]]
+repo = 'creativenull/efmls-configs-nvim'
+on_source = 'nvim-lspconfig'
 # }}}

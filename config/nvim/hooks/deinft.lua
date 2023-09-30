@@ -37,6 +37,12 @@ vim.opt_local.softtabstop = 4
 vim.opt_local.shiftwidth = 4
 -- }}}
 
+-- lua_lua {{{
+vim.opt_local.tabstop = 4
+vim.opt_local.softtabstop = 4
+vim.opt_local.shiftwidth = 4
+-- }}}
+
 -- lua_python {{{
 vim.opt_local.tabstop = 4
 vim.opt_local.softtabstop = 4
@@ -58,6 +64,6 @@ vim.opt_local.foldenable = true
 vim.opt_local.number = true
 vim.opt_local.relativenumber = false
 vim.keymap.set("n", "R", function()
-  vim.cmd([[Qfreplace topleft vsplit]])
+    vim.cmd([[Qfreplace topleft vsplit]])
 end, { silent = true, noremap = true })
 -- }}}

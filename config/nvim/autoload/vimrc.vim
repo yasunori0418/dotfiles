@@ -1,3 +1,5 @@
+scriptencoding utf-8
+
 function! vimrc#lightline_git_branch() abort
   if gitbranch#name() ==# ''
     return ''
