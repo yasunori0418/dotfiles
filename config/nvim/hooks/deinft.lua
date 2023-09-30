@@ -64,6 +64,6 @@ vim.opt_local.foldenable = true
 vim.opt_local.number = true
 vim.opt_local.relativenumber = false
 vim.keymap.set("n", "R", function()
-  vim.cmd([[Qfreplace topleft vsplit]])
+    vim.cmd([[Qfreplace topleft vsplit]])
 end, { silent = true, noremap = true })
 -- }}}

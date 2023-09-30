@@ -2,13 +2,9 @@
 vim.g.user_emmet_install_global = false
 -- vim.g.user_emmet_leader_key = "<C-y>"
 
-require('user.utils').autocmd_set(
-  'FileType',
-  {'html', 'css', 'scss'},
-  function()
-    vim.cmd[[EmmetInstall]]
-  end
-)
+require("user.utils").autocmd_set("FileType", { "html", "css", "scss" }, function()
+    vim.cmd([[EmmetInstall]])
+end)
 
 local html5 = [[
 <!DOCTYPE html>
@@ -27,15 +23,15 @@ local html5 = [[
 ]]
 
 vim.g.user_emmet_settings = {
-  variables = {
-    lang = "ja",
-  },
-  html = {
-    snippets = {
-      html_5 = html5,
-      lrl_s = [[{{ | }}]],
-      lrl_e = [[{!! | !!}]],
+    variables = {
+        lang = "ja",
     },
-  },
+    html = {
+        snippets = {
+            html_5 = html5,
+            lrl_s = [[{{ | }}]],
+            lrl_e = [[{!! | !!}]],
+        },
+    },
 }
 -- }}}
