@@ -18,7 +18,7 @@ efm.setup({
         { kind = "linters", name = "luacheck" },
     },
     markdown = {
-        { kind = "linters", name = "textlint", no_install = true },
+        { kind = "linters", name = "textlint", auto_install = false },
         { kind = "linters", name = "markdownlint" },
     },
     vim = {
