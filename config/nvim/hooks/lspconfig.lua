@@ -9,7 +9,7 @@ local vimx = require("artemis")
 local efm = require("user.plugins.efm")
 
 efm.setup({
-    auto_installs = true,
+    all_installs = true,
     filetypes = {
         python = {
             { kind = "formatters", name = "black" },
