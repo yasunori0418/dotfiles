@@ -1,30 +1,34 @@
 -- lua_source {{{
 require("ibl").setup({
-  char_list = { "│", "|", "¦", "┆", "┊" },
-  char_list_blankline = { "│", "|", "¦", "┆", "┊" },
-  show_current_context = true,
-  show_current_context_start = true,
-  show_current_context_start_on_current_line = true,
-  show_end_of_line = true,
-  show_first_indent_level = true,
-  show_trailing_blankline_indent = true,
-  space_char_blankline = " ",
-  strict_tabs = true,
-  use_treesitter = true,
-  filetype_exclude = {
-    "lspinfo",
-    "packer",
-    "checkhealth",
-    "help",
-    "man",
-    "",
+  enable = true,
+  debounce = 100,
+  viewport_buffer = { min = 30, max = 500 },
+  indent = {
+    char = "┊",
+    highlight = highlight,
+    smart_indent_cap = true,
   },
-  buftype_exclude = {
-    "terminal",
-    "nofile",
-    "quickfix",
-    "prompt",
+  whitespace = {
+    remove_blankline_trail = true,
   },
-  bufname_exclude = {},
+  scope = {
+    enable = false,
+  },
+  exclude = {
+    filetypes = {
+      "",
+      "checkhealth",
+      "gitcommit",
+      "help",
+      "lspinfo",
+      "man",
+    },
+    buftypes = {
+      "nofile",
+      "prompt",
+      "quickfix",
+      "terminal",
+    },
+  },
 })
 -- }}}
