@@ -47,6 +47,10 @@ local function ensure_installed()
         for _, tool in ipairs(M.tools) do
             local pkg = registry.get_package(tool)
             if not pkg:is_installed() then
+                vim.notify(
+                    "Install tool: \"" .. tool .. "\"",
+                    vim.log.levels.INFO
+                )
                 pkg:install()
             end
         end
@@ -56,6 +60,7 @@ end
 ---setup of efm-langserver.
 ---@param options table
 function M.setup(options)
+    vim.notify = require("notify")
     M.filetypes = vim.tbl_keys(options)
     for _, filetype in ipairs(M.filetypes) do
         filetype_config(filetype, options[filetype])
