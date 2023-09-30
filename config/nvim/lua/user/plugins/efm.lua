@@ -16,6 +16,7 @@ M.languages = {}
 ---@class ToolConfig
 ---@field kind kind # Which select of formatters or linters
 ---@field name string # Tool name for supported by efmls-configs.
+---@field no_install boolean # if true then, not execute ensure_install
 
 ---get any configs from efmls-configs-nvim
 ---@param tool_config ToolConfig
@@ -30,7 +31,9 @@ local function filetype_config(filetype, tool_configs)
     M.languages[filetype] = {}
     for _, tool_config in ipairs(tool_configs) do
         table.insert(M.languages[filetype], config_require(tool_config))
-        table.insert(M.tools, tool_config.name)
+        if not tool_config.no_install then
+            table.insert(M.tools, tool_config.name)
+        end
     end
 end
 
