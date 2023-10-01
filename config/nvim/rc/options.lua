@@ -161,7 +161,12 @@ local disable_pluings = {
     "skip_loading_mswin",
     "did_indent_on",
     "loaded_rrhelper",
+
+    -- Disable neovim language api providers
     "loaded_python3_provider",
+    "loaded_node_provider",
+    "loaded_perl_provider",
+    "loaded_ruby_provider",
 }
 
 for _, disable_plugin in pairs(disable_pluings) do

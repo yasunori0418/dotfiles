@@ -9,7 +9,7 @@ local vimx = require("artemis")
 local efm = require("user.plugins.efm")
 
 efm.setup({
-    all_installs = true,
+    all_installs = false,
     filetypes = {
         python = {
             { kind = "formatters", name = "black" },
@@ -45,14 +45,8 @@ efm.setup({
 })
 
 mason_lspconfig.setup({
-    ensure_installed = {
-        "lua_ls",
-        "intelephense",
-        "pyright",
-        "denols",
-        "efm",
-    },
-    automatic_installation = true,
+    ensure_installed = {},
+    automatic_installation = false,
 })
 
 user_lsp.on_attach(function(_, buffer)
