@@ -77,7 +77,7 @@ bindsym $mod+Ctrl+Print exec --no-startup-id xfce4-screenshooter -r
 bindsym $mod+m exec --no-startup-id multi_monitor_for_laptop.sh
 
 # VIME - Vim Input Method Editor
-bindsym $alt+i exec XMODIFIERS=@im= ~/bin/vime.sh
+bindsym $alt+i exec XMODIFIERS=@im= zsh -c ~/bin/vime.sh
 
 # Rofi launch keybinds {{{
 # Start application launcher
@@ -189,7 +189,7 @@ for_window [class="easyeffects"]            floating enable border normal
 for_window [class="Nm-connection-editor"]   floating enable border normal
 for_window [class="SimpleScreenRecorder"]   floating enable border normal
 for_window [class="Gnome-system-monitor"]   floating enable
-for_window [class="Floaterm"]               floating enable
+for_window [class="FloatingVim"]            floating enable
 # }}}
 
 # Launch software in a specific workspace {{{
