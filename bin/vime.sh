@@ -12,7 +12,7 @@ touch ${clip_file}
 
 wezterm \
   --config initial_rows=30 \
-  --config initial_cols=70 \
+  --config initial_cols=120 \
   --config enable_tab_bar=false \
   start --class FloatingVim \
   ${nvim} --listen ~/.cache/nvim/server.pipe ${clip_file} \
