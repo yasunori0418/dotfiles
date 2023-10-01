@@ -1,2 +1,4 @@
 [tools]
 hyperfine = "latest"
+usql = "latest"
+rust = "latest"
