@@ -7,6 +7,7 @@ fd = "latest"
 jq = "latest"
 fzf = "latest"
 node = "latest"
+go = "latest"
 github-cli = "latest"
 eza = "latest"
 
