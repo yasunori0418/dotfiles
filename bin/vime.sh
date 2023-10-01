@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
 
 set -e -u -o pipefail
+eval "$(rtx hook-env -s zsh)"
 
 declare FloatingVim=$( \
   i3-msg -t get_tree \
