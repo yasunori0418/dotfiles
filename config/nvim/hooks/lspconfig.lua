@@ -45,13 +45,7 @@ efm.setup({
 })
 
 mason_lspconfig.setup({
-    ensure_installed = {
-        "lua_ls",
-        "intelephense",
-        "pyright",
-        "denols",
-        "efm",
-    },
+    ensure_installed = {},
     automatic_installation = false,
 })
 
