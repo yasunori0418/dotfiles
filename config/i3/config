@@ -9,6 +9,8 @@
 # layout, use the i3-config-wizard
 #
 
+include $HOME/.config/i3/config.d/*.conf
+
 # window settings {{{
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below.
@@ -22,22 +24,6 @@ default_floating_border normal
 gaps outer 5
 gaps inner 5
 smart_gaps on
-# }}}
-
-# Startup {{{
-set $wallpaper ~/Pictures/wallpaper/Nordic-darker.png
-
-# exec_always --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork --ignore-empty-password -i $wallpaper
-exec_always --no-startup-id light-locker
-exec_always --no-startup-id dunst
-exec_always --no-startup-id clipmenud
-exec --no-startup-id fcitx5
-exec --no-startup-id picom -b
-exec --no-startup-id thunar --daemon
-exec --no-startup-id feh --bg-fill $wallpaper $wallpaper
-exec --no-startup-id xfce4-power-manager
-exec --no-startup-id blueberry-tray
-exec --no-startup-id wezterm
 # }}}
 
 # Keybinds {{{
