@@ -9,37 +9,6 @@
 # layout, use the i3-config-wizard
 #
 
-# window settings {{{
-# Font for window titles. Will also be used by the bar unless a different font
-# is used in the bar {} block below.
-font pango:Noto Sans CJK JP 12
-
-# Hide window title bar.
-default_border none
-default_floating_border normal
-
-# gaps each window
-gaps outer 5
-gaps inner 5
-smart_gaps on
-# }}}
-
-# Startup {{{
-set $wallpaper ~/Pictures/wallpaper/Nordic-darker.png
-
-# exec_always --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork --ignore-empty-password -i $wallpaper
-exec_always --no-startup-id light-locker
-exec_always --no-startup-id dunst
-exec_always --no-startup-id clipmenud
-exec --no-startup-id fcitx5
-exec --no-startup-id picom -b
-exec --no-startup-id thunar --daemon
-exec --no-startup-id feh --bg-fill $wallpaper $wallpaper
-exec --no-startup-id xfce4-power-manager
-exec --no-startup-id blueberry-tray
-exec --no-startup-id wezterm
-# }}}
-
 # Keybinds {{{
 # Use these keys for focus, movement, and resize directions when reaching for
 # the arrows is not convenient
@@ -55,183 +24,19 @@ set $mod Mod4
 set $alt Mod1
 # }}}
 
-# Terminal {{{
-bindsym $mod+Return exec wezterm
-## Sub terminal emulators. 
-# disable ime in alacritty.
-set $alacritty XMODIFIERS=alacritty alacritty
-bindsym $mod+Shift+Return exec --no-startup-id $alacritty
-# daemon startup rxvt-unicode
-set $urxvt XMODIFIERS=urxvt start_urxvt
-bindsym $mod+Ctrl+Return exec --no-startup-id $urxvt
-# }}}
+# window settings {{{
+# Font for window titles. Will also be used by the bar unless a different font
+# is used in the bar {} block below.
+font pango:Noto Sans CJK JP 12
 
-# Screenshot shortcut key {{{
-#bindsym $mod+Shift+p exec --no-startup-id scrot ~/Pictures/%Y-%m-%d-%T-scrot.png
-bindsym $mod+Print exec --no-startup-id xfce4-screenshooter -f
-bindsym $mod+Shift+Print exec --no-startup-id xfce4-screenshooter -w
-bindsym $mod+Ctrl+Print exec --no-startup-id xfce4-screenshooter -r
-# }}}
+# Hide window title bar.
+default_border none
+default_floating_border normal
 
-# Multiple monitor.
-bindsym $mod+m exec --no-startup-id multi_monitor_for_laptop.sh
-
-# VIME - Vim Input Method Editor
-bindsym $alt+i exec XMODIFIERS=@im= zsh -c ~/bin/vime.sh
-
-# Rofi launch keybinds {{{
-# Start application launcher
-bindsym $mod+d exec --no-startup-id rofi -show drun
-# Start window selector
-bindsym $mod+slash exec --no-startup-id rofi -show window
-# Quick command launcher.
-bindsym $mod+semicolon exec --no-startup-id rofi -show run
-# Power menu
-bindsym $mod+Shift+e exec rofi -show power -font "HackGen Console NF 14" -modi "power:~/.local/bin/rofi-power-menu" -no-sidebar-mode
-# Calc
-bindsym $mod+c exec rofi -modi calc -show calc -no-sidebar-mode
-# start clipcat-menu insert on rofi
-bindsym $mod+p exec --no-startup-id clipmenu
-# }}}
-
-# Window controls {{{
-# change focus
-bindsym $mod+$left   focus left
-bindsym $mod+$down   focus down
-bindsym $mod+$up     focus up
-bindsym $mod+$right  focus right
-# move focused window
-bindsym $mod+Shift+$left   move left
-bindsym $mod+Shift+$down   move down
-bindsym $mod+Shift+$up     move up
-bindsym $mod+Shift+$right  move right
-# Switch workspace
-bindsym $mod+Ctrl+$left   workspace prev
-bindsym $mod+Ctrl+$down   workspace prev
-bindsym $mod+Ctrl+$up     workspace next
-bindsym $mod+Ctrl+$right  workspace next
-
-# split in horizontal orientation
-bindsym $mod+b split v, exec dunstify --appname=i3wm "Split the window" "Horizontally"
-# split in vertical orientation
-bindsym $mod+v split h, exec dunstify --appname=i3wm "Split the window" "Vertically"
-# enter fullscreen mode for the focused container
-bindsym $mod+f fullscreen toggle, exec dunstify --appname=i3wm "Change window type" "Fullscreen" "Toggle"
-
-# change container layout (stacked, tabbed, toggle split)
-#bindsym $mod+s layout stacking, exec dunstify --appname=i3wm "Change window type" "Stack"
-bindsym $mod+w layout tabbed, exec dunstify --appname=i3wm "Change window type" "Tab"
-bindsym $mod+e layout toggle split, exec dunstify --appname=i3wm "Change window type" "Split"
-
-# toggle tiling / floating
-bindsym $mod+Shift+space floating toggle, border normal, exec dunstify --appname=i3wm "Change window type" "Floating" "Toggle"
-
-# focus the parent container
-bindsym $mod+a focus parent
-# move the currently focused window to the scratchpad
-bindsym $mod+Shift+minus move scratchpad
-# Show the next scratchpad window or hide the focused scratchpad window.
-# If there are multiple scratchpad windows, this command cycles through them.
-bindsym $mod+minus scratchpad show, border normal
-# }}}
-
-# Workspace {{{
-# Define names for default workspaces for which we configure key bindings later on.
-# We use variables to avoid repeating the names in multiple places.
-set $ws1 "1| "
-set $ws2 "2| "
-set $ws3 "3| "
-set $ws4 "4| "
-set $ws5 "5| "
-set $ws6 "6| "
-set $ws7 "7|󰎄 "
-set $ws8 "8| "
-set $ws9 "9"
-set $ws10 "10"
-
-# switch to workspace
-bindsym $mod+1 workspace number $ws1
-bindsym $mod+2 workspace number $ws2
-bindsym $mod+3 workspace number $ws3
-bindsym $mod+4 workspace number $ws4
-bindsym $mod+5 workspace number $ws5
-bindsym $mod+6 workspace number $ws6
-bindsym $mod+7 workspace number $ws7
-bindsym $mod+8 workspace number $ws8
-bindsym $mod+9 workspace number $ws9
-bindsym $mod+0 workspace number $ws10
-
-# move focused container to workspace
-bindsym $mod+Shift+1 move container to workspace number $ws1
-bindsym $mod+Shift+2 move container to workspace number $ws2
-bindsym $mod+Shift+3 move container to workspace number $ws3
-bindsym $mod+Shift+4 move container to workspace number $ws4
-bindsym $mod+Shift+5 move container to workspace number $ws5
-bindsym $mod+Shift+6 move container to workspace number $ws6
-bindsym $mod+Shift+7 move container to workspace number $ws7
-bindsym $mod+Shift+8 move container to workspace number $ws8
-bindsym $mod+Shift+9 move container to workspace number $ws9
-bindsym $mod+Shift+0 move container to workspace number $ws10
-# }}}
-
-# software floating settings {{{
-for_window [window_role="pop-up"]           floating enable border normal
-for_window [class="Pavucontrol"]            floating enable border normal
-for_window [class="lsp-plugins"]            floating enable border normal
-for_window [class="Lxappearance"]           floating enable border normal
-for_window [class="Blueman-manager"]        floating enable border normal
-for_window [class="Blueberry.py"]           floating enable border normal
-for_window [class="Xfce4-appfinder"]        floating enable border normal
-for_window [class="Peek"]                   floating enable border normal
-for_window [class="Solaar"]                 floating enable border normal
-for_window [class="Gufw.py"]                floating enable border normal
-for_window [class="easyeffects"]            floating enable border normal
-for_window [class="Nm-connection-editor"]   floating enable border normal
-for_window [class="SimpleScreenRecorder"]   floating enable border normal
-for_window [class="Gnome-system-monitor"]   floating enable
-for_window [class="FloatingVim"]            floating enable
-# }}}
-
-# Launch software in a specific workspace {{{
-for_window [window_role="browser"]          move container to workspace $ws3, workspace $ws3, layout tabbed
-for_window [class="neovide"]                move container to workspace $ws2, workspace $ws2
-for_window [class="nvui"]                   move container to workspace $ws2, workspace $ws2
-for_window [class="nvim-qt"]                move container to workspace $ws2, workspace $ws2
-for_window [class="discord"]                move container to workspace $ws4, workspace $ws4, layout tabbed
-for_window [class="Slack"]                  move container to workspace $ws4, workspace $ws4, layout tabbed
-for_window [class="GitKraken"]              move container to workspace $ws5, workspace $ws5
-for_window [class="Thunar"]                 move container to workspace $ws6, workspace $ws6, layout tabbed
-for_window [class="cantata"]                move container to workspace $ws7, workspace $ws7, layout tabbed
-for_window [class="Mysql-workbench-bin"]    move container to workspace $ws8, workspace $ws8, layout tabbed
-# }}}
-
-# reload the configuration file
-bindsym $mod+Shift+c reload
-# restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
-bindsym $mod+Shift+r restart
-# kill focused window
-bindsym $mod+Shift+q kill
-
-# Resize mode configure. {{{
-# resize window (you can also use the mouse for that)
-mode "Resize" {
-  # These bindings trigger as soon as you enter the resize mode
-
-  # Pressing left will shrink the window’s width.
-  # Pressing right will grow the window’s width.
-  # Pressing up will shrink the window’s height.
-  # Pressing down will grow the window’s height.
-  bindsym $left       resize shrink width 10 px or 10 ppt
-  bindsym $down       resize grow height 10 px or 10 ppt
-  bindsym $up         resize shrink height 10 px or 10 ppt
-  bindsym $right      resize grow width 10 px or 10 ppt
-
-  # back to normal: Enter or Escape or $mod+r
-  bindsym Return mode "default"
-  bindsym Escape mode "default"
-  bindsym $mod+r mode "default"
-}
-bindsym $mod+r mode "Resize"
+# gaps each window
+gaps outer 5
+gaps inner 5
+smart_gaps on
 # }}}
 
 # Start i3bar to display a workspace bar (plus the system information i3status
@@ -243,4 +48,6 @@ bar {
   #status_command i3status
 }
 
-# vim:fdm=marker:fen
+include $HOME/.config/i3/config.d/*.conf
+
+# vim:fdm=marker:fen:ft=i3config
