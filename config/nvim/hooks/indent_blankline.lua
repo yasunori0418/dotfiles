@@ -30,6 +30,7 @@ require("ibl").setup({
         smart_indent_cap = true,
     },
     whitespace = {
+        highlight = highlight,
         remove_blankline_trail = true,
     },
     scope = {
