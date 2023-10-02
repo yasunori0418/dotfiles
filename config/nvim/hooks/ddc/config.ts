@@ -235,7 +235,6 @@ export class Config extends BaseConfig {
       sourceOptions: {
         _: {
           keywordPattern: "[0-9a-zA-Z_./#:-]*",
-          minAutoCompleteLength: 1,
         },
       },
     });
