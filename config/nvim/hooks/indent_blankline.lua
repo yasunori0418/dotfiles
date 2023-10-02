@@ -21,7 +21,7 @@ hooks.register(hooks.type.HIGHLIGHT_SETUP, function()
 end)
 
 require("ibl").setup({
-    enable = true,
+    enabled = true,
     debounce = 100,
     viewport_buffer = { min = 30, max = 500 },
     indent = {
@@ -30,10 +30,11 @@ require("ibl").setup({
         smart_indent_cap = true,
     },
     whitespace = {
+        highlight = highlight,
         remove_blankline_trail = true,
     },
     scope = {
-        enable = false,
+        enabled = false,
     },
     exclude = {
         filetypes = {
