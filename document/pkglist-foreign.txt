@@ -1,6 +1,5 @@
 bumblebee-status
 docker-rootless-extras
-downgrade
 google-chrome
 gyazo
 lemonade-git
