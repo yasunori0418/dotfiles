@@ -13,7 +13,7 @@ bison
 blueberry
 blueman
 bluez
-bluez-qt
+bluez-qt5
 bluez-utils
 btrfs-progs
 cantata
