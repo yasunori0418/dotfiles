@@ -22,7 +22,7 @@ utils.keymaps_set({
         end,
         opts = opt,
     },
-    { -- dorfiles
+    { -- dotfiles
         mode = "n",
         lhs = [[<Plug>(ddu-ff)d]],
         rhs = function()
