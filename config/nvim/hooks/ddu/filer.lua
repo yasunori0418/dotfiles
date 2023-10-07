@@ -185,23 +185,9 @@ require("user.utils").keymaps_set({
         end,
         opts = opt,
     },
-    { -- delete command prefix
-        mode = "n",
-        lhs = [[ d]],
-        rhs = [[<Plug>(delete)]],
-        opts = opt,
-    },
-    { -- mv `target_file_directory` $TRASH
-        mode = "n",
-        lhs = [[<Plug>(delete)d]],
-        rhs = function()
-            do_action([[itemAction]], { name = [[trash]] })
-        end,
-        opts = opt,
-    },
     { -- rm `target_file_directory`
         mode = "n",
-        lhs = [[<Plug>(delete)D]],
+        lhs = [[D]],
         rhs = function()
             do_action([[itemAction]], { name = [[delete]] })
         end,
