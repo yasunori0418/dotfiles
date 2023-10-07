@@ -13,6 +13,8 @@ function M.setup(config)
     -- If a second tab is created, the tab will be shown.
     config.hide_tab_bar_if_only_one_tab = true
 
+    config.use_fancy_tab_bar = false
+
     return config
 end
 
