@@ -1,6 +1,7 @@
 local config = {}
 
 local wezterm = require("wezterm")
+local keybinds = require("keybinds")
 
 if wezterm.config_builder then
     config = wezterm.config_builder()
@@ -17,5 +18,8 @@ config.use_ime = false
 config.selection_word_boundary = [=[ \t\n{}[]()"'`.,;:]=]
 
 config.scrollback_lines = 5000
+
+config.keys = keybinds.keys
+config.key_tables = keybinds.key_tables
 
 return config
