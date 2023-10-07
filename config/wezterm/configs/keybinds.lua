@@ -49,6 +49,7 @@ M.keys = {
         action = act.CharSelect({
             copy_on_select = true,
             copy_to = "ClipboardAndPrimarySelection",
+            group = "NerdFonts",
         }),
     },
 }
