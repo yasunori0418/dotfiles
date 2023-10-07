@@ -1,7 +1,7 @@
 local config = {}
 
 local wezterm = require("wezterm")
-local keybinds = require("keybinds")
+local keybinds = require("configs.keybinds")
 
 if wezterm.config_builder then
     config = wezterm.config_builder()
