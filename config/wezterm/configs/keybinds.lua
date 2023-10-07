@@ -42,15 +42,6 @@ M.keys = {
     { key = [[RightArrow]], mods = [[SHIFT|ALT|CTRL]], action = act.AdjustPaneSize({ "Right", 1 }) },
     { key = [[UpArrow]], mods = [[SHIFT|ALT|CTRL]], action = act.AdjustPaneSize({ "Up", 1 }) },
     { key = [[DownArrow]], mods = [[SHIFT|ALT|CTRL]], action = act.AdjustPaneSize({ "Down", 1 }) },
-
-    {
-        key = [[U]],
-        mods = [[SHIFT|CTRL]],
-        action = act.CharSelect({
-            copy_on_select = true,
-            copy_to = "ClipboardAndPrimarySelection",
-        }),
-    },
 }
 
 M.key_tables = {
