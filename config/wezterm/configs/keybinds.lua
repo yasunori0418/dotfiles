@@ -103,14 +103,6 @@ M.key_tables = {
         },
         { key = "PageUp", mods = "NONE", action = act.CopyMode("PageUp") },
         { key = "PageDown", mods = "NONE", action = act.CopyMode("PageDown") },
-        { key = "End", mods = "NONE", action = act.CopyMode("MoveToEndOfLineContent") },
-        { key = "Home", mods = "NONE", action = act.CopyMode("MoveToStartOfLine") },
-        { key = "LeftArrow", mods = "NONE", action = act.CopyMode("MoveLeft") },
-        { key = "LeftArrow", mods = "ALT", action = act.CopyMode("MoveBackwardWord") },
-        { key = "RightArrow", mods = "NONE", action = act.CopyMode("MoveRight") },
-        { key = "RightArrow", mods = "ALT", action = act.CopyMode("MoveForwardWord") },
-        { key = "UpArrow", mods = "NONE", action = act.CopyMode("MoveUp") },
-        { key = "DownArrow", mods = "NONE", action = act.CopyMode("MoveDown") },
     },
 
     search_mode = {
