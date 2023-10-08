@@ -98,7 +98,7 @@ utils.keymaps_set({
             vim.cmd.tabnew()
             vim.cmd({
                 cmd = "execute",
-                args = deol_create_option(utils.search_repo_root()),
+                args = deol_create_option(utils.search_repo_root(), ""),
             })
         end,
         opts = opt,
