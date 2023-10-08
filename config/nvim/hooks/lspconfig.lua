@@ -233,19 +233,7 @@ mason_lspconfig.setup_handlers({
     end,
 
     lua_ls = require("user.lsp.lua_ls"),
-    pyright = function()
-        lspconfig.pyright.setup({
-            capabilities = capabilities,
-            settings = {
-                python = {
-                    exclude = { ".venv" },
-                    venvPath = ".",
-                    venv = ".venv",
-                },
-            },
-        })
-    end,
-
+    pyright = require("user.lsp.pyright"),
     denols = function()
         lspconfig.denols.setup({
             capabilities = capabilities,
