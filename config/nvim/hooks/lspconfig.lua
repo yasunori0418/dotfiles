@@ -4,7 +4,7 @@ local lspconfig = require("lspconfig")
 local lsp = vim.lsp -- nvim lsp api.
 local diagnostic = vim.diagnostic
 local utils = require("user.utils")
-local user_lsp = require("user.lsp")
+local user_lsp_util = require("user.lsp.utils")
 local vimx = require("artemis")
 local efm = require("user.plugins.efm")
 
@@ -55,13 +55,13 @@ mason_lspconfig.setup({
     automatic_installation = false,
 })
 
-user_lsp.on_attach(function(_, buffer)
+user_lsp_util.on_attach(function(_, buffer)
     local opt = { noremap = true, silent = true, buffer = buffer }
     utils.keymaps_set({
         { mode = { "n", "x" }, lhs = [[ l]], rhs = [[<Plug>(lsp)]], opts = opt },
         { mode = { "n" }, lhs = [[K]], rhs = lsp.buf.hover, opts = opt },
         { mode = { "n" }, lhs = [[<Plug>(lsp)a]], rhs = lsp.buf.code_action, opts = opt },
-        { mode = { "n" }, lhs = [[<Plug>(lsp)q]], rhs = user_lsp.format, opts = opt },
+        { mode = { "n" }, lhs = [[<Plug>(lsp)q]], rhs = user_lsp_util.format, opts = opt },
         { mode = { "n" }, lhs = [[<Plug>(lsp)r]], rhs = lsp.buf.rename, opts = opt },
         { -- ddu lsp:definition_all
             mode = { "n" },
