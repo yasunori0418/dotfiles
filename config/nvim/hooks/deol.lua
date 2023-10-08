@@ -5,7 +5,7 @@ local utils = require("user.utils")
 ---@param split? string default: 'floating'
 ---@return table
 local deol_create_option = function(path, split)
-    path = path or vim.fn.getcwd()
+    path = path or utils.search_repo_root()
     split = split or "floating"
 
     local winheight = ""
@@ -53,7 +53,18 @@ utils.keymaps_set({
         rhs = function()
             vim.cmd({
                 cmd = "execute",
-                args = deol_create_option(),
+                args = deol_create_option(utils.search_repo_root()),
+            })
+        end,
+        opts = opt,
+    },
+    { -- project root term
+        mode = "n",
+        lhs = [[<Plug>(term)s]],
+        rhs = function()
+            vim.cmd({
+                cmd = "execute",
+                args = deol_create_option(utils.search_repo_root(), ""),
             })
         end,
         opts = opt,
@@ -87,7 +98,7 @@ utils.keymaps_set({
             vim.cmd.tabnew()
             vim.cmd({
                 cmd = "execute",
-                args = deol_create_option(vim.fn.getcwd(), ""),
+                args = deol_create_option(utils.search_repo_root()),
             })
         end,
         opts = opt,
