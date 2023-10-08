@@ -19,7 +19,7 @@ mason_lspconfig.setup_handlers({
     function(server_name)
         local lsp_options = {}
 
-        lsp_options.capabilities = capabilities
+        lsp_options.capabilities = require("user.lsp.utils").capabilities
 
         lspconfig[server_name].setup(lsp_options)
     end,
