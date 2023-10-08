@@ -234,30 +234,7 @@ mason_lspconfig.setup_handlers({
 
     lua_ls = require("user.lsp.lua_ls"),
     pyright = require("user.lsp.pyright"),
-    denols = function()
-        lspconfig.denols.setup({
-            capabilities = capabilities,
-            settings = {
-                deno = {
-                    enable = true,
-                    unstable = true,
-                    lint = true,
-                    suggest = {
-                        completeFunctionCalls = true,
-                        autoImports = false,
-                        imports = {
-                            hosts = {
-                                ["https://deno.land"] = true,
-                                ["https://crux.land"] = true,
-                                ["https://x.nest.land"] = true,
-                            },
-                        },
-                    },
-                },
-            },
-        })
-    end,
-
+    denols = require("user.lsp.denols"),
     efm = function()
         lspconfig.efm.setup({
             filetypes = efm.filetypes,
