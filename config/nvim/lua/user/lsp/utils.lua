@@ -31,4 +31,10 @@ function M.format()
     lsp.buf.format({ timeout_ms = 5000 })
 end
 
+M.capabilities = require("ddc_nvim_lsp").make_client_capabilities()
+M.capabilities.textDocument.foldingRange = {
+    dynamicRegistration = false,
+    lineFoldingOnly = true,
+}
+
 return M
