@@ -107,7 +107,10 @@ M.key_tables = {
         {
             key = "y",
             mods = "NONE",
-            action = act.Multiple({ { CopyTo = "ClipboardAndPrimarySelection" }, { CopyMode = "Close" } }),
+            action = act.Multiple({
+                { CopyTo = "ClipboardAndPrimarySelection" },
+                { CopyMode = "Close" },
+            }),
         },
         { key = "PageUp", mods = "NONE", action = act.CopyMode("PageUp") },
         { key = "PageDown", mods = "NONE", action = act.CopyMode("PageDown") },
