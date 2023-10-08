@@ -1,6 +1,5 @@
 -- lua_source {{{
 local mason_lspconfig = require("mason-lspconfig")
-local lspconfig = require("lspconfig")
 
 require("user.lsp.keymaps")
 
@@ -21,7 +20,7 @@ mason_lspconfig.setup_handlers({
 
         lsp_options.capabilities = require("user.lsp.utils").capabilities
 
-        lspconfig[server_name].setup(lsp_options)
+        require("lspconfig")[server_name].setup(lsp_options)
     end,
 
     lua_ls = require("user.lsp.lua_ls"),
