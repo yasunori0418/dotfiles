@@ -23,7 +23,6 @@ user_lsp_util.on_attach(function(_, buffer)
     utils.keymaps_set({
         { mode = { "n", "x" }, lhs = [[ l]], rhs = [[<Plug>(lsp)]], opts = opt },
         { mode = { "n" }, lhs = [[K]], rhs = lsp.buf.hover, opts = opt },
-        { mode = { "n" }, lhs = [[ga]], rhs = lsp.buf.code_action, opts = opt },
         { mode = { "n" }, lhs = [[<Plug>(lsp)q]], rhs = user_lsp_util.format, opts = opt },
         { mode = { "n" }, lhs = [[<Plug>(lsp)r]], rhs = lsp.buf.rename, opts = opt },
         { -- ddu lsp:definition_all
@@ -158,7 +157,7 @@ user_lsp_util.on_attach(function(_, buffer)
         },
         { -- ddu lsp:codeAction
             mode = { "n", "x" },
-            lhs = [[<Plug>(lsp)a]],
+            lhs = [[ga]],
             rhs = [[<Cmd>call ddu#start(#{name: "lsp:codeAction"})<CR>]],
             opts = opt,
         },
