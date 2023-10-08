@@ -6,43 +6,6 @@ local diagnostic = vim.diagnostic
 local utils = require("user.utils")
 local user_lsp_util = require("user.lsp.utils")
 local vimx = require("artemis")
-local efm = require("user.plugins.efm")
-
-efm.setup({
-    all_installs = false,
-    filetypes = {
-        python = {
-            { kind = "formatters", name = "black" },
-            { kind = "linters", name = "flake8" },
-        },
-        lua = {
-            { kind = "formatters", name = "stylua" },
-            { kind = "linters", name = "luacheck" },
-        },
-        markdown = {
-            { kind = "linters", name = "textlint", auto_install = false },
-            { kind = "linters", name = "markdownlint" },
-        },
-        vim = {
-            { kind = "linters", name = "vint" },
-        },
-        json = {
-            { kind = "formatters", name = "jq" },
-            { kind = "linters", name = "jq" },
-        },
-        yaml = {
-            { kind = "linters", name = "yamllint" },
-            { kind = "formatters", name = "yq" },
-        },
-        php = {
-            { kind = "linters", name = "phpstan" },
-            { kind = "formatters", name = "pint" },
-        },
-        dockerfile = {
-            { kind = "linters", name = "hadolint" },
-        },
-    },
-})
 
 mason_lspconfig.setup({
     ensure_installed = {
@@ -235,23 +198,6 @@ mason_lspconfig.setup_handlers({
     lua_ls = require("user.lsp.lua_ls"),
     pyright = require("user.lsp.pyright"),
     denols = require("user.lsp.denols"),
-    efm = function()
-        lspconfig.efm.setup({
-            filetypes = efm.filetypes,
-            init_options = {
-                documentFormatting = true,
-                rangeFormatting = true,
-                hover = true,
-                documentSymbol = true,
-                codeAction = true,
-                completion = true,
-            },
-            capabilities = capabilities,
-            settings = {
-                rootMarkers = { ".git/" },
-                languages = efm.languages,
-            },
-        })
-    end,
+    efm = require("user.lsp.efm"),
 })
 -- }}}
