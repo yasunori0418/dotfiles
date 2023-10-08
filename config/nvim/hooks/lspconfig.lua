@@ -23,7 +23,7 @@ user_lsp_util.on_attach(function(_, buffer)
     utils.keymaps_set({
         { mode = { "n", "x" }, lhs = [[ l]], rhs = [[<Plug>(lsp)]], opts = opt },
         { mode = { "n" }, lhs = [[K]], rhs = lsp.buf.hover, opts = opt },
-        { mode = { "n" }, lhs = [[<Plug>(lsp)a]], rhs = lsp.buf.code_action, opts = opt },
+        { mode = { "n" }, lhs = [[ga]], rhs = lsp.buf.code_action, opts = opt },
         { mode = { "n" }, lhs = [[<Plug>(lsp)q]], rhs = user_lsp_util.format, opts = opt },
         { mode = { "n" }, lhs = [[<Plug>(lsp)r]], rhs = lsp.buf.rename, opts = opt },
         { -- ddu lsp:definition_all
