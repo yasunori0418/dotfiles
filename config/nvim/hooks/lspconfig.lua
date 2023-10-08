@@ -232,36 +232,7 @@ mason_lspconfig.setup_handlers({
         lspconfig[server_name].setup(lsp_options)
     end,
 
-    lua_ls = function()
-        lspconfig.lua_ls.setup({
-            capabilities = capabilities,
-            settings = {
-                Lua = {
-                    workspace = {
-                        checkThirdParty = false,
-                        library = vim.api.nvim_get_runtime_file("lua", true),
-                        maxPreload = 1000,
-                    },
-                    completion = {
-                        callSnippet = "Both",
-                        enable = true,
-                        keywordSnippet = "Both",
-                    },
-                    hint = {
-                        enable = true,
-                    },
-                    diagnostics = {
-                        globals = { "vim" },
-                    },
-                    format = {
-                        -- because use stylua from efm.
-                        enable = false,
-                    },
-                },
-            },
-        })
-    end,
-
+    lua_ls = require("user.lsp.lua_ls"),
     pyright = function()
         lspconfig.pyright.setup({
             capabilities = capabilities,
