@@ -15,6 +15,7 @@ depends = ['nvim-lspconfig', 'mason.nvim']
 on_source = 'ddc.vim'
 on_ft = ['lua', 'pyhton', 'php', 'markdown', 'typescript']
 lua_source = '''
+-- $BASE_DIR/lua/user/lsp
 require("user.lsp")
 '''
 
