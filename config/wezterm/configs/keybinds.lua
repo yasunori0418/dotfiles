@@ -3,12 +3,14 @@ local M = {}
 local wezterm = require("wezterm")
 local act = wezterm.action
 
+M.leader = { key = [[Space]], mods = [[SHIFT|CTRL]], timeout_milliseconds = 3000 }
+
 M.keys = {
-    { key = [[Enter]], mods = [[ALT]], action = act.ToggleFullScreen },
-    { key = [[']], mods = [[ALT|CTRL]], action = act.SplitVertical({ domain = "CurrentPaneDomain" }) },
-    { key = [[;]], mods = [[ALT|CTRL]], action = act.SplitHorizontal({ domain = "CurrentPaneDomain" }) },
-    { key = [[t]], mods = [[ALT|CTRL]], action = act.SpawnTab("CurrentPaneDomain") },
-    { key = [[w]], mods = [[ALT|CTRL]], action = act.CloseCurrentTab({ confirm = true }) },
+    { key = [[f]], mods = [[LEADER]], action = act.ToggleFullScreen },
+    { key = [[b]], mods = [[LEADER]], action = act.SplitVertical({ domain = "CurrentPaneDomain" }) },
+    { key = [[v]], mods = [[LEADER]], action = act.SplitHorizontal({ domain = "CurrentPaneDomain" }) },
+    { key = [[t]], mods = [[LEADER]], action = act.SpawnTab("CurrentPaneDomain") },
+    { key = [[x]], mods = [[LEADER]], action = act.CloseCurrentTab({ confirm = true }) },
 
     { key = [[+]], mods = [[CTRL]], action = act.IncreaseFontSize },
     { key = [[-]], mods = [[CTRL]], action = act.DecreaseFontSize },
@@ -20,8 +22,8 @@ M.keys = {
     { key = [[Insert]], mods = [[SHIFT]], action = act.PasteFrom("PrimarySelection") },
 
     { key = [[F]], mods = [[SHIFT|CTRL]], action = act.Search("CurrentSelectionOrEmptyString") },
-    { key = [[{]], mods = [[SHIFT|SUPER]], action = act.ActivateTabRelative(-1) },
-    { key = [[}]], mods = [[SHIFT|SUPER]], action = act.ActivateTabRelative(1) },
+    { key = [[{]], mods = [[SHIFT|CTRL]], action = act.ActivateTabRelative(-1) },
+    { key = [[}]], mods = [[SHIFT|CTRL]], action = act.ActivateTabRelative(1) },
 
     { key = [[X]], mods = [[SHIFT|CTRL]], action = act.ActivateCopyMode },
     { key = [[Z]], mods = [[SHIFT|CTRL]], action = act.TogglePaneZoomState },
@@ -32,6 +34,11 @@ M.keys = {
 
     { key = [[PageUp]], mods = [[NONE]], action = act.ScrollByPage(-1) },
     { key = [[PageDown]], mods = [[NONE]], action = act.ScrollByPage(1) },
+
+    { key = [[h]], mods = [[LEADER]], action = act.ActivatePaneDirection("Left") },
+    { key = [[l]], mods = [[LEADER]], action = act.ActivatePaneDirection("Right") },
+    { key = [[k]], mods = [[LEADER]], action = act.ActivatePaneDirection("Up") },
+    { key = [[j]], mods = [[LEADER]], action = act.ActivatePaneDirection("Down") },
 
     { key = [[LeftArrow]], mods = [[SHIFT|CTRL]], action = act.ActivatePaneDirection("Left") },
     { key = [[RightArrow]], mods = [[SHIFT|CTRL]], action = act.ActivatePaneDirection("Right") },
