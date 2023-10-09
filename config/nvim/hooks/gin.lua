@@ -10,25 +10,61 @@ require("user.utils").keymaps_set({
     {
         mode = { "n" },
         lhs = [[<Plug>(git)pl]],
-        rhs = [[<Cmd>Gin pull<CR>]],
+        rhs = function()
+            vim.cmd.Gin({ "pull" })
+        end,
         opts = opt,
     },
     {
         mode = { "n" },
         lhs = [[<Plug>(git)ps]],
-        rhs = [[<Cmd>Gin push<CR>]],
+        rhs = function()
+            vim.cmd.Gin({ "push" })
+        end,
         opts = opt,
     },
     {
         mode = { "n" },
         lhs = [[<Plug>(git)c]],
-        rhs = [[<Cmd>Gin commit<CR>]],
+        rhs = function()
+            vim.cmd.Gin({ "commit" })
+        end,
+        opts = opt,
+    },
+    {
+        mode = { "n" },
+        lhs = [[<Plug>(git)D]],
+        rhs = function()
+            vim.cmd.GinPatch({
+                [[++opener=tabedit]],
+                [[++no-head]],
+                [[%]],
+            })
+        end,
+        opts = opt,
+    },
+    {
+        mode = { "n" },
+        lhs = [[<Plug>(git)d]],
+        rhs = function()
+            vim.cmd.GinDiff({
+                [[++opener=tabedit]],
+                [[++processor=delta]],
+            })
+        end,
         opts = opt,
     },
     {
         mode = { "n" },
         lhs = [[<Plug>(git)B]],
-        rhs = [[<Cmd>Gina blame<CR>]],
+        rhs = function()
+            vim.cmd.GinBuffer({
+                [[++opener=tabedit]],
+                [[++processor=delta]],
+                [[blame]],
+                [[%]],
+            })
+        end,
         opts = opt,
     },
 })
