@@ -447,7 +447,7 @@
 [delta "chameleon-custom"]
     #author: https://github.com/yasunori0418
     dark = true
-    line-numbers = true
+    line-numbers = false
     side-by-side = false
     keep-plus-minus-markers = true
     syntax-theme = Nord
