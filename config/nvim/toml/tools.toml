@@ -27,3 +27,12 @@ on_cmd = 'StartThemis'
 hook_add = '''
 command! StartThemis call dein#source('vim-themis')
 '''
+
+[[plugins]] # for skkeleton
+repo = 'skk-dev/dict'
+if = false
+
+[[plugins]] # for skkeleton
+repo = 'tokuhirom/jawiki-kana-kanji-dict'
+if = false
+
