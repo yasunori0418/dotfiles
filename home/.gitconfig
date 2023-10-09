@@ -34,6 +34,7 @@
 	colorMoved = default
 [interactive]
 	diffFilter = delta --color-only
+
 [delta]
 	navigate = true
 	syntax-theme = Nord
