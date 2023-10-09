@@ -7,9 +7,6 @@ repo = 'lewis6991/gitsigns.nvim'
 on_event = ['CursorHold']
 hooks_file = '$HOOKS_DIR/gitsigns.lua'
 
-[[plugins]] # gina.vim
-repo = 'lambdalisue/gina.vim'
-
 [[plugins]]
 repo = 'lambdalisue/gin.vim'
 depends = ['denops.vim', 'gina.vim']
