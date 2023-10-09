@@ -7,10 +7,5 @@ require("fidget").setup({
         border = "single",
         relative = "editor",
     },
-    sources = {
-        ["null-ls"] = {
-            ignore = true,
-        },
-    },
 })
 -- }}}
