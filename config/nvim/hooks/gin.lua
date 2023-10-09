@@ -7,53 +7,70 @@ require("user.utils").keymaps_set({
         rhs = [[<Plug>(git)]],
         opts = {},
     },
-    -- {
-    --   mode = { "n" },
-    --   lhs = [[<Plug>(git)s]],
-    --   rhs = [[<Cmd>GinStatus<CR>]],
-    --   opts = opt,
-    -- },
-    -- {
-    --   mode = { "n" },
-    --   lhs = [[<Plug>(git)l]],
-    --   rhs = [[<Cmd>GinLog ++opener=vsplit --graph --all --abbrev-commit --oneline<CR>]],
-    --   opts = opt,
-    -- },
     {
         mode = { "n" },
         lhs = [[<Plug>(git)pl]],
-        rhs = [[<Cmd>Gin pull<CR>]],
+        rhs = function()
+            vim.cmd.Gin({ "pull" })
+        end,
         opts = opt,
     },
     {
         mode = { "n" },
         lhs = [[<Plug>(git)ps]],
-        rhs = [[<Cmd>Gin push<CR>]],
+        rhs = function()
+            vim.cmd.Gin({ "push" })
+        end,
         opts = opt,
     },
     {
         mode = { "n" },
         lhs = [[<Plug>(git)c]],
-        rhs = [[<Cmd>Gin commit<CR>]],
+        rhs = function()
+            vim.cmd.Gin({ "commit" })
+        end,
         opts = opt,
     },
-    -- {
-    --   mode = { "n" },
-    --   lhs = [[<Plug>(git)b]],
-    --   rhs = [[<Cmd>GinBranch<CR>]],
-    --   opts = opt,
-    -- },
+    {
+        mode = { "n" },
+        lhs = [[<Plug>(git)D]],
+        rhs = function()
+            vim.cmd.GinPatch({
+                [[++opener=tabedit]],
+                [[++no-head]],
+                [[%]],
+            })
+        end,
+        opts = opt,
+    },
+    {
+        mode = { "n" },
+        lhs = [[<Plug>(git)d]],
+        rhs = function()
+            vim.cmd.GinDiff({
+                [[++opener=tabedit]],
+                [[++processor=delta]],
+            })
+        end,
+        opts = opt,
+    },
     {
         mode = { "n" },
         lhs = [[<Plug>(git)B]],
-        rhs = [[<Cmd>Gina blame<CR>]],
+        rhs = function()
+            vim.cmd.GinBuffer({
+                [[++opener=tabedit]],
+                [[++processor=delta]],
+                [[blame]],
+                [[%]],
+            })
+        end,
         opts = opt,
     },
 })
 -- }}}
 
 -- lua_source {{{
-vim.fn["gina#custom#command#option"]("blame", "--opener", "tabedit")
 vim.g.gin_proxy_apply_without_confirm = 1
 -- }}}
 

@@ -21,6 +21,9 @@ fi
 # bat theme
 export BAT_THEME=Nord
 
+# diff-highlight
+export PATH=${PATH}:/usr/share/git/diff-highlight
+
 # ヒストリの一覧を読みやすい形に変更
 export HISTTIMEFORMAT="[%Y/%M/%D %H:%M:%S] "
 

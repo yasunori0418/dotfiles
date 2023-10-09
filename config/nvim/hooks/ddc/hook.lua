@@ -5,6 +5,8 @@ end)
 -- }}}
 
 -- lua_source {{{
+local vimx = require("artemis")
+local pum = vimx.fn.pum
 
 -- Source options.
 local joinpath = vim.fs.joinpath
@@ -22,60 +24,49 @@ local ddc_complete = function(...)
 end
 
 -- Keymaping
--- Insert-Mode
 local expr_opt = { expr = true, noremap = true }
-local opt = { noremap = true, silent = true }
+local opt = { noremap = true }
 require("user.utils").keymaps_set({
-    { -- {i, c}_<C-n>
-        mode = { "i", "c" },
+    { -- i_<C-n>
+        mode = "i",
         lhs = [[<C-n>]],
         rhs = function()
-            if vim.fn["pum#visible"]() then
-                vim.fn["pum#map#insert_relative"](1)
+            if pum.visible() then
+                pum.map.insert_relative(1)
             else
                 return [[<Down>]]
             end
         end,
         opts = expr_opt,
     },
-    { -- {i, c}_<C-p>
-        mode = { "i", "c" },
+    { -- i_<C-p>
+        mode = "i",
         lhs = [[<C-p>]],
         rhs = function()
-            if vim.fn["pum#visible"]() then
-                vim.fn["pum#map#insert_relative"](-1)
+            if pum.visible() then
+                pum.map.insert_relative(-1)
             else
                 return [[<Up>]]
             end
         end,
         opts = expr_opt,
     },
-    { -- {i, c}_<C-y>
-        mode = { "i", "c" },
+    { -- i_<C-y>
+        mode = "i",
         lhs = [[<C-y>]],
-        rhs = vim.fn["pum#map#confirm"],
+        rhs = function()
+            pum.map.confirm()
+        end,
         opts = opt,
     },
     { -- i_<C-e>
         mode = "i",
         lhs = [[<C-e>]],
         rhs = function()
-            if vim.fn["pum#visible"]() then
-                vim.fn["pum#map#cancel"]()
+            if pum.visible() then
+                pum.map.cancel()
             else
                 return [[<C-G>U<End>]]
-            end
-        end,
-        opts = expr_opt,
-    },
-    { -- c_<C-e>
-        mode = "c",
-        lhs = [[<C-e>]],
-        rhs = function()
-            if vim.fn["pum#visible"]() then
-                vim.fn["pum#map#cancel"]()
-            else
-                return [[<END>]]
             end
         end,
         opts = expr_opt,
@@ -132,9 +123,51 @@ require("user.utils").keymaps_set({
         mode = "i",
         lhs = [[<C-x><C-u>]],
         rhs = function()
-            vim.fn["ddc#map#manual_complete"]()
+            vimx.fn.ddc.map.manual_complete()
         end,
         opts = opt,
+    },
+
+    -- commandline completion keymapping
+    { -- c_<C-n>
+        mode = "c",
+        lhs = [[<Tab>]],
+        rhs = function()
+            if pum.visible() then
+                pum.map.insert_relative(1)
+            else
+                vimx.fn.ddc.map.manual_complete()
+            end
+        end,
+        opts = opt,
+    },
+    { -- c_<C-p>
+        mode = "c",
+        lhs = [[<S-Tab>]],
+        rhs = function()
+            pum.map.insert_relative(-1)
+        end,
+        opts = opt,
+    },
+    { -- c_<C-y>
+        mode = "c",
+        lhs = [[<C-y>]],
+        rhs = function()
+            pum.map.confirm()
+        end,
+        opts = opt,
+    },
+    { -- c_<C-e>
+        mode = "c",
+        lhs = [[<C-e>]],
+        rhs = function()
+            if pum.visible() then
+                vimx.fn.ddc.hide()
+            else
+                return [[<END>]]
+            end
+        end,
+        opts = expr_opt,
     },
 
     -- deol completion keymapping
@@ -148,8 +181,8 @@ require("user.utils").keymaps_set({
         mode = "t",
         lhs = [[<Tab>]],
         rhs = function()
-            if vim.fn["pum#visible"]() then
-                vim.fn["pum#map#select_relative"](1)
+            if pum.visible() then
+                pum.map.select_relative(1)
             else
                 return [[<Tab>]]
             end
@@ -160,8 +193,8 @@ require("user.utils").keymaps_set({
         mode = "t",
         lhs = [[<S-Tab>]],
         rhs = function()
-            if vim.fn["pum#visible"]() then
-                vim.fn["pum#map#select_relative"](-1)
+            if pum.visible() then
+                pum.map.select_relative(-1)
             else
                 return [[<S-Tab>]]
             end
@@ -172,20 +205,20 @@ require("user.utils").keymaps_set({
         mode = "t",
         lhs = [[<C-y>]],
         rhs = function()
-            if vim.fn["pum#visible"]() then
-                vim.fn["pum#map#confirm"]()
+            if pum.visible() then
+                pum.map.confirm()
             else
                 return [[<C-y>]]
             end
         end,
         opts = expr_opt,
     },
-    { -- t_<C-y> completion cancel
+    { -- t_<C-i> completion cancel
         mode = "t",
         lhs = [[<C-i>]],
         rhs = function()
-            if vim.fn["pum#visible"]() then
-                vim.fn["pum#map#cancel"]()
+            if pum.visible() then
+                pum.map.cancel()
             else
                 return [[<C-i>]]
             end
@@ -194,6 +227,6 @@ require("user.utils").keymaps_set({
     },
 })
 
-vim.fn["ddc#enable_terminal_completion"]()
-vim.fn["ddc#enable"]({ context_filetype = [[treesitter]] })
+vimx.fn.ddc.enable_terminal_completion()
+vimx.fn.ddc.enable({ context_filetype = [[treesitter]] })
 -- }}}
