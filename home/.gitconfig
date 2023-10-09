@@ -10,6 +10,7 @@
 [core]
 	editor = nvim
 	filemode = false
+	pager = delta
 [pull]
 	ff = only
 [init]
