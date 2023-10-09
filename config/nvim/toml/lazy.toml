@@ -122,11 +122,6 @@ hooks_file = '$HOOKS_DIR/dial.lua'
 # }}}
 
 # Filetype plugins {{{
-[[plugins]] # emmet-vim
-repo = 'mattn/emmet-vim'
-on_ft = ['html', 'css', 'scss', 'php']
-hooks_file = '$HOOKS_DIR/emmet.lua'
-
 [[plugins]] # plantuml-syntax
 repo = 'aklt/plantuml-syntax'
 on_ft = 'plantuml'
