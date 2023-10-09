@@ -11,7 +11,3 @@ c3.setup({
     },
 })
 -- }}}
-
--- lua_source_post {{{
-vim.cmd([[CccHighlighterEnable]])
--- }}}
