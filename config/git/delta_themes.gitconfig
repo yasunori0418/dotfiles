@@ -443,3 +443,42 @@
     merge-conflict-ours-diff-header-decoration-style = "#3e3e43" box
     merge-conflict-theirs-diff-header-style = yellow bold
     merge-conflict-theirs-diff-header-decoration-style = "#3e3e43" box
+
+[delta "chameleon-custom"]
+    #author: https://github.com/yasunori0418
+    dark = true
+    line-numbers = true
+    side-by-side = false
+    keep-plus-minus-markers = true
+    syntax-theme = Nord
+    file-style = "#434C5E" bold
+    file-decoration-style = "#434C5E" ul
+    file-added-label = [+]
+    file-copied-label = [==]
+    file-modified-label = [*]
+    file-removed-label = [-]
+    file-renamed-label = [->]
+    hunk-header-style = omit
+    line-numbers-left-format = " {nm:>3} │"
+    line-numbers-left-style = red
+    line-numbers-right-format = " {np:>3} │"
+    line-numbers-right-style = green
+    line-numbers-minus-style = red italic black
+    line-numbers-plus-style = green italic black
+    line-numbers-zero-style = "#434C5E" italic
+    minus-style = bold red
+    minus-emph-style = bold "#2E3440" "#BF616A"
+    minus-non-emph-style = bold
+    plus-style = bold green
+    plus-emph-style = bold "#2E3440" "#EBCB8B"
+    plus-non-emph-style = bold
+    zero-style = syntax
+    blame-code-style = syntax
+    blame-format = "{author:<18} {timestamp:^16} -> {commit:>9}"
+    blame-palette = "#2E3440" "#3B4252" "#434C5E" "#4C566A"
+    merge-conflict-begin-symbol = ~
+    merge-conflict-end-symbol = ~
+    merge-conflict-ours-diff-header-style = "#D08770" bold
+    merge-conflict-ours-diff-header-decoration-style = "#434C5E" box
+    merge-conflict-theirs-diff-header-style = "#D08770" bold
+    merge-conflict-theirs-diff-header-decoration-style = "#434C5E" box

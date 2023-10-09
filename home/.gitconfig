@@ -36,6 +36,8 @@
 [delta]
 	navigate = true
 	syntax-theme = Nord
+	features = chameleon-custom
+	true-color = always
 [ghq]
 	root = ~/src
 	user = yasunori0418
