@@ -30,6 +30,12 @@
 	prompt = false
 [diff]
 	algorithm = histogram
+	colorMoved = default
+[interactive]
+	diffFilter = delta --color-only
+[delta]
+	navigate = true
+	syntax-theme = Nord
 [ghq]
 	root = ~/src
 	user = yasunori0418
@@ -46,3 +52,6 @@
 [url "git@aur.archlinux.org:"]
 	pushInsteadOf = https://aur.archlinux.org/
 	pushInsteadOf = git@aur.archlinux.org:
+
+[include]
+	path = ~/.config/git/delta_themes.gitconfig
