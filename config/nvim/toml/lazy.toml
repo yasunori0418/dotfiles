@@ -55,12 +55,7 @@ on_cmd = 'Bracey'
 repo = 'Shougo/deol.nvim'
 depends = ['ddc.vim']
 on_cmd = 'Deol'
-lua_add = '''
-require("user.plugins.deol").lua_add()
-'''
-lua_source = '''
-require("user.plugins.deol").lua_source()
-'''
+hooks_file = '$HOOKS_DIR/deol.lua'
 
 [[plugins]] # open-browser.vim
 repo = 'tyru/open-browser.vim'
