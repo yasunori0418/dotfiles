@@ -62,16 +62,41 @@ local function l2x_maps()
     }, true)
 end
 
+local joinpath = vim.fs.joinpath
+local repos_github = "~/.cache/dein/repos/github.com"
+local basic_dict = "skk-dev/dict"
+local jawiki_dict = "tokuhirom/jawiki-kana-kanji-dict"
+
 local M = {}
 
 function M.init()
     skkeleton.config({
         eggLikeNewline = true,
         globalDictionaries = {
-            { [[~/.skk/SKK-JISYO.L]], [[euc-jp]] },
-            { [[~/.skk/SKK-JISYO.propernoun]], [[euc-jp]] },
-            { [[~/.skk/SKK-JISYO.jawiki]], [[euc-jp]] },
-            { [[~/.skk/SKK-JISYO.emoji]], [[utf-8]] },
+            {
+                joinpath(repos_github, basic_dict, "SKK-JISYO.L"),
+                [[euc-jp]],
+            },
+            {
+                joinpath(repos_github, basic_dict, "SKK-JISYO.propernoun"),
+                [[euc-jp]],
+            },
+            {
+                joinpath(repos_github, jawiki_dict, "SKK-JISYO.jawiki"),
+                [[euc-jp]],
+            },
+            {
+                joinpath(repos_github, basic_dict, "SKK-JISYO.emoji"),
+                [[utf-8]],
+            },
+            {
+                joinpath(repos_github, basic_dict, "SKK-JISYO.jinmei"),
+                [[euc-jp]],
+            },
+            {
+                joinpath(repos_github, basic_dict, "SKK-JISYO.lisp"),
+                [[euc-jp]],
+            },
         },
         userJisyo = [[~/.skk/skkeleton]],
         completionRankFile = [[~/.skk/rank.json]],
