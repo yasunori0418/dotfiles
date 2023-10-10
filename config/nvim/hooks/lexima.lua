@@ -4,5 +4,11 @@ vim.g["lexima_ctrlh_as_backspace"] = true
 -- }}}
 
 -- lua_source {{{
+local altercmd = require("user.plugins.lexima").altercmd
 vim.fn["lexima#set_default_rules"]()
+
+altercmd([=[si\%[licon]]=], [[Silicon]])
+altercmd([=[r\%[run]]=], [[QuickRun]])
+altercmd([=[ma\%[son]]=], [[Mason]])
+
 -- }}}
