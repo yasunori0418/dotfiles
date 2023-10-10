@@ -12,5 +12,7 @@ altercmd([=[r\%[run]]=], [[QuickRun]])
 altercmd([=[ma\%[son]]=], [[Mason]])
 altercmd([[du]], [[DeinUpdate]])
 altercmd([[rc]], [[Recache]])
+altercmd([[ej]], [[Translate]])
+altercmd([[je]], [[Translate!]])
 
 -- }}}
