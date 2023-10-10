@@ -21,8 +21,6 @@ hooks_file = '$HOOKS_DIR/lightline_skk.lua'
 repo = 'skanehira/denops-translate.vim'
 depends = 'denops.vim'
 on_cmd = 'Translate'
-on_map = { 'nx' = '<Plug>(Translate' }
-hooks_file = '$HOOKS_DIR/translate.lua'
 
 [[plugins]] # denops-silicon.vim
 repo = 'skanehira/denops-silicon.vim'
