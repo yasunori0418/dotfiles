@@ -12,7 +12,7 @@ altercmd([=[r\%[run]]=], [[QuickRun]])
 altercmd([=[ma\%[son]]=], [[Mason]])
 altercmd([[du]], [[DeinUpdate]])
 altercmd([[rc]], [[Recache]])
-altercmd([[ej]], [[Translate]])
-altercmd([[je]], [[Translate!]])
+altercmd([[ej]], [[Translate]]) -- 英語から日本語へ
+altercmd([[je]], [[Translate!]]) -- 日本語から英語へ
 
 -- }}}
