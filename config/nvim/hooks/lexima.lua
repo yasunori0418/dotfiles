@@ -10,6 +10,37 @@ local add = vim.fn["lexima#add_rule"]
 
 vim.fn["lexima#set_default_rules"]()
 
+utils.autocmds_set({
+    -- {
+    --     events = { "FileType" },
+    --     pattern = {},
+    --     group = utils.vimrc_augroup,
+    --     callback = function()
+    --     end,
+    -- },
+    {
+        events = { "FileType" },
+        pattern = { "toml" },
+        group = utils.vimrc_augroup,
+        callback = function()
+            add({
+                mode = "i",
+                char = [[<CR>]],
+                at = [[=\s*'''\%#'''$]],
+                input = [[<CR>]],
+                input_after = [[<CR>]],
+            })
+            add({
+                mode = "i",
+                char = [[<CR>]],
+                at = [[=\s*"""\%#"""$]],
+                input = [[<CR>]],
+                input_after = [[<CR>]],
+            })
+        end,
+    },
+})
+
 altercmd([=[si\%[licon]]=], [[Silicon]])
 altercmd([=[r\%[run]]=], [[QuickRun]])
 altercmd([=[ma\%[son]]=], [[Mason]])
