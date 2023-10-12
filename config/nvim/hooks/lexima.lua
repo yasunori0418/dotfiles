@@ -37,6 +37,30 @@ utils.autocmds_set({
     -- },
     {
         events = { "FileType" },
+        pattern = { "python" },
+        group = utils.vimrc_augroup,
+        callback = function()
+            add({
+                char = [[_]],
+                at = [[\W\+_\%#]],
+                input = [[_]],
+                input_after = [[__]],
+            })
+            add({
+                char = [[<BS>]],
+                at = [[__\%#__]],
+                input = [[<BS><BS>]],
+                delete = 2,
+            })
+            add({
+                char = [[<Tab>]],
+                at = [[\%#__]],
+                leave = 2,
+            })
+        end,
+    },
+    {
+        events = { "FileType" },
         pattern = { "toml" },
         group = utils.vimrc_augroup,
         callback = function()
