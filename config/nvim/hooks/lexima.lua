@@ -5,6 +5,9 @@ vim.g["lexima_ctrlh_as_backspace"] = true
 
 -- lua_source {{{
 local altercmd = require("user.plugins.lexima").altercmd
+local utils = require("user.utils")
+local add = vim.fn["lexima#add_rule"]
+
 vim.fn["lexima#set_default_rules"]()
 
 altercmd([=[si\%[licon]]=], [[Silicon]])
