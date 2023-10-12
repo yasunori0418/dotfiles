@@ -10,6 +10,23 @@ local add = vim.fn["lexima#add_rule"]
 
 vim.fn["lexima#set_default_rules"]()
 
+local global_rules = {
+    { char = [[<]], input_after = [[>]] },
+    { char = [[<BS>]], at = [[<\%#>]], delete = 1 },
+    { char = [[>]], at = [[\%#>]], leave = [[>]] },
+    { char = [[<Tab>]], at = [[\%#\s*>]], leave = [[>]] },
+    { char = [[<Tab>]], at = [[\%#\s*"]], leave = [["]] },
+    { char = [[<Tab>]], at = [[\%#\s*']], leave = [[']] },
+    { char = [[<Tab>]], at = [[\%#\s*`]], leave = [[`]] },
+    { char = [[<Tab>]], at = [=[\%#\s*]]=], leave = [=[]]=] },
+    { char = [[<Tab>]], at = [[\%#\s*}]], leave = [[}]] },
+    { char = [[<Tab>]], at = [[\%#\s*)]], leave = [[)]] },
+}
+
+for _, global_rule in ipairs(global_rules) do
+    add(global_rule)
+end
+
 utils.autocmds_set({
     -- {
     --     events = { "FileType" },
