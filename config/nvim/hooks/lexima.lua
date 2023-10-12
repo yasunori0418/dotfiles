@@ -65,14 +65,12 @@ utils.autocmds_set({
         group = utils.vimrc_augroup,
         callback = function()
             add({
-                mode = "i",
                 char = [[<CR>]],
                 at = [[=\s*'''\%#'''$]],
                 input = [[<CR>]],
                 input_after = [[<CR>]],
             })
             add({
-                mode = "i",
                 char = [[<CR>]],
                 at = [[=\s*"""\%#"""$]],
                 input = [[<CR>]],
