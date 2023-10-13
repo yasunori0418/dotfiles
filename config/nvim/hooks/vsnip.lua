@@ -10,6 +10,10 @@ vim.g.vsnip_snippet_dirs = {
     friendly_snippets_dir,
     joinpath(friendly_snippets_dir, "javascript"),
     joinpath(friendly_snippets_dir, "python"),
+    joinpath(friendly_snippets_dir, "php"),
+    joinpath(friendly_snippets_dir, "lua"),
+    joinpath(friendly_snippets_dir, "shell"),
+    joinpath(friendly_snippets_dir, "ruby"),
 }
 vim.g.vsnip_filetypes = vim.empty_dict()
 vim.g.vsnip_integ_create_autocmd = false
