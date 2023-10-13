@@ -42,7 +42,7 @@ for filetype, rules in pairs(filetype_rules) do
         pattern = filetype,
         group = utils.vimrc_augroup,
         callback = function()
-            lexima_util.add_rule(rules, filetype)
+            lexima_util.add_rules(rules, tostring(filetype))
         end,
     })
 end
