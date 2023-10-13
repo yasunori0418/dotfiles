@@ -54,5 +54,6 @@ lexima_util.altercmd([[du]], [[DeinUpdate]])
 lexima_util.altercmd([[rc]], [[Recache]])
 lexima_util.altercmd([[ej]], [[Translate]]) -- 英語から日本語へ
 lexima_util.altercmd([[je]], [[Translate!]]) -- 日本語から英語へ
+lexima_util.altercmd([[gcf]], [[GinChaperon %]])
 
 -- }}}
