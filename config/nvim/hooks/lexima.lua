@@ -37,9 +37,9 @@ filetype_rules.toml = {
     { char = [[<CR>]], at = [[=\s*"""\%#"""$]], input = [[<CR>]], input_after = [[<CR>]] },
 }
 
-for filetype, rules in ipairs(filetype_rules) do
-    vim.api.nvim_create_autocmd(filetype, {
-        pattern = { "*" },
+for filetype, rules in pairs(filetype_rules) do
+    vim.api.nvim_create_autocmd("FileType", {
+        pattern = filetype,
         group = utils.vimrc_augroup,
         callback = function()
             lexima_util.add_rule(rules, filetype)
