@@ -4,7 +4,7 @@ vim.g["lexima_ctrlh_as_backspace"] = true
 -- }}}
 
 -- lua_source {{{
-local altercmd = require("user.plugins.lexima").altercmd
+local lexima_util = require("user.plugins.lexima")
 local utils = require("user.utils")
 local add = vim.fn["lexima#add_rule"]
 
@@ -80,12 +80,12 @@ utils.autocmds_set({
     },
 })
 
-altercmd([=[si\%[licon]]=], [[Silicon]])
-altercmd([=[r\%[run]]=], [[QuickRun]])
-altercmd([=[ma\%[son]]=], [[Mason]])
-altercmd([[du]], [[DeinUpdate]])
-altercmd([[rc]], [[Recache]])
-altercmd([[ej]], [[Translate]]) -- 英語から日本語へ
-altercmd([[je]], [[Translate!]]) -- 日本語から英語へ
+lexima_util.altercmd([=[si\%[licon]]=], [[Silicon]])
+lexima_util.altercmd([=[r\%[run]]=], [[QuickRun]])
+lexima_util.altercmd([=[ma\%[son]]=], [[Mason]])
+lexima_util.altercmd([[du]], [[DeinUpdate]])
+lexima_util.altercmd([[rc]], [[Recache]])
+lexima_util.altercmd([[ej]], [[Translate]]) -- 英語から日本語へ
+lexima_util.altercmd([[je]], [[Translate!]]) -- 日本語から英語へ
 
 -- }}}
