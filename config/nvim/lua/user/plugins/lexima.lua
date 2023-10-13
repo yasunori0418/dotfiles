@@ -10,7 +10,7 @@ function M.altercmd(original, altanative)
     mode = ':',
     at = [[^\('<,'>\)\?]] .. original .. [[\%#$]],
     char = '<Space>',
-    input = '<C-w>' .. altanative .. '<Space>',
+    input = altanative .. '<Space>',
   })
 
   -- <CR>
@@ -18,7 +18,7 @@ function M.altercmd(original, altanative)
     mode = ':',
     at = [[^\('<,'>\)\?]] .. original .. [[\%#$]],
     char = '<CR>',
-    input = '<C-w>' .. altanative .. '<CR>',
+    input = altanative .. '<CR>',
   })
 end
 
