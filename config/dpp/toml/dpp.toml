@@ -1,0 +1,19 @@
+# Non-lazy plugins
+
+[[plugins]] # dpp.vim
+repo = 'Shougo/dpp.vim'
+
+[[plugins]] # denops.vim
+repo = 'vim-denops/denops.vim'
+
+[[plugins]] # vimdoc-ja
+repo = 'vim-jp/vimdoc-ja'
+
+[[plugins]] # learn-vimscript
+repo = 'mattn/learn-vimscript'
+
+[[plugins]] # mr.vim
+repo = 'lambdalisue/mr.vim'
+
+[[plugins]] # vim-artemis
+repo = 'tani/vim-artemis'
