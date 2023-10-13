@@ -6,7 +6,6 @@ vim.g["lexima_ctrlh_as_backspace"] = true
 -- lua_source {{{
 local lexima_util = require("user.plugins.lexima")
 local utils = require("user.utils")
-local add = vim.fn["lexima#add_rule"]
 
 vim.fn["lexima#set_default_rules"]()
 
@@ -23,62 +22,30 @@ local global_rules = {
     { char = [[<Tab>]], at = [[\%#\s*)]], leave = [[)]] },
 }
 
-for _, global_rule in ipairs(global_rules) do
-    add(global_rule)
-end
+lexima_util.add_rules(global_rules)
 
-utils.autocmds_set({
-    -- {
-    --     events = { "FileType" },
-    --     pattern = {},
-    --     group = utils.vimrc_augroup,
-    --     callback = function()
-    --     end,
-    -- },
-    {
-        events = { "FileType" },
-        pattern = { "python" },
+local filetype_rules = {}
+
+filetype_rules.python = {
+    { char = [[_]], at = [[\W\+_\%#]], input = [[_]], input_after = [[__]] },
+    { char = [[<BS>]], at = [[__\%#__]], input = [[<BS><BS>]], delete = 2 },
+    { char = [[<Tab>]], at = [[\%#__]], leave = 2 },
+}
+
+filetype_rules.toml = {
+    { char = [[<CR>]], at = [[=\s*'''\%#'''$]], input = [[<CR>]], input_after = [[<CR>]] },
+    { char = [[<CR>]], at = [[=\s*"""\%#"""$]], input = [[<CR>]], input_after = [[<CR>]] },
+}
+
+for filetype, rules in ipairs(filetype_rules) do
+    vim.api.nvim_create_autocmd(filetype, {
+        pattern = { "*" },
         group = utils.vimrc_augroup,
         callback = function()
-            add({
-                char = [[_]],
-                at = [[\W\+_\%#]],
-                input = [[_]],
-                input_after = [[__]],
-            })
-            add({
-                char = [[<BS>]],
-                at = [[__\%#__]],
-                input = [[<BS><BS>]],
-                delete = 2,
-            })
-            add({
-                char = [[<Tab>]],
-                at = [[\%#__]],
-                leave = 2,
-            })
+            lexima_util.add_rule(rules, filetype)
         end,
-    },
-    {
-        events = { "FileType" },
-        pattern = { "toml" },
-        group = utils.vimrc_augroup,
-        callback = function()
-            add({
-                char = [[<CR>]],
-                at = [[=\s*'''\%#'''$]],
-                input = [[<CR>]],
-                input_after = [[<CR>]],
-            })
-            add({
-                char = [[<CR>]],
-                at = [[=\s*"""\%#"""$]],
-                input = [[<CR>]],
-                input_after = [[<CR>]],
-            })
-        end,
-    },
-})
+    })
+end
 
 lexima_util.altercmd([=[si\%[licon]]=], [[Silicon]])
 lexima_util.altercmd([=[r\%[run]]=], [[QuickRun]])
