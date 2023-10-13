@@ -53,6 +53,11 @@ vim.opt_local.shiftwidth = 4
 vim.opt_local.conceallevel = 0
 vim.opt_local.foldmethod = "marker"
 vim.opt_local.foldenable = true
+
+-- lexima altercmdで範囲選択した後のコマンド展開で、
+-- <C-w>で選択マーカー('<,'>)が飲み込まれてしまう問題を回避する。
+-- iskeywordに">"を含まないようにする。
+vim.opt_local.iskeyword:append([[^>]])
 -- }}}
 
 -- lua_toml {{{
