@@ -47,10 +47,6 @@ on_source = 'vim-molder'
 repo = 'tweekmonster/helpful.vim'
 on_cmd = 'HelpfulVersion'
 
-[[plugins]] # bracey.vim
-repo = 'turbio/bracey.vim'
-on_cmd = 'Bracey'
-
 [[plugins]] # deol.nvim
 repo = 'Shougo/deol.nvim'
 depends = ['ddc.vim']
