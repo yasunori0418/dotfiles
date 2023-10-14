@@ -1,0 +1,15 @@
+## experimental plugins
+[[plugins]] # dpp.vim
+repo = 'Shougo/dpp.vim'
+
+[[plugins]] # dpp-protocol-git
+repo = 'Shougo/dpp-protocol-git'
+
+[[plugins]] # dpp-ext-installer
+repo = 'Shougo/dpp-ext-installer'
+
+[[plugins]] # dpp-ext-toml
+repo = 'Shougo/dpp-ext-toml'
+
+[[plugins]] # dpp-ext-lazy
+repo = 'Shougo/dpp-ext-lazy'
