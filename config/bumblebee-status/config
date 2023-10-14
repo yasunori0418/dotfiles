@@ -1,5 +1,5 @@
 [core]
-modules = title, cpu2, memory, nic, datetime, amixer, battery, dunstctl, arch_update, indicator, spacer:logo, error
+modules = title, cpu2, memory, nic, datetime, battery, dunstctl, arch_update, indicator, spacer:logo, error
 autohide = arch_update, indicator, error
 theme = iceberg-dark-powerline
 
@@ -14,7 +14,6 @@ nic.states = ^down
 nic.format = {intf} {state}
 datetime.format = %Y/%m/%d %a %H:%M:%S
 datetime.locale = en_US.UTF-8
-amixer.card = 1
 title.scroll = true
 title.scrolling.width = 32
 title.scrolling.makewide = true
