@@ -14,6 +14,7 @@ nic.states = ^down
 nic.format = {intf} {state}
 datetime.format = %Y/%m/%d %a %H:%M:%S
 datetime.locale = en_US.UTF-8
+amixer.card = 1
 title.scroll = true
 title.scrolling.width = 32
 title.scrolling.makewide = true
