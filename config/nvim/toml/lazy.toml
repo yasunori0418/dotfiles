@@ -81,12 +81,6 @@ on_cmd = ['CccPick', 'CccConvert', 'CccHighlighterToggle']
 on_source = 'mason-lspconfig.nvim'
 hooks_file = '$HOOKS_DIR/ccc.lua'
 
-[[plugins]] # nvim-insx
-repo = 'hrsh7th/nvim-insx'
-on_event = ['InsertEnter', 'CmdlineEnter']
-hooks_file = '$HOOKS_DIR/insx.lua'
-if = false
-
 [[plugins]] # promise-async
 repo = 'kevinhwang91/promise-async'
 on_lua = ['async', 'promise']
