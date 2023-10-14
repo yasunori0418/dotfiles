@@ -27,10 +27,6 @@ require("notify").setup({
 vim.notify = require("notify")
 '''
 
-[[plugins]] # suda.vim
-repo = 'lambdalisue/suda.vim'
-on_cmd = ['SudaRead', 'SudaWrite']
-
 [[plugins]] # vim-quickrun
 repo = 'thinca/vim-quickrun'
 on_cmd = 'QuickRun'
@@ -42,10 +38,6 @@ hooks_file = '$HOOKS_DIR/molder.lua'
 [[plugins]] # vim-molder-operations
 repo = 'mattn/vim-molder-operations'
 on_source = 'vim-molder'
-
-[[plugins]] # helpful.vim
-repo = 'tweekmonster/helpful.vim'
-on_cmd = 'HelpfulVersion'
 
 [[plugins]] # deol.nvim
 repo = 'Shougo/deol.nvim'

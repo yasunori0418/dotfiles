@@ -6,6 +6,14 @@ vim.g.vimhelpgenerator_author = [[yasunori0418]]
 vim.g.vimhelpgenerator_uri = [[https://github.com/yasunori0418]]
 '''
 
+[[plugins]] # helpful.vim
+repo = 'tweekmonster/helpful.vim'
+on_cmd = 'HelpfulVersion'
+
+[[plugins]] # suda.vim
+repo = 'lambdalisue/suda.vim'
+on_cmd = ['SudaRead', 'SudaWrite']
+
 [[plugins]] # memolist.vim
 repo = 'glidenote/memolist.vim'
 on_cmd = ['MemoNew', 'MemoList', 'MemoNewWithMeta', 'MemoGrep']
