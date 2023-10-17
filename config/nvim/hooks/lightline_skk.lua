@@ -1,3 +1,7 @@
+-- lua_add {{{
+vim.g.lightline_skk_announce = true
+-- }}}
+
 -- lua_source {{{
 vim.fn["lightline_skk#option"]("display", {
     hiragana = "あぁ󰗧",
