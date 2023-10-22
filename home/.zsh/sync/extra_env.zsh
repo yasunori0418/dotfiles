@@ -3,26 +3,33 @@
 # if installed binary by rust-cargo
 cargo_bin=${HOME}/.cargo/bin
 if [[ -d ${cargo_bin} ]]; then
-  export PATH=${PATH}:${cargo_bin}
+  PATH=${PATH}:${cargo_bin}
 fi
 
 # themis environment
 themis_bin=${HOME}/.cache/dein/repos/github.com/thinca/vim-themis/bin
 if [[ -d ${themis_bin} ]]; then
-  export PATH=${PATH}:${themis_bin}
+  PATH=${PATH}:${themis_bin}
 fi
 
 # go package
 go_bin=${HOME}/go/bin
 if [[ -d ${go_bin} ]]; then
-  export PATH=${PATH}:${go_bin}
+  PATH=${PATH}:${go_bin}
+fi
+
+# bun package
+bun_path=${HOME}/.cache/.bun
+if [[ -d ${bun_path} ]]; then
+  export BUN_INSTALL=${bun_path}
+  PATH=${PATH}:${bun_path}/bin
 fi
 
 # bat theme
 export BAT_THEME=Nord
 
 # diff-highlight
-export PATH=${PATH}:/usr/share/git/diff-highlight
+PATH=${PATH}:/usr/share/git/diff-highlight
 
 # ヒストリの一覧を読みやすい形に変更
 export HISTTIMEFORMAT="[%Y/%M/%D %H:%M:%S] "
@@ -36,7 +43,7 @@ export SAVEHIST=1000000
 export LISTMAX=100
 
 # "|,:"を単語の一部とみなさない
-export WORDCHARS="${WORDCHARS}|:"
+export WORDCHARS="${WORDCHARS}|,:"
 
 # LS_COLORS
 if [[ $(command -v vivid) ]];then
@@ -51,3 +58,4 @@ else
 fi
 
 unset dir_colors dir_colors_cache go_bin cargo_bin themis_bin
+export PATH
