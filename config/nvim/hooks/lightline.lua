@@ -55,7 +55,7 @@ local subseparator = {
 local component_function = {
     git_branch = [[vimrc#lightline_git_branch]],
     mode = [[vimrc#lightline_custom_mode]],
-    skk_mode = [[lightline_skk#mode]],
+    skk_mode = [[statusline_skk#mode]],
 }
 
 vim.g.lightline = {
