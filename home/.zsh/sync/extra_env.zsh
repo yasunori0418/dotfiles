@@ -25,6 +25,12 @@ if [[ -d ${bun_path} ]]; then
   PATH=${PATH}:${bun_path}/bin
 fi
 
+# npm package
+npm_path=${HOME}/node_modules/.bin
+if [[ -d ${bun_path} ]]; then
+  PATH=${PATH}:${npm_path}
+fi
+
 # bat theme
 export BAT_THEME=Nord
 
