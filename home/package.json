@@ -1,0 +1,11 @@
+{
+  "name": "global",
+  "dependencies": {
+    "textlint": "^13.3.3",
+    "@textlint/textlint-plugin-markdown": "^13.3.3",
+    "textlint-filter-rule-comments": "^1.2.2",
+    "textlint-rule-preset-ja-technical-writing": "^7.0.0",
+    "textlint-rule-preset-jtf-style": "^2.3.13",
+    "textlint-rule-prh": "^5.3.0"
+  }
+}
