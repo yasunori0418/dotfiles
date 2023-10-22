@@ -1,0 +1,22 @@
+---
+filters:
+  comments: true
+rules:
+  preset-ja-technical-writing:
+    sentence-length: false
+    ja-no-weak-phrase: false
+    no-exclamation-question-mark: false
+    max-kanji-continuous-len:
+      max: 8
+    no-unmatched-pair: false
+  preset-jtf-style:
+    '4.1.1.句点(。)': false
+    '4.3.1.丸かっこ（）': false
+    '4.3.2.大かっこ［］': false
+    '4.3.7.山かっこ<>': false
+  prh:
+    rulePaths:
+      - node_modules/prh/prh-rules/files/markdown.yml
+      - node_modules/prh/prh-rules/media/techbooster.yml
+plugins:
+  '@textlint/markdown': true
