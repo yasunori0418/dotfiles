@@ -12,12 +12,12 @@ M.all_installs = true
 
 M.languages = {}
 
----@alias kind
+---@alias efm_configs_kind
 ---| "formatters" # `require('efmls-configs.formatters')`
 ---| "linters" # `require('efmls-configs.linters')`
 
 ---@class ToolConfig
----@field kind kind # Which select of formatters or linters
+---@field kind efm_configs_kind # Which select of formatters or linters
 ---@field name string # Tool name for supported by efmls-configs.
 ---@field auto_install boolean # if false not execute ensure_installed. Default: true
 
