@@ -3,7 +3,7 @@ vim.g.lightline_skk_announce = true
 -- }}}
 
 -- lua_source {{{
-vim.fn["lightline_skk#option"]("display", {
+vim.fn["statusline_skk#option"]("display", {
     hiragana = "あぁ󰗧",
     katakana = "アァ󰗧",
     hankaku_katakana = "ｱｧ󰗧",
