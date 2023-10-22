@@ -1,9 +1,10 @@
+---
 name: UpdateDenoDependencies
 
 on:
   workflow_dispatch:
   schedule:
-  - cron: "0 0 * * *" # modify to your convenient time
+    - cron: "0 0 * * *"  # modify to your convenient time
 
 jobs:
   update_dependencies:
