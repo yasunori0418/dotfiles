@@ -1,0 +1,11 @@
+[Unit]
+Description=Minimalistic polkit authentication agent.
+PartOf=graphical-session.target
+
+[Service]
+Type=simple
+ExecStart=/usr/lib/xfce-polkit/xfce-polkit
+Restart=always
+
+[Install]
+WantedBy=xsession.target
