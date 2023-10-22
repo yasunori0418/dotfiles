@@ -1,5 +1,5 @@
 [Unit]
-Description=Minimalistic polkit authentication agent.
+Description=Xfce polkit authentication agent.
 PartOf=graphical-session.target
 
 [Service]
