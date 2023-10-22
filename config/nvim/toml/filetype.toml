@@ -19,3 +19,4 @@ hooks_file = '$HOOKS_DIR/previm/previm.lua'
 repo = 'atusy/tsnode-marker.nvim'
 on_ft = 'markdown'
 hooks_file = '$HOOKS_DIR/tsnode_marker.lua'
+if = false
