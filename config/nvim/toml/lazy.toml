@@ -10,6 +10,7 @@ if = false
 [[plugins]]
 repo = 'rebelot/heirline.nvim'
 on_event = ['WinNew', 'CursorHold', 'InsertEnter', 'CmdlineEnter']
+hooks_file = '$HOOKS_DIR/heirline.lua'
 
 [[plugins]] # context_filetype.vim
 repo = 'Shougo/context_filetype.vim'
