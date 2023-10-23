@@ -5,6 +5,11 @@ repo = 'itchyny/lightline.vim'
 on_event = ['WinNew', 'CursorHold', 'InsertEnter', 'CmdlineEnter']
 depends = ['vim-gitbranch']
 hooks_file = '$HOOKS_DIR/lightline.lua'
+if = false
+
+[[plugins]]
+repo = 'rebelot/heirline.nvim'
+on_event = ['WinNew', 'CursorHold', 'InsertEnter', 'CmdlineEnter']
 
 [[plugins]] # context_filetype.vim
 repo = 'Shougo/context_filetype.vim'
