@@ -1,6 +1,9 @@
+local M = {}
 local utils = require("heirline.utils")
 
-return {
+M.nightfox_palette = require("nightfox.palette.nordfox")
+
+M.colors = {
     bright_bg = utils.get_highlight("Folded").bg,
     bright_fg = utils.get_highlight("Folded").fg,
     red = utils.get_highlight("DiagnosticError").fg,
@@ -19,3 +22,5 @@ return {
     git_add = utils.get_highlight("diffAdded").fg,
     git_change = utils.get_highlight("diffChanged").fg,
 }
+
+return M
