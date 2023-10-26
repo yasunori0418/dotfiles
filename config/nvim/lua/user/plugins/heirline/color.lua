@@ -5,6 +5,7 @@ local utils = require("heirline.utils")
 local nightfox_palette = require("nightfox.palette.nordfox").palette
 
 ---@class HeirlineNightfoxPalette
+---@diagnostic disable: duplicate-doc-field
 ---@field black_base string nightfox_palette.black.base
 ---@field black_bright string nightfox_palette.black.bright
 ---@field black_dim string nightfox_palette.black.dim
@@ -55,6 +56,7 @@ local nightfox_palette = require("nightfox.palette.nordfox").palette
 ---@field git_del string utils.get_highlight("diffRemoved").fg
 ---@field git_add string utils.get_highlight("diffAdded").fg
 ---@field git_change string utils.get_highlight("diffChanged").fg
+---@diagnostic enable: duplicate-doc-field
 M.colors = {
     diag_warn = utils.get_highlight("DiagnosticWarn").fg,
     diag_error = utils.get_highlight("DiagnosticError").fg,
