@@ -4,11 +4,11 @@ local M = {}
 -- local utils = require("heirline.utils")
 
 local heirline = require("heirline")
-local palette = require("user.plugins.heirline.color")
+local palette = require("user.plugins.heirline.color").set()
 local Statusline = require("user.plugins.heirline.statusline")
 
 function M.setup()
-    heirline.load_colors(palette.colors)
+    heirline.load_colors(palette)
     heirline.setup({
         statusline = Statusline,
     })
