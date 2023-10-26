@@ -7,7 +7,7 @@ return {
         {
             Mode,
             hl = function(_)
-                return { fg = "bright_fg", bg = "green" }
+                return { fg = "fg2", bg = "blue_dim" }
             end,
         },
     },
