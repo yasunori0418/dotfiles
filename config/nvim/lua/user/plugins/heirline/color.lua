@@ -78,7 +78,8 @@ function M.set()
             M.colors[color_name .. "_dim"] = color["dim"]
         end
     end
-    return M.colors
+
+    require("heirline").load_colors(M.colors)
 end
 
 return M
