@@ -1,6 +1,10 @@
 local M = {}
 local utils = require("heirline.utils")
 
+function M.mode_colors()
+    return M.modes[vim.fn.mode(0)]
+end
+
 function M.set()
     --- :h nightfox-palette
     local nightfox_palette = require("nightfox.palette.nordfox").palette
