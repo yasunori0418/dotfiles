@@ -79,6 +79,22 @@ function M.set()
         end
     end
 
+    M.modes = {
+        n = { fg = M.colors.green_bright, bg = M.colors.green_base },
+        i = { fg = M.colors.blue_bright, bg = M.colors.blue_base },
+        r = { fg = M.colors.cyan_bright, bg = M.colors.cyan_base },
+        v = { fg = M.colors.yellow_bright, bg = M.colors.yellow_base },
+        [""] = { fg = M.colors.yellow_bright, bg = M.colors.yellow_base },
+        V = { fg = M.colors.yellow_bright, bg = M.colors.yellow_base },
+        s = { fg = M.colors.magenta_bright, bg = M.colors.magenta_base },
+        S = { fg = M.colors.magenta_bright, bg = M.colors.magenta_base },
+        [""] = { fg = M.colors.magenta_bright, bg = M.colors.magenta_base },
+        R = { fg = M.colors.magenta_bright, bg = M.colors.magenta_base },
+        c = { fg = M.colors.red_bright, bg = M.colors.red_base },
+        ["!"] = { fg = M.colors.red_bright, bg = M.colors.red_base },
+        t = { fg = M.colors.red_bright, bg = M.colors.red_base },
+    }
+
     require("heirline").load_colors(M.colors)
 end
 
