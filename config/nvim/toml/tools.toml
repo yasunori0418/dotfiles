@@ -36,6 +36,10 @@ hook_add = '''
 command! StartThemis call dein#source('vim-themis')
 '''
 
+[[plugins]]
+repo = 'nvim-tree/nvim-web-devicons'
+on_lua = 'nvim-web-devicons'
+
 [[plugins]] # for skkeleton
 repo = 'skk-dev/dict'
 if = false
