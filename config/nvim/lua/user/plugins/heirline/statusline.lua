@@ -22,6 +22,13 @@ return {
             hl = function(self)
                 return { fg = "bg3", bg = self.mode_colors.bg, bold = true }
             end,
+            update = {
+                "ModeChanged",
+                pattern = "*:*",
+                callback = vim.schedule_wrap(function()
+                    vim.cmd.redrawstatus()
+                end),
+            },
         },
         { -- separator
             provider = function(self)
