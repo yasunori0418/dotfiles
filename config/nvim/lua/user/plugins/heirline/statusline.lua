@@ -1,3 +1,7 @@
+local devicons = require("nvim-web-devicons")
+local Mode = require("user.plugins.heirline.mode")
+local File = require("user.plugins.heirline.file")
+
 return {
     {
         init = function(self)
@@ -5,6 +9,8 @@ return {
             self.padding_char = "\u{00A0}"
             self.cwd = vim.fn.getcwd()
             self.filename = vim.api.nvim_buf_get_name(0)
+            self.extension = vim.fn.fnamemodify(self.filename, ":e")
+            self.icon, self.icon_color = devicons.get_icon_color(self.filename, self.extension, { default = true })
             self.separator = {
                 main = {
                     left = "\u{E0B0}", -- [[]]
@@ -20,17 +26,11 @@ return {
             return { fg = self.mode_colors.fg, bg = self.mode_colors.bg }
         end,
         { -- mode
-            require("user.plugins.heirline.mode"),
+            Mode.Vim,
+            Mode.Skk,
             hl = function(self)
                 return { fg = "bg3", bg = self.mode_colors.bg, bold = true }
             end,
-            update = {
-                "ModeChanged",
-                pattern = "*:*",
-                callback = vim.schedule_wrap(function()
-                    vim.cmd.redrawstatus()
-                end),
-            },
         },
         { -- separator
             provider = function(self)

@@ -83,33 +83,50 @@ local indicator = { -- see :help mode(1)
     },
 }
 
-return {
-    { -- vim mode
-        provider = function(self)
-            return self.padding_char .. indicator[vim.g.heirline_indicator_type][vim.fn.mode(true)]
-        end,
-        { -- skk mode
-            condition = function()
-                if vim.fn["skkeleton#mode"]() ~= "" then
-                    return true
-                end
-            end,
-            hl = { bold = false },
-            { -- separator.
-                provider = function(self)
-                    return self.separator.sub.left
-                end,
-            },
-            { -- Check skkeleton enable with displayed indicator.
-                provider = function(self)
-                    return self.padding_char .. "SKK"
-                end,
-            },
-            { -- Current skkeleton mode.
-                provider = function(self)
-                    return self.padding_char .. vim.fn["statusline_skk#mode"]()
-                end,
-            },
-        },
+local M = {}
+
+M.Vim = {
+    provider = function(self)
+        return self.padding_char .. indicator[vim.g.heirline_indicator_type][vim.fn.mode(true)]
+    end,
+    update = {
+        "ModeChanged",
+        pattern = "*:*",
+        callback = vim.schedule_wrap(function()
+            vim.cmd.redrawstatus()
+        end),
     },
 }
+
+M.Skk = {
+    condition = function()
+        if vim.fn["skkeleton#mode"]() ~= "" then
+            return true
+        end
+    end,
+    update = {
+        "User",
+        pattern = "skkeleton-mode-changed",
+        callback = vim.schedule_wrap(function()
+            vim.cmd.redrawstatus()
+        end),
+    },
+    hl = { bold = false },
+    { -- separator.
+        provider = function(self)
+            return self.separator.sub.left
+        end,
+    },
+    { -- Check skkeleton enable with displayed indicator.
+        provider = function(self)
+            return self.padding_char .. "SKK"
+        end,
+    },
+    { -- Current skkeleton mode.
+        provider = function(self)
+            return self.padding_char .. vim.fn["statusline_skk#mode"]()
+        end,
+    },
+}
+
+return M
