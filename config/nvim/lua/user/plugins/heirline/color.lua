@@ -84,19 +84,19 @@ function M.set()
     end
 
     M.modes = {
-        n = { fg = M.colors.blue_bright, bg = M.colors.blue_dim },
-        i = { fg = M.colors.green_bright, bg = M.colors.green_dim },
-        r = { fg = M.colors.red_bright, bg = M.colors.red_dim },
-        v = { fg = M.colors.magenta_bright, bg = M.colors.magenta_dim },
-        [""] = { fg = M.colors.magenta_bright, bg = M.colors.magenta_dim },
-        V = { fg = M.colors.magenta_bright, bg = M.colors.magenta_dim },
-        s = { fg = M.colors.cyan_bright, bg = M.colors.cyan_dim },
-        S = { fg = M.colors.cyan_bright, bg = M.colors.cyan_dim },
-        [""] = { fg = M.colors.cyan_bright, bg = M.colors.cyan_dim },
-        R = { fg = M.colors.red_bright, bg = M.colors.red_dim },
-        c = { fg = M.colors.green_bright, bg = M.colors.green_dim },
-        ["!"] = { fg = M.colors.green_bright, bg = M.colors.green_dim },
-        t = { fg = M.colors.green_bright, bg = M.colors.green_dim },
+        n = { fg = M.colors.blue_bright, bg = M.colors.blue_dim, base = M.colors.blue_base },
+        i = { fg = M.colors.green_bright, bg = M.colors.green_dim, base = M.colors.green_base },
+        r = { fg = M.colors.red_bright, bg = M.colors.red_dim, base = M.colors.red_base },
+        v = { fg = M.colors.magenta_bright, bg = M.colors.magenta_dim, base = M.colors.magenta_base },
+        [""] = { fg = M.colors.magenta_bright, bg = M.colors.magenta_dim, base = M.colors.magenta_base },
+        V = { fg = M.colors.magenta_bright, bg = M.colors.magenta_dim, base = M.colors.magenta_base },
+        s = { fg = M.colors.cyan_bright, bg = M.colors.cyan_dim, base = M.colors.cyan_base },
+        S = { fg = M.colors.cyan_bright, bg = M.colors.cyan_dim, base = M.colors.cyan_base },
+        [""] = { fg = M.colors.cyan_bright, bg = M.colors.cyan_dim, base = M.colors.cyan_base },
+        R = { fg = M.colors.red_bright, bg = M.colors.red_dim, base = M.colors.red_base },
+        c = { fg = M.colors.orange_bright, bg = M.colors.orange_dim, base = M.colors.orange_base },
+        ["!"] = { fg = M.colors.orange_bright, bg = M.colors.orange_dim, base = M.colors.orange_base },
+        t = { fg = M.colors.white_bright, bg = M.colors.white_dim, base = M.colors.white_base },
     }
 
     require("heirline").load_colors(M.colors)
