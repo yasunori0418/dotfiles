@@ -84,22 +84,31 @@ local indicator = { -- see :help mode(1)
 }
 
 return {
-    {
-        provider = function()
-            return "\u{00A0}" .. indicator[vim.g.heirline_indicator_type][vim.fn.mode(true)]
+    { -- vim mode
+        provider = function(self)
+            return self.padding_char .. indicator[vim.g.heirline_indicator_type][vim.fn.mode(true)]
         end,
-    },
-    {
-        condition = function()
-            if vim.fn.exists("g:loaded_skkeleton") == 0 then
-                return false
-            end
-            if vim.fn.mode(0) == "i" or vim.fn.mode(0) == "c" then
+        { -- skk mode
+            condition = function()
                 if vim.fn["skkeleton#mode"]() ~= "" then
                     return true
                 end
-            end
-        end,
-        provider = "SKK",
+            end,
+            { -- separator.
+                provider = function(self)
+                    return self.separator.sub.left
+                end,
+            },
+            { -- Check skkeleton enable with displayed indicator.
+                provider = function(self)
+                    return self.padding_char .. "SKK"
+                end,
+            },
+            { -- Current skkeleton mode.
+                provider = function(self)
+                    return self.padding_char .. vim.fn["statusline_skk#mode"]()
+                end,
+            },
+        },
     },
 }
