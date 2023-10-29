@@ -84,7 +84,22 @@ local indicator = { -- see :help mode(1)
 }
 
 return {
-    provider = function()
-        return "\u{00A0}" .. indicator[vim.g.heirline_indicator_type][vim.fn.mode(true)]
-    end,
+    {
+        provider = function()
+            return "\u{00A0}" .. indicator[vim.g.heirline_indicator_type][vim.fn.mode(true)]
+        end,
+    },
+    {
+        condition = function()
+            if vim.fn.exists("g:loaded_skkeleton") == 0 then
+                return false
+            end
+            if vim.fn.mode(0) == "i" or vim.fn.mode(0) == "c" then
+                if vim.fn["skkeleton#mode"]() ~= "" then
+                    return true
+                end
+            end
+        end,
+        provider = "SKK",
+    },
 }
