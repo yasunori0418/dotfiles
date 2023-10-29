@@ -2,6 +2,7 @@ return {
     {
         init = function(self)
             self.mode_colors = require("user.plugins.heirline.color").mode_colors()
+            self.padding_char = "\u{00A0}"
             self.separator = {
                 main = {
                     left = "\u{E0B0}", -- [[]]
@@ -31,8 +32,8 @@ return {
             end,
         },
         { -- CWD
-            provider = function()
-                return "\u{00A0}" .. vim.fn.fnamemodify(vim.fn.getcwd(), ":~")
+            provider = function(self)
+                return self.padding_char .. vim.fn.fnamemodify(vim.fn.getcwd(), ":~")
             end,
             hl = function(self)
                 return { fg = "fg3", bg = self.mode_colors.fg }
