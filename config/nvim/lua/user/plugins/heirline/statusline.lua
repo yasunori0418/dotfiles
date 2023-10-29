@@ -56,5 +56,21 @@ return {
                 return { fg = self.mode_colors.base, bg = self.mode_colors.fg }
             end,
         },
+        { -- file
+            File.Icon,
+            File.Name,
+            File.Flags,
+            hl = function(self)
+                return { fg = "bg3", bg = self.mode_colors.fg }
+            end,
+        },
+        { -- separator
+            provider = function(self)
+                return self.separator.main.left
+            end,
+            hl = function(self)
+                return { fg = self.mode_colors.fg, bg = "bg0" }
+            end,
+        },
     },
 }
