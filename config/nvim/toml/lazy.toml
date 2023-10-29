@@ -9,7 +9,7 @@ if = false
 
 [[plugins]] # heirline.nvim
 repo = 'rebelot/heirline.nvim'
-on_event = ['CursorHold', 'InsertEnter', 'CmdlineEnter']
+on_event = ['CursorHold', 'CmdlineEnter']
 hooks_file = '$HOOKS_DIR/heirline.lua'
 
 [[plugins]] # context_filetype.vim
