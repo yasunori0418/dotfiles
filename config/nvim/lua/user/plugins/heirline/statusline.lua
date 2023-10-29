@@ -23,7 +23,7 @@ return {
                 return { fg = "fg1", bg = self.mode_colors.bg }
             end,
         },
-        {
+        { -- separator
             provider = function(self)
                 return self.separator.main.left
             end,
