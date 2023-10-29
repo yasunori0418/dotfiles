@@ -119,7 +119,12 @@ M.Skk = {
     },
     { -- Check skkeleton enable with displayed indicator.
         provider = function(self)
-            return self.padding_char .. "SKK"
+            return self.padding_char .. "SKK "
+        end,
+    },
+    { -- separator.
+        provider = function(self)
+            return self.separator.sub.left
         end,
     },
     { -- Current skkeleton mode.
