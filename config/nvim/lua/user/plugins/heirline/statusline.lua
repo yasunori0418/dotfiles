@@ -14,5 +14,11 @@ return {
                 return { fg = "fg1", bg = self.mode_colors.bg }
             end,
         },
+        {
+            provider = "\u{E0B0}",
+            hl = function(self)
+                return { fg = self.mode_colors.bg, bg = "bg0" }
+            end,
+        },
     },
 }
