@@ -11,16 +11,16 @@ return {
                 sub = {
                     left = "\u{E0B1}", -- [[]]
                     right = "\u{E0B3}", -- [[]]
-                }
+                },
             }
         end,
         hl = function(self)
             return { fg = self.mode_colors.fg, bg = self.mode_colors.bg }
         end,
-        {
+        { -- mode
             require("user.plugins.heirline.mode"),
             hl = function(self)
-                return { fg = "fg1", bg = self.mode_colors.bg }
+                return { fg = "bg3", bg = self.mode_colors.bg }
             end,
         },
         { -- separator
@@ -28,7 +28,7 @@ return {
                 return self.separator.main.left
             end,
             hl = function(self)
-                return { fg = self.mode_colors.bg, bg = self.mode_colors.fg, }
+                return { fg = self.mode_colors.bg, bg = self.mode_colors.base }
             end,
         },
         { -- CWD
@@ -36,15 +36,15 @@ return {
                 return self.padding_char .. vim.fn.fnamemodify(vim.fn.getcwd(), ":~")
             end,
             hl = function(self)
-                return { fg = "fg3", bg = self.mode_colors.fg }
-            end
+                return { fg = "bg3", bg = self.mode_colors.base }
+            end,
         },
-        {
+        { -- separator
             provider = function(self)
                 return self.separator.main.left
             end,
             hl = function(self)
-                return { fg = self.mode_colors.fg, bg = "bg0" }
+                return { fg = self.mode_colors.base, bg = self.mode_colors.fg }
             end,
         },
     },
