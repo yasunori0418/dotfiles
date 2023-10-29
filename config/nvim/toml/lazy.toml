@@ -7,9 +7,9 @@ depends = ['vim-gitbranch']
 hooks_file = '$HOOKS_DIR/lightline.lua'
 if = false
 
-[[plugins]]
+[[plugins]] # heirline.nvim
 repo = 'rebelot/heirline.nvim'
-on_event = ['WinNew', 'CursorHold', 'InsertEnter', 'CmdlineEnter']
+on_event = ['CursorHold', 'InsertEnter', 'CmdlineEnter']
 hooks_file = '$HOOKS_DIR/heirline.lua'
 
 [[plugins]] # context_filetype.vim
