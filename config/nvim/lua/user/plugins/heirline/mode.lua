@@ -94,6 +94,7 @@ return {
                     return true
                 end
             end,
+            hl = { bold = false },
             { -- separator.
                 provider = function(self)
                     return self.separator.sub.left

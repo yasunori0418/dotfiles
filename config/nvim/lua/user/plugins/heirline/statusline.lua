@@ -20,7 +20,7 @@ return {
         { -- mode
             require("user.plugins.heirline.mode"),
             hl = function(self)
-                return { fg = "bg3", bg = self.mode_colors.bg }
+                return { fg = "bg3", bg = self.mode_colors.bg, bold = true }
             end,
         },
         { -- separator
