@@ -53,7 +53,7 @@ return {
                 return self.separator.main.left
             end,
             hl = function(self)
-                return { fg = self.mode_colors.base, bg = self.mode_colors.fg }
+                return { fg = self.mode_colors.base, bg = self.mode_colors.bg }
             end,
         },
         { -- file
@@ -61,7 +61,7 @@ return {
             File.Name,
             File.Flags,
             hl = function(self)
-                return { fg = "bg3", bg = self.mode_colors.fg }
+                return { fg = "bg3", bg = self.mode_colors.bg }
             end,
         },
         { -- separator
@@ -69,7 +69,7 @@ return {
                 return self.separator.main.left
             end,
             hl = function(self)
-                return { fg = self.mode_colors.fg, bg = "bg0" }
+                return { fg = self.mode_colors.bg, bg = "bg0" }
             end,
         },
     },
