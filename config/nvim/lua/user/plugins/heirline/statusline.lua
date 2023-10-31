@@ -1,6 +1,5 @@
 local devicons = require("nvim-web-devicons")
 local Mode = require("user.plugins.heirline.mode")
-local File = require("user.plugins.heirline.file")
 
 return {
     {
@@ -53,23 +52,7 @@ return {
                 return self.separator.main.left
             end,
             hl = function(self)
-                return { fg = self.mode_colors.base, bg = self.mode_colors.bg }
-            end,
-        },
-        { -- file
-            File.Icon,
-            File.Name,
-            File.Flags,
-            hl = function(self)
-                return { fg = "bg3", bg = self.mode_colors.bg }
-            end,
-        },
-        { -- separator
-            provider = function(self)
-                return self.separator.main.left
-            end,
-            hl = function(self)
-                return { fg = self.mode_colors.bg, bg = "bg0" }
+                return { fg = self.mode_colors.base, bg = "bg0" }
             end,
         },
     },
