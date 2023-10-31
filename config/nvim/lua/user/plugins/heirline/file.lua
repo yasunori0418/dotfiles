@@ -1,9 +1,10 @@
+local devicons = require("nvim-web-devicons")
 local conditions = require("heirline.conditions")
 -- local utils = require("heirline.utils")
 
 local icon = {
     provider = function(self)
-        return self.icon
+        return self.padding_char .. self.icon .. self.padding_char
     end,
     hl = function(self)
         return { fg = self.icon_color }
@@ -33,7 +34,7 @@ local flags = {
         condition = function()
             return vim.bo.modified
         end,
-        provider = "[+]",
+        provider = " [+]",
     },
     {
         condition = function()
@@ -44,12 +45,11 @@ local flags = {
 }
 
 return {
-    condition = function()
-        local filename = vim.api.nvim_buf_get_name(0)
-        return vim.fn.empty(vim.fn.fnamemodify(filename, "%:t")) == 0
-    end,
     init = function(self)
         self.filename = vim.api.nvim_buf_get_name(0)
+        self.extension = vim.fn.fnamemodify(self.filename, ":e")
+        self.icon, self.icon_color = devicons.get_icon_color(self.filename, self.extension, { default = true })
+        self.padding_char = "\u{00A0}"
     end,
     icon,
     name,
