@@ -8,11 +8,11 @@ return {
         self.has_changes = self.status_dict.added ~= 0 or self.status_dict.removed ~= 0 or self.status_dict.changed ~= 0
     end,
 
-    hl = { fg = "orange_base" },
+    hl = { fg = "orange_base", bg = "bg0" },
 
     {   -- git branch name
         provider = function(self)
-            return " " .. self.status_dict.head
+            return "  " .. self.status_dict.head
         end,
         hl = { bold = true }
     },
@@ -21,7 +21,7 @@ return {
         condition = function(self)
             return self.has_changes
         end,
-        provider = "("
+        provider = " ["
     },
     {
         provider = function(self)
@@ -48,6 +48,6 @@ return {
         condition = function(self)
             return self.has_changes
         end,
-        provider = ")",
+        provider = "] ",
     },
 }

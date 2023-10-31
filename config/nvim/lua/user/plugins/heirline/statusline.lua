@@ -17,9 +17,6 @@ return {
                 },
             }
         end,
-        hl = function(self)
-            return { fg = self.mode_colors.fg, bg = self.mode_colors.bg }
-        end,
         { -- mode
             Mode.Vim,
             Mode.Skk,
@@ -50,6 +47,9 @@ return {
             hl = function(self)
                 return { fg = self.mode_colors.base, bg = "bg0" }
             end,
+        },
+        {
+            require("user.plugins.heirline.git"),
         },
     },
 }
