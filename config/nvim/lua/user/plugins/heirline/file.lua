@@ -1,18 +1,16 @@
 local conditions = require("heirline.conditions")
 -- local utils = require("heirline.utils")
 
-local M = {}
-
-M.Icon = {
+local icon = {
     provider = function(self)
-        return self.padding_char .. self.icon
+        return self.icon
     end,
     hl = function(self)
         return { fg = self.icon_color }
     end,
 }
 
-M.Name = {
+local name = {
     provider = function(self)
         -- first, trim the pattern relative to the current directory. For other
         -- options, see :h filename-modifers
@@ -26,11 +24,11 @@ M.Name = {
         if not conditions.width_percent_below(#filename, 0.25) then
             filename = vim.fn.pathshorten(filename)
         end
-        return self.padding_char .. filename .. self.padding_char
+        return filename
     end,
 }
 
-M.Flags = {
+local flags = {
     {
         condition = function()
             return vim.bo.modified
@@ -45,4 +43,11 @@ M.Flags = {
     },
 }
 
-return M
+return {
+    init = function(self)
+        self.filename = vim.api.nvim_buf_get_name(0)
+    end,
+    icon,
+    name,
+    flags,
+}
