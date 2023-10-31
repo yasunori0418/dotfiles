@@ -1,4 +1,3 @@
-local devicons = require("nvim-web-devicons")
 local Mode = require("user.plugins.heirline.mode")
 
 return {
@@ -7,9 +6,6 @@ return {
             self.mode_colors = require("user.plugins.heirline.color").mode_colors()
             self.padding_char = "\u{00A0}"
             self.cwd = vim.fn.getcwd()
-            self.filename = vim.api.nvim_buf_get_name(0)
-            self.extension = vim.fn.fnamemodify(self.filename, ":e")
-            self.icon, self.icon_color = devicons.get_icon_color(self.filename, self.extension, { default = true })
             self.separator = {
                 main = {
                     left = "\u{E0B0}", -- [[]]
