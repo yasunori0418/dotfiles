@@ -44,6 +44,10 @@ local flags = {
 }
 
 return {
+    condition = function()
+        local filename = vim.api.nvim_buf_get_name(0)
+        return vim.fn.empty(vim.fn.fnamemodify(filename, "%:t")) == 0
+    end,
     init = function(self)
         self.filename = vim.api.nvim_buf_get_name(0)
     end,
