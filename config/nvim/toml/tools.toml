@@ -36,6 +36,10 @@ hook_add = '''
 command! StartThemis call dein#source('vim-themis')
 '''
 
+[[plugins]]
+repo = 'rickhowe/wrapwidth'
+on_cmd = 'Wrapwidth'
+
 [[plugins]] # for skkeleton
 repo = 'skk-dev/dict'
 if = false
