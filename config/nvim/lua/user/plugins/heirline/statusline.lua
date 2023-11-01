@@ -1,3 +1,4 @@
+local conditions = require("heirline.conditions")
 local Mode = require("user.plugins.heirline.mode")
 local File = require("user.plugins.heirline.file")
 local Align = { provider = "%=" }
@@ -52,15 +53,16 @@ return {
             end,
         },
         {
+            condition = conditions.is_git_repo,
             require("user.plugins.heirline.git"),
-        },
-        { --separator
-            provider = function(self)
-                return self.separator.sub.left .. self.separator.sub.left
-            end,
-            hl = function(self)
-                return { fg = self.mode_colors.base, bg = "bg0" }
-            end,
+            { --separator
+                provider = function(self)
+                    return self.separator.sub.left .. self.separator.sub.left
+                end,
+                hl = function(self)
+                    return { fg = self.mode_colors.base, bg = "bg0" }
+                end,
+            },
         },
         Align,
         {
