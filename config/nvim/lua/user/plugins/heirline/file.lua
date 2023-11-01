@@ -3,7 +3,7 @@ local devicons = require("nvim-web-devicons")
 -- local conditions = require("heirline.conditions")
 local utils = require("heirline.utils")
 
-local init_info = {
+local init = {
     init = function(self)
         self.filename = vim.api.nvim_buf_get_name(0)
         self.extension = vim.fn.fnamemodify(self.filename, ":e")
@@ -53,15 +53,15 @@ local flags = {
     },
 }
 
-M.NameBlock = utils.insert(init_info, {
+M.NameBlock = utils.insert(init, {
     icon,
     name,
     flags,
 })
 
-M.Type = utils.insert(init_info, {
+M.Type = utils.insert(init, {
     provider = function()
-        return vim.bo.filetype
+        return "ft=" .. vim.bo.filetype
     end,
     hl = function(self)
         return { fg = self.icon_color, bold = true }
@@ -71,14 +71,13 @@ M.Type = utils.insert(init_info, {
 M.Encoding = {
     provider = function()
         local enc = (vim.bo.fenc ~= "" and vim.bo.fenc) or vim.o.enc -- :h 'enc'
-        return enc ~= "utf-8" and enc:upper()
+        return "enc=" .. enc
     end,
 }
 
 M.Format = {
     provider = function()
-        local fmt = vim.bo.fileformat
-        return fmt ~= "unix" and fmt:upper()
+        return "ff=" .. vim.bo.fileformat
     end,
 }
 

@@ -1,4 +1,6 @@
 local Mode = require("user.plugins.heirline.mode")
+local File = require("user.plugins.heirline.file")
+local Align = { provider = "%=" }
 
 return {
     {
@@ -17,6 +19,7 @@ return {
                 },
             }
         end,
+        hl = { bg = "bg0" },
         { -- mode
             Mode.Vim,
             Mode.Skk,
@@ -45,11 +48,27 @@ return {
                 return self.separator.main.left
             end,
             hl = function(self)
-                return { fg = self.mode_colors.base, bg = "bg0" }
+                return { fg = self.mode_colors.base }
             end,
         },
         {
             require("user.plugins.heirline.git"),
+        },
+        { --separator
+            provider = function(self)
+                return self.separator.sub.left .. self.separator.sub.left
+            end,
+            hl = function(self)
+                return { fg = self.mode_colors.base, bg = "bg0" }
+            end,
+        },
+        Align,
+        {
+            File.Type,
+            { provider = ":" },
+            File.Encoding,
+            { provider = ":" },
+            File.Format,
         },
     },
 }
