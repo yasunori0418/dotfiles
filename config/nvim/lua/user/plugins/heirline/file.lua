@@ -59,14 +59,11 @@ M.NameBlock = utils.insert(init, {
     flags,
 })
 
-M.Type = utils.insert(init, {
+M.Type = {
     provider = function()
         return "ft=" .. vim.bo.filetype
     end,
-    hl = function(self)
-        return { fg = self.icon_color, bold = true }
-    end,
-})
+}
 
 M.Encoding = {
     provider = function()
