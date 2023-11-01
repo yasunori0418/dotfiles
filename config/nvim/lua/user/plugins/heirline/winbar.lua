@@ -6,6 +6,6 @@ return {
         return { fg = "fg1" }
     end,
     {
-        require("user.plugins.heirline.file"),
+        require("user.plugins.heirline.file").NameBlock,
     },
 }
