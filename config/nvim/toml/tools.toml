@@ -41,6 +41,10 @@ repo = 'nvim-tree/nvim-web-devicons'
 on_lua = 'nvim-web-devicons'
 hooks_file = '$HOOKS_DIR/devicons.lua'
 
+[[plugins]]
+repo = 'rickhowe/wrapwidth'
+on_cmd = 'Wrapwidth'
+
 [[plugins]] # for skkeleton
 repo = 'skk-dev/dict'
 if = false
