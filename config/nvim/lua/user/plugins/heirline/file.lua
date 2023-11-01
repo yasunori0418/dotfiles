@@ -3,6 +3,14 @@ local devicons = require("nvim-web-devicons")
 -- local conditions = require("heirline.conditions")
 local utils = require("heirline.utils")
 
+local init_info = {
+    init = function(self)
+        self.filename = vim.api.nvim_buf_get_name(0)
+        self.extension = vim.fn.fnamemodify(self.filename, ":e")
+        self.icon, self.icon_color = devicons.get_icon_color(self.filename, self.extension, { default = true })
+    end,
+}
+
 local icon = {
     provider = function(self)
         return " " .. self.icon .. " "
@@ -45,36 +53,33 @@ local flags = {
     },
 }
 
-M.NameBlock = {
-    init = function(self)
-        self.filename = vim.api.nvim_buf_get_name(0)
-        self.extension = vim.fn.fnamemodify(self.filename, ":e")
-        self.icon, self.icon_color = devicons.get_icon_color(self.filename, self.extension, { default = true })
-    end,
+M.NameBlock = utils.insert(init_info, {
     icon,
     name,
     flags,
-}
+})
 
-M.Type = {
+M.Type = utils.insert(init_info, {
     provider = function()
-        return string.upper(vim.bo.filetype)
+        return vim.bo.filetype
     end,
-    hl = { fg = utils.get_highlight("Type").fg, bold = true },
-}
+    hl = function(self)
+        return { fg = self.icon_color, bold = true }
+    end,
+})
 
 M.Encoding = {
     provider = function()
-        local enc = (vim.bo.fenc ~= '' and vim.bo.fenc) or vim.o.enc -- :h 'enc'
-        return enc ~= 'utf-8' and enc:upper()
-    end
+        local enc = (vim.bo.fenc ~= "" and vim.bo.fenc) or vim.o.enc -- :h 'enc'
+        return enc ~= "utf-8" and enc:upper()
+    end,
 }
 
 M.Format = {
     provider = function()
         local fmt = vim.bo.fileformat
-        return fmt ~= 'unix' and fmt:upper()
-    end
+        return fmt ~= "unix" and fmt:upper()
+    end,
 }
 
 return M
