@@ -59,23 +59,31 @@ M.NameBlock = utils.insert(init, {
     flags,
 })
 
-M.Type = {
+local type = {
     provider = function()
         return "ft=" .. vim.bo.filetype
     end,
 }
 
-M.Encoding = {
+local encoding = {
     provider = function()
         local enc = (vim.bo.fenc ~= "" and vim.bo.fenc) or vim.o.enc -- :h 'enc'
         return "enc=" .. enc
     end,
 }
 
-M.Format = {
+local format = {
     provider = function()
         return "ff=" .. vim.bo.fileformat
     end,
+}
+
+M.InfoBlock = {
+    type,
+    { provider = ":" },
+    encoding,
+    { provider = ":" },
+    format,
 }
 
 return M

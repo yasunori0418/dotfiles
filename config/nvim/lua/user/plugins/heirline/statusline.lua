@@ -65,12 +65,6 @@ return {
             },
         },
         Align,
-        {
-            File.Type,
-            { provider = ":" },
-            File.Encoding,
-            { provider = ":" },
-            File.Format,
-        },
+        File.InfoBlock,
     },
 }
