@@ -55,7 +55,7 @@ require("nightfox").setup({
                 enable = true,
                 background = true,
             },
-            navic = false,
+            navic = true,
             neogit = false,
             neotest = false,
             neotree = false,
