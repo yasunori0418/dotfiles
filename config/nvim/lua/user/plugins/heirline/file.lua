@@ -26,7 +26,7 @@ local name = {
         -- options, see :h filename-modifers
         local filename = vim.fn.fnamemodify(self.filename, ":.")
         if filename == "" or filename == nil then
-            return "[No Name]"
+            return "[No Name] "
         end
         -- now, if the filename would occupy more than 1/4th of the available
         -- space, we trim the file path to its initials
@@ -34,7 +34,7 @@ local name = {
         -- if not conditions.width_percent_below(#filename, 0.25) then
         --     filename = vim.fn.pathshorten(filename)
         -- end
-        return filename
+        return filename .. " "
     end,
 }
 
@@ -43,13 +43,13 @@ local flags = {
         condition = function()
             return vim.bo.modified
         end,
-        provider = " [+]",
+        provider = "[+] ",
     },
     {
         condition = function()
             return not vim.bo.modifiable or vim.bo.readonly
         end,
-        provider = " \u{f023}", -- [[]]
+        provider = "\u{f023} ", -- [[]]
     },
 }
 
