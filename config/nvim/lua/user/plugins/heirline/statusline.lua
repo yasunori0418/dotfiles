@@ -51,7 +51,7 @@ local Left = {
 }
 
 local Right = {
-    {
+    { -- lsp server names
         condition = conditions.lsp_attached,
         { -- separator
             provider = function(self)
