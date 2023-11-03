@@ -87,7 +87,7 @@ local M = {}
 
 M.Vim = {
     provider = function(self)
-        return self.padding_char .. indicator[vim.g.heirline_indicator_type][vim.fn.mode(true)]
+        return " " .. indicator[vim.g.heirline_indicator_type][vim.fn.mode(true)]
     end,
     update = {
         "ModeChanged",
@@ -122,7 +122,7 @@ M.Skk = {
     },
     { -- Check skkeleton enable with displayed indicator.
         provider = function(self)
-            return self.padding_char .. "SKK "
+            return " " .. "SKK "
         end,
     },
     { -- separator.
@@ -132,7 +132,7 @@ M.Skk = {
     },
     { -- Current skkeleton mode.
         provider = function(self)
-            return self.padding_char .. vim.fn["statusline_skk#mode"]()
+            return " " .. vim.fn["statusline_skk#mode"]()
         end,
     },
 }
