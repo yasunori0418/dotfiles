@@ -55,5 +55,6 @@ on_source = 'nvim-lspconfig'
 [[plugins]]
 repo = 'SmiteshP/nvim-navic'
 on_event = 'LspAttach'
+on_lua = "nvim-navic"
 hooks_file = "$HOOKS_DIR/navic.lua"
 # }}}
