@@ -1,6 +1,7 @@
+local M = {}
 local conditions = require("heirline.conditions")
 
-return {
+M.Names = {
     condition = conditions.lsp_attached,
     update = {'LspAttach', 'LspDetach'},
 
@@ -17,3 +18,5 @@ return {
     end,
     hl = { fg = "green_base", bold = true },
 }
+
+return M
