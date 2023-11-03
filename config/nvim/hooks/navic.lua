@@ -42,4 +42,10 @@ navic.setup({
     lazy_update_context = false,
     click = false,
 })
+
+user_lsp_utils.on_attach(function(client, buffer)
+    if client.server_capabilities.documentSymbolProvider then
+        navic.attach(client, buffer)
+    end
+end)
 -- }}}
