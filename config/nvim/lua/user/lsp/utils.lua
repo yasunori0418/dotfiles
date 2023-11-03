@@ -20,10 +20,6 @@ function M.on_attach(on_attach)
                 client = vim.lsp.get_client_by_id(args.data.client_id)
             end
             if client ~= nil then
-                vim.notify(
-                    "lsp on attached: bufnr:" .. buffer .. ", client_name[" .. client.name .. "]",
-                    vim.log.levels.INFO
-                )
                 on_attach(client, buffer)
             end
         end,
