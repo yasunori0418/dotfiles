@@ -40,17 +40,16 @@ local Left = {
         require("user.plugins.heirline.git"),
         { --separator
             provider = function(self)
-                return self.separator.sub.left .. self.separator.sub.left
+                return self.separator.sub.left
             end,
             hl = function(self)
-                return { fg = self.mode_colors.base, bg = "bg0" }
+                return { fg = self.mode_colors.base }
             end,
         },
     },
 }
 
 local Right = {
-    hl = { bg = "bg0" },
     { -- separator
         provider = function(self)
             return self.separator.sub.right
