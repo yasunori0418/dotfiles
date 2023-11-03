@@ -1,6 +1,7 @@
 local conditions = require("heirline.conditions")
 local Mode = require("user.plugins.heirline.mode")
 local File = require("user.plugins.heirline.file")
+local Lsp = require("user.plugins.heirline.lsp")
 local Align = { provider = "%=" }
 
 local Left = {
@@ -61,7 +62,7 @@ local Right = {
                 return { fg = self.mode_colors.fg }
             end,
         },
-        require("user.plugins.heirline.lsp"),
+        Lsp.Names,
     },
     { -- separator
         provider = function(self)
