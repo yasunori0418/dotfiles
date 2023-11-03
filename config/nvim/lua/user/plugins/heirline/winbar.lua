@@ -8,4 +8,7 @@ return {
     {
         require("user.plugins.heirline.file").NameBlock,
     },
+    {
+        require("user.plugins.heirline.lsp").Navic,
+    },
 }
