@@ -10,7 +10,7 @@ return {
 
     { -- git branch name
         provider = function(self)
-            return "  " .. self.status_dict.head
+            return "  " .. self.status_dict.head .. " "
         end,
         hl = { bold = true },
     },
@@ -19,7 +19,7 @@ return {
         condition = function(self)
             return self.has_changes
         end,
-        utils.surround({ " [", "] " }, nil, {
+        utils.surround({ "[", "] " }, nil, {
             {
                 provider = function(self)
                     local count = self.status_dict.added or 0
