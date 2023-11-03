@@ -1,5 +1,6 @@
 -- lua_source {{{
 local navic = require("nvim-navic")
+local user_lsp_utils = require("user.lsp.utils")
 
 navic.setup({
     icons = {
