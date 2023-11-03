@@ -51,6 +51,18 @@ local Left = {
 }
 
 local Right = {
+    {
+        condition = conditions.lsp_attached,
+        { -- separator
+            provider = function(self)
+                return self.separator.sub.right
+            end,
+            hl = function(self)
+                return { fg = self.mode_colors.fg }
+            end,
+        },
+        require("user.plugins.heirline.lsp"),
+    },
     { -- separator
         provider = function(self)
             return self.separator.sub.right
