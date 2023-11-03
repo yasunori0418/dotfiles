@@ -4,11 +4,12 @@ local File = require("user.plugins.heirline.file")
 local Align = { provider = "%=" }
 
 local Left = {
+    hl = { fg = "bg3" },
     { -- mode
         Mode.Vim,
         Mode.Skk,
         hl = function(self)
-            return { fg = "bg3", bg = self.mode_colors.bg, bold = true }
+            return { bg = self.mode_colors.bg, bold = true }
         end,
     },
     { -- separator
@@ -24,7 +25,7 @@ local Left = {
             return " " .. vim.fn.fnamemodify(self.cwd, ":~")
         end,
         hl = function(self)
-            return { fg = "bg3", bg = self.mode_colors.base }
+            return { bg = self.mode_colors.base, bold = true }
         end,
     },
     { -- separator
