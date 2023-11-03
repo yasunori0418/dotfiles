@@ -51,4 +51,9 @@ require("neodev").setup({})
 [[plugins]]
 repo = 'creativenull/efmls-configs-nvim'
 on_source = 'nvim-lspconfig'
+
+[[plugins]]
+repo = 'SmiteshP/nvim-navic'
+on_event = 'LspAttach'
+hooks_file = "$HOOKS_DIR/navic.lua"
 # }}}
