@@ -46,7 +46,9 @@ navic.setup({
 
 user_lsp_utils.on_attach(function(client, buffer)
     if client.server_capabilities.documentSymbolProvider then
-        navic.attach(client, buffer)
+        if client.name ~= "efm" then
+            navic.attach(client, buffer)
+        end
     end
 end)
 -- }}}
