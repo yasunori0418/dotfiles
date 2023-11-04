@@ -5,10 +5,10 @@ return {
     condition = conditions.has_diagnostics,
 
     static = {
-        error_icon = "\u{ea87} ", -- [[ ]]
-        warn_icon = "\u{ea6c} ", -- [[ ]]
-        info_icon = "\u{ea74} ", -- [[ ]]
-        hint_icon = "\u{ea61} ", -- [[ ]]
+        error_icon = "\u{ea87} ", -- 
+        warn_icon = "\u{ea6c} ", -- 
+        info_icon = "\u{ea74} ", -- 
+        hint_icon = "\u{ea61} ", -- 
     },
 
     init = function(self)
@@ -21,7 +21,7 @@ return {
     update = { "DiagnosticChanged", "BufEnter" },
 
     {
-        provider = "![",
+        provider = "\u{f4b1} [", --  [
     },
     {
         provider = function(self)
