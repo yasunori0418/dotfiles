@@ -1,3 +1,5 @@
+local Align = { provider = "%=" }
+
 return {
     init = function(self)
         self.mode_colors = require("user.plugins.heirline.color").mode_colors()
@@ -10,5 +12,9 @@ return {
     },
     {
         require("user.plugins.heirline.lsp").Navic,
+    },
+    Align,
+    {
+        require("user.plugins.heirline.diagnostics"),
     },
 }
