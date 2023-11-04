@@ -5,14 +5,10 @@ return {
     condition = conditions.has_diagnostics,
 
     static = {
-        error_icon = "E",
-        warn_icon = "W",
-        info_icon = "I",
-        hint_icon = "H",
-        -- error_icon = vim.fn.sign_getdefined("DiagnosticSignError")[1].text,
-        -- warn_icon = vim.fn.sign_getdefined("DiagnosticSignWarn")[1].text,
-        -- info_icon = vim.fn.sign_getdefined("DiagnosticSignInfo")[1].text,
-        -- hint_icon = vim.fn.sign_getdefined("DiagnosticSignHint")[1].text,
+        error_icon = "\u{ea87} ", -- [[ ]]
+        warn_icon = "\u{ea6c} ", -- [[ ]]
+        info_icon = "\u{ea74} ", -- [[ ]]
+        hint_icon = "\u{ea61} ", -- [[ ]]
     },
 
     init = function(self)
@@ -24,6 +20,9 @@ return {
 
     update = { "DiagnosticChanged", "BufEnter" },
 
+    {
+        provider = "![",
+    },
     {
         provider = function(self)
             -- 0 is just another output, we can decide to print it or not!
@@ -48,5 +47,8 @@ return {
             return self.hints > 0 and (self.hint_icon .. self.hints)
         end,
         hl = { fg = "diag_hint" },
+    },
+    {
+        provider = "]",
     },
 }
