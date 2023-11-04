@@ -67,22 +67,22 @@ M.Navic = {
         end,
     },
     init = function(self)
-        local data = require("nvim-navic").get_data() or {}
+        local navic = require("nvim-navic").get_data() or {}
         local children = {}
         -- create a child for each level
-        for i, d in ipairs(data) do
+        for index, data in ipairs(navic) do
             -- encode line and column numbers into a single integer
-            local pos = self.enc(d.scope.start.line, d.scope.start.character, self.winnr)
+            local pos = self.enc(data.scope.start.line, data.scope.start.character, self.winnr)
             local child = {
                 {
-                    provider = d.icon,
-                    hl = self.type_hl[d.type],
+                    provider = data.icon,
+                    hl = self.type_hl[data.type],
                 },
                 {
                     -- escape `%`s (elixir) and buggy default separators
-                    provider = d.name:gsub("%%", "%%%%"):gsub("%s*->%s*", ""),
+                    provider = data.name:gsub("%%", "%%%%"):gsub("%s*->%s*", ""),
                     -- highlight icon only or location name as well
-                    -- hl = self.type_hl[d.type],
+                    hl = self.type_hl[data.type],
 
                     on_click = {
                         -- pass the encoded position through minwid
@@ -97,7 +97,7 @@ M.Navic = {
                 },
             }
             -- add a separator only if needed
-            if #data > 1 and i < #data then
+            if #navic > 1 and index < #navic then
                 table.insert(child, {
                     provider = " > ",
                     hl = { fg = utils.get_highlight("NavicSeparator").fg },
