@@ -54,6 +54,12 @@ M.Navic = {
             Operator = "NavicIconsOperator",
             TypeParameter = "NavicIconsTypeParameter",
         },
+        depth_limit = 4,
+        depth_limit_indicator = { provider = ".." },
+        separator = {
+            provider = " > ",
+            hl = { fg = utils.get_highlight("NavicSeparator").fg },
+        },
         -- bit operation dark magic, see below...
         enc = function(line, col, winnr)
             return bit.bor(bit.lshift(line, 16), bit.lshift(col, 6), winnr)
@@ -105,6 +111,20 @@ M.Navic = {
             end
             table.insert(children, child)
         end
+
+        if self.depth_limit < #children then
+            while true do
+                table.remove(children, 2)
+                if self.depth_limit == #children then
+                    break
+                end
+            end
+            table.insert(children, 2, {
+                self.depth_limit_indicator,
+                self.separator,
+            })
+        end
+
         -- instantiate the new child, overwriting the previous one
         self.child = self:new(children, 1)
     end,
