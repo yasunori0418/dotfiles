@@ -33,7 +33,7 @@ navic.setup({
     },
     lsp = {
         auto_attach = false,
-        preference = nil,
+        preference = { "lua_ls", "pyright" },
     },
     highlight = false,
     separator = " > ",
