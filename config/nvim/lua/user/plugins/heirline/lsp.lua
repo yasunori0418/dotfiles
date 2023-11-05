@@ -20,7 +20,7 @@ M.Names = {
     hl = { fg = "green_base", bold = true },
 }
 
-M.Navic = {
+M.Navic = utils.surround({ "\u{e0ba}", "\u{e0bc}" }, "black_base", {
     condition = function()
         return require("nvim-navic").is_available()
     end,
@@ -134,6 +134,6 @@ M.Navic = {
     end,
     hl = { fg = utils.get_highlight("NavicText").fg },
     update = "CursorMoved",
-}
+})
 
 return M
