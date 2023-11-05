@@ -55,7 +55,7 @@ M.Flags = {
 
 M.NameBlock = utils.insert(
     init,
-    utils.surround({ "", "" }, "black_bright", {
+    utils.surround({ "\u{e0b6}", "\u{e0b4}" }, "black_bright", {
         icon,
         name,
     })
