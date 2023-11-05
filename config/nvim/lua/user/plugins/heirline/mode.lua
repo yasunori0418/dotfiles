@@ -86,7 +86,7 @@ local indicator = { -- see :help mode(1)
 local M = {}
 
 M.Vim = {
-    provider = function(self)
+    provider = function()
         return " " .. indicator[vim.g.heirline_indicator_type][vim.fn.mode(true)]
     end,
     update = {
@@ -121,7 +121,7 @@ M.Skk = {
         end,
     },
     { -- Check skkeleton enable with displayed indicator.
-        provider = function(self)
+        provider = function()
             return " " .. "SKK "
         end,
     },
@@ -131,7 +131,7 @@ M.Skk = {
         end,
     },
     { -- Current skkeleton mode.
-        provider = function(self)
+        provider = function()
             return " " .. vim.fn["statusline_skk#mode"]()
         end,
     },
