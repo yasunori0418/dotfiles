@@ -28,12 +28,6 @@ local name = {
         if filename == "" or filename == nil then
             return "[No Name]"
         end
-        -- now, if the filename would occupy more than 1/4th of the available
-        -- space, we trim the file path to its initials
-        -- See Flexible Components section below for dynamic truncation
-        -- if not conditions.width_percent_below(#filename, 0.25) then
-        --     filename = vim.fn.pathshorten(filename)
-        -- end
         return filename
     end,
 }
