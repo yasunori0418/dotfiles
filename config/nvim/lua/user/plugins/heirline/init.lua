@@ -11,6 +11,7 @@ function M.setup()
     heirline.setup({
         statusline = require("user.plugins.heirline.statusline"),
         winbar = require("user.plugins.heirline.winbar"),
+        tabline = require("user.plugins.heirline.tabline"),
         opts = {
             -- if the callback returns true, the winbar will be disabled for that window
             -- the args parameter corresponds to the table argument passed to autocommand callbacks.
