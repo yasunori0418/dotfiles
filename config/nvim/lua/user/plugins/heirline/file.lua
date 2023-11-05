@@ -13,7 +13,7 @@ local init = {
 
 local icon = {
     provider = function(self)
-        return " " .. self.icon .. " "
+        return self.icon
     end,
     hl = function(self)
         return { fg = self.icon_color }
@@ -26,7 +26,7 @@ local name = {
         -- options, see :h filename-modifers
         local filename = vim.fn.fnamemodify(self.filename, ":.")
         if filename == "" or filename == nil then
-            return "[No Name] "
+            return "[No Name]"
         end
         -- now, if the filename would occupy more than 1/4th of the available
         -- space, we trim the file path to its initials
@@ -34,11 +34,11 @@ local name = {
         -- if not conditions.width_percent_below(#filename, 0.25) then
         --     filename = vim.fn.pathshorten(filename)
         -- end
-        return filename .. " "
+        return filename
     end,
 }
 
-local flags = {
+M.Flags = {
     {
         condition = function()
             return vim.bo.modified
@@ -53,11 +53,13 @@ local flags = {
     },
 }
 
-M.NameBlock = utils.insert(init, {
-    icon,
-    name,
-    flags,
-})
+M.NameBlock = utils.insert(
+    init,
+    utils.surround({ "", "" }, "black_bright", {
+        icon,
+        name,
+    })
+)
 
 local type = {
     provider = function()
