@@ -32,21 +32,6 @@ local name = {
     end,
 }
 
-M.Flags = {
-    {
-        condition = function()
-            return vim.bo.modified
-        end,
-        provider = "[+] ",
-    },
-    {
-        condition = function()
-            return not vim.bo.modifiable or vim.bo.readonly
-        end,
-        provider = "\u{f023} ", -- [[]]
-    },
-}
-
 M.NameBlock = utils.insert(
     init,
     utils.surround({ "\u{e0b6}", "\u{e0b4}" }, "black_bright", {
