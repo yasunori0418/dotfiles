@@ -30,11 +30,12 @@ local name = {
         end
         return filename
     end,
+    hl = { fg = "bg0" },
 }
 
 M.NameBlock = utils.insert(
     init,
-    utils.surround({ "\u{e0b6}", "\u{e0b4}" }, "black_bright", {
+    utils.surround({ "\u{e0b6}", "\u{e0b4}" }, "fg2", {
         icon,
         name,
     })

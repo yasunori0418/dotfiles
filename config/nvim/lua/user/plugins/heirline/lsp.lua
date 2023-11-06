@@ -20,7 +20,7 @@ M.Names = {
     hl = { fg = "green_base", bold = true },
 }
 
-M.Navic = utils.surround({ "\u{e0ba}", "\u{e0bc}" }, "black_base", {
+M.Navic = utils.surround({ "\u{e0ba}", "\u{e0bc}" }, "bg2", {
     condition = function()
         return require("nvim-navic").is_available()
     end,
