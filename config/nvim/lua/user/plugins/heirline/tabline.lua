@@ -54,9 +54,9 @@ local file_name = { -- file_name
 }
 
 local file_flags = {
-    { -- modifiable
+    { -- modified
         condition = function(self)
-            return vim.api.nvim_get_option_value("modifiable", {
+            return vim.api.nvim_get_option_value("modified", {
                 buf = self.bufnr,
             })
         end,
@@ -126,11 +126,11 @@ local BufferLine = utils.make_buflist(
     TablineBufferBlock,
     { -- left truncation, optional (defaults to "<")
         provider = "",
-        hl = { fg = "black_bright", bg = "bg0" }
+        hl = { fg = "black_bright", bg = "bg0" },
     },
     { -- right trunctation, also optional (defaults to ...... yep, ">")
         provider = "",
-        hl = { fg = "black_bright", bg = "bg0" }
+        hl = { fg = "black_bright", bg = "bg0" },
     },
     -- by the way, open a lot of buffers and try clicking them ;)
     function()
