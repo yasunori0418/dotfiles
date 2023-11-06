@@ -75,6 +75,8 @@ require("nightfox").setup({
 })
 
 -- vim.g.nightfox_name = "nightfox"
+-- vim.g.nightfox_name = "dayfox"
+-- vim.g.nightfox_name = "dawnfox"
 -- vim.g.nightfox_name = "duskfox"
 vim.g.nightfox_name = "nordfox"
 -- vim.g.nightfox_name = "terafox"
