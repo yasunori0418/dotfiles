@@ -19,7 +19,9 @@ function M.on_attach(on_attach)
             if args.data ~= nil then
                 client = vim.lsp.get_client_by_id(args.data.client_id)
             end
-            on_attach(client, buffer)
+            if client ~= nil then
+                on_attach(client, buffer)
+            end
         end,
         desc = "Execute autocmd on LspAttach",
     })

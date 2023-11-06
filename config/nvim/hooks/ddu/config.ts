@@ -949,7 +949,7 @@ export class Config extends BaseConfig {
       uiParams: {
         ff: {
           ignoreEmpty: true,
-        }
+        },
       },
       sources: [
         {

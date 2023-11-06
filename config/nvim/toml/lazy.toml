@@ -1,10 +1,9 @@
 # Lazy load plugins
 # Editor support plugins {{{
-[[plugins]] # lightline.vim
-repo = 'itchyny/lightline.vim'
+[[plugins]] # heirline.nvim
+repo = 'rebelot/heirline.nvim'
 on_event = ['WinNew', 'CursorHold', 'InsertEnter', 'CmdlineEnter']
-depends = ['vim-gitbranch']
-hooks_file = '$HOOKS_DIR/lightline.lua'
+hooks_file = '$HOOKS_DIR/heirline.lua'
 
 [[plugins]] # context_filetype.vim
 repo = 'Shougo/context_filetype.vim'

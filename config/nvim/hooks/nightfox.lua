@@ -55,7 +55,7 @@ require("nightfox").setup({
                 enable = true,
                 background = true,
             },
-            navic = false,
+            navic = true,
             neogit = false,
             neotest = false,
             neotree = false,
@@ -74,5 +74,12 @@ require("nightfox").setup({
     },
 })
 
-vim.cmd([[colorscheme nordfox]])
+-- vim.g.nightfox_name = "nightfox"
+-- vim.g.nightfox_name = "dayfox"
+-- vim.g.nightfox_name = "dawnfox"
+-- vim.g.nightfox_name = "duskfox"
+vim.g.nightfox_name = "nordfox"
+-- vim.g.nightfox_name = "terafox"
+-- vim.g.nightfox_name = "carbonfox"
+vim.cmd.colorscheme(vim.g.nightfox_name)
 -- }}}
