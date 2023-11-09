@@ -1,5 +1,5 @@
 local joinpath = vim.fs.joinpath
-local cache = vim.fn.stdpath("cache")
+local cache = tostring(vim.fn.stdpath("cache"))
 local option_table = {
     -- Use utf-8 to overall encoding.
     encoding = "utf-8",
