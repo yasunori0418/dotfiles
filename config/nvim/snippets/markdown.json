@@ -31,8 +31,35 @@
     ],
     "description": "Stop textlint rule for a time.",
     "prefix": [
-      "textlint-off-on",
-      "tl"
+      "textlint-off-on"
+    ],
+    "scope": "markdown"
+  },
+  "zenn_alert": {
+    "body": [
+      ":::message alert",
+      "$1",
+      ":::",
+      "$0"
+    ],
+    "description": "zenn alert message area.",
+    "prefix": [
+      "zenn_alert",
+      "alert"
+    ],
+    "scope": "markdown"
+  },
+  "zenn_message": {
+    "body": [
+      ":::message",
+      "$1",
+      ":::",
+      "$0"
+    ],
+    "description": "zenn message area.",
+    "prefix": [
+      "zenn_message",
+      "message"
     ],
     "scope": "markdown"
   }
