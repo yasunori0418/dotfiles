@@ -123,19 +123,17 @@ for option_key, option_value in pairs(option_table) do
 end
 
 -- これでssh先の編集作業yankもローカルのもの……
-if not vim.env.DISPLAY then
-    vim.g.clipboard = {
-        name = "OSC 52",
-        copy = {
-            ["+"] = require("vim.clipboard.osc52").copy,
-            ["*"] = require("vim.clipboard.osc52").copy,
-        },
-        paste = {
-            ["+"] = require("vim.clipboard.osc52").paste,
-            ["*"] = require("vim.clipboard.osc52").paste,
-        },
-    }
-end
+vim.g.clipboard = {
+    name = "OSC 52",
+    copy = {
+        ["+"] = require("vim.clipboard.osc52").copy,
+        ["*"] = require("vim.clipboard.osc52").copy,
+    },
+    paste = {
+        ["+"] = vim.fn.getreg("+"),
+        ["*"] = vim.fn.getreg("*"),
+    },
+}
 
 -- Disable default plugins
 -- Fast Startup Settings!!
