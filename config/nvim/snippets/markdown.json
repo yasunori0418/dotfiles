@@ -37,9 +37,11 @@
   },
   "zenn_alert": {
     "body": [
+      "<!-- textlint-disable -->",
       ":::message alert",
       "$1",
       ":::",
+      "<!-- textlint-enable -->",
       "$0"
     ],
     "description": "zenn alert message area.",
@@ -49,11 +51,30 @@
     ],
     "scope": "markdown"
   },
+  "zenn_details": {
+    "body": [
+      "<!-- textlint-disable -->",
+      "",
+      ":::details $1",
+      "$2",
+      ":::",
+      "<!-- textlint-enable -->",
+      "$0"
+    ],
+    "description": "zenn message area.",
+    "prefix": [
+      "zenn_details",
+      "details"
+    ],
+    "scope": "markdown"
+  },
   "zenn_message": {
     "body": [
+      "<!-- textlint-disable -->",
       ":::message",
       "$1",
       ":::",
+      "<!-- textlint-enable -->",
       "$0"
     ],
     "description": "zenn message area.",
