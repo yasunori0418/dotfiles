@@ -1,6 +1,5 @@
 epsonscan2
 intel-ucode
-minecraft-launcher
 nvidia-dkms
 nvidia-settings
 rtl8812au-dkms-git

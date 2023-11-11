@@ -7,7 +7,6 @@ autoconf
 automake
 base
 base-devel
-beanshell
 binutils
 bison
 blueberry
@@ -74,7 +73,6 @@ i3-wm
 i3lock
 imagemagick
 iwd
-jdk-openjdk
 jp2a
 jre-openjdk
 kio5

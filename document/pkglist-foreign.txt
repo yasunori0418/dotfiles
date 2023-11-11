@@ -1,5 +1,6 @@
 bumblebee-status
 docker-rootless-extras
+downgrade
 google-chrome
 gyazo
 lemonade-git
@@ -9,8 +10,7 @@ nordic-darker-standard-buttons-theme
 nordic-darker-theme
 nordic-theme-git
 nordzy-cursors
-nordzy-icon-theme-git
-polkit-dumb-agent-git
+nordzy-icon-theme
 postman-bin
 python-pulsectl
 qt5-styleplugins
