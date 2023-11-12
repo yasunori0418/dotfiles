@@ -13,7 +13,7 @@ local init = {
 
 local icon = {
     provider = function(self)
-        return self.icon
+        return self.icon .. " "
     end,
     hl = function(self)
         return { fg = self.icon_color }
