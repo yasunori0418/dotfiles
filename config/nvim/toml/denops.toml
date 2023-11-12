@@ -12,8 +12,8 @@ depends = 'denops.vim'
 on_map = { ic = '<Plug>(skkeleton-toggle)' }
 hooks_file = '$HOOKS_DIR/skkeleton.lua'
 
-[[plugins]] # lightline_skk.vim
-repo = 'yasunori0418/lightline_skk.vim'
+[[plugins]] # statusline_skk.vim
+repo = 'yasunori0418/statusline_skk.vim'
 on_source = 'skkeleton'
 hooks_file = '$HOOKS_DIR/lightline_skk.lua'
 
