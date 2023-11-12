@@ -11,7 +11,7 @@ hooks_file = '$HOOKS_DIR/mason.lua'
 
 [[plugins]] # mason-lspconfig.nvim
 repo = 'williamboman/mason-lspconfig.nvim'
-depends = ['nvim-lspconfig', 'mason.nvim', 'ddc-source-nvim-lsp']
+depends = ['nvim-lspconfig', 'mason.nvim', 'ddc-source-nvim-lsp', 'nvim-navic']
 on_source = 'ddc.vim'
 on_ft = ['lua', 'pyhton', 'php', 'markdown', 'typescript']
 lua_source = '''
@@ -54,7 +54,5 @@ on_source = 'nvim-lspconfig'
 
 [[plugins]]
 repo = 'SmiteshP/nvim-navic'
-on_event = 'LspAttach'
-on_lua = "nvim-navic"
 hooks_file = "$HOOKS_DIR/navic.lua"
 # }}}
