@@ -15,7 +15,7 @@ hooks_file = '$HOOKS_DIR/skkeleton.lua'
 [[plugins]] # statusline_skk.vim
 repo = 'yasunori0418/statusline_skk.vim'
 on_source = 'skkeleton'
-hooks_file = '$HOOKS_DIR/lightline_skk.lua'
+hooks_file = '$HOOKS_DIR/statusline_skk.lua'
 
 [[plugins]] # denops-translate.vim
 repo = 'skanehira/denops-translate.vim'
