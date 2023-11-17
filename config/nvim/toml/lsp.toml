@@ -42,12 +42,6 @@ on_event = 'LspAttach'
 rev = 'legacy'
 hooks_file = '$HOOKS_DIR/fidget.lua'
 
-[[plugins]] # neodev.nvim
-repo = 'folke/neodev.nvim'
-lua_source = '''
-require("neodev").setup({})
-'''
-
 [[plugins]]
 repo = 'creativenull/efmls-configs-nvim'
 on_source = 'nvim-lspconfig'
