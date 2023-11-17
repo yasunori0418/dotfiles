@@ -67,5 +67,6 @@ init: ## expand config files.
 	@./scripts/rtx_install.sh
 	@./scripts/get_modules.sh
 	@ln -snvf ~/dotfiles/home/.??* ~/
+	@ln -snvf ~/dotfiles/home/package.json ~/
 	@ln -snvf ~/dotfiles/bin ~/
 	@ln -snvf ~/dotfiles/config/* ~/.config/
