@@ -118,6 +118,7 @@ export class Config extends BaseConfig {
         },
         mr: {
           converters: [
+            "converter_relativepath",
             "converter_devicon",
             "converter_hl_dir",
           ],

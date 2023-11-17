@@ -165,6 +165,10 @@ on_source = 'ddu.vim'
 repo = 'kyoh86/ddu-filter-converter_hl_dir'
 on_source = 'ddu.vim'
 
+[[plugins]]
+repo = 'gamoutatsumi/ddu-filter-converter_relativepath'
+on_source = 'ddu.vim'
+
 # }}}
 
 # Column plugins {{{
