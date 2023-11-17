@@ -6,7 +6,6 @@ ghq = "latest"
 fd = "latest"
 jq = "latest"
 fzf = "latest"
-# node-buildがv21のビルドに失敗するため、一旦バージョンを固定
 node = "latest"
 go = "latest"
 github-cli = "latest"
