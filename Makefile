@@ -70,4 +70,3 @@ init: ## expand config files.
 	@ln -snvf ~/dotfiles/home/package.json ~/
 	@ln -snvf ~/dotfiles/bin ~/
 	@ln -snvf ~/dotfiles/config/* ~/.config/
-	@zsh -c 'rtx install --yes'
