@@ -93,10 +93,6 @@ function M.init()
                 joinpath(repos_github, basic_dict, "SKK-JISYO.jinmei"),
                 [[euc-jp]],
             },
-            {
-                joinpath(repos_github, basic_dict, "SKK-JISYO.lisp"),
-                [[euc-jp]],
-            },
         },
         userJisyo = [[~/.skk/skkeleton]],
         completionRankFile = [[~/.skk/rank.json]],
