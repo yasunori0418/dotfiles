@@ -18,7 +18,7 @@ vim.g.vsnip_snippet_dirs = {
 vim.g.vsnip_filetypes = vim.empty_dict()
 vim.g.vsnip_integ_create_autocmd = false
 
-utils.autocmd_set("InsertEnter", "~/dotfiles/config/nvim/toml/*.toml", function()
+utils.autocmd_set("InsertEnter", "$BASE_DIR/toml/*.toml", function()
     vim.g.vsnip_filetypes.toml = { vim.fn["context_filetype#get_filetype"]() }
 end)
 
