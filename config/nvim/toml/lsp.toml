@@ -2,7 +2,6 @@
 # Core plugins {{{
 [[plugins]] # nvim-lspconfig
 repo = 'neovim/nvim-lspconfig'
-depends = 'neodev.nvim'
 
 [[plugins]] # mason.nvim
 repo = 'williamboman/mason.nvim'
