@@ -23,6 +23,66 @@
     "prefix": "comment",
     "scope": "markdown"
   },
+  "github_alert_caution": {
+    "body": [
+      "> [!CAUTION]",
+      "> $0"
+    ],
+    "description": "Negative potential consequences of an action.",
+    "prefix": [
+      "github_warning",
+      "warning"
+    ],
+    "scope": "markdown"
+  },
+  "github_alert_important": {
+    "body": [
+      "> [!IMPORTANT]",
+      "> $0"
+    ],
+    "description": "Crucial information necessary for users to succeed.",
+    "prefix": [
+      "github_important",
+      "important"
+    ],
+    "scope": "markdown"
+  },
+  "github_alert_note": {
+    "body": [
+      "> [!NOTE]",
+      "> $0"
+    ],
+    "description": "Highlights information that users should take into account, even when skimming.",
+    "prefix": [
+      "github_note",
+      "note"
+    ],
+    "scope": "markdown"
+  },
+  "github_alert_tip": {
+    "body": [
+      "> [!TIP]",
+      "> $0"
+    ],
+    "description": "Optional information to help a user be more successful.",
+    "prefix": [
+      "github_tip",
+      "tip"
+    ],
+    "scope": "markdown"
+  },
+  "github_alert_warning": {
+    "body": [
+      "> [!WARNING]",
+      "> $0"
+    ],
+    "description": "Critical content demanding immediate user attention due to potential risks.",
+    "prefix": [
+      "github_warning",
+      "warning"
+    ],
+    "scope": "markdown"
+  },
   "textlint off on": {
     "body": [
       "<!-- textlint-disable -->",
