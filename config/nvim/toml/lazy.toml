@@ -2,6 +2,7 @@
 # Editor support plugins {{{
 [[plugins]] # heirline.nvim
 repo = 'rebelot/heirline.nvim'
+depends = 'nvim-navic'
 on_event = ['WinNew', 'CursorHold', 'InsertEnter', 'CmdlineEnter']
 hooks_file = '$HOOKS_DIR/heirline.lua'
 

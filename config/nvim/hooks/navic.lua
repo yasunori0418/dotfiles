@@ -1,8 +1,5 @@
 -- lua_source {{{
-local navic = require("nvim-navic")
-local user_lsp_utils = require("user.lsp.utils")
-
-navic.setup({
+require("nvim-navic").setup({
     icons = {
         File = " ",
         Module = " ",
@@ -43,12 +40,4 @@ navic.setup({
     lazy_update_context = false,
     click = false,
 })
-
-user_lsp_utils.on_attach(function(client, buffer)
-    if client.server_capabilities.documentSymbolProvider then
-        if client.name ~= "efm" then
-            navic.attach(client, buffer)
-        end
-    end
-end)
 -- }}}
