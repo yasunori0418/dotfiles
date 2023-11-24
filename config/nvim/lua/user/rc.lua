@@ -8,7 +8,7 @@ local function init_plugin(host, repo)
     local plugin_name = vim.fn.split(repo, "/")[2]
     if not vim.regex("/" .. plugin_name):match_str(vim.o.runtimepath) then
         if vim.fn.isdirectory(repo_dir) ~= 1 then
-            os.execute("git clone https://github.com/" .. repo .. " " .. repo_dir)
+            os.execute("git clone https://" .. host .. "/" .. repo .. " " .. repo_dir)
         end
         vim.opt.runtimepath:append(repo_dir)
     end
