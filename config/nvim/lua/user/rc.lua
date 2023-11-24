@@ -1,9 +1,10 @@
 local M = {}
 
 ---初回起動時にプラグインのダウンロードとruntimepathに追加する
+---@param host string e.g. github.com
 ---@param repo string user_name/plugin_name
-local function init_plugin(repo)
-    local repo_dir = M.dein_dir .. "/repos/github.com/" .. repo
+local function init_plugin(host, repo)
+    local repo_dir = M.dein_dir .. "/repos/" .. host .. "/" .. repo
     local plugin_name = vim.fn.split(repo, "/")[2]
     if not vim.regex("/" .. plugin_name):match_str(vim.o.runtimepath) then
         if vim.fn.isdirectory(repo_dir) ~= 1 then
@@ -71,8 +72,8 @@ function M.setup()
     vim.g.hooks_dir = joinpath(vim.g.base_dir, "hooks")
     vim.env.HOOKS_DIR = vim.g.hooks_dir
 
-    init_plugin("Shougo/dein.vim")
-    init_plugin("tani/vim-artemis")
+    init_plugin("github.com", "Shougo/dein.vim")
+    init_plugin("github.com", "tani/vim-artemis")
 
     dein_setup()
 end
