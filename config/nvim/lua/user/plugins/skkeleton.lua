@@ -96,6 +96,10 @@ function M.init()
         },
         userJisyo = [[~/.skk/skkeleton]],
         completionRankFile = [[~/.skk/rank.json]],
+        markerHenkan = "",
+        markerHenkanSelect = "",
+        registerConvertResult = true,
+        usePopup = false,
     })
 
     skkeleton.register_kanatable("rom", {

@@ -17,6 +17,11 @@ repo = 'yasunori0418/statusline_skk.vim'
 on_source = 'skkeleton'
 hooks_file = '$HOOKS_DIR/statusline_skk.lua'
 
+[[plugins]]
+repo = 'NI57721/skkeleton-state-popup'
+on_source = 'skkeleton'
+hooks_file = '$HOOKS_DIR/skkeleton_state_popup.lua'
+
 [[plugins]] # denops-translate.vim
 repo = 'skanehira/denops-translate.vim'
 depends = 'denops.vim'
