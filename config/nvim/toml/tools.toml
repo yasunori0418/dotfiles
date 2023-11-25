@@ -45,6 +45,10 @@ hooks_file = '$HOOKS_DIR/devicons.lua'
 repo = 'rickhowe/wrapwidth'
 on_cmd = 'Wrapwidth'
 
+[[plugins]]
+repo = 'thinca/vim-showtime'
+on_cmd = ['ShowtimeStart', 'ShowtimeResume']
+
 [[plugins]] # for skkeleton
 repo = 'skk-dev/dict'
 if = false
