@@ -20,8 +20,12 @@ lua_source = '''
 require('matchparen').setup()
 '''
 
+[[plugins]]
+repo = 'JoosepAlviste/nvim-ts-context-commentstring'
+
 [[plugins]] # Comment.nvim
 repo = 'numToStr/Comment.nvim'
+depends = 'nvim-ts-context-commentstring'
 on_map = { nox = '<Plug>(comment_toggle_' }
 on_event = ['CursorHold', 'InsertEnter']
 hooks_file = '$HOOKS_DIR/comment_nvim.lua'
