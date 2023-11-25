@@ -3,6 +3,11 @@ repo = 'nvim-treesitter/nvim-treesitter'
 on_event = 'BufRead'
 hooks_file = '$HOOKS_DIR/treesitter.lua'
 
+[[plugins]]
+repo = 'nvim-treesitter/nvim-treesitter-textobjects'
+on_source = 'nvim-treesitter'
+hooks_file = '$HOOKS_DIR/ts_textobjects.lua'
+
 [[plugins]] # indent-blankline.nvim
 repo = 'lukas-reineke/indent-blankline.nvim'
 on_source = 'nvim-treesitter'
