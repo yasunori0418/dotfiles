@@ -27,16 +27,20 @@ require("nvim-treesitter.configs").setup({
             enable = true,
             set_jumps = false,
             goto_next_start = {
-                ["]f"]  = "@function.outer",
+                ["]f"] = { query = { "@function.outer", "@class.outer" } },
+                ["]m"] = { query = { "@loop.outer", "@conditional.outer" } },
             },
             goto_next_end = {
-                ["]F"]  = "@function.outer",
+                ["]F"] = { query = { "@function.outer", "@class.outer" } },
+                ["]M"] = { query = { "@loop.outer", "@conditional.outer" } },
             },
             goto_previous_start = {
-                ["[f"]  = "@function.outer",
+                ["[f"] = { query = { "@function.outer", "@class.outer" } },
+                ["[m"] = { query = { "@loop.outer", "@conditional.outer" } },
             },
             goto_previous_end = {
-                ["[F"]  = "@function.outer",
+                ["[F"] = { query = { "@function.outer", "@class.outer" } },
+                ["[M"] = { query = { "@loop.outer", "@conditional.outer" } },
             },
         },
     },
