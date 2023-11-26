@@ -425,9 +425,7 @@ export class Config extends BaseConfig {
       },
       sync: true,
       sources: [
-        separator(">>Help<<"),
         { name: "help" },
-        separator(">>Readme<<"),
         { name: "readme_viewer" },
       ],
     });
