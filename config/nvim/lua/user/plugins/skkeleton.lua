@@ -99,7 +99,7 @@ function M.init()
         markerHenkan = "",
         markerHenkanSelect = "",
         registerConvertResult = true,
-        usePopup = false,
+        usePopup = true,
     })
 
     skkeleton.register_kanatable("rom", {
