@@ -12,9 +12,9 @@ M.keys = {
     { key = [[t]], mods = [[LEADER]], action = act.SpawnTab("CurrentPaneDomain") },
     { key = [[x]], mods = [[LEADER]], action = act.CloseCurrentTab({ confirm = true }) },
 
-    { key = [[+]], mods = [[CTRL]], action = act.IncreaseFontSize },
-    { key = [[-]], mods = [[CTRL]], action = act.DecreaseFontSize },
-    { key = [[0]], mods = [[CTRL]], action = act.ResetFontSize },
+    { key = [[>]], mods = [[SHIFT|CTRL]], action = act.IncreaseFontSize },
+    { key = [[<]], mods = [[SHIFT|CTRL]], action = act.DecreaseFontSize },
+    { key = [[?]], mods = [[SHIFT|CTRL]], action = act.ResetFontSize },
 
     { key = [[C]], mods = [[SHIFT|CTRL]], action = act.CopyTo("Clipboard") },
     { key = [[Insert]], mods = [[CTRL]], action = act.CopyTo("PrimarySelection") },
