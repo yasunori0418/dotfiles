@@ -420,7 +420,17 @@ export class Config extends BaseConfig {
       ui: "ff",
       uiParams: {
         ff: {
-          startFilter: true,
+          ...{
+            startAutoAction: true,
+            autoAction: {
+              delay: 0,
+              name: "preview",
+            },
+            autoResize: false,
+            startFilter: true,
+            filterFloatingPosition: "top",
+          },
+          ...await uiSize(args, 0.3, "horizontal"),
         },
       },
       sync: true,
