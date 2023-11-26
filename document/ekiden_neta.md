@@ -22,3 +22,7 @@ ddu-source-git_branchにカスタムアクションを追加したけど、本�
 ## archlinuxのセットアップ方法の記事
 
 vimを絡めておけば、駅伝にも投稿できる
+
+## ddu-source-help
+
+dduでhelpを検索するのが体験が良かったので、記事にして紹介したい。
