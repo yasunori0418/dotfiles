@@ -44,15 +44,15 @@ on_source = 'ddc.vim'
 repo = 'Shougo/neco-vim'
 on_ft = ['vim', 'toml', 'help']
 
-[[plugins]] # ddc-source-nvim-lsp
-repo = 'Shougo/ddc-source-nvim-lsp'
+[[plugins]] # ddc-source-lsp
+repo = 'Shougo/ddc-source-lsp'
 on_source = 'nvim-lspconfig'
 
 [[plugins]]
-repo = 'uga-rosa/ddc-nvim-lsp-setup'
-on_source = 'ddc-source-nvim-lsp'
+repo = 'uga-rosa/ddc-source-lsp-setup'
+on_source = 'ddc-source-lsp'
 lua_source = '''
-require("ddc_nvim_lsp_setup").setup()
+require("ddc_source_lsp_setup").setup()
 '''
 
 [[plugins]]
