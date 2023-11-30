@@ -52,7 +52,7 @@ export class Config extends BaseConfig {
           mark: "snip",
           dup: "keep",
         },
-        "nvim-lsp": {
+        "lsp": {
           mark: "LSP",
           forceCompletionPattern: "\\.|:\\s*|->\\s*",
           dup: "keep",
@@ -104,7 +104,7 @@ export class Config extends BaseConfig {
         "shell-native": {
           shell: "zsh",
         },
-        "nvim-lsp": {
+        "lsp": {
           enableResolveItem: true,
           enableAdditionalTextEdit: true,
           confirmBehavior: "replace",
@@ -207,7 +207,7 @@ export class Config extends BaseConfig {
       denops,
       async () => {
         const filetype = await op.filetype.get(denops);
-        const add_sources = ["nvim-lsp"];
+        const add_sources = ["lsp"];
         if (filetype === "lua") add_sources.unshift("nvim-lua");
         args.contextBuilder.patchFiletype(filetype, {
           sources: [
