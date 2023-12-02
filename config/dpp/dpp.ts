@@ -3,8 +3,8 @@ import {
   ContextBuilder,
   Dpp,
   Plugin,
-} from "https://deno.land/x/dpp_vim@v0.0.3/types.ts";
-import { Denops, fn } from "https://deno.land/x/dpp_vim@v0.0.3/deps.ts";
+} from "https://deno.land/x/dpp_vim@v0.0.8/types.ts";
+import { Denops, fn } from "https://deno.land/x/dpp_vim@v0.0.8/deps.ts";
 
 export class Config extends BaseConfig {
   override async config(args: {
