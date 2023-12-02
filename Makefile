@@ -1,4 +1,5 @@
 .DEFAULT_GOAL := help
+MAKEFLAGS += --always-make
 
 .PHONY := help
 # INFO: 参考サイト - https://postd.cc/auto-documented-makefile/
@@ -25,42 +26,33 @@ true-color: ## 24-bit-color.sh
 zsh-bench: ## zsh bench mark with hyperfine used.
 	@hyperfine -w 5 -r 50 'zsh -i -c exit'
 
-.PHONY := nvim-bench
 nvim-bench: ## neovim bench mark with vim-startuptime used.
 	@vim-startuptime -vimpath nvim -count 100 | head -6
 
-.PHONY := arch_iso
 arch_iso: ## Download Arch Linux iso image at latest, and verification.
 	@./scripts/arch_iso.sh
 
-.PHONY := pkglist
 pkglist: ## Update Arch Linux package list.
 	@./scripts/update_pkglist.sh
 
-.PHONY := path
 path: ## List up for $PATH
 	@printenv \
 	| rg '^PATH' \
 	| sed -e 's/PATH=//' \
 	| sed -e 's/:/\n/g'
 
-.PHONY := repolist
 repolist: ## Update ghq management of repository list.
 	@ghq list > ./document/repolist.txt
 
-.PHONY := repoget
 repoget: ## Get and update ghq management repositories.
 	@cat ./document/repolist.txt | ghq get -p -u --parallel
 
-.PHONY := work_repolist
 work_repolist: ## Update ghq management of repository list.
 	@./scripts/work_repolist.sh view
 
-.PHONY := work_repoget
 work_repoget: ## Get and update ghq management repositories.
 	@./scripts/work_repolist.sh
 
-.PHONY := init
 init: ## expand config files.
 	@mkdir -p ${HOME}/.local/bin
 	@mkdir -p ${HOME}/.local/dotfiles
