@@ -32,7 +32,7 @@ export class Config extends BaseConfig {
         path: "$BASE_DIR/toml/dpp.toml",
       },
     ) as Plugin[];
-    console.log(tomlPlugins)
+    console.log(tomlPlugins);
 
     const recordPlugins: Record<string, Plugin> = {};
     for (const plugin of tomlPlugins) {
