@@ -1,0 +1,6 @@
+# github api token.
+# gitter api token.
+*_pat
+
+# Not tracking log stratup log files
+*log*

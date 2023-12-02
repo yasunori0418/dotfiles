@@ -1,0 +1,59 @@
+[[plugins]] # vimhelpgenerator
+repo = 'LeafCage/vimhelpgenerator'
+on_cmd = ['VimHelpGenerator', 'VimHelpGeneratorVirtual']
+lua_source = '''
+vim.g.vimhelpgenerator_author = [[yasunori0418]]
+vim.g.vimhelpgenerator_uri = [[https://github.com/yasunori0418]]
+'''
+
+[[plugins]] # helpful.vim
+repo = 'tweekmonster/helpful.vim'
+on_cmd = 'HelpfulVersion'
+
+[[plugins]] # suda.vim
+repo = 'lambdalisue/suda.vim'
+on_cmd = ['SudaRead', 'SudaWrite']
+
+[[plugins]] # memolist.vim
+repo = 'glidenote/memolist.vim'
+on_cmd = ['MemoNew', 'MemoList', 'MemoNewWithMeta', 'MemoGrep']
+lua_source = '''
+vim.g.memolist_path = vim.fn.expand('~/Documents/memo')
+'''
+
+[[plugins]] # vim-startuptime
+repo = 'dstein64/vim-startuptime'
+on_cmd = 'StartupTime'
+lua_source = '''
+-- vim.g.startuptime_tries = 10
+vim.g.startuptime_event_width = 0
+'''
+
+[[plugins]] # vim-themis
+repo = 'thinca/vim-themis'
+on_cmd = 'StartThemis'
+hook_add = '''
+command! StartThemis call dein#source('vim-themis')
+'''
+
+[[plugins]]
+repo = 'nvim-tree/nvim-web-devicons'
+on_lua = 'nvim-web-devicons'
+hooks_file = '$HOOKS_DIR/devicons.lua'
+
+[[plugins]]
+repo = 'rickhowe/wrapwidth'
+on_cmd = 'Wrapwidth'
+
+[[plugins]]
+repo = 'thinca/vim-showtime'
+on_cmd = ['ShowtimeStart', 'ShowtimeResume']
+
+[[plugins]] # for skkeleton
+repo = 'skk-dev/dict'
+if = false
+
+[[plugins]] # for skkeleton
+repo = 'tokuhirom/jawiki-kana-kanji-dict'
+if = false
+
