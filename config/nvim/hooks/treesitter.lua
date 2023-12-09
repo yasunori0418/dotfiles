@@ -17,11 +17,10 @@ require("nvim-treesitter.configs").setup({
         "toml",
         "typescript",
         "vim",
+        "vimdoc",
         "yaml",
     },
-    ignore_install = {
-        "vimdoc",
-    },
+    ignore_install = {},
     -- Install parsers synchronously (only applied to `ensure_installed`)
     -- Settings for load reduction.
     sync_install = true,
@@ -31,7 +30,7 @@ require("nvim-treesitter.configs").setup({
         enable = true,
         disable = function(lang, buf)
             local languages = {
-                "vimdoc",
+                -- "vimdoc",
             }
             if vim.iter(languages):find(lang) then
                 return true
