@@ -5,8 +5,13 @@ end)
 -- }}}
 
 -- lua_source {{{
-local vimx = require("artemis")
-local pum = vimx.fn.pum
+local pum_insert_relative = vim.fn["pum#map#insert_relative"]
+local pum_select_relative = vim.fn["pum#map#select_relative"]
+local pum_confirm = vim.fn["pum#map#confirm"]
+local pum_cancel = vim.fn["pum#map#cancel"]
+local pum_visible = vim.fn["pum#visible"]
+local ddc_manual_complete = vim.fn["ddc#map#manual_complete"]
+local ddc_hide = vim.fn["ddc#hide"]
 
 -- Source options.
 local joinpath = vim.fs.joinpath
@@ -31,8 +36,8 @@ require("user.utils").keymaps_set({
         mode = "i",
         lhs = [[<C-n>]],
         rhs = function()
-            if pum.visible() then
-                pum.map.insert_relative(1)
+            if pum_visible() then
+                pum_insert_relative(1)
             else
                 return [[<Down>]]
             end
@@ -43,8 +48,8 @@ require("user.utils").keymaps_set({
         mode = "i",
         lhs = [[<C-p>]],
         rhs = function()
-            if pum.visible() then
-                pum.map.insert_relative(-1)
+            if pum_visible() then
+                pum_insert_relative(-1)
             else
                 return [[<Up>]]
             end
@@ -55,7 +60,7 @@ require("user.utils").keymaps_set({
         mode = "i",
         lhs = [[<C-y>]],
         rhs = function()
-            pum.map.confirm()
+            pum_confirm()
         end,
         opts = opt,
     },
@@ -63,8 +68,8 @@ require("user.utils").keymaps_set({
         mode = "i",
         lhs = [[<C-e>]],
         rhs = function()
-            if pum.visible() then
-                pum.map.cancel()
+            if pum_visible() then
+                pum_cancel()
             else
                 return [[<C-G>U<End>]]
             end
@@ -123,7 +128,7 @@ require("user.utils").keymaps_set({
         mode = "i",
         lhs = [[<C-x><C-u>]],
         rhs = function()
-            vimx.fn.ddc.map.manual_complete()
+            ddc_manual_complete()
         end,
         opts = opt,
     },
@@ -133,10 +138,10 @@ require("user.utils").keymaps_set({
         mode = "c",
         lhs = [[<Tab>]],
         rhs = function()
-            if pum.visible() then
-                pum.map.insert_relative(1)
+            if pum_visible() then
+                pum_insert_relative(1)
             else
-                vimx.fn.ddc.map.manual_complete()
+                ddc_manual_complete()
             end
         end,
         opts = opt,
@@ -145,7 +150,7 @@ require("user.utils").keymaps_set({
         mode = "c",
         lhs = [[<S-Tab>]],
         rhs = function()
-            pum.map.insert_relative(-1)
+            pum_insert_relative(-1)
         end,
         opts = opt,
     },
@@ -153,7 +158,7 @@ require("user.utils").keymaps_set({
         mode = "c",
         lhs = [[<C-y>]],
         rhs = function()
-            pum.map.confirm()
+            pum_confirm()
         end,
         opts = opt,
     },
@@ -161,8 +166,8 @@ require("user.utils").keymaps_set({
         mode = "c",
         lhs = [[<C-e>]],
         rhs = function()
-            if pum.visible() then
-                vimx.fn.ddc.hide()
+            if pum_visible() then
+                ddc_hide()
             else
                 return [[<END>]]
             end
@@ -181,8 +186,8 @@ require("user.utils").keymaps_set({
         mode = "t",
         lhs = [[<Tab>]],
         rhs = function()
-            if pum.visible() then
-                pum.map.select_relative(1)
+            if pum_visible() then
+                pum_select_relative(1)
             else
                 return [[<Tab>]]
             end
@@ -193,8 +198,8 @@ require("user.utils").keymaps_set({
         mode = "t",
         lhs = [[<S-Tab>]],
         rhs = function()
-            if pum.visible() then
-                pum.map.select_relative(-1)
+            if pum_visible() then
+                pum_select_relative(-1)
             else
                 return [[<S-Tab>]]
             end
@@ -205,8 +210,8 @@ require("user.utils").keymaps_set({
         mode = "t",
         lhs = [[<C-y>]],
         rhs = function()
-            if pum.visible() then
-                pum.map.confirm()
+            if pum_visible() then
+                pum_confirm()
             else
                 return [[<C-y>]]
             end
@@ -217,8 +222,8 @@ require("user.utils").keymaps_set({
         mode = "t",
         lhs = [[<C-i>]],
         rhs = function()
-            if pum.visible() then
-                pum.map.cancel()
+            if pum_visible() then
+                pum_cancel()
             else
                 return [[<C-i>]]
             end
@@ -227,6 +232,6 @@ require("user.utils").keymaps_set({
     },
 })
 
-vimx.fn.ddc.enable_terminal_completion()
-vimx.fn.ddc.enable({ context_filetype = [[treesitter]] })
+vim.fn['ddc#enable_terminal_completion']()
+vim.fn['ddc#enable']({ context_filetype = [[treesitter]] })
 -- }}}
