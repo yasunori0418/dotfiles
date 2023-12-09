@@ -14,9 +14,6 @@ repo = 'mattn/learn-vimscript'
 repo = 'lambdalisue/mr.vim'
 hooks_file = '$HOOKS_DIR/mr.lua'
 
-[[plugins]]
-repo = 'tani/vim-artemis'
-
 [[plugins]] # nightfox.nvim
 repo = 'EdenEast/nightfox.nvim'
 hooks_file = '$HOOKS_DIR/nightfox.lua'

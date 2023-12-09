@@ -26,6 +26,3 @@ repo = 'mattn/learn-vimscript'
 
 [[plugins]] # mr.vim
 repo = 'lambdalisue/mr.vim'
-
-[[plugins]] # vim-artemis
-repo = 'tani/vim-artemis'

@@ -45,7 +45,6 @@ function M.setup()
     -- vim.g.hooks_dir = joinpath(vim.g.base_dir, "hooks")
     -- vim.env.HOOKS_DIR = vim.g.hooks_dir
 
-    init_plugin("tani/vim-artemis")
     init_plugin("Shougo/dpp-ext-lazy")
     init_plugin("Shougo/dpp-ext-toml")
     init_plugin("Shougo/dpp-ext-installer")

@@ -73,7 +73,6 @@ function M.setup()
     vim.env.HOOKS_DIR = vim.g.hooks_dir
 
     init_plugin("github.com", "Shougo/dein.vim")
-    init_plugin("github.com", "tani/vim-artemis")
 
     dein_setup()
 end
