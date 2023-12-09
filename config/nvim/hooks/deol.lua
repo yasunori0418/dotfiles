@@ -5,7 +5,7 @@ local utils = require("user.utils")
 ---@param split? string default: 'floating'
 ---@return table
 local deol_create_option = function(path, split)
-    path = path or utils.search_repo_root()
+    path = path or tostring(utils.search_repo_root())
     split = split or "floating"
 
     local winheight = ""
