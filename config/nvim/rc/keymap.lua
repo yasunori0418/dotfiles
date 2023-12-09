@@ -383,6 +383,9 @@ require("user.utils").keymaps_set({
             if cfile:match("^https?://") then
                 vim.ui.open(cfile)
             else
+                if vim.fn.filereadable(cfile) ~= 1 then
+                    vim.fn.system({ "touch", tostring(vim.fn.expand(cfile)) })
+                end
                 vim.cmd([[normal! gF]])
             end
         end,
