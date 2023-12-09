@@ -378,7 +378,14 @@ require("user.utils").keymaps_set({
     { -- gfもgFもやってること変わらんのよね…
         mode = { "n" },
         lhs = [[gf]],
-        rhs = [[<C-w>gF]],
+        rhs = function()
+            local cfile = tostring(vim.fn.expand("<cfile>"))
+            if cfile:match("^https?://") then
+                vim.ui.open(cfile)
+            else
+                vim.cmd([[normal! gF]])
+            end
+        end,
         opts = noremap_silent,
     },
     { -- redrawもnohlsearchもやりたいことの目的が同じという事実
