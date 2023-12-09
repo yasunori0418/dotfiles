@@ -1,8 +1,3 @@
-local vimx = require("artemis")
-
-local skkeleton = vimx.fn.skkeleton
-local ddc_custom = vimx.fn.ddc.custom
-
 local function l2x_rom()
     local rom = {}
     local disable_l_nexts =
@@ -51,13 +46,13 @@ local function l2x_rom()
 end
 
 local function l2x_maps()
-    skkeleton.register_kanatable("rom", l2x_rom())
-    skkeleton.register_keymap("input", "x", "disable")
-    skkeleton.register_keymap("input", "X", "zenkaku")
-    skkeleton.register_kanatable("rom", {
+    vim.fn['skkeleton#register_kanatable']("rom", l2x_rom())
+    vim.fn['skkeleton#register_keymap']("input", "x", "disable")
+    vim.fn['skkeleton#register_keymap']("input", "X", "zenkaku")
+    vim.fn['skkeleton#register_kanatable']("rom", {
         ["<s-x>"] = "zenkaku",
     })
-    skkeleton.register_kanatable("rom", {
+    vim.fn['skkeleton#register_kanatable']("rom", {
         ["<s-l>"] = { "L", "" },
     }, true)
 end
@@ -70,7 +65,7 @@ local jawiki_dict = "tokuhirom/jawiki-kana-kanji-dict"
 local M = {}
 
 function M.init()
-    skkeleton.config({
+    vim.fn['skkeleton#config']({
         eggLikeNewline = true,
         globalDictionaries = {
             {
@@ -102,7 +97,7 @@ function M.init()
         usePopup = true,
     })
 
-    skkeleton.register_kanatable("rom", {
+    vim.fn['skkeleton#register_kanatable']("rom", {
         ["jj"] = "escape",
         ["~"] = { "～", "" },
         ["z0"] = { "○", "" },
@@ -113,12 +108,12 @@ function M.init()
 end
 
 function M.pre()
-    vim.b.prev_buffer_config = ddc_custom.get_buffer()
-    ddc_custom.patch_buffer("sources", { "vsnip", "skkeleton" })
+    vim.b.prev_buffer_config = vim.fn['ddc#custom#get_buffer']()
+    vim.fn['ddc#custom#patch_buffer']("sources", { "vsnip", "skkeleton" })
 end
 
 function M.post()
-    ddc_custom.set_buffer(vim.b.prev_buffer_config)
+    vim.fn['ddc#custom#set_buffer'](vim.b.prev_buffer_config)
     vim.b.prev_buffer_config = {}
 end
 
