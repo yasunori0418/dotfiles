@@ -38,11 +38,9 @@ require("user.utils").keymaps_set({
         rhs = function()
             if pum_visible() then
                 pum_insert_relative(1)
-            else
-                return [[<Down>]]
             end
         end,
-        opts = expr_opt,
+        opts = opt,
     },
     { -- i_<C-p>
         mode = "i",
@@ -50,11 +48,9 @@ require("user.utils").keymaps_set({
         rhs = function()
             if pum_visible() then
                 pum_insert_relative(-1)
-            else
-                return [[<Up>]]
             end
         end,
-        opts = expr_opt,
+        opts = opt,
     },
     { -- i_<C-y>
         mode = "i",
