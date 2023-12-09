@@ -2,7 +2,6 @@ local lsp = vim.lsp -- nvim lsp api.
 local diagnostic = vim.diagnostic
 local user_lsp_util = require("user.lsp.utils")
 local utils = require("user.utils")
-local vimx = require("artemis")
 
 user_lsp_util.on_attach(function(_, buffer)
     local opt = { noremap = true, silent = true, buffer = buffer }
@@ -18,7 +17,7 @@ user_lsp_util.on_attach(function(_, buffer)
             mode = { "n" },
             lhs = [[<Plug>(lsp)D]],
             rhs = function()
-                vimx.fn.ddu.start({
+                vim.fn['ddu#start']({
                     name = "lsp:definition_all",
                 })
             end,
@@ -28,7 +27,7 @@ user_lsp_util.on_attach(function(_, buffer)
             mode = { "n" },
             lhs = [[<Plug>(lsp)f]],
             rhs = function()
-                vimx.fn.ddu.start({
+                vim.fn['ddu#start']({
                     name = "lsp:finder",
                 })
             end,
@@ -38,7 +37,7 @@ user_lsp_util.on_attach(function(_, buffer)
             mode = { "n" },
             lhs = [[gd]],
             rhs = function()
-                vimx.fn.ddu.start({
+                vim.fn['ddu#start']({
                     name = "lsp:definition",
                 })
             end,
@@ -48,7 +47,7 @@ user_lsp_util.on_attach(function(_, buffer)
             mode = { "n" },
             lhs = [[gD]],
             rhs = function()
-                vimx.fn.ddu.start({
+                vim.fn['ddu#start']({
                     name = "lsp:declaration",
                 })
             end,
@@ -58,7 +57,7 @@ user_lsp_util.on_attach(function(_, buffer)
             mode = { "n" },
             lhs = [[gt]],
             rhs = function()
-                vimx.fn.ddu.start({
+                vim.fn['ddu#start']({
                     name = "lsp:typeDefinition",
                 })
             end,
@@ -68,7 +67,7 @@ user_lsp_util.on_attach(function(_, buffer)
             mode = { "n" },
             lhs = [[gi]],
             rhs = function()
-                vimx.fn.ddu.start({
+                vim.fn['ddu#start']({
                     name = "lsp:implementation",
                 })
             end,
@@ -78,7 +77,7 @@ user_lsp_util.on_attach(function(_, buffer)
             mode = { "n" },
             lhs = [[gr]],
             rhs = function()
-                vimx.fn.ddu.start({
+                vim.fn['ddu#start']({
                     name = "lsp:references",
                 })
             end,
@@ -88,7 +87,7 @@ user_lsp_util.on_attach(function(_, buffer)
             mode = "n",
             lhs = [[<Plug>(lsp)s]],
             rhs = function()
-                vimx.fn.ddu.start({
+                vim.fn['ddu#start']({
                     name = "lsp:documentSymbol",
                 })
             end,
@@ -98,7 +97,7 @@ user_lsp_util.on_attach(function(_, buffer)
             mode = "n",
             lhs = [[<Plug>(lsp)S]],
             rhs = function()
-                vimx.fn.ddu.start({
+                vim.fn['ddu#start']({
                     name = "lsp:workspaceSymbol",
                 })
             end,
@@ -108,7 +107,7 @@ user_lsp_util.on_attach(function(_, buffer)
             mode = "n",
             lhs = [[<Plug>(lsp)c]],
             rhs = function()
-                vimx.fn.ddu.start({
+                vim.fn['ddu#start']({
                     name = "lsp:incomingCalls",
                 })
             end,
@@ -118,7 +117,7 @@ user_lsp_util.on_attach(function(_, buffer)
             mode = "n",
             lhs = [[<Plug>(lsp)C]],
             rhs = function()
-                vimx.fn.ddu.start({
+                vim.fn['ddu#start']({
                     name = "lsp:outgoingCalls",
                 })
             end,
@@ -128,7 +127,7 @@ user_lsp_util.on_attach(function(_, buffer)
             mode = "n",
             lhs = [[<Plug>(lsp)t]],
             rhs = function()
-                vimx.fn.ddu.start({
+                vim.fn['ddu#start']({
                     name = "lsp:supertypes",
                 })
             end,
@@ -138,7 +137,7 @@ user_lsp_util.on_attach(function(_, buffer)
             mode = "n",
             lhs = [[<Plug>(lsp)T]],
             rhs = function()
-                vimx.fn.ddu.start({
+                vim.fn['ddu#start']({
                     name = "lsp:subtypes",
                 })
             end,
@@ -154,7 +153,7 @@ user_lsp_util.on_attach(function(_, buffer)
             mode = "n",
             lhs = [[<Plug>(lsp)d]],
             rhs = function()
-                vimx.fn.ddu.start({
+                vim.fn['ddu#start']({
                     name = "lsp:diagnostics",
                 })
             end,
