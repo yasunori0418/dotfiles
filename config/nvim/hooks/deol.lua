@@ -75,7 +75,7 @@ utils.keymaps_set({
         rhs = function()
             vim.cmd({
                 cmd = "execute",
-                args = deol_create_option(vim.fn.fnamemodify(vim.fn.expand("%"), ":h")),
+                args = deol_create_option(vim.fn.fnamemodify(tostring(vim.fn.expand("%")), ":h")),
             })
         end,
         opts = opt,
