@@ -11,20 +11,20 @@ local utils = require("user.utils")
 
 ---@param path? string default: require("user.utils").search_repo_root()
 ---@param split? deol_split_kinds default: 'floating'
----@param magnification? integer default: 1
-local function deol_open(path, split, magnification)
+---@param ratio? integer default: 0.6
+local function deol_open(path, split, ratio)
     path = path or utils.search_repo_root()
     split = split or "floating"
-    magnification = magnification or 1
+    ratio = ratio or 0.6
 
     local winheight = ""
     if vim.regex([[floating\|horizontal]]):match_str(split) then
-        winheight = vim.fn.float2nr(vim.opt.lines:get() / magnification)
+        winheight = vim.fn.float2nr(vim.opt.lines:get() * ratio)
     end
 
     local winwidth = ""
     if vim.regex([[floating\|vertical\|farleft\|farright]]):match_str(split) then
-        winwidth = vim.fn.float2nr(vim.opt.columns:get() / magnification)
+        winwidth = vim.fn.float2nr(vim.opt.columns:get() * ratio)
     end
 
     local options = {
