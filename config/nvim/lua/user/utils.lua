@@ -62,13 +62,13 @@ end
 ---gitconfigにて`git root`の定義が必須
 ---Gitリポジトリのルートパスまたは、
 ---Gitリポジトリでなければ、現在バッファーのディレクトリを返す
----@return string|string[]
+---@return string
 function M.search_repo_root()
     local result = io.popen("git root 2> /dev/null", "r"):read("*l")
     if result then
         return result
     end
-    return vim.fn.expand("%:p:h")
+    return tostring(vim.fn.expand("%:p:h"))
 end
 
 ---signcolumnの表示をtoggleする。
