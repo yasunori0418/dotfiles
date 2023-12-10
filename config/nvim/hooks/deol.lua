@@ -1,49 +1,9 @@
 -- lua_add {{{
-local utils = require("user.utils")
-
----@alias deol_split_kinds
----| "" # No split
----| "floating" # Use neovim floating window feature
----| "vertical" # Split buffer vertically
----| "farleft" # Split buffer far left, like |CTRL-W_H|
----| "farright" # Split buffer far right, like |CTRL-W_L|
----| "horizontal" # Split buffer horizontally
-
----@param path? string default: require("user.utils").search_repo_root()
----@param split? deol_split_kinds default: 'floating'
----@param ratio? integer default: 0.6
-local function deol_open(path, split, ratio)
-    path = path or utils.search_repo_root()
-    split = split or "floating"
-    ratio = ratio or 0.6
-
-    local winheight = ""
-    if vim.regex([[floating\|horizontal]]):match_str(split) then
-        winheight = vim.fn.float2nr(vim.opt.lines:get() * ratio)
-    end
-
-    local winwidth = ""
-    if vim.regex([[floating\|vertical\|farleft\|farright]]):match_str(split) then
-        winwidth = vim.fn.float2nr(vim.opt.columns:get() * ratio)
-    end
-
-    local options = {
-        auto_cd = false,
-        cwd = path,
-        dir_changed = false,
-        edit = false,
-        split = split,
-        start_insert = false,
-        toggle = true,
-        winheight = winheight,
-        winwidth = winwidth,
-    }
-
-    vim.fn["deol#start"](options)
-end
+-- $BASE_DIR/lua/user/plugins/deol.lua
+local deol = require("user.plugins.deol")
 
 local opt = { silent = true, noremap = true }
-utils.keymaps_set({
+require("user.utils").keymaps_set({
     { -- leave term insert mode.
         mode = "t",
         lhs = [[<Esc><Esc>]],
@@ -60,7 +20,7 @@ utils.keymaps_set({
         mode = "n",
         lhs = [[<Plug>(term)a]],
         rhs = function()
-            deol_open()
+            deol.open()
         end,
         opts = opt,
     },
@@ -68,7 +28,7 @@ utils.keymaps_set({
         mode = "n",
         lhs = [[<Plug>(term)c]],
         rhs = function()
-            deol_open(vim.fn.fnamemodify(tostring(vim.fn.expand("%")), ":h"))
+            deol.open(vim.fn.fnamemodify(tostring(vim.fn.expand("%")), ":h"))
         end,
         opts = opt,
     },
@@ -76,7 +36,7 @@ utils.keymaps_set({
         mode = "n",
         lhs = [[<Plug>(term)~]],
         rhs = function()
-            deol_open("~")
+            deol.open("~")
         end,
         opts = opt,
     },
@@ -85,7 +45,7 @@ utils.keymaps_set({
         lhs = [[<Plug>(term)t]],
         rhs = function()
             vim.cmd.tabnew()
-            deol_open(nil, "")
+            deol.open(nil, "")
         end,
         opts = opt,
     },
