@@ -2,7 +2,7 @@
 # Core plugins {{{
 [[plugins]] # ddu.vim
 repo = 'Shougo/ddu.vim'
-depends = 'denops.vim'
+depends = ['denops.vim', 'nvim-treesitter']
 on_func = 'ddu#start()'
 on_cmd = 'DeinUpdate'
 hooks_file = '$HOOKS_DIR/ddu/hook.lua'
