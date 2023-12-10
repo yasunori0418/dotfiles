@@ -34,6 +34,10 @@ utils.keymaps_set({
         mode = "n",
         lhs = [[<Plug>(ddu-ff)h]],
         rhs = function()
+            local dein = require("dein")
+            if not dein.is_sourced("nvim-treesitter") then
+                dein.source("nvim-treesitter")
+            end
             vim.fn["ddu#start"]({ name = "help" })
         end,
         opts = opt,
