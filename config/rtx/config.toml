@@ -41,4 +41,4 @@ disable_default_shorthands = false                # disable the default shorthan
 disable_tools = []                                # disable specific tools, generally used to turn off core tools
 
 experimental = true # enable experimental features
-log_level = 'debug' # log verbosity, see `RTX_LOG_LEVEL`
+#log_level = 'debug' # log verbosity, see `RTX_LOG_LEVEL`
