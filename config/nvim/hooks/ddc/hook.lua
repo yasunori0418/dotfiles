@@ -100,7 +100,7 @@ require("user.utils").keymaps_set({
         mode = "i",
         lhs = [[<C-x><C-d>]],
         rhs = function()
-            ddc_complete("nvim-lsp")
+            ddc_complete("lsp")
         end,
         opts = opt,
     },
