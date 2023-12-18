@@ -7,5 +7,5 @@ vim.fn["skkeleton_state_popup#config"]({
     },
     opts = { relative = "cursor", col = 5, row = 1, zindex = 5000, anchor = "NW", style = "minimal" },
 })
-vim.fn["skkeleton_state_popup#run"]()
+vim.fn["skkeleton_state_popup#enable"]()
 -- }}}
