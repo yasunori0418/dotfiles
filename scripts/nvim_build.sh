@@ -17,7 +17,11 @@ fi
 
 [[ -d ${install_prefix} ]] && rm -rf ${install_prefix}
 
-make CMAKE_INSTALL_PREFIX=${install_prefix} CMAKE_BUILD_TYPE=Release install
+make \
+  CMAKE_INSTALL_PREFIX=${install_prefix} \
+  CMAKE_BUILD_TYPE=Release \
+  BUNDLED_CMAKE_FLAG='-DUSE_BUNDLED_TS_PARSERS=OFF' \
+  install
 
 rm -rf ${install_prefix}/lib
 
