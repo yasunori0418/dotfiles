@@ -1,18 +1,28 @@
 local M = {}
 local joinpath = vim.fs.joinpath
 
+---@alias plugin_add_type
+---| "prepend"
+---| "append"
+
 ---初回起動時にプラグインのダウンロードとruntimepathに追加する
----@param host? string default: github.com
 ---@param repo string user_name/plugin_name
-local function plugin_add(host, repo)
+---@param host? string default: github.com
+---@param type? plugin_add_type user_name/plugin_name
+local function plugin_add(repo, host, type)
     host = host or "github.com"
+    type = type or "prepend"
     local repo_dir = joinpath(M.dpp_dir, "repos", host, repo)
     local plugin_name = vim.fn.split(repo, "/")[2]
     if not vim.regex("/" .. plugin_name):match_str(vim.o.runtimepath) then
         if vim.fn.isdirectory(repo_dir) ~= 1 then
             os.execute("git clone https://" .. host .. "/" .. repo .. " " .. repo_dir)
         end
-        vim.opt.runtimepath:prepend(repo_dir)
+        if type == "prepend" then
+            vim.opt.runtimepath:prepend(repo_dir)
+        else
+            vim.opt.runtimepath:append(repo_dir)
+        end
     end
 end
 
@@ -47,12 +57,12 @@ function M.setup()
     vim.env.TOML_DIR = joinpath(vim.g.base_dir, "toml")
     vim.env.HOOKS_DIR = vim.g.hooks_dir
 
-    plugin_add(nil, "Shougo/dpp-ext-lazy")
-    plugin_add(nil, "Shougo/dpp-ext-toml")
-    plugin_add(nil, "Shougo/dpp-ext-installer")
-    plugin_add(nil, "Shougo/dpp-protocol-git")
-    plugin_add(nil, "Shougo/dpp.vim")
-    plugin_add(nil, "vim-denops/denops.vim")
+    plugin_add("Shougo/dpp-ext-lazy")
+    plugin_add("Shougo/dpp-ext-toml")
+    plugin_add("Shougo/dpp-ext-installer")
+    plugin_add("Shougo/dpp-protocol-git")
+    plugin_add("Shougo/dpp.vim")
+    plugin_add("vim-denops/denops.vim")
     dpp_setup()
 end
 
