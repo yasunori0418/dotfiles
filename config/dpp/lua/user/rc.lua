@@ -27,13 +27,16 @@ local function plugin_add(repo, host, type)
 end
 
 local function dpp_setup()
-    vim.fn["dpp#min#load_state"](M.dpp_dir)
-    vim.api.nvim_create_autocmd("User", {
-        pattern = "DenopsReady",
-        callback = function()
-            vim.fn["dpp#make_state"](M.dpp_dir, joinpath(vim.g.base_dir, "dpp.ts"))
-        end,
-    })
+    local dpp = require("dpp")
+    if dpp.load_state(M.dpp_dir) then
+        vim.api.nvim_create_autocmd("User", {
+            pattern = "DenopsReady",
+            callback = function()
+                vim.notify("dpp load_state() is failed", vim.log.levels.INFO)
+                dpp.make_state(M.dpp_dir, joinpath(vim.g.base_dir, "dpp.ts"))
+            end,
+        })
+    end
 end
 
 ---init.luaで呼び出すdpp.vimの初期設定
