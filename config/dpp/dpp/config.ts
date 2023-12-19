@@ -1,10 +1,22 @@
 import {
   BaseConfig,
+  ConfigReturn,
   ContextBuilder,
   Dpp,
   Plugin,
 } from "https://deno.land/x/dpp_vim@v0.0.8/types.ts";
 import { Denops, fn } from "https://deno.land/x/dpp_vim@v0.0.8/deps.ts";
+
+type Toml = {
+  hooks_file?: string;
+  ftplugins?: Record<string, string>;
+  plugins?: Plugin[];
+};
+
+type LazyMakeStateResult = {
+  plugins: Plugin[];
+  stateLines: string[];
+};
 
 export class Config extends BaseConfig {
   override async config(args: {
@@ -12,10 +24,7 @@ export class Config extends BaseConfig {
     contextBuilder: ContextBuilder;
     basePath: string;
     dpp: Dpp;
-  }): Promise<{
-    plugins: Plugin[];
-    stateLines: string[];
-  }> {
+  }): Promise<ConfigReturn> {
     args.contextBuilder.setGlobal({
       protocols: ["git"],
     });
