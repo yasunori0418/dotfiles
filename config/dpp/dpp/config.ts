@@ -5,7 +5,7 @@ import {
   Dpp,
   Plugin,
 } from "https://deno.land/x/dpp_vim@v0.0.8/types.ts";
-import { Denops, fn } from "https://deno.land/x/dpp_vim@v0.0.8/deps.ts";
+import { Denops, vars } from "https://deno.land/x/dpp_vim@v0.0.8/deps.ts";
 
 type Toml = {
   hooks_file?: string;
@@ -25,6 +25,23 @@ export class Config extends BaseConfig {
     basePath: string;
     dpp: Dpp;
   }): Promise<ConfigReturn> {
+    const inlineVimrcs: string[] = [];
+    try {
+      const RC_DIR = Deno.env.get("RC_DIR");
+      if (typeof RC_DIR == "undefined") {
+        throw "failure read directory in $RC_DIR";
+      }
+      for (const dirEntry of Deno.readDirSync(RC_DIR)) {
+        if (typeof dirEntry == "undefined") {
+          continue;
+        }
+        inlineVimrcs.push(dirEntry.name);
+      }
+    } catch (e) {
+      console.error(e);
+      throw e;
+    }
+
     args.contextBuilder.setGlobal({
       protocols: ["git"],
     });
