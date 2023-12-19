@@ -2,8 +2,10 @@ local M = {}
 local joinpath = vim.fs.joinpath
 
 ---初回起動時にプラグインのダウンロードとruntimepathに追加する
+---@param host? string default: github.com
 ---@param repo string user_name/plugin_name
 local function plugin_add(host, repo)
+    host = host or "github.com"
     local repo_dir = joinpath(M.dpp_dir, "repos", host, repo)
     local plugin_name = vim.fn.split(repo, "/")[2]
     if not vim.regex("/" .. plugin_name):match_str(vim.o.runtimepath) then
@@ -45,12 +47,12 @@ function M.setup()
     vim.env.TOML_DIR = joinpath(vim.g.base_dir, "toml")
     vim.env.HOOKS_DIR = vim.g.hooks_dir
 
-    plugin_add("github.com", "Shougo/dpp-ext-lazy")
-    plugin_add("github.com", "Shougo/dpp-ext-toml")
-    plugin_add("github.com", "Shougo/dpp-ext-installer")
-    plugin_add("github.com", "Shougo/dpp-protocol-git")
-    plugin_add("github.com", "Shougo/dpp.vim")
-    plugin_add("github.com", "vim-denops/denops.vim")
+    plugin_add(nil, "Shougo/dpp-ext-lazy")
+    plugin_add(nil, "Shougo/dpp-ext-toml")
+    plugin_add(nil, "Shougo/dpp-ext-installer")
+    plugin_add(nil, "Shougo/dpp-protocol-git")
+    plugin_add(nil, "Shougo/dpp.vim")
+    plugin_add(nil, "vim-denops/denops.vim")
     dpp_setup()
 end
 
