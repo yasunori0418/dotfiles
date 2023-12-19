@@ -33,7 +33,7 @@ local function dpp_setup()
             pattern = "DenopsReady",
             callback = function()
                 vim.notify("dpp load_state() is failed", vim.log.levels.INFO)
-                dpp.make_state(M.dpp_dir, joinpath(vim.g.base_dir, "dpp.ts"))
+                dpp.make_state(M.dpp_dir, joinpath(vim.g.base_dir, "dpp", "config.ts"))
             end,
         })
     end
