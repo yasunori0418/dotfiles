@@ -25,6 +25,11 @@ export class Config extends BaseConfig {
     basePath: string;
     dpp: Dpp;
   }): Promise<ConfigReturn> {
+    const denops = args.denops;
+    // const contextBuilder = args.contextBuilder;
+    // const basePath = args.basePath;
+    // const dpp = args.dpp;
+
     const inlineVimrcs: string[] = [];
     try {
       const RC_DIR = Deno.env.get("RC_DIR");
