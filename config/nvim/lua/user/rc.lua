@@ -21,7 +21,9 @@ local function dein_setup()
     local inline_vimrcs = utils.gather_files(vim.g.base_dir, "rc")
     local toml_files = utils.gather_files(vim.g.base_dir, "toml")
 
-    utils.remove_file_from_gather_files(inline_vimrcs, "neovide.lua")
+    if not vim.g.neovide then
+        utils.remove_file_from_gather_files(inline_vimrcs, "neovide.lua")
+    end
 
     dein.setup({
         install_progress_type = "none",
