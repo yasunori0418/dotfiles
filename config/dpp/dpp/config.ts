@@ -39,8 +39,7 @@ export class Config extends BaseConfig {
       for (const dirEntry of Deno.readDirSync(RC_DIR)) {
         if (typeof dirEntry == "undefined") {
           continue;
-        }
-        inlineVimrcs.push(dirEntry.name);
+        inlineVimrcs.push(`$RC_DIR/${dirEntry.name}`);
       }
     } catch (e) {
       console.error(e);
