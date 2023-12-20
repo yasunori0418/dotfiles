@@ -25,52 +25,79 @@ export class Config extends BaseConfig {
     basePath: string;
     dpp: Dpp;
   }): Promise<ConfigReturn> {
-    const denops = args.denops;
-    // const contextBuilder = args.contextBuilder;
-    // const basePath = args.basePath;
-    // const dpp = args.dpp;
+    const denops: Denops = args.denops;
+    const contextBuilder: ContextBuilder = args.contextBuilder;
+    const basePath: string = args.basePath;
+    const dpp: Dpp = args.dpp;
 
-    const inlineVimrcs: string[] = [];
-    try {
-      const RC_DIR = Deno.env.get("RC_DIR");
-      if (typeof RC_DIR == "undefined") {
-        throw "failure read directory in $RC_DIR";
-      }
-      for (const dirEntry of Deno.readDirSync(RC_DIR)) {
-        if (typeof dirEntry == "undefined") {
-          continue;
-        inlineVimrcs.push(`$RC_DIR/${dirEntry.name}`);
-      }
-    } catch (e) {
-      console.error(e);
-      throw e;
-    }
+    console.log(basePath);
+
+    // const inlineVimrcs: string[] = [];
+    // try {
+    //   const RC_DIR = Deno.env.get("RC_DIR");
+    //   if (typeof RC_DIR == "undefined") {
+    //     throw "failure read directory in $RC_DIR";
+    //   }
+    //   for (const dirEntry of Deno.readDirSync(RC_DIR)) {
+    //     if (typeof dirEntry == "undefined") continue;
+    //     console.log(vars.globals.get(denops, "neovide"))
+    //     if (dirEntry.name == "neovide.lua" && vars.globals.get(denops, "neovide") == null) continue;
+    //     inlineVimrcs.push(`$RC_DIR/${dirEntry.name}`);
+    //   }
+    // } catch (e) {
+    //   console.error(e);
+    //   throw e;
+    // }
 
     args.contextBuilder.setGlobal({
       protocols: ["git"],
     });
 
-    const [context, options] = await args.contextBuilder.get(args.denops);
+    const [context, options] = await contextBuilder.get(denops);
 
-    const tomlPlugins = await args.dpp.extAction(
-      args.denops,
+    const tomls: Toml[] = [];
+    const toml = await dpp.extAction(
+      denops,
       context,
       options,
       "toml",
       "load",
       {
-        path: "$BASE_DIR/toml/dpp.toml",
+        path: "$TOML_DIR/dpp.toml",
+        options: {
+          lazy: false,
+        },
       },
-    ) as Plugin[];
-    console.log(tomlPlugins);
+    ) as Toml | undefined;
+    console.log(toml);
+    if (toml) tomls.push(toml);
+    console.log(tomls);
 
     const recordPlugins: Record<string, Plugin> = {};
-    for (const plugin of tomlPlugins) {
-      recordPlugins[plugin.name] = plugin;
+    const ftplugins: Record<string, string> = {};
+    const hooksFiles: string[] = [];
+    for (const toml of tomls) {
+      for (const plugin of toml.plugins) {
+        recordPlugins[plugin.name] = plugin;
+      }
+
+      if (toml.ftplugins) {
+        for (const filetype of Object.keys(toml.ftplugins)) {
+          if (ftplugins[filetype]) {
+            ftplugins[filetype] += `\n${toml.ftplugins[filetype]}`;
+          } else {
+            ftplugins[filetype] = toml.ftplugins[filetype];
+          }
+        }
+      }
+
+      if (toml.hooks_file) {
+        hooksFiles.push(toml.hooks_file);
+      }
     }
 
-    const stateLines = await args.dpp.extAction(
-      args.denops,
+    const lazyResult = await dpp.extAction(
+      denops,
       context,
       options,
       "lazy",
@@ -78,11 +105,13 @@ export class Config extends BaseConfig {
       {
         plugins: Object.values(recordPlugins),
       },
-    ) as string[];
+    ) as LazyMakeStateResult | undefined;
 
     return {
-      plugins: Object.values(recordPlugins),
-      stateLines,
+      ftplugins,
+      hooksFiles,
+      plugins: lazyResult?.plugins ?? [],
+      stateLines: lazyResult?.stateLines ?? [],
     };
   }
 }
