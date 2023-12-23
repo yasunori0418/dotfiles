@@ -48,7 +48,7 @@ export class Config extends BaseConfig {
     }
 
     contextBuilder.setGlobal({
-      inlineVimrcs,
+      inlineVimrcs: inlineVimrcs,
       protocols: ["git"],
     });
 
