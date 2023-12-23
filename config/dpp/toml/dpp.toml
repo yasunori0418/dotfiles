@@ -1,5 +1,4 @@
-# Non-lazy plugins
-
+## experimental plugins
 [[plugins]] # dpp.vim
 repo = 'Shougo/dpp.vim'
 
@@ -14,15 +13,3 @@ repo = 'Shougo/dpp-ext-toml'
 
 [[plugins]] # dpp-ext-lazy
 repo = 'Shougo/dpp-ext-lazy'
-
-[[plugins]] # denops.vim
-repo = 'vim-denops/denops.vim'
-
-[[plugins]] # vimdoc-ja
-repo = 'vim-jp/vimdoc-ja'
-
-[[plugins]] # learn-vimscript
-repo = 'mattn/learn-vimscript'
-
-[[plugins]] # mr.vim
-repo = 'lambdalisue/mr.vim'

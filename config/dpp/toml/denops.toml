@@ -1,0 +1,79 @@
+# denops plugins
+[[plugins]] # denops.vim
+repo = 'vim-denops/denops.vim'
+lazy = false
+lua_add = '''
+-- vim.g.denops_server_addr = [[127.0.0.1:32123]]
+'''
+
+[[plugins]] # skkeleton
+repo = 'vim-skk/skkeleton'
+depends = 'denops.vim'
+on_map = { ic = '<Plug>(skkeleton-toggle)' }
+hooks_file = '$HOOKS_DIR/skkeleton.lua'
+
+[[plugins]] # statusline_skk.vim
+repo = 'yasunori0418/statusline_skk.vim'
+on_source = 'skkeleton'
+hooks_file = '$HOOKS_DIR/statusline_skk.lua'
+
+[[plugins]]
+repo = 'NI57721/skkeleton-state-popup'
+on_source = 'skkeleton'
+hooks_file = '$HOOKS_DIR/skkeleton_state_popup.lua'
+
+[[plugins]] # denops-translate.vim
+repo = 'skanehira/denops-translate.vim'
+depends = 'denops.vim'
+on_cmd = 'Translate'
+
+[[plugins]] # denops-silicon.vim
+repo = 'skanehira/denops-silicon.vim'
+depends = 'denops.vim'
+on_cmd = 'Silicon'
+hooks_file = '$HOOKS_DIR/silicon.lua'
+
+[[plugins]]
+repo = 'yuki-yano/fuzzy-motion.vim'
+depends = ['denops.vim', 'kensaku.vim']
+on_cmd = ['FuzzyMotion']
+lua_add = '''
+vim.keymap.set("n", [[s/]], [[<Cmd>FuzzyMotion<CR>]], { noremap = true })
+'''
+lua_source = '''
+vim.g['fuzzy_motion_auto_jump'] = true
+vim.g['fuzzy_motion_matchers'] = { 'fzf', 'kensaku' }
+'''
+
+[[plugins]]
+repo = 'lambdalisue/kensaku.vim'
+depends = 'denops.vim'
+
+[[plugins]]
+repo = 'lambdalisue/kensaku-search.vim'
+depends = 'kensaku.vim'
+on_map = { 'c' = '<Plug>(kensaku-search-replace)' }
+lua_add = '''
+vim.keymap.set("c", [[<CR>]], [[<Plug>(kensaku-search-replace)<CR>]], {noremap = false})
+'''
+
+[[plugins]]
+repo = 'kat0h/bufpreview.vim'
+depends = ['denops.vim', 'open-browser.vim']
+build = 'deno task prepare'
+on_cmd = ['PreviewMarkdown', 'PreviewMarkdownToggle']
+lua_source = '''
+vim.g.bufpreview_server_port = '11223'
+'''
+
+[[plugins]]
+repo = 'kuuote/jsonyaml.vim'
+depends = ['denops.vim']
+on_cmd = ['JY', 'YJ']
+hooks_file = '$HOOKS_DIR/jsonyaml.lua'
+
+[[plugins]]
+repo = 'yukimemi/jsontoml.vim'
+depends = ['denops.vim']
+on_cmd = ['JT', 'TJ']
+hooks_file = '$HOOKS_DIR/jsontoml.lua'
