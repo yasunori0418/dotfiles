@@ -1,9 +1,9 @@
 -- lua_add {{{
-local dein = require("dein")
+local dpp = require("dpp")
 vim.api.nvim_create_autocmd({ "BufNewFile", "BufRead", "BufWritePost" }, {
     pattern = "*",
     callback = function(args)
-        if dein.is_sourced("gitsigns.nvim") then
+        if dpp.is_sourced("gitsigns.nvim") then
             vim.api.nvim_del_autocmd(args.id)
             return
         end
@@ -19,7 +19,7 @@ vim.api.nvim_create_autocmd({ "BufNewFile", "BufRead", "BufWritePost" }, {
         end
 
         if vim.wo.diff or is_diff_file then
-            dein.source("gitsigns.nvim")
+            dpp.source("gitsigns.nvim")
             vim.api.nvim_del_autocmd(args.id)
         end
     end,

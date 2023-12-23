@@ -97,14 +97,11 @@ export class Config extends BaseConfig {
             "converter_hl_dir",
           ],
         },
-        dein: {
+        dpp: {
           defaultAction: "cdOpen",
         },
         help: {
           defaultAction: "open",
-        },
-        dein_update: {
-          matchers: ["matcher_dein_update"],
         },
         path_history: {
           defaultAction: "uiCd",
@@ -177,9 +174,6 @@ export class Config extends BaseConfig {
         },
       },
       sourceParams: {
-        dein_update: {
-          useGraphQL: false,
-        },
         rg: {
           args: [
             "--json",
@@ -264,9 +258,6 @@ export class Config extends BaseConfig {
         },
         readme_viewer: {
           defaultAction: "open",
-        },
-        dein_update: {
-          defaultAction: "viewDiff",
         },
         git_status: {
           defaultAction: "open",
@@ -471,7 +462,7 @@ export class Config extends BaseConfig {
       },
       sources: [
         {
-          name: "dein",
+          name: "dpp",
           options: {
             defaultAction: "cdOpen",
           },
@@ -544,15 +535,6 @@ export class Config extends BaseConfig {
       },
       sources: [
         { name: "highlight" },
-      ],
-    });
-
-    args.contextBuilder.patchLocal("dein_update", {
-      ui: "ff",
-      sources: [
-        {
-          name: "dein_update",
-        },
       ],
     });
 
