@@ -27,35 +27,35 @@ export class Config extends BaseConfig {
   }): Promise<ConfigReturn> {
     const denops: Denops = args.denops;
     const contextBuilder: ContextBuilder = args.contextBuilder;
-    const basePath: string = args.basePath;
+    // const basePath: string = args.basePath;
     const dpp: Dpp = args.dpp;
 
-    console.log(basePath);
+    const inlineVimrcs: string[] = [];
+    try {
+      const rc_dir: string = await vars.g.get(denops, "rc_dir");
+      if (rc_dir === null) throw "failure read directory in g:rc_dir";
+      for (const dirEntry of Deno.readDirSync(rc_dir)) {
+        if (typeof dirEntry == "undefined") continue;
+        if (
+          dirEntry.name == "neovide.lua" &&
+          vars.globals.get(denops, "neovide") === null
+        ) continue;
+        inlineVimrcs.push(`${rc_dir}/${dirEntry.name}`);
+      }
+    } catch (e) {
+      console.error(e);
+      throw e;
+    }
 
-    // const inlineVimrcs: string[] = [];
-    // try {
-    //   const RC_DIR = Deno.env.get("RC_DIR");
-    //   if (typeof RC_DIR == "undefined") {
-    //     throw "failure read directory in $RC_DIR";
-    //   }
-    //   for (const dirEntry of Deno.readDirSync(RC_DIR)) {
-    //     if (typeof dirEntry == "undefined") continue;
-    //     console.log(vars.globals.get(denops, "neovide"))
-    //     if (dirEntry.name == "neovide.lua" && vars.globals.get(denops, "neovide") == null) continue;
-    //     inlineVimrcs.push(`$RC_DIR/${dirEntry.name}`);
-    //   }
-    // } catch (e) {
-    //   console.error(e);
-    //   throw e;
-    // }
-
-    args.contextBuilder.setGlobal({
+    contextBuilder.setGlobal({
+      inlineVimrcs,
       protocols: ["git"],
     });
 
     const [context, options] = await contextBuilder.get(denops);
 
     const tomls: Toml[] = [];
+    const toml_dir: string = await vars.g.get(denops, "toml_dir");
     const toml = await dpp.extAction(
       denops,
       context,
@@ -63,22 +63,23 @@ export class Config extends BaseConfig {
       "toml",
       "load",
       {
-        path: "$TOML_DIR/dpp.toml",
+        path: `${toml_dir}/dpp.toml`,
         options: {
           lazy: false,
         },
       },
     ) as Toml | undefined;
-    console.log(toml);
     if (toml) tomls.push(toml);
-    console.log(tomls);
 
     const recordPlugins: Record<string, Plugin> = {};
     const ftplugins: Record<string, string> = {};
     const hooksFiles: string[] = [];
+
     for (const toml of tomls) {
-      for (const plugin of toml.plugins) {
-        recordPlugins[plugin.name] = plugin;
+      if (toml.plugins) {
+        for (const plugin of toml.plugins) {
+          recordPlugins[plugin.name] = plugin;
+        }
       }
 
       if (toml.ftplugins) {
