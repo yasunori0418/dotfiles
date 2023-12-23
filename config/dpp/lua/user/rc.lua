@@ -56,9 +56,9 @@ function M.setup()
 
     -- vim.g.snippet_dir = joinpath(vim.g.base_dir, "snippets")
     vim.g.hooks_dir = joinpath(vim.g.base_dir, "hooks")
-    vim.env.RC_DIR = joinpath(vim.g.base_dir, "rc")
-    vim.env.TOML_DIR = joinpath(vim.g.base_dir, "toml")
     vim.env.HOOKS_DIR = vim.g.hooks_dir
+    vim.g.rc_dir = joinpath(vim.g.base_dir, "rc")
+    vim.g.toml_dir = joinpath(vim.g.base_dir, "toml")
 
     plugin_add("Shougo/dpp-ext-lazy")
     plugin_add("Shougo/dpp-ext-toml")
