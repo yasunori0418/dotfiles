@@ -4,7 +4,6 @@
 repo = 'Shougo/ddu.vim'
 depends = ['denops.vim', 'nvim-treesitter']
 on_func = 'ddu#start()'
-on_cmd = 'DeinUpdate'
 hooks_file = '$HOOKS_DIR/ddu/hook.lua'
 
 # }}}
@@ -83,10 +82,6 @@ on_source = 'ddu.vim'
 
 [[plugins]]
 repo = 'matsui54/ddu-source-highlight'
-on_source = 'ddu.vim'
-
-[[plugins]]
-repo = 'matsui54/ddu-source-dein_update'
 on_source = 'ddu.vim'
 
 [[plugins]]
