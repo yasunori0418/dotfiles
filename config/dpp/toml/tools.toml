@@ -32,8 +32,11 @@ vim.g.startuptime_event_width = 0
 [[plugins]] # vim-themis
 repo = 'thinca/vim-themis'
 on_cmd = 'StartThemis'
-hook_add = '''
+lua_add = '''
 command! StartThemis call dein#source('vim-themis')
+vim.api.nvim_create_user_command("StartThemis", function()
+  require("dpp").source("vim-themis")
+end, {})
 '''
 
 [[plugins]]
