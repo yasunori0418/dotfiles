@@ -1,0 +1,41 @@
+{
+  "body": {
+    "body": [
+      ",\n\"${1:contents}\"$0"
+    ],
+    "description": "add contents line",
+    "prefix": [
+      "body",
+      "b"
+    ],
+    "scope": "json"
+  },
+  "object": {
+    "body": [
+      "{",
+      "\t$0",
+      "}"
+    ],
+    "description": "Json basic object snippet.",
+    "prefix": "obj",
+    "scope": "json"
+  },
+  "tmp": {
+    "body": [
+      "\"${1:snippet_name}\": {",
+      "\t\"scope\": \"$TM_FILENAME_BASE\",",
+      "\t\"prefix\": \"${2:trigger}\",",
+      "\t\"body\": [",
+      "\t\t\"${3:contents}\"$4",
+      "\t],",
+      "\t\"description\": \"${5:description}\"",
+      "}$0"
+    ],
+    "description": "snippet template",
+    "prefix": [
+      "tmp",
+      "t"
+    ],
+    "scope": "json"
+  }
+}

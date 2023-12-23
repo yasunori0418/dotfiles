@@ -56,20 +56,25 @@ export class Config extends BaseConfig {
 
     const tomls: Toml[] = [];
     const toml_dir: string = await vars.g.get(denops, "toml_dir");
-    const toml = await dpp.extAction(
-      denops,
-      context,
-      options,
-      "toml",
-      "load",
-      {
-        path: `${toml_dir}/dpp.toml`,
-        options: {
-          lazy: false,
+    for (const dirEntry of Deno.readDirSync(toml_dir)) {
+      if (typeof dirEntry == "undefined") continue;
+      const is_lazy: boolean = ["dpp.toml"].includes(dirEntry.name);
+      const toml = await dpp.extAction(
+        denops,
+        context,
+        options,
+        "toml",
+        "load",
+        {
+          path: `${toml_dir}/${dirEntry.name}`,
+          options: {
+            lazy: is_lazy,
+          },
         },
-      },
-    ) as Toml | undefined;
-    if (toml) tomls.push(toml);
+      ) as Toml | undefined;
+      if (toml) tomls.push(toml);
+    }
+    console.log(tomls);
 
     const recordPlugins: Record<string, Plugin> = {};
     const ftplugins: Record<string, string> = {};
