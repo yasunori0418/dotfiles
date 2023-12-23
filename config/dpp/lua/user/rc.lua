@@ -37,6 +37,13 @@ local function dpp_setup()
             end,
         })
     end
+    vim.api.nvim_create_autocmd("User", {
+        pattern = "Dpp:makeStatePost",
+        callback = function()
+            vim.notify("dpp make_state() is done", vim.log.levels.WARN)
+            -- dpp.async_ext_action("installer", "install")
+        end
+    })
 end
 
 ---init.luaで呼び出すdpp.vimの初期設定
