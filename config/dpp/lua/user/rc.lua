@@ -41,8 +41,7 @@ local function dpp_setup()
         pattern = "Dpp:makeStatePost",
         callback = function()
             vim.notify("dpp make_state() is done", vim.log.levels.WARN)
-            -- dpp.async_ext_action("installer", "install")
-        end
+        end,
     })
 end
 
