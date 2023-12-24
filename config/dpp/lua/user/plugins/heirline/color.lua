@@ -2,7 +2,7 @@ local M = {}
 local utils = require("heirline.utils")
 
 function M.mode_colors()
-    return M.modes[vim.fn.mode(0)]
+    return M.modes[vim.fn.mode()]
 end
 
 function M.set()
