@@ -36,6 +36,13 @@ local function dpp_setup()
                 dpp.make_state(M.dpp_dir, joinpath(vim.g.base_dir, "dpp", "config.ts"))
             end,
         })
+    else
+        vim.api.nvim_create_autocmd("BufWritePost", {
+            pattern = { "*.lua", "*.toml", "*.ts" },
+            callback = function()
+                dpp.check_files()
+            end
+        })
     end
     vim.api.nvim_create_autocmd("User", {
         pattern = "Dpp:makeStatePost",
