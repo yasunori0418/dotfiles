@@ -64,6 +64,7 @@ function M.setup()
     -- vim.g.snippet_dir = joinpath(vim.g.base_dir, "snippets")
     vim.g.hooks_dir = joinpath(vim.g.base_dir, "hooks")
     vim.env.HOOKS_DIR = vim.g.hooks_dir
+    vim.g.snippet_dir = joinpath(vim.g.base_dir, "snippets")
     vim.g.rc_dir = joinpath(vim.g.base_dir, "rc")
     vim.g.toml_dir = joinpath(vim.g.base_dir, "toml")
 
