@@ -50,7 +50,7 @@ end
 ---NVIM_APPNAMEが設定されていない場合は、デフォルトの`nvim`になる
 function M.setup()
     -- local nvim_appname = vim.env.NVIM_APPNAME or "nvim"
-    M.dpp_dir = nil
+    -- M.dpp_dir = nil
     -- if nvim_appname == "nvim" then
     M.dpp_dir = joinpath(vim.env.XDG_CACHE_HOME, "dpp")
     -- else
