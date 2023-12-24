@@ -3,7 +3,7 @@ local dpp = require("dpp")
 vim.api.nvim_create_autocmd({ "BufNewFile", "BufRead", "BufWritePost" }, {
     pattern = "*",
     callback = function(args)
-        if dpp.is_sourced("gitsigns.nvim") then
+        if dpp.get("gitsigns.nvim").sourced then
             vim.api.nvim_del_autocmd(args.id)
             return
         end
