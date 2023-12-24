@@ -28,7 +28,7 @@ end
 
 local function dpp_setup()
     local dpp = require("dpp")
-    if dpp.load_state(M.dpp_dir) then
+    if dpp.load_state(M.dpp_dir) > 0 then
         vim.api.nvim_create_autocmd("User", {
             pattern = "DenopsReady",
             callback = function()
