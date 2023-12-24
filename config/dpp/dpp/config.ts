@@ -58,6 +58,7 @@ export class Config extends BaseConfig {
     const toml_dir: string = await vars.g.get(denops, "toml_dir");
     for (const dirEntry of Deno.readDirSync(toml_dir)) {
       if (typeof dirEntry == "undefined") continue;
+      const no_lazy = !["no_lazy.toml", "dpp.toml"].includes(dirEntry.name)
       const toml = await dpp.extAction(
         denops,
         context,
@@ -67,7 +68,7 @@ export class Config extends BaseConfig {
         {
           path: `${toml_dir}/${dirEntry.name}`,
           options: {
-            lazy: dirEntry.name == "dpp.toml" ? false : true,
+            lazy: no_lazy,
           },
         },
       ) as Toml | undefined;
