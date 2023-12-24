@@ -74,7 +74,6 @@ export class Config extends BaseConfig {
       ) as Toml | undefined;
       if (toml) tomls.push(toml);
     }
-    console.log(tomls);
 
     const recordPlugins: Record<string, Plugin> = {};
     const ftplugins: Record<string, string> = {};
