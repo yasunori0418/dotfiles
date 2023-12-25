@@ -49,6 +49,10 @@ on_cmd = 'Wrapwidth'
 repo = 'thinca/vim-showtime'
 on_cmd = ['ShowtimeStart', 'ShowtimeResume']
 
+[[plugins]]
+repo = 'itchyny/calendar.vim'
+on_cmd = 'Calendar'
+
 [[plugins]] # for skkeleton
 repo = 'skk-dev/dict'
 if = false
