@@ -56,54 +56,19 @@ export class Config extends BaseConfig {
 
     const tomlDir: string = await vars.globals.get(denops, "toml_dir");
     const tomls: Toml[] = [];
-    tomls.push(
-      await dpp.extAction(denops, context, options, "toml", "load", {
-        path: `${tomlDir}/dpp.toml`,
-        options: {
-          lazy: false,
-        },
-      }) as Toml,
-    );
-    tomls.push(
-      await dpp.extAction(denops, context, options, "toml", "load", {
-        path: `${tomlDir}/no_lazy.toml`,
-        options: {
-          lazy: false,
-        },
-      }) as Toml,
-    );
-    tomls.push(
-      await dpp.extAction(denops, context, options, "toml", "load", {
-        path: `${tomlDir}/treesitter.toml`,
-        options: {
-          lazy: true,
-        },
-      }) as Toml,
-    );
-    tomls.push(
-      await dpp.extAction(denops, context, options, "toml", "load", {
-        path: `${tomlDir}/tools.toml`,
-        options: {
-          lazy: true,
-        },
-      }) as Toml,
-    );
-    tomls.push(
-      await dpp.extAction(denops, context, options, "toml", "load", {
-        path: `${tomlDir}/denops.toml`,
-        options: {
-          lazy: true,
-        },
-      }) as Toml,
-    );
-    tomls.push(
-      await dpp.extAction(denops, context, options, "toml", "load", {
-        path: `${tomlDir}/ddu.toml`,
-        options: {
-          lazy: true,
-        },
-      }) as Toml,
-    );
+
+    for (const tomlFile of Deno.readDirSync(tomlDir)) {
+      if (typeof tomlFile.name === "undefined") continue;
+      const isLazy = !["dpp.toml", "no_lazy.toml"].includes(tomlFile.name);
+      tomls.push(
+        await dpp.extAction(denops, context, options, "toml", "load", {
+          path: `${tomlDir}/${tomlFile.name}`,
+          options: {
+            lazy: isLazy,
+          },
+        }) as Toml,
+      );
+    }
 
     const recordPlugins: Record<string, Plugin> = {};
     const ftplugins: Record<string, string> = {};
