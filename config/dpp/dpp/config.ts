@@ -96,6 +96,14 @@ export class Config extends BaseConfig {
         },
       }) as Toml,
     );
+    tomls.push(
+      await dpp.extAction(denops, context, options, "toml", "load", {
+        path: `${tomlDir}/ddu.toml`,
+        options: {
+          lazy: true,
+        },
+      }) as Toml,
+    );
 
     const recordPlugins: Record<string, Plugin> = {};
     const ftplugins: Record<string, string> = {};
