@@ -55,11 +55,11 @@ on_cmd = ['ShowtimeStart', 'ShowtimeResume']
 repo = 'itchyny/calendar.vim'
 on_cmd = 'Calendar'
 
-[[plugins]] # for skkeleton
-repo = 'skk-dev/dict'
-if = false
+# [[plugins]] # for skkeleton
+# repo = 'skk-dev/dict'
+# if = false
 
-[[plugins]] # for skkeleton
-repo = 'tokuhirom/jawiki-kana-kanji-dict'
-if = false
+# [[plugins]] # for skkeleton
+# repo = 'tokuhirom/jawiki-kana-kanji-dict'
+# if = false
 

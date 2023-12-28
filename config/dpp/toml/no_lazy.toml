@@ -4,8 +4,8 @@ hooks_file = '$HOOKS_DIR/dppft.lua'
 repo = 'EdenEast/nightfox.nvim'
 hooks_file = '$HOOKS_DIR/nightfox.lua'
 
-[[plugins]] # vimdoc-ja
-repo = 'vim-jp/vimdoc-ja'
+# [[plugins]] # vimdoc-ja
+# repo = 'vim-jp/vimdoc-ja'
 
 [[plugins]] # learn-vimscript
 repo = 'mattn/learn-vimscript'
