@@ -4,16 +4,11 @@
 
 set -e -u -o pipefail
 
-date_ym1=$(date +'%Y.%m.01')
-readonly date_ym1
-file_name="archlinux-${date_ym1}-x86_64.iso"
-readonly file_name
-iso_url="http://ftp.jaist.ac.jp/pub/Linux/ArchLinux/iso/${date_ym1}/${file_name}"
-readonly iso_url
-sig_url="${iso_url}.sig"
-readonly sig_url
-download_dir=${HOME}/Downloads/arch_iso_${date_ym1}
-readonly download_dir
+declare -r date_ym1="$(date +'%Y-%m-%d')"
+declare -r file_name="archlinux-x86_64.iso"
+declare -r iso_url="http://ftp.jaist.ac.jp/pub/Linux/ArchLinux/iso/latest/${file_name}"
+declare -r sig_url="${iso_url}.sig"
+declare -r download_dir="${HOME}/Downloads/arch_iso_${date_ym1}"
 
 [[ ! -d ${download_dir} ]] && mkdir -p ${download_dir}
 cd ${download_dir}
@@ -27,7 +22,7 @@ if [[ $(command -v pacman-key) ]]; then
 fi
 
 if [[ $(command -v gpg) ]]; then
-  gpg --keyserver-options auto-key-retrieve --verify archlinux-${date_ym1}-x86_64.iso.sig
+  gpg --keyserver-options auto-key-retrieve --verify ${file_name}.sig
   exit 0
 fi
 
