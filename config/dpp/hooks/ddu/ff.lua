@@ -1,4 +1,5 @@
--- lua_ddu-ff {{{
+-- ddu-ff {{{
+lua << EOL
 local ddu_helper = require("user.plugins.ddu")
 local do_action = vim.fn["ddu#ui#do_action"]
 local line = vim.fn.line
@@ -182,9 +183,11 @@ require("user.utils").keymaps_set({
         opts = ff_opt,
     },
 })
+EOL
 -- }}}
 
--- lua_ddu-ff-filter {{{
+-- ddu-ff-filter {{{
+lua << EOL
 local filter_opt = { buffer = true, noremap = true }
 require("user.utils").keymaps_set({
     -- filter insert mode
@@ -250,4 +253,5 @@ require("user.utils").keymaps_set({
         opts = filter_opt,
     },
 })
+EOL
 -- }}}
