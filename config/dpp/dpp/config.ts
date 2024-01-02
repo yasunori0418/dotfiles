@@ -78,28 +78,6 @@ export class Config extends BaseConfig {
       if (toml.plugins) {
         for (const plugin of toml.plugins) {
           recordPlugins[plugin.name] = plugin;
-
-          // plugins以下にあるftpluginを読み込む
-          if (plugin.ftplugin) {
-            for (const filetype of Object.keys(plugin.ftplugin)) {
-              if (ftplugins[filetype]) {
-                ftplugins[filetype] += `\n${plugin.ftplugin[filetype]}`;
-              } else {
-                ftplugins[filetype] = plugin.ftplugin[filetype];
-              }
-            }
-          }
-
-          // plugins以下にあるhooks_fileを読み込む
-          if (plugin.hooks_file) {
-            if (Array.isArray(plugin.hooks_file)) {
-              for (const hooksFile of plugin.hooks_file) {
-                hooksFiles.push(hooksFile);
-              }
-            } else {
-              hooksFiles.push(plugin.hooks_file);
-            }
-          }
         }
       }
 
