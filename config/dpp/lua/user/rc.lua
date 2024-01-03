@@ -36,6 +36,7 @@ local function dpp_setup()
     --         pattern = { "*.lua", "*.toml", "*.ts" },
     --         group = rc_autocmds,
     --         callback = function()
+    --             vim.notify("dpp check_files() is run", vim.log.levels.INFO)
     --             dpp.check_files()
     --         end
     --     })
