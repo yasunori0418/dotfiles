@@ -5,7 +5,7 @@ import {
   Dpp,
   Plugin,
 } from "https://deno.land/x/dpp_vim@v0.0.9/types.ts";
-import { Denops, vars } from "https://deno.land/x/dpp_vim@v0.0.9/deps.ts";
+import { Denops, fn, vars } from "https://deno.land/x/dpp_vim@v0.0.9/deps.ts";
 
 type Toml = {
   hooks_file?: string;
@@ -50,6 +50,11 @@ export class Config extends BaseConfig {
     contextBuilder.setGlobal({
       inlineVimrcs: inlineVimrcs,
       protocols: ["git"],
+      protocolParams: {
+        git: {
+          enablePartialClone: true,
+        },
+      },
     });
 
     const [context, options] = await contextBuilder.get(denops);
