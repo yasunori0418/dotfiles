@@ -42,7 +42,7 @@ on_source = 'vim-molder'
 [[plugins]] # deol.nvim
 repo = 'Shougo/deol.nvim'
 depends = ['ddc.vim']
-on_func = 'deol#start()'
+on_func = 'deol#start'
 hooks_file = '$HOOKS_DIR/deol.lua'
 
 [[plugins]] # open-browser.vim
