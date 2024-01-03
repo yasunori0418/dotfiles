@@ -30,14 +30,7 @@ local function dpp_setup()
     local dpp = require("dpp")
     local rc_autocmds = vim.api.nvim_create_augroup("RcAutocmds", { clear = true })
     if dpp.load_state(M.dpp_dir) then
-        vim.api.nvim_create_autocmd("User", {
-            pattern = "DenopsReady",
-            group = rc_autocmds,
-            callback = function()
-                vim.notify("dpp load_state() is failed", vim.log.levels.WARN)
-                dpp.make_state(M.dpp_dir, joinpath(vim.g.base_dir, "dpp", "config.ts"))
-            end,
-        })
+        dpp.make_state(M.dpp_dir, joinpath(vim.g.base_dir, "dpp", "config.ts"))
     else
         vim.api.nvim_create_autocmd("BufWritePost", {
             pattern = { "*.lua", "*.toml", "*.ts" },
