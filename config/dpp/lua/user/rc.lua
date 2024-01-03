@@ -36,7 +36,6 @@ local function dpp_setup()
             callback = function()
                 vim.notify("dpp load_state() is failed", vim.log.levels.WARN)
                 dpp.make_state(M.dpp_dir, joinpath(vim.g.base_dir, "dpp", "config.ts"))
-                dpp.async_ext_action("installer", "install")
             end,
         })
     else
