@@ -1,4 +1,6 @@
-## experimental plugins
+[[plugins]] # denops.vim
+repo = 'vim-denops/denops.vim'
+
 [[plugins]] # dpp.vim
 repo = 'Shougo/dpp.vim'
 

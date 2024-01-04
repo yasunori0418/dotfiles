@@ -58,7 +58,7 @@ local function l2x_maps()
 end
 
 local joinpath = vim.fs.joinpath
-local repos_github = "~/.cache/dein/repos/github.com"
+local repos_github = "~/.cache/dpp/repos/github.com"
 local basic_dict = "skk-dev/dict"
 local jawiki_dict = "tokuhirom/jawiki-kana-kanji-dict"
 

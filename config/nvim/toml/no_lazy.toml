@@ -1,0 +1,15 @@
+hooks_file = '$HOOKS_DIR/dppft.lua'
+
+[[plugins]] # nightfox.nvim
+repo = 'EdenEast/nightfox.nvim'
+hooks_file = '$HOOKS_DIR/nightfox.lua'
+
+[[plugins]] # vimdoc-ja
+repo = 'vim-jp/vimdoc-ja'
+
+[[plugins]] # learn-vimscript
+repo = 'mattn/learn-vimscript'
+
+[[plugins]] # mr.vim
+repo = 'lambdalisue/mr.vim'
+hooks_file = '$HOOKS_DIR/mr.lua'
