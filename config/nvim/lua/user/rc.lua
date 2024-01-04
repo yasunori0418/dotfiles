@@ -1,6 +1,7 @@
 local M = {}
 local joinpath = vim.fs.joinpath
 
+---@diagnostic disable: duplicate-doc-alias
 ---@alias plugin_add_type
 ---| "prepend"
 ---| "append"
