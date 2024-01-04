@@ -2,21 +2,15 @@ import {
   BaseConfig,
   ConfigReturn,
   ContextBuilder,
+  Denops,
   Dpp,
+  gatherVimrcs,
+  LazyMakeStateResult,
   Plugin,
-} from "https://deno.land/x/dpp_vim@v0.0.9/types.ts";
-import { Denops, fn, vars } from "https://deno.land/x/dpp_vim@v0.0.9/deps.ts";
-
-type Toml = {
-  hooks_file?: string;
-  ftplugins?: Record<string, string>;
-  plugins?: Plugin[];
-};
-
-type LazyMakeStateResult = {
-  plugins: Plugin[];
-  stateLines: string[];
-};
+  Toml,
+  vars,
+  VimrcSkipRule,
+} from "./deps.ts";
 
 export class Config extends BaseConfig {
   override async config(args: {
@@ -29,22 +23,17 @@ export class Config extends BaseConfig {
     const contextBuilder: ContextBuilder = args.contextBuilder;
     const dpp: Dpp = args.dpp;
 
-    const inlineVimrcs: string[] = [];
-    try {
-      const rc_dir: string = await vars.g.get(denops, "rc_dir");
-      if (rc_dir === null) throw "failure read directory in g:rc_dir";
-      for (const dirEntry of Deno.readDirSync(rc_dir)) {
-        if (typeof dirEntry == "undefined") continue;
-        if (
-          dirEntry.name == "neovide.lua" &&
-          vars.globals.get(denops, "neovide") === null
-        ) continue;
-        inlineVimrcs.push(`${rc_dir}/${dirEntry.name}`);
-      }
-    } catch (e) {
-      console.error(e);
-      throw e;
-    }
+    const vimrcSkipRules = [
+      {
+        name: "neovide.lua",
+        condition: vars.globals.get(denops, "neovide") === null,
+      },
+    ] as VimrcSkipRule[];
+
+    const inlineVimrcs: string[] = gatherVimrcs(
+      await vars.g.get(denops, "rc_dir"),
+      vimrcSkipRules,
+    );
 
     contextBuilder.setGlobal({
       inlineVimrcs: inlineVimrcs,
