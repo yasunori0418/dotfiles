@@ -27,7 +27,6 @@ export class Config extends BaseConfig {
   }): Promise<ConfigReturn> {
     const denops: Denops = args.denops;
     const contextBuilder: ContextBuilder = args.contextBuilder;
-    // const basePath: string = args.basePath;
     const dpp: Dpp = args.dpp;
 
     const inlineVimrcs: string[] = [];
