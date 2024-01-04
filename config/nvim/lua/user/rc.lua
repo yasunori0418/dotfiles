@@ -54,18 +54,16 @@ end
 ---NVIM_APPNAMEを使ってプロファイルとして分離してみる
 ---NVIM_APPNAMEが設定されていない場合は、デフォルトの`nvim`になる
 function M.setup()
-    -- local nvim_appname = vim.env.NVIM_APPNAME or "nvim"
-    -- M.dpp_dir = nil
-    -- if nvim_appname == "nvim" then
-    M.dpp_dir = joinpath(vim.env.XDG_CACHE_HOME, "dpp")
-    -- else
-    -- M.dpp_dir = joinpath(vim.env.XDG_CACHE_HOME, nvim_appname .. "_dpp")
-    -- end
+    local nvim_appname = vim.env.NVIM_APPNAME or "nvim"
+    if nvim_appname == "nvim" then
+        M.dpp_dir = joinpath(vim.env.XDG_CACHE_HOME, "dpp")
+    else
+        M.dpp_dir = joinpath(vim.env.XDG_CACHE_HOME, nvim_appname .. "_dpp")
+    end
 
-    vim.g.base_dir = joinpath(vim.env.XDG_CONFIG_HOME, "dpp"--[[ nvim_appname ]])
+    vim.g.base_dir = joinpath(vim.env.XDG_CONFIG_HOME, nvim_appname)
     vim.env.BASE_DIR = vim.g.base_dir
 
-    -- vim.g.snippet_dir = joinpath(vim.g.base_dir, "snippets")
     vim.g.hooks_dir = joinpath(vim.g.base_dir, "hooks")
     vim.env.HOOKS_DIR = vim.g.hooks_dir
     vim.g.snippet_dir = joinpath(vim.g.base_dir, "snippets")
