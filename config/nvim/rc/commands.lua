@@ -1,5 +1,19 @@
 local command = vim.api.nvim_create_user_command
 local ddc_change_filter = require("user.plugins.ddc").change_filter
+local dpp = require("dpp")
+
+command("DppInstall", function()
+    dpp.async_ext_action("installer", "install")
+end, {})
+
+command("DppUpdate", function()
+    dpp.async_ext_action("installer", "update")
+end, {})
+
+command("DppClear", function()
+    dpp.clear_state()
+    vim.cmd.quit()
+end, {})
 
 command("DDCFuzzyFilter", function(opts)
     ddc_change_filter(opts.bang, "fuzzy")

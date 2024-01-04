@@ -50,8 +50,9 @@ end
 lexima_util.altercmd([=[si\%[licon]]=], [[Silicon]])
 lexima_util.altercmd([=[r\%[run]]=], [[QuickRun]])
 lexima_util.altercmd([=[ma\%[son]]=], [[Mason]])
-lexima_util.altercmd([[du]], [[DeinUpdate]])
-lexima_util.altercmd([[rc]], [[Recache]])
+lexima_util.altercmd([[di]], [[DppInstall]])
+lexima_util.altercmd([[du]], [[DppUpdate]])
+lexima_util.altercmd([[dc]], [[DppClear]])
 lexima_util.altercmd([[ej]], [[Translate]]) -- 英語から日本語へ
 lexima_util.altercmd([[je]], [[Translate!]]) -- 日本語から英語へ
 lexima_util.altercmd([[gcf]], [[GinChaperon %]])
