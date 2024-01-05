@@ -1,9 +1,23 @@
-import { Plugin } from "./deps.ts";
+import {
+  Context,
+  ContextBuilder,
+  Denops,
+  Dpp,
+  DppOptions,
+  Plugin,
+} from "./deps.ts";
 
 export type Toml = {
   hooks_file?: string;
   ftplugins?: Record<string, string>;
   plugins?: Plugin[];
+};
+
+export type ConfigArg = {
+  denops: Denops;
+  contextBuilder: ContextBuilder;
+  basePath: string;
+  dpp: Dpp;
 };
 
 export type LazyMakeStateResult = {
