@@ -1,9 +1,4 @@
-import {
-  ContextBuilder,
-  Denops,
-  Dpp,
-  Plugin,
-} from "./deps.ts";
+import { ContextBuilder, Denops, Dpp, Plugin } from "./deps.ts";
 
 export type Toml = {
   hooks_file?: string;
@@ -46,4 +41,34 @@ export function gatherVimrcs(
     inlineVimrcs.push(`${path}/${dirEntry.name}`);
   }
   return inlineVimrcs;
+}
+
+export async function gatherTomls(
+  path: string,
+  noLazyTomlNames: string[],
+  args: ConfigArguments,
+): Promise<Toml[]> {
+  const tomls: Toml[] = [];
+  const [context, options] = await args.contextBuilder.get(args.denops);
+
+  for (const tomlFile of Deno.readDirSync(path)) {
+    if (typeof tomlFile.name === "undefined") continue;
+    const isLazy = !noLazyTomlNames.includes(tomlFile.name);
+    tomls.push(
+      await args.dpp.extAction(
+        args.denops,
+        context,
+        options,
+        "toml",
+        "load",
+        {
+          path: `${path}/${tomlFile.name}`,
+          options: {
+            lazy: isLazy,
+          },
+        },
+      ) as Toml,
+    );
+  }
+  return tomls;
 }
