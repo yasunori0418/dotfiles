@@ -4,6 +4,7 @@ import {
   ConfigReturn,
   Denops,
   Dpp,
+  gatherCheckFiles,
   gatherTomls,
   gatherVimrcs,
   LazyMakeStateResult,
@@ -74,7 +75,18 @@ export class Config extends BaseConfig {
       },
     ) as LazyMakeStateResult | undefined;
 
+    const checkFiles = gatherCheckFiles(
+      denops,
+      await vars.g.get(denops, "base_dir"),
+      [
+        "**/*.lua",
+        "**/*.toml",
+        "**/*.ts",
+      ],
+    );
+
     return {
+      checkFiles: await checkFiles,
       hooksFiles,
       plugins: lazyResult?.plugins ?? [],
       stateLines: lazyResult?.stateLines ?? [],
