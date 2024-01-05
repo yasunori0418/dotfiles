@@ -1,9 +1,7 @@
 import {
-  Context,
   ContextBuilder,
   Denops,
   Dpp,
-  DppOptions,
   Plugin,
 } from "./deps.ts";
 
@@ -13,7 +11,7 @@ export type Toml = {
   plugins?: Plugin[];
 };
 
-export type ConfigArg = {
+export type ConfigArguments = {
   denops: Denops;
   contextBuilder: ContextBuilder;
   basePath: string;

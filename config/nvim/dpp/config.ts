@@ -1,6 +1,6 @@
 import {
   BaseConfig,
-  ConfigArg,
+  ConfigArguments,
   ConfigReturn,
   ContextBuilder,
   Denops,
@@ -14,7 +14,7 @@ import {
 } from "./deps.ts";
 
 export class Config extends BaseConfig {
-  override async config(args: ConfigArg): Promise<ConfigReturn> {
+  override async config(args: ConfigArguments): Promise<ConfigReturn> {
     const denops: Denops = args.denops;
     const contextBuilder: ContextBuilder = args.contextBuilder;
     const dpp: Dpp = args.dpp;
