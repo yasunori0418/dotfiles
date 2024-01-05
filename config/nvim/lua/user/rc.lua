@@ -31,7 +31,11 @@ local function dpp_setup()
     local dpp = require("dpp")
     local rc_autocmds = vim.api.nvim_create_augroup("RcAutocmds", { clear = true })
     if dpp.load_state(M.dpp_dir) > 0 then
-        dpp.make_state(M.dpp_dir, joinpath(vim.g.base_dir, "dpp", "config.ts"))
+        dpp.make_state(
+            M.dpp_dir,
+            joinpath(vim.g.base_dir, "dpp", "config.ts"),
+            M.nvim_appname
+        )
     else
         vim.api.nvim_create_autocmd("BufWritePost", {
             pattern = {
@@ -59,14 +63,14 @@ end
 ---NVIM_APPNAMEを使ってプロファイルとして分離してみる
 ---NVIM_APPNAMEが設定されていない場合は、デフォルトの`nvim`になる
 function M.setup()
-    local nvim_appname = vim.env.NVIM_APPNAME or "nvim"
-    if nvim_appname == "nvim" then
+    M.nvim_appname = vim.env.NVIM_APPNAME or "nvim"
+    if M.nvim_appname == "nvim" then
         M.dpp_dir = joinpath(vim.env.XDG_CACHE_HOME, "dpp")
     else
-        M.dpp_dir = joinpath(vim.env.XDG_CACHE_HOME, nvim_appname .. "_dpp")
+        M.dpp_dir = joinpath(vim.env.XDG_CACHE_HOME, M.nvim_appname .. "_dpp")
     end
 
-    vim.g.base_dir = joinpath(vim.env.XDG_CONFIG_HOME, nvim_appname)
+    vim.g.base_dir = joinpath(vim.env.XDG_CONFIG_HOME, M.nvim_appname)
     vim.env.BASE_DIR = vim.g.base_dir
 
     vim.g.hooks_dir = joinpath(vim.g.base_dir, "hooks")
