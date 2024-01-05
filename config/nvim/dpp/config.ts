@@ -2,9 +2,9 @@ import {
   BaseConfig,
   ConfigArguments,
   ConfigReturn,
-  ContextBuilder,
   Denops,
   Dpp,
+  gatherTomls,
   gatherVimrcs,
   LazyMakeStateResult,
   Plugin,
@@ -16,7 +16,6 @@ import {
 export class Config extends BaseConfig {
   override async config(args: ConfigArguments): Promise<ConfigReturn> {
     const denops: Denops = args.denops;
-    const contextBuilder: ContextBuilder = args.contextBuilder;
     const dpp: Dpp = args.dpp;
 
     const vimrcSkipRules = [
@@ -31,7 +30,7 @@ export class Config extends BaseConfig {
       vimrcSkipRules,
     );
 
-    contextBuilder.setGlobal({
+    args.contextBuilder.setGlobal({
       inlineVimrcs: inlineVimrcs,
       protocols: ["git"],
       protocolParams: {
@@ -41,23 +40,11 @@ export class Config extends BaseConfig {
       },
     });
 
-    const [context, options] = await contextBuilder.get(denops);
-
-    const tomlDir: string = await vars.globals.get(denops, "toml_dir");
-    const tomls: Toml[] = [];
-
-    for (const tomlFile of Deno.readDirSync(tomlDir)) {
-      if (typeof tomlFile.name === "undefined") continue;
-      const isLazy = !["dpp.toml", "no_lazy.toml"].includes(tomlFile.name);
-      tomls.push(
-        await dpp.extAction(denops, context, options, "toml", "load", {
-          path: `${tomlDir}/${tomlFile.name}`,
-          options: {
-            lazy: isLazy,
-          },
-        }) as Toml,
-      );
-    }
+    const tomls = await gatherTomls(
+      await vars.globals.get(denops, "toml_dir"),
+      ["dpp.toml", "no_lazy.toml"],
+      args,
+    ) as Toml[];
 
     const recordPlugins: Record<string, Plugin> = {};
     const ftplugins: Record<string, string> = {};
@@ -84,6 +71,8 @@ export class Config extends BaseConfig {
         hooksFiles.push(toml.hooks_file);
       }
     }
+
+    const [context, options] = await args.contextBuilder.get(denops);
 
     const lazyResult = await dpp.extAction(
       denops,
