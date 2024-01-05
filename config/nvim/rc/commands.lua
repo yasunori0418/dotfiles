@@ -3,7 +3,7 @@ local ddc_change_filter = require("user.plugins.ddc").change_filter
 local dpp = require("dpp")
 
 command("DppInstall", function()
-    dpp.async_ext_action("installer", "install")
+    dpp.sync_ext_action("installer", "install")
 end, {})
 
 command("DppUpdate", function()
