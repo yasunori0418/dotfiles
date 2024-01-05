@@ -17,7 +17,6 @@ import {
 export class Config extends BaseConfig {
   override async config(args: ConfigArguments): Promise<ConfigReturn> {
     const denops: Denops = args.denops;
-    const dpp: Dpp = args.dpp;
 
     const vimrcSkipRules = [
       {
@@ -64,7 +63,7 @@ export class Config extends BaseConfig {
 
     const [context, options] = await args.contextBuilder.get(denops);
 
-    const lazyResult = await dpp.extAction(
+    const lazyResult = await args.dpp.extAction(
       denops,
       context,
       options,
