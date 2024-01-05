@@ -47,23 +47,12 @@ export class Config extends BaseConfig {
     ) as Toml[];
 
     const recordPlugins: Record<string, Plugin> = {};
-    const ftplugins: Record<string, string> = {};
     const hooksFiles: string[] = [];
 
     for (const toml of tomls) {
       if (toml.plugins) {
         for (const plugin of toml.plugins) {
           recordPlugins[plugin.name] = plugin;
-        }
-      }
-
-      if (toml.ftplugins) {
-        for (const filetype of Object.keys(toml.ftplugins)) {
-          if (ftplugins[filetype]) {
-            ftplugins[filetype] += `\n${toml.ftplugins[filetype]}`;
-          } else {
-            ftplugins[filetype] = toml.ftplugins[filetype];
-          }
         }
       }
 
@@ -86,7 +75,6 @@ export class Config extends BaseConfig {
     ) as LazyMakeStateResult | undefined;
 
     return {
-      ftplugins,
       hooksFiles,
       plugins: lazyResult?.plugins ?? [],
       stateLines: lazyResult?.stateLines ?? [],
