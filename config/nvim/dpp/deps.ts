@@ -17,4 +17,4 @@ export type {
   Toml,
   VimrcSkipRule,
 } from "./helper.ts";
-export { gatherVimrcs } from "./helper.ts";
+export { gatherTomls, gatherVimrcs } from "./helper.ts";
