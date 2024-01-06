@@ -116,9 +116,4 @@ on_source = 'ddc.vim'
 [[plugins]] # vim-vsnip
 repo = 'hrsh7th/vim-vsnip'
 hooks_file = '$HOOKS_DIR/vsnip.lua'
-
-[[plugins]] # vim-vsnip-integ
-repo = 'hrsh7th/vim-vsnip-integ'
-depends = 'vim-vsnip'
-on_source = 'ddc.vim'
 # }}}
