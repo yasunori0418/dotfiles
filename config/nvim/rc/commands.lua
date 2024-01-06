@@ -23,6 +23,7 @@ end, {})
 
 command("DppClear", function()
     dpp.clear_state()
+    vim.loader.reset()
     vim.cmd.quit()
 end, {})
 
