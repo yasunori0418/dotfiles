@@ -81,10 +81,10 @@ type DduDummySource = {
 export function separator(
   word: string,
   hlGroup:
-    | "ErrorMsg" // #BF616A
-    | "Type" // #EBCB8B
-    | "Keyword" // #A3BE8C
-    | "String" // #B48EAD
+    | "ErrorMsg"
+    | "Type"
+    | "Keyword"
+    | "String"
    = "Type",
 ): DduDummySource {
   return {
