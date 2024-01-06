@@ -27,6 +27,19 @@ local function plugin_add(repo, host, type)
     end
 end
 
+local function gather_check_files()
+    local glob_patterns = {
+        "**/*.lua",
+        "**/*.toml",
+        "**/*.ts",
+    }
+    local check_files = {}
+    for _, glob_pattern in pairs(glob_patterns) do
+        table.insert(check_files, vim.fn.globpath(vim.g.base_dir, glob_pattern, true, true))
+    end
+    return vim.tbl_flatten(check_files)
+end
+
 local function dpp_setup()
     local dpp = require("dpp")
     local rc_autocmds = vim.api.nvim_create_augroup("RcAutocmds", { clear = true })
@@ -34,11 +47,7 @@ local function dpp_setup()
         dpp.make_state(M.dpp_dir, joinpath(vim.g.base_dir, "dpp", "config.ts"), M.nvim_appname)
     else
         vim.api.nvim_create_autocmd("BufWritePost", {
-            pattern = {
-                "*.lua",
-                "*.toml",
-                "*.ts",
-            },
+            pattern = gather_check_files(),
             group = rc_autocmds,
             callback = function()
                 vim.notify("dpp check_files() is run", vim.log.levels.INFO)
