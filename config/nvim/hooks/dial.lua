@@ -124,6 +124,7 @@ config.augends:register_group({
             word = true,
             cyclic = true,
         }),
+        augend.semver.alias.semver,
     },
     case = {
         augend.case.new({
