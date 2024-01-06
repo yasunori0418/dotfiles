@@ -10,8 +10,10 @@ export ZENO_GIT_TREE="exa --tree"
 export ZENO_DISABLE_BUILTIN_COMPLETION=1
 
 # zeno keybinds
-bindkey " "  zeno-auto-snippet
-bindkey "^I" zeno-completion
-bindkey "^R" zeno-history-selection
-bindkey '^X' zeno-insert-snippet
-bindkey '^G' zeno-ghq-cd
+if [[ $(command -v deno) ]]; then
+  bindkey " "  zeno-auto-snippet
+  bindkey "^I" zeno-completion
+  bindkey "^R" zeno-history-selection
+  bindkey '^X' zeno-insert-snippet
+  bindkey '^G' zeno-ghq-cd
+fi
