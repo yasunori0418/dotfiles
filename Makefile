@@ -51,10 +51,13 @@ work_repolist: ## Update ghq management of repository list.
 work_repoget: ## Get and update ghq management repositories.
 	@./scripts/work_repolist.sh
 
+mise-install: ## Install mise
+	@curl https://mise.jdx.dev/install.sh | sh
+
 init: ## expand config files.
 	@mkdir -p ${HOME}/.local/bin
 	@mkdir -p ${HOME}/.local/dotfiles
-	@./scripts/rtx_install.sh
+	@make mise-install
 	@./scripts/get_modules.sh
 	@ln -snvf ~/dotfiles/home/.??* ~/
 	@ln -snvf ~/dotfiles/home/package.json ~/
