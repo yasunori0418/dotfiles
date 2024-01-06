@@ -40,13 +40,13 @@ completions:
       --prompt: "'git staging> '"
       --preview: "bat {}"
 
-  - name: rtx plugins catalog
+  - name: mise plugins catalog
     patterns:
-      - "^rtx (plugins |)(i|install) $"
-    sourceCommand: "rtx plugins ls-remote"
+      - "^mise (plugins |)(i|install) $"
+    sourceCommand: "mise plugins ls-remote"
     callback: "awk -F ' ' '{print $1}'"
     options:
-      --prompt: "'rtx plugins> '"
+      --prompt: "'mise plugins> '"
 
   - name: yay(pacman) packages catalog
     patterns:
