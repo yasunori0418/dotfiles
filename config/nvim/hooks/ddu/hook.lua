@@ -110,13 +110,6 @@ utils.keymaps_set({
         end,
         opts = opt,
     },
-    {
-        mode = "n",
-        lhs = [[<Plug>(ddu-ff)N]],
-        rhs = function()
-            vim.fn["ddu#start"]({ name = "notify" })
-        end,
-    },
 
     -- git control by ddu
     { -- git:status

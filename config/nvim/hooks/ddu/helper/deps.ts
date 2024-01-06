@@ -16,7 +16,3 @@ export type {
 export type {
   ActionData as GitBranchActionData,
 } from "https://raw.githubusercontent.com/kyoh86/ddu-source-git_branch/main/denops/%40ddu-kinds/git_branch.ts";
-export type {
-  ActionData as NvimNotifyActionData,
-  Notification,
-} from "https://raw.githubusercontent.com/yuki-yano/ddu-source-nvim-notify/main/denops/%40ddu-kinds/nvim-notify.ts";

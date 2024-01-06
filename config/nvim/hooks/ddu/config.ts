@@ -5,13 +5,9 @@ import {
   BaseConfig,
   ConfigArguments,
   expandHome,
-  fn,
   GitCommitActionData,
-  Notification,
-  NvimNotifyActionData,
   separator,
   uiSize,
-  vars,
 } from "./helper/deps.ts";
 
 type Params = Record<string, unknown>;
@@ -306,28 +302,6 @@ export class Config extends BaseConfig {
         },
         lsp: {
           defaultAction: "open",
-        },
-        "nvim-notify": {
-          defaultAction: "yank",
-          actions: {
-            yank: async (
-              args: ActionArguments<Params>,
-            ): Promise<ActionFlags> => {
-              const action = args.items[0].action as NvimNotifyActionData;
-              const notification = action.notification as Notification;
-              const message = notification.message.join(" ");
-
-              await fn.setreg(denops, '"', message, "v");
-              await fn.setreg(
-                denops,
-                await vars.v.get(denops, "register"),
-                message,
-                "v",
-              );
-
-              return Promise.resolve(ActionFlags.Persist);
-            },
-          },
         },
       },
       actionOptions: {
@@ -931,20 +905,6 @@ export class Config extends BaseConfig {
       sources: [
         {
           name: "lsp_diagnostic",
-        },
-      ],
-    });
-
-    args.contextBuilder.patchLocal("notify", {
-      ui: "ff",
-      uiParams: {
-        ff: {
-          ignoreEmpty: true,
-        },
-      },
-      sources: [
-        {
-          name: "nvim-notify",
         },
       ],
     });

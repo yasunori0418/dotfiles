@@ -120,10 +120,6 @@ on_source = 'ddu.vim'
 repo = 'Shougo/ddu-source-dummy'
 on_source = 'ddu.vim'
 
-[[plugins]]
-repo = 'yuki-yano/ddu-source-nvim-notify'
-on_source = 'ddu.vim'
-
 # }}}
 
 # Filter plugins {{{
