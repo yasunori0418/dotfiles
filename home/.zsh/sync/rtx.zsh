@@ -1,6 +1,6 @@
-# rtx
-rtx_cache=${XDG_CACHE_HOME}/rtx.zsh
-if [[ ! -r ${rtx_cache} || ${RTX_CONFIG_FILE} -nt ${rtx_cache} ]]; then
-  rtx activate zsh > ${rtx_cache}
+# mise
+mise_cache=${XDG_CACHE_HOME}/mise.zsh
+if [[ ! -r ${mise_cache} || ${MISE_CONFIG_FILE} -nt ${mise_cache} ]]; then
+  mise activate zsh > ${mise_cache}
 fi
-source ${rtx_cache}
+source ${mise_cache}
