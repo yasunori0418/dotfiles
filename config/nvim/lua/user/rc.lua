@@ -54,7 +54,7 @@ local function dpp_setup()
         pattern = "Dpp:makeStatePost",
         group = rc_autocmds,
         callback = function()
-            vim.notify("dpp make_state() is done", vim.log.levels.WARN)
+            vim.notify("dpp make_state() is done", vim.log.levels.INFO)
         end,
     })
 end
