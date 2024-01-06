@@ -26,7 +26,7 @@ fidget.setup({
             done_style = "Constant", -- Highlight group for completed LSP tasks
             progress_ttl = math.huge, -- How long a message should persist when in progress
             -- Icon shown when LSP progress tasks are in progress
-            progress_icon = { pattern = "dots", period = 1 },
+            progress_icon = fidget.spinner.animate("meter", 1),
             -- Highlight group for in-progress LSP tasks
             progress_style = "WarningMsg",
             group_style = "Title", -- Highlight group for group name (LSP server name)
