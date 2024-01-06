@@ -1,3 +1,4 @@
 [tools]
 hyperfine = "latest"
 usql = "latest"
+tokei = "latest"
