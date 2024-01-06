@@ -210,9 +210,4 @@ vim.fn["ddu#custom#load_config"](
     -- $HOOKS_DIR/ddu/config.ts
     joinpath(ddu_hooks, "config.ts")
 )
-
-vim.api.nvim_create_user_command("DeinUpdate", function()
-    vim.fn["ddu#start"]({ name = "dein_update" })
-end, {})
-
 -- }}}

@@ -1,15 +1,29 @@
 local command = vim.api.nvim_create_user_command
-local dein = require("dein")
 local ddc_change_filter = require("user.plugins.ddc").change_filter
+local dpp = require("dpp")
 
-command("DeinDelete", function()
-    require("user.plugins.dein").check_uninstall()
+command("DppInstall", function()
+    dpp.sync_ext_action("installer", "install")
 end, {})
 
-command("Recache", function()
-    dein.recache_runtimepath()
-    vim.loader.reset()
-    vim.cmd("qall")
+command("DppInstallQuit", function()
+    vim.api.nvim_create_autocmd("User", {
+        pattern = "Dpp:makeStatePost",
+        callback = function()
+            vim.notify("dpp make_state() is done", vim.log.levels.INFO)
+            vim.cmd.quit()
+        end,
+    })
+    dpp.sync_ext_action("installer", "install")
+end, {})
+
+command("DppUpdate", function()
+    dpp.async_ext_action("installer", "update")
+end, {})
+
+command("DppClear", function()
+    dpp.clear_state()
+    vim.cmd.quit()
 end, {})
 
 command("DDCFuzzyFilter", function(opts)

@@ -4,7 +4,6 @@
 repo = 'Shougo/ddu.vim'
 depends = ['denops.vim', 'nvim-treesitter']
 on_func = 'ddu#start'
-on_cmd = 'DeinUpdate'
 hooks_file = '$HOOKS_DIR/ddu/hook.lua'
 
 # }}}
@@ -55,10 +54,10 @@ on_source = 'ddu.vim'
 
 [[plugins]] # vim-readme-viewer
 repo = '4513ECHO/vim-readme-viewer'
-on_cmd = 'ReadmeOpen'
+on_cmd = ['ReadmeOpen', 'DppReadme']
 on_source = 'ddu.vim'
 lua_add = '''
-vim.g['readme_viewer#plugin_manager'] = [[dein.vim]]
+vim.g['readme_viewer#plugin_manager'] = [[dpp.vim]]
 '''
 
 [[plugins]] # ddu-source-buffer
@@ -83,10 +82,6 @@ on_source = 'ddu.vim'
 
 [[plugins]]
 repo = 'matsui54/ddu-source-highlight'
-on_source = 'ddu.vim'
-
-[[plugins]]
-repo = 'matsui54/ddu-source-dein_update'
 on_source = 'ddu.vim'
 
 [[plugins]]

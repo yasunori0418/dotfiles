@@ -1,11 +1,4 @@
 # denops plugins
-[[plugins]] # denops.vim
-repo = 'vim-denops/denops.vim'
-lazy = false
-lua_add = '''
--- vim.g.denops_server_addr = [[127.0.0.1:32123]]
-'''
-
 [[plugins]] # skkeleton
 repo = 'vim-skk/skkeleton'
 depends = 'denops.vim'
