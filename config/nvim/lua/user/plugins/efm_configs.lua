@@ -62,7 +62,6 @@ end
 ---setup of efm-langserver.
 ---@param options table
 function M.setup(options)
-    vim.notify = require("notify")
     setmetatable(options, {
         __index = {
             all_installs = true,
