@@ -31,11 +31,7 @@ local function dpp_setup()
     local dpp = require("dpp")
     local rc_autocmds = vim.api.nvim_create_augroup("RcAutocmds", { clear = true })
     if dpp.load_state(M.dpp_dir) > 0 then
-        dpp.make_state(
-            M.dpp_dir,
-            joinpath(vim.g.base_dir, "dpp", "config.ts"),
-            M.nvim_appname
-        )
+        dpp.make_state(M.dpp_dir, joinpath(vim.g.base_dir, "dpp", "config.ts"), M.nvim_appname)
     else
         vim.api.nvim_create_autocmd("BufWritePost", {
             pattern = {
