@@ -391,12 +391,6 @@ require("user.utils").keymaps_set({
         end,
         opts = noremap_silent,
     },
-    { -- redrawもnohlsearchもやりたいことの目的が同じという事実
-        mode = { "n" },
-        lhs = [[<C-l>]],
-        rhs = [[<Cmd>nohlsearch<Bar>diffupdate<CR><C-l>]],
-        opts = noremap_silent,
-    },
     { -- 読む用・書く用
         mode = { "n" },
         lhs = [[ n]],
