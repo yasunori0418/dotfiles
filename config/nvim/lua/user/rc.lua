@@ -36,6 +36,7 @@ local function gather_check_files()
     local check_files = {}
     for _, glob_pattern in pairs(glob_patterns) do
         table.insert(check_files, vim.fn.globpath(vim.g.base_dir, glob_pattern, true, true))
+        table.insert(check_files, vim.fn.globpath("~/dotfiles/config/nvim", glob_pattern, true, true))
     end
     return vim.tbl_flatten(check_files)
 end
