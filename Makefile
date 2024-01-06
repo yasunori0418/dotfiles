@@ -12,7 +12,8 @@ nvim-build: ## building neovim head.
 nvim-night: ## download neovim at version nightly build.
 	@./scripts/nvim_night.sh
 
-nvim-plug-install: ## installation neovim plugins after make_state()
+nvim-setup: ## neovim first setups.
+	@nvim
 	@nvim -c 'DppInstallQuit'
 
 true-color: ## 24-bit-color.sh
