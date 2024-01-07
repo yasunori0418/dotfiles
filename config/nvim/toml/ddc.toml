@@ -117,4 +117,8 @@ on_source = 'ddc.vim'
 [[plugins]] # vim-vsnip
 repo = 'hrsh7th/vim-vsnip'
 hooks_file = '$HOOKS_DIR/vsnip.lua'
+
+[[plugins]]
+repo = 'uga-rosa/denippet.vim'
+hooks_file = '$HOOKS_DIR/denippet.lua'
 # }}}
