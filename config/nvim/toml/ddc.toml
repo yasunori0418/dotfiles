@@ -76,11 +76,6 @@ repo = 'Shougo/ddc-source-input'
 on_source = 'ddc.vim'
 
 [[plugins]]
-repo = 'uga-rosa/ddc-source-vsnip'
-depends = 'vim-vsnip'
-on_source = 'ddc.vim'
-
-[[plugins]]
 repo = 'Shougo/ddc-source-shell-native'
 on_source = 'ddc.vim'
 
