@@ -1,0 +1,12 @@
+[is_root]
+body = ["if [[ \\${EUID} -ne 0 ]]; then","\techo -e 'Parmission denied.\\nPlease run as root.'","\texit 1","fi","\n$0"]
+description = "Check execute as root."
+prefix = "is_root"
+scope = "sh"
+
+[shebang]
+body = ["#!/usr/bin/env bash","$0"]
+description = "shebang must write in bash script first line"
+prefix = ["bang","bash","shebang","#!"]
+scope = "sh"
+

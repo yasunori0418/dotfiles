@@ -1,0 +1,6 @@
+[shebang]
+body = ["#!/usr/bin/env $0"]
+description = "shebang must write in script first line."
+prefix = "shebang"
+scope = "global"
+
