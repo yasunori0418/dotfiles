@@ -7,13 +7,14 @@
   "dependencyDashboard": false,
   "automerge": true,
   "branchConcurrentLimit": 0,
-  "major": {
-    "stabilityDays": 7
-  },
-  "minor": {
-    "stabilityDays": 3
-  },
-  "patch": {
-    "stabilityDays": 2
-  }
+  "packageRules": [
+    {
+      "matchFileNames": ["deps.ts"],
+      "groupName": "deno dependencies."
+    },
+    {
+      "matchFileNames": ["package.json"],
+      "groupName": "package.json dependencies."
+    }
+  ]
 }
