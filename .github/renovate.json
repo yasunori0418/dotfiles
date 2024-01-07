@@ -1,5 +1,8 @@
 {
-  "extends": ["config:base"],
+  "extends": [
+    "config:base",
+    "github>Omochice/renovate-config:deno"
+  ],
   "ignorePresets": [":prHourlyLimit2"],
   "timezone": "Asia/Tokyo",
   "dependencyDashboard": false,
