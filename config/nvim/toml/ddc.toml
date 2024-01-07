@@ -120,5 +120,10 @@ hooks_file = '$HOOKS_DIR/vsnip.lua'
 
 [[plugins]]
 repo = 'uga-rosa/denippet.vim'
+depends = ['denops.vim', 'friendly-snippets']
+on_source = 'ddc.vim'
 hooks_file = '$HOOKS_DIR/denippet.lua'
+
+[[plugins]]
+repo = 'rafamadriz/friendly-snippets'
 # }}}
