@@ -10,7 +10,7 @@ jobs:
     name: Update
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
       - uses: hasundue/denopendabot@0.18.2 # @denopendabot hasundue/denopendabot
         with:
           user-token: ${{ secrets.GITHUB_TOKEN }} # needed for updating workflows
