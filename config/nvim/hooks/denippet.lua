@@ -23,7 +23,7 @@ utils.keymaps_set({
         mode = { "i", "s" },
         lhs = [[<C-f>]],
         rhs = function()
-            if vim.fn["denippet#jumpable"](1) > 0 then
+            if vim.fn["denippet#jumpable"](1) then
                 return [[<Plug>(denippet-jump-next)]]
             else
                 return [[<C-G>U<Right>]]
@@ -35,7 +35,7 @@ utils.keymaps_set({
         mode = { "i", "s" },
         lhs = [[<C-b>]],
         rhs = function()
-            if vim.fn["denippet#jumpable"](-1) > 0 then
+            if vim.fn["denippet#jumpable"](-1) then
                 return [[<Plug>(denippet-jump-prev)]]
             else
                 return [[<C-G>U<Left>]]
