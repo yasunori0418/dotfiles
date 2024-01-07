@@ -14,4 +14,4 @@ jobs:
       - uses: hasundue/denopendabot@0.18.2 # @denopendabot hasundue/denopendabot
         with:
           base-branch: main
-          include: "config/nvim/hooks/ddu/deps.ts config/nvim/hooks/ddc/deps.ts config/nvim/dpp/deps.ts"
+          include: "'config/nvim/hooks/ddu/deps.ts config/nvim/hooks/ddc/deps.ts config/nvim/dpp/deps.ts'"
