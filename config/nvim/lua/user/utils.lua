@@ -124,4 +124,13 @@ function M.resolve_module_namespace(base_module, ...)
     return result
 end
 
+
+---配列から最後の要素だけを取得する。
+---@generic T
+---@param list T[]
+---@return T
+function M.last(list)
+    return list[#list]
+end
+
 return M
