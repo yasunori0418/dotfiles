@@ -9,7 +9,7 @@ import {
 
 export class Config extends BaseConfig {
   override config(args: ConfigArguments): Promise<void> {
-    const main_sources: UserSource[] = ["vsnip", "around", "file", "rg"];
+    const main_sources: UserSource[] = ["denippet", "around", "file", "rg"];
     const denops = args.denops;
 
     args.contextBuilder.patchGlobal({
@@ -48,7 +48,7 @@ export class Config extends BaseConfig {
           enabledIf: "finddir('.git', ';') != ''",
         },
         necovim: { mark: "vim" },
-        vsnip: {
+        denippet: {
           mark: "snip",
           dup: "keep",
         },
@@ -109,7 +109,7 @@ export class Config extends BaseConfig {
           enableAdditionalTextEdit: true,
           confirmBehavior: "replace",
           snippetEngine: async (body: string) => {
-            await denops.call("vsnip#anonymous", body);
+            await denops.call("denippet#anonymous", body);
           },
         },
       },
