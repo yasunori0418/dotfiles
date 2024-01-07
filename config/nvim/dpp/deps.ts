@@ -1,4 +1,4 @@
-export { BaseConfig } from "https://deno.land/x/dpp_vim@v0.0.9/types.ts";
+export { BaseConfig } from "https://deno.land/x/dpp_vim@v0.0.8/types.ts";
 export type {
   ConfigReturn,
   Context,
@@ -8,8 +8,8 @@ export type {
   Plugin,
 } from "https://deno.land/x/dpp_vim@v0.0.9/types.ts";
 
-export type { Denops } from "https://deno.land/x/dpp_vim@v0.0.9/deps.ts";
-export { fn, vars } from "https://deno.land/x/dpp_vim@v0.0.9/deps.ts";
+export type { Denops } from "https://deno.land/x/dpp_vim@v0.0.8/deps.ts";
+export { fn, vars } from "https://deno.land/x/dpp_vim@v0.0.8/deps.ts";
 
 export type {
   ConfigArguments,
