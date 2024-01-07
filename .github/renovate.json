@@ -3,7 +3,6 @@
     "config:base",
     "github>Omochice/renovate-config:deno"
   ],
-  "schedule": ["0 0 * * *"],
   "timezone": "Asia/Tokyo",
   "dependencyDashboard": false,
   "automerge": true,
