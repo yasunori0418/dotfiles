@@ -3,3 +3,17 @@ body = ["[[plugins]]","repo = '$CLIPBOARD'","$0"]
 description = "dark plugin manager of vim."
 prefix = "plugins"
 
+[temp]
+body = """
+[${1:snippet_name}]
+body = '''
+${2:contents}
+'''
+description = "${3:description}"
+prefix = [${4:trigger}]
+scope = "$TM_FILENAME_BASE"
+$0
+"""
+description = "snippet template"
+prefix = ["tmp","t"]
+scope = "toml"
