@@ -13,8 +13,8 @@
       "groupName": "deno dependencies."
     },
     {
-      "matchFileNames": ["package.json"],
-      "groupName": "package.json dependencies."
+      "matchFileNames": ["home/package.json"],
+      "groupName": "all package.json dependencies."
     }
   ]
 }
