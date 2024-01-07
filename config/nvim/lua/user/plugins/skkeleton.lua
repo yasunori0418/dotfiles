@@ -109,7 +109,7 @@ end
 
 function M.pre()
     vim.b.prev_buffer_config = vim.fn['ddc#custom#get_buffer']()
-    vim.fn['ddc#custom#patch_buffer']("sources", { "vsnip", "skkeleton" })
+    vim.fn['ddc#custom#patch_buffer']("sources", { "skkeleton" })
 end
 
 function M.post()
