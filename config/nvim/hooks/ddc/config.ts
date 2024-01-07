@@ -5,7 +5,7 @@ import {
   lambda,
   op,
   type UserSource,
-} from "./helper/deps.ts";
+} from "./deps.ts";
 
 export class Config extends BaseConfig {
   override config(args: ConfigArguments): Promise<void> {
