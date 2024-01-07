@@ -3,9 +3,9 @@
 # パク…参考にさせてもらいます。
 # https://gist.github.com/kuuote/4b2feda31d80fc8266fc562fc7f89c7f
 #
-declare -r clip_file=/tmp/clip.txt
-declare -r nvim=${HOME}/.local/dotfiles/nvim/bin/nvim
-eval "$(rtx hook-env -s zsh)"
+declare -r clip_file="/tmp/clip.txt"
+declare -r nvim="${HOME}/.local/dotfiles/nvim/bin/nvim"
+eval "$(mise hook-env -s zsh)"
 
 [[ -f ${clip_file} ]] && rm ${clip_file}
 touch ${clip_file}
