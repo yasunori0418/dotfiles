@@ -3,8 +3,8 @@ local utils = require("user.utils")
 
 local snippets = {}
 local friendly = require("dpp").get("friendly-snippets").rtp
-table.insert(snippets, vim.fn.globpath(friendly, "**/*.json", true, true))
-table.insert(snippets, vim.fn.globpath(vim.g.snippet_dir, "**/*.json", true, true))
+table.insert(snippets, vim.fn.globpath(friendly, "**/*.*", true, true))
+table.insert(snippets, vim.fn.globpath(vim.g.snippet_dir, "**/*.*", true, true))
 for _, path in pairs(vim.tbl_flatten(snippets)) do
     local name = vim.fn.fnamemodify(path, ":t:r")
     -- local parent_dirs = vim.fn.split(vim.fn.fnamemodify(path, ":h"), "/")
