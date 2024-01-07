@@ -112,11 +112,11 @@ require("user.utils").keymaps_set({
         end,
         opts = opt,
     },
-    { -- i_<C-x><C-s> manual_complete vsnip
+    { -- i_<C-x><C-s> manual_complete denippet
         mode = "i",
         lhs = [[<C-x><C-s>]],
         rhs = function()
-            ddc_complete("vsnip")
+            ddc_complete("denippet")
         end,
         opts = opt,
     },
