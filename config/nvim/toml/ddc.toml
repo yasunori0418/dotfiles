@@ -126,4 +126,5 @@ hooks_file = '$HOOKS_DIR/denippet.lua'
 
 [[plugins]]
 repo = 'rafamadriz/friendly-snippets'
+rtp = 'snippets'
 # }}}
