@@ -12,7 +12,7 @@ import {
   separator,
   uiSize,
   vars,
-} from "./helper/deps.ts";
+} from "./deps.ts";
 
 type Params = Record<string, unknown>;
 
