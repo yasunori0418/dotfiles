@@ -7,5 +7,14 @@
   "timezone": "Asia/Tokyo",
   "dependencyDashboard": false,
   "automerge": true,
-  "branchConcurrentLimit": 0
+  "branchConcurrentLimit": 0,
+  "major": {
+    "stabilityDays": 7
+  },
+  "minor": {
+    "stabilityDays": 3
+  },
+  "patch": {
+    "stabilityDays": 2
+  }
 }
