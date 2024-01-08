@@ -50,8 +50,19 @@ local function dpp_setup()
             pattern = "Dpp:makeStatePost",
             group = rc_autocmds,
             callback = function()
-                vim.cmd.quit()
+                dpp.load_state(M.dpp_dir)
+                dpp.async_ext_action("installer", "install")
+                vim.api.nvim_create_autocmd("User", {
+                    pattern = "Dpp:makeStatePost",
+                    group = rc_autocmds,
+                    callback = function()
+                        vim.notify("dpp first install setup is done.", vim.log.levels.INFO)
+                        vim.cmd({ cmd = "quit", bang = true })
+                    end,
+                })
             end,
+            once = true,
+            nested = true,
         })
     else
         vim.api.nvim_create_autocmd("BufWritePost", {
