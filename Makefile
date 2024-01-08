@@ -58,5 +58,6 @@ init: ## expand config files.
 	@./scripts/get_modules.sh
 	@ln -snvf ~/dotfiles/home/.??* ~/
 	@ln -snvf ~/dotfiles/home/package.json ~/
+	@ln -snvf ~/dotfiles/home/bun.lockb ~/
 	@ln -snvf ~/dotfiles/bin ~/
 	@ln -snvf ~/dotfiles/config/* ~/.config/
