@@ -12,10 +12,6 @@ nvim-build: ## building neovim head.
 nvim-night: ## download neovim at version nightly build.
 	@./scripts/nvim_night.sh
 
-nvim-setup: ## neovim first setups.
-	@nvim
-	@nvim -c 'DppInstallQuit'
-
 true-color: ## 24-bit-color.sh
 	@curl -s \
 	https://gist.githubusercontent.com/lifepillar/09a44b8cf0f9397465614e622979107f/raw/24-bit-color.sh \

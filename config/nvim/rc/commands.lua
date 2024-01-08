@@ -6,17 +6,6 @@ command("DppInstall", function()
     dpp.sync_ext_action("installer", "install")
 end, {})
 
-command("DppInstallQuit", function()
-    vim.api.nvim_create_autocmd("User", {
-        pattern = "Dpp:makeStatePost",
-        callback = function()
-            vim.notify("dpp make_state() is done", vim.log.levels.INFO)
-            vim.cmd.quit()
-        end,
-    })
-    dpp.sync_ext_action("installer", "install")
-end, {})
-
 command("DppUpdate", function()
     dpp.async_ext_action("installer", "update")
 end, {})
