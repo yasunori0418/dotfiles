@@ -51,17 +51,6 @@ local function dpp_setup()
             group = rc_autocmds,
             callback = function()
                 dpp.load_state(M.dpp_dir)
-                if #dpp.sync_ext_action("installer", "getNotInstalled") ~= 0 then
-                    dpp.async_ext_action("installer", "install")
-                    vim.api.nvim_create_autocmd("User", {
-                        pattern = "Dpp:makeStatePost",
-                        group = rc_autocmds,
-                        callback = function()
-                            vim.notify("dpp first install setup is done.", vim.log.levels.INFO)
-                            vim.cmd({ cmd = "quit", bang = true })
-                        end,
-                    })
-                end
             end,
             once = true,
             nested = true,
@@ -75,6 +64,16 @@ local function dpp_setup()
                 dpp.check_files()
             end,
         })
+    end
+    local notInstallPlugins = vim.iter(vim.tbl_values(vim.g["dpp#_plugins"]))
+        :filter(function(p)
+            return vim.fn.isdirectory(p.rtp) == 0
+        end)
+        :totable()
+    if #notInstallPlugins > 0 then
+        vim.fn["denops#server#wait_async"](function()
+            dpp.async_ext_action("installer", "install")
+        end)
     end
     vim.api.nvim_create_autocmd("User", {
         pattern = "Dpp:makeStatePost",
