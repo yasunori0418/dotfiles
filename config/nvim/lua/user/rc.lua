@@ -65,7 +65,7 @@ local function dpp_setup()
             end,
         })
     end
-    local notInstallPlugins = vim.iter(vim.tbl_values(vim.g["dpp#_plugins"]))
+    local notInstallPlugins = vim.iter(vim.tbl_values(dpp.get()))
         :filter(function(p)
             return vim.fn.isdirectory(p.rtp) == 0
         end)
