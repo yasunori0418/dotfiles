@@ -3,7 +3,6 @@ import {
   ConfigArguments,
   ConfigReturn,
   Denops,
-  Dpp,
   gatherCheckFiles,
   gatherTomls,
   gatherVimrcs,
