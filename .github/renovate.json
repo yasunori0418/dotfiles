@@ -9,7 +9,7 @@
   "branchConcurrentLimit": 0,
   "packageRules": [
     {
-      "matchFileNames": ["**/deps.ts"],
+      "matchFileNames": ["**/deps.ts", "config/nvim/denops/user/*.ts"],
       "groupName": "deno dependencies."
     },
     {
