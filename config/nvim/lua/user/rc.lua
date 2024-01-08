@@ -47,11 +47,11 @@ local function dpp_setup()
     if dpp.load_state(M.dpp_dir) > 0 then
         dpp.make_state(M.dpp_dir, joinpath(vim.g.base_dir, "dpp", "config.ts"), M.nvim_appname)
         vim.api.nvim_create_autocmd("User", {
-          pattern = "Dpp:makeStatePost",
-          group = rc_autocmds,
-          callback = function()
-            vim.cmd.quit()
-          end,
+            pattern = "Dpp:makeStatePost",
+            group = rc_autocmds,
+            callback = function()
+                vim.cmd.quit()
+            end,
         })
     else
         vim.api.nvim_create_autocmd("BufWritePost", {
