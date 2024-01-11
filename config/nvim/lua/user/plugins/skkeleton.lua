@@ -74,7 +74,7 @@ function M.init()
             joinpath(basic_dict, "SKK-JISYO.emoji"),
             joinpath(basic_dict, "SKK-JISYO.jinmei"),
         },
-        sources = { "skk_dictionary", "deno_kv" },
+        sources = { "deno_kv" },
         userDictionary = [[~/.skk/skkeleton]],
         databasePath = vim.fn.expand([[~/.skk/skkeleton.db]]),
         completionRankFile = [[~/.skk/rank.json]],
