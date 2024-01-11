@@ -79,6 +79,7 @@ local function dpp_setup()
             })
         end)
     else
+        auto_install_plugins(dpp)
         vim.api.nvim_create_autocmd("BufWritePost", {
             pattern = gather_check_files(),
             group = rc_autocmds,
@@ -88,7 +89,6 @@ local function dpp_setup()
             end,
         })
     end
-    auto_install_plugins(dpp)
     vim.api.nvim_create_autocmd("User", {
         pattern = "Dpp:makeStatePost",
         group = rc_autocmds,
