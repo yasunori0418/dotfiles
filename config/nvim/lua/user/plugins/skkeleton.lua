@@ -46,50 +46,37 @@ local function l2x_rom()
 end
 
 local function l2x_maps()
-    vim.fn['skkeleton#register_kanatable']("rom", l2x_rom())
-    vim.fn['skkeleton#register_keymap']("input", "x", "disable")
-    vim.fn['skkeleton#register_keymap']("input", "X", "zenkaku")
-    vim.fn['skkeleton#register_kanatable']("rom", {
+    vim.fn["skkeleton#register_kanatable"]("rom", l2x_rom())
+    vim.fn["skkeleton#register_keymap"]("input", "x", "disable")
+    vim.fn["skkeleton#register_keymap"]("input", "X", "zenkaku")
+    vim.fn["skkeleton#register_kanatable"]("rom", {
         ["<s-x>"] = "zenkaku",
     })
-    vim.fn['skkeleton#register_kanatable']("rom", {
+    vim.fn["skkeleton#register_kanatable"]("rom", {
         ["<s-l>"] = { "L", "" },
     }, true)
 end
 
 local joinpath = vim.fs.joinpath
-local repos_github = "~/.cache/dpp/repos/github.com"
-local basic_dict = "skk-dev/dict"
-local jawiki_dict = "tokuhirom/jawiki-kana-kanji-dict"
+local dpp = require("dpp")
+local basic_dict = dpp.get("dict").path
+local jawiki_dict = dpp.get("jawiki-kana-kanji-dict").path
 
 local M = {}
 
 function M.init()
-    vim.fn['skkeleton#config']({
+    vim.fn["skkeleton#config"]({
         eggLikeNewline = true,
         globalDictionaries = {
-            {
-                joinpath(repos_github, basic_dict, "SKK-JISYO.L"),
-                [[euc-jp]],
-            },
-            {
-                joinpath(repos_github, basic_dict, "SKK-JISYO.propernoun"),
-                [[euc-jp]],
-            },
-            {
-                joinpath(repos_github, jawiki_dict, "SKK-JISYO.jawiki"),
-                [[euc-jp]],
-            },
-            {
-                joinpath(repos_github, basic_dict, "SKK-JISYO.emoji"),
-                [[utf-8]],
-            },
-            {
-                joinpath(repos_github, basic_dict, "SKK-JISYO.jinmei"),
-                [[euc-jp]],
-            },
+            joinpath(basic_dict, "SKK-JISYO.L"),
+            joinpath(basic_dict, "SKK-JISYO.propernoun"),
+            joinpath(jawiki_dict, "SKK-JISYO.jawiki"),
+            joinpath(basic_dict, "SKK-JISYO.emoji"),
+            joinpath(basic_dict, "SKK-JISYO.jinmei"),
         },
-        userJisyo = [[~/.skk/skkeleton]],
+        sources = { "skk_dictionary", "deno_kv" },
+        userDictionary = [[~/.skk/skkeleton]],
+        databasePath = [[~/.skk/skkeleton.db]],
         completionRankFile = [[~/.skk/rank.json]],
         markerHenkan = "",
         markerHenkanSelect = "",
@@ -97,7 +84,7 @@ function M.init()
         usePopup = true,
     })
 
-    vim.fn['skkeleton#register_kanatable']("rom", {
+    vim.fn["skkeleton#register_kanatable"]("rom", {
         ["jj"] = "escape",
         ["~"] = { "～", "" },
         ["z0"] = { "○", "" },
@@ -108,12 +95,12 @@ function M.init()
 end
 
 function M.pre()
-    vim.b.prev_buffer_config = vim.fn['ddc#custom#get_buffer']()
-    vim.fn['ddc#custom#patch_buffer']("sources", { "skkeleton" })
+    vim.b.prev_buffer_config = vim.fn["ddc#custom#get_buffer"]()
+    vim.fn["ddc#custom#patch_buffer"]("sources", { "skkeleton" })
 end
 
 function M.post()
-    vim.fn['ddc#custom#set_buffer'](vim.b.prev_buffer_config)
+    vim.fn["ddc#custom#set_buffer"](vim.b.prev_buffer_config)
     vim.b.prev_buffer_config = {}
 end
 
