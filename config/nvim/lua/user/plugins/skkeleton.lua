@@ -76,7 +76,7 @@ function M.init()
         },
         sources = { "skk_dictionary", "deno_kv" },
         userDictionary = [[~/.skk/skkeleton]],
-        databasePath = [[~/.skk/skkeleton.db]],
+        databasePath = vim.fn.expand([[~/.skk/skkeleton.db]]),
         completionRankFile = [[~/.skk/rank.json]],
         markerHenkan = "",
         markerHenkanSelect = "",
