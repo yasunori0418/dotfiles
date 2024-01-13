@@ -1,4 +1,3 @@
-local M = {}
 local joinpath = vim.fs.joinpath
 
 ---@diagnostic disable: duplicate-doc-alias
@@ -13,7 +12,7 @@ local joinpath = vim.fs.joinpath
 local function plugin_add(repo, host, type)
     host = host or "github.com"
     type = type or "prepend"
-    local repo_dir = joinpath(M.dpp_dir, "repos", host, repo)
+    local repo_dir = joinpath(vim.g.dpp_cache, "repos", host, repo)
     local plugin_name = vim.fn.split(repo, "/")[2]
     if not vim.regex("/" .. plugin_name):match_str(vim.o.runtimepath) then
         if vim.fn.isdirectory(repo_dir) ~= 1 then
@@ -57,14 +56,14 @@ end
 local function dpp_setup()
     local dpp = require("dpp")
     local rc_autocmds = vim.api.nvim_create_augroup("RcAutocmds", { clear = true })
-    if dpp.load_state(M.dpp_dir) > 0 then
+    if dpp.load_state(vim.g.dpp_cache) > 0 then
         vim.fn["denops#server#wait_async"](function()
-            dpp.make_state(M.dpp_dir, joinpath(vim.g.base_dir, "dpp", "config.ts"), M.nvim_appname)
+            dpp.make_state(vim.g.dpp_cache, joinpath(vim.g.base_dir, "dpp", "config.ts"), vim.g.nvim_appname)
             vim.api.nvim_create_autocmd("User", {
                 pattern = "Dpp:makeStatePost",
                 group = rc_autocmds,
                 callback = function()
-                    dpp.load_state(M.dpp_dir)
+                    dpp.load_state(vim.g.dpp_cache)
                     auto_install_plugins(dpp)
                     vim.api.nvim_create_autocmd("User", {
                         pattern = "Dpp:makeStatePost",
@@ -101,17 +100,16 @@ end
 ---init.luaで呼び出すdpp.vimの初期設定
 ---NVIM_APPNAMEを使ってプロファイルとして分離してみる
 ---NVIM_APPNAMEが設定されていない場合は、デフォルトの`nvim`になる
-function M.setup()
-    M.nvim_appname = vim.env.NVIM_APPNAME or "nvim"
-    if M.nvim_appname == "nvim" then
-        M.dpp_dir = joinpath(vim.env.XDG_CACHE_HOME, "dpp")
+return function()
+    vim.g.nvim_appname = vim.env.NVIM_APPNAME or "nvim"
+    if vim.g.nvim_appname == "nvim" then
+        vim.g.dpp_cache = joinpath(vim.env.XDG_CACHE_HOME, "dpp")
     else
-        M.dpp_dir = joinpath(vim.env.XDG_CACHE_HOME, M.nvim_appname .. "_dpp")
+        vim.g.dpp_cache = joinpath(vim.env.XDG_CACHE_HOME, vim.g.nvim_appname .. "_dpp")
     end
 
-    vim.g.base_dir = joinpath(vim.env.XDG_CONFIG_HOME, M.nvim_appname)
+    vim.g.base_dir = joinpath(vim.env.XDG_CONFIG_HOME, vim.g.nvim_appname)
     vim.env.BASE_DIR = vim.g.base_dir
-
     vim.g.hooks_dir = joinpath(vim.g.base_dir, "hooks")
     vim.env.HOOKS_DIR = vim.g.hooks_dir
     vim.g.snippet_dir = joinpath(vim.g.base_dir, "snippets")
@@ -126,5 +124,3 @@ function M.setup()
     plugin_add("vim-denops/denops.vim")
     dpp_setup()
 end
-
-return M
