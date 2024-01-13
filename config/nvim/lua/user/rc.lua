@@ -1,3 +1,4 @@
+local M = {}
 local joinpath = vim.fs.joinpath
 
 ---@diagnostic disable: duplicate-doc-alias
@@ -100,7 +101,7 @@ end
 ---init.luaで呼び出すdpp.vimの初期設定
 ---NVIM_APPNAMEを使ってプロファイルとして分離してみる
 ---NVIM_APPNAMEが設定されていない場合は、デフォルトの`nvim`になる
-return function()
+function M.setup()
     vim.g.nvim_appname = vim.env.NVIM_APPNAME or "nvim"
     if vim.g.nvim_appname == "nvim" then
         vim.g.dpp_cache = joinpath(vim.env.XDG_CACHE_HOME, "dpp")
@@ -124,3 +125,5 @@ return function()
     plugin_add("vim-denops/denops.vim")
     dpp_setup()
 end
+
+return M
