@@ -18,3 +18,5 @@ export type {
   VimrcSkipRule,
 } from "./helper.ts";
 export { gatherCheckFiles, gatherTomls, gatherVimrcs } from "./helper.ts";
+
+export { join } from "https://deno.land/std@0.212.0/path/mod.ts";

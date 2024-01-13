@@ -6,6 +6,7 @@ import {
   gatherCheckFiles,
   gatherTomls,
   gatherVimrcs,
+  join,
   LazyMakeStateResult,
   Plugin,
   Toml,
@@ -35,6 +36,22 @@ export class Config extends BaseConfig {
       protocolParams: {
         git: {
           enablePartialClone: true,
+        },
+      },
+      extParams: {
+        installer: {
+          checkDiff: true,
+          logFilePath: join(
+            await vars.globals.get(denops, "dpp_cache"),
+            // installer_{YYYYMMDD}.log
+            `installer_${
+              new Date().toLocaleDateString("ja-JP", {
+                year: "numeric",
+                month: "2-digit",
+                day: "2-digit",
+              }).replaceAll("/", "")
+            }.log`,
+          ),
         },
       },
     });
