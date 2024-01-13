@@ -20,7 +20,7 @@ export class Config extends BaseConfig {
     const vimrcSkipRules = [
       {
         name: "neovide.lua",
-        condition: vars.globals.get(denops, "neovide") === null,
+        condition: await vars.globals.get(denops, "neovide") === null,
       },
     ] as VimrcSkipRule[];
 
