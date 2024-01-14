@@ -1,0 +1,4 @@
+[[plugins]]
+repo = 'Exafunction/codeium.vim'
+on_cmd = 'Codeium'
+hooks_file = '$HOOKS_DIR/codeium.lua'
