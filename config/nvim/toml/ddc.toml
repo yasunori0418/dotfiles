@@ -83,6 +83,11 @@ on_source = 'ddc.vim'
 repo = 'delphinus/ddc-shell-history'
 on_source = 'ddc.vim'
 
+[[plugins]]
+repo = 'Shougo/ddc-source-codeium'
+depends = 'codeium.vim'
+on_source = 'ddc.vim'
+
 # }}}
 
 # filter plugins {{{

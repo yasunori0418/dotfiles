@@ -120,6 +120,14 @@ require("user.utils").keymaps_set({
         end,
         opts = opt,
     },
+    { -- i_<C-x><C-a> manual_complete codeium
+        mode = "i",
+        lhs = [[<C-x><C-a>]],
+        rhs = function()
+            ddc_complete("codeium")
+        end,
+        opts = opt,
+    },
     { -- i_<C-x><C-u> manual_complete
         mode = "i",
         lhs = [[<C-x><C-u>]],

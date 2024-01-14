@@ -69,6 +69,13 @@ export class Config extends BaseConfig {
           minAutoCompleteLength: 2,
           isVolatile: true,
         },
+        codeium: {
+          matchers: [],
+          mark: "codeium",
+          minAutoCompleteLength: 0,
+          timeout: 1000,
+          isVolatile: true,
+        },
         cmdline: {
           mark: "cmd",
           forceCompletionPattern: "\\S/\\S*|\\.\\w*",
