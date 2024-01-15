@@ -1,4 +1,4 @@
-import { ContextBuilder, Denops, Dpp, fn, Plugin } from "./deps.ts";
+import { ContextBuilder, Denops, Dpp, expandGlobSync, Plugin } from "./deps.ts";
 
 export type Toml = {
   hooks_file?: string;
@@ -73,15 +73,15 @@ export async function gatherTomls(
   return tomls;
 }
 
-export async function gatherCheckFiles(
-  denops: Denops,
-  path: string,
-  globs: string[],
-): Promise<string[]> {
+export function gatherCheckFiles(path: string, glob: string): string[] {
   const checkFiles: string[] = [];
-  for (const glob of globs) {
-    checkFiles.push(await fn.globpath(denops, path, glob, true, true));
+  for (
+    const file of expandGlobSync(glob, {
+      root: path,
+      globstar: true,
+    })
+  ) {
+    checkFiles.push(file.path);
   }
-
-  return checkFiles.flat();
+  return checkFiles;
 }

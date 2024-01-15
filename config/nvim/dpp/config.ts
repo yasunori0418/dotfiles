@@ -91,17 +91,12 @@ export class Config extends BaseConfig {
     ) as LazyMakeStateResult | undefined;
 
     const checkFiles = gatherCheckFiles(
-      denops,
       await vars.g.get(denops, "base_dir"),
-      [
-        "**/*.lua",
-        "**/*.toml",
-        "**/*.ts",
-      ],
+      "**/*.*(ts|lua|toml)",
     );
 
     return {
-      checkFiles: await checkFiles,
+      checkFiles: checkFiles,
       hooksFiles,
       plugins: lazyResult?.plugins ?? [],
       stateLines: lazyResult?.stateLines ?? [],
