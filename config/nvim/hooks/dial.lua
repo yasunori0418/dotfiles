@@ -115,6 +115,11 @@ config.augends:register_group({
             cyclic = true,
         }),
         augend.constant.new({
+            elements = { "True", "False" },
+            word = true,
+            cyclic = true,
+        }),
+        augend.constant.new({
             elements = { "&&", "||" },
             word = false,
             cyclic = true,
