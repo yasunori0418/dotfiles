@@ -1,5 +1,5 @@
 # ls command aliases.
-if [[ $(which eza) ]]; then
+if [[ $(command -v eza) ]]; then
   alias eza='eza --icons -F'
   alias ls='eza'
   alias ll='eza -l --git'
