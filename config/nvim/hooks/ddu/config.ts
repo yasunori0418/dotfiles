@@ -187,6 +187,14 @@ export class Config extends BaseConfig {
             word: "Search",
           },
         },
+        file_rec: {
+          ignoreDirectories: [
+            ".git",
+            ".svn",
+            "__pycache__",
+            ".pytest_cache",
+          ],
+        },
         file_fd: {
           cmd: [
             "fd",
