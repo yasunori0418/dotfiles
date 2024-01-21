@@ -214,6 +214,9 @@ export class Config extends BaseConfig {
         git_branch: {
           remote: false,
         },
+        git_status: {
+          omitStatusColumn: true,
+        },
         ghq: {
           display: "relative",
         },
