@@ -13,17 +13,21 @@ local joinpath = vim.fs.joinpath
 local function plugin_add(repo, host, type)
     host = host or "github.com"
     type = type or "prepend"
-    local repo_dir = joinpath(vim.g.dpp_cache, "repos", host, repo)
-    local plugin_name = vim.fn.split(repo, "/")[2]
-    if not vim.regex("/" .. plugin_name):match_str(vim.o.runtimepath) then
-        if vim.fn.isdirectory(repo_dir) ~= 1 then
-            os.execute("git clone https://" .. host .. "/" .. repo .. " " .. repo_dir)
-        end
-        if type == "prepend" then
-            vim.opt.runtimepath:prepend(repo_dir)
-        else
-            vim.opt.runtimepath:append(repo_dir)
-        end
+    local repo_path = table.concat({host, repo}, "/")
+    local repo_dir = joinpath(vim.g.dpp_cache, "repos", repo_path)
+    if not vim.uv.fs_stat(repo_dir) then
+        vim.fn.system({
+            "git",
+            "clone",
+            "--filter=blob:none",
+            "https://" .. repo_path,
+            repo_dir,
+        })
+    end
+    if type == "prepend" then
+        vim.opt.runtimepath:prepend(repo_dir)
+    else
+        vim.opt.runtimepath:append(repo_dir)
     end
 end
 
