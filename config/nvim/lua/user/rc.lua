@@ -8,8 +8,8 @@ local joinpath = vim.fs.joinpath
 
 ---初回起動時にプラグインのダウンロードとruntimepathに追加する
 ---@param repo string user_name/plugin_name
----@param host? string default: github.com
----@param type? plugin_add_type user_name/plugin_name
+---@param host? string default: "github.com"
+---@param type? plugin_add_type default: "prepend"
 local function plugin_add(repo, host, type)
     host = host or "github.com"
     type = type or "prepend"
