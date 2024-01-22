@@ -10,7 +10,7 @@ local joinpath = vim.fs.joinpath
 ---@param repo string user_name/plugin_name
 ---@param host? string default: "github.com"
 ---@param type? plugin_add_type default: "prepend"
-local function plugin_add(repo, host, type)
+local function init_plugin(repo, host, type)
     host = host or "github.com"
     type = type or "prepend"
     local repo_path = table.concat({host, repo}, "/")
@@ -121,12 +121,12 @@ function M.setup()
     vim.g.rc_dir = joinpath(vim.g.base_dir, "rc")
     vim.g.toml_dir = joinpath(vim.g.base_dir, "toml")
 
-    plugin_add("Shougo/dpp-ext-lazy")
-    plugin_add("Shougo/dpp-ext-toml")
-    plugin_add("Shougo/dpp-ext-installer")
-    plugin_add("Shougo/dpp-protocol-git")
-    plugin_add("Shougo/dpp.vim")
-    plugin_add("vim-denops/denops.vim")
+    init_plugin("Shougo/dpp-ext-lazy")
+    init_plugin("Shougo/dpp-ext-toml")
+    init_plugin("Shougo/dpp-ext-installer")
+    init_plugin("Shougo/dpp-protocol-git")
+    init_plugin("Shougo/dpp.vim")
+    init_plugin("vim-denops/denops.vim")
     dpp_setup()
 end
 
