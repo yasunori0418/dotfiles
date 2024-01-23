@@ -13,7 +13,7 @@ local joinpath = vim.fs.joinpath
 local function init_plugin(repo, host, type)
     host = host or "github.com"
     type = type or "prepend"
-    local repo_path = table.concat({host, repo}, "/")
+    local repo_path = joinpath(host, repo)
     local repo_dir = joinpath(vim.g.dpp_cache, "repos", repo_path)
     if not vim.uv.fs_stat(repo_dir) then
         vim.fn.system({
