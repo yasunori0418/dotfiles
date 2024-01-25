@@ -1,5 +1,8 @@
 [[plugins]] # denops.vim
 repo = 'vim-denops/denops.vim'
+hook_add = '''
+let g:denops#server#deno_args = ['-q', '--no-lock', '--unstable-kv', '-A']
+'''
 
 [[plugins]] # dpp.vim
 repo = 'Shougo/dpp.vim'
