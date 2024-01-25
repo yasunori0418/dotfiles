@@ -239,3 +239,7 @@ require("user.utils").keymaps_set({
 -- vim.fn['ddc#enable_terminal_completion']()
 vim.fn['ddc#enable']({ context_filetype = [[treesitter]] })
 -- }}}
+
+-- lua_post_update {{{
+vim.fn['ddc#set_static_import_path']()
+-- }}}
