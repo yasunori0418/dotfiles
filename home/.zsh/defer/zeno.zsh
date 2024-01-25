@@ -1,5 +1,8 @@
 # zeno.zsh
 
+# Ref: https://uki00a.github.io/deno-weekly/articles/deno/v1.27.html
+export DENO_NO_UPDATE_CHECK=1
+
 # git file preview with color
 export ZENO_GIT_CAT="bat --color=always"
 
