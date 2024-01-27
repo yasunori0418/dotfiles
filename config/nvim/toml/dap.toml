@@ -14,3 +14,6 @@ hooks_file = '$HOOKS_DIR/dap_ui.lua'
 repo = 'mfussenegger/nvim-dap-python'
 depends = 'nvim-dap'
 on_ft = 'python'
+lua_source = '''
+require("dap-python").setup("/usr/bin/python")
+'''
