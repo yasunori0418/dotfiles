@@ -1,0 +1,3 @@
+[[plugins]]
+repo = 'mfussenegger/nvim-dap'
+hooks_file = '$HOOKS_DIR/dap.lua'
