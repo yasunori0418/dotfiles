@@ -1,3 +1,8 @@
 [[plugins]]
 repo = 'mfussenegger/nvim-dap'
 hooks_file = '$HOOKS_DIR/dap.lua'
+
+[[plugins]]
+repo = 'rcarriga/nvim-dap-ui'
+on_source = 'nvim-dap'
+hooks_file = '$HOOKS_DIR/dap_ui.lua'
