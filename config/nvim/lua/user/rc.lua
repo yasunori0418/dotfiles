@@ -58,35 +58,38 @@ local function auto_install_plugins(dpp)
     end
 end
 
-local function dpp_setup()
-    local dpp = require("dpp")
-    local rc_autocmds = vim.api.nvim_create_augroup("RcAutocmds", { clear = true })
-    if dpp.load_state(vim.g.dpp_cache) > 0 then
-        vim.fn["denops#server#wait_async"](function()
-            dpp.make_state(vim.g.dpp_cache, joinpath(vim.g.base_dir, "dpp", "config.ts"), vim.g.nvim_appname)
+local function make_state(dpp)
+    dpp.make_state(vim.g.dpp_cache, joinpath(vim.g.base_dir, "dpp", "config.ts"), vim.g.nvim_appname)
+    vim.api.nvim_create_autocmd("User", {
+        pattern = "Dpp:makeStatePost",
+        group = M.rc_autocmds,
+        callback = function()
+            dpp.load_state(vim.g.dpp_cache)
+            auto_install_plugins(dpp)
             vim.api.nvim_create_autocmd("User", {
                 pattern = "Dpp:makeStatePost",
-                group = rc_autocmds,
+                group = M.rc_autocmds,
                 callback = function()
-                    dpp.load_state(vim.g.dpp_cache)
-                    auto_install_plugins(dpp)
-                    vim.api.nvim_create_autocmd("User", {
-                        pattern = "Dpp:makeStatePost",
-                        group = rc_autocmds,
-                        callback = function()
-                            vim.cmd.quit({ bang = true })
-                        end,
-                    })
+                    vim.cmd.quit({ bang = true })
                 end,
-                once = true,
-                nested = true,
             })
+        end,
+        once = true,
+        nested = true,
+    })
+end
+
+local function dpp_setup()
+    local dpp = require("dpp")
+    if dpp.load_state(vim.g.dpp_cache) > 0 then
+        vim.fn["denops#server#wait_async"](function()
+            make_state(dpp)
         end)
     else
         auto_install_plugins(dpp)
         vim.api.nvim_create_autocmd("BufWritePost", {
             pattern = gather_check_files(),
-            group = rc_autocmds,
+            group = M.rc_autocmds,
             callback = function()
                 vim.notify("dpp check_files() is run", vim.log.levels.INFO)
                 dpp.check_files()
@@ -95,7 +98,7 @@ local function dpp_setup()
     end
     vim.api.nvim_create_autocmd("User", {
         pattern = "Dpp:makeStatePost",
-        group = rc_autocmds,
+        group = M.rc_autocmds,
         callback = function()
             vim.notify("dpp make_state() is done", vim.log.levels.INFO)
         end,
@@ -120,6 +123,7 @@ function M.setup()
     vim.g.snippet_dir = joinpath(vim.g.base_dir, "snippets")
     vim.g.rc_dir = joinpath(vim.g.base_dir, "rc")
     vim.g.toml_dir = joinpath(vim.g.base_dir, "toml")
+    M.rc_autocmds = vim.api.nvim_create_augroup("RcAutocmds", { clear = true })
 
     init_plugin("Shougo/dpp-ext-lazy")
     init_plugin("Shougo/dpp-ext-toml")
