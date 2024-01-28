@@ -235,15 +235,15 @@ export class Config extends BaseConfig {
       sources: ["necovim", ...main_sources],
     });
 
-    args.contextBuilder.patchFiletype("deol", {
-      specialBufferCompletion: true,
-      sources: ["shell-native", "shell-history", "around"],
-      sourceOptions: {
-        _: {
-          keywordPattern: "[0-9a-zA-Z_./#:-]*",
-        },
-      },
-    });
+    // args.contextBuilder.patchFiletype("deol", {
+    //   specialBufferCompletion: true,
+    //   sources: ["shell-native", "shell-history", "around"],
+    //   sourceOptions: {
+    //     _: {
+    //       keywordPattern: "[0-9a-zA-Z_./#:-]*",
+    //     },
+    //   },
+    // });
 
     args.contextBuilder.patchFiletype("ddu-ff-filter", {
       specialBufferCompletion: true,
