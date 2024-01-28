@@ -1,3 +1,8 @@
+import tomllib
+# import os
+from pprint import pprint
+
+
 # fizzbuzz
 def fizzbuzz(loop_index: int):
     for i in range(1, loop_index):
@@ -11,5 +16,11 @@ def fizzbuzz(loop_index: int):
             print(i)
 
 
+def toml_load():
+    with open("/home/yasunori/dotfiles/config/nvim/toml/dpp.toml", "rb") as f:
+        toml_data = tomllib.load(f)
+    pprint(toml_data)
+
+
 if __name__ == "__main__":
-    fizzbuzz(100)
+    toml_load()
