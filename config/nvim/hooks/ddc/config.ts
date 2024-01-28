@@ -60,6 +60,7 @@ export class Config extends BaseConfig {
         },
         "nvim-lua": {
           mark: "lua",
+          dup: "keep",
           forceCompletionPattern: "\\.\\w*",
         },
         skkeleton: {
@@ -214,7 +215,8 @@ export class Config extends BaseConfig {
       async () => {
         const filetype = await op.filetype.get(denops);
         const add_sources = ["lsp"];
-        if (filetype === "lua") add_sources.unshift("nvim-lua");
+        // if (filetype === "lua") add_sources.push("nvim-lua");
+        // console.log(add_sources);
         args.contextBuilder.patchFiletype(filetype, {
           sources: [
             ...add_sources,
