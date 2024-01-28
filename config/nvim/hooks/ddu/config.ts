@@ -191,6 +191,7 @@ export class Config extends BaseConfig {
           ignoreDirectories: [
             ".git",
             ".svn",
+            ".venv",
             "__pycache__",
             ".pytest_cache",
           ],
@@ -201,7 +202,7 @@ export class Config extends BaseConfig {
             ".",
             "--hidden",
             "--exclude",
-            ".git",
+            "'.git .svn'",
             "--type",
             "f",
             "--color",
@@ -397,7 +398,7 @@ export class Config extends BaseConfig {
         },
       },
       sources: [
-        { name: "file_rec" },
+        { name: "file_fd" },
       ],
     });
 
