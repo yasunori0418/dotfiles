@@ -52,7 +52,7 @@ export class Config extends BaseConfig {
           mark: "snip",
           dup: "keep",
         },
-        "lsp": {
+        lsp: {
           mark: "LSP",
           forceCompletionPattern: "\\.|:\\s*|->\\s*",
           dup: "keep",
@@ -110,7 +110,7 @@ export class Config extends BaseConfig {
         "shell-native": {
           shell: "zsh",
         },
-        "lsp": {
+        lsp: {
           enableResolveItem: true,
           enableAdditionalTextEdit: true,
           confirmBehavior: "replace",
