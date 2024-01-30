@@ -22,7 +22,8 @@ github = "romkatv/zsh-defer"
 apply = ["source"]
 
 [templates]
-defer = "{{ hooks | get: \"pre\" | nl }}{% for file in files %}zsh-defer source \"{{ file }}\"\n{% endfor %}{{ hooks | get: \"post\" | nl }}"
+defer = "{{ hooks?.pre | nl }}{% for file in files %}zsh-defer source \"{{ file }}\"\n{% endfor %}{{ hooks?.post | nl }}"
+
 [plugins.powerlevel10k]
 github = "romkatv/powerlevel10k"
 apply = ["source"]
