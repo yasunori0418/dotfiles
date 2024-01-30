@@ -58,6 +58,11 @@ local = "~/.zsh/fpath"
 use = ['{{ name }}.zsh']
 apply = ['defer']
 
+[plugins.sheldon-completion]
+local = "~/.zsh/fpath"
+use = ['{{ name }}.zsh']
+apply = ['defer']
+
 [plugins.zsh-syntax-highlighting]
 github = 'zdharma-continuum/fast-syntax-highlighting'
 apply = ['defer']
