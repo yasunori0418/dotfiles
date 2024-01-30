@@ -44,7 +44,7 @@ return function()
             hover = true,
             documentSymbol = true,
             codeAction = true,
-            completion = true,
+            completion = false,
         },
         capabilities = require("user.lsp.utils").capabilities,
         settings = {
