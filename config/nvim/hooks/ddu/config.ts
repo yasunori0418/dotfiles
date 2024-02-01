@@ -853,6 +853,7 @@ export class Config extends BaseConfig {
               autoResize: false,
               filterFloatingPosition: "bottom",
               ignoreEmpty: true,
+              displayTree: true,
             },
             ...await uiSize(args, 0.5, "vertical"),
           },
