@@ -1,25 +1,26 @@
 import {
   BaseSource,
-  DduOptions,
+  // DduOptions,
   Item,
-  SourceOptions,
+  // SourceOptions,
 } from "https://deno.land/x/ddu_vim@v3.10.2/types.ts";
-import { Denops, fn } from "https://deno.land/x/ddu_vim@v3.10.2/deps.ts";
+import {
+  BaseSourceParams,
+  GatherArguments,
+} from "https://deno.land/x/ddu_vim@v3.10.2/base/source.ts";
+import {
+  // Denops,
+  fn,
+} from "https://deno.land/x/ddu_vim@v3.10.2/deps.ts";
 import { join } from "https://deno.land/std@0.214.0/path/mod.ts";
 import { ActionData } from "../@ddu-kinds/gh_project.ts";
 
-type Params = Record<never, never>;
-
-export class Source extends BaseSource<Params> {
+export class Source extends BaseSource<BaseSourceParams> {
   override kind = "gh_project";
 
-  override gather(args: {
-    denops: Denops;
-    options: DduOptions;
-    sourceOptions: SourceOptions;
-    sourceParams: Params;
-    input: string;
-  }): ReadableStream<Item<ActionData>[]> {
+  override gather(
+    args: GatherArguments<BaseSourceParams>,
+  ): ReadableStream<Item<ActionData>[]> {
     return new ReadableStream({
       async start(controller) {
         const dir = await fn.getcwd(args.denops) as string;
@@ -53,7 +54,7 @@ export class Source extends BaseSource<Params> {
     });
   }
 
-  override params(): Params {
+  override params(): BaseSourceParams {
     return {};
   }
 }
