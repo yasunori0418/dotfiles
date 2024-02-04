@@ -172,6 +172,9 @@ export class Config extends BaseConfig {
         lsp_diagnostic: {
           defaultAction: "open",
         },
+        gh_project: {
+          defaultAction: "echo",
+        },
       },
       sourceParams: {
         rg: {
@@ -958,6 +961,15 @@ export class Config extends BaseConfig {
       sources: [
         {
           name: "nvim-notify",
+        },
+      ],
+    });
+
+    args.contextBuilder.patchLocal("gh:project", {
+      ui: "ff",
+      sources: [
+        {
+          name: "gh_project",
         },
       ],
     });

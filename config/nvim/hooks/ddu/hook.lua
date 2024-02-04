@@ -151,6 +151,14 @@ utils.keymaps_set({
         end,
         opts = opt,
     },
+    { -- gh_project
+        mode = "n",
+        lhs = [[<Plug>(ddu-ff),]],
+        rhs = function()
+            vim.fn["ddu#start"]({ name = "gh:project" })
+        end,
+        opts = opt,
+    },
 
     -- ddu-ui-filer starter
     { -- project_root-filer
