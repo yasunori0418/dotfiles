@@ -2853,11 +2853,6 @@ Description="キーボード - ギリシャ語 - ギリシャ語 (標準)"
 Language=el
 Label="gr (simple)"
 
-[keyboard-gr-extended]
-Description="キーボード - ギリシャ語 - ギリシャ語 (拡張)"
-Language=el
-Label="gr (extended)"
-
 [keyboard-gr-nodeadkeys]
 Description="キーボード - ギリシャ語 - Greek (no dead keys)"
 Language=el
@@ -3278,11 +3273,6 @@ Description="キーボード - ハンガリー語 - Hungarian (QWERTY, 102-key, 
 Language=hu
 Label="hu (102_qwerty_dot_nodead)"
 
-[keyboard-hu-oldhun]
-Description="キーボード - ハンガリー語 - Old Hungarian"
-Language=hu
-Label=oldhun
-
 [keyboard-hu-oldhunlig]
 Description="キーボード - ハンガリー語 - Old Hungarian (for ligatures)"
 Language=hu
@@ -3597,11 +3587,6 @@ Label="it (us)"
 Description="キーボード - イタリア語 - イタリア語 (IBM 142)"
 Language=it
 Label="it (ibm)"
-
-[keyboard-it-intl]
-Description="キーボード - イタリア語 - Italian (intl., with dead keys)"
-Language=it
-Label="it (intl)"
 
 [keyboard-it-fur]
 Description="キーボード - イタリア語 - Friulian (Italy)"
