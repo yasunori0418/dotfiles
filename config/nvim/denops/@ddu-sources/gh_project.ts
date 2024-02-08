@@ -12,7 +12,7 @@ import {
   // Denops,
   fn,
 } from "https://deno.land/x/ddu_vim@v3.10.2/deps.ts";
-import { join } from "https://deno.land/std@0.214.0/path/mod.ts";
+import { join } from "https://deno.land/std@0.215.0/path/mod.ts";
 import { ActionData } from "../@ddu-kinds/gh_project.ts";
 
 export class Source extends BaseSource<BaseSourceParams> {
