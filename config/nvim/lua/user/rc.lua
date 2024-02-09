@@ -55,6 +55,13 @@ local function auto_install_plugins(dpp)
         vim.fn["denops#server#wait_async"](function()
             dpp.async_ext_action("installer", "install")
         end)
+        vim.api.nvim_create_autocmd("User", {
+            pattern = "Dpp:makeStatePost",
+            group = M.rc_autocmds,
+            callback = function()
+                vim.cmd.quit({ bang = true })
+            end,
+        })
     end
 end
 
@@ -66,13 +73,6 @@ local function make_state(dpp)
         callback = function()
             dpp.load_state(vim.g.dpp_cache)
             auto_install_plugins(dpp)
-            vim.api.nvim_create_autocmd("User", {
-                pattern = "Dpp:makeStatePost",
-                group = M.rc_autocmds,
-                callback = function()
-                    vim.cmd.quit({ bang = true })
-                end,
-            })
         end,
         once = true,
         nested = true,
