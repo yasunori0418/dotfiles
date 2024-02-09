@@ -125,16 +125,12 @@ function M.setup()
     vim.g.toml_dir = joinpath(vim.g.base_dir, "toml")
     M.rc_autocmds = vim.api.nvim_create_augroup("RcAutocmds", { clear = true })
 
-    if vim.fn.filereadable(joinpath(vim.g.dpp_cache, vim.g.nvim_appname, "state.vim")) > 0 then
-        vim.opt.runtimepath:prepend(joinpath(vim.g.dpp_cache, vim.g.nvim_appname, ".dpp"))
-    else
-        init_plugin("Shougo/dpp-ext-lazy")
-        init_plugin("Shougo/dpp-ext-toml")
-        init_plugin("Shougo/dpp-ext-installer")
-        init_plugin("Shougo/dpp-protocol-git")
-        init_plugin("Shougo/dpp.vim")
-        init_plugin("vim-denops/denops.vim")
-    end
+    init_plugin("Shougo/dpp-ext-lazy")
+    init_plugin("Shougo/dpp-ext-toml")
+    init_plugin("Shougo/dpp-ext-installer")
+    init_plugin("Shougo/dpp-protocol-git")
+    init_plugin("Shougo/dpp.vim")
+    init_plugin("vim-denops/denops.vim")
     dpp_setup()
 end
 
