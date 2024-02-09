@@ -5,7 +5,6 @@ import {
   // SourceOptions,
 } from "https://deno.land/x/ddu_vim@v3.10.2/types.ts";
 import {
-  BaseSourceParams,
   GatherArguments,
 } from "https://deno.land/x/ddu_vim@v3.10.2/base/source.ts";
 import {
@@ -15,11 +14,17 @@ import {
 import { join } from "https://deno.land/std@0.215.0/path/mod.ts";
 import { ActionData } from "../@ddu-kinds/gh_project.ts";
 
-export class Source extends BaseSource<BaseSourceParams> {
+type Params = {
+  cmd?: string;
+  owner?: string;
+  limit?: number;
+};
+
+export class Source extends BaseSource<Params> {
   override kind = "gh_project";
 
   override gather(
-    args: GatherArguments<BaseSourceParams>,
+    args: GatherArguments<Params>,
   ): ReadableStream<Item<ActionData>[]> {
     return new ReadableStream({
       async start(controller) {
@@ -54,7 +59,11 @@ export class Source extends BaseSource<BaseSourceParams> {
     });
   }
 
-  override params(): BaseSourceParams {
-    return {};
+  override params(): Params {
+    return {
+      cmd: "gh",
+      owner: "@me",
+      limit: 0,
+    };
   }
 }
