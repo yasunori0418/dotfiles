@@ -19,10 +19,12 @@ true-color: ## 24-bit-color.sh
 	@./scripts/termcolors
 
 zsh-bench: ## zsh bench mark with hyperfine used.
-	@hyperfine -w 5 -r 50 'zsh -i -c exit'
+	@hyperfine -w 5 -r 100 'zsh -i -c exit'
 
 nvim-bench: ## neovim bench mark with vim-startuptime used.
-	@vim-startuptime -vimpath nvim -count 100 | head -6
+	-@vim-startuptime -vimpath nvim -count 100 | head -6
+	@sleep 3
+	@hyperfine -i -w 5 -r 100 "nvim -c q!"
 
 arch_iso: ## Download Arch Linux iso image at latest, and verification.
 	@./scripts/arch_iso.sh
