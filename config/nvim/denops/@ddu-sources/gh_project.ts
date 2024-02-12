@@ -14,6 +14,7 @@ import {
 import { join } from "https://deno.land/std@0.215.0/path/mod.ts";
 import { ActionData } from "../@ddu-kinds/gh_project.ts";
 import { JSONLinesParseStream } from "https://deno.land/x/jsonlines@v1.2.2/mod.ts";
+import { GitHubProject } from "../gh_project/type.ts";
 
 type Params = {
   cmd?: string;
@@ -44,8 +45,6 @@ export class Source extends BaseSource<Params> {
               "0",
               "--format",
               "json",
-              "--jq",
-              ".projects"
             ],
             stdin: "null",
             stderr: "null",
@@ -53,11 +52,15 @@ export class Source extends BaseSource<Params> {
           }).spawn();
           const readable = stdout
             .pipeThrough(new TextDecoderStream())
-            .pipeThrough(new JSONLinesParseStream());
+            .pipeThrough(new JSONLinesParseStream()) as ReadableStream<
+              { projects: GitHubProject[] }
+            >;
 
           try {
             for await (const chunk of readable) {
-              console.log(chunk);
+              for (const project of chunk.projects) {
+                console.log(project);
+              };
             }
             for await (const entry of Deno.readDir(root)) {
               const path = join(root, entry.name);
