@@ -12,8 +12,8 @@ import {
   fn,
 } from "https://deno.land/x/ddu_vim@v3.10.2/deps.ts";
 import { join } from "https://deno.land/std@0.215.0/path/mod.ts";
-import { ActionData } from "../@ddu-kinds/gh_project.ts";
 import { JSONLinesParseStream } from "https://deno.land/x/jsonlines@v1.2.2/mod.ts";
+import { ActionData } from "../@ddu-kinds/gh_project.ts";
 import { GitHubProject } from "../gh_project/type.ts";
 
 type Params = {
