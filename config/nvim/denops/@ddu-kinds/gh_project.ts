@@ -30,7 +30,7 @@ export class Kind extends BaseKind<Params> {
     string,
     (args: ActionArguments<Params>) => Promise<ActionFlags>
   > = {
-    echo: (args: { denops: Denops; items: DduItem[] }) => {
+    echo: (args: { items: DduItem[] }) => {
       for (const item of args.items) {
         const action = item.action as ActionData;
         console.log(`number: "${action.number}", title: "${action.title}"`);
