@@ -3,24 +3,24 @@ import {
   ActionFlags,
   BaseKind,
   DduItem,
-  Previewer,
   PreviewContext,
+  Previewer,
 } from "https://deno.land/x/ddu_vim@v3.10.2/types.ts";
 import { Denops, fn, vars } from "https://deno.land/x/ddu_vim@v3.10.2/deps.ts";
 
 export type ActionData = {
-  closed: boolean,
-  fieldsTotalCount: number,
-  id: string,
-  itemsTotalCount: number,
-  number: number,
-  ownerLogin: string,
-  ownerType: string,
-  isPublic: boolean,
-  readme: string,
-  shortDescription: string,
-  title: string,
-  url: string
+  closed: boolean;
+  fieldsTotalCount: number;
+  id: string;
+  itemsTotalCount: number;
+  number: number;
+  ownerLogin: string;
+  ownerType: string;
+  isPublic: boolean;
+  readme: string;
+  shortDescription: string;
+  title: string;
+  url: string;
 };
 
 type Params = Record<never, never>;
@@ -32,7 +32,6 @@ export class Kind extends BaseKind<Params> {
   > = {
     echo: async (args: { denops: Denops; items: DduItem[] }) => {
       for (const item of args.items) {
-        console.log(item.action.path);
       }
       return Promise.resolve(ActionFlags.None);
     },
@@ -51,7 +50,7 @@ export class Kind extends BaseKind<Params> {
 
     return {
       kind: "buffer",
-      path: action.path,
+      path: action.title,
     };
   }
 
