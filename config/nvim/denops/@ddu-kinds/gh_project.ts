@@ -32,6 +32,8 @@ export class Kind extends BaseKind<Params> {
   > = {
     echo: async (args: { denops: Denops; items: DduItem[] }) => {
       for (const item of args.items) {
+        const action = item.action as ActionData;
+        console.log(`number: ${action.number}, title:${action.title}`);
       }
       return Promise.resolve(ActionFlags.None);
     },
