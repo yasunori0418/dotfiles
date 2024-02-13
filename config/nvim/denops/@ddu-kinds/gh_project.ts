@@ -3,12 +3,24 @@ import {
   ActionFlags,
   BaseKind,
   DduItem,
+  Previewer,
   PreviewContext,
 } from "https://deno.land/x/ddu_vim@v3.10.2/types.ts";
 import { Denops, fn, vars } from "https://deno.land/x/ddu_vim@v3.10.2/deps.ts";
 
 export type ActionData = {
-  path: string;
+  closed: boolean,
+  fieldsTotalCount: number,
+  id: string,
+  itemsTotalCount: number,
+  number: number,
+  ownerLogin: string,
+  ownerType: string,
+  isPublic: boolean,
+  readme: string,
+  shortDescription: string,
+  title: string,
+  url: string
 };
 
 type Params = Record<never, never>;

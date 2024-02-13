@@ -9,7 +9,48 @@ import {
 } from "https://deno.land/x/ddu_vim@v3.10.2/base/source.ts";
 import { JSONLinesParseStream } from "https://deno.land/x/jsonlines@v1.2.2/mod.ts";
 import { ActionData } from "../@ddu-kinds/gh_project.ts";
-import { GitHubProject } from "../gh_project/type.ts";
+import { GHProject } from "../gh_project/type.ts";
+
+function parseGHProjectAction(project: GHProject): ActionData {
+  const {
+    closed,
+    id,
+    number,
+    readme,
+    shortDescription,
+    title,
+    url,
+  } = project;
+  const fieldsTotalCount = project.fields.totalCount;
+  const itemsTotalCount = project.items.totalCount;
+  const ownerLogin = project.owner.login;
+  const ownerType = project.owner.type;
+  const isPublic = project.public;
+
+  return {
+    closed,
+    fieldsTotalCount,
+    id,
+    itemsTotalCount,
+    number,
+    ownerLogin,
+    ownerType,
+    isPublic,
+    readme,
+    shortDescription,
+    title,
+    url,
+  };
+}
+
+function parseGHProjectItem(project: GHProject): Item<ActionData> {
+  return {
+    word: project.title,
+    display: project.title,
+    action: parseGHProjectAction(project),
+    kind: "gh_project",
+  };
+}
 
 type Params = {
   cmd: string;
@@ -25,8 +66,6 @@ export class Source extends BaseSource<Params> {
   ): ReadableStream<Item<ActionData>[]> {
     return new ReadableStream({
       async start(controller) {
-        const items: Item<ActionData>[] = [];
-
         const { stdout } = new Deno.Command(sourceParams.cmd, {
           args: [
             "project",
@@ -47,25 +86,17 @@ export class Source extends BaseSource<Params> {
           .pipeThrough(new TextDecoderStream())
           .pipeThrough(new JSONLinesParseStream())
           .pipeTo(
-            new WritableStream<{ projects: GitHubProject[] }>({
-              write(chunk: { projects: GitHubProject[] }) {
-                for (const project of chunk.projects) {
-                  items.push({
-                    word: project.title,
-                    display: project.title,
-                    action: {
-                      title: project.title,
-                      number: project.number,
-                    },
-                  });
-                }
+            new WritableStream<{ projects: GHProject[] }>({
+              write(chunk: { projects: GHProject[] }) {
+                controller.enqueue(
+                  chunk.projects.map((project) => parseGHProjectItem(project)),
+                );
               },
             }),
-          );
-
-        controller.enqueue(items);
-
-        controller.close();
+          ).finally(async () => {
+            await stdout.cancel();
+            controller.close();
+          });
       },
     });
   }

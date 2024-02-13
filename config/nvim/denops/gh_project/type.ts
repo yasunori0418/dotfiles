@@ -1,4 +1,4 @@
-export type GitHubProject = {
+export type GHProject = {
   closed: boolean,
   fields: {
     totalCount: number
