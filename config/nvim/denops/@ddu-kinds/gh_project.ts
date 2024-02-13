@@ -6,7 +6,7 @@ import {
   PreviewContext,
   Previewer,
 } from "https://deno.land/x/ddu_vim@v3.10.2/types.ts";
-import { Denops, fn, vars } from "https://deno.land/x/ddu_vim@v3.10.2/deps.ts";
+import { Denops } from "https://deno.land/x/ddu_vim@v3.10.2/deps.ts";
 
 export type ActionData = {
   closed: boolean;
