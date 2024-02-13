@@ -17,32 +17,32 @@ import { JSONLinesParseStream } from "https://deno.land/x/jsonlines@v1.2.2/mod.t
 import { GitHubProject } from "../gh_project/type.ts";
 
 type Params = {
-  cmd?: string;
-  owner?: string;
-  limit?: number;
+  cmd: string;
+  owner: string;
+  limit: number;
 };
 
 export class Source extends BaseSource<Params> {
   override kind = "gh_project";
 
   override gather(
-    args: GatherArguments<Params>,
+    { denops, sourceParams }: GatherArguments<Params>,
   ): ReadableStream<Item<ActionData>[]> {
     return new ReadableStream({
       async start(controller) {
-        const dir = await fn.getcwd(args.denops) as string;
+        const dir = await fn.getcwd(denops) as string;
 
         const tree = async (root: string) => {
           const items: Item<ActionData>[] = [];
 
-          const { stdout } = new Deno.Command("gh", {
+          const { stdout } = new Deno.Command(sourceParams.cmd, {
             args: [
               "project",
               "list",
               "--owner",
-              "@me",
+              sourceParams.owner,
               "--limit",
-              "0",
+              sourceParams.limit.toString(),
               "--format",
               "json",
             ],
@@ -60,7 +60,7 @@ export class Source extends BaseSource<Params> {
             for await (const chunk of readable) {
               for (const project of chunk.projects) {
                 console.log(project);
-              };
+              }
             }
             for await (const entry of Deno.readDir(root)) {
               const path = join(root, entry.name);
