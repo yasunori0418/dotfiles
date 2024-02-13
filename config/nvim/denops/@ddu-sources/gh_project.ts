@@ -7,11 +7,6 @@ import {
 import {
   GatherArguments,
 } from "https://deno.land/x/ddu_vim@v3.10.2/base/source.ts";
-import {
-  // Denops,
-  fn,
-} from "https://deno.land/x/ddu_vim@v3.10.2/deps.ts";
-import { join } from "https://deno.land/std@0.215.0/path/mod.ts";
 import { JSONLinesParseStream } from "https://deno.land/x/jsonlines@v1.2.2/mod.ts";
 import { ActionData } from "../@ddu-kinds/gh_project.ts";
 import { GitHubProject } from "../gh_project/type.ts";
@@ -26,62 +21,49 @@ export class Source extends BaseSource<Params> {
   override kind = "gh_project";
 
   override gather(
-    { denops, sourceParams }: GatherArguments<Params>,
+    { sourceParams }: GatherArguments<Params>,
   ): ReadableStream<Item<ActionData>[]> {
     return new ReadableStream({
       async start(controller) {
-        const dir = await fn.getcwd(denops) as string;
+        const items: Item<ActionData>[] = [];
 
-        const tree = async (root: string) => {
-          const items: Item<ActionData>[] = [];
+        const { stdout } = new Deno.Command(sourceParams.cmd, {
+          args: [
+            "project",
+            "list",
+            "--owner",
+            sourceParams.owner,
+            "--limit",
+            sourceParams.limit.toString(),
+            "--format",
+            "json",
+          ],
+          stdin: "null",
+          stderr: "null",
+          stdout: "piped",
+        }).spawn();
 
-          const { stdout } = new Deno.Command(sourceParams.cmd, {
-            args: [
-              "project",
-              "list",
-              "--owner",
-              sourceParams.owner,
-              "--limit",
-              sourceParams.limit.toString(),
-              "--format",
-              "json",
-            ],
-            stdin: "null",
-            stderr: "null",
-            stdout: "piped",
-          }).spawn();
-          const readable = stdout
-            .pipeThrough(new TextDecoderStream())
-            .pipeThrough(new JSONLinesParseStream()) as ReadableStream<
-              { projects: GitHubProject[] }
-            >;
+        await stdout
+          .pipeThrough(new TextDecoderStream())
+          .pipeThrough(new JSONLinesParseStream())
+          .pipeTo(
+            new WritableStream<{ projects: GitHubProject[] }>({
+              write(chunk: { projects: GitHubProject[] }) {
+                for (const project of chunk.projects) {
+                  items.push({
+                    word: project.title,
+                    display: project.title,
+                    action: {
+                      title: project.title,
+                      number: project.number,
+                    },
+                  });
+                }
+              },
+            }),
+          );
 
-          try {
-            for await (const chunk of readable) {
-              for (const project of chunk.projects) {
-                console.log(project);
-              }
-            }
-            for await (const entry of Deno.readDir(root)) {
-              const path = join(root, entry.name);
-
-              items.push({
-                word: path,
-                action: {
-                  path: path,
-                },
-              });
-            }
-          } catch (e: unknown) {
-            console.error(e);
-          }
-
-          return items;
-        };
-
-        controller.enqueue(
-          await tree(dir),
-        );
+        controller.enqueue(items);
 
         controller.close();
       },
