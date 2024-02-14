@@ -37,9 +37,12 @@ export class Kind extends BaseKind<Params> {
       }
       return Promise.resolve(ActionFlags.None);
     },
+    // openItemList: (args: { denops: Denops; items: DduItem[] }) => {
+
+    // },
   };
 
-  override async getPreviewer(args: {
+  override getPreviewer(args: {
     denops: Denops;
     item: DduItem;
     actionParams: unknown;
@@ -47,13 +50,13 @@ export class Kind extends BaseKind<Params> {
   }): Promise<Previewer | undefined> {
     const action = args.item.action as ActionData;
     if (!action) {
-      return undefined;
+      return Promise.resolve(undefined);
     }
 
-    return {
+    return Promise.resolve({
       kind: "buffer",
       path: action.title,
-    };
+    });
   }
 
   override params(): Params {
