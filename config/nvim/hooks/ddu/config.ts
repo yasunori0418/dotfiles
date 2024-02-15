@@ -175,6 +175,9 @@ export class Config extends BaseConfig {
         gh_project: {
           defaultAction: "echo",
         },
+        gh_project_item: {
+          defaultAction: "echo",
+        },
       },
       sourceParams: {
         rg: {
