@@ -17,7 +17,7 @@ type Params = {
   projectNumber?: number;
 };
 
-type GHProjectItemContent = {
+type GHProjectTaskContent = {
   title: string;
   body: string;
   type: string;
@@ -26,16 +26,16 @@ type GHProjectItemContent = {
   url?: string;
 };
 
-type GHProjectItem = {
+type GHProjectTask = {
   id: string;
   status: string;
   title: string;
-  content: GHProjectItemContent;
+  content: GHProjectTaskContent;
   assignees?: string[];
   repository?: string;
 };
 
-function parseGHProjectItemAction(projectItem: GHProjectItem): ActionData {
+function parseGHProjectTaskAction(projectItem: GHProjectTask): ActionData {
   const {
     id,
     title,
@@ -47,17 +47,17 @@ function parseGHProjectItemAction(projectItem: GHProjectItem): ActionData {
   };
 }
 
-function parseGHProjectItemItem(projectItem: GHProjectItem): Item<ActionData> {
+function parseGHProjectTaskItem(projectItem: GHProjectTask): Item<ActionData> {
   return {
     word: projectItem.title,
     display: projectItem.title,
-    action: parseGHProjectItemAction(projectItem),
-    kind: "gh_project_item",
+    action: parseGHProjectTaskAction(projectItem),
+    kind: "gh_project_task",
   };
 }
 
 export class Source extends BaseSource<Params> {
-  override kind = "gh_project_item";
+  override kind = "gh_project_task";
 
   override gather(
     { sourceParams }: GatherArguments<Params>,
@@ -88,10 +88,10 @@ export class Source extends BaseSource<Params> {
           .pipeThrough(new TextDecoderStream())
           .pipeThrough(new JSONLinesParseStream())
           .pipeTo(
-            new WritableStream<{ items: GHProjectItem[] }>({
-              write(chunk: { items: GHProjectItem[] }) {
+            new WritableStream<{ items: GHProjectTask[] }>({
+              write(chunk: { items: GHProjectTask[] }) {
                 controller.enqueue(
-                  chunk.items.map((item) => parseGHProjectItemItem(item)),
+                  chunk.items.map((item) => parseGHProjectTaskItem(item)),
                 );
               },
             }),

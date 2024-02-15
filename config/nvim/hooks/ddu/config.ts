@@ -175,7 +175,7 @@ export class Config extends BaseConfig {
         gh_project: {
           defaultAction: "echo",
         },
-        gh_project_item: {
+        gh_project_task: {
           defaultAction: "echo",
         },
       },
@@ -235,7 +235,7 @@ export class Config extends BaseConfig {
         ghq: {
           display: "relative",
         },
-        gh_project_item: {
+        gh_project_task: {
           projectNumber: 4,
         },
       },
@@ -975,7 +975,7 @@ export class Config extends BaseConfig {
       ui: "ff",
       sources: [
         {
-          name: "gh_project_item",
+          name: "gh_project_task",
         },
       ],
     });
