@@ -232,6 +232,9 @@ export class Config extends BaseConfig {
         ghq: {
           display: "relative",
         },
+        gh_project_item: {
+          projectNumber: 4,
+        },
       },
       kindOptions: {
         file: {
@@ -969,7 +972,7 @@ export class Config extends BaseConfig {
       ui: "ff",
       sources: [
         {
-          name: "gh_project",
+          name: "gh_project_item",
         },
       ],
     });
