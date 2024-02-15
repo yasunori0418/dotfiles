@@ -9,7 +9,6 @@ import {
 } from "https://deno.land/x/ddu_vim@v3.10.2/base/source.ts";
 import { JSONLinesParseStream } from "https://deno.land/x/jsonlines@v1.2.2/mod.ts";
 import { ActionData } from "../@ddu-kinds/gh_project.ts";
-import { GHProject } from "../gh_project/type.ts";
 
 function parseGHProjectAction(project: GHProject): ActionData {
   const {
