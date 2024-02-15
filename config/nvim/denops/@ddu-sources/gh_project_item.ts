@@ -8,7 +8,7 @@ import {
   GatherArguments,
 } from "https://deno.land/x/ddu_vim@v3.10.2/base/source.ts";
 import { JSONLinesParseStream } from "https://deno.land/x/jsonlines@v1.2.2/mod.ts";
-import { ActionData } from "../@ddu-kinds/gh_project.ts";
+import { ActionData } from "../@ddu-kinds/gh_project_item.ts";
 
 type Params = {
   cmd: string;
@@ -34,6 +34,27 @@ type GHProjectItem = {
   assignees?: string[];
   repository?: string;
 };
+
+function parseGHProjectItemAction(projectItem: GHProjectItem): ActionData {
+  const {
+    id,
+    title,
+  } = projectItem;
+
+  return {
+    id,
+    title,
+  };
+}
+
+function parseGHProjectItemItem(projectItem: GHProjectItem): Item<ActionData> {
+  return {
+    word: projectItem.title,
+    display: projectItem.title,
+    action: parseGHProjectItemAction(projectItem),
+    kind: "gh_project_item",
+  };
+}
 
 export class Source extends BaseSource<Params> {
   override kind = "gh_project_item";
@@ -69,9 +90,9 @@ export class Source extends BaseSource<Params> {
           .pipeTo(
             new WritableStream<{ items: GHProjectItem[] }>({
               write(chunk: { items: GHProjectItem[] }) {
-                for (const item of chunk.items) {
-                  console.log(item);
-                }
+                controller.enqueue(
+                  chunk.items.map((item) => parseGHProjectItemItem(item)),
+                );
               },
             }),
           );
