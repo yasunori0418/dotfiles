@@ -49,11 +49,11 @@ function parseGHProjectTaskAction(projectItem: GHProjectTask): ActionData {
   };
 }
 
-function parseGHProjectTaskItem(projectItem: GHProjectTask): Item<ActionData> {
+function parseGHProjectTaskItem(projectTask: GHProjectTask): Item<ActionData> {
   return {
-    word: projectItem.title,
-    display: projectItem.title,
-    action: parseGHProjectTaskAction(projectItem),
+    word: projectTask.title,
+    display: projectTask.title,
+    action: parseGHProjectTaskAction(projectTask),
     kind: "gh_project_task",
   };
 }
