@@ -39,11 +39,13 @@ function parseGHProjectTaskAction(projectItem: GHProjectTask): ActionData {
   const {
     id,
     title,
+    status,
   } = projectItem;
 
   return {
     id,
     title,
+    status,
   };
 }
 

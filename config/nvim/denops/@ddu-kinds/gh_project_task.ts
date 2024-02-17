@@ -11,6 +11,7 @@ import { Denops } from "https://deno.land/x/ddu_vim@v3.10.2/deps.ts";
 export type ActionData = {
   title: string;
   id: string;
+  status: string;
 };
 
 type Params = Record<never, never>;
