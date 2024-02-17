@@ -8,7 +8,7 @@ import {
   GatherArguments,
 } from "https://deno.land/x/ddu_vim@v3.10.2/base/source.ts";
 import { JSONLinesParseStream } from "https://deno.land/x/jsonlines@v1.2.2/mod.ts";
-import { ActionData } from "../@ddu-kinds/gh_project_item.ts";
+import { ActionData } from "../@ddu-kinds/gh_project_task.ts";
 
 type Params = {
   cmd: string;
