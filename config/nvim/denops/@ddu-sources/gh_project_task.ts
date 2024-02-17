@@ -55,7 +55,13 @@ function parseGHProjectTaskItem(projectTask: GHProjectTask): Item<ActionData> {
     display: projectTask.title,
     action: parseGHProjectTaskAction(projectTask),
     kind: "gh_project_task",
+    treePath: [projectTask.status, projectTask.title],
+    isTree: false,
   };
+}
+
+function unique<T>(array: T[]): T[] {
+  return [...new Set(array)];
 }
 
 export class Source extends BaseSource<Params> {
@@ -91,9 +97,27 @@ export class Source extends BaseSource<Params> {
           .pipeThrough(new JSONLinesParseStream())
           .pipeTo(
             new WritableStream<{ items: GHProjectTask[] }>({
-              write(chunk: { items: GHProjectTask[] }) {
+              write(task: { items: GHProjectTask[] }) {
+                const taskStatuses = unique<string>(
+                  task.items.map((item) => item.status),
+                );
+                console.log(taskStatuses);
                 controller.enqueue(
-                  chunk.items.map((item) => parseGHProjectTaskItem(item)),
+                  taskStatuses.map((taskStatus: string): Item<ActionData> => {
+                    return {
+                      word: taskStatus,
+                      display: taskStatus,
+                      isTree: true,
+                      treePath: [taskStatus],
+                      isExpanded: false,
+                    };
+                  }),
+                );
+
+                controller.enqueue(
+                  task.items.map((item: GHProjectTask): Item<ActionData> =>
+                    parseGHProjectTaskItem(item)
+                  ),
                 );
               },
             }),
@@ -106,7 +130,7 @@ export class Source extends BaseSource<Params> {
     return {
       cmd: "gh",
       owner: "@me",
-      limit: 0,
+      limit: 1000,
     };
   }
 }
