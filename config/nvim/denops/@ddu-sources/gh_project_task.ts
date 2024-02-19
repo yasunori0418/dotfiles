@@ -55,8 +55,6 @@ function parseGHProjectTaskItem(projectTask: GHProjectTask): Item<ActionData> {
     display: `[${projectTask.status}] ${projectTask.title}`,
     action: parseGHProjectTaskAction(projectTask),
     kind: "gh_project_task",
-    treePath: [projectTask.status, projectTask.title],
-    isTree: false,
   };
 }
 
