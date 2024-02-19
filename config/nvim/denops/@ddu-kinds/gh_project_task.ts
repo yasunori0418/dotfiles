@@ -6,7 +6,7 @@ import {
   PreviewContext,
   Previewer,
 } from "https://deno.land/x/ddu_vim@v3.10.2/types.ts";
-import { Denops } from "https://deno.land/x/ddu_vim@v3.10.2/deps.ts";
+import { Denops, fn } from "https://deno.land/x/ddu_vim@v3.10.2/deps.ts";
 
 export type ActionData = {
   title: string;
@@ -15,6 +15,17 @@ export type ActionData = {
 };
 
 type Params = Record<never, never>;
+
+async function createScratchBuffer(denops: Denops, item: DduItem) {
+  const action = item.action as ActionData;
+  const bufnr = await fn.bufadd(denops, `gh_project://${action.id}`);
+  const bufname = await fn.bufname(denops, bufnr);
+  await fn.bufload(denops, bufnr);
+  await fn.setbufvar(denops, bufname, "&buftype", "nofile");
+  await fn.setbufvar(denops, bufname, "&bufhidden", "hide");
+  await fn.setbufvar(denops, bufname, "&swapfile", false);
+  console.log(await fn.getbufinfo(denops, bufname));
+}
 
 export class Kind extends BaseKind<Params> {
   override actions: Record<
@@ -26,6 +37,10 @@ export class Kind extends BaseKind<Params> {
         const action = item.action as ActionData;
         console.log(`title: "${action.title}"`);
       }
+      return Promise.resolve(ActionFlags.None);
+    },
+    edit: async (args: { items: DduItem[]; denops: Denops }) => {
+      await createScratchBuffer(args.denops, args.items[0]);
       return Promise.resolve(ActionFlags.None);
     },
   };
