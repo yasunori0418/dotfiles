@@ -52,7 +52,7 @@ function parseGHProjectTaskAction(projectItem: GHProjectTask): ActionData {
 function parseGHProjectTaskItem(projectTask: GHProjectTask): Item<ActionData> {
   return {
     word: projectTask.title,
-    display: projectTask.title,
+    display: `[${projectTask.status}] ${projectTask.title}`,
     action: parseGHProjectTaskAction(projectTask),
     kind: "gh_project_task",
     treePath: [projectTask.status, projectTask.title],
