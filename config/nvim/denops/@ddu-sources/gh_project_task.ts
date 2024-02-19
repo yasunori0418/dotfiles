@@ -60,10 +60,6 @@ function parseGHProjectTaskItem(projectTask: GHProjectTask): Item<ActionData> {
   };
 }
 
-function unique<T>(array: T[]): T[] {
-  return [...new Set(array)];
-}
-
 export class Source extends BaseSource<Params> {
   override kind = "gh_project_task";
 
@@ -98,22 +94,6 @@ export class Source extends BaseSource<Params> {
           .pipeTo(
             new WritableStream<{ items: GHProjectTask[] }>({
               write(task: { items: GHProjectTask[] }) {
-                const taskStatuses = unique<string>(
-                  task.items.map((item) => item.status),
-                );
-                console.log(taskStatuses);
-                controller.enqueue(
-                  taskStatuses.map((taskStatus: string): Item<ActionData> => {
-                    return {
-                      word: taskStatus,
-                      display: taskStatus,
-                      isTree: true,
-                      treePath: [taskStatus],
-                      isExpanded: false,
-                    };
-                  }),
-                );
-
                 controller.enqueue(
                   task.items.map((item: GHProjectTask): Item<ActionData> =>
                     parseGHProjectTaskItem(item)
