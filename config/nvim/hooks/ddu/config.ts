@@ -176,7 +176,7 @@ export class Config extends BaseConfig {
           defaultAction: "echo",
         },
         gh_project_task: {
-          defaultAction: "echo",
+          defaultAction: "edit",
         },
       },
       sourceParams: {
