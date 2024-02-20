@@ -172,12 +172,6 @@ export class Config extends BaseConfig {
         lsp_diagnostic: {
           defaultAction: "open",
         },
-        gh_project: {
-          defaultAction: "echo",
-        },
-        gh_project_task: {
-          defaultAction: "edit",
-        },
       },
       sourceParams: {
         rg: {
@@ -349,6 +343,12 @@ export class Config extends BaseConfig {
               return Promise.resolve(ActionFlags.Persist);
             },
           },
+        },
+        gh_project: {
+          defaultAction: "echo",
+        },
+        gh_project_task: {
+          defaultAction: "edit",
         },
       },
       actionOptions: {
