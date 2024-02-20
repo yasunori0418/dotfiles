@@ -41,7 +41,7 @@ export class Kind extends BaseKind<Params> {
     },
     edit: async (args: { items: DduItem[]; denops: Denops }) => {
       await createScratchBuffer(args.denops, args.items[0]);
-      return Promise.resolve(ActionFlags.None);
+      return ActionFlags.None;
     },
   };
 
