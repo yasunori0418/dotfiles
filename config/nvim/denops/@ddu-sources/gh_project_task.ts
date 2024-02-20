@@ -35,29 +35,6 @@ type GHProjectTask = {
   repository?: string;
 };
 
-function parseGHProjectTaskAction(projectItem: GHProjectTask): ActionData {
-  const {
-    id,
-    title,
-    status,
-  } = projectItem;
-
-  return {
-    id,
-    title,
-    status,
-  };
-}
-
-function parseGHProjectTaskItem(projectTask: GHProjectTask): Item<ActionData> {
-  return {
-    word: projectTask.title,
-    display: `[${projectTask.status}] ${projectTask.title}`,
-    action: parseGHProjectTaskAction(projectTask),
-    kind: "gh_project_task",
-  };
-}
-
 export class Source extends BaseSource<Params> {
   override kind = "gh_project_task";
 
@@ -93,9 +70,17 @@ export class Source extends BaseSource<Params> {
             new WritableStream<{ items: GHProjectTask[] }>({
               write(task: { items: GHProjectTask[] }) {
                 controller.enqueue(
-                  task.items.map((item: GHProjectTask): Item<ActionData> =>
-                    parseGHProjectTaskItem(item)
-                  ),
+                  task.items.map((item: GHProjectTask): Item<ActionData> => {
+                    return {
+                      word: item.title,
+                      display: `[${item.status}] ${item.title}`,
+                      action: {
+                        id: item.id,
+                        title: item.title,
+                        status: item.status,
+                      },
+                    };
+                  }),
                 );
               },
             }),
