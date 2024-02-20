@@ -3,8 +3,8 @@ import {
   ActionFlags,
   BaseKind,
   DduItem,
-  PreviewContext,
-  Previewer,
+  // PreviewContext,
+  // Previewer,
 } from "https://deno.land/x/ddu_vim@v3.10.2/types.ts";
 import { Denops, fn } from "https://deno.land/x/ddu_vim@v3.10.2/deps.ts";
 
@@ -45,22 +45,22 @@ export class Kind extends BaseKind<Params> {
     },
   };
 
-  override getPreviewer(args: {
-    denops: Denops;
-    item: DduItem;
-    actionParams: unknown;
-    previewContext: PreviewContext;
-  }): Promise<Previewer | undefined> {
-    const action = args.item.action as ActionData;
-    if (!action) {
-      return Promise.resolve(undefined);
-    }
+  // override getPreviewer(args: {
+  //   denops: Denops;
+  //   item: DduItem;
+  //   actionParams: unknown;
+  //   previewContext: PreviewContext;
+  // }): Promise<Previewer | undefined> {
+  //   const action = args.item.action as ActionData;
+  //   if (!action) {
+  //     return Promise.resolve(undefined);
+  //   }
 
-    return Promise.resolve({
-      kind: "buffer",
-      path: action.title,
-    });
-  }
+  //   return Promise.resolve({
+  //     kind: "buffer",
+  //     path: action.title,
+  //   });
+  // }
 
   override params(): Params {
     return {};
