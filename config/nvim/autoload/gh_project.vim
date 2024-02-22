@@ -5,7 +5,7 @@ function! gh_project#create_scratch_buffer(name)
   call setbufvar(bufname, '&buftype', 'nofile')
   call setbufvar(bufname, '&bufhidden', 'hide')
   call setbufvar(bufname, '&swapfile', v:false)
-  return #{ bufnr: bufnr(bufname), bufname: bufname }
+  call setbufvar(bufname, '&filetype', 'toml')
   return #{ bufnr: bufnr, bufname: bufname }
 endfunction
 
