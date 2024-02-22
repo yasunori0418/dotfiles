@@ -1,9 +1,12 @@
 function! gh_project#create_scratch_buffer(name)
   let bufname = $'gh_project://{a:name}'->bufadd()->bufname()
+  let bufnr = bufname->bufnr()
+  call bufload(bufnr)
   call setbufvar(bufname, '&buftype', 'nofile')
   call setbufvar(bufname, '&bufhidden', 'hide')
   call setbufvar(bufname, '&swapfile', v:false)
   return #{ bufnr: bufnr(bufname), bufname: bufname }
+  return #{ bufnr: bufnr, bufname: bufname }
 endfunction
 
 function! gh_project#open_buffer(bufnr, split_kind)
