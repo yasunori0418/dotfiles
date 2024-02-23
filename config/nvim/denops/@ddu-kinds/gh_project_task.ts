@@ -45,7 +45,7 @@ export class Kind extends BaseKind<Params> {
         `title = '${action.title}'`,
         `status = '${action.status}'`,
       ]);
-      await args.denops.call(
+      denops.call(
         "gh_project#open_buffer",
         bufnr,
         "horizontal",
