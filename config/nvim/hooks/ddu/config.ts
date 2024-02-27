@@ -229,7 +229,11 @@ export class Config extends BaseConfig {
         ghq: {
           display: "relative",
         },
+        gh_project: {
+          cmd: "/home/yasunori/src/github.com/yasunori0418/cli/bin/gh",
+        },
         gh_project_task: {
+          cmd: "/home/yasunori/src/github.com/yasunori0418/cli/bin/gh",
           projectNumber: 4,
         },
       },
