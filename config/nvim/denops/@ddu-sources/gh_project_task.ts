@@ -79,9 +79,10 @@ export class Source extends BaseSource<Params> {
                       word: item.title,
                       display: `[${item.status}] ${item.title}`,
                       action: {
-                        id: item.id,
+                        id: item.content.id ?? item.id,
                         title: item.title,
                         status: item.status,
+                        type: item.content.type,
                       },
                     };
                   }),
