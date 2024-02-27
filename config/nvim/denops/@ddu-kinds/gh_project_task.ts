@@ -12,7 +12,10 @@ export type ActionData = {
   title: string;
   id: string;
   status: string;
-  type: string;
+  type:
+  | "DraftIssue"
+  | "Issue"
+  | "PullRequest";
 };
 
 type Params = Record<never, never>;

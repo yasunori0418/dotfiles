@@ -20,10 +20,14 @@ type Params = {
 type GHProjectTaskContent = {
   title: string;
   body: string;
-  type: string;
+  type: 
+  | "DraftIssue"
+  | "Issue"
+  | "PullRequest";
   number?: number;
   repository?: string;
   url?: string;
+  id?: string;
 };
 
 type GHProjectTask = {
