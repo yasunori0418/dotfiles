@@ -12,6 +12,7 @@ export type ActionData = {
   title: string;
   id: string;
   status: string;
+  type: string;
 };
 
 type Params = Record<never, never>;
