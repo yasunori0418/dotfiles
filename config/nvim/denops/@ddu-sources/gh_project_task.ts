@@ -81,6 +81,7 @@ export class Source extends BaseSource<Params> {
                       display: `[${item.status}] ${item.title}`,
                       action: {
                         taskId: item.content.id ?? item.id,
+                        projectId: projectId,
                         title: item.title,
                         status: item.status,
                         type: item.content.type,
