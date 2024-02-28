@@ -7,16 +7,18 @@ import {
   // Previewer,
 } from "https://deno.land/x/ddu_vim@v3.10.2/types.ts";
 import { Denops, fn } from "https://deno.land/x/ddu_vim@v3.10.2/deps.ts";
+import { GHProjectTaskField } from "../@ddu-sources/gh_project_task.ts";
 
 export type ActionData = {
   title: string;
+  body: string;
   taskId: string;
   projectId: string;
-  status: string;
   type:
-  | "DraftIssue"
-  | "Issue"
-  | "PullRequest";
+    | "DraftIssue"
+    | "Issue"
+    | "PullRequest";
+  fileds: GHProjectTaskField[];
 };
 
 type Params = Record<never, never>;

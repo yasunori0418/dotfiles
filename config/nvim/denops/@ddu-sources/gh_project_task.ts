@@ -40,6 +40,18 @@ type GHProjectTask = {
   repository?: string;
 };
 
+export type GHProjectTaskField = {
+  id: string;
+  name: string;
+  type: string;
+  options?: GHProjectTaskSingleSelectField[];
+};
+
+type GHProjectTaskSingleSelectField = {
+  id: string;
+  name: string;
+};
+
 export class Source extends BaseSource<Params> {
   override kind = "gh_project_task";
 
@@ -50,6 +62,41 @@ export class Source extends BaseSource<Params> {
       async start(controller) {
         const projectNumber = sourceParams.projectNumber;
         if (!projectNumber) throw "required projectNumber";
+        const projectId = sourceParams.projectId;
+        if (!projectId) throw "required projectId";
+
+        const taskFieldsPipeout = new Deno.Command(sourceParams.cmd, {
+          args: [
+            "project",
+            "field-list",
+            projectNumber.toString(),
+            "--owner",
+            sourceParams.owner,
+            "--limit",
+            sourceParams.limit.toString(),
+            "--format",
+            "json",
+          ],
+          stdin: "null",
+          stderr: "null",
+          stdout: "piped",
+        }).spawn();
+
+        const taskFields: GHProjectTaskField[] = [];
+        await taskFieldsPipeout.stdout
+          .pipeThrough(new TextDecoderStream())
+          .pipeThrough(new JSONLinesParseStream())
+          .pipeTo(
+            new WritableStream<{ fields: GHProjectTaskField[] }>({
+              write(chunk: { fields: GHProjectTaskField[] }) {
+                for (const filed of chunk.fields) {
+                  taskFields.push(filed);
+                }
+              },
+            }),
+          ).finally(async () => {
+            await taskFieldsPipeout.stdout.cancel();
+          });
 
         const { stdout } = new Deno.Command(sourceParams.cmd, {
           args: [
@@ -83,8 +130,9 @@ export class Source extends BaseSource<Params> {
                         taskId: item.content.id ?? item.id,
                         projectId: projectId,
                         title: item.title,
-                        status: item.status,
                         type: item.content.type,
+                        body: item.content.body,
+                        fileds: taskFields,
                       },
                     };
                   }).reverse(),
