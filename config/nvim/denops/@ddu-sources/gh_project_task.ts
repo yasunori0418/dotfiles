@@ -21,10 +21,10 @@ type Params = {
 type GHProjectTaskContent = {
   title: string;
   body: string;
-  type: 
-  | "DraftIssue"
-  | "Issue"
-  | "PullRequest";
+  type:
+    | "DraftIssue"
+    | "Issue"
+    | "PullRequest";
   number?: number;
   repository?: string;
   url?: string;
@@ -80,7 +80,7 @@ export class Source extends BaseSource<Params> {
                       word: item.title,
                       display: `[${item.status}] ${item.title}`,
                       action: {
-                        id: item.content.id ?? item.id,
+                        taskId: item.content.id ?? item.id,
                         title: item.title,
                         status: item.status,
                         type: item.content.type,

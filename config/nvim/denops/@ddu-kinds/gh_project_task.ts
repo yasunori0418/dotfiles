@@ -10,7 +10,7 @@ import { Denops, fn } from "https://deno.land/x/ddu_vim@v3.10.2/deps.ts";
 
 export type ActionData = {
   title: string;
-  id: string;
+  taskId: string;
   status: string;
   type:
   | "DraftIssue"
@@ -42,10 +42,10 @@ export class Kind extends BaseKind<Params> {
       const action = args.items[0].action as ActionData;
       const { bufnr, bufname } = await denops.call(
         "gh_project#create_scratch_buffer",
-        action.id,
+        action.taskId,
       ) as BufInfo;
       await fn.appendbufline(denops, bufname, 0, [
-        `task_id = '${action.id}'`,
+        `task_id = '${action.taskId}'`,
         `title = '${action.title}'`,
         `status = '${action.status}'`,
       ]);
