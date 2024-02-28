@@ -234,6 +234,7 @@ export class Config extends BaseConfig {
         },
         gh_project_task: {
           cmd: "/home/yasunori/src/github.com/yasunori0418/cli/bin/gh",
+          projectId: "PVT_kwHOBHUnA84ASqYZ",
           projectNumber: 4,
         },
       },
