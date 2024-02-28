@@ -85,7 +85,7 @@ export class Source extends BaseSource<Params> {
                         type: item.content.type,
                       },
                     };
-                  }),
+                  }).reverse(),
                 );
               },
             }),
