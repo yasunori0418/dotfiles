@@ -11,6 +11,7 @@ import { Denops, fn } from "https://deno.land/x/ddu_vim@v3.10.2/deps.ts";
 export type ActionData = {
   title: string;
   taskId: string;
+  projectId: string;
   status: string;
   type:
   | "DraftIssue"
