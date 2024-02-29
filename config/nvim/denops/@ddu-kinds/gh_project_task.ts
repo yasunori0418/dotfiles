@@ -8,6 +8,7 @@ import {
 } from "https://deno.land/x/ddu_vim@v3.10.2/types.ts";
 import { Denops, fn } from "https://deno.land/x/ddu_vim@v3.10.2/deps.ts";
 import { GHProjectTaskField } from "../@ddu-sources/gh_project_task.ts";
+import { stringify as tomlStringify } from "https://deno.land/std@0.217.0/toml/mod.ts";
 
 export type Task = {
   projectId: string;
@@ -29,6 +30,30 @@ type BufInfo = {
   bufname: string;
 };
 
+function createTomlData(action: ActionData): string[] {
+  /**
+   * 特定のプロパティを上書きする型関数
+   * Reference: https://qiita.com/ibaragi/items/2a6412aeaca5703694b1
+   */
+  type Overwrite<T, U extends { [Key in keyof T]?: unknown }> =
+    & Omit<
+      T,
+      keyof U
+    >
+    & U;
+
+  const task: Overwrite<Task, { body: string[] }> = {
+    projectId: action.projectId,
+    taskId: action.taskId,
+    title: action.title,
+    body: action.body.split(/\n/),
+    status: action.status,
+  };
+  const toml: string[] = tomlStringify(task).split(/\n/);
+
+  return toml;
+}
+
 export class Kind extends BaseKind<Params> {
   override actions: Record<
     string,
@@ -48,12 +73,8 @@ export class Kind extends BaseKind<Params> {
         "gh_project#create_scratch_buffer",
         action.taskId,
       ) as BufInfo;
-      await fn.appendbufline(denops, bufname, 0, [
-        `task_id = '${action.taskId}'`,
-        `project_id = '${action.projectId}'`,
-        `title = '${action.title}'`,
-        `status = '${action.status}'`,
-      ]);
+      await fn.appendbufline(denops, bufname, 0, createTomlData(action));
+
       denops.call(
         "gh_project#open_buffer",
         bufnr,
