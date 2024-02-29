@@ -42,16 +42,46 @@ function createTomlData(action: ActionData): string[] {
     >
     & U;
 
-  const task: Overwrite<Task, { body: string[] }> = {
+  const task: Overwrite<Omit<Task, "status">, { body: string[] }> = {
     projectId: action.projectId,
     taskId: action.taskId,
     title: action.title,
     body: action.body.split(/\n/),
-    status: action.status,
+  };
+
+  const commentOutToml = (status: string): string => {
+    if (action.status === status) {
+      return "";
+    } else {
+      return "# ";
+    }
   };
   const toml: string[] = tomlStringify(task).split(/\n/);
+  const fields: string[] = ["########fields########", ""];
+  for (const field of action.fields) {
+    fields.push(`####[field.${field.name}]####`);
+    fields.push(`[field.${field.name}]`);
+    fields.push(`fieldId = "${field.id}"`);
+    fields.push(`fieldName = "${field.name}"`);
+    if (!field.options) fields.push(`fieldText = ""`);
+    fields.push("");
+    if (field.options) {
+      for (const option of field.options) {
+        fields.push(
+          `${commentOutToml(option.name)}optionId = "${option.id}"`,
+        );
+        fields.push(
+          `${commentOutToml(option.name)}optionName = "${option.name}"`,
+        );
+        fields.push("");
+      }
+    }
+  }
 
-  return toml;
+  return [
+    ...toml,
+    ...fields,
+  ];
 }
 
 export class Kind extends BaseKind<Params> {
