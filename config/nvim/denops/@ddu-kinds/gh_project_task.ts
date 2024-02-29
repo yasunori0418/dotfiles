@@ -12,6 +12,7 @@ import { GHProjectTaskField } from "../@ddu-sources/gh_project_task.ts";
 export type ActionData = {
   title: string;
   body: string;
+  status: string;
   taskId: string;
   projectId: string;
   type:
