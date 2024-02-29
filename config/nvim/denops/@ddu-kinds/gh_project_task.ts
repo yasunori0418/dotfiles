@@ -9,16 +9,16 @@ import {
 import { Denops, fn } from "https://deno.land/x/ddu_vim@v3.10.2/deps.ts";
 import { GHProjectTaskField } from "../@ddu-sources/gh_project_task.ts";
 
-export type ActionData = {
+export type Task = {
+  projectId: string;
+  taskId: string;
   title: string;
   body: string;
   status: string;
-  taskId: string;
-  projectId: string;
-  type:
-    | "DraftIssue"
-    | "Issue"
-    | "PullRequest";
+};
+
+export type ActionData = Task & {
+  type: "DraftIssue" | "Issue" | "PullRequest";
   fileds: GHProjectTaskField[];
 };
 
@@ -50,6 +50,7 @@ export class Kind extends BaseKind<Params> {
       ) as BufInfo;
       await fn.appendbufline(denops, bufname, 0, [
         `task_id = '${action.taskId}'`,
+        `project_id = '${action.projectId}'`,
         `title = '${action.title}'`,
         `status = '${action.status}'`,
       ]);
