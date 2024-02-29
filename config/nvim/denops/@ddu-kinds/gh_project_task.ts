@@ -20,7 +20,7 @@ export type Task = {
 
 export type ActionData = Task & {
   type: "DraftIssue" | "Issue" | "PullRequest";
-  fileds: GHProjectTaskField[];
+  fields: GHProjectTaskField[];
 };
 
 type Params = Record<never, never>;

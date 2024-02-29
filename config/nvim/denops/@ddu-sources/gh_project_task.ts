@@ -133,7 +133,7 @@ export class Source extends BaseSource<Params> {
                         type: item.content.type,
                         body: item.content.body,
                         status: item.status,
-                        fileds: taskFields,
+                        fields: taskFields,
                       },
                     };
                   }).reverse(),
