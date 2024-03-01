@@ -29,6 +29,24 @@ export type Task = {
   currentStatus: string;
 };
 
+export type TaskField = {
+  id: string;
+  name: string;
+  text?: string;
+  options?: TaskFieldOption[];
+};
+
+type TaskFieldOption = {
+  id: string;
+  name: string;
+  currentStatusFlag?: boolean;
+};
+
+export type TaskEdit = Overwrite<
+  Task,
+  { body: string[]; taskFields: TaskField[] }
+>;
+
 export type ActionData = Task & {
   type: "DraftIssue" | "Issue" | "PullRequest";
   fields: GHProjectTaskField[];
@@ -42,47 +60,39 @@ type BufInfo = {
 };
 
 function createTomlData(action: ActionData): string[] {
-
-  const task: Overwrite<Task, { body: string[] }> = {
+  const task: TaskEdit = {
     projectId: action.projectId,
     taskId: action.taskId,
     title: action.title,
     body: action.body.split(/\n/),
     currentStatus: action.currentStatus,
+    taskFields: [],
   };
 
-  const commentOutToml = (status: string): string => {
-    if (action.status === status) {
-      return "";
-    } else {
-      return "# ";
-    }
-  };
-  const toml: string[] = tomlStringify(task).split(/\n/);
-  const fields: string[] = [];
   for (const field of action.fields) {
-    fields.push(`[field.${field.name}]`);
-    fields.push(`fieldId = "${field.id}"`);
-    fields.push(`fieldName = "${field.name}"`);
-    if (!field.options) fields.push(`fieldText = ""`);
-    fields.push("");
+    const taskField: TaskField = {
+      id: field.id,
+      name: field.name,
+    };
+    if (!field.options) taskField.text = "";
     if (field.options) {
+      taskField.options = [];
       for (const option of field.options) {
-        fields.push(
-          `${commentOutToml(option.name)}optionId = "${option.id}"`,
-        );
-        fields.push(
-          `${commentOutToml(option.name)}optionName = "${option.name}"`,
-        );
-        fields.push("");
+        let currentStatusFlag = undefined;
+        if (field.name === "Status" && option.name === action.currentStatus) {
+          currentStatusFlag = true;
+        }
+        taskField.options.push({
+          id: option.id,
+          name: option.name,
+          currentStatusFlag,
+        });
       }
     }
+    task.taskFields.push(taskField);
   }
 
-  return [
-    ...toml,
-    ...fields,
-  ];
+  return tomlStringify(task).split(/\n/);
 }
 
 export class Kind extends BaseKind<Params> {
