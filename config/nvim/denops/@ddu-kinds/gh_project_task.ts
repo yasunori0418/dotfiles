@@ -57,9 +57,8 @@ function createTomlData(action: ActionData): string[] {
     }
   };
   const toml: string[] = tomlStringify(task).split(/\n/);
-  const fields: string[] = ["########fields########", ""];
+  const fields: string[] = [];
   for (const field of action.fields) {
-    fields.push(`####[field.${field.name}]####`);
     fields.push(`[field.${field.name}]`);
     fields.push(`fieldId = "${field.id}"`);
     fields.push(`fieldName = "${field.name}"`);
