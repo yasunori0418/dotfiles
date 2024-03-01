@@ -8,7 +8,7 @@ import {
 } from "https://deno.land/x/ddu_vim@v3.10.2/types.ts";
 import { Denops, fn } from "https://deno.land/x/ddu_vim@v3.10.2/deps.ts";
 import { GHProjectTaskField } from "../@ddu-sources/gh_project_task.ts";
-import { stringify as tomlStringify } from "https://deno.land/std@0.217.0/toml/mod.ts";
+import { stringify as tomlStringify } from "https://deno.land/std@0.218.2/toml/mod.ts";
 
 export type Task = {
   projectId: string;
