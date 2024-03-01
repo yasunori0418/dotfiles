@@ -132,7 +132,7 @@ export class Source extends BaseSource<Params> {
                         title: item.title,
                         type: item.content.type,
                         body: item.content.body,
-                        status: item.status,
+                        currentStatus: item.status,
                         fields: taskFields,
                       },
                     };

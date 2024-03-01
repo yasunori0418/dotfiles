@@ -15,7 +15,7 @@ export type Task = {
   taskId: string;
   title: string;
   body: string;
-  status: string;
+  currentStatus: string;
 };
 
 export type ActionData = Task & {
@@ -42,11 +42,12 @@ function createTomlData(action: ActionData): string[] {
     >
     & U;
 
-  const task: Overwrite<Omit<Task, "status">, { body: string[] }> = {
+  const task: Overwrite<Task, { body: string[] }> = {
     projectId: action.projectId,
     taskId: action.taskId,
     title: action.title,
     body: action.body.split(/\n/),
+    currentStatus: action.currentStatus,
   };
 
   const commentOutToml = (status: string): string => {
