@@ -18,6 +18,9 @@ function! gh_project#open_buffer(bufnr, split_kind)
 endfunction
 
 function! gh_project#send(bufnr)
+  const l:bufline = getbufline(a:bufnr, 1, '$')->join('\n')
+
   " 作ったscratch-bufferをdenops側に投げ付ける処理書きたい…
-  const l:bufline = getbufline(bufnr, 1, '$')->join('\n')
+
+  $'bdelete{a:bufnr}'->execute()
 endfunction
