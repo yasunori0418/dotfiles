@@ -6,7 +6,11 @@ import {
   // PreviewContext,
   // Previewer,
 } from "https://deno.land/x/ddu_vim@v3.10.2/types.ts";
-import { Denops, fn } from "https://deno.land/x/ddu_vim@v3.10.2/deps.ts";
+import {
+  autocmd,
+  Denops,
+  fn,
+} from "https://deno.land/x/ddu_vim@v3.10.2/deps.ts";
 import { GHProjectTaskField } from "../@ddu-sources/gh_project_task.ts";
 import { stringify as tomlStringify } from "https://deno.land/std@0.218.2/toml/mod.ts";
 
@@ -58,6 +62,16 @@ type BufInfo = {
   bufnr: number;
   bufname: string;
 };
+
+function defineAutocmd(
+  denops: Denops,
+  bufnr: number,
+  ctx: string,
+) {
+  autocmd.define(denops, "QuitPre", `<buffer=${bufnr}>`, ctx, {
+    once: true,
+  });
+}
 
 function createTomlData(action: ActionData): string[] {
   const task: TaskEdit = {
@@ -115,6 +129,8 @@ export class Kind extends BaseKind<Params> {
         action.taskId,
       ) as BufInfo;
       await fn.appendbufline(denops, bufname, 0, createTomlData(action));
+
+      defineAutocmd(denops, bufnr, "call gh_project#send()");
 
       denops.call(
         "gh_project#open_buffer",
