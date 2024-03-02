@@ -1,5 +1,5 @@
 function! gh_project#create_scratch_buffer(name)
-  let bufname = $'gh_project://{a:name}'->bufadd()->bufname()
+  let bufname = $'gh_project:{a:name}'->bufadd()->bufname()
   let bufnr = bufname->bufnr()
   call bufload(bufnr)
   call setbufvar(bufname, '&buftype', 'nofile')
