@@ -1,12 +1,12 @@
 function! gh_project#create_scratch_buffer(name)
-  let bufname = $'gh_project:{a:name}'->bufadd()->bufname()
-  let bufnr = bufname->bufnr()
-  call bufload(bufnr)
-  call setbufvar(bufname, '&buftype', 'nofile')
-  call setbufvar(bufname, '&bufhidden', 'hide')
-  call setbufvar(bufname, '&swapfile', v:false)
-  call setbufvar(bufname, '&filetype', 'toml')
-  return #{ bufnr: bufnr, bufname: bufname }
+  const l:bufname = $'gh_project:{a:name}'->bufadd()->bufname()
+  const l:bufnr = l:bufname->bufnr()
+  call bufload(l:bufnr)
+  call setbufvar(l:bufname, '&buftype', 'nofile')
+  call setbufvar(l:bufname, '&bufhidden', 'hide')
+  call setbufvar(l:bufname, '&swapfile', v:false)
+  call setbufvar(l:bufname, '&filetype', 'toml')
+  return #{ bufnr: l:bufnr, bufname: l:bufname }
 endfunction
 
 function! gh_project#open_buffer(bufnr, split_kind)
@@ -17,6 +17,7 @@ function! gh_project#open_buffer(bufnr, split_kind)
   endif
 endfunction
 
-function! gh_project#send()
+function! gh_project#send(bufnr)
   " 作ったscratch-bufferをdenops側に投げ付ける処理書きたい…
+  const l:bufline = getbufline(bufnr, 1, '$')->join('\n')
 endfunction
