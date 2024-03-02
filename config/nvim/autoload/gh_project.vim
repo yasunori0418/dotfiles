@@ -16,3 +16,7 @@ function! gh_project#open_buffer(bufnr, split_kind)
     execute $'vsplit +buffer{a:bufnr}'
   endif
 endfunction
+
+function! gh_project#send()
+  " 作ったscratch-bufferをdenops側に投げ付ける処理書きたい…
+endfunction
