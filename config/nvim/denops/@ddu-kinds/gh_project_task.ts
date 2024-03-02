@@ -130,7 +130,7 @@ export class Kind extends BaseKind<Params> {
       ) as BufInfo;
       await fn.appendbufline(denops, bufname, 0, createTomlData(action));
 
-      defineAutocmd(denops, bufnr, "call gh_project#send()");
+      defineAutocmd(denops, bufnr, `call gh_project#send(${bufnr})`);
 
       denops.call(
         "gh_project#open_buffer",
