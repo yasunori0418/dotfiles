@@ -3,10 +3,10 @@ import {
   // DduOptions,
   Item,
   // SourceOptions,
-} from "https://deno.land/x/ddu_vim@v3.10.2/types.ts";
+} from "https://deno.land/x/ddu_vim@v3.10.3/types.ts";
 import {
   GatherArguments,
-} from "https://deno.land/x/ddu_vim@v3.10.2/base/source.ts";
+} from "https://deno.land/x/ddu_vim@v3.10.3/base/source.ts";
 import { JSONLinesParseStream } from "https://deno.land/x/jsonlines@v1.2.2/mod.ts";
 import { ActionData } from "../@ddu-kinds/gh_project.ts";
 
