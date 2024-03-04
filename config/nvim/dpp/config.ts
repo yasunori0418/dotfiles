@@ -4,6 +4,7 @@ import {
   ConfigReturn,
   Denops,
   gatherCheckFiles,
+  gatherGhqPlugins,
   gatherTomls,
   gatherVimrcs,
   join,
@@ -75,6 +76,11 @@ export class Config extends BaseConfig {
       if (toml.hooks_file) {
         hooksFiles.push(toml.hooks_file);
       }
+    }
+
+    const ghqPlugins = await gatherGhqPlugins(args);
+    for (const ghqPlugin of ghqPlugins) {
+      recordPlugins[ghqPlugin.name] = ghqPlugin;
     }
 
     const [context, options] = await args.contextBuilder.get(denops);

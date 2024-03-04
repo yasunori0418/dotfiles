@@ -125,6 +125,7 @@ function M.setup()
     vim.g.toml_dir = joinpath(vim.g.base_dir, "toml")
     M.rc_autocmds = vim.api.nvim_create_augroup("RcAutocmds", { clear = true })
 
+    init_plugin("Comamoca/dpp-ext-ghq")
     init_plugin("Shougo/dpp-ext-lazy")
     init_plugin("Shougo/dpp-ext-toml")
     init_plugin("Shougo/dpp-ext-installer")

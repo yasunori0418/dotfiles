@@ -18,3 +18,6 @@ repo = 'Shougo/dpp-ext-toml'
 
 [[plugins]] # dpp-ext-lazy
 repo = 'Shougo/dpp-ext-lazy'
+
+[[plugins]]
+repo = 'comamoca/dpp-ext-ghq'

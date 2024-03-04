@@ -73,6 +73,29 @@ export async function gatherTomls(
   return tomls;
 }
 
+export async function gatherGhqPlugins(
+  args: ConfigArguments,
+): Promise<Plugin[]> {
+  const [context, options] = await args.contextBuilder.get(args.denops);
+  return await args.dpp.extAction(
+    args.denops,
+    context,
+    options,
+    "ghq",
+    "ghq",
+    {
+      ghq_root: "~/src",
+      repos: ["yasunori0418/ddu-source-gh_project"],
+      hostname: "github.com",
+      options: {
+        lazy: true,
+        merged: false,
+        on_source: "ddu.vim",
+      },
+    },
+  ) as Plugin[];
+}
+
 export function gatherCheckFiles(path: string, glob: string): string[] {
   const checkFiles: string[] = [];
   for (
