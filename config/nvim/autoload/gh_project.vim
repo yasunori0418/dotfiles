@@ -22,5 +22,5 @@ function! gh_project#send(bufnr)
 
   " 作ったscratch-bufferをdenops側に投げ付ける処理書きたい…
 
-  $'bdelete{a:bufnr}'->execute()
+  execute $'bdelete{a:bufnr}'
 endfunction
