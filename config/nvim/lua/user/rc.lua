@@ -81,7 +81,7 @@ end
 
 local function dpp_setup()
     local dpp = require("dpp")
-    if dpp.load_state(vim.g.dpp_cache) > 0 then
+    if dpp.load_state(vim.g.dpp_cache) then
         vim.fn["denops#server#wait_async"](function()
             make_state(dpp)
         end)
