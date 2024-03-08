@@ -24,5 +24,5 @@ export {
   gatherVimrcs,
 } from "./helper.ts";
 
-export { join } from "https://deno.land/std@0.218.2/path/mod.ts";
-export { expandGlobSync } from "https://deno.land/std@0.218.2/fs/mod.ts";
+export { join } from "https://deno.land/std@0.219.0/path/mod.ts";
+export { expandGlobSync } from "https://deno.land/std@0.219.0/fs/mod.ts";
