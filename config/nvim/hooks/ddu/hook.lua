@@ -1,6 +1,7 @@
 -- lua_add {{{
 local opt = { noremap = false }
 local utils = require("user.utils")
+local start_input_filter = require("user.plugins.ddu").start_input_filter
 utils.keymaps_set({
     -- ddu start prefixes
     { mode = "n", lhs = [[ d]], rhs = [[<Plug>(ddu-ff)]], opts = opt },
@@ -11,14 +12,14 @@ utils.keymaps_set({
         mode = "n",
         lhs = [[<Plug>(ddu-ff)a]],
         rhs = function()
-            vim.fn["ddu#start"]({
+            start_input_filter({
                 name = "current",
                 sourceOptions = {
                     file_rec = {
                         path = utils.search_repo_root(),
                     },
                 },
-            })
+            }, false, "file")
         end,
         opts = opt,
     },
@@ -26,7 +27,7 @@ utils.keymaps_set({
         mode = "n",
         lhs = [[<Plug>(ddu-ff)d]],
         rhs = function()
-            vim.fn["ddu#start"]({ name = "dotfiles" })
+            start_input_filter({ name = "dotfiles" }, false, "file")
         end,
         opts = opt,
     },
@@ -34,7 +35,7 @@ utils.keymaps_set({
         mode = "n",
         lhs = [[<Plug>(ddu-ff)h]],
         rhs = function()
-            vim.fn["ddu#start"]({ name = "help" })
+            start_input_filter({ name = "help" }, true, "help")
         end,
         opts = opt,
     },
@@ -42,7 +43,7 @@ utils.keymaps_set({
         mode = "n",
         lhs = [[<Plug>(ddu-ff)b]],
         rhs = function()
-            vim.fn["ddu#start"]({ name = "buffer" })
+            start_input_filter({ name = "buffer" }, false, "buffer")
         end,
         opts = opt,
     },
@@ -50,15 +51,7 @@ utils.keymaps_set({
         mode = "n",
         lhs = [[<Plug>(ddu-ff)P]],
         rhs = function()
-            vim.fn["ddu#start"]({ name = "plugin-list" })
-        end,
-        opts = opt,
-    },
-    { -- home
-        mode = "n",
-        lhs = [[<Plug>(ddu-ff)~]],
-        rhs = function()
-            vim.fn["ddu#start"]({ name = "home" })
+            start_input_filter({ name = "plugin-list" })
         end,
         opts = opt,
     },
@@ -74,7 +67,7 @@ utils.keymaps_set({
         mode = "n",
         lhs = [[<Plug>(ddu-ff)s]],
         rhs = function()
-            vim.fn["ddu#start"]({ name = "ripgrep" })
+            start_input_filter({ name = "ripgrep" }, true)
         end,
         opts = opt,
     },
@@ -98,7 +91,7 @@ utils.keymaps_set({
         mode = "n",
         lhs = [[<Plug>(ddu-ff)/]],
         rhs = function()
-            vim.fn["ddu#start"]({ name = "search_line" })
+            start_input_filter({ name = "search_line" })
         end,
         opts = opt,
     },
@@ -106,7 +99,7 @@ utils.keymaps_set({
         mode = "n",
         lhs = [[<Plug>(ddu-ff)C]],
         rhs = function()
-            vim.fn["ddu#start"]({ name = "highlight" })
+            start_input_filter({ name = "highlight" }, true, "highlight")
         end,
         opts = opt,
     },
@@ -221,5 +214,5 @@ vim.fn["ddu#custom#load_config"](
 -- }}}
 
 -- lua_post_update {{{
-vim.fn['ddu#set_static_import_path']()
+vim.fn["ddu#set_static_import_path"]()
 -- }}}
