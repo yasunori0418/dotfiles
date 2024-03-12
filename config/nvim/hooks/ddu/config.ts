@@ -406,11 +406,6 @@ export class Config extends BaseConfig {
 
     args.contextBuilder.patchLocal("current", {
       ui: "ff",
-      uiParams: {
-        ff: {
-          startFilter: true,
-        },
-      },
       sources: [
         { name: "file_fd" },
       ],
@@ -418,11 +413,6 @@ export class Config extends BaseConfig {
 
     args.contextBuilder.patchLocal("dotfiles", {
       ui: "ff",
-      uiParams: {
-        ff: {
-          startFilter: true,
-        },
-      },
       sources: [
         {
           name: "file_rec",
@@ -444,7 +434,6 @@ export class Config extends BaseConfig {
               name: "preview",
             },
             autoResize: false,
-            startFilter: true,
             filterFloatingPosition: "top",
           },
           ...await uiSize(args, 0.3, "horizontal"),
@@ -459,9 +448,6 @@ export class Config extends BaseConfig {
 
     args.contextBuilder.patchLocal("search_line", {
       ui: "ff",
-      uiParams: {
-        ff: { startFilter: true },
-      },
       sources: [
         {
           name: "line",
@@ -481,11 +467,6 @@ export class Config extends BaseConfig {
 
     args.contextBuilder.patchLocal("plugin-list", {
       ui: "ff",
-      uiParams: {
-        ff: {
-          startFilter: true,
-        },
-      },
       sources: [
         {
           name: "dpp",
@@ -498,11 +479,6 @@ export class Config extends BaseConfig {
 
     args.contextBuilder.patchLocal("home", {
       ui: "ff",
-      uiParams: {
-        ff: {
-          startFilter: true,
-        },
-      },
       sources: [
         {
           name: "file",
@@ -554,11 +530,6 @@ export class Config extends BaseConfig {
 
     args.contextBuilder.patchLocal("highlight", {
       ui: "ff",
-      uiParams: {
-        ff: {
-          startFilter: true,
-        },
-      },
       sources: [
         { name: "highlight" },
       ],
@@ -575,7 +546,6 @@ export class Config extends BaseConfig {
               name: "preview",
             },
             autoResize: false,
-            startFilter: true,
             filterFloatingPosition: "top",
           },
           ...await uiSize(args, 0.3, "horizontal"),
@@ -707,11 +677,6 @@ export class Config extends BaseConfig {
 
     args.contextBuilder.patchLocal("ghq", {
       ui: "ff",
-      uiParams: {
-        ff: {
-          startFilter: true,
-        },
-      },
       sources: [
         {
           name: "ghq",
