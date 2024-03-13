@@ -62,10 +62,18 @@ end
 function M.start_input_filter(options, after_filter_flag, completion)
     after_filter_flag = after_filter_flag or false
     completion = completion or nil
+
+    local input_pattern
     if completion then
-        options.input = vim.fn.input("Pattern: ", "", completion)
+        input_pattern = vim.fn.input("Pattern: ", "", completion)
     else
-        options.input = vim.fn.input("Pattern: ", "")
+        input_pattern = vim.fn.input("Pattern: ", "")
+    end
+    options.input = input_pattern
+
+    -- 何も入力しなかったらstartFilterと同じ挙動にする
+    if #input_pattern == 0 then
+        after_filter_flag = true
     end
     if after_filter_flag then
         vim.api.nvim_create_autocmd("User", {
