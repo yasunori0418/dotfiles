@@ -6,6 +6,12 @@ end, {})
 
 command("DppUpdate", function()
     require("dpp").async_ext_action("installer", "update")
+    vim.api.nvim_create_autocmd("User", {
+        pattern = "Dpp:makeStatePost",
+        callback = function()
+            vim.cmd.quit({ bang = true })
+        end,
+    })
 end, {})
 
 command("DppClear", function()
