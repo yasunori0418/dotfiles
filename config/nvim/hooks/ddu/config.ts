@@ -353,7 +353,7 @@ export class Config extends BaseConfig {
           defaultAction: "echo",
         },
         gh_project_task: {
-          defaultAction: "edit",
+          defaultAction: "create",
         },
       },
       actionOptions: {
