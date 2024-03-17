@@ -91,6 +91,8 @@ export async function gatherGhqPlugins(
         lazy: true,
         merged: false,
         on_source: "ddu.vim",
+        hook_add:
+          "let g:ddu_source_gh_project_gh_cmd = '/home/yasunori/src/github.com/yasunori0418/cli/bin/gh'",
       },
     },
   ) as Plugin[];
