@@ -241,6 +241,24 @@ require("user.utils").keymaps_set({
         rhs = [[<C-W>n]],
         opts = noremap_silent,
     },
+    { -- Ctrl-W _
+        mode = { "n" },
+        lhs = [[<Plug>(Window)_]],
+        rhs = [[<C-W>_]],
+        opts = noremap_silent,
+    },
+    { -- Ctrl-W |
+        mode = { "n" },
+        lhs = [[<Plug>(Window)|]],
+        rhs = [[<C-W>|]],
+        opts = noremap_silent,
+    },
+    { -- Ctrl-W =
+        mode = { "n" },
+        lhs = [[<Plug>(Window)=]],
+        rhs = [[<C-W>=]],
+        opts = noremap_silent,
+    },
     { -- Ctrl-W_<
         mode = { "n" },
         lhs = [[<S-Left>]],
