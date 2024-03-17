@@ -349,12 +349,6 @@ export class Config extends BaseConfig {
             },
           },
         },
-        gh_project: {
-          defaultAction: "echo",
-        },
-        gh_project_task: {
-          defaultAction: "create",
-        },
       },
       actionOptions: {
         narrow: { quit: false },
