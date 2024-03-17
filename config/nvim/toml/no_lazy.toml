@@ -6,6 +6,7 @@ hooks_file = '$HOOKS_DIR/nightfox.lua'
 
 [[plugins]] # vimdoc-ja
 repo = 'vim-jp/vimdoc-ja'
+hook_add = 'set helplang=ja,en'
 
 [[plugins]] # learn-vimscript
 repo = 'mattn/learn-vimscript'
