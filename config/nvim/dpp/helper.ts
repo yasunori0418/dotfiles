@@ -85,14 +85,14 @@ export async function gatherGhqPlugins(
     "ghq",
     {
       ghq_root: "~/src",
-      repos: ["yasunori0418/ddu-source-gh_project"],
+      repos: ["yasunori0418/ddu-gh_project"],
       hostname: "github.com",
       options: {
         lazy: true,
         merged: false,
         on_source: "ddu.vim",
         hook_add:
-          "let g:ddu_source_gh_project_gh_cmd = '/home/yasunori/src/github.com/yasunori0418/cli/bin/gh'",
+          "let g:ddu_gh_project_gh_cmd = '/home/yasunori/src/github.com/yasunori0418/cli/bin/gh'",
       },
     },
   ) as Plugin[];
