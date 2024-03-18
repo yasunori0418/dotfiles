@@ -172,3 +172,9 @@ repo = 'ryota2357/ddu-column-icon_filename'
 on_source = 'ddu.vim'
 
 # }}}
+
+# Other or plugins with multiple functions {{{
+[[plugins]]
+repo = 'yasunori0418/ddu-gh_project'
+on_source = 'ddu.vim'
+# }}}

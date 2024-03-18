@@ -78,11 +78,6 @@ export class Config extends BaseConfig {
       }
     }
 
-    const ghqPlugins = await gatherGhqPlugins(args);
-    for (const ghqPlugin of ghqPlugins) {
-      recordPlugins[ghqPlugin.name] = ghqPlugin;
-    }
-
     const [context, options] = await args.contextBuilder.get(denops);
 
     const lazyResult = await args.dpp.extAction(
