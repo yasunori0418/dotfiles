@@ -1,10 +1,11 @@
 bumblebee-status
+cantata
 docker-rootless-extras
 downgrade
 google-chrome
 gyazo
 lemonade-git
-light-git
+light
 lightdm-mini-greeter
 nordic-darker-standard-buttons-theme
 nordic-darker-theme
