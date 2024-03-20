@@ -37,5 +37,3 @@ alias sync_status='watch grep -e Dirty: -e Writeback: /proc/meminfo'
 alias capswap='systemctl --user start swap_caps_k8.service'
 
 [[ $(command -v colordiff) ]] && alias diff='colordiff'
-
-alias ggh='~/src/github.com/yasunori0418/cli/bin/gh'

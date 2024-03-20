@@ -177,7 +177,4 @@ on_source = 'ddu.vim'
 [[plugins]]
 repo = 'yasunori0418/ddu-gh_project'
 on_source = 'ddu.vim'
-lua_source = '''
-vim.g.ddu_gh_project_gh_cmd = '/home/yasunori/src/github.com/yasunori0418/cli/bin/gh'
-'''
 # }}}
