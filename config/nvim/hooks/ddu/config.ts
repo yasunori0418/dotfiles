@@ -933,11 +933,6 @@ export class Config extends BaseConfig {
 
     args.contextBuilder.patchLocal("gh:project", {
       ui: "ff",
-      uiParams: {
-        ff: {
-          displayTree: true,
-        },
-      },
       sources: [
         {
           name: "gh_project_task",
