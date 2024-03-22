@@ -345,6 +345,9 @@ export class Config extends BaseConfig {
             },
           },
         },
+        gh_project: {
+          defaultAction: "openTaskList",
+        }
       },
       actionOptions: {
         narrow: { quit: false },
