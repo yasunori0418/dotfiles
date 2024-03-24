@@ -934,6 +934,15 @@ export class Config extends BaseConfig {
       ],
     });
 
+    args.contextBuilder.patchLocal("gh:project_list", {
+      ui: "ff",
+      sources: [
+        {
+          name: "gh_project",
+        },
+      ],
+    });
+
     args.contextBuilder.patchLocal("gh:project", {
       ui: "ff",
       sources: [
