@@ -54,7 +54,7 @@ apply = ["fpath"]
 remote = "https://raw.github.com/git/git/master/contrib/completion/git-completion.zsh"
 apply = ["fpath"]
 
-[plugins.rtx-completion]
+[plugins.mise-completion]
 local = "~/.zsh/fpath"
 use = ['{{ name }}.zsh']
 apply = ['defer']
