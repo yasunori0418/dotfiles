@@ -71,7 +71,6 @@ hooks_file = '$HOOKS_DIR/ccc.lua'
 
 [[plugins]] # promise-async
 repo = 'kevinhwang91/promise-async'
-on_lua = ['async', 'promise']
 
 [[plugins]] # nvim-ufo
 repo = 'kevinhwang91/nvim-ufo'
