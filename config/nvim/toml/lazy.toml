@@ -76,7 +76,6 @@ on_lua = ['async', 'promise']
 [[plugins]] # nvim-ufo
 repo = 'kevinhwang91/nvim-ufo'
 depends = 'promise-async'
-rev = 'e29dbf5b2d76ea43f4e585e3deeb6510488eee3f'
 on_source = 'nvim-treesitter'
 hooks_file = '$HOOKS_DIR/ufo.lua'
 
