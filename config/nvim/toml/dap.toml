@@ -5,10 +5,13 @@ hooks_file = '$HOOKS_DIR/dap.lua'
 
 [[plugins]]
 repo = 'rcarriga/nvim-dap-ui'
-depends = 'nvim-dap'
+depends = ['nvim-dap', 'nvim-nio']
 on_lua = 'dapui'
 on_source = 'nvim-dap'
 hooks_file = '$HOOKS_DIR/dap_ui.lua'
+
+[[plugins]]
+repo = 'nvim-neotest/nvim-nio'
 
 [[plugins]]
 repo = 'mfussenegger/nvim-dap-python'
