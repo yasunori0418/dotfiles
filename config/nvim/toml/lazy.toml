@@ -91,6 +91,10 @@ hooks_file = '$HOOKS_DIR/cmdline.lua'
 repo = 'cohama/lexima.vim'
 hooks_file = '$HOOKS_DIR/lexima.lua'
 
+[[plugins]]
+repo = 'hrsh7th/nvim-insx'
+hooks_file = '$HOOKS_DIR/insx.lua'
+
 [[plugins]] # vim-eft
 repo = 'hrsh7th/vim-eft'
 on_map = { nxo = '<Plug>(eft-' }
