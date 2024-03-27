@@ -63,11 +63,16 @@ function M.start_input_filter(options, after_filter_flag, completion)
     after_filter_flag = after_filter_flag or false
     completion = completion or nil
 
+    if vim.fn.exists("*cmdline#enable") == 0 then
+        require("dpp").source("cmdline.vim")
+        vim.fn["cmdline#enable"]()
+    end
+
     local input_pattern
     if completion then
-        input_pattern = vim.fn.input("Pattern: ", "", completion)
+        input_pattern = vim.fn["cmdline#input"]("Pattern: ", "", completion)
     else
-        input_pattern = vim.fn.input("Pattern: ", "")
+        input_pattern = vim.fn["cmdline#input"]("Pattern: ", "")
     end
     options.input = input_pattern
 

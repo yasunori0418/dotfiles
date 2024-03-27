@@ -78,6 +78,12 @@ depends = 'promise-async'
 on_source = 'nvim-treesitter'
 hooks_file = '$HOOKS_DIR/ufo.lua'
 
+[[plugins]]
+repo = 'Shougo/cmdline.vim'
+on_event = ['CmdlineEnter']
+on_func = ['cmdline#input', 'cmdline#enable']
+hooks_file = '$HOOKS_DIR/cmdline.lua'
+
 # }}}
 
 # Coding support plugins {{{
