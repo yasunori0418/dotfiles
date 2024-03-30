@@ -87,10 +87,6 @@ hooks_file = '$HOOKS_DIR/cmdline.lua'
 # }}}
 
 # Coding support plugins {{{
-[[plugins]] # lexima.vim
-repo = 'cohama/lexima.vim'
-hooks_file = '$HOOKS_DIR/lexima.lua'
-
 [[plugins]]
 repo = 'hrsh7th/nvim-insx'
 hooks_file = '$HOOKS_DIR/insx.lua'
