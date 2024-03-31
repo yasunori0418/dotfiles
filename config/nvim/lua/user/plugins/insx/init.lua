@@ -5,26 +5,9 @@
 -- local builtin_auto_pairs = require("insx.recipe.auto_pair")
 -- local builtin_delete_pair = require("insx.recipe.delete_pair")
 
-local M = {}
-
-
--- local rules = {
---     {
---         open = [[(]],
---         close = [[)]],
---         options = {},
---     },
---     {
---         open = [[{]],
---         close = [[}]],
---         options = {},
---     },
---     {
---         open = [=[[]=],
---         close = [=[]]=],
---         options = {},
---     },
--- }
+local M = {
+    auto_pair = require("user.plugins.insx.auto_pair") ---@as AutoPairRule
+}
 
 
 -- local rules = {
