@@ -30,7 +30,6 @@ function InsxWithOptions.new(options)
         priority = options.priority or 0,
         undopoint = options.undopoint or false,
     }
-    vim.print(obj)
     return setmetatable(obj, { __index = InsxWithOptions })
 end
 
