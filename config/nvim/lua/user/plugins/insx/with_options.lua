@@ -1,3 +1,8 @@
+-- luacheck: push no_max_comment_line_length
+---@diagnostic disable-next-line:duplicate-doc-alias
+---@alias WithOptions { filetype?: string|string[], in_comment?: boolean, in_string?: boolean, match: string, nomatch: string, priority: integer, undopoint?: boolean }
+-- luacheck: pop
+
 ---@class InsxWithOptions
 ---@diagnostic disable:duplicate-doc-field
 ---@field public filetype? string|string[] # default nil
@@ -7,12 +12,13 @@
 ---@field public nomatch? string # default nil
 ---@field public priority? integer # default nil
 ---@field public undopoint? boolean # default false
----@field public new fun(options: table<string, string>): InsxWithOptions
+---@field public new fun(options: WithOptions): InsxWithOptions
+---@field public override_names fun(): string[]
 ---@field public overrides fun(self: InsxWithOptions): insx.Override[]
 local InsxWithOptions = {}
 
 ---InsxWithOptions initializer
----@param options table<string, string>
+---@param options WithOptions
 ---@return InsxWithOptions
 function InsxWithOptions.new(options)
     local obj = {
@@ -27,13 +33,10 @@ function InsxWithOptions.new(options)
     return setmetatable(obj, { __index = InsxWithOptions })
 end
 
----Returns the result of the override option given to the rule to be set
----@param self InsxWithOptions
----@return table
-function InsxWithOptions:overrides()
-    local with = require("insx").with
-    local result = {}
-    for _, override in ipairs({
+---Get `insx with overrides` name list.
+---@return string[]
+function InsxWithOptions.override_names()
+    return {
         "filetype",
         "in_comment",
         "in_string",
@@ -41,7 +44,16 @@ function InsxWithOptions:overrides()
         "nomatch",
         "priority",
         "undopoint",
-    }) do
+    }
+end
+
+---Returns the result of the override option given to the rule to be set
+---@param self InsxWithOptions
+---@return table
+function InsxWithOptions:overrides()
+    local with = require("insx").with
+    local result = {}
+    for _, override in ipairs(self.override_names()) do
         if self[override] then
             table.insert(result, with[override](self[override]))
         end
