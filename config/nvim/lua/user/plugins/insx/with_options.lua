@@ -54,7 +54,7 @@ function InsxWithOptions:overrides()
     local with = require("insx").with
     local result = {}
     for _, override in ipairs(self.override_names()) do
-        local override_type = type(override)
+        local override_type = type(self[override])
         if override_type == "boolean" then
             if self[override] then
                 table.insert(result, with[override](self[override]))
