@@ -33,7 +33,7 @@ function AutoPairRule.new(rule)
     return setmetatable(obj, { __index = { AutoPairRule } })
 end
 
-function AutoPairRule:apply()
+function AutoPairRule.apply(self)
     local insx = require("insx")
     local esc = require("insx.helper.regex").esc
 
