@@ -22,14 +22,15 @@ local InsxWithOptions = {}
 ---@return InsxWithOptions
 function InsxWithOptions.new(options)
     local obj = {
-        filetype = options.filetype or nil,
+        filetype = options.filetype or "",
         in_comment = options.in_comment or false,
         in_string = options.in_string or false,
-        match = options.match or nil,
-        nomatch = options.nomatch or nil,
-        priority = options.priority or nil,
+        match = options.match or "",
+        nomatch = options.nomatch or "",
+        priority = options.priority or 0,
         undopoint = options.undopoint or false,
     }
+    vim.print(obj)
     return setmetatable(obj, { __index = InsxWithOptions })
 end
 
@@ -54,8 +55,19 @@ function InsxWithOptions:overrides()
     local with = require("insx").with
     local result = {}
     for _, override in ipairs(self.override_names()) do
-        if self[override] then
-            table.insert(result, with[override](self[override]))
+        local override_type = type(override)
+        if override_type == "boolean" then
+            if self[override] then
+                table.insert(result, with[override](self[override]))
+            end
+        elseif override_type == "string" then
+            if #self[override] == 0 then
+                table.insert(result, with[override](self[override]))
+            end
+        elseif override_type == "number" then
+            if self[override] == 0 then
+                table.insert(result, with[override](self[override]))
+            end
         end
     end
     return result
