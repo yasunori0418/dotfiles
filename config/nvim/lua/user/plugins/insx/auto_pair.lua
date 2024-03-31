@@ -1,5 +1,6 @@
 local with_options = require("user.plugins.insx.with_options")
 
+---@diagnostic disable-next-line:duplicate-doc-alias
 ---@alias FastBreakOption { arguments?: boolean, html_attrs?: boolean, html_tags?: boolean, indent?: integer }
 
 ---@class AutoPairRule
@@ -15,7 +16,7 @@ local with_options = require("user.plugins.insx.with_options")
 local AutoPairRule = {}
 
 ---AutoPairRule initializer
----@param rule { open: string, close: string, options?: WithOptions, fast_break?: FastBreakOption }
+---@param rule { open: string, close: string, options?: WithOptions|nil, fast_break?: FastBreakOption|nil }
 ---@return AutoPairRule
 function AutoPairRule.new(rule)
     local obj = {
