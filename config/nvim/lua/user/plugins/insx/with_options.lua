@@ -12,10 +12,27 @@
 ---@field public nomatch? string # default nil
 ---@field public priority? integer # default nil
 ---@field public undopoint? boolean # default false
+---@field public set_keys string[] # List of options passed when instantiating
 ---@field public new fun(options: WithOptions): InsxWithOptions
 ---@field public override_names fun(): string[]
 ---@field public overrides fun(self: InsxWithOptions): insx.Override[]
 local InsxWithOptions = {}
+
+---@param table table
+---@return string[]
+local function set_keys(table)
+    local keys = {}
+    for key, _ in pairs(table) do
+        table.insert(keys, key)
+    end
+    return keys
+end
+
+---@param table table
+---@return boolean
+local function has_key(table, key)
+    return table[key] ~= nil
+end
 
 ---InsxWithOptions initializer
 ---@param options WithOptions
@@ -29,6 +46,7 @@ function InsxWithOptions.new(options)
         nomatch = options.nomatch or "",
         priority = options.priority or 0,
         undopoint = options.undopoint or false,
+        set_keys = set_keys(options),
     }
     return setmetatable(obj, { __index = InsxWithOptions })
 end
