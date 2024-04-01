@@ -18,11 +18,11 @@
 ---@field public overrides fun(self: InsxWithOptions): insx.Override[]
 local InsxWithOptions = {}
 
----@param table table
+---@param options table
 ---@return string[]
-local function set_keys(table)
+local function set_keys(options)
     local keys = {}
-    for key, _ in pairs(table) do
+    for key, _ in pairs(options) do
         table.insert(keys, key)
     end
     return keys
