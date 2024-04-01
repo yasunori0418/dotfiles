@@ -15,7 +15,10 @@
 --     },
 -- })
 
-local auto_pairs = {
+local auto_pair_config = {}
+
+---@type AutoPairRuleTable[]
+auto_pair_config.rules = {
     {
         open = [[(]],
         close = [[)]],
@@ -27,7 +30,7 @@ local auto_pairs = {
             arguments = true,
             html_attrs = true,
             html_tags = true,
-        }
+        },
     },
     {
         open = [[{]],
@@ -40,7 +43,7 @@ local auto_pairs = {
             arguments = true,
             html_attrs = true,
             html_tags = true,
-        }
+        },
     },
     {
         open = [=[[]=],
@@ -53,13 +56,25 @@ local auto_pairs = {
             arguments = true,
             html_attrs = true,
             html_tags = true,
-        }
+        },
     },
 }
 
-local auto_pair_helper = require('user.plugins.insx.auto_pair')
-for _, auto_pair in ipairs(auto_pairs) do
-    local rule = auto_pair_helper.new(auto_pair)
+---@type AutoPairKeymaps
+auto_pair_config.keymaps = {
+    jump_next_extra = { "<Tab>" },
+    delete_pair = { "<BS>", "<C-h>" },
+    spacing = {
+        increase = { "<Space>" },
+        decrease = { "<BS>", "<C-h>" },
+    },
+    fast_break = { "<CR>" },
+    fast_wrap = { "<C-]>" },
+}
+
+local auto_pair_helper = require("user.plugins.insx.auto_pair")
+for _, auto_pair in pairs(auto_pair_config.rules) do
+    local rule = auto_pair_helper.new(auto_pair, auto_pair_config.keymaps)
     auto_pair_helper.apply(rule)
 end
 
