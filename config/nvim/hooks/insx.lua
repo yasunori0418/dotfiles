@@ -1,81 +1,37 @@
 -- lua_source {{{
+local insx_helper = require("user.plugins.insx")
 
--- require("insx.preset.standard").setup({
---     cmdline = {
---         enabled = true,
---     },
---     fast_break = {
---         enabled = true,
---     },
---     fast_wrap = {
---         enabled = true,
---     },
---     spacing = {
---         enabled = true,
---     },
--- })
-
-local auto_pair_config = {}
-
----@type AutoPairRuleTable[]
-auto_pair_config.rules = {
-    {
-        open = [[(]],
-        close = [[)]],
-        options = {
-            undopoint = true,
-            nomatch = [[\%#\w]],
+---@type { rules: AutoPairRuleTable[], keymaps: AutoPairKeymaps }
+local auto_pair_config = {
+    rules = {
+        {
+            open = [[(]],
+            close = [[)]],
+            options = { undopoint = true, nomatch = [[\%#\w]] },
+            fast_break = { arguments = true, html_attrs = true, html_tags = true },
         },
-        fast_break = {
-            arguments = true,
-            html_attrs = true,
-            html_tags = true,
+        {
+            open = [[{]],
+            close = [[}]],
+            options = { undopoint = true, nomatch = [[\%#\w]] },
+            fast_break = { arguments = true, html_attrs = true, html_tags = true },
+        },
+        {
+            open = [=[[]=],
+            close = [=[]]=],
+            options = { undopoint = true, nomatch = [[\%#\w]] },
+            fast_break = { arguments = true, html_attrs = true, html_tags = true },
         },
     },
-    {
-        open = [[{]],
-        close = [[}]],
-        options = {
-            undopoint = true,
-            nomatch = [[\%#\w]],
-        },
-        fast_break = {
-            arguments = true,
-            html_attrs = true,
-            html_tags = true,
-        },
-    },
-    {
-        open = [=[[]=],
-        close = [=[]]=],
-        options = {
-            undopoint = true,
-            nomatch = [[\%#\w]],
-        },
-        fast_break = {
-            arguments = true,
-            html_attrs = true,
-            html_tags = true,
-        },
+    keymaps = {
+        jump_next_extra = { "<Tab>" },
+        delete_pair = { "<BS>", "<C-h>" },
+        spacing = { increase = { "<Space>" }, decrease = { "<BS>", "<C-h>" } },
+        fast_break = { "<CR>" },
+        fast_wrap = { "<C-]>" },
     },
 }
 
----@type AutoPairKeymaps
-auto_pair_config.keymaps = {
-    jump_next_extra = { "<Tab>" },
-    delete_pair = { "<BS>", "<C-h>" },
-    spacing = {
-        increase = { "<Space>" },
-        decrease = { "<BS>", "<C-h>" },
-    },
-    fast_break = { "<CR>" },
-    fast_wrap = { "<C-]>" },
-}
-
-local auto_pair_helper = require("user.plugins.insx.auto_pair")
-for _, auto_pair in pairs(auto_pair_config.rules) do
-    local rule = auto_pair_helper.new(auto_pair, auto_pair_config.keymaps)
-    auto_pair_helper.apply(rule)
-end
+insx_helper.auto_pairs_apply(auto_pair_config)
 
 -- }}}
