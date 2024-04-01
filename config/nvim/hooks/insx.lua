@@ -57,9 +57,10 @@ local auto_pairs = {
     },
 }
 
+local auto_pair_helper = require('user.plugins.insx.auto_pair')
 for _, auto_pair in ipairs(auto_pairs) do
-    local rule = insx_helper.auto_pair.new(auto_pair)
-    insx_helper.auto_pair.apply(rule)
+    local rule = auto_pair_helper.new(auto_pair)
+    auto_pair_helper.apply(rule)
 end
 
 -- }}}
