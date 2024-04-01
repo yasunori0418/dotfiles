@@ -21,7 +21,7 @@ local auto_pairs = {
         close = [[)]],
         options = {
             undopoint = true,
-            priority = 10,
+            nomatch = [[\%#\w]],
         },
         fast_break = {
             arguments = true,
