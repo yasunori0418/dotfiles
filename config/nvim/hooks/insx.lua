@@ -15,9 +15,6 @@
 --     },
 -- })
 
-local insx_helper = require("user.plugins.insx")
-
----@type { open: string, close: string, options?: WithOptions, fast_break?: FastBreakOption }[]
 local auto_pairs = {
     {
         open = [[(]],
