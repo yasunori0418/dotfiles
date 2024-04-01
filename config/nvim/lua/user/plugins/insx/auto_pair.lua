@@ -16,7 +16,7 @@ local with_options = require("user.plugins.insx.with_options")
 local AutoPairRule = {}
 
 ---AutoPairRule initializer
----@param rule { open: string, close: string, options?: WithOptions|nil, fast_break?: FastBreakOption|nil }
+---@param rule table<string, any>
 ---@return AutoPairRule
 function AutoPairRule.new(rule)
     local obj = {
