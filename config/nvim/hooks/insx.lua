@@ -22,6 +22,24 @@ local auto_pair_config = {
             options = { undopoint = true, nomatch = [[\%#\w]] },
             fast_break = { arguments = true, html_attrs = true, html_tags = true },
         },
+        {
+            open = [[']],
+            close = [[']],
+            options = { undopoint = true, nomatch = [[\%#\w]] },
+            fast_break = { arguments = true, html_attrs = true, html_tags = true },
+        },
+        {
+            open = [["]],
+            close = [["]],
+            options = { undopoint = true, nomatch = [[\%#\w]] },
+            fast_break = { arguments = true, html_attrs = true, html_tags = true },
+        },
+        {
+            open = [[`]],
+            close = [[`]],
+            options = { undopoint = true, nomatch = [[\%#\w]] },
+            fast_break = { arguments = true, html_attrs = true, html_tags = true },
+        },
     },
     keymaps = {
         jump_next_extra = { "<Tab>" },
