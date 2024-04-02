@@ -28,12 +28,6 @@ local function set_keys(options)
     return keys
 end
 
----@param table table
----@return boolean
-local function has_key(table, key)
-    return table[key] ~= nil
-end
-
 ---InsxWithOptions initializer
 ---@param options WithOptions
 ---@return InsxWithOptions
@@ -71,10 +65,8 @@ end
 function InsxWithOptions:overrides()
     local with = require("insx").with
     local result = {}
-    for _, override in ipairs(self.override_names()) do
-        if has_key(self.set_keys, override) then
-            table.insert(result, with[override](self[override]))
-        end
+    for _, key in pairs(self.set_keys) do
+        table.insert(result, with[key](self[key]))
     end
     return result
 end
