@@ -1,6 +1,13 @@
 -- lua_source {{{
 local insx_helper = require("user.plugins.insx")
 
+require("insx.preset.standard").setup({
+    cmdline = { enabled = true },
+    fast_break = { enabled = true, arguments = true, html_attrs = true },
+    fast_wrap = { enabled = true },
+    spacing = { enabled = true },
+})
+
 ---@type { rules: AutoPairRuleTable[], keymaps: AutoPairKeymaps }
 local auto_pair_config = {
     rules = {
