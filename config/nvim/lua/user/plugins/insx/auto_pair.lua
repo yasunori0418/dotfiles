@@ -1,24 +1,28 @@
+-- luacheck: push no_max_comment_line_length
 ---@diagnostic disable-next-line:duplicate-doc-alias
 ---@alias FastBreakOption { arguments?: boolean, html_attrs?: boolean, html_tags?: boolean, indent?: integer }
 
--- luacheck: push no_max_comment_line_length
 ---@diagnostic disable-next-line:duplicate-doc-alias
 ---@alias AutoPairKeymaps { jump_next_extra: string[], delete_pair: string[], spacing: { increase: string[], decrease: string[] }, fast_break: string[], fast_wrap: string[] }
--- luacheck: pop
 
 ---@diagnostic disable-next-line:duplicate-doc-alias
----@alias AutoPairRuleTable { open: string, close: string, with_option?: insx.Override[], fast_break?: FastBreakOption }
+---@alias AutoPairRuleTable { open: string, close: string, mode_list?: InsxMode[], with_option?: insx.Override[], fast_break?: FastBreakOption }
+
+---@diagnostic disable-next-line:duplicate-doc-alias
+---@alias InsxMode 'c'|'i'|'n'
 
 ---@class AutoPairRule
 ---@diagnostic disable:duplicate-doc-field
 ---@field public open string
 ---@field public close string
 ---@field public with_option insx.Override[]
+---@field public mode_list InsxMode[]
 ---@field public fast_break FastBreakOption
 ---@field public keymaps AutoPairKeymaps
 ---@field public new fun(rule: AutoPairRuleTable, keymaps: AutoPairKeymaps ): AutoPairRule
 ---@field public apply fun(self: AutoPairRule)
 local AutoPairRule = {}
+-- luacheck: pop
 
 ---AutoPairRule initializer
 ---@param rule AutoPairRuleTable
@@ -29,6 +33,7 @@ function AutoPairRule.new(rule, keymaps)
         open = rule.open,
         close = rule.close,
         with_option = rule.with_option or {},
+        mode_list = rule.mode_list or { "i" },
         fast_break = {
             arguments = rule.fast_break.arguments or false,
             html_attrs = rule.fast_break.html_tags or false,
@@ -44,92 +49,102 @@ function AutoPairRule.apply(self)
     local insx = require("insx")
     local esc = require("insx.helper.regex").esc
 
-    -- auto_pair
-    insx.add(
-        self.open,
-        insx.with(
-            require("insx.recipe.auto_pair")({
-                open = self.open,
-                close = self.close,
-            }),
-            self.with_option
-        )
-    )
-
-    -- jump_next
-    insx.add(
-        self.close,
-        require("insx.recipe.jump_next")({
-            jump_pat = {
-                [[\%#]] .. esc(self.close) .. [[\zs]],
-            },
-        })
-    )
-    for _, keymap in pairs(self.keymaps.jump_next_extra) do
+    for _, mode in pairs(self.mode_list) do
+        -- auto_pair
         insx.add(
-            keymap,
+            self.open,
+            insx.with(
+                require("insx.recipe.auto_pair")({
+                    open = self.open,
+                    close = self.close,
+                }),
+                self.with_option
+            ),
+            { mode = mode }
+        )
+
+        -- jump_next
+        insx.add(
+            self.close,
             require("insx.recipe.jump_next")({
                 jump_pat = {
                     [[\%#]] .. esc(self.close) .. [[\zs]],
                 },
-            })
+            }),
+            { mode = mode }
         )
-    end
+        for _, keymap in pairs(self.keymaps.jump_next_extra) do
+            insx.add(
+                keymap,
+                require("insx.recipe.jump_next")({
+                    jump_pat = {
+                        [[\%#]] .. esc(self.close) .. [[\zs]],
+                    },
+                }),
+                { mode = mode }
+            )
+        end
 
-    -- delete_pair
-    for _, keymap in pairs(self.keymaps.delete_pair) do
-        insx.add(
-            keymap,
-            require("insx.recipe.delete_pair")({
-                open_pat = esc(self.open),
-                close_pat = esc(self.close),
-            })
-        )
-    end
+        -- delete_pair
+        for _, keymap in pairs(self.keymaps.delete_pair) do
+            insx.add(
+                keymap,
+                require("insx.recipe.delete_pair")({
+                    open_pat = esc(self.open),
+                    close_pat = esc(self.close),
+                }),
+                { mode = mode }
+            )
+        end
 
-    -- spacing
-    for _, keymap in pairs(self.keymaps.spacing.increase) do
-        insx.add(
-            keymap,
-            require("insx.recipe.pair_spacing").increase({
-                open_pat = esc(self.open),
-                close_pat = esc(self.close),
-            })
-        )
-    end
-    for _, keymap in pairs(self.keymaps.spacing.decrease) do
-        insx.add(
-            keymap,
-            require("insx.recipe.pair_spacing").decrease({
-                open_pat = esc(self.open),
-                close_pat = esc(self.close),
-            })
-        )
-    end
+        -- spacing
+        for _, keymap in pairs(self.keymaps.spacing.increase) do
+            insx.add(
+                keymap,
+                require("insx.recipe.pair_spacing").increase({
+                    open_pat = esc(self.open),
+                    close_pat = esc(self.close),
+                }),
+                { mode = mode }
+            )
+        end
+        for _, keymap in pairs(self.keymaps.spacing.decrease) do
+            insx.add(
+                keymap,
+                require("insx.recipe.pair_spacing").decrease({
+                    open_pat = esc(self.open),
+                    close_pat = esc(self.close),
+                }),
+                { mode = mode }
+            )
+        end
 
-    -- fast_break
-    for _, keymap in pairs(self.keymaps.fast_break) do
-        insx.add(
-            keymap,
-            require("insx.recipe.fast_break")({
-                open_pat = esc(self.open),
-                close_pat = esc(self.close),
-                arguments = self.fast_break.arguments,
-                html_attrs = self.fast_break.html_attrs,
-                html_tags = self.fast_break.html_tags,
-                indent = self.fast_break.indent,
-            })
-        )
-    end
+        -- fast_break
+        for _, keymap in pairs(self.keymaps.fast_break) do
+            insx.add(
+                keymap,
+                require("insx.recipe.fast_break")({
+                    open_pat = esc(self.open),
+                    close_pat = esc(self.close),
+                    arguments = self.fast_break.arguments,
+                    html_attrs = self.fast_break.html_attrs,
+                    html_tags = self.fast_break.html_tags,
+                    indent = self.fast_break.indent,
+                }),
+                { mode = mode }
+            )
+        end
 
-    -- fast_wrap
-    for _, keymap in pairs(self.keymaps.fast_wrap) do
-        insx.add(
-            keymap,
-            require("insx.recipe.fast_wrap")({
-                close = self.close,
-            })
-        )
+        -- fast_wrap
+        for _, keymap in pairs(self.keymaps.fast_wrap) do
+            insx.add(
+                keymap,
+                require("insx.recipe.fast_wrap")({
+                    close = self.close,
+                }),
+                { mode = mode }
+            )
+        end
     end
 end
 
