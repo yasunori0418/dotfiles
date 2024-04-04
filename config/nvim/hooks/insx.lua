@@ -1,4 +1,6 @@
 -- lua_source {{{
+local insx = require("insx")
+local with = insx.with
 local insx_helper = require("user.plugins.insx")
 
 require("insx.preset.standard").setup({
@@ -14,43 +16,72 @@ local auto_pair_config = {
         {
             open = [[(]],
             close = [[)]],
-            options = { undopoint = true, nomatch = [[\%#\w]], priority = 10 },
+            with_option = {
+                with.undopoint(false),
+                with.nomatch([[\%#\w]]),
+                with.priority(10),
+            },
             fast_break = { arguments = true, html_attrs = true, html_tags = true },
         },
         {
             open = [[{]],
             close = [[}]],
-            options = { undopoint = true, nomatch = [[\%#\w]], priority = 10 },
+            with_option = {
+                with.undopoint(true),
+                with.nomatch([[\%#\w]]),
+                with.priority(10),
+            },
             fast_break = { arguments = true, html_attrs = true, html_tags = true },
         },
         {
             open = [=[[]=],
             close = [=[]]=],
-            options = { undopoint = true, nomatch = [[\%#\w]], priority = 10 },
+            with_option = {
+                with.undopoint(true),
+                with.nomatch([[\%#\w]]),
+                with.priority(10),
+            },
             fast_break = { arguments = true, html_attrs = true, html_tags = true },
         },
         {
             open = [[']],
             close = [[']],
-            options = { undopoint = true, nomatch = [[\%#\w]], priority = 10 },
+            with_option = {
+                with.undopoint(true),
+                with.nomatch([[\%#\w]]),
+                with.priority(10),
+            },
             fast_break = { arguments = true, html_attrs = true, html_tags = true },
         },
         {
             open = [["]],
             close = [["]],
-            options = { undopoint = true, nomatch = [[\%#\w]], priority = 10 },
+            with_option = {
+                with.undopoint(true),
+                with.nomatch([[\%#\w]]),
+                with.priority(10),
+            },
             fast_break = { arguments = true, html_attrs = true, html_tags = true },
         },
         {
             open = [[`]],
             close = [[`]],
-            options = { undopoint = true, nomatch = [[\%#\w]], priority = 10 },
+            with_option = {
+                with.undopoint(true),
+                with.nomatch([[\%#\w]]),
+                with.priority(10),
+            },
             fast_break = { arguments = true, html_attrs = true, html_tags = true },
         },
         {
             open = [[<]],
             close = [[>]],
-            options = { undopoint = true, nomatch = [[\%#\w]], priority = 10, filetype = { "html", "markdown" } },
+            with_option = {
+                with.undopoint(true),
+                with.nomatch([[\%#\w]]),
+                with.priority(10),
+                with.filetype({ "html", "markdown" }),
+            },
             fast_break = { arguments = true, html_attrs = true, html_tags = true },
         },
     },

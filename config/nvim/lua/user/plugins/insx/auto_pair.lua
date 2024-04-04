@@ -1,21 +1,19 @@
-local with_options = require("user.plugins.insx.with_options")
-
 ---@diagnostic disable-next-line:duplicate-doc-alias
 ---@alias FastBreakOption { arguments?: boolean, html_attrs?: boolean, html_tags?: boolean, indent?: integer }
 
 -- luacheck: push no_max_comment_line_length
 ---@diagnostic disable-next-line:duplicate-doc-alias
----@alias AutoPairKeymaps { jump_next_extra: string[], delete_pair: string[], spacing: { increase: string[], decrease: string[] }, fast_break: string[], fast_wrap: string[]  }
+---@alias AutoPairKeymaps { jump_next_extra: string[], delete_pair: string[], spacing: { increase: string[], decrease: string[] }, fast_break: string[], fast_wrap: string[] }
 -- luacheck: pop
 
 ---@diagnostic disable-next-line:duplicate-doc-alias
----@alias AutoPairRuleTable { open: string, close: string, options?: WithOptions, fast_break?: FastBreakOption }
+---@alias AutoPairRuleTable { open: string, close: string, with_option?: insx.Override[], fast_break?: FastBreakOption }
 
 ---@class AutoPairRule
 ---@diagnostic disable:duplicate-doc-field
 ---@field public open string
 ---@field public close string
----@field public options InsxWithOptions
+---@field public with_option insx.Override[]
 ---@field public fast_break FastBreakOption
 ---@field public keymaps AutoPairKeymaps
 ---@field public new fun(rule: AutoPairRuleTable, keymaps: AutoPairKeymaps ): AutoPairRule
@@ -30,7 +28,7 @@ function AutoPairRule.new(rule, keymaps)
     local obj = {
         open = rule.open,
         close = rule.close,
-        options = with_options.new(rule.options or {}),
+        with_option = rule.with_option or {},
         fast_break = {
             arguments = rule.fast_break.arguments or false,
             html_attrs = rule.fast_break.html_tags or false,
@@ -54,7 +52,7 @@ function AutoPairRule.apply(self)
                 open = self.open,
                 close = self.close,
             }),
-            self.options:overrides()
+            self.with_option
         )
     )
 
