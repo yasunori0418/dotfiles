@@ -80,8 +80,7 @@ function AutoPairRule.apply(self)
                     jump_pat = {
                         [[\%#]] .. esc(self.close) .. [[\zs]],
                     },
-                }),
-                { mode = mode }
+                })
             )
         end
 
