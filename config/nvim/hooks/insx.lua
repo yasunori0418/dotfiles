@@ -16,6 +16,7 @@ local auto_pair_config = {
         {
             open = [[(]],
             close = [[)]],
+            mode_list = { 'c', 'i' },
             with_option = {
                 with.undopoint(false),
                 with.nomatch([[\%#\w]]),
@@ -26,6 +27,7 @@ local auto_pair_config = {
         {
             open = [[{]],
             close = [[}]],
+            mode_list = { 'c', 'i' },
             with_option = {
                 with.undopoint(true),
                 with.nomatch([[\%#\w]]),
@@ -36,6 +38,7 @@ local auto_pair_config = {
         {
             open = [=[[]=],
             close = [=[]]=],
+            mode_list = { 'c', 'i' },
             with_option = {
                 with.undopoint(true),
                 with.nomatch([[\%#\w]]),
@@ -46,6 +49,7 @@ local auto_pair_config = {
         {
             open = [[']],
             close = [[']],
+            mode_list = { 'c', 'i' },
             with_option = {
                 with.undopoint(true),
                 with.nomatch([[\%#\w]]),
@@ -56,6 +60,7 @@ local auto_pair_config = {
         {
             open = [["]],
             close = [["]],
+            mode_list = { 'c', 'i' },
             with_option = {
                 with.undopoint(true),
                 with.nomatch([[\%#\w]]),
@@ -66,6 +71,7 @@ local auto_pair_config = {
         {
             open = [[`]],
             close = [[`]],
+            mode_list = { 'c', 'i' },
             with_option = {
                 with.undopoint(true),
                 with.nomatch([[\%#\w]]),
@@ -76,6 +82,7 @@ local auto_pair_config = {
         {
             open = [[<]],
             close = [[>]],
+            mode_list = { 'i' },
             with_option = {
                 with.undopoint(true),
                 with.nomatch([[\%#\w]]),
