@@ -1,7 +1,7 @@
 -- lua_source {{{
 local insx = require("insx")
 local with = insx.with
-local insx_helper = require("user.plugins.insx")
+local helper = require("user.plugins.insx")
 
 require("insx.preset.standard").setup({
     cmdline = { enabled = true },
@@ -101,6 +101,6 @@ local auto_pair_config = {
     },
 }
 
-insx_helper.auto_pairs_apply(auto_pair_config)
+helper.auto_pairs_apply(auto_pair_config)
 
 -- }}}
