@@ -2,6 +2,8 @@
 local insx = require("insx")
 local with = insx.with
 local helper = require("user.plugins.insx")
+local endwise = require("insx.recipe.endwise")
+insx.add("<CR>", endwise(endwise.builtin))
 
 require("insx.preset.standard").setup({
     cmdline = { enabled = true },
