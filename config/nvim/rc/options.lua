@@ -102,6 +102,8 @@ local option_table = {
     -- Invisible characters
     list = true,
 
+    virtualedit = "block",
+
     -- Tab/End line Space/End line/No brake space.
     listchars = {
         tab = "»-",
