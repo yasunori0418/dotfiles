@@ -16,10 +16,4 @@ function M.auto_pairs_apply(config)
     end
 end
 
--- local rules = {
---     { quote = [[']] },
---     { quote = [["]] },
---     { quote = [[`]] },
--- }
-
 return M
