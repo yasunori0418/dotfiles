@@ -11,7 +11,7 @@ end, {})
 command("DppClear", function()
     require("dpp").clear_state()
     vim.loader.reset()
-    vim.cmd.quit()
+    vim.cmd.quit({ bang = true })
 end, {})
 
 command("DDCFuzzyFilter", function(opts)
