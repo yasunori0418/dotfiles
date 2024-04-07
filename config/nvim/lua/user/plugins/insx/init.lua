@@ -5,6 +5,9 @@
 -- local builtin_auto_pairs = require("insx.recipe.auto_pair")
 -- local builtin_delete_pair = require("insx.recipe.delete_pair")
 
+---@diagnostic disable-next-line:duplicate-doc-alias
+---@alias InsxMode 'c'|'i'|'n'
+
 local M = {}
 
 ---@param config { rules: AutoPairRuleTable[], keymaps: AutoPairKeymaps }

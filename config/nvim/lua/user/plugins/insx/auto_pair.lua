@@ -8,9 +8,6 @@
 ---@diagnostic disable-next-line:duplicate-doc-alias
 ---@alias AutoPairRuleTable { open: string, close: string, mode_list?: InsxMode[], with_option?: insx.Override[], fast_break?: FastBreakOption }
 
----@diagnostic disable-next-line:duplicate-doc-alias
----@alias InsxMode 'c'|'i'|'n'
-
 ---@class AutoPairRule
 ---@diagnostic disable:duplicate-doc-field
 ---@field public open string
