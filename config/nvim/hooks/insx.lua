@@ -154,7 +154,6 @@ helper.altercmds_apply({
             space = true,
             cr = true,
         },
-        modes = { "c" },
     },
 })
 
