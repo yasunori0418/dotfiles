@@ -106,4 +106,16 @@ helper.auto_pairs_apply(auto_pair_config)
 local endwise = require("insx.recipe.endwise")
 insx.add("<CR>", endwise(endwise.builtin))
 
+local altercmd = require("user.plugins.insx.substitute").altercmd
+altercmd([=[si\%[licon]]=], [[Silicon]], [[<Space>]], [[c]])
+altercmd([=[r\%[run]]=], [[QuickRun]], [[<Space>]], [[c]])
+altercmd([=[ma\%[son]]=], [[Mason]], [[<Space>]], [[c]])
+altercmd([[di]], [[DppInstall]], [[<Space>]], [[c]])
+altercmd([[du]], [[DppUpdate]], [[<Space>]], [[c]])
+altercmd([[dc]], [[DppClear]], [[<Space>]], [[c]])
+altercmd([[ej]], [[Translate]], [[<Space>]], [[c]]) -- 英語から日本語へ
+altercmd([[je]], [[Translate!]], [[<Space>]], [[c]]) -- 日本語から英語へ
+altercmd([[gcf]], [[GinChaperon %]], [[<Space>]], [[c]])
+altercmd([[cal]], [[Calendar]], [[<Space>]], [[c]])
+
 -- }}}
