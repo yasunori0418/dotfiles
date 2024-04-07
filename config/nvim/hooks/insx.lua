@@ -10,8 +10,7 @@ require("insx.preset.standard").setup({
     spacing = { enabled = true },
 })
 
----@type { rules: AutoPairRuleTable[], keymaps: AutoPairKeymaps }
-local auto_pair_config = {
+helper.auto_pairs_apply({
     rules = {
         {
             open = [[(]],
@@ -99,9 +98,7 @@ local auto_pair_config = {
         fast_break = { "<CR>" },
         fast_wrap = { "<C-]>" },
     },
-}
-
-helper.auto_pairs_apply(auto_pair_config)
+})
 
 local endwise = require("insx.recipe.endwise")
 insx.add("<CR>", endwise(endwise.builtin))
