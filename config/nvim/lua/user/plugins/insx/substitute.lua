@@ -24,7 +24,8 @@ function M.altercmd(original, altanative, keymaps)
                     mode = mode,
                 }
             )
-        elseif keymaps.expand_keys.cr then
+        end
+        if keymaps.expand_keys.cr then
             insx.add(
                 [[<CR>]],
                 substitute({
