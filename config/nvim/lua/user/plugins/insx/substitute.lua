@@ -16,8 +16,8 @@ function M.altercmd(original, altanative, keymaps)
         insx.add(
             [[<Space>]],
             substitute({
-                pattern = original .. [[\%#]],
-                replace = altanative .. [[ \%#]],
+                pattern = [[\(^\|'<,'>\)]] .. original .. [[\%#]],
+                replace = [[\1]] .. altanative .. [[ \%#]],
             }),
             {
                 mode = "c",
