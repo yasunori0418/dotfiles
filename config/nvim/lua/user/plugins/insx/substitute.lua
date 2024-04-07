@@ -18,7 +18,7 @@ function M.altercmd(original, altanative, keymaps)
                 [[<Space>]],
                 substitute({
                     pattern = original .. [[\%#]],
-                    replace = altanative .. [[\%#]],
+                    replace = altanative .. [[ \%#]],
                 }),
                 {
                     mode = mode,
@@ -30,7 +30,7 @@ function M.altercmd(original, altanative, keymaps)
                 [[<CR>]],
                 substitute({
                     pattern = original .. [[\%#]],
-                    replace = altanative .. [[\%#]],
+                    replace = altanative .. [[ \%#<CR>]],
                 }),
                 {
                     mode = mode,
