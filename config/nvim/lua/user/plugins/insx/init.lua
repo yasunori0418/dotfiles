@@ -19,4 +19,15 @@ function M.auto_pairs_apply(config)
     end
 end
 
+---@diagnostic disable-next-line:duplicate-doc-alias
+---@alias AltercmdRuleTable { original: string, altanative: string }
+
+---@param config { rules: AltercmdRuleTable[], keymaps: AltercmdKeymaps }
+function M.altercmds_apply(config)
+    local altercmd = require("user.plugins.insx.substitute").altercmd
+    for _, rule in pairs(config.rules) do
+        altercmd(rule.original, rule.altanative, config.keymaps)
+    end
+end
+
 return M
