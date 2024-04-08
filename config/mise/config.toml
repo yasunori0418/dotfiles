@@ -1,7 +1,7 @@
 [tools]
 ripgrep = "latest"
 bat = "latest"
-deno = "1.40.5"
+deno = "latest"
 ghq = "latest"
 fd = "latest"
 jq = "latest"
