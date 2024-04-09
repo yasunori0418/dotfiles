@@ -63,33 +63,38 @@ function M.start_input_filter(options, after_filter_flag, completion)
     after_filter_flag = after_filter_flag or false
     completion = completion or nil
 
-    if vim.fn.exists("*cmdline#enable") == 0 then
-        require("dpp").source("cmdline.vim")
-        vim.fn["cmdline#enable"]()
+    local ddu_start = function(input)
+        -- 何も入力しなかったらstartFilterと同じ挙動にする
+        if input == nil then
+            after_filter_flag = true
+        end
+        options.input = input
+        if after_filter_flag then
+            vim.api.nvim_create_autocmd("User", {
+                pattern = "Ddu:uiReady",
+                callback = function()
+                    vim.fn.timer_start(5, vim.fn["ddu#ui#do_action"]("openFilterWindow"))
+                end,
+                once = true,
+            })
+        end
+        vim.fn["ddu#start"](options)
     end
 
-    local input_pattern
+    local dpp = require("dpp")
+    if dpp.get("dressing.nvim").sourced ~= 1 then
+        dpp.source("dressing.nvim")
+    end
+
     if completion then
-        input_pattern = vim.fn["cmdline#input"]("Pattern: ", "", completion)
+        vim.ui.input({ prompt = "Pattern: ", completion = completion }, function(input)
+            ddu_start(input)
+        end)
     else
-        input_pattern = vim.fn["cmdline#input"]("Pattern: ", "")
+        vim.ui.input({ prompt = "Pattern: " }, function(input)
+            ddu_start(input)
+        end)
     end
-    options.input = input_pattern
-
-    -- 何も入力しなかったらstartFilterと同じ挙動にする
-    if #input_pattern == 0 then
-        after_filter_flag = true
-    end
-    if after_filter_flag then
-        vim.api.nvim_create_autocmd("User", {
-            pattern = "Ddu:uiReady",
-            callback = function()
-                vim.fn.timer_start(5, vim.fn["ddu#ui#do_action"]("openFilterWindow"))
-            end,
-            once = true,
-        })
-    end
-    vim.fn["ddu#start"](options)
 end
 
 return M
