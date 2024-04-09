@@ -75,6 +75,11 @@ on_event = ['CmdlineEnter']
 on_func = ['cmdline#input', 'cmdline#enable']
 hooks_file = '$HOOKS_DIR/cmdline.lua'
 
+[[plugins]]
+repo = 'stevearc/dressing.nvim'
+on_event = ['CmdlineEnter']
+hooks_file = '$HOOKS_DIR/dressing.lua'
+
 # }}}
 
 # Coding support plugins {{{
