@@ -391,12 +391,13 @@ require("user.utils").keymaps_set({
         end,
         opts = noremap_silent,
     },
-    { -- 読む用・書く用
-        mode = { "n" },
-        lhs = [[ n]],
-        rhs = require("user.utils").toggle_view,
-        opts = noremap_silent,
-    },
+    -- { -- 読む用・書く用
+        -- いまこの機能メンテナンスできていない
+    --     mode = { "n" },
+    --     lhs = [[ n]],
+    --     rhs = require("user.utils").toggle_view,
+    --     opts = noremap_silent,
+    -- },
     { -- qって結構誤爆するんだよね…
         mode = { "n" },
         lhs = [[<C-Q>]],
