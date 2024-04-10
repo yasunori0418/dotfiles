@@ -1,7 +1,3 @@
-if &compatible
-  set nocompatible
-endif
-
 " Editor-Settings{{{
 " Encoding{{{
 " Use utf-8 to overall encoding.
@@ -30,7 +26,7 @@ set ambiwidth=single
 set autoread
 
 " Move the cursor one character ahead of the end of the line
-" set virtualedit=onemore
+set virtualedit=block
 
 " Use the clipboard on linux systems.
 set clipboard+=unnamedplus
@@ -56,18 +52,6 @@ set cursorline
 " Show title bar string when X11.
 set icon
 
-" Set title string.
-set iconstring='\ \|\ [%f]'
-
-" True color terminal settings.
-if exists('+termguicolors')
-  let &t_8f="\<Esc>[38;2;%lu;%lu;%lum"
-  let &t_8b="\<Esc>[48;2;%lu;%lu;%lum"
-  set termguicolors
-endif
-
-" Transparency of pop-up menus such as completion
-"set pumblend=30
 " }}}
 
 " Folding{{{
@@ -135,83 +119,58 @@ set history=5000
 
 " Invisible characters{{{
 " Invisible characters
-"set list
+set list
 
 "Tab/End line Space/End line/No brake space.
-"set listchars=tab:»-,space:･,trail:･,nbsp:%,eol:↲,extends:»,precedes:«
+set listchars=tab:»-,space:･,trail:･,nbsp:%,eol:↲,extends:»,precedes:«
 " }}}
 
 " Keybind settings.
 " Window control keybind {{{
 " overwrites window command of 'CTRL-W'.
-" Use prefix [Window].
-nnoremap <C-W> <Nop>
-nnoremap [Window] <Nop>
-nmap <Space>w [Window]
+" Use prefix <Plug>(window).
+nnoremap <Plug>(window) <Nop>
+nmap <Space>w <Plug>(window)
 
 " Commands of move between window.
-nnoremap [Window]h <C-W>h
-nnoremap [Window]j <C-W>j
-nnoremap [Window]k <C-W>k
-nnoremap [Window]l <C-W>l
+nnoremap <Plug>(window)h <C-W>h
+nnoremap <Plug>(window)j <C-W>j
+nnoremap <Plug>(window)k <C-W>k
+nnoremap <Plug>(window)l <C-W>l
 
 " Commands of move window.
-nnoremap [Window]H <C-W>H
-nnoremap [Window]J <C-W>J
-nnoremap [Window]K <C-W>K
-nnoremap [Window]L <C-W>L
+nnoremap <Plug>(window)H <C-W>H
+nnoremap <Plug>(window)J <C-W>J
+nnoremap <Plug>(window)K <C-W>K
+nnoremap <Plug>(window)L <C-W>L
 
 " Tab page controls.
 nnoremap [t gT
 nnoremap ]t gt
 nnoremap [T <Cmd>tabfirst<CR>
 nnoremap ]T <Cmd>tablast<CR>
-nnoremap tn <Cmd>tabnew<CR>
-nnoremap tN <Cmd>-tabnew<CR>
-nnoremap tt <C-W>g<Tab>
-nnoremap tT <C-W>T
+nnoremap <Plug>(window)tn <Cmd>tabnew<CR>
+nnoremap <Plug>(window)tT <C-W>T
 
 " Commands of close window.
-nnoremap [Window]q <C-W>q
-nnoremap [Window]Q <Cmd>quit!<CR>
-nnoremap [Window]o <C-W>o
+nnoremap <Plug>(window)q <C-W>q
+nnoremap <Plug>(window)Q <Cmd>quit!<CR>
 
 " Commands of window split.
-nnoremap [Window]s <C-W>s
-nnoremap [Window]v <C-W>v
-nnoremap [Window]n <C-W>n
+nnoremap <Plug>(window)s <C-W>s
+nnoremap <Plug>(window)v <C-W>v
+nnoremap <Plug>(window)n <C-W>n
 
 " Window size controls.
-nnoremap [Window]+ <C-W>+
-nnoremap [Window]- <C-W>-
-nnoremap [Window]= <C-W>=
-nnoremap [Window]< <C-W><
-nnoremap [Window]> <C-W>>
-" }}}
-
-" File save keybinds. {{{
-nnoremap [Save] <Nop>
-nmap <Space>s [Save]
-nnoremap [Save]a <Cmd>wall<CR>
-nnoremap [Save]q <Cmd>wq<CR>
-nnoremap [Save]w <Cmd>write<CR>
-nnoremap [Save]u <Cmd>update<CR>
+nnoremap <Plug>(window)| <C-W>|
+nnoremap <Plug>(window)_ <C-W>_
+nnoremap <Plug>(window)= <C-W>=
 " }}}
 
 " Normal Mode:{{{
-" US Keyboard layout mapping.
-" Exchange Colon and Semi-Colon.
-" nnoremap ; :
-" nnoremap : ;
-" nnoremap q; q:
-
-
 " Do not save the things erased by x and c in the register.
 nnoremap x "_x
 nnoremap c "_c
-
-" For vim-sandwich.
-" nnoremap s <Nop>
 
 " Opens the file name under the cursor.
 nnoremap gf <C-w>gF
@@ -230,11 +189,6 @@ inoremap <C-l> <Del>
 " }}}
 
 " Visual Mode:{{{
-
-" Exchange Colon and Semi-Colon.
-" xnoremap ; :
-" xnoremap : ;
-
 
 " Do not save the things erased by x and c in the register.
 xnoremap x "_x
