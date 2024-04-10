@@ -89,18 +89,6 @@ require("user.utils").keymaps_set({
         rhs = [[<Nop>]],
         opts = noremap_silent,
     },
-    { -- disable of "t"
-        mode = { "n", "x" },
-        lhs = [[t]],
-        rhs = [[<Nop>]],
-        opts = noremap_silent,
-    },
-    { -- disable of "T"
-        mode = { "n", "x" },
-        lhs = [[T]],
-        rhs = [[<Nop>]],
-        opts = noremap_silent,
-    },
     { -- disable of marker
         mode = { "n", "x" },
         lhs = [[m]],
@@ -363,19 +351,13 @@ require("user.utils").keymaps_set({
     },
     { -- tabnew
         mode = { "n" },
-        lhs = [[tn]],
+        lhs = [[<Plug>(Window)tn]],
         rhs = [[<Cmd>tabnew<CR>]],
-        opts = noremap_silent,
-    },
-    { -- move to last access tab
-        mode = { "n" },
-        lhs = [[tt]],
-        rhs = [[<C-W>g<Tab>]],
         opts = noremap_silent,
     },
     { -- Ctrl-W_T
         mode = { "n" },
-        lhs = [[tT]],
+        lhs = [[<Plug>(Window)tT]],
         rhs = [[<C-W>T]],
         opts = noremap_silent,
     },
