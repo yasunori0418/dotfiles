@@ -49,9 +49,6 @@ set relativenumber
 " Display current row cursorline.
 set cursorline
 
-" Show title bar string when X11.
-set icon
-
 " }}}
 
 " Folding{{{
