@@ -2,6 +2,7 @@
 " Encoding{{{
 " Use utf-8 to overall encoding.
 set encoding=utf-8
+scriptencoding utf-8
 
 " Use utf-8 when file write.
 set fileencoding=utf-8
