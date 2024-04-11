@@ -170,7 +170,7 @@ nnoremap x "_x
 nnoremap c "_c
 
 " Opens the file name under the cursor.
-nnoremap gf <C-w>gF
+nnoremap gf gF
 
 " Disable highlights from search results.
 nnoremap <C-l> <Cmd>nohlsearch<Bar>diffupdate<CR><C-l>
