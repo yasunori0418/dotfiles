@@ -14,11 +14,31 @@ set fileencodings=utf-8,sjis,iso-2022-jp,euc-jp
 " Automatic line feed code recognition.
 set fileformats=unix,dos
 
-" Disable backup.
-set nobackup
+let s:cache_dir = expand('~/.cache/vim')
 
-" Don't make swap file.
-set noswapfile
+" make backup file.
+let s:backup_dir = s:cache_dir . '/backup'
+if isdirectory(s:backup_dir)
+  call mkdir(s:backup_dir, 'p')
+  execute 'set backupdir=' . s:backup_dir
+  set backup
+endif
+
+" make swap file.
+let s:swap_dir = s:cache_dir . '/swap'
+if isdirectory(s:swap_dir)
+  call mkdir(s:swap_dir, 'p')
+  execute 'set directory=' . s:swap_dir
+  set swapfile
+endif
+
+" make undo file.
+let s:undo_dir = s:cache_dir . '/undo'
+if isdirectory(s:undo_dir)
+  call mkdir(s:swap_dir, 'p')
+  execute 'set undodir=' . s:swap_dir
+  set undofile
+endif
 
 " East asia ambigunous charactor width problem.
 set ambiwidth=single
@@ -33,7 +53,7 @@ set virtualedit=block
 set clipboard+=unnamedplus
 
 " diff vertical view
-set diffopt+=vertical
+set diffopt+=vertical,algorithm:histogram,indent-heuristic
 
 " no beep
 set visualbell t_vb=
@@ -163,7 +183,7 @@ nnoremap <Plug>(window)v <C-W>v
 nnoremap <Plug>(window)n <C-W>n
 
 " Window size controls.
-nnoremap <Plug>(window)| <C-W>|
+nnoremap <Plug>(window)<Bar> <C-W><Bar>
 nnoremap <Plug>(window)_ <C-W>_
 nnoremap <Plug>(window)= <C-W>=
 " }}}
