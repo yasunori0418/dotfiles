@@ -112,8 +112,6 @@ set tabstop=2
 " Insert a tab with 2 minutes of half-width space.
 set softtabstop=2
 
-let g:vim_indent_count = 0
-
 augroup filetypeIndent
   autocmd!
   autocmd FileType html   setlocal tabstop=2 softtabstop=2 shiftwidth=2

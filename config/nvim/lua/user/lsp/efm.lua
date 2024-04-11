@@ -15,9 +15,6 @@ efm_configs.setup({
             { kind = "linters", name = "textlint", auto_install = false },
             { kind = "linters", name = "markdownlint" },
         },
-        vim = {
-            { kind = "linters", name = "vint" },
-        },
         json = {
             { kind = "formatters", name = "jq" },
             { kind = "linters", name = "jq" },
