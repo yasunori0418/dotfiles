@@ -49,4 +49,12 @@ require("user.utils").autocmds_set({
             vim.cmd([[cwindow]])
         end,
     },
+    {
+        events = { "WinEnter" },
+        group = vimrc,
+        pattern = "*",
+        callback = function()
+            vim.cmd.checktime("%")
+        end,
+    },
 })
