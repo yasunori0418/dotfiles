@@ -56,7 +56,7 @@ set clipboard+=unnamedplus
 set diffopt+=vertical,algorithm:histogram,indent-heuristic
 
 " no beep
-set visualbell t_vb=
+set belloff=all
 
 " }}}
 
