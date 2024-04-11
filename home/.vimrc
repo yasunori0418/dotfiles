@@ -147,7 +147,6 @@ set listchars=tab:»-,space:･,trail:･,nbsp:%,eol:↲,extends:»,precedes:«
 " Window control keybind {{{
 " overwrites window command of 'CTRL-W'.
 " Use prefix <Plug>(window).
-nnoremap <Plug>(window) <Nop>
 nmap <Space>w <Plug>(window)
 
 " Commands of move between window.
