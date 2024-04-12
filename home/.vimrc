@@ -17,28 +17,28 @@ set fileformats=unix,dos
 let s:cache_dir = expand('~/.cache/vim')
 
 " make backup file.
-let s:backup_dir = s:cache_dir . '/backup'
-if isdirectory(s:backup_dir)
-  call mkdir(s:backup_dir, 'p')
-  execute 'set backupdir=' . s:backup_dir
-  set backup
+let s:backupdir = s:cache_dir . '/backup'
+if !isdirectory(s:backupdir)
+  call mkdir(s:backupdir, 'p')
 endif
+execute 'set backupdir=' . s:backupdir
+set backup
 
 " make swap file.
-let s:swap_dir = s:cache_dir . '/swap'
-if isdirectory(s:swap_dir)
-  call mkdir(s:swap_dir, 'p')
-  execute 'set directory=' . s:swap_dir
-  set swapfile
+let s:swapdir = s:cache_dir . '/swap'
+if !isdirectory(s:swapdir)
+  call mkdir(s:swapdir, 'p')
 endif
+execute 'set directory=' . s:swapdir
+set swapfile
 
 " make undo file.
-let s:undo_dir = s:cache_dir . '/undo'
-if isdirectory(s:undo_dir)
-  call mkdir(s:swap_dir, 'p')
-  execute 'set undodir=' . s:swap_dir
-  set undofile
+let s:undodir = s:cache_dir . '/undo'
+if isdirectory(s:undodir)
+  call mkdir(s:undodir, 'p')
 endif
+execute 'set undodir=' . s:undodir
+set undofile
 
 " East asia ambigunous charactor width problem.
 set ambiwidth=single
