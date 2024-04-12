@@ -172,7 +172,7 @@ nnoremap <Plug>(window)q <C-W>q
 nnoremap <Plug>(window)Q <Cmd>quit!<CR>
 
 " easy save. save file only when changed.
-nnoremap <Plug>(windows)w <Cmd>update<CR>
+nnoremap <Plug>(window)w <Cmd>update<CR>
 
 " Commands of window split.
 nnoremap <Plug>(window)s <C-W>s
