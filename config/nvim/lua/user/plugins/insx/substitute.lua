@@ -29,7 +29,7 @@ function M.altercmd(original, altanative, keymaps)
             [[<CR>]],
             substitute({
                 pattern = original .. [[\%#]],
-                replace = altanative .. [[ \%#<CR>]],
+                replace = altanative .. [[ \%# <CR>]],
             }),
             {
                 mode = "c",
