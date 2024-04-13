@@ -16,6 +16,7 @@ bluez-utils
 btrfs-progs
 catimg
 chafa
+clang
 clipmenu
 cmake
 code
@@ -83,6 +84,7 @@ lightdm-gtk-greeter
 linux-firmware
 linux-zen
 linux-zen-headers
+llvm
 lua-sec
 luarocks
 lxappearance-gtk3
