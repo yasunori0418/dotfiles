@@ -87,6 +87,11 @@ hooks_file = '$HOOKS_DIR/dressing.lua'
 repo = 'hrsh7th/nvim-insx'
 hooks_file = '$HOOKS_DIR/insx.lua'
 
+[[plugins]]
+repo = 'eraserhd/parinfer-rust'
+build = 'cargo build --release'
+hooks_file = '$HOOKS_DIR/parinfer-rust.lua'
+
 [[plugins]] # vim-eft
 repo = 'hrsh7th/vim-eft'
 on_map = { nxo = '<Plug>(eft-' }
