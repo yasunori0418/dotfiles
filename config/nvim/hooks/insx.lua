@@ -110,7 +110,7 @@ helper.altercmds_apply({
             altanative = [[Silicon]],
         },
         {
-            original = [=[r\%[run]]=],
+            original = [=[r\%[un]]=],
             altanative = [[QuickRun]],
         },
         {
