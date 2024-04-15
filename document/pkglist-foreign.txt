@@ -5,7 +5,6 @@ downgrade
 google-chrome
 gyazo
 lemonade-git
-light
 lightdm-mini-greeter
 nordic-darker-standard-buttons-theme
 nordic-darker-theme

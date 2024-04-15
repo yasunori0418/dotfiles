@@ -1,9 +1,9 @@
 # ddu plugins
 # Core plugins {{{
 [[plugins]] # ddu.vim
-# repo = 'Shougo/ddu.vim'
-repo = 'Milly/ddu.vim'
-rev = 'source-stream'
+repo = 'Shougo/ddu.vim'
+# repo = 'Milly/ddu.vim'
+# rev = 'source-stream'
 depends = ['denops.vim', 'nvim-treesitter']
 on_func = 'ddu#start'
 hooks_file = '$HOOKS_DIR/ddu/hook.lua'
