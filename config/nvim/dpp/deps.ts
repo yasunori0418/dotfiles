@@ -1,4 +1,4 @@
-export { BaseConfig } from "https://deno.land/x/dpp_vim@v0.1.0/types.ts";
+export { BaseConfig } from "https://deno.land/x/dpp_vim@v0.2.0/types.ts";
 export type {
   ConfigReturn,
   Context,
@@ -6,10 +6,10 @@ export type {
   Dpp,
   DppOptions,
   Plugin,
-} from "https://deno.land/x/dpp_vim@v0.1.0/types.ts";
+} from "https://deno.land/x/dpp_vim@v0.2.0/types.ts";
 
-export type { Denops } from "https://deno.land/x/dpp_vim@v0.1.0/deps.ts";
-export { fn, vars } from "https://deno.land/x/dpp_vim@v0.1.0/deps.ts";
+export type { Denops } from "https://deno.land/x/dpp_vim@v0.2.0/deps.ts";
+export { fn, vars } from "https://deno.land/x/dpp_vim@v0.2.0/deps.ts";
 
 export type {
   ConfigArguments,
@@ -24,5 +24,5 @@ export {
   gatherVimrcs,
 } from "./helper.ts";
 
-export { join } from "https://deno.land/std@0.222.1/path/mod.ts";
-export { expandGlobSync } from "https://deno.land/std@0.222.1/fs/mod.ts";
+export { join } from "https://deno.land/std@0.223.0/path/mod.ts";
+export { expandGlobSync } from "https://deno.land/std@0.223.0/fs/mod.ts";
