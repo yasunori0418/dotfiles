@@ -13,7 +13,6 @@ declare -Ar modules=(
   # key => {ユーザー名}/{リポジトリ名}
   # value => リンク対象:symlink先
   ["yasunori0418/SKK_Keymap_L2X"]=":${dotfiles}/config/libskk/rules/L2X"
-  ["rafamadriz/friendly-snippets"]="snippets:${dotfiles}/config/nvim/snippets/friendly-snippets"
   ["jluttine/rofi-power-menu"]="rofi-power-menu:${local_bin}/rofi-power-menu"
   ["arcticicestudio/nord-dircolors"]="src/dir_colors:${dotfiles}/home/.dir_colors"
 )
