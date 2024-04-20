@@ -9,8 +9,8 @@ require("nvim-treesitter.configs").setup({
                 ["if"] = "@function.inner",
             },
             selection_modes = {
-                ["@function.outer"] = "V",
-                ["@function.inner"] = "V",
+                ["@function.outer"] = "v",
+                ["@function.inner"] = "v",
             },
             include_surrounding_whitespace = false,
         },
