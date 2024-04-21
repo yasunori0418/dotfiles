@@ -28,8 +28,8 @@ function M.altercmd(original, altanative, keymaps)
         insx.add(
             [[<CR>]],
             substitute({
-                pattern = original .. [[\%#]],
-                replace = altanative .. [[ \%# <CR>]],
+                pattern = [[\(^\|'<,'>\)]] .. original .. [[\%#]],
+                replace = [[\1]] .. altanative .. [[ \%# <CR>]],
             }),
             {
                 mode = "c",
