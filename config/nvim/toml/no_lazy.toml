@@ -1,16 +1,16 @@
 hooks_file = '$HOOKS_DIR/dppft.lua'
 
 [[plugins]] # nightfox.nvim
-repo = 'EdenEast/nightfox.nvim'
+repo = 'github.com/EdenEast/nightfox.nvim'
 hooks_file = '$HOOKS_DIR/nightfox.lua'
 
 [[plugins]] # vimdoc-ja
-repo = 'vim-jp/vimdoc-ja'
+repo = 'github.com/vim-jp/vimdoc-ja'
 hook_add = 'set helplang=ja,en'
 
 [[plugins]] # learn-vimscript
-repo = 'mattn/learn-vimscript'
+repo = 'github.com/mattn/learn-vimscript'
 
 [[plugins]] # mr.vim
-repo = 'lambdalisue/mr.vim'
+repo = 'github.com/lambdalisue/mr.vim'
 hooks_file = '$HOOKS_DIR/mr.lua'

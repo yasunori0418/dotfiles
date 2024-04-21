@@ -1,13 +1,13 @@
 # Lazy load plugins
 # Editor support plugins {{{
 [[plugins]] # heirline.nvim
-repo = 'rebelot/heirline.nvim'
+repo = 'github.com/rebelot/heirline.nvim'
 depends = 'nvim-navic'
 on_event = ['WinNew', 'CursorHold']
 hooks_file = '$HOOKS_DIR/heirline.lua'
 
 [[plugins]] # context_filetype.vim
-repo = 'Shougo/context_filetype.vim'
+repo = 'github.com/Shougo/context_filetype.vim'
 lua_source = '''
 vim.g['context_filetype#ignore_patterns'] = {
   toml = {
@@ -17,7 +17,7 @@ vim.g['context_filetype#ignore_patterns'] = {
 '''
 
 [[plugins]] # nvim-notify
-repo = 'rcarriga/nvim-notify'
+repo = 'github.com/rcarriga/nvim-notify'
 on_lua = 'notify'
 lua_source = '''
 require("notify").setup({
@@ -28,49 +28,49 @@ vim.notify = require("notify")
 '''
 
 [[plugins]] # vim-quickrun
-repo = 'thinca/vim-quickrun'
+repo = 'github.com/thinca/vim-quickrun'
 on_cmd = 'QuickRun'
 
 [[plugins]] # vim-molder
-repo = 'mattn/vim-molder'
+repo = 'github.com/mattn/vim-molder'
 hooks_file = '$HOOKS_DIR/molder.lua'
 
 [[plugins]] # vim-molder-operations
-repo = 'mattn/vim-molder-operations'
+repo = 'github.com/mattn/vim-molder-operations'
 on_source = 'vim-molder'
 
 [[plugins]] # deol.nvim
-repo = 'Shougo/deol.nvim'
+repo = 'github.com/Shougo/deol.nvim'
 depends = ['ddc.vim']
 on_func = 'deol#start'
 hooks_file = '$HOOKS_DIR/deol.lua'
 
 [[plugins]] # vim-qfreplace
-repo = 'thinca/vim-qfreplace'
+repo = 'github.com/thinca/vim-qfreplace'
 on_cmd = 'Qfreplace'
 
 [[plugins]] # vim-qfedit
-repo = 'itchyny/vim-qfedit'
+repo = 'github.com/itchyny/vim-qfedit'
 on_event = 'QuickFixCmdPost'
 
 [[plugins]] # ccc.nvim
-repo = 'uga-rosa/ccc.nvim'
+repo = 'github.com/uga-rosa/ccc.nvim'
 on_ft = ['css', 'html', 'conf']
 on_cmd = ['CccPick', 'CccConvert', 'CccHighlighterToggle']
 on_source = 'mason-lspconfig.nvim'
 hooks_file = '$HOOKS_DIR/ccc.lua'
 
 [[plugins]] # promise-async
-repo = 'kevinhwang91/promise-async'
+repo = 'github.com/kevinhwang91/promise-async'
 
 [[plugins]] # nvim-ufo
-repo = 'kevinhwang91/nvim-ufo'
+repo = 'github.com/kevinhwang91/nvim-ufo'
 depends = 'promise-async'
 on_source = 'nvim-treesitter'
 hooks_file = '$HOOKS_DIR/ufo.lua'
 
 [[plugins]]
-repo = 'Shougo/cmdline.vim'
+repo = 'github.com/Shougo/cmdline.vim'
 on_event = ['CmdlineEnter']
 on_func = ['cmdline#input', 'cmdline#enable']
 hooks_file = '$HOOKS_DIR/cmdline.lua'
@@ -79,11 +79,11 @@ hooks_file = '$HOOKS_DIR/cmdline.lua'
 
 # Coding support plugins {{{
 [[plugins]]
-repo = 'hrsh7th/nvim-insx'
+repo = 'github.com/hrsh7th/nvim-insx'
 hooks_file = '$HOOKS_DIR/insx.lua'
 
 [[plugins]]
-repo = 'eraserhd/parinfer-rust'
+repo = 'github.com/eraserhd/parinfer-rust'
 on_ft = [
   'carp',
   'clojure',
@@ -101,17 +101,17 @@ build = 'cargo build --release'
 hooks_file = '$HOOKS_DIR/parinfer-rust.lua'
 
 [[plugins]] # vim-eft
-repo = 'hrsh7th/vim-eft'
+repo = 'github.com/hrsh7th/vim-eft'
 on_map = { nxo = '<Plug>(eft-' }
 hooks_file = '$HOOKS_DIR/eft.lua'
 
 [[plugins]] # vim-sandwich
-repo = 'machakann/vim-sandwich'
+repo = 'github.com/machakann/vim-sandwich'
 on_map = { nxo = '<Plug>(sandwich-' }
 hooks_file = '$HOOKS_DIR/sandwich.lua'
 
 [[plugins]] # dial.nvim
-repo = 'monaqa/dial.nvim'
+repo = 'github.com/monaqa/dial.nvim'
 on_lua = 'dial'
 on_cmd = ['DialIncrement', 'DialDecrement']
 hooks_file = '$HOOKS_DIR/dial.lua'

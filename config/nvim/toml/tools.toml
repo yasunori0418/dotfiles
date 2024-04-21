@@ -1,5 +1,5 @@
 [[plugins]] # vimhelpgenerator
-repo = 'LeafCage/vimhelpgenerator'
+repo = 'github.com/LeafCage/vimhelpgenerator'
 on_cmd = ['VimHelpGenerator', 'VimHelpGeneratorVirtual']
 lua_source = '''
 vim.g.vimhelpgenerator_author = [[yasunori0418]]
@@ -7,22 +7,22 @@ vim.g.vimhelpgenerator_uri = [[https://github.com/yasunori0418]]
 '''
 
 [[plugins]] # helpful.vim
-repo = 'tweekmonster/helpful.vim'
+repo = 'github.com/tweekmonster/helpful.vim'
 on_cmd = 'HelpfulVersion'
 
 [[plugins]] # suda.vim
-repo = 'lambdalisue/suda.vim'
+repo = 'github.com/lambdalisue/suda.vim'
 on_cmd = ['SudaRead', 'SudaWrite']
 
 [[plugins]] # memolist.vim
-repo = 'glidenote/memolist.vim'
+repo = 'github.com/glidenote/memolist.vim'
 on_cmd = ['MemoNew', 'MemoList', 'MemoNewWithMeta', 'MemoGrep']
 lua_source = '''
 vim.g.memolist_path = vim.fn.expand('~/Documents/memo')
 '''
 
 [[plugins]] # vim-startuptime
-repo = 'dstein64/vim-startuptime'
+repo = 'github.com/dstein64/vim-startuptime'
 on_cmd = 'StartupTime'
 lua_source = '''
 -- vim.g.startuptime_tries = 10
@@ -30,7 +30,7 @@ vim.g.startuptime_event_width = 0
 '''
 
 [[plugins]] # vim-themis
-repo = 'thinca/vim-themis'
+repo = 'github.com/thinca/vim-themis'
 on_cmd = 'StartThemis'
 lua_add = '''
 vim.api.nvim_create_user_command("StartThemis", function()
@@ -39,27 +39,27 @@ end, {})
 '''
 
 [[plugins]]
-repo = 'nvim-tree/nvim-web-devicons'
+repo = 'github.com/nvim-tree/nvim-web-devicons'
 on_lua = 'nvim-web-devicons'
 hooks_file = '$HOOKS_DIR/devicons.lua'
 
 [[plugins]]
-repo = 'rickhowe/wrapwidth'
+repo = 'github.com/rickhowe/wrapwidth'
 on_cmd = 'Wrapwidth'
 
 [[plugins]]
-repo = 'thinca/vim-showtime'
+repo = 'github.com/thinca/vim-showtime'
 on_cmd = ['ShowtimeStart', 'ShowtimeResume']
 
 [[plugins]]
-repo = 'itchyny/calendar.vim'
+repo = 'github.com/itchyny/calendar.vim'
 on_cmd = 'Calendar'
 
 [[plugins]] # for skkeleton
-repo = 'skk-dev/dict'
+repo = 'github.com/skk-dev/dict'
 if = false
 
 [[plugins]] # for skkeleton
-repo = 'tokuhirom/jawiki-kana-kanji-dict'
+repo = 'github.com/tokuhirom/jawiki-kana-kanji-dict'
 if = false
 

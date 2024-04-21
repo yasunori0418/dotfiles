@@ -1,15 +1,15 @@
 # LSP plugins
 # Core plugins {{{
 [[plugins]] # nvim-lspconfig
-repo = 'neovim/nvim-lspconfig'
+repo = 'github.com/neovim/nvim-lspconfig'
 
 [[plugins]] # mason.nvim
-repo = 'williamboman/mason.nvim'
+repo = 'github.com/williamboman/mason.nvim'
 hook_post_update = 'MasonUpdate'
 hooks_file = '$HOOKS_DIR/mason.lua'
 
 [[plugins]] # mason-lspconfig.nvim
-repo = 'williamboman/mason-lspconfig.nvim'
+repo = 'github.com/williamboman/mason-lspconfig.nvim'
 depends = ['nvim-lspconfig', 'mason.nvim', 'ddc-source-lsp', 'nvim-navic']
 on_source = 'ddc.vim'
 on_ft = ['lua', 'pyhton', 'php', 'markdown', 'typescript']
@@ -22,31 +22,31 @@ require("user.lsp")
 
 # Support plugins {{{
 [[plugins]] # denops-popup-preview.vim
-repo = 'matsui54/denops-popup-preview.vim'
+repo = 'github.com/matsui54/denops-popup-preview.vim'
 on_source = 'ddc.vim'
 lua_source = '''
 vim.fn['popup_preview#enable']()
 '''
 
 [[plugins]] # denops-signature_help
-repo = 'matsui54/denops-signature_help'
+repo = 'github.com/matsui54/denops-signature_help'
 on_event = 'LspAttach'
 lua_source = '''
 vim.fn['signature_help#enable']()
 '''
 
 [[plugins]] # fidget.nvim
-repo = 'j-hui/fidget.nvim'
+repo = 'github.com/j-hui/fidget.nvim'
 on_lua = 'fidget'
 on_event = ['LspAttach', 'BufRead']
 on_cmd = 'Fidget'
 hooks_file = '$HOOKS_DIR/fidget.lua'
 
 [[plugins]]
-repo = 'creativenull/efmls-configs-nvim'
+repo = 'github.com/creativenull/efmls-configs-nvim'
 on_source = 'nvim-lspconfig'
 
 [[plugins]]
-repo = 'SmiteshP/nvim-navic'
+repo = 'github.com/SmiteshP/nvim-navic'
 hooks_file = "$HOOKS_DIR/navic.lua"
 # }}}

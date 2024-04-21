@@ -1,34 +1,34 @@
 [[plugins]] # nvim-treesitter
-repo = 'nvim-treesitter/nvim-treesitter'
+repo = 'github.com/nvim-treesitter/nvim-treesitter'
 on_event = 'BufRead'
 hooks_file = '$HOOKS_DIR/treesitter.lua'
 
 [[plugins]]
-repo = 'nvim-treesitter/nvim-treesitter-textobjects'
+repo = 'github.com/nvim-treesitter/nvim-treesitter-textobjects'
 on_source = 'nvim-treesitter'
 hooks_file = '$HOOKS_DIR/ts_textobjects.lua'
 
 [[plugins]] # indent-blankline.nvim
-repo = 'lukas-reineke/indent-blankline.nvim'
+repo = 'github.com/lukas-reineke/indent-blankline.nvim'
 on_source = 'nvim-treesitter'
 hooks_file = '$HOOKS_DIR/indent_blankline.lua'
 
 [[plugins]] # matchparen.nvim
-repo = 'monkoose/matchparen.nvim'
+repo = 'github.com/monkoose/matchparen.nvim'
 on_source = 'nvim-treesitter'
 lua_source = '''
 require('matchparen').setup()
 '''
 
 [[plugins]]
-repo = 'JoosepAlviste/nvim-ts-context-commentstring'
+repo = 'github.com/JoosepAlviste/nvim-ts-context-commentstring'
 
 [[plugins]] #nvim-yati
-repo = 'yioneko/nvim-yati'
+repo = 'github.com/yioneko/nvim-yati'
 on_source = 'nvim-treesitter'
 
 [[plugins]]
-repo = 'RRethy/vim-illuminate'
+repo = 'github.com/RRethy/vim-illuminate'
 on_source = 'nvim-treesitter'
 hooks_file = '$HOOKS_DIR/illuminate.lua'
 

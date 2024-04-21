@@ -1,23 +1,23 @@
 [[plugins]] # denops.vim
-repo = 'vim-denops/denops.vim'
+repo = 'github.com/vim-denops/denops.vim'
 hook_add = '''
 let g:denops#server#deno_args = ['-q', '--no-lock', '--unstable-kv', '-A']
 '''
 
 [[plugins]] # dpp.vim
-repo = 'Shougo/dpp.vim'
+repo = 'github.com/Shougo/dpp.vim'
 
 [[plugins]] # dpp-protocol-git
-repo = 'Shougo/dpp-protocol-git'
+repo = 'github.com/Shougo/dpp-protocol-git'
 
 [[plugins]] # dpp-ext-installer
-repo = 'Shougo/dpp-ext-installer'
+repo = 'github.com/Shougo/dpp-ext-installer'
 
 [[plugins]] # dpp-ext-toml
-repo = 'Shougo/dpp-ext-toml'
+repo = 'github.com/Shougo/dpp-ext-toml'
 
 [[plugins]] # dpp-ext-lazy
-repo = 'Shougo/dpp-ext-lazy'
+repo = 'github.com/Shougo/dpp-ext-lazy'
 
 [[plugins]]
-repo = 'comamoca/dpp-ext-ghq'
+repo = 'github.com/comamoca/dpp-ext-ghq'

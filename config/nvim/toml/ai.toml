@@ -1,9 +1,9 @@
 [[plugins]]
-repo = 'Exafunction/codeium.vim'
+repo = 'github.com/Exafunction/codeium.vim'
 on_cmd = 'Codeium'
 hooks_file = '$HOOKS_DIR/codeium.lua'
 
 [[plugins]]
-repo = 'kyoh86/denops-ollama.vim'
+repo = 'github.com/kyoh86/denops-ollama.vim'
 on_func = ['ollama#start_chat', 'ollama#start_chat_with_context']
 hooks_file = '$HOOKS_DIR/ollama.lua'

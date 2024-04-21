@@ -1,22 +1,22 @@
 # Filetype plugins
 
 [[plugins]] # plantuml-syntax
-repo = 'aklt/plantuml-syntax'
+repo = 'github.com/aklt/plantuml-syntax'
 on_ft = 'plantuml'
 
 [[plugins]] # vim-maketable
-repo = 'mattn/vim-maketable'
+repo = 'github.com/mattn/vim-maketable'
 on_ft = 'markdown'
 
 [[plugins]] # previm
-repo = 'previm/previm'
+repo = 'github.com/previm/previm'
 depends = 'open-browser.vim'
 on_ft = 'markdown'
 on_cmd = 'PrevimOpen'
 hooks_file = '$HOOKS_DIR/previm/previm.lua'
 
 [[plugins]] # tsnode-marker.nvim
-repo = 'atusy/tsnode-marker.nvim'
+repo = 'github.com/atusy/tsnode-marker.nvim'
 on_ft = 'markdown'
 hooks_file = '$HOOKS_DIR/tsnode_marker.lua'
 if = false

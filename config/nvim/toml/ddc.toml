@@ -2,7 +2,7 @@
 
 # Core plugins {{{
 [[plugins]] # pum.vim
-repo = 'Shougo/pum.vim'
+repo = 'github.com/Shougo/pum.vim'
 lua_source = '''
 vim.fn['pum#set_option']({
   border = [[single]],
@@ -12,11 +12,11 @@ vim.fn['pum#set_option']({
 '''
 
 [[plugins]] # ddc-ui-pum
-repo = 'Shougo/ddc-ui-pum'
+repo = 'github.com/Shougo/ddc-ui-pum'
 on_source = 'ddc.vim'
 
 [[plugins]] # ddc.vim
-repo = 'Shougo/ddc.vim'
+repo = 'github.com/Shougo/ddc.vim'
 depends = ['context_filetype.vim', 'denops.vim', 'pum.vim', 'nvim-insx']
 on_event = ['InsertEnter', 'CmdlineEnter', 'CursorHold', 'LspAttach']
 hooks_file = '$HOOKS_DIR/ddc/hook.lua'
@@ -25,66 +25,66 @@ hooks_file = '$HOOKS_DIR/ddc/hook.lua'
 
 # source plugins {{{
 [[plugins]] # ddc-source-around
-repo = 'Shougo/ddc-source-around'
+repo = 'github.com/Shougo/ddc-source-around'
 on_source = 'ddc.vim'
 
 [[plugins]] # ddc-buffer
-repo = 'matsui54/ddc-buffer'
+repo = 'github.com/matsui54/ddc-buffer'
 on_source = 'ddc.vim'
 
 [[plugins]] # ddc-source-file
-repo = 'LumaKernel/ddc-source-file'
+repo = 'github.com/LumaKernel/ddc-source-file'
 on_source = 'ddc.vim'
 
 [[plugins]] # ddc-source-rg
-repo = 'Shougo/ddc-source-rg'
+repo = 'github.com/Shougo/ddc-source-rg'
 on_source = 'ddc.vim'
 
 [[plugins]] # neco-vim
-repo = 'Shougo/neco-vim'
+repo = 'github.com/Shougo/neco-vim'
 on_ft = ['vim', 'toml', 'help']
 
 [[plugins]] # ddc-source-lsp
-repo = 'Shougo/ddc-source-lsp'
+repo = 'github.com/Shougo/ddc-source-lsp'
 on_source = 'nvim-lspconfig'
 
 [[plugins]]
-repo = 'uga-rosa/ddc-source-lsp-setup'
+repo = 'github.com/uga-rosa/ddc-source-lsp-setup'
 on_source = 'ddc-source-lsp'
 lua_source = '''
 require("ddc_source_lsp_setup").setup()
 '''
 
 [[plugins]]
-repo = 'uga-rosa/ddc-source-nvim-lua'
+repo = 'github.com/uga-rosa/ddc-source-nvim-lua'
 on_source = 'ddc.vim'
 
 [[plugins]] # ddc-source-line
-repo = 'Shougo/ddc-source-line'
+repo = 'github.com/Shougo/ddc-source-line'
 on_source = 'ddc.vim'
 
 [[plugins]] # ddc-source-cmdline
-repo = 'Shougo/ddc-source-cmdline'
+repo = 'github.com/Shougo/ddc-source-cmdline'
 on_source = 'ddc.vim'
 
 [[plugins]] # ddc-source-cmdline-history
-repo = 'Shougo/ddc-source-cmdline-history'
+repo = 'github.com/Shougo/ddc-source-cmdline-history'
 on_source = 'ddc.vim'
 
 [[plugins]] # ddc-source-input
-repo = 'Shougo/ddc-source-input'
+repo = 'github.com/Shougo/ddc-source-input'
 on_source = 'ddc.vim'
 
 [[plugins]]
-repo = 'Shougo/ddc-source-shell-native'
+repo = 'github.com/Shougo/ddc-source-shell-native'
 on_source = 'ddc.vim'
 
 [[plugins]]
-repo = 'delphinus/ddc-shell-history'
+repo = 'github.com/delphinus/ddc-shell-history'
 on_source = 'ddc.vim'
 
 [[plugins]]
-repo = 'Shougo/ddc-source-codeium'
+repo = 'github.com/Shougo/ddc-source-codeium'
 depends = 'codeium.vim'
 on_source = 'ddc.vim'
 
@@ -92,35 +92,35 @@ on_source = 'ddc.vim'
 
 # filter plugins {{{
 [[plugins]] # ddc-matcher_head
-repo = 'Shougo/ddc-matcher_head'
+repo = 'github.com/Shougo/ddc-matcher_head'
 on_source = 'ddc.vim'
 
 [[plugins]] # ddc-matcher_length
-repo = 'Shougo/ddc-matcher_length'
+repo = 'github.com/Shougo/ddc-matcher_length'
 on_source = 'ddc.vim'
 
 [[plugins]] # ddc-sorter_rank
-repo = 'Shougo/ddc-sorter_rank'
+repo = 'github.com/Shougo/ddc-sorter_rank'
 on_source = 'ddc.vim'
 
 [[plugins]] # ddc-converter_remove_overlap
-repo = 'Shougo/ddc-converter_remove_overlap'
+repo = 'github.com/Shougo/ddc-converter_remove_overlap'
 on_source = 'ddc.vim'
 
 [[plugins]] # ddc-fuzzy
-repo = 'tani/ddc-fuzzy'
+repo = 'github.com/tani/ddc-fuzzy'
 on_source = 'ddc.vim'
 
 # }}}
 
 # snippet plugins {{{
 [[plugins]]
-repo = 'uga-rosa/denippet.vim'
+repo = 'github.com/uga-rosa/denippet.vim'
 depends = ['denops.vim', 'friendly-snippets']
 on_source = 'ddc.vim'
 hooks_file = '$HOOKS_DIR/denippet.lua'
 
 [[plugins]]
-repo = 'rafamadriz/friendly-snippets'
+repo = 'github.com/rafamadriz/friendly-snippets'
 rtp = 'snippets'
 # }}}

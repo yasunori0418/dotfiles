@@ -1,11 +1,11 @@
 # Git plugins
 [[plugins]] # gitsigns.nvim
-repo = 'lewis6991/gitsigns.nvim'
+repo = 'github.com/lewis6991/gitsigns.nvim'
 on_event = ['CursorHold']
 hooks_file = '$HOOKS_DIR/gitsigns.lua'
 
 [[plugins]]
-repo = 'lambdalisue/gin.vim'
+repo = 'github.com/lambdalisue/gin.vim'
 depends = ['denops.vim']
 on_cmd = ['Gin', 'GinBranch', 'GinCd', 'GinChaperon', 'GinDiff', 'GinLog', 'GinPatch', 'GinStatus']
 hooks_file = '$HOOKS_DIR/gin.lua'
