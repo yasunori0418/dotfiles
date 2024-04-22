@@ -10,7 +10,6 @@ on_ft = 'markdown'
 
 [[plugins]] # previm
 repo = 'github.com/previm/previm'
-depends = 'open-browser.vim'
 on_ft = 'markdown'
 on_cmd = 'PrevimOpen'
 hooks_file = '$HOOKS_DIR/previm/previm.lua'
