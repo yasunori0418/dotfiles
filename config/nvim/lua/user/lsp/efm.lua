@@ -15,6 +15,9 @@ efm_configs.setup({
             { kind = "linters", name = "textlint", auto_install = false },
             { kind = "linters", name = "markdownlint" },
         },
+        make = {
+            { kind = "linters", name = "checkmake" },
+        },
         json = {
             { kind = "formatters", name = "jq" },
             { kind = "linters", name = "jq" },
@@ -57,4 +60,3 @@ return function()
         },
     })
 end
-
