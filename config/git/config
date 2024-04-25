@@ -11,6 +11,7 @@
 	editor = nvim
 	filemode = false
 	pager = delta
+	autocrlf = input
 [pull]
 	ff = only
 [init]
