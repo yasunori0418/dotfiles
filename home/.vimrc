@@ -185,6 +185,28 @@ nnoremap <Plug>(window)_ <C-W>_
 nnoremap <Plug>(window)= <C-W>=
 " }}}
 
+" QuickFix {{{
+nnoremap <silent> [q <Cmd>cprevious<CR>
+nnoremap <silent> ]q <Cmd>cnext<CR>
+nnoremap <silent> [Q <Cmd>cfirst<CR>
+nnoremap <silent> ]Q <Cmd>clast<CR>
+" }}}
+
+" Buffer {{{
+nnoremap <silent> [b <Cmd>bprevious<CR>
+nnoremap <silent> ]b <Cmd>bnext<CR>
+nnoremap <silent> [B <Cmd>bfirst<CR>
+nnoremap <silent> ]B <Cmd>blast<CR>
+" }}}
+
+" Autocmds {{{
+augroup MyVimrcAutocmds
+  autocmd!
+  autocmd QuickFixCmdPost *grep* cwindow
+  autocmd WinEnter * checktime %
+augroup END
+" }}}
+
 " Normal Mode:{{{
 " Do not save the things erased by x and c in the register.
 nnoremap x "_x
