@@ -4,7 +4,7 @@ efm_configs.setup({
     all_installs = false,
     filetypes = {
         python = {
-            { kind = "formatters", name = "black" },
+            { kind = "formatters", name = "ruff" },
             { kind = "linters", name = "ruff" },
         },
         lua = {
