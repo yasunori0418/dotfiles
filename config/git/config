@@ -9,7 +9,7 @@
 	interactive = auto
 [core]
 	editor = nvim
-	filemode = false
+	filemode = true
 	pager = delta
 	autocrlf = input
 [pull]
