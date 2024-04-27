@@ -12,6 +12,7 @@ on_ft = 'markdown'
 repo = 'github.com/previm/previm'
 on_ft = 'markdown'
 on_cmd = 'PrevimOpen'
+on_func = ['previm#refresh']
 hooks_file = '$HOOKS_DIR/previm/previm.lua'
 
 [[plugins]] # tsnode-marker.nvim
