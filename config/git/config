@@ -12,6 +12,9 @@
 	filemode = true
 	pager = delta
 	autocrlf = input
+	safecrlf = true
+	quotepath = false
+	ignorecase = false
 [pull]
 	ff = only
 [init]
