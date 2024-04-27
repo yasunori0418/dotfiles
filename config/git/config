@@ -46,7 +46,7 @@
 	root = ~/src
 	user = yasunori0418
 
-# https://stackoverflow.com/a/71971739
+; https://stackoverflow.com/a/71971739
 [url "https://github.com/"]
 	insteadOf = git@github.com:
 [url "git@github.com:"]
