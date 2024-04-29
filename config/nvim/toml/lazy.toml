@@ -97,7 +97,7 @@ on_ft = [
   'wast',
   'yuck',
 ]
-build = 'cargo build --release'
+build = 'cargo build --release > /dev/null'
 hooks_file = '$HOOKS_DIR/parinfer-rust.lua'
 
 [[plugins]] # vim-eft
