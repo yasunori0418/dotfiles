@@ -23,6 +23,10 @@ snippets:
     keyword: gpl
     snippet: git pull
 
+  - name: git lol
+    keyword: gl
+    snippet: git lol
+
 completions:
   - name: change directory.
     patterns:
