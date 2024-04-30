@@ -1,3 +1,4 @@
 epsonscan2
 nvidia-dkms
 nvidia-settings
+ollama-cuda
