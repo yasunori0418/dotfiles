@@ -32,6 +32,10 @@ efm_configs.setup({
         dockerfile = {
             { kind = "linters", name = "hadolint" },
         },
+        javascript = {
+            { kind = "linters", name = "eslint" },
+            { kind = "formatters", name = "prettier" },
+        },
         sh = {
             { kind = "linters", name = "shellcheck" },
             { kind = "formatters", name = "beautysh" },
