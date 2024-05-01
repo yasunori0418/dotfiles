@@ -32,6 +32,10 @@ efm_configs.setup({
         dockerfile = {
             { kind = "linters", name = "hadolint" },
         },
+        sh = {
+            { kind = "linters", name = "shellcheck" },
+            { kind = "formatters", name = "beautysh" },
+        },
         bash = {
             { kind = "linters", name = "shellcheck" },
             { kind = "formatters", name = "beautysh" },
