@@ -24,6 +24,7 @@ efm_configs.setup({
         },
         yaml = {
             { kind = "linters", name = "yamllint" },
+            { kind = "linters", name = "actionlint" },
         },
         php = {
             { kind = "linters", name = "phpstan" },
