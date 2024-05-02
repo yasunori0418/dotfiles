@@ -1,3 +1,4 @@
+; vim:ft=gitconfig
 [user]
 	name = yasunori0418
 	email = yasunori.kirin0418@gmail.com
@@ -69,8 +70,6 @@
 	smudge = git-lfs smudge -- %f
 	process = git-lfs filter-process
 	required = true
-
-; vim:ft=gitconfig
 [rerere]
 	enabled = true
 [branch]
