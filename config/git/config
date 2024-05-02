@@ -73,3 +73,5 @@
 ; vim:ft=gitconfig
 [rerere]
 	enabled = true
+[branch]
+	sort = -committerdate
