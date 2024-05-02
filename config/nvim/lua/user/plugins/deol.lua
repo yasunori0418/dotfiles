@@ -16,29 +16,27 @@ function M.open(cwd, split, ratio)
     split = split or "floating"
     ratio = ratio or 0.6
 
-    local winheight = ""
+    local winheight
     if vim.regex([[floating\|horizontal]]):match_str(split) then
         winheight = vim.fn.float2nr(vim.opt.lines:get() * ratio)
     end
 
-    local winwidth = ""
+    local winwidth
     if vim.regex([[floating\|vertical\|farleft\|farright]]):match_str(split) then
         winwidth = vim.fn.float2nr(vim.opt.columns:get() * ratio)
     end
 
-    local options = {
+    vim.fn["deol#start"]({
         auto_cd = false,
         cwd = cwd,
         dir_changed = false,
         edit = false,
         split = split,
         start_insert = false,
-        toggle = true,
+        toggle = false,
         winheight = winheight,
         winwidth = winwidth,
-    }
-
-    vim.fn["deol#start"](options)
+    })
 end
 
 return M
