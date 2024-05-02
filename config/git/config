@@ -71,3 +71,5 @@
 	required = true
 
 ; vim:ft=gitconfig
+[rerere]
+	enabled = true
