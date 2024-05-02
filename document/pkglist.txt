@@ -145,6 +145,7 @@ rxvt-unicode-terminfo
 sane
 screenkey
 slirp4netns
+systemctl-tui
 tailscale
 thunar
 tk
