@@ -33,6 +33,7 @@ dosfstools
 dunst
 ethtool
 expect
+fastfetch
 fcitx5
 fcitx5-configtool
 fcitx5-gtk
@@ -97,7 +98,6 @@ mousepad
 mpd
 mupdf
 ncmpc
-neofetch
 neovide
 net-tools
 network-manager-applet
