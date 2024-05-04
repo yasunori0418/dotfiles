@@ -22,6 +22,10 @@ efm_configs.setup({
             { kind = "formatters", name = "jq" },
             { kind = "linters", name = "jq" },
         },
+        jsonc = {
+            { kind = "formatters", name = "jq" },
+            { kind = "linters", name = "jq" },
+        },
         yaml = {
             { kind = "linters", name = "yamllint" },
             { kind = "linters", name = "actionlint" },
