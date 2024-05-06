@@ -301,16 +301,16 @@ export class Config extends BaseConfig {
               args: ActionArguments<Params>,
             ): Promise<ActionFlags> => {
               const action = args.items[0].action as GitCommitActionData;
-
-              await denops.call("ddu#start", {
-                name: "git:diff_tree",
-                sourceParams: {
-                  git_diff_tree: {
-                    commitHash: action.hash,
+              if (action.kind === "commit") {
+                await denops.call("ddu#start", {
+                  name: "git:diff_tree",
+                  sourceParams: {
+                    git_diff_tree: {
+                      commitHash: action.hash,
+                    },
                   },
-                },
-              });
-
+                });
+              }
               return Promise.resolve(ActionFlags.None);
             },
           },
@@ -345,7 +345,7 @@ export class Config extends BaseConfig {
         },
         gh_project: {
           defaultAction: "openTaskList",
-        }
+        },
       },
       actionOptions: {
         narrow: { quit: false },
