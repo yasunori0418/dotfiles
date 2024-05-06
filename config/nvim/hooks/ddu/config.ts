@@ -4,15 +4,13 @@ import {
   ActionFlags,
   BaseConfig,
   ConfigArguments,
-  expandHome,
   fn,
   GitCommitActionData,
   Notification,
   NvimNotifyActionData,
-  separator,
-  uiSize,
   vars,
 } from "./deps.ts";
+import { expandHome, separator, uiSize } from "./helper.ts";
 
 type Params = Record<string, unknown>;
 
