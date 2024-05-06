@@ -12,6 +12,7 @@ return function()
                     imports = {
                         hosts = {
                             ["https://deno.land"] = true,
+                            ["https://denopkg.com"] = true,
                             ["https://crux.land"] = true,
                             ["https://x.nest.land"] = true,
                         },
