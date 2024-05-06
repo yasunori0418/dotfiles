@@ -1,28 +1,17 @@
-export { BaseConfig } from "https://deno.land/x/dpp_vim@v0.2.0/types.ts";
-export type {
-  ConfigReturn,
-  Context,
-  ContextBuilder,
-  Dpp,
-  DppOptions,
-  Plugin,
-} from "https://deno.land/x/dpp_vim@v0.2.0/types.ts";
-
-export type { Denops } from "https://deno.land/x/dpp_vim@v0.2.0/deps.ts";
-export { fn, vars } from "https://deno.land/x/dpp_vim@v0.2.0/deps.ts";
-
-export type {
-  ConfigArguments,
-  LazyMakeStateResult,
-  Toml,
-  VimrcSkipRule,
-} from "./helper.ts";
 export {
-  gatherCheckFiles,
-  gatherGhqPlugins,
-  gatherTomls,
-  gatherVimrcs,
-} from "./helper.ts";
+  BaseConfig,
+  type ConfigReturn,
+  type Context,
+  type ContextBuilder,
+  type Dpp,
+  type DppOptions,
+  type Plugin,
+} from "https://deno.land/x/dpp_vim@v0.2.0/types.ts";
+export {
+  type Denops,
+  fn,
+  vars,
+} from "https://deno.land/x/dpp_vim@v0.2.0/deps.ts";
 
-export { join } from "https://deno.land/std@0.224.0/path/mod.ts";
-export { expandGlobSync } from "https://deno.land/std@0.224.0/fs/mod.ts";
+export { join } from "jsr:@std/path";
+export { expandGlobSync } from "jsr:@std/fs";

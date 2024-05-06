@@ -1,19 +1,21 @@
 import {
   BaseConfig,
-  ConfigArguments,
   ConfigReturn,
   Denops,
+  join,
+  Plugin,
+  vars,
+} from "./deps.ts";
+import {
   gatherCheckFiles,
-  gatherGhqPlugins,
   gatherTomls,
   gatherVimrcs,
-  join,
-  LazyMakeStateResult,
-  Plugin,
-  Toml,
-  vars,
-  VimrcSkipRule,
-} from "./deps.ts";
+  type ConfigArguments,
+  type LazyMakeStateResult,
+  type Toml,
+  type VimrcSkipRule,
+} from "./helper.ts";
+
 
 export class Config extends BaseConfig {
   override async config(args: ConfigArguments): Promise<ConfigReturn> {
