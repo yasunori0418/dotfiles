@@ -63,5 +63,15 @@ else
   source ${dir_colors_cache}
 fi
 
-unset dir_colors dir_colors_cache go_bin cargo_bin themis_bin
+# terminfo for WezTerm
+wezterm="${XDG_CACHE_HOME}/wezterm.terminfo"
+if [[ ! -f ${wezterm} ]]; then
+  curl -o ${wezterm} https://raw.githubusercontent.com/wez/wezterm/main/termwiz/data/wezterm.terminfo
+fi
+if [[ ! -d ${HOME}/.terminfo ]]; then
+  tic -x -o ~/.terminfo ${wezterm}
+fi
+export TERM=wezterm
+
+unset dir_colors dir_colors_cache go_bin cargo_bin themis_bin wezterm
 export PATH
