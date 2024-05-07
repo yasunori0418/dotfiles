@@ -10,7 +10,7 @@ M.keys = {
     { key = [[b]], mods = [[LEADER]], action = act.SplitVertical({ domain = "CurrentPaneDomain" }) },
     { key = [[v]], mods = [[LEADER]], action = act.SplitHorizontal({ domain = "CurrentPaneDomain" }) },
     { key = [[t]], mods = [[LEADER]], action = act.SpawnTab("CurrentPaneDomain") },
-    { key = [[x]], mods = [[LEADER]], action = act.CloseCurrentTab({ confirm = true }) },
+    { key = [[x]], mods = [[LEADER]], action = act.CloseCurrentPane({ confirm = true }) },
 
     { key = [[>]], mods = [[SHIFT|CTRL]], action = act.IncreaseFontSize },
     { key = [[<]], mods = [[SHIFT|CTRL]], action = act.DecreaseFontSize },
