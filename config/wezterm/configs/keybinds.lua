@@ -68,8 +68,10 @@ M.key_tables = {
         { key = "l", mods = "NONE", action = act.CopyMode("MoveRight") },
 
         { key = "w", mods = "NONE", action = act.CopyMode("MoveForwardWord") },
-        { key = "e", mods = "NONE", action = act.CopyMode("MoveForwardWordEnd") },
+        { key = "e", mods = "NONE", action = act.CopyMode("MoveForwardWord") },
         { key = "b", mods = "NONE", action = act.CopyMode("MoveBackwardWord") },
+        { key = "0", mods = "NONE", action = act.CopyMode("MoveToStartOfLineContent") },
+        { key = "E", mods = "NONE", action = act.CopyMode("MoveForwardWordEnd") },
 
         { key = "f", mods = "NONE", action = act.CopyMode({ JumpForward = { prev_char = false } }) },
         { key = "F", mods = "SHIFT", action = act.CopyMode({ JumpBackward = { prev_char = false } }) },
