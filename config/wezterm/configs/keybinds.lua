@@ -108,6 +108,7 @@ M.key_tables = {
         { key = "Escape", mods = "NONE", action = act.CopyMode("Close") },
         { key = "r", mods = "CTRL", action = act.CopyMode("CycleMatchType") },
         { key = "u", mods = "CTRL", action = act.CopyMode("ClearPattern") },
+        { key = "h", mods = "CTRL", action = act.SendKey({ key = "Backspace" }) },
         { key = "PageUp", mods = "NONE", action = act.CopyMode("PriorMatchPage") },
         { key = "PageDown", mods = "NONE", action = act.CopyMode("NextMatchPage") },
     },
