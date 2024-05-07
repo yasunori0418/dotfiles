@@ -12,4 +12,4 @@ export {
   vars,
 } from "https://deno.land/x/ddc_vim@v4.3.1/deps.ts";
 
-export * as lambda from "https://deno.land/x/denops_std@v6.4.1/lambda/mod.ts";
+export * as lambda from "https://deno.land/x/denops_std@v6.4.2/lambda/mod.ts";
