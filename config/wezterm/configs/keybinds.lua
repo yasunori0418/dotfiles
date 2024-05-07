@@ -35,11 +35,6 @@ M.keys = {
     { key = [[PageUp]], mods = [[NONE]], action = act.ScrollByPage(-1) },
     { key = [[PageDown]], mods = [[NONE]], action = act.ScrollByPage(1) },
 
-    { key = [[h]], mods = [[LEADER]], action = act.ActivatePaneDirection("Left") },
-    { key = [[l]], mods = [[LEADER]], action = act.ActivatePaneDirection("Right") },
-    { key = [[k]], mods = [[LEADER]], action = act.ActivatePaneDirection("Up") },
-    { key = [[j]], mods = [[LEADER]], action = act.ActivatePaneDirection("Down") },
-
     { key = [[LeftArrow]], mods = [[SHIFT|CTRL]], action = act.ActivatePaneDirection("Left") },
     { key = [[RightArrow]], mods = [[SHIFT|CTRL]], action = act.ActivatePaneDirection("Right") },
     { key = [[UpArrow]], mods = [[SHIFT|CTRL]], action = act.ActivatePaneDirection("Up") },
