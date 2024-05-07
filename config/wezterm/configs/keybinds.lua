@@ -60,7 +60,6 @@ M.key_tables = {
         { key = "Tab", mods = "SHIFT", action = act.CopyMode("MoveBackwardWord") },
         { key = "Enter", mods = "NONE", action = act.CopyMode("MoveToStartOfNextLine") },
         { key = "Escape", mods = "NONE", action = act.CopyMode("Close") },
-        { key = "Space", mods = "NONE", action = act.CopyMode({ SetSelectionMode = "Cell" }) },
 
         -- cursor move of vim like
         { key = "h", mods = "NONE", action = act.CopyMode("MoveLeft") },
