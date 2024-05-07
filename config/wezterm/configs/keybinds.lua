@@ -62,14 +62,6 @@ M.key_tables = {
         { key = "Escape", mods = "NONE", action = act.CopyMode("Close") },
         { key = "Space", mods = "NONE", action = act.CopyMode({ SetSelectionMode = "Cell" }) },
 
-        -- cursor move of emacs like
-        { key = "b", mods = "CTRL", action = act.CopyMode("MoveLeft") },
-        { key = "f", mods = "CTRL", action = act.CopyMode("MoveRight") },
-        { key = "n", mods = "CTRL", action = act.CopyMode("MoveDown") },
-        { key = "p", mods = "CTRL", action = act.CopyMode("MoveUp") },
-        { key = "a", mods = "CTRL", action = act.CopyMode("MoveToStartOfLineContent") },
-        { key = "e", mods = "CTRL", action = act.CopyMode("MoveToEndOfLineContent") },
-
         -- cursor move of vim like
         { key = "h", mods = "NONE", action = act.CopyMode("MoveLeft") },
         { key = "j", mods = "NONE", action = act.CopyMode("MoveDown") },
