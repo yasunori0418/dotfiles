@@ -21,6 +21,7 @@ M.keys = {
     { key = [[Insert]], mods = [[SHIFT]], action = act.PasteFrom("PrimarySelection") },
 
     { key = [[F]], mods = [[SHIFT|CTRL]], action = act.Search("CurrentSelectionOrEmptyString") },
+    { key = [[G]], mods = [[SHIFT|CTRL]], action = act.Search({ Regex = [=[[a-f0-9]{6,}]=] }) },
     { key = [[{]], mods = [[SHIFT|CTRL]], action = act.ActivateTabRelative(-1) },
     { key = [[}]], mods = [[SHIFT|CTRL]], action = act.ActivateTabRelative(1) },
 
@@ -114,6 +115,14 @@ M.key_tables = {
         { key = "r", mods = "CTRL", action = act.CopyMode("CycleMatchType") },
         { key = "u", mods = "CTRL", action = act.CopyMode("ClearPattern") },
         { key = "h", mods = "CTRL", action = act.SendKey({ key = "Backspace" }) },
+        {
+            key = "c",
+            mods = [[SHIFT|CTRL]],
+            action = act.Multiple({
+                { CopyTo = "ClipboardAndPrimarySelection" },
+                { CopyMode = "Close" },
+            }),
+        },
         { key = "PageUp", mods = "NONE", action = act.CopyMode("PriorMatchPage") },
         { key = "PageDown", mods = "NONE", action = act.CopyMode("NextMatchPage") },
     },
