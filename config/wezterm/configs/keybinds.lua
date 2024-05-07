@@ -3,14 +3,12 @@ local M = {}
 local wezterm = require("wezterm")
 local act = wezterm.action
 
-M.leader = { key = [[Space]], mods = [[SHIFT|CTRL]], timeout_milliseconds = 3000 }
-
 M.keys = {
-    { key = [[f]], mods = [[LEADER]], action = act.ToggleFullScreen },
-    { key = [[b]], mods = [[LEADER]], action = act.SplitVertical({ domain = "CurrentPaneDomain" }) },
-    { key = [[v]], mods = [[LEADER]], action = act.SplitHorizontal({ domain = "CurrentPaneDomain" }) },
-    { key = [[t]], mods = [[LEADER]], action = act.SpawnTab("CurrentPaneDomain") },
-    { key = [[x]], mods = [[LEADER]], action = act.CloseCurrentPane({ confirm = true }) },
+    { key = [[f]], mods = [[SHIFT|ALT]], action = act.ToggleFullScreen },
+    { key = [[b]], mods = [[SHIFT|ALT]], action = act.SplitVertical({ domain = "CurrentPaneDomain" }) },
+    { key = [[v]], mods = [[SHIFT|ALT]], action = act.SplitHorizontal({ domain = "CurrentPaneDomain" }) },
+    { key = [[t]], mods = [[SHIFT|ALT]], action = act.SpawnTab("CurrentPaneDomain") },
+    { key = [[x]], mods = [[SHIFT|ALT]], action = act.CloseCurrentPane({ confirm = true }) },
 
     { key = [[>]], mods = [[SHIFT|CTRL]], action = act.IncreaseFontSize },
     { key = [[<]], mods = [[SHIFT|CTRL]], action = act.DecreaseFontSize },

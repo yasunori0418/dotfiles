@@ -22,6 +22,5 @@ config.scrollback_lines = 5000
 config.disable_default_key_bindings = true
 config.keys = keybinds.keys
 config.key_tables = keybinds.key_tables
-config.leader = keybinds.leader
 
 return config
