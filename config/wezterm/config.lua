@@ -19,6 +19,8 @@ config.selection_word_boundary = [=[ \t\n{}[]()"'`.,;:]=]
 
 config.scrollback_lines = 5000
 
+config.term = "wezterm"
+
 config.disable_default_key_bindings = true
 config.keys = keybinds.keys
 config.key_tables = keybinds.key_tables
