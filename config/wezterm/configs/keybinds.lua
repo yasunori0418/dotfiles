@@ -4,11 +4,12 @@ local wezterm = require("wezterm")
 local act = wezterm.action
 
 M.keys = {
-    { key = [[f]], mods = [[SHIFT|ALT]], action = act.ToggleFullScreen },
-    { key = [[b]], mods = [[SHIFT|ALT]], action = act.SplitVertical({ domain = "CurrentPaneDomain" }) },
-    { key = [[v]], mods = [[SHIFT|ALT]], action = act.SplitHorizontal({ domain = "CurrentPaneDomain" }) },
-    { key = [[t]], mods = [[SHIFT|ALT]], action = act.SpawnTab("CurrentPaneDomain") },
-    { key = [[x]], mods = [[SHIFT|ALT]], action = act.CloseCurrentPane({ confirm = true }) },
+    { key = [[f]], mods = [[ALT]], action = act.ToggleFullScreen },
+    { key = [[s]], mods = [[ALT]], action = act.SplitVertical({ domain = "CurrentPaneDomain" }) },
+    { key = [[v]], mods = [[ALT]], action = act.SplitHorizontal({ domain = "CurrentPaneDomain" }) },
+    { key = [[t]], mods = [[ALT]], action = act.SpawnTab("CurrentPaneDomain") },
+    { key = [[x]], mods = [[ALT]], action = act.CloseCurrentPane({ confirm = true }) },
+    { key = [[n]], mods = [[ALT]], action = act.SpawnWindow },
 
     { key = [[>]], mods = [[SHIFT|CTRL]], action = act.IncreaseFontSize },
     { key = [[<]], mods = [[SHIFT|CTRL]], action = act.DecreaseFontSize },
@@ -27,7 +28,6 @@ M.keys = {
     { key = [[Z]], mods = [[SHIFT|CTRL]], action = act.TogglePaneZoomState },
     { key = [[P]], mods = [[SHIFT|CTRL]], action = act.ActivateCommandPalette },
     { key = [[L]], mods = [[SHIFT|ALT|CTRL]], action = act.ShowDebugOverlay },
-    { key = [[N]], mods = [[SHIFT|CTRL]], action = act.SpawnWindow },
     { key = [[R]], mods = [[SHIFT|CTRL]], action = act.ReloadConfiguration },
 
     { key = [[PageUp]], mods = [[NONE]], action = act.ScrollByPage(-1) },
