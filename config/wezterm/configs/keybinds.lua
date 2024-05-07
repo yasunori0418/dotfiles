@@ -26,7 +26,7 @@ M.keys = {
     { key = [[X]], mods = [[SHIFT|CTRL]], action = act.ActivateCopyMode },
     { key = [[Z]], mods = [[SHIFT|CTRL]], action = act.TogglePaneZoomState },
     { key = [[P]], mods = [[SHIFT|CTRL]], action = act.ActivateCommandPalette },
-    { key = [[L]], mods = [[SHIFT|CTRL]], action = act.ShowDebugOverlay },
+    { key = [[L]], mods = [[SHIFT|ALT|CTRL]], action = act.ShowDebugOverlay },
     { key = [[N]], mods = [[SHIFT|CTRL]], action = act.SpawnWindow },
     { key = [[R]], mods = [[SHIFT|CTRL]], action = act.ReloadConfiguration },
 
