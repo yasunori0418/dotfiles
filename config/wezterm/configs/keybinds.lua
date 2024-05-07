@@ -38,6 +38,11 @@ M.keys = {
     { key = [[UpArrow]], mods = [[SHIFT|CTRL]], action = act.ActivatePaneDirection("Up") },
     { key = [[DownArrow]], mods = [[SHIFT|CTRL]], action = act.ActivatePaneDirection("Down") },
 
+    { key = [[h]], mods = [[SHIFT|CTRL]], action = act.ActivatePaneDirection("Left") },
+    { key = [[j]], mods = [[SHIFT|CTRL]], action = act.ActivatePaneDirection("Down") },
+    { key = [[k]], mods = [[SHIFT|CTRL]], action = act.ActivatePaneDirection("Up") },
+    { key = [[l]], mods = [[SHIFT|CTRL]], action = act.ActivatePaneDirection("Right") },
+
     { key = [[LeftArrow]], mods = [[SHIFT|ALT|CTRL]], action = act.AdjustPaneSize({ "Left", 1 }) },
     { key = [[RightArrow]], mods = [[SHIFT|ALT|CTRL]], action = act.AdjustPaneSize({ "Right", 1 }) },
     { key = [[UpArrow]], mods = [[SHIFT|ALT|CTRL]], action = act.AdjustPaneSize({ "Up", 1 }) },
