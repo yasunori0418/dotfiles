@@ -12,6 +12,12 @@ hooks_file = '$HOOKS_DIR/ts_textobjects.lua'
 repo = 'github.com/lukas-reineke/indent-blankline.nvim'
 on_source = 'nvim-treesitter'
 hooks_file = '$HOOKS_DIR/indent_blankline.lua'
+if = false
+
+[[plugins]]
+repo = 'github.com/shellRaining/hlchunk.nvim'
+on_source = 'nvim-treesitter'
+hooks_file = '$HOOKS_DIR/hlchunk.lua'
 
 [[plugins]] # matchparen.nvim
 repo = 'github.com/monkoose/matchparen.nvim'
