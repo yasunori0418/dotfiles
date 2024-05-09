@@ -19,6 +19,7 @@ slack-desktop
 ttf-cica
 ttf-font-icons
 ttf-hackgen
+ttf-moralerspace
 xfce-polkit
 xremap-x11-bin
 yay
