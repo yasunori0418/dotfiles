@@ -1,4 +1,28 @@
 -- lua_source {{{
+
+---get color code from hlGroup
+---@param hl_name string
+---@param type? "fg" | "bg"
+---@param mode? "gui" | "cterm" | "term"
+---@return string
+local function get_color_code(hl_name, type, mode)
+    type = type or "fg"
+    mode = mode or "gui"
+    return vim.fn.synIDattr(
+        vim.fn.synIDtrans(vim.fn.hlID(hl_name)),
+        type,
+        mode
+    )
+end
+
+local red = get_color_code("Error")
+-- local yellow = get_color_code("Type")
+local blue = get_color_code("Title")
+-- local orange = get_color_code("Boolean")
+-- local green = get_color_code("String")
+local cyan = get_color_code("Keyword")
+local light_gray = get_color_code("Whitespace")
+
 local ft = require("hlchunk.utils.filetype")
 require("hlchunk").setup({
     chunk = {
@@ -17,8 +41,8 @@ require("hlchunk").setup({
             right_arrow = ">",
         },
         style = {
-            { fg = "#806d9c" },
-            { fg = "#c21f30" }, -- this fg is used to highlight wrong chunk
+            { fg = cyan },
+            { fg = red }, -- this fg is used to highlight wrong chunk
         },
         textobject = "",
         max_file_size = 1024 * 1024,
@@ -35,36 +59,36 @@ require("hlchunk").setup({
             "┊",
         },
         style = {
-            { fg = vim.fn.synIDattr(vim.fn.synIDtrans(vim.fn.hlID("Whitespace")), "fg", "gui") },
+            { fg = get_color_code("Whitespace") },
         },
     },
 
     line_num = {
         enable = true,
         use_treesitter = true,
-        style = "#806d9c",
+        style = cyan,
     },
 
     blank = {
         enable = true,
         use_treesitter = true,
         chars = {
-            "․",
+            " ",
         },
         style = {
-            vim.fn.synIDattr(vim.fn.synIDtrans(vim.fn.hlID("Whitespace")), "fg", "gui"),
+            { fg = light_gray },
         },
     },
 
     context = {
-        enable = false,
+        enable = true,
         notify = true,
         use_treesitter = false,
         chars = {
             "┃", -- Box Drawings Heavy Vertical
         },
         style = {
-            "#806d9c",
+            blue,
         },
         exclude_filetypes = ft.exclude_filetypes,
     },
