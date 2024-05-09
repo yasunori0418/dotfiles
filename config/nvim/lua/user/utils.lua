@@ -133,4 +133,19 @@ function M.last(list)
     return list[#list]
 end
 
+---get color code from hlGroup
+---@param hl_name string
+---@param type? "fg" | "bg"
+---@param mode? "gui" | "cterm" | "term"
+---@return string
+function M.get_color_code(hl_name, type, mode)
+    type = type or "fg"
+    mode = mode or "gui"
+    return vim.fn.synIDattr(
+        vim.fn.synIDtrans(vim.fn.hlID(hl_name)),
+        type,
+        mode
+    )
+end
+
 return M
