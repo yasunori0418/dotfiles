@@ -20,6 +20,5 @@ ttf-cica
 ttf-font-icons
 ttf-hackgen
 xfce-polkit
-xmind
 xremap-x11-bin
 yay
