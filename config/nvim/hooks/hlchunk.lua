@@ -59,7 +59,7 @@ require("hlchunk").setup({
     },
 
     blank = {
-        enable = true,
+        enable = false,
         use_treesitter = true,
         chars = {
             ".",
