@@ -19,7 +19,9 @@
     "rust-analyzer@latest",
     "rustfmt@latest",
     "rustup@latest",
-    "nodejs@latest"
+    "nodejs@latest",
+    "zsh@latest",
+    "git@latest"
   ],
   "shell": {
     "init_hook": [
