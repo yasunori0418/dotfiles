@@ -27,6 +27,8 @@ export EDITOR=$(which nvim)
 export TERMINAL=/usr/bin/wezterm
 export XDG_CONFIG_HOME=${HOME}/.config
 export XDG_CACHE_HOME=${HOME}/.cache
+export XDG_DATA_HOME=${HOME}/.local/share
+export XDG_STATE_HOME=${HOME}/.local/state
 
 # Docker rootless config
 export DOCKER_HOST=unix://${XDG_RUNTIME_DIR}/docker.sock
