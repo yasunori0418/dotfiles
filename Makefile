@@ -53,6 +53,10 @@ work_repoget: ## Get and update ghq management repositories.
 mise-install: ## Install mise
 	@curl https://mise.jdx.dev/install.sh | sh
 
+devbox-install: ## Install nix and devbox
+	@curl --proto '=https' --tlsv1.2 -sSf -L https://install.determinate.systems/nix | sh -s -- install
+	@curl -fsSL https://get.jetify.com/devbox | bash
+
 symlink: ## expand symlinks
 	@ln -snvf ~/dotfiles/home/.??* ~/
 	@ln -snvf ~/dotfiles/home/package.json ~/
