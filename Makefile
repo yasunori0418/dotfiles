@@ -53,13 +53,22 @@ work_repoget: ## Get and update ghq management repositories.
 mise-install: ## Install mise
 	@curl https://mise.jdx.dev/install.sh | sh
 
-init: ## expand config files.
-	@mkdir -p ${HOME}/.local/bin
-	@mkdir -p ${HOME}/.local/dotfiles
-	@make mise-install
-	@./scripts/get_modules.sh
+symlink: ## expand symlinks
 	@ln -snvf ~/dotfiles/home/.??* ~/
 	@ln -snvf ~/dotfiles/home/package.json ~/
 	@ln -snvf ~/dotfiles/home/bun.lockb ~/
 	@ln -snvf ~/dotfiles/bin ~/
 	@ln -snvf ~/dotfiles/config/* ~/.config/
+
+mkdir: ## make direcotries of required
+	@mkdir -p ${HOME}/.local/bin
+	@mkdir -p ${HOME}/.local/dotfiles
+	@mkdir -p ${HOME}/.config
+	@mkdir -p ${HOME}/.cache
+
+
+init: ## expand config files.
+	@make mkdir
+	@make mise-install
+	@./scripts/get_modules.sh
+	@make symlink
