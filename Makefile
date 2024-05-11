@@ -58,11 +58,7 @@ devbox-install: ## Install nix and devbox
 	@curl -fsSL https://get.jetify.com/devbox | bash
 
 symlink: ## expand symlinks
-	@ln -snvf ~/dotfiles/home/.??* ~/
-	@ln -snvf ~/dotfiles/home/package.json ~/
-	@ln -snvf ~/dotfiles/home/bun.lockb ~/
-	@ln -snvf ~/dotfiles/bin ~/
-	@ln -snvf ~/dotfiles/config/* ~/.config/
+	@./scripts/expand_symlink.sh
 
 mkdir: ## make direcotries of required
 	@mkdir -p ${HOME}/.local/bin
