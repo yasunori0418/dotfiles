@@ -127,7 +127,7 @@ helper.altercmds_apply({
         },
         {
             original = [[dc]],
-            altanative = [[DppClear]],
+            altanative = [[DppClearState]],
         },
         {
             original = [[ej]],

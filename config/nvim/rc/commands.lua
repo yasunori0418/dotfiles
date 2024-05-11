@@ -8,7 +8,7 @@ command("DppUpdate", function()
     require("dpp").async_ext_action("installer", "update")
 end, {})
 
-command("DppClear", function()
+command("DppClearState", function()
     require("dpp").clear_state()
     vim.loader.reset()
     vim.cmd.quit({ bang = true })
