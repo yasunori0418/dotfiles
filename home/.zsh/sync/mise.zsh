@@ -4,3 +4,5 @@ if [[ ! -r ${mise_cache} || ${MISE_CONFIG_FILE} -nt ${mise_cache} ]]; then
   mise activate zsh > ${mise_cache}
 fi
 source ${mise_cache}
+
+unset mise_cache
