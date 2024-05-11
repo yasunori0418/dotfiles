@@ -12,6 +12,7 @@ local light_gray = utils.get_color_code("Whitespace")
 local ft = require("hlchunk.utils.filetype")
 ft.exclude_filetypes["ddu-ff"] = true
 ft.exclude_filetypes["ddu-filer"] = true
+ft.exclude_filetypes["deol"] = true
 
 require("hlchunk").setup({
     chunk = {
@@ -41,6 +42,9 @@ require("hlchunk").setup({
     indent = {
         enable = true,
         use_treesitter = true,
+        notify = true,
+        support_filetypes = ft.support_filetypes,
+        exclude_filetypes = ft.exclude_filetypes,
         chars = {
             "│",
         },
@@ -58,6 +62,9 @@ require("hlchunk").setup({
     line_num = {
         enable = true,
         use_treesitter = true,
+        notify = true,
+        support_filetypes = ft.support_filetypes,
+        exclude_filetypes = ft.exclude_filetypes,
         style = cyan,
     },
 
@@ -76,13 +83,14 @@ require("hlchunk").setup({
         enable = true,
         notify = true,
         use_treesitter = false,
+        support_filetypes = ft.support_filetypes,
+        exclude_filetypes = ft.exclude_filetypes,
         chars = {
             "┃", -- Box Drawings Heavy Vertical
         },
         style = {
             blue,
         },
-        exclude_filetypes = ft.exclude_filetypes,
     },
 })
 -- }}}
