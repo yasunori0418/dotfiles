@@ -18,6 +18,3 @@ repo = 'github.com/Shougo/dpp-ext-toml'
 
 [[plugins]] # dpp-ext-lazy
 repo = 'github.com/Shougo/dpp-ext-lazy'
-
-[[plugins]]
-repo = 'github.com/comamoca/dpp-ext-ghq'
