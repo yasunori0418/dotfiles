@@ -8,7 +8,7 @@ fi
 function ensure_zcompiled {
   local compiled="$1.zwc"
   if [[ ! -r "$compiled" || "$1" -nt "$compiled" ]]; then
-    echo Compiling $1
+    echo "\033[1;36mCompiling\033[m $1"
     zcompile $1
   fi
 }
