@@ -59,6 +59,16 @@ local = "~/.zsh/fpath"
 use = ['{{ name }}.zsh']
 apply = ['defer']
 
+[plugins.nix-zsh-completions]
+github = "nix-community/nix-zsh-completions"
+use = ['{{ name }}.plugin.zsh']
+apply = ['defer']
+
+[plugins._nix]
+local = "~/.local/share/sheldon/repos/github.com/nix-community/nix-zsh-completions"
+use = ['{{ name }}*']
+apply = ['fpath']
+
 [plugins._devbox]
 local = "~/.zsh/fpath"
 use = ['{{ name }}']
