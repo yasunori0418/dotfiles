@@ -31,12 +31,6 @@ if [[ -d ${npm_path} ]]; then
   PATH="${PATH}:${npm_path}"
 fi
 
-# aqua
-aqua_bin="${XDG_DATA_HOME}/aquaproj-aqua/bin"
-if [[ -d ${aqua_bin} ]]; then
-  PATH="${PATH}:${aqua_bin}"
-fi
-
 # bat theme
 export BAT_THEME="Nord"
 

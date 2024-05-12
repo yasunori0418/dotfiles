@@ -30,6 +30,9 @@ export XDG_CACHE_HOME="${HOME}/.cache"
 export XDG_DATA_HOME="${HOME}/.local/share"
 export XDG_STATE_HOME="${HOME}/.local/state"
 
+export AQUA_GLOBAL_CONFIG="${XDG_CONFIG_HOME}/aqua/config.yaml"
+PATH="${XDG_DATA_HOME}/aquaproj-aqua/bin:${PATH}"
+
 # Docker rootless config
 export DOCKER_HOST="unix://${XDG_RUNTIME_DIR}/docker.sock"
 
