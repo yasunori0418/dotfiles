@@ -129,6 +129,7 @@ pipewire-jack
 pipewire-pulse
 postgresql-libs
 pstoedit
+python-dbus
 python-i3ipc
 python-keyrings-alt
 python-pip
