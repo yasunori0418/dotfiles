@@ -32,6 +32,7 @@ export XDG_STATE_HOME="${HOME}/.local/state"
 export XDG_RUNTIME_DIR="${XDG_RUNTIME_DIR:-${HOME}/.local/runtime}"
 
 export AQUA_GLOBAL_CONFIG="${XDG_CONFIG_HOME}/aqua/config.yaml"
+export AQUA_PROGRESS_BAR=true
 PATH="${XDG_DATA_HOME}/aquaproj-aqua/bin:${PATH}"
 
 # Docker rootless config
