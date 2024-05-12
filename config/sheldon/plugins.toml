@@ -59,6 +59,11 @@ local = "~/.zsh/fpath"
 use = ['{{ name }}.zsh']
 apply = ['defer']
 
+[plugins._devbox]
+local = "~/.zsh/fpath"
+use = ['{{ name }}']
+apply = ['fpath']
+
 [plugins._gh]
 local = "~/.zsh/fpath"
 use = ['{{ name }}']
