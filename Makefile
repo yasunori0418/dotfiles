@@ -53,6 +53,9 @@ work_repoget: ## Get and update ghq management repositories.
 mise-install: ## Install mise
 	@curl https://mise.jdx.dev/install.sh | sh
 
+aqua-install: # Install aqua
+	@curl -sSfL https://raw.githubusercontent.com/aquaproj/aqua-installer/v3.0.1/aqua-installer | bash
+
 devbox-install: ## Install nix and devbox
 	@curl --proto '=https' --tlsv1.2 -sSf -L https://install.determinate.systems/nix | sh -s -- install
 	@curl -fsSL https://get.jetify.com/devbox | bash
