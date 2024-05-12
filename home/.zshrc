@@ -1,9 +1,3 @@
-# sheldonが無かったらインストールする
-if [[ ! $(command -v sheldon) ]]; then
-  curl --proto '=https' -fLsS https://rossmacarthur.github.io/install/crate.sh \
-  | bash -s -- --repo rossmacarthur/sheldon --to ~/.local/bin
-fi
-
 # https://zenn.dev/fuzmare/articles/zsh-plugin-manager-cache
 function ensure_zcompiled {
   local compiled="$1.zwc"
