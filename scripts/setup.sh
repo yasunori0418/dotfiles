@@ -2,11 +2,11 @@
 
 set -euo pipefail
 
-mkdir -p "${HOME}/.local/bin"
-mkdir -p "${HOME}/.local/dotfiles"
-mkdir -p "${HOME}/.local/runtime"
-mkdir -p "${HOME}/.config"
-mkdir -p "${HOME}/.cache"
+mkdir -vp "${HOME}/.local/bin"
+mkdir -vp "${HOME}/.local/dotfiles"
+mkdir -vp "${HOME}/.local/runtime"
+mkdir -vp "${HOME}/.config"
+mkdir -vp "${HOME}/.cache"
 
 # aqua install
 curl -sSfL https://raw.githubusercontent.com/aquaproj/aqua-installer/v3.0.1/aqua-installer | bash
