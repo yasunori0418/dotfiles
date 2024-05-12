@@ -71,7 +71,7 @@ fi
 if [[ ! -d ${HOME}/.terminfo ]]; then
   tic -x -o ~/.terminfo ${wezterm}
 fi
-export TERM="wezterm"
+[[ $(uname -n) != "did" ]] && export TERM="wezterm"
 
 unset dir_colors dir_colors_cache go_bin cargo_bin npm_path bun_path aqua_bin themis_bin wezterm
 export PATH
