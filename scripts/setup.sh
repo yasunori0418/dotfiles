@@ -17,9 +17,12 @@ cd "${HOME}/dotfiles"
 
 # shellcheck disable=SC1091
 source "${HOME}/dotfiles/home/.zshenv"
-aqua install --only-link --all
+aqua install --all
+
+sleep 3
 mise install --yes
 
+sleep 3
 "${HOME}/dotfiles/scripts/nvim_night.sh"
 
 zsh
