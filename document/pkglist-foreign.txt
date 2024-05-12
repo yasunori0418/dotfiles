@@ -14,6 +14,7 @@ nordzy-icon-theme
 postman-bin
 python-pulsectl
 qt5-styleplugins
+rofi-power-menu
 simplescreenrecorder
 slack-desktop
 ttf-cica
