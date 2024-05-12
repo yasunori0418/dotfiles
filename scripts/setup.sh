@@ -4,6 +4,7 @@ set -euo pipefail
 
 mkdir -p "${HOME}/.local/bin"
 mkdir -p "${HOME}/.local/dotfiles"
+mkdir -p "${HOME}/.local/runtime"
 mkdir -p "${HOME}/.config"
 mkdir -p "${HOME}/.cache"
 
