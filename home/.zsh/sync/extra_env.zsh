@@ -27,7 +27,7 @@ fi
 
 # npm package
 npm_path="${HOME}/node_modules/.bin"
-if [[ -d ${bun_path} ]]; then
+if [[ -d ${npm_path} ]]; then
   PATH="${PATH}:${npm_path}"
 fi
 
