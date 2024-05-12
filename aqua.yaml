@@ -8,5 +8,6 @@
 #   - all
 registries:
 - type: standard
-  ref: v4.177.0  # renovate: depName=aquaproj/aqua-registry
+  ref: v4.177.0 # renovate: depName=aquaproj/aqua-registry
 packages:
+- name: rossmacarthur/sheldon@0.7.4
