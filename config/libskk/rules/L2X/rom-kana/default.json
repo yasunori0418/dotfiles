@@ -1,0 +1,41 @@
+{
+  "include": [
+    "default/default"
+  ],
+  "define": {
+    "rom-kana": {
+      "xa": null,
+      "xi": null,
+      "xu": null,
+      "xe": null,
+      "xo": null,
+      "xx": null,
+      "xtu": null,
+      "xtsu": null,
+      "xka": null,
+      "xke": null,
+      "xwa": null,
+      "xwe": null,
+      "xwi": null,
+      "xya": null,
+      "xyo": null,
+      "xyu": null,
+      "la": ["", "ぁ"],
+      "li": ["", "ぃ"],
+      "lu": ["", "ぅ"],
+      "le": ["", "ぇ"],
+      "lo": ["", "ぉ"],
+      "ll": ["l", "っ"],
+      "ltu": ["", "っ" ],
+      "ltsu": ["", "っ" ],
+      "lka": [ "", "か", "ヵ" ],
+      "lke": [ "", "け", "ヶ" ],
+      "lwa": ["", "ゎ" ],
+      "lwe": ["", "ゑ" ],
+      "lwi": ["", "ゐ" ],
+      "lya": ["", "ゃ" ],
+      "lyo": ["", "ょ" ],
+      "lyu": ["", "ゅ" ]
+    }
+  }
+}
