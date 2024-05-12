@@ -24,7 +24,6 @@
     "git@latest",
     "cmake@latest",
     "ninja@latest",
-    "gcc@latest",
     "unzip@latest"
   ],
   "shell": {
