@@ -73,4 +73,5 @@ mkdir: ## make direcotries of required
 init: ## expand config files.
 	@make mkdir
 	@make mise-install
+	@make aqua-install
 	@make symlink
