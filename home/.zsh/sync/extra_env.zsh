@@ -31,6 +31,12 @@ if [[ -d ${npm_path} ]]; then
   PATH="${PATH}:${npm_path}"
 fi
 
+# aqua
+aqua_bin="${XDG_DATA_HOME}/aquaproj-aqua/bin"
+if [[ -d ${aqua_bin} ]]; then
+  PATH="${PATH}:${aqua_bin}"
+fi
+
 # bat theme
 export BAT_THEME="Nord"
 
@@ -73,5 +79,5 @@ if [[ ! -d ${HOME}/.terminfo ]]; then
 fi
 export TERM="wezterm"
 
-unset dir_colors dir_colors_cache go_bin cargo_bin themis_bin wezterm
+unset dir_colors dir_colors_cache go_bin cargo_bin npm_path bun_path aqua_bin themis_bin wezterm
 export PATH
