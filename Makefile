@@ -70,5 +70,4 @@ mkdir: ## make direcotries of required
 init: ## expand config files.
 	@make mkdir
 	@make mise-install
-	@./scripts/get_modules.sh
 	@make symlink
