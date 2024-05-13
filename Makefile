@@ -70,4 +70,7 @@ mkdir: ## make direcotries of required
 
 
 init: ## expand config files.
+	@make mkdir
+	@make symlink
+	@make aqua-install
 	@./scripts/setup.sh
