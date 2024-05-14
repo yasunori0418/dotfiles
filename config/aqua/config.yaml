@@ -21,3 +21,4 @@ packages:
 - name: dandavison/delta@0.17.0
 - name: denoland/deno@v1.43.3
 - name: sharkdp/fd@v10.1.0
+- name: junegunn/fzf@0.52.1

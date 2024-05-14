@@ -1,5 +1,4 @@
 [tools]
-fzf = "latest"
 node = "latest"
 go = "latest"
 rust = "latest"
