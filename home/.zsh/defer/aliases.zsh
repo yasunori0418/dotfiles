@@ -28,9 +28,7 @@ if [[ $(command -v nvim) ]]; then
   alias nvrt='nvim --server ~/.cache/nvim/server.pipe --remote-tab'
 fi
 
-if [[ $(command -v neovide) ]]; then
-  alias nvg='neovide --multigrid'
-fi
+[[ $(command -v neovide) ]] && alias nvg='neovide --multigrid'
 
 # useful command aliases
 alias sync_status='watch grep -e Dirty: -e Writeback: /proc/meminfo'
