@@ -2,4 +2,3 @@
 node = "latest"
 go = "latest"
 rust = "latest"
-eza = "latest"
