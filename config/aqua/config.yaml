@@ -15,3 +15,4 @@ packages:
 - name: sharkdp/bat@v0.24.0
 - name: cli/cli@v2.49.2
 - name: jqlang/jq@jq-1.7.1
+- name: BurntSushi/ripgrep@14.1.0

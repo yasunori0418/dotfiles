@@ -1,5 +1,4 @@
 [tools]
-ripgrep = "latest"
 deno = "latest"
 ghq = "latest"
 fd = "latest"
