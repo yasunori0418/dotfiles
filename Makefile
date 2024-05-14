@@ -23,8 +23,6 @@ zsh-bench: ## zsh bench mark with hyperfine used.
 
 nvim-bench: ## neovim bench mark with vim-startuptime used.
 	-@vim-startuptime -vimpath nvim -count 100 | head -6
-	@sleep 3
-	@hyperfine -i -w 5 -r 100 "nvim -c q!"
 
 arch_iso: ## Download Arch Linux iso image at latest, and verification.
 	@./scripts/arch_iso.sh
