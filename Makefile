@@ -55,9 +55,8 @@ aqua-install: ## Install aqua
 	@echo 'fb4b3b7d026e5aba1fc478c268e8fbd653e01404c8a8c6284fdba88ae62eda6a /tmp/aqua-installer' | sha256sum -c
 	@bash /tmp/aqua-installer
 
-devbox-install: ## Install nix and devbox
+nix-install: ## Install nix.
 	@curl --proto '=https' --tlsv1.2 -sSf -L https://install.determinate.systems/nix | sh -s -- install
-	@curl -fsSL https://get.jetify.com/devbox | bash
 
 symlink: ## expand symlinks
 	@./scripts/expand_symlink.sh
