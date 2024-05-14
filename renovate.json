@@ -23,6 +23,15 @@
         "home/package.json"
       ],
       "groupName": "all package.json dependencies."
+    },
+    {
+      "matchFileNames": [
+        "aqua.yaml",
+        "config/aqua/config.yaml",
+        "Makefile",
+        "renovate.json"
+      ],
+      "groupName": "aqua update"
     }
   ]
 }
