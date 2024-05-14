@@ -1,6 +1,5 @@
 [tools]
 deno = "latest"
-ghq = "latest"
 fd = "latest"
 fzf = "latest"
 node = "latest"
