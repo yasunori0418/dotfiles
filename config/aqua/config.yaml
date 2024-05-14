@@ -17,3 +17,4 @@ packages:
 - name: jqlang/jq@jq-1.7.1
 - name: BurntSushi/ripgrep@14.1.0
 - name: x-motemen/ghq@v1.6.1
+- name: oven-sh/bun@bun-v1.1.8
