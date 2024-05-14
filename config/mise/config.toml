@@ -1,5 +1,4 @@
 [tools]
-fd = "latest"
 fzf = "latest"
 node = "latest"
 go = "latest"

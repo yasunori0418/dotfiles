@@ -20,3 +20,4 @@ packages:
 - name: oven-sh/bun@bun-v1.1.8
 - name: dandavison/delta@0.17.0
 - name: denoland/deno@v1.43.3
+- name: sharkdp/fd@v10.1.0
