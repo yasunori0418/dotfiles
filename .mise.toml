@@ -1,6 +1,0 @@
-[tools]
-hyperfine = "latest"
-usql = "latest"
-tokei = "latest"
-dasel = "latest"
-jnv = "latest"
