@@ -19,3 +19,4 @@ packages:
 - name: x-motemen/ghq@v1.6.1
 - name: oven-sh/bun@bun-v1.1.8
 - name: dandavison/delta@0.17.0
+- name: denoland/deno@v1.43.3

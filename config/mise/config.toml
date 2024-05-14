@@ -1,5 +1,4 @@
 [tools]
-deno = "latest"
 fd = "latest"
 fzf = "latest"
 node = "latest"
