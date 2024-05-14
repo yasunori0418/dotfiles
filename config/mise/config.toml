@@ -1,6 +1,5 @@
 [tools]
 ripgrep = "latest"
-bat = "latest"
 deno = "latest"
 ghq = "latest"
 fd = "latest"
