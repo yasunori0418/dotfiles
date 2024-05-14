@@ -15,3 +15,4 @@ packages:
 - name: ynqa/jnv@v0.2.2
 - name: XAMPPRocky/tokei@v12.1.2
 - name: xo/usql@v0.19.1
+- name: rhysd/vim-startuptime@v1.3.2
