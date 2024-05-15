@@ -27,6 +27,7 @@
 	lol = log --graph --all --abbrev-commit --pretty=format:'%C(bold yellow)%h%Creset -> %s%C(auto)%d%Creset %C(dim green)(%cr)%Creset%C(dim blue)<%an>%Creset'
 	root = rev-parse --show-superproject-working-tree --show-toplevel
 	patch = -c core.pager= diff
+	obj = cat-file -p
 [merge]
 	ff = false
 	conflictstyle = diff3
