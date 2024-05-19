@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-set -e -u -o pipefail
+set -euo pipefail
 
 declare -r install_prefix="${HOME}/.local/dotfiles"
 declare -r tag_name="nightly"
