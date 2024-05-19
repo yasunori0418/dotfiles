@@ -10,7 +10,10 @@ nvim-build: ## building neovim head.
 	@./scripts/nvim_build.sh
 
 nvim-night: ## download neovim at version nightly build.
-	@./scripts/nvim_night.sh
+	@./scripts/nvim_dl.sh nightly
+
+nvim-stable: ## download neovim at version stable build.
+	@./scripts/nvim_dl.sh
 
 true-color: ## 24-bit-color.sh
 	@curl -s \
