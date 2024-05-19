@@ -42,7 +42,7 @@ local function gather_check_files()
         table.insert(check_files, vim.fn.globpath(vim.g.base_dir, glob_pattern, true, true))
         table.insert(check_files, vim.fn.globpath("~/dotfiles/config/nvim", glob_pattern, true, true))
     end
-    return vim.tbl_flatten(check_files)
+    return vim.iter(check_files):flatten():totable()
 end
 
 local function auto_install_plugins(dpp)

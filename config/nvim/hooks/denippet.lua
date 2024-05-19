@@ -5,7 +5,7 @@ local snippets = {}
 local friendly = require("dpp").get("friendly-snippets").rtp
 table.insert(snippets, vim.fn.globpath(friendly, "**/*.*", true, true))
 table.insert(snippets, vim.fn.globpath(vim.g.snippet_dir, "**/*.*", true, true))
-for _, path in pairs(vim.tbl_flatten(snippets)) do
+for _, path in pairs(vim.iter(snippets):flatten():totable()) do
     local name = vim.fn.fnamemodify(path, ":t:r")
     -- local parent_dirs = vim.fn.split(vim.fn.fnamemodify(path, ":h"), "/")
     -- local parent_dirname = utils.last(parent_dirs)
