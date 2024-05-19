@@ -2,10 +2,10 @@
 
 set -e -u -o pipefail
 
-declare -r install_prefix=${HOME}/.local/dotfiles
-declare -r tag_name=nightly
-declare -r dl_file=nvim-linux64.tar.gz
-declare -r download_url=https://github.com/neovim/neovim/releases/download/${tag_name}/${dl_file}
+declare -r install_prefix="${HOME}/.local/dotfiles"
+declare -r tag_name="nightly"
+declare -r dl_file="nvim-linux64.tar.gz"
+declare -r download_url="https://github.com/neovim/neovim/releases/download/${tag_name}/${dl_file}"
 
 curl -Lo "${install_prefix}/${dl_file}" "${download_url}"
 
