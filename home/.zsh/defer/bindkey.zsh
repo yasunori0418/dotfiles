@@ -1,17 +1,15 @@
 ## Remove keybinds of default.
-bindkey -rpM emacs "^X"
-bindkey -rpM emacs "^["
-bindkey -rM  emacs "^G"
-bindkey -rM  emacs "^V"
-bindkey -rM  emacs "^Q"
-bindkey -rM  emacs "^S"
-bindkey -rM  emacs "^T"
-bindkey -rM  emacs "^@"
-bindkey -rM  emacs "^J"
-bindkey -rM  emacs "^O"
-bindkey -rM  emacs "^R"
-
-bindkey "^[[200~" bracketed-paste # keybinds for deol
+# bindkey -rpM emacs "^X"
+# bindkey -rpM emacs "^["
+# bindkey -rM  emacs "^G"
+# bindkey -rM  emacs "^V"
+# bindkey -rM  emacs "^Q"
+# bindkey -rM  emacs "^S"
+# bindkey -rM  emacs "^T"
+# bindkey -rM  emacs "^@"
+# bindkey -rM  emacs "^J"
+# bindkey -rM  emacs "^O"
+# bindkey -rM  emacs "^R"
 
 ## Remaining keybinds of default.
 # bindkey "^A" beginning-of-line
@@ -36,5 +34,6 @@ bindkey "^[[200~" bracketed-paste # keybinds for deol
 #                 Additional keybinds                          #
 ################################################################
 
-bindkey "^O" edit-command-line
+bindkey "^Xe" edit-command-line
+bindkey "^X^e" edit-command-line
 bindkey "^[[Z" reverse-menu-complete  # Shift-Tabで補完候補を逆順する("\e[Z"でも動作する)
