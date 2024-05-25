@@ -20,7 +20,7 @@ function M.move_ignore_dummy(dir)
     end
 end
 
-function M.start_filter()
+function M.start_filter_once()
     vim.api.nvim_create_autocmd("User", {
         pattern = "Ddu:uiDone",
         callback = function()
