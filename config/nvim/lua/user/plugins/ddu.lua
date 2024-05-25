@@ -20,6 +20,17 @@ function M.move_ignore_dummy(dir)
     end
 end
 
+function M.start_filter()
+    vim.api.nvim_create_autocmd("User", {
+        pattern = "Ddu:uiDone",
+        callback = function()
+            vim.fn["ddu#ui#async_action"]("openFilterWindow")
+        end,
+        once = true,
+        nested = true,
+    })
+end
+
 ---ddu-ui-ff startFilter using input function.
 ---@param options table # :h ddu-options
 ---@param after_filter_flag? boolean # Open filter window after `Ddu:uiReady`. default: `false`
