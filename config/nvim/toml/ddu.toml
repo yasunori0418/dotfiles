@@ -13,6 +13,7 @@ hooks_file = '$HOOKS_DIR/ddu/hook.lua'
 # UI plugins {{{
 [[plugins]] # ddu-ui-ff
 repo = 'github.com/Shougo/ddu-ui-ff'
+depends = ['cmdline.vim']
 on_source = 'ddu.vim'
 hooks_file = '$HOOKS_DIR/ddu/ff.lua'
 
