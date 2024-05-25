@@ -1,7 +1,7 @@
 -- lua_add {{{
 local opt = { noremap = false }
 local utils = require("user.utils")
--- local start_input_filter = require("user.plugins.ddu").start_input_filter
+local start_filter = require("user.plugins.ddu").start_filter
 utils.keymaps_set({
     -- ddu start prefixes
     { mode = "n", lhs = [[ d]], rhs = [[<Plug>(ddu-ff)]], opts = opt },
@@ -12,6 +12,7 @@ utils.keymaps_set({
         mode = "n",
         lhs = [[<Plug>(ddu-ff)a]],
         rhs = function()
+            start_filter()
             vim.fn["ddu#start"]({
                 name = "current",
                 sourceOptions = {
@@ -27,6 +28,7 @@ utils.keymaps_set({
         mode = "n",
         lhs = [[<Plug>(ddu-ff)d]],
         rhs = function()
+            start_filter()
             vim.fn["ddu#start"]({ name = "dotfiles" })
         end,
         opts = opt,
@@ -35,6 +37,7 @@ utils.keymaps_set({
         mode = "n",
         lhs = [[<Plug>(ddu-ff)h]],
         rhs = function()
+            start_filter()
             vim.fn["ddu#start"]({ name = "help" })
         end,
         opts = opt,
@@ -51,6 +54,7 @@ utils.keymaps_set({
         mode = "n",
         lhs = [[<Plug>(ddu-ff)P]],
         rhs = function()
+            start_filter()
             vim.fn["ddu#start"]({ name = "plugin-list" })
         end,
         opts = opt,
@@ -67,6 +71,7 @@ utils.keymaps_set({
         mode = "n",
         lhs = [[<Plug>(ddu-ff)s]],
         rhs = function()
+            start_filter()
             vim.fn["ddu#start"]({ name = "ripgrep" })
         end,
         opts = opt,
@@ -91,6 +96,7 @@ utils.keymaps_set({
         mode = "n",
         lhs = [[<Plug>(ddu-ff)/]],
         rhs = function()
+            start_filter()
             vim.fn["ddu#start"]({ name = "search_line" })
         end,
         opts = opt,
@@ -99,6 +105,7 @@ utils.keymaps_set({
         mode = "n",
         lhs = [[<Plug>(ddu-ff)C]],
         rhs = function()
+            start_filter()
             vim.fn["ddu#start"]({ name = "highlight" })
         end,
         opts = opt,
