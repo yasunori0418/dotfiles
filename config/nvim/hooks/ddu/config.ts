@@ -393,6 +393,19 @@ export class Config extends BaseConfig {
 
     args.contextBuilder.patchLocal("current", {
       ui: "ff",
+      uiParams: {
+        ff: {
+          ...{
+            startAutoAction: true,
+            autoAction: {
+              delay: 0,
+              name: "preview",
+            },
+            autoResize: false,
+          },
+          ...await uiSize(args, 0.3, "horizontal"),
+        },
+      },
       sources: [
         { name: "file_fd" },
       ],
@@ -400,6 +413,19 @@ export class Config extends BaseConfig {
 
     args.contextBuilder.patchLocal("dotfiles", {
       ui: "ff",
+      uiParams: {
+        ff: {
+          ...{
+            startAutoAction: true,
+            autoAction: {
+              delay: 0,
+              name: "preview",
+            },
+            autoResize: false,
+          },
+          ...await uiSize(args, 0.3, "horizontal"),
+        },
+      },
       sources: [
         {
           name: "file_rec",
@@ -434,6 +460,19 @@ export class Config extends BaseConfig {
 
     args.contextBuilder.patchLocal("search_line", {
       ui: "ff",
+      uiParams: {
+        ff: {
+          ...{
+            startAutoAction: true,
+            autoAction: {
+              delay: 0,
+              name: "preview",
+            },
+            autoResize: false,
+          },
+          ...await uiSize(args, 0.3, "horizontal"),
+        },
+      },
       sources: [
         {
           name: "line",
@@ -446,6 +485,19 @@ export class Config extends BaseConfig {
 
     args.contextBuilder.patchLocal("buffer", {
       ui: "ff",
+      uiParams: {
+        ff: {
+          ...{
+            startAutoAction: true,
+            autoAction: {
+              delay: 0,
+              name: "preview",
+            },
+            autoResize: false,
+          },
+          ...await uiSize(args, 0.3, "horizontal"),
+        },
+      },
       sources: [
         { name: "buffer" },
       ],
@@ -465,6 +517,19 @@ export class Config extends BaseConfig {
 
     args.contextBuilder.patchLocal("home", {
       ui: "ff",
+      uiParams: {
+        ff: {
+          ...{
+            startAutoAction: true,
+            autoAction: {
+              delay: 0,
+              name: "preview",
+            },
+            autoResize: false,
+          },
+          ...await uiSize(args, 0.3, "horizontal"),
+        },
+      },
       sources: [
         {
           name: "file",
@@ -486,6 +551,19 @@ export class Config extends BaseConfig {
 
     args.contextBuilder.patchLocal("mrr", {
       ui: "ff",
+      uiParams: {
+        ff: {
+          ...{
+            startAutoAction: true,
+            autoAction: {
+              delay: 0,
+              name: "preview",
+            },
+            autoResize: false,
+          },
+          ...await uiSize(args, 0.3, "horizontal"),
+        },
+      },
       sources: [
         {
           name: "mr",
@@ -501,6 +579,19 @@ export class Config extends BaseConfig {
 
     args.contextBuilder.patchLocal("mru", {
       ui: "ff",
+      uiParams: {
+        ff: {
+          ...{
+            startAutoAction: true,
+            autoAction: {
+              delay: 0,
+              name: "preview",
+            },
+            autoResize: false,
+          },
+          ...await uiSize(args, 0.3, "horizontal"),
+        },
+      },
       sources: [
         {
           name: "mr",
