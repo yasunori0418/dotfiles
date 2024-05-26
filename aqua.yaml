@@ -12,7 +12,7 @@ registries:
 packages:
 - name: TomWright/dasel@v2.7.0
 - name: sharkdp/hyperfine@v1.18.0
-- name: ynqa/jnv@v0.2.2
+- name: ynqa/jnv@v0.2.3
 - name: XAMPPRocky/tokei@v12.1.2
 - name: xo/usql@v0.19.1
 - name: rhysd/vim-startuptime@v1.3.2
