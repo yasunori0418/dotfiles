@@ -32,8 +32,3 @@ repo = 'github.com/RRethy/vim-illuminate'
 on_source = 'nvim-treesitter'
 hooks_file = '$HOOKS_DIR/illuminate.lua'
 
-[[plugins]]
-repo = 'gitlab.com/HiPhish/rainbow-delimiters.nvim'
-on_source = 'nvim-treesitter'
-hooks_file = '$HOOKS_DIR/rainbow_delimiters.lua'
-
