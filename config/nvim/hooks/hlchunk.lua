@@ -24,8 +24,7 @@ require("hlchunk").setup({
         use_treesitter = true,
     },
     line_num = {
-        enable = true,
-        use_treesitter = true,
+        enable = false,
     },
     blank = {
         enable = false,
