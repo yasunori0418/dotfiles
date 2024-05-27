@@ -12,7 +12,7 @@
 require("hlchunk").setup({
     chunk = {
         enable = true,
-        notify = true,
+        notify = false,
         use_treesitter = true,
         exclude_filetypes = {
             ["ddu-ff"] = true,
