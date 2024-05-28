@@ -24,7 +24,10 @@ function M.start_filter_once()
     vim.api.nvim_create_autocmd("User", {
         pattern = "Ddu:uiDone",
         callback = function()
-            vim.fn["ddu#ui#async_action"]("openFilterWindow")
+            -- vim.fn["ddu#ui#async_action"]("openFilterWindow")
+            vim.fn.timer_start(0, function()
+                vim.fn["ddu#ui#sync_action"]("openFilterWindow")
+            end)
         end,
         once = true,
         nested = true,
