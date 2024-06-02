@@ -2,6 +2,7 @@ bumblebee-status
 cantata
 docker-rootless-extras
 downgrade
+etcher-bin
 google-chrome
 gyazo
 lemonade-git
