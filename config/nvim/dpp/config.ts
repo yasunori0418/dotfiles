@@ -24,7 +24,7 @@ export class Config extends BaseConfig {
     const vimrcSkipRules = [
       {
         name: "neovide.lua",
-        condition: await vars.globals.get(denops, "neovide") === null,
+        condition: await vars.g.get(denops, "neovide") === null,
       },
     ] as VimrcSkipRule[];
 
@@ -45,7 +45,7 @@ export class Config extends BaseConfig {
         installer: {
           checkDiff: true,
           logFilePath: join(
-            await vars.globals.get(denops, "dpp_cache"),
+            await vars.g.get(denops, "dpp_cache"),
             // installer_{YYYYMMDD}.log
             `installer_${
               new Date().toLocaleDateString("ja-JP", {
@@ -60,7 +60,7 @@ export class Config extends BaseConfig {
     });
 
     const tomls = await gatherTomls(
-      await vars.globals.get(denops, "toml_dir"),
+      await vars.g.get(denops, "toml_dir"),
       ["dpp.toml", "no_lazy.toml"],
       args,
     ) as Toml[];
