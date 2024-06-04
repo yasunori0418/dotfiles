@@ -12,6 +12,6 @@ sleep 3
 mise install --yes
 
 sleep 3
-bash "${HOME}/dotfiles/scripts/nvim_night.sh"
+bash "${HOME}/dotfiles/scripts/nvim_dl.sh"
 
 zsh -l -c exit
