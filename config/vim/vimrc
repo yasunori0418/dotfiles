@@ -1,5 +1,5 @@
-" Editor-Settings{{{
-" Encoding{{{
+" Editor-Settings {{{
+" Encoding {{{
 " Use utf-8 to overall encoding.
 set encoding=utf-8
 scriptencoding utf-8
@@ -60,7 +60,7 @@ set belloff=all
 
 " }}}
 
-" Display{{{
+" Display {{{
 " Display rows number.
 set number
 
@@ -72,13 +72,13 @@ set cursorline
 
 " }}}
 
-" Folding{{{
+" Folding {{{
 set foldmethod=marker
 set foldlevel=0
 set foldcolumn=3
 " }}}
 
-" Search{{{
+" Search {{{
 " Highlight search results
 set hlsearch
 
@@ -96,7 +96,7 @@ set smartcase
 set wrapscan
 " }}}
 
-" Indent{{{
+" Indent {{{
 " Smart indent.
 set smartindent
 
@@ -122,7 +122,7 @@ augroup END
 
 " }}}
 
-" Statusline{{{
+" Statusline {{{
 " Display statusline.
 set laststatus=2
 
@@ -133,7 +133,7 @@ set wildmenu
 set history=5000
 " }}} 
 
-" Invisible characters{{{
+" Invisible characters {{{
 " Invisible characters
 set list
 
@@ -207,7 +207,7 @@ augroup MyVimrcAutocmds
 augroup END
 " }}}
 
-" Normal Mode:{{{
+" Normal Mode: {{{
 " Do not save the things erased by x and c in the register.
 nnoremap x "_x
 nnoremap c "_c
@@ -220,7 +220,7 @@ nnoremap <C-l> <Cmd>nohlsearch<Bar>diffupdate<CR><C-l>
 
 " }}}
 
-" Insert Mode:{{{
+" Insert Mode: {{{
 
 " Exit insert mode.
 inoremap jj <ESC>
@@ -228,7 +228,7 @@ inoremap <C-l> <Del>
 
 " }}}
 
-" Visual Mode:{{{
+" Visual Mode: {{{
 
 " Do not save the things erased by x and c in the register.
 xnoremap x "_x
