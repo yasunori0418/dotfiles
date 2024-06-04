@@ -8,10 +8,10 @@
 #   - all
 registries:
 - type: standard
-  ref: v4.188.0 # renovate: depName=aquaproj/aqua-registry
+  ref: v4.189.0 # renovate: depName=aquaproj/aqua-registry
 packages:
 - name: rossmacarthur/sheldon@0.7.4
-- name: jdx/mise@v2024.6.0
+- name: jdx/mise@v2024.6.1
 - name: sharkdp/bat@v0.24.0
 - name: cli/cli@v2.50.0
 - name: jqlang/jq@jq-1.7.1
