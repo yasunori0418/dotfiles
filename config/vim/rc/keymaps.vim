@@ -64,6 +64,10 @@ nnoremap <silent> <Plug>(Window)n <C-W>n
 nnoremap <silent> <Plug>(Window)<Bar> <C-W><Bar>
 nnoremap <silent> <Plug>(Window)_ <C-W>_
 nnoremap <silent> <Plug>(Window)= <C-W>=
+nnoremap <silent> <S-Left> <C-w><
+nnoremap <silent> <S-Right> <C-w>>
+nnoremap <silent> <S-Up> <C-w>-
+nnoremap <silent> <S-Down> <C-w>+
 " }}}
 
 " QuickFix {{{
