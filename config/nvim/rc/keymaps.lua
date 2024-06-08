@@ -65,18 +65,6 @@ require("user.utils").keymaps_set({
         rhs = [[<Nop>]],
         opts = noremap_silent,
     },
-    { -- disable of "s"
-        mode = { "n", "x" },
-        lhs = [[s]],
-        rhs = [[<Nop>]],
-        opts = noremap_silent,
-    },
-    { -- disable of "S"
-        mode = { "n", "x" },
-        lhs = [[S]],
-        rhs = [[<Nop>]],
-        opts = noremap_silent,
-    },
     { -- disable of marker
         mode = { "n", "x" },
         lhs = [[m]],
