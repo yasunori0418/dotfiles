@@ -376,7 +376,7 @@ require("user.utils").keymaps_set({
     { -- ↑を見てこいカルロ
         mode = { "n", "x" },
         lhs = [[q]],
-        rhs = "",
+        rhs = [[<Nop>]],
         opts = noremap_silent,
     },
     { -- よく見るやつ。icで使えるようにしてみる
