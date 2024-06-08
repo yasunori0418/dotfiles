@@ -375,13 +375,13 @@ require("user.utils").keymaps_set({
     --     opts = noremap_silent,
     -- },
     { -- qって結構誤爆するんだよね…
-        mode = { "n" },
+        mode = { "n", "x" },
         lhs = [[<C-Q>]],
         rhs = [[q]],
         opts = noremap_silent,
     },
     { -- ↑を見てこいカルロ
-        mode = { "n" },
+        mode = { "n", "x" },
         lhs = [[q]],
         rhs = "",
         opts = noremap_silent,
