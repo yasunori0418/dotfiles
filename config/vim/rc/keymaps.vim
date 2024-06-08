@@ -87,34 +87,40 @@ nnoremap <silent> [T <Cmd>tabfirst<CR>
 nnoremap <silent> ]T <Cmd>tablast<CR>
 " }}}
 
-" Do not save the things erased by x and c in the register.
+" Do not save the things erased by x and c in the register. {{{
 nnoremap x "_x
 xnoremap x "_x
 nnoremap c "_c
 xnoremap c "_c
 nnoremap C "_C
 xnoremap C "_C
+" }}}
 
+" Normal mode {{{
 " Opens the file name under the cursor.
 nnoremap <silent> gf gF
 
 " Disable highlights from search results.
 nnoremap <silent> <C-l> <Cmd>nohlsearch<Bar>diffupdate<CR><C-l>
+" }}}
 
+" Insert mode {{{
 " Exit insert mode and cmdline mode.
 inoremap <silent> jj <ESC><C-l>
 cnoremap <silent> jj <ESC><C-l>
 
 inoremap <C-l> <Del>
 inoremap <C-a> <C-g>U<Home>
+" }}}
 
-" cmdline mode cursor move emacs like
+" cmdline mode cursor move emacs like {{{
 cnoremap <C-a> <Home>
 cnoremap <C-e> <End>
 cnoremap <C-f> <Left>
 cnoremap <C-b> <Right>
+" }}}
 
-" Operator
+" Operator {{{
 onoremap <silent> a' 2i'
 xnoremap <silent> a' 2i'
 onoremap <silent> a" 2i"
@@ -125,5 +131,6 @@ onoremap <silent> a<Space> aW
 xnoremap <silent> a<Space> aW
 onoremap <silent> i<Space> iW
 xnoremap <silent> i<Space> iW
+" }}}
 
 " vim:foldmethod=marker
