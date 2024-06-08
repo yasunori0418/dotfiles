@@ -92,12 +92,19 @@ nnoremap <silent> ]T <Cmd>tablast<CR>
 " }}}
 
 " Do not save the things erased by x and c in the register. {{{
-nnoremap x "_x
-xnoremap x "_x
-nnoremap c "_c
-xnoremap c "_c
-nnoremap C "_C
-xnoremap C "_C
+nnoremap <silent> x "_x
+xnoremap <silent> x "_x
+nnoremap <silent> c "_c
+xnoremap <silent> c "_c
+nnoremap <silent> C "_C
+xnoremap <silent> C "_C
+" }}}
+
+" Macro record keymap {{{
+nnoremap <silent> <C-q> q
+xnoremap <silent> <C-q> q
+nnoremap <silent> q <Nop>
+xnoremap <silent> q <Nop>
 " }}}
 
 " Normal mode {{{
