@@ -64,7 +64,7 @@ end
 ---Gitリポジトリでなければ、現在バッファーのディレクトリを返す
 ---@return string
 function M.search_repo_root()
-    local result = io.popen("git root 2> /dev/null", "r"):read("*l")
+    local result = vim.fs.root(0, ".git")
     if result then
         return result
     end
