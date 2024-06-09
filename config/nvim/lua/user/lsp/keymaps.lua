@@ -11,8 +11,22 @@ user_lsp_util.on_attach(function(_, buffer)
         { mode = { "n" }, lhs = [[<Plug>(lsp)q]], rhs = user_lsp_util.format, opts = opt },
         { mode = { "n" }, lhs = [[<Plug>(lsp)r]], rhs = lsp.buf.rename, opts = opt },
         { mode = { "n" }, lhs = [[ge]], rhs = diagnostic.open_float, opts = opt },
-        { mode = { "n" }, lhs = [=[[d]=], rhs = diagnostic.goto_prev, opts = opt },
-        { mode = { "n" }, lhs = [=[]d]=], rhs = diagnostic.goto_next, opts = opt },
+        {
+            mode = { "n" },
+            lhs = [=[]d]=],
+            rhs = function()
+                diagnostic.jump({ count = 1 })
+            end,
+            opts = opt,
+        },
+        {
+            mode = { "n" },
+            lhs = [=[[d]=],
+            rhs = function()
+                diagnostic.jump({ count = -1 })
+            end,
+            opts = opt,
+        },
         { -- ddu lsp:definition_all
             mode = { "n" },
             lhs = [[<Plug>(lsp)D]],
