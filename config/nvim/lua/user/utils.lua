@@ -71,29 +71,6 @@ function M.search_repo_root()
     return tostring(vim.fn.expand("%:p:h"))
 end
 
----ディレクトリ内からファイルリストを取得して、
----全ての要素をフルパスにした物を配列にして返す
----@param base_dir string
----@param config_dir_name string
----@return Iter
-function M.gather_files(base_dir, config_dir_name)
-    local config_dir = vim.fs.joinpath(base_dir, config_dir_name)
-    return vim.iter(vim.fs.dir(config_dir)):map(function(file_name)
-        return vim.fs.joinpath(config_dir, file_name)
-    end)
-end
-
----gather_filesから特定のファイルパスを削除する。
----@param gather_files Iter
----@param file_name string
----@return Iter
-function M.remove_file_from_gather_files(gather_files, file_name)
-    gather_files:filter(function(file_path)
-        return vim.fn.fnamemodify(file_path, ":t") ~= file_name
-    end)
-    return gather_files
-end
-
 ---luaのモジュール名前空間を解決する。
 ---@param base_module string
 ---@param ... string
