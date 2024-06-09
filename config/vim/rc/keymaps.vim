@@ -122,6 +122,12 @@ cnoremap <silent> jj <ESC><C-l>
 
 inoremap <C-l> <Del>
 inoremap <C-a> <C-g>U<Home>
+
+if !has('nvim')
+  inoremap <C-e> <C-g>U<End>
+  inoremap <C-f> <C-g>U<Left>
+  inoremap <C-b> <C-g>U<Right>
+endif
 " }}}
 
 " cmdline mode cursor move emacs like {{{
