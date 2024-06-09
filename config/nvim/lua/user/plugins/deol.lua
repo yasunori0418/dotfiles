@@ -1,5 +1,6 @@
 local M = {}
 
+---@diagnostic disable: duplicate-doc-alias
 ---@alias deol_split_kinds
 ---| "" # No split
 ---| "floating" # Use neovim floating window feature
