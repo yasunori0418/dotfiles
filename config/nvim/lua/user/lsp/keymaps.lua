@@ -1,16 +1,49 @@
 local lsp = vim.lsp -- nvim lsp api.
 local diagnostic = vim.diagnostic
-local user_lsp_util = require("user.lsp.utils")
+local lsp_utils = require("user.lsp.utils")
 local utils = require("user.utils")
 
-user_lsp_util.on_attach(function(_, buffer)
+lsp_utils.on_attach(function(_, buffer)
     local opt = { noremap = true, silent = true, buffer = buffer }
     utils.keymaps_set({
-        { mode = { "n", "x" }, lhs = [[ l]], rhs = [[<Plug>(lsp)]], opts = opt },
-        { mode = { "n" }, lhs = [[K]], rhs = lsp.buf.hover, opts = opt },
-        { mode = { "n" }, lhs = [[<Plug>(lsp)q]], rhs = user_lsp_util.format, opts = opt },
-        { mode = { "n" }, lhs = [[<Plug>(lsp)r]], rhs = lsp.buf.rename, opts = opt },
-        { mode = { "n" }, lhs = [[ge]], rhs = diagnostic.open_float, opts = opt },
+        {
+            mode = { "n", "x" },
+            lhs = [[gl]],
+            rhs = [[<Plug>(lsp)]],
+            opts = opt
+        },
+        {
+            mode = { "n" },
+            lhs = [[K]],
+            rhs = function()
+                lsp.buf.hover()
+            end,
+            opts = opt,
+        },
+        {
+            mode = { "n" },
+            lhs = [[<Plug>(lsp)q]],
+            rhs = function()
+                lsp_utils.format()
+            end,
+            opts = opt,
+        },
+        {
+            mode = { "n" },
+            lhs = [[<Plug>(lsp)r]],
+            rhs = function()
+                lsp.buf.rename()
+            end,
+            opts = opt,
+        },
+        {
+            mode = { "n" },
+            lhs = [[ge]],
+            rhs = function()
+                diagnostic.open_float()
+            end,
+            opts = opt,
+        },
         {
             mode = { "n" },
             lhs = [=[]d]=],
@@ -177,4 +210,3 @@ user_lsp_util.on_attach(function(_, buffer)
 
     -- pcall(lsp.inlay_hint, buffer, nil)
 end)
-
