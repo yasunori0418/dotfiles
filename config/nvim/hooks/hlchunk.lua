@@ -20,8 +20,7 @@ require("hlchunk").setup({
         },
     },
     indent = {
-        enable = true,
-        use_treesitter = true,
+        enable = false,
     },
     line_num = {
         enable = false,
