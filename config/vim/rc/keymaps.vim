@@ -121,6 +121,7 @@ inoremap <silent> jj <ESC><C-l>
 cnoremap <silent> jj <ESC><C-l>
 
 inoremap <C-l> <Del>
+cnoremap <C-l> <Del>
 inoremap <C-a> <C-g>U<Home>
 
 if !has('nvim')
