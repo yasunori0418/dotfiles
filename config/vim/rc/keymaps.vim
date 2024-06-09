@@ -133,8 +133,8 @@ endif
 " cmdline mode cursor move emacs like {{{
 cnoremap <C-a> <Home>
 cnoremap <C-e> <End>
-cnoremap <C-f> <Left>
-cnoremap <C-b> <Right>
+cnoremap <C-f> <Right>
+cnoremap <C-b> <Left>
 " }}}
 
 " Operator {{{
