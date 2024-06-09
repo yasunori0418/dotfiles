@@ -71,24 +71,6 @@ function M.search_repo_root()
     return tostring(vim.fn.expand("%:p:h"))
 end
 
----signcolumnの表示をtoggleする。
-function M.toggle_view()
-    local gitsigns = require("gitsigns")
-    if vim.opt.number:get() then
-        vim.opt.number = false
-        vim.opt.relativenumber = false
-        vim.opt.laststatus = 0
-        vim.opt.showtabline = 0
-        gitsigns.toggle_signs(false)
-    else
-        vim.opt.number = true
-        vim.opt.relativenumber = true
-        vim.opt.laststatus = 3
-        vim.opt.showtabline = 1
-        gitsigns.toggle_signs(true)
-    end
-end
-
 ---ディレクトリ内からファイルリストを取得して、
 ---全ての要素をフルパスにした物を配列にして返す
 ---@param base_dir string
