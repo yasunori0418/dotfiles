@@ -28,15 +28,7 @@ require("user.utils").keymaps_set({
         mode = "n",
         lhs = [[<Plug>(term)c]],
         rhs = function()
-            deol.open(vim.fn.fnamemodify(tostring(vim.fn.expand("%")), ":h"))
-        end,
-        opts = opt,
-    },
-    { -- $HOME term
-        mode = "n",
-        lhs = [[<Plug>(term)~]],
-        rhs = function()
-            deol.open("~")
+            deol.open(vim.fn.expand("%:h"))
         end,
         opts = opt,
     },
