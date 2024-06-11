@@ -1,7 +1,4 @@
 -- lua_add {{{
--- $BASE_DIR/lua/user/plugins/deol.lua
-local deol = require("user.plugins.deol")
-
 local opt = { silent = true, noremap = true }
 require("user.utils").keymaps_set({
     { -- leave term insert mode.
@@ -20,7 +17,7 @@ require("user.utils").keymaps_set({
         mode = "n",
         lhs = [[<Plug>(term)a]],
         rhs = function()
-            deol.open()
+            vim.fn["deol#start"]({ name = "current" })
         end,
         opts = opt,
     },
@@ -28,16 +25,10 @@ require("user.utils").keymaps_set({
         mode = "n",
         lhs = [[<Plug>(term)c]],
         rhs = function()
-            deol.open(vim.fn.expand("%:h"))
-        end,
-        opts = opt,
-    },
-    { -- tab term
-        mode = "n",
-        lhs = [[<Plug>(term)t]],
-        rhs = function()
-            vim.cmd.tabnew()
-            deol.open(nil, "")
+            vim.fn["deol#start"]({
+                name = "current",
+                cwd = vim.fn.expand("%:h"),
+            })
         end,
         opts = opt,
     },
@@ -46,10 +37,9 @@ require("user.utils").keymaps_set({
 
 -- lua_source {{{
 vim.fn["deol#set_option"]({
-    auto_cd = false,
     edit = false,
     start_insert = false,
-    toggle = false,
+    toggle = true,
     external_history_path = vim.fn.expand("~/.zhistory"),
     nvim_server = vim.fs.joinpath(vim.fn.stdpath("cache") --[[@as string]], "server.pipe"),
     custom_maps = {
@@ -68,4 +58,12 @@ vim.fn["deol#set_option"]({
     floating_border = "single",
     prompt_pattern = "❯ ",
 })
+
+vim.fn["deol#set_local_option"]("current", {
+    split = "floating",
+    cwd = require("user.utils").search_repo_root(),
+    winheight = vim.fn.float2nr(vim.opt.lines:get() * 0.6),
+    winwidth = vim.fn.float2nr(vim.opt.columns:get() * 0.6),
+})
+
 -- }}}
