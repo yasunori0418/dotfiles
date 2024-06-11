@@ -116,11 +116,13 @@ on_source = 'ddc.vim'
 # snippet plugins {{{
 [[plugins]]
 repo = 'github.com/uga-rosa/denippet.vim'
-depends = ['denops.vim', 'friendly-snippets']
+depends = ['denops.vim', 'denippet-autoimport-vscode', 'friendly-snippets']
 on_source = 'ddc.vim'
 hooks_file = '$HOOKS_DIR/denippet.lua'
 
 [[plugins]]
+repo = 'github.com/ryoppippi/denippet-autoimport-vscode'
+
+[[plugins]]
 repo = 'github.com/rafamadriz/friendly-snippets'
-rtp = 'snippets'
 # }}}
