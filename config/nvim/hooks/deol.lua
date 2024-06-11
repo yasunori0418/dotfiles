@@ -45,10 +45,28 @@ require("user.utils").keymaps_set({
 -- }}}
 
 -- lua_source {{{
-vim.g["deol#external_history_path"] = vim.fn.expand("~/.zhistory")
-vim.g["deol#nvim_server"] = "~/.cache/nvim/server.pipe"
-vim.g["deol#custom_map"] = { edit = "" }
-vim.g["deol#floating_border"] = "single"
-vim.g["deol#enable_dir_changed"] = false
-vim.g["deol#prompt_pattern"] = "❯ "
+vim.fn["deol#set_option"]({
+    auto_cd = false,
+    edit = false,
+    start_insert = false,
+    toggle = false,
+    external_history_path = vim.fn.expand("~/.zhistory"),
+    nvim_server = vim.fs.joinpath(vim.fn.stdpath("cache") --[[@as string]], "server.pipe"),
+    dir_changed = true,
+    custom_maps = {
+        edit = "",
+        quit = "q",
+        bg = "<C-z>",
+        paste_prompt = "<C-y>",
+        next_prompt = "<C-n>",
+        previous_prompt = "<C-p>",
+        execute_line = "<CR>",
+        start_append_last = "A",
+        start_append = "a",
+        start_insert_first = "I",
+        start_insert = "i",
+    },
+    floating_border = "single",
+    prompt_pattern = "❯ ",
+})
 -- }}}
