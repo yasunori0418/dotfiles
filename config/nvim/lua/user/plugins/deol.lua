@@ -28,13 +28,8 @@ function M.open(cwd, split, ratio)
     end
 
     vim.fn["deol#start"]({
-        auto_cd = false,
         cwd = cwd,
-        dir_changed = false,
-        edit = false,
         split = split,
-        start_insert = false,
-        toggle = false,
         winheight = winheight,
         winwidth = winwidth,
     })
