@@ -52,7 +52,6 @@ vim.fn["deol#set_option"]({
     toggle = false,
     external_history_path = vim.fn.expand("~/.zhistory"),
     nvim_server = vim.fs.joinpath(vim.fn.stdpath("cache") --[[@as string]], "server.pipe"),
-    dir_changed = true,
     custom_maps = {
         edit = "",
         quit = "q",
