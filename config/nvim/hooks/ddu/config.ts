@@ -184,7 +184,7 @@ export class Config extends BaseConfig {
           },
         },
         file_rec: {
-          ignoreDirectories: [
+          ignoredDirectories: [
             ".git",
             ".svn",
             ".venv",
