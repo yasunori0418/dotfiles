@@ -2,6 +2,99 @@ local M = {}
 
 local lsp = vim.lsp
 
+-- Refer:
+-- https://github.com/ryoppippi/dotfiles/blob/e6e0f02/nvim/lua/plugin/nvim-lspconfig/utils.lua#L36-L125
+M.ft = {}
+M.ft.js_like = {
+    "javascript",
+    "javascriptreact",
+    "javascript.jsx",
+    "typescript",
+    "typescriptreact",
+    "typescript.tsx",
+}
+
+M.ft.js_framework_like = vim.iter({
+    M.ft.js_like,
+    {
+        "svelte",
+        "astro",
+        "vue",
+    },
+})
+    :flatten(math.huge)
+    :totable()
+
+M.ft.markdown_like = {
+    "markdown",
+    "markdown.mdx",
+}
+
+M.ft.css_like = {
+    "css",
+    "scss",
+    "less",
+}
+
+M.ft.html_like = vim.iter({
+    M.ft.markdown_like,
+    M.ft.css_like,
+    M.ft.js_framework_like,
+    { "html", "htmldjango" },
+})
+    :flatten(math.huge)
+    :totable()
+
+M.ft.json_like = {
+    "json",
+    "jsonc",
+    "json5",
+}
+
+M.ft.yaml_like = {
+    "yaml",
+    "yaml.docker-compose",
+    "yaml.gitlab",
+}
+
+M.ft.config_like = vim.iter({
+    M.ft.json_like,
+    M.ft.yaml_like,
+    { "toml" },
+})
+    :flatten(math.huge)
+    :totable()
+
+M.ft.sh_like = {
+    "sh",
+    "bash",
+    "zsh",
+    "fish",
+}
+
+M.ft.deno_files = {
+    "deno.json",
+    "deno.jsonc",
+    "denops",
+    "package.json",
+}
+
+M.ft.node_specific_files = {
+    "node_modules",
+    "bun.lockb", -- bun
+    "package-lock.json", -- npm or bun
+    "npm-shrinkwrap.json", -- npm
+    "yarn.lock", -- yarn
+    "pnpm-lock.yaml", -- pnpm
+}
+
+M.ft.node_files = vim.iter({
+    M.ft.node_specific_files,
+    "package.json",
+})
+    :flatten(math.huge)
+    :totable()
+
 ---LSPが動くバッファーに対しての設定をするヘルパー
 ---[参考リンク]:(https://zenn.dev/ryoppippi/articles/8aeedded34c914)
 ---
