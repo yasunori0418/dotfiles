@@ -7,15 +7,14 @@ import {
   vars,
 } from "./deps.ts";
 import {
+  type ConfigArguments,
   gatherCheckFiles,
   gatherTomls,
   gatherVimrcs,
-  type ConfigArguments,
   type LazyMakeStateResult,
   type Toml,
   type VimrcSkipRule,
 } from "./helper.ts";
-
 
 export class Config extends BaseConfig {
   override async config(args: ConfigArguments): Promise<ConfigReturn> {
@@ -43,7 +42,7 @@ export class Config extends BaseConfig {
       },
       extParams: {
         installer: {
-          checkDiff: true,
+          checkDiff: false,
           logFilePath: join(
             await vars.g.get(denops, "dpp_cache"),
             // installer_{YYYYMMDD}.log
