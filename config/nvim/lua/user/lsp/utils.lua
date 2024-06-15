@@ -95,6 +95,15 @@ M.ft.node_files = vim.iter({
     :flatten(math.huge)
     :totable()
 
+---search node related files in project root
+---@param path string
+---@return boolean
+function M.is_node_files_found(path)
+    return vim.iter(M.ft.node_specific_files):any(function(file)
+        return vim.uv.fs_stat(vim.fs.joinpath(path, file)) ~= nil
+    end)
+end
+
 ---LSPが動くバッファーに対しての設定をするヘルパー
 ---[参考リンク]:(https://zenn.dev/ryoppippi/articles/8aeedded34c914)
 ---
