@@ -190,6 +190,7 @@ export class Config extends BaseConfig {
             ".venv",
             "__pycache__",
             ".pytest_cache",
+            "node_modules",
           ],
         },
         file_fd: {
