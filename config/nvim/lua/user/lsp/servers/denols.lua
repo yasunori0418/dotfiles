@@ -1,5 +1,34 @@
+local lsp_utils = require("user.lsp.utils")
+local ft = lsp_utils.ft
+
+-- Refer:
+-- https://github.com/ryoppippi/dotfiles/blob/e6e0f02/nvim/lua/plugin/nvim-lspconfig/servers/denols.lua#L5-L49
+---@param path string
+---@return string|nil
+local function find_root(path)
+    ---@type string|nil
+    local project_root =
+        vim.fs.root(path, vim.iter({ ".git", ft.deno_files, ft.node_specific_files }):flatten(math.huge):totable())
+    project_root = project_root or vim.env.PWD
+
+    -- when node files not found, lauch denols
+    if not lsp_utils.is_node_files_found(project_root) then
+        local deps_path = vim.fs.joinpath(project_root, "deps.ts")
+        if vim.uv.fs_stat(deps_path) ~= nil then
+            vim.b[vim.fn.bufnr()].deno_deps_candidate = deps_path
+        end
+        return project_root
+    end
+
+    return nil
+end
+
 return function()
     require("lspconfig").denols.setup({
+        single_file_support = true,
+        root_dir = function(path)
+            return find_root(vim.fs.dirname(path))
+        end,
         capabilities = require("user.lsp.utils").capabilities,
         settings = {
             deno = {
