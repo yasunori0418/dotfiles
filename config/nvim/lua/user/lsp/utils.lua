@@ -107,7 +107,7 @@ end
 ---LSPが動くバッファーに対しての設定をするヘルパー
 ---[参考リンク]:(https://zenn.dev/ryoppippi/articles/8aeedded34c914)
 ---
----@param on_attach fun(client: any|nil, buffer: number|nil)
+---@param on_attach fun(client: vim.lsp.Client|nil, buffer: number|nil)
 function M.on_attach(on_attach)
     vim.api.nvim_create_autocmd("LspAttach", {
         group = require("user.utils").vimrc_augroup,
