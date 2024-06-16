@@ -37,5 +37,6 @@ mason_lspconfig.setup_handlers({
     pyright = require("user.lsp.servers.pyright"),
     efm = require("user.lsp.servers.efm"),
     denols = require("user.lsp.servers.denols"),
+    vtsls = require("user.lsp.servers.vtsls"),
 })
 
