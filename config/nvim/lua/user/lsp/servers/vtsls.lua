@@ -11,18 +11,18 @@ local function find_root(path)
         return nil
     end
 
-    local project_root = vim.fs.root(path, vim.iter({ ".git", ft.node_files }):flatten(math.huge):totable())
+    local project_root = vim.fs.root(path, vim.iter({ ".git", ft.node_specific_files }):flatten(math.huge):totable())
 
     if project_root == nil or project_root == vim.fn.expand("$HOME") then
         return nil
     end
 
-    if utils.is_files_found(project_root, ft.deno_files) then
-        return nil
-    end
-
     if utils.is_files_found(project_root, ft.node_files) then
         return project_root
+    end
+
+    if utils.is_files_found(project_root, ft.deno_files) then
+        return nil
     end
 end
 
