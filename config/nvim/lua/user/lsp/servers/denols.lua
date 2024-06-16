@@ -25,14 +25,21 @@ end
 
 ---If the environment runs deno lsp, stop the another node lsp
 ---@param path string|nil
-local function stop_node_lsp_clients(path)
+local function stop_lsp_clients(path)
     lsp_utils.on_attach(function(_, buffer)
         if buffer == nil then
             return
         end
 
         local deno_lsp_client = lsp_utils.deno_lsp_client(buffer)
+        if deno_lsp_client == nil then
+            return
+        end
         local is_denols_attached = vim.lsp.buf_is_attached(buffer, deno_lsp_client.id) and path ~= nil
+
+        if not is_denols_attached then
+            vim.lsp.stop_client(deno_lsp_client.id, true)
+        end
 
         local node_lsp_clients = lsp_utils.node_lsp_clients(buffer)
         if is_denols_attached and #node_lsp_clients > 0 then
@@ -48,7 +55,7 @@ return function()
         single_file_support = true,
         root_dir = function(path)
             local root_dir = find_root(vim.fs.dirname(path))
-            stop_node_lsp_clients(root_dir)
+            stop_lsp_clients(root_dir)
             return root_dir
         end,
         capabilities = require("user.lsp.utils").capabilities,
