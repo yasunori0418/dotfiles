@@ -83,7 +83,6 @@ function M.resolve_module_namespace(base_module, ...)
     return result
 end
 
-
 ---配列から最後の要素だけを取得する。
 ---@generic T
 ---@param list T[]
@@ -100,11 +99,7 @@ end
 function M.get_color_code(hl_name, type, mode)
     type = type or "fg"
     mode = mode or "gui"
-    return vim.fn.synIDattr(
-        vim.fn.synIDtrans(vim.fn.hlID(hl_name)),
-        type,
-        mode
-    )
+    return vim.fn.synIDattr(vim.fn.synIDtrans(vim.fn.hlID(hl_name)), type, mode)
 end
 
 ---table shallow copy
