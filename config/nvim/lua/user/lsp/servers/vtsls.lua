@@ -12,7 +12,7 @@ local function find_root(path)
 
     local project_root = vim.fs.root(path, vim.iter({ ".git", ft.node_files }):flatten(math.huge):totable())
 
-    if project_root == nil then
+    if project_root == nil or project_root == vim.fn.expand("$HOME") then
         return nil
     end
 
