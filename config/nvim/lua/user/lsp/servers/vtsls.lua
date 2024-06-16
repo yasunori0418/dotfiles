@@ -1,3 +1,4 @@
+local utils = require("user.utils")
 local lsp_utils = require("user.lsp.utils")
 local ft = lsp_utils.ft
 
@@ -16,7 +17,7 @@ local function find_root(path)
         return nil
     end
 
-    if lsp_utils.is_node_files_found(project_root) then
+    if utils.is_files_found(project_root, ft.node_files) then
         return project_root
     end
 
