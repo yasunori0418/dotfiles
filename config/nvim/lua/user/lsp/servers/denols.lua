@@ -9,8 +9,8 @@ local ft = lsp_utils.ft
 local function find_root(path)
     ---@type string|nil
     local project_root =
-        vim.fs.root(path, vim.iter({ ".git", ft.deno_files, ft.node_specific_files }):flatten(math.huge):totable())
-    project_root = project_root or vim.env.PWD
+        vim.fs.root(path, vim.iter({ ".git", ft.deno_files }):flatten(math.huge):totable())
+    project_root = project_root or vim.env.PWD --[[@as string]]
 
     -- when node files not found, lauch denols
     if not utils.is_files_found(project_root, ft.node_specific_files) then
