@@ -17,12 +17,12 @@ local function find_root(path)
         return nil
     end
 
-    if utils.is_files_found(project_root, ft.node_files) then
-        return project_root
+    if utils.is_files_found(project_root, ft.deno_files) then
+        return nil
     end
 
-    if vim.uv.fs_stat(vim.fs.joinpath(project_root, ".git")) ~= nil then
-        return nil
+    if utils.is_files_found(project_root, ft.node_files) then
+        return project_root
     end
 end
 
