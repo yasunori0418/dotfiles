@@ -3,6 +3,9 @@ local mason_lspconfig = require("mason-lspconfig")
 require("user.lsp.keymaps")
 
 require("user.lsp.utils").on_attach(function(client, buffer)
+    if client == nil then
+        return
+    end
     if client.server_capabilities.documentSymbolProvider then
         if client.name ~= "efm" then
             require("nvim-navic").attach(client, buffer)
