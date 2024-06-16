@@ -3,6 +3,9 @@ local mason_lspconfig = require("mason-lspconfig")
 require("user.lsp.keymaps")
 
 require("user.lsp.utils").on_attach(function(client, buffer)
+    if client == nil then
+        return
+    end
     if client.server_capabilities.documentSymbolProvider then
         if client.name ~= "efm" then
             require("nvim-navic").attach(client, buffer)
@@ -30,8 +33,10 @@ mason_lspconfig.setup_handlers({
         require("lspconfig")[server_name].setup(lsp_options)
     end,
 
-    lua_ls = require("user.lsp.lua_ls"),
-    pyright = require("user.lsp.pyright"),
-    denols = require("user.lsp.denols"),
-    efm = require("user.lsp.efm"),
+    lua_ls = require("user.lsp.servers.lua_ls"),
+    pyright = require("user.lsp.servers.pyright"),
+    efm = require("user.lsp.servers.efm"),
+    denols = require("user.lsp.servers.denols"),
+    vtsls = require("user.lsp.servers.vtsls"),
 })
+

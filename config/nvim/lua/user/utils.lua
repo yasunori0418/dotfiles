@@ -83,7 +83,6 @@ function M.resolve_module_namespace(base_module, ...)
     return result
 end
 
-
 ---配列から最後の要素だけを取得する。
 ---@generic T
 ---@param list T[]
@@ -100,11 +99,7 @@ end
 function M.get_color_code(hl_name, type, mode)
     type = type or "fg"
     mode = mode or "gui"
-    return vim.fn.synIDattr(
-        vim.fn.synIDtrans(vim.fn.hlID(hl_name)),
-        type,
-        mode
-    )
+    return vim.fn.synIDattr(vim.fn.synIDtrans(vim.fn.hlID(hl_name)), type, mode)
 end
 
 ---table shallow copy
@@ -116,6 +111,16 @@ function M.shallow_copy(table)
         copy_table[key] = value
     end
     return copy_table
+end
+
+---check is files exsists in path.
+---@param path string
+---@param files string[]
+---@return boolean
+function M.is_files_found(path, files)
+    return vim.iter(files):any(function(file)
+        return vim.uv.fs_stat(vim.fs.joinpath(path, file)) ~= nil
+    end)
 end
 
 return M
