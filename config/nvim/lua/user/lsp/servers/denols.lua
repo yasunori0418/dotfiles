@@ -1,3 +1,4 @@
+local utils = require("user.utils")
 local lsp_utils = require("user.lsp.utils")
 local ft = lsp_utils.ft
 
@@ -12,7 +13,7 @@ local function find_root(path)
     project_root = project_root or vim.env.PWD
 
     -- when node files not found, lauch denols
-    if not lsp_utils.is_node_files_found(project_root) then
+    if not utils.is_files_found(project_root, ft.node_specific_files) then
         local deps_path = vim.fs.joinpath(project_root, "deps.ts")
         if vim.uv.fs_stat(deps_path) ~= nil then
             vim.b[vim.fn.bufnr()].deno_deps_candidate = deps_path

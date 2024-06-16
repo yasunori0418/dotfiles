@@ -95,15 +95,6 @@ M.ft.node_files = vim.iter({
     :flatten(math.huge)
     :totable()
 
----search node related files in project root
----@param path string
----@return boolean
-function M.is_node_files_found(path)
-    return vim.iter(M.ft.node_specific_files):any(function(file)
-        return vim.uv.fs_stat(vim.fs.joinpath(path, file)) ~= nil
-    end)
-end
-
 ---@param buffer number
 ---@return vim.lsp.Client[]
 function M.node_lsp_clients(buffer)

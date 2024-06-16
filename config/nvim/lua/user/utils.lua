@@ -113,4 +113,14 @@ function M.shallow_copy(table)
     return copy_table
 end
 
+---check is files exsists in path.
+---@param path string
+---@param files string[]
+---@return boolean
+function M.is_files_found(path, files)
+    return vim.iter(files):any(function(file)
+        return vim.uv.fs_stat(vim.fs.joinpath(path, file)) ~= nil
+    end)
+end
+
 return M
