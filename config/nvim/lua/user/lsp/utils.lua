@@ -116,7 +116,7 @@ function M.node_lsp_clients(buffer)
 end
 
 ---@param buffer number
----@return vim.lsp.Client
+---@return vim.lsp.Client|nil
 function M.deno_lsp_client(buffer)
     return vim.lsp.get_clients({ name = "denols", bufnr = buffer })[1]
 end
