@@ -8,20 +8,20 @@ local ft = lsp_utils.ft
 ---@return string|nil
 local function find_root(path)
     ---@type string|nil
-    local project_root =
-        vim.fs.root(path, vim.iter({ ".git", ft.deno_files }):flatten(math.huge):totable())
+    local project_root = vim.fs.root(path, vim.iter({ ".git", ft.deno_files }):flatten(math.huge):totable())
     project_root = project_root or vim.env.PWD --[[@as string]]
 
-    -- when node files not found, lauch denols
-    if not utils.is_files_found(project_root, ft.node_specific_files) then
-        local deps_path = vim.fs.joinpath(project_root, "deps.ts")
-        if vim.uv.fs_stat(deps_path) ~= nil then
-            vim.b[vim.fn.bufnr()].deno_deps_candidate = deps_path
-        end
-        return project_root
+    -- when node files found, not launch denols.
+    if utils.is_files_found(project_root, ft.node_specific_files) then
+        return nil
     end
 
-    return nil
+    -- when node files not found, lauch denols
+    local deps_path = vim.fs.joinpath(project_root, "deps.ts")
+    if vim.uv.fs_stat(deps_path) ~= nil then
+        vim.b[vim.fn.bufnr()].deno_deps_candidate = deps_path
+    end
+    return project_root
 end
 
 return function()
