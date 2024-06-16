@@ -104,6 +104,23 @@ function M.is_node_files_found(path)
     end)
 end
 
+---@param buffer number
+---@return vim.lsp.Client[]
+function M.node_lsp_clients(buffer)
+    return vim.iter({ "vtsls", "tsserver" })
+        :map(function(c)
+            return vim.lsp.get_clients({ name = c, bufnr = buffer })
+        end)
+        :flatten()
+        :totable()
+end
+
+---@param buffer number
+---@return vim.lsp.Client
+function M.deno_lsp_client(buffer)
+    return vim.lsp.get_clients({ name = "denols", bufnr = buffer })[1]
+end
+
 ---LSPが動くバッファーに対しての設定をするヘルパー
 ---[参考リンク]:(https://zenn.dev/ryoppippi/articles/8aeedded34c914)
 ---
