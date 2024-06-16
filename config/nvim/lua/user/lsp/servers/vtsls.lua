@@ -7,7 +7,7 @@ local ft = lsp_utils.ft
 ---@param path string|nil
 ---@return string|nil
 local function find_root(path)
-    if path == nil or path == "" then
+    if path == nil then
         return nil
     end
 
