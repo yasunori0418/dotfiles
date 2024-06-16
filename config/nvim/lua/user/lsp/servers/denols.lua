@@ -26,7 +26,6 @@ end
 
 return function()
     require("lspconfig").denols.setup({
-        single_file_support = true,
         root_dir = function(path)
             local root_dir = find_root(vim.fs.dirname(path))
             return root_dir
