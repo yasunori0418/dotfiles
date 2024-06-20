@@ -29,6 +29,18 @@ vim.api.nvim_create_autocmd({ "BufNewFile", "BufRead", "BufWritePost" }, {
 -- lua_source {{{
 local gitsigns = require("gitsigns")
 
+---current_line_blame_formatter
+---@param name string
+---@param blame_info Gitsigns.BlameInfoPublic
+---@return {[1]:string,[2]:"GitSignsCurrentLineBlame"}[]
+local function blame_line_formatter(name, blame_info)
+    if name == blame_info.author then
+        return {{[1] = "", [2] = "GitSignsCurrentLineBlame"}}
+    end
+    local text = blame_info.author .. ":" .. blame_info.abbrev_sha .. " - " .. blame_info.summary
+    return {{[1] = text, [2] = "GitSignsCurrentLineBlame"}}
+end
+
 gitsigns.setup({
     signs = {
         add = { text = "┃" },
@@ -46,28 +58,39 @@ gitsigns.setup({
         changedelete = { text = "~" },
         untracked = { text = "┆" },
     },
+    signs_staged_enable = true,
 
     signcolumn = true, -- Toggle with `:Gitsigns toggle_signs`
     numhl = true, -- Toggle with `:Gitsigns toggle_numhl`
     linehl = false, -- Toggle with `:Gitsigns toggle_linehl`
     word_diff = false, -- Toggle with `:Gitsigns toggle_word_diff`
+    show_deleted = true,
     watch_gitdir = {
-        interval = 1000,
+        enable = true,
         follow_files = true,
     },
+    diff_opts = {
+        algorithm = "histogram",
+        internal = true,
+        indent_heuristic = true,
+        vertical = true,
+    },
+    auto_attach = true,
     attach_to_untracked = true,
-    current_line_blame = false, -- Toggle with `:Gitsigns toggle_current_line_blame`
+    current_line_blame = true, -- Toggle with `:Gitsigns toggle_current_line_blame`
     current_line_blame_opts = {
         virt_text = true,
         virt_text_pos = "right_align", -- 'eol' | 'overlay' | 'right_align'
-        delay = 1000,
+        delay = 3000,
         ignore_whitespace = false,
     },
-    current_line_blame_formatter = "<author>, <author_time:%Y-%m-%d> - <summary>",
+    current_line_blame_formatter = function(name, blame_info)
+        return blame_line_formatter(name, blame_info)
+    end,
     sign_priority = 6,
     update_debounce = 100,
     status_formatter = nil, -- Use default
-    max_file_length = 40000, -- Disable if file is longer than this (in lines)
+    max_file_length = 10000, -- Disable if file is longer than this (in lines)
     preview_config = {
         -- Options passed to nvim_open_win
         border = "single",
