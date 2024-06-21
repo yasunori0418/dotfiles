@@ -19,7 +19,7 @@ end
 ---@param bufnr integer
 function M.keymaps_set(bufnr)
     ---@type vim.keymap.set.Opts
-    local opts = { nnoremap = true, buffer = bufnr }
+    local opts = { noremap = true, buffer = bufnr }
 
     ---@type Gitsigns.NavOpts
     local nav_opts = {
