@@ -26,7 +26,7 @@ function M.keymaps_set(bufnr)
         wrap = true,
         navigation_message = true,
         foldopen = true,
-        preview = true,
+        preview = false,
         greedy = true,
         target = "all",
         count = vim.v.count1,
