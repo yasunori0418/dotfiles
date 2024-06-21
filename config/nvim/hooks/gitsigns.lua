@@ -63,6 +63,7 @@ gitsigns.setup({
         internal = true,
         indent_heuristic = true,
         vertical = true,
+        linematch = 60,
     },
     auto_attach = true,
     attach_to_untracked = true,

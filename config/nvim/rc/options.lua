@@ -39,7 +39,15 @@ local option_table = {
     -- Use the clipboard on linux systems.
     clipboard = "unnamedplus",
 
-    diffopt = "vertical,algorithm:histogram,indent-heuristic",
+    diffopt = {
+        "internal",
+        "filler",
+        "closeoff",
+        "vertical",
+        "algorithm:histogram",
+        "indent-heuristic",
+        "linematch:60"
+    },
 
     -- For pum.vim
     shortmess = "c",
