@@ -91,39 +91,7 @@ gitsigns.setup({
     },
 
     on_attach = function(bufnr)
-        local keymap = vim.keymap.set
-        local keymap_options = { noremap = true, buffer = bufnr, expr = true }
-
-        -- Navigation
-        keymap("n", "[c", function()
-            if vim.wo.diff then
-                return "[c"
-            end
-            vim.schedule(function()
-                gitsigns.prev_hunk()
-            end)
-            return "<Ignore>"
-        end, keymap_options)
-
-        keymap("n", "]c", function()
-            if vim.wo.diff then
-                return "]c"
-            end
-            vim.schedule(function()
-                gitsigns.next_hunk()
-            end)
-            return "<Ignore>"
-        end, keymap_options)
-
-        keymap("n", "ghs", "<Cmd>Gitsigns stage_hunk<CR>")
-        keymap("n", "ghr", "<Cmd>Gitsigns reset_hunk<CR>")
-        keymap("n", "ghu", "<Cmd>Gitsigns undo_stage_hunk<CR>")
-        keymap("x", "ghs", ":Gitsigns stage_hunk<CR>")
-        keymap("x", "ghr", ":Gitsigns reset_hunk<CR>")
-        keymap("x", "ghu", ":Gitsigns undo_stage_hunk<CR>")
-        keymap("n", "gbs", "<Cmd>Gitsigns stage_buffer<CR>")
-        keymap("n", "gbr", "<Cmd>Gitsigns reset_buffer<CR>")
-        keymap("n", "gbu", "<Cmd>Gitsigns undo_stage_hunk<CR>")
+        helper.keymaps_set(bufnr)
     end,
 })
 -- }}}
