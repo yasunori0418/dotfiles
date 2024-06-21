@@ -28,18 +28,7 @@ vim.api.nvim_create_autocmd({ "BufNewFile", "BufRead", "BufWritePost" }, {
 
 -- lua_source {{{
 local gitsigns = require("gitsigns")
-
----current_line_blame_formatter
----@param name string
----@param blame_info Gitsigns.BlameInfoPublic
----@return {[1]:string,[2]:"GitSignsCurrentLineBlame"}[]
-local function blame_line_formatter(name, blame_info)
-    if name == blame_info.author then
-        return {{[1] = "", [2] = "GitSignsCurrentLineBlame"}}
-    end
-    local text = blame_info.author .. ":" .. blame_info.abbrev_sha .. " - " .. blame_info.summary
-    return {{[1] = text, [2] = "GitSignsCurrentLineBlame"}}
-end
+local helper = require("user.plugins.gitsigns")
 
 gitsigns.setup({
     signs = {
@@ -85,7 +74,7 @@ gitsigns.setup({
         ignore_whitespace = false,
     },
     current_line_blame_formatter = function(name, blame_info)
-        return blame_line_formatter(name, blame_info)
+        return helper.blame_line_formatter(name, blame_info)
     end,
     sign_priority = 6,
     update_debounce = 100,
