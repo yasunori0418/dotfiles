@@ -37,7 +37,7 @@ function M.keymaps_set(bufnr)
             mode = { "n", "x" },
             lhs = [[gs]],
             rhs = [[<Plug>(gitsigns)]],
-            opts = { noremap = false, buffer = bufnr },
+            opts = { buffer = bufnr },
         },
         {
             mode = { "n" },
@@ -64,40 +64,26 @@ function M.keymaps_set(bufnr)
             opts = opts,
         },
         {
-            mode = { "n" },
+            mode = { "n", "x" },
             lhs = [[<Plug>(gitsigns)s]],
             rhs = function()
-                gitsigns.stage_hunk()
+                local arg = nil
+                if vim.fn.mode() == "v" or vim.fn.mode == "V" then
+                    arg = { vim.fn.line("."), vim.fn.line("v") }
+                end
+                gitsigns.stage_hunk(arg)
             end,
             opts = opts,
         },
         {
-            mode = { "n" },
+            mode = { "n", "x" },
             lhs = [[<Plug>(gitsigns)r]],
             rhs = function()
-                gitsigns.reset_hunk()
-            end,
-            opts = opts,
-        },
-        {
-            mode = { "x" },
-            lhs = [[<Plug>(gitsigns)s]],
-            rhs = function()
-                gitsigns.stage_hunk({
-                    vim.fn.line("."),
-                    vim.fn.line("v"),
-                })
-            end,
-            opts = opts,
-        },
-        {
-            mode = { "x" },
-            lhs = [[<Plug>(gitsigns)r]],
-            rhs = function()
-                gitsigns.reset_hunk({
-                    vim.fn.line("."),
-                    vim.fn.line("v"),
-                })
+                local arg = nil
+                if vim.fn.mode() == "v" or vim.fn.mode == "V" then
+                    arg = { vim.fn.line("."), vim.fn.line("v") }
+                end
+                gitsigns.reset_hunk(arg)
             end,
             opts = opts,
         },
@@ -150,13 +136,13 @@ function M.keymaps_set(bufnr)
             opts = opts,
         },
         {
-            mode = {"o", "x"},
+            mode = { "o", "x" },
             lhs = [[is]],
             rhs = function()
                 gitsigns.select_hunk()
             end,
             opts = opts,
-        }
+        },
     })
 end
 
