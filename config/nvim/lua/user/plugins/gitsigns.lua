@@ -1,6 +1,7 @@
 local M = {}
 
 local gitsigns = require("gitsigns")
+local utils = require("user.utils")
 
 ---current_line_blame_formatter
 ---@param name string
@@ -16,7 +17,7 @@ end
 
 ---set keymaps by on_attach
 ---@param bufnr integer
-function M.keymaps(bufnr)
+function M.keymaps_set(bufnr)
     ---@type vim.keymap.set.Opts
     local opts = { nnoremap = true, buffer = bufnr }
 
@@ -31,7 +32,7 @@ function M.keymaps(bufnr)
         count = vim.v.count1,
     }
 
-    require("user.utils").keymaps_set({
+    utils.keymaps_set({
         {
             mode = { "n", "x" },
             lhs = [[gs]],
