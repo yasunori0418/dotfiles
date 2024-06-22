@@ -68,7 +68,7 @@ function M.search_repo_root()
     if result then
         return result
     end
-    return tostring(vim.fn.expand("%:p:h"))
+    return vim.fn.expand("%:p:h")
 end
 
 ---luaのモジュール名前空間を解決する。
