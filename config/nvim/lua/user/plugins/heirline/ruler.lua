@@ -3,8 +3,7 @@ local Ruler = {
     -- %l = current line number
     -- %L = number of lines in the buffer
     -- %c = column number
-    -- %p = percentage through file of displayed window
-    provider = "%7(%l/%L%):%2c %p%% ",
+    provider = "%7(%l/%L%):%2c ",
 }
 
 -- I take no credits for this! :lion:
