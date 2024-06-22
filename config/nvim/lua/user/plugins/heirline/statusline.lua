@@ -24,7 +24,7 @@ local Left = {
     { -- CWD
         provider = function(self)
             local ghq_root = vim.fn.fnamemodify(io.popen("ghq root 2> /dev/null", "r"):read("*l"), ":~")
-            local cwd = vim.fn.fnamemodify(self.cwd, ":~"):gsub(tostring(ghq_root), "$GHQ_ROOT")
+            local cwd = vim.fn.fnamemodify(self.cwd, ":~"):gsub(tostring(ghq_root), "$SRC")
             return " " .. cwd
         end,
         hl = function(self)
