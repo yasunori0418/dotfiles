@@ -24,9 +24,8 @@ local Left = {
     { -- CWD
         provider = function(self)
             local ghq_root = vim.fn.fnamemodify(io.popen("ghq root 2> /dev/null", "r"):read("*l"), ":~")
-            local cwd = vim.fn.fnamemodify(self.cwd, ":~"):gsub(tostring(ghq_root), "$SRC")
-            local short_cwd = vim.fn.pathshorten(cwd, 3)
-            return " " .. short_cwd
+            local repo_root = vim.fn.fnamemodify(self.repo_root, ":~"):gsub(tostring(ghq_root), "$SRC")
+            return " " .. vim.fn.pathshorten(repo_root, 3)
         end,
         hl = function(self)
             return { bg = self.mode_colors.base, bold = true }
@@ -101,7 +100,7 @@ return {
     init = function(self)
         self.mode_colors = require("user.plugins.heirline.color").mode_colors()
         self.cwd = vim.fn.getcwd()
-        self.project_root = require("user.utils").search_repo_root()
+        self.repo_root = require("user.utils").search_repo_root()
         self.separator = {
             main = {
                 left = "\u{E0B0}", -- [[]]
