@@ -101,6 +101,7 @@ return {
     init = function(self)
         self.mode_colors = require("user.plugins.heirline.color").mode_colors()
         self.cwd = vim.fn.getcwd()
+        self.project_root = require("user.utils").search_repo_root()
         self.separator = {
             main = {
                 left = "\u{E0B0}", -- [[]]
