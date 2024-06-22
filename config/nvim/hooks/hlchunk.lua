@@ -9,18 +9,22 @@
 -- local cyan = utils.get_color_code("Keyword")
 -- local light_gray = utils.get_color_code("Whitespace")
 
+local exclude_filetypes = {
+    ["ddu-ff"] = true,
+    ["ddu-filer"] = true,
+    ["deol"] = true,
+}
+
 require("hlchunk").setup({
     chunk = {
         enable = true,
         notify = false,
         use_treesitter = true,
-        exclude_filetypes = {
-            ["ddu-ff"] = true,
-            ["ddu-filer"] = true,
-        },
+        exclude_filetypes = exclude_filetypes,
     },
     indent = {
         enable = true,
+        exclude_filetypes = exclude_filetypes,
     },
     line_num = {
         enable = false,
