@@ -25,7 +25,8 @@ local Left = {
         provider = function(self)
             local ghq_root = vim.fn.fnamemodify(io.popen("ghq root 2> /dev/null", "r"):read("*l"), ":~")
             local cwd = vim.fn.fnamemodify(self.cwd, ":~"):gsub(tostring(ghq_root), "$SRC")
-            return " " .. cwd
+            local short_cwd = vim.fn.pathshorten(cwd, 3)
+            return " " .. short_cwd
         end,
         hl = function(self)
             return { bg = self.mode_colors.base, bold = true }
