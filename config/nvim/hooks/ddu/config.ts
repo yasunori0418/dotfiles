@@ -1,9 +1,9 @@
 import {
   ActionArguments,
-  ActionData,
   ActionFlags,
   BaseConfig,
   ConfigArguments,
+  FileActionData,
   fn,
   GitCommitActionData,
   Notification,
@@ -236,7 +236,7 @@ export class Config extends BaseConfig {
             uiCd: async (
               args: ActionArguments<Params>,
             ): Promise<ActionFlags> => {
-              const action = args.items[0].action as ActionData;
+              const action = args.items[0].action as FileActionData;
 
               await denops.call("ddu#ui#do_action", "itemAction", {
                 name: "narrow",
@@ -250,7 +250,7 @@ export class Config extends BaseConfig {
             cdOpen: async (
               args: ActionArguments<Params>,
             ): Promise<ActionFlags> => {
-              const action = args.items[0].action as ActionData;
+              const action = args.items[0].action as FileActionData;
               await denops.call("chdir", action.path);
               await denops.cmd("edit .");
 
@@ -276,7 +276,7 @@ export class Config extends BaseConfig {
             gitDiff: async (
               args: ActionArguments<Params>,
             ): Promise<ActionFlags> => {
-              const action = args.items[0].action as ActionData;
+              const action = args.items[0].action as FileActionData;
 
               await denops.call("ddu#start", {
                 name: "git:diff",

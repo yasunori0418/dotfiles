@@ -7,7 +7,7 @@ export { fn, op, vars } from "https://deno.land/x/ddu_vim@v4.1.1/deps.ts";
 // Type definitions.
 export type { ActionArguments } from "https://deno.land/x/ddu_vim@v4.1.1/types.ts";
 export type { ConfigArguments } from "https://deno.land/x/ddu_vim@v4.1.1/base/config.ts";
-export type { ActionData } from "https://deno.land/x/ddu_kind_file@v0.7.1/file.ts";
+export type { ActionData as FileActionData } from "https://deno.land/x/ddu_kind_file@v0.7.1/file.ts";
 
 export type {
   ActionData as GitCommitActionData,
