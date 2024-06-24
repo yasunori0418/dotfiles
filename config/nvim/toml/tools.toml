@@ -21,6 +21,10 @@ lua_source = '''
 vim.g.memolist_path = vim.fn.expand('~/Documents/memo')
 '''
 
+[[plugins]]
+repo = 'github.com/tyru/capture.vim'
+on_cmd = ['Capture']
+
 [[plugins]] # vim-startuptime
 repo = 'github.com/dstein64/vim-startuptime'
 on_cmd = 'StartupTime'
