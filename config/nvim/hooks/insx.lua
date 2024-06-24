@@ -145,6 +145,14 @@ helper.altercmds_apply({
             original = [[cal]],
             altanative = [[Calendar]],
         },
+        {
+            original = [[mes]],
+            altanative = [[Capture mes]],
+        },
+        {
+            original = [=[c\%[apture]]=],
+            altanative = [[Capture ]],
+        },
     },
     keymaps = {
         expand_keys = {
