@@ -2,25 +2,42 @@
 
 set -euo pipefail
 
+
+os_name () {
+  if [[ $(uname -s) = "Linux" ]]; then
+    echo "linux64"
+  fi
+  if [[ $(uname -s) = "Darwin" ]]; then
+    echo "macos-$(uname -m)"
+  fi
+}
+
 declare -r install_prefix="${HOME}/.local/dotfiles"
 declare -r tag_name="${1:-stable}" # nightly | stable
-declare -r dl_file="nvim-linux64.tar.gz"
-declare -r download_url="https://github.com/neovim/neovim/releases/download/${tag_name}/${dl_file}"
+file_name="nvim-$(os_name)"
+readonly file_name
+declare -r archive_file_name="${file_name}.tar.gz"
+declare -r download_bin_url="https://github.com/neovim/neovim/releases/download/${tag_name}/${archive_file_name}"
+declare -r download_sha256_url="https://github.com/neovim/neovim/releases/download/${tag_name}/${archive_file_name}.sha256sum"
 
-curl -Lo "${install_prefix}/${dl_file}" "${download_url}"
+curl -Lo "${install_prefix}/${archive_file_name}" "${download_bin_url}"
+curl -Lo "${install_prefix}/${archive_file_name}.sha256sum" "${download_sha256_url}"
 
+# downloadしたディレクトリで作業
 cd "${install_prefix}"
-tar zxvf "${dl_file}"
-rm "${dl_file}"
+sha256sum -c "${archive_file_name}.sha256sum"
+[[ $? -eq 1 ]] && exit 1
+tar zxf "${archive_file_name}"
+rm "${archive_file_name}" "${archive_file_name}.sha256sum"
 
+# 前のバージョンの物と入れ替え
 [[ -d ${install_prefix}/nvim ]] && rm -rf "${install_prefix}/nvim"
-mv "${install_prefix}/nvim-linux64" "${install_prefix}/nvim"
-rm -rf nvim/lib
-
-echo -e '\n\n\n'
+mv "${install_prefix}/${file_name}" "${install_prefix}/nvim"
+rm -rf nvim/lib # delete treesitter parsers
 
 if [[ $(command -v nvim) ]]; then
   nvim -V1 -v
+  ls -la "${install_prefix}"
   exit 0
 else
   echo "Failure install of neovim."
