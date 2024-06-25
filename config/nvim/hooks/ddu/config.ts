@@ -234,9 +234,9 @@ export class Config extends BaseConfig {
           defaultAction: "open",
           actions: {
             uiCd: async (
-              args: ActionArguments<Params>,
+              { items }: ActionArguments<Params>,
             ): Promise<ActionFlags> => {
-              const action = args.items[0].action as FileActionData;
+              const action = items[0].action as FileActionData;
 
               await denops.call("ddu#ui#do_action", "itemAction", {
                 name: "narrow",
@@ -248,9 +248,9 @@ export class Config extends BaseConfig {
               return Promise.resolve(ActionFlags.None);
             },
             cdOpen: async (
-              args: ActionArguments<Params>,
+              { items }: ActionArguments<Params>,
             ): Promise<ActionFlags> => {
-              const action = args.items[0].action as FileActionData;
+              const action = items[0].action as FileActionData;
               await denops.call("chdir", action.path);
               await denops.cmd("edit .");
 
@@ -274,9 +274,9 @@ export class Config extends BaseConfig {
           defaultAction: "open",
           actions: {
             gitDiff: async (
-              args: ActionArguments<Params>,
+              { items }: ActionArguments<Params>,
             ): Promise<ActionFlags> => {
-              const action = args.items[0].action as FileActionData;
+              const action = items[0].action as FileActionData;
 
               await denops.call("ddu#start", {
                 name: "git:diff",
@@ -295,9 +295,9 @@ export class Config extends BaseConfig {
           defaultAction: "yank",
           actions: {
             diffTree: async (
-              args: ActionArguments<Params>,
+              { items }: ActionArguments<Params>,
             ): Promise<ActionFlags> => {
-              const action = args.items[0].action as GitCommitActionData;
+              const action = items[0].action as GitCommitActionData;
               if (action.kind === "commit") {
                 await denops.call("ddu#start", {
                   name: "git:diff_tree",
@@ -322,9 +322,9 @@ export class Config extends BaseConfig {
           defaultAction: "yank",
           actions: {
             yank: async (
-              args: ActionArguments<Params>,
+              { items }: ActionArguments<Params>,
             ): Promise<ActionFlags> => {
-              const action = args.items[0].action as NvimNotifyActionData;
+              const action = items[0].action as NvimNotifyActionData;
               const notification = action.notification as Notification;
               const message = notification.message.join(" ");
 
