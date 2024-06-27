@@ -1,8 +1,5 @@
-import { Denops } from "https://deno.land/x/denops_std@v6.5.0/mod.ts";
+import type { Entrypoint, Denops } from "https://deno.land/x/denops_std@v6.5.0/mod.ts";
 
-export function main(denops: Denops): Promise<void> {
-  denops.dispatcher = {
-  };
-
-  return Promise.resolve();
+export const main: Entrypoint = (denops: Denops) => {
+  denops.dispatcher = {}
 }
