@@ -36,7 +36,10 @@ vim.opt.ambiwidth = "single"
 vim.opt.autoread = true
 
 -- Use the clipboard on linux systems.
-vim.opt.clipboard = "unnamedplus"
+vim.opt.clipboard = {
+    "unnamed",
+    "unnamedplus",
+}
 
 vim.opt.diffopt:append({
     "internal",
