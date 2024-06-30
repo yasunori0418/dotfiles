@@ -1,136 +1,126 @@
 local joinpath = vim.fs.joinpath
 local cache = tostring(vim.fn.stdpath("cache"))
-local option_table = {
-    -- Use utf-8 to overall encoding.
-    encoding = "utf-8",
+-- Use utf-8 to overall encoding.
+vim.opt.encoding = "utf-8"
 
-    -- Use utf-8 when file write.
-    fileencoding = "utf-8",
+-- Use utf-8 when file write.
+vim.opt.fileencoding = "utf-8"
 
-    -- Use file encodings when loaded.
-    fileencodings = { "utf-8", "sjis", "iso-2022-jp", "euc-jp" },
+-- Use file encodings when loaded.
+vim.opt.fileencodings = { "utf-8", "sjis", "iso-2022-jp", "euc-jp" }
 
-    -- Automatic line feed code recognition.
-    fileformats = { "unix", "dos", "mac" },
+-- Automatic line feed code recognition.
+vim.opt.fileformats = { "unix", "dos", "mac" }
 
-    -- backup.
-    backup = true,
-    backupdir = joinpath(cache, "backup"),
+-- backup.
+vim.opt.backup = true
+vim.opt.backupdir = joinpath(cache, "backup")
 
-    -- swapfile.
-    swapfile = true,
-    directory = joinpath(cache, "swap"),
+-- swapfile.
+vim.opt.swapfile = true
+vim.opt.directory = joinpath(cache, "swap")
 
-    -- UNDOをどうぞ
-    undodir = joinpath(cache, "undo"),
-    undofile = true,
+-- UNDOをどうぞ
+vim.opt.undodir = joinpath(cache, "undo")
+vim.opt.undofile = true
 
-    grepprg = [[rg --vimgrep --no-heading $*]],
-    grepformat = [[%f:%l:%c:%m]],
+vim.opt.grepprg = [[rg --vimgrep --no-heading $*]]
+vim.opt.grepformat = [[%f:%l:%c:%m]]
 
-    -- 早くなるんか…？
-    ttyfast = true,
+-- 早くなるんか…？
+vim.opt.ttyfast = true
 
-    -- East asia ambiguous character width problem.
-    ambiwidth = "single",
+-- East asia ambiguous character width problem.
+vim.opt.ambiwidth = "single"
 
-    autoread = true,
+vim.opt.autoread = true
 
-    -- Use the clipboard on linux systems.
-    clipboard = "unnamedplus",
+-- Use the clipboard on linux systems.
+vim.opt.clipboard = "unnamedplus"
 
-    diffopt = {
-        "internal",
-        "filler",
-        "closeoff",
-        "vertical",
-        "algorithm:histogram",
-        "indent-heuristic",
-        "linematch:60"
-    },
+vim.opt.diffopt:append({
+    "internal",
+    "filler",
+    "closeoff",
+    "vertical",
+    "algorithm:histogram",
+    "indent-heuristic",
+    "linematch:60",
+})
 
-    -- For pum.vim
-    shortmess = "c",
+-- For pum.vim
+vim.opt.shortmess:append("c")
 
-    -- jump momentarily to a matching parenthesis
-    showmatch = true,
-    matchtime = 1,
+-- jump momentarily to a matching parenthesis
+vim.opt.showmatch = true
+vim.opt.matchtime = 1
 
-    -- disable wildmode
-    wildchar = 0,
-    wildcharm = 0,
-    wildmenu = false,
+-- disable wildmode
+vim.opt.wildchar = 0
+vim.opt.wildcharm = 0
+vim.opt.wildmenu = false
 
-    -- Display rows number.
-    number = true,
+-- Display rows number.
+vim.opt.number = true
 
-    -- Display relative rows number.
-    relativenumber = true,
+-- Display relative rows number.
+vim.opt.relativenumber = true
 
-    -- Display current row cursorline.
-    cursorline = true,
+-- Display current row cursorline.
+vim.opt.cursorline = true
 
-    -- disable ruler display.
-    ruler = false,
+-- disable ruler display.
+vim.opt.ruler = false
 
-    -- Smart indent.
-    smartindent = true,
-    autoindent = true,
+-- Smart indent.
+vim.opt.smartindent = true
+vim.opt.autoindent = true
 
-    -- Insert tab with half-width space.
-    expandtab = true,
+-- Insert tab with half-width space.
+vim.opt.expandtab = true
 
-    -- The amount of blank space to insert with each command or smart indent.
-    shiftwidth = 2,
+-- The amount of blank space to insert with each command or smart indent.
+vim.opt.shiftwidth = 2
 
-    -- Tab width with 2 spaces.
-    tabstop = 2,
+-- Tab width with 2 spaces.
+vim.opt.tabstop = 2
 
-    -- Insert a tab with 2 minutes of half-width space.
-    softtabstop = 2,
+-- Insert a tab with 2 minutes of half-width space.
+vim.opt.softtabstop = 2
 
-    -- Highlight search results
-    hlsearch = true,
+-- Highlight search results
+vim.opt.hlsearch = true
 
-    -- Incremental search.
-    -- Search starts when you enter the first character of the search word.
-    incsearch = true,
+-- Incremental search.
+-- Search starts when you enter the first character of the search word.
+vim.opt.incsearch = true
 
-    -- Search is not case sensitive
-    ignorecase = true,
+-- Search is not case sensitive
+vim.opt.ignorecase = true
 
-    -- Searching in lowercase ignores uppercase and lowercase
-    smartcase = true,
+-- Searching in lowercase ignores uppercase and lowercase
+vim.opt.smartcase = true
 
-    -- When the search progresses to the end of the file, search again from the beginning of the file.
-    wrapscan = true,
+-- When the search progresses to the end of the file, search again from the beginning of the file.
+vim.opt.wrapscan = true
 
-    history = 100,
+vim.opt.history = 100
 
-    -- Invisible characters
-    list = true,
+-- Invisible characters
+vim.opt.list = true
 
-    virtualedit = "block",
+vim.opt.virtualedit = "block"
 
-    -- Tab/End line Space/End line/No brake space.
-    listchars = {
-        tab = "»-",
-        space = "･",
-        trail = "･",
-        nbsp = "%",
-        eol = "↲",
-        extends = "»",
-        precedes = "«",
-    },
+-- Tab/End line Space/End line/No brake space.
+vim.opt.listchars = {
+    tab = "»-",
+    space = "･",
+    trail = "･",
+    nbsp = "%",
+    eol = "↲",
+    extends = "»",
+    precedes = "«",
 }
-
-for option_key, option_value in pairs(option_table) do
-    if vim.regex([[diffopt\|shortmess]]):match_str(option_key) then
-        vim.opt[option_key]:append(option_value)
-    else
-        vim.opt[option_key] = option_value
-    end
-end
 
 -- Disable default plugins
 -- Fast Startup Settings!!
