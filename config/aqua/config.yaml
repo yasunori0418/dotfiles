@@ -22,5 +22,5 @@ packages:
 - name: denoland/deno@v1.44.4
 - name: sharkdp/fd@v10.1.0
 - name: junegunn/fzf@0.53.0
-- name: eza-community/eza@v0.18.20
+- name: eza-community/eza@v0.18.21
 - name: golang/go@go1.22.4
