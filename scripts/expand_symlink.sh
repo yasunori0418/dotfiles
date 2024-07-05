@@ -11,3 +11,7 @@ ln -snvf ~/dotfiles/config/* ~/.config/
 if [[ -d /nix && $(command -v devbox) ]]; then
   ln -svf ~/dotfiles/local/share/devbox/global/default/* ~/.local/share/devbox/global/default/
 fi
+
+if [[ $(uname -s) = 'Darwin' ]]; then
+  ln -svf ~/dotfiles/Library/ApplicationSupport/* "$HOME/Library/Application Support"
+fi
