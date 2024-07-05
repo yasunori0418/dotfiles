@@ -15,7 +15,7 @@ function M.setup(config)
 
     config.use_fancy_tab_bar = false
 
-    config.native_macos_fullscreen_mode = true
+    config.native_macos_fullscreen_mode = false -- default
 
     return config
 end
