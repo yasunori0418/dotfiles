@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<array>
+	<dict>
+		<key>bundleIdentifier</key>
+		<string>com.microsoft.powerpoint</string>
+		<key>insertMarkedText</key>
+		<true/>
+	</dict>
+	<dict>
+		<key>bundleIdentifier</key>
+		<string>com.jetbrains</string>
+		<key>insertEmptyString</key>
+		<false/>
+		<key>insertMarkedText</key>
+		<true/>
+		<key>syncInputSource</key>
+		<true/>
+	</dict>
+	<dict>
+		<key>bundleIdentifier</key>
+		<string>com.google.android.studio</string>
+		<key>insertEmptyString</key>
+		<false/>
+		<key>insertMarkedText</key>
+		<true/>
+		<key>syncInputSource</key>
+		<true/>
+	</dict>
+	<dict>
+		<key>bundleIdentifier</key>
+		<string>jp.naver.line.mac</string>
+		<key>insertEmptyString</key>
+		<false/>
+		<key>insertMarkedText</key>
+		<true/>
+	</dict>
+</array>
+</plist>
