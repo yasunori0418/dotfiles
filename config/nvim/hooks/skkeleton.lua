@@ -6,7 +6,7 @@ vim.keymap.set({ "i", "c" }, [[<C-j>]], [[<Plug>(skkeleton-toggle)]], { noremap 
 local skkeleton_autocmds = vim.api.nvim_create_augroup("skkeleton_autocmds", { clear = true })
 local skkeleton = require("user.plugins.skkeleton")
 
-local skkeleton_dir = tostring(vim.fn.expand("~/.skk"))
+local skkeleton_dir = vim.fn.expand("~/.skk") --[[@as string]]
 if vim.fn.isdirectory(skkeleton_dir) == 0 then
     vim.fn.mkdir(skkeleton_dir)
 end
