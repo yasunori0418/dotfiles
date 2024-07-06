@@ -1,6 +1,11 @@
 -- lua_add {{{
 local opt = { noremap = true }
-vim.g.previm_open_cmd = "google-chrome-stable"
+if vim.uv.os_uname().sysname == "Darwin" then
+    vim.g.previm_open_cmd = "open"
+end
+if vim.uv.os_uname().sysname == "Linux" then
+    vim.g.previm_open_cmd = "google-chrome-stable"
+end
 require("user.utils").keymaps_set({
     { mode = "n", lhs = [[ p]], rhs = [[<Plug>(previm)]], opts = {} },
     {
