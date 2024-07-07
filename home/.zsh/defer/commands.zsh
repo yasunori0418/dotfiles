@@ -1,8 +1,20 @@
 # Custom cd command
-function custom_cd() {
+custom_cd ()
+{
   \cd $@ ; cc la
 }
 
-function git_root() {
-  cd `git root`
+git_root ()
+{
+  cd $(git root)
+}
+
+git_branch_point ()
+{
+  local branch_name="${@}"
+  local tag_name="${branch_name}.stump"
+  readonly tag_name branch_name
+  git tag -am "created_at: $(date +%Y/%m/%d\ %H:%M:%S)" ${tag_name}
+  git switch -c ${branch_name}
+}
 }
