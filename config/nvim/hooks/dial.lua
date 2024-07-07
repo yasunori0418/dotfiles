@@ -130,6 +130,8 @@ config.augends:register_group({
             cyclic = true,
         }),
         augend.semver.alias.semver,
+        augend.constant.alias.Alpha,
+        augend.constant.alias.alpha,
     },
     case = {
         augend.case.new({
