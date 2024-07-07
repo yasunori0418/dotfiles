@@ -6,7 +6,7 @@ import {
   KeychronK8,
 } from "./devices.ts";
 
-writeToProfile("Test", [
+writeToProfile("Default", [
   disableBuiltInKeyboard(),
   swapCapsLockToCtrl(),
 ]);
