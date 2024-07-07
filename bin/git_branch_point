@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+
+set -euo pipefail
+
+declare -r branch_name="${1}"
+declare -r tag_name="${branch_name}.stump"
+git tag -am "created_at: $(date +%Y/%m/%d\ %H:%M:%S)" "${tag_name}"
+git switch -c "${branch_name}"

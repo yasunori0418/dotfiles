@@ -1,0 +1,14 @@
+#!/usr/bin/env bash
+
+set -euo pipefail
+
+declare -r rebase_point="$1"
+declare -r stump_tag="$2.stump"
+declare -r target_branch="$2"
+rebase_hash="$(git hash "${rebase_point}")"
+readonly rebase_hash
+# https://qiita.com/sotarok/items/07c6b2cca5ed2f9a53a6
+# git rebase --onto どこへ($rebase_point) どこから($stump_tag) どのブランチを($target_branch)
+git rebase --onto "${rebase_point} ${stump_tag} ${target_branch}"
+git tag -d "${stump_tag}"
+git tag -am "created_at: $(date +%Y/%m/%d\ %H:%M:%S)" "${stump_tag}" "${rebase_hash}"
