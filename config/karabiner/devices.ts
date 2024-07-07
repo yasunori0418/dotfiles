@@ -14,7 +14,7 @@ import {
   numberKeyCodes,
   type PcKeyboardKeyCode,
   pcKeyboardKeyCodes,
-} from "./deps.ts";
+} from "karabiner_ts";
 
 export const AppleBuiltInKeyboard: DeviceIdentifier = {
   vendor_id: 1452,

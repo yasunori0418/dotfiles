@@ -1,4 +1,4 @@
-import { condition, map, rule, writeToProfile } from "./deps.ts";
+import * as k from "karabiner_ts";
 import {
   AppleBuiltInKeyboard,
   appleBuiltInKeyboardKeyCodes,
@@ -6,29 +6,29 @@ import {
   KeychronK8,
 } from "./devices.ts";
 
-writeToProfile("Default", [
+k.writeToProfile("Default", [
   disableBuiltInKeyboard(),
   swapCapsLockToCtrl(),
 ]);
 
 function swapCapsLockToCtrl() {
-  return rule("swapping caps_lock and left_control")
-    .condition(condition.ifDevice([AppleBuiltInKeyboard, KeychronK8]))
+  return k.rule("swapping caps_lock and left_control")
+    .condition(k.ifDevice([AppleBuiltInKeyboard, KeychronK8]))
     .manipulators([
-      map("caps_lock").to("left_control"),
-      map("left_control").to("caps_lock"),
+      k.map("caps_lock").to("left_control"),
+      k.map("left_control").to("caps_lock"),
     ]);
 }
 
 function disableBuiltInKeyboard() {
   const disableMappingRules = appleBuiltInKeyboardKeyCodes.map((keyCode) => {
-    return map(keyCode).toNone();
+    return k.map(keyCode).toNone();
   });
-  return rule(
+  return k.rule(
     "disable built in apple keyboard when connection another keyboards.",
   )
     .condition(
-      condition.ifDevice(AppleBuiltInKeyboard),
-      condition.ifDeviceExists([KeychronK8, HHKBProfessionalHybridTypeS]),
+      k.ifDevice(AppleBuiltInKeyboard),
+      k.ifDeviceExists([KeychronK8, HHKBProfessionalHybridTypeS]),
     ).manipulators(disableMappingRules);
 }
