@@ -1,6 +1,4 @@
 export {
-  ifDevice,
-  ifDeviceExists,
   map,
   rule,
   writeToProfile,
