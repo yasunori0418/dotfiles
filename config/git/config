@@ -28,9 +28,7 @@
 	root = rev-parse --show-superproject-working-tree --show-toplevel
 	patch = -c core.pager= diff
 	obj = cat-file -p
-	hash = show --format="%H" --no-patch
-	swc = !git_branch_point
-	rebase-onto = !git_rebase_onto
+	hash = show --format=%H --no-patch
 [merge]
 	ff = false
 	conflictstyle = diff3
