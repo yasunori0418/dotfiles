@@ -29,6 +29,7 @@
 	patch = -c core.pager= diff
 	obj = cat-file -p
 	hash = show --format=%H --no-patch
+	rebase-onto = !git_rebase_onto
 [merge]
 	ff = false
 	conflictstyle = diff3
