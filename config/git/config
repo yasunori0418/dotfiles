@@ -30,6 +30,7 @@
 	obj = cat-file -p
 	hash = show --format="%H" --no-patch
 	swc = !git_branch_point
+	rebase-onto = !git_rebase_onto
 [merge]
 	ff = false
 	conflictstyle = diff3
