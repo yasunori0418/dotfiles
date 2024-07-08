@@ -19,6 +19,8 @@ function swapCapsLockToCtrl() {
     .manipulators([
       k.map("caps_lock").to("left_control"),
       k.map("left_control").to("caps_lock"),
+      k.map({ key_code: "caps_lock", modifiers: { mandatory: ["left_shift"] } })
+        .toNone(),
     ]);
 }
 
