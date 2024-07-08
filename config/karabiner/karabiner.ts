@@ -8,8 +8,22 @@ import {
 } from "./devices.ts";
 
 k.writeToProfile("Default", [
+  disableBuiltInKeyboard(),
   startupWezterm(),
 ]);
+
+function disableBuiltInKeyboard() {
+  const disableMappingRules = appleBuiltInKeyboardKeyCodes.map((keyCode) => {
+    return k.map(keyCode).toNone();
+  });
+  return k.rule(
+    "disable built in apple keyboard when connection another keyboards.",
+  )
+    .condition(
+      k.ifDevice(AppleBuiltInKeyboard),
+      k.ifDeviceExists([KeychronK8, HHKBProfessionalHybridTypeS]),
+    ).manipulators(disableMappingRules);
+}
 
 function startupWezterm() {
   const hideOrStartWezterm = k.withMapper(
