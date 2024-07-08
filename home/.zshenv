@@ -41,7 +41,7 @@ PATH="${XDG_DATA_HOME}/aquaproj-aqua/bin:${PATH}"
 export DOCKER_HOST
 
 # ssh-agent socket
-[[ $(uname -s) = 'Darwin' ]] && eval $(ssh-agent)
+# [[ $(uname -s) = 'Darwin' ]] && eval $(ssh-agent)
 [[ $(uname -s) = 'Linux' ]] && export SSH_AUTH_SOCK="${XDG_RUNTIME_DIR}/ssh-agent.socket"
 
 export PATH
