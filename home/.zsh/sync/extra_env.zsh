@@ -28,7 +28,7 @@ fi
 # volta node version manager
 VOLTA_HOME="${HOME}/.volta"
 if [[ -d ${VOLTA_HOME} ]]; then
-  PATH="${PATH}:${VOLTA_HOME}/bin"
+  PATH="${VOLTA_HOME}/bin:${PATH}"
   export VOLTA_HOME
 fi
 
