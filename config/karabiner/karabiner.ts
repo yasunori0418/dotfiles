@@ -1,5 +1,5 @@
 import * as k from "karabiner_ts";
-import { toHideApp } from "./utils.ts";
+//import { toHideApp } from "./utils.ts";
 import {
   AppleBuiltInKeyboard,
   appleBuiltInKeyboardKeyCodes,
@@ -9,7 +9,7 @@ import {
 
 k.writeToProfile("Default", [
   disableBuiltInKeyboard(),
-  startupWezterm(),
+  //startupWezterm(),
 ]);
 
 function disableBuiltInKeyboard() {
@@ -25,29 +25,29 @@ function disableBuiltInKeyboard() {
     ).manipulators(disableMappingRules);
 }
 
-function startupWezterm() {
-  const hideOrStartWezterm = k.withMapper(
-    [
-      toHideApp("WezTerm"),
-      k.toApp("WezTerm"),
-    ] as const,
-  );
-  const weztermStarter = hideOrStartWezterm((event, i) =>
-    k.withCondition(
-      ...[k.ifApp("wezterm")].map((c) => i === 0 ? c : c.unless()),
-    )([
-      k.map({
-        key_code: "comma",
-        modifiers: { mandatory: ["control"] },
-      }).to(event),
-      //i3 like
-      //k.map({
-      //  key_code: "return_or_enter",
-      //  modifiers: { mandatory: ["command"] }
-      //})
-    ])
-  );
-  return k.rule("toggle wezterm by Command+return").manipulators([
-    weztermStarter,
-  ]);
-}
+//function startupWezterm() {
+//  const hideOrStartWezterm = k.withMapper(
+//    [
+//      toHideApp("WezTerm"),
+//      k.toApp("WezTerm"),
+//    ] as const,
+//  );
+//  const weztermStarter = hideOrStartWezterm((event, i) =>
+//    k.withCondition(
+//      ...[k.ifApp("wezterm")].map((c) => i === 0 ? c : c.unless()),
+//    )([
+//      k.map({
+//        key_code: "comma",
+//        modifiers: { mandatory: ["control"] },
+//      }).to(event),
+//      //i3 like
+//      //k.map({
+//      //  key_code: "return_or_enter",
+//      //  modifiers: { mandatory: ["command"] }
+//      //})
+//    ])
+//  );
+//  return k.rule("toggle wezterm by Command+return").manipulators([
+//    weztermStarter,
+//  ]);
+//}
