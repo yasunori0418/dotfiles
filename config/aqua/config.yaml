@@ -26,3 +26,4 @@ packages:
 - name: golang/go@go1.22.5
 - name: xo/usql@v0.19.3
 - name: charmbracelet/glow@v1.5.1
+- name: volta-cli/volta@v1.1.1

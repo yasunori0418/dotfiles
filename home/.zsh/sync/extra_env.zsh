@@ -25,6 +25,13 @@ if [[ -d ${bun_path} ]]; then
   PATH=${PATH}:${bun_path}/bin
 fi
 
+# volta node version manager
+VOLTA_HOME="${HOME}/.volta"
+if [[ -d ${VOLTA_HOME} ]]; then
+  PATH="${PATH}:${VOLTA_HOME}/bin"
+  export VOLTA_HOME
+fi
+
 # npm package
 npm_path="${HOME}/node_modules/.bin"
 if [[ -d ${npm_path} ]]; then
