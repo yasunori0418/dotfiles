@@ -42,7 +42,15 @@ yabai -m config top_padding 10
 yabai -m config bottom_padding 10
 yabai -m config left_padding 10
 yabai -m config right_padding 10
-yabai -m config window_gap 05
+yabai -m config window_gap 2
 yabai -m config auto_balance on
+
+yabai -m space 1 --label code
+yabai -m space 2 --label shell
+yabai -m space 3 --label web
+yabai -m space 4 --label social
+yabai -m space 5 --label free
+
+yabai -m rule --add app="^Google Chrome$" space=web
 
 echo "yabai configuration loaded.."
