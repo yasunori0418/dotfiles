@@ -13,7 +13,7 @@ sudo yabai --load-sa
 
 # global settings
 yabai -m config debug_output on
-yabai -m config external_bar all:20:20
+yabai -m config external_bar all:30:0
 yabai -m config menubar_opacity 1.0
 yabai -m config mouse_follows_focus on
 yabai -m config focus_follows_mouse off
