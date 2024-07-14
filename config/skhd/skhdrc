@@ -137,3 +137,8 @@ shift + alt - space : yabai -m window --toggle float && yabai -m window --grid 4
 
 alt - e : yabai -m window --toggle split
 
+# restart yabai
+# from https://github.com/koekeishiya/yabai/wiki/Tips-and-tricks
+# (2022-10-11 21:24)
+ctrl + alt + cmd - r : launchctl kickstart -k "gui/${UID}/com.koekeishiya.yabai"
+
