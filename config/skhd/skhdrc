@@ -142,3 +142,5 @@ alt - e : yabai -m window --toggle split
 # (2022-10-11 21:24)
 ctrl + alt + cmd - r : launchctl kickstart -k "gui/${UID}/com.koekeishiya.yabai"
 
+# start wezterm
+cmd - return : /Applications/WezTerm.app/Contents/MacOS/wezterm-gui
