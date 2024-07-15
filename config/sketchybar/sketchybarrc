@@ -1,3 +1,5 @@
+#!/usr/bin/env bash
+
 ### Font ###
 Font="Moralerspace Argon NF"
 
@@ -6,36 +8,36 @@ Font="Moralerspace Argon NF"
 ## Polar Night ##
 nord00="0x2E3440" #2E3440
 nord01="0x3B4252" #3B4252
-nord02="0x434C5E" #434C5E
+# nord02="0x434C5E" #434C5E
 nord03="0x4C566A" #4C566A
 ## Snow Strom ##
 nord04="0xD8DEE9" #D8DEE9
-nord05="0xE5E9F0" #E5E9F0
-nord06="0xECEFF4" #ECEFF4
+# nord05="0xE5E9F0" #E5E9F0
+# nord06="0xECEFF4" #ECEFF4
 ## Frost ##
-nord07="0x8FBCBB" #8FBCBB
-nord08="0x88C0D0" #88C0D0
-nord09="0x81A1C1" #81A1C1
-nord10="0x5E81AC" #5E81AC
+# nord07="0x8FBCBB" #8FBCBB
+# nord08="0x88C0D0" #88C0D0
+# nord09="0x81A1C1" #81A1C1
+# nord10="0x5E81AC" #5E81AC
 ## Aurora ##
-nord11="0xBF616A" #BF616A
-nord12="0xD08770" #D08770
-nord13="0xEBCB8B" #EBCB8B
-nord14="0xA3BE8C" #A3BE8C
-nord15="0xB48EAD" #B48EAD
+# nord11="0xBF616A" #BF616A
+# nord12="0xD08770" #D08770
+# nord13="0xEBCB8B" #EBCB8B
+# nord14="0xA3BE8C" #A3BE8C
+# nord15="0xB48EAD" #B48EAD
 
 # alpha value
 # refer: https://qiita.com/CUTBOSS/items/6166cf79b9f18c45a010
-alpha000="00"
-alpha010="1A"
-alpha020="33"
-alpha030="4D"
-alpha040="66"
+# alpha000="00"
+# alpha010="1A"
+# alpha020="33"
+# alpha030="4D"
+# alpha040="66"
 alpha050="80"
-alpha060="99"
-alpha070="B3"
+# alpha060="99"
+# alpha070="B3"
 alpha080="CC"
-alpha090="E6"
+# alpha090="E6"
 alpha100="FF"
 
 # This is a demo config to showcase some of the most important commands.
@@ -107,7 +109,7 @@ sketchybar --default "${default[@]}"
 SPACE_ICONS=("1| " "2| " "3| " "4| " "5| " "6| " "7|󰎄 " "8| ")
 for i in "${!SPACE_ICONS[@]}"
 do
-  sid="$(($i+1))"
+  sid="$((i+1))"
   space=(
     space="$sid"
     icon="${SPACE_ICONS[i]}"
@@ -155,3 +157,5 @@ sketchybar --add item clock right \
 
 ##### Force all scripts to run the first time (never do this in a script) #####
 sketchybar --update
+
+# vim:ft=bash
