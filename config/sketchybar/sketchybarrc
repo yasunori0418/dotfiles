@@ -26,6 +26,8 @@ nord04="0xD8DEE9" #D8DEE9
 # nord14="0xA3BE8C" #A3BE8C
 # nord15="0xB48EAD" #B48EAD
 
+SEESROUGH="0x00000000"
+
 # alpha value
 # refer: https://qiita.com/CUTBOSS/items/6166cf79b9f18c45a010
 # alpha000="00"
@@ -62,7 +64,7 @@ bar_property=(
   margin=0
   y_offset=0
   corner_radius=0
-  border_width=1
+  border_width=3
   blur_radius=30
   padding_left=0
   padding_right=0
