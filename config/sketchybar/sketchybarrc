@@ -15,10 +15,10 @@ nord04="D8DEE9" #D8DEE9
 # nord05="E5E9F0" #E5E9F0
 # nord06="ECEFF4" #ECEFF4
 ## Frost ##
-# nord07="8FBCBB" #8FBCBB
+nord07="8FBCBB" #8FBCBB
 # nord08="88C0D0" #88C0D0
 # nord09="81A1C1" #81A1C1
-# nord10="5E81AC" #5E81AC
+nord10="5E81AC" #5E81AC
 ## Aurora ##
 # nord11="BF616A" #BF616A
 # nord12="D08770" #D08770
@@ -35,7 +35,7 @@ SEESROUGH="0x00000000"
 # alpha020="33"
 # alpha030="4D"
 # alpha040="66"
-alpha050="80"
+# alpha050="80"
 # alpha060="99"
 # alpha070="B3"
 alpha080="CC"
@@ -58,7 +58,7 @@ PLUGIN_DIR="$CONFIG_DIR/plugins"
 
 bar_property=(
   color="0x${alpha080}${nord01}"
-  border_color="0x${alpha050}${nord00}"
+  border_color="0x${alpha100}${nord00}"
   position=top
   height=40
   margin=0
@@ -94,14 +94,78 @@ default=(
   label.font.family="${Font}"
   label.font.style=Bold
   label.font.size=14.0
-  icon.color="0x${alpha100}${nord04}"
-  label.color="0x${alpha100}${nord04}"
+  icon.color="0x${alpha080}${nord04}"
+  label.color="0x${alpha080}${nord04}"
   icon.padding_left=4
   icon.padding_right=4
   label.padding_left=4
   label.padding_right=4
 )
 sketchybar --default "${default[@]}"
+
+##### Adding Left Items #####
+# We add some regular items to the left side of the bar, where
+# only the properties deviating from the current defaults need to be set
+
+apple=(
+  icon=" "
+  icon.drawing=on
+  icon.font.family="${Font}"
+  icon.font.style=Bold
+  icon.font.size=20.0
+  icon.color="0x${alpha100}${nord04}"
+  icon.y_offset=2
+  icon.padding_left=5
+  icon.padding_right=5
+  icon.background.color="${SEESROUGH}"
+  background.color="${SEESROUGH}"
+  background.border_color="${SEESROUGH}"
+  click_script="sketchybar --set \$NAME popup.drawing=toggle"
+  popup.background.color="0x${alpha080}${nord07}"
+  popup.background.border_width=2
+  popup.background.corner_radius=10
+  popup.background.border_color="0x${alpha080}${nord10}"
+)
+apple_popup=(
+  icon.color="0x${alpha100}${nord03}"
+  icon.drawing=on
+  icon.align=left
+  label.color="0x${alpha100}${nord03}"
+  label.drawing=on
+  label.align=left
+)
+preference=(
+  icon=" "
+  label="Preferences"
+  click_script="open -a 'System Preferences'; sketchybar --set apple popup.drawing=off"
+)
+activity=(
+  icon=" "
+  label="Activity Monitor"
+  click_script="open -a 'Activity Monitor'; sketchybar --set apple popup.drawing=off"
+)
+shutdown=(
+  icon=" "
+  label="Shutdown"
+  click_script="osascript -e  'tell app \"loginwindow\" to «event aevtrsdn»'; sketchybar --set apple popup.drawing=off"
+)
+reboot=(
+  icon=" "
+  label="Reboot"
+  click_script="osascript -e 'tell app \"loginwindow\" to «event aevtrrst»'; sketchybar --set apple popup.drawing=off"
+)
+lock=(
+  icon=" "
+  label="Lock Screen"
+  click_script="pmset displaysleepnow; sketchybar --set apple popup.drawing=off"
+)
+sketchybar \
+  --add item apple left --set apple "${apple[@]}" \
+  --add item apple.preference popup.apple --set apple.preference "${apple_popup[@]}" "${preference[@]}" \
+  --add item apple.activity   popup.apple --set apple.activity   "${apple_popup[@]}" "${activity[@]}" \
+  --add item apple.shutdown   popup.apple --set apple.shutdown   "${apple_popup[@]}" "${shutdown[@]}" \
+  --add item apple.reboot     popup.apple --set apple.reboot     "${apple_popup[@]}" "${reboot[@]}" \
+  --add item apple.lock       popup.apple --set apple.lock       "${apple_popup[@]}" "${lock[@]}"
 
 ##### Adding Mission Control Space Indicators #####
 # Let's add some mission control spaces:
