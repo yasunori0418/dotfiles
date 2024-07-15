@@ -1,3 +1,6 @@
+### Font ###
+Font="Moralerspace Argon NF"
+
 ### nord colorscheme ###
 # refer: https://www.nordtheme.com/docs/colors-and-palettes
 ## Polar Night ##
@@ -81,10 +84,14 @@ sketchybar --bar "${bar_property[@]}"
 default=(
   padding_left=5
   padding_right=5
-  icon.font="Hack Nerd Font:Bold:17.0"
-  label.font="Hack Nerd Font:Bold:14.0"
-  icon.color=0xffffffff
-  label.color=0xffffffff
+  icon.font.family="${Font}"
+  icon.font.style=Bold
+  icon.font.size=17.0
+  label.font.family="${Font}"
+  label.font.style=Bold
+  label.font.size=14.0
+  icon.color="${nord04}${alpha100}"
+  label.color="${nord04}${alpha100}"
   icon.padding_left=4
   icon.padding_right=4
   label.padding_left=4
