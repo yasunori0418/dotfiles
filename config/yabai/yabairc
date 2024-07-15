@@ -52,5 +52,6 @@ yabai -m space 4 --label social
 yabai -m space 5 --label free
 
 yabai -m rule --add app="^Google Chrome$" space=web
+yabai -m rule --add app="^Slack$" space=social
 
 echo "yabai configuration loaded.."
