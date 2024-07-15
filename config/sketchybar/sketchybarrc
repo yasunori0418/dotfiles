@@ -49,7 +49,29 @@ PLUGIN_DIR="$CONFIG_DIR/plugins"
 # If you are looking for other colors, see the color picker:
 # https://felixkratz.github.io/SketchyBar/config/tricks#color-picker
 
-sketchybar --bar position=top height=40 blur_radius=30 color=0x40000000
+bar_property=(
+  color="${nord01}${alpha080}"
+  border_color="${nord00}${alpha050}"
+  position=top
+  height=40
+  margin=0
+  y_offset=0
+  corner_radius=0
+  border_width=1
+  blur_radius=30
+  padding_left=0
+  padding_right=0
+  notch_width=200
+  notch_offset=0
+  display=all
+  hidden=off
+  topmost=off
+  sticky=on
+  font_smoothing=on
+  shadow=on
+)
+
+sketchybar --bar "${bar_property[@]}"
 
 ##### Changing Defaults #####
 # We now change some default values, which are applied to all further items.
