@@ -6,25 +6,25 @@ Font="Moralerspace Argon NF"
 ### nord colorscheme ###
 # refer: https://www.nordtheme.com/docs/colors-and-palettes
 ## Polar Night ##
-nord00="0x2E3440" #2E3440
-nord01="0x3B4252" #3B4252
-# nord02="0x434C5E" #434C5E
-nord03="0x4C566A" #4C566A
+nord00="2E3440" #2E3440
+nord01="3B4252" #3B4252
+# nord02="434C5E" #434C5E
+nord03="4C566A" #4C566A
 ## Snow Strom ##
-nord04="0xD8DEE9" #D8DEE9
-# nord05="0xE5E9F0" #E5E9F0
-# nord06="0xECEFF4" #ECEFF4
+nord04="D8DEE9" #D8DEE9
+# nord05="E5E9F0" #E5E9F0
+# nord06="ECEFF4" #ECEFF4
 ## Frost ##
-# nord07="0x8FBCBB" #8FBCBB
-# nord08="0x88C0D0" #88C0D0
-# nord09="0x81A1C1" #81A1C1
-# nord10="0x5E81AC" #5E81AC
+# nord07="8FBCBB" #8FBCBB
+# nord08="88C0D0" #88C0D0
+# nord09="81A1C1" #81A1C1
+# nord10="5E81AC" #5E81AC
 ## Aurora ##
-# nord11="0xBF616A" #BF616A
-# nord12="0xD08770" #D08770
-# nord13="0xEBCB8B" #EBCB8B
-# nord14="0xA3BE8C" #A3BE8C
-# nord15="0xB48EAD" #B48EAD
+# nord11="BF616A" #BF616A
+# nord12="D08770" #D08770
+# nord13="EBCB8B" #EBCB8B
+# nord14="A3BE8C" #A3BE8C
+# nord15="B48EAD" #B48EAD
 
 SEESROUGH="0x00000000"
 
@@ -57,8 +57,8 @@ PLUGIN_DIR="$CONFIG_DIR/plugins"
 # https://felixkratz.github.io/SketchyBar/config/tricks#color-picker
 
 bar_property=(
-  color="${nord01}${alpha080}"
-  border_color="${nord00}${alpha050}"
+  color="0x${alpha080}${nord01}"
+  border_color="0x${alpha050}${nord00}"
   position=top
   height=40
   margin=0
@@ -94,8 +94,8 @@ default=(
   label.font.family="${Font}"
   label.font.style=Bold
   label.font.size=14.0
-  icon.color="${nord04}${alpha100}"
-  label.color="${nord04}${alpha100}"
+  icon.color="0x${alpha100}${nord04}"
+  label.color="0x${alpha100}${nord04}"
   icon.padding_left=4
   icon.padding_right=4
   label.padding_left=4
@@ -116,7 +116,7 @@ for i in "${!SPACE_ICONS[@]}" ; do
     icon="${SPACE_ICONS[i]}"
     icon.padding_left=5
     icon.padding_right=5
-    background.color="${nord03}${alpha100}"
+    background.color="0x${alpha100}${nord03}"
     background.corner_radius=5
     background.height=25
     label.drawing=off
