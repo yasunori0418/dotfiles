@@ -7,6 +7,10 @@ snippets:
     keyword: gc
     snippet: git commit
 
+  - name: git commit --amend
+    keyword: gcam
+    snippet: git commit --amend
+
   - name: git commit --all
     keyword: gca
     snippet: git commit --all
