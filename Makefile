@@ -15,6 +15,13 @@ nvim-night: ## download neovim at version nightly build.
 nvim-stable: ## download neovim at version stable build.
 	@./scripts/nvim_dl.sh
 
+vscode-setup: ## install extensions and expand settings.json for mac or linux.
+	@./scripts/vscode-setup.sh
+
+vscode-ext: ## update installed vscode extensions list.
+	@code --list-extensions > ${HOME}/dotfiles/vscode/extensions.txt
+	@cat ${HOME}/dotfiles/vscode/extensions.txt
+
 true-color: ## 24-bit-color.sh
 	@curl -s \
 	https://gist.githubusercontent.com/lifepillar/09a44b8cf0f9397465614e622979107f/raw/24-bit-color.sh \
