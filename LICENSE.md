@@ -6,9 +6,12 @@ A. This software is "Everyone'sWare". It means:
   the author.
 
   A-1. Freeware. No fee is required.
+
   A-2. You can freely redistribute this software.
+
   A-3. You can freely modify this software. And the source
       may be used in any software with no limitation.
+
   A-4. When you release a modified version to public, you
       must publish it with your name.
 
@@ -31,8 +34,11 @@ A. 本ソフトウェアは Everyone'sWare です。このソフトを手にし�
    ご自分の作ったものを扱うのと同じように、自由に利用することが出来ます。
 
   A-1. フリーウェアです。作者からは使用料等を要求しません。
+
   A-2. 有料無料や媒体の如何を問わず、自由に転載・再配布できます。
+
   A-3. いかなる種類の 改変・他プログラムでの利用 を行っても構いません。
+
   A-4. 変更したものや部分的に使用したものは、あなたのものになります。
        公開する場合は、あなたの名前の下で行って下さい。
 
