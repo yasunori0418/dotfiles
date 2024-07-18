@@ -12,6 +12,9 @@ vim.opt.fileencodings = { "utf-8", "sjis", "iso-2022-jp", "euc-jp" }
 -- Automatic line feed code recognition.
 vim.opt.fileformats = { "unix", "dos", "mac" }
 
+-- OSのIMEを無効化できる～やったー！
+vim.opt.imdisable = true
+
 -- backup.
 vim.opt.backup = true
 vim.opt.backupdir = joinpath(cache, "backup")
