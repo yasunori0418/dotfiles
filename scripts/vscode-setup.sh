@@ -2,6 +2,8 @@
 
 set -euo pipefail
 
+[[ ! $(command -v code) ]] && echo "Not installed Visual Studio Code!" && exit 1
+
 timestamp=$(date +%Y%m%d%H%M%S)
 readonly timestamp
 declare -r VSCODE_CONF="${HOME}/dotfiles/vscode"
@@ -12,8 +14,6 @@ declare -r ERR_LOG="${VSCODE_CONF}/logs/install_extensions-${timestamp}.err.log"
 
 declare -r LINUX="${XDG_CONFIG_HOME}/Code/User"
 declare -r MAC="${HOME}/Library/Application Support/Code/User"
-
-[[ ! $(command -v code) ]] && echo "Not installed Visual Studio Code!" && exit 1
 
 echo "${timestamp} Execute : code --install-extension {extension_name} --force"
 while IFS= read -r line; do
