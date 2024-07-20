@@ -12,7 +12,7 @@ declare -r SETTINGS_JSON="${VSCODE_CONF}/settings.json"
 declare -r OUT_LOG="${VSCODE_CONF}/logs/install_extensions-${timestamp}.out.log"
 declare -r ERR_LOG="${VSCODE_CONF}/logs/install_extensions-${timestamp}.err.log"
 
-declare -r LINUX="${XDG_CONFIG_HOME}/Code/User"
+declare -r LINUX="${HOME}/.config/Code/User"
 declare -r MAC="${HOME}/Library/Application Support/Code/User"
 
 echo "${timestamp} Execute : code --install-extension {extension_name} --force"
