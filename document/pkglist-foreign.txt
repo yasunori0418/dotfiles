@@ -3,6 +3,7 @@ cantata
 docker-rootless-extras
 downgrade
 etcher-bin
+git-remote-codecommit
 google-chrome
 gyazo
 lemonade-git
@@ -22,6 +23,7 @@ ttf-cica
 ttf-font-icons
 ttf-hackgen
 ttf-moralerspace
+visual-studio-code-bin
 xfce-polkit
 xremap-x11-bin
 yay
