@@ -1,23 +1,23 @@
 [Hotkey]
-# トリガーキーを押すたびに切り替える
+# Enumerate when press trigger key repeatedly
 EnumerateWithTriggerKeys=True
-# 次の入力メソッドに切り替える
+# Enumerate Input Method Forward
 EnumerateForwardKeys=
-# 前の入力メソッドに切り替える
+# Enumerate Input Method Backward
 EnumerateBackwardKeys=
-# 切り替え時は第1入力メソッドをスキップする
+# Skip first input method while enumerating
 EnumerateSkipFirst=True
-# デフォルトの前ページ
+# Default Previous page
 PrevPage=
-# デフォルトの次ページ
+# Default Next page
 NextPage=
-# デフォルトの前候補
+# Default Previous Candidate
 PrevCandidate=
-# デフォルトの次候補
+# Default Next Candidate
 NextCandidate=
 
 [Hotkey/TriggerKeys]
-0=Control+space
+0=Alt+space
 
 [Hotkey/AltTriggerKeys]
 0=Control+Control_R
@@ -38,25 +38,27 @@ NextCandidate=
 0=Control+Alt+P
 
 [Behavior]
-# デフォルトで有効にする
+# Active By Default
 ActiveByDefault=True
-# 入力状態を共有する
+# Reset state on Focus In
+resetStateWhenFocusIn=No
+# Share Input State
 ShareInputState=No
-# アプリケーションにプリエディットを表示する
+# Show preedit in application
 PreeditEnabledByDefault=True
-# 入力メソッドを切り替える際に入力メソッドの情報を表示する
+# Show Input Method Information when switch input method
 ShowInputMethodInformation=True
-# フォーカスを変更する際に入力メソッドの情報を表示する
+# Show Input Method Information when changing focus
 showInputMethodInformationWhenFocusIn=True
-# 入力メソッドの情報をコンパクトに表示する
+# Show compact input method information
 CompactInputMethodInformation=True
-# 第1入力メソッドの情報を表示する
+# Show first input method information
 ShowFirstInputMethodInformation=True
-# デフォルトのページサイズ
+# Default page size
 DefaultPageSize=5
-# XKB オプションより優先する
+# Override Xkb Option
 OverrideXkbOption=False
-# カスタム XKB オプション
+# Custom Xkb Option
 CustomXkbOption=ctrl:swapcaps
 # Force Enabled Addons
 EnabledAddons=
@@ -64,4 +66,10 @@ EnabledAddons=
 DisabledAddons=
 # Preload input method to be used by default
 PreloadInputMethod=True
+# Allow input method in the password field
+AllowInputMethodForPassword=False
+# Show preedit text when typing password
+ShowPreeditForPassword=False
+# Interval of saving user data in minutes
+AutoSavePeriod=30
 
