@@ -8,7 +8,7 @@
 #   - all
 registries:
 - type: standard
-  ref: v4.206.0 # renovate: depName=aquaproj/aqua-registry
+  ref: v4.207.0 # renovate: depName=aquaproj/aqua-registry
 packages:
 - name: rossmacarthur/sheldon@0.7.4
 - name: jdx/mise@v2024.7.4
@@ -19,7 +19,7 @@ packages:
 - name: x-motemen/ghq@v1.6.2
 - name: oven-sh/bun@bun-v1.1.20
 - name: dandavison/delta@0.17.0
-- name: denoland/deno@v1.45.2
+- name: denoland/deno@v1.45.3
 - name: sharkdp/fd@v10.1.0
 - name: junegunn/fzf@v0.54.1
 - name: eza-community/eza@v0.18.22
