@@ -31,8 +31,8 @@ efm_configs.setup({
             { kind = "linters", name = "actionlint" },
         },
         php = {
-            { kind = "linters", name = "phpstan" },
-            { kind = "formatters", name = "pint" },
+            { kind = "linters", name = "phpcs" },
+            { kind = "formatters", name = "phpcbf" },
         },
         dockerfile = {
             { kind = "linters", name = "hadolint" },
