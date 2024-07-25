@@ -90,8 +90,8 @@ alt - 5 : yabai -m space --focus 5
 alt - 6 : yabai -m space --focus 6
 alt - 7 : yabai -m space --focus 7
 alt - 8 : yabai -m space --focus 8
-alt - 0 : yabai -m space --focus prev
-alt - 9 : yabai -m space --focus next
+alt - 9 : yabai -m space --focus prev
+alt - 0 : yabai -m space --focus next
 
 # move window
 shift + alt - h : yabai -m window --warp west
@@ -107,8 +107,8 @@ shift + alt - 5 : yabai -m window --space 5
 shift + alt - 6 : yabai -m window --space 6
 shift + alt - 7 : yabai -m window --space 7
 shift + alt - 8 : yabai -m window --space 8
-shift + alt - 0 : yabai -m window --space prev
-shift + alt - 9 : yabai -m window --space next
+shift + alt - 9 : yabai -m window --space prev
+shift + alt - 0 : yabai -m window --space next
 
 # fullscreen / floating
 # toggle window native fullscreen
