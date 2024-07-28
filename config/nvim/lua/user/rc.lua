@@ -36,7 +36,6 @@ local function gather_check_files()
         "**/*.lua",
         "**/*.toml",
         "**/*.ts",
-        "**/*.vim",
     }
     local target_directories = vim.iter({ vim.g.base_dir, vim.fn.expand("~/dotfiles/config/nvim") }):join(",")
     local check_files = {}

@@ -94,7 +94,7 @@ export class Config extends BaseConfig {
 
     const checkFiles = gatherCheckFiles(
       await vars.g.get(denops, "base_dir"),
-      "**/*.(ts|lua|toml|vim)",
+      "**/*.(ts|lua|toml)",
     );
 
     return {
