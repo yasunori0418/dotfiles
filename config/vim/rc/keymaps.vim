@@ -94,6 +94,8 @@ nnoremap <silent> ]T <Cmd>tablast<CR>
 " Do not save the things erased by x and c in the register. {{{
 nnoremap <silent> x "_x
 xnoremap <silent> x "_x
+nnoremap <silent> X "_X
+xnoremap <silent> X "_X
 nnoremap <silent> c "_c
 xnoremap <silent> c "_c
 nnoremap <silent> C "_C

@@ -1,13 +1,21 @@
-const g:base_dir = '<script>:p:h'->expand()
+vim9script
+
+const g:base_dir = '$XDG_CONFIG_HOME/vim'->expand()
+const g:hooks_dir = $'{g:base_dir}/hooks'
+g:hooks_dir->setenv("HOOKS_DIR")
+const g:snippet_dir = $'{g:base_dir}/snippets'
 const g:rc_dir = $'{g:base_dir}/rc'
-const g:exrc_dir = $'{g:base_dir}/exrc'
+const g:toml_dir = $'{g:base_dir}/toml'
+const g:dpp_cache = '$XDG_CACHE_HOME/dpp_vim9'->expand()
+augroup RcAutocmds
+  autocmd!
+augroup END
 
-execute $'source {g:rc_dir}/options.vim'
-execute $'source {g:rc_dir}/keymaps.vim'
-execute $'source {g:rc_dir}/autocmds.vim'
-execute $'source {g:exrc_dir}/cache.vim'
+# ~/.config/vim/autoload/user/dpp.vim
+import autoload $'{g:base_dir}/autoload/user/dpp.vim' as user_dpp
+user_dpp.Setup()
 
-colorscheme habamax
+colorscheme sorbet
 
 filetype plugin indent on
-syntax on
+syntax enable

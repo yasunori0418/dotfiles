@@ -20,12 +20,7 @@ export class Config extends BaseConfig {
   override async config(args: ConfigArguments): Promise<ConfigReturn> {
     const denops: Denops = args.denops;
 
-    const vimrcSkipRules = [
-      {
-        name: "neovide.lua",
-        condition: await vars.g.get(denops, "neovide") === null,
-      },
-    ] as VimrcSkipRule[];
+    const vimrcSkipRules: VimrcSkipRule[] = [];
 
     const inlineVimrcs: string[] = gatherVimrcs(
       await vars.g.get(denops, "rc_dir"),
@@ -94,7 +89,7 @@ export class Config extends BaseConfig {
 
     const checkFiles = gatherCheckFiles(
       await vars.g.get(denops, "base_dir"),
-      "**/*.(ts|lua|toml)",
+      "**/*.(ts|toml|vim)",
     );
 
     return {
