@@ -1,0 +1,12 @@
+# hooks_file = '$HOOKS_DIR/dppft.vim'
+
+[[plugins]] # vimdoc-ja
+repo = 'github.com/vim-jp/vimdoc-ja'
+hook_add = 'set helplang=ja,en'
+
+[[plugins]] # learn-vimscript
+repo = 'github.com/mattn/learn-vimscript'
+
+[[plugins]] # mr.vim
+repo = 'github.com/lambdalisue/mr.vim'
+#hooks_file = '$HOOKS_DIR/mr.lua'

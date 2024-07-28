@@ -38,22 +38,21 @@ local function gather_check_files()
         "**/*.ts",
         "**/*.vim",
     }
+    local target_directories = vim.iter({ vim.g.base_dir, vim.fn.expand("~/dotfiles/config/nvim") }):join(",")
     local check_files = {}
     for _, glob_pattern in pairs(glob_patterns) do
-        table.insert(check_files, vim.fn.globpath(vim.g.base_dir, glob_pattern, true, true))
-        table.insert(check_files, vim.fn.globpath("~/dotfiles/config/nvim", glob_pattern, true, true))
-        table.insert(check_files, vim.fn.globpath("~/dotfiles/config/vim", glob_pattern, true, true))
+        table.insert(check_files, vim.fn.globpath(target_directories, glob_pattern, true, true))
     end
     return vim.iter(check_files):flatten():totable()
 end
 
 local function auto_install_plugins(dpp)
-    local notInstallPlugins = vim.iter(vim.tbl_values(dpp.get()))
+    local not_install_plugins = vim.iter(vim.tbl_values(dpp.get()))
         :filter(function(p)
             return vim.fn.isdirectory(p.rtp) == 0
         end)
         :totable()
-    if #notInstallPlugins > 0 then
+    if #not_install_plugins > 0 then
         vim.fn["denops#server#wait_async"](function()
             dpp.async_ext_action("installer", "install")
         end)
@@ -89,15 +88,15 @@ local function dpp_setup()
         end)
     else
         auto_install_plugins(dpp)
-        vim.api.nvim_create_autocmd("BufWritePost", {
-            pattern = gather_check_files(),
-            group = M.rc_autocmds,
-            callback = function()
-                vim.notify("dpp check_files() is run", vim.log.levels.INFO)
-                dpp.check_files()
-            end,
-        })
     end
+    vim.api.nvim_create_autocmd("BufWritePost", {
+        pattern = gather_check_files(),
+        group = M.rc_autocmds,
+        callback = function()
+            vim.notify("dpp check_files() is run", vim.log.levels.INFO)
+            dpp.check_files()
+        end,
+    })
     vim.api.nvim_create_autocmd("User", {
         pattern = "Dpp:makeStatePost",
         group = M.rc_autocmds,
