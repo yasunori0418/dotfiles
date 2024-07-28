@@ -1,4 +1,4 @@
-vim9script noclear
+vim9script
 
 def InitPlugin(repo: string, host: string = 'github.com'): void
   const repo_path = $'{host}/{repo}'
@@ -21,16 +21,20 @@ def CheckFiles(): list<string>
     '**/*.toml',
     '**/*.vim',
     '**/*.ts',
+    'vimrc',
   ]
   const target_directories = [g:base_dir, expand('~/dotfiles/config/vim')]->join(',')
   var check_files = []
   for pattern in glob_patterns
-    add(check_files, globpath(target_directories, pattern, v:true, v:true))
+    add(
+      check_files,
+      globpath(target_directories, pattern, v:true, v:true)
+    )
   endfor
   return flattennew(check_files)
 enddef
 
-def AutoInstallPlugins()
+def AutoInstallPlugins(): void
   const not_install_plugins = dpp#get()
     ->values()
     ->filter((idx, val) => !isdirectory(val.rtp))
@@ -44,7 +48,7 @@ def AutoInstallPlugins()
   endif
 enddef
 
-def MakeState()
+def MakeState(): void
   dpp#make_state(g:dpp_cache, $'{g:base_dir}/dpp/config.ts')
   augroup RcAutocmds
     autocmd User Dpp:makeStatePost ++once ++nested {
@@ -54,7 +58,7 @@ def MakeState()
   augroup END
 enddef
 
-def DppSetup()
+def DppSetup(): void
   if dpp#min#load_state(g:dpp_cache)
     denops#server#wait_async(() => {
       MakeState()
@@ -66,13 +70,13 @@ def DppSetup()
     'group': 'RcAutocmds',
     'event': 'BufWritePost',
     'pattern': CheckFiles()->join(','),
-    'cmd': 'echomsg "dpp check_files() is run" | dpp#check_files()',
+    'cmd': 'echowindow "dpp check_files() is run" | dpp#check_files()',
   }
   const make_state_post_autocmd = {
     'group': 'RcAutocmds',
     'event': 'User',
     'pattern': 'Dpp:makeStatePost',
-    'cmd': 'echomsg "dpp make_state() is done"',
+    'cmd': 'echowindow "dpp make_state() is done"',
   }
   [check_files_autocmd, make_state_post_autocmd]->autocmd_add()
 enddef

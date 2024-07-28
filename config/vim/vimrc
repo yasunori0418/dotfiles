@@ -11,14 +11,11 @@ augroup RcAutocmds
   autocmd!
 augroup END
 
-execute $'source {g:rc_dir}/keymaps.vim' # ~/.config/vim/rc/keymaps.vim
-execute $'source {g:rc_dir}/options.vim' # ~/.config/vim/rc/options.vim
-execute $'source {g:rc_dir}/autocmds.vim' # ~/.config/vim/rc/autocmds.vim
-colorscheme sorbet
-
 # ~/.config/vim/autoload/user/dpp.vim
 import autoload $'{g:base_dir}/autoload/user/dpp.vim' as user_dpp
 user_dpp.Setup()
+
+colorscheme sorbet
 
 filetype plugin indent on
 syntax enable
