@@ -65,9 +65,9 @@ export class Config extends BaseConfig {
         },
         skkeleton: {
           mark: "SKK",
-          matchers: ["skkeleton"],
+          matchers: [],
           sorters: ["sorter_rank"],
-          minAutoCompleteLength: 2,
+          minAutoCompleteLength: 1,
           isVolatile: true,
         },
         codeium: {
