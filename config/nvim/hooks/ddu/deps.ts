@@ -1,12 +1,12 @@
 export {
   ActionFlags,
   BaseConfig,
-} from "https://deno.land/x/ddu_vim@v4.2.0/types.ts";
-export { fn, op, vars } from "https://deno.land/x/ddu_vim@v4.2.0/deps.ts";
+} from "https://deno.land/x/ddu_vim@v5.0.0/types.ts";
+export { fn, op, vars } from "https://deno.land/x/ddu_vim@v5.0.0/deps.ts";
 
 // Type definitions.
-export type { ActionArguments } from "https://deno.land/x/ddu_vim@v4.2.0/types.ts";
-export type { ConfigArguments } from "https://deno.land/x/ddu_vim@v4.2.0/base/config.ts";
+export type { ActionArguments } from "https://deno.land/x/ddu_vim@v5.0.0/types.ts";
+export type { ConfigArguments } from "https://deno.land/x/ddu_vim@v5.0.0/base/config.ts";
 export type { ActionData as FileActionData } from "https://deno.land/x/ddu_kind_file@v0.8.0/file.ts";
 
 export type {
