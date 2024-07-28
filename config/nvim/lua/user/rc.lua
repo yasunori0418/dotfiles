@@ -48,12 +48,12 @@ local function gather_check_files()
 end
 
 local function auto_install_plugins(dpp)
-    local notInstallPlugins = vim.iter(vim.tbl_values(dpp.get()))
+    local not_install_plugins = vim.iter(vim.tbl_values(dpp.get()))
         :filter(function(p)
             return vim.fn.isdirectory(p.rtp) == 0
         end)
         :totable()
-    if #notInstallPlugins > 0 then
+    if #not_install_plugins > 0 then
         vim.fn["denops#server#wait_async"](function()
             dpp.async_ext_action("installer", "install")
         end)
