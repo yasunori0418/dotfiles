@@ -6,14 +6,14 @@ g:hooks_dir->setenv("HOOKS_DIR")
 const g:snippet_dir = $'{g:base_dir}/snippets'
 const g:rc_dir = $'{g:base_dir}/rc'
 const g:toml_dir = $'{g:base_dir}/toml'
-const g:dpp_cache = '$XDG_CACHE_HOME/dpp'->expand()
+const g:dpp_cache = '$XDG_CACHE_HOME/dpp_vim9'->expand()
 augroup RcAutocmds
   autocmd!
 augroup END
 
-execute $'source {g:rc_dir}/keymaps.vim'
-execute $'source {g:rc_dir}/options.vim'
-execute $'source {g:rc_dir}/autocmds.vim'
+execute $'source {g:rc_dir}/keymaps.vim' # ~/.config/vim/rc/keymaps.vim
+execute $'source {g:rc_dir}/options.vim' # ~/.config/vim/rc/options.vim
+execute $'source {g:rc_dir}/autocmds.vim' # ~/.config/vim/rc/autocmds.vim
 colorscheme sorbet
 
 # ~/.config/vim/autoload/user/dpp.vim
