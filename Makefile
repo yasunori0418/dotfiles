@@ -6,6 +6,9 @@ help: ## subcommand list and description.
 	@grep -E -e '^[a-zA-Z_-]+:.*?## .*$$' -e '^## .* ##$$' $(MAKEFILE_LIST) \
 	| ./scripts/help.awk
 
+help-fzf: ## Search for fzf and run the target rule
+	@make `make --no-print-directory help | fzf --ansi | cut -d ' ' -f1`
+
 ## Neovim Tools ##
 nvim-build: ## building neovim head.
 	@./scripts/nvim_build.sh
