@@ -27,6 +27,10 @@ nvim-%: ## download neovim at version %(nightly|stable) build.
 nvim-bench: ## neovim bench mark with vim-startuptime used.
 	-@vim-startuptime -vimpath nvim -count 100 | head -6
 
+## Vim Tools ##
+vim-build: ## building vim head.
+	@./scripts/vim_build.sh
+
 ## Arch Linux System Package Management ##
 arch_iso: ## Download Arch Linux iso image at latest, and verification.
 	@./scripts/arch_iso.sh
