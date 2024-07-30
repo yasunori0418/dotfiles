@@ -1,3 +1,4 @@
+.PHONY: all test clean
 .DEFAULT_GOAL := help
 MAKEFLAGS += --always-make
 
