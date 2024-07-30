@@ -44,6 +44,8 @@ set relativenumber
 " Display current row cursorline.
 set cursorline
 
+set termguicolors
+
 " }}}
 
 " Folding {{{

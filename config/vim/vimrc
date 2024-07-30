@@ -15,7 +15,5 @@ augroup END
 import autoload $'{g:base_dir}/autoload/user/dpp.vim' as user_dpp
 user_dpp.Setup()
 
-colorscheme sorbet
-
 filetype plugin indent on
 syntax enable

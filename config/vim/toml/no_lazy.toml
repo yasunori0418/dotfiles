@@ -1,5 +1,11 @@
 # hooks_file = '$HOOKS_DIR/dppft.vim'
 
+[[plugins]]
+repo = 'github.com/cocopon/iceberg.vim'
+hook_add = '''
+colorscheme iceberg
+'''
+
 [[plugins]] # vimdoc-ja
 repo = 'github.com/vim-jp/vimdoc-ja'
 hook_add = 'set helplang=ja,en'
