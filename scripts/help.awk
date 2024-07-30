@@ -57,7 +57,7 @@ BEGIN {
   line_accent = start back_cyan end padding_32 reset
 }
 
-/^[a-zA-Z_-]+:.*?## .*$/ {
+/^[%a-zA-Z_-]+:.*?## .*$/ {
   sub("※.*$", "\n" padding_32 "&\n")
   printf(cmd_accent("%-30s") " %s\n", $1, $2)
 }

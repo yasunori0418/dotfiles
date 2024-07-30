@@ -2,7 +2,7 @@
 .DEFAULT_GOAL := help
 MAKEFLAGS += --always-make
 AQUA_INSTALLER_HASH := fb4b3b7d026e5aba1fc478c268e8fbd653e01404c8a8c6284fdba88ae62eda6a
-RULE_AND_DESC_REGEX := ^[a-zA-Z_-]+:.*?## .*$$
+RULE_AND_DESC_REGEX := ^[%a-zA-Z_-]+:.*?## .*$$
 EXTRA_COMMENT_REGEX := ^## .* ##$$
 
 # INFO: 参考サイト - https://postd.cc/auto-documented-makefile/
