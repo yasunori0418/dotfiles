@@ -21,11 +21,8 @@ help-fzf: ## Search for fzf and run the target rule
 nvim-build: ## building neovim head.
 	@./scripts/nvim_build.sh
 
-nvim-night: ## download neovim at version nightly build.
-	@./scripts/nvim_dl.sh nightly
-
-nvim-stable: ## download neovim at version stable build.
-	@./scripts/nvim_dl.sh
+nvim-%: ## download neovim at version %(nightly|stable) build.
+	@./scripts/nvim_dl.sh ${@:nvim-%=%}
 
 nvim-bench: ## neovim bench mark with vim-startuptime used.
 	-@vim-startuptime -vimpath nvim -count 100 | head -6
