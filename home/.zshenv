@@ -21,7 +21,7 @@ export DOTFILES="${HOME}/dotfiles"
 # User local tools management directory.
 PATH="${HOME}/.local/bin:${PATH}"
 PATH="${HOME}/bin:${PATH}"
-PATH=${DOTFILES_DATA}/nvim/bin:${PATH}
+PATH=${DOTFILES_DATA}/nvim/bin:${DOTFILES_DATA}/vim/bin:${PATH}
 
 export EDITOR="$(which nvim)"
 export TERMINAL="/usr/bin/wezterm"
