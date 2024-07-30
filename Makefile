@@ -1,6 +1,7 @@
 .PHONY: all test clean
 .DEFAULT_GOAL := help
 MAKEFLAGS += --always-make
+AQUA_INSTALLER_HASH := fb4b3b7d026e5aba1fc478c268e8fbd653e01404c8a8c6284fdba88ae62eda6a
 
 # INFO: 参考サイト - https://postd.cc/auto-documented-makefile/
 help: ## subcommand list and description.
@@ -69,7 +70,7 @@ work_repoget: ## Get and update ghq management repositories.
 ## Environment Setup Tools ##
 aqua-install: ## Install aqua
 	@curl -sSfLo /tmp/aqua-installer https://raw.githubusercontent.com/aquaproj/aqua-installer/v3.0.1/aqua-installer
-	@echo 'fb4b3b7d026e5aba1fc478c268e8fbd653e01404c8a8c6284fdba88ae62eda6a /tmp/aqua-installer' | sha256sum -c
+	@echo "$(AQUA_INSTALLER_HASH) /tmp/aqua-installer" | sha256sum -c
 	@bash /tmp/aqua-installer
 
 nix-install: ## Install nix.
