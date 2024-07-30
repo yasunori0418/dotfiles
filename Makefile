@@ -80,7 +80,7 @@ mkdir: ## make direcotries of required
 	@mkdir -p ${HOME}/.config
 	@mkdir -p ${HOME}/.cache
 
-init: ## expand config files. ※WARNING: Excecute when Initial setup only!!
+init: ## expand config files. ※WARNING: Execute when Initial setup only!!
 	@make mkdir
 	@make symlink
 	@make aqua-install

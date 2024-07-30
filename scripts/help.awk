@@ -1,13 +1,13 @@
 #!/usr/bin/awk -f
 
-function cmd_acent(char) {
-  acent = start front_cyan acent_bold end
-  return acent char reset
+function cmd_accent(char) {
+  accent = start front_cyan accent_bold end
+  return accent char reset
 }
 
-function ex_comment_acent(char) {
-  acent = start front_black back_cyan acent_bold acent_underline end
-  return acent char reset
+function ex_comment_accent(char) {
+  accent = start front_black back_cyan accent_bold accent_underline end
+  return accent char reset
 }
 
 BEGIN {
@@ -41,29 +41,29 @@ BEGIN {
   back_white = ";47"
 
   # 表示アクセント
-  acent_bold = ";1" # 太字
-  acent_thin = ";2" # 薄く表示
-  acent_italic = ";3" # イタリック
-  acent_underline = ";4" # アンダーライン
-  acent_blink = ";5" # ブリンク(点滅)
-  acent_quickblink = ";6" # 高速ブリンク(高速点滅)
-  acent_inversion = ";7" # 文字色と背景色の反転
-  acent_hide = ";8" # 表示を隠す(コピペは可能)
-  acent_strikeout = ";9" # 取り消し線
+  accent_bold = ";1" # 太字
+  accent_thin = ";2" # 薄く表示
+  accent_italic = ";3" # イタリック
+  accent_underline = ";4" # アンダーライン
+  accent_blink = ";5" # ブリンク(点滅)
+  accent_quickblink = ";6" # 高速ブリンク(高速点滅)
+  accent_inversion = ";7" # 文字色と背景色の反転
+  accent_hide = ";8" # 表示を隠す(コピペは可能)
+  accent_strikeout = ";9" # 取り消し線
 
   # エスケープシーケンス終了
   end = "m"
 
-  line_acent = start back_cyan end padding_32 reset
+  line_accent = start back_cyan end padding_32 reset
 }
 
 /^[a-zA-Z_-]+:.*?## .*$/ {
   sub("※.*$", "\n" padding_32 "&\n")
-  printf(cmd_acent("%-30s") " %s\n", $1, $2)
+  printf(cmd_accent("%-30s") " %s\n", $1, $2)
 }
 
 /^## .* ##$/ {
   sub("^## ", "")
   sub(" ##$", "")
-  printf("\n" line_acent ex_comment_acent("%s") "\n", $0)
+  printf("\n" line_accent ex_comment_accent("%s") "\n", $0)
 }
