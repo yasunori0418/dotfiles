@@ -17,8 +17,9 @@ declare -r tag_name="${1:-stable}" # nightly | stable
 file_name="nvim-$(os_name)"
 readonly file_name
 declare -r archive_file_name="${file_name}.tar.gz"
-declare -r download_bin_url="https://github.com/neovim/neovim/releases/download/${tag_name}/${archive_file_name}"
-declare -r download_sha256_url="https://github.com/neovim/neovim/releases/download/${tag_name}/${archive_file_name}.sha256sum"
+declare -r download_base_url="https://github.com/neovim/neovim/releases/download"
+declare -r download_bin_url="${download_base_url}/${tag_name}/${archive_file_name}"
+declare -r download_sha256_url="${download_base_url}/${tag_name}/${archive_file_name}.sha256sum"
 
 curl -Lo "${install_prefix}/${archive_file_name}" "${download_bin_url}"
 curl -Lo "${install_prefix}/${archive_file_name}.sha256sum" "${download_sha256_url}"
