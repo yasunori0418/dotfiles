@@ -30,7 +30,21 @@
   "vim.useCtrlKeys": true,
   "vim.easymotion": true,
   "vim.visualstar": true,
+  "vim.surround": true,
   "vim.hlsearch": true,
+  "vim.ignorecase": true,
+  "vim.autoindent": true,
+  "vim.incsearch": true,
+  "vim.statusBarColorControl": false,
+  "vim.highlightedyank.enable": true,
+  "vim.smartcase": true,
+  "vim.whichwrap": "b,s",
+  "vim.handleKeys": {
+    "<C-d>": true,
+    "<C-s>": false,
+    "<C-z>": false
+  },
+  "vim.leader": "\\",
   "vim.normalModeKeyBindingsNonRecursive": [
     // For vscode undo
     // https://fe-notes.work/posts/20200708_vsvim01/#normalモードのキーバインド
@@ -38,7 +52,7 @@
     { "before": [ "<C-r>" ], "commands": [ { "command": "redo" } ] },
     // disable keymaps {{{
     { "before": [ "<Space>" ], "after": [ "<Nop>" ] },
-    { "before": [ "s" ], "after": [ "<Nop>" ], },
+    { "before": [ "s" ], "after": [ "<Nop>" ] },
     { "before": [ "S" ], "after": [ "<Nop>" ] },
     { "before": [ "m" ], "after": [ "<Nop>" ] },
     { "before": [ "'" ], "after": [ "<Nop>" ] },
@@ -79,7 +93,7 @@
     { "before": [ "C" ], "after": [ "\"", "_", "C" ] },
     // }}}
     // nohlsearch
-    { "before": [ "<C-l>" ], "after": [ ":nohlsearch", "<CR>", "<C-l>" ] }
+    { "before": [ "<C-l>" ], "commands": [ ":nohlsearch" ] }
   ],
   "vim.visualModeKeyBindingsNonRecursive": [
     { "before": [ "<Space>" ], "after": [ "<Nop>" ] },
@@ -111,5 +125,7 @@
     { "before": [ "a", "\"" ], "after": [ "2", "i", "\"" ] },
     { "before": [ "a", "<Space>" ], "after": [ "a", "W" ] },
     { "before": [ "i", "<Space>" ], "after": [ "i", "W" ] }
-  ]
+  ],
+  "terminal.integrated.sendKeybindingsToShell": true
 }
+// vim:ft=jsonc
