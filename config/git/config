@@ -78,3 +78,5 @@
 	enabled = true
 [branch]
 	sort = -committerdate
+[advice]
+	skippedCherryPicks = false
