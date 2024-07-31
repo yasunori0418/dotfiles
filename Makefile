@@ -45,6 +45,9 @@ vscode-setup: ## install extensions and expand settings.json for mac or linux.
 vscode-ext: ## update installed vscode extensions list.
 	@code --list-extensions | tee ${HOME}/dotfiles/vscode/extensions.txt
 
+vscode-byebye: ## Uninstall VSCode extensions and unlink settings.json
+	@./scripts/vscode-byebye.sh
+
 ## Utility Commands ##
 true-color: ## 24-bit-color.sh
 	@curl -s \
