@@ -43,8 +43,7 @@ vscode-setup: ## install extensions and expand settings.json for mac or linux.
 	@./scripts/vscode-setup.sh
 
 vscode-ext: ## update installed vscode extensions list.
-	@code --list-extensions > ${HOME}/dotfiles/vscode/extensions.txt
-	@cat ${HOME}/dotfiles/vscode/extensions.txt
+	@code --list-extensions | tee ${HOME}/dotfiles/vscode/extensions.txt
 
 ## Utility Commands ##
 true-color: ## 24-bit-color.sh
