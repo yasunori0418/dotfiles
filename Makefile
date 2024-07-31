@@ -15,7 +15,7 @@ help-fzf: ## Search for fzf and run the target rule
 	| ./scripts/help.awk \
 	| fzf --ansi \
 	| cut -d ' ' -f1 \
-	| xargs -I make {}
+	| xargs -I{} make {}
 
 ## Neovim Tools ##
 nvim-build: ## building neovim head.
