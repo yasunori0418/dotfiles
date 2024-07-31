@@ -1,9 +1,9 @@
 # hooks_file = '$HOOKS_DIR/dppft.vim'
 
 [[plugins]]
-repo = 'github.com/cocopon/iceberg.vim'
+repo = 'github.com/nordtheme/vim'
 hook_add = '''
-colorscheme iceberg
+colorscheme nord
 '''
 
 [[plugins]] # vimdoc-ja
