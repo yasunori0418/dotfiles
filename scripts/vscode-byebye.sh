@@ -12,6 +12,18 @@ declare -r ERR_LOG="${VSCODE_CONF}/logs/uninstall_extensions-${timestamp}.err.lo
 declare -r LINUX="${HOME}/.config/Code/User"
 declare -r MAC="${HOME}/Library/Application Support/Code/User"
 
+if [[ $(uname -s) = 'Linux' ]]; then
+  unlink "${LINUX}/settings.json"
+  echo "unlinked: ${LINUX}/settings.json"
+  ls -l "${LINUX}"
+fi
+
+if [[ $(uname -s) = 'Darwin' ]]; then
+  unlink "${MAC}/settings.json"
+  echo "unlinked: ${MAC}/settings.json"
+  ls -l "${MAC}"
+fi
+
 echo "${timestamp} Execute : code --uninstall-extension {extension_name}"
 code --list-extensions > "${EXTENSIONS}"
 
@@ -32,16 +44,4 @@ echo "Exported uninstall log files."
 ls -l "${VSCODE_CONF}/logs"
 echo "================================"
 
-if [[ $(uname -s) = 'Linux' ]]; then
-  unlink "${LINUX}/settings.json"
-  echo "unlinked: ${LINUX}/settings.json"
-  ls -l "${LINUX}"
-  exit 0
-fi
-
-if [[ $(uname -s) = 'Darwin' ]]; then
-  unlink "${MAC}/settings.json"
-  echo "unlinked: ${MAC}/settings.json"
-  ls -l "${MAC}"
-  exit 0
-fi
+exit 0
