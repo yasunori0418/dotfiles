@@ -2,11 +2,8 @@ export { type ConfigArguments } from "jsr:@shougo/ddc-vim@6.0.0/config";
 
 export { BaseConfig, type UserSource } from "jsr:@shougo/ddc-vim@6.0.0/types";
 
-export {
-  autocmd,
-  fn,
-  op,
-  vars,
-} from "https://deno.land/x/ddc_vim@v6.0.0/deps.ts";
-
-export * as lambda from "https://deno.land/x/denops_std@v6.5.1/lambda/mod.ts";
+export * as autocmd from "jsr:@denops/std@7.0.1/autocmd";
+export * as fn from "jsr:@denops/std@7.0.1/function";
+export * as op from "jsr:@denops/std@7.0.1/option";
+export * as vars from "jsr:@denops/std@7.0.1/variable";
+export * as lambda from "jsr:@denops/std@7.0.1/lambda";
