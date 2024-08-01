@@ -1,9 +1,6 @@
-export {
-  BaseConfig,
-  type ConfigArguments,
-} from "https://deno.land/x/ddc_vim@v6.0.0/base/config.ts";
+export { type ConfigArguments } from "jsr:@shougo/ddc-vim@6.0.0/config";
 
-export type { UserSource } from "https://deno.land/x/ddc_vim@v6.0.0/types.ts";
+export { BaseConfig, type UserSource } from "jsr:@shougo/ddc-vim@6.0.0/types";
 
 export {
   autocmd,
