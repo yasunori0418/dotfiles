@@ -57,4 +57,20 @@ require("user.utils").autocmds_set({
             vim.cmd.checktime("%")
         end,
     },
+    {
+        events = { "CursorHold" },
+        group = vimrc,
+        pattern = "*",
+        callback = function()
+            vim.opt.cursorline = true
+        end
+    },
+    {
+        events = { "CursorMoved" },
+        group = vimrc,
+        pattern = "*",
+        callback = function()
+            vim.opt.cursorline = false
+        end
+    },
 })

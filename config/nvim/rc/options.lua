@@ -70,7 +70,7 @@ vim.opt.number = true
 vim.opt.relativenumber = true
 
 -- Display current row cursorline.
-vim.opt.cursorline = true
+vim.opt.cursorline = false
 
 -- disable ruler display.
 vim.opt.ruler = false
