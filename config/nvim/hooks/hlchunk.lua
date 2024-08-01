@@ -21,10 +21,13 @@ require("hlchunk").setup({
         notify = false,
         use_treesitter = true,
         exclude_filetypes = exclude_filetypes,
+        duration = 0,
+        delay = vim.opt.updatetime:get() + 1000,
     },
     indent = {
         enable = true,
         exclude_filetypes = exclude_filetypes,
+        delay = 1000
     },
     line_num = {
         enable = false,
