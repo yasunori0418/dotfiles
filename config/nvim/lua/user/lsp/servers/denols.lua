@@ -44,6 +44,7 @@ return function()
                             ["https://denopkg.com"] = true,
                             ["https://crux.land"] = true,
                             ["https://x.nest.land"] = true,
+                            ["https://jsr.io"] = true,
                         },
                     },
                 },
