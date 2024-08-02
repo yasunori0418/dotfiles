@@ -54,19 +54,6 @@
 	root = ~/src
 	user = yasunori0418
 
-; https://stackoverflow.com/a/71971739
-[url "https://github.com/"]
-	insteadOf = git@github.com:
-[url "git@github.com:"]
-	pushInsteadOf = https://github.com/
-	pushInsteadOf = git@github.com:
-
-[url "https://aur.archlinux.org/"]
-	insteadOf = git@aur.archlinux.org:
-[url "git@aur.archlinux.org:"]
-	pushInsteadOf = https://aur.archlinux.org/
-	pushInsteadOf = git@aur.archlinux.org:
-
 [include]
 	path = ~/.config/git/delta_themes.gitconfig
 [filter "lfs"]
