@@ -12,5 +12,6 @@ ms-vscode.remote-explorer
 ms-vscode.remote-server
 ms-vsliveshare.vsliveshare
 ritwickdey.liveserver
+timonwong.shellcheck
 vscodevim.vim
 xdebug.php-debug
