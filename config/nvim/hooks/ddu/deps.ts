@@ -1,13 +1,14 @@
 export {
+  type ActionArguments,
   ActionFlags,
   BaseConfig,
-} from "https://deno.land/x/ddu_vim@v5.0.0/types.ts";
-export { fn, op, vars } from "https://deno.land/x/ddu_vim@v5.0.0/deps.ts";
+} from "jsr:@shougo/ddu-vim@5.0.0/types";
+export { type ConfigArguments } from "jsr:@shougo/ddu-vim@5.0.0/config";
+export { type ActionData as FileActionData } from "jsr:@shougo/ddu-kind-file@0.8.0";
 
-// Type definitions.
-export type { ActionArguments } from "https://deno.land/x/ddu_vim@v5.0.0/types.ts";
-export type { ConfigArguments } from "https://deno.land/x/ddu_vim@v5.0.0/base/config.ts";
-export type { ActionData as FileActionData } from "https://deno.land/x/ddu_kind_file@v0.8.0/file.ts";
+export * as fn from "jsr:@denops/std@7.0.1/function";
+export * as op from "jsr:@denops/std@7.0.1/option";
+export * as vars from "jsr:@denops/std@7.0.1/variable";
 
 export type {
   ActionData as GitCommitActionData,

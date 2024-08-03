@@ -6,12 +6,10 @@ export {
   type Dpp,
   type DppOptions,
   type Plugin,
-} from "https://deno.land/x/dpp_vim@v1.0.0/types.ts";
-export {
-  type Denops,
-  fn,
-  vars,
-} from "https://deno.land/x/dpp_vim@v1.0.0/deps.ts";
+} from "jsr:@shougo/dpp-vim@1.0.0/types";
+export { type Denops } from "jsr:@denops/core@7.0.1";
+export * as fn from "jsr:@denops/std@7.0.1/function";
+export * as vars from "jsr:@denops/std@7.0.1/variable";
 
-export { join } from "jsr:@std/path";
-export { expandGlobSync } from "jsr:@std/fs";
+export { join } from "jsr:@std/path@1.0.2";
+export { expandGlobSync } from "jsr:@std/fs@1.0.0";
