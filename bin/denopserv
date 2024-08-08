@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#!/usr/bin/env -S bash
 
 ## Check for existence of deno.
 ## No existence then install deno.

@@ -1,4 +1,4 @@
-#!/usr/bin/awk -f
+#!/usr/bin/env -S awk -f
 
 function cmd_accent(char) {
   accent = start front_cyan accent_bold end
