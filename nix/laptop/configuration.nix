@@ -54,7 +54,22 @@
 
       # Enable the XFCE Desktop Environment.
       displayManager.lightdm.enable = true;
-      desktopManager.xfce.enable = true;
+      windowManager.i3 = {
+        enable = true;
+        extraPackages = with pkgs; [
+          rofi
+          rofi-power-menu
+          feh
+          picom
+          blueberry
+          dunst
+          lightlocker
+          clipmenu
+          xfce.xfce4-power-manager
+          xfce.thunar
+          xfce.thunar-volman
+        ];
+      };
 
       # Configure keymap in X11
       xkb = {
@@ -106,6 +121,31 @@
       enable = true;
       # libraries = with pkgs; [];
     };
+  };
+
+  fonts = {
+    fonts = with pkgs; [
+      noto-fonts
+      noto-fonts-cjk-serif
+      noto-fonts-cjk-sans
+      noto-fonts-emoji
+      nerdfonts
+      hackgen-nf-font
+    ];
+    fontDir.enable = true;
+    fontconfig = {
+      defaultFonts = {
+        serif = ["Noto Serif CJK JP" "Noto Color Emoji"];
+        sansSerif = ["Noto Sans CJK JP" "Noto Color Emoji"];
+        monospace = ["HackGen35 Console NF" "JetBrainsMono Nerd Font" "Noto Color Emoji"];
+        emoji = ["Noto Color Emoji"];
+      };
+    };
+  };
+
+  i18n.inputMethod = {
+    enabled = "fcitx5";
+    fcitx5.addons = [ pkgs.fcitx5-skk ];
   };
 
   # List packages installed in system profile. To search, run:
