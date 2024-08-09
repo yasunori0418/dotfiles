@@ -58,6 +58,15 @@ export class Config extends BaseConfig {
       },
     });
 
+    const [context, options] = await args.contextBuilder.get(denops);
+    //TODO: for dpp version 2
+    //const protocols = await args.dpp.getProtocols(denops, options);
+    //const [tomlExt, tomlOptions, tomlParams] = await args.dpp.getExt(
+    //  denops,
+    //  options,
+    //  "toml",
+    //);
+
     const tomls = await gatherTomls(
       await vars.g.get(denops, "toml_dir"),
       ["dpp.toml", "no_lazy.toml"],
@@ -78,8 +87,6 @@ export class Config extends BaseConfig {
         hooksFiles.push(toml.hooks_file);
       }
     }
-
-    const [context, options] = await args.contextBuilder.get(denops);
 
     const lazyResult = await args.dpp.extAction(
       denops,

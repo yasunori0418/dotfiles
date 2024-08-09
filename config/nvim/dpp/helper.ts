@@ -1,10 +1,31 @@
-import { ContextBuilder, Denops, Dpp, expandGlobSync, Plugin } from "./deps.ts";
+import {
+  BaseExt,
+  BaseExtParams,
+  Context,
+  ContextBuilder,
+  Denops,
+  Dpp,
+  DppOptions,
+  expandGlobSync,
+  ExtOptions,
+  Plugin,
+} from "./deps.ts";
 
 export type Toml = {
   hooks_file?: string;
   ftplugins?: Record<string, string>;
   plugins?: Plugin[];
 };
+
+export interface GatherTomlsArgs {
+  path: string;
+  noLazyTomlNames: string[];
+  context: Context;
+  options: DppOptions;
+  tomlExt: BaseExt<BaseExtParams>;
+  tomlOptions: ExtOptions;
+  tomlParams: BaseExtParams;
+}
 
 export type ConfigArguments = {
   denops: Denops;

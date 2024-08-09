@@ -1,10 +1,14 @@
 export {
+  type Action,
   BaseConfig,
+  type BaseExt,
+  type BaseExtParams,
   type ConfigReturn,
   type Context,
   type ContextBuilder,
   type Dpp,
   type DppOptions,
+  type ExtOptions,
   type Plugin,
 } from "jsr:@shougo/dpp-vim@2.0.0/types";
 export { type Denops } from "jsr:@denops/core@7.0.1";
