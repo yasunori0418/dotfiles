@@ -66,6 +66,7 @@
         enable = true;
         extraPackages = with pkgs; [
           i3status
+          arandr
           google-chrome
           rofi
           rofi-power-menu
