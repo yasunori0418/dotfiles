@@ -67,6 +67,10 @@
         extraPackages = with pkgs; [
           i3status
           gparted
+          slack
+          fcitx5
+          fcitx5-skk
+          libsForQt5.fcitx5-configtool
           arandr
           google-chrome
           rofi
@@ -126,6 +130,7 @@
       clang
       zig
       ncurses
+      xsel
     ];
   };
 
