@@ -94,8 +94,8 @@
       wezterm
       deno
       gnumake
-      gcc_multi
-      clang_multi
+      gcc
+      clang
       zig
       ncurses
     ];
