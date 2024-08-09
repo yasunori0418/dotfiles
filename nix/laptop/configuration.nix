@@ -12,15 +12,23 @@
 
   nix = {
     settings = {
+      auto-optimise-store = true;
       experimental-features = ["nix-command" "flakes"];
     };
+    gc = {
+      automatic = true;
+      dates = "weekly";
+      options = "--delete-older-then 7d";
+    };
   };
+
+  nixpkgs.config.allowUnfree = true;
 
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
-  networking.hostName = "nixos"; # Define your hostname.
+  networking.hostName = "yasunori-laptop"; # Define your hostname.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
 
   # Configure network proxy if necessary
@@ -57,6 +65,8 @@
       windowManager.i3 = {
         enable = true;
         extraPackages = with pkgs; [
+          i3status
+          google-chrome
           rofi
           rofi-power-menu
           feh
@@ -117,6 +127,7 @@
 
   programs = {
     zsh.enable = true;
+    noisetorch.enable = true;
     nix-ld = {
       enable = true;
       # libraries = with pkgs; [];
