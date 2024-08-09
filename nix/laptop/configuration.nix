@@ -66,6 +66,7 @@
         enable = true;
         extraPackages = with pkgs; [
           i3status
+          gparted
           arandr
           google-chrome
           rofi
@@ -92,6 +93,8 @@
     # Enable CUPS to print documents.
     printing.enable = true;
   };
+
+  security.polkit.enable = true;
 
   # Enable sound with pipewire.
   hardware.pulseaudio.enable = false;
