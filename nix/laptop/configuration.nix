@@ -135,7 +135,7 @@
   };
 
   fonts = {
-    fonts = with pkgs; [
+    packages = with pkgs; [
       noto-fonts
       noto-fonts-cjk-serif
       noto-fonts-cjk-sans
@@ -155,7 +155,7 @@
   };
 
   i18n.inputMethod = {
-    enabled = "fcitx5";
+    type = "fcitx5";
     fcitx5.addons = [ pkgs.fcitx5-skk ];
   };
 
