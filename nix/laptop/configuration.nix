@@ -175,6 +175,44 @@
     vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
   ];
 
+  /* Run a single one-shot service that allows root's services to access user's X session */
+  systemd.user.services.set-xhost = {
+    description = "Run a one-shot command upon user login";
+    path = [ pkgs.xorg.xhost ];
+    wantedBy = [ "default.target" ];
+    script = "xhost +SI:localuser:root";
+    environment.DISPLAY = ":0.0"; # NOTE: This is hardcoded for this flake
+  };
+
+  services.xremap = {
+    withX11 = true;
+    config = {
+      modmap = [
+        {
+          name = "Swapping Capslock and Ctrl_L";
+          remap = {
+            Capslock = "Ctrl_L";
+            Ctrl_L = "Capslock";
+          };
+          device = {
+            not = [ "HHKB" ];
+          };
+        }
+      ];
+      keymap = [
+        {
+          name = "Ctrl+H should be enabled on all apps as BackSpace";
+          remap = {
+            C-h = "Backspace";
+          };
+          application = {
+            not = [ "Wezterm" ];
+          };
+        }
+      ];
+    };
+  };
+
   # 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.

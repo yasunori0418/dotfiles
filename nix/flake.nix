@@ -12,6 +12,7 @@
         modules = [
           ./laptop/configuration.nix
           nixos-hardware.nixosModules.lenovo-thinkpad-e14-amd
+          xremap.nixosModules.default
         ];
         specialArgs = {
           inherit nixpkgs;
