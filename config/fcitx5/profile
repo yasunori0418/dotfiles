@@ -1,6 +1,6 @@
 [Groups/0]
 # Group Name
-Name=デフォルト
+Name=Default
 # Layout
 Default Layout=us
 # Default Input Method
@@ -8,10 +8,16 @@ DefaultIM=skk
 
 [Groups/0/Items/0]
 # Name
+Name=keyboard-us
+# Layout
+Layout=
+
+[Groups/0/Items/1]
+# Name
 Name=skk
 # Layout
-Layout=us
+Layout=
 
 [GroupOrder]
-0=デフォルト
+0=Default
 
