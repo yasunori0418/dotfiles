@@ -68,9 +68,6 @@
           i3status
           gparted
           slack
-          fcitx5
-          fcitx5-skk
-          libsForQt5.fcitx5-configtool
           arandr
           google-chrome
           rofi
@@ -164,8 +161,12 @@
   };
 
   i18n.inputMethod = {
+    enable = true;
     type = "fcitx5";
-    fcitx5.addons = [ pkgs.fcitx5-skk ];
+    fcitx5.addons = with pkgs; [
+      fcitx5-skk 
+      fcitx5-nord
+    ];
   };
 
   # List packages installed in system profile. To search, run:
