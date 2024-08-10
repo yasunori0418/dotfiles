@@ -152,7 +152,6 @@ vim.g.loaded_getscript = true
 vim.g.loaded_getscriptPlugin = true
 
 -- Disable other plugins
-vim.g.loaded_man = true
 vim.g.loaded_matchit = true
 vim.g.loaded_matchparen = true
 vim.g.loaded_shada_plugin = true
