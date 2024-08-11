@@ -26,5 +26,5 @@ local ScrollBar = {
 
 return {
     Ruler,
-    ScrollBar,
+    -- ScrollBar,
 }
