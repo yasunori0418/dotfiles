@@ -198,6 +198,9 @@
           application = {
             not = [ "Wezterm" ];
           };
+          device = {
+            not = [];
+          };
         }
       ];
     };
