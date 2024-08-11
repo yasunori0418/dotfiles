@@ -14,11 +14,6 @@
           nixos-hardware.nixosModules.lenovo-thinkpad-e14-amd
           xremap.nixosModules.default
         ];
-        specialArgs = {
-          inherit nixpkgs;
-          inherit nixos-hardware;
-          inherit xremap;
-        };
       };
     };
   };
