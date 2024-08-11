@@ -8,7 +8,7 @@ EXTRA_COMMENT_REGEX := ^## .* ##$$
 # INFO: 参考サイト - https://postd.cc/auto-documented-makefile/
 help: ## subcommand list and description.
 	@grep -E -e $(RULE_AND_DESC_REGEX) -e $(EXTRA_COMMENT_REGEX) $(MAKEFILE_LIST) \
-	| ./scripts/help.awk
+	| ./scripts/help.awk | less -R
 
 help-fzf: ## Search for fzf and run the target rule
 	@grep -E -e $(RULE_AND_DESC_REGEX) $(MAKEFILE_LIST) \
@@ -75,6 +75,10 @@ work_repolist: ## Update ghq management of repository list.
 
 work_repoget: ## Get and update ghq management repositories.
 	@./scripts/work_repolist.sh
+
+## NixOS utility commands ##
+nixos-%: ## nixos-rebuild switch --flake %(laptop)
+	@cd nix && sudo nixos-rebuild switch --flake ".#"${@:nixos-%=%}
 
 ## Environment Setup Tools ##
 aqua-install: ## Install aqua

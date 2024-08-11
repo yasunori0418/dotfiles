@@ -13,7 +13,8 @@ export LESS="\
   --window=-4 \
   --tabs=4"
 
-[[ -n $(toe -a | cut -f1 | grep xterm-256color) ]] && export TERM=xterm-256color
+#[[ -n $(toe -a | cut -f1 | grep xterm-256color) ]] && export TERM=xterm-256color
+export TERM=xterm-256color
 
 export DOTFILES_DATA="${HOME}/.local/dotfiles"
 export DOTFILES="${HOME}/dotfiles"

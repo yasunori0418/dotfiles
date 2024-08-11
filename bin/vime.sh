@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#!/usr/bin/env -S bash
 
 # パク…参考にさせてもらいます。
 # https://gist.github.com/kuuote/4b2feda31d80fc8266fc562fc7f89c7f

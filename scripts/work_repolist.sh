@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#!/usr/bin/env -S bash
 
 export GHQ_ROOT=${HOME}/work
 gist_id=$(\
