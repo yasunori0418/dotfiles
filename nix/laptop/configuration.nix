@@ -203,7 +203,7 @@
             C-m = "enter";
           };
           application = {
-            not = [ "/wezterm/i" ];
+            not = [ "/wezterm/" ];
           };
           device = {
             not = [];
