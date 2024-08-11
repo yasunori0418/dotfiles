@@ -191,12 +191,19 @@
       ];
       keymap = [
         {
-          name = "Ctrl+H should be enabled on all apps as BackSpace";
+          name = "Slightly emacs-like keymap.";
           remap = {
             C-h = "Backspace";
+            C-a = "home";
+            C-e = "end";
+            C-f = "right";
+            C-b = "left";
+            C-p = "up";
+            C-n = "down";
+            C-m = "enter";
           };
           application = {
-            not = [ "Wezterm" ];
+            not = [ "/wezterm/i" ];
           };
           device = {
             not = [];
