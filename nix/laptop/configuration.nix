@@ -2,7 +2,7 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ pkgs, ...  }:
+{ config, pkgs, ...  }:
 
 {
   nix = {
@@ -25,11 +25,7 @@
   boot.kernelPackages = pkgs.linuxKernel.packages.linux_zen;
 
   networking.hostName = "yasunori-laptop"; # Define your hostname.
-  # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
-
-  # Configure network proxy if necessary
-  # networking.proxy.default = "http://user:password@proxy:port/";
-  # networking.proxy.noProxy = "127.0.0.1,localhost,internal.domain";
+  networking.firewall.enable = true;
 
   # Enable networking
   networking.networkmanager.enable = true;
@@ -208,6 +204,14 @@
         }
       ];
     };
+  };
+
+  services.tailscale.enable = true;
+  networking.firewall = {
+    # tailscaleの仮想NICを信頼する
+    # `<Tailscaleのホスト名>:<ポート番号>`のアクセスが可能になる
+    trustedInterfaces = [ "tailscale0" ];
+    allowedUDPPorts = [ config.services.tailscale.port ];
   };
 
   virtualisation = {
