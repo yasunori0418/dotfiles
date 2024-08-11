@@ -1,19 +1,12 @@
-# DO NOT EDIT! This file will be overwritten by LXAppearance.
-# Any customization should be done in ~/.gtkrc-2.0.mine instead.
-
-include "/home/yasunori/.gtkrc-2.0.mine"
 gtk-theme-name="Nordic-darker"
 gtk-icon-theme-name="Nordzy-orange-dark"
-gtk-font-name="Noto Sans CJK JP 11"
-gtk-cursor-theme-name="Nordzy-cursors"
+gtk-cursor-theme-name="Nordic-cursors"
+gtk-font-name="Sans 10"
+gtk-menu-images=0
 gtk-cursor-theme-size=0
-gtk-toolbar-style=GTK_TOOLBAR_BOTH_HORIZ
-gtk-toolbar-icon-size=GTK_ICON_SIZE_LARGE_TOOLBAR
-gtk-button-images=1
-gtk-menu-images=1
-gtk-enable-event-sounds=1
-gtk-enable-input-feedback-sounds=1
+gtk-button-images=0
 gtk-xft-antialias=1
 gtk-xft-hinting=1
-gtk-xft-hintstyle="hintmedium"
-gtk-modules="gail:atk-bridge"
+gtk-xft-hintstyle="hintslight"
+gtk-xft-rgba="none"
+gtk-xft-dpi=97280

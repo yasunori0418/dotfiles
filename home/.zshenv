@@ -31,7 +31,7 @@ export XDG_CACHE_HOME="${HOME}/.cache"
 export XDG_DATA_HOME="${HOME}/.local/share"
 export XDG_STATE_HOME="${HOME}/.local/state"
 export XDG_RUNTIME_DIR="${XDG_RUNTIME_DIR:-${HOME}/.local/runtime}"
-
+export QT_QPA_PLATFORMTHEME=gtk2
 export AQUA_GLOBAL_CONFIG="${XDG_CONFIG_HOME}/aqua/config.yaml"
 export AQUA_PROGRESS_BAR=true
 PATH="${XDG_DATA_HOME}/aquaproj-aqua/bin:${PATH}"

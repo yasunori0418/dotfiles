@@ -74,7 +74,19 @@
           xfce.xfce4-power-manager
           xfce.thunar
           xfce.thunar-volman
-        ];
+          nordic
+          nordzy-icon-theme
+          nordzy-cursor-theme
+          gtk4
+          gtk3
+          themechanger
+          ncpamixer
+        ]
+          ++(with pkgs.libsForQt5; [
+            qt5.qtbase
+            qt5ct
+            qtstyleplugins
+          ]);
       };
 
       # Configure keymap in X11
@@ -86,6 +98,11 @@
 
     # Enable CUPS to print documents.
     printing.enable = true;
+  };
+
+  qt = {
+    enable = true;
+    platformTheme = "qt5ct";
   };
 
   security.polkit.enable = true;
