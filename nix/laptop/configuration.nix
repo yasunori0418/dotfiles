@@ -51,6 +51,7 @@
             qt5.qtbase
             qt5ct
             qtstyleplugins
+            polkit-qt
           ]);
       };
 
