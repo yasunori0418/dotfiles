@@ -5,16 +5,14 @@
 { config, pkgs, ... }:
 
 {
-  imports = [
+  imports = let
+    myNetworkSettings = import ../common/network.nix { hostName = "yasunori-laptop"; };
+  in
+  [
     ../common/system.nix
     ../common/boot.nix
+    myNetworkSettings
   ];
-
-  networking.hostName = "yasunori-laptop"; # Define your hostname.
-  networking.firewall.enable = true;
-
-  # Enable networking
-  networking.networkmanager.enable = true;
 
   # Set your time zone.
   time.timeZone = "Asia/Tokyo";
