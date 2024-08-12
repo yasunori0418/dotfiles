@@ -6,31 +6,11 @@
 
 {
   imports = let
-    myNetworkSettings = import ../common/network.nix { hostName = "yasunori-laptop"; };
+    mySystemSettings = import ../common/system.nix { inherit pkgs; hostName = "yasunori-laptop"; };
   in
   [
-    ../common/system.nix
-    ../common/boot.nix
-    myNetworkSettings
+    mySystemSettings
   ];
-
-  # Set your time zone.
-  time.timeZone = "Asia/Tokyo";
-
-  # Select internationalisation properties.
-  i18n.defaultLocale = "en_US.UTF-8";
-
-  i18n.extraLocaleSettings = {
-    LC_ADDRESS = "en_US.UTF-8";
-    LC_IDENTIFICATION = "en_US.UTF-8";
-    LC_MEASUREMENT = "en_US.UTF-8";
-    LC_MONETARY = "en_US.UTF-8";
-    LC_NAME = "en_US.UTF-8";
-    LC_NUMERIC = "en_US.UTF-8";
-    LC_PAPER = "en_US.UTF-8";
-    LC_TELEPHONE = "en_US.UTF-8";
-    LC_TIME = "en_US.UTF-8";
-  };
 
   services = {
     xserver = {
@@ -80,15 +60,15 @@
         variant = "";
       };
     };
-
-    # Enable CUPS to print documents.
-    printing.enable = true;
   };
 
   qt = {
     enable = true;
     platformTheme = "qt5ct";
   };
+
+  # Enable CUPS to print documents.
+  services.printing.enable = true;
 
   security.polkit.enable = true;
 
@@ -160,12 +140,6 @@
       fcitx5-nord
     ];
   };
-
-  # List packages installed in system profile. To search, run:
-  # $ nix search wget
-  environment.systemPackages = with pkgs; [
-    vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
-  ];
 
   /* Run a single one-shot service that allows root's services to access user's X session */
   systemd.user.services.set-xhost = {
