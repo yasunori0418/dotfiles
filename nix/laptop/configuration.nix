@@ -2,23 +2,12 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ config, pkgs, ...  }:
+{ config, pkgs, ... }:
 
 {
-  nix = {
-    checkConfig = true;
-    settings = {
-      auto-optimise-store = true;
-      experimental-features = ["nix-command" "flakes"];
-    };
-    gc = {
-      automatic = true;
-      dates = "weekly";
-      options = "--delete-older-then 7d";
-    };
-  };
-
-  nixpkgs.config.allowUnfree = true;
+  imports = [
+    ../common/system.nix
+  ];
 
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
