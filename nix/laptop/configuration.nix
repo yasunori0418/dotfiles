@@ -7,12 +7,8 @@
 {
   imports = [
     ../common/system.nix
+    ../common/boot.nix
   ];
-
-  # Bootloader.
-  boot.loader.systemd-boot.enable = true;
-  boot.loader.efi.canTouchEfiVariables = true;
-  boot.kernelPackages = pkgs.linuxKernel.packages.linux_zen;
 
   networking.hostName = "yasunori-laptop"; # Define your hostname.
   networking.firewall.enable = true;
