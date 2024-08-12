@@ -58,6 +58,7 @@
         enable = true;
         extraPackages = with pkgs; [
           i3status
+          # bumblebee-status
           gparted
           slack
           arandr
