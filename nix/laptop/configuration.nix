@@ -6,167 +6,17 @@
 
 {
   imports = let
-    mySystemSettings = import ../common/system.nix { inherit pkgs; hostName = "yasunori-laptop"; };
-    myXserverSettings = import ../common/xserver.nix;
+    mySystemSettings = import ../common/system.nix {
+      inherit config;
+      inherit pkgs;
+      hostName = "yasunori-laptop";
+    };
   in
   [
     mySystemSettings
-    myXserverSettings
+    ../common/user.nix
+    ../common/xserver.nix
   ];
-
-  # Enable CUPS to print documents.
-  services.printing.enable = true;
-
-  security.polkit.enable = true;
-  systemd.user.services.polkit-kde-agent-1 = {
-    description = "polkit-kde-agent-1";
-    wantedBy = [ "graphical-session.target" ];
-    wants = [ "graphical-session.target" ];
-    after = [ "graphical-session.target" ];
-    serviceConfig = {
-      Type = "simple";
-      ExecStart = "${pkgs.libsForQt5.polkit-kde-agent}/libexec/polkit-kde-authentication-agent-1";
-      Restart = "on-failure";
-      RestartSec = 1;
-      TimeoutStopSec = 10;
-    };
-  };
-
-  # Enable sound with pipewire.
-  hardware.pulseaudio.enable = false;
-  security.rtkit.enable = true;
-  services.pipewire = {
-    enable = true;
-    alsa.enable = true;
-    alsa.support32Bit = true;
-    pulse.enable = true;
-    # If you want to use JACK applications, uncomment this
-    jack.enable = true;
-  };
-
-  # Define a user account. Don't forget to set a password with ‘passwd’.
-  users.users.yasunori = {
-    isNormalUser = true;
-    shell = pkgs.zsh;
-    description = "yasunori";
-    extraGroups = [ "networkmanager" "wheel" ];
-    packages = with pkgs; [
-      git
-      wezterm
-      deno
-      gnumake
-      gcc
-      clang
-      zig
-      ncurses
-      xsel
-    ];
-  };
-
-  programs = {
-    zsh.enable = true;
-    noisetorch.enable = true;
-    nix-ld = {
-      enable = true;
-      # libraries = with pkgs; [];
-    };
-  };
-
-  fonts = {
-    packages = with pkgs; [
-      noto-fonts
-      noto-fonts-cjk-serif
-      noto-fonts-cjk-sans
-      noto-fonts-emoji
-      nerdfonts
-      hackgen-nf-font
-    ];
-    fontDir.enable = true;
-    fontconfig = {
-      defaultFonts = {
-        serif = ["Noto Serif CJK JP" "Noto Color Emoji"];
-        sansSerif = ["Noto Sans CJK JP" "Noto Color Emoji"];
-        monospace = ["HackGen35 Console NF" "JetBrainsMono Nerd Font" "Noto Color Emoji"];
-        emoji = ["Noto Color Emoji"];
-      };
-    };
-  };
-
-  i18n.inputMethod = {
-    enable = true;
-    type = "fcitx5";
-    fcitx5.addons = with pkgs; [
-      fcitx5-skk 
-      fcitx5-nord
-    ];
-  };
-
-  /* Run a single one-shot service that allows root's services to access user's X session */
-  systemd.user.services.set-xhost = {
-    description = "Run a one-shot command upon user login";
-    path = [ pkgs.xorg.xhost ];
-    wantedBy = [ "default.target" ];
-    script = "xhost +SI:localuser:root";
-    environment.DISPLAY = ":0.0"; # NOTE: This is hardcoded for this flake
-  };
-
-  services.xremap = {
-    withX11 = true;
-    config = {
-      modmap = [
-        {
-          name = "Swapping Capslock and Ctrl_L";
-          remap = {
-            Capslock = "Ctrl_L";
-            Ctrl_L = "Capslock";
-          };
-          device = {
-            not = [ "HHKB" ];
-          };
-        }
-      ];
-      keymap = [
-        {
-          name = "Slightly emacs-like keymap.";
-          remap = {
-            C-h = "Backspace";
-            C-a = "home";
-            C-e = "end";
-            C-f = "right";
-            C-b = "left";
-            C-p = "up";
-            C-n = "down";
-            C-m = "enter";
-          };
-          application = {
-            not = [ "/wezterm/" ];
-          };
-          device = {
-            not = [];
-          };
-        }
-      ];
-    };
-  };
-
-  services.tailscale.enable = true;
-  networking.firewall = {
-    # tailscaleの仮想NICを信頼する
-    # `<Tailscaleのホスト名>:<ポート番号>`のアクセスが可能になる
-    trustedInterfaces = [ "tailscale0" ];
-    allowedUDPPorts = [ config.services.tailscale.port ];
-  };
-
-  virtualisation = {
-    docker = {
-      enable = true;
-      rootless = {
-        enable = true;
-        setSocketVariable = true;
-      };
-    };
-  };
-
 
   # Enable the OpenSSH daemon.
   # services.openssh.enable = true;

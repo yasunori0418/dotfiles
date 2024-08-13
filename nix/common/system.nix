@@ -1,4 +1,4 @@
-{ pkgs, hostName, ... }: {
+{ config, pkgs, hostName, ... }: {
   nix = {
     checkConfig = true;
     settings = {
@@ -54,4 +54,29 @@
     vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
   ];
 
+  programs.nix-ld = {
+    enable = true;
+    # libraries = with pkgs; [];
+  };
+
+  services.tailscale.enable = true;
+  networking.firewall = {
+    # tailscaleの仮想NICを信頼する
+    # `<Tailscaleのホスト名>:<ポート番号>`のアクセスが可能になる
+    trustedInterfaces = [ "tailscale0" ];
+    allowedUDPPorts = [ config.services.tailscale.port ];
+  };
+
+  virtualisation = {
+    docker = {
+      enable = true;
+      rootless = {
+        enable = true;
+        setSocketVariable = true;
+      };
+    };
+  };
+
+  # Enable CUPS to print documents.
+  services.printing.enable = true;
 }

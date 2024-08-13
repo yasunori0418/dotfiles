@@ -1,4 +1,9 @@
 { pkgs, ... }: {
+
+  imports = [
+    ./xremap.nix
+  ];
+
   services.xserver = {
     enable = true; # Enable the X11 windowing system.
 
@@ -22,10 +27,6 @@
         dunst
         lightlocker
         clipmenu
-        xfce.xfce4-power-manager
-        xfce.thunar
-        xfce.thunar-volman
-        xfce.xfce4-screenshooter
         nordic
         nordzy-icon-theme
         nordzy-cursor-theme
@@ -39,7 +40,14 @@
           qt5ct
           qtstyleplugins
           polkit-kde-agent
-        ]);
+        ])
+        ++(with pkgs.xfce; [
+          xfce4-power-manager
+          thunar
+          thunar-volman
+          xfce4-screenshooter
+        ])
+      ;
     };
 
     # Configure keymap in X11
@@ -53,5 +61,62 @@
     enable = true;
     platformTheme = "qt5ct";
   };
+
+  security.polkit.enable = true;
+  systemd.user.services.polkit-kde-agent-1 = {
+    description = "polkit-kde-agent-1";
+    wantedBy = [ "graphical-session.target" ];
+    wants = [ "graphical-session.target" ];
+    after = [ "graphical-session.target" ];
+    serviceConfig = {
+      Type = "simple";
+      ExecStart = "${pkgs.libsForQt5.polkit-kde-agent}/libexec/polkit-kde-authentication-agent-1";
+      Restart = "on-failure";
+      RestartSec = 1;
+      TimeoutStopSec = 10;
+    };
+  };
+
+  fonts = {
+    packages = with pkgs; [
+      noto-fonts
+      noto-fonts-cjk-serif
+      noto-fonts-cjk-sans
+      noto-fonts-emoji
+      nerdfonts
+      hackgen-nf-font
+    ];
+    fontDir.enable = true;
+    fontconfig = {
+      defaultFonts = {
+        serif = ["Noto Serif CJK JP" "Noto Color Emoji"];
+        sansSerif = ["Noto Sans CJK JP" "Noto Color Emoji"];
+        monospace = ["HackGen35 Console NF" "JetBrainsMono Nerd Font" "Noto Color Emoji"];
+        emoji = ["Noto Color Emoji"];
+      };
+    };
+  };
+
+  i18n.inputMethod = {
+    enable = true;
+    type = "fcitx5";
+    fcitx5.addons = with pkgs; [
+      fcitx5-skk 
+      fcitx5-nord
+    ];
+  };
+
+  # Enable sound with pipewire.
+  hardware.pulseaudio.enable = false;
+  security.rtkit.enable = true;
+  services.pipewire = {
+    enable = true;
+    alsa.enable = true;
+    alsa.support32Bit = true;
+    pulse.enable = true;
+    # If you want to use JACK applications, uncomment this
+    jack.enable = true;
+  };
+  programs.noisetorch.enable = true;
 
 }
