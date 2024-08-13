@@ -9,6 +9,7 @@
     packages = with pkgs; [
       git
       wezterm
+      lemonade
       deno
       gnumake
       gcc
