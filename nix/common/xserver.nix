@@ -5,6 +5,7 @@
     ./xremap.nix
     ./polkit.nix
     ./font.nix
+    ./fcitx5.nix
   ];
 
   services.xserver = {
@@ -59,15 +60,6 @@
   qt = {
     enable = true;
     platformTheme = "qt5ct";
-  };
-
-  i18n.inputMethod = {
-    enable = true;
-    type = "fcitx5";
-    fcitx5.addons = with pkgs; [
-      fcitx5-skk 
-      fcitx5-nord
-    ];
   };
 
 }
