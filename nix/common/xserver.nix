@@ -6,7 +6,11 @@
   ];
 
   services.xserver = {
-    enable = true; # Enable the X11 windowing system.
+    # Enable the X11 windowing system.
+    enable = true;
+
+    # Configure keymap in X11
+    xkb.layout = "us";
 
     # Enable the XFCE Desktop Environment.
     displayManager.lightdm.enable = true;
@@ -26,7 +30,6 @@
         picom
         blueberry
         dunst
-        lightlocker
         clipmenu
         nordic
         nordzy-icon-theme
@@ -49,12 +52,6 @@
           xfce4-screenshooter
         ])
       ;
-    };
-
-    # Configure keymap in X11
-    xkb = {
-      layout = "us";
-      variant = "";
     };
   };
 
