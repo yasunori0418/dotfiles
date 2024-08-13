@@ -22,40 +22,42 @@
       extraPackages = with pkgs; [
         i3status
         # bumblebee-status
-        gparted
-        slack
-        arandr
-        google-chrome
-        discord
-        rofi
-        rofi-power-menu
-        feh
-        picom
-        blueberry
-        dunst
-        clipmenu
-        nordic
-        nordzy-icon-theme
-        nordzy-cursor-theme
-        gtk4
-        gtk3
-        themechanger
-        ncpamixer
-      ]
-        ++(with pkgs.libsForQt5; [
-          qt5.qtbase
-          qt5ct
-          qtstyleplugins
-        ])
-        ++(with pkgs.xfce; [
-          xfce4-power-manager
-          thunar
-          thunar-volman
-          xfce4-screenshooter
-        ])
-      ;
+      ];
     };
   };
+
+  environment.systemPackages = with pkgs; [
+    gparted
+    slack
+    arandr
+    google-chrome
+    discord
+    rofi
+    rofi-power-menu
+    feh
+    picom
+    blueberry
+    dunst
+    clipmenu
+    nordic
+    nordzy-icon-theme
+    nordzy-cursor-theme
+    gtk4
+    gtk3
+    themechanger
+    ncpamixer
+  ]
+    ++(with pkgs.libsForQt5; [
+      qt5.qtbase
+      qt5ct
+      qtstyleplugins
+    ])
+    ++(with pkgs.xfce; [
+      xfce4-power-manager
+      thunar
+      thunar-volman
+      xfce4-screenshooter
+    ]);
 
   qt = {
     enable = true;
