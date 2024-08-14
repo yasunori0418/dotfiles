@@ -77,8 +77,13 @@ work_repoget: ## Get and update ghq management repositories.
 	@./scripts/work_repolist.sh
 
 ## NixOS utility commands ##
-nixos-%: ## nixos-rebuild switch --flake %(laptop)
-	@cd nix && sudo nixos-rebuild switch --flake ".#"${@:nixos-%=%}
+nixos-%: ## nixos-rebuild switch --flake ".#"%(laptop)
+	@cd nix && \
+		sudo nixos-rebuild switch --flake ".#"${@:nixos-%=%}
+
+nix-home-%: ## nix run "nixpkgs#home-manager" -- switch --flake ".#"%(linux)
+	@cd nix && \
+		nix run "nixpkgs#home-manager" -- switch --flake ".#"${@:nix-home-%=%}
 
 ## Environment Setup Tools ##
 aqua-install: ## Install aqua
