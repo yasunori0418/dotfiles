@@ -39,6 +39,7 @@
     blueberry
     dunst
     clipmenu
+    lightlocker
     nordic
     nordzy-icon-theme
     nordzy-cursor-theme
