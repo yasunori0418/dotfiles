@@ -47,6 +47,7 @@
     gtk3
     themechanger
     ncpamixer
+    xsel
   ]
     ++(with pkgs.libsForQt5; [
       qt5.qtbase
