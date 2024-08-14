@@ -6,8 +6,7 @@
     deno
     gnumake
     gcc
-    # clang
-    zig
+    rust
     ncurses
   ];
 }
