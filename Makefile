@@ -85,6 +85,9 @@ nix-home-%: ## nix run "nixpkgs#home-manager" -- switch --flake ".#"%(linux)
 	@cd nix && \
 		nix run "nixpkgs#home-manager" -- switch --flake ".#"${@:nix-home-%=%}
 
+nix-gc: ## nix-collect-garbage -d
+	@nix-collect-garbage -d
+
 ## Environment Setup Tools ##
 aqua-install: ## Install aqua
 	@curl -sSfLo /tmp/aqua-installer https://raw.githubusercontent.com/aquaproj/aqua-installer/v3.0.1/aqua-installer
