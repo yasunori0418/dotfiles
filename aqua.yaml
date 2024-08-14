@@ -8,11 +8,11 @@
 #   - all
 registries:
 - type: standard
-  ref: v4.212.0 # renovate: depName=aquaproj/aqua-registry
+  ref: v4.213.0 # renovate: depName=aquaproj/aqua-registry
 packages:
 - name: TomWright/dasel@v2.8.1
 - name: sharkdp/hyperfine@v1.18.0
-- name: ynqa/jnv@v0.3.0
+- name: ynqa/jnv@v0.4.0
 - name: XAMPPRocky/tokei@v12.1.2
 - name: rhysd/vim-startuptime@v1.3.2
 - name: kamadorueda/alejandra@3.0.0
