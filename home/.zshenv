@@ -37,7 +37,7 @@ export AQUA_PROGRESS_BAR=true
 PATH="${XDG_DATA_HOME}/aquaproj-aqua/bin:${PATH}"
 
 # Docker rootless config
-[[ $(uname -s) = 'Darwin' ]] && DOCKER_HOST="unix://${HOME}/.colima/default/docker.sock"
+[[ $(uname -s) = 'Darwin' ]] && DOCKER_HOST="unix://${XDG_CONFIG_HOME}/colima/default/docker.sock"
 [[ $(uname -s) = 'Linux' ]] && DOCKER_HOST="unix://${XDG_RUNTIME_DIR}/docker.sock"
 export DOCKER_HOST
 
