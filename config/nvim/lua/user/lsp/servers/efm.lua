@@ -58,7 +58,10 @@ efm_configs.setup({
         },
         nix = {
             { kind = "formatters", name = "alejandra", auto_install = false },
-        }
+        },
+        sql = {
+            { kind = "formatters", name = "sql-formatter" },
+        },
     },
 })
 
