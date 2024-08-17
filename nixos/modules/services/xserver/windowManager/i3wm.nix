@@ -1,4 +1,6 @@
-{ pkgs, ... }: {
+{ pkgs, ... }: let
+  applicationList = import ../applicationList.nix;
+in {
   enable = true;
   extraPackages = with pkgs; [
     i3status
@@ -16,5 +18,11 @@
         p.error
       ];
     })
-  ];
+  ]
+    ++applicationList.systemThemeTools
+    ++applicationList.nordThemePkgs
+    ++applicationList.desktopTools
+    ++applicationList.xfceTools
+    ++applicationList.otherTools
+  ;
 }
