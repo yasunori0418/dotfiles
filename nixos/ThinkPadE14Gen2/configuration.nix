@@ -13,6 +13,7 @@
     };
   in
   [
+    ./hardware-configuration.nix
     mySystemSettings
     ../common/user.nix
     ../common/xserver.nix
