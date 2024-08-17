@@ -1,7 +1,10 @@
 let
   openssh = import ./openssh.nix;
-in {
-  inherit openssh;
+  xserver = import ./xserver;
+in
+{
+  inherit openssh xserver;
+
   # Enable CUPS to print documents.
   printing.enable = true;
 }
