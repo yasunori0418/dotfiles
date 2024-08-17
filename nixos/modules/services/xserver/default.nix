@@ -1,6 +1,7 @@
+{ pkgs }:
 let
   lightdm = import ./displayManager/lightdm.nix;
-  i3 = import ./windowManager/i3wm.nix;
+  i3 = import ./windowManager/i3wm.nix { inherit pkgs; };
 in
 {
   # Enable the X11 windowing system.

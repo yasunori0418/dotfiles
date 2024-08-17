@@ -1,6 +1,7 @@
+{ pkgs }:
 let
   openssh = import ./openssh.nix;
-  xserver = import ./xserver;
+  xserver = import ./xserver { inherit pkgs; };
 in
 {
   inherit openssh xserver;

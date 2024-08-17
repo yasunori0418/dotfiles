@@ -23,7 +23,7 @@
       laptop = nixpkgs.lib.nixosSystem {
         system = system;
         modules = [
-          ./nixos/ThinkPadE14Gen2/configuration.nix
+          ./nixos/ThinkPadE14Gen2
           nixos-hardware.nixosModules.lenovo-thinkpad-e14-amd
           xremap.nixosModules.default
         ];

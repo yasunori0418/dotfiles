@@ -1,15 +1,17 @@
+{ pkgs, ... }:
 let
   nix = import ../modules/nix.nix;
-  boot = import ../modules/boot.nix;
+  boot = import ../modules/boot.nix { inherit pkgs; };
   networking = import ../modules/networking.nix { hostName = "yasunori-laptop"; };
-  environment = import ../modules/environment.nix;
+  environment = import ../modules/environment.nix { inherit pkgs; };
   time = import ../modules/time.nix;
   i18n = import ../modules/i18n.nix;
   security = import ../modules/security.nix;
-  programs = import ../modules/programs.nix;
-  users = import ../modules/users.nix;
-  fonts = import ../modules/fonts.nix;
-  virtualization = import ../modules/virtualization.nix;
+  programs = import ../modules/programs.nix { inherit pkgs; };
+  services = import ../modules/services { inherit pkgs; };
+  users = import ../modules/users.nix { inherit pkgs; };
+  fonts = import ../modules/fonts.nix { inherit pkgs; };
+  virtualisation = import ../modules/virtualisation.nix;
   qt = import ../modules/qt.nix;
 in
 {
@@ -22,9 +24,10 @@ in
     i18n
     security
     programs
+    services
     users
     fonts
-    virtualization
+    virtualisation
     qt
   ;
 

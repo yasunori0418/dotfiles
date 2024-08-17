@@ -6,5 +6,4 @@
       setSocketVariable = true;
     };
   };
-
 }

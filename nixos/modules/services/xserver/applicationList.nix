@@ -1,4 +1,4 @@
-{ pkgs, ... }: {
+{ pkgs }: {
 
   systemThemeTools = with pkgs; [
     gtk4

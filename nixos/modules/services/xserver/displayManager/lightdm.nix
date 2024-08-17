@@ -1,3 +1,3 @@
 {
-  lightdm.enable = true;
+  enable = true;
 }

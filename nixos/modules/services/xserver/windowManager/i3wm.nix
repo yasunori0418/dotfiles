@@ -1,5 +1,5 @@
-{ pkgs, ... }: let
-  applicationList = import ../applicationList.nix;
+{ pkgs }: let
+  applicationList = import ../applicationList.nix { inherit pkgs; };
 in {
   enable = true;
   extraPackages = with pkgs; [
