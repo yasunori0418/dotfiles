@@ -1,0 +1,3 @@
+{
+  lightdm.enable = true;
+}
