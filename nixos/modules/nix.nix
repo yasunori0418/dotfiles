@@ -1,15 +1,12 @@
 {
-  nix = {
-    checkConfig = true;
-    settings = {
-      auto-optimise-store = true;
-      experimental-features = ["nix-command" "flakes"];
-    };
-    gc = {
-      automatic = true;
-      dates = "weekly";
-      options = "--delete-older-then 7d";
-    };
+  checkConfig = true;
+  settings = {
+    auto-optimise-store = true;
+    experimental-features = ["nix-command" "flakes"];
   };
-  nixpkgs.config.allowUnfree = true;
+  gc = {
+    automatic = true;
+    dates = "weekly";
+    options = "--delete-older-then 7d";
+  };
 }
