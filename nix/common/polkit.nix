@@ -1,6 +1,5 @@
 { pkgs, ... }: {
 
-  security.polkit.enable = true;
   systemd.user.services.polkit-authentication-agent = {
     description = "polkit-authentication-agent";
     wantedBy = [ "graphical-session.target" ];
