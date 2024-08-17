@@ -1,7 +1,5 @@
 { pkgs, ... }: {
-  programs.zsh.enable = true;
-  # Define a user account. Don't forget to set a password with ‘passwd’.
-  users.users.yasunori = {
+  users.yasunori = {
     isNormalUser = true;
     shell = pkgs.zsh;
     description = "yasunori";
