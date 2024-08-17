@@ -1,7 +1,7 @@
 { pkgs, ... }: {
 
-  systemd.user.services.polkit-authentication-agent = {
-    description = "polkit-authentication-agent";
+  systemd.user.services.polkit-authentication-kde-agent = {
+    description = "polkit authentication kde agent";
     wantedBy = [ "graphical-session.target" ];
     wants = [ "graphical-session.target" ];
     after = [ "graphical-session.target" ];
