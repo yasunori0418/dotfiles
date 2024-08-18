@@ -11,7 +11,12 @@ export {
   type DppOptions,
   type ExtOptions,
   type Plugin,
+  type Protocol,
+  type MultipleHook,
 } from "jsr:@shougo/dpp-vim@2.2.0/types";
+export {
+  mergeFtplugins,
+} from "jsr:@shougo/dpp-vim@2.2.0/utils";
 export {
   Ext as TomlExt,
   type Params as TomlParams,

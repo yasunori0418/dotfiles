@@ -1,19 +1,18 @@
 import {
   BaseConfig,
-  type ConfigArguments,
+  ConfigArguments,
   ConfigReturn,
   Denops,
   join,
-  type LazyMakeStateResult,
-  Plugin,
-  type Toml,
+  LazyMakeStateResult,
   vars,
 } from "./deps.ts";
 import {
   gatherCheckFiles,
   gatherTomls,
   gatherVimrcs,
-  type VimrcSkipRule,
+  getTomlExt,
+  VimrcSkipRule,
 } from "./helper.ts";
 
 export class Config extends BaseConfig {
@@ -59,34 +58,20 @@ export class Config extends BaseConfig {
     });
 
     const [context, options] = await args.contextBuilder.get(denops);
-    //TODO: for dpp version 2
-    //const protocols = await args.dpp.getProtocols(denops, options);
-    //const [tomlExt, tomlOptions, tomlParams] = await args.dpp.getExt(
-    //  denops,
-    //  options,
-    //  "toml",
-    //);
+    const protocols = await args.dpp.getProtocols(denops, options);
+    const [tomlExt, tomlOptions, tomlParams] = await getTomlExt(args, options);
 
-    const tomls = await gatherTomls(
-      await vars.g.get(denops, "toml_dir"),
-      ["dpp.toml", "no_lazy.toml"],
-      args,
-    ) as Toml[];
-
-    const recordPlugins: Record<string, Plugin> = {};
-    const hooksFiles: string[] = [];
-
-    for (const toml of tomls) {
-      if (toml.plugins) {
-        for (const plugin of toml.plugins) {
-          recordPlugins[plugin.name] = plugin;
-        }
-      }
-
-      if (toml.hooks_file) {
-        hooksFiles.push(toml.hooks_file);
-      }
-    }
+    const toml = await gatherTomls({
+      denops,
+      context,
+      options,
+      protocols,
+      tomlExt,
+      tomlOptions,
+      tomlParams,
+      path: await vars.g.get(denops, "toml_dir"),
+      noLazyTomlNames: ["dpp.toml", "no_lazy.toml"]
+    });
 
     const lazyResult = await args.dpp.extAction(
       denops,
@@ -95,7 +80,7 @@ export class Config extends BaseConfig {
       "lazy",
       "makeState",
       {
-        plugins: Object.values(recordPlugins),
+        plugins: Object.values(toml.recordPlugins ?? {}),
       },
     ) as LazyMakeStateResult | undefined;
 
@@ -106,7 +91,7 @@ export class Config extends BaseConfig {
 
     return {
       checkFiles: checkFiles,
-      hooksFiles,
+      hooksFiles: toml.hooksFiles,
       plugins: lazyResult?.plugins ?? [],
       stateLines: lazyResult?.stateLines ?? [],
     };
