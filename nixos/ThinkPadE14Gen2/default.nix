@@ -1,33 +1,22 @@
-{pkgs, ...}: let
+{ pkgs, ... }:
+let
   nix = import ../modules/nix.nix;
-  boot = import ../modules/boot.nix {inherit pkgs;};
-  networking = import ../modules/networking.nix {hostName = "yasunori-laptop";};
-  environment = import ../modules/environment.nix {inherit pkgs;};
+  boot = import ../modules/boot.nix { inherit pkgs; };
+  networking =
+    import ../modules/networking.nix { hostName = "yasunori-laptop"; };
+  environment = import ../modules/environment.nix { inherit pkgs; };
   time = import ../modules/time.nix;
   i18n = import ../modules/i18n.nix;
   security = import ../modules/security.nix;
-  programs = import ../modules/programs.nix {inherit pkgs;};
-  services = import ../modules/services {inherit pkgs;};
-  users = import ../modules/users.nix {inherit pkgs;};
-  fonts = import ../modules/fonts.nix {inherit pkgs;};
+  programs = import ../modules/programs.nix { inherit pkgs; };
+  services = import ../modules/services { inherit pkgs; };
+  users = import ../modules/users.nix { inherit pkgs; };
+  fonts = import ../modules/fonts.nix { inherit pkgs; };
   virtualisation = import ../modules/virtualisation.nix;
   qt = import ../modules/qt.nix;
 in {
-  inherit
-    nix
-    boot
-    networking
-    environment
-    time
-    i18n
-    security
-    programs
-    services
-    users
-    fonts
-    virtualisation
-    qt
-    ;
+  inherit nix boot networking environment time i18n security programs services
+    users fonts virtualisation qt;
 
   imports = [
     ./hardware-configuration.nix

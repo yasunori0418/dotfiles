@@ -1,6 +1,1 @@
-{pkgs, ...}: {
-  systemPackages = with pkgs; [
-    vim
-    exfat
-  ];
-}
+{ pkgs, ... }: { systemPackages = with pkgs; [ vim exfat ]; }

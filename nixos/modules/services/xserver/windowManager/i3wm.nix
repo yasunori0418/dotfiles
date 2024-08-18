@@ -1,5 +1,5 @@
-{pkgs}: let
-  applicationList = import ../applicationList.nix {inherit pkgs;};
+{ pkgs }:
+let applicationList = import ../applicationList.nix { inherit pkgs; };
 in {
   enable = true;
   extraPackages = with pkgs;
@@ -19,10 +19,7 @@ in {
           p.error
         ];
       })
-    ]
-    ++ applicationList.systemThemeTools
-    ++ applicationList.nordThemePkgs
-    ++ applicationList.desktopTools
-    ++ applicationList.xfceTools
+    ] ++ applicationList.systemThemeTools ++ applicationList.nordThemePkgs
+    ++ applicationList.desktopTools ++ applicationList.xfceTools
     ++ applicationList.otherTools;
 }

@@ -1,3 +1,1 @@
-{
-  timeZone = "Asia/Tokyo";
-}
+{ timeZone = "Asia/Tokyo"; }
