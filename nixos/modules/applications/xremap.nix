@@ -1,9 +1,11 @@
-{ pkgs, ... }: {
-  /* Run a single one-shot service that allows root's services to access user's X session */
+{pkgs, ...}: {
+  /*
+  Run a single one-shot service that allows root's services to access user's X session
+  */
   systemd.user.services.set-xhost = {
     description = "Run a one-shot command upon user login";
-    path = [ pkgs.xorg.xhost ];
-    wantedBy = [ "default.target" ];
+    path = [pkgs.xorg.xhost];
+    wantedBy = ["default.target"];
     script = "xhost +SI:localuser:root";
     environment.DISPLAY = ":0.0"; # NOTE: This is hardcoded for this flake
   };
@@ -19,7 +21,7 @@
             Ctrl_L = "Capslock";
           };
           device = {
-            not = [ "HHKB" ];
+            not = ["HHKB"];
           };
         }
       ];
@@ -37,7 +39,7 @@
             C-m = "enter";
           };
           application = {
-            not = [ "/wezterm/" ];
+            not = ["/wezterm/"];
           };
           device = {
             not = [];

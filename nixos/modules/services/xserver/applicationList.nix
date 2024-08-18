@@ -1,11 +1,11 @@
-{ pkgs }: {
-
-  systemThemeTools = with pkgs; [
-    gtk4
-    gtk3
-    themechanger
-  ]
-    ++(with pkgs.libsForQt5; [
+{pkgs}: {
+  systemThemeTools = with pkgs;
+    [
+      gtk4
+      gtk3
+      themechanger
+    ]
+    ++ (with pkgs.libsForQt5; [
       qt5.qtbase
       qt5ct
       qtstyleplugins
@@ -44,5 +44,4 @@
     ncpamixer
     xsel
   ];
-
 }

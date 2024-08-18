@@ -1,4 +1,4 @@
-{ pkgs, ... }: {
+{pkgs, ...}: {
   packages = with pkgs; [
     noto-fonts
     noto-fonts-cjk-serif
