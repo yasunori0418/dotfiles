@@ -1,18 +1,18 @@
 import {
   BaseConfig,
+  type ConfigArguments,
   ConfigReturn,
   Denops,
   join,
+  type LazyMakeStateResult,
   Plugin,
+  type Toml,
   vars,
 } from "./deps.ts";
 import {
-  type ConfigArguments,
   gatherCheckFiles,
   gatherTomls,
   gatherVimrcs,
-  type LazyMakeStateResult,
-  type Toml,
   type VimrcSkipRule,
 } from "./helper.ts";
 

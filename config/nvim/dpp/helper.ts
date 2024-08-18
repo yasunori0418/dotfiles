@@ -2,20 +2,13 @@ import {
   BaseExt,
   BaseExtParams,
   Context,
-  ContextBuilder,
-  Denops,
-  Dpp,
+  ConfigArguments,
   DppOptions,
   expandGlobSync,
   ExtOptions,
   Plugin,
+  Toml,
 } from "./deps.ts";
-
-export type Toml = {
-  hooks_file?: string;
-  ftplugins?: Record<string, string>;
-  plugins?: Plugin[];
-};
 
 export interface GatherTomlsArgs {
   path: string;
@@ -26,18 +19,6 @@ export interface GatherTomlsArgs {
   tomlOptions: ExtOptions;
   tomlParams: BaseExtParams;
 }
-
-export type ConfigArguments = {
-  denops: Denops;
-  contextBuilder: ContextBuilder;
-  basePath: string;
-  dpp: Dpp;
-};
-
-export type LazyMakeStateResult = {
-  plugins: Plugin[];
-  stateLines: string[];
-};
 
 export type VimrcSkipRule = {
   name: string; // file name
