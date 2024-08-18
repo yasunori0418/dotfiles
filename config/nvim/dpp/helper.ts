@@ -10,16 +10,6 @@ import {
   Toml,
 } from "./deps.ts";
 
-export interface GatherTomlsArgs {
-  path: string;
-  noLazyTomlNames: string[];
-  context: Context;
-  options: DppOptions;
-  tomlExt: BaseExt<BaseExtParams>;
-  tomlOptions: ExtOptions;
-  tomlParams: BaseExtParams;
-}
-
 export type VimrcSkipRule = {
   name: string; // file name
   condition: boolean; // skip target by condition
@@ -43,6 +33,16 @@ export function gatherVimrcs(
     inlineVimrcs.push(`${path}/${dirEntry.name}`);
   }
   return inlineVimrcs;
+}
+
+export interface GatherTomlsArgs {
+  path: string;
+  noLazyTomlNames: string[];
+  context: Context;
+  options: DppOptions;
+  tomlExt: BaseExt<BaseExtParams>;
+  tomlOptions: ExtOptions;
+  tomlParams: BaseExtParams;
 }
 
 export async function gatherTomls(
