@@ -9,10 +9,19 @@
     };
   };
 
-  outputs = { self, nixpkgs, nixos-hardware, xremap, home-manager, }@inputs:
-    let system = "x86_64-linux";
-    in {
-      formatter.x86_64-linux = nixpkgs.legacyPackages.x86_64-linux.nixfmt;
+  outputs =
+    {
+      self,
+      nixpkgs,
+      nixos-hardware,
+      xremap,
+      home-manager,
+    }@inputs:
+    let
+      system = "x86_64-linux";
+    in
+    {
+      formatter.x86_64-linux = nixpkgs.legacyPackages.x86_64-linux.nixfmt-rfc-style;
       nixosConfigurations = {
         laptop = nixpkgs.lib.nixosSystem {
           system = system;
@@ -30,7 +39,9 @@
             system = system;
             config.allowUnfree = true;
           };
-          extraSpecialArgs = { inherit inputs; };
+          extraSpecialArgs = {
+            inherit inputs;
+          };
           modules = [ ./home-manager/linux.nix ];
         };
       };

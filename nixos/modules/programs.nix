@@ -1,4 +1,5 @@
-{ pkgs, ... }: {
+{ pkgs, ... }:
+{
   zsh.enable = true;
   nix-ld = {
     enable = true;

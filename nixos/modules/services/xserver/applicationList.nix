@@ -1,9 +1,23 @@
-{ pkgs }: {
-  systemThemeTools = with pkgs;
-    [ gtk4 gtk3 themechanger ]
-    ++ (with pkgs.libsForQt5; [ qt5.qtbase qt5ct qtstyleplugins ]);
+{ pkgs }:
+{
+  systemThemeTools =
+    with pkgs;
+    [
+      gtk4
+      gtk3
+      themechanger
+    ]
+    ++ (with pkgs.libsForQt5; [
+      qt5.qtbase
+      qt5ct
+      qtstyleplugins
+    ]);
 
-  nordThemePkgs = with pkgs; [ nordic nordzy-icon-theme nordzy-cursor-theme ];
+  nordThemePkgs = with pkgs; [
+    nordic
+    nordzy-icon-theme
+    nordzy-cursor-theme
+  ];
 
   desktopTools = with pkgs; [
     gparted

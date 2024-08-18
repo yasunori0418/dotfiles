@@ -1,8 +1,11 @@
 { pkgs }:
-let applicationList = import ../applicationList.nix { inherit pkgs; };
-in {
+let
+  applicationList = import ../applicationList.nix { inherit pkgs; };
+in
+{
   enable = true;
-  extraPackages = with pkgs;
+  extraPackages =
+    with pkgs;
     [
       i3status
       i3status-rust
@@ -19,7 +22,10 @@ in {
           p.error
         ];
       })
-    ] ++ applicationList.systemThemeTools ++ applicationList.nordThemePkgs
-    ++ applicationList.desktopTools ++ applicationList.xfceTools
+    ]
+    ++ applicationList.systemThemeTools
+    ++ applicationList.nordThemePkgs
+    ++ applicationList.desktopTools
+    ++ applicationList.xfceTools
     ++ applicationList.otherTools;
 }

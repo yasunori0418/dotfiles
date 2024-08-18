@@ -1,4 +1,5 @@
-{ hostName, ... }: {
+{ hostName, ... }:
+{
   hostName = hostName;
   firewall.enable = true;
 
