@@ -6,8 +6,8 @@
     deno
     gnumake
     gcc
-    # rust
     ncurses
     unzip
+    rustup
   ];
 }
