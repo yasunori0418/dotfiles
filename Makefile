@@ -81,8 +81,7 @@ nixos-%: ## nixos-rebuild switch --flake ".#"%(laptop)
 	@sudo nixos-rebuild switch --flake ".#"${@:nixos-%=%}
 
 nix-home-%: ## nix run "nixpkgs#home-manager" -- switch --flake ".#"%(linux)
-	@cd nix && \
-		nix run "nixpkgs#home-manager" -- switch --flake ".#"${@:nix-home-%=%}
+	@nix run "nixpkgs#home-manager" -- switch --flake ".#"${@:nix-home-%=%}
 
 nix-gc: ## nix-collect-garbage -d
 	@nix-collect-garbage -d

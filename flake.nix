@@ -40,7 +40,7 @@
           inherit inputs;
         };
         modules = [
-          ./home/linux.nix
+          ./home-manager/linux.nix
         ];
       };
     };
