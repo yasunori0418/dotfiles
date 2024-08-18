@@ -31,6 +31,10 @@ snippets:
     keyword: gpl
     snippet: git pull
 
+  - name: git pull --rebase
+    keyword: gplr
+    snippet: git pull --rebase
+
   - name: git lol
     keyword: gl
     snippet: git lol
