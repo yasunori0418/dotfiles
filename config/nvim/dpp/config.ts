@@ -88,6 +88,8 @@ export class Config extends BaseConfig {
     return {
       checkFiles: checkFiles,
       hooksFiles: toml.hooksFiles,
+      ftplugins: toml.ftplugins,
+      multipleHooks: toml.multipleHooks,
       plugins: lazyResult?.plugins ?? [],
       stateLines: lazyResult?.stateLines ?? [],
     };
