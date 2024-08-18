@@ -34,7 +34,6 @@
   ];
 
   otherTools = with pkgs; [
-    wezterm
     rofi
     rofi-power-menu
     feh

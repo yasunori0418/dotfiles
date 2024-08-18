@@ -1,12 +1,12 @@
 { pkgs, ... }: {
   home.packages = with pkgs; [
     git
-    # wezterm
+    wezterm
     lemonade
     deno
     gnumake
     gcc
-    rust
+    # rust
     ncurses
     unzip
   ];
