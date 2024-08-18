@@ -9,11 +9,13 @@ import {
 } from "./deps.ts";
 import {
   gatherCheckFiles,
-  gatherTomls,
   gatherVimrcs,
-  getTomlExt,
   VimrcSkipRule,
 } from "./helper.ts";
+import {
+  gatherTomls,
+  getTomlExt,
+} from "./helper/toml.ts";
 
 export class Config extends BaseConfig {
   override async config(args: ConfigArguments): Promise<ConfigReturn> {
