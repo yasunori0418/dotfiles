@@ -9,5 +9,6 @@
     ncurses
     unzip
     rustup
+    luajitPackages.luarocks
   ];
 }
