@@ -20,7 +20,7 @@ nord07="8FBCBB" #8FBCBB
 # nord09="81A1C1" #81A1C1
 nord10="5E81AC" #5E81AC
 ## Aurora ##
-# nord11="BF616A" #BF616A
+nord11="BF616A" #BF616A
 # nord12="D08770" #D08770
 # nord13="EBCB8B" #EBCB8B
 # nord14="A3BE8C" #A3BE8C
@@ -172,22 +172,39 @@ sketchybar \
 # https://felixkratz.github.io/SketchyBar/config/components#space----associate-mission-control-spaces-with-an-item
 # to indicate active and available mission control spaces.
 
-SPACE_ICONS=("1" "2" "3" "4" "5" "6" "7" "8")
-for i in "${!SPACE_ICONS[@]}" ; do
-  sid="$((i+1))"
-  space=(
-    space="$sid"
-    icon="${SPACE_ICONS[i]}"
-    icon.padding_left=5
-    icon.padding_right=5
-    background.color="0x${alpha100}${nord03}"
-    background.corner_radius=5
-    background.height=25
-    label.drawing=off
-    script="$PLUGIN_DIR/space.sh"
-    click_script="yabai -m space --focus $sid"
-  )
-  sketchybar --add space space."$sid" left --set space."$sid" "${space[@]}"
+# SPACE_ICONS=("1" "2" "3" "4" "5" "6" "7" "8")
+# for i in "${!SPACE_ICONS[@]}" ; do
+#   sid="$((i+1))"
+#   space=(
+#     space="$sid"
+#     icon="${SPACE_ICONS[i]}"
+#     icon.padding_left=5
+#     icon.padding_right=5
+#     background.color="0x${alpha100}${nord03}"
+#     background.corner_radius=5
+#     background.height=25
+#     label.drawing=off
+#     script="$PLUGIN_DIR/space.sh"
+#     click_script="yabai -m space --focus $sid"
+#   )
+#   sketchybar --add space space."$sid" left --set space."$sid" "${space[@]}"
+# done
+
+sketchybar --add event aerospace_workspace_change
+for sid in $(aerospace list-workspaces --all); do
+
+  sketchybar --add item "space.${sid}" left \
+    --subscribe "space.${sid}" aerospace_workspace_change \
+    --set "space.${sid}" \
+    icon="${sid}" \
+    icon.font.size=18.0 \
+    background.color="0x${alpha100}${nord11}" \
+    background.corner_radius=5 \
+    background.height=20 \
+    background.drawing=off \
+    click_script="aerospace workspace ${sid}" \
+    script="${PLUGIN_DIR}/aerospace.sh $sid"
+
 done
 
 ##### Adding Center Items #####

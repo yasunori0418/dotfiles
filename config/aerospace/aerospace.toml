@@ -10,13 +10,33 @@ enable-normalization-opposite-orientation-for-nested-containers = false
 # Mouse follows focus when focused monitor changes
 on-focused-monitor-changed = ['move-mouse monitor-lazy-center']
 
+# Run Sketchybar together with AeroSpace
+# sketchbar has a built-in detection of already running process,
+# so it won't be run twice on AeroSpace restart
+after-startup-command = ['exec-and-forget sketchybar']
+
+# Notify Sketchybar about workspace change
+exec-on-workspace-change = [
+  '/bin/bash',
+  '-c',
+  'sketchybar --trigger aerospace_workspace_change FOCUSED_WORKSPACE=$(aerospace list-workspaces --focused)'
+]
+
+[gaps]
+inner.horizontal = 5
+inner.vertical = 5
+outer.left = 5
+outer.bottom = 5
+outer.top = 40
+outer.right = 5
+
 [mode.main.binding]
 # See: https://nikitabobko.github.io/AeroSpace/goodness#open-a-new-window-with-applescript
 alt-enter = 'exec-and-forget open -n /Applications/WezTerm.app'
 
 alt-h = 'focus left'
-alt-j = 'focus down'
-alt-k = 'focus up'
+alt-j = ['focus down', 'focus-monitor up']
+alt-k = ['focus up', 'focus-monitor down']
 alt-l = 'focus right'
 
 alt-shift-h = 'move left'
@@ -25,12 +45,10 @@ alt-shift-k = 'move up'
 alt-shift-l = 'move right'
 
 # Consider using 'join-with' command as a 'split' replacement if you want to enable normalizations
-cmd-v = 'split horizontal'
-cmd-b = 'split vertical'
+alt-shift-v = 'split horizontal'
+alt-shift-b = 'split vertical'
 
-cmd-f = 'fullscreen'
-
-cmd-w = 'layout tiles h_accordion' # 'layout tabbed' in i3
+alt-w = 'layout tiles h_accordion' # 'layout tabbed' in i3
 
 alt-shift-space = 'layout floating tiling' # 'floating toggle' in i3
 
@@ -60,7 +78,7 @@ alt-shift-8 = ['move-node-to-workspace 8', 'workspace 8']
 alt-shift-9 = ['move-node-to-workspace 9', 'workspace 9']
 alt-shift-0 = ['move-node-to-workspace 10', 'workspace 10']
 
-cmd-shift-c = 'reload-config'
+alt-shift-c = 'reload-config'
 
 alt-r = 'mode resize'
 
