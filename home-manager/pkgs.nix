@@ -4,6 +4,7 @@
     git
     wezterm
     kitty
+    alacritty
     lemonade
     deno
     gnumake
