@@ -3,6 +3,18 @@ snippets:
     keyword: gs
     snippet: git status --short --branch
 
+  - name: git add
+    keyword: ga
+    snippet: git add
+
+  - name: git restore
+    keyword: gr
+    snippet: git restore
+
+  - name: git restore --staged
+    keyword: grs
+    snippet: git restore --staged
+
   - name: git commit
     keyword: gc
     snippet: git commit
