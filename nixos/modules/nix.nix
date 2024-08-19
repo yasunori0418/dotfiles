@@ -9,7 +9,7 @@
   };
   gc = {
     automatic = true;
-    dates = "weekly";
-    options = "--delete-older-then 7d";
+    dates = "daily";
+    options = "--delete-older-then 3d";
   };
 }
