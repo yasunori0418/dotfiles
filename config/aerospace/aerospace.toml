@@ -35,8 +35,8 @@ outer.right = 5
 alt-enter = 'exec-and-forget open -n /Applications/WezTerm.app'
 
 alt-h = 'focus left'
-alt-j = ['focus down', 'focus-monitor up']
-alt-k = ['focus up', 'focus-monitor down']
+alt-j = ['focus down', 'focus-monitor down']
+alt-k = ['focus up', 'focus-monitor up']
 alt-l = 'focus right'
 
 alt-shift-h = 'move left'
