@@ -38,7 +38,7 @@
             C-m = "enter";
           };
           application = {
-            not = [ "/wezterm/" ];
+            not = [ "/wezterm/" "/kitty/" "/alacritty/" ];
           };
           device = {
             not = [ ];
