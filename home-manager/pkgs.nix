@@ -3,6 +3,7 @@
   home.packages = with pkgs; [
     git
     wezterm
+    kitty
     lemonade
     deno
     gnumake
