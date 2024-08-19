@@ -9,6 +9,7 @@ let
   security = import ../modules/security.nix;
   programs = import ../modules/programs.nix { inherit pkgs; };
   services = import ../modules/services { inherit pkgs; };
+  systemd = import ../modules/systemd { inherit pkgs; };
   users = import ../modules/users.nix { inherit pkgs; };
   fonts = import ../modules/fonts.nix { inherit pkgs; };
   virtualisation = import ../modules/virtualisation.nix;
@@ -25,6 +26,7 @@ in
     security
     programs
     services
+    systemd
     users
     fonts
     virtualisation
@@ -37,7 +39,6 @@ in
     ../modules/applications/fcitx5.nix
     ../modules/applications/tailscale.nix
     ../modules/applications/pipewire.nix
-    ../modules/systemd/polkit-kde-agent.nix
   ];
 
   nixpkgs.config.allowUnfree = true;
