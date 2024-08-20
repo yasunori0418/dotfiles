@@ -1,0 +1,10 @@
+[laravel_sql_log]
+body = '''
+\\DB::enableQueryLog();
+logger(\\DB::getQueryLog());
+'''
+description = "output executed sql log by laravel "
+prefix = ['sqllog']
+scope = "php"
+
+
