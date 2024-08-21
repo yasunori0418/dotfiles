@@ -43,6 +43,6 @@ export DOCKER_HOST
 
 # ssh-agent socket
 # [[ $(uname -s) = 'Darwin' ]] && eval $(ssh-agent)
-[[ $(uname -s) = 'Linux' ]] && export SSH_AUTH_SOCK="${XDG_RUNTIME_DIR}/ssh-agent.socket"
+[[ $(uname -s) = 'Linux' ]] && eval $(ssh-agent | head -2)
 
 export PATH
