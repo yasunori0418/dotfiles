@@ -55,6 +55,24 @@ vim.opt_local.shiftwidth = 4
 vim.opt_local.iskeyword:append("$")
 -- }}}
 
+-- lua_sh {{{
+vim.opt_local.tabstop = 4
+vim.opt_local.softtabstop = 4
+vim.opt_local.shiftwidth = 4
+-- }}}
+
+-- lua_bash {{{
+vim.opt_local.tabstop = 4
+vim.opt_local.softtabstop = 4
+vim.opt_local.shiftwidth = 4
+-- }}}
+
+-- lua_zsh {{{
+vim.opt_local.tabstop = 4
+vim.opt_local.softtabstop = 4
+vim.opt_local.shiftwidth = 4
+-- }}}
+
 -- lua_lua {{{
 vim.opt_local.tabstop = 4
 vim.opt_local.softtabstop = 4
