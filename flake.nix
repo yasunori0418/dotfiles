@@ -33,15 +33,16 @@
         };
         desktop = nixpkgs.lib.nixosSystem {
           system = system;
-          modules = [
-            ./nixos/Desktop
-            xremap.nixosModules.default
-          ]
-          ++ (with nixos-hardware.nixosModules; [
-            common-cpu-amd-zenpower
-            common-gpu-nvidia-nonprime
-            common-pc-ssd
-          ]);
+          modules =
+            [
+              ./nixos/Desktop
+              xremap.nixosModules.default
+            ]
+            ++ (with nixos-hardware.nixosModules; [
+              common-cpu-amd-zenpower
+              common-gpu-nvidia-nonprime
+              common-pc-ssd
+            ]);
         };
       };
 
