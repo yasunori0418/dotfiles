@@ -72,11 +72,14 @@ fi
 
 [[ $(command -v nvim) ]] && export MANPAGER='nvim +Man!'
 
-if [[ $(ps aux | grep ssh-agent | grep -v grep | wc -l) -eq 0 ]]; then
-    eval $(ssh-agent -a "${XDG_RUNTIME_DIR}/ssh-agent.socket")
-else
-    export SSH_AUTH_SOCK="${XDG_RUNTIME_DIR}/ssh-agent.socket"
-    export SSH_AGENT_PID=$(pidof ssh-agent)
+# ssh-agent socket settings
+if [[ $(uname -s) = 'Linux' ]]; then
+    if [[ $(ps aux | grep ssh-agent | grep -v grep | wc -l) -eq 0 ]]; then
+        eval $(ssh-agent -a "${XDG_RUNTIME_DIR}/ssh-agent.socket")
+    else
+        export SSH_AUTH_SOCK="${XDG_RUNTIME_DIR}/ssh-agent.socket"
+        export SSH_AGENT_PID=$(pidof ssh-agent)
+    fi
 fi
 
 unset dir_colors dir_colors_cache go_bin cargo_bin npm_path bun_path aqua_bin themis_bin
