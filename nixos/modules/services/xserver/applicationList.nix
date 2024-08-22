@@ -26,6 +26,7 @@
     google-chrome
     discord
     blueberry
+    pavucontrol
   ];
 
   xfceTools = with pkgs.xfce; [
