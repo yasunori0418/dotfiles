@@ -30,8 +30,6 @@
 
   xfceTools = with pkgs.xfce; [
     xfce4-power-manager
-    thunar
-    thunar-volman
     xfce4-screenshooter
   ];
 

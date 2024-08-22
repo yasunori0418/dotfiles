@@ -39,6 +39,7 @@ in
     ../modules/applications/fcitx5.nix
     ../modules/applications/tailscale.nix
     ../modules/applications/pipewire.nix
+    ../modules/applications/thunar.nix
   ];
 
   nixpkgs.config.allowUnfree = true;
