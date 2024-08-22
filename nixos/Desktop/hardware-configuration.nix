@@ -12,18 +12,22 @@
 {
   imports = [ (modulesPath + "/installer/scan/not-detected.nix") ];
 
-  boot.initrd.availableKernelModules = [
-    "nvme"
-    "ahci"
-    "xhci_pci"
-    "usbhid"
-    "usb_storage"
-    "sd_mod"
-    "sr_mod"
-  ];
-  boot.initrd.kernelModules = [ ];
-  boot.kernelModules = [ "kvm-amd" ];
-  boot.extraModulePackages = [ ];
+  boot = {
+    initrd = {
+      availableKernelModules = [
+        "nvme"
+        "ahci"
+        "xhci_pci"
+        "usbhid"
+        "usb_storage"
+        "sd_mod"
+        "sr_mod"
+      ];
+      kernelModules = [ ];
+    };
+    kernelModules = [ "kvm-amd" ];
+    extraModulePackages = [ ];
+  };
 
   fileSystems."/" = {
     device = "/dev/disk/by-label/NIX_ROOT";
@@ -36,6 +40,16 @@
     options = [
       "fmask=0022"
       "dmask=0022"
+    ];
+  };
+
+  fileSystems."/data" = {
+    device = "/dev/disk/by-label/data";
+    noCheck = true;
+    fsType = "ntfs-3g";
+    options = [
+      "rw"
+      "uid=1000"
     ];
   };
 
