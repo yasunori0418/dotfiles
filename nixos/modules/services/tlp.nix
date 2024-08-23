@@ -1,5 +1,5 @@
 {
-  enable = true;
+  enable = false;
   settings = {
     TLP_DEFAULT_MODE = "BAT";
 
