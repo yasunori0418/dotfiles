@@ -1,29 +1,30 @@
 {
+  # Refer:
+  # https://github.com/takeokunn/nixos-configuration/blob/9e13d22/nixos/modules/services.nix#L38-L65
   enable = true;
   settings = {
-    TLP_DEFAULT_MODE = "BAT";
+    CPU_SCALING_GOVERNOR_ON_AC = "performance";
+    CPU_SCALING_GOVERNOR_ON_BAT = "powersave";
 
-    # Battery Care
-    # Refer: https://linrunner.de/tlp/settings/battery.html
-    START_CHARGE_THRESH_BAT0 = 80;
-    STOP_CHARGE_THRESH_BAT0 = 90;
-    START_CHARGE_THRESH_BAT1 = 80;
-    STOP_CHARGE_THRESH_BAT1 = 90;
-    # Control battery care drivers:
-    NATACPI_ENABLE = 1;
-    TPACPI_ENABLE = 1;
-    TPSMAPI_ENABLE = 1;
+    CPU_HWP_DYN_BOOST_ON_AC = 1;
+    CPU_HWP_DYN_BOOST_ON_BAT = 0;
 
-    # Disks and Controllers
-    DISK_APM_LEVEL_ON_AC = "254 254";
-    DISK_APM_LEVEL_ON_BAT = "128 128";
-    SATA_LINKPWR_ON_AC = "med_power_with_dipm";
-    SATA_LINKPWR_ON_BAT = "med_power_with_dipm";
-    AHCI_RUNTIME_PM_ON_AC = "on";
-    AHCI_RUNTIME_PM_ON_BAT = "auto";
+    CPU_BOOST_ON_AC = 1;
+    CPU_BOOST_ON_BAT = 0;
 
-    # Networking
-    WIFI_PWR_ON_AC = "off";
-    WIFI_PWR_ON_BAT = "on";
+    CPU_ENERGY_PERF_POLICY_ON_AC = "performance";
+    CPU_ENERGY_PERF_POLICY_ON_BAT = "power";
+
+    RUNTIME_PM_ON_AC = "auto";
+    RUNTIME_PM_ON_BAT = "auto";
+
+    PLATFORM_PROFILE_ON_AC = "performance";
+    PLATFORM_PROFILE_ON_BAT = "low-power";
+
+    SATA_LINKPWR_ON_AC = "max_performance";
+    SATA_LINKPWR_ON_BAT = "min_power";
+
+    SOUND_POWER_SAVE_ON_AC = 0;
+    SOUND_POWER_SAVE_ON_BAT = 1;
   };
 }
