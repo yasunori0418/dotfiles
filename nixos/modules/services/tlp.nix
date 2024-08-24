@@ -1,13 +1,13 @@
 {
-  enable = false;
+  enable = true;
   settings = {
     TLP_DEFAULT_MODE = "BAT";
 
     # Battery Care
     # Refer: https://linrunner.de/tlp/settings/battery.html
-    START_CHARGE_THRESH_BAT0 = 30;
+    START_CHARGE_THRESH_BAT0 = 80;
     STOP_CHARGE_THRESH_BAT0 = 90;
-    START_CHARGE_THRESH_BAT1 = 30;
+    START_CHARGE_THRESH_BAT1 = 80;
     STOP_CHARGE_THRESH_BAT1 = 90;
     # Control battery care drivers:
     NATACPI_ENABLE = 1;
