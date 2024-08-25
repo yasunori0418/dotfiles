@@ -35,6 +35,7 @@ in
 
   imports = [
     ./hardware-configuration.nix
+    ../modules/nvidia.nix
     ../modules/applications/xremap.nix
     ../modules/applications/fcitx5.nix
     ../modules/applications/tailscale.nix

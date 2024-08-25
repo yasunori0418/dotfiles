@@ -23,10 +23,10 @@
         "sd_mod"
         "sr_mod"
       ];
-      kernelModules = [ ];
+      kernelModules = [ "nvidia" ];
     };
     kernelModules = [ "kvm-amd" ];
-    extraModulePackages = [ ];
+    extraModulePackages = [ config.boot.kernelPackages.nvidia_x11 ];
   };
 
   fileSystems."/" = {

@@ -40,7 +40,7 @@
             ]
             ++ (with nixos-hardware.nixosModules; [
               common-cpu-amd-zenpower
-              common-gpu-nvidia-nonprime
+              common-gpu-nvidia-sync
               common-pc-ssd
             ]);
         };
