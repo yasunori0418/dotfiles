@@ -379,22 +379,6 @@
     },
     "nixpkgs_5": {
       "locked": {
-        "lastModified": 1721435672,
-        "narHash": "sha256-VaBqKvCu4iFWPwKFFigdhOfgccLUDEVByb6Wa2Z9i98=",
-        "owner": "NixOS",
-        "repo": "nixpkgs",
-        "rev": "2d65995365a2a6b05db69e344d3b673c8d541bcd",
-        "type": "github"
-      },
-      "original": {
-        "owner": "NixOS",
-        "ref": "nixpkgs-unstable",
-        "repo": "nixpkgs",
-        "type": "github"
-      }
-    },
-    "nixpkgs_6": {
-      "locked": {
         "lastModified": 1719690277,
         "narHash": "sha256-0xSej1g7eP2kaUF+JQp8jdyNmpmCJKRpO12mKl/36Kc=",
         "owner": "nixos",
@@ -449,7 +433,7 @@
     },
     "treefmt-nix": {
       "inputs": {
-        "nixpkgs": "nixpkgs_6"
+        "nixpkgs": "nixpkgs_5"
       },
       "locked": {
         "lastModified": 1721458737,
@@ -505,7 +489,9 @@
         "flake-parts": "flake-parts",
         "home-manager": "home-manager_2",
         "hyprland": "hyprland",
-        "nixpkgs": "nixpkgs_5",
+        "nixpkgs": [
+          "nixpkgs"
+        ],
         "treefmt-nix": "treefmt-nix",
         "xremap": "xremap_2"
       },

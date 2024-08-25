@@ -2,7 +2,10 @@
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
     nixos-hardware.url = "github:NixOS/nixos-hardware/master";
-    xremap.url = "github:xremap/nix-flake";
+    xremap = {
+      url = "github:xremap/nix-flake";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     home-manager = {
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -16,7 +19,7 @@
       nixos-hardware,
       xremap,
       home-manager,
-    }@inputs:
+    }:
     let
       system = "x86_64-linux";
     in
@@ -51,9 +54,6 @@
           pkgs = import nixpkgs {
             system = system;
             config.allowUnfree = true;
-          };
-          extraSpecialArgs = {
-            inherit inputs;
           };
           modules = [ ./home-manager/linux.nix ];
         };
