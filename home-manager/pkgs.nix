@@ -1,7 +1,7 @@
 { pkgs, ... }:
 {
   home.packages = with pkgs; [
-    wezterm
+    # wezterm
     kitty
     alacritty
     lemonade

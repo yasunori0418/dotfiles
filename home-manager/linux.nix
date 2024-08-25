@@ -1,4 +1,4 @@
-{ ... }:
+{ pkgs, wezterm-flake, ...  }:
 {
   imports = [ ./pkgs.nix ];
   programs.home-manager.enable = true;
@@ -6,5 +6,9 @@
     username = "yasunori";
     homeDirectory = "/home/${username}";
     stateVersion = "24.05";
+  };
+  programs.wezterm = {
+    enable = true;
+    package = wezterm-flake.packages.${pkgs.system}.default;
   };
 }

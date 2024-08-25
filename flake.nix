@@ -10,6 +10,10 @@
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    wezterm-flake = {
+      url = "github:wez/wezterm?dir=nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs =
@@ -19,6 +23,7 @@
       nixos-hardware,
       xremap,
       home-manager,
+      wezterm-flake,
     }:
     let
       system = "x86_64-linux";
@@ -54,6 +59,9 @@
           pkgs = import nixpkgs {
             system = system;
             config.allowUnfree = true;
+          };
+          extraSpecialArgs = {
+            inherit wezterm-flake;
           };
           modules = [ ./home-manager/linux.nix ];
         };
