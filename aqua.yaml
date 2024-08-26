@@ -8,7 +8,7 @@
 #   - all
 registries:
 - type: standard
-  ref: v4.216.0 # renovate: depName=aquaproj/aqua-registry
+  ref: v4.218.0 # renovate: depName=aquaproj/aqua-registry
 packages:
 - name: TomWright/dasel@v2.8.1
 - name: sharkdp/hyperfine@v1.18.0
