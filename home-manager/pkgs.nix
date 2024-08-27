@@ -1,15 +1,17 @@
-{ pkgs, ... }:
+{ pkgs, wezterm-flake, ... }:
 {
-  home.packages = with pkgs; [
-    # wezterm
-    kitty
-    alacritty
-    lemonade
-    deno
-    gcc
-    ncurses
-    unzip
-    rustup
-    luajitPackages.luarocks
-  ];
+  home.packages =
+    with pkgs;
+    [
+      kitty
+      alacritty
+      lemonade
+      deno
+      gcc
+      ncurses
+      unzip
+      rustup
+      luajitPackages.luarocks
+    ]
+    ++ [ wezterm-flake.packages.${pkgs.system}.default ];
 }
