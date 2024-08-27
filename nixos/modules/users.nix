@@ -1,12 +1,14 @@
 { pkgs, ... }:
 {
-  users.yasunori = {
-    isNormalUser = true;
-    shell = pkgs.zsh;
-    description = "yasunori";
-    extraGroups = [
-      "networkmanager"
-      "wheel"
-    ];
+  users = {
+    users.yasunori = {
+      isNormalUser = true;
+      shell = pkgs.zsh;
+      description = "yasunori";
+      extraGroups = [
+        "networkmanager"
+        "wheel"
+      ];
+    };
   };
 }

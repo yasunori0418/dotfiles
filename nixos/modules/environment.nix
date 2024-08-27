@@ -1,9 +1,11 @@
 { pkgs, ... }:
 {
-  systemPackages = with pkgs; [
-    vim
-    exfat
-    git
-    gnumake
-  ];
+  environment = {
+    systemPackages = with pkgs; [
+      vim
+      exfat
+      git
+      gnumake
+    ];
+  };
 }

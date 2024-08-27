@@ -1,4 +1,7 @@
+{ ... }:
 {
-  enable = true;
-  platformTheme = "gtk2";
+  qt = {
+    enable = true;
+    platformTheme = "gtk2";
+  };
 }
