@@ -1,5 +1,6 @@
 # Refer: https://nixos.wiki/wiki/Nvidia
-{config, ...}: {
+{ config, ... }:
+{
   hardware = {
     opengl.enable = true;
     nvidia = {
