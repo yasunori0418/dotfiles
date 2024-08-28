@@ -52,11 +52,11 @@
     { "before": [ "<C-r>" ], "commands": [ { "command": "redo" } ] },
     // disable keymaps {{{
     { "before": [ "<Space>" ], "after": [ "<Nop>" ] },
-    { "before": [ "s" ], "after": [ "<Nop>" ] },
-    { "before": [ "S" ], "after": [ "<Nop>" ] },
-    { "before": [ "m" ], "after": [ "<Nop>" ] },
-    { "before": [ "'" ], "after": [ "<Nop>" ] },
-    { "before": [ "`" ], "after": [ "<Nop>" ] },
+    // { "before": [ "s" ], "after": [ "<Nop>" ] },
+    // { "before": [ "S" ], "after": [ "<Nop>" ] },
+    // { "before": [ "m" ], "after": [ "<Nop>" ] },
+    // { "before": [ "'" ], "after": [ "<Nop>" ] },
+    // { "before": [ "`" ], "after": [ "<Nop>" ] },
     // }}} disable keymaps
     // Window control keybind {{{
     { "before": [ "<Space>", "w", "h" ], "after": [ "<C-w>", "h" ] },
@@ -97,11 +97,11 @@
   ],
   "vim.visualModeKeyBindingsNonRecursive": [
     { "before": [ "<Space>" ], "after": [ "<Nop>" ] },
-    { "before": [ "s" ], "after": [ "<Nop>" ] },
-    { "before": [ "S" ], "after": [ "<Nop>" ] },
-    { "before": [ "m" ], "after": [ "<Nop>" ] },
-    { "before": [ "'" ], "after": [ "<Nop>" ] },
-    { "before": [ "`" ], "after": [ "<Nop>" ] },
+    // { "before": [ "s" ], "after": [ "<Nop>" ] },
+    // { "before": [ "S" ], "after": [ "<Nop>" ] },
+    // { "before": [ "m" ], "after": [ "<Nop>" ] },
+    // { "before": [ "'" ], "after": [ "<Nop>" ] },
+    // { "before": [ "`" ], "after": [ "<Nop>" ] },
     // xとcで消えたものがレジスターに入らないようにする {{{
     { "before": [ "x" ], "after": [ "\"", "_", "x" ] },
     { "before": [ "c" ], "after": [ "\"", "_", "c" ] },
