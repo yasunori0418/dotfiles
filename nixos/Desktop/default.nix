@@ -25,7 +25,7 @@ let
 
   xserver = {
     base = import ../modules/xserver/base.nix;
-    lightdm = import ../modules/xserver/displayManager/lightdm.nix { greeterName = "gtk"; };
+    lightdm = import ../modules/xserver/displayManager/lightdm.nix { greeterName = "mini"; };
     i3wm = import ../modules/xserver/windowManager/i3wm.nix { inherit pkgs; };
   };
 
