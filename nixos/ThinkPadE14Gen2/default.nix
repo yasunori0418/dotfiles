@@ -20,11 +20,12 @@ let
     printing = import ../modules/services/printing.nix;
     openssh = import ../modules/services/openssh.nix;
     tlp = import ../modules/services/tlp.nix;
+    ly = import ../modules/services/displayManager/ly.nix;
   };
 
   xserver = {
     base = import ../modules/xserver/base.nix;
-    lightdm = import ../modules/xserver/displayManager/lightdm.nix;
+    # lightdm = import ../modules/xserver/displayManager/lightdm.nix;
     i3wm = import ../modules/xserver/windowManager/i3wm.nix { inherit pkgs; };
   };
 
@@ -56,8 +57,8 @@ in
     services.openssh
     services.printing
     services.tlp
+    services.ly
     xserver.base
-    xserver.lightdm
     xserver.i3wm
     systemdUserServiceUnits.polkit-kde-agent
     systemdUserServiceUnits.ssh-agent
