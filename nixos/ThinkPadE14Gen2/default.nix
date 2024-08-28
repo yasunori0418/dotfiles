@@ -40,6 +40,7 @@ let
   tailscale = import ../modules/applications/tailscale.nix;
   pipewire = import ../modules/applications/pipewire.nix;
   thunar = import ../modules/applications/thunar.nix;
+  xss-i3lock = import ../modules/applications/xss-i3lock.nix;
 in
 {
   imports = [
@@ -73,6 +74,7 @@ in
     tailscale
     pipewire
     thunar
+    xss-i3lock
   ];
 
   nixpkgs.config.allowUnfree = true;
