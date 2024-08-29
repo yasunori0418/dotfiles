@@ -28,8 +28,13 @@
 
       # Optionally, you may need to select the appropriate driver version for your specific GPU.
       package = config.boot.kernelPackages.nvidiaPackages.stable;
-      prime.amdgpuBusId = "PCI:11:00:0";
-      prime.nvidiaBusId = "PCI:01:00:0";
+
+      # Refer: https://nixos.wiki/wiki/Nvidia#Configuring_Optimus_PRIME:_Bus_ID_Values_.28Mandatory.29
+      prime = {
+        sync.enable = true;
+        nvidiaBusId = "PCI:01:00:0";
+        amdgpuBusId = "PCI:17:00:0";
+      };
     };
   };
 }
