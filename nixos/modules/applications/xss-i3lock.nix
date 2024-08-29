@@ -1,4 +1,5 @@
-{ pkgs, ... }: {
+{ pkgs, ... }:
+{
   programs.xss-lock = {
     enable = true;
     extraOptions = [

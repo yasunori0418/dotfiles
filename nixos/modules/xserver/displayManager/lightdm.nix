@@ -1,4 +1,4 @@
-{ greeterName, ...  }:
+{ greeterName, ... }:
 {
   imports = [
     ./lightdm-${greeterName}.nix
