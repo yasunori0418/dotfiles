@@ -10,24 +10,22 @@
 }:
 
 {
-  imports = [ (modulesPath + "/installer/scan/not-detected.nix") ];
+  imports = [
+    (modulesPath + "/installer/scan/not-detected.nix")
+  ];
 
-  boot = {
-    initrd = {
-      availableKernelModules = [
-        "nvme"
-        "ahci"
-        "xhci_pci"
-        "usbhid"
-        "usb_storage"
-        "sd_mod"
-        "sr_mod"
-      ];
-      kernelModules = [ "nvidia" ];
-    };
-    kernelModules = [ "kvm-amd" ];
-    extraModulePackages = [ config.boot.kernelPackages.nvidia_x11 ];
-  };
+  boot.initrd.availableKernelModules = [
+    "nvme"
+    "ahci"
+    "xhci_pci"
+    "usbhid"
+    "usb_storage"
+    "sd_mod"
+    "sr_mod"
+  ];
+  boot.initrd.kernelModules = [ ];
+  boot.kernelModules = [ "kvm-amd" ];
+  boot.extraModulePackages = [ ];
 
   fileSystems."/" = {
     device = "/dev/disk/by-label/NIX_ROOT";
@@ -43,17 +41,9 @@
     ];
   };
 
-  fileSystems."/data" = {
-    device = "/dev/disk/by-label/data";
-    noCheck = true;
-    fsType = "ntfs-3g";
-    options = [
-      "rw"
-      "uid=1000"
-    ];
-  };
-
-  swapDevices = [ { device = "/dev/disk/by-label/NIX_SWAP"; } ];
+  swapDevices = [
+    { device = "/dev/disk/by-label/NIX_SWAP"; }
+  ];
 
   # Enables DHCP on each ethernet and wireless interface. In case of scripted networking
   # (the default) this is the recommended approach. When using systemd-networkd it's
