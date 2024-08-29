@@ -8,4 +8,13 @@
       "nofail"
     ];
   };
+
+  fileSystems."/music" = {
+    device = "/dev/disk/by-label/Music";
+    fsType = "ext4";
+    options = [
+      "users"
+      "nofail"
+    ];
+  };
 }
