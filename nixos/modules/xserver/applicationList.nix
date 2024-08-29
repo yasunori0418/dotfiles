@@ -41,7 +41,6 @@
     picom
     dunst
     clipmenu
-    lightlocker
     ncpamixer
     xsel
   ];
