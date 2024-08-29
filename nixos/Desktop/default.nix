@@ -1,6 +1,7 @@
 { pkgs, ... }:
 let
   hardware = ./hardware-configuration.nix;
+  extraMountFilesystems = ./extra-mount-filesystems.nix;
   nvidia = ../modules/nvidia.nix;
 
   # configuration.nix top level keys
@@ -46,6 +47,7 @@ in
 
   imports = [
     hardware
+    extraMountFilesystems
     nvidia
 
     # configuration.nix top level keys
