@@ -22,12 +22,12 @@ let
     printing = import ../modules/services/printing.nix;
     openssh = import ../modules/services/openssh.nix;
     tlp = import ../modules/services/tlp.nix;
-    # ly = import ../modules/services/displayManager/ly.nix;
+    ly = import ../modules/services/displayManager/ly.nix;
   };
 
   xserver = {
     base = import ../modules/xserver/base.nix;
-    lightdm = import ../modules/xserver/displayManager/lightdm.nix { greeterName = "mini"; };
+    # lightdm = import ../modules/xserver/displayManager/lightdm.nix { greeterName = "mini"; };
     i3wm = import ../modules/xserver/windowManager/i3wm.nix { inherit pkgs; };
   };
 
@@ -42,6 +42,7 @@ let
   tailscale = import ../modules/applications/tailscale.nix;
   pipewire = import ../modules/applications/pipewire.nix;
   thunar = import ../modules/applications/thunar.nix;
+  xss-i3lock = import ../modules/applications/xss-i3lock.nix;
 in
 {
 
@@ -62,9 +63,10 @@ in
     services.openssh
     services.printing
     services.tlp
+    services.ly
     xserver.base
     xserver.i3wm
-    xserver.lightdm
+    # xserver.lightdm
     systemdUserServiceUnits.polkit-kde-agent
     systemdUserServiceUnits.ssh-agent
     users
@@ -78,6 +80,7 @@ in
     tailscale
     pipewire
     thunar
+    xss-i3lock
   ];
 
   nixpkgs.config.allowUnfree = true;
