@@ -18,23 +18,23 @@ let
   virtualisation = ../modules/virtualisation.nix;
   qt = ../modules/qt.nix;
 
-  services = {
-    printing = ../modules/services/printing.nix;
-    openssh = ../modules/services/openssh.nix;
-    tlp = ../modules/services/tlp.nix;
-    ly = ../modules/services/displayManager/ly.nix;
-  };
+  services = [
+    ../modules/services/printing.nix
+    ../modules/services/openssh.nix
+    ../modules/services/tlp.nix
+    ../modules/services/displayManager/ly.nix
+  ];
 
-  xserver = {
-    base = ../modules/xserver/base.nix;
-    # lightdm = import ../modules/xserver/displayManager/lightdm.nix { greeterName = "mini"; };
-    i3wm = import ../modules/xserver/windowManager/i3wm.nix { inherit pkgs; };
-  };
+  xserver = [
+    ../modules/xserver/base.nix
+    # (import ../modules/xserver/displayManager/lightdm.nix { greeterName = "mini"; })
+    (import ../modules/xserver/windowManager/i3wm.nix { inherit pkgs; })
+  ];
 
-  systemdUserServiceUnits = {
-    polkit-kde-agent = ../modules/systemd/polkit-kde-agent.nix;
-    ssh-agent = ../modules/systemd/ssh-agent.nix;
-  };
+  systemdUserServiceUnits = [
+    ../modules/systemd/polkit-kde-agent.nix
+    ../modules/systemd/ssh-agent.nix
+  ];
 
   # Applications
   xremap = ../modules/applications/xremap.nix;
@@ -60,15 +60,6 @@ in
     i18n
     security
     programs
-    services.openssh
-    services.printing
-    services.tlp
-    services.ly
-    xserver.base
-    xserver.i3wm
-    # xserver.lightdm
-    systemdUserServiceUnits.polkit-kde-agent
-    systemdUserServiceUnits.ssh-agent
     users
     fonts
     virtualisation
@@ -81,7 +72,7 @@ in
     pipewire
     thunar
     xss-i3lock
-  ];
+  ] ++ services ++ xserver ++ systemdUserServiceUnits;
 
   nixpkgs.config.allowUnfree = true;
 
