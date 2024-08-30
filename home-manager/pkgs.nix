@@ -30,6 +30,7 @@
       glow
       volta
       awscli2
+      nix-prefetch-github
     ]
     ++ [ wezterm-flake.packages.${pkgs.system}.default ];
 }
