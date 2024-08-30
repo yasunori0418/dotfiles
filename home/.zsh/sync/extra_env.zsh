@@ -72,5 +72,5 @@ fi
 
 [[ $(command -v nvim) ]] && export MANPAGER='nvim +Man!'
 
-unset dir_colors dir_colors_cache go_bin cargo_bin npm_path bun_path aqua_bin themis_bin
+unset dir_colors dir_colors_cache go_bin cargo_bin npm_path bun_path themis_bin
 export PATH
