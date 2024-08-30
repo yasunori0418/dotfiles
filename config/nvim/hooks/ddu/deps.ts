@@ -4,7 +4,7 @@ export {
   BaseConfig,
 } from "jsr:@shougo/ddu-vim@6.1.0/types";
 export { type ConfigArguments } from "jsr:@shougo/ddu-vim@6.1.0/config";
-export { type ActionData as FileActionData } from "jsr:@shougo/ddu-kind-file@0.8.0";
+export { type ActionData as FileActionData } from "jsr:@shougo/ddu-kind-file@0.9.0";
 
 export * as fn from "jsr:@denops/std@7.1.1/function";
 export * as op from "jsr:@denops/std@7.1.1/option";
