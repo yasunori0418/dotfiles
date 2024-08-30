@@ -1,8 +1,8 @@
 export {
   type ActionArguments,
   ActionFlags,
-  BaseConfig,
 } from "jsr:@shougo/ddu-vim@6.1.0/types";
+export { BaseConfig } from "jsr:@shougo/ddu-vim@6.1.0/config";
 export { type ConfigArguments } from "jsr:@shougo/ddu-vim@6.1.0/config";
 export { type ActionData as FileActionData } from "jsr:@shougo/ddu-kind-file@0.9.0";
 
