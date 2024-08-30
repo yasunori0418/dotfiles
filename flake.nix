@@ -25,14 +25,11 @@
       home-manager,
       wezterm-flake,
     }:
-    let
-      system = "x86_64-linux";
-    in
     {
       formatter.x86_64-linux = nixpkgs.legacyPackages.x86_64-linux.nixfmt-rfc-style;
       nixosConfigurations = {
         laptop = nixpkgs.lib.nixosSystem {
-          system = system;
+          system = "x86_64-linux";
           modules = [
             ./nixos/ThinkPadE14Gen2
             nixos-hardware.nixosModules.lenovo-thinkpad-e14-amd
@@ -40,7 +37,7 @@
           ];
         };
         desktop = nixpkgs.lib.nixosSystem {
-          system = system;
+          system = "x86_64-linux";
           modules =
             [
               ./nixos/Desktop
@@ -57,7 +54,7 @@
       homeConfigurations = {
         linux = home-manager.lib.homeManagerConfiguration {
           pkgs = import nixpkgs {
-            system = system;
+            system = "x86_64-linux";
             config.allowUnfree = true;
           };
           extraSpecialArgs = {
