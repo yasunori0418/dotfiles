@@ -1,6 +1,6 @@
-export { type ConfigArguments } from "jsr:@shougo/ddc-vim@6.0.1/config";
+export { type ConfigArguments } from "jsr:@shougo/ddc-vim@7.0.0/config";
 
-export { BaseConfig, type UserSource } from "jsr:@shougo/ddc-vim@6.0.1/types";
+export { BaseConfig, type UserSource } from "jsr:@shougo/ddc-vim@7.0.0/types";
 
 export * as autocmd from "jsr:@denops/std@7.1.1/autocmd";
 export * as fn from "jsr:@denops/std@7.1.1/function";
