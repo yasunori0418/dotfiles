@@ -25,11 +25,19 @@
       home-manager,
       wezterm-flake,
     }:
+    let
+      flake_root = ./.;
+      nixos = /${flake_root}/nixos;
+      nixosModules = /${nixos}/modules;
+    in
     {
       formatter.x86_64-linux = nixpkgs.legacyPackages.x86_64-linux.nixfmt-rfc-style;
       nixosConfigurations = {
         laptop = nixpkgs.lib.nixosSystem {
           system = "x86_64-linux";
+          specialArgs = {
+            inherit nixosModules;
+          };
           modules = [
             ./nixos/ThinkPadE14Gen2
             nixos-hardware.nixosModules.lenovo-thinkpad-e14-amd
