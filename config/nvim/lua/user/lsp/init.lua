@@ -40,3 +40,4 @@ mason_lspconfig.setup_handlers({
     vtsls = require("user.lsp.servers.vtsls"),
 })
 
+require("user.lsp.servers.nixd")()
