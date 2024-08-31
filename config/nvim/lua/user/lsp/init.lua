@@ -32,12 +32,10 @@ mason_lspconfig.setup_handlers({
 
         require("lspconfig")[server_name].setup(lsp_options)
     end,
-
-    lua_ls = require("user.lsp.servers.lua_ls"),
-    pyright = require("user.lsp.servers.pyright"),
-    efm = require("user.lsp.servers.efm"),
-    denols = require("user.lsp.servers.denols"),
-    vtsls = require("user.lsp.servers.vtsls"),
 })
 
+require("user.lsp.servers.lua_ls")()
+require("user.lsp.servers.pyright")()
+require("user.lsp.servers.efm")()
+require("user.lsp.servers.denols")()
 require("user.lsp.servers.nixd")()
