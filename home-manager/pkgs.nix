@@ -31,6 +31,7 @@
       volta
       awscli2
       nix-prefetch-github
+      nixd
     ]
     ++ [ wezterm-flake.packages.${pkgs.system}.default ];
 }
