@@ -56,9 +56,9 @@ efm_configs.setup({
         zsh = {
             { kind = "formatters", name = "beautysh" },
         },
-        nix = {
-            { kind = "formatters", name = "alejandra", auto_install = false },
-        },
+        -- nix = {
+        --     { kind = "formatters", name = "alejandra", auto_install = false },
+        -- },
         sql = {
             { kind = "formatters", name = "sql-formatter" },
         },
