@@ -56,11 +56,13 @@
           pkgs = import nixpkgs {
             system = "x86_64-linux";
             config.allowUnfree = true;
-            overlays = let
-              sheldonOverlay = import ./nix-overlays/sheldon.nix;
-            in [
-              sheldonOverlay
-            ];
+            overlays =
+              let
+                sheldonOverlay = import ./nix-overlays/sheldon.nix;
+              in
+              [
+                sheldonOverlay
+              ];
           };
           extraSpecialArgs = {
             inherit wezterm-flake;
