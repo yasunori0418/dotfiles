@@ -3,44 +3,44 @@ let
   hardware = ./hardware-configuration.nix;
 
   # configuration.nix top level keys
-  nix = import ../modules/nix.nix;
-  boot = import ../modules/boot.nix;
+  nix = ../modules/nix.nix;
+  boot = ../modules/boot.nix;
   networking = import ../modules/networking.nix { hostName = "yasunori-laptop"; };
-  environment = import ../modules/environment.nix;
-  time = import ../modules/time.nix;
-  i18n = import ../modules/i18n.nix;
-  security = import ../modules/security.nix;
-  programs = import ../modules/programs.nix;
-  users = import ../modules/users.nix;
-  fonts = import ../modules/fonts.nix;
-  virtualisation = import ../modules/virtualisation.nix;
-  qt = import ../modules/qt.nix;
+  environment = ../modules/environment.nix;
+  time = ../modules/time.nix;
+  i18n = ../modules/i18n.nix;
+  security = ../modules/security.nix;
+  programs = ../modules/programs.nix;
+  users = ../modules/users.nix;
+  fonts = ../modules/fonts.nix;
+  virtualisation = ../modules/virtualisation.nix;
+  qt = ../modules/qt.nix;
 
-  services = {
-    printing = import ../modules/services/printing.nix;
-    openssh = import ../modules/services/openssh.nix;
-    tlp = import ../modules/services/tlp.nix;
-    ly = import ../modules/services/displayManager/ly.nix;
-  };
+  services = [
+    ../modules/services/printing.nix
+    ../modules/services/openssh.nix
+    ../modules/services/tlp.nix
+    ../modules/services/displayManager/ly.nix
+  ];
 
-  xserver = {
-    base = import ../modules/xserver/base.nix;
-    # lightdm = import ../modules/xserver/displayManager/lightdm.nix;
-    i3wm = import ../modules/xserver/windowManager/i3wm.nix { inherit pkgs; };
-  };
+  xserver = [
+    ../modules/xserver/base.nix
+    # (import ../modules/xserver/displayManager/lightdm.nix)
+    (import ../modules/xserver/windowManager/i3wm.nix { inherit pkgs; })
+  ];
 
-  systemdUserServiceUnits = {
-    polkit-kde-agent = import ../modules/systemd/polkit-kde-agent.nix;
-    ssh-agent = import ../modules/systemd/ssh-agent.nix;
-  };
+  systemdUserServiceUnits = [
+    ../modules/systemd/polkit-kde-agent.nix
+    ../modules/systemd/ssh-agent.nix
+  ];
 
   # Applications
-  xremap = import ../modules/applications/xremap.nix;
-  fcitx5 = import ../modules/applications/fcitx5.nix;
-  tailscale = import ../modules/applications/tailscale.nix;
-  pipewire = import ../modules/applications/pipewire.nix;
-  thunar = import ../modules/applications/thunar.nix;
-  xss-i3lock = import ../modules/applications/xss-i3lock.nix;
+  xremap = ../modules/applications/xremap.nix;
+  fcitx5 = ../modules/applications/fcitx5.nix;
+  tailscale = ../modules/applications/tailscale.nix;
+  pipewire = ../modules/applications/pipewire.nix;
+  thunar = ../modules/applications/thunar.nix;
+  xss-i3lock = ../modules/applications/xss-i3lock.nix;
 in
 {
   imports = [
@@ -55,14 +55,6 @@ in
     i18n
     security
     programs
-    services.openssh
-    services.printing
-    services.tlp
-    services.ly
-    xserver.base
-    xserver.i3wm
-    systemdUserServiceUnits.polkit-kde-agent
-    systemdUserServiceUnits.ssh-agent
     users
     fonts
     virtualisation
@@ -75,7 +67,7 @@ in
     pipewire
     thunar
     xss-i3lock
-  ];
+  ] ++ services ++ xserver ++ systemdUserServiceUnits;
 
   nixpkgs.config.allowUnfree = true;
 
