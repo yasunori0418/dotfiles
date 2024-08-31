@@ -33,17 +33,11 @@
     {
       formatter.x86_64-linux = nixpkgs.legacyPackages.x86_64-linux.nixfmt-rfc-style;
       nixosConfigurations = {
-        laptop = nixpkgs.lib.nixosSystem {
-          system = "x86_64-linux";
-          specialArgs = {
-            inherit nixosModules;
-          };
-          modules = [
-            ./nixos/ThinkPadE14Gen2
-            nixos-hardware.nixosModules.lenovo-thinkpad-e14-amd
-            xremap.nixosModules.default
-          ];
-        };
+        laptop = nixpkgs.lib.nixosSystem (
+          import ./nixos/ThinkPadE14Gen2 {
+            inherit nixos-hardware xremap nixosModules;
+          }
+        );
         desktop = nixpkgs.lib.nixosSystem {
           system = "x86_64-linux";
           modules =

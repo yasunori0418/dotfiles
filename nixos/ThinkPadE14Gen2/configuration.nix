@@ -1,4 +1,8 @@
-{ pkgs, nixosModules, ... }:
+{
+  pkgs,
+  nixosModules,
+  ...
+}:
 let
   hardware = ./hardware-configuration.nix;
 
