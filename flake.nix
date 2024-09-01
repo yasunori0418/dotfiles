@@ -37,9 +37,6 @@
 
       # nix home-manager directory symbols
       homeManager = /${flakeRoot}/home-manager;
-      xdgConfigHome = /${flakeRoot}/config;
-      homeDir = /${flakeRoot}/home;
-      appleLibrary = /${flakeRoot}/Library;
     in
     {
       formatter.x86_64-linux = nixpkgs.legacyPackages.x86_64-linux.nixfmt-rfc-style;
@@ -67,9 +64,6 @@
               flakeRoot
               nixpkgsOverlay
               homeManager
-              xdgConfigHome
-              homeDir
-              appleLibrary
               ;
           }
         );

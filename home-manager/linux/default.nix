@@ -1,31 +1,36 @@
 {
   pkgs,
+  config,
   wezterm-flake,
   flakeRoot,
   homeManager,
-  xdgConfigHome,
-  homeDir,
   ...
 }:
-let
-  packages = import /${homeManager}/pkgs.nix { inherit pkgs wezterm-flake; };
-  fileMap = import /${homeManager}/fileMap.nix {
-    inherit
-      flakeRoot
-      homeDir
-      xdgConfigHome
-      ;
-  };
-in
-{
-  imports = [
-    packages
-    fileMap
-  ];
+rec {
+  imports =
+    let
+      dotfiles = /${home.homeDirectory}/dotfiles;
+      homeDir = /${dotfiles}/home;
+      xdgConfigHome = /${dotfiles}/config;
+      packages = import /${homeManager}/pkgs.nix { inherit pkgs wezterm-flake; };
+      fileMap = import /${homeManager}/fileMap.nix {
+        inherit
+          config
+          flakeRoot
+          dotfiles
+          homeDir
+          xdgConfigHome
+          ;
+      };
+    in
+    [
+      packages
+      fileMap
+    ];
   programs.home-manager.enable = true;
-  home = rec {
+  home = {
     username = "yasunori";
-    homeDirectory = "/home/${username}";
+    homeDirectory = "/home/${home.username}";
     stateVersion = "24.05";
   };
 }

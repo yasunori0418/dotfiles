@@ -1,191 +1,194 @@
 {
-  flakeRoot,
+  config,
+  dotfiles,
   homeDir,
   xdgConfigHome,
   ...
 }:
 {
-  home.file = {
+  home.file = let
+    symlink = config.lib.file.mkOutOfStoreSymlink;
+  in {
     ".docker" = {
-      source = /${homeDir}/.docker;
+      source = (symlink /${homeDir}/.docker);
       recursive = true;
     };
     ".icons" = {
-      source = /${homeDir}/.icons;
+      source = (symlink /${homeDir}/.icons);
       recursive = true;
     };
     ".Xresources.d" = {
-      source = /${homeDir}/.Xresources.d;
+      source = (symlink /${homeDir}/.Xresources.d);
       recursive = true;
     };
     ".zsh" = {
-      source = /${homeDir}/.zsh;
+      source = (symlink /${homeDir}/.zsh);
       recursive = true;
     };
     "bin" = {
-      source = /${flakeRoot}/bin;
+      source = (symlink /${dotfiles}/bin);
       recursive = true;
     };
-    ".Xresources".source = /${homeDir}/.Xresources;
-    ".zshenv".source = /${homeDir}/.zshenv;
-    ".zshrc".source = /${homeDir}/.zshrc;
-    ".zprofile".source = /${homeDir}/.zprofile;
-    ".p10k.zsh".source = /${homeDir}/.p10k.zsh;
-    ".xprofile".source = /${homeDir}/.xprofile;
-    ".xinitrc".source = /${homeDir}/.xinitrc;
-    ".xserverrc".source = /${homeDir}/.xserverrc;
-    ".textlintrc.yaml".source = /${homeDir}/.textlintrc.yaml;
-    ".pam_environment".source = /${homeDir}/.pam_environment;
-    ".gtkrc-2.0".source = /${homeDir}/.gtkrc-2.0;
-    ".face".source = /${homeDir}/.face;
-    ".dir_colors".source = /${homeDir}/.dir_colors;
-    ".bashrc".source = /${homeDir}/.bashrc;
-    ".bash_profile".source = /${homeDir}/.bash_profile;
-    ".bash_logout".source = /${homeDir}/.bash_logout;
-    "bun.lockb".source = /${homeDir}/bun.lockb;
-    "package.json".source = /${homeDir}/package.json;
+    ".Xresources".source = (symlink /${homeDir}/.Xresources);
+    ".zshenv".source = (symlink /${homeDir}/.zshenv);
+    ".zshrc".source = (symlink /${homeDir}/.zshrc);
+    ".zprofile".source = (symlink /${homeDir}/.zprofile);
+    ".p10k.zsh".source = (symlink /${homeDir}/.p10k.zsh);
+    ".xprofile".source = (symlink /${homeDir}/.xprofile);
+    ".xinitrc".source = (symlink /${homeDir}/.xinitrc);
+    ".xserverrc".source = (symlink /${homeDir}/.xserverrc);
+    ".textlintrc.yaml".source = (symlink /${homeDir}/.textlintrc.yaml);
+    ".pam_environment".source = (symlink /${homeDir}/.pam_environment);
+    ".gtkrc-2.0".source = (symlink /${homeDir}/.gtkrc-2.0);
+    ".face".source = (symlink /${homeDir}/.face);
+    ".dir_colors".source = (symlink /${homeDir}/.dir_colors);
+    ".bashrc".source = (symlink /${homeDir}/.bashrc);
+    ".bash_profile".source = (symlink /${homeDir}/.bash_profile);
+    ".bash_logout".source = (symlink /${homeDir}/.bash_logout);
+    "bun.lockb".source = (symlink /${homeDir}/bun.lockb);
+    "package.json".source = (symlink /${homeDir}/package.json);
 
     ".config/aerospace" = {
-      source = /${xdgConfigHome}/aerospace;
+      source = (symlink /${xdgConfigHome}/aerospace);
       recursive = true;
     };
     ".config/aqua" = {
-      source = /${xdgConfigHome}/aqua;
+      source = (symlink /${xdgConfigHome}/aqua);
       recursive = true;
     };
     ".config/bumblebee-status" = {
-      source = /${xdgConfigHome}/bumblebee-status;
+      source = (symlink /${xdgConfigHome}/bumblebee-status);
       recursive = true;
     };
     ".config/cantata" = {
-      source = /${xdgConfigHome}/cantata;
+      source = (symlink /${xdgConfigHome}/cantata);
       recursive = true;
     };
     ".config/dunst" = {
-      source = /${xdgConfigHome}/dunst;
+      source = (symlink /${xdgConfigHome}/dunst);
       recursive = true;
     };
     ".config/fastfetch" = {
-      source = /${xdgConfigHome}/fastfetch;
+      source = (symlink /${xdgConfigHome}/fastfetch);
       recursive = true;
     };
     ".config/fcitx5" = {
-      source = /${xdgConfigHome}/fcitx5;
+      source = (symlink /${xdgConfigHome}/fcitx5);
       recursive = true;
     };
     ".config/fd" = {
-      source = /${xdgConfigHome}/fd;
+      source = (symlink /${xdgConfigHome}/fd);
       recursive = true;
     };
     ".config/git" = {
-      source = /${xdgConfigHome}/git;
+      source = (symlink /${xdgConfigHome}/git);
       recursive = true;
     };
     ".config/gtk-2.0" = {
-      source = /${xdgConfigHome}/gtk-2.0;
+      source = (symlink /${xdgConfigHome}/gtk-2.0);
       recursive = true;
     };
     ".config/gtk-3.0" = {
-      source = /${xdgConfigHome}/gtk-3.0;
+      source = (symlink /${xdgConfigHome}/gtk-3.0);
       recursive = true;
     };
     ".config/i3" = {
-      source = /${xdgConfigHome}/i3;
+      source = (symlink /${xdgConfigHome}/i3);
       recursive = true;
     };
     ".config/jj" = {
-      source = /${xdgConfigHome}/jj;
+      source = (symlink /${xdgConfigHome}/jj);
       recursive = true;
     };
     ".config/karabiner" = {
-      source = /${xdgConfigHome}/karabiner;
+      source = (symlink /${xdgConfigHome}/karabiner);
       recursive = true;
     };
     ".config/keynav" = {
-      source = /${xdgConfigHome}/keynav;
+      source = (symlink /${xdgConfigHome}/keynav);
       recursive = true;
     };
     ".config/kitty" = {
-      source = /${xdgConfigHome}/kitty;
+      source = (symlink /${xdgConfigHome}/kitty);
       recursive = true;
     };
     ".config/libskk" = {
-      source = /${xdgConfigHome}/libskk;
+      source = (symlink /${xdgConfigHome}/libskk);
       recursive = true;
     };
     ".config/luacheck" = {
-      source = /${xdgConfigHome}/luacheck;
+      source = (symlink /${xdgConfigHome}/luacheck);
       recursive = true;
     };
     ".config/mise" = {
-      source = /${xdgConfigHome}/mise;
+      source = (symlink /${xdgConfigHome}/mise);
       recursive = true;
     };
     ".config/mpd" = {
-      source = /${xdgConfigHome}/mpd;
+      source = (symlink /${xdgConfigHome}/mpd);
       recursive = true;
     };
     ".config/neofetch" = {
-      source = /${xdgConfigHome}/neofetch;
+      source = (symlink /${xdgConfigHome}/neofetch);
       recursive = true;
     };
     ".config/nvim" = {
-      source = /${xdgConfigHome}/nvim;
+      source = (symlink /${xdgConfigHome}/nvim);
       recursive = true;
     };
     ".config/paru" = {
-      source = /${xdgConfigHome}/paru;
+      source = (symlink /${xdgConfigHome}/paru);
       recursive = true;
     };
     ".config/picom" = {
-      source = /${xdgConfigHome}/picom;
+      source = (symlink /${xdgConfigHome}/picom);
       recursive = true;
     };
     ".config/rofi" = {
-      source = /${xdgConfigHome}/rofi;
+      source = (symlink /${xdgConfigHome}/rofi);
       recursive = true;
     };
     ".config/sheldon" = {
-      source = /${xdgConfigHome}/sheldon;
+      source = (symlink /${xdgConfigHome}/sheldon);
       recursive = true;
     };
     ".config/sketchybar" = {
-      source = /${xdgConfigHome}/sketchybar;
+      source = (symlink /${xdgConfigHome}/sketchybar);
       recursive = true;
     };
     ".config/skhd" = {
-      source = /${xdgConfigHome}/skhd;
+      source = (symlink /${xdgConfigHome}/skhd);
       recursive = true;
     };
     ".config/systemd" = {
-      source = /${xdgConfigHome}/systemd;
+      source = (symlink /${xdgConfigHome}/systemd);
       recursive = true;
     };
     ".config/vim" = {
-      source = /${xdgConfigHome}/vim;
+      source = (symlink /${xdgConfigHome}/vim);
       recursive = true;
     };
     ".config/wezterm" = {
-      source = /${xdgConfigHome}/wezterm;
+      source = (symlink /${xdgConfigHome}/wezterm);
       recursive = true;
     };
     ".config/xremap" = {
-      source = /${xdgConfigHome}/xremap;
+      source = (symlink /${xdgConfigHome}/xremap);
       recursive = true;
     };
     ".config/yabai" = {
-      source = /${xdgConfigHome}/yabai;
+      source = (symlink /${xdgConfigHome}/yabai);
       recursive = true;
     };
     ".config/yamllint" = {
-      source = /${xdgConfigHome}/yamllint;
+      source = (symlink /${xdgConfigHome}/yamllint);
       recursive = true;
     };
     ".config/zeno" = {
-      source = /${xdgConfigHome}/zeno;
+      source = (symlink /${xdgConfigHome}/zeno);
       recursive = true;
     };
-    ".config/ncpamixer.conf".source = /${xdgConfigHome}/ncpamixer.conf;
-    ".config/screenkey.json".source = /${xdgConfigHome}/screenkey.json;
+    ".config/ncpamixer.conf".source = (symlink /${xdgConfigHome}/ncpamixer.conf);
+    ".config/screenkey.json".source = (symlink /${xdgConfigHome}/screenkey.json);
   };
 }

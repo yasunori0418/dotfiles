@@ -6,9 +6,6 @@
   flakeRoot,
   homeManager,
   nixpkgsOverlay,
-  xdgConfigHome,
-  homeDir,
-  appleLibrary,
   ...
 }:
 {
@@ -24,9 +21,6 @@
       wezterm-flake
       flakeRoot
       homeManager
-      xdgConfigHome
-      homeDir
-      appleLibrary
       ;
   };
   modules = [ ./${profileName} ];
