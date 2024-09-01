@@ -2,7 +2,7 @@
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
     nixos-hardware.url = "github:NixOS/nixos-hardware/master";
-    xremap = {
+    xremap-flake = {
       url = "github:xremap/nix-flake";
       inputs.nixpkgs.follows = "nixpkgs";
     };
@@ -21,7 +21,7 @@
       self,
       nixpkgs,
       nixos-hardware,
-      xremap,
+      xremap-flake,
       home-manager,
       wezterm-flake,
     }:
@@ -35,12 +35,12 @@
       nixosConfigurations = {
         laptop = nixpkgs.lib.nixosSystem (
           import ./nixos/ThinkPadE14Gen2 {
-            inherit nixos-hardware xremap nixosModules;
+            inherit nixos-hardware  nixosModules xremap-flake;
           }
         );
         desktop = nixpkgs.lib.nixosSystem (
           import ./nixos/Desktop {
-            inherit nixos-hardware xremap nixosModules;
+            inherit nixos-hardware  nixosModules xremap-flake;
           }
         );
       };

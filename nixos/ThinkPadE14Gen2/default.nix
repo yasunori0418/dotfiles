@@ -1,7 +1,7 @@
 {
   nixosModules,
   nixos-hardware,
-  xremap,
+  xremap-flake,
   ...
 }:
 {
@@ -12,6 +12,6 @@
   modules = [
     ./configuration.nix
     nixos-hardware.nixosModules.lenovo-thinkpad-e14-amd
-    xremap.nixosModules.default
+    xremap-flake.nixosModules.default
   ];
 }

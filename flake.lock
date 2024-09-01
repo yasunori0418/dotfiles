@@ -3,7 +3,7 @@
     "crane": {
       "inputs": {
         "nixpkgs": [
-          "xremap",
+          "xremap-flake",
           "nixpkgs"
         ]
       },
@@ -169,17 +169,17 @@
     "hyprcursor": {
       "inputs": {
         "hyprlang": [
-          "xremap",
+          "xremap-flake",
           "hyprland",
           "hyprlang"
         ],
         "nixpkgs": [
-          "xremap",
+          "xremap-flake",
           "hyprland",
           "nixpkgs"
         ],
         "systems": [
-          "xremap",
+          "xremap-flake",
           "hyprland",
           "systems"
         ]
@@ -225,13 +225,13 @@
     "hyprland-protocols": {
       "inputs": {
         "nixpkgs": [
-          "xremap",
+          "xremap-flake",
           "hyprland",
           "xdph",
           "nixpkgs"
         ],
         "systems": [
-          "xremap",
+          "xremap-flake",
           "hyprland",
           "xdph",
           "systems"
@@ -254,17 +254,17 @@
     "hyprlang": {
       "inputs": {
         "hyprutils": [
-          "xremap",
+          "xremap-flake",
           "hyprland",
           "hyprutils"
         ],
         "nixpkgs": [
-          "xremap",
+          "xremap-flake",
           "hyprland",
           "nixpkgs"
         ],
         "systems": [
-          "xremap",
+          "xremap-flake",
           "hyprland",
           "systems"
         ]
@@ -286,12 +286,12 @@
     "hyprutils": {
       "inputs": {
         "nixpkgs": [
-          "xremap",
+          "xremap-flake",
           "hyprland",
           "nixpkgs"
         ],
         "systems": [
-          "xremap",
+          "xremap-flake",
           "hyprland",
           "systems"
         ]
@@ -313,12 +313,12 @@
     "hyprwayland-scanner": {
       "inputs": {
         "nixpkgs": [
-          "xremap",
+          "xremap-flake",
           "hyprland",
           "nixpkgs"
         ],
         "systems": [
-          "xremap",
+          "xremap-flake",
           "hyprland",
           "systems"
         ]
@@ -468,7 +468,7 @@
         "nixos-hardware": "nixos-hardware",
         "nixpkgs": "nixpkgs",
         "wezterm-flake": "wezterm-flake",
-        "xremap": "xremap"
+        "xremap-flake": "xremap-flake"
       }
     },
     "rust-overlay": {
@@ -587,17 +587,17 @@
       "inputs": {
         "hyprland-protocols": "hyprland-protocols",
         "hyprlang": [
-          "xremap",
+          "xremap-flake",
           "hyprland",
           "hyprlang"
         ],
         "nixpkgs": [
-          "xremap",
+          "xremap-flake",
           "hyprland",
           "nixpkgs"
         ],
         "systems": [
-          "xremap",
+          "xremap-flake",
           "hyprland",
           "systems"
         ]
@@ -617,33 +617,6 @@
       }
     },
     "xremap": {
-      "inputs": {
-        "crane": "crane",
-        "devshell": "devshell",
-        "flake-parts": "flake-parts",
-        "home-manager": "home-manager_2",
-        "hyprland": "hyprland",
-        "nixpkgs": [
-          "nixpkgs"
-        ],
-        "treefmt-nix": "treefmt-nix",
-        "xremap": "xremap_2"
-      },
-      "locked": {
-        "lastModified": 1721842203,
-        "narHash": "sha256-3tV6a9Ri6JTapeOQFuBpIjYk+R+F9RGiaG7Hpz1sTv8=",
-        "owner": "xremap",
-        "repo": "nix-flake",
-        "rev": "3717cb0539f4967010ba540baa439a4cf6ea8576",
-        "type": "github"
-      },
-      "original": {
-        "owner": "xremap",
-        "repo": "nix-flake",
-        "type": "github"
-      }
-    },
-    "xremap_2": {
       "flake": false,
       "locked": {
         "lastModified": 1716231654,
@@ -657,6 +630,33 @@
         "owner": "k0kubun",
         "ref": "v0.10.0",
         "repo": "xremap",
+        "type": "github"
+      }
+    },
+    "xremap-flake": {
+      "inputs": {
+        "crane": "crane",
+        "devshell": "devshell",
+        "flake-parts": "flake-parts",
+        "home-manager": "home-manager_2",
+        "hyprland": "hyprland",
+        "nixpkgs": [
+          "nixpkgs"
+        ],
+        "treefmt-nix": "treefmt-nix",
+        "xremap": "xremap"
+      },
+      "locked": {
+        "lastModified": 1721842203,
+        "narHash": "sha256-3tV6a9Ri6JTapeOQFuBpIjYk+R+F9RGiaG7Hpz1sTv8=",
+        "owner": "xremap",
+        "repo": "nix-flake",
+        "rev": "3717cb0539f4967010ba540baa439a4cf6ea8576",
+        "type": "github"
+      },
+      "original": {
+        "owner": "xremap",
+        "repo": "nix-flake",
         "type": "github"
       }
     },

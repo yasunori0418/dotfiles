@@ -1,6 +1,6 @@
 {
   nixos-hardware,
-  xremap,
+  xremap-flake,
   nixosModules,
   ...
 }:
@@ -12,6 +12,6 @@
   modules =
     [
       ./configuration.nix
-      xremap.nixosModules.default
+      xremap-flake.nixosModules.default
     ];
 }
