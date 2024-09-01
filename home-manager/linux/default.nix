@@ -1,6 +1,13 @@
-{ pkgs, wezterm-flake, ... }:
+{
+  pkgs,
+  wezterm-flake,
+  flakeRoot,
+  # xdgConfigHome,
+  # homeDir,
+  ...
+}:
 let
-  packages = import ../pkgs.nix { inherit pkgs wezterm-flake; };
+  packages = import /${flakeRoot}/home-manager/pkgs.nix { inherit pkgs wezterm-flake; };
 in
 {
   imports = [ packages ];
