@@ -1,4 +1,6 @@
 {
+  description = "My dotfiles, all my wisdom, my castle.";
+
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
     nixos-hardware.url = "github:NixOS/nixos-hardware/master";
