@@ -1,6 +1,5 @@
 {
   pkgs,
-  config,
   wezterm-flake,
   flakeRoot,
   homeManager,
@@ -10,7 +9,13 @@
 }:
 let
   packages = import /${homeManager}/pkgs.nix { inherit pkgs wezterm-flake; };
-  fileMap = import /${homeManager}/fileMap.nix { inherit config flakeRoot homeDir xdgConfigHome; };
+  fileMap = import /${homeManager}/fileMap.nix {
+    inherit
+      flakeRoot
+      homeDir
+      xdgConfigHome
+      ;
+  };
 in
 {
   imports = [
