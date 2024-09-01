@@ -1,6 +1,6 @@
 { pkgs, wezterm-flake, ... }:
 let
-  packages = import ./pkgs.nix { inherit pkgs wezterm-flake; };
+  packages = import ../pkgs.nix { inherit pkgs wezterm-flake; };
 in
 {
   imports = [ packages ];

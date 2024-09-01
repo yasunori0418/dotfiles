@@ -27,5 +27,5 @@
       appleLibrary
       ;
   };
-  modules = [ ./${profileName}.nix ];
+  modules = [ ./${profileName} ];
 }
