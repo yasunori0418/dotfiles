@@ -4,6 +4,7 @@
   nixpkgs,
   wezterm-flake,
   flakeRoot,
+  homeManager,
   nixpkgsOverlay,
   xdgConfigHome,
   homeDir,
@@ -22,6 +23,7 @@
     inherit
       wezterm-flake
       flakeRoot
+      homeManager
       xdgConfigHome
       homeDir
       appleLibrary

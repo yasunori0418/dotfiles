@@ -2,8 +2,9 @@
   pkgs,
   wezterm-flake,
   flakeRoot,
-  # xdgConfigHome,
-  # homeDir,
+  homeManager,
+  xdgConfigHome,
+  homeDir,
   ...
 }:
 let

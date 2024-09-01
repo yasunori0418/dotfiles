@@ -36,6 +36,7 @@
       nixosModules = /${nixos}/modules;
 
       # nix home-manager directory symbols
+      homeManager = /${flakeRoot}/home-manager;
       xdgConfigHome = /${flakeRoot}/config;
       homeDir = /${flakeRoot}/home;
       appleLibrary = /${flakeRoot}/Library;
@@ -65,6 +66,7 @@
               wezterm-flake
               flakeRoot
               nixpkgsOverlay
+              homeManager
               xdgConfigHome
               homeDir
               appleLibrary
