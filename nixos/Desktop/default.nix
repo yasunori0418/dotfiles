@@ -9,9 +9,8 @@
   specialArgs = {
     inherit nixos-hardware nixosModules;
   };
-  modules =
-    [
-      ./configuration.nix
-      xremap-flake.nixosModules.default
-    ];
+  modules = [
+    ./configuration.nix
+    xremap-flake.nixosModules.default
+  ];
 }
