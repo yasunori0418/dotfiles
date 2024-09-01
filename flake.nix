@@ -28,9 +28,17 @@
       wezterm-flake,
     }:
     let
-      flake_root = ./.;
-      nixos = /${flake_root}/nixos;
+      flakeRoot = ./.;
+      nixpkgsOverlay = /${flakeRoot}/nix-overlays;
+
+      # nixos directory symbols
+      nixos = /${flakeRoot}/nixos;
       nixosModules = /${nixos}/modules;
+
+      # nix home-manager directory symbols
+      xdgConfigHome = /${flakeRoot}/config;
+      homeDir = /${flakeRoot}/home;
+      appleLibrary = /${flakeRoot}/Library;
     in
     {
       formatter.x86_64-linux = nixpkgs.legacyPackages.x86_64-linux.nixfmt-rfc-style;
@@ -48,23 +56,21 @@
       };
 
       homeConfigurations = {
-        linux = home-manager.lib.homeManagerConfiguration {
-          pkgs = import nixpkgs {
+        linux = home-manager.lib.homeManagerConfiguration (
+          import ./home-manager {
+            profileName = "linux";
             system = "x86_64-linux";
-            config.allowUnfree = true;
-            overlays =
-              let
-                sheldonOverlay = import ./nix-overlays/sheldon.nix;
-              in
-              [
-                sheldonOverlay
-              ];
-          };
-          extraSpecialArgs = {
-            inherit wezterm-flake;
-          };
-          modules = [ ./home-manager/linux.nix ];
-        };
+            inherit
+              nixpkgs
+              wezterm-flake
+              flakeRoot
+              nixpkgsOverlay
+              xdgConfigHome
+              homeDir
+              appleLibrary
+              ;
+          }
+        );
       };
     };
 }
