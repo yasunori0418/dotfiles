@@ -38,19 +38,11 @@
             inherit nixos-hardware xremap nixosModules;
           }
         );
-        desktop = nixpkgs.lib.nixosSystem {
-          system = "x86_64-linux";
-          modules =
-            [
-              ./nixos/Desktop
-              xremap.nixosModules.default
-            ]
-            ++ (with nixos-hardware.nixosModules; [
-              common-cpu-amd-zenpower
-              common-gpu-nvidia-sync
-              common-pc-ssd
-            ]);
-        };
+        desktop = nixpkgs.lib.nixosSystem (
+          import ./nixos/Desktop {
+            inherit nixos-hardware xremap nixosModules;
+          }
+        );
       };
 
       homeConfigurations = {

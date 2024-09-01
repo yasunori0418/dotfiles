@@ -1,78 +1,92 @@
-{ pkgs, ... }:
+{
+  pkgs,
+  nixos-hardware,
+  nixosModules,
+  ...
+}:
 let
   hardware = ./hardware-configuration.nix;
   extraMountFilesystems = ./extra-mount-filesystems.nix;
-  nvidia = ../modules/nvidia.nix;
+  nvidia = /${nixosModules}/nvidia.nix;
 
   # configuration.nix top level keys
-  nix = ../modules/nix.nix;
-  boot = ../modules/boot.nix;
-  networking = import ../modules/networking.nix { hostName = "yasunori-desktop"; };
-  environment = ../modules/environment.nix;
-  time = ../modules/time.nix;
-  i18n = ../modules/i18n.nix;
-  security = ../modules/security.nix;
-  programs = ../modules/programs.nix;
-  users = ../modules/users.nix;
-  fonts = ../modules/fonts.nix;
-  virtualisation = ../modules/virtualisation.nix;
-  qt = ../modules/qt.nix;
+  nix = /${nixosModules}/nix.nix;
+  boot = /${nixosModules}/boot.nix;
+  networking = import /${nixosModules}/networking.nix { hostName = "yasunori-desktop"; };
+  environment = /${nixosModules}/environment.nix;
+  time = /${nixosModules}/time.nix;
+  i18n = /${nixosModules}/i18n.nix;
+  security = /${nixosModules}/security.nix;
+  programs = /${nixosModules}/programs.nix;
+  users = /${nixosModules}/users.nix;
+  fonts = /${nixosModules}/fonts.nix;
+  virtualisation = /${nixosModules}/virtualisation.nix;
+  qt = /${nixosModules}/qt.nix;
 
   services = [
-    ../modules/services/printing.nix
-    ../modules/services/openssh.nix
-    ../modules/services/tlp.nix
-    ../modules/services/displayManager/ly.nix
+    /${nixosModules}/services/printing.nix
+    /${nixosModules}/services/openssh.nix
+    /${nixosModules}/services/tlp.nix
+    /${nixosModules}/services/displayManager/ly.nix
   ];
 
   xserver = [
-    ../modules/xserver/base.nix
-    # (import ../modules/xserver/displayManager/lightdm.nix { greeterName = "mini"; })
-    (import ../modules/xserver/windowManager/i3wm.nix { inherit pkgs; })
+    /${nixosModules}/xserver/base.nix
+    # (import /${nixosModules}/xserver/displayManager/lightdm.nix { greeterName = "mini"; })
+    (import /${nixosModules}/xserver/windowManager/i3wm.nix { inherit pkgs; })
   ];
 
   systemdUserServiceUnits = [
-    ../modules/systemd/polkit-kde-agent.nix
-    ../modules/systemd/ssh-agent.nix
+    /${nixosModules}/systemd/polkit-kde-agent.nix
+    /${nixosModules}/systemd/ssh-agent.nix
   ];
 
   # Applications
-  xremap = ../modules/applications/xremap.nix;
-  fcitx5 = ../modules/applications/fcitx5.nix;
-  tailscale = ../modules/applications/tailscale.nix;
-  pipewire = ../modules/applications/pipewire.nix;
-  thunar = ../modules/applications/thunar.nix;
-  xss-i3lock = ../modules/applications/xss-i3lock.nix;
+  xremap = /${nixosModules}/applications/xremap.nix;
+  fcitx5 = /${nixosModules}/applications/fcitx5.nix;
+  tailscale = /${nixosModules}/applications/tailscale.nix;
+  pipewire = /${nixosModules}/applications/pipewire.nix;
+  thunar = /${nixosModules}/applications/thunar.nix;
+  xss-i3lock = /${nixosModules}/applications/xss-i3lock.nix;
 in
 {
 
-  imports = [
-    hardware
-    extraMountFilesystems
-    nvidia
+  imports =
+    [
+      hardware
+      extraMountFilesystems
+      nvidia
 
-    # configuration.nix top level keys
-    nix
-    boot
-    networking
-    environment
-    time
-    i18n
-    security
-    programs
-    users
-    fonts
-    virtualisation
-    qt
+      # configuration.nix top level keys
+      nix
+      boot
+      networking
+      environment
+      time
+      i18n
+      security
+      programs
+      users
+      fonts
+      virtualisation
+      qt
 
-    # Applications
-    xremap
-    fcitx5
-    tailscale
-    pipewire
-    thunar
-    xss-i3lock
-  ] ++ services ++ xserver ++ systemdUserServiceUnits;
+      # Applications
+      xremap
+      fcitx5
+      tailscale
+      pipewire
+      thunar
+      xss-i3lock
+    ]
+    ++ services
+    ++ xserver
+    ++ systemdUserServiceUnits
+    ++ (with nixos-hardware.nixosModules; [
+      common-cpu-amd-zenpower
+      common-gpu-nvidia-sync
+      common-pc-ssd
+    ]);
 
   nixpkgs.config.allowUnfree = true;
 
