@@ -67,6 +67,19 @@
               ;
           }
         );
+        macx64 = home-manager.lib.homeManagerConfiguration (
+          import ./home-manager {
+            profileName = "macx64";
+            system = "x86_64-darwin";
+            inherit
+              nixpkgs
+              wezterm-flake
+              flakeRoot
+              nixpkgsOverlay
+              homeManager
+              ;
+          }
+        );
       };
     };
 }

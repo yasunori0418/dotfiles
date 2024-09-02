@@ -80,7 +80,7 @@ work_repoget: ## Get and update ghq management repositories.
 nixos-%: ## nixos-rebuild switch --flake ".#"%(laptop | desktop)
 	@sudo nixos-rebuild switch --flake ".#"${@:nixos-%=%}
 
-nix-home-%: ## nix run "nixpkgs#home-manager" -- switch --flake ".#"%(linux)
+nix-home-%: ## nix run "nixpkgs#home-manager" -- switch --flake ".#"%(linux | macx64)
 	@nix run "nixpkgs#home-manager" -- switch --flake ".#"${@:nix-home-%=%}
 
 nix-gc: ## nix-collect-garbage -d
