@@ -2,10 +2,10 @@
 
 cd "${HOME}"
 
-unlink .docker/
-rm -rf .icons/
-rm -rf .Xresources.d/
-rm -rf .zsh/
+unlink .docker/config.json
+unlink .icons/
+unlink .Xresources.d/
+unlink .zsh/
 unlink .bash_logout
 unlink .bash_profile
 unlink .bashrc
@@ -19,49 +19,49 @@ unlink .xinitrc
 unlink .xprofile
 unlink .Xresources
 unlink .xserverrc
-unlink .zprofile
+# unlink .zprofile  mac環境: 意図していないaliasやら環境変数を差し込んでいる。
 unlink .zshenv
 unlink .zshrc
 unlink bun.lockb
 unlink package.json
-rm -rf bin
+unlink bin
 
-cd "${HOME}/.config"
-
-rm -rf aerospace
-rm -rf aqua
-rm -rf bumblebee-status
-rm -rf cantata
-rm -rf dunst
-rm -rf fastfetch
-rm -rf fcitx5
-rm -rf fd
-rm -rf git
-rm -rf gtk-2.0
-rm -rf gtk-3.0
-rm -rf i3
-rm -rf jj
-rm -rf karabiner
-rm -rf keynav
-rm -rf kitty
-rm -rf libskk
-rm -rf luacheck
-rm -rf mise
-rm -rf mpd
-rm -rf neofetch
-rm -rf nvim
-rm -rf paru
-rm -rf picom
-rm -rf rofi
-rm -rf sheldon
-rm -rf sketchybar
-rm -rf skhd
-rm -rf systemd
-rm -rf vim
-rm -rf wezterm
-rm -rf xremap
-rm -rf yabai
-rm -rf yamllint
-rm -rf zeno
-unlink ncpamixer.conf
-unlink screenkey.json
+# cd "${HOME}/.config"
+#
+# unlink aerospace
+# unlink aqua
+# unlink bumblebee-status
+# unlink cantata
+# unlink dunst
+# unlink fastfetch
+# unlink fcitx5
+# unlink fd
+# unlink git
+# unlink gtk-2.0
+# unlink gtk-3.0
+# unlink i3
+# unlink jj
+# unlink karabiner
+# unlink keynav
+# unlink kitty
+# unlink libskk
+# unlink luacheck
+# unlink mise
+# unlink mpd
+# unlink neofetch
+# unlink nvim
+# unlink paru
+# unlink picom
+# unlink rofi
+# unlink sheldon
+# unlink sketchybar
+# unlink skhd
+# unlink systemd
+# unlink vim
+# unlink wezterm
+# unlink xremap
+# unlink yabai
+# unlink yamllint
+# unlink zeno
+# unlinkamixer.conf
+# unlink screenkey.json
