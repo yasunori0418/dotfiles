@@ -1,0 +1,8 @@
+{
+	"auths": {},
+	"detachKeys": "ctrl-\\",
+	"currentContext": "orbstack",
+	"cliPluginsExtraDirs": [
+		"/usr/local/lib/docker/cli-plugins"
+	]
+}
