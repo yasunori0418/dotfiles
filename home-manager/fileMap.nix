@@ -12,8 +12,8 @@
     in
     {
       # $HOME
-      ".docker" = {
-        source = (symlink /${homeDir}/.docker);
+      ".docker/config.json" = {
+        source = (symlink /${homeDir}/.docker/linux_config.json);
         recursive = true;
       };
       ".icons" = {
