@@ -35,7 +35,6 @@
       ".Xresources".source = (symlink /${homeDir}/.Xresources);
       ".zshenv".source = (symlink /${homeDir}/.zshenv);
       ".zshrc".source = (symlink /${homeDir}/.zshrc);
-      ".zprofile".source = (symlink /${homeDir}/.zprofile);
       ".p10k.zsh".source = (symlink /${homeDir}/.p10k.zsh);
       ".xprofile".source = (symlink /${homeDir}/.xprofile);
       ".xinitrc".source = (symlink /${homeDir}/.xinitrc);
