@@ -87,11 +87,6 @@ nix-gc: ## nix-collect-garbage -d
 	@nix-collect-garbage -d
 
 ## Environment Setup Tools ##
-aqua-install: ## Install aqua
-	@curl -sSfLo /tmp/aqua-installer https://raw.githubusercontent.com/aquaproj/aqua-installer/v3.0.1/aqua-installer
-	@echo "$(AQUA_INSTALLER_HASH) /tmp/aqua-installer" | sha256sum -c
-	@bash /tmp/aqua-installer
-
 nix-install: ## Install nix.
 	@curl --proto '=https' --tlsv1.2 -sSf -L https://install.determinate.systems/nix | sh -s -- install
 

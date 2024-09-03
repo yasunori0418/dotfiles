@@ -52,10 +52,6 @@
         source = (symlink /${xdgConfigHome}/aerospace);
         recursive = true;
       };
-      ".config/aqua" = {
-        source = (symlink /${xdgConfigHome}/aqua);
-        recursive = true;
-      };
       ".config/bumblebee-status" = {
         source = (symlink /${xdgConfigHome}/bumblebee-status);
         recursive = true;
@@ -118,10 +114,6 @@
       };
       ".config/luacheck" = {
         source = (symlink /${xdgConfigHome}/luacheck);
-        recursive = true;
-      };
-      ".config/mise" = {
-        source = (symlink /${xdgConfigHome}/mise);
         recursive = true;
       };
       ".config/mpd" = {
