@@ -12,6 +12,7 @@
   pkgs = import nixpkgs {
     inherit system;
     config.allowUnfree = true;
+    config.allowUnsupportedSystem = true;
     overlays = [
       (import /${nixpkgsOverlay}/sheldon.nix)
     ];

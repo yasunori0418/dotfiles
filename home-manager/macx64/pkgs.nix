@@ -17,7 +17,7 @@
       luajitPackages.luarocks
 
       # aqua config.yaml
-      # sheldon
+      sheldon
       bat
       gh
       jq
