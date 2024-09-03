@@ -24,7 +24,7 @@ rec {
     in
     [
       packages
-      # fileMap
+      fileMap
     ];
   programs.home-manager.enable = true;
   home = {
