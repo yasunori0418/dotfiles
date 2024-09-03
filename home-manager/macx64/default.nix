@@ -23,8 +23,8 @@ rec {
       };
     in
     [
-      packages
-      fileMap
+      # packages
+      # fileMap
     ];
   programs.home-manager.enable = true;
   home = {
