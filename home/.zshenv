@@ -13,7 +13,6 @@ export LESS="\
   --window=-4 \
   --tabs=4"
 
-#[[ -n $(toe -a | cut -f1 | grep xterm-256color) ]] && export TERM=xterm-256color
 export TERM=xterm-256color
 
 export DOTFILES_DATA="${HOME}/.local/dotfiles"
@@ -33,12 +32,7 @@ export XDG_STATE_HOME="${HOME}/.local/state"
 export XDG_RUNTIME_DIR="${XDG_RUNTIME_DIR:-${HOME}/.local/runtime}"
 export QT_QPA_PLATFORMTHEME=gtk2
 
-[[ $(uname -s) = 'Darwin' ]] && export AQUA_GLOBAL_CONFIG="${XDG_CONFIG_HOME}/aqua/config.yaml"
-[[ $(uname -s) = 'Darwin' ]] && export AQUA_PROGRESS_BAR=true
-[[ $(uname -s) = 'Darwin' ]] && PATH="${XDG_DATA_HOME}/aquaproj-aqua/bin:${PATH}"
-
 # Docker rootless config
-[[ $(uname -s) = 'Darwin' ]] && DOCKER_HOST="unix://${XDG_CONFIG_HOME}/colima/default/docker.sock"
 [[ $(uname -s) = 'Linux' ]] && DOCKER_HOST="unix://${XDG_RUNTIME_DIR}/docker.sock"
 export DOCKER_HOST
 
