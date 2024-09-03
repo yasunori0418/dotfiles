@@ -13,7 +13,7 @@
     inherit system;
     config.allowUnfree = true;
     overlays = [
-      # (import /${nixpkgsOverlay}/sheldon.nix)
+      (import /${nixpkgsOverlay}/sheldon.nix)
     ];
   };
   extraSpecialArgs = {

@@ -7,7 +7,7 @@
   home.packages =
     with pkgs;
     [
-      kitty
+      # kitty
       alacritty
       lemonade
       gcc
@@ -17,6 +17,7 @@
       luajitPackages.luarocks
 
       # aqua config.yaml
+      # sheldon
       bat
       gh
       jq
@@ -35,6 +36,6 @@
       awscli2
       nix-prefetch-github
       nixd
-    ]
-    ++ [ wezterm-flake.packages.${pkgs.system}.default ];
+    ];
+    # ++ [ wezterm-flake.packages.${pkgs.system}.default ];
 }
