@@ -15,6 +15,7 @@ rec {
       packages = import /${homeManager}/pkgs.nix { inherit pkgs wezterm-flake; };
       fileMap = import /${homeManager}/fileMap.nix {
         inherit
+          pkgs
           config
           flakeRoot
           dotfiles

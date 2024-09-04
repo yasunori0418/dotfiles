@@ -1,4 +1,5 @@
 {
+  pkgs,
   config,
   dotfiles,
   homeDir,
@@ -12,10 +13,13 @@
     in
     {
       # $HOME
-      ".docker/config.json" = {
-        source = (symlink /${homeDir}/.docker/linux_config.json);
-        recursive = true;
-      };
+      ".docker/config.json".source =
+        if pkgs.stdenv.isLinux then
+          (symlink /${homeDir}/.docker/linux_config.json)
+        else if pkgs.stdenv.isDarwin then
+          (symlink /${homeDir}/.docker/mac_config.json)
+        else
+          throw "unsupported system ${pkgs.stdenv.hostPlatform.system}";
       ".icons" = {
         source = (symlink /${homeDir}/.icons);
         recursive = true;
