@@ -21,11 +21,7 @@ export async function getLazyExt(
   args: ConfigArguments,
   options: DppOptions,
 ): Promise<GetLazyExtResults> {
-  return await args.dpp.getExt(
-    args.denops,
-    options,
-    "lazy",
-  ) as GetLazyExtResults;
+  return await args.denops.dispatcher.getExt("lazy") as GetLazyExtResults;
 }
 
 export interface makeStateArgs {

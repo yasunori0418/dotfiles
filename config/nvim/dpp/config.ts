@@ -54,7 +54,7 @@ export class Config extends BaseConfig {
     });
 
     const [context, options] = await args.contextBuilder.get(denops);
-    const protocols = await args.dpp.getProtocols(denops, options);
+    const protocols = await args.denops.dispatcher.getProtocols();
     const [tomlExt, tomlOptions, tomlParams] = await getTomlExt(args, options);
 
     const toml = await gatherTomls({

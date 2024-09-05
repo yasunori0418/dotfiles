@@ -22,11 +22,7 @@ export async function getTomlExt(
   args: ConfigArguments,
   options: DppOptions,
 ): Promise<GetTomlExtResults> {
-  return await args.dpp.getExt(
-    args.denops,
-    options,
-    "toml",
-  ) as GetTomlExtResults;
+  return await args.denops.dispatcher.getExt("toml") as GetTomlExtResults;
 }
 
 export interface GatherTomlsArgs {
