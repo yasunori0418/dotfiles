@@ -1,6 +1,5 @@
 import {
   Plugin,
-  ConfigArguments,
   Context,
   Denops,
   DppOptions,
@@ -16,12 +15,6 @@ export type GetLazyExtResults = [
   ExtOptions,
   LazyParams,
 ];
-
-export async function getLazyExt(
-  args: ConfigArguments,
-): Promise<GetLazyExtResults> {
-  return await args.denops.dispatcher.getExt("lazy") as GetLazyExtResults;
-}
 
 export interface makeStateArgs {
   denops: Denops;

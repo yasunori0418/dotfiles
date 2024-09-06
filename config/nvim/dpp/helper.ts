@@ -4,6 +4,14 @@ import {
   Plugin,
 } from "./deps.ts";
 
+
+export async function getExt<T>(
+  args: ConfigArguments,
+  extName: string,
+): Promise<T> {
+  return await args.denops.dispatcher.getExt(extName) as T;
+}
+
 export async function gatherGhqPlugins(
   args: ConfigArguments,
 ): Promise<Plugin[]> {

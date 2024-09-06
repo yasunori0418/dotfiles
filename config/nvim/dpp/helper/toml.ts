@@ -1,5 +1,4 @@
 import {
-  ConfigArguments,
   Context,
   Denops,
   DppOptions,
@@ -17,12 +16,6 @@ export type GetTomlExtResults = [
   ExtOptions,
   TomlParams,
 ];
-
-export async function getTomlExt(
-  args: ConfigArguments,
-): Promise<GetTomlExtResults> {
-  return await args.denops.dispatcher.getExt("toml") as GetTomlExtResults;
-}
 
 export interface GatherTomlsArgs {
   path: string;
