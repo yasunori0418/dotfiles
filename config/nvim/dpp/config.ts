@@ -4,6 +4,7 @@ import {
   ConfigReturn,
   Denops,
   join,
+  Protocol,
   vars,
 } from "./deps.ts";
 import { gatherCheckFiles } from "./helper.ts";
@@ -54,8 +55,10 @@ export class Config extends BaseConfig {
     });
 
     const [context, options] = await args.contextBuilder.get(denops);
-    const protocols = await args.denops.dispatcher.getProtocols();
-    const [tomlExt, tomlOptions, tomlParams] = await getTomlExt(args, options);
+    const protocols = await args.denops.dispatcher.getProtocols() as Record<
+      string,
+      Protocol
+    >;
 
     const toml = await gatherTomls({
       denops,
