@@ -20,7 +20,6 @@ export type GetTomlExtResults = [
 
 export async function getTomlExt(
   args: ConfigArguments,
-  options: DppOptions,
 ): Promise<GetTomlExtResults> {
   return await args.denops.dispatcher.getExt("toml") as GetTomlExtResults;
 }

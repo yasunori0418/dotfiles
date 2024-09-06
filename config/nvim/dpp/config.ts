@@ -59,6 +59,7 @@ export class Config extends BaseConfig {
       string,
       Protocol
     >;
+    const [tomlExt, tomlOptions, tomlParams] = await getTomlExt(args);
 
     const toml = await gatherTomls({
       denops,
@@ -72,7 +73,7 @@ export class Config extends BaseConfig {
       noLazyTomlNames: ["dpp.toml", "no_lazy.toml"],
     });
 
-    const [lazyExt, lazyOptions, lazyParams] = await getLazyExt(args, options);
+    const [lazyExt, lazyOptions, lazyParams] = await getLazyExt(args);
     const lazyResult = await makeState({
       denops,
       context,

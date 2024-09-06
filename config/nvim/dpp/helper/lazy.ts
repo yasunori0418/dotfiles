@@ -19,7 +19,6 @@ export type GetLazyExtResults = [
 
 export async function getLazyExt(
   args: ConfigArguments,
-  options: DppOptions,
 ): Promise<GetLazyExtResults> {
   return await args.denops.dispatcher.getExt("lazy") as GetLazyExtResults;
 }
