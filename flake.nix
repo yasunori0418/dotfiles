@@ -16,6 +16,10 @@
       url = "github:wez/wezterm?dir=nix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    neovim-nightly-overlay = {
+      url = "github:nix-community/neovim-nightly-overlay";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs =
@@ -26,6 +30,7 @@
       xremap-flake,
       home-manager,
       wezterm-flake,
+      neovim-nightly-overlay,
     }:
     let
       flakeRoot = ./.;
@@ -62,6 +67,7 @@
             inherit
               nixpkgs
               wezterm-flake
+              neovim-nightly-overlay
               flakeRoot
               nixpkgsOverlay
               homeManager
@@ -75,6 +81,7 @@
             inherit
               nixpkgs
               wezterm-flake
+              neovim-nightly-overlay
               flakeRoot
               nixpkgsOverlay
               homeManager

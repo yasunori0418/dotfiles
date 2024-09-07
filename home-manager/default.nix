@@ -3,6 +3,7 @@
   system,
   nixpkgs,
   wezterm-flake,
+  neovim-nightly-overlay,
   flakeRoot,
   homeManager,
   # nixpkgsOverlay,
@@ -13,7 +14,9 @@
     inherit system;
     config.allowUnfree = true;
     config.allowUnsupportedSystem = true;
-    overlays = [];
+    overlays = [
+      neovim-nightly-overlay.overlays.default
+    ];
   };
   extraSpecialArgs = {
     inherit

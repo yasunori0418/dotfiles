@@ -14,6 +14,7 @@
     unzip
     rustup
     luajitPackages.luarocks
+    neovim
 
     # aqua config.yaml
     sheldon
