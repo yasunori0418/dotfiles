@@ -22,6 +22,12 @@ config.scrollback_lines = 5000
 config.disable_default_key_bindings = true
 config.keys = keybinds.keys
 config.key_tables = keybinds.key_tables
-config.front_end = [[OpenGL]]
+
+local machine_type = io.popen("uname -s"):read("*l")
+if machine_type == "Linux" then
+    config.front_end = [[OpenGl]]
+elseif machine_type == "Darwin" then
+    config.front_end = [[WebGpu]]
+end
 
 return config
