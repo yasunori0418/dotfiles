@@ -2,7 +2,7 @@
 { config, ... }:
 {
   hardware = {
-    opengl.enable = true;
+    graphics.enable = true;
     nvidia = {
       # Modesetting is required.
       modesetting.enable = true;
