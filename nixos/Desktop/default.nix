@@ -1,13 +1,13 @@
 {
   nixos-hardware,
   xremap-flake,
-  nixosModules,
+  nixosSettings,
   ...
 }:
 {
   system = "x86_64-linux";
   specialArgs = {
-    inherit nixos-hardware nixosModules;
+    inherit nixos-hardware nixosSettings;
   };
   modules = [
     ./configuration.nix

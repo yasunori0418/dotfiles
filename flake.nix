@@ -33,7 +33,7 @@
 
       # nixos directory symbols
       nixos = /${flakeRoot}/nixos;
-      nixosModules = /${nixos}/modules;
+      nixosSettings = /${nixos}/settings;
 
       # nix home-manager directory symbols
       homeManager = /${flakeRoot}/home-manager;
@@ -44,12 +44,12 @@
       nixosConfigurations = {
         laptop = nixpkgs.lib.nixosSystem (
           import ./nixos/ThinkPadE14Gen2 {
-            inherit nixos-hardware nixosModules xremap-flake;
+            inherit nixos-hardware  xremap-flake nixosSettings;
           }
         );
         desktop = nixpkgs.lib.nixosSystem (
           import ./nixos/Desktop {
-            inherit nixos-hardware nixosModules xremap-flake;
+            inherit nixos-hardware  xremap-flake nixosSettings;
           }
         );
       };

@@ -1,53 +1,53 @@
 {
   pkgs,
   nixos-hardware,
-  nixosModules,
+  nixosSettings,
   ...
 }:
 let
   hardware = ./hardware-configuration.nix;
   extraMountFilesystems = ./extra-mount-filesystems.nix;
-  nvidia = /${nixosModules}/nvidia.nix;
+  nvidia = /${nixosSettings}/nvidia.nix;
 
   # configuration.nix top level keys
-  nix = /${nixosModules}/nix.nix;
-  boot = /${nixosModules}/boot.nix;
-  networking = import /${nixosModules}/networking.nix { hostName = "yasunori-desktop"; };
-  environment = /${nixosModules}/environment.nix;
-  time = /${nixosModules}/time.nix;
-  i18n = /${nixosModules}/i18n.nix;
-  security = /${nixosModules}/security.nix;
-  programs = /${nixosModules}/programs.nix;
-  users = /${nixosModules}/users.nix;
-  fonts = /${nixosModules}/fonts.nix;
-  virtualisation = /${nixosModules}/virtualisation.nix;
-  qt = /${nixosModules}/qt.nix;
+  nix = /${nixosSettings}/nix.nix;
+  boot = /${nixosSettings}/boot.nix;
+  networking = import /${nixosSettings}/networking.nix { hostName = "yasunori-desktop"; };
+  environment = /${nixosSettings}/environment.nix;
+  time = /${nixosSettings}/time.nix;
+  i18n = /${nixosSettings}/i18n.nix;
+  security = /${nixosSettings}/security.nix;
+  programs = /${nixosSettings}/programs.nix;
+  users = /${nixosSettings}/users.nix;
+  fonts = /${nixosSettings}/fonts.nix;
+  virtualisation = /${nixosSettings}/virtualisation.nix;
+  qt = /${nixosSettings}/qt.nix;
 
   services = [
-    /${nixosModules}/services/printing.nix
-    /${nixosModules}/services/openssh.nix
-    /${nixosModules}/services/tlp.nix
-    /${nixosModules}/services/displayManager/ly.nix
+    /${nixosSettings}/services/printing.nix
+    /${nixosSettings}/services/openssh.nix
+    /${nixosSettings}/services/tlp.nix
+    /${nixosSettings}/services/displayManager/ly.nix
   ];
 
   xserver = [
-    /${nixosModules}/xserver/base.nix
-    # (import /${nixosModules}/xserver/displayManager/lightdm.nix { greeterName = "mini"; })
-    (import /${nixosModules}/xserver/windowManager/i3wm.nix { inherit pkgs; })
+    /${nixosSettings}/xserver/base.nix
+    # (import /${nixosSettings}/xserver/displayManager/lightdm.nix { greeterName = "mini"; })
+    (import /${nixosSettings}/xserver/windowManager/i3wm.nix { inherit pkgs; })
   ];
 
   systemdUserServiceUnits = [
-    /${nixosModules}/systemd/polkit-kde-agent.nix
-    /${nixosModules}/systemd/ssh-agent.nix
+    /${nixosSettings}/systemd/polkit-kde-agent.nix
+    /${nixosSettings}/systemd/ssh-agent.nix
   ];
 
   # Applications
-  xremap = /${nixosModules}/applications/xremap.nix;
-  fcitx5 = /${nixosModules}/applications/fcitx5.nix;
-  tailscale = /${nixosModules}/applications/tailscale.nix;
-  pipewire = /${nixosModules}/applications/pipewire.nix;
-  thunar = /${nixosModules}/applications/thunar.nix;
-  xss-i3lock = /${nixosModules}/applications/xss-i3lock.nix;
+  xremap = /${nixosSettings}/applications/xremap.nix;
+  fcitx5 = /${nixosSettings}/applications/fcitx5.nix;
+  tailscale = /${nixosSettings}/applications/tailscale.nix;
+  pipewire = /${nixosSettings}/applications/pipewire.nix;
+  thunar = /${nixosSettings}/applications/thunar.nix;
+  xss-i3lock = /${nixosSettings}/applications/xss-i3lock.nix;
 in
 {
 
