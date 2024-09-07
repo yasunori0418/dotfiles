@@ -11,7 +11,7 @@
   };
   modules = [
     ./configuration.nix
-    nixos-hardware.nixosSettings.lenovo-thinkpad-e14-amd
-    xremap-flake.nixosSettings.default
+    nixos-hardware.nixosModules.lenovo-thinkpad-e14-amd
+    xremap-flake.nixosModules.default
   ];
 }
