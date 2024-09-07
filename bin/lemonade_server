@@ -1,4 +1,4 @@
-#!/usr/bin/env -S bash
+#!/usr/bin/env bash
 
 lemonade_cache_path=${HOME}/.cache/lemonade
 [[ ! -d ${lemonade_cache_path} ]] && mkdir -p ${lemonade_cache_path}
