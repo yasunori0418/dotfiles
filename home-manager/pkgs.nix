@@ -36,6 +36,7 @@
     awscli2
     nix-prefetch-github
     nixd
+    (lib.mkIf pkgs.stdenv.isDarwin wezterm)
     (lib.mkIf pkgs.stdenv.isLinux wezterm-flake.packages.${pkgs.system}.default)
   ];
 }
