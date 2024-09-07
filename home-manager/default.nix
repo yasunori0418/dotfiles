@@ -5,7 +5,7 @@
   wezterm-flake,
   flakeRoot,
   homeManager,
-  nixpkgsOverlay,
+  # nixpkgsOverlay,
   ...
 }:
 {
@@ -13,9 +13,7 @@
     inherit system;
     config.allowUnfree = true;
     config.allowUnsupportedSystem = true;
-    overlays = [
-      (import /${nixpkgsOverlay}/sheldon.nix)
-    ];
+    overlays = [];
   };
   extraSpecialArgs = {
     inherit
