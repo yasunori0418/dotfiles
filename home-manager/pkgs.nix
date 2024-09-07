@@ -6,7 +6,7 @@
 }:
 {
   home.packages = with pkgs; [
-    (lib.mkIf pkgs.stdenv.isLinux kitty)
+    kitty
     alacritty
     lemonade
     gcc
@@ -24,7 +24,7 @@
     ripgrep
     ghq
     delta
-    deno
+    (lib.mkIf pkgs.stdenv.isLinux deno) # 全部intel macって奴が悪いんだ！
     fd
     fzf
     eza
