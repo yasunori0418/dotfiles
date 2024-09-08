@@ -15,6 +15,7 @@
     rustup
     luajitPackages.luarocks
     neovim
+    vim
 
     # aqua config.yaml
     sheldon

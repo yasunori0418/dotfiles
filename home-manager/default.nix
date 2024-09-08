@@ -4,6 +4,7 @@
   nixpkgs,
   wezterm-flake,
   neovim-nightly-overlay,
+  vim-overlay,
   flakeRoot,
   homeManager,
   # nixpkgsOverlay,
@@ -16,6 +17,12 @@
     config.allowUnsupportedSystem = true;
     overlays = [
       neovim-nightly-overlay.overlays.default
+      (vim-overlay.overlays.features {
+        lua = true;
+        python3 = true;
+        ruby = true;
+        sodium = true;
+      })
     ];
   };
   extraSpecialArgs = {
