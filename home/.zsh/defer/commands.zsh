@@ -19,5 +19,5 @@ nvim_server_pipe ()
         args+=("--listen")
     fi
     args+=("${server_pipe}")
-    nvim "${args[@]} $@"
+    nvim "${args[@]}" "${@}"
 }

@@ -22,7 +22,7 @@ alias cd=custom_cd # ./commands.zsh
 alias dotfiles='cd ~/dotfiles'
 
 # Neovim alias
-[[ $(command -v nvim) ]] && alias nv=nvim_server_pipe
+[[ $(command -v nvim) ]] || alias nv=nvim_server_pipe # ./commands.zsh
 
 [[ $(command -v neovide) ]] && alias nvg='neovide --multigrid'
 
