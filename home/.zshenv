@@ -30,7 +30,6 @@ export XDG_CACHE_HOME="${HOME}/.cache"
 export XDG_DATA_HOME="${HOME}/.local/share"
 export XDG_STATE_HOME="${HOME}/.local/state"
 export XDG_RUNTIME_DIR="${XDG_RUNTIME_DIR:-${HOME}/.local/runtime}"
-export QT_QPA_PLATFORMTHEME=gtk2
 
 # Docker rootless config
 [[ $(uname -s) = 'Linux' ]] && DOCKER_HOST="unix://${XDG_RUNTIME_DIR}/docker.sock"

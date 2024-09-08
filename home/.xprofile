@@ -9,7 +9,7 @@ export QT_QPA_PLATFORMTHEME='gtk2'
 # Clipmenu
 export CM_LAUNCHER=rofi
 
-if [[ `uname -n` = 'yasunori-laptop' ]];then
+if [[ $(uname -n) = 'yasunori-laptop' ]];then
   ~/bin/multi_monitor_for_laptop.sh
 fi
 
@@ -19,4 +19,3 @@ systemctl --user import-environment \
   XDG_SESSION_ID \
   QT_QPA_PLATFORMTHEME
 systemctl --user start xsession.target
-# vim:ft=sh
