@@ -24,10 +24,10 @@
         source = (symlink /${homeDir}/.icons);
         recursive = true;
       };
-      ".Xresources.d" = {
-        source = (symlink /${homeDir}/.Xresources.d);
-        recursive = true;
-      };
+      # ".Xresources.d" = {
+      #   source = (symlink /${homeDir}/.Xresources.d);
+      #   recursive = true;
+      # };
       ".zsh" = {
         source = (symlink /${homeDir}/.zsh);
         recursive = true;
@@ -36,7 +36,7 @@
         source = (symlink /${dotfiles}/bin);
         recursive = true;
       };
-      ".Xresources".source = (symlink /${homeDir}/.Xresources);
+      # ".Xresources".source = (symlink /${homeDir}/.Xresources);
       ".zshenv".source = (symlink /${homeDir}/.zshenv);
       ".zshrc".source = (symlink /${homeDir}/.zshrc);
       ".p10k.zsh".source = (symlink /${homeDir}/.p10k.zsh);
