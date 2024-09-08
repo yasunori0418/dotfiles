@@ -1,20 +1,16 @@
 import {
   BaseConfig,
+  ConfigArguments,
   ConfigReturn,
   Denops,
   join,
-  Plugin,
+  Protocol,
   vars,
 } from "./deps.ts";
-import {
-  type ConfigArguments,
-  gatherCheckFiles,
-  gatherTomls,
-  gatherVimrcs,
-  type LazyMakeStateResult,
-  type Toml,
-  type VimrcSkipRule,
-} from "./helper.ts";
+import { gatherCheckFiles, getExt } from "./helper.ts";
+import { gatherVimrcs, VimrcSkipRule } from "./helper/inlineVimrcs.ts";
+import { gatherTomls, GetTomlExtResults } from "./helper/toml.ts";
+import { makeState, GetLazyExtResults } from "./helper/lazy.ts";
 
 export class Config extends BaseConfig {
   override async config(args: ConfigArguments): Promise<ConfigReturn> {
@@ -53,39 +49,36 @@ export class Config extends BaseConfig {
       },
     });
 
-    const tomls = await gatherTomls(
-      await vars.g.get(denops, "toml_dir"),
-      ["dpp.toml", "no_lazy.toml"],
-      args,
-    ) as Toml[];
-
-    const recordPlugins: Record<string, Plugin> = {};
-    const hooksFiles: string[] = [];
-
-    for (const toml of tomls) {
-      if (toml.plugins) {
-        for (const plugin of toml.plugins) {
-          recordPlugins[plugin.name] = plugin;
-        }
-      }
-
-      if (toml.hooks_file) {
-        hooksFiles.push(toml.hooks_file);
-      }
-    }
-
     const [context, options] = await args.contextBuilder.get(denops);
+    const protocols = await args.denops.dispatcher.getProtocols() as Record<
+      string,
+      Protocol
+    >;
+    const [tomlExt, tomlOptions, tomlParams] = await getExt<GetTomlExtResults>(args, "toml");
 
-    const lazyResult = await args.dpp.extAction(
+    const toml = await gatherTomls({
       denops,
       context,
       options,
-      "lazy",
-      "makeState",
-      {
-        plugins: Object.values(recordPlugins),
-      },
-    ) as LazyMakeStateResult | undefined;
+      protocols,
+      tomlExt,
+      tomlOptions,
+      tomlParams,
+      path: await vars.g.get(denops, "toml_dir"),
+      noLazyTomlNames: ["dpp.toml", "no_lazy.toml"],
+    });
+
+    const [lazyExt, lazyOptions, lazyParams] = await getExt<GetLazyExtResults>(args, "lazy");
+    const lazyResult = await makeState({
+      denops,
+      context,
+      options,
+      protocols,
+      lazyExt,
+      lazyOptions,
+      lazyParams,
+      plugins: Object.values(toml.recordPlugins ?? {}),
+    });
 
     const checkFiles = gatherCheckFiles(
       await vars.g.get(denops, "base_dir"),
@@ -94,7 +87,9 @@ export class Config extends BaseConfig {
 
     return {
       checkFiles: checkFiles,
-      hooksFiles,
+      hooksFiles: toml.hooksFiles,
+      ftplugins: toml.ftplugins,
+      multipleHooks: toml.multipleHooks,
       plugins: lazyResult?.plugins ?? [],
       stateLines: lazyResult?.stateLines ?? [],
     };
