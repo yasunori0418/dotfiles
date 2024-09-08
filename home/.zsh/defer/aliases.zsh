@@ -28,6 +28,6 @@ alias dotfiles='cd ~/dotfiles'
 
 # useful command aliases
 alias sync_status='watch grep -e Dirty: -e Writeback: /proc/meminfo'
-alias capswap='systemctl --user start swap_caps_k8.service'
+alias capswap='systemctl restart xremap.service'
 
 [[ $(command -v colordiff) ]] && alias diff='colordiff'
