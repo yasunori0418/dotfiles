@@ -14,7 +14,6 @@
   pkgs = import nixpkgs {
     inherit system;
     config.allowUnfree = true;
-    config.allowUnsupportedSystem = true;
     overlays = [
       neovim-nightly-overlay.overlays.default
       (vim-overlay.overlays.features {
