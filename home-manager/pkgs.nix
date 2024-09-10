@@ -5,39 +5,17 @@
   ...
 }:
 {
-  home.packages = with pkgs; [
-    kitty
-    alacritty
-    lemonade
-    gcc
-    ncurses
-    unzip
-    rustup
-    luajitPackages.luarocks
-    neovim
-    vim
-    emacs
-
-    # aqua config.yaml
-    sheldon
-    bat
-    gh
-    jq
-    ripgrep
-    ghq
-    delta
-    (lib.mkIf pkgs.stdenv.isLinux deno) # 全部intel macって奴が悪いんだ！
-    fd
-    fzf
-    eza
-    go
-    bun
-    usql
-    glow
-    volta
-    awscli2
-    nix-prefetch-github
-    nixd
-    (if pkgs.stdenv.isLinux then wezterm-flake.packages.${pkgs.system}.default else wezterm)
-  ];
+  home.packages =
+    let
+      applicationList = import ./applicationList.nix { inherit pkgs lib wezterm-flake; };
+    in
+    with applicationList;
+    [ ]
+    ++ nixTools
+    ++ utilityTools
+    ++ textEditors
+    ++ terminalEmulators
+    ++ shellTools
+    ++ languageServers
+    ++ libraries;
 }
