@@ -16,7 +16,7 @@
     luajitPackages.luarocks
     neovim
     vim
-    # emacs-gtk
+    emacs
 
     # aqua config.yaml
     sheldon
