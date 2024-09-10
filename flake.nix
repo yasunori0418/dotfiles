@@ -54,12 +54,12 @@
       nixosConfigurations = {
         laptop = nixpkgs.lib.nixosSystem (
           import ./nixos/ThinkPadE14Gen2 {
-            inherit nixos-hardware  xremap-flake nixosSettings;
+            inherit nixos-hardware xremap-flake nixosSettings;
           }
         );
         desktop = nixpkgs.lib.nixosSystem (
           import ./nixos/Desktop {
-            inherit nixos-hardware  xremap-flake nixosSettings;
+            inherit nixos-hardware xremap-flake nixosSettings;
           }
         );
       };
