@@ -1,16 +1,10 @@
-{
-  pkgs,
-  lib,
-  wezterm-flake,
-  ...
-}:
+{ pkgs, ... }:
 {
   nixTools = with pkgs; [
     nix-prefetch-github
   ];
 
   utilityTools = with pkgs; [
-    (lib.mkIf pkgs.stdenv.isLinux deno) # 全部intel macって奴が悪いんだ！
     usql
     glow
     gh
@@ -28,7 +22,6 @@
   terminalEmulators = with pkgs; [
     kitty
     alacritty
-    (if pkgs.stdenv.isLinux then wezterm-flake.packages.${pkgs.system}.default else wezterm)
   ];
 
   shellTools = with pkgs; [

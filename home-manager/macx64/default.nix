@@ -1,8 +1,6 @@
 {
   pkgs,
-  lib,
   config,
-  wezterm-flake,
   flakeRoot,
   homeManager,
   ...
@@ -13,7 +11,7 @@ rec {
       dotfiles = /${home.homeDirectory}/dotfiles;
       homeDir = /${dotfiles}/home;
       xdgConfigHome = /${dotfiles}/config;
-      packages = import /${homeManager}/pkgs.nix { inherit pkgs lib wezterm-flake; };
+      packages = import ./packages.nix { inherit pkgs homeManager; };
       fileMap = import /${homeManager}/fileMap.nix {
         inherit
           pkgs
