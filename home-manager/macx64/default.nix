@@ -1,7 +1,6 @@
 {
   pkgs,
   config,
-  flakeRoot,
   homeManager,
   ...
 }:
@@ -12,11 +11,10 @@ rec {
       homeDir = /${dotfiles}/home;
       xdgConfigHome = /${dotfiles}/config;
       packages = import ./packages.nix { inherit pkgs homeManager; };
-      fileMap = import /${homeManager}/fileMap.nix {
+      homeFile = import ./homeFile.nix {
         inherit
-          pkgs
           config
-          flakeRoot
+          homeManager
           dotfiles
           homeDir
           xdgConfigHome
@@ -25,7 +23,7 @@ rec {
     in
     [
       packages
-      fileMap
+      homeFile
     ];
   programs.home-manager.enable = true;
   home = {
