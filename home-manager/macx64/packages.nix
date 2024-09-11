@@ -6,8 +6,8 @@
 {
   home.packages =
     let
-      applicationList = import /${homeManager}/applicationList.nix { inherit pkgs; };
-      apps = with applicationList; {
+      applications = import /${homeManager}/applications.nix { inherit pkgs; };
+      applicationsOverride = with applications; {
         inherit
           nixTools
           utilityTools
@@ -19,7 +19,7 @@
         terminalEmulators = terminalEmulators ++ [ pkgs.wezterm ];
       };
     in
-    with apps;
+    with applicationsOverride;
     [ ]
     ++ nixTools
     ++ utilityTools

@@ -7,8 +7,8 @@
 {
   home.packages =
     let
-      applicationList = import /${homeManager}/applicationList.nix { inherit pkgs; };
-      apps = with applicationList; {
+      applications = import /${homeManager}/applications.nix { inherit pkgs; };
+      applicationsOverride = with applications; {
         inherit
           nixTools
           textEditors
@@ -20,7 +20,7 @@
         terminalEmulators = terminalEmulators ++ [ wezterm-flake.packages.${pkgs.system}.default ];
       };
     in
-    with apps;
+    with applicationsOverride;
     [ ]
     ++ nixTools
     ++ utilityTools
