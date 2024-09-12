@@ -2,7 +2,6 @@
   pkgs,
   config,
   wezterm-flake,
-  flakeRoot,
   homeManager,
   ...
 }:
@@ -19,11 +18,10 @@ rec {
           homeManager
           ;
       };
-      fileMap = import /${homeManager}/fileMap.nix {
+      homeFile = import ./homeFile.nix {
         inherit
-          pkgs
           config
-          flakeRoot
+          homeManager
           dotfiles
           homeDir
           xdgConfigHome
@@ -32,7 +30,7 @@ rec {
     in
     [
       packages
-      fileMap
+      homeFile
     ];
   programs.home-manager.enable = true;
   home = {
