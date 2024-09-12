@@ -1,6 +1,6 @@
 { pkgs }:
 let
-  applicationList = import ../applicationList.nix { inherit pkgs; };
+  applicationList = import ../applications.nix { inherit pkgs; };
 in
 {
   services.xserver.windowManager.i3 = {
