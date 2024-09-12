@@ -12,7 +12,7 @@
     kernelPackages = pkgs.linuxKernel.packages.linux_zen;
     tmp = {
       cleanOnBoot = true;
-      useTmpfs = true;
+      useTmpfs = false;
     };
   };
 }
