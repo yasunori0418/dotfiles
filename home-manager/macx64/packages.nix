@@ -11,12 +11,13 @@
         inherit
           nixTools
           utilityTools
+          terminalEmulators
           textEditors
           shellTools
           languageServers
           libraries
           ;
-        terminalEmulators = terminalEmulators ++ [ pkgs.wezterm ];
+        # terminalEmulators = terminalEmulators ++ [ pkgs.wezterm ]; ## intel macを使っているのが悪い intel macを使っているのが悪い
       };
     in
     with applicationsOverride;
