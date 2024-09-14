@@ -44,6 +44,22 @@
   languageServers = with pkgs; [
     nixd
     nil
+    efm-langserver
+    lua-language-server
+    stylua
+    luajitPackages.luacheck
+    pyright
+    ruff
+    bash-language-server
+    shellcheck
+    beautysh
+    nodePackages.sql-formatter
+    checkmake
+    markdownlint-cli
+    intelephense
+    php83Packages.php-codesniffer
+    php83Packages.phpmd
+    php83Extensions.xdebug
   ];
 
   libraries = with pkgs; [
