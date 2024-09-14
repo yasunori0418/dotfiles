@@ -51,20 +51,6 @@ local function filetype_config(filetype, tool_configs)
     end
 end
 
----mason ensure_installed
-local function ensure_installed()
-    local registry = require("mason-registry")
-    registry.refresh(function()
-        for _, tool in ipairs(M.tools) do
-            local pkg = registry.get_package(tool)
-            if not pkg:is_installed() and M.all_installs then
-                vim.notify('Install tool: "' .. tool .. '"', vim.log.levels.INFO)
-                pkg:install()
-            end
-        end
-    end)
-end
-
 ---setup of efm-langserver.
 ---@param options EfmConfigSetup
 function M.setup(options)
@@ -78,7 +64,6 @@ function M.setup(options)
     for _, filetype in ipairs(M.filetypes) do
         filetype_config(filetype, options.filetypes[filetype])
     end
-    ensure_installed()
 end
 
 return M
