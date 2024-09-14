@@ -14,6 +14,7 @@
           textEditors
           shellTools
           languageServers
+          codingSupportTools
           libraries
           ;
         utilityTools = utilityTools ++ [ pkgs.deno ];

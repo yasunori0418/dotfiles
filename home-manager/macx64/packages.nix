@@ -15,6 +15,7 @@
           textEditors
           shellTools
           languageServers
+          codingSupportTools
           libraries
           ;
         # terminalEmulators = terminalEmulators ++ [ pkgs.wezterm ]; ## intel macを使っているのが悪い intel macを使っているのが悪い
