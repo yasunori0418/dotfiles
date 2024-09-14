@@ -1,5 +1,3 @@
-local mason_lspconfig = require("mason-lspconfig")
-
 require("user.lsp.keymaps")
 
 require("user.lsp.utils").on_attach(function(client, buffer)
@@ -13,29 +11,8 @@ require("user.lsp.utils").on_attach(function(client, buffer)
     end
 end)
 
-mason_lspconfig.setup({
-    ensure_installed = {
-        -- "lua_ls",
-        -- "pyright",
-        -- "intelephense",
-        -- "denols",
-        -- "efm",
-    },
-    automatic_installation = false,
-})
-
-mason_lspconfig.setup_handlers({
-    function(server_name)
-        local lsp_options = {}
-
-        lsp_options.capabilities = require("user.lsp.utils").capabilities
-
-        require("lspconfig")[server_name].setup(lsp_options)
-    end,
-})
-
-require("user.lsp.servers.lua_ls")()
-require("user.lsp.servers.pyright")()
-require("user.lsp.servers.efm")()
-require("user.lsp.servers.denols")()
--- require("user.lsp.servers.nixd")()
+require("user.lsp.servers.lua_ls")
+require("user.lsp.servers.pyright")
+require("user.lsp.servers.efm")
+require("user.lsp.servers.denols")
+require("user.lsp.servers.nixd")

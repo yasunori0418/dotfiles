@@ -65,21 +65,20 @@ efm_configs.setup({
     },
 })
 
-return function()
-    require("lspconfig").efm.setup({
-        filetypes = efm_configs.filetypes,
-        init_options = {
-            documentFormatting = true,
-            rangeFormatting = true,
-            hover = true,
-            documentSymbol = true,
-            codeAction = true,
-            completion = false,
-        },
-        capabilities = require("user.lsp.utils").capabilities,
-        settings = {
-            rootMarkers = { ".git/" },
-            languages = efm_configs.languages,
-        },
-    })
-end
+require("lspconfig").efm.setup({
+    filetypes = efm_configs.filetypes,
+    init_options = {
+        documentFormatting = true,
+        rangeFormatting = true,
+        hover = true,
+        documentSymbol = true,
+        codeAction = true,
+        completion = false,
+    },
+    capabilities = require("user.lsp.utils").capabilities,
+    settings = {
+        rootMarkers = { ".git/" },
+        languages = efm_configs.languages,
+    },
+})
+

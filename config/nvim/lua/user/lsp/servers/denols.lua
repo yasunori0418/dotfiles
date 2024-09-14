@@ -24,31 +24,30 @@ local function find_root(path)
     return project_root
 end
 
-return function()
-    require("lspconfig").denols.setup({
-        root_dir = function(path)
-            return find_root(vim.fs.dirname(path))
-        end,
-        capabilities = require("user.lsp.utils").capabilities,
-        settings = {
-            deno = {
-                enable = true,
-                unstable = true,
-                lint = true,
-                suggest = {
-                    completeFunctionCalls = true,
-                    autoImports = false,
-                    imports = {
-                        hosts = {
-                            ["https://deno.land"] = true,
-                            ["https://denopkg.com"] = true,
-                            ["https://crux.land"] = true,
-                            ["https://x.nest.land"] = true,
-                            ["https://jsr.io"] = true,
-                        },
+require("lspconfig").denols.setup({
+    root_dir = function(path)
+        return find_root(vim.fs.dirname(path))
+    end,
+    capabilities = require("user.lsp.utils").capabilities,
+    settings = {
+        deno = {
+            enable = true,
+            unstable = true,
+            lint = true,
+            suggest = {
+                completeFunctionCalls = true,
+                autoImports = false,
+                imports = {
+                    hosts = {
+                        ["https://deno.land"] = true,
+                        ["https://denopkg.com"] = true,
+                        ["https://crux.land"] = true,
+                        ["https://x.nest.land"] = true,
+                        ["https://jsr.io"] = true,
                     },
                 },
             },
         },
-    })
-end
+    },
+})
+

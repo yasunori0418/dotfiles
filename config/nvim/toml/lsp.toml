@@ -2,21 +2,13 @@
 # Core plugins {{{
 [[plugins]] # nvim-lspconfig
 repo = 'github.com/neovim/nvim-lspconfig'
-
-[[plugins]] # mason.nvim
-repo = 'github.com/williamboman/mason.nvim'
-hook_post_update = 'MasonUpdate'
-hooks_file = '$HOOKS_DIR/mason.lua'
-
-[[plugins]] # mason-lspconfig.nvim
-repo = 'github.com/williamboman/mason-lspconfig.nvim'
-depends = ['nvim-lspconfig', 'mason.nvim', 'ddc-source-lsp', 'nvim-navic']
+lua_source = '''
+--[[$BASE_DIR/lua/user/lsp]]
+require("user.lsp") 
+'''
+depends = ['nvim-lspconfig', 'ddc-source-lsp', 'nvim-navic']
 on_source = 'ddc.vim'
 on_ft = ['lua', 'pyhton', 'php', 'markdown', 'typescript']
-lua_source = '''
--- $BASE_DIR/lua/user/lsp
-require("user.lsp")
-'''
 
 # }}}
 
