@@ -48,6 +48,7 @@
     pyright
     bash-language-server
     intelephense
+    typescript-language-server
   ];
 
   codingSupportTools = with pkgs; [
