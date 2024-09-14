@@ -29,5 +29,6 @@
     ++ terminalEmulators
     ++ shellTools
     ++ languageServers
+    ++ codingSupportTools
     ++ libraries;
 }
