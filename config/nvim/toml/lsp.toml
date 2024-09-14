@@ -10,6 +10,16 @@ depends = ['nvim-lspconfig', 'ddc-source-lsp', 'nvim-navic']
 on_source = 'ddc.vim'
 on_ft = ['lua', 'pyhton', 'php', 'markdown', 'typescript']
 
+[[plugins]] # mason.nvim
+repo = 'github.com/williamboman/mason.nvim'
+on_cmd = 'Mason'
+hook_post_update = 'MasonUpdate'
+hooks_file = '$HOOKS_DIR/mason.lua'
+
+[[plugins]] # mason-lspconfig.nvim
+repo = 'github.com/williamboman/mason-lspconfig.nvim'
+on_source = 'mason.nvim'
+
 # }}}
 
 # Support plugins {{{
