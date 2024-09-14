@@ -5,6 +5,11 @@
   ];
 
   utilityTools = with pkgs; [
+    vim-startuptime
+    tokei
+    jnv
+    hyperfine
+    dasel
     usql
     glow
     gh
