@@ -3,12 +3,22 @@
 [[plugins]] # nvim-lspconfig
 repo = 'github.com/neovim/nvim-lspconfig'
 lua_source = '''
---[[$BASE_DIR/lua/user/lsp]]
+--[[$BASE_DIR/lua/user/lsp/init.lua]]
 require("user.lsp") 
 '''
 depends = ['nvim-lspconfig', 'ddc-source-lsp', 'nvim-navic']
 on_source = 'ddc.vim'
-on_ft = ['lua', 'pyhton', 'php', 'markdown', 'typescript']
+on_ft = [
+  'lua',
+  'pyhton',
+  'php',
+  'markdown',
+  'typescript',
+  'nix',
+  'bash',
+  'sh',
+  'zsh',
+]
 
 [[plugins]] # mason.nvim
 repo = 'github.com/williamboman/mason.nvim'
