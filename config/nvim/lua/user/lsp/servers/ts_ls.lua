@@ -26,7 +26,7 @@ local function find_root(path)
     end
 end
 
-require("lspconfig").vtsls.setup({
+require("lspconfig").ts_ls.setup({
     filetype = ft.js_like,
     single_file_support = false,
     root_dir = function(path)
