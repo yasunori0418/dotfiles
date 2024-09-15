@@ -1,10 +1,10 @@
-{ pkgs, ... }:
+{ pkgs, nixosSettings, ... }:
 {
   services.xserver.windowManager.i3 = {
     enable = true;
     extraPackages =
       let
-        applications = import ../applications.nix { inherit pkgs; };
+        applications = import /${nixosSettings}/xserver/applications.nix { inherit pkgs; };
         extraPackages =
           with applications;
           [ ] ++ systemThemeTools ++ nordThemePkgs ++ desktopTools ++ xfceTools ++ otherTools;
