@@ -15,11 +15,12 @@ let
       xdgConfigHome
       ;
   };
+  file =
+    with fileMap;
+    { } // homeDirectory // dotConfig // Linux.homeDirectory // Linux.dotConfig;
 in
 {
-  home.file =
-    fileMap.homeDirectory
-    // fileMap.xdgConfigHome
-    // fileMap.Linux.homeDirectory
-    // fileMap.Linux.xdgConfigHome;
+  home = {
+    inherit file;
+  };
 }

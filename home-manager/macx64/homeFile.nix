@@ -15,11 +15,12 @@ let
       xdgConfigHome
       ;
   };
+  file =
+    with fileMap;
+    { } // homeDirectory // dotConfig // MacOS.homeDirectory // MacOS.xdgConfigHome;
 in
 {
-  home.file =
-    fileMap.homeDirectory
-    // fileMap.xdgConfigHome
-    // fileMap.MacOS.homeDirectory
-    // fileMap.MacOS.xdgConfigHome;
+  home = {
+    inherit file;
+  };
 }

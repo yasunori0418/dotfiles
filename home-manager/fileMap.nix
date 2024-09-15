@@ -30,7 +30,7 @@ in
     "package.json".source = (symlink /${homeDir}/package.json);
   };
 
-  xdgConfigHome = {
+  dotConfig = {
     ".config/fastfetch" = {
       source = (symlink /${xdgConfigHome}/fastfetch);
       recursive = true;
@@ -89,7 +89,7 @@ in
     homeDirectory = {
       ".docker/config.json".source = (symlink /${homeDir}/.docker/mac_config.json);
     };
-    xdgConfigHome = {
+    dotConfig = {
       ".config/aerospace" = {
         source = (symlink /${xdgConfigHome}/aerospace);
         recursive = true;
@@ -132,7 +132,7 @@ in
       ".gtkrc-2.0".source = (symlink /${homeDir}/.gtkrc-2.0);
       ".face".source = (symlink /${homeDir}/.face);
     };
-    xdgConfigHome = {
+    dotConfig = {
       ".config/bumblebee-status" = {
         source = (symlink /${xdgConfigHome}/bumblebee-status);
         recursive = true;
