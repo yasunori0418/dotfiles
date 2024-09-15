@@ -1,6 +1,7 @@
 {
   nixos-hardware,
   nixosSettings,
+  xremap-flake,
   ...
 }:
 let
@@ -41,6 +42,7 @@ let
   ];
 
   # Applications
+  xremapModule = xremap-flake.nixosModules.default;
   xremap = /${nixosSettings}/applications/xremap.nix;
   fcitx5 = /${nixosSettings}/applications/fcitx5.nix;
   tailscale = /${nixosSettings}/applications/tailscale.nix;
@@ -71,6 +73,7 @@ in
       qt
 
       # Applications
+      xremapModule
       xremap
       fcitx5
       tailscale

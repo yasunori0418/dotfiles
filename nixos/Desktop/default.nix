@@ -7,10 +7,9 @@
 {
   system = "x86_64-linux";
   specialArgs = {
-    inherit nixos-hardware nixosSettings;
+    inherit nixos-hardware nixosSettings xremap-flake;
   };
   modules = [
     ./configuration.nix
-    xremap-flake.nixosModules.default
   ];
 }
