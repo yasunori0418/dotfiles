@@ -1,4 +1,3 @@
-{ ... }:
 {
   nix = {
     checkConfig = true;

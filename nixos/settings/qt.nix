@@ -1,4 +1,3 @@
-{ ... }:
 {
   qt = {
     enable = true;

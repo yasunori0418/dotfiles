@@ -1,4 +1,3 @@
-{ ... }:
 {
   virtualisation = {
     docker = {
