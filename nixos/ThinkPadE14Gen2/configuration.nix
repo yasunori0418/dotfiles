@@ -1,9 +1,11 @@
 {
-  pkgs,
   nixosSettings,
+  nixos-hardware,
+  xremap-flake,
   ...
 }:
 let
+  lenovoThinkpadE14Amd = nixos-hardware.nixosModules.lenovo-thinkpad-e14-amd;
   hardware = ./hardware-configuration.nix;
 
   # configuration.nix top level keys
@@ -30,7 +32,7 @@ let
   xserver = [
     /${nixosSettings}/xserver/base.nix
     # (import /${nixosSettings}/xserver/displayManager/lightdm.nix)
-    (import /${nixosSettings}/xserver/windowManager/i3wm.nix { inherit pkgs; })
+    /${nixosSettings}/xserver/windowManager/i3wm.nix
   ];
 
   systemdUserServiceUnits = [
@@ -39,6 +41,7 @@ let
   ];
 
   # Applications
+  xremapModule = xremap-flake.nixosModules.default;
   xremap = /${nixosSettings}/applications/xremap.nix;
   fcitx5 = /${nixosSettings}/applications/fcitx5.nix;
   tailscale = /${nixosSettings}/applications/tailscale.nix;
@@ -48,6 +51,7 @@ let
 in
 {
   imports = [
+    lenovoThinkpadE14Amd
     hardware
 
     # configuration.nix top level keys
@@ -65,6 +69,7 @@ in
     qt
 
     # Applications
+    xremapModule
     xremap
     fcitx5
     tailscale
