@@ -17,7 +17,7 @@ let
   };
   file =
     with fileMap;
-    { } // homeDirectory // dotConfig // MacOS.homeDirectory // MacOS.xdgConfigHome;
+    { } // homeDirectory // dotConfig // MacOS.homeDirectory // MacOS.dotConfig;
 in
 {
   home = {
