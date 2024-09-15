@@ -5,6 +5,11 @@
   ...
 }:
 let
+  hardwareModules = with nixos-hardware.nixosModules; [
+    common-cpu-amd-zenpower
+    common-gpu-nvidia-sync
+    common-pc-ssd
+  ];
   hardware = ./hardware-configuration.nix;
   extraMountFilesystems = ./extra-mount-filesystems.nix;
   nvidia = /${nixosSettings}/nvidia.nix;
@@ -52,43 +57,34 @@ let
 in
 {
 
-  imports =
-    [
-      hardware
-      extraMountFilesystems
-      nvidia
+  imports = [
+    hardware
+    extraMountFilesystems
+    nvidia
 
-      # configuration.nix top level keys
-      nix
-      boot
-      networking
-      environment
-      time
-      i18n
-      security
-      programs
-      users
-      fonts
-      virtualisation
-      qt
+    # configuration.nix top level keys
+    nix
+    boot
+    networking
+    environment
+    time
+    i18n
+    security
+    programs
+    users
+    fonts
+    virtualisation
+    qt
 
-      # Applications
-      xremapModule
-      xremap
-      fcitx5
-      tailscale
-      pipewire
-      thunar
-      xss-i3lock
-    ]
-    ++ services
-    ++ xserver
-    ++ systemdUserServiceUnits
-    ++ (with nixos-hardware.nixosModules; [
-      common-cpu-amd-zenpower
-      common-gpu-nvidia-sync
-      common-pc-ssd
-    ]);
+    # Applications
+    xremapModule
+    xremap
+    fcitx5
+    tailscale
+    pipewire
+    thunar
+    xss-i3lock
+  ] ++ services ++ xserver ++ systemdUserServiceUnits ++ hardwareModules;
 
   nixpkgs.config.allowUnfree = true;
 
