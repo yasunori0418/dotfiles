@@ -15,9 +15,7 @@ let
       xdgConfigHome
       ;
   };
-  file =
-    with fileMap;
-    { } // homeDirectory // dotConfig // Linux.homeDirectory // Linux.dotConfig;
+  file = with fileMap; homeDirectory // dotConfig // Linux.homeDirectory // Linux.dotConfig;
 in
 {
   home = {
