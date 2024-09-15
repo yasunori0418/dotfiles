@@ -9,8 +9,7 @@
       applications = import /${homeManager}/applications.nix { inherit pkgs; };
       packages =
         with applications;
-        [ ]
-        ++ nixTools
+        nixTools
         ++ utilityTools
         ++ terminalEmulators
         # ++ (terminalEmulators ++ [ pkgs.wezterm ]) intel macを使っているのが悪い intel macを使っているのが悪い

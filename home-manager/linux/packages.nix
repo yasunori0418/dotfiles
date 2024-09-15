@@ -10,8 +10,7 @@
       applications = import /${homeManager}/applications.nix { inherit pkgs; };
       packages =
         with applications;
-        [ ]
-        ++ nixTools
+        nixTools
         ++ textEditors
         ++ shellTools
         ++ languageServers
