@@ -1,5 +1,4 @@
 {
-  pkgs,
   nixos-hardware,
   nixosSettings,
   ...
@@ -33,7 +32,7 @@ let
   xserver = [
     /${nixosSettings}/xserver/base.nix
     # (import /${nixosSettings}/xserver/displayManager/lightdm.nix { greeterName = "mini"; })
-    (import /${nixosSettings}/xserver/windowManager/i3wm.nix { inherit pkgs; })
+    /${nixosSettings}/xserver/windowManager/i3wm.nix
   ];
 
   systemdUserServiceUnits = [
