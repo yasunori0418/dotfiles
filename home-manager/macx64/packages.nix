@@ -7,28 +7,19 @@
   home.packages =
     let
       applications = import /${homeManager}/applications.nix { inherit pkgs; };
-      applicationsOverride = with applications; {
-        inherit
-          nixTools
-          utilityTools
-          terminalEmulators
-          textEditors
-          shellTools
-          languageServers
-          codingSupportTools
-          libraries
-          ;
-        # terminalEmulators = terminalEmulators ++ [ pkgs.wezterm ]; ## intel macを使っているのが悪い intel macを使っているのが悪い
-      };
+      packages =
+        with applications;
+        [ ]
+        ++ nixTools
+        ++ utilityTools
+        ++ terminalEmulators
+        # ++ (terminalEmulators ++ [ pkgs.wezterm ]) intel macを使っているのが悪い intel macを使っているのが悪い
+        # weztermは社会性(homebrew)でインストールしている奴を使っている
+        ++ textEditors
+        ++ shellTools
+        ++ languageServers
+        ++ codingSupportTools
+        ++ libraries;
     in
-    with applicationsOverride;
-    [ ]
-    ++ nixTools
-    ++ utilityTools
-    ++ textEditors
-    ++ terminalEmulators
-    ++ shellTools
-    ++ languageServers
-    ++ codingSupportTools
-    ++ libraries;
+    packages;
 }
