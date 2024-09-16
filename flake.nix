@@ -52,18 +52,22 @@
     {
       formatter.x86_64-linux = nixpkgs.legacyPackages.x86_64-linux.nixfmt-rfc-style;
       formatter.x86_64-darwin = nixpkgs.legacyPackages.x86_64-darwin.nixfmt-rfc-style;
-      nixosConfigurations = {
-        laptop = nixpkgs.lib.nixosSystem (
-          import ./nixos/ThinkPadE14Gen2 {
-            inherit nixos-hardware xremap-flake nixosSettings;
-          }
-        );
-        desktop = nixpkgs.lib.nixosSystem (
-          import ./nixos/Desktop {
-            inherit nixos-hardware xremap-flake nixosSettings;
-          }
-        );
-      };
+      nixosConfigurations =
+        let
+          nixosSystemArgs =
+            { path }:
+            import path {
+              inherit nixos-hardware xremap-flake nixosSettings;
+            };
+        in
+        {
+          laptop = nixpkgs.lib.nixosSystem (nixosSystemArgs {
+            path = ./nixos/ThinkPadE14Gen2;
+          });
+          desktop = nixpkgs.lib.nixosSystem (nixosSystemArgs {
+            path = ./nixos/Desktop;
+          });
+        };
 
       homeConfigurations =
         let
