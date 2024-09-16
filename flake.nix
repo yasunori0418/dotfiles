@@ -65,37 +65,33 @@
         );
       };
 
-      homeConfigurations = {
-        linux = home-manager.lib.homeManagerConfiguration (
-          import ./home-manager {
+      homeConfigurations =
+        let
+          homeManagerArgs =
+            { profileName, system }:
+            import ./home-manager {
+              inherit
+                profileName
+                system
+                nixpkgs
+                wezterm-flake
+                neovim-nightly-overlay
+                vim-overlay
+                flakeRoot
+                nixpkgsOverlay
+                homeManager
+                ;
+            };
+        in
+        {
+          linux = home-manager.lib.homeManagerConfiguration (homeManagerArgs {
             profileName = "linux";
             system = "x86_64-linux";
-            inherit
-              nixpkgs
-              wezterm-flake
-              neovim-nightly-overlay
-              vim-overlay
-              flakeRoot
-              nixpkgsOverlay
-              homeManager
-              ;
-          }
-        );
-        macx64 = home-manager.lib.homeManagerConfiguration (
-          import ./home-manager {
+          });
+          macx64 = home-manager.lib.homeManagerConfiguration (homeManagerArgs {
             profileName = "macx64";
             system = "x86_64-darwin";
-            inherit
-              nixpkgs
-              wezterm-flake
-              neovim-nightly-overlay
-              vim-overlay
-              flakeRoot
-              nixpkgsOverlay
-              homeManager
-              ;
-          }
-        );
-      };
+          });
+        };
     };
 }
