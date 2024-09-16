@@ -55,17 +55,25 @@
       nixosConfigurations =
         let
           nixosSystemArgs =
-            { path }:
-            import path {
-              inherit nixos-hardware xremap-flake nixosSettings;
+            { profileName, system }:
+            import ./nixos {
+              inherit
+                nixos-hardware
+                xremap-flake
+                nixosSettings
+                profileName
+                system
+                ;
             };
         in
         {
           laptop = nixpkgs.lib.nixosSystem (nixosSystemArgs {
-            path = ./nixos/ThinkPadE14Gen2;
+            profileName = "ThinkPadE14Gen2";
+            system = "x86_64-linux";
           });
           desktop = nixpkgs.lib.nixosSystem (nixosSystemArgs {
-            path = ./nixos/Desktop;
+            profileName = "Desktop";
+            system = "x86_64-linux";
           });
         };
 
