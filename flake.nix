@@ -28,7 +28,7 @@
 
   outputs =
     {
-      self,
+      # self,
       nixpkgs,
       nixos-hardware,
       xremap-flake,
@@ -36,6 +36,7 @@
       wezterm-flake,
       neovim-nightly-overlay,
       vim-overlay,
+      ...
     }:
     let
       flakeRoot = ./.;
