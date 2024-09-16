@@ -19,5 +19,11 @@
         ++ (utilityTools ++ [ pkgs.deno ])
         ++ (terminalEmulators ++ [ wezterm-flake.packages.${pkgs.system}.default ]);
     in
-    packages;
+    with pkgs;
+    [
+      python312Full
+      python312Packages.uv
+      pdm
+    ]
+    ++ packages;
 }
