@@ -12,6 +12,6 @@
     inherit nixos-hardware nixosSettings xremap-flake;
   };
   modules = [
-    ./${profileName}/configuration.nix
+    ./${profileName}
   ];
 }
