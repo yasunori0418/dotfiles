@@ -1,7 +1,0 @@
-version: "3.8"
-services:
-  plantuml-server:
-    image: plantuml/plantuml-server
-    restart: always
-    ports:
-      - "58080:8080"
