@@ -88,6 +88,12 @@ in
     homeDirectory = {
       ".docker/config.json".source = (symlink /${homeDir}/.docker/mac_config.json);
     };
+    library = {
+      "Library/Application Support/AquaSKK" = {
+        source = (symlink /${homeDir}/Library/ApplicationSupport/AquaSKK);
+        recursive = true;
+      };
+    };
     dotConfig = {
       ".config/aerospace" = {
         source = (symlink /${xdgConfigHome}/aerospace);
