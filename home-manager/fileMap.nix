@@ -93,6 +93,7 @@ in
         source = (symlink /${homeDir}/Library/ApplicationSupport/AquaSKK);
         recursive = true;
       };
+      "Library/Application Support/Code/User/settings.json".source = (symlink /${xdgConfigHome}/Code/User/settings.json);
     };
     dotConfig = {
       ".config/aerospace" = {
@@ -200,6 +201,7 @@ in
       };
       ".config/ncpamixer.conf".source = (symlink /${xdgConfigHome}/ncpamixer.conf);
       ".config/screenkey.json".source = (symlink /${xdgConfigHome}/screenkey.json);
+      ".config/Code/User/settings.json".source = (symlink /${xdgConfigHome}/Code/User/settings.json);
     };
   };
 }
