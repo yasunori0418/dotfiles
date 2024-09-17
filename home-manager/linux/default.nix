@@ -10,7 +10,7 @@ rec {
     let
       dotfiles = /${home.homeDirectory}/dotfiles;
       homeDir = /${dotfiles}/home;
-      xdgConfigHome = /${dotfiles}/config;
+      xdgConfigHome = /${homeDir}/.config;
       packages = import ./packages.nix {
         inherit
           pkgs

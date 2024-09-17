@@ -1,6 +1,5 @@
 {
   config,
-  dotfiles,
   homeDir,
   xdgConfigHome,
   ...
@@ -15,7 +14,7 @@ in
       recursive = true;
     };
     "bin" = {
-      source = (symlink /${dotfiles}/bin);
+      source = (symlink /${homeDir}/bin);
       recursive = true;
     };
     ".zshenv".source = (symlink /${homeDir}/.zshenv);
