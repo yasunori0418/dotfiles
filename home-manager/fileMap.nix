@@ -25,7 +25,6 @@ in
     ".bashrc".source = (symlink /${homeDir}/.bashrc);
     ".bash_profile".source = (symlink /${homeDir}/.bash_profile);
     ".bash_logout".source = (symlink /${homeDir}/.bash_logout);
-    "bun.lockb".source = (symlink /${homeDir}/bun.lockb);
     "package.json".source = (symlink /${homeDir}/package.json);
   };
 
