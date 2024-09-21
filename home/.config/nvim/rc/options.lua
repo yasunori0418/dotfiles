@@ -67,7 +67,7 @@ vim.opt.wildmenu = false
 vim.opt.number = true
 
 -- Display relative rows number.
-vim.opt.relativenumber = true
+vim.opt.relativenumber = false
 
 -- Display current row cursorline.
 vim.opt.cursorline = false
