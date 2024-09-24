@@ -20,5 +20,10 @@
         ++ codingSupportTools
         ++ libraries;
     in
-    packages;
+    with pkgs;
+    [
+      python312Packages.uv
+      pdm
+    ]
+    ++ packages;
 }
