@@ -24,6 +24,7 @@
       python312Full
       python312Packages.uv
       pdm
+      leetcode-cli
     ]
     ++ packages;
 }
