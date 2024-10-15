@@ -16,6 +16,7 @@
     awscli2
     lemonade
     unzip
+    hugo
   ];
 
   textEditors = with pkgs; [
