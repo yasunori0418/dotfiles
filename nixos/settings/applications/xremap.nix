@@ -41,7 +41,7 @@
             not = [
               "/wezterm/"
               "/kitty/"
-              "/alacritty/"
+              "/Alacritty/"
             ];
           };
           device = {
