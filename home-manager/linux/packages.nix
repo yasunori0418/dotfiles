@@ -1,6 +1,6 @@
 {
   pkgs,
-  wezterm-flake,
+  # wezterm-flake,
   homeManager,
   ...
 }:
@@ -17,7 +17,7 @@
         ++ codingSupportTools
         ++ libraries
         ++ (utilityTools ++ [ pkgs.deno ])
-        ++ (terminalEmulators ++ [ wezterm-flake.packages.${pkgs.system}.default ]);
+        ++ (terminalEmulators ++ [ /* wezterm-flake.packages.${pkgs.system}.default */ pkgs.wezterm ]);
     in
     with pkgs;
     [

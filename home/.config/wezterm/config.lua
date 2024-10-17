@@ -23,11 +23,12 @@ config.disable_default_key_bindings = true
 config.keys = keybinds.keys
 config.key_tables = keybinds.key_tables
 
-local machine_type = io.popen("uname -s"):read("*l")
-if machine_type == "Linux" then
-    config.front_end = [[OpenGL]]
-elseif machine_type == "Darwin" then
-    config.front_end = [[WebGpu]]
-end
+-- local machine_type = io.popen("uname -s"):read("*l")
+-- if machine_type == "Linux" then
+--     config.front_end = [[OpenGL]]
+-- elseif machine_type == "Darwin" then
+--     config.front_end = [[WebGpu]]
+-- end
+config.front_end = [[WebGpu]]
 
 return config
