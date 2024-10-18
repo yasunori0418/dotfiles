@@ -6,7 +6,7 @@
   // editor global
   "editor.fontFamily": "'Moralerspace Argon NF'",
   "editor.fontSize": 16,
-  "editor.lineNumbers": "relative",
+  "editor.lineNumbers": "on",
   "editor.renderLineHighlight": "all",
   "editor.renderWhitespace": "boundary",
   "editor.renderControlCharacters": true,
