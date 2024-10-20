@@ -22,7 +22,7 @@ action = "Copy"
 
 [[keyboard.bindings]] ## Basic key bindings
 key = "L"
-mods = "Control"
+mods = "Control|Shift"
 action = "ClearLogNotice"
 
 [[keyboard.bindings]] ## Basic key bindings
