@@ -30,6 +30,7 @@ in
 
   dotConfig = {
     ".config/alacritty/alacritty.toml".source = (symlink /${xdgConfigHome}/alacritty/alacritty.toml);
+    ".config/alacritty/nord.toml".source = (symlink /${xdgConfigHome}/alacritty/nord.toml);
     ".config/alacritty/keybinds/base.toml".source = (symlink /${xdgConfigHome}/alacritty/keybinds/base.toml);
     ".config/alacritty/keybinds/vi_mode.toml".source = (symlink /${xdgConfigHome}/alacritty/keybinds/vi_mode.toml);
     ".config/alacritty/keybinds/search_mode.toml".source = (symlink /${xdgConfigHome}/alacritty/keybinds/search_mode.toml);
