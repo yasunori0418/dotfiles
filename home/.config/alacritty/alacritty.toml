@@ -34,7 +34,7 @@ normal = { family = "HackGen35 Console NF", style = "Regular" }
 bold = { style = "Bold" }
 italic = { style = "Italic" }
 bold_italic = { style = "Bold Italic" }
-size = 11.25
+size = 14
 offset = { x = 0, y = 0 }
 builtin_box_drawing = true
 
