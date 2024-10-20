@@ -29,6 +29,10 @@ in
   };
 
   dotConfig = {
+    ".config/alacritty/alacritty.toml".source = (symlink /${xdgConfigHome}/alacritty/alacritty.toml);
+    ".config/alacritty/keybinds/base.toml".source = (symlink /${xdgConfigHome}/alacritty/keybinds/base.toml);
+    ".config/alacritty/keybinds/vi_mode.toml".source = (symlink /${xdgConfigHome}/alacritty/keybinds/vi_mode.toml);
+    ".config/alacritty/keybinds/search_mode.toml".source = (symlink /${xdgConfigHome}/alacritty/keybinds/search_mode.toml);
     ".config/fastfetch" = {
       source = (symlink /${xdgConfigHome}/fastfetch);
       recursive = true;
@@ -95,6 +99,7 @@ in
       "Library/Application Support/Code/User/settings.json".source = (symlink /${xdgConfigHome}/Code/User/settings.json);
     };
     dotConfig = {
+      ".config/alacritty/keybinds/os.toml".source = (symlink /${xdgConfigHome}/alacritty/keybinds/mac.toml);
       ".config/aerospace" = {
         source = (symlink /${xdgConfigHome}/aerospace);
         recursive = true;
@@ -138,6 +143,7 @@ in
       ".face".source = (symlink /${homeDir}/.face);
     };
     dotConfig = {
+      ".config/alacritty/keybinds/os.toml".source = (symlink /${xdgConfigHome}/alacritty/keybinds/linux.toml);
       ".config/bumblebee-status" = {
         source = (symlink /${xdgConfigHome}/bumblebee-status);
         recursive = true;

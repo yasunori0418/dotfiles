@@ -1,0 +1,54 @@
+[[keyboard.bindings]]
+key = "Enter"
+mode = "Search|Vi"
+action = "SearchConfirm"
+
+[[keyboard.bindings]]
+key = "Escape"
+mode = "Search"
+action = "SearchCancel"
+
+[[keyboard.bindings]]
+key = "C"
+mods = "Control"
+mode = "Search"
+action = "SearchCancel"
+
+[[keyboard.bindings]]
+key = "U"
+mods = "Control"
+mode = "Search"
+action = "SearchClear"
+
+[[keyboard.bindings]]
+key = "W"
+mods = "Control"
+mode = "Search"
+action = "SearchDeleteWord"
+
+[[keyboard.bindings]]
+key = "P"
+mods = "Control"
+mode = "Search"
+action = "SearchHistoryPrevious"
+
+[[keyboard.bindings]]
+key = "N"
+mods = "Control"
+mode = "Search"
+action = "SearchHistoryNext"
+
+[[keyboard.bindings]]
+key = "ArrowUp"
+mode = "Search"
+action = "SearchHistoryPrevious"
+
+[[keyboard.bindings]]
+key = "ArrowDown"
+mode = "Search"
+action = "SearchHistoryNext"
+
+[[keyboard.bindings]]
+key = "Enter"
+mode = "Search|~Vi"
+action = "SearchFocusNext"

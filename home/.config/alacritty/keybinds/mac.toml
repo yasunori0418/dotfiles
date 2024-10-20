@@ -1,0 +1,182 @@
+[[keyboard.bindings]] ## macOS only
+key = "K"
+mods = "Command"
+mode = "~Vi|~Search"
+chars = "\u000c"
+
+[[keyboard.bindings]] ## macOS only
+key = "K"
+mods = "Command"
+mode = "~Vi|~Search"
+action = "ClearHistory"
+
+[[keyboard.bindings]] ## macOS only
+key = "0"
+mods = "Command"
+action = "ResetFontSize"
+
+[[keyboard.bindings]] ## macOS only
+key = "="
+mods = "Command"
+action = "IncreaseFontSize"
+
+[[keyboard.bindings]] ## macOS only
+key = "+"
+mods = "Command"
+action = "IncreaseFontSize"
+
+[[keyboard.bindings]] ## macOS only
+key = "NumpadAdd"
+mods = "Command"
+action = "IncreaseFontSize"
+
+[[keyboard.bindings]] ## macOS only
+key = "-"
+mods = "Command"
+action = "DecreaseFontSize"
+
+[[keyboard.bindings]] ## macOS only
+key = "NumpadSubtract"
+mods = "Control"
+action = "DecreaseFontSize"
+
+[[keyboard.bindings]] ## macOS only
+key = "V"
+mods = "Command"
+mode = "~Vi"
+action = "Paste"
+
+[[keyboard.bindings]] ## macOS only
+key = "V"
+mods = "Command"
+mode = "Vi|Search"
+action = "Paste"
+
+[[keyboard.bindings]] ## macOS only
+key = "C"
+mods = "Command"
+action = "Copy"
+
+[[keyboard.bindings]] ## macOS only
+key = "C"
+mods = "Command"
+mode = "Vi|~Search"
+action = "ClearSelection"
+
+[[keyboard.bindings]] ## macOS only
+key = "H"
+mods = "Command"
+action = "Hide"
+
+[[keyboard.bindings]] ## macOS only
+key = "H"
+mods = "Command|Alt"
+action = "HideOtherApplications"
+
+[[keyboard.bindings]] ## macOS only
+key = "M"
+mods = "Command"
+action = "Minimize"
+
+[[keyboard.bindings]] ## macOS only
+key = "Q"
+mods = "Command"
+action = "Quit"
+
+[[keyboard.bindings]] ## macOS only
+key = "W"
+mods = "Command"
+action = "Quit"
+
+[[keyboard.bindings]] ## macOS only
+key = "N"
+mods = "Command"
+action = "CreateNewWindow"
+
+[[keyboard.bindings]] ## macOS only
+key = "T"
+mods = "Command"
+action = "CreateNewTab"
+
+[[keyboard.bindings]] ## macOS only
+key = "F"
+mods = "Command|Control"
+action = "ToggleFullScreen"
+
+[[keyboard.bindings]] ## macOS only
+key = "F"
+mods = "Command"
+mode = "~Search"
+action = "SearchForward"
+
+[[keyboard.bindings]] ## macOS only
+key = "B"
+mods = "Command"
+mode = "~Search"
+action = "SearchBackward"
+
+[[keyboard.bindings]] ## macOS only
+key = "]"
+mods = "Command|Shift"
+action = "SelectNextTab"
+
+[[keyboard.bindings]] ## macOS only
+key = "["
+mods = "Command|Shift"
+action = "SelectPreviousTab"
+
+[[keyboard.bindings]] ## macOS only
+key = "Tab"
+mods = "Command"
+action = "SelectNextTab"
+
+[[keyboard.bindings]] ## macOS only
+key = "Tab"
+mods = "Command|Shift"
+action = "SelectPreviousTab"
+
+[[keyboard.bindings]] ## macOS only
+key = "1"
+mods = "Command"
+action = "SelectTab1"
+
+[[keyboard.bindings]] ## macOS only
+key = "2"
+mods = "Command"
+action = "SelectTab2"
+
+[[keyboard.bindings]] ## macOS only
+key = "3"
+mods = "Command"
+action = "SelectTab3"
+
+[[keyboard.bindings]] ## macOS only
+key = "4"
+mods = "Command"
+action = "SelectTab4"
+
+[[keyboard.bindings]] ## macOS only
+key = "5"
+mods = "Command"
+action = "SelectTab5"
+
+[[keyboard.bindings]] ## macOS only
+key = "6"
+mods = "Command"
+action = "SelectTab6"
+
+[[keyboard.bindings]] ## macOS only
+key = "7"
+mods = "Command"
+action = "SelectTab7"
+
+[[keyboard.bindings]] ## macOS only
+key = "8"
+mods = "Command"
+action = "SelectTab8"
+
+[[keyboard.bindings]] ## macOS only
+key = "9"
+mods = "Command"
+action = "SelectLastTab"
+

@@ -1,0 +1,55 @@
+[[mouse.bindings]]
+mouse = "Right"
+action = "ExpandSelection"
+
+[[mouse.bindings]]
+mouse = "Right"
+mods = "Control"
+action = "ExpandSelection"
+
+[[mouse.bindings]]
+mouse = "Right"
+mode = "~Vi"
+action = "PasteSelection"
+
+[[keyboard.bindings]] ## Basic key bindings
+key = "Paste"
+action = "Paste"
+
+[[keyboard.bindings]] ## Basic key bindings
+key = "Copy"
+action = "Copy"
+
+[[keyboard.bindings]] ## Basic key bindings
+key = "L"
+mods = "Control"
+action = "ClearLogNotice"
+
+[[keyboard.bindings]] ## Basic key bindings
+key = "Paste"
+mode = "Vi|Search"
+action = "Paste"
+
+[[keyboard.bindings]] ## Basic key bindings
+key = "PageUp"
+mods = "Shift"
+mode = "~Alt"
+action = "ScrollPageUp"
+
+[[keyboard.bindings]] ## Basic key bindings
+key = "PageDown"
+mods = "Shift"
+mode = "~Alt"
+action = "ScrollPageDown"
+
+[[keyboard.bindings]] ## Basic key bindings
+key = "Home"
+mods = "Shift"
+mode = "~Alt"
+action = "ScrollToTop"
+
+[[keyboard.bindings]] ## Basic key bindings
+key = "End"
+mods = "Shift"
+mode = "~Alt"
+action = "ScrollToBottom"
