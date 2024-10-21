@@ -17,7 +17,7 @@
         ++ codingSupportTools
         ++ libraries
         ++ (utilityTools ++ [ pkgs.deno ])
-        ++ (terminalEmulators ++ [ /* wezterm-flake.packages.${pkgs.system}.default */ pkgs.wezterm ]);
+        ++ terminalEmulators;
     in
     with pkgs;
     [
