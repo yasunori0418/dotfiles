@@ -98,7 +98,9 @@ in
         source = (symlink /${homeDir}/Library/ApplicationSupport/AquaSKK);
         recursive = true;
       };
-      "Library/Application Support/Code/User/settings.json".source = (symlink /${xdgConfigHome}/Code/User/settings.json);
+      "Library/Application Support/Code/User/settings.json".source = (
+        symlink /${xdgConfigHome}/Code/User/settings.json
+      );
     };
     dotConfig = {
       ".config/alacritty/os.toml".source = (symlink /${xdgConfigHome}/alacritty/mac.toml);
