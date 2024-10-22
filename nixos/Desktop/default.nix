@@ -1,6 +1,6 @@
 {
   nixos-hardware,
-  nixosSettings,
+  nixosSettings, # ../settings
   xremap-flake,
   ...
 }:
