@@ -28,13 +28,13 @@ action = "Copy"
 key = "F"
 mods = "Control|Shift"
 mode = "~Search"
-action = "SearchForward"
+action = "None"
 
 [[keyboard.bindings]]
 key = "B"
 mods = "Control|Shift"
 mode = "~Search"
-action = "SearchBackward"
+action = "None"
 
 [[keyboard.bindings]]
 key = "C"

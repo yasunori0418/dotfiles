@@ -11,13 +11,7 @@ regex = "(ipfs:|ipns:|magnet:|mailto:|gemini://|gopher://|https://|http://|news:
 key = "K"
 mods = "Command"
 mode = "~Vi|~Search"
-chars = "\u000c"
-
-[[keyboard.bindings]] ## macOS only
-key = "K"
-mods = "Command"
-mode = "~Vi|~Search"
-action = "ClearHistory"
+action = "None"
 
 [[keyboard.bindings]] ## macOS only
 key = "0"
@@ -75,27 +69,27 @@ action = "ClearSelection"
 [[keyboard.bindings]] ## macOS only
 key = "H"
 mods = "Command"
-action = "Hide"
+action = "None"
 
 [[keyboard.bindings]] ## macOS only
 key = "H"
 mods = "Command|Alt"
-action = "HideOtherApplications"
+action = "None"
 
 [[keyboard.bindings]] ## macOS only
 key = "M"
 mods = "Command"
-action = "Minimize"
+action = "None"
 
 [[keyboard.bindings]] ## macOS only
 key = "Q"
 mods = "Command"
-action = "Quit"
+action = "None"
 
 [[keyboard.bindings]] ## macOS only
 key = "W"
 mods = "Command"
-action = "Quit"
+action = "None"
 
 [[keyboard.bindings]] ## macOS only
 key = "N"
@@ -110,19 +104,19 @@ action = "CreateNewTab"
 [[keyboard.bindings]] ## macOS only
 key = "F"
 mods = "Command|Control"
-action = "ToggleFullScreen"
+action = "None"
 
 [[keyboard.bindings]] ## macOS only
 key = "F"
 mods = "Command"
 mode = "~Search"
-action = "SearchForward"
+action = "None"
 
 [[keyboard.bindings]] ## macOS only
 key = "B"
 mods = "Command"
 mode = "~Search"
-action = "SearchBackward"
+action = "None"
 
 [[keyboard.bindings]] ## macOS only
 key = "]"
