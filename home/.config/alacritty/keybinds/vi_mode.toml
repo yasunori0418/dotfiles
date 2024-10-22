@@ -2,289 +2,289 @@
 key = "Space"
 mods = "Shift|Control"
 mode = "~Search"
-action = "ToggleViMode"
+action = "None"
 
 [[keyboard.bindings]]
 key = "Space"
 mods = "Shift|Control"
 mode = "Vi|~Search"
-action = "ScrollToBottom"
+action = "None"
 
 [[keyboard.bindings]]
 key = "Escape"
 mode = "Vi|~Search"
-action = "ClearSelection"
+action = "None"
 
 [[keyboard.bindings]]
 key = "I"
 mode = "Vi|~Search"
-action = "ToggleViMode"
+action = "None"
 
 [[keyboard.bindings]]
 key = "I"
 mode = "Vi|~Search"
-action = "ScrollToBottom"
+action = "None"
 
 [[keyboard.bindings]]
 key = "C"
 mods = "Control"
 mode = "Vi|~Search"
-action = "ToggleViMode"
+action = "None"
 
 [[keyboard.bindings]]
 key = "Y"
 mods = "Control"
 mode = "Vi|~Search"
-action = "ScrollLineUp"
+action = "None"
 
 [[keyboard.bindings]]
 key = "E"
 mods = "Control"
 mode = "Vi|~Search"
-action = "ScrollLineDown"
+action = "None"
 
 [[keyboard.bindings]]
 key = "G"
 mode = "Vi|~Search"
-action = "ScrollToTop"
+action = "None"
 
 [[keyboard.bindings]]
 key = "G"
 mods = "Shift"
 mode = "Vi|~Search"
-action = "ScrollToBottom"
+action = "None"
 
 [[keyboard.bindings]]
 key = "B"
 mods = "Control"
 mode = "Vi|~Search"
-action = "ScrollPageUp"
+action = "None"
 
 [[keyboard.bindings]]
 key = "F"
 mods = "Control"
 mode = "Vi|~Search"
-action = "ScrollPageDown"
+action = "None"
 
 [[keyboard.bindings]]
 key = "U"
 mods = "Control"
 mode = "Vi|~Search"
-action = "ScrollHalfPageUp"
+action = "None"
 
 [[keyboard.bindings]]
 key = "D"
 mods = "Control"
 mode = "Vi|~Search"
-action = "ScrollHalfPageDown"
+action = "None"
 
 [[keyboard.bindings]]
 key = "Y"
 mode = "Vi|~Search"
-action = "Copy"
+action = "None"
 
 [[keyboard.bindings]]
 key = "Y"
 mode = "Vi|~Search"
-action = "ClearSelection"
+action = "None"
 
 [[keyboard.bindings]]
 key = "Copy"
 mode = "Vi|~Search"
-action = "ClearSelection"
+action = "None"
 
 [[keyboard.bindings]]
 key = "V"
 mode = "Vi|~Search"
-action = "ToggleNormalSelection"
+action = "None"
 
 [[keyboard.bindings]]
 key = "V"
 mods = "Shift"
 mode = "Vi|~Search"
-action = "ToggleLineSelection"
+action = "None"
 
 [[keyboard.bindings]]
 key = "V"
 mods = "Control"
 mode = "Vi|~Search"
-action = "ToggleBlockSelection"
+action = "None"
 
 [[keyboard.bindings]]
 key = "V"
 mods = "Alt"
 mode = "Vi|~Search"
-action = "ToggleSemanticSelection"
+action = "None"
 
 [[keyboard.bindings]]
 key = "Enter"
 mode = "Vi|~Search"
-action = "Open"
+action = "None"
 
 [[keyboard.bindings]]
 key = "Z"
 mode = "Vi|~Search"
-action = "CenterAroundViCursor"
+action = "None"
 
 [[keyboard.bindings]]
 key = "F"
 mode = "Vi|~Search"
-action = "InlineSearchForward"
+action = "None"
 
 [[keyboard.bindings]]
 key = "F"
 mods = "Shift"
 mode = "Vi|~Search"
-action = "InlineSearchBackward"
+action = "None"
 
 [[keyboard.bindings]]
 key = "T"
 mode = "Vi|~Search"
-action = "InlineSearchForwardShort"
+action = "None"
 
 [[keyboard.bindings]]
 key = "T"
 mods = "Shift"
 mode = "Vi|~Search"
-action = "InlineSearchBackwardShort"
+action = "None"
 
 [[keyboard.bindings]]
 key = ";"
 mode = "Vi|~Search"
-action = "InlineSearchNext"
+action = "None"
 
 [[keyboard.bindings]]
 key = ","
 mode = "Vi|~Search"
-action = "InlineSearchPrevious"
+action = "None"
 
 [[keyboard.bindings]]
 key = "H"
 mode = "Vi|~Search"
-action = "Left"
+action = "None"
 
 [[keyboard.bindings]]
 key = "J"
 mode = "Vi|~Search"
-action = "Down"
+action = "None"
 
 [[keyboard.bindings]]
 key = "K"
 mode = "Vi|~Search"
-action = "Up"
+action = "None"
 
 [[keyboard.bindings]]
 key = "L"
 mode = "Vi|~Search"
-action = "Right"
+action = "None"
 
 [[keyboard.bindings]]
 key = "ArrowLeft"
 mode = "Vi|~Search"
-action = "Left"
+action = "None"
 
 [[keyboard.bindings]]
 key = "ArrowDown"
 mode = "Vi|~Search"
-action = "Down"
+action = "None"
 
 [[keyboard.bindings]]
 key = "ArrowUp"
 mode = "Vi|~Search"
-action = "Up"
+action = "None"
 
 [[keyboard.bindings]]
 key = "ArrowRight"
 mode = "Vi|~Search"
-action = "Right"
+action = "None"
 
 [[keyboard.bindings]]
 key = "0"
 mode = "Vi|~Search"
-action = "First"
+action = "None"
 
 [[keyboard.bindings]]
 key = "$"
 mods = "Shift"
 mode = "Vi|~Search"
-action = "Last"
+action = "None"
 
 [[keyboard.bindings]]
 key = "Home"
 mode = "Vi|~Search"
-action = "First"
+action = "None"
 
 [[keyboard.bindings]]
 key = "End"
 mode = "Vi|~Search"
-action = "Last"
+action = "None"
 
 [[keyboard.bindings]]
 key = "^"
 mods = "Shift"
 mode = "Vi|~Search"
-action = "FirstOccupied"
+action = "None"
 
 [[keyboard.bindings]]
 key = "H"
 mods = "Shift"
 mode = "Vi|~Search"
-action = "High"
+action = "None"
 
 [[keyboard.bindings]]
 key = "M"
 mods = "Shift"
 mode = "Vi|~Search"
-action = "Middle"
+action = "None"
 
 [[keyboard.bindings]]
 key = "L"
 mods = "Shift"
 mode = "Vi|~Search"
-action = "Low"
+action = "None"
 
 [[keyboard.bindings]]
 key = "B"
 mods = "Shift"
 mode = "Vi|~Search"
-action = "SemanticLeft"
+action = "None"
 
 [[keyboard.bindings]]
 key = "W"
 mods = "Shift"
 mode = "Vi|~Search"
-action = "SemanticRight"
+action = "None"
 
 [[keyboard.bindings]]
 key = "E"
 mods = "Shift"
 mode = "Vi|~Search"
-action = "SemanticRightEnd"
+action = "None"
 
 [[keyboard.bindings]]
 key = "%"
 mods = "Shift"
 mode = "Vi|~Search"
-action = "Bracket"
+action = "None"
 
 [[keyboard.bindings]]
 key = "/"
 mode = "Vi|~Search"
-action = "SearchForward"
+action = "None"
 
 [[keyboard.bindings]]
 key = "?"
 mods = "Shift"
 mode = "Vi|~Search"
-action = "SearchBackward"
+action = "None"
 
 [[keyboard.bindings]]
 key = "N"
 mode = "Vi|~Search"
-action = "SearchNext"
+action = "None"
 
 [[keyboard.bindings]]
 key = "N"
 mods = "Shift"
 mode = "Vi|~Search"
-action = "SearchPrevious"
+action = "None"
