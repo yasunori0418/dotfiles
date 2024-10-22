@@ -101,6 +101,10 @@ in
       "Library/Application Support/Code/User/settings.json".source = (
         symlink /${xdgConfigHome}/Code/User/settings.json
       );
+      "Library/Application Support/org.Zellij-Contributors.Zellij" = {
+        source = (symlink /${xdgConfigHome}/zellij);
+        recursive = true;
+      };
     };
     dotConfig = {
       ".config/alacritty/os.toml".source = (symlink /${xdgConfigHome}/alacritty/mac.toml);
@@ -211,6 +215,10 @@ in
       ".config/ncpamixer.conf".source = (symlink /${xdgConfigHome}/ncpamixer.conf);
       ".config/screenkey.json".source = (symlink /${xdgConfigHome}/screenkey.json);
       ".config/Code/User/settings.json".source = (symlink /${xdgConfigHome}/Code/User/settings.json);
+      ".config/zellij" = {
+        source = (symlink /${xdgConfigHome}/zellij);
+        recursive = true;
+      };
     };
   };
 }
