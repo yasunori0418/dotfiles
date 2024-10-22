@@ -14,9 +14,9 @@ ipc_socket = true
 dimensions = { columns = 0, lines = 0 }
 position = "None"
 padding = { x = 0, y = 0 }
-dynamic_padding = false
-decorations = "Full"
-opacity = 1.0
+dynamic_padding = true
+decorations = "None"
+opacity = 0.75
 blur = false
 startup_mode = "Windowed"
 title = "Alacritty"
