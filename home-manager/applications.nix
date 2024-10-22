@@ -17,6 +17,8 @@
     lemonade
     unzip
     hugo
+    zellij
+    leetcode-cli
   ];
 
   textEditors = with pkgs; [
@@ -74,5 +76,7 @@
     rustup
     ncurses
     luajitPackages.luarocks
+    python312Packages.uv
+    pdm
   ];
 }

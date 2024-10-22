@@ -19,12 +19,5 @@
         ++ (utilityTools ++ [ pkgs.deno ])
         ++ terminalEmulators;
     in
-    with pkgs;
-    [
-      python312Full
-      python312Packages.uv
-      pdm
-      leetcode-cli
-    ]
-    ++ packages;
+    packages;
 }
