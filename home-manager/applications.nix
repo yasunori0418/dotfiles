@@ -18,7 +18,6 @@
     unzip
     hugo
     zellij
-    leetcode-cli
   ];
 
   textEditors = with pkgs; [
