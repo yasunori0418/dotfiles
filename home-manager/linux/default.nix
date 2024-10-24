@@ -1,7 +1,6 @@
 {
   pkgs,
   config,
-  wezterm-flake,
   homeManager,
   ...
 }:
@@ -14,7 +13,6 @@ rec {
       packages = import ./packages.nix {
         inherit
           pkgs
-          wezterm-flake
           homeManager
           ;
       };

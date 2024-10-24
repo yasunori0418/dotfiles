@@ -5,7 +5,6 @@
   wezterm-flake,
   neovim-nightly-overlay,
   vim-overlay,
-  flakeRoot,
   homeManager,
   # nixpkgsOverlay,
   ...
@@ -27,7 +26,6 @@
   extraSpecialArgs = {
     inherit
       wezterm-flake
-      flakeRoot
       homeManager
       ;
   };

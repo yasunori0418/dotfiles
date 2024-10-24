@@ -1,6 +1,5 @@
 {
   pkgs,
-  # wezterm-flake,
   homeManager,
   ...
 }:
@@ -16,7 +15,13 @@
         ++ languageServers
         ++ codingSupportTools
         ++ libraries
-        ++ (utilityTools ++ [ pkgs.deno pkgs.leetcode-cli ])
+        ++ (
+          utilityTools
+          ++ [
+            pkgs.deno
+            pkgs.leetcode-cli
+          ]
+        )
         ++ terminalEmulators;
     in
     packages;

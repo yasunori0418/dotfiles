@@ -89,7 +89,6 @@
                 wezterm-flake
                 neovim-nightly-overlay
                 vim-overlay
-                flakeRoot
                 nixpkgsOverlay
                 homeManager
                 ;
