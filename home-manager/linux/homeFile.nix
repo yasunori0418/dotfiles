@@ -7,7 +7,7 @@
   ...
 }:
 let
-  fileMap = import /${homeManager}/fileMap.nix {
+  fileMap = import "${homeManager}/fileMap.nix" {
     inherit
       config
       dotfiles

@@ -6,7 +6,7 @@
 {
   home.packages =
     let
-      applications = import /${homeManager}/applications.nix { inherit pkgs; };
+      applications = import "${homeManager}/applications.nix" { inherit pkgs; };
       packages =
         with applications;
         nixTools

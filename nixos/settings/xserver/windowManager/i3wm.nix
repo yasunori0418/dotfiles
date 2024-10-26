@@ -4,7 +4,7 @@
     enable = true;
     extraPackages =
       let
-        applications = import /${nixosSettings}/xserver/applications.nix { inherit pkgs; };
+        applications = import "${nixosSettings}/xserver/applications.nix" { inherit pkgs; };
         extraPackages =
           with applications;
           [ ] ++ systemThemeTools ++ nordThemePkgs ++ desktopTools ++ xfceTools ++ otherTools;

@@ -28,7 +28,7 @@
 
   outputs =
     {
-      # self,
+      self,
       nixpkgs,
       nixos-hardware,
       xremap-flake,
@@ -39,15 +39,15 @@
       ...
     }:
     let
-      flakeRoot = ./.;
-      nixpkgsOverlay = /${flakeRoot}/nix-overlays;
+      flakeRoot = self;
+      nixpkgsOverlay = "${flakeRoot}/nix-overlays";
 
       # nixos directory symbols
-      nixos = /${flakeRoot}/nixos;
-      nixosSettings = /${nixos}/settings;
+      nixos = "${flakeRoot}/nixos";
+      nixosSettings = "${nixos}/settings";
 
       # nix home-manager directory symbols
-      homeManager = /${flakeRoot}/home-manager;
+      homeManager = "${flakeRoot}/home-manager";
     in
     {
       formatter.x86_64-linux = nixpkgs.legacyPackages.x86_64-linux.nixfmt-rfc-style;
