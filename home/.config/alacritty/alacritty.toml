@@ -66,6 +66,7 @@ shape = "Block"
 blinking = "Off"
 
 [terminal]
+shell = "zellij"
 osc52 = "OnlyCopy"
 
 [mouse]
