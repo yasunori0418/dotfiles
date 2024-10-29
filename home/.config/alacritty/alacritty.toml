@@ -1,3 +1,7 @@
+[general]
+live_config_reload = true
+working_directory = "None"
+ipc_socket = true
 import = [
   "~/.config/alacritty/os.toml",
   "~/.config/alacritty/nord.toml",
@@ -5,10 +9,6 @@ import = [
   "~/.config/alacritty/keybinds/vi_mode.toml",
   "~/.config/alacritty/keybinds/search_mode.toml",
 ]
-
-working_directory = "None"
-live_config_reload = true
-ipc_socket = true
 
 [window]
 dimensions = { columns = 0, lines = 0 }
