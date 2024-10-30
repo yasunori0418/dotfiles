@@ -1,3 +1,5 @@
+window.decorations = "None"
+
 [[hints.enabled]]
 command = "xdg-open" # On Linux/BSD
 hyperlinks = true

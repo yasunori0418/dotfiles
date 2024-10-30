@@ -1,3 +1,5 @@
+window.decorations = "Buttonless"
+
 [[hints.enabled]]
 command = "open" # On macOS
 hyperlinks = true
