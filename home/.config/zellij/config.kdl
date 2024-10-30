@@ -15,7 +15,7 @@ simplified_ui false
 // Toggle between having pane frames around the panes
 // - true (default)
 // - false
-pane_frames false
+pane_frames true
 
 // Choose the Zellij color theme.
 // This theme must be specified in the themes section or loaded from the themes folder.
@@ -129,19 +129,18 @@ keybinds clear-defaults=true {
         bind "Delete" { SwitchToMode "locked"; }
     }
     shared_except "normal" {
-        bind "Insert" { SwitchToMode "normal"; }
+        bind "Delete" { SwitchToMode "normal"; }
     }
     shared_except "locked" "normal" {
-        bind "Delete" { SwitchToMode "locked"; }
-        bind "Insert" { SwitchToMode "normal"; }
+        bind "Esc" { SwitchToMode "locked"; }
+        bind "Delete" { SwitchToMode "normal"; }
     }
     locked {
         bind "r" { SwitchToMode "resize"; }
         bind "p" { SwitchToMode "pane"; }
         bind "m" { SwitchToMode "move"; }
         bind "t" { SwitchToMode "tab"; }
-        bind "l" { SwitchToMode "scroll"; }
-        bind "/" { SwitchToMode "search"; }
+        bind "/" { SwitchToMode "scroll"; }
         bind "s" { SwitchToMode "session"; }
         bind "Ctrl t" { SwitchToMode "tmux"; }
     }
@@ -204,8 +203,8 @@ keybinds clear-defaults=true {
     }
     scroll {
         bind "e" { EditScrollback; SwitchToMode "Normal"; }
-        bind "s" { SwitchToMode "EnterSearch"; SearchInput 0; }
-        bind "g" "Ctrl c" { ScrollToBottom; SwitchToMode  "Normal"; }
+        bind "/" { SwitchToMode "EnterSearch"; SearchInput 0; }
+        bind "Ctrl c" { ScrollToBottom; SwitchToMode  "Normal"; }
         bind "j" "Down" { ScrollDown; }
         bind "k" "Up" { ScrollUp; }
         bind "Ctrl f" "PageDown" "Right" "l" { PageScrollDown; }
@@ -216,7 +215,7 @@ keybinds clear-defaults=true {
         // bind "Alt c" { Copy; }
     }
     search {
-        bind "g" "Ctrl c" { ScrollToBottom; SwitchToMode "Normal"; }
+        bind "Ctrl c" { ScrollToBottom; SwitchToMode "Normal"; }
         bind "j" "Down" { ScrollDown; }
         bind "k" "Up" { ScrollUp; }
         bind "Ctrl f" "PageDown" "Right" "l" { PageScrollDown; }
@@ -231,7 +230,11 @@ keybinds clear-defaults=true {
     }
     entersearch {
         bind "Ctrl c" "Esc" { SwitchToMode "Scroll"; }
-        bind "Enter" { SwitchToMode "Search"; }
+        bind "Enter" {
+            SwitchToMode "Search";
+            SearchToggleOption "Wrap";
+            SearchToggleOption "CaseSensitivity";
+        }
     }
     renametab {
         bind "Ctrl c" { SwitchToMode "Normal"; }
