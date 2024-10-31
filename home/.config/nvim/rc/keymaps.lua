@@ -360,6 +360,18 @@ require("user.utils").keymaps_set({
         opts = opt,
     },
     {
+        mode = { "n", "x" },
+        lhs = [[0]],
+        rhs = [[^]],
+        opts = opt,
+    },
+    {
+        mode = { "n", "x" },
+        lhs = [[^]],
+        rhs = [[0]],
+        opts = opt,
+    },
+    {
         mode = { "i" },
         lhs = [[jj]],
         rhs = [[<ESC><C-l>]],

@@ -115,6 +115,9 @@ nnoremap <silent> gf gF
 
 " Disable highlights from search results.
 nnoremap <silent> <C-l> <Cmd>nohlsearch<Bar>diffupdate<CR><C-l>
+
+nnoremap 0 ^
+nnoremap ^ 0
 " }}}
 
 " Insert mode {{{
@@ -126,11 +129,9 @@ inoremap <C-l> <Del>
 cnoremap <C-l> <Del>
 inoremap <C-a> <C-g>U<Home>
 
-if !has('nvim')
-  inoremap <C-e> <C-g>U<End>
-  inoremap <C-f> <C-g>U<Left>
-  inoremap <C-b> <C-g>U<Right>
-endif
+inoremap <C-e> <C-g>U<End>
+inoremap <C-f> <C-g>U<Left>
+inoremap <C-b> <C-g>U<Right>
 " }}}
 
 " cmdline mode cursor move emacs like {{{
@@ -138,6 +139,13 @@ cnoremap <C-a> <Home>
 cnoremap <C-e> <End>
 cnoremap <C-f> <Right>
 cnoremap <C-b> <Left>
+" }}}
+
+" Visual {{{
+xnoremap P p
+xnoremap p P
+xnoremap 0 ^
+xnoremap ^ 0
 " }}}
 
 " Operator {{{
