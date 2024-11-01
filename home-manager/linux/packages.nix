@@ -14,7 +14,12 @@
         ++ shellTools
         ++ languageServers
         ++ codingSupportTools
-        ++ libraries
+        ++ (
+          libraries
+          ++ [
+            pkgs.leiningen
+          ]
+        )
         ++ (
           utilityTools
           ++ [
