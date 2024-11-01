@@ -21,7 +21,7 @@ on_ft = 'markdown'
 hooks_file = '$HOOKS_DIR/tsnode_marker.lua'
 if = false
 
-# For LISP
+# For LISP {{{
 [[plugins]]
 repo = 'github.com/eraserhd/parinfer-rust'
 on_ft = [
@@ -40,3 +40,12 @@ on_ft = [
 build = 'cargo build --release > /dev/null'
 hooks_file = '$HOOKS_DIR/parinfer-rust.lua'
 
+[[plugins]]
+repo = 'github.com/liquidz/vim-iced'
+on_ft = 'clojure'
+hooks_file = '$HOOKS_DIR/vim-iced.lua'
+depends = 'github.com/guns/vim-sexp'
+
+[[plugins]]
+repo = 'github.com/guns/vim-sexp'
+# }}}
