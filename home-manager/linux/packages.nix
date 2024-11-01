@@ -12,7 +12,12 @@
         nixTools
         ++ textEditors
         ++ shellTools
-        ++ languageServers
+        ++ (
+          languageServers
+          ++ [
+            pkgs.clojure-lsp
+          ]
+        )
         ++ codingSupportTools
         ++ (
           libraries
