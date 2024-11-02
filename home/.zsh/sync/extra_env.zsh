@@ -72,5 +72,8 @@ fi
 
 [[ $(command -v nvim) ]] && export MANPAGER='nvim +Man!'
 
+iced_path="${XDG_CACHE_HOME}/dpp/repos/github.com/liquidz/vim-iced/bin"
+[[ -d ${iced_path} ]] && PATH="${PATH}:${iced_path}"
+
 unset dir_colors dir_colors_cache go_bin cargo_bin npm_path bun_path themis_bin
 export PATH
