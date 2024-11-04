@@ -2,6 +2,7 @@
 {
   nixTools = with pkgs; [
     nix-prefetch-github
+    nix-search-cli
   ];
 
   utilityTools = with pkgs; [
