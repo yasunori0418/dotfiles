@@ -41,11 +41,7 @@ build = 'cargo build --release > /dev/null'
 hooks_file = '$HOOKS_DIR/parinfer-rust.lua'
 
 [[plugins]]
-repo = 'github.com/liquidz/vim-iced'
+repo = 'github.com/liquidz/elin'
 on_ft = 'clojure'
-hooks_file = '$HOOKS_DIR/vim-iced.lua'
-depends = 'github.com/guns/vim-sexp'
-
-[[plugins]]
-repo = 'github.com/guns/vim-sexp'
+hooks_file = '$HOOKS_DIR/elin.lua'
 # }}}
