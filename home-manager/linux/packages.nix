@@ -12,19 +12,9 @@
         nixTools
         ++ textEditors
         ++ shellTools
-        ++ (
-          languageServers
-          ++ [
-            pkgs.clojure-lsp
-          ]
-        )
+        ++ languageServers
         ++ codingSupportTools
-        ++ (
-          libraries
-          ++ [
-            pkgs.leiningen
-          ]
-        )
+        ++ libraries
         ++ (
           utilityTools
           ++ [
@@ -32,7 +22,8 @@
             pkgs.leetcode-cli
           ]
         )
-        ++ terminalEmulators;
+        ++ terminalEmulators
+        ++ clojureTools;
     in
     packages;
 }
