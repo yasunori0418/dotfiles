@@ -37,7 +37,7 @@ local function gather_check_files()
         "**/*.toml",
         "**/*.ts",
     }
-    local target_directories = vim.iter({ vim.g.base_dir, vim.fn.expand("~/dotfiles/config/nvim") }):join(",")
+    local target_directories = vim.iter({ vim.g.base_dir, vim.fn.expand("~/dotfiles/home/.config/nvim") }):join(",")
     local check_files = {}
     for _, glob_pattern in pairs(glob_patterns) do
         table.insert(check_files, vim.fn.globpath(target_directories, glob_pattern, true, true))
