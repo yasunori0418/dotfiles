@@ -1,17 +1,32 @@
+# おまじないのようなエンコード設定
 defutf8 on
 defencoding utf8
 encoding utf8 utf8
+
+# 起動時のメッセージを非表示にする
 startup_message off
+
+# ビジュアルベルを無効化
 vbell off
+
+## オシャレterminalのためにはtruecolorは必須
 term screen-256color
 truecolor on
 
+# job stop等の処理をscreenの操作に寄せる
 escape ^Zz
 
-## スクロール行数
+# スクロール行数
 defscrollback 10000
 
-### マウススクロール有効
+# マウススクロール有効
 termcapinfo xterm* ti@:te@
 
+# vim等を閉じたあとにscreenを再描画する
 altscreen on
+
+# # status bar
+# TODO: 5.0.0で書式が変わっているらしいので要調査
+hardstatus off
+hardstatus alwayslastline
+hardstatus string '%{= kG}[ %{G}%H %{g}][%= %{= kw}%?%-Lw%?%{r}(%{W}%n*%f%t%?(%u)%?%{r})%{w}%?%+Lw%?%?%= %{g}][%{B} %m-%d %{W} %c %{g}]'
