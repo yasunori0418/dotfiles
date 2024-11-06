@@ -6,7 +6,7 @@
   neovim-nightly-overlay,
   vim-overlay,
   homeManager,
-  # nixpkgsOverlay,
+  nixpkgsOverlay,
   ...
 }:
 {
@@ -21,6 +21,7 @@
         ruby = true;
         sodium = true;
       })
+      (import "${nixpkgsOverlay}/gnu-screen.nix")
     ];
   };
   extraSpecialArgs = {

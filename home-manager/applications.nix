@@ -19,6 +19,7 @@
     unzip
     hugo
     zellij
+    screen
   ];
 
   textEditors = with pkgs; [
