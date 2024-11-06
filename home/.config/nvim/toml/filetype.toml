@@ -20,3 +20,28 @@ repo = 'github.com/atusy/tsnode-marker.nvim'
 on_ft = 'markdown'
 hooks_file = '$HOOKS_DIR/tsnode_marker.lua'
 if = false
+
+# For LISP {{{
+[[plugins]]
+repo = 'github.com/eraserhd/parinfer-rust'
+on_ft = [
+  'carp',
+  'clojure',
+  'dune',
+  'fennel',
+  'hy',
+  'janet',
+  'lisp',
+  'racket',
+  'scheme',
+  'wast',
+  'yuck',
+]
+build = 'cargo build --release > /dev/null'
+hooks_file = '$HOOKS_DIR/parinfer-rust.lua'
+
+[[plugins]]
+repo = 'github.com/liquidz/elin'
+on_ft = 'clojure'
+hooks_file = '$HOOKS_DIR/elin.lua'
+# }}}

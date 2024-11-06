@@ -22,7 +22,8 @@
             pkgs.leetcode-cli
           ]
         )
-        ++ terminalEmulators;
+        ++ terminalEmulators
+        ++ clojureTools;
     in
     packages;
 }

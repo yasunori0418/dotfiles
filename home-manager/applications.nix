@@ -79,4 +79,12 @@
     python312Packages.uv
     pdm
   ];
+
+  clojureTools = with pkgs; [
+    clojure
+    clojure-lsp
+    clj-kondo
+    leiningen
+    babashka
+  ];
 }
