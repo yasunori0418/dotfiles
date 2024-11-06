@@ -26,6 +26,7 @@ in
     ".bash_profile".source = (symlink /${homeDir}/.bash_profile);
     ".bash_logout".source = (symlink /${homeDir}/.bash_logout);
     "package.json".source = (symlink /${homeDir}/package.json);
+    ".screenrc".source = (symlink /${homeDir}/.screenrc);
   };
 
   dotConfig = {

@@ -1,0 +1,17 @@
+defutf8 on
+defencoding utf8
+encoding utf8 utf8
+startup_message off
+vbell off
+term screen-256color
+truecolor on
+
+escape ^Zz
+
+## スクロール行数
+defscrollback 10000
+
+### マウススクロール有効
+termcapinfo xterm* ti@:te@
+
+altscreen on
