@@ -1,6 +1,5 @@
 (final: prev: {
   screen = prev.screen.overrideAttrs (oldAttrs: rec {
-    pname = "screen";
     version = "5.0.0";
     src = prev.fetchurl {
       url = "mirror://gnu/screen/screen-${version}.tar.gz";
@@ -12,8 +11,6 @@
       "--enable-telnet"
       "--with-system_screenrc=/etc/screenrc"
     ];
-    nativeBuildInputs = oldAttrs.nativeBuildInputs;
-    buildInputs = oldAttrs.buildInputs;
     doCheck = false;
   });
 })
