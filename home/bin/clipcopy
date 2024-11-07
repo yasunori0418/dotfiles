@@ -1,0 +1,15 @@
+#!/usr/bin/env bash
+
+[[ $DEBUG = "true" ]] && set -x
+
+[[ -z $1 ]] && echo "Insufficient arguments of file path" && exit 1
+
+set -euo pipefail
+
+if [[ $(command -v xsel) ]]; then
+    COPY_CMD="xsel -bi"
+elif [[ $(command -v pbcopy) ]]; then
+    COPY_CMD="pbcopy"
+fi
+
+eval "${COPY_CMD} < ${1}"
