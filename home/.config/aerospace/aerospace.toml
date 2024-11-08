@@ -38,10 +38,10 @@ alt-enter = 'exec-and-forget ~/.nix-profile/bin/alacritty'
 cmd-h = [] # Disable "hide application"
 cmd-alt-h = [] # Disable "hide others"
 
-alt-h = 'focus left'
+alt-h = ['focus left', 'focus-monitor left']
 alt-j = ['focus down', 'focus-monitor down']
 alt-k = ['focus up', 'focus-monitor up']
-alt-l = 'focus right'
+alt-l = ['focus right', 'focus-monitor right']
 
 alt-shift-h = 'move left'
 alt-shift-j = 'move down'
