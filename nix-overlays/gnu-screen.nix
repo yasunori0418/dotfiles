@@ -11,6 +11,9 @@
       "--enable-telnet"
       "--with-system_screenrc=/etc/screenrc"
     ];
+    buildInputs =
+      oldAttrs.buildInputs
+      ++ prev.lib.optionals prev.stdenv.hostPlatform.isDarwin [ prev.pam ];
     doCheck = false;
   });
 })
