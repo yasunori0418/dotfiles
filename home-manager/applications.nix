@@ -4,6 +4,7 @@
     nix-prefetch-github
     nix-search-cli
     devenv
+    nix-direnv
   ];
 
   utilityTools = with pkgs; [
@@ -21,6 +22,7 @@
     hugo
     zellij
     screen
+    direnv
   ];
 
   textEditors = with pkgs; [
