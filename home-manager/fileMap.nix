@@ -88,6 +88,10 @@ in
       source = (symlink /${xdgConfigHome}/wezterm);
       recursive = true;
     };
+    ".config/direnv" = {
+      source = (symlink /${xdgConfigHome}/direnv);
+      recursive = true;
+    };
   };
 
   MacOS = {

@@ -1,0 +1,4 @@
+[global]
+disable_stdin = true
+strict_env = true
+hide_env_diff = true
