@@ -16,9 +16,9 @@ export ZENO_ENABLE_SOCK=1
 
 # zeno keybinds
 if [[ $(command -v deno) && ${ZENO_LOADED} ]]; then
-  bindkey " "  zeno-auto-snippet
-  bindkey "^I" zeno-completion
-  bindkey "^R" zeno-history-selection
-  bindkey '^X' zeno-insert-snippet
-  bindkey '^G' zeno-ghq-cd
+    bindkey " "  zeno-auto-snippet
+    bindkey "^I" zeno-completion
+    bindkey "^R" zeno-history-selection
+    bindkey '^X' zeno-insert-snippet
+    bindkey '^G' zeno-ghq-cd
 fi
