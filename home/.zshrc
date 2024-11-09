@@ -24,12 +24,12 @@ ensure_zcompiled ${HOME}/.zshenv
 
 sheldon_cache=${XDG_CACHE_HOME}/sheldon.zsh
 sheldon_toml=${XDG_CONFIG_HOME}/sheldon/plugins.toml
-if [[ ! -r ${sheldon_cache} || ${sheldon_toml} -nt ${sheldon_cache} ]]; then
+if [[ ! -r ${sheldon_cache} || ${sheldon_toml} -nt ${sheldon_cache} || $(sheldon source | wc -l) -ne $(cat ${sheldon_cache} | wc -l) ]]; then
     sheldon source > ${sheldon_cache}
 fi
-
 source ${sheldon_cache}
 unset sheldon_cache sheldon_toml
+
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
