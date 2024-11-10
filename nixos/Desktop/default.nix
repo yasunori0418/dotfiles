@@ -29,6 +29,7 @@
       fonts = "${nixosSettings}/fonts.nix";
       virtualisation = "${nixosSettings}/virtualisation.nix";
       qt = "${nixosSettings}/qt.nix";
+      sane = "${nixosSettings}/hardware/sane.nix";
 
       services = [
         "${nixosSettings}/services/printing.nix"
@@ -75,6 +76,7 @@
       fonts
       virtualisation
       qt
+      sane
 
       # Applications
       xremapModule

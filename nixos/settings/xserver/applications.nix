@@ -27,6 +27,7 @@
     discord
     blueberry
     pavucontrol
+    gthumb
   ];
 
   xfceTools = with pkgs.xfce; [
