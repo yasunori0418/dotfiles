@@ -61,6 +61,7 @@
                 nixos-hardware
                 xremap-flake
                 nixosSettings
+                nixpkgsOverlay
                 profileName
                 system
                 ;
