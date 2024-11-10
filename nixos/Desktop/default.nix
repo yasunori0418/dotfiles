@@ -19,6 +19,7 @@
 
       # configuration.nix top level keys
       nix = "${nixosSettings}/nix.nix";
+      nixpkgs = import "${nixosSettings}/nixpkgs.nix" { inherit nixpkgsOverlay; };
       boot = "${nixosSettings}/boot.nix";
       networking = import "${nixosSettings}/networking.nix" { hostName = "yasunori-desktop"; };
       environment = "${nixosSettings}/environment.nix";
@@ -66,6 +67,7 @@
 
       # configuration.nix top level keys
       nix
+      nixpkgs
       boot
       networking
       environment
@@ -92,11 +94,6 @@
     ++ xserver
     ++ systemdUserServiceUnits
     ++ hardwareModules;
-
-  nixpkgs.config.allowUnfree = true;
-  nixpkgs.overlays = [
-    (import "${nixpkgsOverlay}/libskk.nix")
-  ];
 
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions
