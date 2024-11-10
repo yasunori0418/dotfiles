@@ -1,0 +1,22 @@
+#!/usr/bin/env bash
+
+[[ $DEBUG = "true" ]] && set -x
+
+set -euo pipefail
+
+# [ "$STY" ] || exit 1
+
+if [[ $(command -v xsel) ]]; then
+    COPY_CMD="xsel -b"
+elif [[ $(command -v pbpaste) ]]; then
+    COPY_CMD="pbpaste"
+fi
+
+declare -r file_path="/tmp/screen-clippaste"
+eval "${COPY_CMD}" > $file_path
+
+while IFS= read -r line; do
+    # 各行の内容をキーストロークとしてScreenに送信
+    screen -X stuff "$line"
+    screen -X stuff $'\n'
+done < "$file_path"
