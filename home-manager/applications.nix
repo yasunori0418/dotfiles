@@ -25,6 +25,12 @@
     direnv
   ];
 
+  tmuxTools = (with pkgs; [
+    tmux
+  ]) ++ (with pkgs.tmuxPlugins; [
+    nord
+  ]);
+
   textEditors = with pkgs; [
     vim
     neovim
