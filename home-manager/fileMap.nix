@@ -36,6 +36,10 @@ in
       source = (symlink /${xdgConfigHome}/alacritty/keybinds);
       recursive = true;
     };
+    ".config/tmux" = {
+      source = (symlink /${xdgConfigHome}/tmux);
+      recursive = true;
+    };
     ".config/fastfetch" = {
       source = (symlink /${xdgConfigHome}/fastfetch);
       recursive = true;
