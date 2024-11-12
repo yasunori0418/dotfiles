@@ -48,83 +48,83 @@
   "vim.normalModeKeyBindingsNonRecursive": [
     // For vscode undo
     // https://fe-notes.work/posts/20200708_vsvim01/#normalモードのキーバインド
-    { "before": [ "u" ], "commands": [ { "command": "undo" } ] },
-    { "before": [ "<C-r>" ], "commands": [ { "command": "redo" } ] },
+    { "before": ["u"], "commands": [{ "command": "undo" }] },
+    { "before": ["<C-r>"], "commands": [{ "command": "redo" }] },
     // disable keymaps {{{
-    { "before": [ "<Space>" ], "after": [ "<Nop>" ] },
-    // { "before": [ "s" ], "after": [ "<Nop>" ] },
-    // { "before": [ "S" ], "after": [ "<Nop>" ] },
-    // { "before": [ "m" ], "after": [ "<Nop>" ] },
-    // { "before": [ "'" ], "after": [ "<Nop>" ] },
-    // { "before": [ "`" ], "after": [ "<Nop>" ] },
+    { "before": ["<Space>"], "after": ["<Nop>"] },
+    // { "before": ["s"], "after": ["<Nop>"] },
+    // { "before": ["S"], "after": ["<Nop>"] },
+    // { "before": ["m"], "after": ["<Nop>"] },
+    // { "before": ["'"], "after": ["<Nop>"] },
+    // { "before": ["`"], "after": ["<Nop>"] },
     // }}} disable keymaps
     // Window control keybind {{{
-    { "before": [ "<Space>", "w", "h" ], "after": [ "<C-w>", "h" ] },
-    { "before": [ "<Space>", "w", "j" ], "after": [ "<C-w>", "j" ] },
-    { "before": [ "<Space>", "w", "k" ], "after": [ "<C-w>", "k" ] },
-    { "before": [ "<Space>", "w", "l" ], "after": [ "<C-w>", "l" ] },
-    { "before": [ "<Space>", "w", "H" ], "after": [ "<C-w>", "H" ] },
-    { "before": [ "<Space>", "w", "J" ], "after": [ "<C-w>", "J" ] },
-    { "before": [ "<Space>", "w", "K" ], "after": [ "<C-w>", "K" ] },
-    { "before": [ "<Space>", "w", "L" ], "after": [ "<C-w>", "L" ] },
-    { "before": [ "<Space>", "w", "t", "n" ], "commands": [ ":tabnew" ] },
-    { "before": [ "<Space>", "w", "t", "T" ], "after": [ "<C-w>", "T" ] },
-    { "before": [ "<Space>", "w", "q" ], "after": [ "<C-w>", "q" ] },
-    { "before": [ "<Space>", "w", "w" ], "commands": [ ":update" ] },
-    { "before": [ "<Space>", "w", "s" ], "after": [ "<C-w>", "s" ] },
-    { "before": [ "<Space>", "w", "v" ], "after": [ "<C-w>", "v" ] },
-    { "before": [ "<Space>", "w", "n" ], "after": [ "<C-w>", "n" ] },
+    { "before": ["<Space>", "w", "h"], "after": ["<C-w>", "h"] },
+    { "before": ["<Space>", "w", "j"], "after": ["<C-w>", "j"] },
+    { "before": ["<Space>", "w", "k"], "after": ["<C-w>", "k"] },
+    { "before": ["<Space>", "w", "l"], "after": ["<C-w>", "l"] },
+    { "before": ["<Space>", "w", "H"], "after": ["<C-w>", "H"] },
+    { "before": ["<Space>", "w", "J"], "after": ["<C-w>", "J"] },
+    { "before": ["<Space>", "w", "K"], "after": ["<C-w>", "K"] },
+    { "before": ["<Space>", "w", "L"], "after": ["<C-w>", "L"] },
+    { "before": ["<Space>", "w", "t", "n"], "commands": [":tabnew"] },
+    { "before": ["<Space>", "w", "t", "T"], "after": ["<C-w>", "T"] },
+    { "before": ["<Space>", "w", "q"], "after": ["<C-w>", "q"] },
+    { "before": ["<Space>", "w", "w"], "commands": [":update"] },
+    { "before": ["<Space>", "w", "s"], "after": ["<C-w>", "s"] },
+    { "before": ["<Space>", "w", "v"], "after": ["<C-w>", "v"] },
+    { "before": ["<Space>", "w", "n"], "after": ["<C-w>", "n"] },
     // }}}
     // tab control {{{
-    { "before": [ "[", "t" ], "commands": [ ":tabprev" ] },
-    { "before": [ "]", "t" ], "commands": [ ":tabnext" ] },
-    { "before": [ "[", "T" ], "commands": [ ":tabfirst" ] },
-    { "before": [ "]", "T" ], "commands": [ ":tablast" ] },
+    { "before": ["[", "t"], "commands": [":tabprev"] },
+    { "before": ["]", "t"], "commands": [":tabnext"] },
+    { "before": ["[", "T"], "commands": [":tabfirst"] },
+    { "before": ["]", "T"], "commands": [":tablast"] },
     // }}}
     // 検索後に画面中央に検索単語が来るようにする設定 {{{
-    { "before": [ "n" ], "after": [ "n", "z", "z" ] },
-    { "before": [ "N" ], "after": [ "N", "z", "z" ] },
-    { "before": [ "*" ], "after": [ "*", "z", "z" ] },
-    { "before": [ "#" ], "after": [ "#", "z", "z" ] },
+    { "before": ["n"], "after": ["n", "z", "z"] },
+    { "before": ["N"], "after": ["N", "z", "z"] },
+    { "before": ["*"], "after": ["*", "z", "z"] },
+    { "before": ["#"], "after": ["#", "z", "z"] },
     // }}}
     // xとcで消えたものがレジスターに入らないようにする {{{
-    { "before": [ "x" ], "after": [ "\"", "_", "x" ] },
-    { "before": [ "c" ], "after": [ "\"", "_", "c" ] },
-    { "before": [ "C" ], "after": [ "\"", "_", "C" ] },
+    { "before": ["x"], "after": ["\"", "_", "x"] },
+    { "before": ["c"], "after": ["\"", "_", "c"] },
+    { "before": ["C"], "after": ["\"", "_", "C"] },
     // }}}
     // nohlsearch
-    { "before": [ "<C-l>" ], "commands": [ ":nohlsearch" ] }
+    { "before": ["<C-l>"], "commands": [":nohlsearch"] }
   ],
   "vim.visualModeKeyBindingsNonRecursive": [
-    { "before": [ "<Space>" ], "after": [ "<Nop>" ] },
-    // { "before": [ "s" ], "after": [ "<Nop>" ] },
-    // { "before": [ "S" ], "after": [ "<Nop>" ] },
-    // { "before": [ "m" ], "after": [ "<Nop>" ] },
-    // { "before": [ "'" ], "after": [ "<Nop>" ] },
-    // { "before": [ "`" ], "after": [ "<Nop>" ] },
+    { "before": ["<Space>"], "after": ["<Nop>"] },
+    // { "before": ["s"], "after": ["<Nop>"] },
+    // { "before": ["S"], "after": ["<Nop>"] },
+    // { "before": ["m"], "after": ["<Nop>"] },
+    // { "before": ["'"], "after": ["<Nop>"] },
+    // { "before": ["`"], "after": ["<Nop>"] },
     // xとcで消えたものがレジスターに入らないようにする {{{
-    { "before": [ "x" ], "after": [ "\"", "_", "x" ] },
-    { "before": [ "c" ], "after": [ "\"", "_", "c" ] },
-    { "before": [ "C" ], "after": [ "\"", "_", "C" ] },
+    { "before": ["x"], "after": ["\"", "_", "x"] },
+    { "before": ["c"], "after": ["\"", "_", "c"] },
+    { "before": ["C"], "after": ["\"", "_", "C"] },
     // }}}
     // operator {{{
-    { "before": [ "a", "'" ], "after": [ "2", "i", "'" ] },
-    { "before": [ "a", "`" ], "after": [ "2", "i", "`" ] },
-    { "before": [ "a", "\"" ], "after": [ "2", "i", "\"" ] },
-    { "before": [ "a", "<Space>" ], "after": [ "a", "W" ] },
-    { "before": [ "i", "<Space>" ], "after": [ "i", "W" ] }
+    { "before": ["a", "'"], "after": ["2", "i", "'"] },
+    { "before": ["a", "`"], "after": ["2", "i", "`"] },
+    { "before": ["a", "\""], "after": ["2", "i", "\""] },
+    { "before": ["a", "<Space>"], "after": ["a", "W"] },
+    { "before": ["i", "<Space>"], "after": ["i", "W"] }
     // }}}
   ],
   "vim.insertModeKeyBindingsNonRecursive": [
-    { "before": [ "j", "j" ], "after": [ "<Esc>" ] },
-    { "before": [ "<C-l>" ], "after": [ "<Del>" ] }
+    { "before": ["j", "j"], "after": ["<Esc>"] },
+    { "before": ["<C-l>"], "after": ["<Del>"] }
   ],
   "vim.operatorPendingModeKeyBindingsNonRecursive": [
-    { "before": [ "a", "'" ], "after": [ "2", "i", "'" ] },
-    { "before": [ "a", "`" ], "after": [ "2", "i", "`" ] },
-    { "before": [ "a", "\"" ], "after": [ "2", "i", "\"" ] },
-    { "before": [ "a", "<Space>" ], "after": [ "a", "W" ] },
-    { "before": [ "i", "<Space>" ], "after": [ "i", "W" ] }
+    { "before": ["a", "'"], "after": ["2", "i", "'"] },
+    { "before": ["a", "`"], "after": ["2", "i", "`"] },
+    { "before": ["a", "\""], "after": ["2", "i", "\""] },
+    { "before": ["a", "<Space>"], "after": ["a", "W"] },
+    { "before": ["i", "<Space>"], "after": ["i", "W"] }
   ],
   "terminal.integrated.sendKeybindingsToShell": true
 }

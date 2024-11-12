@@ -84,8 +84,7 @@ export function separator(
     | "ErrorMsg"
     | "Type"
     | "Keyword"
-    | "String"
-   = "Type",
+    | "String" = "Type",
 ): DduDummySource {
   return {
     name: "dummy",
