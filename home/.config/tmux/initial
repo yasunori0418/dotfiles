@@ -9,5 +9,5 @@ if [[ ! -d ${TMUX_PLUGIN_MANAGER_PATH}/tpm ]]; then
     git clone https://github.com/tmux-plugins/tpm.git "${TMUX_PLUGIN_MANAGER_PATH}/tpm"
 fi
 
-tmux run -b "${TMUX_PLUGIN_MANAGER_PATH}/tpm/tpm"
-"${TMUX_PLUGIN_MANAGER_PATH}/tpm/bin/install_plugins"
+"${TMUX_PLUGIN_MANAGER_PATH}/tpm/tpm" > /dev/null
+"${TMUX_PLUGIN_MANAGER_PATH}/tpm/bin/install_plugins" > /dev/null
