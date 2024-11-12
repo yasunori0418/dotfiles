@@ -6,4 +6,6 @@
 set -g prefix C-z
 bind C-z send-prefix
 
+source ~/.config/tmux/keybinds/copy_mode.tmux
+
 # vim:ft=tmux
