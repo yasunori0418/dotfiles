@@ -1,22 +1,20 @@
 export {
-  type Action,
   BaseConfig,
-  type BaseExt,
-  type BaseExtParams,
   type ConfigArguments,
   type ConfigReturn,
+  type MultipleHook,
+} from "jsr:@shougo/dpp-vim@3.1.0/config";
+export { type Dpp } from "jsr:@shougo/dpp-vim@3.1.0/dpp";
+export { type Protocol } from "jsr:@shougo/dpp-vim/protocol";
+export { type Action, type BaseExt } from "jsr:@shougo/dpp-vim@3.1.0/ext";
+export {
   type Context,
   type ContextBuilder,
-  type Dpp,
   type DppOptions,
   type ExtOptions,
   type Plugin,
-  type Protocol,
-  type MultipleHook,
 } from "jsr:@shougo/dpp-vim@3.1.0/types";
-export {
-  mergeFtplugins,
-} from "jsr:@shougo/dpp-vim@3.1.0/utils";
+export { mergeFtplugins } from "jsr:@shougo/dpp-vim@3.1.0/utils";
 export {
   Ext as TomlExt,
   type Params as TomlParams,
@@ -24,8 +22,8 @@ export {
 } from "jsr:@shougo/dpp-ext-toml@1.3.0";
 export {
   Ext as LazyExt,
-  type Params as LazyParams,
   type LazyMakeStateResult,
+  type Params as LazyParams,
 } from "jsr:@shougo/dpp-ext-lazy@1.5.0";
 export { type Denops } from "jsr:@denops/core@7.0.1";
 export * as fn from "jsr:@denops/std@7.3.1/function";

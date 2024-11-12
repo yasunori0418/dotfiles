@@ -1,5 +1,4 @@
 import {
-  Plugin,
   Context,
   Denops,
   DppOptions,
@@ -7,6 +6,7 @@ import {
   LazyExt,
   LazyMakeStateResult,
   LazyParams,
+  Plugin,
   Protocol,
 } from "../deps.ts";
 
@@ -51,6 +51,6 @@ export async function makeState(
     extParams: lazyParams,
     actionParams: {
       plugins,
-    }
-  })
+    },
+  });
 }

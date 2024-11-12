@@ -1,9 +1,4 @@
-import {
-  ConfigArguments,
-  expandGlobSync,
-  Plugin,
-} from "./deps.ts";
-
+import { ConfigArguments, expandGlobSync, Plugin } from "./deps.ts";
 
 export async function getExt<T>(
   args: ConfigArguments,

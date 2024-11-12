@@ -10,7 +10,7 @@ import {
 import { gatherCheckFiles, getExt } from "./helper.ts";
 import { gatherVimrcs, VimrcSkipRule } from "./helper/inlineVimrcs.ts";
 import { gatherTomls, GetTomlExtResults } from "./helper/toml.ts";
-import { makeState, GetLazyExtResults } from "./helper/lazy.ts";
+import { GetLazyExtResults, makeState } from "./helper/lazy.ts";
 
 export class Config extends BaseConfig {
   override async config(args: ConfigArguments): Promise<ConfigReturn> {
@@ -54,7 +54,10 @@ export class Config extends BaseConfig {
       string,
       Protocol
     >;
-    const [tomlExt, tomlOptions, tomlParams] = await getExt<GetTomlExtResults>(args, "toml");
+    const [tomlExt, tomlOptions, tomlParams] = await getExt<GetTomlExtResults>(
+      args,
+      "toml",
+    );
 
     const toml = await gatherTomls({
       denops,
@@ -68,7 +71,10 @@ export class Config extends BaseConfig {
       noLazyTomlNames: ["dpp.toml", "no_lazy.toml"],
     });
 
-    const [lazyExt, lazyOptions, lazyParams] = await getExt<GetLazyExtResults>(args, "lazy");
+    const [lazyExt, lazyOptions, lazyParams] = await getExt<GetLazyExtResults>(
+      args,
+      "lazy",
+    );
     const lazyResult = await makeState({
       denops,
       context,
