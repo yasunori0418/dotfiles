@@ -10,7 +10,6 @@
       packages =
         with applications;
         nixTools
-        ++ tmuxTools
         ++ textEditors
         ++ shellTools
         ++ languageServers

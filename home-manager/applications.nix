@@ -81,6 +81,7 @@
     bun
     volta
     rustup
+    ruby
     ncurses
     luajitPackages.luarocks
     python312Packages.uv
