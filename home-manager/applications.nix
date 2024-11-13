@@ -23,13 +23,8 @@
     zellij
     screen
     direnv
-  ];
-
-  tmuxTools = (with pkgs; [
     tmux
-  ]) ++ (with pkgs.tmuxPlugins; [
-    nord
-  ]);
+  ];
 
   textEditors = with pkgs; [
     vim
@@ -66,6 +61,7 @@
   ];
 
   codingSupportTools = with pkgs; [
+    nixfmt-rfc-style
     markdownlint-cli
     checkmake
     shellcheck
