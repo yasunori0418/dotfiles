@@ -15,6 +15,13 @@ set -g @prefix_highlight_prefix_prompt 'Wait'
 set -g @prefix_highlight_copy_prompt 'Copy'
 set -g @prefix_highlight_sync_prompt 'Sync'
 
+set -g @plugin 'tmux-plugins/tmux-open'
+set -g @open 'o'
+
+set -g @plugin 'schasse/tmux-jump'
+
+set -g @plugin 'tmux-plugins/tmux-copycat'
+
 run -b '${XDG_CONFIG_HOME}/tmux/initial'
 
 # vim:ft=tmux
