@@ -1,4 +1,5 @@
-run 'tmux unbind -a -q -T copy-mode-vi' # これでcopy-modeのキー全部を設定させていただける
+unbind -a -q -T copy-mode-vi # これでcopy-modeのキー全部を設定させていただける
+unbind -a -q -T copy-mode # こっちは、emacs版のcopy-mode
 
 # visual selection
 bind-key -T copy-mode-vi C-c send-keys -X cancel
