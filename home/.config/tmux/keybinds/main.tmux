@@ -20,7 +20,12 @@ bind -n M-k select-pane -U
 bind -n M-l select-pane -R
 
 bind -n M-n new-window -c "#{pane_current_path}"
+bind -n M-N new-session
 bind -n M-\{ previous-window
 bind -n M-\} next-window
+
+bind -n M-a choose-tree
+bind -n M-e choose-session
+bind -n M-w choose-tree -w
 
 # vim:ft=tmux
