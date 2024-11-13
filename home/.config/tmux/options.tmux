@@ -19,6 +19,7 @@ set -g mode-keys vi
 set -g status-keys emacs
 set -g status-interval 5
 set -g focus-events on
-setw -g aggressive-resize on
+set -g set-clipboard off
+set -g aggressive-resize on
 
 # vim:ft=tmux
