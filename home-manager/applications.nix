@@ -62,6 +62,7 @@
     bash-language-server
     intelephense
     typescript-language-server
+    yaml-language-server
   ];
 
   codingSupportTools = with pkgs; [
