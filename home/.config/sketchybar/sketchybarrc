@@ -32,7 +32,7 @@ SEESROUGH="0x00000000"
 # refer: https://qiita.com/CUTBOSS/items/6166cf79b9f18c45a010
 # alpha000="00"
 # alpha010="1A"
-# alpha020="33"
+alpha020="33"
 # alpha030="4D"
 # alpha040="66"
 # alpha050="80"
@@ -57,25 +57,25 @@ PLUGIN_DIR="$CONFIG_DIR/plugins"
 # https://felixkratz.github.io/SketchyBar/config/tricks#color-picker
 
 bar_property=(
-  color="0x${alpha080}${nord01}"
-  border_color="0x${alpha100}${nord00}"
-  position=top
-  height=40
-  margin=0
-  y_offset=0
-  corner_radius=0
-  border_width=3
-  blur_radius=30
-  padding_left=0
-  padding_right=0
-  notch_width=200
-  notch_offset=0
-  display=all
-  hidden=off
-  topmost=off
-  sticky=on
-  font_smoothing=on
-  shadow=on
+    color="0x${alpha080}${nord01}"
+    border_color="0x${alpha100}${nord00}"
+    position=top
+    height=40
+    margin=0
+    y_offset=0
+    corner_radius=0
+    border_width=3
+    blur_radius=30
+    padding_left=0
+    padding_right=0
+    notch_width=200
+    notch_offset=0
+    display=all
+    hidden=off
+    topmost=off
+    sticky=on
+    font_smoothing=on
+    shadow=on
 )
 
 sketchybar --bar "${bar_property[@]}"
@@ -86,20 +86,20 @@ sketchybar --bar "${bar_property[@]}"
 # https://felixkratz.github.io/SketchyBar/config/items
 
 default=(
-  padding_left=5
-  padding_right=5
-  icon.font.family="${Font}"
-  icon.font.style=Bold
-  icon.font.size=17.0
-  label.font.family="${Font}"
-  label.font.style=Bold
-  label.font.size=14.0
-  icon.color="0x${alpha080}${nord04}"
-  label.color="0x${alpha080}${nord04}"
-  icon.padding_left=4
-  icon.padding_right=4
-  label.padding_left=4
-  label.padding_right=4
+    padding_left=5
+    padding_right=5
+    icon.font.family="${Font}"
+    icon.font.style=Bold
+    icon.font.size=17.0
+    label.font.family="${Font}"
+    label.font.style=Bold
+    label.font.size=14.0
+    icon.color="0x${alpha080}${nord04}"
+    label.color="0x${alpha080}${nord04}"
+    icon.padding_left=4
+    icon.padding_right=4
+    label.padding_left=4
+    label.padding_right=4
 )
 sketchybar --default "${default[@]}"
 
@@ -108,64 +108,64 @@ sketchybar --default "${default[@]}"
 # only the properties deviating from the current defaults need to be set
 
 apple=(
-  icon=" "
-  icon.drawing=on
-  icon.font.family="${Font}"
-  icon.font.style=Bold
-  icon.font.size=20.0
-  icon.color="0x${alpha100}${nord04}"
-  icon.y_offset=2
-  icon.padding_left=5
-  icon.padding_right=5
-  icon.background.color="${SEESROUGH}"
-  background.color="${SEESROUGH}"
-  background.border_color="${SEESROUGH}"
-  click_script="sketchybar --set \$NAME popup.drawing=toggle"
-  popup.background.color="0x${alpha080}${nord07}"
-  popup.background.border_width=2
-  popup.background.corner_radius=10
-  popup.background.border_color="0x${alpha080}${nord10}"
+    icon=" "
+    icon.drawing=on
+    icon.font.family="${Font}"
+    icon.font.style=Bold
+    icon.font.size=20.0
+    icon.color="0x${alpha100}${nord04}"
+    icon.y_offset=2
+    icon.padding_left=5
+    icon.padding_right=5
+    icon.background.color="${SEESROUGH}"
+    background.color="${SEESROUGH}"
+    background.border_color="${SEESROUGH}"
+    click_script="sketchybar --set \$NAME popup.drawing=toggle"
+    popup.background.color="0x${alpha080}${nord07}"
+    popup.background.border_width=2
+    popup.background.corner_radius=10
+    popup.background.border_color="0x${alpha080}${nord10}"
 )
 apple_popup=(
-  icon.color="0x${alpha100}${nord03}"
-  icon.drawing=on
-  icon.align=left
-  label.color="0x${alpha100}${nord03}"
-  label.drawing=on
-  label.align=left
+    icon.color="0x${alpha100}${nord03}"
+    icon.drawing=on
+    icon.align=left
+    label.color="0x${alpha100}${nord03}"
+    label.drawing=on
+    label.align=left
 )
 preference=(
-  icon=" "
-  label="Preferences"
-  click_script="open -a 'System Preferences'; sketchybar --set apple popup.drawing=off"
+    icon=" "
+    label="Preferences"
+    click_script="open -a 'System Preferences'; sketchybar --set apple popup.drawing=off"
 )
 activity=(
-  icon=" "
-  label="Activity Monitor"
-  click_script="open -a 'Activity Monitor'; sketchybar --set apple popup.drawing=off"
+    icon=" "
+    label="Activity Monitor"
+    click_script="open -a 'Activity Monitor'; sketchybar --set apple popup.drawing=off"
 )
 shutdown=(
-  icon=" "
-  label="Shutdown"
-  click_script="osascript -e  'tell app \"loginwindow\" to «event aevtrsdn»'; sketchybar --set apple popup.drawing=off"
+    icon=" "
+    label="Shutdown"
+    click_script="osascript -e  'tell app \"loginwindow\" to «event aevtrsdn»'; sketchybar --set apple popup.drawing=off"
 )
 reboot=(
-  icon=" "
-  label="Reboot"
-  click_script="osascript -e 'tell app \"loginwindow\" to «event aevtrrst»'; sketchybar --set apple popup.drawing=off"
+    icon=" "
+    label="Reboot"
+    click_script="osascript -e 'tell app \"loginwindow\" to «event aevtrrst»'; sketchybar --set apple popup.drawing=off"
 )
 lock=(
-  icon=" "
-  label="Lock Screen"
-  click_script="pmset displaysleepnow; sketchybar --set apple popup.drawing=off"
+    icon=" "
+    label="Lock Screen"
+    click_script="pmset displaysleepnow; sketchybar --set apple popup.drawing=off"
 )
 sketchybar \
-  --add item apple left --set apple "${apple[@]}" \
-  --add item apple.preference popup.apple --set apple.preference "${apple_popup[@]}" "${preference[@]}" \
-  --add item apple.activity   popup.apple --set apple.activity   "${apple_popup[@]}" "${activity[@]}" \
-  --add item apple.shutdown   popup.apple --set apple.shutdown   "${apple_popup[@]}" "${shutdown[@]}" \
-  --add item apple.reboot     popup.apple --set apple.reboot     "${apple_popup[@]}" "${reboot[@]}" \
-  --add item apple.lock       popup.apple --set apple.lock       "${apple_popup[@]}" "${lock[@]}"
+    --add item apple left --set apple "${apple[@]}" \
+    --add item apple.preference popup.apple --set apple.preference "${apple_popup[@]}" "${preference[@]}" \
+    --add item apple.activity   popup.apple --set apple.activity   "${apple_popup[@]}" "${activity[@]}" \
+    --add item apple.shutdown   popup.apple --set apple.shutdown   "${apple_popup[@]}" "${shutdown[@]}" \
+    --add item apple.reboot     popup.apple --set apple.reboot     "${apple_popup[@]}" "${reboot[@]}" \
+    --add item apple.lock       popup.apple --set apple.lock       "${apple_popup[@]}" "${lock[@]}"
 
 ##### Adding Mission Control Space Indicators #####
 # Let's add some mission control spaces:
@@ -191,20 +191,18 @@ sketchybar \
 # done
 
 sketchybar --add event aerospace_workspace_change
+
 for sid in $(aerospace list-workspaces --all); do
-
-  sketchybar --add item "space.${sid}" left \
-    --subscribe "space.${sid}" aerospace_workspace_change \
-    --set "space.${sid}" \
-    icon="${sid}" \
-    icon.font.size=18.0 \
-    background.color="0x${alpha100}${nord11}" \
-    background.corner_radius=5 \
-    background.height=20 \
-    background.drawing=off \
-    click_script="aerospace workspace ${sid}" \
-    script="${PLUGIN_DIR}/aerospace.sh $sid"
-
+    sketchybar --add item "space.${sid}" left \
+        --subscribe "space.${sid}" aerospace_workspace_change \
+        --set "space.${sid}" \
+        background.color="0x${alpha020}${nord11}" \
+        background.corner_radius=5 \
+        background.height=20 \
+        background.drawing=off \
+        label="$sid" \
+        click_script="aerospace workspace $sid" \
+        script="${PLUGIN_DIR}/aerospace.sh $sid"
 done
 
 ##### Adding Center Items #####
@@ -212,12 +210,12 @@ done
 # where only the properties deviating from the current defaults need to be set
 
 front_app=(
-  front_app
-  icon.drawing=off
-  script="$PLUGIN_DIR/front_app.sh"
-  --subscribe
-  front_app
-  front_app_switched
+    front_app
+    icon.drawing=off
+    script="$PLUGIN_DIR/front_app.sh"
+    --subscribe
+    front_app
+    front_app_switched
 )
 sketchybar --add item front_app center --set "${front_app[@]}"
 
@@ -233,28 +231,28 @@ sketchybar --add item front_app center --set "${front_app[@]}"
 # https://felixkratz.github.io/SketchyBar/config/events
 
 clock=(
-  update_freq=10
-  icon=
-  script="$PLUGIN_DIR/clock.sh"
+    update_freq=10
+    icon=
+    script="$PLUGIN_DIR/clock.sh"
 )
 volume=(
-  script="$PLUGIN_DIR/volume.sh"
-  --subscribe
-  volume
-  volume_change
+    script="$PLUGIN_DIR/volume.sh"
+    --subscribe
+    volume
+    volume_change
 )
 battery=(
-  update_freq=120
-  script="$PLUGIN_DIR/battery.sh"
-  --subscribe
-  battery
-  system_woke
-  power_source_change
+    update_freq=120
+    script="$PLUGIN_DIR/battery.sh"
+    --subscribe
+    battery
+    system_woke
+    power_source_change
 )
 
 sketchybar --add item clock right --set clock "${clock[@]}" \
-           --add item volume right --set volume "${volume[@]}" \
-           --add item battery right --set battery "${battery[@]}"
+    --add item volume right --set volume "${volume[@]}" \
+    --add item battery right --set battery "${battery[@]}"
 
 ##### Force all scripts to run the first time (never do this in a script) #####
 sketchybar --update
