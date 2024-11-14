@@ -11,7 +11,6 @@
         with applications;
         nixTools
         ++ utilityTools
-        ++ tmuxTools
         ++ terminalEmulators
         ++ textEditors
         ++ shellTools
