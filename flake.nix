@@ -76,6 +76,10 @@
             profileName = "Desktop";
             system = "x86_64-linux";
           });
+          macx64OrbStack = nixpkgs.lib.nixosSystem (nixosSystemArgs {
+            profileName = "MacX64_OrbStack";
+            system = "x86_64-linux";
+          });
         };
 
       homeConfigurations =
