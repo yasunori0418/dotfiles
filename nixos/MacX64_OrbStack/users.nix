@@ -1,6 +1,5 @@
 { pkgs, ... }:
 {
-  programs.zsh.enable = true;
   users = {
     users.watanabe = {
       uid = 502;

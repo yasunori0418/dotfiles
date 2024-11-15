@@ -1,8 +1,6 @@
 {
-  nixos-hardware,
   nixosSettings, # ../settings
   nixpkgsOverlay,
-  xremap-flake,
   modulesPath,
   ...
 }:
@@ -17,11 +15,28 @@
         ./networking.nix
       ];
 
+      nix = "${nixosSettings}/nix.nix";
+      nixpkgs = import "${nixosSettings}/nixpkgs.nix" { inherit nixpkgsOverlay; };
+      environment = "${nixosSettings}/environment.nix";
       time = "${nixosSettings}/time.nix";
+      i18n = "${nixosSettings}/i18n.nix";
+      security = "${nixosSettings}/security.nix";
+      programs = "${nixosSettings}/programs.nix";
+      fonts = "${nixosSettings}/fonts.nix";
+      virtualisation = "${nixosSettings}/virtualisation.nix";
     in
     [
+      nix
+      nixpkgs
+      environment
       time
-    ] ++ defaultSettings;
+      i18n
+      security
+      programs
+      fonts
+      virtualisation
+    ]
+    ++ defaultSettings;
 
   # This option defines the first version of NixOS you have installed on this particular machine,
   # and is used to maintain compatibility with application data (e.g. databases) created on older NixOS versions.
