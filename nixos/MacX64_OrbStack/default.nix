@@ -22,7 +22,6 @@
       i18n = "${nixosSettings}/i18n.nix";
       security = "${nixosSettings}/security.nix";
       programs = "${nixosSettings}/programs.nix";
-      fonts = "${nixosSettings}/fonts.nix";
       virtualisation = "${nixosSettings}/virtualisation.nix";
     in
     [
@@ -33,7 +32,6 @@
       i18n
       security
       programs
-      fonts
       virtualisation
     ]
     ++ defaultSettings;

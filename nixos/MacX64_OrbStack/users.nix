@@ -1,7 +1,7 @@
 { pkgs, ... }:
 {
   users = {
-    users.watanabe = {
+    users.yasunori = {
       uid = 502;
       extraGroups = [ "wheel" ];
 
@@ -10,7 +10,7 @@
       group = "users";
       shell = pkgs.zsh;
       createHome = true;
-      home = "/home/watanabe";
+      home = "/home/yasunori";
     };
     # This being `true` leads to a few nasty bugs, change at your own risk!
     mutableUsers = false;
