@@ -19,6 +19,7 @@ set -g @plugin 'tmux-plugins/tmux-open'
 set -g @open 'o'
 
 set -g @plugin 'schasse/tmux-jump'
+set -g @jump-key 'J'
 
 set -g @plugin 'tmux-plugins/tmux-copycat'
 
