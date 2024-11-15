@@ -7,7 +7,7 @@
   ...
 }:
 {
-  import =
+  imports =
     let
       # generated settings by orbstack.
       defaultSettings = [
