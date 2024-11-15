@@ -33,9 +33,10 @@ automatically-unhide-macos-hidden-apps = true
 
 # Notify Sketchybar about workspace change
 exec-on-workspace-change = [
-  '/usr/local/bin/bash',
-  '-c',
-  'sketchybar --trigger aerospace_workspace_change FOCUSED_WORKSPACE=$(aerospace list-workspaces --focused)'
+  # '/usr/local/bin/bash',
+  # '-c',
+  # 'sketchybar --trigger aerospace_workspace_change FOCUSED_WORKSPACE=$(aerospace list-workspaces --focused)'
+  '/Users/watanabe/.config/aerospace/workspace-change.sh'
 ]
 
 [exec]
