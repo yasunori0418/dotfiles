@@ -29,12 +29,6 @@
           name = "Slightly emacs-like keymap.";
           remap = {
             C-h = "Backspace";
-            C-a = "home";
-            C-e = "end";
-            C-f = "right";
-            C-b = "left";
-            C-p = "up";
-            C-n = "down";
             C-m = "enter";
           };
           application = {
