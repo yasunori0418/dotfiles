@@ -1,13 +1,12 @@
 {
   config,
-  homeManager,
   dotfiles,
   homeDir,
   xdgConfigHome,
   ...
 }:
 let
-  fileMap = import "${homeManager}/fileMap.nix" {
+  fileMap = import ../fileMap.nix {
     inherit
       config
       dotfiles

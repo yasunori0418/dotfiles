@@ -1,7 +1,5 @@
 {
-  nixosSettings,
   nixos-hardware,
-  nixpkgsOverlay,
   xremap-flake,
   ...
 }:
@@ -10,46 +8,46 @@ let
   hardware = ./hardware-configuration.nix;
 
   # configuration.nix top level keys
-  nix = "${nixosSettings}/nix.nix";
-  nixpkgs = import "${nixosSettings}/nixpkgs.nix" { inherit nixpkgsOverlay; };
-  boot = "${nixosSettings}/boot.nix";
-  networking = import "${nixosSettings}/networking.nix" { hostName = "yasunori-laptop"; };
-  environment = "${nixosSettings}/environment.nix";
-  time = "${nixosSettings}/time.nix";
-  i18n = "${nixosSettings}/i18n.nix";
-  security = "${nixosSettings}/security.nix";
-  programs = "${nixosSettings}/programs.nix";
-  users = "${nixosSettings}/users.nix";
-  fonts = "${nixosSettings}/fonts.nix";
-  virtualisation = "${nixosSettings}/virtualisation.nix";
-  qt = "${nixosSettings}/qt.nix";
+  nix = ../settings/nix.nix;
+  nixpkgs = import ../settings/nixpkgs.nix;
+  boot = ../settings/boot.nix;
+  networking = import ../settings/networking.nix { hostName = "yasunori-laptop"; };
+  environment = ../settings/environment.nix;
+  time = ../settings/time.nix;
+  i18n = ../settings/i18n.nix;
+  security = ../settings/security.nix;
+  programs = ../settings/programs.nix;
+  users = ../settings/users.nix;
+  fonts = ../settings/fonts.nix;
+  virtualisation = ../settings/virtualisation.nix;
+  qt = ../settings/qt.nix;
 
   services = [
-    "${nixosSettings}/services/printing.nix"
-    "${nixosSettings}/services/openssh.nix"
-    "${nixosSettings}/services/tlp.nix"
-    "${nixosSettings}/services/displayManager/ly.nix"
+    ../settings/services/printing.nix
+    ../settings/services/openssh.nix
+    ../settings/services/tlp.nix
+    ../settings/services/displayManager/ly.nix
   ];
 
   xserver = [
-    "${nixosSettings}/xserver/base.nix"
-    # (import "${nixosSettings}/xserver/displayManager/lightdm.nix")
-    "${nixosSettings}/xserver/windowManager/i3wm.nix"
+    ../settings/xserver/base.nix
+    # (import ../settings/xserver/displayManager/lightdm.nix)
+    ../settings/xserver/windowManager/i3wm.nix
   ];
 
   systemdUserServiceUnits = [
-    "${nixosSettings}/systemd/polkit-kde-agent.nix"
-    "${nixosSettings}/systemd/ssh-agent.nix"
+    ../settings/systemd/polkit-kde-agent.nix
+    ../settings/systemd/ssh-agent.nix
   ];
 
   # Applications
   xremapModule = xremap-flake.nixosModules.default;
-  xremap = "${nixosSettings}/applications/xremap.nix";
-  fcitx5 = "${nixosSettings}/applications/fcitx5.nix";
-  tailscale = "${nixosSettings}/applications/tailscale.nix";
-  pipewire = "${nixosSettings}/applications/pipewire.nix";
-  thunar = "${nixosSettings}/applications/thunar.nix";
-  xss-i3lock = "${nixosSettings}/applications/xss-i3lock.nix";
+  xremap = ../settings/applications/xremap.nix;
+  fcitx5 = ../settings/applications/fcitx5.nix;
+  tailscale = ../settings/applications/tailscale.nix;
+  pipewire = ../settings/applications/pipewire.nix;
+  thunar = ../settings/applications/thunar.nix;
+  xss-i3lock = ../settings/applications/xss-i3lock.nix;
 in
 {
   imports = [

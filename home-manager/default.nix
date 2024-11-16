@@ -5,8 +5,6 @@
   wezterm-flake,
   neovim-nightly-overlay,
   vim-overlay,
-  homeManager,
-  nixpkgsOverlay,
   ...
 }:
 {
@@ -21,13 +19,12 @@
         ruby = true;
         sodium = true;
       })
-      (import "${nixpkgsOverlay}/gnu-screen.nix")
+      (import ../nix-overlays/gnu-screen.nix)
     ];
   };
   extraSpecialArgs = {
     inherit
       wezterm-flake
-      homeManager
       ;
   };
   modules = [ ./${profileName} ];

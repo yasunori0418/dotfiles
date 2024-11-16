@@ -28,7 +28,7 @@
 
   outputs =
     {
-      self,
+      # self,
       nixpkgs,
       nixos-hardware,
       xremap-flake,
@@ -38,17 +38,6 @@
       vim-overlay,
       ...
     }:
-    let
-      flakeRoot = self;
-      nixpkgsOverlay = "${flakeRoot}/nix-overlays";
-
-      # nixos directory symbols
-      nixos = "${flakeRoot}/nixos";
-      nixosSettings = "${nixos}/settings";
-
-      # nix home-manager directory symbols
-      homeManager = "${flakeRoot}/home-manager";
-    in
     {
       formatter.x86_64-linux = nixpkgs.legacyPackages.x86_64-linux.nixfmt-rfc-style;
       formatter.x86_64-darwin = nixpkgs.legacyPackages.x86_64-darwin.nixfmt-rfc-style;
@@ -60,8 +49,6 @@
               inherit
                 nixos-hardware
                 xremap-flake
-                nixosSettings
-                nixpkgsOverlay
                 profileName
                 system
                 ;
@@ -94,8 +81,6 @@
                 wezterm-flake
                 neovim-nightly-overlay
                 vim-overlay
-                nixpkgsOverlay
-                homeManager
                 ;
             };
         in

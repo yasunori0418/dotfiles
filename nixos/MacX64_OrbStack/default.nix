@@ -1,6 +1,4 @@
 {
-  nixosSettings, # ../settings
-  nixpkgsOverlay,
   modulesPath,
   ...
 }:
@@ -15,15 +13,15 @@
         ./networking.nix
       ];
 
-      nix = "${nixosSettings}/nix.nix";
-      nixpkgs = import "${nixosSettings}/nixpkgs.nix" { inherit nixpkgsOverlay; };
-      environment = "${nixosSettings}/environment.nix";
-      time = "${nixosSettings}/time.nix";
-      i18n = "${nixosSettings}/i18n.nix";
-      security = "${nixosSettings}/security.nix";
-      programs = "${nixosSettings}/programs.nix";
-      # fonts = "${nixosSettings}/fonts.nix";
+      nix = ../settings/nix.nix;
+      nixpkgs = import ../settings/nixpkgs.nix;
+      environment = ../settings/environment.nix;
+      time = ../settings/time.nix;
+      i18n = ../settings/i18n.nix;
+      security = ../settings/security.nix;
+      programs = ../settings/programs.nix;
     in
+    # fonts = ../settings/fonts.nix;
     [
       nix
       nixpkgs

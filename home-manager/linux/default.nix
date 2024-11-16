@@ -1,7 +1,6 @@
 {
   pkgs,
   config,
-  homeManager,
   ...
 }:
 rec {
@@ -13,13 +12,11 @@ rec {
       packages = import ./packages.nix {
         inherit
           pkgs
-          homeManager
           ;
       };
       homeFile = import ./homeFile.nix {
         inherit
           config
-          homeManager
           dotfiles
           homeDir
           xdgConfigHome

@@ -1,12 +1,11 @@
 {
   pkgs,
-  homeManager,
   ...
 }:
 {
   home.packages =
     let
-      applications = import "${homeManager}/applications.nix" { inherit pkgs; };
+      applications = import ../applications.nix { inherit pkgs; };
       packages =
         with applications;
         nixTools
