@@ -1,6 +1,7 @@
 {
   nixosSettings,
   nixos-hardware,
+  nixpkgsOverlay,
   xremap-flake,
   ...
 }:
@@ -10,6 +11,7 @@ let
 
   # configuration.nix top level keys
   nix = "${nixosSettings}/nix.nix";
+  nixpkgs = import "${nixosSettings}/nixpkgs.nix" { inherit nixpkgsOverlay; };
   boot = "${nixosSettings}/boot.nix";
   networking = import "${nixosSettings}/networking.nix" { hostName = "yasunori-laptop"; };
   environment = "${nixosSettings}/environment.nix";
@@ -56,6 +58,7 @@ in
 
     # configuration.nix top level keys
     nix
+    nixpkgs
     boot
     networking
     environment
@@ -77,8 +80,6 @@ in
     thunar
     xss-i3lock
   ] ++ services ++ xserver ++ systemdUserServiceUnits;
-
-  nixpkgs.config.allowUnfree = true;
 
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions
