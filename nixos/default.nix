@@ -16,32 +16,14 @@
       xremap-flake
       ;
   };
-  modules = [
-    ./${profileName}
-    inputs.home-manager.nixosModules.home-manager
-    (
-      let
-        homeManagerConfig = import ../home-manager {
-          profileName = "linux";
-          inherit system;
-          inherit (inputs)
-            nixpkgs
-            wezterm-flake
-            neovim-nightly-overlay
-            vim-overlay
-            ;
-        };
-      in
-      {
-        home-manager = {
-          useGlobalPkgs = true;
-          useUserPackages = true;
-          users.yasunori = {
-            imports = homeManagerConfig.modules;
-          };
-          inherit (homeManagerConfig) extraSpecialArgs;
-        };
-      }
-    )
-  ];
+  modules =
+    let
+      hmNixosModule = inputs.home-manager.nixosModules.home-manager;
+      homeConfig = import ./home.nix { inherit inputs system; };
+    in
+    [
+      ./${profileName}
+      hmNixosModule
+      homeConfig
+    ];
 }
