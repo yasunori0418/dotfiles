@@ -2,7 +2,6 @@
   profileName,
   system,
   nixpkgs,
-  wezterm-flake,
   neovim-nightly-overlay,
   vim-overlay,
   ...
@@ -22,10 +21,6 @@
       (import ../nix-overlays/gnu-screen.nix)
     ];
   };
-  extraSpecialArgs = {
-    inherit
-      wezterm-flake
-      ;
-  };
+  extraSpecialArgs = {};
   modules = [ ./${profileName} ];
 }

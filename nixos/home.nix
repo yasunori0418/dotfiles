@@ -7,7 +7,6 @@
         inherit system;
         inherit (inputs)
           nixpkgs
-          wezterm-flake
           neovim-nightly-overlay
           vim-overlay
           ;
