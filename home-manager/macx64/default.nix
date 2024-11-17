@@ -12,6 +12,7 @@ rec {
       packages = import ./packages.nix { inherit pkgs; };
       homeFile = import ./homeFile.nix {
         inherit
+          pkgs
           config
           dotfiles
           homeDir

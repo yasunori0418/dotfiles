@@ -1,4 +1,5 @@
 {
+  pkgs,
   config,
   dotfiles,
   homeDir,
@@ -8,6 +9,7 @@
 let
   fileMap = import ../fileMap.nix {
     inherit
+      pkgs
       config
       dotfiles
       homeDir

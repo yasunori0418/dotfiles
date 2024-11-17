@@ -18,6 +18,7 @@ rec {
       };
       homeFile = import ./homeFile.nix {
         inherit
+          pkgs
           config
           dotfiles
           homeDir

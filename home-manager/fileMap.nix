@@ -1,4 +1,5 @@
 {
+  # pkgs,
   config,
   homeDir,
   xdgConfigHome,
@@ -27,6 +28,8 @@ in
     ".bash_logout".source = (symlink /${homeDir}/.bash_logout);
     "package.json".source = (symlink /${homeDir}/package.json);
     ".screenrc".source = (symlink /${homeDir}/.screenrc);
+    # ".background-image".source = pkgs.nixos-artwork.wallpapers.nineish-solarized-dark;
+    ".background-image".source = (symlink /${homeDir}/.background-image);
   };
 
   dotConfig = {
