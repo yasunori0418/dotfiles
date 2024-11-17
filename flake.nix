@@ -62,27 +62,17 @@
 
       homeConfigurations =
         let
-          homeManagerArgs =
-            { profileName, system }:
-            import ./home-manager {
-              inherit
-                profileName
-                system
-                ;
-              inherit (inputs)
-                nixpkgs
-                neovim-nightly-overlay
-                vim-overlay
-                ;
-            };
           inherit (inputs.home-manager.lib) homeManagerConfiguration;
+          inherit (import ./home-manager/args.nix) args;
         in
         {
-          linux = homeManagerConfiguration (homeManagerArgs {
+          linux = homeManagerConfiguration (args {
+            inherit inputs;
             profileName = "linux";
             system = "x86_64-linux";
           });
-          macx64 = homeManagerConfiguration (homeManagerArgs {
+          macx64 = homeManagerConfiguration (args {
+            inherit inputs;
             profileName = "macx64";
             system = "x86_64-darwin";
           });

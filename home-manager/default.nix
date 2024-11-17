@@ -21,6 +21,6 @@
       (import ../nix-overlays/gnu-screen.nix)
     ];
   };
-  extraSpecialArgs = {};
+  extraSpecialArgs = { };
   modules = [ ./${profileName} ];
 }
