@@ -26,11 +26,6 @@
     {
       # self,
       nixpkgs,
-      nixos-hardware,
-      xremap-flake,
-      home-manager,
-      neovim-nightly-overlay,
-      vim-overlay,
       ...
     }@inputs:
     {
@@ -43,23 +38,22 @@
             import ./nixos {
               inherit
                 inputs
-                nixos-hardware
-                xremap-flake
                 profileName
                 system
                 ;
             };
+          inherit (inputs.nixpkgs.lib) nixosSystem;
         in
         {
-          laptop = nixpkgs.lib.nixosSystem (nixosSystemArgs {
+          laptop = nixosSystem (nixosSystemArgs {
             profileName = "ThinkPadE14Gen2";
             system = "x86_64-linux";
           });
-          desktop = nixpkgs.lib.nixosSystem (nixosSystemArgs {
+          desktop = nixosSystem (nixosSystemArgs {
             profileName = "Desktop";
             system = "x86_64-linux";
           });
-          macx64OrbStack = nixpkgs.lib.nixosSystem (nixosSystemArgs {
+          macx64OrbStack = nixosSystem (nixosSystemArgs {
             profileName = "MacX64_OrbStack";
             system = "x86_64-linux";
           });
@@ -73,18 +67,21 @@
               inherit
                 profileName
                 system
+                ;
+              inherit (inputs)
                 nixpkgs
                 neovim-nightly-overlay
                 vim-overlay
                 ;
             };
+          inherit (inputs.home-manager.lib) homeManagerConfiguration;
         in
         {
-          linux = home-manager.lib.homeManagerConfiguration (homeManagerArgs {
+          linux = homeManagerConfiguration (homeManagerArgs {
             profileName = "linux";
             system = "x86_64-linux";
           });
-          macx64 = home-manager.lib.homeManagerConfiguration (homeManagerArgs {
+          macx64 = homeManagerConfiguration (homeManagerArgs {
             profileName = "macx64";
             system = "x86_64-darwin";
           });

@@ -1,7 +1,5 @@
 {
   inputs,
-  nixos-hardware,
-  xremap-flake,
   profileName,
   system,
   ...
@@ -12,6 +10,8 @@
     inherit
       inputs
       system
+      ;
+    inherit (inputs)
       nixos-hardware
       xremap-flake
       ;
