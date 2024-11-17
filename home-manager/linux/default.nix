@@ -1,5 +1,6 @@
 {
   pkgs,
+  pkgs-stable,
   config,
   ...
 }:
@@ -12,6 +13,7 @@ rec {
       packages = import ./packages.nix {
         inherit
           pkgs
+          pkgs-stable
           ;
       };
       homeFile = import ./homeFile.nix {

@@ -9,6 +9,7 @@ rec {
       inherit profileName system;
       inherit (inputs)
         nixpkgs
+        nixpkgs-stable
         neovim-nightly-overlay
         vim-overlay
         ;

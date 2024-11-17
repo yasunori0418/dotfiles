@@ -1,5 +1,6 @@
 {
   pkgs,
+  pkgs-stable,
   ...
 }:
 {
@@ -21,7 +22,7 @@
             pkgs.leetcode-cli
           ]
         )
-        ++ terminalEmulators
+        ++ (terminalEmulators ++ [ pkgs-stable.wezterm ])
         ++ clojureTools;
     in
     packages;
