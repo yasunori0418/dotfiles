@@ -1,5 +1,5 @@
 {
-  # pkgs,
+  pkgs,
   config,
   homeDir,
   xdgConfigHome,
@@ -7,6 +7,23 @@
 }:
 let
   symlink = config.lib.file.mkOutOfStoreSymlink;
+  selectWallpaper =
+    {
+      ## type = (nixos-artwork | (default | null))
+      type,
+
+      ## type is `nixos-artwork` then select from nixos-artwork.
+      ## mean name: nix-wallpaper-${name}.png
+      ## refer: https://github.com/NixOS/nixos-artwork/tree/master/wallpapers
+      #
+      ## type is default or null then must be set any value.
+      ## e.g. name = "";
+      name,
+    }:
+    if type == "nixos-artwork" then
+      "${pkgs.nixos-artwork.wallpapers.${name}}/share/backgrounds/nixos/nix-wallpaper-${name}.png"
+    else
+      (symlink /${homeDir}/.background-image);
 in
 {
   homeDirectory = {
@@ -28,8 +45,12 @@ in
     ".bash_logout".source = (symlink /${homeDir}/.bash_logout);
     "package.json".source = (symlink /${homeDir}/package.json);
     ".screenrc".source = (symlink /${homeDir}/.screenrc);
-    # ".background-image".source = pkgs.nixos-artwork.wallpapers.nineish-solarized-dark;
-    ".background-image".source = (symlink /${homeDir}/.background-image);
+    ".background-image".source = selectWallpaper {
+      type = "default";
+      name = "";
+      # type = "nixos-artwork";
+      # name = "nineish-solarized-dark";
+    };
   };
 
   dotConfig = {
