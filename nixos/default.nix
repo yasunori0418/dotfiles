@@ -18,12 +18,12 @@
   };
   modules =
     let
-      hmNixosModule = inputs.home-manager.nixosModules.home-manager;
+      inherit (inputs.home-manager.nixosModules) home-manager;
       homeConfig = import ./home.nix { inherit inputs system; };
     in
     [
       ./${profileName}
-      hmNixosModule
+      home-manager
       homeConfig
     ];
 }
