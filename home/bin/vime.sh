@@ -11,7 +11,6 @@ alacritty \
   --option "window.dimensions.columns=120" \
   --option "window.dimensions.lines=30" \
   --option "window.decorations='FULL'" \
-  --option "terminal.shell=$(which zsh)" \
   --class FloatingVim \
   --command nvim "${clip_file}" \
   || exit 1
