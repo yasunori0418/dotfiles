@@ -26,6 +26,7 @@ rec {
       home-manager = {
         useGlobalPkgs = true;
         useUserPackages = true;
+        backupFileExtension = "hm_backup";
         users.yasunori = {
           imports = homeManagerConfig.modules;
         };
