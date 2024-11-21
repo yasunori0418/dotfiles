@@ -21,7 +21,6 @@
     unzip
     hugo
     zellij
-    screen
     direnv
     tmux
   ];

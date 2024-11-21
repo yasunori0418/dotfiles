@@ -25,7 +25,6 @@ in
         ruby = true;
         sodium = true;
       })
-      (import ../nix-overlays/gnu-screen.nix)
     ];
   };
   extraSpecialArgs = {
