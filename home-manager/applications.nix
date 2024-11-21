@@ -84,6 +84,7 @@
     ruby
     ncurses
     luajitPackages.luarocks
+    nodejs_22
     python312Packages.uv
     pdm
   ];
