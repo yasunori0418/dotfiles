@@ -74,6 +74,7 @@
     nodePackages.sql-formatter
     php83Extensions.xdebug
     eslint_d
+    prettierd
     biome
   ];
 

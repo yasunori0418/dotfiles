@@ -39,19 +39,19 @@ efm_configs.setup({
         },
         javascript = {
             { kind = "linters", name = "eslint_d" },
-            { kind = "formatters", name = "biome" },
+            { kind = "formatters", name = "prettier_d" },
         },
         javascriptreact = {
             { kind = "linters", name = "eslint_d" },
-            { kind = "formatters", name = "biome" },
+            { kind = "formatters", name = "prettier_d" },
         },
         typescript = {
             { kind = "linters", name = "eslint_d" },
-            { kind = "formatters", name = "biome" },
+            { kind = "formatters", name = "prettier_d" },
         },
         typescriptreact = {
             { kind = "linters", name = "eslint_d" },
-            { kind = "formatters", name = "biome" },
+            { kind = "formatters", name = "prettier_d" },
         },
         sh = {
             { kind = "linters", name = "shellcheck" },
