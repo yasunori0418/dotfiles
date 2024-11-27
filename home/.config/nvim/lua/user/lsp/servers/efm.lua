@@ -45,6 +45,14 @@ efm_configs.setup({
             { kind = "linters", name = "eslint_d" },
             { kind = "formatters", name = "biome" },
         },
+        typescript = {
+            { kind = "linters", name = "eslint_d" },
+            { kind = "formatters", name = "biome" },
+        },
+        typescriptreact = {
+            { kind = "linters", name = "eslint_d" },
+            { kind = "formatters", name = "biome" },
+        },
         sh = {
             { kind = "linters", name = "shellcheck" },
             { kind = "formatters", name = "beautysh" },

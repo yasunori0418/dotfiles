@@ -73,6 +73,8 @@
     beautysh
     nodePackages.sql-formatter
     php83Extensions.xdebug
+    eslint_d
+    biome
   ];
 
   libraries = with pkgs; [
