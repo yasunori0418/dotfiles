@@ -57,6 +57,7 @@
     intelephense
     typescript-language-server
     yaml-language-server
+    emmet-ls
   ];
 
   codingSupportTools = with pkgs; [
