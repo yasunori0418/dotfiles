@@ -14,7 +14,7 @@ require("user.utils").autocmds_set({
         group = vimrc,
         pattern = { "*.blade.*" },
         callback = function()
-            vim.opt_local.filetype = "html"
+            vim.opt_local.filetype = "blade"
         end,
     },
     {

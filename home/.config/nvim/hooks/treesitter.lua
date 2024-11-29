@@ -19,6 +19,8 @@ require("nvim-treesitter.configs").setup({
         "vim",
         "vimdoc",
         "yaml",
+        "php",
+        "html",
     },
     ignore_install = {},
     -- Install parsers synchronously (only applied to `ensure_installed`)
@@ -51,6 +53,21 @@ require("nvim-treesitter.configs").setup({
         default_fallback = "auto",
     },
 })
+
+require("nvim-treesitter.parsers").get_parser_configs().blade = {
+    install_info = {
+        url = "https://github.com/EmranMR/tree-sitter-blade",
+        files = { "src/parser.c" },
+        branch = "main",
+    },
+    filetype = "blade",
+}
+vim.filetype.add({
+    pattern = {
+        [".*%.blade%.php"] = "blade",
+    },
+})
+
 -- }}}
 
 -- lua_post_update {{{
