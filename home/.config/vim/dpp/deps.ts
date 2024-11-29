@@ -3,18 +3,18 @@ export {
   type ConfigArguments,
   type ConfigReturn,
   type MultipleHook,
-} from "jsr:@shougo/dpp-vim@3.1.0/config";
-export { type Dpp } from "jsr:@shougo/dpp-vim@3.1.0/dpp";
+} from "jsr:@shougo/dpp-vim@4.0.0/config";
+export { type Dpp } from "jsr:@shougo/dpp-vim@4.0.0/dpp";
 export { type Protocol } from "jsr:@shougo/dpp-vim/protocol";
-export { type Action, type BaseExt } from "jsr:@shougo/dpp-vim@3.1.0/ext";
+export { type Action, type BaseExt } from "jsr:@shougo/dpp-vim@4.0.0/ext";
 export {
   type Context,
   type ContextBuilder,
   type DppOptions,
   type ExtOptions,
   type Plugin,
-} from "jsr:@shougo/dpp-vim@3.1.0/types";
-export { mergeFtplugins } from "jsr:@shougo/dpp-vim@3.1.0/utils";
+} from "jsr:@shougo/dpp-vim@4.0.0/types";
+export { mergeFtplugins } from "jsr:@shougo/dpp-vim@4.0.0/utils";
 export {
   Ext as TomlExt,
   type Params as TomlParams,
