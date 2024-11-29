@@ -2,6 +2,7 @@
 {
   nixTools = with pkgs; [
     nix-prefetch-github
+    nix-output-monitor
     nix-search-cli
     devenv
     nix-direnv
