@@ -34,6 +34,9 @@ efm_configs.setup({
             { kind = "linters", name = "phpcs" },
             { kind = "formatters", name = "phpcbf" },
         },
+        blade = {
+            { kind = "formatters", name = "blade_formatter" },
+        },
         dockerfile = {
             { kind = "linters", name = "hadolint" },
         },

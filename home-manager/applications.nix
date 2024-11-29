@@ -69,12 +69,13 @@
     shellcheck
     php83Packages.php-codesniffer
     php83Packages.phpmd
+    php83Extensions.xdebug
+    blade-formatter
     luajitPackages.luacheck
     ruff
     stylua
     beautysh
     nodePackages.sql-formatter
-    php83Extensions.xdebug
     eslint_d
     prettierd
     biome
