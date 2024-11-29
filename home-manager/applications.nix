@@ -58,6 +58,8 @@
     typescript-language-server
     yaml-language-server
     emmet-ls
+    vscode-langservers-extracted
+    vtsls
   ];
 
   codingSupportTools = with pkgs; [
