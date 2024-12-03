@@ -5,8 +5,8 @@
       noto-fonts
       noto-fonts-cjk-serif
       noto-fonts-cjk-sans
-      noto-fonts-emoji
-      fira-code-nerdfont
+      noto-fonts-color-emoji
+      nerd-fonts.hack
       hackgen-nf-font
     ];
     fontDir.enable = true;
