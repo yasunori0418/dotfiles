@@ -32,7 +32,8 @@ local yaml = {
         "!Join sequence",
     },
     schemas = {
-        ["https://raw.githubusercontent.com/awslabs/goformation/master/schema/cloudformation.schema.json"] = "/*",
+        -- ["https://raw.githubusercontent.com/awslabs/goformation/master/schema/cloudformation.schema.json"] = "/*",
+        ["https://json.schemastore.org/hugo.json"] = 'hugo.yaml',
     },
 }
 require("lspconfig").yamlls.setup({
