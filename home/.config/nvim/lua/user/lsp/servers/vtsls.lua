@@ -33,4 +33,16 @@ require("lspconfig").vtsls.setup({
         return find_root(vim.fs.dirname(path))
     end,
     capabilities = require("user.lsp.utils").capabilities,
+    settings = {
+        typescript = {
+            format = {
+                enable = false,
+            },
+        },
+        javascript = {
+            format = {
+                enable = false,
+            },
+        },
+    }
 })
