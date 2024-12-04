@@ -17,8 +17,8 @@ type Params = Record<string, unknown>;
 export class Config extends BaseConfig {
   override async config(args: ConfigArguments): Promise<void> {
     const denops = args.denops;
-    args.setAlias("source", "file_fd", "file_external");
-    args.setAlias("source", "file_rg", "file_external");
+    args.setAlias("files", "source", "file_fd", "file_external");
+    args.setAlias("files", "source", "file_rg", "file_external");
 
     args.contextBuilder.patchGlobal({
       uiOptions: {
