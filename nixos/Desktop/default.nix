@@ -18,6 +18,7 @@
       # configuration.nix top level keys
       nix = ../settings/nix.nix;
       nixpkgs = import ../settings/nixpkgs.nix;
+      system = ../settings/system.nix;
       boot = ../settings/boot.nix;
       networking = import ../settings/networking.nix { hostName = "yasunori-desktop"; };
       environment = ../settings/environment.nix;
@@ -66,6 +67,7 @@
       # configuration.nix top level keys
       nix
       nixpkgs
+      system
       boot
       networking
       environment
