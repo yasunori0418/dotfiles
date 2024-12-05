@@ -24,6 +24,7 @@
     zellij
     direnv
     tmux
+    zip
   ];
 
   textEditors = with pkgs; [
