@@ -76,7 +76,7 @@
     ruff
     stylua
     beautysh
-    nodePackages.sql-formatter
+    sql-formatter
     eslint_d
     prettierd
     biome
