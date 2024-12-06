@@ -15,6 +15,8 @@
 
       nix = ../settings/nix.nix;
       nixpkgs = import ../settings/nixpkgs.nix;
+      system = ../settings/system.nix;
+      hostToLocalSymlink = ./hostToLocalSymlink.nix;
       environment = ../settings/environment.nix;
       time = ../settings/time.nix;
       i18n = ../settings/i18n.nix;
@@ -25,6 +27,8 @@
     [
       nix
       nixpkgs
+      system
+      hostToLocalSymlink
       environment
       time
       i18n

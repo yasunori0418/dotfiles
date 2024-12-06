@@ -6,31 +6,11 @@
 
 {
   # Add OrbStack CLI tools to PATH
-  environment.shellInit =
-    let
-      macHomeDir = "/mnt/mac/Users/watanabe";
-      nixHomeDir = config.users.users.yasunori.home;
-    in
-    ''
-      . /opt/orbstack-guest/etc/profile-early
-
-      # add your customizations here
-
-      . /opt/orbstack-guest/etc/profile-late
-
-      if [[ ! -L ${nixHomeDir}/dotfiles ]]; then
-        rm -rf ${nixHomeDir}/dotfiles
-      fi
-      if [[ ! -L ${nixHomeDir}/src ]]; then
-        rm -rf ${nixHomeDir}/src
-      fi
-      if [[ ! -L ${nixHomeDir}/.ssh ]]; then
-        rm -rf ${nixHomeDir}/.ssh
-      fi
-      ln -svf ${macHomeDir}/dotfiles ${nixHomeDir}/
-      ln -svf ${macHomeDir}/src ${nixHomeDir}/
-      ln -svf ${macHomeDir}/.ssh ${nixHomeDir}/
-    '';
+  environment.shellInit = ''
+    # add your customizations here
+    . /opt/orbstack-guest/etc/profile-early
+    . /opt/orbstack-guest/etc/profile-late
+  '';
 
   # Enable documentation
   documentation.man.enable = true;
