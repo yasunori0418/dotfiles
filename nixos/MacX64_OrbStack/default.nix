@@ -1,5 +1,6 @@
 {
   modulesPath,
+  xremap-flake,
   ...
 }:
 {
@@ -22,8 +23,28 @@
       i18n = ../settings/i18n.nix;
       security = ../settings/security.nix;
       programs = ../settings/programs.nix;
+      fonts = ../settings/fonts.nix;
+      qt = ../settings/qt.nix;
+
+      xserver = [
+        ../settings/xserver/base.nix
+        # (import ../settings/xserver/displayManager/lightdm.nix)
+        ../settings/xserver/windowManager/i3wm.nix
+      ];
+
+      systemdUserServiceUnits = [
+        ../settings/systemd/polkit-kde-agent.nix
+        ../settings/systemd/ssh-agent.nix
+      ];
+
+      # Applications
+      xremapModule = xremap-flake.nixosModules.default;
+      xremap = ../settings/applications/xremap.nix;
+      fcitx5 = ../settings/applications/fcitx5.nix;
+      pipewire = ../settings/applications/pipewire.nix;
+      thunar = ../settings/applications/thunar.nix;
+      xss-i3lock = ../settings/applications/xss-i3lock.nix;
     in
-    # fonts = ../settings/fonts.nix;
     [
       nix
       nixpkgs
@@ -34,9 +55,19 @@
       i18n
       security
       programs
-      # fonts
+      fonts
+      qt
+
+      xremapModule
+      xremap
+      fcitx5
+      pipewire
+      thunar
+      xss-i3lock
     ]
-    ++ defaultSettings;
+    ++ defaultSettings
+    ++ xserver
+    ++ systemdUserServiceUnits;
 
   # This option defines the first version of NixOS you have installed on this particular machine,
   # and is used to maintain compatibility with application data (e.g. databases) created on older NixOS versions.
