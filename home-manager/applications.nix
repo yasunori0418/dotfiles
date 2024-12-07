@@ -13,7 +13,6 @@
     tokei
     jnv
     hyperfine
-    dasel
     usql
     glow
     gh
@@ -41,7 +40,9 @@
   shellTools = with pkgs; [
     sheldon
     bat
+    dasel
     jq
+    yq
     ripgrep
     ghq
     delta
@@ -62,6 +63,7 @@
     emmet-ls
     vscode-langservers-extracted
     vtsls
+    taplo
   ];
 
   codingSupportTools = with pkgs; [
