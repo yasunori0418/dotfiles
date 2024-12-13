@@ -59,6 +59,8 @@ setopt AUTO_RESUME
 unsetopt BEEP
 setopt ZLE
 
+setopt NOCLOBBER
+
 ZSH_HIGHLIGHT_HIGHLIGHTERS=(main brackets cursor line)
 
 zmodload -F zsh/terminfo +p:terminfo
