@@ -14,13 +14,13 @@ code --list-extensions > "${EXTENSIONS}"
 
 declare -r dump_file="/tmp/remove-extension"
 while [[ $(code --list-extensions | wc -l) -gt 0 ]]; do
-  code --list-extensions \
-  | head -1 \
-  | tee "${dump_file}" \
-  | xargs -I{} code --uninstall-extension {} \
-  1>> "${OUT_LOG}" \
-  2>> "${ERR_LOG}"
-  echo "uninstalled extension: $(cat ${dump_file})"
+    code --list-extensions \
+        | head -1 \
+        | tee "${dump_file}" \
+        | xargs -I{} code --uninstall-extension {} \
+        1>> "${OUT_LOG}" \
+        2>> "${ERR_LOG}"
+    echo "uninstalled extension: $(cat ${dump_file})"
 done
 
 echo "================================"

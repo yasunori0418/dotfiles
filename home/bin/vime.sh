@@ -22,4 +22,4 @@ alacritty \
     --command nvim "${clip_file}" \
     || exit 1
 
-eval "${copy_cmd}" - < "${clip_file}" 
+eval "${copy_cmd}" - < "${clip_file}"

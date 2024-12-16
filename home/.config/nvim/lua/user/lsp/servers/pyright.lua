@@ -8,4 +8,3 @@ require("lspconfig").pyright.setup({
         },
     },
 })
-

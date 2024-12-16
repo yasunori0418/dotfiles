@@ -1,8 +1,8 @@
 local M = {}
 local utils = require("user.utils")
 
-local set_buffer = vim.fn['ddc#custom#set_buffer']
-local get_buffer = vim.fn['ddc#custom#get_buffer']
+local set_buffer = vim.fn["ddc#custom#set_buffer"]
+local get_buffer = vim.fn["ddc#custom#get_buffer"]
 
 local function commandline_post()
     if vim.b.prev_buffer_config then
@@ -21,7 +21,7 @@ function M.commandline_pre()
         end,
         once = true,
     })
-    vim.fn['ddc#enable_cmdline_completion']()
+    vim.fn["ddc#enable_cmdline_completion"]()
 end
 
 return M

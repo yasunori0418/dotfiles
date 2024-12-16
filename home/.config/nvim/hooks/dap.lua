@@ -27,7 +27,7 @@ require("user.utils").keymaps_set({
         mode = "n",
         lhs = [[<Plug>(dap)lp]],
         rhs = function()
-            require('dap').set_breakpoint(nil, nil, vim.fn.input('Log point message: '))
+            require("dap").set_breakpoint(nil, nil, vim.fn.input("Log point message: "))
         end,
         opts = opt,
     },

@@ -92,4 +92,3 @@ require("lspconfig").efm.setup({
         languages = efm_configs.languages,
     },
 })
-

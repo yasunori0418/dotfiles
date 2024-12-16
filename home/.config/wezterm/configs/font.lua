@@ -17,7 +17,7 @@ function M.setup(config)
     config.adjust_window_size_when_changing_font_size = false
 
     -- disable ligatures
-    config.harfbuzz_features = { 'calt=0', 'clig=0', 'liga=0' }
+    config.harfbuzz_features = { "calt=0", "clig=0", "liga=0" }
 
     return config
 end

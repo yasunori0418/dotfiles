@@ -4,12 +4,12 @@ set -euo pipefail
 
 
 os_name () {
-  if [[ $(uname -s) = "Linux" ]]; then
-    echo "linux64"
-  fi
-  if [[ $(uname -s) = "Darwin" ]]; then
-    echo "macos-$(uname -m)"
-  fi
+    if [[ $(uname -s) = "Linux" ]]; then
+        echo "linux64"
+    fi
+    if [[ $(uname -s) = "Darwin" ]]; then
+        echo "macos-$(uname -m)"
+    fi
 }
 
 declare -r install_prefix="${HOME}/.local/dotfiles"
@@ -37,10 +37,10 @@ mv "${install_prefix}/${file_name}" "${install_prefix}/nvim"
 rm -rf nvim/lib # delete treesitter parsers
 
 if [[ $(command -v nvim) ]]; then
-  nvim -V1 -v
-  ls -la "${install_prefix}"
-  exit 0
+    nvim -V1 -v
+    ls -la "${install_prefix}"
+    exit 0
 else
-  echo "Failure install of neovim."
-  exit 1
+    echo "Failure install of neovim."
+    exit 1
 fi

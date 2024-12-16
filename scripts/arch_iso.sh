@@ -15,16 +15,16 @@ declare -r download_dir="${HOME}/Downloads/arch_iso_${date_ym1}"
 cd "${download_dir}"
 
 curl -OL ${iso_url} \
-     -OL ${sig_url}
+    -OL ${sig_url}
 
 if [[ $(command -v pacman-key) ]]; then
-  pacman-key -v "${img_file}.sig"
-  exit 0
+    pacman-key -v "${img_file}.sig"
+    exit 0
 fi
 
 if [[ $(command -v gpg) ]]; then
-  gpg --keyserver-options auto-key-retrieve --verify "${img_file}.sig"
-  exit 0
+    gpg --keyserver-options auto-key-retrieve --verify "${img_file}.sig"
+    exit 0
 fi
 
 echo "Not fonund proof verification command"

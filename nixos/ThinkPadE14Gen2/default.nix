@@ -51,35 +51,39 @@ let
   xss-i3lock = ../settings/applications/xss-i3lock.nix;
 in
 {
-  imports = [
-    lenovoThinkpadE14Amd
-    hardware
+  imports =
+    [
+      lenovoThinkpadE14Amd
+      hardware
 
-    # configuration.nix top level keys
-    nix
-    nixpkgs
-    system
-    boot
-    networking
-    environment
-    time
-    i18n
-    security
-    programs
-    users
-    fonts
-    virtualisation
-    qt
+      # configuration.nix top level keys
+      nix
+      nixpkgs
+      system
+      boot
+      networking
+      environment
+      time
+      i18n
+      security
+      programs
+      users
+      fonts
+      virtualisation
+      qt
 
-    # Applications
-    xremapModule
-    xremap
-    fcitx5
-    tailscale
-    pipewire
-    thunar
-    xss-i3lock
-  ] ++ services ++ xserver ++ systemdUserServiceUnits;
+      # Applications
+      xremapModule
+      xremap
+      fcitx5
+      tailscale
+      pipewire
+      thunar
+      xss-i3lock
+    ]
+    ++ services
+    ++ xserver
+    ++ systemdUserServiceUnits;
 
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions

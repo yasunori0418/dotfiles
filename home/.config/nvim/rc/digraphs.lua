@@ -32,4 +32,4 @@ digraphs("j9", 65305) -- ９
 -- その他の記号
 digraphs("j~", 65374) -- ～
 digraphs("j/", 12539) -- ・
-digraphs("j ", 12288) -- 　
+digraphs("j ", 12288) -- [[ 　 ]]

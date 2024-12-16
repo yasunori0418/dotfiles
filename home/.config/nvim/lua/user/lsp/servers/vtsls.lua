@@ -44,5 +44,5 @@ require("lspconfig").vtsls.setup({
                 enable = false,
             },
         },
-    }
+    },
 })

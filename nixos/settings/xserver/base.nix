@@ -7,7 +7,7 @@
     xkb.layout = "us";
 
     desktopManager.wallpaper = {
-      combineScreens= true;
+      combineScreens = true;
       mode = "scale";
     };
   };

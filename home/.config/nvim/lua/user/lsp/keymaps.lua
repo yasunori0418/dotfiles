@@ -10,7 +10,7 @@ lsp_utils.on_attach(function(_, buffer)
             mode = { "n", "x" },
             lhs = [[gl]],
             rhs = [[<Plug>(lsp)]],
-            opts = opt
+            opts = opt,
         },
         {
             mode = { "n" },

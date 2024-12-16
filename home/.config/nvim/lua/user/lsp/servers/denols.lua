@@ -50,4 +50,3 @@ require("lspconfig").denols.setup({
         },
     },
 })
-

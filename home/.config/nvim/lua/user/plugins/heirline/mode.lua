@@ -100,7 +100,7 @@ M.Vim = {
 
 M.Skk = {
     condition = function()
-        if vim.fn.exists('g:loaded_skkeleton') == 0 then
+        if vim.fn.exists("g:loaded_skkeleton") == 0 then
             return false
         end
         if vim.fn["skkeleton#mode"]() ~= "" then

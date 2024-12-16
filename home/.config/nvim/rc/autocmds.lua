@@ -63,7 +63,7 @@ require("user.utils").autocmds_set({
         pattern = "*",
         callback = function()
             vim.opt.cursorline = true
-        end
+        end,
     },
     {
         events = { "CursorMoved" },
@@ -71,6 +71,6 @@ require("user.utils").autocmds_set({
         pattern = "*",
         callback = function()
             vim.opt.cursorline = false
-        end
+        end,
     },
 })

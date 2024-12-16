@@ -1,7 +1,7 @@
 local M = {}
 
-local patch_global = vim.fn['ddc#custom#patch_global']
-local get_global = vim.fn['ddc#custom#get_global']
+local patch_global = vim.fn["ddc#custom#patch_global"]
+local get_global = vim.fn["ddc#custom#get_global"]
 
 function M.change_filter(bang, filter_name)
     if filter_name == "normal" then

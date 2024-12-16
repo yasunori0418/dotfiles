@@ -23,8 +23,8 @@
           ]
         )
         ++ (terminalEmulators ++ [ pkgs-stable.wezterm ])
-        # ++ clojureTools
-        ;
+      # ++ clojureTools
+      ;
     in
     packages;
 }

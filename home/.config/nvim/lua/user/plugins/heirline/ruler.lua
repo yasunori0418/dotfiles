@@ -20,7 +20,7 @@ local ScrollBar = {
         return string.rep(self.sbar[i], 2) .. " "
     end,
     hl = function(self)
-        return { fg = self.mode_colors.base,  bg = "bg0", bold = true }
+        return { fg = self.mode_colors.base, bg = "bg0", bold = true }
     end,
 }
 
