@@ -6,6 +6,7 @@
     nixpkgs-stable.url = "github:NixOS/nixpkgs/nixos-24.05";
     nixos-hardware.url = "github:NixOS/nixos-hardware/master";
     flake-parts.url = "github:hercules-ci/flake-parts";
+    treefmt-nix.url = "github:numtide/treefmt-nix";
     xremap-flake = {
       url = "github:xremap/nix-flake";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -36,6 +37,7 @@
         # 1. Add foo to inputs
         # 2. Add foo as a parameter to the outputs function
         # 3. Add here: foo.flakeModule
+        inputs.treefmt-nix.flakeModule
       ];
       systems = [
         "x86_64-linux"
@@ -48,12 +50,40 @@
           # config,
           # self',
           # inputs',
-          pkgs,
+          # pkgs,
           # system,
           ...
         }:
         {
-          formatter.default = pkgs.nixfmt-rfc-style;
+          treefmt = {
+            programs = {
+              beautysh = {
+                enable = true;
+                indent_size = 4;
+              };
+              nixfmt-rfc-style.enable = true;
+              stylua = {
+                enable = true;
+                settings = {
+                  call_parentheses = "Always";
+                  collapse_simple_statement = "Never";
+                  column_width = 120;
+                  indent_type = "Spaces";
+                  indent_width = 4;
+                  line_endings = "Unix";
+                  quote_style = "AutoPreferDouble";
+                  sort_requires.enabled = false;
+                };
+              };
+              deno = {
+                enable = true;
+                includes = [
+                  "home/.config/nvim"
+                  "home/.config/vim"
+                ];
+              };
+            };
+          };
           # Per-system attributes can be defined here. The self' and inputs'
           # module parameters provide easy access to attributes of the same
           # system.
