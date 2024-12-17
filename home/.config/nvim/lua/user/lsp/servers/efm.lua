@@ -14,6 +14,7 @@ efm_configs.setup({
         markdown = {
             { kind = "linters", name = "textlint", auto_install = false },
             { kind = "linters", name = "markdownlint" },
+            { kind = "formatters", name = "mdformat" },
         },
         make = {
             { kind = "linters", name = "checkmake" },
