@@ -19,7 +19,6 @@
     awscli2
     lemonade
     unzip
-    hugo
     zellij
     direnv
     tmux
@@ -68,7 +67,6 @@
 
   codingSupportTools = with pkgs; [
     nixfmt-rfc-style
-    markdownlint-cli
     checkmake
     shellcheck
     php83Packages.php-codesniffer
