@@ -37,9 +37,11 @@
       };
     };
   };
-  boot.initrd.kernelModules = [ "nvidia" ];
-  boot.extraModulePackages = [ config.boot.kernelPackages.nvidia_x11 ];
-  boot.extraModprobeConfig = ''
-    options nvidia NVreg_PreserveVideoMemoryAllocations=1
-  '';
+  boot = {
+    initrd.kernelModules = [ "nvidia" ];
+    extraModulePackages = [ config.boot.kernelPackages.nvidia_x11 ];
+    extraModprobeConfig = ''
+      options nvidia NVreg_PreserveVideoMemoryAllocations=1
+    '';
+  };
 }

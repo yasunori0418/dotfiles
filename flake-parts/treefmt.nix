@@ -4,8 +4,7 @@ localFlake:
 
 # Regular module arguments; self, inputs, etc all reference the final user flake,
 # where this module was imported.
-{ ... }:
-{
+_: {
   perSystem =
     { pkgs, ... }:
     {

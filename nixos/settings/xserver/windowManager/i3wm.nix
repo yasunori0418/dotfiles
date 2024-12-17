@@ -7,7 +7,7 @@
         applications = import ../applications.nix { inherit pkgs; };
         extraPackages =
           with applications;
-          [ ] ++ systemThemeTools ++ nordThemePkgs ++ desktopTools ++ xfceTools ++ otherTools;
+          systemThemeTools ++ nordThemePkgs ++ desktopTools ++ xfceTools ++ otherTools;
       in
       with pkgs;
       [

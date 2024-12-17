@@ -1,7 +1,7 @@
 { hostName, ... }:
 {
   networking = {
-    hostName = hostName;
+    inherit hostName;
     firewall.enable = true;
 
     # Enable networking
