@@ -67,6 +67,7 @@
 
   codingSupportTools = with pkgs; [
     nixfmt-rfc-style
+    statix
     checkmake
     shellcheck
     php83Packages.php-codesniffer
