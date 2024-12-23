@@ -17,6 +17,7 @@
     glow
     gh
     awscli2
+    ssm-session-manager-plugin
     lemonade
     unzip
     zellij
