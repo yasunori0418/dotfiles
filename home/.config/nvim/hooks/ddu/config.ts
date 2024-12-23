@@ -459,7 +459,32 @@ export class Config extends BaseConfig {
       ],
     });
 
-    args.contextBuilder.patchLocal("search_line", {
+    args.contextBuilder.patchLocal("search_line:strict", {
+      ui: "ff",
+      uiParams: {
+        ff: {
+          ...{
+            startAutoAction: true,
+            autoAction: {
+              delay: 0,
+              name: "preview",
+            },
+            autoResize: false,
+          },
+          ...await uiSize(args, 0.3, "horizontal"),
+        },
+      },
+      sources: [
+        {
+          name: "line",
+          options: {
+            matchers: ["matcher_substring"]
+          },
+        },
+      ],
+    });
+
+    args.contextBuilder.patchLocal("search_line:fuzzy", {
       ui: "ff",
       uiParams: {
         ff: {

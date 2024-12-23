@@ -92,12 +92,21 @@ utils.keymaps_set({
         end,
         opts = opt,
     },
-    { -- search_line
+    { -- search_line:strict
         mode = "n",
         lhs = [[<Plug>(ddu-ff)/]],
         rhs = function()
             start_filter_once()
-            vim.fn["ddu#start"]({ name = "search_line" })
+            vim.fn["ddu#start"]({ name = "search_line:strict" })
+        end,
+        opts = opt,
+    },
+    { -- search_line:fuzzy
+        mode = "n",
+        lhs = [[<Plug>(ddu-ff)?]],
+        rhs = function()
+            start_filter_once()
+            vim.fn["ddu#start"]({ name = "search_line:fuzzy" })
         end,
         opts = opt,
     },
