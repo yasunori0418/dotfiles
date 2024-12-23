@@ -595,6 +595,7 @@ export class Config extends BaseConfig {
           name: "mr",
           options: {
             defaultAction: "cdOpen",
+            matchers: ["matcher_substring"],
           },
           params: {
             kind: "mrr",
@@ -622,7 +623,7 @@ export class Config extends BaseConfig {
         {
           name: "mr",
           options: {
-            matchers: ["matcher_relative"],
+            matchers: ["matcher_relative", "matcher_substring"],
           },
           params: {
             kind: "mru",
