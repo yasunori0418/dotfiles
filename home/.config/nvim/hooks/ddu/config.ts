@@ -62,7 +62,7 @@ export class Config extends BaseConfig {
               ["&wrap", 0],
             ],
           },
-          ...await uiSize(args, 0.2, "vertical"),
+          ...(await uiSize(args, 0.2, "vertical")),
         },
       },
       sourceOptions: {
@@ -74,24 +74,15 @@ export class Config extends BaseConfig {
         },
         file_rec: {
           ignoreCase: true,
-          converters: [
-            "converter_devicon",
-            "converter_hl_dir",
-          ],
+          converters: ["converter_devicon", "converter_hl_dir"],
         },
         file_fd: {
           ignoreCase: true,
-          converters: [
-            "converter_devicon",
-            "converter_hl_dir",
-          ],
+          converters: ["converter_devicon", "converter_hl_dir"],
         },
         file_rg: {
           ignoreCase: true,
-          converters: [
-            "converter_devicon",
-            "converter_hl_dir",
-          ],
+          converters: ["converter_devicon", "converter_hl_dir"],
         },
         dpp: {
           defaultAction: "cdOpen",
@@ -117,15 +108,10 @@ export class Config extends BaseConfig {
           ],
         },
         buffer: {
-          converters: [
-            "converter_hl_dir",
-          ],
+          converters: ["converter_hl_dir"],
         },
         rg: {
-          converters: [
-            "converter_devicon",
-            "converter_hl_dir",
-          ],
+          converters: ["converter_devicon", "converter_hl_dir"],
         },
         git_branch: {
           columns: [
@@ -141,26 +127,16 @@ export class Config extends BaseConfig {
           defaultAction: "cdOpen",
         },
         lsp_definition: {
-          converters: [
-            "converter_devicon",
-            "converter_hl_dir",
-          ],
+          converters: ["converter_devicon", "converter_hl_dir"],
         },
         lsp_references: {
-          converters: [
-            "converter_devicon",
-            "converter_hl_dir",
-          ],
+          converters: ["converter_devicon", "converter_hl_dir"],
         },
         lsp_documentSymbol: {
-          converters: [
-            "converter_lsp_symbol",
-          ],
+          converters: ["converter_lsp_symbol"],
         },
         lsp_workspaceSymbol: {
-          converters: [
-            "converter_lsp_symbol",
-          ],
+          converters: ["converter_lsp_symbol"],
         },
         lsp_codeAction: {
           defaultAction: "apply",
@@ -194,15 +170,7 @@ export class Config extends BaseConfig {
           ],
         },
         file_fd: {
-          cmd: [
-            "fd",
-            ".",
-            "--hidden",
-            "--type",
-            "f",
-            "--color",
-            "never",
-          ],
+          cmd: ["fd", ".", "--hidden", "--type", "f", "--color", "never"],
         },
         file_rg: {
           cmd: [
@@ -233,9 +201,9 @@ export class Config extends BaseConfig {
         file: {
           defaultAction: "open",
           actions: {
-            uiCd: async (
-              { items }: ActionArguments<Params>,
-            ): Promise<ActionFlags> => {
+            uiCd: async ({
+              items,
+            }: ActionArguments<Params>): Promise<ActionFlags> => {
               const action = items[0].action as FileActionData;
 
               await denops.call("ddu#ui#do_action", "itemAction", {
@@ -247,9 +215,9 @@ export class Config extends BaseConfig {
 
               return Promise.resolve(ActionFlags.None);
             },
-            cdOpen: async (
-              { items }: ActionArguments<Params>,
-            ): Promise<ActionFlags> => {
+            cdOpen: async ({
+              items,
+            }: ActionArguments<Params>): Promise<ActionFlags> => {
               const action = items[0].action as FileActionData;
               await denops.call("chdir", action.path);
               await denops.cmd("edit .");
@@ -273,9 +241,9 @@ export class Config extends BaseConfig {
         git_status: {
           defaultAction: "open",
           actions: {
-            gitDiff: async (
-              { items }: ActionArguments<Params>,
-            ): Promise<ActionFlags> => {
+            gitDiff: async ({
+              items,
+            }: ActionArguments<Params>): Promise<ActionFlags> => {
               const action = items[0].action as FileActionData;
 
               await denops.call("ddu#start", {
@@ -294,9 +262,9 @@ export class Config extends BaseConfig {
         git_commit: {
           defaultAction: "yank",
           actions: {
-            diffTree: async (
-              { items }: ActionArguments<Params>,
-            ): Promise<ActionFlags> => {
+            diffTree: async ({
+              items,
+            }: ActionArguments<Params>): Promise<ActionFlags> => {
               const action = items[0].action as GitCommitActionData;
               if (action.kind === "commit") {
                 await denops.call("ddu#start", {
@@ -321,9 +289,9 @@ export class Config extends BaseConfig {
         "nvim-notify": {
           defaultAction: "yank",
           actions: {
-            yank: async (
-              { items }: ActionArguments<Params>,
-            ): Promise<ActionFlags> => {
+            yank: async ({
+              items,
+            }: ActionArguments<Params>): Promise<ActionFlags> => {
               const action = items[0].action as NvimNotifyActionData;
               const notification = action.notification as Notification;
               const message = notification.message.join(" ");
@@ -372,11 +340,7 @@ export class Config extends BaseConfig {
           unique: true,
         },
         converter_hl_dir: {
-          hlGroup: [
-            "Directory",
-            "Number",
-            "Type",
-          ],
+          hlGroup: ["Directory", "Number", "Type"],
         },
       },
       columnParams: {
@@ -404,12 +368,10 @@ export class Config extends BaseConfig {
             },
             autoResize: false,
           },
-          ...await uiSize(args, 0.3, "horizontal"),
+          ...(await uiSize(args, 0.3, "horizontal")),
         },
       },
-      sources: [
-        { name: "file_rec" },
-      ],
+      sources: [{ name: "file_rec" }],
     });
 
     args.contextBuilder.patchLocal("dotfiles", {
@@ -424,7 +386,7 @@ export class Config extends BaseConfig {
             },
             autoResize: false,
           },
-          ...await uiSize(args, 0.3, "horizontal"),
+          ...(await uiSize(args, 0.3, "horizontal")),
         },
       },
       sources: [
@@ -449,14 +411,11 @@ export class Config extends BaseConfig {
             },
             autoResize: false,
           },
-          ...await uiSize(args, 0.3, "horizontal"),
+          ...(await uiSize(args, 0.3, "horizontal")),
         },
       },
       sync: true,
-      sources: [
-        { name: "help" },
-        { name: "readme_viewer" },
-      ],
+      sources: [{ name: "help" }, { name: "readme_viewer" }],
     });
 
     args.contextBuilder.patchLocal("search_line:strict", {
@@ -471,14 +430,14 @@ export class Config extends BaseConfig {
             },
             autoResize: false,
           },
-          ...await uiSize(args, 0.3, "horizontal"),
+          ...(await uiSize(args, 0.3, "horizontal")),
         },
       },
       sources: [
         {
           name: "line",
           options: {
-            matchers: ["matcher_substring"]
+            matchers: ["matcher_substring"],
           },
         },
       ],
@@ -496,7 +455,7 @@ export class Config extends BaseConfig {
             },
             autoResize: false,
           },
-          ...await uiSize(args, 0.3, "horizontal"),
+          ...(await uiSize(args, 0.3, "horizontal")),
         },
       },
       sources: [
@@ -521,12 +480,10 @@ export class Config extends BaseConfig {
             },
             autoResize: false,
           },
-          ...await uiSize(args, 0.3, "horizontal"),
+          ...(await uiSize(args, 0.3, "horizontal")),
         },
       },
-      sources: [
-        { name: "buffer" },
-      ],
+      sources: [{ name: "buffer" }],
     });
 
     args.contextBuilder.patchLocal("plugin-list", {
@@ -553,7 +510,7 @@ export class Config extends BaseConfig {
             },
             autoResize: false,
           },
-          ...await uiSize(args, 0.3, "horizontal"),
+          ...(await uiSize(args, 0.3, "horizontal")),
         },
       },
       sources: [
@@ -587,7 +544,7 @@ export class Config extends BaseConfig {
             },
             autoResize: false,
           },
-          ...await uiSize(args, 0.3, "horizontal"),
+          ...(await uiSize(args, 0.3, "horizontal")),
         },
       },
       sources: [
@@ -616,7 +573,7 @@ export class Config extends BaseConfig {
             },
             autoResize: false,
           },
-          ...await uiSize(args, 0.3, "horizontal"),
+          ...(await uiSize(args, 0.3, "horizontal")),
         },
       },
       sources: [
@@ -634,9 +591,7 @@ export class Config extends BaseConfig {
 
     args.contextBuilder.patchLocal("highlight", {
       ui: "ff",
-      sources: [
-        { name: "highlight" },
-      ],
+      sources: [{ name: "highlight" }],
     });
 
     args.contextBuilder.patchLocal("ripgrep", {
@@ -651,7 +606,7 @@ export class Config extends BaseConfig {
             },
             autoResize: false,
           },
-          ...await uiSize(args, 0.3, "horizontal"),
+          ...(await uiSize(args, 0.3, "horizontal")),
         },
       },
       sources: [
@@ -667,9 +622,7 @@ export class Config extends BaseConfig {
 
     args.contextBuilder.patchLocal("path_history", {
       ui: "ff",
-      sources: [
-        { name: "path_history" },
-      ],
+      sources: [{ name: "path_history" }],
     });
 
     args.contextBuilder.patchLocal("git:status", {
@@ -685,7 +638,7 @@ export class Config extends BaseConfig {
             autoResize: false,
             ignoreEmpty: true,
           },
-          ...await uiSize(args, 0.5, "vertical"),
+          ...(await uiSize(args, 0.5, "vertical")),
         },
       },
       sources: [
@@ -699,7 +652,7 @@ export class Config extends BaseConfig {
       ui: "ff",
       uiParams: {
         ff: {
-          ...await uiSize(args, 1, "vertical"),
+          ...(await uiSize(args, 1, "vertical")),
         },
       },
       sources: [
@@ -724,7 +677,7 @@ export class Config extends BaseConfig {
             },
             autoResize: false,
           },
-          ...await uiSize(args, 0.5, "vertical"),
+          ...(await uiSize(args, 0.5, "vertical")),
         },
       },
       sources: [
@@ -746,7 +699,7 @@ export class Config extends BaseConfig {
             },
             autoResize: false,
           },
-          ...await uiSize(args, 0.5, "vertical"),
+          ...(await uiSize(args, 0.5, "vertical")),
         },
       },
       sources: [
@@ -765,7 +718,7 @@ export class Config extends BaseConfig {
       ui: "ff",
       uiParams: {
         ff: {
-          ...await uiSize(args, 1, "vertical"),
+          ...(await uiSize(args, 1, "vertical")),
         },
       },
       sources: [
@@ -806,7 +759,7 @@ export class Config extends BaseConfig {
               immediateAction: "open",
               ignoreEmpty: true,
             },
-            ...await uiSize(args, 0.5, "vertical"),
+            ...(await uiSize(args, 0.5, "vertical")),
           },
         },
         sources: [
@@ -833,7 +786,7 @@ export class Config extends BaseConfig {
             autoResize: false,
             ignoreEmpty: true,
           },
-          ...await uiSize(args, 0.5, "vertical"),
+          ...(await uiSize(args, 0.5, "vertical")),
         },
       },
       sources: [
@@ -856,7 +809,7 @@ export class Config extends BaseConfig {
             autoResize: false,
             ignoreEmpty: true,
           },
-          ...await uiSize(args, 0.5, "vertical"),
+          ...(await uiSize(args, 0.5, "vertical")),
         },
       },
       sources: [
@@ -911,10 +864,7 @@ export class Config extends BaseConfig {
       ],
     });
 
-    const lsp_symbol_scope = [
-      "document",
-      "workspace",
-    ];
+    const lsp_symbol_scope = ["document", "workspace"];
     lsp_symbol_scope.forEach(async (scope) => {
       args.contextBuilder.patchLocal(`lsp:${scope}Symbol`, {
         ui: "ff",
@@ -930,7 +880,7 @@ export class Config extends BaseConfig {
               ignoreEmpty: true,
               displayTree: true,
             },
-            ...await uiSize(args, 0.5, "vertical"),
+            ...(await uiSize(args, 0.5, "vertical")),
           },
         },
         sources: [
@@ -962,7 +912,7 @@ export class Config extends BaseConfig {
               ignoreEmpty: true,
               displayTree: true,
             },
-            ...await uiSize(args, 0.5, "vertical"),
+            ...(await uiSize(args, 0.5, "vertical")),
           },
         },
         sources: [
@@ -987,7 +937,7 @@ export class Config extends BaseConfig {
             autoResize: false,
             ignoreEmpty: true,
           },
-          ...await uiSize(args, 0.5, "vertical"),
+          ...(await uiSize(args, 0.5, "vertical")),
         },
       },
       sources: [
@@ -1010,7 +960,7 @@ export class Config extends BaseConfig {
             autoResize: false,
             ignoreEmpty: true,
           },
-          ...await uiSize(args, 0.5, "vertical"),
+          ...(await uiSize(args, 0.5, "vertical")),
         },
       },
       sources: [
@@ -1056,9 +1006,7 @@ export class Config extends BaseConfig {
 
     args.contextBuilder.patchLocal("current-filer", {
       ui: "filer",
-      sources: [
-        { name: "file" },
-      ],
+      sources: [{ name: "file" }],
     });
 
     args.contextBuilder.patchLocal("home-filer", {
