@@ -56,27 +56,19 @@
         flake = {
           nixosConfigurations =
             let
-              nixosSystemArgs =
-                { profileName, system }:
-                import ./nixos {
-                  inherit
-                    inputs
-                    profileName
-                    system
-                    ;
-                };
               inherit (inputs.nixpkgs.lib) nixosSystem;
+              inherit (import ./nixos/args.nix inputs) args;
             in
             {
-              laptop = nixosSystem (nixosSystemArgs {
+              laptop = nixosSystem (args {
                 profileName = "ThinkPadE14Gen2";
                 system = "x86_64-linux";
               });
-              desktop = nixosSystem (nixosSystemArgs {
+              desktop = nixosSystem (args {
                 profileName = "Desktop";
                 system = "x86_64-linux";
               });
-              macx64OrbStack = nixosSystem (nixosSystemArgs {
+              macx64OrbStack = nixosSystem (args {
                 profileName = "MacX64_OrbStack";
                 system = "x86_64-linux";
               });
@@ -85,16 +77,14 @@
           homeConfigurations =
             let
               inherit (inputs.home-manager.lib) homeManagerConfiguration;
-              inherit (import ./home-manager/args.nix) args;
+              inherit (import ./home-manager/args.nix inputs) args;
             in
             {
               linux = homeManagerConfiguration (args {
-                inherit inputs;
                 profileName = "linux";
                 system = "x86_64-linux";
               });
               macx64 = homeManagerConfiguration (args {
-                inherit inputs;
                 profileName = "macx64";
                 system = "x86_64-darwin";
               });

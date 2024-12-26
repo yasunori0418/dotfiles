@@ -1,25 +1,15 @@
-rec {
+inputs: rec {
   args =
-    {
-      inputs,
-      profileName,
-      system,
-    }:
+    { profileName, system }:
     import ./default.nix {
-      inherit profileName system;
-      inherit (inputs)
-        nixpkgs
-        nixpkgs-stable
-        neovim-nightly-overlay
-        vim-overlay
-        ;
+      inherit inputs profileName system;
     };
   hmConfigForNixosModule =
-    { inputs, system }:
+    system:
     let
       homeManagerConfig = args {
         profileName = "linux";
-        inherit inputs system;
+        inherit system;
       };
     in
     {
