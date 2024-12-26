@@ -81,7 +81,6 @@ function M.init()
         markerHenkan = "",
         markerHenkanSelect = "",
         registerConvertResult = true,
-        usePopup = true,
     })
 
     vim.fn["skkeleton#register_kanatable"]("rom", {
