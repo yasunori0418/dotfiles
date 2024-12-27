@@ -64,6 +64,7 @@
     vscode-langservers-extracted
     vtsls
     taplo
+    jq-lsp
   ];
 
   codingSupportTools = with pkgs; [
