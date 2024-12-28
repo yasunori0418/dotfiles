@@ -17,6 +17,7 @@ in
         sodium = true;
       })
       (import ../../nix-overlays/awscli2.nix)
+      (import ../../nix-overlays/libskk.nix)
     ];
   };
 }
