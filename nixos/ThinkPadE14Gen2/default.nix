@@ -44,7 +44,7 @@ let
   # Applications
   xremapModule = xremap-flake.nixosModules.default;
   xremap = ../settings/applications/xremap.nix;
-  # fcitx5 = ../settings/applications/fcitx5.nix;
+  fcitx5 = ../settings/applications/fcitx5.nix;
   tailscale = ../settings/applications/tailscale.nix;
   pipewire = ../settings/applications/pipewire.nix;
   thunar = ../settings/applications/thunar.nix;
@@ -75,7 +75,7 @@ in
       # Applications
       xremapModule
       xremap
-      # fcitx5
+      fcitx5
       tailscale
       pipewire
       thunar
