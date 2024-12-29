@@ -77,7 +77,7 @@ efm_configs.setup({
     },
 })
 
-require("lspconfig").efm.setup({
+require("user.lsp.utils").config("efm", {
     filetypes = efm_configs.filetypes,
     init_options = {
         documentFormatting = true,
@@ -87,7 +87,6 @@ require("lspconfig").efm.setup({
         codeAction = true,
         completion = false,
     },
-    capabilities = require("user.lsp.utils").capabilities,
     settings = {
         rootMarkers = { ".git/" },
         languages = efm_configs.languages,

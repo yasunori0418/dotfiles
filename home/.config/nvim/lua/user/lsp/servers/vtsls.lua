@@ -26,13 +26,12 @@ local function find_root(path)
     end
 end
 
-require("lspconfig").vtsls.setup({
-    filetype = ft.js_like,
+require("user.lsp.utils").config("vtsls", {
+    filetypes = ft.js_like,
     single_file_support = false,
     root_dir = function(path)
         return find_root(vim.fs.dirname(path))
     end,
-    capabilities = require("user.lsp.utils").capabilities,
     settings = {
         typescript = {
             format = {

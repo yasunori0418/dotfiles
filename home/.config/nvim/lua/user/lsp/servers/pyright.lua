@@ -1,5 +1,4 @@
-require("lspconfig").pyright.setup({
-    capabilities = require("user.lsp.utils").capabilities,
+require("user.lsp.utils").config("pyright", {
     settings = {
         python = {
             exclude = { ".venv" },

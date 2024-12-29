@@ -149,4 +149,19 @@ M.capabilities.textDocument.foldingRange = {
     lineFoldingOnly = true,
 }
 
+---@class user.utils.LspConfig : lspconfig.Config
+---@diagnostic disable-next-line: duplicate-doc-field
+---@field cmd? vim.lsp.rpc.PublicClient
+
+---共通的に使用するlspの設定
+---@param lsp_name string
+---@param setup? user.utils.LspConfig
+function M.config(lsp_name, setup)
+    setup = setup or {}
+    local default_setup = {
+        capabilities = M.capabilities,
+    }
+    require("lspconfig")[lsp_name].setup(vim.tbl_extend("force", default_setup, setup))
+end
+
 return M

@@ -1,5 +1,4 @@
-require("lspconfig").nixd.setup({
-    capabilities = require("user.lsp.utils").capabilities,
+require("user.lsp.utils").config("nixd", {
     settings = {
         nixd = {
             formatting = {

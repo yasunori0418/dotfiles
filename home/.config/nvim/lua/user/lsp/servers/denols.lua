@@ -24,11 +24,10 @@ local function find_root(path)
     return project_root
 end
 
-require("lspconfig").denols.setup({
+require("user.lsp.utils").config("denols", {
     root_dir = function(path)
         return find_root(vim.fs.dirname(path))
     end,
-    capabilities = require("user.lsp.utils").capabilities,
     settings = {
         deno = {
             enable = true,

@@ -12,8 +12,7 @@ local function library()
     return paths
 end
 
-require("lspconfig").lua_ls.setup({
-    capabilities = require("user.lsp.utils").capabilities,
+require("user.lsp.utils").config("lua_ls", {
     settings = {
         Lua = {
             runtime = {
