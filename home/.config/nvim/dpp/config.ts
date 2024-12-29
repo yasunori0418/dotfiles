@@ -7,10 +7,10 @@ import {
   Protocol,
   vars,
 } from "./deps.ts";
-import { gatherCheckFiles, getExt } from "./helper.ts";
+import { gatherCheckFiles } from "./helper.ts";
 import { gatherVimrcs, VimrcSkipRule } from "./helper/inlineVimrcs.ts";
-import { gatherTomls, GetTomlExtResults } from "./helper/toml.ts";
-import { GetLazyExtResults, makeState } from "./helper/lazy.ts";
+import { gatherTomls, getTomlExt } from "./helper/toml.ts";
+import { getLazyExt, makeState } from "./helper/lazy.ts";
 
 export class Config extends BaseConfig {
   override async config(args: ConfigArguments): Promise<ConfigReturn> {
@@ -19,17 +19,15 @@ export class Config extends BaseConfig {
     const vimrcSkipRules = [
       {
         name: "neovide.lua",
-        condition: await vars.g.get(denops, "neovide") === null,
+        condition: (await vars.g.get(denops, "neovide")) === null,
       },
     ] as VimrcSkipRule[];
 
-    const inlineVimrcs: string[] = gatherVimrcs(
-      await vars.g.get(denops, "rc_dir"),
-      vimrcSkipRules,
-    );
-
     args.contextBuilder.setGlobal({
-      inlineVimrcs: inlineVimrcs,
+      inlineVimrcs: gatherVimrcs(
+        await vars.g.get(denops, "rc_dir"),
+        vimrcSkipRules,
+      ),
       protocols: ["git"],
       protocolParams: {
         git: {
@@ -42,27 +40,24 @@ export class Config extends BaseConfig {
           logFilePath: join(
             await vars.g.get(denops, "dpp_cache"),
             // installer_{YYYYMMDD}.log
-            `installer_${
-              new Date().toLocaleDateString("ja-JP", {
+            `installer_${new Date()
+              .toLocaleDateString("ja-JP", {
                 year: "numeric",
                 month: "2-digit",
                 day: "2-digit",
-              }).replaceAll("/", "")
-            }.log`,
+              })
+              .replaceAll("/", "")}.log`,
           ),
         },
       },
     });
 
     const [context, options] = await args.contextBuilder.get(denops);
-    const protocols = await args.denops.dispatcher.getProtocols() as Record<
+    const protocols = (await denops.dispatcher.getProtocols()) as Record<
       string,
       Protocol
     >;
-    const [tomlExt, tomlOptions, tomlParams] = await getExt<GetTomlExtResults>(
-      args,
-      "toml",
-    );
+    const [tomlExt, tomlOptions, tomlParams] = await getTomlExt(args);
 
     const toml = await gatherTomls({
       denops,
@@ -76,10 +71,7 @@ export class Config extends BaseConfig {
       noLazyTomlNames: ["dpp.toml", "no_lazy.toml"],
     });
 
-    const [lazyExt, lazyOptions, lazyParams] = await getExt<GetLazyExtResults>(
-      args,
-      "lazy",
-    );
+    const [lazyExt, lazyOptions, lazyParams] = await getLazyExt(args);
     const lazyResult = await makeState({
       denops,
       context,
@@ -88,7 +80,7 @@ export class Config extends BaseConfig {
       lazyExt,
       lazyOptions,
       lazyParams,
-      plugins: Object.values(toml.recordPlugins ?? {}),
+      plugins: toml.plugins,
     });
 
     const checkFiles = gatherCheckFiles(

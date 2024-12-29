@@ -1,4 +1,5 @@
 import {
+  ConfigArguments,
   Context,
   Denops,
   DppOptions,
@@ -9,12 +10,13 @@ import {
   Plugin,
   Protocol,
 } from "../deps.ts";
+import { Ext, getExt } from "../helper.ts";
 
-export type GetLazyExtResults = [
-  LazyExt | undefined,
-  ExtOptions,
-  LazyParams,
-];
+export type GetLazyExtResults = Ext<LazyParams, LazyExt>;
+
+export async function getLazyExt(args: ConfigArguments) {
+  return await getExt<LazyParams, LazyExt>(args, "lazy");
+}
 
 export interface makeStateArgs {
   denops: Denops;

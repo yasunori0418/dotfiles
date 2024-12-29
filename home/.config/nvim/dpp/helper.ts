@@ -1,46 +1,32 @@
-import { ConfigArguments, expandGlobSync, Plugin } from "./deps.ts";
+import {
+  BaseExt,
+  BaseParams,
+  ConfigArguments,
+  expandGlobSync,
+  ExtOptions,
+  WalkEntry,
+} from "./deps.ts";
 
-export async function getExt<T>(
-  args: ConfigArguments,
-  extName: string,
-): Promise<T> {
-  return await args.denops.dispatcher.getExt(extName) as T;
-}
+export type Ext<P extends BaseParams, E extends BaseExt<P>> = [
+  ext: E | undefined,
+  options: ExtOptions,
+  params: P,
+];
 
-export async function gatherGhqPlugins(
-  args: ConfigArguments,
-): Promise<Plugin[]> {
-  const [context, options] = await args.contextBuilder.get(args.denops);
-  return await args.dpp.extAction(
-    args.denops,
-    context,
-    options,
-    "ghq",
-    "ghq",
-    {
-      ghq_root: "~/src",
-      repos: ["yasunori0418/ddu-gh_project"],
-      hostname: "github.com",
-      options: {
-        lazy: true,
-        merged: false,
-        on_source: "ddu.vim",
-        hook_add:
-          "let g:ddu_gh_project_gh_cmd = '/home/yasunori/src/github.com/yasunori0418/cli/bin/gh'",
-      },
-    },
-  ) as Plugin[];
+export type ValidExt = "toml" | "lazy";
+
+export async function getExt<P extends BaseParams, E extends BaseExt<P>>(
+  { denops }: ConfigArguments,
+  extName: ValidExt,
+): Promise<Ext<P, E>> {
+  return (await denops.dispatcher.getExt(extName)) as Ext<P, E>;
 }
 
 export function gatherCheckFiles(path: string, glob: string): string[] {
-  const checkFiles: string[] = [];
-  for (
-    const file of expandGlobSync(glob, {
+  return Array.from(
+    expandGlobSync(glob, {
       root: path,
       globstar: true,
-    })
-  ) {
-    checkFiles.push(file.path);
-  }
-  return checkFiles;
+    }),
+  ).map(({ path }: WalkEntry) => path);
 }
