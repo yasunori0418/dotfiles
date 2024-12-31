@@ -1,0 +1,17 @@
+#!/usr/bin/env bash
+
+set -euo pipefail
+
+remote_name=$(git remote | fzf --preview="git remote get-url {}")
+readonly remote_name
+
+echo "$remote_name"
+
+declare -r target_url="git remote get-url ${remote_name}"
+
+eval "${target_url}" | grep -E '^.+@' && echo "Target remote is not http." && eval "${target_url}" && exit 1
+
+# change remote http url to ssh
+eval "${target_url}" | sed -E 's|^(https?://)?([^/]+)/(.+)|git@\2:\3|' | xargs git remote set-url "${remote_name}"
+
+git remote -v

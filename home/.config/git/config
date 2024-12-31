@@ -30,6 +30,7 @@
 	hash = show --format=%H --no-patch
 	rebase-onto = !git_rebase_onto
 	swc = !git_branch_point
+	remote-to-ssh = !git_change_http_remote_url_to_ssh
 [merge]
 	ff = false
 	conflictstyle = diff3
