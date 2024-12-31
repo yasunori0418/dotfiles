@@ -19,7 +19,12 @@ hooks_file = '$HOOKS_DIR/previm/previm.lua'
 repo = 'github.com/atusy/tsnode-marker.nvim'
 on_ft = 'markdown'
 hooks_file = '$HOOKS_DIR/tsnode_marker.lua'
-if = false
+
+[[plugins]]
+repo = 'github.com/hat0uma/csvview.nvim'
+on_ft = ['csv', 'tsv']
+on_cmd = ['CsvViewEnable', 'CsvViewToggle', 'CsvViewDisable']
+hooks_file = '$HOOKS_DIR/csvview.lua'
 
 # For LISP {{{
 [[plugins]]
