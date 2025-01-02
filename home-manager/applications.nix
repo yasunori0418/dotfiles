@@ -20,7 +20,6 @@
     ssm-session-manager-plugin
     lemonade
     unzip
-    zellij
     direnv
     tmux
     zip
