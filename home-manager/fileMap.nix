@@ -84,6 +84,10 @@ in
       source = symlink /${xdgConfigHome}/kitty;
       recursive = true;
     };
+    ".config/ghostty" = {
+      source = symlink /${xdgConfigHome}/ghostty;
+      recursive = true;
+    };
     ".config/luacheck" = {
       source = symlink /${xdgConfigHome}/luacheck;
       recursive = true;

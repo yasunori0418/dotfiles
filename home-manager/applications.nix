@@ -30,6 +30,7 @@
   terminalEmulators = with pkgs; [
     kitty
     alacritty
+    ghostty
   ];
 
   shellTools = with pkgs; [
