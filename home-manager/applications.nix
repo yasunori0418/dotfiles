@@ -4,15 +4,11 @@
     nix-prefetch-github
     nix-output-monitor
     nix-search-cli
-    devenv
     nix-direnv
   ];
 
   utilityTools = with pkgs; [
-    vim-startuptime
-    tokei
     jnv
-    hyperfine
     usql
     glow
     gh
@@ -53,7 +49,6 @@
   languageServers = with pkgs; [
     nixd
     efm-langserver
-    lua-language-server
     pyright
     bash-language-server
     intelephense
@@ -69,15 +64,12 @@
   codingSupportTools = with pkgs; [
     nixfmt-rfc-style
     statix
-    checkmake
     shellcheck
     php83Packages.php-codesniffer
     php83Packages.phpmd
     php83Extensions.xdebug
     blade-formatter
-    luajitPackages.luacheck
     ruff
-    stylua
     beautysh
     sql-formatter
     eslint_d
@@ -96,7 +88,6 @@
     luajitPackages.luarocks
     nodejs_22
     python312Packages.uv
-    # pdm
   ];
 
   clojureTools = with pkgs; [

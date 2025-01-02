@@ -7,6 +7,7 @@
     nixos-hardware.url = "github:NixOS/nixos-hardware/master";
     flake-parts.url = "github:hercules-ci/flake-parts";
     treefmt-nix.url = "github:numtide/treefmt-nix";
+    devenv.url = "github:cachix/devenv";
     xremap-flake = {
       url = "github:xremap/nix-flake";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -42,10 +43,13 @@
         imports =
           let
             treefmt.default = importApp ./flake-parts/treefmt.nix;
+            devenv.default = importApp ./flake-parts/devenv.nix;
           in
           [
             inputs.treefmt-nix.flakeModule
             treefmt.default
+            inputs.devenv.flakeModule
+            devenv.default
           ];
         systems = [
           "x86_64-linux"
