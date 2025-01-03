@@ -7,6 +7,12 @@ EnumerateForwardKeys=
 EnumerateBackwardKeys=
 # Skip first input method while enumerating
 EnumerateSkipFirst=True
+# Enumerate Input Method Group Backward
+EnumerateGroupBackwardKeys=
+# Activate Input Method
+ActivateKeys=
+# Deactivate Input Method
+DeactivateKeys=
 # Default Previous page
 PrevPage=
 # Default Next page
@@ -15,6 +21,8 @@ NextPage=
 PrevCandidate=
 # Default Next Candidate
 NextCandidate=
+# Toggle embedded preedit
+TogglePreedit=
 
 [Hotkey/TriggerKeys]
 0=Alt+space
@@ -23,19 +31,7 @@ NextCandidate=
 0=Control+Control_R
 
 [Hotkey/EnumerateGroupForwardKeys]
-0=Super+space
-
-[Hotkey/EnumerateGroupBackwardKeys]
-0=Shift+Super+space
-
-[Hotkey/ActivateKeys]
-0=Alt+grave
-
-[Hotkey/DeactivateKeys]
-0=Alt+backslash
-
-[Hotkey/TogglePreedit]
-0=Control+Alt+P
+0=Alt+space
 
 [Behavior]
 # Active By Default
