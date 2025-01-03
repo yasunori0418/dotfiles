@@ -28,6 +28,8 @@
     blueberry
     pavucontrol
     gthumb
+    peek
+    simplescreenrecorder
   ];
 
   xfceTools = with pkgs.xfce; [
