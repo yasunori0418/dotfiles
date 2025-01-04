@@ -36,14 +36,18 @@
       { withSystem, flake-parts-lib, ... }:
       let
         # ref: https://flake.parts/dogfood-a-reusable-module.html?highlight=imports#example-with-importapply
-        inherit (flake-parts-lib) importApply;
-        importApp = nixPath: importApply nixPath { inherit withSystem; };
+        importApply =
+          nixPath:
+          let
+            inherit (flake-parts-lib) importApply;
+          in
+          importApply nixPath { inherit withSystem; };
       in
       {
         imports =
           let
-            treefmt.default = importApp ./flake-parts/treefmt.nix;
-            devenv.default = importApp ./flake-parts/devenv.nix;
+            treefmt.default = importApply ./flake-parts/treefmt.nix;
+            devenv.default = importApply ./flake-parts/devenv.nix;
           in
           [
             inputs.treefmt-nix.flakeModule
