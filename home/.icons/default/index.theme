@@ -1,4 +1,4 @@
 [Icon Theme]
 Name=Default
 Comment=Default icon theme
-Inherits=Nordzy-cursors
+Inherits=Nordzy-catppuccin-mocha-dark

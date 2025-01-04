@@ -1,6 +1,6 @@
 gtk-theme-name="Nordic-darker"
-gtk-icon-theme-name="Nordzy-orange-dark"
-gtk-cursor-theme-name="Nordzy-cursors"
+gtk-icon-theme-name="Nordzy-dark"
+gtk-cursor-theme-name="Nordzy-catppuccin-mocha-dark"
 gtk-font-name="Noto Sans CJK JP 11"
 gtk-menu-images=1
 gtk-cursor-theme-size=0
