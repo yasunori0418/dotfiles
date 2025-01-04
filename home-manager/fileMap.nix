@@ -137,6 +137,7 @@ in
     // xdgConfigFileMap [
       "alacritty/alacritty.toml"
       "alacritty/nord.toml"
+      "ghostty/config"
       "ghostty/core.conf"
       "ghostty/clipboard.conf"
       "ghostty/command.conf"
