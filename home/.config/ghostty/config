@@ -25,13 +25,12 @@
 # because `foo` is loaded after the configuration file that configures the nested `config-file` value.
 
 config-file = core.conf
-config-file = adjust.conf
 config-file = clipboard.conf
 config-file = command.conf
 config-file = font.conf
 config-file = keybinds.conf
-config-file = linux.conf
-config-file = macos.conf
+config-file = ?linux.conf
+config-file = ?macos.conf
 config-file = mouse.conf
 config-file = quick.conf
 config-file = resize.conf
