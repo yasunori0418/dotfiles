@@ -1,3 +1,29 @@
+# Additional configuration files to read.
+# This configuration can be repeated to read multiple configuration files.
+# Configuration files themselves can load more configuration files.
+# Paths are relative to the file containing the `config-file` directive.
+# For command-line arguments, paths are relative to the current working directory.
+# 
+# Prepend a ? character to the file path to suppress errors if the file does not exist.
+# If you want to include a file that begins with a literal ? character, surround the file path in double quotes (").
+# 
+# Cycles are not allowed.
+# If a cycle is detected, an error will be logged and the configuration file will be ignored.
+# 
+# Configuration files are loaded after the configuration they're defined within in the order they're defined.
+# **THIS IS A VERY SUBTLE BUT IMPORTANT POINT.**
+# To put it another way: configuration files do not take effect until after the entire configuration is loaded.
+# For example, in the configuration below:
+# 
+# ```
+# config-file = "foo"
+# a = 1
+# ```
+# 
+# If "foo" contains `a = 2`,
+# the final value of `a` will be 2,
+# because `foo` is loaded after the configuration file that configures the nested `config-file` value.
+
 config-file = "./core.conf"
 config-file = "./adjust.conf"
 config-file = "./clipboard.conf"
