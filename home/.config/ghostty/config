@@ -24,17 +24,17 @@
 # the final value of `a` will be 2,
 # because `foo` is loaded after the configuration file that configures the nested `config-file` value.
 
-config-file = "./core.conf"
-config-file = "./adjust.conf"
-config-file = "./clipboard.conf"
-config-file = "./command.conf"
-config-file = "./font.conf"
-config-file = "./keybinds.conf"
-config-file = "./linux.conf"
-config-file = "./macos.conf"
-config-file = "./mouse.conf"
-config-file = "./quick.conf"
-config-file = "./resize.conf"
-config-file = "./theme.conf"
-config-file = "./window.conf"
+config-file = core.conf
+config-file = adjust.conf
+config-file = clipboard.conf
+config-file = command.conf
+config-file = font.conf
+config-file = keybinds.conf
+config-file = linux.conf
+config-file = macos.conf
+config-file = mouse.conf
+config-file = quick.conf
+config-file = resize.conf
+config-file = theme.conf
+config-file = window.conf
 # vim:ft=conf
