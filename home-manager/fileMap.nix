@@ -50,20 +50,19 @@ let
     let
       f =
         files:
-        builtins.foldl' (acc: elem: acc // elem) { } (
-          map (
-            file:
-            let
-              distFile = if dist == "" then "${file}" else "${dist}/${file}";
-            in
-            {
-              ${distFile} = {
-                source = symlink /${src}/${file};
-                recursive = is_recursive;
-              };
-            }
-          ) files
-        );
+        builtins.foldl' (
+          acc: file:
+          let
+            distFile = if dist == "" then "${file}" else "${dist}/${file}";
+          in
+          acc
+          // {
+            ${distFile} = {
+              source = symlink /${src}/${file};
+              recursive = is_recursive;
+            };
+          }
+        ) { } files;
     in
     f;
 
