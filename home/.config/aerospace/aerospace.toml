@@ -44,7 +44,7 @@ outer.right = 5
 
 [mode.main.binding]
 # See: https://nikitabobko.github.io/AeroSpace/goodness#open-a-new-window-with-applescript
-alt-enter = 'exec-and-forget ~/.nix-profile/bin/ghostty'
+alt-enter = 'exec-and-forget open -n /Applications/Ghostty.app'
 
 # https://nikitabobko.github.io/AeroSpace/goodness#disable-hide-app
 cmd-h = [] # Disable "hide application"
