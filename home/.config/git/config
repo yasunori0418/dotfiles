@@ -37,6 +37,7 @@
 [commit]
 	verbose = true
 	gpgsign = false
+	template = /home/yasunori/.config/git/commit_template
 [mergetool]
 	prompt = false
 [diff]

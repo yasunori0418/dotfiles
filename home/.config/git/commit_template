@@ -1,0 +1,41 @@
+
+
+# ==== Commit Messages(Template) ====
+# :emoji: #Issue番号 変更内容
+# 例) :+1: #438 コメント追加
+#       👍 #438 コメント追加
+# ==== Prefix ====
+# :fix: バグ修正
+# :hotfix: クリティカルなバグ修正
+# :add: 新規機能・新規ファイル追加
+# :feat: feature
+# :update: バグではない機能修正
+# :change: 仕様変更による機能修正
+# :docs: ドキュメントのみ修正
+# :disable: 無効化
+# :remove(delete): ファイル削除、コードの一部を取り除く
+# :rename: ファイル名の変更
+# :upgrade: バージョンアップ
+# :revert: 修正取り消し
+# :style: 空白、セミコロン、行、コーディングフォーマットなどの修正
+# :refactor(clean,improve): リファクタリング
+# :test: テスト追加や間違っていたテストの修正
+# :chore: ビルドツールやライブラリで自動生成されたものをコミットするとき
+
+# ==== Emojis ====
+# 🐛  :bug: バグ修正
+# 👍  :+1: 機能改善
+# ✨  :sparkles: 部分的な機能追加
+# 🎨  :art: デザイン変更のみ
+# 💢  :anger: コンフリクト
+# 🚧  :construction: WIP
+# 📝  :memo: 文言修正
+# ♻️  :recycle: リファクタリング
+# 🔥  :fire: 不要な機能・使われなくなった機能の削除
+# 💚  :green_heart: テストやCIの修正・改善
+# 👕  :shirt: Lintエラーの修正やコードスタイルの修正
+# 🚀  :rocket: パフォーマンス改善
+# 🆙  :up: 依存パッケージなどのアップデート
+# 👮  :cop: セキュリティ関連の改善
+# ⚙   :gear: config変更
+# 📚  :books: ドキュメント
