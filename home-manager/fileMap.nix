@@ -121,6 +121,7 @@ in
       "fastfetch"
       "fd"
       "git"
+      "glow"
       "jj"
       "kitty"
       "luacheck"
