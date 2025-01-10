@@ -30,4 +30,4 @@ export * as fn from "jsr:@denops/std@7.4.0/function";
 export * as vars from "jsr:@denops/std@7.4.0/variable";
 
 export { join } from "jsr:@std/path@1.0.8";
-export { expandGlobSync } from "jsr:@std/fs@1.0.8";
+export { expandGlobSync } from "jsr:@std/fs@1.0.9";
