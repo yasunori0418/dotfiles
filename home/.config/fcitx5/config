@@ -7,6 +7,8 @@ EnumerateForwardKeys=
 EnumerateBackwardKeys=
 # Skip first input method while enumerating
 EnumerateSkipFirst=True
+# Enumerate Input Method Group Forward
+EnumerateGroupForwardKeys=
 # Enumerate Input Method Group Backward
 EnumerateGroupBackwardKeys=
 # Activate Input Method
@@ -25,13 +27,10 @@ NextCandidate=
 TogglePreedit=
 
 [Hotkey/TriggerKeys]
-0=Alt+space
+0=Control+space
 
 [Hotkey/AltTriggerKeys]
 0=Control+Control_R
-
-[Hotkey/EnumerateGroupForwardKeys]
-0=Alt+space
 
 [Behavior]
 # Active By Default
