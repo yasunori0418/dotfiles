@@ -21,17 +21,6 @@ on_ft = [
   'zsh',
   'kotlin',
 ]
-
-[[plugins]] # mason.nvim
-repo = 'github.com/williamboman/mason.nvim'
-on_cmd = 'Mason'
-hook_post_update = 'MasonUpdate'
-hooks_file = '$HOOKS_DIR/mason.lua'
-
-[[plugins]] # mason-lspconfig.nvim
-repo = 'github.com/williamboman/mason-lspconfig.nvim'
-on_source = 'mason.nvim'
-
 # }}}
 
 # Support plugins {{{
