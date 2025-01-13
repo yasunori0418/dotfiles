@@ -25,14 +25,14 @@ vim.opt.undodir = joinpath(cache, "undo")
 vim.opt.undofile = true
 
 -- shada(viminfo)
-vim.opt.shada = vim.iter({
+vim.opt.shada = {
     [[!]],
     [['100]],
     [[<50]],
     [[s10]],
     [[h]],
     [[n]] .. joinpath(cache, "shada"),
-}):join([[,]])
+}
 
 vim.opt.grepprg = [[rg --vimgrep --no-heading $*]]
 vim.opt.grepformat = [[%f:%l:%c:%m]]
@@ -51,7 +51,7 @@ vim.opt.clipboard = {
     "unnamedplus",
 }
 
-vim.opt.diffopt:append({
+vim.opt.diffopt = {
     "internal",
     "filler",
     "closeoff",
@@ -59,10 +59,22 @@ vim.opt.diffopt:append({
     "algorithm:histogram",
     "indent-heuristic",
     "linematch:60",
-})
+}
 
 -- For pum.vim
-vim.opt.shortmess:append("c")
+vim.opt.shortmess = {
+    a = true, --[[filmnrwx]]
+    o = true,
+    O = true,
+    s = true,
+    t = true,
+    T = true,
+    W = true,
+    I = true,
+    c = true,
+    C = true,
+    F = true,
+}
 
 -- jump momentarily to a matching parenthesis
 vim.opt.showmatch = true
