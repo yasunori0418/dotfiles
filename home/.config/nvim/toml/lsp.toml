@@ -4,7 +4,7 @@
 repo = 'github.com/neovim/nvim-lspconfig'
 lua_source = '''
 --[[$BASE_DIR/lua/user/lsp/init.lua]]
-require("user.lsp") 
+require("user.lsp")
 '''
 depends = ['nvim-lspconfig', 'ddc-source-lsp', 'nvim-navic']
 on_source = 'ddc.vim'
@@ -19,6 +19,7 @@ on_ft = [
   'bash',
   'sh',
   'zsh',
+  'kotlin',
 ]
 
 [[plugins]] # mason.nvim
