@@ -1,5 +1,5 @@
 local joinpath = vim.fs.joinpath
-local cache = tostring(vim.fn.stdpath("cache"))
+local cache = vim.fn.stdpath("cache") --[[@as string]]
 -- Use utf-8 to overall encoding.
 vim.opt.encoding = "utf-8"
 
@@ -23,6 +23,16 @@ vim.opt.directory = joinpath(cache, "swap")
 -- UNDOをどうぞ
 vim.opt.undodir = joinpath(cache, "undo")
 vim.opt.undofile = true
+
+-- shada(viminfo)
+vim.opt.shada = vim.iter({
+    [[!]],
+    [['100]],
+    [[<50]],
+    [[s10]],
+    [[h]],
+    [[n]] .. joinpath(cache, "shada"),
+}):join([[,]])
 
 vim.opt.grepprg = [[rg --vimgrep --no-heading $*]]
 vim.opt.grepformat = [[%f:%l:%c:%m]]
