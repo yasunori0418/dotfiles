@@ -1,8 +1,9 @@
 {
   "auths": {},
-  "detachKeys": "ctrl-\\",
-  "currentContext": "orbstack",
   "cliPluginsExtraDirs": [
     "/usr/local/lib/docker/cli-plugins"
-  ]
+  ],
+  "credsStore": "osxkeychain",
+  "currentContext": "orbstack",
+  "detachKeys": "ctrl-\\"
 }
