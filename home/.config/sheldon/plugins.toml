@@ -28,6 +28,9 @@ defer = "{{ hooks?.pre | nl }}{% for file in files %}zsh-defer source \"{{ file 
 github = "romkatv/powerlevel10k"
 apply = ["source"]
 
+[plugins.bashcompinit]
+inline = 'autoload bashcompinit && bashcompinit'
+
 [plugins.compinit]
 inline = 'autoload -Uz compinit && zsh-defer compinit -u'
 
