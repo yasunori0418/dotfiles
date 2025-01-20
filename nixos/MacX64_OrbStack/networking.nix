@@ -3,6 +3,7 @@
     dhcpcd.enable = false;
     useDHCP = false;
     useHostResolvConf = false;
+    hostName = "yasunori-macx64OrbStack";
   };
   systemd.network = {
     enable = true;
