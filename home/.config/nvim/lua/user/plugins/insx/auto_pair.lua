@@ -93,27 +93,27 @@ function AutoPairRule.apply(self)
             )
         end
 
-        -- spacing
-        for _, keymap in pairs(self.keymaps.spacing.increase) do
-            insx.add(
-                keymap,
-                require("insx.recipe.pair_spacing").increase({
-                    open_pat = esc(self.open),
-                    close_pat = esc(self.close),
-                }),
-                { mode = mode }
-            )
-        end
-        for _, keymap in pairs(self.keymaps.spacing.decrease) do
-            insx.add(
-                keymap,
-                require("insx.recipe.pair_spacing").decrease({
-                    open_pat = esc(self.open),
-                    close_pat = esc(self.close),
-                }),
-                { mode = mode }
-            )
-        end
+        -- -- spacing
+        -- for _, keymap in pairs(self.keymaps.spacing.increase) do
+        --     insx.add(
+        --         keymap,
+        --         require("insx.recipe.pair_spacing").increase({
+        --             open_pat = esc(self.open),
+        --             close_pat = esc(self.close),
+        --         }),
+        --         { mode = mode }
+        --     )
+        -- end
+        -- for _, keymap in pairs(self.keymaps.spacing.decrease) do
+        --     insx.add(
+        --         keymap,
+        --         require("insx.recipe.pair_spacing").decrease({
+        --             open_pat = esc(self.open),
+        --             close_pat = esc(self.close),
+        --         }),
+        --         { mode = mode }
+        --     )
+        -- end
 
         -- fast_break
         for _, keymap in pairs(self.keymaps.fast_break) do
