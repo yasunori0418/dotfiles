@@ -52,6 +52,7 @@
     pyright
     bash-language-server
     intelephense
+    phpactor
     typescript-language-server
     yaml-language-server
     emmet-ls
