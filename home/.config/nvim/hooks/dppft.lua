@@ -102,6 +102,14 @@ vim.opt_local.softtabstop = 4
 vim.opt_local.shiftwidth = 4
 -- }}}
 
+-- lua_html {{{
+vim.opt_local.wrap = false
+-- }}}
+
+-- lua_blade {{{
+vim.opt_local.wrap = false
+-- }}}
+
 -- lua_help {{{
 vim.opt_local.conceallevel = 0
 vim.opt_local.foldmethod = "marker"
