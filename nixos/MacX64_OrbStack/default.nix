@@ -14,7 +14,7 @@
       ];
 
       nix = ../settings/nix.nix;
-      nixpkgs = import ../settings/nixpkgs.nix;
+      nixpkgs = ../settings/nixpkgs.nix;
       system = ../settings/system.nix;
       hostToLocalSymlink = ./hostToLocalSymlink.nix;
       environment = ../settings/environment.nix;
