@@ -1,0 +1,7 @@
+[[plugins]]
+repo = 'github.com/Shougo/ddt.vim'
+depends = ['denops.vim']
+
+[[plugins]]
+repo = 'github.com/Shougo/ddt-ui-shell'
+on_source = 'ddt.vim'
