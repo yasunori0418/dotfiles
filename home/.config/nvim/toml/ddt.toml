@@ -1,6 +1,8 @@
 [[plugins]]
 repo = 'github.com/Shougo/ddt.vim'
 depends = ['denops.vim']
+hooks_file = '$HOOKS_DIR/ddt/hook.lua'
+lazy = false
 
 [[plugins]]
 repo = 'github.com/Shougo/ddt-ui-shell'
