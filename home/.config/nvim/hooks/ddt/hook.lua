@@ -11,7 +11,7 @@ require("user.utils").keymaps_set({
         mode = "n",
         lhs = [[<Plug>(ddt)a]],
         rhs = function()
-            vim.print('start ddt default')
+            vim.fn['ddt#start']()
         end,
         opts = opt,
     },
@@ -27,5 +27,9 @@ require("user.utils").keymaps_set({
 -- }}}
 
 -- lua_source {{{
-
+local ddt_hooks = vim.fs.joinpath(vim.g.hooks_dir, "ddt")
+vim.fn['ddt#custom#load_config'](
+    -- $HOOKS_DIR/ddt/config.ts
+    vim.fs.joinpath(ddt_hooks, "config.ts")
+)
 -- }}}
