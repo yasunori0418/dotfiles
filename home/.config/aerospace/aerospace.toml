@@ -128,6 +128,10 @@ if.window-title-regex-substring = 'FloatingVim'
 run = 'layout floating'
 
 [[on-window-detected]]
+if.app-id = 'us.zoom.xos'
+run = 'layout floating'
+
+[[on-window-detected]]
 if.app-id = 'com.apple.systempreferences'
 run = 'layout floating'
 
