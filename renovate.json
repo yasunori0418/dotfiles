@@ -3,9 +3,9 @@
   "extends": [
     "config:base",
     "github>Omochice/renovate-config:deno",
-    "github>aquaproj/aqua-renovate-config:file#2.6.0(aqua/.*\\.ya?ml|aqua\\.yaml)",
-    "github>aquaproj/aqua-renovate-config:aqua-renovate-config#2.6.0(renovate\\.json)",
-    "github>aquaproj/aqua-renovate-config:installer-script#2.6.0(Makefile)"
+    "github>aquaproj/aqua-renovate-config:file#2.7.0(aqua/.*\\.ya?ml|aqua\\.yaml)",
+    "github>aquaproj/aqua-renovate-config:aqua-renovate-config#2.7.0(renovate\\.json)",
+    "github>aquaproj/aqua-renovate-config:installer-script#2.7.0(Makefile)"
   ],
   "timezone": "Asia/Tokyo",
   "dependencyDashboard": false,
