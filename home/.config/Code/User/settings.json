@@ -126,6 +126,7 @@
     { "before": ["a", "<Space>"], "after": ["a", "W"] },
     { "before": ["i", "<Space>"], "after": ["i", "W"] }
   ],
-  "terminal.integrated.sendKeybindingsToShell": true
+  "terminal.integrated.sendKeybindingsToShell": true,
+  "git.autofetch": true
 }
 // vim:ft=jsonc
