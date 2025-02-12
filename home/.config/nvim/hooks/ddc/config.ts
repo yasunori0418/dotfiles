@@ -25,8 +25,8 @@ export class Config extends BaseConfig {
       ],
       cmdlineSources: {
         ":": ["cmdline", "cmdline-history", "around"],
-        "@": ["cmdline-history", "input", "file", "around"],
-        ">": ["cmdline-history", "input", "file", "around"],
+        "@": ["cmdline_history", "input", "file", "around"],
+        ">": ["cmdline_history", "input", "file", "around"],
         "/": ["around", "line"],
         "?": ["around", "line"],
         "-": ["around", "line"],
@@ -82,7 +82,7 @@ export class Config extends BaseConfig {
           forceCompletionPattern: "\\S/\\S*|\\.\\w*",
           dup: "force",
         },
-        "cmdline-history": {
+        cmdline_history: {
           mark: "cmd-history",
           sorters: [],
         },
