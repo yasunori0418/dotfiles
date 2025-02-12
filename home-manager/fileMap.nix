@@ -216,7 +216,7 @@ in
         "paru"
         "picom"
         "rofi"
-        "systemd"
+        # "systemd"
         "xremap"
         "zellij"
       ]
