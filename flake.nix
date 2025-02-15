@@ -8,6 +8,7 @@
     flake-parts.url = "github:hercules-ci/flake-parts";
     treefmt-nix.url = "github:numtide/treefmt-nix";
     devenv.url = "github:cachix/devenv";
+    systems.url = "github:nix-systems/default";
     xremap-flake = {
       url = "github:xremap/nix-flake";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -55,12 +56,7 @@
             inputs.devenv.flakeModule
             devenv.default
           ];
-        systems = [
-          "x86_64-linux"
-          "aarch64-linux"
-          "aarch64-darwin"
-          "x86_64-darwin"
-        ];
+        systems = import inputs.systems;
         flake = {
           nixosConfigurations =
             let
