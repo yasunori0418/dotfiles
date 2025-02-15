@@ -44,6 +44,8 @@
     fd
     fzf
     eza
+    yazi
+    tdf
   ];
 
   languageServers = with pkgs; [
