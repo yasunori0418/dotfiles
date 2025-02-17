@@ -22,6 +22,12 @@ export class Config extends BaseConfig {
 
     args.contextBuilder.patchGlobal({
       uiOptions: {
+        _: {
+          filterInputFunc: "cmdline#input",
+          filterInputOptsFunc: "cmdline#input_opts",
+          filterPrompt: "",
+          persist: true,
+        },
         filer: {
           toggle: true,
         },
@@ -30,7 +36,6 @@ export class Config extends BaseConfig {
         ff: {
           split: "floating",
           floatingBorder: "single",
-          prompt: "",
           displaySourceName: "long",
           previewFloating: true,
           previewFloatingBorder: "single",

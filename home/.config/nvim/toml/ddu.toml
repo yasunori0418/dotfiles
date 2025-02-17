@@ -4,7 +4,7 @@
 repo = 'github.com/Shougo/ddu.vim'
 # repo = 'Milly/ddu.vim'
 # rev = 'source-stream'
-depends = ['denops.vim', 'nvim-treesitter']
+depends = ['denops.vim', 'nvim-treesitter', 'cmdline.vim']
 on_func = 'ddu#start'
 hooks_file = '$HOOKS_DIR/ddu/hook.lua'
 
@@ -13,7 +13,6 @@ hooks_file = '$HOOKS_DIR/ddu/hook.lua'
 # UI plugins {{{
 [[plugins]] # ddu-ui-ff
 repo = 'github.com/Shougo/ddu-ui-ff'
-depends = ['cmdline.vim']
 on_source = 'ddu.vim'
 hooks_file = '$HOOKS_DIR/ddu/ff.lua'
 
