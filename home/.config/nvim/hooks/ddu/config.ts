@@ -26,7 +26,6 @@ export class Config extends BaseConfig {
           filterInputFunc: "cmdline#input",
           filterInputOptsFunc: "cmdline#input_opts",
           filterPrompt: "",
-          persist: true,
         },
         filer: {
           toggle: true,
