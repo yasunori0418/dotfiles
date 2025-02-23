@@ -1,7 +1,6 @@
 .PHONY: all test clean
 .DEFAULT_GOAL := help
 MAKEFLAGS += --always-make
-AQUA_INSTALLER_HASH := fb4b3b7d026e5aba1fc478c268e8fbd653e01404c8a8c6284fdba88ae62eda6a
 RULE_AND_DESC_REGEX := ^[%a-zA-Z_-]+:.*?## .*$$
 EXTRA_COMMENT_REGEX := ^## .* ##$$
 
@@ -18,25 +17,12 @@ help-fzf: ## Search for fzf and run the target rule
 	| xargs -I{} make {}
 
 ## Neovim Tools ##
-nvim-build: ## building neovim head.
-	@./scripts/nvim_build.sh
-
-nvim-%: ## download neovim at version %(nightly|stable) build.
-	@./scripts/nvim_dl.sh ${@:nvim-%=%}
-
 nvim-bench: ## neovim bench mark with vim-startuptime used.
 	-@vim-startuptime -vimpath nvim -count 100 | head -6
-
-## Vim Tools ##
-vim-build: ## building vim head.
-	@./scripts/vim_build.sh
 
 ## Arch Linux System Package Management ##
 arch_iso: ## Download Arch Linux iso image at latest, and verification.
 	@./scripts/arch_iso.sh
-
-pkglist: ## Update Arch Linux package list.
-	@./scripts/update_pkglist.sh
 
 ## vi-sual studio code... ##
 vscode-setup: ## install extensions and expand settings.json for mac or linux.
@@ -64,18 +50,6 @@ path: ## List up for $PATH
 zsh-bench: ## zsh bench mark with hyperfine used.
 	@hyperfine -w 5 -r 100  'zsh -i -c exit'
 
-repolist: ## Update ghq management of repository list.
-	@ghq list > ./document/repolist.txt
-
-repoget: ## Get and update ghq management repositories.
-	@cat ./document/repolist.txt | ghq get -p -u --parallel
-
-work_repolist: ## Update ghq management of repository list.
-	@./scripts/work_repolist.sh view
-
-work_repoget: ## Get and update ghq management repositories.
-	@./scripts/work_repolist.sh
-
 ## NixOS utility commands ##
 nixos-%: ## nixos-rebuild switch --flake ".#"%(laptop | desktop | macx64OrbStack)
 	@sudo nixos-rebuild switch --flake ".#"${@:nixos-%=%}
@@ -89,18 +63,3 @@ nix-gc: ## nix-collect-garbage -d
 ## Environment Setup Tools ##
 nix-install: ## Install nix.
 	@curl --proto '=https' --tlsv1.2 -sSf -L https://install.determinate.systems/nix | sh -s -- install
-
-symlink: ## expand symlinks
-	@./scripts/expand_symlink.sh
-
-mkdir: ## make direcotries of required
-	@mkdir -p ${HOME}/.local/bin
-	@mkdir -p ${HOME}/.local/dotfiles
-	@mkdir -p ${HOME}/.config
-	@mkdir -p ${HOME}/.cache
-
-init: ## expand config files. ※WARNING: Execute when Initial setup only!!
-	@make mkdir
-	@make symlink
-	@make aqua-install
-	@./scripts/setup.sh
