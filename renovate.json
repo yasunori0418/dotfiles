@@ -2,10 +2,7 @@
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
   "extends": [
     "config:base",
-    "github>Omochice/renovate-config:deno",
-    "github>aquaproj/aqua-renovate-config:file#2.7.4(aqua/.*\\.ya?ml|aqua\\.yaml)",
-    "github>aquaproj/aqua-renovate-config:aqua-renovate-config#2.7.4(renovate\\.json)",
-    "github>aquaproj/aqua-renovate-config:installer-script#2.7.4(Makefile)"
+    "github>Omochice/renovate-config:deno"
   ],
   "timezone": "Asia/Tokyo",
   "dependencyDashboard": false,
@@ -24,15 +21,6 @@
         "home/package.json"
       ],
       "groupName": "all package.json dependencies."
-    },
-    {
-      "matchFileNames": [
-        "aqua.yaml",
-        "config/aqua/config.yaml",
-        "Makefile",
-        "renovate.json"
-      ],
-      "groupName": "aqua"
     }
   ]
 }
