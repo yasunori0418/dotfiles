@@ -22,7 +22,13 @@
             pkgs.leetcode-cli
           ]
         )
-        ++ (terminalEmulators ++ [ pkgs-stable.wezterm  pkgs.ghostty ])
+        ++ (
+          terminalEmulators
+          ++ [
+            pkgs-stable.wezterm
+            pkgs.ghostty
+          ]
+        )
       # ++ clojureTools
       ;
     in
