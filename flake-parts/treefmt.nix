@@ -8,34 +8,44 @@ _: {
   perSystem =
     { pkgs, ... }:
     {
-      treefmt.programs = {
-        beautysh = {
-          enable = true;
-          indent_size = 4;
-        };
-        nixfmt = {
-          enable = true;
-          package = pkgs.nixfmt-rfc-style;
-        };
-        stylua = {
-          enable = true;
-          settings = {
-            call_parentheses = "Always";
-            collapse_simple_statement = "Never";
-            column_width = 120;
-            indent_type = "Spaces";
-            indent_width = 4;
-            line_endings = "Unix";
-            quote_style = "AutoPreferDouble";
-            sort_requires.enabled = false;
+      treefmt = {
+        projectRootFile = "flake.nix";
+        programs = {
+          beautysh = {
+            enable = true;
+            indent_size = 4;
           };
-        };
-        deno = {
-          enable = true;
-          includes = [
-            "home/.config/nvim"
-            "home/.config/vim"
-          ];
+          nixfmt = {
+            enable = true;
+            package = pkgs.nixfmt-rfc-style;
+          };
+          stylua = {
+            enable = true;
+            settings = {
+              call_parentheses = "Always";
+              collapse_simple_statement = "Never";
+              column_width = 120;
+              indent_type = "Spaces";
+              indent_width = 4;
+              line_endings = "Unix";
+              quote_style = "AutoPreferDouble";
+              sort_requires.enabled = false;
+            };
+          };
+          statix = {
+            enable = true;
+            excludes = [
+              ".direnv"
+              "hardware-configuration.nix"
+            ];
+          };
+          deno = {
+            enable = true;
+            includes = [
+              "home/.config/nvim"
+              "home/.config/vim"
+            ];
+          };
         };
       };
     };
