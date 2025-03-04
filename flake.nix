@@ -9,6 +9,11 @@
     treefmt-nix.url = "github:numtide/treefmt-nix";
     devenv.url = "github:cachix/devenv";
     systems.url = "github:nix-systems/default";
+    mk-shell-bin.url = "github:rrbutani/nix-mk-shell-bin";
+    nix2container = {
+      url = "github:nlewo/nix2container";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     xremap-flake = {
       url = "github:xremap/nix-flake";
       inputs.nixpkgs.follows = "nixpkgs";
