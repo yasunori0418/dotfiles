@@ -77,7 +77,7 @@
     sql-formatter
     eslint_d
     prettierd
-    # biome # see https://nixpk.gs/pr-tracker.html?pr=384904
+    biome
   ];
 
   libraries = with pkgs; [

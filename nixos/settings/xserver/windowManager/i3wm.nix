@@ -12,7 +12,7 @@
       with pkgs;
       [
         i3status
-        i3status-rust
+        # i3status-rust # see https://nixpk.gs/pr-tracker.html?pr=386738
         (bumblebee-status.override {
           plugins =
             p: with p; [
