@@ -3,6 +3,7 @@
 # run 'tmux unbind -a -q' # これで全てのキーを設定させていただける
 
 # prefix keys
+unbind C-b
 set -g prefix C-z
 bind C-z send-prefix
 
