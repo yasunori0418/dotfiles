@@ -39,6 +39,10 @@ snippets:
     keyword: gps
     snippet: git push
 
+  - name: git push --force-with-lease --force-if-includes
+    keyword: gpsf
+    snippet: git push --force-with-lease --force-if-includes
+
   - name: git pull
     keyword: gpl
     snippet: git pull
