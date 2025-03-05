@@ -10,7 +10,7 @@
 #
 # See the documentation for more https://github.com/rossmacarthur/sheldon#readme
 
-shell = "zsh"
+shell = 'zsh'
 
 [plugins.sync_configs]
 local = '~/.zsh/sync'
@@ -18,15 +18,15 @@ use = ['*.zsh']
 apply = ['source']
 
 [plugins.zsh-defer]
-github = "romkatv/zsh-defer"
-apply = ["source"]
+github = 'romkatv/zsh-defer'
+apply = ['source']
 
 [templates]
 defer = "{{ hooks?.pre | nl }}{% for file in files %}zsh-defer source \"{{ file }}\"\n{% endfor %}{{ hooks?.post | nl }}"
 
 [plugins.powerlevel10k]
-github = "romkatv/powerlevel10k"
-apply = ["source"]
+github = 'romkatv/powerlevel10k'
+apply = ['source']
 
 [plugins.bashcompinit]
 inline = 'autoload bashcompinit && bashcompinit'
@@ -41,44 +41,44 @@ inline = 'autoload -Uz colors && zsh-defer colors'
 inline = 'autoload -Uz edit-command-line && zle -N edit-command-line'
 
 [plugins.zsh-autosuggestions]
-github = "zsh-users/zsh-autosuggestions"
+github = 'zsh-users/zsh-autosuggestions'
 use = ['{{ name }}.zsh']
-apply = ["defer"]
+apply = ['defer']
 
 [plugins.zsh-completions]
 github = 'zsh-users/zsh-completions'
-apply = ["defer"]
+apply = ['defer']
 
 [plugins.docker-completion]
-remote = "https://raw.github.com/docker/compose/1.29.2/contrib/completion/zsh/_docker-compose"
-apply = ["fpath"]
+remote = 'https://raw.github.com/docker/compose/1.29.2/contrib/completion/zsh/_docker-compose'
+apply = ['fpath']
 
 [plugins.git-completion]
-remote = "https://raw.github.com/git/git/master/contrib/completion/git-completion.zsh"
-apply = ["fpath"]
+remote = 'https://raw.github.com/git/git/master/contrib/completion/git-completion.zsh'
+apply = ['fpath']
 
 [plugins.sheldon-completion]
-local = "~/.zsh/fpath"
+local = '~/.zsh/fpath'
 use = ['{{ name }}.zsh']
 apply = ['defer']
 
 [plugins.nix-zsh-completions]
-github = "nix-community/nix-zsh-completions"
+github = 'nix-community/nix-zsh-completions'
 use = ['{{ name }}.plugin.zsh']
 apply = ['defer']
 
 [plugins._nix]
-local = "~/.local/share/sheldon/repos/github.com/nix-community/nix-zsh-completions"
+local = '~/.local/share/sheldon/repos/github.com/nix-community/nix-zsh-completions'
 use = ['{{ name }}*']
 apply = ['fpath']
 
 [plugins._devbox]
-local = "~/.zsh/fpath"
+local = '~/.zsh/fpath'
 use = ['{{ name }}']
 apply = ['fpath']
 
 [plugins._gh]
-local = "~/.zsh/fpath"
+local = '~/.zsh/fpath'
 use = ['{{ name }}']
 apply = ['fpath']
 
