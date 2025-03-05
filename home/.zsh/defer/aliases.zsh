@@ -22,6 +22,9 @@ alias cd=custom_cd # ./commands.zsh
 alias dotfiles='cd ~/dotfiles'
 alias cdr=git_root # ./commands.zsh
 
+# rm command disable
+[[ $(command -v rip) ]] && alias rm="echo Use 'rip' instead of rm."
+
 # Neovim alias
 [[ $(command -v nvim) ]] && alias nv=nvim_server_pipe # ./commands.zsh
 

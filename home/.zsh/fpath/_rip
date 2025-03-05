@@ -1,0 +1,139 @@
+#compdef rip
+
+autoload -U is-at-least
+
+_rip() {
+    typeset -A opt_args
+    typeset -a _arguments_options
+    local ret=1
+
+    if is-at-least 5.2; then
+        _arguments_options=(-s -S -C)
+    else
+        _arguments_options=(-s -C)
+    fi
+
+    local context curcontext="$curcontext" state line
+    _arguments "${_arguments_options[@]}" : \
+'--graveyard=[Directory where deleted files rest]:GRAVEYARD:_files' \
+'-d[Permanently deletes the graveyard]' \
+'--decompose[Permanently deletes the graveyard]' \
+'-s[Prints files that were deleted in the current directory]' \
+'--seance[Prints files that were deleted in the current directory]' \
+'*-u[Restore the specified files or the last file if none are specified]' \
+'*--unbury[Restore the specified files or the last file if none are specified]' \
+'-i[Print some info about FILES before burying]' \
+'--inspect[Print some info about FILES before burying]' \
+'-f[Non-interactive mode]' \
+'--force[Non-interactive mode]' \
+'-h[Print help]' \
+'--help[Print help]' \
+'-V[Print version]' \
+'--version[Print version]' \
+'::targets -- Files and directories to remove:_files' \
+":: :_rip_commands" \
+"*::: :->rip" \
+&& ret=0
+    case $state in
+    (rip)
+        words=($line[2] "${words[@]}")
+        (( CURRENT += 1 ))
+        curcontext="${curcontext%:*:*}:rip-command-$line[2]:"
+        case $line[2] in
+            (completions)
+_arguments "${_arguments_options[@]}" : \
+'-h[Print help]' \
+'--help[Print help]' \
+':shell -- The shell to generate completions for:_default' \
+&& ret=0
+;;
+(graveyard)
+_arguments "${_arguments_options[@]}" : \
+'-s[Get the graveyard subdirectory of the current directory]' \
+'--seance[Get the graveyard subdirectory of the current directory]' \
+'-h[Print help]' \
+'--help[Print help]' \
+&& ret=0
+;;
+(help)
+_arguments "${_arguments_options[@]}" : \
+":: :_rip__help_commands" \
+"*::: :->help" \
+&& ret=0
+
+    case $state in
+    (help)
+        words=($line[1] "${words[@]}")
+        (( CURRENT += 1 ))
+        curcontext="${curcontext%:*:*}:rip-help-command-$line[1]:"
+        case $line[1] in
+            (completions)
+_arguments "${_arguments_options[@]}" : \
+&& ret=0
+;;
+(graveyard)
+_arguments "${_arguments_options[@]}" : \
+&& ret=0
+;;
+(help)
+_arguments "${_arguments_options[@]}" : \
+&& ret=0
+;;
+        esac
+    ;;
+esac
+;;
+        esac
+    ;;
+esac
+}
+
+(( $+functions[_rip_commands] )) ||
+_rip_commands() {
+    local commands; commands=(
+'completions:Generate shell completions file' \
+'graveyard:Print the graveyard path' \
+'help:Print this message or the help of the given subcommand(s)' \
+    )
+    _describe -t commands 'rip commands' commands "$@"
+}
+(( $+functions[_rip__completions_commands] )) ||
+_rip__completions_commands() {
+    local commands; commands=()
+    _describe -t commands 'rip completions commands' commands "$@"
+}
+(( $+functions[_rip__graveyard_commands] )) ||
+_rip__graveyard_commands() {
+    local commands; commands=()
+    _describe -t commands 'rip graveyard commands' commands "$@"
+}
+(( $+functions[_rip__help_commands] )) ||
+_rip__help_commands() {
+    local commands; commands=(
+'completions:Generate shell completions file' \
+'graveyard:Print the graveyard path' \
+'help:Print this message or the help of the given subcommand(s)' \
+    )
+    _describe -t commands 'rip help commands' commands "$@"
+}
+(( $+functions[_rip__help__completions_commands] )) ||
+_rip__help__completions_commands() {
+    local commands; commands=()
+    _describe -t commands 'rip help completions commands' commands "$@"
+}
+(( $+functions[_rip__help__graveyard_commands] )) ||
+_rip__help__graveyard_commands() {
+    local commands; commands=()
+    _describe -t commands 'rip help graveyard commands' commands "$@"
+}
+(( $+functions[_rip__help__help_commands] )) ||
+_rip__help__help_commands() {
+    local commands; commands=()
+    _describe -t commands 'rip help help commands' commands "$@"
+}
+
+if [ "$funcstack[1]" = "_rip" ]; then
+    _rip "$@"
+else
+    compdef _rip rip
+fi
