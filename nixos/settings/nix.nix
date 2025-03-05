@@ -4,6 +4,8 @@
     settings = {
       auto-optimise-store = true;
       sandbox = true;
+      keep-outputs = true;
+      keep-derivations = true;
       experimental-features = [
         "nix-command"
         "flakes"
@@ -14,9 +16,5 @@
       dates = "weekly";
       options = "--delete-older-than 7d";
     };
-    extraOptions = ''
-      keep-outputs = true
-      keep-derivations = true
-    '';
   };
 }
