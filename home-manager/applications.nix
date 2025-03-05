@@ -46,6 +46,7 @@
     eza
     yazi
     tdf
+    rip2
   ];
 
   languageServers = with pkgs; [
