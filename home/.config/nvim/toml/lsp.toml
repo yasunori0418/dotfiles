@@ -6,8 +6,7 @@ lua_source = '''
 --[[$BASE_DIR/lua/user/lsp/init.lua]]
 require("user.lsp")
 '''
-depends = ['nvim-lspconfig', 'ddc-source-lsp', 'nvim-navic']
-on_source = 'ddc.vim'
+depends = ['ddc.vim', 'nvim-navic']
 on_ft = [
   'lua',
   'pyhton',
