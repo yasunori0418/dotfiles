@@ -202,5 +202,13 @@
 		<key>type</key>
 		<integer>0</integer>
 	</dict>
+	<dict>
+		<key>active</key>
+		<true/>
+		<key>location</key>
+		<string></string>
+		<key>type</key>
+		<integer>2</integer>
+	</dict>
 </array>
 </plist>
