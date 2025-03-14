@@ -19,6 +19,7 @@
     direnv
     tmux
     zip
+    typos
   ];
 
   textEditors = with pkgs; [
@@ -63,6 +64,7 @@
     vtsls
     taplo
     jq-lsp
+    typos-lsp
   ];
 
   codingSupportTools = with pkgs; [
