@@ -105,12 +105,10 @@ in
       ".zshenv"
       ".zshrc"
       ".p10k.zsh"
-      ".textlintrc.yaml"
       ".dir_colors"
       ".bashrc"
       ".bash_profile"
       ".bash_logout"
-      "package.json"
       ".screenrc"
     ];
 
