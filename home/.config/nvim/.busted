@@ -1,0 +1,13 @@
+return {
+    _all = {
+        coverage = true,
+    },
+    default = {
+        verbose = true,
+        ROOT = { "./test/lua/user" },
+    },
+    user_utils = {
+        verbose = true,
+        tags = "user.utils",
+    },
+}

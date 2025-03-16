@@ -4,3 +4,5 @@
 
 # Not tracking log stratup log files
 *log*
+
+luacov.*
