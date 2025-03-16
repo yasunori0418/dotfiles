@@ -113,7 +113,7 @@ function M.shallow_copy(table)
     return copy_table
 end
 
----check is files exsists in path.
+---check is files exists in path.
 ---@param path string
 ---@param files string[]
 ---@return boolean

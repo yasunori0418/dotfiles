@@ -146,7 +146,7 @@ require("user.utils").keymaps_set({
         opts = opt_expr,
     },
 
-    -- controll
+    -- control
     { -- copy file_or_directory
         mode = "n",
         lhs = [[C]],

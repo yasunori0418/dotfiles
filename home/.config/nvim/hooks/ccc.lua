@@ -5,7 +5,7 @@ c3.setup({
     win_opts = {
         border = "single",
     },
-    preserv = true,
+    preserve = true,
     hightlighter = {
         auto_enable = true,
     },

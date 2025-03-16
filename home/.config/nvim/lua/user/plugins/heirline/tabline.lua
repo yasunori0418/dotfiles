@@ -128,7 +128,7 @@ local BufferLine = utils.make_buflist(
         provider = "",
         hl = { fg = "black_bright", bg = "bg0" },
     },
-    { -- right trunctation, also optional (defaults to ...... yep, ">")
+    { -- right truncation, also optional (defaults to ...... yep, ">")
         provider = "",
         hl = { fg = "black_bright", bg = "bg0" },
     },

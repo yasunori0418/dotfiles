@@ -23,7 +23,7 @@ local icon = {
 local name = {
     provider = function(self)
         -- first, trim the pattern relative to the current directory. For other
-        -- options, see :h filename-modifers
+        -- options, see :h filename-modifiers
         local filename = vim.fn.fnamemodify(self.filename, ":.")
         if filename == "" or filename == nil then
             return "[No Name]"

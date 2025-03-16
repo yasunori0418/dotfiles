@@ -110,7 +110,7 @@ utils.keymaps_set({
         end,
         opts = opt,
     },
-    { -- hightlight
+    { -- highlight
         mode = "n",
         lhs = [[<Plug>(ddu-ff)C]],
         rhs = function()
