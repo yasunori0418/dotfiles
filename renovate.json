@@ -8,6 +8,14 @@
   "dependencyDashboard": false,
   "automerge": true,
   "branchConcurrentLimit": 0,
+  "nix": {
+    "fileMatch": [
+      "(^|/)flake\\.nix$"
+    ],
+    "commitMessageTopic": "nix",
+    "commitMessageExtra": "to {{newValue}}",
+    "enabled": true
+  },
   "packageRules": [
     {
       "matchFileNames": [
