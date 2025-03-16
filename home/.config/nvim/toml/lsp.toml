@@ -9,7 +9,7 @@ require("user.lsp")
 depends = ['ddc.vim', 'nvim-navic']
 on_ft = [
   'lua',
-  'pyhton',
+  'python',
   'php',
   'markdown',
   'typescript',
