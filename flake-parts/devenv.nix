@@ -16,6 +16,8 @@ _: {
             hyperfine
             stylua
             luajitPackages.luacheck
+            luajitPackages.vusted
+            luajitPackages.luacov
             checkmake
             lua-language-server
           ];
