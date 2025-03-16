@@ -8,6 +8,20 @@
   "dependencyDashboard": false,
   "automerge": true,
   "branchConcurrentLimit": 0,
+  "lockFileMaintenance": {
+    "enabled": true,
+    "recreateWhen": "always",
+    "rebaseStalePrs": true,
+    "branchTopic": "lock-file-maintenance",
+    "commitMessageAction": "Lock file maintenance",
+    "schedule": [
+      "before 4am on monday"
+    ],
+    "groupName": null,
+    "prBodyDefinitions": {
+      "Change": "All locks refreshed"
+    }
+  },
   "nix": {
     "fileMatch": [
       "(^|/)flake\\.nix$"
@@ -23,12 +37,6 @@
         "home/.config/nvim/denops/user/*.ts"
       ],
       "groupName": "deno dependencies."
-    },
-    {
-      "matchFileNames": [
-        "home/package.json"
-      ],
-      "groupName": "all package.json dependencies."
     }
   ]
 }
