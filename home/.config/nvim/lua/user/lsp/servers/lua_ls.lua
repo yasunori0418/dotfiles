@@ -1,14 +1,25 @@
 local function library()
     local dpp = require("dpp")
-    local paths = {}
-    for _, plugin in pairs(dpp.get()) do
-        table.insert(paths, plugin.path .. "/lua")
+    local lua_joinpath = function(path)
+        return vim.fs.joinpath(path, "lua")
     end
-    table.insert(paths, vim.fn.stdpath("config") .. "/lua")
-    table.insert(paths, vim.env.VIMRUNTIME .. "/lua")
-    table.insert(paths, "${3rd}/luv/library")
-    table.insert(paths, "${3rd}/busted/library")
-    table.insert(paths, "${3rd}/luassert/library")
+    local paths = vim.iter(vim.tbl_values(dpp.get()))
+        :filter(function(plugin)
+            return vim.fn.isdirectory(lua_joinpath(plugin.path) --[[@as string]]) > 0
+        end)
+        :map(function(plugin)
+            return lua_joinpath(plugin.path)
+        end)
+        :totable()
+    for _, value in ipairs({
+        lua_joinpath(vim.fn.stdpath("config")),
+        lua_joinpath(vim.env.VIMRUNTIME),
+        "${3rd}/luv/library",
+        "${3rd}/busted/library",
+        "${3rd}/luassert/library",
+    }) do
+        table.insert(paths, value)
+    end
     return paths
 end
 
