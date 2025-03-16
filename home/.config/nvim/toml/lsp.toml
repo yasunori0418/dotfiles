@@ -19,6 +19,7 @@ on_ft = [
   'sh',
   'zsh',
   'kotlin',
+  'json',
 ]
 # }}}
 
