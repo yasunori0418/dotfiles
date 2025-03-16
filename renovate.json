@@ -12,7 +12,7 @@
     {
       "matchFileNames": [
         "**/deps.ts",
-        "config/nvim/denops/user/*.ts"
+        "home/.config/nvim/denops/user/*.ts"
       ],
       "groupName": "deno dependencies."
     },
