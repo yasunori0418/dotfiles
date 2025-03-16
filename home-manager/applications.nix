@@ -20,6 +20,7 @@
     tmux
     zip
     typos
+    lnav
   ];
 
   textEditors = with pkgs; [
