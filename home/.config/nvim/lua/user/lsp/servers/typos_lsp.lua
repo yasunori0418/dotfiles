@@ -15,4 +15,7 @@ require("user.lsp.utils").config("typos_lsp", {
         "css",
         "awk",
     },
+    init_options = {
+        config = "~/.config/typos/config.toml",
+    },
 })

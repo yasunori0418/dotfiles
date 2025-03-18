@@ -131,6 +131,7 @@ in
       "zeno"
       "wezterm"
       "direnv"
+      "typos"
     ]
     // xdgConfigFileMap [
       "alacritty/alacritty.toml"
