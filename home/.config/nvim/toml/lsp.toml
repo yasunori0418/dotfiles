@@ -20,6 +20,8 @@ on_ft = [
   'zsh',
   'kotlin',
   'json',
+  'awk',
+  'make',
 ]
 # }}}
 
