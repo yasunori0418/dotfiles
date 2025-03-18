@@ -22,16 +22,16 @@ require("user.lsp.servers.pyright")
 require("user.lsp.servers.vtsls")
 require("user.lsp.servers.yamlls")
 require("user.lsp.servers.kotlin_language_server")
+require("user.lsp.servers.typos_lsp")
 
 utils.config("awk_ls")
 utils.config("bashls")
 utils.config("ccls")
 utils.config("clojure_lsp")
-utils.config("cssls")
+utils.config("cssls") -- vscode-langservers-extracted
 utils.config("emmet_ls")
-utils.config("html")
+utils.config("html") -- vscode-langservers-extracted
 utils.config("jqls")
-utils.config("jsonls")
+utils.config("jsonls") -- vscode-langservers-extracted
 utils.config("taplo")
-utils.config("typos_lsp")
 -- utils.config("phpactor")
