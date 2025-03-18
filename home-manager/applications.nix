@@ -66,6 +66,7 @@
     taplo
     jq-lsp
     typos-lsp
+    awk-language-server
   ];
 
   codingSupportTools = with pkgs; [
