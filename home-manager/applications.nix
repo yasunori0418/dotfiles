@@ -67,6 +67,7 @@
     jq-lsp
     typos-lsp
     awk-language-server
+    lua-language-server
   ];
 
   codingSupportTools = with pkgs; [
