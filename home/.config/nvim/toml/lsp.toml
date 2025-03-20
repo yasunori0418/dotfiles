@@ -22,6 +22,8 @@ on_ft = [
   'json',
   'awk',
   'make',
+  'html',
+  'css',
 ]
 # }}}
 
