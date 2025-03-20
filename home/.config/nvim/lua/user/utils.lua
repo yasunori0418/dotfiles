@@ -123,4 +123,18 @@ function M.is_files_found(path, files)
     end)
 end
 
+---Transform 'if statement' into an expression
+---@generic T : any
+---@param cond boolean
+---@param right T
+---@param left T
+---@return T
+function M.ifx(cond, right, left)
+    if cond then
+        return right
+    else
+        return left
+    end
+end
+
 return M
