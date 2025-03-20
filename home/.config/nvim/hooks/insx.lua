@@ -1,4 +1,6 @@
 -- lua_source {{{
+local ifx = require("user.utils").ifx
+local insx = require("insx")
 local helper = require("user.plugins.insx.helper")
 local pair_setup = require("user.plugins.insx.pair")
 local quote_setup = require("user.plugins.insx.quote")
@@ -16,12 +18,20 @@ vim.iter({
     ["{"] = "}",
     ["<"] = ">",
 }):each(function(open, close)
-    pair_setup.auto_pair(open, open, close)
-    pair_setup.delete_pair([[<BS>]], open, close)
-    pair_setup.delete_pair([[<C-h>]], open, close)
-    pair_setup.jump_pair_next(close, close)
-    pair_setup.jump_pair_next([[<Tab>]], close)
-    helper.fast_wrap([[<C-]>]], close)
+    local overrides = ifx(open == "<", {
+        insx.with.filetype({
+            "lua",
+            "vim",
+            "typescript",
+            "kotlin",
+        }),
+    }, {})
+    pair_setup.auto_pair(open, open, close, overrides)
+    pair_setup.delete_pair([[<BS>]], open, close, overrides)
+    pair_setup.delete_pair([[<C-h>]], open, close, overrides)
+    pair_setup.jump_pair_next(close, close, overrides)
+    pair_setup.jump_pair_next([[<Tab>]], close, overrides)
+    helper.fast_wrap([[<C-]>]], close, overrides)
 end)
 
 vim.iter({
