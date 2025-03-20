@@ -2,6 +2,7 @@
 local ifx = require("user.utils").ifx
 local insx = require("insx")
 local helper = require("user.plugins.insx.helper")
+local altercmd = helper.altercmd
 local pair_setup = require("user.plugins.insx.pair")
 local quote_setup = require("user.plugins.insx.quote")
 
@@ -11,6 +12,18 @@ require("insx.preset.standard").setup({
     fast_wrap = { enabled = true },
     spacing = { enabled = true },
 })
+
+altercmd([=[si\%[licon]]=], [[Silicon]])
+altercmd([=[r\%[un]]=], [[QuickRun]])
+altercmd([[di]], [[DppInstall]])
+altercmd([[du]], [[DppUpdate]])
+altercmd([[dc]], [[DppClearState]])
+altercmd([[ej]], [[Translate]])
+altercmd([[je]], [[Translate!]])
+altercmd([[gcf]], [[GinChaperon %]])
+altercmd([[cal]], [[Calendar]])
+altercmd([[mes]], [[Capture mes]])
+altercmd([=[c\%[apture]]=], [[Capture ]])
 
 vim.iter({
     ["("] = ")",

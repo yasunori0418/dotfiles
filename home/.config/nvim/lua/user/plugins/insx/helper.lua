@@ -28,4 +28,18 @@ function M.fast_wrap(key, close, overrides)
     )(key, overrides)
 end
 
+function M.altercmd(original, altanative)
+    ---@type insx.recipe.substitute.Option
+    local options = {
+        pattern = [[\v(^|'<, '>)]] .. original .. [[\%#]],
+        replace = [[\1]] .. altanative .. [[ \%#]],
+    }
+    local recipe = require("insx.recipe.substitute")(options)
+    ---@param ctx insx.Context
+    recipe.enabled = function(ctx)
+        return vim.fn.getcmdtype() == ":" and ctx.match(options.pattern)
+    end
+    M.insx_override_add(recipe, { "c" })("<Space>")
+end
+
 return M
