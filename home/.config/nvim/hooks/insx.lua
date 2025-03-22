@@ -10,7 +10,7 @@ require("insx.preset.standard").setup({
     cmdline = { enabled = true },
     fast_break = { enabled = true, arguments = true, html_attrs = true },
     fast_wrap = { enabled = true },
-    spacing = { enabled = true },
+    spacing = { enabled = false },
 })
 
 altercmd([=[si\%[licon]]=], [[Silicon]])
