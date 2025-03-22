@@ -40,7 +40,6 @@ vim.iter({
         }),
     }, {})
     pair_setup.auto_pair(open, open, close, overrides)
-    pair_setup.delete_pair([[<BS>]], open, close, overrides)
     pair_setup.delete_pair([[<C-h>]], open, close, overrides)
     pair_setup.jump_pair_next(close, close, overrides)
     pair_setup.jump_pair_next([[<Tab>]], close, overrides)
@@ -53,7 +52,6 @@ vim.iter({
     [[`]],
 }):each(function(quote)
     quote_setup.auto_quote(quote, quote)
-    quote_setup.delete_quote([[<BS>]], quote)
     quote_setup.delete_quote([[<C-h>]], quote)
     quote_setup.jump_quote_next(quote, quote)
     quote_setup.jump_quote_next([[<Tab>]], quote)
