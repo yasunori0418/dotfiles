@@ -36,7 +36,8 @@ let
     ../settings/xserver/windowManager/i3wm.nix
   ];
 
-  systemdUserServiceUnits = [
+  systemd = [
+    ../settings/systemd/system-conf.nix
     ../settings/systemd/polkit-kde-agent.nix
     ../settings/systemd/ssh-agent.nix
   ];
@@ -83,7 +84,7 @@ in
     ]
     ++ services
     ++ xserver
-    ++ systemdUserServiceUnits;
+    ++ systemd;
 
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions
