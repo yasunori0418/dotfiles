@@ -23,7 +23,7 @@ setopt LIST_TYPES
 setopt LIST_PACKED
 setopt MENU_COMPLETE
 
-## Expantion and Globbing
+## Expansion and Globbing
 # defaults
 setopt CASE_GLOB
 setopt CASE_MATCH
