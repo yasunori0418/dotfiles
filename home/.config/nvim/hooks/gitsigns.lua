@@ -13,7 +13,7 @@ vim.api.nvim_create_autocmd({ "BufNewFile", "BufRead", "BufWritePost" }, {
         local repo_root = require("user.utils").search_repo_root()
         local diff_files = vim.fn.systemlist("git diff --name-only 2> /dev/null")
         for _, diff_file in pairs(diff_files) do
-            if repo_root .. "/" .. diff_file == current_file then
+            if vim.fs.joinpath(repo_root, diff_file) == current_file then
                 is_diff_file = true
             end
         end
