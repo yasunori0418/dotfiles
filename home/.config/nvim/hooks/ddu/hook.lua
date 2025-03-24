@@ -128,6 +128,12 @@ utils.keymaps_set({
     },
 
     -- git control by ddu
+    {
+        mode = "n",
+        lhs = [[<C-g>]],
+        rhs = [[<Plug>(git)]],
+        opts = {},
+    },
     { -- git:status
         mode = "n",
         lhs = [[<Plug>(git)s]],
