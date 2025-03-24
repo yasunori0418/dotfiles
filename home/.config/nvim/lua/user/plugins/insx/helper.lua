@@ -31,7 +31,7 @@ end
 function M.altercmd(original, altanative)
     ---@type insx.recipe.substitute.Option
     local options = {
-        pattern = [[\v(^|'<, '>)]] .. original .. [[\%#]],
+        pattern = [[\v(^|'\<,'\>)]] .. original .. [[\%#]],
         replace = [[\1]] .. altanative .. [[ \%#]],
     }
     local recipe = require("insx.recipe.substitute")(options)
