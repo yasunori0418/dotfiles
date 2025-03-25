@@ -1,7 +1,7 @@
 # Git plugins
 [[plugins]] # gitsigns.nvim
 repo = 'github.com/lewis6991/gitsigns.nvim'
-on_event = ['CursorHold']
+on_event = ['CursorHold', 'BufRead']
 hooks_file = '$HOOKS_DIR/gitsigns.lua'
 
 [[plugins]]
