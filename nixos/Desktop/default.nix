@@ -49,6 +49,7 @@
         ../settings/systemd/polkit-kde-agent.nix
         ../settings/systemd/ssh-agent.nix
       ];
+      systemd-conf = ../settings/systemd/system-conf.nix;
 
       # Applications
       xremapModule = xremap-flake.nixosModules.default;
@@ -80,6 +81,7 @@
       virtualisation
       qt
       sane
+      systemd-conf
 
       # Applications
       xremapModule
