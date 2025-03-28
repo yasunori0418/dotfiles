@@ -13,6 +13,10 @@ utils.on_attach(function(client, buffer)
     end
 end)
 
+vim.lsp.config("*", {
+    capabilities = utils.capabilities,
+} --[[@as vim.lsp.Config]])
+
 require("user.lsp.servers.denols")
 require("user.lsp.servers.efm")
 require("user.lsp.servers.intelephense")
