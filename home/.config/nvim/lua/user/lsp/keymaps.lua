@@ -48,7 +48,9 @@ lsp_utils.on_attach(function(_, buffer)
             mode = { "n" },
             lhs = [=[]d]=],
             rhs = function()
-                diagnostic.goto_next()
+                diagnostic.jump({
+                    count = 1,
+                })
             end,
             opts = opt,
         },
@@ -56,7 +58,9 @@ lsp_utils.on_attach(function(_, buffer)
             mode = { "n" },
             lhs = [=[[d]=],
             rhs = function()
-                diagnostic.goto_prev()
+                diagnostic.jump({
+                    count = -1,
+                })
             end,
             opts = opt,
         },
