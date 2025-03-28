@@ -1,4 +1,5 @@
 require("user.lsp.keymaps")
+require("user.lsp.diagnostic")
 
 local utils = require("user.lsp.utils")
 utils.on_attach(function(client, buffer)
