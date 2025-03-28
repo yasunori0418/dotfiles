@@ -26,10 +26,11 @@ local function find_root(path)
     end
 end
 
-require("user.lsp.utils").config("ts_ls", {
+require("lspconfig").ts_ls.setup({
     filetypes = ft.js_like,
     single_file_support = false,
-    root_dir = function(path)
-        return find_root(vim.fs.dirname(path))
+    root_dir = function(bufnr)
+        local file_path = vim.fn.fnamemodify(vim.fn.bufname(bufnr), ":p")
+        return find_root(vim.fs.dirname(file_path))
     end,
-})
+} --[[@as vim.lsp.Config]])

@@ -1,4 +1,4 @@
-require("user.lsp.utils").config("typos_lsp", {
+require("lspconfig").typos_lsp.setup({
     filetypes = {
         "bash",
         "kotlin",
@@ -18,4 +18,4 @@ require("user.lsp.utils").config("typos_lsp", {
     init_options = {
         config = "~/.config/typos/config.toml",
     },
-})
+} --[[@as vim.lsp.Config]])

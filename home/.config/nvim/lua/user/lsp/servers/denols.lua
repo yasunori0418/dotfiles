@@ -24,9 +24,10 @@ local function find_root(path)
     return project_root
 end
 
-require("user.lsp.utils").config("denols", {
-    root_dir = function(path)
-        return find_root(vim.fs.dirname(path))
+require("lspconfig").denols.setup({
+    root_dir = function(bufnr)
+        local file_path = vim.fn.fnamemodify(vim.fn.bufname(bufnr), ":p")
+        return find_root(vim.fs.dirname(file_path))
     end,
     settings = {
         deno = {
@@ -48,4 +49,4 @@ require("user.lsp.utils").config("denols", {
             },
         },
     },
-})
+} --[[@as vim.lsp.Config]])

@@ -23,7 +23,7 @@ local function library()
     return paths
 end
 
-require("user.lsp.utils").config("lua_ls", {
+require("lspconfig").lua_ls.setup({
     settings = {
         Lua = {
             runtime = {
@@ -55,4 +55,4 @@ require("user.lsp.utils").config("lua_ls", {
             },
         },
     },
-})
+} --[[@as vim.lsp.Config]])
