@@ -13,6 +13,8 @@ require("insx.preset.standard").setup({
     spacing = { enabled = false },
 })
 
+insx.add([[<CR>]], helper.kensaku_search_expand(), { mode = "c" })
+
 altercmd([=[si\%[licon]]=], [[Silicon]])
 altercmd([=[r\%[un]]=], [[QuickRun]])
 altercmd([[di]], [[DppInstall]])

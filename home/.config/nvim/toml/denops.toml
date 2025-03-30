@@ -45,10 +45,7 @@ depends = 'denops.vim'
 [[plugins]]
 repo = 'github.com/lambdalisue/kensaku-search.vim'
 depends = 'kensaku.vim'
-on_map = { 'c' = '<Plug>(kensaku-search-replace)' }
-lua_add = '''
-vim.keymap.set("c", [[<CR>]], [[<Plug>(kensaku-search-replace)<CR>]], {noremap = false})
-'''
+on_func = 'kensaku_search#replace'
 
 [[plugins]]
 repo = 'github.com/kat0h/bufpreview.vim'

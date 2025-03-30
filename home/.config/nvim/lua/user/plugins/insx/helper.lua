@@ -42,4 +42,19 @@ function M.altercmd(original, altanative)
     M.insx_override_add(recipe, { "c" })("<Space>")
 end
 
+---lambdalisue/kensaku-search.vim
+---@return insx.RecipeSource
+function M.kensaku_search_expand()
+    return {
+        enabled = function()
+            local current_cmd_type = vim.fn.getcmdtype()
+            return current_cmd_type == "/" or current_cmd_type == "?"
+        end,
+        ---@param ctx insx.Context
+        action = function(ctx)
+            ctx.send(vim.fn["kensaku_search#replace"]() .. [[<CR>n]])
+        end,
+    }
+end
+
 return M
