@@ -57,4 +57,9 @@ on_source = 'nvim-lspconfig'
 [[plugins]]
 repo = 'github.com/SmiteshP/nvim-navic'
 hooks_file = "$HOOKS_DIR/navic.lua"
+
+[[plugins]]
+repo = 'github.com/kosayoda/nvim-lightbulb'
+hooks_file = '$HOOKS_DIR/lightbulb.lua'
+on_source = ['nvim-lspconfig']
 # }}}
