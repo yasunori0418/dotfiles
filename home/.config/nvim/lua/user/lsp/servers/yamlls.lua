@@ -1,4 +1,4 @@
-require("user.lsp.utils").config("yamlls", {
+require("lspconfig").yamlls.setup({
     settings = {
         yaml = {
             format = {
