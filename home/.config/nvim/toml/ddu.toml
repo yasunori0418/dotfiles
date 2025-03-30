@@ -155,7 +155,7 @@ on_source = 'ddu.vim'
 
 [[plugins]]
 repo = 'github.com/Milly/ddu-filter-kensaku'
-depends = 'kensaku.vim'
+depends = 'vim-kensaku'
 on_source = 'ddu.vim'
 
 [[plugins]]

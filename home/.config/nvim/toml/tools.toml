@@ -11,7 +11,7 @@ repo = 'github.com/tweekmonster/helpful.vim'
 on_cmd = 'HelpfulVersion'
 
 [[plugins]] # suda.vim
-repo = 'github.com/lambdalisue/suda.vim'
+repo = 'github.com/lambdalisue/vim-suda'
 on_cmd = ['SudaRead', 'SudaWrite']
 
 [[plugins]] # memolist.vim

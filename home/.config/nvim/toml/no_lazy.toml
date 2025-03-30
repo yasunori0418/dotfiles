@@ -12,5 +12,5 @@ hook_add = 'set helplang=ja,en'
 repo = 'github.com/mattn/learn-vimscript'
 
 [[plugins]] # mr.vim
-repo = 'github.com/lambdalisue/mr.vim'
+repo = 'github.com/lambdalisue/vim-mr'
 hooks_file = '$HOOKS_DIR/mr.lua'

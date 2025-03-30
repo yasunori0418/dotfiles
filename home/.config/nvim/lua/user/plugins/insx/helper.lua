@@ -42,7 +42,7 @@ function M.altercmd(original, altanative)
     M.insx_override_add(recipe, { "c" })("<Space>")
 end
 
----lambdalisue/kensaku-search.vim
+---lambdalisue/vim-kensaku-search
 ---@return insx.RecipeSource
 function M.kensaku_search_expand()
     return {

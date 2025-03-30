@@ -39,11 +39,11 @@ vim.g['fuzzy_motion_matchers'] = { 'fzf', 'kensaku' }
 '''
 
 [[plugins]]
-repo = 'github.com/lambdalisue/kensaku.vim'
+repo = 'github.com/lambdalisue/vim-kensaku'
 depends = 'denops.vim'
 
 [[plugins]]
-repo = 'github.com/lambdalisue/kensaku-search.vim'
+repo = 'github.com/lambdalisue/vim-kensaku-search'
 depends = 'kensaku.vim'
 on_func = 'kensaku_search#replace'
 

@@ -5,7 +5,7 @@ on_event = ['CursorHold', 'BufRead']
 hooks_file = '$HOOKS_DIR/gitsigns.lua'
 
 [[plugins]]
-repo = 'github.com/lambdalisue/gin.vim'
+repo = 'github.com/lambdalisue/vim-gin'
 depends = ['denops.vim']
 on_cmd = ['Gin', 'GinBranch', 'GinCd', 'GinChaperon', 'GinDiff', 'GinLog', 'GinPatch', 'GinStatus']
 hooks_file = '$HOOKS_DIR/gin.lua'
