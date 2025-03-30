@@ -62,4 +62,23 @@ hooks_file = "$HOOKS_DIR/navic.lua"
 repo = 'github.com/kosayoda/nvim-lightbulb'
 hooks_file = '$HOOKS_DIR/lightbulb.lua'
 on_source = ['nvim-lspconfig']
+
+[[plugins]]
+repo = 'github.com/stevearc/aerial.nvim'
+on_source = ['nvim-lspconfig']
+on_cmd = [
+  'AerialToggle',
+  'AerialOpen',
+  'AerialOpenAll',
+  'AerialClose',
+  'AerialCloseAll',
+  'AerialNext',
+  'AerialPrev',
+  'AerialGo',
+  'AerialInfo',
+  'AerialNavToggle',
+  'AerialNavOpen',
+  'AerialNavClose',
+]
+hooks_file = '$HOOKS_DIR/aerial.lua'
 # }}}
