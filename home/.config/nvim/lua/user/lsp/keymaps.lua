@@ -16,7 +16,9 @@ lsp_utils.on_attach(function(_, buffer)
             mode = { "n" },
             lhs = [[K]],
             rhs = function()
-                lsp.buf.hover()
+                lsp.buf.hover({
+                    border = "single",
+                })
             end,
             opts = opt,
         },
@@ -32,7 +34,9 @@ lsp_utils.on_attach(function(_, buffer)
             mode = { "n" },
             lhs = [[<Plug>(lsp)r]],
             rhs = function()
-                lsp.buf.rename()
+                local cword = vim.fn.expand("<cword>")
+                local input_word = vim.fn["cmdline#input"]("New name: ", cword) --[[@as string]]
+                lsp.buf.rename(utils.ifx(input_word == "", cword, input_word))
             end,
             opts = opt,
         },
@@ -196,8 +200,10 @@ lsp_utils.on_attach(function(_, buffer)
         },
         { -- ddu lsp:codeAction
             mode = { "n", "x" },
-            lhs = [[ga]],
-            rhs = [[<Cmd>call ddu#start(#{name: "lsp:codeAction"})<CR>]],
+            lhs = [[<Plug>(lsp)a]],
+            rhs = function()
+                vim.fn["ddu#start"]({ name = "lsp:codeAction" })
+            end,
             opts = opt,
         },
         { -- ddu lsp:diagnostics
