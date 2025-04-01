@@ -8,6 +8,8 @@
   ];
 
   utilityTools = with pkgs; [
+    gnumake
+    git
     jnv
     usql
     glow
