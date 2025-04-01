@@ -26,7 +26,7 @@ rec {
     ];
   programs.home-manager.enable = true;
   home = {
-    username = "watanabe";
+    username = "taiki.watanabe";
     homeDirectory = "/Users/${home.username}";
     stateVersion = "24.05";
   };

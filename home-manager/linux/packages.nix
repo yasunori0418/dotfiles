@@ -15,13 +15,7 @@
         ++ languageServers
         ++ codingSupportTools
         ++ libraries
-        ++ (
-          utilityTools
-          ++ [
-            pkgs.deno
-            pkgs.leetcode-cli
-          ]
-        )
+        ++ utilityTools
         ++ (
           terminalEmulators
           ++ [

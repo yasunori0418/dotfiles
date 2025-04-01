@@ -95,7 +95,7 @@
               });
               macx64 = homeManagerConfiguration (args {
                 profileName = "macx64";
-                system = "x86_64-darwin";
+                system = "aarch64-darwin";
               });
             };
         };

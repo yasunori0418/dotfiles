@@ -21,6 +21,7 @@
     zip
     typos
     lnav
+    deno
   ];
 
   textEditors = with pkgs; [
