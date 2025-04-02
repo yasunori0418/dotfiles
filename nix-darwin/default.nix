@@ -25,6 +25,14 @@
       "kitty"
     ];
   };
+
+  # フォントの設定
+  fonts = {
+    packages = with pkgs; [
+      hackgen-nf-font
+    ];
+  };
+
   # システムの設定（nix-darwinが効いているかのテスト）
   system = {
     stateVersion = 6;
