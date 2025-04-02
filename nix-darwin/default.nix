@@ -23,6 +23,7 @@
       "1password-cli"
       "ghostty"
       "kitty"
+      "stats"
     ];
   };
 
