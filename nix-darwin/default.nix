@@ -1,4 +1,4 @@
-{ ... }:
+{ pkgs, ... }:
 {
 
   # nix自体の設定
@@ -11,6 +11,20 @@
     };
   };
 
+  # homebrew
+  homebrew = {
+    enable = true;
+    onActivation = {
+      autoUpdate = true;
+      cleanup = "uninstall"; # nix-darwin経由だけでbrew installさせる
+    };
+    casks = [
+      "1password"
+      "1password-cli"
+      "ghostty"
+      "kitty"
+    ];
+  };
   # システムの設定（nix-darwinが効いているかのテスト）
   system = {
     stateVersion = 6;

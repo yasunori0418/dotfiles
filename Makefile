@@ -60,6 +60,9 @@ nix-home-%: ## nix run "nixpkgs#home-manager" -- switch --flake ".#"%(linux | ma
 nix-gc: ## nix-collect-garbage -d
 	@nix-collect-garbage -d
 
+nix-darwin: ## nix run nix-darwin -- switch --flake .
+	@nix run nix-darwin -- switch --flake '.#yasunori-darwin'
+
 ## Environment Setup Tools ##
 nix-install: ## Install nix.
 	@curl --proto '=https' --tlsv1.2 -sSf -L https://install.determinate.systems/nix | sh -s -- install
