@@ -24,6 +24,7 @@
       "ghostty"
       "kitty"
       "stats"
+      "nikitabobko/tap/aerospace"
     ];
   };
 
