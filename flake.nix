@@ -114,12 +114,13 @@
           darwinConfigurations =
             let
               inherit (inputs.nix-darwin.lib) darwinSystem;
+              inherit (import ./nix-darwin/args.nix inputs) args;
             in
             {
-              yasunori-darwin = darwinSystem {
+              yasunori-darwin = darwinSystem (args {
+                profileName = "lg-darwin";
                 system = "aarch64-darwin";
-                modules = [ ./nix-darwin ];
-              };
+              });
             };
 
         };
