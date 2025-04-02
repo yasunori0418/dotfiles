@@ -16,7 +16,7 @@ start-at-login = true
 # Run Sketchybar together with AeroSpace
 # sketchbar has a built-in detection of already running process,
 # so it won't be run twice on AeroSpace restart
-after-startup-command = ['exec-and-forget sketchybar']
+# after-startup-command = ['exec-and-forget sketchybar']
 
 # Possible values: tiles|accordion
 default-root-container-layout = 'accordion'
@@ -39,7 +39,7 @@ inner.horizontal = 5
 inner.vertical = 5
 outer.left = 5
 outer.bottom = 5
-outer.top = 40
+outer.top = 5
 outer.right = 5
 
 [mode.main.binding]
