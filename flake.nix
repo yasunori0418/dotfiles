@@ -5,11 +5,19 @@
     nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
     nixpkgs-stable.url = "github:NixOS/nixpkgs/nixos-24.05";
     nixos-hardware.url = "github:NixOS/nixos-hardware/master";
-    flake-parts.url = "github:hercules-ci/flake-parts";
-    treefmt-nix.url = "github:numtide/treefmt-nix";
-    devenv.url = "github:cachix/devenv";
+    flake-parts = {
+      url = "github:hercules-ci/flake-parts";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+    treefmt-nix = {
+      url = "github:numtide/treefmt-nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+    devenv = {
+      url = "github:cachix/devenv";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     systems.url = "github:nix-systems/default";
-    mk-shell-bin.url = "github:rrbutani/nix-mk-shell-bin";
     nix2container = {
       url = "github:nlewo/nix2container";
       inputs.nixpkgs.follows = "nixpkgs";
