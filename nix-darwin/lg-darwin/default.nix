@@ -28,6 +28,7 @@
       "dbeaver-community"
       "docker"
       "temurin@17"
+      "jetbrains-toolbox"
     ];
     brews = [
       "docker-compose"
