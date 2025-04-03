@@ -26,12 +26,13 @@
       "stats"
       "nikitabobko/tap/aerospace"
       "dbeaver-community"
-      "docker"
+      # "docker"
       "temurin@17"
       "jetbrains-toolbox"
+      "rancher" # similar docker desktop
     ];
     brews = [
-      "docker-compose"
+      # "docker-compose"
       "watch"
     ];
   };
