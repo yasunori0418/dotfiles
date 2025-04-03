@@ -151,7 +151,7 @@ in
 
   MacOS = {
     homeDirectory = {
-      ".docker/config.json".source = symlink /${homeDir}/.docker/mac_config.json;
+      # ".docker/config.json".source = symlink /${homeDir}/.docker/mac_config.json;
     };
     library = {
       "Library/Application Support/AquaSKK" = {
