@@ -27,6 +27,7 @@
       "nikitabobko/tap/aerospace"
       "dbeaver-community"
       "docker"
+      "temurin@17"
     ];
     brews = [
       "docker-compose"
