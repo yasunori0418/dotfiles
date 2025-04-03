@@ -32,6 +32,7 @@
     ];
     brews = [
       "docker-compose"
+      "watch"
     ];
   };
 
