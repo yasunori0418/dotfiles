@@ -1,9 +1,6 @@
 {
   "auths": {},
-  "cliPluginsExtraDirs": [
-    "/usr/local/lib/docker/cli-plugins"
-  ],
   "credsStore": "osxkeychain",
-  "currentContext": "orbstack",
+  "currentContext": "colima",
   "detachKeys": "ctrl-\\"
 }

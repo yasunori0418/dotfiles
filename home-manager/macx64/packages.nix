@@ -15,7 +15,10 @@
         ++ shellTools
         ++ languageServers
         ++ codingSupportTools
-        ++ libraries;
+        ++ libraries
+        ++ [
+          pkgs.colima
+        ];
     in
     packages;
 }

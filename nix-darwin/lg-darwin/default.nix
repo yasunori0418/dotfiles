@@ -26,6 +26,10 @@
       "stats"
       "nikitabobko/tap/aerospace"
       "dbeaver-community"
+      "docker"
+    ];
+    brews = [
+      "docker-compose"
     ];
   };
 
