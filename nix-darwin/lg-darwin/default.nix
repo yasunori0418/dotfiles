@@ -25,6 +25,7 @@
       "kitty"
       "stats"
       "nikitabobko/tap/aerospace"
+      "dbeaver-community"
     ];
   };
 
