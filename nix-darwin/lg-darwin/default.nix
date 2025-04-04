@@ -30,6 +30,7 @@
       "temurin@17"
       "jetbrains-toolbox"
       "rancher" # similar docker desktop
+      "cursor"
     ];
     brews = [
       # "docker-compose"
