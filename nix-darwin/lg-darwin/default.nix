@@ -24,7 +24,7 @@
       "ghostty"
       "kitty"
       "stats"
-      "nikitabobko/tap/aerospace"
+      "aerospace"
       "dbeaver-community"
       # "docker"
       "temurin@17"
@@ -34,6 +34,9 @@
     brews = [
       # "docker-compose"
       "watch"
+    ];
+    taps = [
+      "nikitabobko/tap" # for aerospace
     ];
   };
 
