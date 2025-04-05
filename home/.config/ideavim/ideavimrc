@@ -1,0 +1,277 @@
+" Editor-Settings {{{
+" Encoding {{{
+" Use utf-8 to overall encoding.
+set encoding=utf-8
+scriptencoding utf-8
+
+" Use utf-8 when file write.
+set fileencoding=utf-8
+
+" Use file encodings when loaded.
+set fileencodings=utf-8,sjis,iso-2022-jp,euc-jp
+" }}}
+
+" Automatic line feed code recognition.
+set fileformats=unix,dos
+
+" East asia ambigunous character width problem.
+set ambiwidth=single
+
+" Automatically load the file being edited
+set autoread
+
+" Move the cursor one character ahead of the end of the line
+set virtualedit=block
+
+" Use the clipboard on linux systems.
+set clipboard+=unnamedplus,unnamed
+
+" diff vertical view
+set diffopt+=vertical,algorithm:histogram,indent-heuristic
+
+" no beep
+set belloff=all
+
+" }}}
+
+" Display {{{
+" Display rows number.
+set number
+
+" Display relative rows number.
+set relativenumber
+
+" Display current row cursorline.
+set cursorline
+
+set termguicolors
+
+" }}}
+
+" Folding {{{
+set foldmethod=marker
+set foldlevel=0
+set foldcolumn=3
+" }}}
+
+" Search {{{
+" Highlight search results
+set hlsearch
+
+" Incremental search.
+" Search starts when you enter the first character of the search word.
+set incsearch
+
+" Search is not case sensitive
+set ignorecase
+
+" Searching in lowercase ignores uppercase and lowercase
+set smartcase
+
+" When the search progresses to the end of the file, search again from the beginning of the file.
+set wrapscan
+" }}}
+
+" Indent {{{
+" Smart indent.
+set smartindent
+
+" Insert tab with half-width space.
+set expandtab
+
+" The amount of blank space to insert with each command or smart indent.
+set shiftwidth=2
+
+" Tab width with 2 spaces.
+set tabstop=2
+
+" Insert a tab with 2 minutes of half-width space.
+set softtabstop=2
+" }}}
+
+" Statusline {{{
+" Display statusline.
+set laststatus=2
+
+" Command line completion.
+set wildmenu
+
+" Command history.
+set history=5000
+" }}} 
+
+" Invisible characters {{{
+" Invisible characters
+set list
+
+"Tab/End line Space/End line/No brake space.
+set listchars=tab:»-,space:･,trail:･,nbsp:%,eol:↲,extends:»,precedes:«
+" }}}
+
+" Disable keymaps. {{{
+" `s` and `S` same is `cl`, `cc` and `C` "
+nnoremap s <Nop>
+xnoremap s <Nop>
+nnoremap S <Nop>
+xnoremap S <Nop>
+
+" unuse marker
+nnoremap m <Nop>
+xnoremap m <Nop>
+nnoremap ' <Nop>
+xnoremap ' <Nop>
+nnoremap ` <Nop>
+xnoremap ` <Nop>
+
+" disable move left after space
+nnoremap <Space> <Nop>
+xnoremap <Space> <Nop>
+
+" disable arrow keys for move
+noremap <Left> <Nop>
+noremap! <Left> <Nop>
+noremap <Down> <Nop>
+noremap! <Down> <Nop>
+noremap <Up> <Nop>
+noremap! <Up> <Nop>
+noremap <Right> <Nop>
+noremap! <Right> <Nop>
+" }}}
+
+" Window control keybind {{{
+" overwrites window command of 'CTRL-W'.
+
+" Commands of move between window.
+nnoremap <silent> <Space>wh <C-W>h
+nnoremap <silent> <Space>wj <C-W>j
+nnoremap <silent> <Space>wk <C-W>k
+nnoremap <silent> <Space>wl <C-W>l
+
+" Commands of move window.
+nnoremap <silent> <Space>wH <C-W>H
+nnoremap <silent> <Space>wJ <C-W>J
+nnoremap <silent> <Space>wK <C-W>K
+nnoremap <silent> <Space>wL <C-W>L
+
+" Tab page controls.
+nnoremap <silent> <Space>wtn :<C-u>tabnew<CR>
+nnoremap <silent> <Space>wtT <C-W>T
+
+" Commands of close window.
+nnoremap <silent> <Space>wq <C-W>q
+
+" easy save. save file only when changed.
+nnoremap <silent> <Space>ww :<C-u>update<CR>
+
+" Commands of Window split.
+nnoremap <silent> <Space>ws <C-W>s
+nnoremap <silent> <Space>wv <C-W>v
+nnoremap <silent> <Space>wn <C-W>n
+
+" Window size controls.
+nnoremap <silent> <Space>w<Bar> <C-W><Bar>
+nnoremap <silent> <Space>w_ <C-W>_
+nnoremap <silent> <Space>w= <C-W>=
+nnoremap <silent> <S-Left> <C-w><
+nnoremap <silent> <S-Right> <C-w>>
+nnoremap <silent> <S-Up> <C-w>-
+nnoremap <silent> <S-Down> <C-w>+
+" }}}
+
+" QuickFix {{{
+nnoremap <silent> [q :<C-u>cprevious<CR>
+nnoremap <silent> ]q :<C-u>cnext<CR>
+nnoremap <silent> [Q :<C-u>cfirst<CR>
+nnoremap <silent> ]Q :<C-u>clast<CR>
+" }}}
+
+" Buffer {{{
+nnoremap <silent> [b :<C-u>bprevious<CR>
+nnoremap <silent> ]b :<C-u>bnext<CR>
+nnoremap <silent> [B :<C-u>bfirst<CR>
+nnoremap <silent> ]B :<C-u>blast<CR>
+" }}}
+
+" Tab {{{
+nnoremap <silent> [t gT
+nnoremap <silent> ]t gt
+nnoremap <silent> [T :<C-u>tabfirst<CR>
+nnoremap <silent> ]T :<C-u>tablast<CR>
+" }}}
+
+" Do not save the things erased by x and c in the register. {{{
+nnoremap <silent> x "_x
+xnoremap <silent> x "_x
+nnoremap <silent> X "_X
+xnoremap <silent> X "_X
+nnoremap <silent> c "_c
+xnoremap <silent> c "_c
+nnoremap <silent> C "_C
+xnoremap <silent> C "_C
+" }}}
+
+" Macro record keymap {{{
+nnoremap <silent> <C-q> q
+xnoremap <silent> <C-q> q
+nnoremap <silent> q <Nop>
+xnoremap <silent> q <Nop>
+" }}}
+
+" Normal mode {{{
+" Opens the file name under the cursor.
+nnoremap <silent> gf gF
+
+" Disable highlights from search results.
+nnoremap <silent> <C-l> :<C-u>nohlsearch<Bar>diffupdate<CR><C-l>
+
+nnoremap 0 ^
+nnoremap ^ 0
+" }}}
+
+" Insert mode {{{
+" Exit insert mode and cmdline mode.
+inoremap <silent> jj <ESC><C-l>
+cnoremap <silent> jj <ESC><C-l>
+
+inoremap <C-l> <Del>
+cnoremap <C-l> <Del>
+inoremap <C-a> <C-g>U<Home>
+
+inoremap <C-e> <C-g>U<End>
+inoremap <C-f> <C-g>U<Left>
+inoremap <C-b> <C-g>U<Right>
+" }}}
+
+" cmdline mode cursor move emacs like {{{
+cnoremap <C-a> <Home>
+cnoremap <C-e> <End>
+cnoremap <C-f> <Right>
+cnoremap <C-b> <Left>
+" }}}
+
+" Visual {{{
+xnoremap P p
+xnoremap p P
+xnoremap 0 ^
+xnoremap ^ 0
+" }}}
+
+" Operator {{{
+onoremap <silent> a' 2i'
+xnoremap <silent> a' 2i'
+onoremap <silent> a" 2i"
+xnoremap <silent> a" 2i"
+onoremap <silent> a` 2i`
+xnoremap <silent> a` 2i`
+onoremap <silent> a<Space> aW
+xnoremap <silent> a<Space> aW
+onoremap <silent> i<Space> iW
+xnoremap <silent> i<Space> iW
+" }}}
+
+augroup MyVimrcAutocmds
+  autocmd!
+  autocmd QuickFixCmdPost *grep* cwindow
+augroup END
+
+" vim:ft=vim

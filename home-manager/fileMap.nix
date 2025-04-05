@@ -131,6 +131,7 @@ in
       "wezterm"
       "direnv"
       "typos"
+      "ideavim"
     ]
     // xdgConfigFileMap [
       "alacritty/alacritty.toml"
