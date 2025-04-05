@@ -37,6 +37,10 @@ require("lspconfig").lua_ls.setup({
                 checkThirdParty = false,
                 library = library(),
                 -- maxPreload = 1000,
+                ignoreDir = {
+                    ".vscode",
+                    ".devenv",
+                },
             },
             completion = {
                 callSnippet = "Both",
