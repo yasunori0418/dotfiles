@@ -122,7 +122,6 @@ in
       "glow"
       "jj"
       "kitty"
-      "luacheck"
       "neofetch"
       "nvim"
       "vim"
@@ -164,6 +163,8 @@ in
         source = symlink /${xdgConfigHome}/zellij;
         recursive = true;
       };
+      "Library/Application Support/Luacheck/.luacheckrc".source =
+        symlink /${xdgConfigHome}/luacheck/.luacheckrc;
     };
     dotConfig =
       {
@@ -211,6 +212,7 @@ in
         "i3"
         "keynav"
         "libskk"
+        "luacheck"
         "mpd"
         "paru"
         "picom"
