@@ -176,9 +176,6 @@ in
       // xdgConfigDirMap [
         "aerospace"
         "karabiner"
-        "sketchybar"
-        "skhd"
-        "yabai"
       ];
   };
 
