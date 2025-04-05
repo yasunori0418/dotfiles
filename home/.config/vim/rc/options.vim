@@ -39,7 +39,7 @@ set belloff=all
 set number
 
 " Display relative rows number.
-set relativenumber
+set norelativenumber
 
 " Display current row cursorline.
 set cursorline
