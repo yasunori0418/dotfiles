@@ -28,7 +28,7 @@ hooks_file = '$HOOKS_DIR/silicon.lua'
 
 [[plugins]]
 repo = 'github.com/yuki-yano/fuzzy-motion.vim'
-depends = ['denops.vim', 'kensaku.vim']
+depends = ['denops.vim', 'vim-kensaku']
 on_cmd = ['FuzzyMotion']
 lua_add = '''
 vim.keymap.set("n", [[s/]], [[<Cmd>FuzzyMotion<CR>]], { noremap = true })
@@ -44,7 +44,7 @@ depends = 'denops.vim'
 
 [[plugins]]
 repo = 'github.com/lambdalisue/vim-kensaku-search'
-depends = 'kensaku.vim'
+depends = 'vim-kensaku'
 on_func = 'kensaku_search#replace'
 
 [[plugins]]
