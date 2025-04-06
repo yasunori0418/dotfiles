@@ -26,14 +26,12 @@
       "stats"
       "aerospace"
       "dbeaver-community"
-      # "docker"
       "temurin@17"
       "jetbrains-toolbox"
       "rancher" # similar docker desktop
       "cursor"
     ];
     brews = [
-      # "docker-compose"
       "watch"
     ];
     taps = [
