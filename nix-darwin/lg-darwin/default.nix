@@ -33,6 +33,7 @@
     ];
     brews = [
       "watch"
+      "coreutils"
     ];
     taps = [
       "nikitabobko/tap" # for aerospace
