@@ -160,6 +160,10 @@ if.app-id = 'com.tinyspeck.slackmacgap'
 run = 'move-node-to-workspace 4'
 
 [[on-window-detected]]
+if.app-id = 'org.jkiss.dbeaver.core.product'
+run = 'move-node-to-workspace 5'
+
+[[on-window-detected]]
 if.app-id = 'io.rancherdesktop.app'
 run = 'move-node-to-workspace 6'
 
