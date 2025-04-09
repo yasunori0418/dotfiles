@@ -8,6 +8,7 @@ let
   inherit (inputs)
     nixpkgs
     nixpkgs-stable
+    claude-desktop
     ;
   pkgs-stable = import nixpkgs-stable {
     inherit system;
@@ -21,7 +22,7 @@ in
     overlays = import ../nix-overlays inputs;
   };
   extraSpecialArgs = {
-    inherit pkgs-stable;
+    inherit pkgs-stable claude-desktop;
   };
   modules = [ ./${profileName} ];
 }

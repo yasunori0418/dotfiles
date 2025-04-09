@@ -1,6 +1,7 @@
 {
   pkgs,
   pkgs-stable,
+  claude-desktop,
   config,
   ...
 }:
@@ -14,6 +15,7 @@ rec {
         inherit
           pkgs
           pkgs-stable
+          claude-desktop
           ;
       };
       homeFile = import ./homeFile.nix {

@@ -89,6 +89,9 @@
     biome
   ];
 
+  aiTools = with pkgs; [
+  ];
+
   libraries = with pkgs; [
     gcc
     go

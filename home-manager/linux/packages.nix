@@ -1,6 +1,7 @@
 {
   pkgs,
   pkgs-stable,
+  claude-desktop,
   ...
 }:
 {
@@ -23,6 +24,9 @@
             pkgs.ghostty
           ]
         )
+        ++ [
+          claude-desktop.packages.${pkgs.system}.claude-desktop-with-fhs
+        ]
       # ++ clojureTools
       ;
     in
