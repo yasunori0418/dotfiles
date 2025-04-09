@@ -122,7 +122,6 @@ in
       "glow"
       "jj"
       "kitty"
-      "neofetch"
       "nvim"
       "vim"
       "sheldon"
