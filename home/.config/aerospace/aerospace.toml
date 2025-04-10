@@ -176,5 +176,9 @@ if.app-id = 'com.microsoft.VSCode'
 run = 'move-node-to-workspace 10'
 
 [[on-window-detected]]
+if.app-id = 'com.todesktop.230313mzl4w4u92'
+run = 'move-node-to-workspace 10'
+
+[[on-window-detected]]
 if.app-id = 'com.jetbrains.intellij'
 run = 'move-node-to-workspace 10'
