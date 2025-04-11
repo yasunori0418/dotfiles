@@ -25,7 +25,7 @@
           ]
         )
         ++ [
-          claude-desktop.packages.${pkgs.system}.claude-desktop-with-fhs
+          claude-desktop.packages.${pkgs.system}.claude-desktop
         ]
       # ++ clojureTools
       ;
