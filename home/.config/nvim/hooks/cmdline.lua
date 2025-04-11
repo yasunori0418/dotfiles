@@ -4,5 +4,6 @@ vim.fn["cmdline#set_option"]({
     border = "double",
     highlight_window = "NormalFloat",
     highlight_cursor = "TermCursor",
+    zindex = 1000,
 })
 -- }}}
