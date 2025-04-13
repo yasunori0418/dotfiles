@@ -161,7 +161,7 @@ nnoremap <silent> <Space>wtT <C-W>T
 nnoremap <silent> <Space>wq <C-W>q
 
 " easy save. save file only when changed.
-nnoremap <silent> <Space>ww :<C-u>update<CR>
+nnoremap <silent> <Space>ww :<C-u>write<CR>
 
 " Commands of Window split.
 nnoremap <silent> <Space>ws <C-W>s
