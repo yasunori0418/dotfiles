@@ -11,7 +11,7 @@
       packages =
         with applications;
         nixTools
-        ++ textEditors
+        ++ (textEditors ++ [ pkgs.emacs ])
         ++ shellTools
         ++ languageServers
         ++ codingSupportTools

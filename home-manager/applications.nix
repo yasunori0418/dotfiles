@@ -29,7 +29,6 @@
   textEditors = with pkgs; [
     vim
     neovim
-    emacs
   ];
 
   terminalEmulators = with pkgs; [
@@ -59,8 +58,6 @@
     efm-langserver
     pyright
     bash-language-server
-    intelephense
-    phpactor
     typescript-language-server
     yaml-language-server
     emmet-ls
@@ -77,9 +74,6 @@
     nixfmt-rfc-style
     statix
     shellcheck
-    php83Packages.php-codesniffer
-    php83Packages.phpmd
-    php83Extensions.xdebug
     blade-formatter
     ruff
     beautysh
@@ -89,8 +83,8 @@
     biome
   ];
 
-  aiTools = with pkgs; [
-  ];
+  # aiTools = with pkgs; [
+  # ];
 
   libraries = with pkgs; [
     gcc
