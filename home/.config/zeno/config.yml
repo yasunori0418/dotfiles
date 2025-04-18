@@ -59,6 +59,14 @@ snippets:
     keyword: gl
     snippet: git lol
 
+  - name: git fetch
+    keyword: gf
+    snippet: git fetch
+
+  - name: git fetch --prune
+    keyword: gfp
+    snippet: git fetch --prune
+
 completions:
   - name: change directory.
     patterns:
