@@ -30,8 +30,10 @@
       "jetbrains-toolbox"
       "rancher" # similar docker desktop
       "cursor"
+      "discord"
     ];
     brews = [
+      "tailscale"
       "watch"
       "coreutils"
     ];
