@@ -52,7 +52,7 @@ function M.kensaku_search_expand()
         end,
         ---@param ctx insx.Context
         action = function(ctx)
-            ctx.send(vim.fn["kensaku_search#replace"]() .. [[<CR>n]])
+            ctx.send(vim.fn["kensaku_search#replace"]())
         end,
     }
 end
