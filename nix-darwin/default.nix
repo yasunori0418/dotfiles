@@ -18,5 +18,13 @@ in
   specialArgs = {
     inherit pkgs-stable;
   };
-  modules = [ ./${profileName} ];
+  modules =
+    let
+      inherit (import ../home-manager/args.nix inputs) hmConfigForNixDarwinModules;
+      home-manager = hmConfigForNixDarwinModules system;
+    in
+    [
+      ./${profileName}
+    ]
+    ++ home-manager;
 }

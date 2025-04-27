@@ -11,6 +11,10 @@
     };
   };
 
+  users.users."taiki.watanabe" = {
+    home = "/Users/taiki.watanabe";
+  };
+
   # homebrew
   homebrew = {
     enable = true;
