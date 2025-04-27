@@ -59,7 +59,7 @@ nix-gc: ## nix-collect-garbage -d
 	@nix-collect-garbage -d
 
 nix-darwin: ## nix run nix-darwin -- switch --flake .
-	@nix run nix-darwin -- switch --flake .
+	@nix run 'nix-darwin/master#darwin-rebuild' -- switch --flake .
 
 ## Environment Setup Tools ##
 nix-install: ## Install nix.
