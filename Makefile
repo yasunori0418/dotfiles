@@ -51,11 +51,9 @@ zsh-bench: ## zsh bench mark with hyperfine used.
 	@hyperfine -w 5 -r 100  'zsh -i -c exit'
 
 ## NixOS utility commands ##
-nixos-%: ## nixos-rebuild switch --flake ".#"%(laptop | desktop | macx64OrbStack)
-	@sudo nixos-rebuild switch --flake ".#"${@:nixos-%=%}
-
 nixos: ## nixos-rebuild switch --flake .
-	@sudo nixos-rebuild switch --flake .
+	@read -p "password: " -s password
+	@echo $$password | sudo -S nixos-rebuild switch --flake . |& nom
 
 nix-gc: ## nix-collect-garbage -d
 	@nix-collect-garbage -d
