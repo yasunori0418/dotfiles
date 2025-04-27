@@ -11,9 +11,7 @@
     };
   };
 
-  users.users."taiki.watanabe" = {
-    home = "/Users/taiki.watanabe";
-  };
+  users.users."taiki.watanabe".home = "/Users/taiki.watanabe";
 
   # homebrew
   homebrew = {
