@@ -96,22 +96,6 @@
               });
             };
 
-          homeConfigurations =
-            let
-              inherit (inputs.home-manager.lib) homeManagerConfiguration;
-              inherit (import ./home-manager/args.nix inputs) args;
-            in
-            {
-              linux = homeManagerConfiguration (args {
-                profileName = "linux";
-                system = "x86_64-linux";
-              });
-              macx64 = homeManagerConfiguration (args {
-                profileName = "macx64";
-                system = "aarch64-darwin";
-              });
-            };
-
           darwinConfigurations =
             let
               inherit (inputs.nix-darwin.lib) darwinSystem;

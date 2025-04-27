@@ -54,9 +54,6 @@ zsh-bench: ## zsh bench mark with hyperfine used.
 nixos-%: ## nixos-rebuild switch --flake ".#"%(laptop | desktop | macx64OrbStack)
 	@sudo nixos-rebuild switch --flake ".#"${@:nixos-%=%}
 
-nix-home-%: ## nix run "nixpkgs#home-manager" -- switch --flake ".#"%(linux | macx64)
-	@nix run "nixpkgs#home-manager" -- -b hm_backup switch --flake ".#"${@:nix-home-%=%}
-
 nix-gc: ## nix-collect-garbage -d
 	@nix-collect-garbage -d
 
