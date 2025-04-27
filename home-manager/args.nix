@@ -34,21 +34,17 @@ inputs: rec {
   hmConfigForNixosModule =
     system:
     let
-      homeManagerConfig = args {
-        profileName = "linux";
-        inherit system;
-      };
+      username = "yasunori";
+      profileName = "linux";
+      moduleName = "nixosModules";
     in
-    {
-      home-manager = {
-        useGlobalPkgs = true;
-        useUserPackages = true;
-        backupFileExtension = "hm_backup";
-        users.yasunori = {
-          imports = homeManagerConfig.modules;
-        };
-        inherit (homeManagerConfig) extraSpecialArgs;
-      };
+    hmConfigForModule {
+      inherit
+        system
+        profileName
+        username
+        moduleName
+        ;
     };
   hmConfigForNixDarwinModules =
     system:
