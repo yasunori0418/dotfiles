@@ -82,11 +82,11 @@
               inherit (import ./nixos/args.nix inputs) args;
             in
             {
-              laptop = nixosSystem (args {
+              yasunori-laptop = nixosSystem (args {
                 profileName = "ThinkPadE14Gen2";
                 system = "x86_64-linux";
               });
-              desktop = nixosSystem (args {
+              yasunori-desktop = nixosSystem (args {
                 profileName = "Desktop";
                 system = "x86_64-linux";
               });

@@ -54,6 +54,9 @@ zsh-bench: ## zsh bench mark with hyperfine used.
 nixos-%: ## nixos-rebuild switch --flake ".#"%(laptop | desktop | macx64OrbStack)
 	@sudo nixos-rebuild switch --flake ".#"${@:nixos-%=%}
 
+nixos: ## nixos-rebuild switch --flake .
+	@sudo nixos-rebuild switch --flake .
+
 nix-gc: ## nix-collect-garbage -d
 	@nix-collect-garbage -d
 
