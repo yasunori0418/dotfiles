@@ -102,7 +102,7 @@
               inherit (import ./nix-darwin/args.nix inputs) args;
             in
             {
-              yasunori-darwin = darwinSystem (args {
+              LGPM-0151 = darwinSystem (args {
                 profileName = "lg-darwin";
                 system = "aarch64-darwin";
               });

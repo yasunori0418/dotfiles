@@ -51,6 +51,10 @@
     ];
   };
 
+  networking = {
+    hostName = "LGPM-0151";
+  };
+
   # システムの設定（nix-darwinが効いているかのテスト）
   system = {
     stateVersion = 6;
