@@ -173,7 +173,7 @@ run = 'move-node-to-workspace 6'
 
 [[on-window-detected]]
 if.app-id = 'com.gather.Gather'
-run = 'move-node-to-workspace 8'
+run = 'layout floating'
 
 [[on-window-detected]] ## cursor
 if.app-id = 'com.todesktop.230313mzl4w4u92'
