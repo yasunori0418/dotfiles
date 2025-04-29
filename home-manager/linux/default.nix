@@ -5,10 +5,10 @@
   config,
   ...
 }:
-rec {
+{
   imports =
     let
-      dotfiles = /${home.homeDirectory}/dotfiles;
+      dotfiles = /${config.home.homeDirectory}/dotfiles;
       homeDir = /${dotfiles}/home;
       xdgConfigHome = /${homeDir}/.config;
       packages = import ./packages.nix {
@@ -35,7 +35,7 @@ rec {
   programs.home-manager.enable = true;
   home = {
     username = "yasunori";
-    homeDirectory = "/home/${home.username}";
+    homeDirectory = "/home/${config.home.username}";
     stateVersion = "24.05";
   };
 }
