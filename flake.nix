@@ -75,40 +75,55 @@
             devenv.default
           ];
         systems = import inputs.systems;
-        flake = {
-          nixosConfigurations =
-            let
-              inherit (inputs.nixpkgs.lib) nixosSystem;
-              inherit (import ./nixos/args.nix inputs) args;
-            in
-            {
-              yasunori-laptop = nixosSystem (args {
-                profileName = "ThinkPadE14Gen2";
+        flake =
+          let
+            args =
+              targetSystem:
+              let
+                f =
+                  { profileName, system }:
+                  import ./${targetSystem} {
+                    inherit inputs profileName system;
+                  };
+              in
+              f;
+          in
+          {
+            nixosConfigurations =
+              let
+                inherit (inputs.nixpkgs.lib) nixosSystem;
+                nixosArgs = args "nixos";
                 system = "x86_64-linux";
-              });
-              yasunori-desktop = nixosSystem (args {
-                profileName = "Desktop";
-                system = "x86_64-linux";
-              });
-              macx64OrbStack = nixosSystem (args {
-                profileName = "MacX64_OrbStack";
-                system = "x86_64-linux";
-              });
-            };
+              in
+              {
+                yasunori-laptop = nixosSystem (nixosArgs {
+                  profileName = "ThinkPadE14Gen2";
+                  inherit system;
+                });
+                yasunori-desktop = nixosSystem (nixosArgs {
+                  profileName = "Desktop";
+                  inherit system;
+                });
+                macx64OrbStack = nixosSystem (nixosArgs {
+                  profileName = "MacX64_OrbStack";
+                  inherit system;
+                });
+              };
 
-          darwinConfigurations =
-            let
-              inherit (inputs.nix-darwin.lib) darwinSystem;
-              inherit (import ./nix-darwin/args.nix inputs) args;
-            in
-            {
-              LGPM-0151 = darwinSystem (args {
-                profileName = "lg-darwin";
+            darwinConfigurations =
+              let
+                inherit (inputs.nix-darwin.lib) darwinSystem;
+                darwinArgs = args "nix-darwin";
                 system = "aarch64-darwin";
-              });
-            };
+              in
+              {
+                LGPM-0151 = darwinSystem (darwinArgs {
+                  profileName = "lg-darwin";
+                  inherit system;
+                });
+              };
 
-        };
+          };
       }
     );
 }
