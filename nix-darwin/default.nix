@@ -16,7 +16,7 @@ in
 {
   inherit system;
   specialArgs = {
-    inherit pkgs-stable;
+    inherit pkgs-stable inputs;
   };
   modules =
     let

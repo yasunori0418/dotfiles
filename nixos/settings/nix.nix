@@ -1,6 +1,8 @@
+{ inputs, pkgs, ... }:
 {
   nix = {
     checkConfig = true;
+    package = inputs.nix-monitored.packages.${pkgs.system}.default;
     settings = {
       auto-optimise-store = true;
       sandbox = true;

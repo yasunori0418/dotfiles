@@ -1,9 +1,10 @@
-{ pkgs, ... }:
+{ inputs, pkgs, ... }:
 {
   # nix自体の設定
   nix = {
     enable = true;
     optimise.automatic = true;
+    package = inputs.nix-monitored.packages.${pkgs.system}.default;
     settings = {
       experimental-features = "nix-command flakes pipe-operators";
       max-jobs = 8;

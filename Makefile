@@ -52,8 +52,7 @@ zsh-bench: ## zsh bench mark with hyperfine used.
 
 ## NixOS utility commands ##
 nixos: ## nixos-rebuild switch --flake .
-	@read -p "password: " -s password
-	@echo $$password | sudo -S nixos-rebuild switch --flake . |& nom
+	@sudo nixos-rebuild switch --flake .
 
 nix-home-%: ## nix run "nixpkgs#home-manager" -- switch --flake ".#"%(linux | macx64)
 	@nix run "nixpkgs#home-manager" -- -b hm_backup switch --flake ".#"${@:nix-home-%=%}

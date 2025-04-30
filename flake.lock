@@ -948,6 +948,26 @@
         "type": "github"
       }
     },
+    "nix-monitored": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1745680380,
+        "narHash": "sha256-Z8PknjkmIr/8ZCH+dmc2Pc+UltiOr7/oKg37PXuVvuU=",
+        "owner": "ners",
+        "repo": "nix-monitored",
+        "rev": "60f3baa4701d58eab86c2d1d9c3d7e820074d461",
+        "type": "github"
+      },
+      "original": {
+        "owner": "ners",
+        "repo": "nix-monitored",
+        "type": "github"
+      }
+    },
     "nix2container": {
       "inputs": {
         "flake-utils": "flake-utils_2",
@@ -1198,6 +1218,7 @@
         "home-manager": "home-manager",
         "neovim-nightly-overlay": "neovim-nightly-overlay",
         "nix-darwin": "nix-darwin",
+        "nix-monitored": "nix-monitored",
         "nix2container": "nix2container",
         "nixos-hardware": "nixos-hardware",
         "nixpkgs": "nixpkgs_3",
