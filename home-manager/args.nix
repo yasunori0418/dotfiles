@@ -33,32 +33,22 @@ inputs: rec {
     ];
   hmConfigForNixosModule =
     system:
-    let
+    hmConfigForModule {
       username = "yasunori";
       profileName = "linux";
       moduleName = "nixosModules";
-    in
-    hmConfigForModule {
       inherit
         system
-        profileName
-        username
-        moduleName
         ;
     };
   hmConfigForNixDarwinModules =
     system:
-    let
+    hmConfigForModule {
       username = "taiki.watanabe";
       profileName = "macx64";
       moduleName = "darwinModules";
-    in
-    hmConfigForModule {
       inherit
         system
-        profileName
-        username
-        moduleName
         ;
     };
 }
