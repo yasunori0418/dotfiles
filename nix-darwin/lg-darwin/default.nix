@@ -33,6 +33,7 @@
       "rancher" # similar docker desktop
       "cursor"
       "discord"
+      "as-timer"
     ];
     brews = [
       "tailscale"
