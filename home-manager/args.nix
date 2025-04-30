@@ -45,7 +45,7 @@ inputs: rec {
     system:
     hmConfigForModule {
       username = "taiki.watanabe";
-      profileName = "macx64";
+      profileName = "macos";
       moduleName = "darwinModules";
       inherit
         system

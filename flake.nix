@@ -121,7 +121,7 @@
                   system = "x86_64-linux";
                 });
                 macx64 = homeManagerConfiguration (hmArgs {
-                  profileName = "macx64";
+                  profileName = "macos";
                   system = "aarch64-darwin";
                 });
               };
