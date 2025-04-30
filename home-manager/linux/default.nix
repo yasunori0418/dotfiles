@@ -27,10 +27,12 @@
           xdgConfigHome
           ;
       };
+      clearDppStateAfterLinkGeneration = ../clear-dpp-state-after-link-generation.nix;
     in
     [
       packages
       homeFile
+      clearDppStateAfterLinkGeneration
     ];
   programs.home-manager.enable = true;
   home = {

@@ -15,7 +15,6 @@
 
       nix = ../settings/nix.nix;
       nixpkgs = ../settings/nixpkgs.nix;
-      system = ../settings/system.nix;
       hostToLocalSymlink = ./hostToLocalSymlink.nix;
       environment = ../settings/environment.nix;
       time = ../settings/time.nix;
@@ -27,7 +26,6 @@
     [
       nix
       nixpkgs
-      system
       hostToLocalSymlink
       environment
       time
