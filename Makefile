@@ -55,6 +55,9 @@ nixos: ## nixos-rebuild switch --flake .
 	@read -p "password: " -s password
 	@echo $$password | sudo -S nixos-rebuild switch --flake . |& nom
 
+nix-home-%: ## nix run "nixpkgs#home-manager" -- switch --flake ".#"%(linux | macx64)
+	@nix run "nixpkgs#home-manager" -- -b hm_backup switch --flake ".#"${@:nix-home-%=%}
+
 nix-gc: ## nix-collect-garbage -d
 	@nix-collect-garbage -d
 
