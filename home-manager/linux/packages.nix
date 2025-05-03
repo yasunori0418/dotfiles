@@ -1,6 +1,5 @@
 {
   pkgs,
-  pkgs-stable,
   claude-desktop,
   ...
 }:
@@ -20,7 +19,6 @@
         ++ (
           terminalEmulators
           ++ [
-            pkgs-stable.wezterm
             pkgs.ghostty
           ]
         )
