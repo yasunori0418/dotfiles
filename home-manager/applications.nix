@@ -24,7 +24,6 @@
     typos
     lnav
     deno
-    codex
   ];
 
   textEditors = with pkgs; [
@@ -84,8 +83,10 @@
     biome
   ];
 
-  # aiTools = with pkgs; [
-  # ];
+  aiTools = with pkgs; [
+    codex
+    goose-cli
+  ];
 
   libraries = with pkgs; [
     gcc
