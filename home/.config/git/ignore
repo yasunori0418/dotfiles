@@ -67,3 +67,4 @@ Temporary Items
 .devenv/
 .direnv/
 .envrc
+.env
