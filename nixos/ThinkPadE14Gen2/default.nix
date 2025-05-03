@@ -3,55 +3,56 @@
   xremap-flake,
   ...
 }:
-let
-  lenovoThinkpadE14Amd = nixos-hardware.nixosModules.lenovo-thinkpad-e14-amd;
-  hardware = ./hardware-configuration.nix;
-
-  # configuration.nix top level keys
-  nix = ../settings/nix.nix;
-  nixpkgs = ../settings/nixpkgs.nix;
-  boot = ../settings/boot.nix;
-  networking = import ../settings/networking.nix { hostName = "yasunori-laptop"; };
-  environment = ../settings/environment.nix;
-  time = ../settings/time.nix;
-  i18n = ../settings/i18n.nix;
-  security = ../settings/security.nix;
-  programs = ../settings/programs.nix;
-  users = ../settings/users.nix;
-  fonts = ../settings/fonts.nix;
-  virtualisation = ../settings/virtualisation.nix;
-  qt = ../settings/qt.nix;
-
-  services = [
-    ../settings/services/printing.nix
-    ../settings/services/openssh.nix
-    ../settings/services/tlp.nix
-    ../settings/services/displayManager/ly.nix
-  ];
-
-  xserver = [
-    ../settings/xserver/base.nix
-    # (import ../settings/xserver/displayManager/lightdm.nix)
-    ../settings/xserver/windowManager/i3wm.nix
-  ];
-
-  systemd = [
-    ../settings/systemd/system-conf.nix
-    ../settings/systemd/polkit-kde-agent.nix
-    ../settings/systemd/ssh-agent.nix
-  ];
-
-  # Applications
-  xremapModule = xremap-flake.nixosModules.default;
-  xremap = ../settings/applications/xremap.nix;
-  fcitx5 = ../settings/applications/fcitx5.nix;
-  tailscale = ../settings/applications/tailscale.nix;
-  pipewire = ../settings/applications/pipewire.nix;
-  thunar = ../settings/applications/thunar.nix;
-  xss-i3lock = ../settings/applications/xss-i3lock.nix;
-in
 {
   imports =
+    let
+      lenovoThinkpadE14Amd = nixos-hardware.nixosModules.lenovo-thinkpad-e14-amd;
+      hardware = ./hardware-configuration.nix;
+
+      # configuration.nix top level keys
+      nix = ../settings/nix.nix;
+      nixpkgs = ../settings/nixpkgs.nix;
+      boot = ../settings/boot.nix;
+      networking = import ../settings/networking.nix { hostName = "yasunori-laptop"; };
+      environment = ../settings/environment.nix;
+      time = ../settings/time.nix;
+      i18n = ../settings/i18n.nix;
+      security = ../settings/security.nix;
+      programs = ../settings/programs.nix;
+      users = ../settings/users.nix;
+      fonts = ../settings/fonts.nix;
+      virtualisation = ../settings/virtualisation.nix;
+      qt = ../settings/qt.nix;
+
+      services = [
+        ../settings/services/printing.nix
+        ../settings/services/openssh.nix
+        ../settings/services/tlp.nix
+        ../settings/services/displayManager/ly.nix
+      ];
+
+      xserver = [
+        ../settings/xserver/base.nix
+        # (import ../settings/xserver/displayManager/lightdm.nix)
+        ../settings/xserver/windowManager/i3wm.nix
+      ];
+
+      systemd = [
+        ../settings/systemd/system-conf.nix
+        ../settings/systemd/polkit-kde-agent.nix
+        ../settings/systemd/ssh-agent.nix
+      ];
+
+      # Applications
+      xremapModule = xremap-flake.nixosModules.default;
+      xremap = ../settings/applications/xremap.nix;
+      fcitx5 = ../settings/applications/fcitx5.nix;
+      tailscale = ../settings/applications/tailscale.nix;
+      pipewire = ../settings/applications/pipewire.nix;
+      thunar = ../settings/applications/thunar.nix;
+      xss-i3lock = ../settings/applications/xss-i3lock.nix;
+      _1password = ../settings/applications/_1password.nix;
+    in
     [
       lenovoThinkpadE14Amd
       hardware
@@ -79,6 +80,7 @@ in
       pipewire
       thunar
       xss-i3lock
+      _1password
     ]
     ++ services
     ++ xserver
