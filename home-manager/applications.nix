@@ -24,6 +24,7 @@
     typos
     lnav
     deno
+    codex
   ];
 
   textEditors = with pkgs; [
