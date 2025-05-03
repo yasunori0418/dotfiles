@@ -28,7 +28,7 @@
           ;
       };
       clearDppStateAfterLinkGeneration = ../clear-dpp-state-after-link-generation.nix;
-      xdg = ../xdg.nix;
+      xdg = ../settings/xdg.nix;
     in
     [
       packages
