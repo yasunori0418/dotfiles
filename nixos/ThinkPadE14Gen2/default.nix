@@ -43,15 +43,16 @@
         ../settings/systemd/ssh-agent.nix
       ];
 
-      # Applications
-      xremapModule = xremap-flake.nixosModules.default;
-      xremap = ../settings/applications/xremap.nix;
-      fcitx5 = ../settings/applications/fcitx5.nix;
-      tailscale = ../settings/applications/tailscale.nix;
-      pipewire = ../settings/applications/pipewire.nix;
-      thunar = ../settings/applications/thunar.nix;
-      xss-i3lock = ../settings/applications/xss-i3lock.nix;
-      _1password = ../settings/applications/_1password.nix;
+      applications = [
+        xremap-flake.nixosModules.default
+        ../settings/applications/xremap.nix
+        ../settings/applications/fcitx5.nix
+        ../settings/applications/tailscale.nix
+        ../settings/applications/pipewire.nix
+        ../settings/applications/thunar.nix
+        ../settings/applications/xss-i3lock.nix
+        ../settings/applications/_1password.nix
+      ];
     in
     [
       lenovoThinkpadE14Amd
@@ -71,20 +72,11 @@
       fonts
       virtualisation
       qt
-
-      # Applications
-      xremapModule
-      xremap
-      fcitx5
-      tailscale
-      pipewire
-      thunar
-      xss-i3lock
-      _1password
     ]
     ++ services
     ++ xserver
-    ++ systemd;
+    ++ systemd
+    ++ applications;
 
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions
