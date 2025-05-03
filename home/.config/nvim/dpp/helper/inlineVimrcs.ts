@@ -7,7 +7,6 @@ export function gatherVimrcs(
   path: string,
   vimrcSkipRules: VimrcSkipRule[],
 ): string[] {
-  if (path === null) throw `failure read directory in ${path}`;
   return Array.from(Deno.readDirSync(path))
     .filter(
       (dirEntry) =>

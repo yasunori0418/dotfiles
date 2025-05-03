@@ -22,7 +22,7 @@ export async function uiSize(
   splitRaitio: number,
   previewSplit: "horizontal" | "vertical",
 ): Promise<DduUiSize> {
-  const denops = args.denops;
+  const { denops } = args;
   const FRAME_SIZE = 2;
   const columns = await op.columns.get(denops);
   const lines = await op.lines.get(denops);

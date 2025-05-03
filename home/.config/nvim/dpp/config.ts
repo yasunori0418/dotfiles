@@ -14,7 +14,7 @@ import { getLazyExt, makeState } from "./helper/lazy.ts";
 
 export class Config extends BaseConfig {
   override async config(args: ConfigArguments): Promise<ConfigReturn> {
-    const denops: Denops = args.denops;
+    const { denops, contextBuilder } = args;
 
     const vimrcSkipRules = [
       {
@@ -23,7 +23,7 @@ export class Config extends BaseConfig {
       },
     ] as VimrcSkipRule[];
 
-    args.contextBuilder.setGlobal({
+    contextBuilder.setGlobal({
       inlineVimrcs: gatherVimrcs(
         await vars.g.get(denops, "rc_dir"),
         vimrcSkipRules,
@@ -52,7 +52,7 @@ export class Config extends BaseConfig {
       },
     });
 
-    const [context, options] = await args.contextBuilder.get(denops);
+    const [context, options] = await contextBuilder.get(denops);
     const protocols = (await denops.dispatcher.getProtocols()) as Record<
       string,
       Protocol
