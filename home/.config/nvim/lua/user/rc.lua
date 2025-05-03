@@ -59,7 +59,7 @@ local function auto_install_plugins(dpp)
             pattern = "Dpp:makeStatePost",
             group = M.rc_autocmds,
             callback = function()
-                vim.cmd.quit({ bang = true })
+                vim.cmd.quitall({ bang = true })
             end,
         })
     end
