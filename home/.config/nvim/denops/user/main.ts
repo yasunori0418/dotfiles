@@ -1,5 +1,11 @@
-import type { Denops, Entrypoint } from "jsr:@denops/core@^7.0.1";
-import { is, ensure } from "jsr:@core/unknownutil@^4.3.0";
+import {
+  type Denops,
+  echoerrCommand,
+  ensure,
+  type Entrypoint,
+  is,
+  TextLineStream,
+} from "./deps.ts";
 
 export const main: Entrypoint = (denops: Denops) => {
   denops.dispatcher = {
@@ -8,6 +14,24 @@ export const main: Entrypoint = (denops: Denops) => {
       await denops.cmd('echo "Hello Denops! mes:" messages', {
         messages,
       });
+    },
+    async codex(prompt) {
+      const messages = ensure(prompt, is.String);
+      const { pipeOut, wait, finalize } = echoerrCommand(denops, "codex", {
+        args: ["-q", messages, "--json"],
+      });
+      try {
+        pipeOut.pipeThrough(new TextLineStream()).pipeTo(
+          new WritableStream({
+            write: (chunk) => {
+              console.log(chunk)
+            },
+          }),
+        );
+      } finally {
+        await wait;
+        await finalize();
+      }
     },
   };
 };
