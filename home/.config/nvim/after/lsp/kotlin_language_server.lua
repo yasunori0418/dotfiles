@@ -1,4 +1,5 @@
-require("lspconfig").kotlin_language_server.setup({
+---@type vim.lsp.Config
+return {
     settings = {
         kotlin = {
             compiler = {
@@ -8,4 +9,5 @@ require("lspconfig").kotlin_language_server.setup({
             },
         },
     },
-} --[[@as vim.lsp.Config]])
+}
+

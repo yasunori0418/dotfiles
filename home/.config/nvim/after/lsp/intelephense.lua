@@ -1,4 +1,5 @@
-require("lspconfig").intelephense.setup({
+---@type vim.lsp.Config
+return {
     filetypes = { "php", "blade" },
     settings = {
         intelephense = {
@@ -7,4 +8,5 @@ require("lspconfig").intelephense.setup({
             },
         },
     },
-} --[[@as vim.lsp.Config]])
+}
+

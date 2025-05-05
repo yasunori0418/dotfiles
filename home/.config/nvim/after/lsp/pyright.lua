@@ -1,4 +1,5 @@
-require("lspconfig").pyright.setup({
+---@type vim.lsp.Config
+return {
     settings = {
         python = {
             exclude = { ".venv" },
@@ -6,4 +7,4 @@ require("lspconfig").pyright.setup({
             venv = ".venv",
         },
     },
-} --[[@as vim.lsp.Config]])
+}

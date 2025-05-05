@@ -77,7 +77,8 @@ efm_configs.setup({
     },
 })
 
-require("lspconfig").efm.setup({
+---@type vim.lsp.Config
+return {
     filetypes = efm_configs.filetypes,
     init_options = {
         documentFormatting = true,
@@ -91,4 +92,4 @@ require("lspconfig").efm.setup({
         rootMarkers = { ".git/" },
         languages = efm_configs.languages,
     },
-} --[[@as vim.lsp.Config]])
+}

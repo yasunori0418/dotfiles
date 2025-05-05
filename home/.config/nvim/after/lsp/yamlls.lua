@@ -1,4 +1,5 @@
-require("lspconfig").yamlls.setup({
+---@type vim.lsp.Config
+return {
     settings = {
         yaml = {
             format = {
@@ -38,4 +39,4 @@ require("lspconfig").yamlls.setup({
             },
         },
     },
-})
+}

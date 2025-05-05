@@ -1,4 +1,5 @@
-require("lspconfig").nixd.setup({
+---@type vim.lsp.Config
+return {
     settings = {
         nixd = {
             formatting = {
@@ -6,4 +7,4 @@ require("lspconfig").nixd.setup({
             },
         },
     },
-} --[[@as vim.lsp.Config]])
+}

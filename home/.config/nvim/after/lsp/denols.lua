@@ -24,10 +24,11 @@ local function find_root(path)
     return project_root
 end
 
-require("lspconfig").denols.setup({
-    root_dir = function(bufnr)
+---@type vim.lsp.Config
+return {
+    root_dir = function(bufnr, on_dir)
         local file_path = vim.fn.fnamemodify(vim.fn.bufname(bufnr), ":p")
-        return find_root(vim.fs.dirname(file_path))
+        on_dir(find_root(vim.fs.dirname(file_path)))
     end,
     settings = {
         deno = {
@@ -49,4 +50,4 @@ require("lspconfig").denols.setup({
             },
         },
     },
-} --[[@as vim.lsp.Config]])
+}

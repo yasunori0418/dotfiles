@@ -27,12 +27,13 @@ local function find_root(path)
     end
 end
 
-require("lspconfig").vtsls.setup({
+---@type vim.lsp.Config
+return {
     filetypes = ft.js_like,
     single_file_support = false,
-    root_dir = function(bufnr)
+    root_dir = function(bufnr, on_dir)
         local file_path = vim.fn.fnamemodify(vim.fn.bufname(bufnr), ":p")
-        return find_root(vim.fs.dirname(file_path))
+        on_dir(find_root(vim.fs.dirname(file_path)))
     end,
     settings = {
         typescript = {
@@ -46,4 +47,4 @@ require("lspconfig").vtsls.setup({
             },
         },
     },
-} --[[@as vim.lsp.Config]])
+}
