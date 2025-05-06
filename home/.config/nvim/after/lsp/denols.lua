@@ -28,7 +28,10 @@ end
 return {
     root_dir = function(bufnr, on_dir)
         local file_path = vim.fn.fnamemodify(vim.fn.bufname(bufnr), ":p")
-        on_dir(find_root(vim.fs.dirname(file_path)))
+        local root_dir = find_root(vim.fs.dirname(file_path))
+        if root_dir then
+            on_dir(root_dir)
+        end
     end,
     settings = {
         deno = {
