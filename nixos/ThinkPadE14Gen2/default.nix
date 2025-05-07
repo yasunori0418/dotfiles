@@ -50,7 +50,7 @@
         ../settings/applications/tailscale.nix
         ../settings/applications/pipewire.nix
         ../settings/applications/thunar.nix
-        # ../settings/applications/xss-i3lock.nix
+        ../settings/applications/xss-i3lock.nix
         ../settings/applications/_1password.nix
       ];
     in
