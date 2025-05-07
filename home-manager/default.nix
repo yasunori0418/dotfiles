@@ -19,7 +19,6 @@ in
   pkgs = import nixpkgs {
     inherit system;
     config.allowUnfree = true;
-    overlays = import ../nix-overlays inputs;
   };
   extraSpecialArgs = {
     inherit inputs pkgs-stable claude-desktop;

@@ -39,18 +39,18 @@
       url = "github:nix-darwin/nix-darwin";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    neovim-nightly-overlay = {
-      url = "github:nix-community/neovim-nightly-overlay";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
+    # neovim-nightly-overlay = {
+    #   url = "github:nix-community/neovim-nightly-overlay";
+    #   inputs.nixpkgs.follows = "nixpkgs";
+    # };
     neovim-src = {
       url = "github:neovim/neovim";
       flake = false;
     };
-    vim-overlay = {
-      url = "github:kawarimidoll/vim-overlay";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
+    # vim-overlay = {
+    #   url = "github:kawarimidoll/vim-overlay";
+    #   inputs.nixpkgs.follows = "nixpkgs";
+    # };
     vim-src = {
       url = "github:vim/vim";
       flake = false;
