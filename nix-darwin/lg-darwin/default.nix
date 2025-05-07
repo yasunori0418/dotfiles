@@ -12,6 +12,10 @@
     };
   };
 
+  nixpkgs = {
+    config.allowUnfree = true;
+  };
+
   users.users."taiki.watanabe".home = "/Users/taiki.watanabe";
 
   # homebrew
