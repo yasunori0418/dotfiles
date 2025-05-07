@@ -26,10 +26,18 @@
     deno
   ];
 
-  textEditors = with pkgs; [
-    vim
-    neovim
-  ];
+  textEditors =
+    with pkgs;
+    let
+      neovim-nightly = neovim-unwrapped.overrideAttrs {
+        version = "v0.12.0-dev";
+        src = inputs.neovim-src;
+      };
+    in
+    [
+      vim
+      neovim-nightly
+    ];
 
   terminalEmulators = with pkgs; [
     kitty

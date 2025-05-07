@@ -43,6 +43,10 @@
       url = "github:nix-community/neovim-nightly-overlay";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    neovim-src = {
+      url = "github:neovim/neovim";
+      flake = false;
+    };
     vim-overlay = {
       url = "github:kawarimidoll/vim-overlay";
       inputs.nixpkgs.follows = "nixpkgs";
