@@ -1,7 +1,5 @@
 {
   pkgs,
-  pkgs-stable,
-  claude-desktop,
   config,
   ...
 }:
@@ -11,13 +9,7 @@
       dotfiles = /${config.home.homeDirectory}/dotfiles;
       homeDir = /${dotfiles}/home;
       xdgConfigHome = /${homeDir}/.config;
-      packages = import ./packages.nix {
-        inherit
-          pkgs
-          pkgs-stable
-          claude-desktop
-          ;
-      };
+      packages = ./packages.nix;
       homeFile = import ./homeFile.nix {
         inherit
           pkgs

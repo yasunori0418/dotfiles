@@ -9,7 +9,7 @@
       dotfiles = /${config.home.homeDirectory}/dotfiles;
       homeDir = /${dotfiles}/home;
       xdgConfigHome = /${homeDir}/.config;
-      packages = import ./packages.nix { inherit pkgs; };
+      packages = ./packages.nix;
       homeFile = import ./homeFile.nix {
         inherit
           pkgs
