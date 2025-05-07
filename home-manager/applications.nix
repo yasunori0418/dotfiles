@@ -1,4 +1,9 @@
-{ inputs, pkgs, ... }:
+{
+  inputs,
+  pkgs,
+  lib,
+  ...
+}:
 {
   nixTools = with pkgs; [
     nix-prefetch-github
@@ -29,12 +34,15 @@
   textEditors =
     with pkgs;
     let
-      vim-latest = vim.overrideAttrs (
-        prev: {
-          version = "latest";
-          src = inputs.vim-src;
-          configureFlags = prev.configureFlags ++ [
+      vim-latest = vim.overrideAttrs (prev: {
+        version = "latest";
+        src = inputs.vim-src;
+        configureFlags =
+          prev.configureFlags
+          ++ [
             "--enable-fail-if-missing"
+            "--enable-autoservername"
+            "--with-features=huge"
 
             # if_lua
             "--enable-luainterp"
@@ -53,15 +61,32 @@
 
             # if_cscope
             "--enable-cscope"
-          ];
-          buildInputs = prev.buildInputs ++ [
+
+            # clipboard
+            "--enable-clipboard=yes"
+            "--enable-multibyte"
+          ]
+          ++ (lib.optionals stdenv.isLinux [
+            "--enable-gui=auto"
+            "--enable-fontset"
+            "--with-x"
+            # お試しで有効にしたけど上手く有効化できてないシリーズ
+            "--enable-xim"
+            "--enable-xterm_save"
+          ]);
+        buildInputs =
+          prev.buildInputs
+          ++ [
             lua
             python3
             ruby
             libsodium
-          ];
-        }
-      );
+          ]
+          ++ (lib.optionals stdenv.isLinux [
+            xorg.libX11
+            xorg.libXt
+          ]);
+      });
       neovim-nightly = neovim-unwrapped.overrideAttrs {
         version = "v0.12.0-dev";
         src = inputs.neovim-src;

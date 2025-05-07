@@ -1,13 +1,14 @@
 {
   inputs,
   pkgs,
+  lib,
   claude-desktop,
   ...
 }:
 {
   home.packages =
     let
-      applications = import ../applications.nix { inherit pkgs inputs; };
+      applications = import ../applications.nix { inherit pkgs inputs lib; };
       packages =
         with applications;
         nixTools

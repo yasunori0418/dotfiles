@@ -1,12 +1,13 @@
 {
   inputs,
   pkgs,
+  lib,
   ...
 }:
 {
   home.packages =
     let
-      applications = import ../applications.nix { inherit pkgs inputs; };
+      applications = import ../applications.nix { inherit pkgs inputs lib; };
       packages =
         with applications;
         nixTools
