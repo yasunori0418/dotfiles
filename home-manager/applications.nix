@@ -29,13 +29,46 @@
   textEditors =
     with pkgs;
     let
+      vim-latest = vim.overrideAttrs (
+        prev: {
+          version = "latest";
+          src = inputs.vim-src;
+          configureFlags = prev.configureFlags ++ [
+            "--enable-fail-if-missing"
+
+            # if_lua
+            "--enable-luainterp"
+            "--with-lua-prefix=${lua}"
+
+            # if_python3
+            "--enable-python3interp=yes"
+            "--with-python3-command=${python3}/bin/python3"
+            "--with-python3-config-dir=${python3}/lib"
+            # Disable python2
+            "--disable-pythoninterp"
+
+            # if_ruby
+            "--with-ruby-command=${ruby}/bin/ruby"
+            "--enable-rubyinterp"
+
+            # if_cscope
+            "--enable-cscope"
+          ];
+          buildInputs = prev.buildInputs ++ [
+            lua
+            python3
+            ruby
+            libsodium
+          ];
+        }
+      );
       neovim-nightly = neovim-unwrapped.overrideAttrs {
         version = "v0.12.0-dev";
         src = inputs.neovim-src;
       };
     in
     [
-      vim
+      vim-latest
       neovim-nightly
     ];
 

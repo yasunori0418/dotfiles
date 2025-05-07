@@ -51,6 +51,10 @@
       url = "github:kawarimidoll/vim-overlay";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    vim-src = {
+      url = "github:vim/vim";
+      flake = false;
+    };
   };
 
   outputs =

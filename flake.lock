@@ -1243,6 +1243,7 @@
         "systems": "systems_3",
         "treefmt-nix": "treefmt-nix_2",
         "vim-overlay": "vim-overlay",
+        "vim-src": "vim-src_2",
         "xremap-flake": "xremap-flake"
       }
     },
@@ -1388,6 +1389,22 @@
       }
     },
     "vim-src": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1746548009,
+        "narHash": "sha256-PicFrzRHLjWPQqwDPTWbYmxlHwEFdCTVXoGWsCzxQIE=",
+        "owner": "vim",
+        "repo": "vim",
+        "rev": "38972d8b1ae2be48e63b9cbe086084a52198c9aa",
+        "type": "github"
+      },
+      "original": {
+        "owner": "vim",
+        "repo": "vim",
+        "type": "github"
+      }
+    },
+    "vim-src_2": {
       "flake": false,
       "locked": {
         "lastModified": 1746548009,
