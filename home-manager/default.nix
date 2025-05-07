@@ -22,7 +22,7 @@ in
     overlays = import ../nix-overlays inputs;
   };
   extraSpecialArgs = {
-    inherit pkgs-stable claude-desktop;
+    inherit inputs pkgs-stable claude-desktop;
   };
   modules = [ ./${profileName} ];
 }
