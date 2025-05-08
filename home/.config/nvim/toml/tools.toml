@@ -67,3 +67,5 @@ if = false
 repo = 'github.com/tokuhirom/jawiki-kana-kanji-dict'
 if = false
 
+[[plugins]]
+repo = 'github.com/nvim-lua/plenary.nvim'
