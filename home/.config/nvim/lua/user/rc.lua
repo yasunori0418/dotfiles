@@ -1,13 +1,13 @@
 local M = {}
 local joinpath = vim.fs.joinpath
 
----初回起動時にプラグインのダウンロードとruntimepathに追加する
+---初回起動時にプラグインのダウンロードとリポジトリのパスを返却する
+---runtimepathに追加する
 ---@param repo string user_name/plugin_name
 ---@param host? string default: "github.com"
----@param type? "prepend" | "append" default: "prepend"
-local function init_plugin(repo, host, type)
+---@return string
+local function init_plugin(repo, host)
     host = host or "github.com"
-    type = type or "prepend"
     local repo_path = joinpath(host, repo)
     local repo_dir = joinpath(vim.g.dpp_cache, "repos", repo_path)
     if not vim.uv.fs_stat(repo_dir) then
@@ -19,11 +19,7 @@ local function init_plugin(repo, host, type)
             repo_dir,
         })
     end
-    if type == "prepend" then
-        vim.opt.runtimepath:prepend(repo_dir)
-    else
-        vim.opt.runtimepath:append(repo_dir)
-    end
+    return repo_dir
 end
 
 local function gather_check_files()
@@ -120,12 +116,25 @@ function M.setup()
     vim.g.toml_dir = joinpath(vim.g.base_dir, "toml")
     M.rc_autocmds = vim.api.nvim_create_augroup("RcAutocmds", { clear = true })
 
-    init_plugin("Shougo/dpp-ext-lazy")
-    init_plugin("Shougo/dpp-ext-toml")
-    init_plugin("Shougo/dpp-ext-installer")
-    init_plugin("Shougo/dpp-protocol-git")
-    init_plugin("Shougo/dpp.vim")
-    init_plugin("vim-denops/denops.vim")
+    ---@class Plugin
+    ---@diagnostic disable :duplicate-doc-field
+    ---@field repo string
+    ---@field host? string
+
+    vim.iter({
+        { repo = "Shougo/dpp-ext-lazy" },
+        { repo = "Shougo/dpp-ext-toml" },
+        { repo = "Shougo/dpp-ext-installer" },
+        { repo = "Shougo/dpp-protocol-git" },
+        { repo = "Shougo/dpp.vim" },
+        { repo = "vim-denops/denops.vim" },
+    }):map(
+        ---@param plugin Plugin
+        ---@return string
+        function(plugin)
+            return vim.opt.runtimepath:prepend(init_plugin(plugin.repo, plugin.host))
+        end
+    )
     dpp_setup()
 end
 
