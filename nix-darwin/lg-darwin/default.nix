@@ -39,6 +39,7 @@
       "cursor"
       "discord"
       "as-timer"
+      "obsidian"
       "claude"
     ];
     brews = [
