@@ -39,6 +39,7 @@
       "cursor"
       "discord"
       "as-timer"
+      "claude"
     ];
     brews = [
       "tailscale"
