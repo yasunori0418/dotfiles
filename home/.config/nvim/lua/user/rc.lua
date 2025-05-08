@@ -1,15 +1,10 @@
 local M = {}
 local joinpath = vim.fs.joinpath
 
----@diagnostic disable: duplicate-doc-alias
----@alias plugin_add_type
----| "prepend"
----| "append"
-
 ---初回起動時にプラグインのダウンロードとruntimepathに追加する
 ---@param repo string user_name/plugin_name
 ---@param host? string default: "github.com"
----@param type? plugin_add_type default: "prepend"
+---@param type? "prepend" | "append" default: "prepend"
 local function init_plugin(repo, host, type)
     host = host or "github.com"
     type = type or "prepend"
