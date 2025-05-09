@@ -41,6 +41,7 @@
       "as-timer"
       "obsidian"
       "claude"
+      "raycast"
     ];
     brews = [
       "tailscale"
