@@ -136,6 +136,10 @@ if.app-id = 'us.zoom.xos'
 run = 'layout floating'
 
 [[on-window-detected]]
+if.app-id = 'com.anthropic.claudefordesktop'
+run = 'layout floating'
+
+[[on-window-detected]]
 if.app-id = 'com.apple.systempreferences'
 run = 'layout floating'
 
