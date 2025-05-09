@@ -29,6 +29,7 @@
     typos
     lnav
     deno
+    unar
   ];
 
   textEditors =
