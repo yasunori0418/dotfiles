@@ -16,3 +16,13 @@ description = "shebang must write in bash script first line"
 prefix = ["bang", "bash", "shebang", "#!"]
 scope = "sh"
 
+[repo-root]
+body = [
+  "REPO_ROOT=\\$(git rev-parse --show-superproject-working-tree --show-toplevel)",
+  "readonly REPO_ROOT",
+  "export REPO_ROOT",
+  "$0"
+]
+description = "Script to get repository root with .envrc etc"
+prefix = ["root", "repo", "repo_root"]
+scope = "sh"
