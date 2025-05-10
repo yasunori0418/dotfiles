@@ -6,7 +6,7 @@ localFlake:
 # where this module was imported.
 _: {
   perSystem =
-    { pkgs, ... }:
+    { pkgs, config, ... }:
     {
       devenv = {
         shells.default = {
@@ -20,6 +20,28 @@ _: {
             luajitPackages.luacov
             checkmake
           ];
+
+          scripts = {
+            list =
+              let
+                inherit (pkgs) lib;
+              in
+              {
+                exec = ''
+                  echo
+                  echo 🦾 Helper scripts you can run to make your development richer:
+                  echo 🦾
+                  ${pkgs.gnused}/bin/sed -e 's| |••|g' -e 's|=| |' <<EOF \
+                  | ${pkgs.util-linuxMinimal}/bin/column -t | ${pkgs.gnused}/bin/sed -e 's|^|🦾 |' -e 's|••| |g'
+                  ${lib.generators.toKeyValue { } (
+                    lib.mapAttrs (name: value: value.description) config.devenv.shells.default.scripts
+                  )}
+                  EOF
+                  echo
+                '';
+                description = "devenvで定義したのscripts一覧";
+              };
+          };
         };
       };
     };
