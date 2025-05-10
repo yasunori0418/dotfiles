@@ -63,6 +63,9 @@ nix-gc: ## nix-collect-garbage -d
 nix-darwin: ## nix run nix-darwin -- switch --flake .
 	@nix run 'nix-darwin/master#darwin-rebuild' -- switch --flake .
 
+nix-rebuild: ## nixos or nix-darwin rebuild switch
+	@./scripts/nix-rebuild.sh
+
 ## Environment Setup Tools ##
 nix-install: ## Install nix.
 	@curl --proto '=https' --tlsv1.2 -sSf -L https://install.determinate.systems/nix | sh -s -- install
