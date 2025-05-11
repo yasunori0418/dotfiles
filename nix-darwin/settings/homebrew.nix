@@ -23,6 +23,7 @@
       "obsidian"
       "claude"
       "raycast"
+      "jordanbaird-ice"
     ];
     brews = [
       "tailscale"
