@@ -55,7 +55,7 @@ efm_configs.setup({
         },
         typescriptreact = {
             { kind = "linters", name = "eslint_d" },
-            { kind = "formatters", name = "prettier_d" },
+            { kind = "formatters", name = vim.env.NVIM_EFM_LS_FORMATTERS_TYPESCRIPT or "prettier_d" },
         },
         sh = {
             { kind = "linters", name = "shellcheck" },
