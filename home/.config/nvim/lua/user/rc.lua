@@ -76,7 +76,8 @@ end
 
 local function dpp_setup()
     local dpp = require("dpp")
-    if dpp.load_state(vim.g.dpp_cache) then
+    local is_state_stale_or_missing = dpp.load_state(vim.g.dpp_cache) --[[@as boolean]]
+    if is_state_stale_or_missing then
         vim.fn["denops#server#wait_async"](function()
             make_state(dpp)
         end)
@@ -96,6 +97,7 @@ local function dpp_setup()
         group = M.rc_autocmds,
         callback = function()
             vim.notify("dpp make_state() is done", vim.log.levels.INFO)
+            vim.cmd.quitall({ bang = is_state_stale_or_missing })
         end,
     })
 end
