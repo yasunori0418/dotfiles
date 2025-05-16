@@ -29,6 +29,7 @@
       "tailscale"
       "watch"
       "coreutils"
+      "tfenv"
     ];
     taps = [
       "nikitabobko/tap" # for aerospace

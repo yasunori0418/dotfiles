@@ -135,6 +135,7 @@
     typos-lsp
     awk-language-server
     lua-language-server
+    terraform-ls
   ];
 
   codingSupportTools = with pkgs; [

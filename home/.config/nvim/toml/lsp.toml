@@ -27,6 +27,7 @@ on_ft = [
   'css',
   'toml',
   'sql',
+  'terraform',
 ]
 # }}}
 

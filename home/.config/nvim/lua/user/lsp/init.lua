@@ -35,6 +35,7 @@ vim.lsp.enable({
     "nixd",
     "pyright",
     "taplo",
+    "terraformls",
     "typos_lsp",
     "vtsls",
     "yamlls",
