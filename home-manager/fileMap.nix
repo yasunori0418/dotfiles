@@ -79,6 +79,7 @@ in
       "ideavim"
     ]
     // xdgConfigFileMap [
+      "shellcheckrc"
       "alacritty/alacritty.toml"
       "alacritty/nord.toml"
       "ghostty/config"
