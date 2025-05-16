@@ -76,7 +76,7 @@ def DppSetup(): void
     'group': 'RcAutocmds',
     'event': 'User',
     'pattern': 'Dpp:makeStatePost',
-    'cmd': 'echowindow "dpp make_state() is done"',
+    'cmd': 'echowindow "dpp make_state() is done" | quitall!',
   }
   [check_files_autocmd, make_state_post_autocmd]->autocmd_add()
 enddef
