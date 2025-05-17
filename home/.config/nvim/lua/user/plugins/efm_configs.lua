@@ -21,10 +21,8 @@ M.languages = {}
 ---@diagnostic disable: duplicate-doc-field
 ---@field kind efm_configs_kind # Which select of formatters or linters
 ---@field name string # Tool name for supported by efmls-configs.
----@field auto_install boolean? # if false not execute ensure_installed. Default: true
 
 ---@class EfmConfigSetup
----@field all_installs boolean
 ---@field filetypes table<string, ToolConfig[]>
 
 ---get any configs from efmls-configs-nvim
@@ -45,9 +43,6 @@ local function filetype_config(filetype, tool_configs)
             },
         })
         table.insert(M.languages[filetype], config_require(tool_config))
-        if tool_config.auto_install then
-            table.insert(M.tools, tool_config.name)
-        end
     end
 end
 
@@ -59,7 +54,6 @@ function M.setup(options)
             all_installs = true,
         },
     })
-    M.all_installs = options.all_installs
     M.filetypes = vim.tbl_keys(options.filetypes)
     for _, filetype in ipairs(M.filetypes) do
         filetype_config(filetype, options.filetypes[filetype])

@@ -1,7 +1,6 @@
 local efm_configs = require("user.plugins.efm_configs")
 
 efm_configs.setup({
-    all_installs = false,
     filetypes = {
         python = {
             { kind = "formatters", name = "ruff" },
@@ -12,7 +11,7 @@ efm_configs.setup({
             { kind = "linters", name = "luacheck" },
         },
         markdown = {
-            { kind = "linters", name = "textlint", auto_install = false },
+            { kind = "linters", name = "textlint" },
             { kind = "linters", name = "markdownlint" },
             { kind = "formatters", name = "mdformat" },
         },
