@@ -68,3 +68,5 @@
 	sort = -committerdate
 [advice]
 	skippedCherryPicks = false
+[fetch]
+	prune = true
