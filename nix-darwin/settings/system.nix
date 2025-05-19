@@ -1,6 +1,8 @@
+{ name, ... }:
 {
   system = {
     stateVersion = 6;
+    primaryUser = name;
     defaults = {
       NSGlobalDomain.AppleShowAllExtensions = true;
       finder = {
