@@ -97,7 +97,9 @@ local function dpp_setup()
         group = M.rc_autocmds,
         callback = function()
             vim.notify("dpp make_state() is done", vim.log.levels.INFO)
-            vim.cmd.quitall({ bang = is_state_stale_or_missing })
+            if is_state_stale_or_missing then
+                vim.cmd.quitall({ bang = true })
+            end
         end,
     })
 end
