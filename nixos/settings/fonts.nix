@@ -8,6 +8,7 @@
       noto-fonts-color-emoji
       nerd-fonts.hack
       hackgen-nf-font
+      font-awesome_6
     ];
     fontDir.enable = true;
     fontconfig = {
