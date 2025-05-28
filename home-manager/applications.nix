@@ -154,6 +154,7 @@
   aiTools = with pkgs; [
     codex
     goose-cli
+    claude-code
   ];
 
   libraries = with pkgs; [
