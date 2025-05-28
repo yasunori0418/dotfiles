@@ -25,9 +25,11 @@ PrevCandidate=
 NextCandidate=
 # Toggle embedded preedit
 TogglePreedit=
+# Time limit in milliseconds for triggering modifier key shortcuts
+ModifierOnlyKeyTimeout=250
 
 [Hotkey/TriggerKeys]
-0=Control+space
+0=Control+Alt+Alt_R
 
 [Hotkey/AltTriggerKeys]
 0=Control+Control_R
