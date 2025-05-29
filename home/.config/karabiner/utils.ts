@@ -1,21 +1,23 @@
 import * as k from "karabiner_ts";
+import * as u from "@core/unknownutil";
 import { $ } from "@david/dax";
 
+/** Hide the application by name */
 export function toHideApp(name: string) {
   return k.to$(
     `osascript -e 'tell application "System Events" to set visible of process "${name}" to false'`,
   );
 }
 
-/** Get the bundle identifier of the application by name.
- * Refer: https://github.com/ryoppippi/dotfiles/blob/main/karabiner/utils.ts#L11-L27
+/**
+ * Get the bundle identifier of the application by name
+ *
+ * @see https://github.com/ryoppippi/dotfiles/blob/e4ef43a/karabiner/utils.ts#L12-L32
  */
-export async function extractIdentifer(
-  appName: string,
-): Promise<string | undefined> {
+export async function extractIdentifier(appName: string): Promise<string> {
   const appPath = $.path(`/Applications/${appName}.app`);
 
-  if (!await appPath.exists()) {
+  if (!(await appPath.exists())) {
     throw new Error(`Application ${appName} not found`);
   }
 
@@ -23,8 +25,40 @@ export async function extractIdentifer(
   const output = await $`mdls -name kMDItemCFBundleIdentifier ${appPath}`
     .text();
 
-  /** output is like `com.apple.Safari` */
-  const identifer = output.match(/"(.*)"/)?.[1];
+  /** output is like com.apple.Safari */
+  const identifier = output.match(/"(.*)"/)?.at(1)?.trim();
 
-  return identifer;
+  u.assert(identifier, u.isString, {
+    message: `Failed to extract bundle identifier for ${appName}`,
+  });
+
+  return identifier;
+}
+
+/**
+ * @see https://github.com/ryoppippi/dotfiles/blob/e4ef43a/karabiner/utils.ts#L34-L57
+ */
+export async function getDeviceId(
+  deviceName: string,
+): Promise<Readonly<k.DeviceIdentifier | undefined>> {
+  const output = await $`hidutil list -n`.lines();
+
+  const devices = output.map((line) => JSON.parse(line));
+
+  const _devices = new Map(devices
+    .map((device) => [
+      device.Product,
+      {
+        product_id: device.ProductID as number,
+        vendor_id: device.VendorID as number,
+        // location_id: device.LocationID as number,
+      } as const satisfies k.DeviceIdentifier,
+    ]));
+
+  const info = _devices.get(deviceName);
+
+  if (u.isNullish(info)) {
+    return undefined;
+  }
+  return info;
 }
