@@ -26,10 +26,12 @@
       ];
       keymap = [
         {
-          name = "emacs-like keymap.";
+          name = "emacs-like keybinds.";
           # https://github.com/xremap/xremap/blob/master/example/emacs.yml
           remap = {
             C-h = "backspace";
+
+            C-Shift-a = "C-Shift-a";
 
             # Cursor
             C-f = {
@@ -110,11 +112,6 @@
               "C-x"
               { set_mark = false; }
             ];
-            C-u = [
-              "Shift-home"
-              "C-x"
-              { set_mark = false; }
-            ];
 
             # Kill word backward
             Alt-backspace = [
@@ -133,7 +130,6 @@
               "C-z"
               { set_mark = false; }
             ];
-            C-Shift-ro = "C-z";
 
             # Mark
             C-space = {
@@ -171,7 +167,7 @@
                 C-k = "C-F4";
 
                 # C-x C-c (exit)
-                C-c = "C-q";
+                C-c = "Super-Shift-q";
 
                 # C-x u (undo)
                 C-u = [
