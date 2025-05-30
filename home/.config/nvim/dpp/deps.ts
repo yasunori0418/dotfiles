@@ -35,4 +35,4 @@ export * as fn from "jsr:@denops/std@7.5.0/function";
 export * as vars from "jsr:@denops/std@7.5.0/variable";
 
 export { join } from "jsr:@std/path@1.1.0";
-export { expandGlobSync, type WalkEntry } from "jsr:@std/fs@1.0.17";
+export { expandGlobSync, type WalkEntry } from "jsr:@std/fs@1.0.18";
