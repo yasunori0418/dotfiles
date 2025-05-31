@@ -4,7 +4,11 @@
     stateVersion = 6;
     primaryUser = name;
     defaults = {
-      NSGlobalDomain.AppleShowAllExtensions = true;
+      NSGlobalDomain = {
+        AppleShowAllExtensions = true;
+        "com.apple.keyboard.fnState" = false;
+        "com.apple.sound.beep.volume" = 0.0;
+      };
       finder = {
         AppleShowAllFiles = true;
         AppleShowAllExtensions = true;
