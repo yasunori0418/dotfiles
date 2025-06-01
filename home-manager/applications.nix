@@ -30,6 +30,7 @@
     lnav
     deno
     unar
+    kanata-with-cmd
   ];
 
   textEditors =
