@@ -1,4 +1,5 @@
 -- lua_source {{{
+---@diagnostic disable-next-line missing-fields
 require("nvim-treesitter.configs").setup({
     ensure_installed = {
         "bash",
@@ -54,7 +55,10 @@ require("nvim-treesitter.configs").setup({
     },
 })
 
-require("nvim-treesitter.parsers").get_parser_configs().blade = {
+local parser_config = require("nvim-treesitter.parsers").get_parser_configs()
+
+---@diagnostic disable-next-line inject-field
+parser_config.blade = {
     install_info = {
         url = "https://github.com/EmranMR/tree-sitter-blade",
         files = { "src/parser.c" },
@@ -62,9 +66,21 @@ require("nvim-treesitter.parsers").get_parser_configs().blade = {
     },
     filetype = "blade",
 }
+
+---@diagnostic disable-next-line inject-field
+parser_config.kanata = {
+    install_info = {
+        url = "https://github.com/postsolar/tree-sitter-kanata",
+        files = { "src/parser.c" },
+        branch = "master",
+    },
+    filetype = "kdb",
+}
+
 vim.filetype.add({
     pattern = {
         [".*%.blade%.php"] = "blade",
+        [".*%.kdb"] = "kdb",
     },
 })
 
