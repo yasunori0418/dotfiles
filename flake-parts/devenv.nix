@@ -19,6 +19,7 @@ _: {
             luajitPackages.vusted
             luajitPackages.luacov
             checkmake
+            lua-language-server
           ];
 
           scripts = {
