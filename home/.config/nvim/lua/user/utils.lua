@@ -7,8 +7,8 @@ M.vimrc_augroup = vim.api.nvim_create_augroup("vimrc", { clear = false })
 
 ---autocmd単発用
 ---自動でvimrcグループにセットする
----@param events table|string
----@param pattern table|string
+---@param events string[]|string
+---@param pattern string[]|string
 ---@param callback function|string
 ---@param group? string|integer
 function M.autocmd_set(events, pattern, callback, group)
