@@ -132,11 +132,12 @@
                   profileName = "linux";
                   system = "x86_64-linux";
                 });
-                macx64 = homeManagerConfiguration (hmArgs {
+                macos = homeManagerConfiguration (hmArgs {
                   profileName = "macos";
                   system = "aarch64-darwin";
                 });
               };
+
             darwinConfigurations =
               let
                 inherit (inputs.nix-darwin.lib) darwinSystem;
