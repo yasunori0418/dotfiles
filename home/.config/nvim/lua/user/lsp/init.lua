@@ -30,16 +30,17 @@ vim.lsp.enable({
     "intelephense",
     "jqls",
     "jsonls", -- vscode-langservers-extracted
-    -- "kotlin_language_server",
     "kotlin_ls",
     "lua_ls",
     "nixd",
     "pyright",
     "taplo",
     "terraformls",
+    "ts_query_ls",
     "typos_lsp",
     "vtsls",
     "yamlls",
+    -- "kotlin_language_server",
     -- "phpactor",
     -- "ts_ls",
 })

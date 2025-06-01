@@ -20,6 +20,7 @@ _: {
             luajitPackages.luacov
             checkmake
             lua-language-server
+            ts_query_ls
           ];
 
           scripts = {

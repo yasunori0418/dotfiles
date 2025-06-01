@@ -23,6 +23,7 @@ on_ft = [
   'nix',
   'php',
   'python',
+  'query',
   'sh',
   'sql',
   'terraform',
