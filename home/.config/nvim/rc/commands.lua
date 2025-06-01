@@ -1,5 +1,6 @@
 local command = vim.api.nvim_create_user_command
-local ifx = require("user.utils").ifx
+local utils = require("user.utils")
+local ifx = utils.ifx
 
 command("DppInstall", function()
     require("dpp").sync_ext_action("installer", "install")
@@ -7,6 +8,15 @@ end, {})
 
 command("DppUpdate", function()
     require("dpp").async_ext_action("installer", "update")
+end, {})
+
+command("DppUpdateAndClose", function()
+    require("dpp").async_ext_action("installer", "update")
+    utils.autocmd_set("User", "Dpp:extActionPost:installer:update", function()
+        utils.autocmd_set("User", "Dpp:makeStatePost", function()
+            vim.cmd.quitall({ bang = true })
+        end)
+    end)
 end, {})
 
 command("DppClearState", function()

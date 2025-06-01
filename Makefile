@@ -20,6 +20,9 @@ help-fzf: ## Search for fzf and run the target rule
 nvim-bench: ## neovim bench mark with vim-startuptime used.
 	-@vim-startuptime -vimpath nvim -count 100 | head -6
 
+nvim-update: ## DppUpdateAndClose
+	@nvim -c DppUpdateAndClose
+
 ## Arch Linux System Package Management ##
 arch_iso: ## Download Arch Linux iso image at latest, and verification.
 	@./scripts/arch_iso.sh
