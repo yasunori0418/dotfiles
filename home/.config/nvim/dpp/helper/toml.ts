@@ -21,7 +21,7 @@ export async function getTomlExt(
   return (await getExt<TomlParams, TomlExt>(args, "toml")) as GetTomlExtResults;
 }
 
-export interface GatherTomlsArgs {
+export type GatherTomlsArgs = {
   path: string;
   noLazyTomlNames: string[];
   denops: Denops;
@@ -31,25 +31,25 @@ export interface GatherTomlsArgs {
   tomlExt: TomlExt | undefined;
   tomlOptions: ExtOptions;
   tomlParams: TomlParams;
-}
+};
 
-export interface GatherTomlsResults {
+export type GatherTomlsResults = {
   plugins: Plugin[];
   ftplugins: Record<string, string>;
   hooksFiles: string[];
   multipleHooks: MultipleHook[];
-}
+};
 
-interface GatherTomlFilesResult {
+type GatherTomlFilesResult = {
   path: string;
   lazy: boolean;
-}
+};
 
-function gatherTomlFiles(
+const gatherTomlFiles = (
   path: string,
   noLazyTomlNames: string[],
-): GatherTomlFilesResult[] {
-  return Array.from(Deno.readDirSync(path))
+): GatherTomlFilesResult[] =>
+  Array.from(Deno.readDirSync(path))
     .filter((tomlFile: Deno.DirEntry) => typeof tomlFile.name !== "undefined")
     .map((tomlFile: Deno.DirEntry) => {
       return {
@@ -57,23 +57,19 @@ function gatherTomlFiles(
         lazy: !noLazyTomlNames.includes(tomlFile.name),
       } as GatherTomlFilesResult;
     });
-}
 
-export async function gatherTomls(
-  args: GatherTomlsArgs,
-): Promise<GatherTomlsResults> {
-  if (!args.tomlExt) throw "Failed load toml extension.";
-  const {
-    denops,
-    context,
-    options,
-    protocols,
-    tomlExt,
-    tomlOptions,
-    tomlParams,
-    path,
-    noLazyTomlNames,
-  } = args;
+export async function gatherTomls({
+  denops,
+  context,
+  options,
+  protocols,
+  tomlExt,
+  tomlOptions,
+  tomlParams,
+  path,
+  noLazyTomlNames,
+}: GatherTomlsArgs): Promise<GatherTomlsResults> {
+  if (!tomlExt) throw "Failed load toml extension.";
   const action = tomlExt.actions.load;
   const tomlPromises = gatherTomlFiles(path, noLazyTomlNames).map((tomlFile) =>
     action.callback({
@@ -89,7 +85,7 @@ export async function gatherTomls(
           lazy: tomlFile.lazy,
         },
       },
-    }),
+    })
   );
   const tomls = await Promise.all(tomlPromises);
   const results: GatherTomlsResults = {

@@ -18,7 +18,7 @@ export async function getLazyExt(args: ConfigArguments) {
   return await getExt<LazyParams, LazyExt>(args, "lazy");
 }
 
-export interface makeStateArgs {
+export type makeStateArgs = {
   denops: Denops;
   context: Context;
   options: DppOptions;
@@ -27,22 +27,19 @@ export interface makeStateArgs {
   lazyOptions: ExtOptions;
   lazyParams: LazyParams;
   plugins: Plugin[];
-}
+};
 
-export async function makeState(
-  args: makeStateArgs,
-): Promise<LazyMakeStateResult | undefined> {
-  if (!args.lazyExt) throw "Failed load lazy extension.";
-  const {
-    denops,
-    context,
-    options,
-    protocols,
-    lazyExt,
-    lazyOptions,
-    lazyParams,
-    plugins,
-  } = args;
+export async function makeState({
+  denops,
+  context,
+  options,
+  protocols,
+  lazyExt,
+  lazyOptions,
+  lazyParams,
+  plugins,
+}: makeStateArgs): Promise<LazyMakeStateResult | undefined> {
+  if (!lazyExt) throw "Failed load lazy extension.";
   const action = lazyExt.actions.makeState;
   return await action.callback({
     denops,

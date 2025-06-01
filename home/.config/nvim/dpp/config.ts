@@ -2,7 +2,6 @@ import {
   BaseConfig,
   ConfigArguments,
   ConfigReturn,
-  Denops,
   join,
   Protocol,
   vars,
@@ -40,13 +39,15 @@ export class Config extends BaseConfig {
           logFilePath: join(
             await vars.g.get(denops, "dpp_cache"),
             // installer_{YYYYMMDD}.log
-            `installer_${new Date()
-              .toLocaleDateString("ja-JP", {
-                year: "numeric",
-                month: "2-digit",
-                day: "2-digit",
-              })
-              .replaceAll("/", "")}.log`,
+            `installer_${
+              new Date()
+                .toLocaleDateString("ja-JP", {
+                  year: "numeric",
+                  month: "2-digit",
+                  day: "2-digit",
+                })
+                .replaceAll("/", "")
+            }.log`,
           ),
         },
       },
