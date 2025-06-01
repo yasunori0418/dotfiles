@@ -77,6 +77,7 @@ in
       "direnv"
       "typos"
       "ideavim"
+      "kanata"
     ]
     // xdgConfigFileMap [
       "shellcheckrc"
