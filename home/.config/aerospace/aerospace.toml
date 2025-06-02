@@ -50,10 +50,15 @@ alt-enter = 'exec-and-forget open -n /Applications/Ghostty.app'
 cmd-h = [] # Disable "hide application"
 cmd-alt-h = [] # Disable "hide others"
 
-alt-h = ['focus left', 'focus-monitor left']
-alt-j = ['focus down', 'focus-monitor down']
-alt-k = ['focus up', 'focus-monitor up']
-alt-l = ['focus right', 'focus-monitor right']
+alt-h = 'focus left'
+alt-j = 'focus down'
+alt-k = 'focus up'
+alt-l = 'focus right'
+
+ctrl-alt-h = 'focus-monitor left'
+ctrl-alt-j = 'focus-monitor down'
+ctrl-alt-k = 'focus-monitor up'
+ctrl-alt-l = 'focus-monitor right'
 
 alt-shift-h = 'move left'
 alt-shift-j = 'move down'
