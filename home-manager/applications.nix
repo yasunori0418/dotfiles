@@ -31,6 +31,7 @@
     deno
     unar
     kanata-with-cmd
+    colorized-logs
   ];
 
   textEditors =
