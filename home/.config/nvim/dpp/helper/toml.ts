@@ -50,7 +50,6 @@ const gatherTomlFiles = (
   noLazyTomlNames: string[],
 ): GatherTomlFilesResult[] =>
   Array.from(Deno.readDirSync(path))
-    .filter((tomlFile: Deno.DirEntry) => typeof tomlFile.name !== "undefined")
     .map((tomlFile: Deno.DirEntry) => {
       return {
         path: `${path}/${tomlFile.name}`,
