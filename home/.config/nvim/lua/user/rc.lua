@@ -1,6 +1,17 @@
 local M = {}
 local joinpath = vim.fs.joinpath
 
+---@class Directories
+---@diagnostic disable :duplicate-doc-field
+---@field base string
+---@field toml string
+---@field rc string
+
+---@class ExtraArgs
+---@diagnostic disable :duplicate-doc-field
+---@field neovide boolean
+---@field directories Directories
+
 ---@class Plugin
 ---@diagnostic disable :duplicate-doc-field
 ---@field repo string
@@ -31,7 +42,8 @@ local function gather_check_files()
         "**/*.toml",
         "**/*.ts",
     }
-    local target_directories = vim.iter({ vim.g.base_dir, vim.fn.expand("~/dotfiles/home/.config/nvim") }):join(",")
+    local target_directories =
+        vim.iter({ M.extra_args.directories.base, vim.fn.expand("~/dotfiles/home/.config/nvim") }):join(",")
     local check_files = {}
     for _, glob_pattern in pairs(glob_patterns) do
         table.insert(check_files, vim.fn.globpath(target_directories, glob_pattern, true, true))
@@ -62,8 +74,9 @@ end
 local function make_state()
     M.dpp.make_state(
         M.dpp_base_path,
-        joinpath(vim.g.base_dir, "dpp", "config.ts"),
-        M.nvim_appname
+        joinpath(M.extra_args.directories.base, "dpp", "config.ts"),
+        M.nvim_appname,
+        M.extra_args
     )
     vim.api.nvim_create_autocmd("User", {
         pattern = "Dpp:makeStatePost",
@@ -92,7 +105,7 @@ local function dpp_setup()
         group = M.rc_autocmds,
         callback = function()
             vim.notify("dpp check_files() is run", vim.log.levels.INFO)
-            M.dpp.check_files()
+            M.dpp.check_files(M.nvim_appname, M.extra_args)
         end,
     })
     vim.api.nvim_create_autocmd("User", {
@@ -121,15 +134,29 @@ end
 function M.setup()
     M.nvim_appname = vim.env.NVIM_APPNAME or "nvim"
     M.dpp_base_path = get_dpp_base_path()
-
-    vim.g.base_dir = joinpath(vim.env.XDG_CONFIG_HOME, M.nvim_appname)
-    vim.env.BASE_DIR = vim.g.base_dir
-    vim.g.hooks_dir = joinpath(vim.g.base_dir, "hooks")
-    vim.env.HOOKS_DIR = vim.g.hooks_dir
-    vim.g.snippet_dir = joinpath(vim.g.base_dir, "snippets")
-    vim.g.rc_dir = joinpath(vim.g.base_dir, "rc")
-    vim.g.toml_dir = joinpath(vim.g.base_dir, "toml")
     M.rc_autocmds = vim.api.nvim_create_augroup("RcAutocmds", { clear = true })
+
+    ---@param dir string?
+    ---@return string
+    local base_dir = function(dir)
+        dir = dir or nil
+        return joinpath(vim.env.XDG_CONFIG_HOME, M.nvim_appname, dir)
+    end
+
+    ---@type ExtraArgs
+    M.extra_args = {
+        neovide = vim.g.neovide or false,
+        directories = {
+            base = base_dir(),
+            toml = base_dir("toml"),
+            rc = base_dir("rc"),
+        },
+    }
+
+    M.hooks_dir = joinpath(M.extra_args.directories.base, "hooks")
+    M.snippet_dir = joinpath(M.extra_args.directories.base, "snippets")
+    vim.env.BASE_DIR = M.extra_args.directories.base
+    vim.env.HOOKS_DIR = M.hooks_dir
 
     ---@type Plugin[]
     local init_plugins = {

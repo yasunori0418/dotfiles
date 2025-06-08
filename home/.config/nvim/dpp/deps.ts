@@ -33,6 +33,7 @@ export {
 export { type Denops } from "jsr:@denops/core@7.0.1";
 export * as fn from "jsr:@denops/std@7.5.0/function";
 export * as vars from "jsr:@denops/std@7.5.0/variable";
+export { ensure, is } from "jsr:@core/unknownutil@4.3.0";
 
 export { join } from "jsr:@std/path@1.1.0";
 export { expandGlobSync, type WalkEntry } from "jsr:@std/fs@1.0.18";

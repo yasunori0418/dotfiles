@@ -2,8 +2,10 @@ import {
   BaseExt,
   BaseParams,
   ConfigArguments,
+  ensure,
   expandGlobSync,
   ExtOptions,
+  is,
   WalkEntry,
 } from "./deps.ts";
 
@@ -30,3 +32,29 @@ export function gatherCheckFiles(path: string, glob: string): string[] {
     }),
   ).map(({ path }: WalkEntry) => path);
 }
+
+type Directories = {
+  base: string;
+  rc: string;
+  toml: string;
+};
+
+type ExtraArgs = {
+  neovide: boolean;
+  directories: Directories;
+};
+
+export const assertExtraArgs = (
+  extraArgs: Record<string, unknown>,
+): ExtraArgs =>
+  ensure(
+    extraArgs,
+    is.ObjectOf({
+      neovide: is.Boolean,
+      directories: is.ObjectOf({
+        base: is.String,
+        rc: is.String,
+        toml: is.String,
+      }),
+    }),
+  );

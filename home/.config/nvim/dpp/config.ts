@@ -4,29 +4,27 @@ import {
   ConfigReturn,
   join,
   Protocol,
-  vars,
 } from "./deps.ts";
-import { gatherCheckFiles } from "./helper.ts";
+import { gatherCheckFiles, assertExtraArgs } from "./helper.ts";
 import { gatherVimrcs, VimrcSkipRule } from "./helper/inlineVimrcs.ts";
 import { gatherTomls, getTomlExt } from "./helper/toml.ts";
 import { getLazyExt, makeState } from "./helper/lazy.ts";
 
 export class Config extends BaseConfig {
   override async config(args: ConfigArguments): Promise<ConfigReturn> {
-    const { denops, contextBuilder, basePath } = args;
+    const { denops, contextBuilder, basePath, extraArgs } = args;
+
+    const { neovide, directories } = assertExtraArgs(extraArgs);
 
     const vimrcSkipRules = [
       {
         name: "neovide.lua",
-        condition: (await vars.g.get(denops, "neovide")) === null,
+        condition: neovide,
       },
     ] as VimrcSkipRule[];
 
     contextBuilder.setGlobal({
-      inlineVimrcs: gatherVimrcs(
-        await vars.g.get(denops, "rc_dir"),
-        vimrcSkipRules,
-      ),
+      inlineVimrcs: gatherVimrcs(directories.rc, vimrcSkipRules),
       protocols: ["git"],
       protocolParams: {
         git: {
@@ -71,7 +69,7 @@ export class Config extends BaseConfig {
       tomlExt,
       tomlOptions,
       tomlParams,
-      path: await vars.g.get(denops, "toml_dir"),
+      path: directories.toml,
       noLazyTomlNames: ["dpp.toml", "no_lazy.toml"],
     });
 
@@ -87,10 +85,7 @@ export class Config extends BaseConfig {
       plugins: toml.plugins,
     });
 
-    const checkFiles = gatherCheckFiles(
-      await vars.g.get(denops, "base_dir"),
-      "**/*.(ts|lua|toml)",
-    );
+    const checkFiles = gatherCheckFiles(directories.base, "**/*.(ts|lua|toml)");
 
     return {
       checkFiles: checkFiles,

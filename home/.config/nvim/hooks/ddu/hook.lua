@@ -235,7 +235,7 @@ utils.keymaps_set({
 -- }}}
 
 -- lua_source {{{
-local ddu_hooks = vim.fs.joinpath(vim.g.hooks_dir, "ddu")
+local ddu_hooks = vim.fs.joinpath(require("user.rc").hooks_dir, "ddu")
 vim.fn["ddu#custom#load_config"](
     -- $HOOKS_DIR/ddu/config.ts
     vim.fs.joinpath(ddu_hooks, "config.ts")

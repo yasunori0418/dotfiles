@@ -15,7 +15,7 @@ local ddc_hide = vim.fn["ddc#hide"]
 
 -- Source options.
 local joinpath = vim.fs.joinpath
-local ddc_hooks = joinpath(vim.g.hooks_dir, "ddc")
+local ddc_hooks = joinpath(require("user.rc").hooks_dir, "ddc")
 vim.fn["ddc#custom#load_config"](
     -- $HOOKS_DIR/ddc/config.ts
     joinpath(ddc_hooks, "config.ts")

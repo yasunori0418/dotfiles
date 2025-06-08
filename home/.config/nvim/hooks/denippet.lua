@@ -2,7 +2,7 @@
 local utils = require("user.utils")
 
 local snippets = {}
-table.insert(snippets, vim.fn.globpath(vim.g.snippet_dir, "**/*.*", true, true))
+table.insert(snippets, vim.fn.globpath(require("user.rc").snippet_dir, "**/*.*", true, true))
 for _, path in pairs(vim.iter(snippets):flatten():totable()) do
     local name = vim.fn.fnamemodify(path, ":t:r")
     if name == "global" then
