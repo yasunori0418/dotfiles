@@ -13,7 +13,7 @@ import { getLazyExt, makeState } from "./helper/lazy.ts";
 
 export class Config extends BaseConfig {
   override async config(args: ConfigArguments): Promise<ConfigReturn> {
-    const { denops, contextBuilder } = args;
+    const { denops, contextBuilder, basePath } = args;
 
     const vimrcSkipRules = [
       {
@@ -37,7 +37,7 @@ export class Config extends BaseConfig {
         installer: {
           checkDiff: false,
           logFilePath: join(
-            await vars.g.get(denops, "dpp_cache"),
+            basePath,
             // installer_{YYYYMMDD}.log
             `installer_${
               new Date()
@@ -45,8 +45,11 @@ export class Config extends BaseConfig {
                   year: "numeric",
                   month: "2-digit",
                   day: "2-digit",
+                  hour: "2-digit",
+                  minute: "2-digit",
+                  second: "2-digit",
                 })
-                .replaceAll("/", "")
+                .replaceAll(new RegExp(/[\/ :]/, "g"), "")
             }.log`,
           ),
         },

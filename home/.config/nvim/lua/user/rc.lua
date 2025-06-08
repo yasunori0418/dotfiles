@@ -7,13 +7,12 @@ local joinpath = vim.fs.joinpath
 ---@field host? string
 
 ---初回起動時にプラグインのダウンロードとリポジトリのパスを返却する
----runtimepathに追加する
 ---@param plugin Plugin
 ---@return string
 local function init_plugin(plugin)
     local host = plugin.host or "github.com"
     local repo_path = joinpath(host, plugin.repo)
-    local repo_dir = joinpath(vim.g.dpp_cache, "repos", repo_path)
+    local repo_dir = joinpath(M.dpp_base_path, "repos", repo_path)
     if not vim.uv.fs_stat(repo_dir) then
         vim.fn.system({
             "git",
@@ -60,36 +59,40 @@ local function auto_install_plugins(dpp)
     end
 end
 
-local function make_state(dpp)
-    dpp.make_state(vim.g.dpp_cache, joinpath(vim.g.base_dir, "dpp", "config.ts"), vim.g.nvim_appname)
+local function make_state()
+    M.dpp.make_state(
+        M.dpp_base_path,
+        joinpath(vim.g.base_dir, "dpp", "config.ts"),
+        M.nvim_appname
+    )
     vim.api.nvim_create_autocmd("User", {
         pattern = "Dpp:makeStatePost",
         group = M.rc_autocmds,
         callback = function()
-            dpp.load_state(vim.g.dpp_cache)
-            auto_install_plugins(dpp)
+            M.dpp.load_state(M.dpp_base_path)
+            auto_install_plugins(M.dpp)
         end,
         once = true,
         nested = true,
     })
 end
 
+---@return nil
 local function dpp_setup()
-    local dpp = require("dpp")
-    local is_state_stale_or_missing = dpp.load_state(vim.g.dpp_cache) --[[@as boolean]]
+    local is_state_stale_or_missing = M.dpp.load_state(M.dpp_base_path) --[[@as boolean]]
     if is_state_stale_or_missing then
         vim.fn["denops#server#wait_async"](function()
-            make_state(dpp)
+            make_state()
         end)
     else
-        auto_install_plugins(dpp)
+        auto_install_plugins(M.dpp)
     end
     vim.api.nvim_create_autocmd("BufWritePost", {
         pattern = gather_check_files(),
         group = M.rc_autocmds,
         callback = function()
             vim.notify("dpp check_files() is run", vim.log.levels.INFO)
-            dpp.check_files()
+            M.dpp.check_files()
         end,
     })
     vim.api.nvim_create_autocmd("User", {
@@ -104,18 +107,22 @@ local function dpp_setup()
     })
 end
 
+local function get_dpp_base_path()
+    if M.nvim_appname == "nvim" then
+        return joinpath(vim.env.XDG_CACHE_HOME, "dpp")
+    else
+        return joinpath(vim.env.XDG_CACHE_HOME, M.nvim_appname .. "_dpp")
+    end
+end
+
 ---init.luaで呼び出すdpp.vimの初期設定
 ---NVIM_APPNAMEを使ってプロファイルとして分離してみる
 ---NVIM_APPNAMEが設定されていない場合は、デフォルトの`nvim`になる
 function M.setup()
-    vim.g.nvim_appname = vim.env.NVIM_APPNAME or "nvim"
-    if vim.g.nvim_appname == "nvim" then
-        vim.g.dpp_cache = joinpath(vim.env.XDG_CACHE_HOME, "dpp")
-    else
-        vim.g.dpp_cache = joinpath(vim.env.XDG_CACHE_HOME, vim.g.nvim_appname .. "_dpp")
-    end
+    M.nvim_appname = vim.env.NVIM_APPNAME or "nvim"
+    M.dpp_base_path = get_dpp_base_path()
 
-    vim.g.base_dir = joinpath(vim.env.XDG_CONFIG_HOME, vim.g.nvim_appname)
+    vim.g.base_dir = joinpath(vim.env.XDG_CONFIG_HOME, M.nvim_appname)
     vim.env.BASE_DIR = vim.g.base_dir
     vim.g.hooks_dir = joinpath(vim.g.base_dir, "hooks")
     vim.env.HOOKS_DIR = vim.g.hooks_dir
@@ -140,6 +147,7 @@ function M.setup()
             return vim.opt.runtimepath:prepend(init_plugin(plugin))
         end
     )
+    M.dpp = require("dpp")
     dpp_setup()
 end
 
