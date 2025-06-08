@@ -98,6 +98,7 @@
     [
       vim-latest
       neovim-nightly
+      neovide
     ];
 
   terminalEmulators = with pkgs; [

@@ -185,6 +185,7 @@
               "/Alacritty/"
               "/ghostty/"
               "/Emacs/"
+              "/neovide/"
             ];
           };
           device = {

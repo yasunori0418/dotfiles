@@ -29,7 +29,7 @@ alias cdr=git_root # ./commands.zsh
 # Neovim alias
 [[ $(command -v nvim) ]] && alias nv=nvim_server_pipe # ./commands.zsh
 
-[[ $(command -v neovide) ]] && alias nvg='neovide --multigrid'
+[[ $(command -v neovide) ]] && alias nvg='neovide'
 
 # useful command aliases
 alias sync_status='watch grep -e Dirty: -e Writeback: /proc/meminfo'
