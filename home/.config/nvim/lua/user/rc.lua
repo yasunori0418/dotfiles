@@ -105,7 +105,7 @@ local function dpp_setup()
         group = M.rc_autocmds,
         callback = function()
             vim.notify("dpp check_files() is run", vim.log.levels.INFO)
-            M.dpp.check_files(M.nvim_appname, M.extra_args)
+            M.dpp.check_files(M.nvim_appname)
         end,
     })
     vim.api.nvim_create_autocmd("User", {
