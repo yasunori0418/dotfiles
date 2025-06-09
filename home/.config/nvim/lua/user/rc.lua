@@ -145,7 +145,7 @@ function M.setup()
 
     ---@type ExtraArgs
     M.extra_args = {
-        neovide = vim.g.neovide or false,
+        neovide = vim.g.neovide --[[@as boolean]] or false,
         directories = {
             base = base_dir(),
             toml = base_dir("toml"),
