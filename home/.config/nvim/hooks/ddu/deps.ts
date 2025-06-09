@@ -6,9 +6,9 @@ export { BaseConfig } from "jsr:@shougo/ddu-vim@10.3.0/config";
 export { type ConfigArguments } from "jsr:@shougo/ddu-vim@10.3.0/config";
 export { type ActionData as FileActionData } from "jsr:@shougo/ddu-kind-file@0.9.0";
 
-export * as fn from "jsr:@denops/std@7.5.0/function";
-export * as op from "jsr:@denops/std@7.5.0/option";
-export * as vars from "jsr:@denops/std@7.5.0/variable";
+export * as fn from "jsr:@denops/std@7.5.1/function";
+export * as op from "jsr:@denops/std@7.5.1/option";
+export * as vars from "jsr:@denops/std@7.5.1/variable";
 
 export type {
   ActionData as GitCommitActionData,
