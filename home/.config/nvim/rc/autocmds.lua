@@ -12,6 +12,14 @@ require("user.utils").autocmds_set({
     {
         events = { "BufNewFile", "BufRead" },
         group = vimrc,
+        pattern = { ".env" },
+        callback = function()
+            vim.opt_local.filetype = "conf"
+        end,
+    },
+    {
+        events = { "BufNewFile", "BufRead" },
+        group = vimrc,
         pattern = { "*.blade.*" },
         callback = function()
             vim.opt_local.filetype = "blade"
