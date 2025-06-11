@@ -16,6 +16,7 @@
         ++ textEditors
         ++ shellTools
         ++ languageServers
+        ++ aiTools
         ++ codingSupportTools
         ++ libraries;
     in
