@@ -7,3 +7,9 @@ hooks_file = '$HOOKS_DIR/codeium.lua'
 repo = 'github.com/kyoh86/denops-ollama.vim'
 on_func = ['ollama#start_chat', 'ollama#start_chat_with_context']
 hooks_file = '$HOOKS_DIR/ollama.lua'
+
+[[plugins]]
+repo = 'github.com/greggh/claude-code.nvim'
+depends = ['plenary.nvim']
+on_cmd = ['ClaudeCode', 'ClaudeCodeContinue', 'ClaudeCodeResume', 'ClaudeCodeVerbose']
+hooks_file = '$HOOKS_DIR/claude_code.lua'
