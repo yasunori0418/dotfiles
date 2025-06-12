@@ -32,6 +32,7 @@
     unar
     kanata-with-cmd
     colorized-logs
+    asciinema
   ];
 
   textEditors =
