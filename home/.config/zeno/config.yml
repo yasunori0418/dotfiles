@@ -92,3 +92,11 @@ completions:
     callback: "awk -F ' ' '{print $1}'"
     options:
       --prompt: "'gist> '"
+
+  - name: ghq remove project
+    patterns:
+      - "^ghq rm $"
+    sourceCommand: "ghq list"
+    options:
+      --prompt: "'ghq remove> '"
+      --preview: "glow $(git config --global --get ghq.root)/{}/README.md"
