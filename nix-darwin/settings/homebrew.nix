@@ -32,9 +32,11 @@
       "watch"
       "coreutils"
       "tfenv"
+      "gh-asset"
     ];
     taps = [
       "nikitabobko/tap" # for aerospace
+      "YuitoSato/gh-asset"
     ];
   };
 
