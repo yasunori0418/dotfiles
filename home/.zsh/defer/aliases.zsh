@@ -21,6 +21,8 @@ alias cc='c &&'
 # cd command aliases
 alias cd=custom_cd # ./commands.zsh
 alias dotfiles='cd ~/dotfiles'
+alias dotnvim='cd ~/dotfiles/home/.config/nvim'
+alias dotvim='cd ~/dotfiles/home/.config/vim'
 alias cdr=git_root # ./commands.zsh
 
 # rm command disable
