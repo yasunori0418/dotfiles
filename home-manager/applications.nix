@@ -33,6 +33,7 @@
     kanata-with-cmd
     colorized-logs
     asciinema
+    pueue
   ];
 
   textEditors =
