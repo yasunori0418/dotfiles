@@ -28,7 +28,7 @@
     zip
     typos
     lnav
-    deno
+    # deno # https://nixpk.gs/pr-tracker.html?pr=416177
     unar
     kanata-with-cmd
     colorized-logs
