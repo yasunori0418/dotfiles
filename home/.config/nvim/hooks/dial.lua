@@ -68,9 +68,9 @@ utils.keymaps_set({
         end,
         opts = opt,
     },
-    { -- vimの中でCtrl-cとか使わないよね？(煽り)
+    { -- 大文字小文字の入れ替えが~でできるので、これと置き換える
         mode = "n",
-        lhs = [[<C-c>]],
+        lhs = [[~]],
         rhs = function()
             require(dial_map).manipulate("increment", "normal", "case")
         end,
