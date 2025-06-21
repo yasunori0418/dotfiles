@@ -55,19 +55,7 @@ vim.opt_local.softtabstop = 4
 vim.opt_local.shiftwidth = 4
 -- }}}
 
--- lua_sh {{{
-vim.opt_local.tabstop = 4
-vim.opt_local.softtabstop = 4
-vim.opt_local.shiftwidth = 4
--- }}}
-
--- lua_bash {{{
-vim.opt_local.tabstop = 4
-vim.opt_local.softtabstop = 4
-vim.opt_local.shiftwidth = 4
--- }}}
-
--- lua_zsh {{{
+-- lua_bash_zsh_sh {{{
 vim.opt_local.tabstop = 4
 vim.opt_local.softtabstop = 4
 vim.opt_local.shiftwidth = 4
@@ -85,13 +73,7 @@ vim.opt_local.softtabstop = 4
 vim.opt_local.shiftwidth = 4
 -- }}}
 
--- lua_java {{{
-vim.opt_local.tabstop = 4
-vim.opt_local.softtabstop = 4
-vim.opt_local.shiftwidth = 4
--- }}}
-
--- lua_kotlin {{{
+-- lua_java_kotlin {{{
 vim.opt_local.tabstop = 4
 vim.opt_local.softtabstop = 4
 vim.opt_local.shiftwidth = 4
@@ -103,11 +85,7 @@ vim.opt_local.softtabstop = 4
 vim.opt_local.shiftwidth = 4
 -- }}}
 
--- lua_html {{{
-vim.opt_local.wrap = false
--- }}}
-
--- lua_blade {{{
+-- lua_html_blade {{{
 vim.opt_local.wrap = false
 -- }}}
 
