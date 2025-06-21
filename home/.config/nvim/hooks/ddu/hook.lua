@@ -241,7 +241,3 @@ vim.fn["ddu#custom#load_config"](
     vim.fs.joinpath(ddu_hooks, "config.ts")
 )
 -- }}}
-
--- lua_post_update {{{
-vim.fn["ddu#set_static_import_path"]()
--- }}}
