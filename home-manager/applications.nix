@@ -45,6 +45,7 @@
       kanata-with-cmd
       colorized-logs
       asciinema
+      asciinema-agg
       pueue
     ];
 
