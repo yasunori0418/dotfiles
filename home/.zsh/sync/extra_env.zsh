@@ -7,7 +7,7 @@ if [[ -d ${cargo_bin} ]]; then
 fi
 
 # themis environment
-themis_bin="${HOME}/.cache/dein/repos/github.com/thinca/vim-themis/bin"
+themis_bin="${HOME}/.cache/dpp/repos/github.com/thinca/vim-themis/bin"
 if [[ -d ${themis_bin} ]]; then
     PATH="${PATH}:${themis_bin}"
 fi
