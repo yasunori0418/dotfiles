@@ -38,6 +38,12 @@ if [[ -d ${npm_path} ]]; then
     PATH="${PATH}:${npm_path}"
 fi
 
+# deno package
+deno_path="${HOME}/.deno/bin"
+if [[ -d ${deno_path} ]]; then
+    PATH="${deno_path}:${PATH}"
+fi
+
 # bat theme
 export BAT_THEME="Nord"
 
