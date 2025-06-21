@@ -12,29 +12,41 @@
     nix-direnv
   ];
 
-  utilityTools = with pkgs; [
-    gnumake
-    git
-    jnv
-    usql
-    glow
-    gh
-    awscli2
-    ssm-session-manager-plugin
-    lemonade
-    unzip
-    direnv
-    tmux
-    zip
-    typos
-    lnav
-    # deno # https://nixpk.gs/pr-tracker.html?pr=416177
-    unar
-    kanata-with-cmd
-    colorized-logs
-    asciinema
-    pueue
-  ];
+  utilityTools =
+    with pkgs;
+    let
+      nixpkgs = fetchFromGitHub {
+        owner = "NixOS";
+        repo = "nixpkgs";
+        rev = "3e3afe5174c561dee0df6f2c2b2236990146329f";
+        hash = "sha256-frdhQvPbmDYaScPFiCnfdh3B/Vh81Uuoo0w5TkWmmjU=";
+      };
+      buildable-deno = (import nixpkgs { inherit system; }).deno;
+    in
+    [
+      gnumake
+      git
+      jnv
+      usql
+      glow
+      gh
+      awscli2
+      ssm-session-manager-plugin
+      lemonade
+      unzip
+      direnv
+      tmux
+      zip
+      typos
+      lnav
+      # deno # https://nixpk.gs/pr-tracker.html?pr=416177
+      buildable-deno
+      unar
+      kanata-with-cmd
+      colorized-logs
+      asciinema
+      pueue
+    ];
 
   textEditors =
     with pkgs;
