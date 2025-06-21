@@ -16,7 +16,7 @@
       networking = import ../settings/networking.nix {
         inherit hostName name;
       };
-      system = import ../settings/system.nix {inherit name;};
+      system = import ../settings/system.nix { inherit name; };
     in
     [
       nix
