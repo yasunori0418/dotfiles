@@ -31,8 +31,8 @@ export {
   type Params as LazyParams,
 } from "jsr:@shougo/dpp-ext-lazy@1.5.0";
 export { type Denops } from "jsr:@denops/core@7.0.1";
-export * as fn from "jsr:@denops/std@7.5.1/function";
-export * as vars from "jsr:@denops/std@7.5.1/variable";
+export * as fn from "jsr:@denops/std@7.6.0/function";
+export * as vars from "jsr:@denops/std@7.6.0/variable";
 export { ensure, is } from "jsr:@core/unknownutil@4.3.0";
 
 export { join } from "jsr:@std/path@1.1.0";
