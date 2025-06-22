@@ -30,6 +30,7 @@
     gthumb
     peek
     simplescreenrecorder
+    font-manager
   ];
 
   xfceTools = with pkgs.xfce; [
