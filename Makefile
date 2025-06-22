@@ -1,8 +1,9 @@
 .PHONY: all test clean
 .DEFAULT_GOAL := help
-MAKEFLAGS += --always-make
-RULE_AND_DESC_REGEX := ^[%a-zA-Z_-]+:.*?## .*$$
+RULE_REGEX := ^[a-zA-Z_][a-zA-Z0-9_-]+:
+RULE_AND_DESC_REGEX := $(RULE_REGEX).*?## .*$$
 EXTRA_COMMENT_REGEX := ^## .* ##$$
+.PHONY: $(shell grep -E $(RULE_REGEX) $(MAKEFILE_LIST) | cut -d: -f1)
 
 # INFO: 参考サイト - https://postd.cc/auto-documented-makefile/
 help: ## subcommand list and description.
