@@ -9,6 +9,7 @@
       nerd-fonts.hack
       hackgen-nf-font
       font-awesome_6
+      moralerspace-hwnf
     ];
     fontDir.enable = true;
     fontconfig = {
