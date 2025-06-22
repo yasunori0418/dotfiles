@@ -78,6 +78,7 @@ in
       "typos"
       "ideavim"
       "kanata"
+      "zellij"
     ]
     // xdgConfigFileMap [
       "shellcheckrc"
@@ -109,10 +110,6 @@ in
       };
       "Library/Application Support/Code/User/settings.json".source =
         symlink /${xdgConfigHome}/Code/User/settings.json;
-      "Library/Application Support/org.Zellij-Contributors.Zellij" = {
-        source = symlink /${xdgConfigHome}/zellij;
-        recursive = true;
-      };
       "Library/Application Support/Luacheck/.luacheckrc".source =
         symlink /${xdgConfigHome}/luacheck/.luacheckrc;
     };
@@ -166,7 +163,6 @@ in
         "picom"
         "rofi"
         "xremap"
-        "zellij"
       ]
       // xdgConfigFileMap [
         "ghostty/linux.conf"
