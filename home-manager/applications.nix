@@ -36,6 +36,7 @@
       unzip
       direnv
       tmux
+      zellij
       zip
       typos
       lnav
