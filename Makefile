@@ -1,6 +1,7 @@
 RULE_REGEX := ^[a-zA-Z_][a-zA-Z0-9_-]+:
 RULE_AND_DESC_REGEX := $(RULE_REGEX).*?## .*$$
 EXTRA_COMMENT_REGEX := ^## .* ##$$
+.ONESHELL:
 .DEFAULT_GOAL := help
 .PHONY: all test clean
 .PHONY: $(shell grep -E $(RULE_REGEX) $(MAKEFILE_LIST) | cut -d: -f1)
