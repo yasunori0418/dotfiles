@@ -30,7 +30,7 @@ vim.lsp.enable({
     "intelephense",
     "jqls",
     "jsonls", -- vscode-langservers-extracted
-    "kotlin_ls",
+    "kotlin_lsp",
     "lua_ls",
     "nixd",
     "pyright",
