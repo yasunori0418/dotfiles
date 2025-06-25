@@ -14,15 +14,15 @@
 
   utilityTools =
     with pkgs;
-    let
-      nixpkgs = fetchFromGitHub {
-        owner = "NixOS";
-        repo = "nixpkgs";
-        rev = "3e3afe5174c561dee0df6f2c2b2236990146329f";
-        hash = "sha256-frdhQvPbmDYaScPFiCnfdh3B/Vh81Uuoo0w5TkWmmjU=";
-      };
-      buildable-deno = (import nixpkgs { inherit system; }).deno;
-    in
+    # let
+    #   nixpkgs = fetchFromGitHub {
+    #     owner = "NixOS";
+    #     repo = "nixpkgs";
+    #     rev = "3e3afe5174c561dee0df6f2c2b2236990146329f";
+    #     hash = "sha256-frdhQvPbmDYaScPFiCnfdh3B/Vh81Uuoo0w5TkWmmjU=";
+    #   };
+    #   buildable-deno = (import nixpkgs { inherit system; }).deno;
+    # in
     [
       gnumake
       git
@@ -40,8 +40,8 @@
       zip
       typos
       lnav
-      # deno # https://nixpk.gs/pr-tracker.html?pr=416177
-      buildable-deno
+      deno # https://nixpk.gs/pr-tracker.html?pr=416177
+      # buildable-deno
       unar
       kanata-with-cmd
       colorized-logs
