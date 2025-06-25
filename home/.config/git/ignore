@@ -68,3 +68,6 @@ Temporary Items
 .direnv/
 .envrc
 .env
+
+# claude-code作業用の一時ディレクトリ
+tmp_claude/
