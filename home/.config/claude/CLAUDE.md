@@ -31,6 +31,10 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 ## 影響
 
 - {実施した対応内容による影響を箇条書き}
+
+---
+
+{私の入力に対して必要なデータ出力}
 ```
 
 ## 一時ファイル使用時のルール
