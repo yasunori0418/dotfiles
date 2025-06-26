@@ -61,20 +61,9 @@ function! termsend#open() abort
   " バッファローカルマッピング
   nnoremap <buffer> <silent> <Leader>ts :call termsend#send()<CR>
 
-  " ヘルプテキストを表示
-  call append(0, [
-    \ '# TermSend - Markdown Buffer',
-    \ '',
-    \ 'このバッファでマークダウンを編集し、:TermSend または <Leader>ts でターミナルに送信できます。',
-    \ '',
-    \ '## 使用方法',
-    \ '1. このバッファでコードやコマンドを記述',
-    \ '2. :TermSend で上のターミナルに送信',
-    \ '3. <Leader>ts でも送信可能（ノーマルモード）',
-    \ '',
-    \ '---',
-    \ ''
-    \ ])
+  " バッファローカルコマンド
+  command! -buffer TermSendClear call s:clear_markdown_buffer()
+  command! -buffer TermSendFocus call termsend#focus_terminal()
 
   " カーソルを末尾に移動
   normal! G
@@ -104,15 +93,17 @@ function! termsend#send() abort
   const lines = getline(1, '$')
 
   " 空行のみの場合は送信しない
-  if empty(filter(copy(lines), 'v:val !~ "^\\s*$"'))
+  if lines->copy()->filter('v:val !~ "^\\s*$"')->empty()
     echo "TermSend: 送信する内容がありません。"
     return
   endif
 
 
-  call chansend(s:term_channel_id, lines->join("\n"))
+  " 各行を改行で結合し、最後に改行を追加
+  let content = lines->join("\n") . "\n"
+  call chansend(s:term_channel_id, content)
 
-  echo "TermSend: 内容を送信しました (" . len(lines) . " 行)"
+  echo "TermSend: 内容を送信しました (" . lines->len() . " 行)"
 endfunction
 
 " ターミナルセッションを閉じる関数
@@ -153,4 +144,21 @@ function! termsend#focus_markdown() abort
   else
     echo "TermSend: markdownウィンドウが見つかりません"
   endif
+endfunction
+
+" ========================================
+" 補助関数（スクリプトローカル）
+" ========================================
+
+" markdownバッファをクリアする関数
+function! s:clear_markdown_buffer() abort
+  " 現在のバッファがmarkdownバッファかチェック
+  if bufnr('%') != s:md_buffer_nr
+    echo "TermSend: markdownバッファで実行してください"
+    return
+  endif
+  
+  " バッファの内容をクリア
+  silent! normal! ggdG
+  echo "TermSend: バッファをクリアしました"
 endfunction
