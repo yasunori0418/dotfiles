@@ -137,6 +137,10 @@ if.app-name-regex-substring = 'Stats'
 run = 'layout floating'
 
 [[on-window-detected]]
+if.window-title-regex-substring = 'Meet'
+run = 'layout floating'
+
+[[on-window-detected]]
 if.app-id = 'us.zoom.xos'
 run = 'layout floating'
 
