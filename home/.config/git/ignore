@@ -71,3 +71,5 @@ Temporary Items
 
 # claude-code作業用の一時ディレクトリ
 tmp_claude/
+
+**/.claude/settings.local.json
