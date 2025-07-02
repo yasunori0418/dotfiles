@@ -1,4 +1,4 @@
 export {
   BaseConfig,
   type ConfigArguments,
-} from "https://denopkg.com/Shougo/ddt.vim@main/denops/ddt/base/config.ts";
+} from "jsr:@shougo/ddt-vim@1.2.0/config";
