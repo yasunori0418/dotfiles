@@ -23,9 +23,6 @@ function! termsend#open() abort
     return
   endif
 
-  " 現在のウィンドウサイズを保存
-  let original_window = win_getid()
-
   " 水平分割でターミナルを起動
   split
   terminal
