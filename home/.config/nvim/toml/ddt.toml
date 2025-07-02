@@ -11,5 +11,5 @@ lazy = false
 
 [[plugins]]
 repo = 'github.com/Shougo/ddt-ui-terminal'
-hooks_file = '$HOOKS_DIR/ddt/shell.lua'
+hooks_file = '$HOOKS_DIR/ddt/terminal.lua'
 lazy = false
