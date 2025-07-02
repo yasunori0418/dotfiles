@@ -164,10 +164,10 @@
     with pkgs;
     let
       claude-code-latest = claude-code.overrideAttrs (prev: rec {
-        version = "1.0.38"; # Update this to match your claude-code CLI version
+        version = "1.0.40"; # Update this to match your claude-code CLI version
         src = fetchzip {
           url = "https://registry.npmjs.org/@anthropic-ai/claude-code/-/claude-code-${version}.tgz";
-          hash = "sha256-flG9VlnQfMfGFBbs6RdQKSbceD/Tke19Euo8znR5OG0=";
+          hash = "sha256-pf7wk+ExkL0Ka+pO8dSN8lf1+PhxwDOxmcQVyxVNu54=";
         };
       });
     in
