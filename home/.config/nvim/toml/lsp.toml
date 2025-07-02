@@ -35,19 +35,19 @@ on_ft = [
 # }}}
 
 # Support plugins {{{
-[[plugins]] # denops-popup-preview.vim
-repo = 'github.com/matsui54/denops-popup-preview.vim'
-on_source = 'ddc.vim'
-lua_source = '''
-vim.fn['popup_preview#enable']()
-'''
+# [[plugins]] # denops-popup-preview.vim
+# repo = 'github.com/matsui54/denops-popup-preview.vim'
+# on_source = 'ddc.vim'
+# lua_source = '''
+# vim.fn['popup_preview#enable']()
+# '''
 
-[[plugins]] # denops-signature_help
-repo = 'github.com/matsui54/denops-signature_help'
-on_event = 'LspAttach'
-lua_source = '''
-vim.fn['signature_help#enable']()
-'''
+# [[plugins]] # denops-signature_help
+# repo = 'github.com/matsui54/denops-signature_help'
+# on_event = 'LspAttach'
+# lua_source = '''
+# vim.fn['signature_help#enable']()
+# '''
 
 [[plugins]] # fidget.nvim
 repo = 'github.com/j-hui/fidget.nvim'
