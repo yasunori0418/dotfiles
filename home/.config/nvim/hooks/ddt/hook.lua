@@ -28,7 +28,7 @@ require("user.utils").keymaps_set({
 -- }}}
 
 -- lua_source {{{
-local ddt_hooks = vim.fs.joinpath(vim.g.hooks_dir, "ddt")
+local ddt_hooks = vim.fs.joinpath(vim.env.HOOKS_DIR, "ddt")
 vim.fn["ddt#custom#load_config"](
     -- $HOOKS_DIR/ddt/config.ts
     vim.fs.joinpath(ddt_hooks, "config.ts")
