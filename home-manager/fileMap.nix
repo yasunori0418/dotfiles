@@ -56,6 +56,8 @@ in
       ".bash_profile"
       ".bash_logout"
       ".screenrc"
+      ".claude/projects/settings.json"
+      ".claude/CLAUDE.md"
     ];
 
   dotConfig =
@@ -84,8 +86,6 @@ in
       "shellcheckrc"
       "alacritty/alacritty.toml"
       "alacritty/nord.toml"
-      "claude/settings.json"
-      "claude/CLAUDE.md"
       "ghostty/config"
       "ghostty/core.conf"
       "ghostty/clipboard.conf"
