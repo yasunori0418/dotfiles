@@ -5,12 +5,14 @@ export class Config extends BaseConfig {
   override config({ contextBuilder }: ConfigArguments): Promise<void> {
     contextBuilder.patchGlobal({
       nvimServer: expandHome("~/.cache/nvim/server.pipe"),
-      ui: "shell",
       uiParams: {
         shell: {
           prompt: "%",
           promptPattern: "\w*% \?",
           // shellHistoryPath: expandHome("~/.cache/ddt-shell-history"),
+        },
+        terminal: {
+          command: [Deno.env.get('SHELL')]
         },
       },
     });

@@ -9,17 +9,18 @@ require("user.utils").keymaps_set({
     },
     { -- project root term
         mode = "n",
-        lhs = [[<Plug>(ddt)a]],
+        lhs = [[<Plug>(ddt)s]],
         rhs = function()
-            vim.fn['ddt#start']()
+            vim.fn["ddt#start"]({ ui = "shell" })
         end,
         opts = opt,
     },
     { -- current buffer term
         mode = "n",
-        lhs = [[<Plug>(ddt)c]],
+        lhs = [[<Plug>(ddt)t]],
         rhs = function()
-            vim.print('start ddt current buffer path')
+            vim.print("start ddt current buffer path")
+            vim.fn["ddt#start"]({ ui = "terminal" })
         end,
         opts = opt,
     },
@@ -28,7 +29,7 @@ require("user.utils").keymaps_set({
 
 -- lua_source {{{
 local ddt_hooks = vim.fs.joinpath(vim.g.hooks_dir, "ddt")
-vim.fn['ddt#custom#load_config'](
+vim.fn["ddt#custom#load_config"](
     -- $HOOKS_DIR/ddt/config.ts
     vim.fs.joinpath(ddt_hooks, "config.ts")
 )
