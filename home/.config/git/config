@@ -70,3 +70,5 @@
 	skippedCherryPicks = false
 [fetch]
 	prune = true
+[credential]
+	helper = git-credential-manager

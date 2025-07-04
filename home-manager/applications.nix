@@ -17,6 +17,7 @@
     [
       gnumake
       git
+      git-credential-manager
       jnv
       usql
       glow
