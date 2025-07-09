@@ -10,6 +10,7 @@
     nix-output-monitor
     nix-search-cli
     nix-direnv
+    node2nix
   ];
 
   utilityTools =
