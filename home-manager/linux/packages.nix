@@ -3,12 +3,14 @@
   pkgs,
   lib,
   claude-desktop,
+  nodePkgsBuilder,
   ...
 }:
 {
   home.packages =
     let
-      applications = import ../applications.nix { inherit pkgs inputs lib; };
+      nodePkgs = nodePkgsBuilder pkgs;
+      applications = import ../applications.nix { inherit pkgs inputs lib nodePkgs; };
       packages =
         with applications;
         nixTools

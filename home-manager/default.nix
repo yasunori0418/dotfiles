@@ -14,6 +14,7 @@ let
     inherit system;
     config.allowUnfree = true;
   };
+  nodePkgsBuilder = pkgs: pkgs.callPackages ../node2nix { inherit pkgs; };
 in
 {
   pkgs = import nixpkgs {
@@ -21,7 +22,7 @@ in
     config.allowUnfree = true;
   };
   extraSpecialArgs = {
-    inherit inputs pkgs-stable claude-desktop;
+    inherit inputs pkgs-stable claude-desktop nodePkgsBuilder;
   };
   modules = [ ./${profileName} ];
 }
