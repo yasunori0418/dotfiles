@@ -14,20 +14,20 @@
         i3status
         i3status-rust
         # https://nixpk.gs/pr-tracker.html?pr=406695
-        # (bumblebee-status.override {
-        #   plugins =
-        #     p: with p; [
-        #       title
-        #       cpu2
-        #       memory
-        #       nic
-        #       datetime
-        #       battery
-        #       dunstctl
-        #       indicator
-        #       error
-        #     ];
-        # })
+        (bumblebee-status.override {
+          plugins =
+            p: with p; [
+              title
+              cpu2
+              memory
+              nic
+              datetime
+              battery
+              dunstctl
+              indicator
+              error
+            ];
+        })
       ]
       ++ extraPackages;
   };
