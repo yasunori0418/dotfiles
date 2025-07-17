@@ -73,3 +73,5 @@ Temporary Items
 tmp_claude/
 
 **/.claude/settings.local.json
+
+*.code-workspace
