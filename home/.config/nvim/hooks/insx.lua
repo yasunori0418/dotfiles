@@ -49,6 +49,7 @@ vim.iter({
     }, {})
     pair_setup.auto_pair(open, open, close, overrides)
     pair_setup.delete_pair([[<C-h>]], open, close, overrides)
+    pair_setup.delete_pair([[<C-u>]], open, close, overrides)
     pair_setup.jump_pair_next(close, close, overrides)
     pair_setup.jump_pair_next([[<Tab>]], close, overrides)
     helper.fast_wrap([[<C-]>]], close, overrides)
