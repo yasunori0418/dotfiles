@@ -1,5 +1,11 @@
 -- lua_ddt-shell {{{
-local opt = { silent = false, buffer = true, noremap = true }
+local opt = {
+    silent = false,
+    buffer = true,
+    noremap = true,
+    desc = 'set from hooks/ddt/shell.lua'
+} --[[@type vim.keymap.set.Opts]]
+
 require("user.utils").keymaps_set({
     {
         mode = { "n" },
