@@ -1,7 +1,7 @@
 [[plugins]] # denops.vim
 repo = 'github.com/vim-denops/denops.vim'
 hook_add = '''
-let g:denops#server#deno_args = ['-q', '--no-lock', '--unstable-kv', '-A', '--unstable-ffi']
+let g:denops#server#deno_args = ['-q', '--no-lock', '--unstable-kv', '--unstable-ffi', '-A']
 '''
 
 [[plugins]] # dpp.vim
