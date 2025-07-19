@@ -2,7 +2,7 @@
   inputs,
   pkgs,
   lib,
-  claude-desktop,
+  # claude-desktop,
   nodePkgsBuilder,
   ...
 }:
@@ -26,12 +26,12 @@
             pkgs.ghostty
           ]
         )
-        ++ (
-          aiTools
-          ++ [
-            claude-desktop.packages.${pkgs.system}.claude-desktop
-          ]
-        )
+        # ++ (
+        #   aiTools
+        #   ++ [
+        #     claude-desktop.packages.${pkgs.system}.claude-desktop
+        #   ]
+        # )
       # ++ clojureTools
       ;
     in
