@@ -1,6 +1,9 @@
-local M = {}
+local M = {
+    with = {},
+}
 
 local insx = require("insx")
+local esc = require("insx.helper.regex").esc
 local with = insx.with
 
 ---insx.add with override
@@ -13,6 +16,40 @@ function M.insx_override_add(recipe_source_like, mode)
         overrides = overrides or {}
         insx.add(key, with(recipe_source_like, overrides), { mode = mode })
     end
+end
+
+---invert insx.with.filetype
+---@param filetypes string|string[]
+---@return insx.Override
+function M.with.not_filetype(filetypes)
+    filetypes = require("insx.kit").to_array(filetypes) --[=[@as string[]]]=]
+    return {
+        ---@param enabled insx.Enabled
+        ---@param ctx insx.Context
+        enabled = function(enabled, ctx)
+            local res = not vim.tbl_contains(filetypes, ctx.filetype)
+            vim.print(res)
+            return res and enabled(ctx)
+        end,
+    }
+end
+
+---insx fast_break
+---@param key string
+---@param open string
+---@param close string
+---@param override? insx.Override[]
+function M.fast_break(key, open, close, override)
+    M.insx_override_add(
+        require("insx.recipe.fast_break")({
+            open_pat = esc(open),
+            close_pat = esc(close),
+            arguments = true,
+            html_attrs = true,
+            html_tags = true,
+        }),
+        { "i" }
+    )(key, override)
 end
 
 ---insx fast_wrap

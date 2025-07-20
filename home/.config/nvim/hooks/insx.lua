@@ -8,8 +8,8 @@ local quote_setup = require("user.plugins.insx.quote")
 
 require("insx.preset.standard").setup({
     cmdline = { enabled = true },
-    fast_break = { enabled = true, arguments = true, html_attrs = true },
-    fast_wrap = { enabled = true },
+    fast_break = { enabled = false, arguments = false, html_attrs = false },
+    fast_wrap = { enabled = false },
     spacing = { enabled = false },
 })
 
@@ -53,6 +53,9 @@ vim.iter({
     pair_setup.jump_pair_next(close, close, overrides)
     pair_setup.jump_pair_next([[<Tab>]], close, overrides)
     helper.fast_wrap([[<C-]>]], close, overrides)
+    if open ~= "<" then
+        helper.fast_break([[<CR>]], open, close, { helper.with.not_filetype({ "ddt-shell" }) })
+    end
 end)
 
 vim.iter({
