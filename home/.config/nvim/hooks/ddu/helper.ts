@@ -57,16 +57,16 @@ export async function uiSize(
   }
 
   return {
-    winRow: winRow,
-    winCol: winCol,
-    winWidth: winWidth,
-    winHeight: winHeight,
+    winRow,
+    winCol,
+    winWidth,
+    winHeight,
     previewFloating: true,
-    previewSplit: previewSplit,
-    previewRow: previewRow,
-    previewCol: previewCol,
-    previewHeight: previewHeight,
-    previewWidth: previewWidth,
+    previewSplit,
+    previewRow,
+    previewCol,
+    previewHeight,
+    previewWidth,
   };
 }
 
