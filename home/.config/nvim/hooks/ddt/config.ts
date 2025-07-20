@@ -8,7 +8,7 @@ export class Config extends BaseConfig {
       uiParams: {
         shell: {
           prompt: "%",
-          promptPattern: "\w*% \?",
+          promptPattern: "% ",
           // shellHistoryPath: expandHome("~/.cache/ddt-shell-history"),
         },
         terminal: {
