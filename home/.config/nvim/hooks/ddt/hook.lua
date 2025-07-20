@@ -19,8 +19,7 @@ require("user.utils").keymaps_set({
         mode = "n",
         lhs = [[<Plug>(ddt)t]],
         rhs = function()
-            vim.print("start ddt current buffer path")
-            vim.fn["ddt#start"]({ ui = "terminal" })
+            vim.fn["ddt#start"]({ ui = "terminal", name = "terminal-floating" })
         end,
         opts = opt,
     },
