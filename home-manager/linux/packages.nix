@@ -26,12 +26,7 @@
             pkgs.ghostty
           ]
         )
-        # ++ (
-        #   aiTools
-        #   ++ [
-        #     claude-desktop.packages.${pkgs.system}.claude-desktop
-        #   ]
-        # )
+        ++ aiTools
       # ++ clojureTools
       ;
     in

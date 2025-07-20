@@ -165,19 +165,9 @@
 
   aiTools =
     with pkgs;
-    # let
-    #   claude-code-latest = claude-code.overrideAttrs (prev: rec {
-    #     version = "1.0.40"; # Update this to match your claude-code CLI version
-    #     src = fetchzip {
-    #       url = "https://registry.npmjs.org/@anthropic-ai/claude-code/-/claude-code-${version}.tgz";
-    #       hash = "sha256-pf7wk+ExkL0Ka+pO8dSN8lf1+PhxwDOxmcQVyxVNu54=";
-    #     };
-    #   });
-    # in
     [
       codex
-      goose-cli
-      # claude-code-latest
+      # goose-cli
       nodePkgs."@anthropic-ai/claude-code"
       nodePkgs."ccusage"
     ];
