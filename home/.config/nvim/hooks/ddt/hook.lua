@@ -1,5 +1,5 @@
 -- lua_add {{{
-local opt = { silent = true, noremap = true }
+local opt = { silent = true, noremap = true } --[[@as vim.keymap.set.Opts]]
 require("user.utils").keymaps_set({
     { -- ddt prefix
         mode = "n",
@@ -15,11 +15,14 @@ require("user.utils").keymaps_set({
         end,
         opts = opt,
     },
-    { -- floating window terminal
+    { -- floating window terminal at default
         mode = "n",
         lhs = [[<Plug>(ddt)a]],
         rhs = function()
-            vim.fn["ddt#start"]({ name = "terminal-floating" })
+            vim.fn["ddt#start"]({
+                ui = "terminal",
+                name = table.concat({ "terminal", "default" }, "-"),
+            })
         end,
         opts = opt,
     },

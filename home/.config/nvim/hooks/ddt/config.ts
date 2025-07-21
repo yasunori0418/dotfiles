@@ -22,15 +22,6 @@ export class Config extends BaseConfig {
         terminal: {
           command: [Deno.env.get("SHELL")],
           promptPattern: "❯ ",
-          split: "",
-        },
-      },
-    });
-
-    contextBuilder.patchLocal("terminal-floating", {
-      ui: "terminal",
-      uiParams: {
-        terminal: {
           ...defaultFloatingTerminalUiSize,
         },
       },
