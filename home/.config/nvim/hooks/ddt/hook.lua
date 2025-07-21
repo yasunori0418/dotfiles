@@ -28,7 +28,7 @@ require("user.utils").keymaps_set({
     },
     { -- TODO:open floating terminal from current buffer file directory
         mode = "n",
-        lhs = [[<Plug>(ddt)c]],
+        lhs = [[<Plug>(ddt)s]],
         rhs = function()
             local name = table.concat({ "terminal", vim.fn.bufnr("%") }, "-")
             vim.fn["ddt#start"]({
