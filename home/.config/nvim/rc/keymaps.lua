@@ -459,4 +459,12 @@ require("user.utils").keymaps_set({
         rhs = [[iW]],
         opts = opt,
     },
+
+    -- Terminal
+    { -- leave term insert mode.
+        mode = "t",
+        lhs = [[<Esc><Esc>]],
+        rhs = [[<C-\><C-n>]],
+        opts = opt,
+    },
 })
