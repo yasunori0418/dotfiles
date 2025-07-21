@@ -5,6 +5,12 @@ export class Config extends BaseConfig {
   override async config(args: ConfigArguments): Promise<void> {
     const { contextBuilder } = args;
 
+    const defaultFloatingTerminalUiSize = await ddtUiSize(
+      args,
+      "floating",
+      0.6,
+    );
+
     contextBuilder.patchGlobal({
       nvimServer: "~/.cache/nvim/server.pipe",
       uiParams: {
@@ -25,7 +31,7 @@ export class Config extends BaseConfig {
       ui: "terminal",
       uiParams: {
         terminal: {
-          ...await ddtUiSize(args, "floating", 0.6),
+          ...defaultFloatingTerminalUiSize,
         },
       },
     });
