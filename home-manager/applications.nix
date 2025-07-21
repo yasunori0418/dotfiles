@@ -136,7 +136,7 @@
     nixd
     efm-langserver
     pyright
-    # bash-language-server
+    bash-language-server
     typescript-language-server
     yaml-language-server
     emmet-ls

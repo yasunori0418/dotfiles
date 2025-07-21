@@ -2,15 +2,22 @@
   inputs,
   pkgs,
   lib,
-  # claude-desktop,
+  claude-desktop,
   nodePkgsBuilder,
   ...
 }:
 {
-  home.packages =
+  home =
     let
       nodePkgs = nodePkgsBuilder pkgs;
-      applications = import ../applications.nix { inherit pkgs inputs lib nodePkgs; };
+      applications = import ../applications.nix {
+        inherit
+          pkgs
+          inputs
+          lib
+          nodePkgs
+          ;
+      };
       packages =
         with applications;
         nixTools
@@ -27,8 +34,11 @@
           ]
         )
         ++ aiTools
-      # ++ clojureTools
-      ;
+        ++ [
+          claude-desktop.packages.${pkgs.system}.claude-desktop
+        ];
     in
-    packages;
+    {
+      inherit packages;
+    };
 }
