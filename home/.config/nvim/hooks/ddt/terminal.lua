@@ -41,5 +41,13 @@ require("user.utils").keymaps_set({
         end,
         opts = opt,
     },
+    {
+        mode = { "n" },
+        lhs = [[<C-l>]],
+        rhs = function()
+            vim.fn["ddt#ui#do_action"]("redraw")
+        end,
+        opts = opt,
+    },
 })
 -- }}}
