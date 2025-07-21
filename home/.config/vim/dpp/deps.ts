@@ -29,5 +29,5 @@ export { type Denops } from "jsr:@denops/core@7.0.1";
 export * as fn from "jsr:@denops/std@7.6.0/function";
 export * as vars from "jsr:@denops/std@7.6.0/variable";
 
-export { join } from "jsr:@std/path@1.1.0";
-export { expandGlobSync } from "jsr:@std/fs@1.0.18";
+export { join } from "jsr:@std/path@1.1.1";
+export { expandGlobSync } from "jsr:@std/fs@1.0.19";
