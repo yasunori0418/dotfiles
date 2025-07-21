@@ -1,23 +1,23 @@
 -- lua_add {{{
 local opt = { silent = true, noremap = true }
 require("user.utils").keymaps_set({
-    { -- term prefix
+    { -- ddt prefix
         mode = "n",
-        lhs = [[ S]],
+        lhs = [[ s]],
         rhs = [[<Plug>(ddt)]],
         opts = {},
     },
-    { -- project root term
+    { -- experimental ddt-ui-shell
         mode = "n",
-        lhs = [[<Plug>(ddt)s]],
+        lhs = [[<Plug>(ddt)S]],
         rhs = function()
             vim.fn["ddt#start"]({ ui = "shell" })
         end,
         opts = opt,
     },
-    { -- current buffer term
+    { -- floating window terminal
         mode = "n",
-        lhs = [[<Plug>(ddt)t]],
+        lhs = [[<Plug>(ddt)a]],
         rhs = function()
             vim.fn["ddt#start"]({ name = "terminal-floating" })
         end,

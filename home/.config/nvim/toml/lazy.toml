@@ -40,12 +40,6 @@ hooks_file = '$HOOKS_DIR/molder.lua'
 repo = 'github.com/mattn/vim-molder-operations'
 on_source = 'vim-molder'
 
-[[plugins]] # deol.nvim
-repo = 'github.com/Shougo/deol.nvim'
-depends = ['ddc.vim']
-on_func = 'deol#start'
-hooks_file = '$HOOKS_DIR/deol.lua'
-
 [[plugins]] # vim-qfreplace
 repo = 'github.com/thinca/vim-qfreplace'
 on_cmd = 'Qfreplace'
