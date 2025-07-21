@@ -22,14 +22,6 @@
       "Change": "All locks refreshed"
     }
   },
-  "nix": {
-    "fileMatch": [
-      "(^|/)flake\\.nix$"
-    ],
-    "commitMessageTopic": "nix",
-    "commitMessageExtra": "to {{newValue}}",
-    "enabled": true
-  },
   "packageRules": [
     {
       "matchFileNames": [
