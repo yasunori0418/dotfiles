@@ -43,6 +43,34 @@ require("user.utils").keymaps_set({
         end,
         opts = opt,
     },
+    { -- TODO:claude
+        mode = "n",
+        lhs = [[<Plug>(ddt)c]],
+        rhs = function()
+            local prompt_bufnr = vim.fn.bufadd("[prompt]")
+            vim.iter({
+                ["&buftype"] = "nofile",
+                ["&swapfile"] = false,
+                ["&buflisted"] = true,
+                ["&filetype"] = "markdown",
+            }):each(
+                ---@param varname string
+                ---@param val any
+                function(varname, val)
+                    vim.fn.setbufvar(prompt_bufnr, varname, val)
+                end
+            )
+            vim.api.nvim_win_set_buf(vim.fn.win_getid(), prompt_bufnr)
+            local prompt_window = vim.fn.win_getid()
+            vim.fn["ddt#start"]({
+                ui = "terminal",
+                name = "claude",
+            })
+            vim.cmd("sleep 1")
+            vim.api.nvim_set_current_win(prompt_window)
+        end,
+        opts = opt,
+    },
 })
 -- }}}
 

@@ -27,6 +27,16 @@ export class Config extends BaseConfig {
       },
     });
 
+    contextBuilder.patchLocal("claude", {
+      uiParams: {
+        terminal: {
+          command: ["claude"],
+          promptPattern: "│ > ",
+          ...(await ddtUiSize(args, "horizontal", 0.5)),
+        },
+      },
+    });
+
     return Promise.resolve();
   }
 }
