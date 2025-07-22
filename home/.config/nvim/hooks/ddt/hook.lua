@@ -30,10 +30,9 @@ require("user.utils").keymaps_set({
         mode = "n",
         lhs = [[<Plug>(ddt)s]],
         rhs = function()
-            local name = table.concat({ "terminal", vim.fn.bufnr("%") }, "-")
             vim.fn["ddt#start"]({
                 ui = "terminal",
-                name = name,
+                name = table.concat({ "terminal", vim.fn.bufnr("%") }, "-"),
                 uiParams = {
                     terminal = {
                         cwd = vim.fn.expand("%:h"),
@@ -47,7 +46,7 @@ require("user.utils").keymaps_set({
         mode = "n",
         lhs = [[<Plug>(ddt)c]],
         rhs = function()
-            local prompt_bufnr = vim.fn.bufadd("[prompt:claude]")
+            local prompt_bufnr = vim.fn.bufadd("prompt://claude.md")
             vim.iter({
                 ["&buftype"] = "nofile",
                 ["&swapfile"] = false,
