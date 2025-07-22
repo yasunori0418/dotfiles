@@ -1,5 +1,5 @@
 -- lua_add {{{
-local opt = { silent = true, noremap = true } --[[@as vim.keymap.set.Opts]]
+local opt = { silent = false, noremap = true } --[[@as vim.keymap.set.Opts]]
 require("user.utils").keymaps_set({
     { -- ddt prefix
         mode = "n",
@@ -60,14 +60,14 @@ require("user.utils").keymaps_set({
                     vim.fn.setbufvar(prompt_bufnr, varname, val)
                 end
             )
-            vim.api.nvim_win_set_buf(vim.fn.win_getid(), prompt_bufnr)
-            local prompt_window = vim.fn.win_getid()
+            local current_winid = vim.fn.win_getid()
+            vim.api.nvim_win_set_buf(current_winid, prompt_bufnr)
             vim.fn["ddt#start"]({
                 ui = "terminal",
                 name = "claude",
             })
             vim.cmd("sleep 1")
-            vim.api.nvim_set_current_win(prompt_window)
+            vim.api.nvim_set_current_win(current_winid)
         end,
         opts = opt,
     },
