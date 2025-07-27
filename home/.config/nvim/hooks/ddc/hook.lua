@@ -52,6 +52,26 @@ require("user.utils").keymaps_set({
         end,
         opts = opt,
     },
+    {
+        mode = "i",
+        lhs = [[<M-n>]],
+        rhs = function()
+            if pum_visible() then
+                pum_select_relative(1)
+            end
+        end,
+        opts = opt,
+    },
+    {
+        mode = "i",
+        lhs = [[<M-p>]],
+        rhs = function()
+            if pum_visible() then
+                pum_select_relative(-1)
+            end
+        end,
+        opts = opt,
+    },
     { -- i_<C-y>
         mode = "i",
         lhs = [[<C-y>]],
