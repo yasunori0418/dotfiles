@@ -163,7 +163,7 @@
 
   aiTools = with pkgs; [
     codex
-    # goose-cli
+    goose-cli
     nodePkgs."@anthropic-ai/claude-code"
     nodePkgs."ccusage"
   ];
