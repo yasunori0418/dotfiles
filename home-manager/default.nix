@@ -22,7 +22,12 @@ in
     config.allowUnfree = true;
   };
   extraSpecialArgs = {
-    inherit inputs pkgs-stable claude-desktop nodePkgsBuilder;
+    inherit
+      inputs
+      pkgs-stable
+      claude-desktop
+      nodePkgsBuilder
+      ;
   };
   modules = [ ./${profileName} ];
 }

@@ -14,34 +14,32 @@
     node2nix
   ];
 
-  utilityTools =
-    with pkgs;
-    [
-      gnumake
-      git
-      git-credential-manager
-      jnv
-      usql
-      glow
-      gh
-      awscli2
-      ssm-session-manager-plugin
-      lemonade
-      unzip
-      direnv
-      tmux
-      zellij
-      zip
-      typos
-      lnav
-      deno
-      unar
-      kanata-with-cmd
-      colorized-logs
-      asciinema
-      asciinema-agg
-      pueue
-    ];
+  utilityTools = with pkgs; [
+    gnumake
+    git
+    git-credential-manager
+    jnv
+    usql
+    glow
+    gh
+    awscli2
+    ssm-session-manager-plugin
+    lemonade
+    unzip
+    direnv
+    tmux
+    zellij
+    zip
+    typos
+    lnav
+    deno
+    unar
+    kanata-with-cmd
+    colorized-logs
+    asciinema
+    asciinema-agg
+    pueue
+  ];
 
   textEditors =
     with pkgs;
@@ -163,14 +161,12 @@
     biome
   ];
 
-  aiTools =
-    with pkgs;
-    [
-      codex
-      # goose-cli
-      nodePkgs."@anthropic-ai/claude-code"
-      nodePkgs."ccusage"
-    ];
+  aiTools = with pkgs; [
+    codex
+    # goose-cli
+    nodePkgs."@anthropic-ai/claude-code"
+    nodePkgs."ccusage"
+  ];
 
   libraries = with pkgs; [
     gcc

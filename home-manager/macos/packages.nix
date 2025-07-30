@@ -9,7 +9,14 @@
   home.packages =
     let
       nodePkgs = nodePkgsBuilder pkgs;
-      applications = import ../applications.nix { inherit pkgs inputs lib nodePkgs; };
+      applications = import ../applications.nix {
+        inherit
+          pkgs
+          inputs
+          lib
+          nodePkgs
+          ;
+      };
       packages =
         with applications;
         nixTools

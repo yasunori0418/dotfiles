@@ -34,31 +34,30 @@ let
   };
 in
 {
-  homeDirectory =
-    {
-      ".background-image".source = selectWallpaper {
-        type = "default";
-        name = "";
-        # type = "nixos-artwork";
-        # name = "nineish-solarized-dark";
-      };
-    }
-    // homeDirMap [
-      ".zsh"
-      "bin"
-    ]
-    // homeFileMap [
-      ".zshenv"
-      ".zshrc"
-      ".p10k.zsh"
-      ".dir_colors"
-      ".bashrc"
-      ".bash_profile"
-      ".bash_logout"
-      ".screenrc"
-      ".claude/projects/settings.json"
-      ".claude/CLAUDE.md"
-    ];
+  homeDirectory = {
+    ".background-image".source = selectWallpaper {
+      type = "default";
+      name = "";
+      # type = "nixos-artwork";
+      # name = "nineish-solarized-dark";
+    };
+  }
+  // homeDirMap [
+    ".zsh"
+    "bin"
+  ]
+  // homeFileMap [
+    ".zshenv"
+    ".zshrc"
+    ".p10k.zsh"
+    ".dir_colors"
+    ".bashrc"
+    ".bash_profile"
+    ".bash_logout"
+    ".screenrc"
+    ".claude/projects/settings.json"
+    ".claude/CLAUDE.md"
+  ];
 
   dotConfig =
     xdgConfigDirMap [
@@ -113,17 +112,16 @@ in
       "Library/Application Support/Luacheck/.luacheckrc".source =
         symlink /${xdgConfigHome}/luacheck/.luacheckrc;
     };
-    dotConfig =
-      {
-        ".config/alacritty/os.toml".source = symlink /${xdgConfigHome}/alacritty/mac.toml;
-      }
-      // xdgConfigDirMap [
-        "ghostty/macos.conf"
-      ]
-      // xdgConfigDirMap [
-        "aerospace"
-        "karabiner"
-      ];
+    dotConfig = {
+      ".config/alacritty/os.toml".source = symlink /${xdgConfigHome}/alacritty/mac.toml;
+    }
+    // xdgConfigDirMap [
+      "ghostty/macos.conf"
+    ]
+    // xdgConfigDirMap [
+      "aerospace"
+      "karabiner"
+    ];
   };
 
   Linux = {
@@ -142,33 +140,32 @@ in
         ".face"
         # ".Xresources"
       ];
-    dotConfig =
-      {
-        ".config/alacritty/os.toml".source = symlink /${xdgConfigHome}/alacritty/linux.toml;
-      }
-      // xdgConfigDirMap [
-        "bumblebee-status"
-        "cantata"
-        "dunst"
-        "fcitx5"
-        "gtk-2.0"
-        "gtk-3.0"
-        "i3"
-        "i3status-rust"
-        "keynav"
-        "libskk"
-        "luacheck"
-        "mpd"
-        "paru"
-        "picom"
-        "rofi"
-        "xremap"
-      ]
-      // xdgConfigFileMap [
-        "ghostty/linux.conf"
-        "ncpamixer.conf"
-        "screenkey.json"
-        "Code/User/settings.json"
-      ];
+    dotConfig = {
+      ".config/alacritty/os.toml".source = symlink /${xdgConfigHome}/alacritty/linux.toml;
+    }
+    // xdgConfigDirMap [
+      "bumblebee-status"
+      "cantata"
+      "dunst"
+      "fcitx5"
+      "gtk-2.0"
+      "gtk-3.0"
+      "i3"
+      "i3status-rust"
+      "keynav"
+      "libskk"
+      "luacheck"
+      "mpd"
+      "paru"
+      "picom"
+      "rofi"
+      "xremap"
+    ]
+    // xdgConfigFileMap [
+      "ghostty/linux.conf"
+      "ncpamixer.conf"
+      "screenkey.json"
+      "Code/User/settings.json"
+    ];
   };
 }
