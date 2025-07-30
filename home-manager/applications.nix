@@ -97,14 +97,14 @@
             xorg.libXt
           ]);
       });
-      # neovim-nightly = neovim-unwrapped.overrideAttrs {
-      #   version = "v0.12.0-dev";
-      #   src = inputs.neovim-src;
-      # };
+      neovim-nightly = neovim-unwrapped.overrideAttrs {
+        version = "v0.12.0-dev";
+        src = inputs.neovim-src;
+      };
     in
     [
       vim-latest
-      neovim
+      neovim-nightly
       neovide
     ];
 
