@@ -71,11 +71,11 @@ require("user.utils").keymaps_set({
         opts = opt,
     },
 })
--- }}}
-
--- lua_source {{{
 vim.fn["ddt#custom#load_config"](
     -- $HOOKS_DIR/ddt/config.ts
     vim.fs.joinpath(require("user.rc").hooks_dir, "ddt", "config.ts")
 )
+-- }}}
+
+-- lua_source {{{
 -- }}}
