@@ -24,7 +24,7 @@
     slack
     arandr
     google-chrome
-    discord
+    # discord
     blueberry
     pavucontrol
     gthumb

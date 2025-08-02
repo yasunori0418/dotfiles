@@ -8,12 +8,12 @@
     let
       hardwareModules = with nixos-hardware.nixosModules; [
         common-cpu-amd-zenpower
-        common-gpu-nvidia-sync
+        # common-gpu-nvidia-sync
         common-pc-ssd
       ];
       hardware = ./hardware-configuration.nix;
       extraMountFilesystems = ./extra-mount-filesystems.nix;
-      nvidia = ../settings/nvidia.nix;
+      # nvidia = ../settings/nvidia.nix;
 
       # configuration.nix top level keys
       nix = ../settings/nix.nix;
@@ -53,7 +53,7 @@
       applications = [
         xremap-flake.nixosModules.default
         ../settings/applications/xremap.nix
-        ../settings/applications/fcitx5.nix
+        # ../settings/applications/fcitx5.nix
         ../settings/applications/tailscale.nix
         ../settings/applications/pipewire.nix
         ../settings/applications/thunar.nix
@@ -64,7 +64,7 @@
     [
       hardware
       extraMountFilesystems
-      nvidia
+      # nvidia
 
       # configuration.nix top level keys
       nix
@@ -88,6 +88,8 @@
     ++ systemdUserServiceUnits
     ++ hardwareModules
     ++ applications;
+
+  hardware.nvidia.open = true;
 
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions
