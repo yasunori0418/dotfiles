@@ -645,22 +645,6 @@
         "type": "github"
       }
     },
-    "neovim-src": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1754016833,
-        "narHash": "sha256-of8Z6vLd6aNofFN1pjLViyeSBuXBIY4yI/BMNmLJ2ck=",
-        "owner": "neovim",
-        "repo": "neovim",
-        "rev": "68eece8b849da73bb9c93dabd6403ed0fb2f4174",
-        "type": "github"
-      },
-      "original": {
-        "owner": "neovim",
-        "repo": "neovim",
-        "type": "github"
-      }
-    },
     "nix": {
       "inputs": {
         "flake-compat": [
@@ -930,7 +914,6 @@
         "devenv": "devenv",
         "flake-parts": "flake-parts_2",
         "home-manager": "home-manager",
-        "neovim-src": "neovim-src",
         "nix-darwin": "nix-darwin",
         "nix-monitored": "nix-monitored",
         "nix2container": "nix2container",
@@ -939,7 +922,6 @@
         "nixpkgs-stable": "nixpkgs-stable",
         "systems": "systems_2",
         "treefmt-nix": "treefmt-nix",
-        "vim-src": "vim-src",
         "xremap-flake": "xremap-flake"
       }
     },
@@ -1023,22 +1005,6 @@
       "original": {
         "owner": "numtide",
         "repo": "treefmt-nix",
-        "type": "github"
-      }
-    },
-    "vim-src": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1754050815,
-        "narHash": "sha256-nz0+Nrqe1aUNGEZEGfe8Y0T5fW5i0CbfHtb15vmHz2s=",
-        "owner": "vim",
-        "repo": "vim",
-        "rev": "b88f9e4a04ce9fb70abb7cdae17688aa4f49c8c9",
-        "type": "github"
-      },
-      "original": {
-        "owner": "vim",
-        "repo": "vim",
         "type": "github"
       }
     },
