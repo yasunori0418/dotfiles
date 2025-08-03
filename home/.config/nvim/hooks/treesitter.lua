@@ -1,4 +1,4 @@
--- lua_add {{{
+-- lua_source {{{
 local treesitter = require("nvim-treesitter")
 treesitter.setup({
     install_dir = vim.fs.joinpath(vim.fn.stdpath("data"), "site"),
@@ -152,8 +152,6 @@ vim.api.nvim_create_autocmd("FileType", {
 
 -- }}}
 
--- -- lua_post_update {{{
--- vim.opt.more = false
--- vim.cmd([[TSUpdate]])
--- vim.opt.more = true
--- -- }}}
+-- lua_post_update {{{
+vim.cmd([[TSUpdate]])
+-- }}}
