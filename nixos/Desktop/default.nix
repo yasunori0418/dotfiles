@@ -53,7 +53,7 @@
       applications = [
         xremap-flake.nixosModules.default
         ../settings/applications/xremap.nix
-        # ../settings/applications/fcitx5.nix
+        ../settings/applications/fcitx5.nix
         ../settings/applications/tailscale.nix
         ../settings/applications/pipewire.nix
         ../settings/applications/thunar.nix
