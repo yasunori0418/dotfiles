@@ -11,6 +11,7 @@ treesitter.install({
     "dockerfile",
     "git_config",
     "git_rebase",
+    "gitattributes",
     "gitcommit",
     "gitignore",
     "html",
@@ -26,11 +27,13 @@ treesitter.install({
     "vimdoc",
     "yaml",
 } --[=[@as string[]]=], {
-    force = false,
-    generate = true,
-    max_jobs = 4,
-    summary = false,
+    force = false, -- force installation of already installed parsers
+    generate = true, -- generate `parser.c` from `grammar.json` or `grammar.js` before compiling.
+    max_jobs = 4, -- limit parallel tasks (useful in combination with {generate} on memory-limited systems).
+    summary = false, -- print summary of successful and total operations for multiple languages.
 } --[[@as InstallOptions]])
+
+vim.treesitter.language.register("bash", { "sh", "zsh" })
 
 vim.api.nvim_create_autocmd("FileType", {
     pattern = {
@@ -45,10 +48,12 @@ vim.api.nvim_create_autocmd("FileType", {
         "lua",
         "make",
         "markdown",
+        "sh",
         "toml",
         "typescript",
         "vim",
         "yaml",
+        "zsh",
     },
     callback = function()
         -- syntax highlighting, provided by Neovim
