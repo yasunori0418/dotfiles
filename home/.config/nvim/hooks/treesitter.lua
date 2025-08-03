@@ -4,27 +4,32 @@ treesitter.setup({
     install_dir = vim.fs.joinpath(vim.fn.stdpath("data"), "site"),
 })
 
--- treesitter.install({
---     "bash",
---     "diff",
---     "dockerfile",
---     "git_config",
---     "git_rebase",
---     "gitcommit",
---     "gitignore",
---     "lua",
---     "luadoc",
---     "make",
---     "markdown",
---     "markdown_inline",
---     "toml",
---     "typescript",
---     "vim",
---     "vimdoc",
---     "yaml",
---     "html",
---     "css",
--- } --[=[@as string[]]=], { force = false, generate = true, max_jobs = 4, summary = true } --[[@as InstallOptions]])
+treesitter.install({
+    "bash",
+    "css",
+    "diff",
+    "dockerfile",
+    "git_config",
+    "git_rebase",
+    "gitcommit",
+    "gitignore",
+    "html",
+    "lua",
+    "luadoc",
+    "make",
+    "markdown",
+    "markdown_inline",
+    "toml",
+    "typescript",
+    "vim",
+    "vimdoc",
+    "yaml",
+} --[=[@as string[]]=], {
+    force = false,
+    generate = true,
+    max_jobs = 4,
+    summary = false,
+} --[[@as InstallOptions]])
 
 vim.api.nvim_create_autocmd("FileType", {
     pattern = {
@@ -46,7 +51,6 @@ vim.api.nvim_create_autocmd("FileType", {
         "typescript",
         "vim",
         "yaml",
-        "zsh",
     },
     callback = function()
         -- syntax highlighting, provided by Neovim
