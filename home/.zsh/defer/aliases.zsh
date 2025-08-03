@@ -14,12 +14,8 @@ else
     alias la='ls -laA | less'
 fi
 
-# clear command aliases.
-alias c='clear'
-alias cc='c &&'
-
 # cd command aliases
-alias cd=custom_cd # ./commands.zsh
+alias cdc=custom_cd # ./commands.zsh
 alias dotfiles='cd ~/dotfiles'
 alias dotnvim='cd ~/dotfiles/home/.config/nvim'
 alias dotvim='cd ~/dotfiles/home/.config/vim'
