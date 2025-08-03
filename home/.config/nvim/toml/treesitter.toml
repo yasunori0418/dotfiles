@@ -24,10 +24,6 @@ require('matchparen').setup()
 [[plugins]]
 repo = 'github.com/JoosepAlviste/nvim-ts-context-commentstring'
 
-[[plugins]] #nvim-yati
-repo = 'github.com/yioneko/nvim-yati'
-on_source = 'nvim-treesitter'
-
 [[plugins]]
 repo = 'github.com/RRethy/vim-illuminate'
 on_source = 'nvim-treesitter'
