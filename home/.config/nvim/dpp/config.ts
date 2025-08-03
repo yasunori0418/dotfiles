@@ -70,7 +70,7 @@ export class Config extends BaseConfig {
       tomlOptions,
       tomlParams,
       path: directories.toml,
-      noLazyTomlNames: ["dpp.toml", "no_lazy.toml"],
+      noLazyTomlNames: ["dpp.toml", "no_lazy.toml", "ddt.toml"],
     });
 
     const [lazyExt, lazyOptions, lazyParams] = await getLazyExt(args);
