@@ -1,7 +1,8 @@
 [[plugins]] # nvim-treesitter
 repo = 'github.com/nvim-treesitter/nvim-treesitter'
-on_event = 'BufRead'
+rev = "main"
 hooks_file = '$HOOKS_DIR/treesitter.lua'
+lazy = false
 
 [[plugins]]
 repo = 'github.com/nvim-treesitter/nvim-treesitter-textobjects'
