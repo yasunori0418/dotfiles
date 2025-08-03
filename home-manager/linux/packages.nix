@@ -2,7 +2,7 @@
   inputs,
   pkgs,
   lib,
-  # claude-desktop,
+  claude-desktop,
   nodePkgsBuilder,
   ...
 }:
@@ -34,10 +34,9 @@
           ]
         )
         ++ aiTools
-      # ++ [
-      #   claude-desktop.packages.${pkgs.system}.claude-desktop
-      # ]
-      ;
+        ++ [
+          claude-desktop.packages.${pkgs.system}.claude-desktop
+        ];
     in
     {
       inherit packages;
