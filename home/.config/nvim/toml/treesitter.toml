@@ -6,6 +6,7 @@ lazy = false
 
 [[plugins]]
 repo = 'github.com/nvim-treesitter/nvim-treesitter-textobjects'
+rev = "main"
 on_source = 'nvim-treesitter'
 hooks_file = '$HOOKS_DIR/ts_textobjects.lua'
 
