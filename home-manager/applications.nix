@@ -1,5 +1,4 @@
 {
-  inputs,
   pkgs,
   lib,
   nodePkgs,
@@ -44,9 +43,14 @@
   textEditors =
     with pkgs;
     let
-      vim-latest = vim.overrideAttrs (prev: {
-        version = "latest";
-        src = inputs.vim-src;
+      vim-latest = vim.overrideAttrs (prev: rec {
+        version = "9.1.1591";
+        src = fetchFromGitHub {
+          owner = "vim";
+          repo = "vim";
+          rev = "v${version}";
+          hash = "sha256-aiHvj01EuV0zivj2WJdWZu8+QOQiGssEK4DDRRJ5Gvc=";
+        };
         configureFlags =
           prev.configureFlags
           ++ [
@@ -98,8 +102,13 @@
           ]);
       });
       neovim-nightly = neovim-unwrapped.overrideAttrs {
-        version = "v0.12.0-dev";
-        src = inputs.neovim-src;
+        version = "0.12.0-dev";
+        src = fetchFromGitHub {
+          owner = "neovim";
+          repo = "neovim";
+          rev = "nightly";
+          hash = "sha256-of8Z6vLd6aNofFN1pjLViyeSBuXBIY4yI/BMNmLJ2ck=";
+        };
       };
     in
     [
@@ -163,7 +172,7 @@
 
   aiTools = with pkgs; [
     codex
-    goose-cli
+    # goose-cli
     nodePkgs."@anthropic-ai/claude-code"
     nodePkgs."ccusage"
   ];
