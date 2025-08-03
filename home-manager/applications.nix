@@ -107,7 +107,7 @@
           owner = "neovim";
           repo = "neovim";
           rev = "nightly";
-          hash = "sha256-of8Z6vLd6aNofFN1pjLViyeSBuXBIY4yI/BMNmLJ2ck=";
+          hash = "sha256-Z6Ybj0NHfTz7asZLWmHu+ehYLFmpyoT3eOZifDsvUXs=";
         };
       };
     in
