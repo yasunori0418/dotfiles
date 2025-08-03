@@ -38,6 +38,7 @@
     asciinema
     asciinema-agg
     pueue
+    tree-sitter
   ];
 
   textEditors =
