@@ -1,10 +1,12 @@
 [[plugins]] # nvim-treesitter
 repo = 'github.com/nvim-treesitter/nvim-treesitter'
-on_event = 'BufRead'
+rev = "main"
 hooks_file = '$HOOKS_DIR/treesitter.lua'
+on_event = ['BufRead', 'CursorHold']
 
 [[plugins]]
 repo = 'github.com/nvim-treesitter/nvim-treesitter-textobjects'
+rev = "main"
 on_source = 'nvim-treesitter'
 hooks_file = '$HOOKS_DIR/ts_textobjects.lua'
 
@@ -22,10 +24,6 @@ require('matchparen').setup()
 
 [[plugins]]
 repo = 'github.com/JoosepAlviste/nvim-ts-context-commentstring'
-
-[[plugins]] #nvim-yati
-repo = 'github.com/yioneko/nvim-yati'
-on_source = 'nvim-treesitter'
 
 [[plugins]]
 repo = 'github.com/RRethy/vim-illuminate'

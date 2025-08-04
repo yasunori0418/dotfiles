@@ -1,7 +1,9 @@
 # Custom cd command
 custom_cd ()
 {
-    \cd $@ ; cc la
+    \cd $@
+    clear
+    la
 }
 
 git_root ()
