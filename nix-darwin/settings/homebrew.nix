@@ -12,7 +12,7 @@
       "ghostty"
       "kitty"
       "stats"
-      "aerospace"
+      "nikitabobko/tap/aerospace"
       "dbeaver-community"
       "temurin@17"
       "jetbrains-toolbox"
@@ -32,6 +32,7 @@
       "watch"
       "coreutils"
       "tfenv"
+      "gh"
       "gh-asset"
     ];
     taps = [
