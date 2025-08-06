@@ -30,6 +30,7 @@ on_ft = [
   'toml',
   'typescript',
   'typescriptreact',
+  'yaml',
   'zsh',
 ]
 # }}}

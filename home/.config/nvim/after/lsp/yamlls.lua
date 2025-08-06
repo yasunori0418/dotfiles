@@ -1,3 +1,7 @@
+local hugo_schema = "https://json.schemastore.org/hugo.json"
+-- luacheck: ignore 631
+local markdownlint_schema = "https://raw.githubusercontent.com/DavidAnson/markdownlint/refs/heads/main/schema/markdownlint-config-schema.json"
+
 ---@type vim.lsp.Config
 return {
     settings = {
@@ -35,7 +39,8 @@ return {
                 "!Join sequence",
             },
             schemas = {
-                ["https://json.schemastore.org/hugo.json"] = "hugo.yaml",
+                [hugo_schema] = "hugo.yaml",
+                [markdownlint_schema] = ".markdownlint.yaml",
             },
         },
     },
