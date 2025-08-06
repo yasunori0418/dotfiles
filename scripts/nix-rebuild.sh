@@ -10,5 +10,5 @@ if [[ ${KERNEL_NAME} != "Linux" && ${KERNEL_NAME} != "Darwin" ]]; then
     exit 1
 fi
 
-[[ ${KERNEL_NAME} = "Linux" ]] && sudo nixos-rebuild switch --flake .
-[[ ${KERNEL_NAME} = "Darwin" ]] && sudo nix run 'nix-darwin/master#darwin-rebuild' -- switch --flake .
+[[ ${KERNEL_NAME} = "Linux" ]] && sudo nixos-rebuild switch --accept-flake-config --flake .
+[[ ${KERNEL_NAME} = "Darwin" ]] && sudo nix run 'nix-darwin/master#darwin-rebuild' -- switch --accept-flake-config --flake .
