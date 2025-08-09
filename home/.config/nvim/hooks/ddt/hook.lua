@@ -46,6 +46,7 @@ require("user.utils").keymaps_set({
         mode = "n",
         lhs = [[<Plug>(ddt)c]],
         rhs = function()
+            vim.cmd.tabnew()
             local prompt_bufnr = vim.fn.bufadd("prompt://claude.md")
             vim.iter({
                 ["&buftype"] = "nofile",
