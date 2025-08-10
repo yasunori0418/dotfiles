@@ -45,12 +45,12 @@
     with pkgs;
     let
       vim-latest = vim.overrideAttrs (prev: rec {
-        version = "9.1.1591";
+        version = "9.1.1616";
         src = fetchFromGitHub {
           owner = "vim";
           repo = "vim";
           rev = "v${version}";
-          hash = "sha256-aiHvj01EuV0zivj2WJdWZu8+QOQiGssEK4DDRRJ5Gvc=";
+          hash = "sha256-PHhDVkk6rxfgwo7VOUmr/QHrEKC94vDcu5LSBLfRe3M=";
         };
         configureFlags =
           prev.configureFlags
@@ -107,8 +107,8 @@
         src = fetchFromGitHub {
           owner = "neovim";
           repo = "neovim";
-          rev = "nightly";
-          hash = "sha256-Z6Ybj0NHfTz7asZLWmHu+ehYLFmpyoT3eOZifDsvUXs=";
+          rev = "2c3929624ac9f28d0bdd0a0423facae7063456d1"; # 2025-08-10T12:30:00+09:00 nightly
+          hash = "sha256-3UazKGB9GTbY9tTuUEnw3OFK9Ib0p65x+yl+K5vWHN4=";
         };
       };
     in
