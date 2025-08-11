@@ -28,7 +28,6 @@ function M.with.not_filetype(filetypes)
         ---@param ctx insx.Context
         enabled = function(enabled, ctx)
             local res = not vim.tbl_contains(filetypes, ctx.filetype)
-            vim.print(res)
             return res and enabled(ctx)
         end,
     }
