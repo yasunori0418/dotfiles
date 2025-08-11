@@ -58,7 +58,7 @@ vim.api.nvim_create_autocmd("FileType", {
     callback = function(ctx)
         -- syntax highlighting, provided by Neovim
         vim.treesitter.start()
-        vim.bo[ctx.buf].syntax = 'ON'
+        vim.bo[ctx.buf].syntax = "ON"
         -- folds, provided by Neovim
         -- vim.wo.foldexpr = "v:lua.vim.treesitter.foldexpr()"
         -- indentation, provided by nvim-treesitter
