@@ -14,3 +14,9 @@ repo = 'github.com/mattn/learn-vimscript'
 [[plugins]] # mr.vim
 repo = 'github.com/lambdalisue/vim-mr'
 hooks_file = '$HOOKS_DIR/mr.lua'
+
+[[plugins]]
+repo = 'github.com/kana/vim-textobj-user'
+
+[[plugins]]
+repo = 'github.com/kana/vim-textobj-entire'
