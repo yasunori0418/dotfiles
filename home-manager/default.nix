@@ -14,10 +14,13 @@ let
     inherit system;
     config.allowUnfree = true;
   };
-  nodePkgsBuilder = pkgs: pkgs.callPackages ../node2nix {
-    inherit pkgs system;
-    nodejs = pkgs.nodejs_24;
-  };
+  nodePkgsBuilder =
+    pkgs:
+    pkgs.callPackages ../node2nix {
+      inherit pkgs;
+      inherit (pkgs) system;
+      nodejs = pkgs.nodejs_24;
+    };
 in
 {
   pkgs = import nixpkgs {
