@@ -1,5 +1,6 @@
 ---@type vim.lsp.Config
 return {
+    cmd = vim.lsp.rpc.connect("127.0.0.1", tonumber(9999)),
     init_options = {
         storagePath = vim.fs.joinpath(vim.fn.stdpath("cache"), "kotlin_ls"),
     },
