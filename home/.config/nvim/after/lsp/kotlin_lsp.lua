@@ -25,7 +25,13 @@ return {
             :each(
                 ---@param name string
                 function(name)
-                    vim.lsp.buf.add_workspace_folder(vim.fs.joinpath(client.root_dir, name))
+                    vim.iter(
+                        vim.fn.systemlist(
+                            "find " .. vim.fs.joinpath(client.root_dir, name) .. " -type f -name build.gradle.*"
+                        )
+                    ):each(function(build_gradle)
+                        vim.lsp.buf.add_workspace_folder(vim.fn.fnamemodify(build_gradle, ":p:h"))
+                    end)
                 end
             )
     end,
