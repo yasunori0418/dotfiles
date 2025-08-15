@@ -35,5 +35,5 @@ export * as fn from "jsr:@denops/std@7.6.0/function";
 export * as vars from "jsr:@denops/std@7.6.0/variable";
 export { ensure, is } from "jsr:@core/unknownutil@4.3.0";
 
-export { join } from "jsr:@std/path@1.1.1";
+export { join } from "jsr:@std/path@1.1.2";
 export { expandGlobSync, type WalkEntry } from "jsr:@std/fs@1.0.19";
