@@ -11,7 +11,7 @@ let
       f = v: lib.optionals env v;
     in
     f;
-  isLinux = optional pkgs.stdenv.isLinux;
+  optionalIsLinux = optional pkgs.stdenv.isLinux;
 in
 {
   nixTools = with pkgs; [
@@ -92,7 +92,7 @@ in
             "--enable-clipboard=yes"
             "--enable-multibyte"
           ]
-          ++ (isLinux [
+          ++ (optionalIsLinux [
             "--enable-gui=auto"
             "--enable-fontset"
             "--with-x"
@@ -108,7 +108,7 @@ in
             ruby
             libsodium
           ]
-          ++ (isLinux [
+          ++ (optionalIsLinux [
             xorg.libX11
             xorg.libXt
           ]);
@@ -127,13 +127,13 @@ in
       vim-latest
       neovim-nightly
       neovide
-      (isLinux emacs)
+      (optionalIsLinux emacs)
     ];
 
   terminalEmulators = with pkgs; [
     kitty
     alacritty
-    (isLinux ghostty)
+    (optionalIsLinux ghostty)
   ];
 
   shellTools = with pkgs; [
