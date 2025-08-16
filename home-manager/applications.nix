@@ -187,7 +187,8 @@
     ruby
     ncurses
     luajitPackages.luarocks
-    nodejs_22
+    nodejs_24
+    pnpm
     python312Packages.uv
     perl
   ];
