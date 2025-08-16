@@ -4,6 +4,15 @@
   nodePkgs,
   ...
 }:
+let
+  optional =
+    env:
+    let
+      f = v: lib.optionals env v;
+    in
+    f;
+  isLinux = optional pkgs.stdenv.isLinux;
+in
 {
   nixTools = with pkgs; [
     nix-prefetch-github
@@ -82,7 +91,7 @@
             "--enable-clipboard=yes"
             "--enable-multibyte"
           ]
-          ++ (lib.optionals stdenv.isLinux [
+          ++ (isLinux [
             "--enable-gui=auto"
             "--enable-fontset"
             "--with-x"
@@ -98,7 +107,7 @@
             ruby
             libsodium
           ]
-          ++ (lib.optionals stdenv.isLinux [
+          ++ (isLinux [
             xorg.libX11
             xorg.libXt
           ]);
