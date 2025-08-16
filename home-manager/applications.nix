@@ -55,12 +55,12 @@ in
     with pkgs;
     let
       vim-latest = vim.overrideAttrs (prev: rec {
-        version = "9.1.1616";
+        version = "9.1.1634";
         src = fetchFromGitHub {
           owner = "vim";
           repo = "vim";
           rev = "v${version}";
-          hash = "sha256-PHhDVkk6rxfgwo7VOUmr/QHrEKC94vDcu5LSBLfRe3M=";
+          hash = "sha256-PRTvJ7DwdPE8pl2/12iTqaXUB4Jmnr8xqrHIaXbt3nQ=";
         };
         configureFlags =
           prev.configureFlags
