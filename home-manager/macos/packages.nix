@@ -20,14 +20,14 @@
       packages =
         with applications;
         nixTools
-        ++ utilityTools
-        ++ terminalEmulators
-        ++ textEditors
-        ++ shellTools
-        ++ languageServers
         ++ aiTools
         ++ codingSupportTools
-        ++ libraries;
+        ++ languageServers
+        ++ libraries
+        ++ shellTools
+        ++ terminalEmulators
+        ++ textEditors
+        ++ utilityTools;
     in
     packages;
 }

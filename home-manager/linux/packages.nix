@@ -20,14 +20,14 @@
       packages =
         with applications;
         nixTools
-        ++ textEditors
-        ++ shellTools
-        ++ languageServers
+        ++ aiTools
         ++ codingSupportTools
+        ++ languageServers
         ++ libraries
-        ++ utilityTools
+        ++ shellTools
         ++ terminalEmulators
-        ++ aiTools;
+        ++ textEditors
+        ++ utilityTools;
     in
     {
       inherit packages;
