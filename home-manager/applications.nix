@@ -117,8 +117,8 @@ in
         src = fetchFromGitHub {
           owner = "neovim";
           repo = "neovim";
-          rev = "2c3929624ac9f28d0bdd0a0423facae7063456d1"; # 2025-08-10T12:30:00+09:00 nightly
-          hash = "sha256-3UazKGB9GTbY9tTuUEnw3OFK9Ib0p65x+yl+K5vWHN4=";
+          rev = "c12701d4e1404a67fef6da01a8a9d7e2d48d78d6"; # 2025-08-17T21:20:00+09:00 nightly
+          hash = "sha256-n/DCESlXGFQSKF8u+tv99kW67PZgj5LSa+UGN9kOiw4=";
         };
       };
     in
