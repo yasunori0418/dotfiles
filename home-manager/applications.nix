@@ -211,4 +211,62 @@ in
     leiningen
     babashka
   ];
+
+  linuxDesktop = {
+    theme = with pkgs; [
+      themechanger
+      libsForQt5.qt5ct
+      libsForQt5.qtstyleplugins
+      nordic
+      nordzy-icon-theme
+      nordzy-cursor-theme
+    ];
+
+    desktopApps = with pkgs; [
+      gparted
+      slack
+      arandr
+      google-chrome
+      discord
+      blueberry
+      pavucontrol
+      gthumb
+      peek
+      simplescreenrecorder
+      font-manager
+      xfce.xfce4-screenshooter
+      rofi
+      rofi-power-menu
+      feh
+      picom
+      dunst
+      clipmenu
+      ncpamixer
+      xsel
+    ];
+
+    i3wmTools =
+      let
+        override-bumblebee-status = pkgs.bumblebee-status.override {
+          plugins =
+            p: with p; [
+              title
+              cpu2
+              memory
+              nic
+              datetime
+              battery
+              dunstctl
+              indicator
+              error
+            ];
+        };
+      in
+      with pkgs;
+      [
+        i3status
+        i3status-rust
+        override-bumblebee-status
+      ];
+  };
 }
