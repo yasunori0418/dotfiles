@@ -198,8 +198,6 @@ in
     volta
     rustup
     ruby
-    ncurses
-    luajitPackages.luarocks
     nodejs_24
     pnpm
     python312Packages.uv

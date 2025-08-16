@@ -1,17 +1,10 @@
 { pkgs, ... }:
 {
-  systemThemeTools =
-    with pkgs;
-    [
-      gtk4
-      gtk3
-      themechanger
-    ]
-    ++ (with pkgs.libsForQt5; [
-      qt5.qtbase
-      qt5ct
-      qtstyleplugins
-    ]);
+  systemThemeTools = with pkgs; [
+    themechanger
+    libsForQt5.qt5ct
+    libsForQt5.qtstyleplugins
+  ];
 
   nordThemePkgs = with pkgs; [
     nordic
