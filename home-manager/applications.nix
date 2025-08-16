@@ -27,6 +27,7 @@ in
     gnumake
     git
     git-credential-manager
+    git-lfs
     jnv
     usql
     glow
