@@ -8,7 +8,6 @@ let
   inherit (inputs)
     nixpkgs
     nixpkgs-stable
-    claude-desktop
     ;
   pkgs-stable = import nixpkgs-stable {
     inherit system;
@@ -31,7 +30,6 @@ in
     inherit
       inputs
       pkgs-stable
-      claude-desktop
       nodePkgsBuilder
       ;
   };
