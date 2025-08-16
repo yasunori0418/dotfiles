@@ -19,18 +19,28 @@
           ;
       };
       packages =
-        applications
-        |> mergeAttrsValue [
-          "nixTools"
-          "aiTools"
-          "codingSupportTools"
-          "languageServers"
-          "libraries"
-          "shellTools"
-          "terminalEmulators"
-          "textEditors"
-          "utilityTools"
-        ];
+        (
+          applications
+          |> mergeAttrsValue [
+            "nixTools"
+            "aiTools"
+            "codingSupportTools"
+            "languageServers"
+            "libraries"
+            "shellTools"
+            "terminalEmulators"
+            "textEditors"
+            "utilityTools"
+          ]
+        )
+        ++ (
+          applications.linuxDesktop
+          |> mergeAttrsValue [
+            "theme"
+            "desktopApps"
+            "i3wmTools"
+          ]
+        );
     in
     {
       inherit packages;
