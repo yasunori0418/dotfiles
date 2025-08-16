@@ -27,7 +27,6 @@
   ];
 
   xfceTools = with pkgs.xfce; [
-    xfce4-power-manager
     xfce4-screenshooter
   ];
 
