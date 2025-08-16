@@ -11,6 +11,7 @@
     nix-search-cli
     nix-direnv
     node2nix
+    nvfetcher
   ];
 
   utilityTools = with pkgs; [
