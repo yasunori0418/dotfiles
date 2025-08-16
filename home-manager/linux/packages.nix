@@ -9,6 +9,7 @@
   home =
     let
       nodePkgs = nodePkgsBuilder pkgs;
+      mergeAttrsValue = import ../lib/merge-attrs-value.nix pkgs;
       applications = import ../applications.nix {
         inherit
           pkgs
@@ -18,16 +19,18 @@
           ;
       };
       packages =
-        with applications;
-        nixTools
-        ++ aiTools
-        ++ codingSupportTools
-        ++ languageServers
-        ++ libraries
-        ++ shellTools
-        ++ terminalEmulators
-        ++ textEditors
-        ++ utilityTools;
+        applications
+        |> mergeAttrsValue [
+          "nixTools"
+          "aiTools"
+          "codingSupportTools"
+          "languageServers"
+          "libraries"
+          "shellTools"
+          "terminalEmulators"
+          "textEditors"
+          "utilityTools"
+        ];
     in
     {
       inherit packages;
