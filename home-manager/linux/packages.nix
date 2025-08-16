@@ -20,18 +20,13 @@
       packages =
         with applications;
         nixTools
-        ++ (textEditors ++ [ pkgs.emacs ])
+        ++ textEditors
         ++ shellTools
         ++ languageServers
         ++ codingSupportTools
         ++ libraries
         ++ utilityTools
-        ++ (
-          terminalEmulators
-          ++ [
-            pkgs.ghostty
-          ]
-        )
+        ++ terminalEmulators
         ++ aiTools;
     in
     {

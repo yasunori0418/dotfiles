@@ -127,11 +127,13 @@ in
       vim-latest
       neovim-nightly
       neovide
+      (isLinux emacs)
     ];
 
   terminalEmulators = with pkgs; [
     kitty
     alacritty
+    (isLinux ghostty)
   ];
 
   shellTools = with pkgs; [
