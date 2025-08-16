@@ -72,7 +72,8 @@ efm_configs.setup({
             { kind = "formatters", name = "beautysh" },
         },
         nix = {
-            { kind = "linters", name = "statix" },
+            -- todo: https://github.com/oppiliappan/statix/pull/102
+            -- { kind = "linters", name = "statix" },
         },
         sql = {
             { kind = "formatters", name = "sql-formatter" },
