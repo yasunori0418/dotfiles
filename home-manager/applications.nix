@@ -1,7 +1,7 @@
 {
+  inputs,
   pkgs,
   lib,
-  nodePkgs,
   ...
 }:
 let
@@ -13,6 +13,7 @@ let
     f;
   optionalIsLinux = optional pkgs.stdenv.isLinux;
   optionalIsDarwin = optional pkgs.stdenv.isDarwin;
+  nurPkgs = inputs.yasunori-nur.legacyPackages.${pkgs.system};
 in
 {
   nixTools = with pkgs; [
@@ -192,8 +193,8 @@ in
   aiTools = with pkgs; [
     codex
     goose-cli
-    nodePkgs."@anthropic-ai/claude-code"
-    nodePkgs."ccusage"
+    nurPkgs.claude-code
+    nurPkgs.ccusage
   ];
 
   libraries = with pkgs; [

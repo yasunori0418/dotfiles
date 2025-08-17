@@ -1013,7 +1013,8 @@
         "nixpkgs-stable": "nixpkgs-stable",
         "systems": "systems_3",
         "treefmt-nix": "treefmt-nix",
-        "xremap-flake": "xremap-flake"
+        "xremap-flake": "xremap-flake",
+        "yasunori-nur": "yasunori-nur"
       }
     },
     "systems": {
@@ -1202,6 +1203,29 @@
       "original": {
         "owner": "xremap",
         "repo": "nix-flake",
+        "type": "github"
+      }
+    },
+    "yasunori-nur": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ],
+        "treefmt-nix": [
+          "treefmt-nix"
+        ]
+      },
+      "locked": {
+        "lastModified": 1755435259,
+        "narHash": "sha256-uSaBokSWYbG5NGygqGCurgmI4h8b8uK3HAOuGl6Yhk8=",
+        "owner": "yasunori0418",
+        "repo": "nur-packages",
+        "rev": "0d738c5eeffc97063f57e9214e22a3a2734c4a74",
+        "type": "github"
+      },
+      "original": {
+        "owner": "yasunori0418",
+        "repo": "nur-packages",
         "type": "github"
       }
     }
