@@ -216,6 +216,13 @@ in
     babashka
   ];
 
+  guiTools = with pkgs; [
+    google-chrome
+    discord
+    dbeaver-bin
+    jetbrains-toolbox
+  ];
+
   linuxDesktop = {
     theme = with pkgs; [
       themechanger
@@ -273,4 +280,8 @@ in
         override-bumblebee-status
       ];
   };
+
+  macOs = with pkgs; [
+    aerospace
+  ];
 }

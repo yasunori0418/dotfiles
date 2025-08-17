@@ -30,6 +30,8 @@
           "terminalEmulators"
           "textEditors"
           "utilityTools"
+          "guiTools"
+          "macOs"
         ];
     in
     packages;

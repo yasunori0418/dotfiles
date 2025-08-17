@@ -10,13 +10,9 @@
       "1password"
       "1password-cli"
       "stats"
-      "nikitabobko/tap/aerospace"
-      "dbeaver-community"
       "temurin@17"
-      "jetbrains-toolbox"
       "rancher" # similar docker desktop
       "cursor"
-      "discord"
       "as-timer"
       "obsidian"
       "claude"
@@ -34,7 +30,6 @@
       "gh-asset"
     ];
     taps = [
-      "nikitabobko/tap" # for aerospace
       "YuitoSato/gh-asset"
     ];
   };
