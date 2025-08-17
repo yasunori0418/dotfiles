@@ -9,6 +9,7 @@
   home.packages =
     let
       nodePkgs = nodePkgsBuilder pkgs;
+      inherit (import ../lib pkgs) concatTargetAttrsValue;
       applications = import ../applications.nix {
         inherit
           pkgs
@@ -18,16 +19,18 @@
           ;
       };
       packages =
-        with applications;
-        nixTools
-        ++ aiTools
-        ++ codingSupportTools
-        ++ languageServers
-        ++ libraries
-        ++ shellTools
-        ++ terminalEmulators
-        ++ textEditors
-        ++ utilityTools;
+        applications
+        |> concatTargetAttrsValue [
+          "nixTools"
+          "aiTools"
+          "codingSupportTools"
+          "languageServers"
+          "libraries"
+          "shellTools"
+          "terminalEmulators"
+          "textEditors"
+          "utilityTools"
+        ];
     in
     packages;
 }
