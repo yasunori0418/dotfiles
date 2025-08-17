@@ -22,6 +22,7 @@ in
     nix-direnv
     node2nix
     nvfetcher
+    cachix
   ];
 
   utilityTools = with pkgs; [
