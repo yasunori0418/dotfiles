@@ -2,20 +2,17 @@
   inputs,
   pkgs,
   lib,
-  nodePkgsBuilder,
   ...
 }:
 {
   home =
     let
-      nodePkgs = nodePkgsBuilder pkgs;
       inherit (import ../lib pkgs) concatTargetAttrsValue;
       applications = import ../applications.nix {
         inherit
           pkgs
           inputs
           lib
-          nodePkgs
           ;
       };
 

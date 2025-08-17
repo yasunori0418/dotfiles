@@ -13,7 +13,7 @@ let
     f;
   optionalIsLinux = optional pkgs.stdenv.isLinux;
   optionalIsDarwin = optional pkgs.stdenv.isDarwin;
-  nurPkgs = inputs.yasunori-nur.legacyPackages.${pkgs.system};
+  myNurPkgs = inputs.yasunori-nur.legacyPackages.${pkgs.system};
 in
 {
   nixTools = with pkgs; [
@@ -21,8 +21,6 @@ in
     nix-output-monitor
     nix-search-cli
     nix-direnv
-    node2nix
-    nvfetcher
     cachix
   ];
 
@@ -193,8 +191,8 @@ in
   aiTools = with pkgs; [
     codex
     goose-cli
-    nurPkgs.claude-code
-    nurPkgs.ccusage
+    myNurPkgs.claude-code
+    myNurPkgs.ccusage
   ];
 
   libraries = with pkgs; [
