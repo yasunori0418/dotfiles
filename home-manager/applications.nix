@@ -127,8 +127,8 @@ in
       vim-latest
       neovim-nightly
       neovide
-    ]
-    ++ (optionalIsLinux [ emacs ]);
+      emacs
+    ];
 
   terminalEmulators =
     with pkgs;
