@@ -9,7 +9,7 @@
   home =
     let
       nodePkgs = nodePkgsBuilder pkgs;
-      mergeAttrsValue = import ../lib/merge-attrs-value.nix pkgs;
+      concatTargetAttrsValue = import ../lib/concat-target-attrs-value.nix pkgs;
       applications = import ../applications.nix {
         inherit
           pkgs
@@ -21,7 +21,7 @@
       packages =
         (
           applications
-          |> mergeAttrsValue [
+          |> concatTargetAttrsValue [
             "nixTools"
             "aiTools"
             "codingSupportTools"
@@ -35,7 +35,7 @@
         )
         ++ (
           applications.linuxDesktop
-          |> mergeAttrsValue [
+          |> concatTargetAttrsValue [
             "theme"
             "desktopApps"
             "i3wmTools"
