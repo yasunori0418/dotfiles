@@ -21,17 +21,17 @@
       packages =
         applications
         |> concatTargetAttrsValue [
-          "nixTools"
           "aiTools"
           "codingSupportTools"
+          "guiTools"
           "languageServers"
           "libraries"
+          "macOs"
+          "nixTools"
           "shellTools"
           "terminalEmulators"
           "textEditors"
           "utilityTools"
-          "guiTools"
-          "macOs"
         ];
     in
     packages;

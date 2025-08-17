@@ -22,24 +22,24 @@
       commonTools =
         applications
         |> concatTargetAttrsValue [
-          "nixTools"
           "aiTools"
           "codingSupportTools"
+          "guiTools"
           "languageServers"
           "libraries"
+          "nixTools"
           "shellTools"
           "terminalEmulators"
           "textEditors"
           "utilityTools"
-          "guiTools"
         ];
 
       linuxDesktopTools =
         applications.linuxDesktop
         |> concatTargetAttrsValue [
-          "theme"
           "desktopApps"
           "i3wmTools"
+          "theme"
         ];
 
       packages = commonTools ++ linuxDesktopTools;
