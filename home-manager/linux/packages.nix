@@ -31,6 +31,7 @@
           "terminalEmulators"
           "textEditors"
           "utilityTools"
+          "guiTools"
         ];
 
       linuxDesktopTools =

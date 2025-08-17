@@ -237,8 +237,6 @@ in
       gparted
       slack
       arandr
-      google-chrome
-      discord
       blueberry
       pavucontrol
       gthumb
