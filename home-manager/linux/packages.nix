@@ -9,7 +9,7 @@
   home =
     let
       nodePkgs = nodePkgsBuilder pkgs;
-      concatTargetAttrsValue = import ../lib/concat-target-attrs-value.nix pkgs;
+      inherit (import ../lib pkgs) concatTargetAttrsValue;
       applications = import ../applications.nix {
         inherit
           pkgs
