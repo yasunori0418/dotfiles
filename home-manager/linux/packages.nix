@@ -18,29 +18,30 @@
           nodePkgs
           ;
       };
-      packages =
-        (
-          applications
-          |> concatTargetAttrsValue [
-            "nixTools"
-            "aiTools"
-            "codingSupportTools"
-            "languageServers"
-            "libraries"
-            "shellTools"
-            "terminalEmulators"
-            "textEditors"
-            "utilityTools"
-          ]
-        )
-        ++ (
-          applications.linuxDesktop
-          |> concatTargetAttrsValue [
-            "theme"
-            "desktopApps"
-            "i3wmTools"
-          ]
-        );
+
+      commonTools =
+        applications
+        |> concatTargetAttrsValue [
+          "nixTools"
+          "aiTools"
+          "codingSupportTools"
+          "languageServers"
+          "libraries"
+          "shellTools"
+          "terminalEmulators"
+          "textEditors"
+          "utilityTools"
+        ];
+
+      linuxDesktopTools =
+        applications.linuxDesktop
+        |> concatTargetAttrsValue [
+          "theme"
+          "desktopApps"
+          "i3wmTools"
+        ];
+
+      packages = commonTools ++ linuxDesktopTools;
     in
     {
       inherit packages;
