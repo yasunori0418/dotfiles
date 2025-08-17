@@ -12,6 +12,7 @@ let
     in
     f;
   optionalIsLinux = optional pkgs.stdenv.isLinux;
+  optionalIsDarwin = optional pkgs.stdenv.isDarwin;
 in
 {
   nixTools = with pkgs; [
@@ -136,7 +137,8 @@ in
       kitty
       alacritty
     ]
-    ++ (optionalIsLinux [ ghostty ]);
+    ++ (optionalIsLinux [ ghostty ])
+    ++ (optionalIsDarwin [ ghostty-bin ]);
 
   shellTools = with pkgs; [
     sheldon

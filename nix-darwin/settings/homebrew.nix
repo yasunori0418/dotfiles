@@ -9,8 +9,6 @@
     casks = [
       "1password"
       "1password-cli"
-      "ghostty"
-      "kitty"
       "stats"
       "nikitabobko/tap/aerospace"
       "dbeaver-community"
