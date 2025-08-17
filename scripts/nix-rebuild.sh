@@ -12,5 +12,5 @@ fi
 
 [[ ${KERNEL_NAME} = "Linux" ]] && sudo nixos-rebuild switch --accept-flake-config --flake .
 
-[[ ${KERNEL_NAME} = "Darwin" && $(command -v nom) ]] && sudo -s exit && sudo nix run 'nix-darwin/master#darwin-rebuild' -- switch --flake . |& nom && exit 0
-[[ ${KERNEL_NAME} = "Darwin" ]] && sudo nix run 'nix-darwin/master#darwin-rebuild' -- switch --flake .
+[[ ${KERNEL_NAME} = "Darwin" && $(command -v darwin-rebuild) ]] && sudo darwin-rebuild switch --flake .
+[[ ${KERNEL_NAME} = "Darwin" && ! $(command -v darwin-rebuild) ]] && sudo nix run 'nix-darwin/master#darwin-rebuild' -- switch --flake .
