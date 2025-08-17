@@ -55,78 +55,9 @@ in
 
   textEditors =
     with pkgs;
-    let
-      vim-latest = vim.overrideAttrs (prev: rec {
-        version = "9.1.1634";
-        src = fetchFromGitHub {
-          owner = "vim";
-          repo = "vim";
-          rev = "v${version}";
-          hash = "sha256-PRTvJ7DwdPE8pl2/12iTqaXUB4Jmnr8xqrHIaXbt3nQ=";
-        };
-        configureFlags =
-          prev.configureFlags
-          ++ [
-            "--enable-fail-if-missing"
-            "--enable-autoservername"
-            "--with-features=huge"
-
-            # if_lua
-            "--enable-luainterp"
-            "--with-lua-prefix=${lua}"
-
-            # if_python3
-            "--enable-python3interp=yes"
-            "--with-python3-command=${python3}/bin/python3"
-            "--with-python3-config-dir=${python3}/lib"
-            # Disable python2
-            "--disable-pythoninterp"
-
-            # if_ruby
-            "--with-ruby-command=${ruby}/bin/ruby"
-            "--enable-rubyinterp"
-
-            # if_cscope
-            "--enable-cscope"
-
-            # clipboard
-            "--enable-clipboard=yes"
-            "--enable-multibyte"
-          ]
-          ++ (optionalIsLinux [
-            "--enable-gui=auto"
-            "--enable-fontset"
-            "--with-x"
-            # お試しで有効にしたけど上手く有効化できてないシリーズ
-            "--enable-xim"
-            "--enable-xterm_save"
-          ]);
-        buildInputs =
-          prev.buildInputs
-          ++ [
-            lua
-            python3
-            ruby
-            libsodium
-          ]
-          ++ (optionalIsLinux [
-            xorg.libX11
-            xorg.libXt
-          ]);
-      });
-      neovim-nightly = neovim-unwrapped.overrideAttrs {
-        version = "0.12.0-dev";
-        src = fetchFromGitHub {
-          owner = "neovim";
-          repo = "neovim";
-          rev = "c12701d4e1404a67fef6da01a8a9d7e2d48d78d6"; # 2025-08-17T21:20:00+09:00 nightly
-          hash = "sha256-n/DCESlXGFQSKF8u+tv99kW67PZgj5LSa+UGN9kOiw4=";
-        };
-      };
-    in
     [
-      vim-latest
-      neovim-nightly
+      myNurPkgs.neovim
+      myNurPkgs.vim
       neovide
       emacs
     ];
