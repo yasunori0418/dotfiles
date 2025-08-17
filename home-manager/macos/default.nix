@@ -1,4 +1,5 @@
 {
+  inputs,
   pkgs,
   config,
   ...
@@ -25,6 +26,7 @@
       packages
       homeFile
       clearDppStateAfterLinkGeneration
+      inputs.mac-app-util.homeManagerModules.default
     ];
   programs.home-manager.enable = true;
   home = {

@@ -25,6 +25,7 @@ in
     in
     [
       ./${profileName}
+      inputs.mac-app-util.darwinModules.default
     ]
     ++ home-manager;
 }
