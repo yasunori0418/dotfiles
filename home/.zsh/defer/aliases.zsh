@@ -34,3 +34,6 @@ alias sync_status='watch grep -e Dirty: -e Writeback: /proc/meminfo'
 alias capswap='systemctl restart xremap.service'
 
 [[ $(command -v colordiff) ]] && alias diff='colordiff'
+
+# aws profile switch
+alias awsp='export AWS_PROFILE=$(aws configure list-profiles | fzf) && aws sso login'
