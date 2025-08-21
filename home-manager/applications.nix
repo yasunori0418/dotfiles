@@ -53,14 +53,12 @@ in
     tree-sitter
   ];
 
-  textEditors =
-    with pkgs;
-    [
-      myNurPkgs.neovim
-      myNurPkgs.vim
-      neovide
-      emacs
-    ];
+  textEditors = with pkgs; [
+    myNurPkgs.neovim
+    myNurPkgs.vim
+    neovide
+    emacs
+  ];
 
   terminalEmulators =
     with pkgs;
@@ -124,7 +122,9 @@ in
     # goose-cli
     myNurPkgs.claude-code
     myNurPkgs.ccusage
-  ];
+  ]
+  # ++ (optionalIsLinux [ inputs.claude-desktop.packages.${system}.claude-desktop ])
+  ;
 
   libraries = with pkgs; [
     gcc
