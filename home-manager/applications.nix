@@ -121,7 +121,7 @@ in
 
   aiTools = with pkgs; [
     codex
-    goose-cli
+    # goose-cli
     myNurPkgs.claude-code
     myNurPkgs.ccusage
   ];
