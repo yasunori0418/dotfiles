@@ -131,11 +131,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1755878119,
-        "narHash": "sha256-+Ken38K0DADRzkljduXqH/2fxZXqAy3ongDyMtsJURI=",
+        "lastModified": 1755961020,
+        "narHash": "sha256-Fs0CWiUA78Qgbc9zVk+zUN7pEkMPffnd//JsDtUUWBM=",
         "owner": "cachix",
         "repo": "devenv",
-        "rev": "42cc33507eaf828f4e6ef80f4ed1af4cf126ff3a",
+        "rev": "abb198476023189fc45a01bd6502f5ca6ea62bd0",
         "type": "github"
       },
       "original": {
@@ -989,6 +989,21 @@
         "type": "github"
       }
     },
+    "nixtest_2": {
+      "locked": {
+        "lastModified": 1712694952,
+        "narHash": "sha256-f8NufqWlnEbdHAUT34LcSCUBkQcGxJ8Cnn6UCPIBxuU=",
+        "owner": "jetify-com",
+        "repo": "nixtest",
+        "rev": "cdd1c7ed6cfb49e3c06702cd21f90924378f2083",
+        "type": "github"
+      },
+      "original": {
+        "owner": "jetify-com",
+        "repo": "nixtest",
+        "type": "github"
+      }
+    },
     "pre-commit-hooks": {
       "inputs": {
         "flake-compat": "flake-compat_3",
@@ -1227,16 +1242,17 @@
         "nixpkgs": [
           "nixpkgs"
         ],
+        "nixtest": "nixtest_2",
         "treefmt-nix": [
           "treefmt-nix"
         ]
       },
       "locked": {
-        "lastModified": 1755857239,
-        "narHash": "sha256-xSU9rhAF9O9uhA50+yxWInCLKhrs84SfAyunLPDeFYo=",
+        "lastModified": 1756002835,
+        "narHash": "sha256-n+vCjnHHWZFA5ElYciSQ3mwM9iQq1D4QTdlq08Fhbz4=",
         "owner": "yasunori0418",
         "repo": "nur-packages",
-        "rev": "6134aa806dbb886e3f02fc557842269937577288",
+        "rev": "f55f75a2e0cb302343354b3612e3a752b3b99226",
         "type": "github"
       },
       "original": {
