@@ -14,6 +14,10 @@
         "pipe-operators"
       ];
 
+      substituters = [
+        "https://nix-community.cachix.org"
+        "https://yasunori0418.cachix.org"
+      ];
       trusted-substituters = [
         "https://nix-community.cachix.org"
         "https://yasunori0418.cachix.org"
@@ -23,7 +27,6 @@
         "yasunori0418.cachix.org-1:mC1j+M5A6063OHaOB5bH2nS0BiCW/BJsSRiOWjLeV9o="
       ];
       trusted-users = [
-        "root"
         "@wheel"
       ];
 
