@@ -7,19 +7,95 @@ let
   inherit (builtins)
     foldl'
     ;
-  concat = list: foldl' (item: acc: acc ++ item) [ ] list;
 in
-{
+rec {
+  /**
+    # Example
+
+    ```nix
+    let
+      listInList = [
+        [
+          "a"
+          "b"
+          "c"
+        ]
+        [
+          "d"
+          "e"
+          "f"
+        ]
+      ];
+    in
+    concatOfList listInList
+    => ["a" "b" "c" "d" "e" "f"]
+    ```
+
+    # Type
+
+    ```
+    concatOfList :: [[a]] -> [a]
+    ```
+
+    # Arguments
+
+    list :: [[a]]
+    : List in list values
+  */
+  concatOfList = list: foldl' (item: acc: acc ++ item) [ ] list;
+
+  /**
+    # Example
+
+    ```nix
+    let
+      listInAttrs = [
+        abc = {
+          a = "a";
+          b = "b";
+          c = "c";
+        };
+        def = {
+          d = "d";
+          e = "e";
+          f = "f";
+        };
+      ];
+    in
+    concatOfAttrs listInAttrs
+    => {
+      a = "a";
+      b = "b";
+      c = "c";
+      d = "d";
+      e = "e";
+      f = "f";
+    }
+    ```
+
+    # Type
+
+    ```
+    concatOfList :: [AttrSet] -> AttrSet
+    ```
+
+    # Arguments
+
+    attrs :: [AttrSet]
+    : List in attrset values
+  */
+  concatOfAttrs = attrs: foldl' (item: acc: acc // item) { } attrs;
+
   /**
     # Example
 
     ```nix
     let
       attr = {
-        abc = ["a" "b" "c"]
-        def = ["d" "e" "f"]
-        ghi = ["g" "h" "i"]
-        jkl = ["j" "k" "l"]
+        abc = ["a" "b" "c"];
+        def = ["d" "e" "f"];
+        ghi = ["g" "h" "i"];
+        jkl = ["j" "k" "l"];
       };
     in
     concatTargetAttrsValue ["abc" "ghi"] attr
@@ -41,5 +117,51 @@ in
     : The original AttrSet
   */
   concatTargetAttrsValue =
-    targetNames: attrSet: attrSet |> getAttrs targetNames |> attrValues |> concat;
+    targetNames: attrSet: attrSet |> getAttrs targetNames |> attrValues |> concatOfList;
+
+  attrSetsInList = {
+    abc = [
+      "a"
+      "b"
+      "c"
+    ];
+    def = [
+      "d"
+      "e"
+      "f"
+    ];
+    ghi = [
+      "g"
+      "h"
+      "i"
+    ];
+    jkl = [
+      "j"
+      "k"
+      "l"
+    ];
+  };
+
+  attrSetsInAttrSet = {
+    abc = {
+      a = "a";
+      b = "b";
+      c = "c";
+    };
+    def = {
+      d = "d";
+      e = "e";
+      f = "f";
+    };
+    ghi = {
+      g = "g";
+      h = "h";
+      i = "i";
+    };
+    jkl = {
+      j = "j";
+      k = "k";
+      l = "l";
+    };
+  };
 }
