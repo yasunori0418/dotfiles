@@ -39,7 +39,7 @@
 
       systemd = [
         ../settings/systemd/system-conf.nix
-        ../settings/systemd/polkit-kde-agent.nix
+        # ../settings/systemd/polkit-kde-agent.nix
         ../settings/systemd/ssh-agent.nix
       ];
 
