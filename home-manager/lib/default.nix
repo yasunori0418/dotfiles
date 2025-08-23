@@ -42,7 +42,7 @@ rec {
     list :: [[a]]
     : List in list values
   */
-  concatOfList = list: foldl' (item: acc: acc ++ item) [ ] list;
+  concatOfList = list: foldl' (item: acc: item ++ acc) [ ] list;
 
   /**
     # Example
@@ -50,16 +50,16 @@ rec {
     ```nix
     let
       listInAttrs = [
-        abc = {
+        {
           a = "a";
           b = "b";
           c = "c";
-        };
-        def = {
+        }
+        {
           d = "d";
           e = "e";
           f = "f";
-        };
+        }
       ];
     in
     concatOfAttrs listInAttrs
@@ -84,7 +84,7 @@ rec {
     attrs :: [AttrSet]
     : List in attrset values
   */
-  concatOfAttrs = attrs: foldl' (item: acc: acc // item) { } attrs;
+  concatOfAttrs = attrs: foldl' (item: acc: item // acc) { } attrs;
 
   /**
     # Example
