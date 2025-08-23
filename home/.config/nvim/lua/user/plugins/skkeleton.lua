@@ -85,7 +85,7 @@ function M.init()
 
     vim.fn["skkeleton#register_kanatable"]("rom", {
         ["jj"] = "escape",
-        ["~"] = { "～", "" },
+        ["~"] = { "〜", "" },
         ["z0"] = { "○", "" },
         ["("] = { "（", "" },
         [")"] = { "）", "" },
