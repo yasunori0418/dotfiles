@@ -7,7 +7,7 @@
 {
   home.packages =
     let
-      inherit (import ../lib pkgs) concatTargetAttrsValue;
+      inherit (import ../lib pkgs) targetAttrsValue concatOfList;
       applications = import ../applications.nix {
         inherit
           pkgs
@@ -17,7 +17,7 @@
       };
       packages =
         applications
-        |> concatTargetAttrsValue [
+        |> targetAttrsValue [
           "aiTools"
           "codingSupportTools"
           "guiTools"
@@ -29,7 +29,8 @@
           "terminalEmulators"
           "textEditors"
           "utilityTools"
-        ];
+        ]
+        |> concatOfList;
     in
     packages;
 }

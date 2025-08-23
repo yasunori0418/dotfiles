@@ -7,7 +7,7 @@
 {
   home =
     let
-      inherit (import ../lib pkgs) concatTargetAttrsValue;
+      inherit (import ../lib pkgs) targetAttrsValue concatOfList;
       applications = import ../applications.nix {
         inherit
           pkgs
@@ -18,7 +18,7 @@
 
       commonTools =
         applications
-        |> concatTargetAttrsValue [
+        |> targetAttrsValue [
           "aiTools"
           "codingSupportTools"
           "guiTools"
@@ -29,15 +29,17 @@
           "terminalEmulators"
           "textEditors"
           "utilityTools"
-        ];
+        ]
+        |> concatOfList;
 
       linuxDesktopTools =
         applications.linuxDesktop
-        |> concatTargetAttrsValue [
+        |> targetAttrsValue [
           "desktopApps"
           "i3wmTools"
           "theme"
-        ];
+        ]
+        |> concatOfList;
 
       packages = commonTools ++ linuxDesktopTools;
     in

@@ -8,7 +8,7 @@ let
     foldl'
     ;
 in
-rec {
+{
   /**
     # Example
 
@@ -98,14 +98,14 @@ rec {
         jkl = ["j" "k" "l"];
       };
     in
-    concatTargetAttrsValue ["abc" "ghi"] attr
-    => ["a" "b" "c" "g" "h" "i"]
+    targetAttrsValue ["abc" "ghi"] attr
+    => [["a" "b" "c"] ["g" "h" "i"]]
     ```
 
     # Type
 
     ```
-    concatTargetAttrsValue :: [String] -> AttrSet [a] -> [a]
+    targetAttrsValue :: [String] -> AttrSet [a] -> [[a]]
     ```
 
     # Arguments
@@ -116,8 +116,8 @@ rec {
     attrSet :: AttrSet [a]
     : The original AttrSet
   */
-  concatTargetAttrsValue =
-    targetNames: attrSet: attrSet |> getAttrs targetNames |> attrValues |> concatOfList;
+  targetAttrsValue =
+    targetNames: attrSet: attrSet |> getAttrs targetNames |> attrValues;
 
   attrSetsInList = {
     abc = [
