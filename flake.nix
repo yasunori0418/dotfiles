@@ -45,6 +45,7 @@
       url = "github:nix-darwin/nix-darwin";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    nixtest.url = "github:jetify-com/nixtest";
   };
 
   nixConfig = {
@@ -153,6 +154,7 @@
                 });
               };
 
+            tests = inputs.nixtest.run ./.;
           };
       }
     );

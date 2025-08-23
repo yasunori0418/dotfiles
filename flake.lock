@@ -974,6 +974,21 @@
         "type": "github"
       }
     },
+    "nixtest": {
+      "locked": {
+        "lastModified": 1712694952,
+        "narHash": "sha256-f8NufqWlnEbdHAUT34LcSCUBkQcGxJ8Cnn6UCPIBxuU=",
+        "owner": "jetify-com",
+        "repo": "nixtest",
+        "rev": "cdd1c7ed6cfb49e3c06702cd21f90924378f2083",
+        "type": "github"
+      },
+      "original": {
+        "owner": "jetify-com",
+        "repo": "nixtest",
+        "type": "github"
+      }
+    },
     "pre-commit-hooks": {
       "inputs": {
         "flake-compat": "flake-compat_3",
@@ -1011,6 +1026,7 @@
         "nixos-hardware": "nixos-hardware",
         "nixpkgs": "nixpkgs_2",
         "nixpkgs-stable": "nixpkgs-stable",
+        "nixtest": "nixtest",
         "systems": "systems_3",
         "treefmt-nix": "treefmt-nix",
         "xremap-flake": "xremap-flake",
