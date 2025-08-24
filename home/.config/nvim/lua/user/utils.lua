@@ -111,17 +111,6 @@ function M.get_color_code(hl_name, type, mode)
     return vim.fn.synIDattr(vim.fn.synIDtrans(vim.fn.hlID(hl_name)), type, mode)
 end
 
----table shallow copy
----@param table table
----@return table
-function M.shallow_copy(table)
-    local copy_table = {}
-    for key, value in pairs(table) do
-        copy_table[key] = value
-    end
-    return copy_table
-end
-
 ---check is files exists in path.
 ---@param path string
 ---@param files string[]
