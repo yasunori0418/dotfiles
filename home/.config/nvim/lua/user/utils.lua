@@ -5,11 +5,33 @@ local autocmd = vim.api.nvim_create_autocmd
 ---@return integer
 M.vimrc_augroup = vim.api.nvim_create_augroup("vimrc", { clear = false })
 
+---@diagnostic disable-next-line duplicate-doc-alias
+---@alias AutocmdEvents vim.api.keyset.events|vim.api.keyset.events[] nvim_create_autocmd event args
+
+---@class AutocmdCallbackFuncArg
+---@diagnostic disable-next-line duplicate-doc-field
+---@field id number
+---@diagnostic disable-next-line duplicate-doc-field
+---@field event vim.api.keyset.events
+---@diagnostic disable-next-line duplicate-doc-field
+---@field group number|nil
+---@diagnostic disable-next-line duplicate-doc-field
+---@field file string
+---@diagnostic disable-next-line duplicate-doc-field
+---@field match string
+---@diagnostic disable-next-line duplicate-doc-field
+---@field buf number
+---@diagnostic disable-next-line duplicate-doc-field
+---@field data any
+
+---@diagnostic disable-next-line duplicate-doc-alias
+---@alias AutocmdCallbackFunc fun(arg?: AutocmdCallbackFuncArg)
+
 ---autocmd単発用
 ---自動でvimrcグループにセットする
----@param events string[]|string
+---@param events AutocmdEvents
 ---@param pattern string[]|string
----@param callback function|string
+---@param callback AutocmdCallbackFunc|string
 ---@param group? string|integer
 function M.autocmd_set(events, pattern, callback, group)
     group = group or M.vimrc_augroup
@@ -21,7 +43,12 @@ function M.autocmd_set(events, pattern, callback, group)
 end
 
 ---複数のautocmdを定義する
----@param autocmds { events: string|table, pattern: table|string, group: integer, callback: function|string }
+---@param autocmds {
+---    events: AutocmdEvents,
+---    pattern: string|string[],
+---    group: string|integer,
+---    callback: AutocmdCallbackFunc|string,
+---    }[]
 function M.autocmds_set(autocmds)
     for _, item in pairs(autocmds) do
         autocmd(item.events, {
