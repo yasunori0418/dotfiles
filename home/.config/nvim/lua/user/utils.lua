@@ -67,24 +67,6 @@ function M.keymaps_set(keymaps)
     end
 end
 
----1行で書かれているAPI Tokenのファイルを読み込む
----@params path string -- Tokenファイルがあるパスを指定する。
----@return table { result: bool, token: string }
-function M.load_token(path)
-    local token = io.open(path, "r"):read("*l")
-    if token ~= nil then
-        return {
-            result = true,
-            token = token,
-        }
-    else
-        return {
-            result = false,
-            token = "Can not read pat file.",
-        }
-    end
-end
-
 ---現在のディレクトリからリポジトリルートのパスを取得する。
 ---gitconfigにて`git root`の定義が必須
 ---Gitリポジトリのルートパスまたは、
