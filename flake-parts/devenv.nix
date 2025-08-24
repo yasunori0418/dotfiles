@@ -20,8 +20,12 @@ _: {
             luajitPackages.luacov
             checkmake
             lua-language-server
-            # ts_query_ls
+            ts_query_ls
           ];
+
+          enterTest = ''
+            cd $REPO_ROOT/home/.config/nvim && vusted
+          '';
 
           scripts = {
             list =
