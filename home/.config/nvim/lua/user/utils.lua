@@ -80,18 +80,6 @@ function M.search_repo_root()
     return vim.fn.expand("%:p:h")
 end
 
----luaのモジュール名前空間を解決する。
----@param base_module string
----@param ... string
----@return string
-function M.resolve_module_namespace(base_module, ...)
-    local result = base_module
-    for _, module in ipairs({ ... }) do
-        result = result .. "." .. module
-    end
-    return result
-end
-
 ---配列から最後の要素だけを取得する。
 ---@generic T
 ---@param list T[]

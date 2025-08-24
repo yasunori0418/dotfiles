@@ -29,7 +29,7 @@ M.languages = {}
 ---@param tool_config ToolConfig
 ---@return table # tool config for efm-langserver.
 local function config_require(tool_config)
-    return require(utils.resolve_module_namespace("efmls-configs", tool_config.kind, tool_config.name))
+    return require(vim.iter({ "efmls-configs", tool_config.kind, tool_config.name }):join("."))
 end
 
 ---make filetype config.
