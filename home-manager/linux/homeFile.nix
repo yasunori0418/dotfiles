@@ -1,4 +1,5 @@
 {
+  inputs,
   pkgs,
   config,
   dotfiles,
@@ -7,7 +8,10 @@
   ...
 }:
 let
-  inherit (import ../lib pkgs) targetAttrsValue concatOfAttrs;
+  inherit (inputs.yasunori-nur.legacyPackages.${pkgs.system}.lib.attrsets)
+    targetAttrsValue
+    concatOfAttrs
+    ;
   fileMap = import ../fileMap.nix {
     inherit
       pkgs

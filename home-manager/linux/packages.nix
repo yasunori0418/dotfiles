@@ -7,7 +7,10 @@
 {
   home =
     let
-      inherit (import ../lib pkgs) targetAttrsValue concatOfList;
+      inherit (inputs.yasunori-nur.legacyPackages.${pkgs.system}.lib.attrsets)
+        targetAttrsValue
+        concatOfList
+        ;
       applications = import ../applications.nix {
         inherit
           pkgs

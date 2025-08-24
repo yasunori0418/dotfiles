@@ -1,4 +1,5 @@
 {
+  inputs,
   pkgs,
   config,
   ...
@@ -12,6 +13,7 @@
       packages = ./packages.nix;
       homeFile = import ./homeFile.nix {
         inherit
+          inputs
           pkgs
           config
           dotfiles
