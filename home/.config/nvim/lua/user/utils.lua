@@ -68,7 +68,6 @@ function M.keymaps_set(keymaps)
 end
 
 ---現在のディレクトリからリポジトリルートのパスを取得する。
----gitconfigにて`git root`の定義が必須
 ---Gitリポジトリのルートパスまたは、
 ---Gitリポジトリでなければ、現在バッファーのディレクトリを返す
 ---@return string
