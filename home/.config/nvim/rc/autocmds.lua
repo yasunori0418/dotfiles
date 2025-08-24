@@ -2,46 +2,6 @@ local vimrc = vim.api.nvim_create_augroup("vimrc", { clear = true })
 
 require("user.utils").autocmds_set({
     {
-        events = { "BufNewFile", "BufRead" },
-        group = vimrc,
-        pattern = { ".textlintrc" },
-        callback = function()
-            vim.opt_local.filetype = "json"
-        end,
-    },
-    {
-        events = { "BufNewFile", "BufRead" },
-        group = vimrc,
-        pattern = { ".env" },
-        callback = function()
-            vim.opt_local.filetype = "conf"
-        end,
-    },
-    {
-        events = { "BufNewFile", "BufRead" },
-        group = vimrc,
-        pattern = { "*.blade.*" },
-        callback = function()
-            vim.opt_local.filetype = "blade"
-        end,
-    },
-    {
-        events = { "BufNewFile", "BufRead" },
-        group = vimrc,
-        pattern = { "*.uml" },
-        callback = function()
-            vim.opt_local.filetype = "plantuml"
-        end,
-    },
-    {
-        events = { "BufNewFile", "BufRead" },
-        group = vimrc,
-        pattern = { "*/i3/config" },
-        callback = function()
-            vim.opt_local.filetype = "i3config"
-        end,
-    },
-    {
         events = { "FileType" },
         group = vimrc,
         pattern = { "gin-*" },

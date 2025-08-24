@@ -190,3 +190,19 @@ vim.g.loaded_python3_provider = true
 vim.g.loaded_node_provider = true
 vim.g.loaded_perl_provider = true
 vim.g.loaded_ruby_provider = true
+
+vim.filetype.add({
+    extension = {
+        jsonc = "jsonc",
+        json5 = "json5",
+        uml = "plantuml",
+    },
+    filename = {
+        [".env"] = "conf",
+        [".textlintrc"] = "json",
+    },
+    pattern = {
+        [".*%.blade%.php"] = "blade",
+        [".*/i3/.*"] = "i3config",
+    },
+})
