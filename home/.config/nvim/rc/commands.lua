@@ -25,6 +25,10 @@ command("DppClearState", function()
     vim.cmd.quit({ bang = true })
 end, {})
 
+command("DppDenoCache", function()
+    require("dpp").async_ext_action("installer", "denoCache")
+end, {})
+
 command("DDCFuzzyFilter", function(opts)
     require("user.plugins.ddc").change_filter(opts.bang, "fuzzy")
 end, { bang = true })
