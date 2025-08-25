@@ -8,4 +8,4 @@ export type {
   Ui as TerminalUi,
 } from "jsr:@shougo/ddt-ui-terminal@1.0.0";
 
-export * as op from "jsr:@denops/std@7.6.0/option";
+export * as op from "jsr:@denops/std@8.0.0/option";
