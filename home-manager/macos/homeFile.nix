@@ -21,16 +21,19 @@ let
       xdgConfigHome
       ;
   };
-  concatFileMap =
-    fileMap:
-    let
-      targetNames = [
+  concatFileMap = targetNames: fileMap: fileMap |> targetAttrsValue targetNames |> concatOfAttrs;
+  file =
+    (
+      fileMap
+      |> concatFileMap [
         "homeDirectory"
         "dotConfig"
-      ];
-    in
-    fileMap |> targetAttrsValue targetNames |> concatOfAttrs;
-  file = (fileMap |> concatFileMap) // (fileMap.MacOS |> concatFileMap);
+      ]
+    )
+    // (fileMap.MacOS |> concatFileMap [
+      "dotConfig"
+      "library"
+    ]);
 in
 {
   home = {
