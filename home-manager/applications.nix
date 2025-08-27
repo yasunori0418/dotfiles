@@ -51,6 +51,7 @@ in
     asciinema-agg
     pueue
     tree-sitter
+    act
   ];
 
   textEditors = with pkgs; [
