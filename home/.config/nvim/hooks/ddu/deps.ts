@@ -1,10 +1,10 @@
 export {
   type ActionArguments,
   ActionFlags,
-} from "jsr:@shougo/ddu-vim@10.4.0/types";
-export { BaseConfig } from "jsr:@shougo/ddu-vim@10.4.0/config";
-export { type ConfigArguments } from "jsr:@shougo/ddu-vim@10.4.0/config";
-export { type ActionData as FileActionData } from "jsr:@shougo/ddu-kind-file@0.9.0";
+} from "jsr:@shougo/ddu-vim@11.0.0/types";
+export { BaseConfig } from "jsr:@shougo/ddu-vim@11.0.0/config";
+export { type ConfigArguments } from "jsr:@shougo/ddu-vim@11.0.0/config";
+export { type ActionData as FileActionData } from "jsr:@shougo/ddu-kind-file@1.0.0";
 
 export * as fn from "jsr:@denops/std@8.0.0/function";
 export * as op from "jsr:@denops/std@8.0.0/option";
