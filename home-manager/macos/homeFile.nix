@@ -30,10 +30,13 @@ let
         "dotConfig"
       ]
     )
-    // (fileMap.MacOS |> concatFileMap [
-      "dotConfig"
-      "library"
-    ]);
+    // (
+      fileMap.MacOS
+      |> concatFileMap [
+        "dotConfig"
+        "library"
+      ]
+    );
 in
 {
   home = {
