@@ -14,7 +14,7 @@ export class Config extends BaseConfig {
   override async config(args: ConfigArguments): Promise<ConfigReturn> {
     const { denops, contextBuilder, basePath, extraArgs } = args;
 
-    const { neovide, directories, noLazyTomlNames, checkFilesGlob } =
+    const { neovide, directories, noLazyTomlNames, checkFilesGlobs } =
       assertExtraArgs(extraArgs);
 
     const vimrcSkipRules = [
@@ -86,10 +86,12 @@ export class Config extends BaseConfig {
       plugins: toml.plugins,
     });
 
-    const checkFiles = gatherCheckFiles(directories.base, checkFilesGlob);
+    const checkFiles = checkFilesGlobs.flatMap((glob) =>
+      gatherCheckFiles(directories.base, glob)
+    );
 
     return {
-      checkFiles: checkFiles,
+      checkFiles,
       hooksFiles: toml.hooksFiles,
       ftplugins: toml.ftplugins,
       multipleHooks: toml.multipleHooks,

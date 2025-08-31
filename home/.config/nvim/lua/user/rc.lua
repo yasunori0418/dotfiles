@@ -12,6 +12,7 @@ local joinpath = vim.fs.joinpath
 ---@field neovide boolean
 ---@field directories Directories
 ---@field noLazyTomlNames string[]
+---@field checkFilesGlobs string[]
 
 ---@class Plugin
 ---@diagnostic disable :duplicate-doc-field
@@ -38,18 +39,16 @@ local function init_plugin(plugin)
 end
 
 local function gather_check_files()
-    local glob_patterns = {
-        "**/*.lua",
-        "**/*.toml",
-        "**/*.ts",
-    }
-    local target_directories =
-        vim.iter({ M.extra_args.directories.base, vim.fn.expand("~/dotfiles/home/.config/nvim") }):join(",")
-    local check_files = {}
-    for _, glob_pattern in pairs(glob_patterns) do
-        table.insert(check_files, vim.fn.globpath(target_directories, glob_pattern, true, true))
-    end
-    return vim.iter(check_files):flatten():totable()
+    return vim.iter(M.extra_args.checkFilesGlobs)
+        :map(
+            ---@param glob string
+            ---@return string[]
+            function(glob)
+                return vim.fn.globpath(vim.fn.expand("~/dotfiles/home/.config/nvim"), glob, true, true)
+            end
+        )
+        :flatten()
+        :totable()
 end
 
 local function auto_install_plugins(dpp)
@@ -154,7 +153,7 @@ function M.setup()
             rc = base_dir("rc"),
         },
         noLazyTomlNames = { "dpp.toml", "no_lazy.toml", "ddt.toml" },
-        checkFilesGlob = "**/*.(ts|lua|toml)",
+        checkFilesGlobs = { "**/*.lua", "**/*.toml", "**/*.ts" },
     }
 
     M.hooks_dir = joinpath(M.extra_args.directories.base, "hooks")
