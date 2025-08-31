@@ -1,5 +1,37 @@
 vim9script
 
+class VimrcSkipRule
+  var name: string
+  var condition: bool
+
+  def new(this.name, this.condition)
+  enddef
+endclass
+
+class Directories
+  var base: string;
+  var rc: string;
+  var toml: string;
+
+  def new(this.base, this.rc, this.toml)
+  enddef
+endclass
+
+class ExtraArgs
+  var vimrcSkipRules: list<VimrcSkipRule>
+  var directories: Directories
+  var noLazyTomlNames: list<string>
+  var checkFilesGlobs: list<string>
+
+  def new(
+    this.vimrcSkipRules,
+    this.directories,
+    this.noLazyTomlNames,
+    this.checkFilesGlobs,
+  )
+  enddef
+endclass
+
 def InitPlugin(repo: string, host: string = 'github.com'): void
   const repo_path = $'{host}/{repo}'
   const repo_dir = $'{g:dpp_cache}/repos/{repo_path}'
@@ -82,6 +114,29 @@ def DppSetup(): void
 enddef
 
 export def Setup(): void
+  const GetBaseDir = (dir: string): string =>
+    ['$XDG_CONFIG_HOME/vim'->expand(), dir]->join('/')
+  const base_dir = GetBaseDir(null_string)
+  const rc_dir = GetBaseDir('rc')
+  const toml_dir = GetBaseDir('toml')
+  GetBaseDir('hooks')->setenv('HOOKS_DIR')
+
+  const vimrcSkipRules: list<VimrcSkipRule> = []
+  const directories: Directories = Directories.new(base_dir, toml_dir, rc_dir)
+  const noLazyTomlNames: list<string> = ['dpp.toml', 'no_lazy.toml']
+  const checkFilesGlobs: list<string> = [
+    '**/*.toml',
+    '**/*.vim',
+    '**/*.ts',
+    'vimrc',
+  ]
+  const extraArgs: ExtraArgs = ExtraArgs.new(
+    vimrcSkipRules,
+    directories,
+    noLazyTomlNames,
+    checkFilesGlobs,
+  )
+
   InitPlugin("Shougo/dpp-ext-lazy")
   InitPlugin("Shougo/dpp-ext-toml")
   InitPlugin("Shougo/dpp-ext-installer")
