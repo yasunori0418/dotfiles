@@ -73,7 +73,7 @@ end
 local function make_state()
     M.dpp.make_state(
         M.dpp_base_path,
-        joinpath(M.extra_args.directories.base, "dpp", "config.ts"),
+        joinpath(vim.env.XDG_CONFIG_HOME, "dpp", "config.ts"),
         M.nvim_appname,
         M.extra_args
     )

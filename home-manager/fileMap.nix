@@ -71,6 +71,7 @@ in
       "kitty"
       "nvim"
       "vim"
+      "dpp"
       "sheldon"
       "yamllint"
       "zeno"
