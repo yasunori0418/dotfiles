@@ -6,6 +6,13 @@ class VimrcSkipRule
 
   def new(this.name, this.condition)
   enddef
+
+  def ToDict(): dict<any>
+    return {
+      name: this.name,
+      condition: this.condition,
+    }
+  enddef
 endclass
 
 class Directories
@@ -15,20 +22,41 @@ class Directories
 
   def new(this.base, this.rc, this.toml)
   enddef
+
+  def ToDict(): dict<any>
+    return {
+      base: this.base,
+      rc: this.rc,
+      toml: this.toml,
+    }
+  enddef
 endclass
 
 class ExtraArgs
-  var vimrcSkipRules: list<VimrcSkipRule>
+  var vimrc_skip_rules: list<VimrcSkipRule>
   var directories: Directories
-  var noLazyTomlNames: list<string>
-  var checkFilesGlobs: list<string>
+  var no_lazy_toml_names: list<string>
+  var check_files_globs: list<string>
 
   def new(
-    this.vimrcSkipRules,
+    this.vimrc_skip_rules,
     this.directories,
-    this.noLazyTomlNames,
-    this.checkFilesGlobs,
+    this.no_lazy_toml_names,
+    this.check_files_globs,
   )
+  enddef
+
+  def ToDict(): dict<any>
+    var vimrc_skip_rules = []
+    for rule in this.vimrc_skip_rules
+      vimrc_skip_rules->add(rule.ToDict())
+    endfor
+    return {
+      vimrcSkipRules: vimrc_skip_rules,
+      directories: this.directories.ToDict(),
+      noLazyTomlNames: this.no_lazy_toml_names,
+      checkFilesGlobs: this.check_files_globs,
+    }
   enddef
 endclass
 
@@ -111,7 +139,7 @@ def AutoInstallPlugins(): void
     ->filter((idx, val) => !isdirectory(val.rtp))
   if len(not_install_plugins) > 0
     denops#server#wait_async(() => {
-      dpp#async_ext_action("installer", "install")
+      dpp#async_ext_action('installer', 'install')
     })
     augroup RcAutocmds
       autocmd User Dpp:makeStatePost quit!
@@ -131,23 +159,21 @@ enddef
 
 def DppSetup(): void
   if dpp#min#load_state(g:dpp_cache)
-    denops#server#wait_async(() => {
-      MakeState()
-    })
+    denops#server#wait_async(() => MakeState())
   else
     AutoInstallPlugins()
   endif
   const check_files_autocmd = {
-    'group': 'RcAutocmds',
-    'event': 'BufWritePost',
-    'pattern': CheckFiles()->join(','),
-    'cmd': 'echowindow "dpp check_files() is run" | dpp#check_files()',
+    group: 'RcAutocmds',
+    event: 'BufWritePost',
+    pattern: CheckFiles()->join(','),
+    cmd: 'echowindow "dpp check_files() is run" | dpp#check_files()',
   }
   const make_state_post_autocmd = {
-    'group': 'RcAutocmds',
-    'event': 'User',
-    'pattern': 'Dpp:makeStatePost',
-    'cmd': 'echowindow "dpp make_state() is done" | quitall!',
+    group: 'RcAutocmds',
+    event: 'User',
+    pattern: 'Dpp:makeStatePost',
+    cmd: 'echowindow "dpp make_state() is done" | quitall!',
   }
   [check_files_autocmd, make_state_post_autocmd]->autocmd_add()
 enddef
@@ -186,7 +212,7 @@ export def Setup(): void
     'Shougo/dpp.vim',
     'vim-denops/denops.vim',
   ]
-    Plugin.new(name, "github.com", dpp_base_path)
+    Plugin.new(name, 'github.com', dpp_base_path)
   endfor
 
   DppSetup()
