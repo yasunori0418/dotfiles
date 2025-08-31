@@ -27,6 +27,9 @@ end, {})
 
 command("DppDenoCache", function()
     require("dpp").async_ext_action("installer", "denoCache")
+    utils.autocmd_set("User", "Dpp:extActionPost:installer:denoCache", function()
+        vim.notify("DppDenoCache Done!", vim.log.levels.INFO)
+    end)
 end, {})
 
 command("DDCFuzzyFilter", function(opts)
