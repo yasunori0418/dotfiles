@@ -154,6 +154,7 @@ function M.setup()
             rc = base_dir("rc"),
         },
         noLazyTomlNames = { "dpp.toml", "no_lazy.toml", "ddt.toml" },
+        checkFilesGlob = "**/*.(ts|lua|toml)",
     }
 
     M.hooks_dir = joinpath(M.extra_args.directories.base, "hooks")
