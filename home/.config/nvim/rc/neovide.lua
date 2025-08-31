@@ -1,7 +1,7 @@
 -- Neovide settings
 
 -- Font and size settings when using GUI
-vim.opt.guifont = [[HackGen\ Console\ NF:h14]]
+vim.opt.guifont = [[Moralerspace\ Argon\ HWNF:h14]]
 
 local neovide_config = {
     padding_top = 0,
