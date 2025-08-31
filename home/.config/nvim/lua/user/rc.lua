@@ -11,6 +11,7 @@ local joinpath = vim.fs.joinpath
 ---@diagnostic disable :duplicate-doc-field
 ---@field neovide boolean
 ---@field directories Directories
+---@field noLazyTomlNames string[]
 
 ---@class Plugin
 ---@diagnostic disable :duplicate-doc-field
@@ -152,6 +153,7 @@ function M.setup()
             toml = base_dir("toml"),
             rc = base_dir("rc"),
         },
+        noLazyTomlNames = { "dpp.toml", "no_lazy.toml", "ddt.toml" },
     }
 
     M.hooks_dir = joinpath(M.extra_args.directories.base, "hooks")

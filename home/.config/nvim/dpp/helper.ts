@@ -42,6 +42,7 @@ type Directories = {
 type ExtraArgs = {
   neovide: boolean;
   directories: Directories;
+  noLazyTomlNames: string[];
 };
 
 export const assertExtraArgs = (
@@ -56,5 +57,6 @@ export const assertExtraArgs = (
         rc: is.String,
         toml: is.String,
       }),
+      noLazyTomlNames: is.ArrayOf(is.String),
     }),
   );

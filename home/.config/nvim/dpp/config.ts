@@ -5,7 +5,7 @@ import {
   join,
   Protocol,
 } from "./deps.ts";
-import { gatherCheckFiles, assertExtraArgs } from "./helper.ts";
+import { assertExtraArgs, gatherCheckFiles } from "./helper.ts";
 import { gatherVimrcs, VimrcSkipRule } from "./helper/inlineVimrcs.ts";
 import { gatherTomls, getTomlExt } from "./helper/toml.ts";
 import { getLazyExt, makeState } from "./helper/lazy.ts";
@@ -14,7 +14,9 @@ export class Config extends BaseConfig {
   override async config(args: ConfigArguments): Promise<ConfigReturn> {
     const { denops, contextBuilder, basePath, extraArgs } = args;
 
-    const { neovide, directories } = assertExtraArgs(extraArgs);
+    const { neovide, directories, noLazyTomlNames } = assertExtraArgs(
+      extraArgs,
+    );
 
     const vimrcSkipRules = [
       {
@@ -70,7 +72,7 @@ export class Config extends BaseConfig {
       tomlOptions,
       tomlParams,
       path: directories.toml,
-      noLazyTomlNames: ["dpp.toml", "no_lazy.toml", "ddt.toml"],
+      noLazyTomlNames,
     });
 
     const [lazyExt, lazyOptions, lazyParams] = await getLazyExt(args);
