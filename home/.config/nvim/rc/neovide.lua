@@ -3,7 +3,7 @@
 -- Font and size settings when using GUI
 vim.opt.guifont = [[Moralerspace\ Argon\ HWNF:h14]]
 
-local neovide_config = {
+vim.iter({
     padding_top = 0,
     padding_bottom = 0,
     padding_right = 0,
@@ -22,8 +22,10 @@ local neovide_config = {
     floating_blur_amount_x = 2.0,
     floating_blur_amount_y = 2.0,
     profiler = false,
-}
-
-for config_name, value in pairs(neovide_config) do
-    vim.g["neovide_" .. config_name] = value
-end
+}):each(
+    ---@param config_name string
+    ---@param value any
+    function(config_name, value)
+        vim.g["neovide_" .. config_name] = value
+    end
+)
