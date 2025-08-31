@@ -119,11 +119,14 @@ local function dpp_setup()
     })
 end
 
-local function get_dpp_base_path()
-    if M.nvim_appname == "nvim" then
+---dppのcacheが配置されるbase_dir
+---@param nvim_appname string
+---@return string
+local function get_dpp_base_path(nvim_appname)
+    if nvim_appname == "nvim" then
         return joinpath(vim.env.XDG_CACHE_HOME, "dpp")
     else
-        return joinpath(vim.env.XDG_CACHE_HOME, M.nvim_appname .. "_dpp")
+        return joinpath(vim.env.XDG_CACHE_HOME, nvim_appname .. "_dpp")
     end
 end
 
@@ -132,7 +135,7 @@ end
 ---NVIM_APPNAMEが設定されていない場合は、デフォルトの`nvim`になる
 function M.setup()
     M.nvim_appname = vim.env.NVIM_APPNAME or "nvim"
-    M.dpp_base_path = get_dpp_base_path()
+    M.dpp_base_path = get_dpp_base_path(M.nvim_appname)
     M.rc_autocmds = vim.api.nvim_create_augroup("RcAutocmds", { clear = true })
 
     ---@param dir string?
