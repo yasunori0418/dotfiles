@@ -24,12 +24,12 @@ export {
   Ext as TomlExt,
   type Params as TomlParams,
   type Toml,
-} from "jsr:@shougo/dpp-ext-toml@1.3.0";
+} from "jsr:@shougo/dpp-ext-toml@2.0.1";
 export {
   Ext as LazyExt,
   type LazyMakeStateResult,
   type Params as LazyParams,
-} from "jsr:@shougo/dpp-ext-lazy@1.5.0";
+} from "jsr:@shougo/dpp-ext-lazy@2.0.1";
 export { type Denops } from "jsr:@denops/core@8.0.0";
 export * as fn from "jsr:@denops/std@8.0.0/function";
 export * as vars from "jsr:@denops/std@8.0.0/variable";
