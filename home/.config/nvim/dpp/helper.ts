@@ -28,7 +28,6 @@ export function gatherCheckFiles(path: string, glob: string): string[] {
   return Array.from(
     expandGlobSync(glob, {
       root: path,
-      globstar: true,
     }),
   ).map(({ path }: WalkEntry) => path);
 }
