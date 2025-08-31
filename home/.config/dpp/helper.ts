@@ -9,6 +9,8 @@ import {
   WalkEntry,
 } from "./deps.ts";
 
+import { VimrcSkipRule } from "./helper/inlineVimrcs.ts";
+
 export type Ext<P extends BaseParams, E extends BaseExt<P>> = [
   ext: E | undefined,
   options: ExtOptions,
@@ -39,7 +41,7 @@ type Directories = {
 };
 
 type ExtraArgs = {
-  neovide: boolean;
+  vimrcSkipRules: VimrcSkipRule[];
   directories: Directories;
   noLazyTomlNames: string[];
   checkFilesGlobs: string[];
@@ -51,7 +53,12 @@ export const assertExtraArgs = (
   ensure(
     extraArgs,
     is.ObjectOf({
-      neovide: is.Boolean,
+      vimrcSkipRules: is.ArrayOf(
+        is.ObjectOf({
+          name: is.String,
+          condition: is.Boolean,
+        }),
+      ),
       directories: is.ObjectOf({
         base: is.String,
         rc: is.String,

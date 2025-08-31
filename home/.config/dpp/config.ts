@@ -6,7 +6,7 @@ import {
   Protocol,
 } from "./deps.ts";
 import { assertExtraArgs, gatherCheckFiles } from "./helper.ts";
-import { gatherVimrcs, VimrcSkipRule } from "./helper/inlineVimrcs.ts";
+import { gatherVimrcs } from "./helper/inlineVimrcs.ts";
 import { gatherTomls, getTomlExt } from "./helper/toml.ts";
 import { getLazyExt, makeState } from "./helper/lazy.ts";
 
@@ -14,15 +14,8 @@ export class Config extends BaseConfig {
   override async config(args: ConfigArguments): Promise<ConfigReturn> {
     const { denops, contextBuilder, basePath, extraArgs } = args;
 
-    const { neovide, directories, noLazyTomlNames, checkFilesGlobs } =
+    const { vimrcSkipRules, directories, noLazyTomlNames, checkFilesGlobs } =
       assertExtraArgs(extraArgs);
-
-    const vimrcSkipRules = [
-      {
-        name: "neovide.lua",
-        condition: neovide,
-      },
-    ] as VimrcSkipRule[];
 
     contextBuilder.setGlobal({
       inlineVimrcs: gatherVimrcs(directories.rc, vimrcSkipRules),

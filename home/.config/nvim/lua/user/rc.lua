@@ -7,9 +7,14 @@ local joinpath = vim.fs.joinpath
 ---@field toml string
 ---@field rc string
 
+---@class VimrcSkipRule
+---@diagnostic disable :duplicate-doc-field
+---@field name string
+---@field condition boolean
+
 ---@class ExtraArgs
 ---@diagnostic disable :duplicate-doc-field
----@field neovide boolean
+---@field vimrcSkipRules VimrcSkipRule[]
 ---@field directories Directories
 ---@field noLazyTomlNames string[]
 ---@field checkFilesGlobs string[]
@@ -147,8 +152,13 @@ function M.setup()
 
     ---@type ExtraArgs
     M.extra_args = {
-        neovide = vim.g.neovide --[[@as boolean]]
-            or false,
+        vimrcSkipRules = {
+            {
+                name = "neovide.lua",
+                condition = vim.g.neovide --[[@as boolean]]
+                    or false,
+            },
+        },
         directories = {
             base = base_dir(),
             toml = base_dir("toml"),
