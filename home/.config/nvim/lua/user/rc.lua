@@ -42,12 +42,11 @@ local function gather_check_files()
     return vim.iter(M.extra_args.checkFilesGlobs)
         :map(
             ---@param glob string
-            ---@return string[]
+            ---@return string
             function(glob)
-                return vim.fn.globpath(vim.fn.expand("~/dotfiles/home/.config/nvim"), glob, true, true)
+                return vim.fs.joinpath(vim.fn.expand("~/dotfiles/home/.config/nvim"), glob)
             end
         )
-        :flatten()
         :totable()
 end
 
