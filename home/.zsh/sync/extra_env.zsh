@@ -44,8 +44,6 @@ if [[ -d ${deno_path} ]]; then
     PATH="${deno_path}:${PATH}"
 fi
 
-export CLAUDE_CONFIG_DIR="${HOME}/.claude/projects"
-
 # bat theme
 export BAT_THEME="Nord"
 
