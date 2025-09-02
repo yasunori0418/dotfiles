@@ -52,7 +52,7 @@
     ],
     "defaultMode": "acceptEdits"
   },
-  "statusline": {
+  "statusLine": {
     "type": "command",
     "command": "bunx ccusage statusline",
     "padding": 0
