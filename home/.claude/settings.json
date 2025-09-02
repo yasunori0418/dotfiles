@@ -54,6 +54,7 @@
   },
   "statusline": {
     "type": "command",
-    "command": "~/.claude/statusline.sh"
+    "command": "bun x ccusage statusline",
+    "padding": 0
   }
 }
