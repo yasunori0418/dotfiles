@@ -49,6 +49,5 @@
       "Bash(mysql:*)",
       "Bash(mongod:*)"
     ]
-  },
-  "model": "opus"
+  }
 }
