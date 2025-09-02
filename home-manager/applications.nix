@@ -207,7 +207,7 @@ in
       [
         i3status
         i3status-rust
-        override-bumblebee-status
+        # override-bumblebee-status
       ];
   };
 
