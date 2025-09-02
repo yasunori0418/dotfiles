@@ -55,7 +55,7 @@ in
     ".bash_profile"
     ".bash_logout"
     ".screenrc"
-    ".claude/projects/settings.json"
+    ".claude/settings.json"
     ".claude/CLAUDE.md"
   ];
 
