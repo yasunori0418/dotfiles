@@ -2,6 +2,17 @@ local utils = require("user.utils")
 local lsp_utils = require("user.lsp.utils")
 local ft = lsp_utils.ft
 
+lsp_utils.on_attach(function(client, bufnr)
+    if bufnr == nil then
+        return
+    end
+    if client.name ~= "denols" then
+        return
+    end
+    local efm_client = vim.lsp.get_clients({ name = "efm" })[1]
+    vim.lsp.buf_detach_client(bufnr, efm_client.id)
+end)
+
 -- Refer:
 -- https://github.com/ryoppippi/dotfiles/blob/e6e0f02/nvim/lua/plugin/nvim-lspconfig/servers/denols.lua#L5-L49
 ---@param path string
