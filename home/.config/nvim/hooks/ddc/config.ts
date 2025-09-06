@@ -56,7 +56,7 @@ export class Config extends BaseConfig {
           mark: "LSP",
           forceCompletionPattern: "\\.|:\\s*|->\\s*",
           dup: "keep",
-          sorters: ["sorter_lsp-kind", "converter_kind_labels"],
+          sorters: ["sorter_lsp_kind", "converter_kind_labels"],
         },
         "nvim-lua": {
           mark: "lua",
