@@ -46,6 +46,7 @@ on_ft = ['vim', 'toml', 'help']
 
 [[plugins]] # ddc-source-lsp
 repo = 'github.com/Shougo/ddc-source-lsp'
+rev= "8084bee90bc7a3c92f31e9696c8e360c8f889cf9"
 on_source = 'nvim-lspconfig'
 
 [[plugins]]
