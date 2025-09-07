@@ -26,7 +26,7 @@ alias cdr=git_root # ./commands.zsh
 
 # Neovim alias
 [[ $(command -v nvim) ]] && alias nv=nvim_server_pipe # ./commands.zsh
-
+[[ $(command -v nvr) && -n "${NVIM}" ]] && alias nv='nvr -cc "if nvim_win_get_config(0).relative != \"\" | quit | endif" --remote'
 [[ $(command -v neovide) ]] && alias nvg='neovide'
 
 # useful command aliases
