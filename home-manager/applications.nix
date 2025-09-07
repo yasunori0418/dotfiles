@@ -57,6 +57,7 @@ in
   textEditors = with pkgs; [
     myNurPkgs.neovim
     myNurPkgs.vim
+    neovim-remote
     neovide
     emacs
   ];
