@@ -56,7 +56,7 @@ export class Config extends BaseConfig {
           mark: "LSP",
           forceCompletionPattern: "\\.|:\\s*|->\\s*",
           dup: "keep",
-          sorters: ["sorter_lsp-kind", "converter_kind_labels"],
+          sorters: ["sorter_lsp_kind", "converter_kind_labels"],
         },
         "nvim-lua": {
           mark: "lua",
@@ -121,7 +121,7 @@ export class Config extends BaseConfig {
         },
       },
       filterParams: {
-        "sorter_lsp-kind": {
+        "sorter_lsp_kind": {
           priority: [
             "Snippet",
             "Method",
@@ -215,7 +215,7 @@ export class Config extends BaseConfig {
       async () => {
         const filetype = await op.filetype.get(denops);
         const add_sources = ["lsp"];
-        // if (filetype === "lua") add_sources.push("nvim-lua");
+        if (filetype === "lua") add_sources.push("nvim-lua");
         // console.log(add_sources);
         args.contextBuilder.patchFiletype(filetype, {
           sources: [

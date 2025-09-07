@@ -46,7 +46,6 @@ on_ft = ['vim', 'toml', 'help']
 
 [[plugins]] # ddc-source-lsp
 repo = 'github.com/Shougo/ddc-source-lsp'
-rev= "8084bee90bc7a3c92f31e9696c8e360c8f889cf9"
 on_source = 'nvim-lspconfig'
 
 [[plugins]]
@@ -110,6 +109,14 @@ on_source = 'ddc.vim'
 
 [[plugins]] # ddc-fuzzy
 repo = 'github.com/tani/ddc-fuzzy'
+on_source = 'ddc.vim'
+
+[[plugins]]
+repo = 'github.com/Shougo/ddc-filter-sorter_lsp_kind'
+on_source = 'ddc.vim'
+
+[[plugins]]
+repo = 'github.com/Shougo/ddc-filter-converter_kind_labels'
 on_source = 'ddc.vim'
 
 # }}}
