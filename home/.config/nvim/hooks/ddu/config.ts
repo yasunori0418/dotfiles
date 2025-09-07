@@ -17,8 +17,8 @@ type Params = Record<string, unknown>;
 export class Config extends BaseConfig {
   override async config(args: ConfigArguments): Promise<void> {
     const denops = args.denops;
-    args.setAlias("files", "source", "file_fd", "file_external");
-    args.setAlias("files", "source", "file_rg", "file_external");
+    args.setAlias("_", "source", "file_fd", "file_external");
+    args.setAlias("_", "source", "file_rg", "file_external");
 
     args.contextBuilder.patchGlobal({
       uiOptions: {
@@ -174,7 +174,15 @@ export class Config extends BaseConfig {
           ],
         },
         file_fd: {
-          cmd: ["fd", ".", "--hidden", "--type", "f", "--color", "never"],
+          cmd: [
+            "fd",
+            "--hidden",
+            "--type",
+            "f",
+            "--color",
+            "never",
+            "--glob",
+          ],
         },
         file_rg: {
           cmd: [
@@ -375,7 +383,7 @@ export class Config extends BaseConfig {
           ...(await uiSize(args, 0.3, "horizontal")),
         },
       },
-      sources: [{ name: "file_rec" }],
+      sources: [{ name: "file_fd" }],
     });
 
     args.contextBuilder.patchLocal("dotfiles", {
