@@ -67,3 +67,7 @@ repo = 'github.com/yukimemi/jsontoml.vim'
 depends = ['denops.vim']
 on_cmd = ['JT', 'TJ']
 hooks_file = '$HOOKS_DIR/jsontoml.lua'
+
+[[plugins]]
+repo = 'github.com/lambdalisue/vim-guise'
+lazy = false
