@@ -50,4 +50,16 @@ require("user.utils").keymaps_set({
         opts = opt,
     },
 })
+
+vim.api.nvim_create_autocmd("DirChanged", {
+    group = require("user.utils").vimrc_augroup,
+    callback = function(event)
+        vim.print(event)
+        vim.fn["ddt#ui#do_action"]("cd", {
+            directory = vim.fn.get(event, "cwd", vim.fn.getcwd()),
+        })
+    end,
+    buffer = vim.fn.bufnr("%"),
+})
+
 -- }}}
