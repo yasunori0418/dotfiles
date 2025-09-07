@@ -71,3 +71,6 @@ hooks_file = '$HOOKS_DIR/jsontoml.lua'
 [[plugins]]
 repo = 'github.com/lambdalisue/vim-guise'
 lazy = false
+hook_add = '''
+let g:guise_edit_opener = 'if nvim_win_get_config(0).relative != "" | quit | endif | tab drop'
+'''
