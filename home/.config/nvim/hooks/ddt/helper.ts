@@ -39,7 +39,7 @@ type DdtFullWindowUiSize = {
 export const ddtUiSize = async (
   args: ConfigArguments,
   split: DdtSplit,
-  raitio: number,
+  raitio: number = 1,
 ): Promise<DdtUiSize> => {
   const { denops } = args;
   const columns = await op.columns.get(denops);

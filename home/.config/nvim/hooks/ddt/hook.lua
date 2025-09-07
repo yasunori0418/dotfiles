@@ -76,6 +76,12 @@ vim.fn["ddt#custom#load_config"](
     -- $HOOKS_DIR/ddt/config.ts
     vim.fs.joinpath(require("user.rc").hooks_dir, "ddt", "config.ts")
 )
+vim.api.nvim_create_user_command("Ddt", function()
+    vim.fn["ddt#start"]({
+        ui = "terminal",
+        name = "full-terminal",
+    })
+end, {})
 -- }}}
 
 -- lua_source {{{

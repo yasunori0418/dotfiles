@@ -27,6 +27,16 @@ export class Config extends BaseConfig {
       },
     });
 
+    contextBuilder.patchLocal("full-terminal", {
+      uiParams: {
+        terminal: {
+          command: [Deno.env.get("SHELL")],
+          promptPattern: "❯ ",
+          ...(await ddtUiSize(args, "")),
+        },
+      },
+    });
+
     contextBuilder.patchLocal("claude", {
       uiParams: {
         terminal: {
