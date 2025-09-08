@@ -10,7 +10,7 @@
       nerd-fonts.hack
       hackgen-nf-font
       font-awesome_6
-      moralerspace-hwnf
+      moralerspace-hw
     ];
   };
 }
