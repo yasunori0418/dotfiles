@@ -81,6 +81,7 @@ in
       "ideavim"
       "kanata"
       "zellij"
+      "cchook"
     ]
     // xdgConfigFileMap [
       "shellcheckrc"

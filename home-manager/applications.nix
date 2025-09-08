@@ -125,6 +125,7 @@ in
     # goose-cli
     myNurPkgs.claude-code
     myNurPkgs.ccusage
+    myNurPkgs.cchook
   ]
   # ++ (optionalIsLinux [ inputs.claude-desktop.packages.${system}.claude-desktop ])
   ;
