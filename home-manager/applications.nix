@@ -52,6 +52,7 @@ in
     pueue
     tree-sitter
     act
+    myNurPkgs.safe-chain
   ];
 
   textEditors = with pkgs; [
@@ -126,6 +127,7 @@ in
     myNurPkgs.claude-code
     myNurPkgs.ccusage
     myNurPkgs.cchook
+    myNurPkgs.ccexp
   ]
   # ++ (optionalIsLinux [ inputs.claude-desktop.packages.${system}.claude-desktop ])
   ;
