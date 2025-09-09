@@ -95,3 +95,8 @@ apply = ['defer']
 local = '~/.zsh/defer'
 use = ['*.zsh']
 apply = ['defer']
+
+[plugins.safe_chain]
+local = '~/.safe-chain/scripts'
+use = ['init-posix.sh']
+apply = ['defer']
