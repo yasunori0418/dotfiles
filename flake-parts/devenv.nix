@@ -19,7 +19,7 @@ _: {
             luajitPackages.vusted
             luajitPackages.luacov
             checkmake
-            lua-language-server
+            emmylua-ls
             ts_query_ls
           ];
 

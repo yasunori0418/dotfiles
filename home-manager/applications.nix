@@ -97,7 +97,6 @@ in
     typescript-language-server
     yaml-language-server
     emmet-ls
-    emmylua-ls
     vscode-langservers-extracted
     vtsls
     taplo
