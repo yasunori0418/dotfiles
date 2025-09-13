@@ -3,7 +3,7 @@ require("user.lsp.diagnostic")
 
 local utils = require("user.lsp.utils")
 utils.on_attach(function(client, buffer)
-    if client == nil then
+    if client == nil or client.server_capabilities == nil then
         return
     end
     if client.server_capabilities.documentSymbolProvider then
