@@ -26,12 +26,13 @@ vim.lsp.enable({
     "denols",
     "efm",
     "emmet_ls",
+    "emmylua_ls",
     "html", -- vscode-langservers-extracted
     "intelephense",
     "jqls",
     "jsonls", -- vscode-langservers-extracted
     "kotlin_lsp",
-    "lua_ls",
+    -- "lua_ls",
     "nixd",
     "pyright",
     "taplo",
