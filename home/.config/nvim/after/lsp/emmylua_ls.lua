@@ -32,13 +32,29 @@ local function gather_runtimepath()
         :totable()
 end
 
+---$LUA_PATHからモジュールを収集
+---@return string[]
+local function gather_lua_path()
+    return vim.list.unique(vim.iter(vim.split(vim.env.LUA_PATH, ";", { trimempty = true }))
+        :map(function(v)
+            return vim.fn.substitute(v, [[\v\/{-}\?.+$]], "", "")
+        end)
+        :totable())
+end
+
 ---@type vim.lsp.Config
 return {
     on_init = function(client)
         client.config.settings.Lua --[[@as table]] =
             vim.tbl_deep_extend("force", client.config.settings.Lua --[[@as table]], {
                 workspace = {
-                    library = vim.iter({ gather_lua_plugin(), gather_runtimepath() }):flatten(math.huge):totable(),
+                    library = vim.iter({
+                        gather_lua_plugin(),
+                        gather_runtimepath(),
+                        gather_lua_path(),
+                    })
+                        :flatten(math.huge)
+                        :totable(),
                 },
             })
     end,
@@ -50,6 +66,20 @@ return {
                 ignoreDir = {
                     ".vscode",
                     ".devenv",
+                },
+            },
+            format = {
+                externalTool = {
+                    program = "stylua",
+                    args = {
+                        "-",
+                        "--config-path=" .. vim.fn.expand("$HOME/dotfiles/stylua.toml"),
+                        "--stdin-filepath=${file}",
+                        "--color=Never",
+                        "--range-start=${start_offset}",
+                        "--range-end=${end_offset}",
+                    },
+                    timeout = 5000,
                 },
             },
         },
