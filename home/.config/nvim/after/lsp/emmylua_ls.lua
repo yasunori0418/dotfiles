@@ -45,7 +45,13 @@ return {
     settings = {
         Lua = {
             runtime = { version = "LuaJIT" },
-            workspace = { checkThirdParty = false },
+            workspace = {
+                checkThirdParty = false,
+                ignoreDir = {
+                    ".vscode",
+                    ".devenv",
+                },
+            },
         },
     },
     workspace_required = true,
