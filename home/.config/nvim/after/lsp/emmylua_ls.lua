@@ -27,6 +27,7 @@ local function gather_runtimepath()
     return vim.iter(vim.api.nvim_get_runtime_file("", true))
         :filter(function(v)
             return not vim.regex(require("user.rc").dpp_base_path):match_str(v)
+                and not vim.regex(vim.fn.expand([[$HOME/\.config/nvim]])):match_str(v)
                 and directory_exists(vim.fs.joinpath(v, "lua"))
         end)
         :totable()
@@ -42,19 +43,25 @@ local function gather_lua_path()
         :totable())
 end
 
+---@return string[]
+local function library()
+    return vim.iter({
+        gather_lua_plugin(),
+        gather_runtimepath(),
+        gather_lua_path(),
+        vim.fn.expand([[$HOME/dotfiles/home/.config/nvim]]),
+    })
+        :flatten(math.huge)
+        :totable()
+end
+
 ---@type vim.lsp.Config
 return {
     on_init = function(client)
         client.config.settings.Lua --[[@as table]] =
             vim.tbl_deep_extend("force", client.config.settings.Lua --[[@as table]], {
                 workspace = {
-                    library = vim.iter({
-                        gather_lua_plugin(),
-                        gather_runtimepath(),
-                        gather_lua_path(),
-                    })
-                        :flatten(math.huge)
-                        :totable(),
+                    library = library(),
                 },
             })
     end,
