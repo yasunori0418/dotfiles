@@ -5,33 +5,24 @@ local autocmd = vim.api.nvim_create_autocmd
 ---@return integer
 M.vimrc_augroup = vim.api.nvim_create_augroup("vimrc", { clear = false })
 
----@diagnostic disable-next-line duplicate-doc-alias
----@alias AutocmdEvents vim.api.keyset.events|vim.api.keyset.events[] nvim_create_autocmd event args
+---@alias User.Utils.AutocmdEvents vim.api.keyset.events|vim.api.keyset.events[] nvim_create_autocmd event args
 
----@class AutocmdCallbackFuncArg
----@diagnostic disable-next-line duplicate-doc-field
+---@class User.Utils.AutocmdCallbackFuncArg
 ---@field id number
----@diagnostic disable-next-line duplicate-doc-field
 ---@field event vim.api.keyset.events
----@diagnostic disable-next-line duplicate-doc-field
 ---@field group number|nil
----@diagnostic disable-next-line duplicate-doc-field
 ---@field file string
----@diagnostic disable-next-line duplicate-doc-field
 ---@field match string
----@diagnostic disable-next-line duplicate-doc-field
 ---@field buf number
----@diagnostic disable-next-line duplicate-doc-field
 ---@field data any
 
----@diagnostic disable-next-line duplicate-doc-alias
----@alias AutocmdCallbackFunc fun(arg?: AutocmdCallbackFuncArg)
+---@alias User.Utils.AutocmdCallbackFunc fun(arg?: User.Utils.AutocmdCallbackFuncArg)
 
 ---autocmd単発用
 ---自動でvimrcグループにセットする
----@param events AutocmdEvents
+---@param events User.Utils.AutocmdEvents
 ---@param pattern string[]|string
----@param callback AutocmdCallbackFunc|string
+---@param callback User.Utils.AutocmdCallbackFunc|string
 ---@param group? string|integer
 function M.autocmd_set(events, pattern, callback, group)
     group = group or M.vimrc_augroup
@@ -44,10 +35,10 @@ end
 
 ---複数のautocmdを定義する
 ---@param autocmds {
----    events: AutocmdEvents,
+---    events: User.Utils.AutocmdEvents,
 ---    pattern: string|string[],
 ---    group: string|integer,
----    callback: AutocmdCallbackFunc|string,
+---    callback: User.Utils.AutocmdCallbackFunc|string,
 ---    }[]
 function M.autocmds_set(autocmds)
     for _, item in pairs(autocmds) do

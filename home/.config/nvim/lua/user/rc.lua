@@ -1,27 +1,27 @@
 local M = {}
 local joinpath = vim.fs.joinpath
 
----@class Directories
+---@class User.Rc.Directories
 ---@field base string
 ---@field toml string
 ---@field rc string
 
----@class VimrcSkipRule
+---@class User.Rc.VimrcSkipRule
 ---@field name string
 ---@field condition boolean
 
----@class ExtraArgs
----@field vimrcSkipRules VimrcSkipRule[]
----@field directories Directories
+---@class User.Rc.ExtraArgs
+---@field vimrcSkipRules User.Rc.VimrcSkipRule[]
+---@field directories User.Rc.Directories
 ---@field noLazyTomlNames string[]
 ---@field checkFilesGlobs string[]
 
----@class Plugin
+---@class User.Rc.Plugin
 ---@field repo string
 ---@field host? string
 
 ---初回起動時にプラグインのダウンロードとリポジトリのパスを返却する
----@param plugin Plugin
+---@param plugin User.Rc.Plugin
 ---@return string
 local function init_plugin(plugin)
     local host = plugin.host or "github.com"
@@ -146,7 +146,7 @@ function M.setup()
         return joinpath(vim.env.XDG_CONFIG_HOME, M.nvim_appname, dir)
     end
 
-    ---@type ExtraArgs
+    ---@type User.Rc.ExtraArgs
     M.extra_args = {
         vimrcSkipRules = {
             {
@@ -169,7 +169,7 @@ function M.setup()
     vim.env.BASE_DIR = M.extra_args.directories.base
     vim.env.HOOKS_DIR = M.hooks_dir
 
-    ---@type Plugin[]
+    ---@type User.Rc.Plugin[]
     local init_plugins = {
         { repo = "Shougo/dpp-ext-lazy" },
         { repo = "Shougo/dpp-ext-toml" },
@@ -179,7 +179,7 @@ function M.setup()
         { repo = "vim-denops/denops.vim" },
     }
     vim.iter(init_plugins):map(
-        ---@param plugin Plugin
+        ---@param plugin User.Rc.Plugin
         ---@return string
         function(plugin)
             return vim.opt.runtimepath:prepend(init_plugin(plugin))
