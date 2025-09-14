@@ -6,6 +6,19 @@ treesitter.setup({
 
 vim.treesitter.language.register("bash", { "sh", "zsh" })
 
+local function initialize()
+    local uv = vim.uv
+    local joinpath = vim.fs.joinpath
+    local plugin_path = require("dpp").get("nvim-treesitter").path
+    local treesitter_runtime = joinpath(vim.fn.stdpath("data"), "site")
+    local queries_path = joinpath(treesitter_runtime, "queries")
+    local lstat = uv.fs_lstat(queries_path)
+    if lstat == nil then
+        vim.uv.fs_symlink(vim.fs.joinpath(plugin_path, "runtime", "queries"), queries_path)
+    end
+end
+initialize()
+
 vim.api.nvim_create_autocmd("FileType", {
     pattern = {
         "bash",
