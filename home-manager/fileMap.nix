@@ -1,5 +1,6 @@
 {
   pkgs,
+  myNurPkgs,
   config,
   homeDir,
   xdgConfigHome,
@@ -99,6 +100,40 @@ in
       "ghostty/theme.conf"
       "ghostty/window.conf"
     ];
+
+  dotLocalShare = {
+    ".local/share/nvim/site/parser".source = builtins.toString "/${
+      myNurPkgs.nvim-treesitter-parsers [
+        "bash"
+        "css"
+        "diff"
+        "dockerfile"
+        "git_config"
+        "git_rebase"
+        "gitattributes"
+        "gitcommit"
+        "gitignore"
+        "html"
+        "jsdoc"
+        "json"
+        "json5"
+        "jsonc"
+        "kdl"
+        "kotlin"
+        "lua"
+        "luadoc"
+        "make"
+        "markdown"
+        "markdown_inline"
+        "nix"
+        "toml"
+        "typescript"
+        "vim"
+        "vimdoc"
+        "yaml"
+      ]
+    }/parser";
+  };
 
   MacOS = {
     homeDirectory = {

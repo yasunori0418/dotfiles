@@ -4,41 +4,6 @@ treesitter.setup({
     install_dir = vim.fs.joinpath(vim.fn.stdpath("data"), "site"),
 })
 
-treesitter.install({
-    "bash",
-    "css",
-    "diff",
-    "dockerfile",
-    "git_config",
-    "git_rebase",
-    "gitattributes",
-    "gitcommit",
-    "gitignore",
-    "html",
-    "jsdoc",
-    "json",
-    "json5",
-    "jsonc",
-    "kdl",
-    "kotlin",
-    "lua",
-    "luadoc",
-    "make",
-    "markdown",
-    "markdown_inline",
-    "nix",
-    "toml",
-    "typescript",
-    "vim",
-    "vimdoc",
-    "yaml",
-} --[=[@as string[]]=], {
-    force = false, -- force installation of already installed parsers
-    generate = true, -- generate `parser.c` from `grammar.json` or `grammar.js` before compiling.
-    max_jobs = 4, -- limit parallel tasks (useful in combination with {generate} on memory-limited systems).
-    summary = false, -- print summary of successful and total operations for multiple languages.
-} --[[@as InstallOptions]])
-
 vim.treesitter.language.register("bash", { "sh", "zsh" })
 
 vim.api.nvim_create_autocmd("FileType", {

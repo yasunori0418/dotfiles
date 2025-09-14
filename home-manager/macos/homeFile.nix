@@ -8,13 +8,15 @@
   ...
 }:
 let
-  inherit (inputs.yasunori-nur.legacyPackages.${pkgs.system}.lib.attrsets)
+  myNurPkgs = inputs.yasunori-nur.legacyPackages.${pkgs.system};
+  inherit (myNurPkgs.lib.attrsets)
     targetAttrsValue
     concatOfAttrs
     ;
   fileMap = import ../fileMap.nix {
     inherit
       pkgs
+      myNurPkgs
       config
       dotfiles
       homeDir
@@ -28,6 +30,7 @@ let
       |> concatFileMap [
         "homeDirectory"
         "dotConfig"
+        "dotLocalShare"
       ]
     )
     // (
