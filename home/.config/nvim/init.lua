@@ -1,7 +1,5 @@
 -- Enables the experimental Lua module loader
-if vim.loader then
-    vim.loader.enable()
-end
+vim.loader.enable()
 
 require("user.rc").setup()
 

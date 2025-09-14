@@ -3,8 +3,9 @@ local diagnostic = vim.diagnostic
 local lsp_utils = require("user.lsp.utils")
 local utils = require("user.utils")
 
-lsp_utils.on_attach(function(_, buffer)
-    local opt = { noremap = true, silent = true, buffer = buffer }
+lsp_utils.on_attach(function()
+    ---@type vim.keymap.set.Opts
+    local opt = { noremap = true, silent = true, buffer = true }
     utils.keymaps_set({
         {
             mode = { "n", "x" },

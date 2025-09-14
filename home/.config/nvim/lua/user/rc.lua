@@ -2,25 +2,21 @@ local M = {}
 local joinpath = vim.fs.joinpath
 
 ---@class Directories
----@diagnostic disable :duplicate-doc-field
 ---@field base string
 ---@field toml string
 ---@field rc string
 
 ---@class VimrcSkipRule
----@diagnostic disable :duplicate-doc-field
 ---@field name string
 ---@field condition boolean
 
 ---@class ExtraArgs
----@diagnostic disable :duplicate-doc-field
 ---@field vimrcSkipRules VimrcSkipRule[]
 ---@field directories Directories
 ---@field noLazyTomlNames string[]
 ---@field checkFilesGlobs string[]
 
 ---@class Plugin
----@diagnostic disable :duplicate-doc-field
 ---@field repo string
 ---@field host? string
 
@@ -49,7 +45,7 @@ local function gather_check_files()
             ---@param glob string
             ---@return string
             function(glob)
-                return vim.fs.joinpath(vim.fn.expand("~/dotfiles/home/.config/nvim"), glob)
+                return joinpath(vim.fn.expand("~/dotfiles/home/.config/nvim"), glob)
             end
         )
         :totable()
@@ -146,7 +142,7 @@ function M.setup()
     ---@param dir string?
     ---@return string
     local base_dir = function(dir)
-        dir = dir or nil
+        dir = dir or ""
         return joinpath(vim.env.XDG_CONFIG_HOME, M.nvim_appname, dir)
     end
 
