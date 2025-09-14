@@ -1,7 +1,7 @@
 -- lua_source {{{
 local treesitter = require("nvim-treesitter")
 treesitter.setup({
-    install_dir = vim.fs.joinpath(vim.fn.stdpath("data"), "site"),
+    install_dir = vim.fs.joinpath(vim.fn.stdpath("data"), "treesitter"),
 })
 
 vim.treesitter.language.register("bash", { "sh", "zsh" })
@@ -10,7 +10,7 @@ local function initialize()
     local uv = vim.uv
     local joinpath = vim.fs.joinpath
     local plugin_path = require("dpp").get("nvim-treesitter").path
-    local treesitter_runtime = joinpath(vim.fn.stdpath("data"), "site")
+    local treesitter_runtime = joinpath(vim.fn.stdpath("data"), "treesitter")
     local queries_path = joinpath(treesitter_runtime, "queries")
     local lstat = uv.fs_lstat(queries_path)
     if lstat == nil then

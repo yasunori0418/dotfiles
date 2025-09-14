@@ -102,7 +102,7 @@ in
     ];
 
   dotLocalShare = {
-    ".local/share/nvim/site/parser".source = builtins.toString "/${
+    ".local/share/nvim/treesitter/parser".source = builtins.toString "/${
       myNurPkgs.nvim-treesitter-parsers [
         "bash"
         "css"
