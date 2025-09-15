@@ -7,6 +7,7 @@
 {
   home =
     let
+      inherit (pkgs.lib) pipe;
       inherit (inputs.yasunori-nur.legacyPackages.${pkgs.system}.lib.attrsets)
         targetAttrsValue
         concatOfList
@@ -19,9 +20,8 @@
           ;
       };
 
-      commonTools =
-        applications
-        |> targetAttrsValue [
+      commonTools = pipe applications [
+        (targetAttrsValue [
           "aiTools"
           "codingSupportTools"
           "guiTools"
@@ -32,17 +32,18 @@
           "terminalEmulators"
           "textEditors"
           "utilityTools"
-        ]
-        |> concatOfList;
+        ])
+        concatOfList
+      ];
 
-      linuxDesktopTools =
-        applications.linuxDesktop
-        |> targetAttrsValue [
+      linuxDesktopTools = pipe applications.linuxDesktop [
+        (targetAttrsValue [
           "desktopApps"
           "i3wmTools"
           "theme"
-        ]
-        |> concatOfList;
+        ])
+        concatOfList
+      ];
 
       packages = commonTools ++ linuxDesktopTools;
     in

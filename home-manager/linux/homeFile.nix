@@ -8,6 +8,7 @@
   ...
 }:
 let
+  inherit (pkgs.lib) pipe;
   myNurPkgs = inputs.yasunori-nur.legacyPackages.${pkgs.system};
   inherit (myNurPkgs.lib.attrsets)
     targetAttrsValue
@@ -25,23 +26,20 @@ let
   };
   concatFileMap =
     targetNames: fileMap:
-    fileMap |> targetAttrsValue targetNames |> concatOfAttrs;
+    pipe fileMap [
+      (targetAttrsValue targetNames)
+      concatOfAttrs
+    ];
   file =
-    (
-      fileMap
-      |> concatFileMap [
-        "homeDirectory"
-        "dotConfig"
-        "dotLocalShare"
-      ]
-    )
-    // (
-      fileMap.Linux
-      |> concatFileMap [
-        "homeDirectory"
-        "dotConfig"
-      ]
-    );
+    (concatFileMap [
+      "homeDirectory"
+      "dotConfig"
+      "dotLocalShare"
+    ] fileMap)
+    // (concatFileMap [
+      "homeDirectory"
+      "dotConfig"
+    ] fileMap.Linux);
 in
 {
   home = {
