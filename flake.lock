@@ -1274,11 +1274,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1757928897,
-        "narHash": "sha256-dDIsRd6cKLkZZ0Y7EgsLgZNRoURMRJYVmEUh6HcC1mE=",
+        "lastModified": 1757997015,
+        "narHash": "sha256-1K36QXbKAfPDxyIn112M7HjD+kpcwq/2ju2JjAFnmrA=",
         "owner": "yasunori0418",
         "repo": "nur-packages",
-        "rev": "36e122b802e118b91cbc4659e81d86b51fac6173",
+        "rev": "7a03b861db4b6c215619819b273ea41b67162867",
         "type": "github"
       },
       "original": {
