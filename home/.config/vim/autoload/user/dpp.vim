@@ -1,14 +1,11 @@
 vim9script
 
-const GetBaseDir = (dir: string): string => {
-  const dir_path = ['$XDG_CONFIG_HOME/vim'->expand(), dir]->join('/')
-  return dir == null_string ? dir_path->substitute('\/$', '', '') : dir_path
-}
-const base_dir = GetBaseDir(null_string)
+const GetBaseDir = (dir: string): string => ['$XDG_CONFIG_HOME/vim'->expand(), dir]->join('/')
+const base_dir = ['$XDG_CONFIG_HOME/vim'->expand(), null_string]->join('/')
 const rc_dir = GetBaseDir('rc')
 const toml_dir = GetBaseDir('toml')
 GetBaseDir('hooks')->setenv('HOOKS_DIR')
-const dpp_cache = '$XDG_CACHE_HOME/dpp_vim9'->expand()
+const dpp_base_path = '$XDG_CACHE_HOME/dpp'->expand()
 
 class VimrcSkipRule
   var name: string
@@ -157,20 +154,20 @@ def AutoInstallPlugins(): void
   endif
 enddef
 
-def MakeState(): void
+def MakeState(extraArgs: ExtraArgs): void
   echomsg $'{base_dir}/dpp/config.ts'
-  dpp#make_state(dpp_cache, $'{base_dir}/dpp/config.ts')
+  dpp#make_state(dpp_base_path, '$XDG_CONFIG_HOME/dpp/config.ts'->expand(), 'vim', extraArgs.ToDict())
   augroup RcAutocmds
     autocmd User Dpp:makeStatePost ++once ++nested {
-      dpp#min#load_state(dpp_cache)
+      dpp#min#load_state(dpp_base_path)
       AutoInstallPlugins()
     }
   augroup END
 enddef
 
-def DppSetup(): void
-  if dpp#min#load_state(dpp_cache)
-    denops#server#wait_async(() => MakeState())
+def DppSetup(extraArgs: ExtraArgs): void
+  if dpp#min#load_state(dpp_base_path)
+    denops#server#wait_async(() => MakeState(extraArgs))
   else
     AutoInstallPlugins()
   endif
@@ -205,7 +202,6 @@ export def Setup(): void
     noLazyTomlNames,
     checkFilesGlobs,
   )
-  const dpp_base_path = '$XDG_CACHE_HOME/dpp'->expand()
 
   # 本当はmapとかforeachでやりたい
   for name in [
@@ -219,6 +215,6 @@ export def Setup(): void
     Plugin.new(name, 'github.com', dpp_base_path)
   endfor
 
-  DppSetup()
+  DppSetup(extraArgs)
 enddef
 
