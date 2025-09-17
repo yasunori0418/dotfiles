@@ -18,6 +18,10 @@ Stop:
 SubagentStop:
 
 PreCompact:
+  - matcher: "auto"
+    actions:
+      - type: output
+        message: "直前の作業内容と最初の依頼内容は圧縮しないこと。過去の作業途中の内容を圧縮"
 
 SessionStart:
 
