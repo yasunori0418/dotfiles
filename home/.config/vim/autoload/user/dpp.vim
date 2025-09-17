@@ -1,5 +1,15 @@
 vim9script
 
+const GetBaseDir = (dir: string): string => {
+  const dir_path = ['$XDG_CONFIG_HOME/vim'->expand(), dir]->join('/')
+  return dir == null_string ? dir_path->substitute('\/$', '', '') : dir_path
+}
+const base_dir = GetBaseDir(null_string)
+const rc_dir = GetBaseDir('rc')
+const toml_dir = GetBaseDir('toml')
+GetBaseDir('hooks')->setenv('HOOKS_DIR')
+const dpp_cache = '$XDG_CACHE_HOME/dpp_vim9'->expand()
+
 class VimrcSkipRule
   var name: string
   var condition: bool
@@ -122,7 +132,7 @@ def CheckFiles(): list<string>
     '**/*.ts',
     'vimrc',
   ]
-  const target_directories = [g:base_dir, expand('~/dotfiles/config/vim')]->join(',')
+  const target_directories = [base_dir, expand('~/dotfiles/config/vim')]->join(',')
   var check_files = []
   for pattern in glob_patterns
     add(
@@ -148,17 +158,18 @@ def AutoInstallPlugins(): void
 enddef
 
 def MakeState(): void
-  dpp#make_state(g:dpp_cache, $'{g:base_dir}/dpp/config.ts')
+  echomsg $'{base_dir}/dpp/config.ts'
+  dpp#make_state(dpp_cache, $'{base_dir}/dpp/config.ts')
   augroup RcAutocmds
     autocmd User Dpp:makeStatePost ++once ++nested {
-      dpp#min#load_state(g:dpp_cache)
+      dpp#min#load_state(dpp_cache)
       AutoInstallPlugins()
     }
   augroup END
 enddef
 
 def DppSetup(): void
-  if dpp#min#load_state(g:dpp_cache)
+  if dpp#min#load_state(dpp_cache)
     denops#server#wait_async(() => MakeState())
   else
     AutoInstallPlugins()
@@ -173,19 +184,12 @@ def DppSetup(): void
     group: 'RcAutocmds',
     event: 'User',
     pattern: 'Dpp:makeStatePost',
-    cmd: 'echowindow "dpp make_state() is done" | quitall!',
+    cmd: 'echowindow "dpp make_state() is done"',
   }
   [check_files_autocmd, make_state_post_autocmd]->autocmd_add()
 enddef
 
 export def Setup(): void
-  const GetBaseDir = (dir: string): string =>
-    ['$XDG_CONFIG_HOME/vim'->expand(), dir]->join('/')
-  const base_dir = GetBaseDir(null_string)
-  const rc_dir = GetBaseDir('rc')
-  const toml_dir = GetBaseDir('toml')
-  GetBaseDir('hooks')->setenv('HOOKS_DIR')
-
   const vimrcSkipRules: list<VimrcSkipRule> = []
   const directories: Directories = Directories.new(base_dir, toml_dir, rc_dir)
   const noLazyTomlNames: list<string> = ['dpp.toml', 'no_lazy.toml']
@@ -217,3 +221,4 @@ export def Setup(): void
 
   DppSetup()
 enddef
+
