@@ -142,7 +142,8 @@ export def Setup(): void
     '**/*.ts',
     'vimrc',
   ]
-  const extraArgs: types.ExtraArgs = types.ExtraArgs.new( vimrcSkipRules,
+  const extraArgs: types.ExtraArgs = types.ExtraArgs.new(
+    vimrcSkipRules,
     directories,
     noLazyTomlNames,
     checkFilesGlobs,
