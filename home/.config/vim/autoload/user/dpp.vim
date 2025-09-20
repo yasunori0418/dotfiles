@@ -67,8 +67,9 @@ defcompile Plugin.new
 
 def CheckFilesPattern(glob_patterns: list<string>): string
   return glob_patterns
-    ->mapnew((_, glob_pattern) => $'~/dotfiles/home/.config/vim/{glob_pattern}'->expand())
-    ->join(',')
+    ->mapnew((_, glob_pattern) => 
+      $'~/dotfiles/home/.config/vim/{glob_pattern},$XDG_CONFIG_HOME/vim/{glob_pattern}'->expand()
+    )->join(',')
 enddef
 defcompile CheckFilesPattern
 
@@ -113,7 +114,10 @@ def DppSetup(extraArgs: types.ExtraArgs): void
     group: 'RcAutocmds',
     event: 'BufWritePost',
     pattern: CheckFilesPattern(extraArgs.check_files_globs),
-    cmd: 'echowindow "dpp check_files() is run" | dpp#check_files()',
+    cmd: [
+      'echowindow "dpp check_files() is run"',
+      'call dpp#check_files()'
+    ]->join(' | '),
   }
   const make_state_post_autocmd = {
     group: 'RcAutocmds',
