@@ -1,71 +1,13 @@
 vim9script
 
+import autoload './dpp/types.vim' as types
+
 const GetBaseDir = (dir: string): string => ['$XDG_CONFIG_HOME/vim'->expand(), dir]->join('/')
 const base_dir = ['$XDG_CONFIG_HOME/vim'->expand(), null_string]->join('/')
 const rc_dir = GetBaseDir('rc')
 const toml_dir = GetBaseDir('toml')
 GetBaseDir('hooks')->setenv('HOOKS_DIR')
 const dpp_base_path = '$XDG_CACHE_HOME/dpp'->expand()
-
-class VimrcSkipRule
-  var name: string
-  var condition: bool
-
-  def new(this.name, this.condition)
-  enddef
-
-  def ToDict(): dict<any>
-    return {
-      name: this.name,
-      condition: this.condition,
-    }
-  enddef
-endclass
-
-class Directories
-  var base: string;
-  var rc: string;
-  var toml: string;
-
-  def new(this.base, this.rc, this.toml)
-  enddef
-
-  def ToDict(): dict<any>
-    return {
-      base: this.base,
-      rc: this.rc,
-      toml: this.toml,
-    }
-  enddef
-endclass
-
-class ExtraArgs
-  var vimrc_skip_rules: list<VimrcSkipRule>
-  var directories: Directories
-  var no_lazy_toml_names: list<string>
-  var check_files_globs: list<string>
-
-  def new(
-    this.vimrc_skip_rules,
-    this.directories,
-    this.no_lazy_toml_names,
-    this.check_files_globs,
-  )
-  enddef
-
-  def ToDict(): dict<any>
-    var vimrc_skip_rules = []
-    for rule in this.vimrc_skip_rules
-      vimrc_skip_rules->add(rule.ToDict())
-    endfor
-    return {
-      vimrcSkipRules: vimrc_skip_rules,
-      directories: this.directories.ToDict(),
-      noLazyTomlNames: this.no_lazy_toml_names,
-      checkFilesGlobs: this.check_files_globs,
-    }
-  enddef
-endclass
 
 class Plugin
   var repo: string
@@ -121,6 +63,7 @@ class Plugin
     execute($'set runtimepath^={this.repo_dir}')
   enddef
 endclass
+defcompile Plugin.new
 
 def CheckFiles(): list<string>
   const glob_patterns = [
@@ -139,6 +82,7 @@ def CheckFiles(): list<string>
   endfor
   return flattennew(check_files)
 enddef
+defcompile CheckFiles
 
 def AutoInstallPlugins(): void
   const not_install_plugins = dpp#get()
@@ -153,9 +97,9 @@ def AutoInstallPlugins(): void
     augroup END
   endif
 enddef
+defcompile AutoInstallPlugins
 
-def MakeState(extraArgs: ExtraArgs): void
-  echomsg $'{base_dir}/dpp/config.ts'
+def MakeState(extraArgs: types.ExtraArgs): void
   dpp#make_state(dpp_base_path, '$XDG_CONFIG_HOME/dpp/config.ts'->expand(), 'vim', extraArgs.ToDict())
   augroup RcAutocmds
     autocmd User Dpp:makeStatePost ++once ++nested {
@@ -164,8 +108,9 @@ def MakeState(extraArgs: ExtraArgs): void
     }
   augroup END
 enddef
+defcompile MakeState
 
-def DppSetup(extraArgs: ExtraArgs): void
+def DppSetup(extraArgs: types.ExtraArgs): void
   if dpp#min#load_state(dpp_base_path)
     denops#server#wait_async(() => MakeState(extraArgs))
   else
@@ -185,10 +130,11 @@ def DppSetup(extraArgs: ExtraArgs): void
   }
   [check_files_autocmd, make_state_post_autocmd]->autocmd_add()
 enddef
+defcompile DppSetup
 
 export def Setup(): void
-  const vimrcSkipRules: list<VimrcSkipRule> = []
-  const directories: Directories = Directories.new(base_dir, rc_dir, toml_dir)
+  const vimrcSkipRules: list<types.VimrcSkipRule> = []
+  const directories: types.Directories = types.Directories.new(base_dir, rc_dir, toml_dir)
   const noLazyTomlNames: list<string> = ['dpp.toml', 'no_lazy.toml']
   const checkFilesGlobs: list<string> = [
     '**/*.toml',
@@ -196,8 +142,7 @@ export def Setup(): void
     '**/*.ts',
     'vimrc',
   ]
-  const extraArgs: ExtraArgs = ExtraArgs.new(
-    vimrcSkipRules,
+  const extraArgs: types.ExtraArgs = types.ExtraArgs.new( vimrcSkipRules,
     directories,
     noLazyTomlNames,
     checkFilesGlobs,
@@ -217,4 +162,4 @@ export def Setup(): void
 
   DppSetup(extraArgs)
 enddef
-
+defcompile Setup
