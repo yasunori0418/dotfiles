@@ -149,17 +149,14 @@ export def Setup(): void
     checkFilesGlobs,
   )
 
-  # 本当はmapとかforeachでやりたい
-  for name in [
+  [
     'Shougo/dpp-ext-lazy',
     'Shougo/dpp-ext-toml',
     'Shougo/dpp-ext-installer',
     'Shougo/dpp-protocol-git',
     'Shougo/dpp.vim',
     'vim-denops/denops.vim',
-  ]
-    Plugin.new(name, 'github.com', dpp_base_path)
-  endfor
+  ]->foreach((_, name: string) => Plugin.new(name, 'github.com', dpp_base_path))
 
   DppSetup(extraArgs)
 enddef

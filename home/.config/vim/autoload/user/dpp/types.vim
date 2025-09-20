@@ -51,12 +51,8 @@ export class ExtraArgs implements model.Model
   enddef
 
   def ToDict(): dict<any>
-    var vimrc_skip_rules = []
-    for rule in this.vimrc_skip_rules
-      vimrc_skip_rules->add(rule.ToDict())
-    endfor
     return {
-      vimrcSkipRules: vimrc_skip_rules,
+      vimrcSkipRules: this.vimrc_skip_rules->mapnew((rule) => rule.ToDict()),
       directories: this.directories.ToDict(),
       noLazyTomlNames: this.no_lazy_toml_names,
       checkFilesGlobs: this.check_files_globs,
