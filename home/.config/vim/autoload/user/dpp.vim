@@ -188,7 +188,7 @@ enddef
 
 export def Setup(): void
   const vimrcSkipRules: list<VimrcSkipRule> = []
-  const directories: Directories = Directories.new(base_dir, toml_dir, rc_dir)
+  const directories: Directories = Directories.new(base_dir, rc_dir, toml_dir)
   const noLazyTomlNames: list<string> = ['dpp.toml', 'no_lazy.toml']
   const checkFilesGlobs: list<string> = [
     '**/*.toml',
