@@ -65,24 +65,12 @@ class Plugin
 endclass
 defcompile Plugin.new
 
-def CheckFiles(): list<string>
-  const glob_patterns = [
-    '**/*.toml',
-    '**/*.vim',
-    '**/*.ts',
-    'vimrc',
-  ]
-  const target_directories = [base_dir, expand('~/dotfiles/config/vim')]->join(',')
-  var check_files = []
-  for pattern in glob_patterns
-    add(
-      check_files,
-      globpath(target_directories, pattern, v:true, v:true)
-    )
-  endfor
-  return flattennew(check_files)
+def CheckFilesPattern(glob_patterns: list<string>): string
+  return glob_patterns
+    ->mapnew((_, glob_pattern) => $'~/dotfiles/home/.config/vim/{glob_pattern}')
+    ->join(',')
 enddef
-defcompile CheckFiles
+defcompile CheckFilesPattern
 
 def AutoInstallPlugins(): void
   const not_install_plugins = dpp#get()
@@ -119,7 +107,7 @@ def DppSetup(extraArgs: types.ExtraArgs): void
   const check_files_autocmd = {
     group: 'RcAutocmds',
     event: 'BufWritePost',
-    pattern: CheckFiles()->join(','),
+    pattern: CheckFilesPattern(extraArgs.check_files_globs),
     cmd: 'echowindow "dpp check_files() is run" | dpp#check_files()',
   }
   const make_state_post_autocmd = {
