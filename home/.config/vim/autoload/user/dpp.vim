@@ -67,7 +67,7 @@ defcompile Plugin.new
 
 def CheckFilesPattern(glob_patterns: list<string>): string
   return glob_patterns
-    ->mapnew((_, glob_pattern) => $'~/dotfiles/home/.config/vim/{glob_pattern}')
+    ->mapnew((_, glob_pattern) => $'~/dotfiles/home/.config/vim/{glob_pattern}'->expand())
     ->join(',')
 enddef
 defcompile CheckFilesPattern
