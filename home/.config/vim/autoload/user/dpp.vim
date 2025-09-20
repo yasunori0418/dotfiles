@@ -105,7 +105,8 @@ enddef
 defcompile MakeState
 
 def DppSetup(extraArgs: types.ExtraArgs): void
-  if dpp#min#load_state(dpp_base_path)
+  const is_state_stale_or_missing = dpp#min#load_state(dpp_base_path)
+  if is_state_stale_or_missing
     denops#server#wait_async(() => MakeState(extraArgs))
   else
     AutoInstallPlugins()
@@ -123,7 +124,10 @@ def DppSetup(extraArgs: types.ExtraArgs): void
     group: 'RcAutocmds',
     event: 'User',
     pattern: 'Dpp:makeStatePost',
-    cmd: 'echowindow "dpp make_state() is done"',
+    cmd: [
+      'echowindow "dpp make_state() is done"',
+      is_state_stale_or_missing ? ('DPP_DEBUG'->getenv() == null ? 'quitall!' : 'echowindow "DEBUG!!"') : ''
+    ]->join(' | '),
   }
   [check_files_autocmd, make_state_post_autocmd]->autocmd_add()
 enddef
