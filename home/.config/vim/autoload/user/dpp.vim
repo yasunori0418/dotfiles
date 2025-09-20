@@ -88,7 +88,12 @@ enddef
 defcompile AutoInstallPlugins
 
 def MakeState(extraArgs: types.ExtraArgs): void
-  dpp#make_state(dpp_base_path, '$XDG_CONFIG_HOME/dpp/config.ts'->expand(), 'vim', extraArgs.ToDict())
+  dpp#make_state(
+    dpp_base_path,
+    '$XDG_CONFIG_HOME/dpp/config.ts'->expand(),
+    'vim',
+    extraArgs.ToDict()
+  )
   augroup RcAutocmds
     autocmd User Dpp:makeStatePost ++once ++nested {
       dpp#min#load_state(dpp_base_path)
