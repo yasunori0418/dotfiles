@@ -17,7 +17,7 @@ let s:cache_dir = '$XDG_CACHE_HOME/vim'->expand()
  " make backup file.
 let s:backupdir = $'{s:cache_dir}/backup'
 if !isdirectory(s:backupdir)
-  s:backupdir->mkdir('p')
+  call mkdir(s:backupdir, 'p')
 endif
 execute $'set backupdir={s:backupdir}'
 set backup
@@ -25,7 +25,7 @@ set backup
 " make swap file.
 let s:swapdir = $'{s:cache_dir}/swap'
 if !isdirectory(s:swapdir)
-  s:swapdir->mkdir('p')
+  call mkdir(s:swapdir, 'p')
 endif
 execute $'set directory={s:swapdir}'
 set swapfile
@@ -33,7 +33,7 @@ set swapfile
 " make undo file.
 let s:undodir = $'{s:cache_dir}/undo'
 if isdirectory(s:undodir)
-  s:undodir->mkdir('p')
+  call mkdir(s:undodir, 'p')
 endif
 execute $'set undodir={s:undodir}'
 set undofile
