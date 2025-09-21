@@ -11,6 +11,35 @@ set fileencoding=utf-8
 set fileencodings=utf-8,sjis,iso-2022-jp,euc-jp
 " }}}
 
+" Cache {{{
+let s:cache_dir = '$XDG_CACHE_HOME/vim'->expand()
+
+ " make backup file.
+let s:backupdir = $'{s:cache_dir}/backup'
+if !isdirectory(s:backupdir)
+  s:backupdir->mkdir('p')
+endif
+execute $'set backupdir={s:backupdir}'
+set backup
+
+" make swap file.
+let s:swapdir = $'{s:cache_dir}/swap'
+if !isdirectory(s:swapdir)
+  s:swapdir->mkdir('p')
+endif
+execute $'set directory={s:swapdir}'
+set swapfile
+
+" make undo file.
+let s:undodir = $'{s:cache_dir}/undo'
+if isdirectory(s:undodir)
+  s:undodir->mkdir('p')
+endif
+execute $'set undodir={s:undodir}'
+set undofile
+
+" }}}
+
 " Automatic line feed code recognition.
 set fileformats=unix,dos
 
