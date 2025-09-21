@@ -56,7 +56,19 @@ set virtualedit=block
 set clipboard=unnamedplus,unnamed
 
 " diff vertical view
-set diffopt+=vertical,algorithm:histogram,indent-heuristic
+const s:diffopt = [
+\ "internal",
+\ "filler",
+\ "closeoff",
+\ "indent-heuristic",
+\ "inline:char",
+\ "vertical",
+\ "algorithm:histogram",
+\ "linematch:60",
+\ "iwhite",
+\ "iblank",
+\ ]->join(',')
+execute $'set diffopt={s:diffopt}'
 
 " no beep
 set belloff=all

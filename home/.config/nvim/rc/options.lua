@@ -59,6 +59,8 @@ vim.opt.diffopt = {
     "algorithm:histogram",
     "indent-heuristic",
     "linematch:60",
+    "iwhiteall",
+    "iblank",
 }
 
 -- For pum.vim
