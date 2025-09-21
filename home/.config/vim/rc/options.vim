@@ -98,7 +98,7 @@ set wildmenu
 
 " Command history.
 set history=5000
-" }}} 
+" }}}
 
 " Invisible characters {{{
 " Invisible characters
