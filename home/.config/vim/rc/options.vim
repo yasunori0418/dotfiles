@@ -53,7 +53,7 @@ set autoread
 set virtualedit=block
 
 " Use the clipboard on linux systems.
-set clipboard+=unnamedplus,unnamed
+set clipboard=unnamedplus,unnamed
 
 " diff vertical view
 set diffopt+=vertical,algorithm:histogram,indent-heuristic
