@@ -32,8 +32,8 @@
       # Refer: https://nixos.wiki/wiki/Nvidia#Configuring_Optimus_PRIME:_Bus_ID_Values_.28Mandatory.29
       prime = {
         sync.enable = true;
-        nvidiaBusId = "PCI:01:00:0";
-        amdgpuBusId = "PCI:17:00:0";
+        nvidiaBusId = "PCI:1:0:0";
+        amdgpuBusId = "PCI:17:0:0";
       };
     };
   };
