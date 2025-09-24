@@ -11,6 +11,7 @@
       hackgen-nf-font
       font-awesome_6
       moralerspace-hw
+      moralerspace-hwjpdoc
     ];
   };
 }
