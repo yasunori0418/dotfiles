@@ -128,6 +128,7 @@ in
     myNurPkgs.ccusage
     myNurPkgs.cchook
     myNurPkgs.ccexp
+    myNurPkgs.cc-sdd
   ]
   # ++ (optionalIsLinux [ inputs.claude-desktop.packages.${system}.claude-desktop ])
   ;
