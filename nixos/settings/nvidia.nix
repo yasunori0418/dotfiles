@@ -1,5 +1,5 @@
 # Refer: https://nixos.wiki/wiki/Nvidia
-{ config, ... }:
+{ config, pkgs, ... }:
 {
   hardware = {
     graphics.enable = true;
@@ -30,11 +30,33 @@
       package = config.boot.kernelPackages.nvidiaPackages.stable;
 
       # Refer: https://nixos.wiki/wiki/Nvidia#Configuring_Optimus_PRIME:_Bus_ID_Values_.28Mandatory.29
-      prime = {
-        sync.enable = true;
-        nvidiaBusId = "PCI:1:0:0";
-        amdgpuBusId = "PCI:17:0:0";
-      };
+      prime =
+        let
+          # VERY VERY EXPERIMENTAL!!
+          displayBusId =
+            vendor:
+            builtins.readFile (
+              pkgs.runCommand "display-bus-id"
+                {
+                  buildInputs = with pkgs; [
+                    pciutils
+                    gnused
+                    gnugrep
+                    coreutils
+                  ];
+                }
+                ''
+                  for i in $(lspci | grep -i -e 'vga' | grep -i '${vendor}' | cut -d ' ' -f1 | sed -e 's/[:\.]/ /g')
+                          do
+                          echo $((16#$i))
+                        done | paste -sd ':' | xargs -I{} printf 'PCI:{}' > $out ''
+            );
+        in
+        {
+          sync.enable = true;
+          nvidiaBusId = displayBusId "nvidia"; # "PCI:1:0:0"
+          amdgpuBusId = displayBusId "amd"; # "PCI:17:0:0"
+        };
     };
   };
   boot = {
