@@ -46,7 +46,7 @@
                   ];
                 }
                 ''
-                  for i in $(lspci | grep -i -e 'vga' | grep -i '${vendor}' | cut -d ' ' -f1 | sed -e 's/[:\.]/ /g')
+                  for i in $(lspci | grep -i 'vga' | grep -i '${vendor}' | cut -d ' ' -f1 | sed -e 's/[:\.]/ /g')
                           do
                           echo $((16#$i))
                         done | paste -sd ':' | xargs -I{} printf 'PCI:{}' > $out ''
