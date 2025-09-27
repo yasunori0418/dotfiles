@@ -36,7 +36,3 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 {私の入力に対して必要なデータ出力}
 ```
-
-## 一時ファイル使用時のルール
-
-- 確認・検証・デバッグなどで一時的なファイルを使う時はリポジトリの配下に `tmp_claude/` ディレクトリを作って、そこを使うようにしてください
