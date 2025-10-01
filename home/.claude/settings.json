@@ -11,17 +11,17 @@
   "includeCoAuthoredBy": false,
   "permissions": {
     "allow": [
-      "Agent",
       "Bash",
+      "BashOutput",
       "Edit",
       "Glob",
       "Grep",
-      "LS",
       "MultiEdit",
       "NotebookEdit",
       "NotebookRead",
       "Read",
-      "TodoRead",
+      "SlashCommand",
+      "Task",
       "TodoWrite",
       "WebFetch",
       "WebSearch",
@@ -53,6 +53,7 @@
     ],
     "defaultMode": "acceptEdits"
   },
+  "enableAllProjectMcpServers": true,
   "hooks": {
     "PreToolUse": [
       {
