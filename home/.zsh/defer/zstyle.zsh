@@ -5,7 +5,7 @@
 zstyle ':completion::complete:*' use-cache true
 zstyle ':completion:*:default' menu select=1
 
-#大文字、小文字を区別せず補完する
+# 大文字、小文字を区別せず補完する
 zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}'
 
 # 補完関数の表示を強化する
@@ -23,19 +23,19 @@ zstyle ':completion:*' use-cache true
 # マッチ種別を別々に表示
 zstyle ':completion:*' group-name ''
 
-#rehash不要にする
+# rehash不要にする
 zstyle ":completion:*:commands" rehash 1
 
-#補完でカラーを使用する
+# 補完でカラーを使用する
 zstyle ':completion:*' list-colors ${LS_COLORS}
 
-#kill の候補にも色付き表示
+# kill の候補にも色付き表示
 zstyle ':completion:*:*:kill:*:processes' list-colors '=(#b) #([%0-9]#)*=0=01;31'
 
-#コマンドにsudoを付けても補完
+# コマンドにsudoを付けても補完
 zstyle ':completion:*:sudo:*' command-path /usr/local/bin /usr/bin /bin /usr/local/sbin
 
-#何も入力されていないときのTABでTABが挿入されるのを抑制
+# 何も入力されていないときのTABでTABが挿入されるのを抑制
 zstyle ':completion:*' insert-tab false
 
 # セパレータを設定する
