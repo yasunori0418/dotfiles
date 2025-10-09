@@ -14,42 +14,43 @@
       "Bash",
       "BashOutput",
       "Edit",
+      "ExitPlanMode",
       "Glob",
       "Grep",
-      "MultiEdit",
       "NotebookEdit",
-      "NotebookRead",
       "Read",
       "SlashCommand",
       "Task",
       "TodoWrite",
-      "WebFetch",
       "WebSearch",
       "Write"
     ],
-    "deny": [
-      "Bash(sudo:*)",
+    "ask":[
+      "Bash(git push:*)",
+      "KillShell",
+      "WebFetch",
+      "Bash(curl:*)",
+      "Bash(wget:*)",
       "Bash(rm:*)",
       "Bash(rm -rf:*)",
-      "Bash(git push:*)",
+      "Bash(psql:*)",
+      "Bash(mysql:*)",
+      "Bash(mongod:*)"
+    ],
+    "deny": [
+      "Bash(sudo:*)",
       "Bash(git reset:*)",
       "Bash(git rebase:*)",
       "Read(.env.*)",
       "Read(id_rsa)",
       "Read(id_ed25519)",
-      "Read(~/.ssh/*)",
       "Read(**/*token*)",
       "Read(**/*key*)",
       "Write(.env*)",
       "Write(**/secrets/**)",
-      "Bash(curl:*)",
-      "Bash(wget:*)",
       "Bash(nc:*)",
       "Bash(npm uninstall:*)",
-      "Bash(npm remove:*)",
-      "Bash(psql:*)",
-      "Bash(mysql:*)",
-      "Bash(mongod:*)"
+      "Bash(npm remove:*)"
     ],
     "defaultMode": "acceptEdits"
   },
@@ -150,5 +151,6 @@
     "type": "command",
     "command": "bunx ccusage statusline",
     "padding": 0
-  }
+  },
+  "alwaysThinkingEnabled": true
 }
