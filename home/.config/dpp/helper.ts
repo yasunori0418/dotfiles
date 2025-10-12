@@ -32,18 +32,13 @@ type GetExtFunc<P extends BaseParams, E extends BaseExt<P>> = (
   args: ConfigArguments,
 ) => Promise<Ext<P, E>>;
 
-export type Protocols = Record<string, Protocol>;
-
-export const getProtocols = async ({
-  dispatcher,
-}: Denops): Promise<Protocols> =>
-  (await dispatcher.getProtocols()) as Protocols;
+export type ProtocolRecord = Record<string, Protocol>;
 
 export type ExtArgs<P extends BaseParams, E extends BaseExt<P>> = {
   denops: Denops;
   context: Context;
   options: DppOptions;
-  protocols: Protocols;
+  protocols: ProtocolRecord;
   ext: E | undefined;
   extOptions: ExtOptions;
   extParams: P;
@@ -58,7 +53,7 @@ export const generateExtArgs = async (
 > => {
   const { denops, contextBuilder } = args;
   const [context, options] = await contextBuilder.get(denops);
-  const protocols = await getProtocols(denops);
+  const protocols = (await denops.dispatcher.getProtocols()) as ProtocolRecord;
   return async <P extends BaseParams, E extends BaseExt<P>>(
     getExtFunc: GetExtFunc<P, E>,
   ): Promise<ExtArgs<P, E>> => {
