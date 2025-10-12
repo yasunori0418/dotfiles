@@ -1,17 +1,12 @@
 import {
   ConfigArguments,
-  Context,
-  Denops,
-  DppOptions,
-  ExtOptions,
   mergeFtplugins,
   MultipleHook,
   Plugin,
-  Protocol,
   TomlExt,
   TomlParams,
 } from "../deps.ts";
-import { Ext, getExt } from "../helper.ts";
+import { Ext, ExtArgs, getExt } from "../helper.ts";
 
 type GetTomlExtResults = Ext<TomlParams, TomlExt>;
 
@@ -23,13 +18,7 @@ export const getTomlExt = async (
 export type GatherTomlsArgs = {
   path: string;
   noLazyTomlNames: string[];
-  denops: Denops;
-  context: Context;
-  options: DppOptions;
-  protocols: Record<string, Protocol>;
-  tomlExt: TomlExt | undefined;
-  tomlOptions: ExtOptions;
-  tomlParams: TomlParams;
+  tomlExtArgs: ExtArgs<TomlParams, TomlExt>;
 };
 
 export type GatherTomlsResults = {
@@ -57,16 +46,19 @@ const gatherTomlFiles = (
     });
 
 export const gatherTomls = async ({
-  denops,
-  context,
-  options,
-  protocols,
-  tomlExt,
-  tomlOptions,
-  tomlParams,
+  tomlExtArgs,
   path,
   noLazyTomlNames,
 }: GatherTomlsArgs): Promise<GatherTomlsResults> => {
+  const {
+    denops,
+    context,
+    options,
+    protocols,
+    ext: tomlExt,
+    extOptions: tomlOptions,
+    extParams: tomlParams,
+  } = tomlExtArgs;
   if (!tomlExt) throw "Failed load toml extension.";
   const action = tomlExt.actions.load;
   const tomlPromises = gatherTomlFiles(path, noLazyTomlNames).map((tomlFile) =>

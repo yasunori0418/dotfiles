@@ -1,16 +1,11 @@
 import {
   ConfigArguments,
-  Context,
-  Denops,
-  DppOptions,
-  ExtOptions,
   LazyExt,
   LazyMakeStateResult,
   LazyParams,
   Plugin,
-  Protocol,
 } from "../deps.ts";
-import { Ext, getExt } from "../helper.ts";
+import { Ext, ExtArgs, getExt } from "../helper.ts";
 
 export type GetLazyExtResults = Ext<LazyParams, LazyExt>;
 
@@ -20,26 +15,23 @@ export const getLazyExt = async (
   (await getExt<LazyParams, LazyExt>(args, "lazy")) as GetLazyExtResults;
 
 export type makeStateArgs = {
-  denops: Denops;
-  context: Context;
-  options: DppOptions;
-  protocols: Record<string, Protocol>;
-  lazyExt: LazyExt | undefined;
-  lazyOptions: ExtOptions;
-  lazyParams: LazyParams;
+  lazyExtArgs: ExtArgs<LazyParams, LazyExt>;
   plugins: Plugin[];
 };
 
 export const makeState = async ({
-  denops,
-  context,
-  options,
-  protocols,
-  lazyExt,
-  lazyOptions,
-  lazyParams,
+  lazyExtArgs,
   plugins,
 }: makeStateArgs): Promise<LazyMakeStateResult | undefined> => {
+  const {
+    denops,
+    context,
+    options,
+    protocols,
+    ext: lazyExt,
+    extOptions: lazyOptions,
+    extParams: lazyParams,
+  } = lazyExtArgs;
   if (!lazyExt) throw "Failed load lazy extension.";
   const action = lazyExt.actions.makeState;
   return await action.callback({

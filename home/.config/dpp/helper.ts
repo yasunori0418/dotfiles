@@ -2,7 +2,9 @@ import {
   BaseExt,
   BaseParams,
   ConfigArguments,
+  Context,
   Denops,
+  DppOptions,
   ensure,
   expandGlobSync,
   ExtOptions,
@@ -26,12 +28,52 @@ export const getExt = async <P extends BaseParams, E extends BaseExt<P>>(
   extName: ValidExt,
 ): Promise<Ext<P, E>> => (await denops.dispatcher.getExt(extName)) as Ext<P, E>;
 
+type GetExtFunc<P extends BaseParams, E extends BaseExt<P>> = (
+  args: ConfigArguments,
+) => Promise<Ext<P, E>>;
+
 export type Protocols = Record<string, Protocol>;
 
 export const getProtocols = async ({
   dispatcher,
 }: Denops): Promise<Protocols> =>
   (await dispatcher.getProtocols()) as Protocols;
+
+export type ExtArgs<P extends BaseParams, E extends BaseExt<P>> = {
+  denops: Denops;
+  context: Context;
+  options: DppOptions;
+  protocols: Protocols;
+  ext: E | undefined;
+  extOptions: ExtOptions;
+  extParams: P;
+};
+
+export const generateExtArgs = async (
+  args: ConfigArguments,
+): Promise<
+  <P extends BaseParams, E extends BaseExt<P>>(
+    getExtFunc: GetExtFunc<P, E>,
+  ) => Promise<ExtArgs<P, E>>
+> => {
+  const { denops, contextBuilder } = args;
+  const [context, options] = await contextBuilder.get(denops);
+  const protocols = await getProtocols(denops);
+  return async <P extends BaseParams, E extends BaseExt<P>>(
+    getExtFunc: GetExtFunc<P, E>,
+  ): Promise<ExtArgs<P, E>> => {
+    const [ext, extOptions, extParams] = await getExtFunc(args);
+    return {
+      denops,
+      context,
+      options,
+      protocols,
+      ext,
+      extOptions,
+      extParams,
+    };
+  };
+};
 
 export const gatherCheckFiles = (path: string, globs: string[]): string[] =>
   globs.flatMap((glob) =>

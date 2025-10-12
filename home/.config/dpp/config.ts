@@ -1,12 +1,16 @@
 import { BaseConfig, ConfigArguments, ConfigReturn, join } from "./deps.ts";
-import { assertExtraArgs, gatherCheckFiles, getProtocols } from "./helper.ts";
+import {
+  assertExtraArgs,
+  gatherCheckFiles,
+  generateExtArgs,
+} from "./helper.ts";
 import { gatherVimrcs } from "./helper/inlineVimrcs.ts";
 import { gatherTomls, getTomlExt } from "./helper/toml.ts";
 import { getLazyExt, makeState } from "./helper/lazy.ts";
 
 export class Config extends BaseConfig {
   override async config(args: ConfigArguments): Promise<ConfigReturn> {
-    const { denops, contextBuilder, basePath, extraArgs } = args;
+    const { contextBuilder, basePath, extraArgs } = args;
 
     const { vimrcSkipRules, directories, noLazyTomlNames, checkFilesGlobs } =
       assertExtraArgs(extraArgs);
@@ -42,32 +46,16 @@ export class Config extends BaseConfig {
       },
     });
 
-    const [context, options] = await contextBuilder.get(denops);
-    const protocols = await getProtocols(denops);
-
-    const [tomlExt, tomlOptions, tomlParams] = await getTomlExt(args);
+    const getExtArgsFunc = await generateExtArgs(args);
 
     const toml = await gatherTomls({
-      denops,
-      context,
-      options,
-      protocols,
-      tomlExt,
-      tomlOptions,
-      tomlParams,
+      tomlExtArgs: (await getExtArgsFunc(getTomlExt)),
       path: directories.toml,
       noLazyTomlNames,
     });
 
-    const [lazyExt, lazyOptions, lazyParams] = await getLazyExt(args);
     const lazyResult = await makeState({
-      denops,
-      context,
-      options,
-      protocols,
-      lazyExt,
-      lazyOptions,
-      lazyParams,
+      lazyExtArgs: (await getExtArgsFunc(getLazyExt)),
       plugins: toml.plugins,
     });
 
