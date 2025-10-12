@@ -127,12 +127,14 @@ export const omitProperties = <T extends object, K extends keyof T>(
  */
 export const logFileNameFormat = (date: Date): string =>
   `installer_${
-    date.toLocaleDateString("ja-JP", {
-      year: "numeric",
-      month: "2-digit",
-      day: "2-digit",
-      hour: "2-digit",
-      minute: "2-digit",
-      second: "2-digit",
-    }).replaceAll(new RegExp(/[\/ :]/, "g"), "")
+    date
+      .toLocaleDateString("ja-JP", {
+        year: "numeric",
+        month: "2-digit",
+        day: "2-digit",
+        hour: "2-digit",
+        minute: "2-digit",
+        second: "2-digit",
+      })
+      .replaceAll(new RegExp(/[\/ :]/, "g"), "")
   }.log`;
