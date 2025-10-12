@@ -122,3 +122,18 @@ export const omitProperties = <T extends object, K extends keyof T>(
   keys.forEach((key) => delete result[key]);
   return result as Omit<T, K>;
 };
+
+/**
+ * installer_YYYYmmddHHMMSS.log
+ */
+export const logFileNameFormat = (date: Date): string =>
+  `installer_${
+    date.toLocaleDateString("ja-JP", {
+      year: "numeric",
+      month: "2-digit",
+      day: "2-digit",
+      hour: "2-digit",
+      minute: "2-digit",
+      second: "2-digit",
+    }).replaceAll(new RegExp(/[\/ :]/, "g"), "")
+  }.log`;

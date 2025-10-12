@@ -3,6 +3,7 @@ import {
   assertExtraArgs,
   gatherCheckFiles,
   generateExtArgs,
+  logFileNameFormat,
 } from "./helper.ts";
 import { gatherVimrcs } from "./helper/inlineVimrcs.ts";
 import { gatherTomls, getTomlExt } from "./helper/toml.ts";
@@ -28,19 +29,7 @@ export class Config extends BaseConfig {
           checkDiff: false,
           logFilePath: join(
             basePath,
-            // installer_{YYYYMMDD}.log
-            `installer_${
-              new Date()
-                .toLocaleDateString("ja-JP", {
-                  year: "numeric",
-                  month: "2-digit",
-                  day: "2-digit",
-                  hour: "2-digit",
-                  minute: "2-digit",
-                  second: "2-digit",
-                })
-                .replaceAll(new RegExp(/[\/ :]/, "g"), "")
-            }.log`,
+            logFileNameFormat(new Date()),
           ),
         },
       },
