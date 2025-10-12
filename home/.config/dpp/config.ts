@@ -79,12 +79,8 @@ export class Config extends BaseConfig {
       plugins: toml.plugins,
     });
 
-    const checkFiles = checkFilesGlobs.flatMap((glob) =>
-      gatherCheckFiles(directories.base, glob)
-    );
-
     return {
-      checkFiles,
+      checkFiles: gatherCheckFiles(directories.base, checkFilesGlobs),
       hooksFiles: toml.hooksFiles,
       ftplugins: toml.ftplugins,
       multipleHooks: toml.multipleHooks,

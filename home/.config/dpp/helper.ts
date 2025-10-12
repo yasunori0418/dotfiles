@@ -26,13 +26,14 @@ export async function getExt<P extends BaseParams, E extends BaseExt<P>>(
   return (await denops.dispatcher.getExt(extName)) as Ext<P, E>;
 }
 
-export function gatherCheckFiles(path: string, glob: string): string[] {
-  return Array.from(
-    expandGlobSync(glob, {
-      root: path,
-    }),
-  ).map(({ path }: WalkEntry) => path);
-}
+export const gatherCheckFiles = (path: string, globs: string[]): string[] =>
+  globs.flatMap((glob) =>
+    Array.from(
+      expandGlobSync(glob, {
+        root: path,
+      }),
+    ).map(({ path }: WalkEntry) => path)
+  );
 
 type Directories = {
   base: string;
