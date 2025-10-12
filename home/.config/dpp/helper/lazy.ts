@@ -30,7 +30,7 @@ export type makeStateArgs = {
   plugins: Plugin[];
 };
 
-export async function makeState({
+export const makeState = async ({
   denops,
   context,
   options,
@@ -39,7 +39,7 @@ export async function makeState({
   lazyOptions,
   lazyParams,
   plugins,
-}: makeStateArgs): Promise<LazyMakeStateResult | undefined> {
+}: makeStateArgs): Promise<LazyMakeStateResult | undefined> => {
   if (!lazyExt) throw "Failed load lazy extension.";
   const action = lazyExt.actions.makeState;
   return await action.callback({
@@ -53,4 +53,4 @@ export async function makeState({
       plugins,
     },
   });
-}
+};
