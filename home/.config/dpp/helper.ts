@@ -21,12 +21,10 @@ export type Ext<P extends BaseParams, E extends BaseExt<P>> = [
 
 export type ValidExt = "toml" | "lazy";
 
-export async function getExt<P extends BaseParams, E extends BaseExt<P>>(
+export const getExt = async <P extends BaseParams, E extends BaseExt<P>>(
   { denops }: ConfigArguments,
   extName: ValidExt,
-): Promise<Ext<P, E>> {
-  return (await denops.dispatcher.getExt(extName)) as Ext<P, E>;
-}
+): Promise<Ext<P, E>> => (await denops.dispatcher.getExt(extName)) as Ext<P, E>;
 
 export type Protocols = Record<string, Protocol>;
 
