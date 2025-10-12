@@ -14,9 +14,10 @@ import { Ext, getExt } from "../helper.ts";
 
 export type GetLazyExtResults = Ext<LazyParams, LazyExt>;
 
-export async function getLazyExt(args: ConfigArguments) {
-  return await getExt<LazyParams, LazyExt>(args, "lazy");
-}
+export const getLazyExt = async (
+  args: ConfigArguments,
+): Promise<GetLazyExtResults> =>
+  (await getExt<LazyParams, LazyExt>(args, "lazy")) as GetLazyExtResults;
 
 export type makeStateArgs = {
   denops: Denops;
