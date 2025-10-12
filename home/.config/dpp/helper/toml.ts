@@ -15,11 +15,10 @@ import { Ext, getExt } from "../helper.ts";
 
 type GetTomlExtResults = Ext<TomlParams, TomlExt>;
 
-export async function getTomlExt(
+export const getTomlExt = async (
   args: ConfigArguments,
-): Promise<GetTomlExtResults> {
-  return (await getExt<TomlParams, TomlExt>(args, "toml")) as GetTomlExtResults;
-}
+): Promise<GetTomlExtResults> =>
+  (await getExt<TomlParams, TomlExt>(args, "toml")) as GetTomlExtResults;
 
 export type GatherTomlsArgs = {
   path: string;
