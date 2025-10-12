@@ -1,7 +1,8 @@
 -- lua_add {{{
 vim.g["mr#mru#predicates"] = {
     function(filename)
-        return vim.regex([[\vCOMMIT_EDITMSG|git-rebase-todo]]):match_str(filename) == nil
+        local excludes = vim.iter({ "COMMIT_EDITMSG", "git-rebase-todo" }):join("|")
+        return vim.regex([[\v]] .. excludes):match_str(filename) == nil
     end,
 }
 -- }}}
