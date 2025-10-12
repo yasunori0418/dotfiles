@@ -2,10 +2,12 @@ import {
   BaseExt,
   BaseParams,
   ConfigArguments,
+  Denops,
   ensure,
   expandGlobSync,
   ExtOptions,
   is,
+  Protocol,
   WalkEntry,
 } from "./deps.ts";
 
@@ -25,6 +27,13 @@ export async function getExt<P extends BaseParams, E extends BaseExt<P>>(
 ): Promise<Ext<P, E>> {
   return (await denops.dispatcher.getExt(extName)) as Ext<P, E>;
 }
+
+export type Protocols = Record<string, Protocol>;
+
+export const getProtocols = async ({
+  dispatcher,
+}: Denops): Promise<Protocols> =>
+  (await dispatcher.getProtocols()) as Protocols;
 
 export const gatherCheckFiles = (path: string, globs: string[]): string[] =>
   globs.flatMap((glob) =>

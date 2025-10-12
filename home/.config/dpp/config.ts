@@ -1,11 +1,5 @@
-import {
-  BaseConfig,
-  ConfigArguments,
-  ConfigReturn,
-  join,
-  Protocol,
-} from "./deps.ts";
-import { assertExtraArgs, gatherCheckFiles } from "./helper.ts";
+import { BaseConfig, ConfigArguments, ConfigReturn, join } from "./deps.ts";
+import { assertExtraArgs, gatherCheckFiles, getProtocols } from "./helper.ts";
 import { gatherVimrcs } from "./helper/inlineVimrcs.ts";
 import { gatherTomls, getTomlExt } from "./helper/toml.ts";
 import { getLazyExt, makeState } from "./helper/lazy.ts";
@@ -49,10 +43,8 @@ export class Config extends BaseConfig {
     });
 
     const [context, options] = await contextBuilder.get(denops);
-    const protocols = (await denops.dispatcher.getProtocols()) as Record<
-      string,
-      Protocol
-    >;
+    const protocols = await getProtocols(denops);
+
     const [tomlExt, tomlOptions, tomlParams] = await getTomlExt(args);
 
     const toml = await gatherTomls({
