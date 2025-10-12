@@ -118,7 +118,7 @@ in
     eslint_d
     prettierd
     biome
-    actionlint
+    # actionlint
   ];
 
   aiTools = with pkgs; [
