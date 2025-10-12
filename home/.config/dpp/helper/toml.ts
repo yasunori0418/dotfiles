@@ -56,7 +56,7 @@ const gatherTomlFiles = (
       } as GatherTomlFilesResult;
     });
 
-export async function gatherTomls({
+export const gatherTomls = async ({
   denops,
   context,
   options,
@@ -66,7 +66,7 @@ export async function gatherTomls({
   tomlParams,
   path,
   noLazyTomlNames,
-}: GatherTomlsArgs): Promise<GatherTomlsResults> {
+}: GatherTomlsArgs): Promise<GatherTomlsResults> => {
   if (!tomlExt) throw "Failed load toml extension.";
   const action = tomlExt.actions.load;
   const tomlPromises = gatherTomlFiles(path, noLazyTomlNames).map((tomlFile) =>
@@ -101,4 +101,4 @@ export async function gatherTomls({
     }
   });
   return results;
-}
+};
