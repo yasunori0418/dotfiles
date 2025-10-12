@@ -5,7 +5,7 @@ import {
   LazyParams,
   Plugin,
 } from "../deps.ts";
-import { Ext, ExtArgs, getExt } from "../helper.ts";
+import { Ext, ExtArgs, getExt, omitProperties } from "../helper.ts";
 
 export type GetLazyExtResults = Ext<LazyParams, LazyExt>;
 
@@ -23,24 +23,9 @@ export const makeState = async ({
   lazyExtArgs,
   plugins,
 }: makeStateArgs): Promise<LazyMakeStateResult | undefined> => {
-  const {
-    denops,
-    context,
-    options,
-    protocols,
-    ext: lazyExt,
-    extOptions: lazyOptions,
-    extParams: lazyParams,
-  } = lazyExtArgs;
-  if (!lazyExt) throw "Failed load lazy extension.";
-  const action = lazyExt.actions.makeState;
-  return await action.callback({
-    denops,
-    context,
-    options,
-    protocols,
-    extOptions: lazyOptions,
-    extParams: lazyParams,
+  if (!lazyExtArgs.ext) throw "Failed load lazy extension.";
+  return await lazyExtArgs.ext.actions.makeState.callback({
+    ...omitProperties(lazyExtArgs, "ext"),
     actionParams: {
       plugins,
     },

@@ -6,7 +6,7 @@ import {
   TomlExt,
   TomlParams,
 } from "../deps.ts";
-import { Ext, ExtArgs, getExt } from "../helper.ts";
+import { Ext, ExtArgs, getExt, omitProperties } from "../helper.ts";
 
 type GetTomlExtResults = Ext<TomlParams, TomlExt>;
 
@@ -39,36 +39,23 @@ const gatherTomlFiles = (
 ): GatherTomlFilesResult[] =>
   Array.from(Deno.readDirSync(path))
     .map((tomlFile: Deno.DirEntry) => {
-      return {
-        path: `${path}/${tomlFile.name}`,
-        lazy: !noLazyTomlNames.includes(tomlFile.name),
-      } as GatherTomlFilesResult;
-    });
+    return {
+      path: `${path}/${tomlFile.name}`,
+      lazy: !noLazyTomlNames.includes(tomlFile.name),
+    } as GatherTomlFilesResult;
+  });
 
 export const gatherTomls = async ({
   tomlExtArgs,
   path,
   noLazyTomlNames,
 }: GatherTomlsArgs): Promise<GatherTomlsResults> => {
-  const {
-    denops,
-    context,
-    options,
-    protocols,
-    ext: tomlExt,
-    extOptions: tomlOptions,
-    extParams: tomlParams,
-  } = tomlExtArgs;
-  if (!tomlExt) throw "Failed load toml extension.";
-  const action = tomlExt.actions.load;
+  if (!tomlExtArgs.ext) throw "Failed load toml extension.";
+  const action = tomlExtArgs.ext.actions.load;
+  const actionCallbackArgs = omitProperties(tomlExtArgs, "ext");
   const tomlPromises = gatherTomlFiles(path, noLazyTomlNames).map((tomlFile) =>
     action.callback({
-      denops,
-      context,
-      options,
-      protocols,
-      extOptions: tomlOptions,
-      extParams: tomlParams,
+      ...actionCallbackArgs,
       actionParams: {
         path: tomlFile.path,
         options: {
