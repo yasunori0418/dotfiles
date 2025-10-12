@@ -48,22 +48,24 @@ export class Config extends BaseConfig {
 
     const getExtArgsFunc = await generateExtArgs(args);
 
-    const toml = await gatherTomls({
-      tomlExtArgs: (await getExtArgsFunc(getTomlExt)),
-      path: directories.toml,
-      noLazyTomlNames,
-    });
+    const { plugins, hooksFiles, ftplugins, multipleHooks } = await gatherTomls(
+      {
+        tomlExtArgs: (await getExtArgsFunc(getTomlExt)),
+        path: directories.toml,
+        noLazyTomlNames,
+      },
+    );
 
     const lazyResult = await makeState({
       lazyExtArgs: (await getExtArgsFunc(getLazyExt)),
-      plugins: toml.plugins,
+      plugins,
     });
 
     return {
       checkFiles: gatherCheckFiles(directories.base, checkFilesGlobs),
-      hooksFiles: toml.hooksFiles,
-      ftplugins: toml.ftplugins,
-      multipleHooks: toml.multipleHooks,
+      hooksFiles,
+      ftplugins,
+      multipleHooks,
       plugins: lazyResult?.plugins ?? [],
       stateLines: lazyResult?.stateLines ?? [],
     };
