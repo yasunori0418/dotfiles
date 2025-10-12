@@ -117,11 +117,10 @@ export const assertExtraArgs = (
 export const omitProperties = <T extends object, K extends keyof T>(
   obj: T,
   ...keys: K[]
-): Omit<T, K> => {
-  const result = { ...obj };
-  keys.forEach((key) => delete result[key]);
-  return result as Omit<T, K>;
-};
+): Omit<T, K> =>
+  Object.fromEntries(
+    Object.entries(obj).filter(([key]) => !keys.includes(key as K)),
+  ) as Omit<T, K>;
 
 /**
  * installer_YYYYmmddHHMMSS.log
