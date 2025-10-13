@@ -11,6 +11,7 @@ _: {
       treefmt = {
         projectRootFile = "flake.nix";
         programs = {
+          keep-sorted.enable = true;
           beautysh = {
             enable = true;
             indent_size = 4;
