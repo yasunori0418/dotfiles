@@ -1,0 +1,13 @@
+cache: 1h
+commands:
+- lang: qr
+  run: 'qrencode -o "{{output}}" -t png "{{input}}"'
+  ext: png
+- lang: mermaid
+  run: 'mmdc -i - -o "{{output}}" --quiet'
+  ext: png
+- lang: '{go,rust,python,java,javascript,typescript}'
+  run: 'silicon -l "{{lang}}" -o "{{output}}"'
+  ext: png
+- lang: '*'
+  run: ['convert', '-background', 'white', '-fill', 'black', 'label:{{input}}', '{{output}}']

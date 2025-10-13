@@ -74,6 +74,7 @@ in
       "jj"
       "kanata"
       "kitty"
+      "laminate"
       "nvim"
       "sheldon"
       "tmux"
