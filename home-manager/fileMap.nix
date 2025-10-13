@@ -48,50 +48,49 @@ in
     "bin"
   ]
   // homeFileMap [
+    ".bash_logout"
+    ".bash_profile"
+    ".bashrc"
+    ".claude/CLAUDE.md"
+    ".claude/settings.json"
+    ".dir_colors"
+    ".p10k.zsh"
+    ".screenrc"
     ".zshenv"
     ".zshrc"
-    ".p10k.zsh"
-    ".dir_colors"
-    ".bashrc"
-    ".bash_profile"
-    ".bash_logout"
-    ".screenrc"
-    ".claude/settings.json"
-    ".claude/CLAUDE.md"
   ];
 
   dotConfig =
     xdgConfigDirMap [
       "alacritty/keybinds"
-      "tmux"
+      "cchook"
+      "direnv"
+      "dpp"
       "fastfetch"
       "fd"
       "git"
       "glow"
+      "ideavim"
       "jj"
+      "kanata"
       "kitty"
       "nvim"
-      "vim"
-      "dpp"
       "sheldon"
-      "yamllint"
-      "zeno"
-      "wezterm"
-      "direnv"
+      "tmux"
       "typos"
-      "ideavim"
-      "kanata"
+      "vim"
+      "wezterm"
+      "yamllint"
       "zellij"
-      "cchook"
+      "zeno"
     ]
     // xdgConfigFileMap [
-      "shellcheckrc"
       "alacritty/alacritty.toml"
       "alacritty/nord.toml"
-      "ghostty/config"
-      "ghostty/core.conf"
       "ghostty/clipboard.conf"
       "ghostty/command.conf"
+      "ghostty/config"
+      "ghostty/core.conf"
       "ghostty/font.conf"
       "ghostty/keybinds.conf"
       "ghostty/mouse.conf"
@@ -99,6 +98,7 @@ in
       "ghostty/resize.conf"
       "ghostty/theme.conf"
       "ghostty/window.conf"
+      "shellcheckrc"
     ];
 
   dotLocalShare = {
@@ -169,12 +169,12 @@ in
       ]
       // homeFileMap [
         ".docker/config.json"
-        ".xprofile"
-        ".xinitrc"
-        ".xserverrc"
-        ".pam_environment"
-        ".gtkrc-2.0"
         ".face"
+        ".gtkrc-2.0"
+        ".pam_environment"
+        ".xinitrc"
+        ".xprofile"
+        ".xserverrc"
         # ".Xresources"
       ];
     dotConfig = {
@@ -199,10 +199,10 @@ in
       "xremap"
     ]
     // xdgConfigFileMap [
+      "Code/User/settings.json"
       "ghostty/linux.conf"
       "ncpamixer.conf"
       "screenkey.json"
-      "Code/User/settings.json"
     ];
   };
 }
