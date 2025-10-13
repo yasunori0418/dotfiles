@@ -44,10 +44,13 @@ in
     };
   }
   // homeDirMap [
+    # keep-sorted start
     ".zsh"
     "bin"
+    # keep-sorted end
   ]
   // homeFileMap [
+    # keep-sorted start
     ".bash_logout"
     ".bash_profile"
     ".bashrc"
@@ -58,10 +61,12 @@ in
     ".screenrc"
     ".zshenv"
     ".zshrc"
+    # keep-sorted end
   ];
 
   dotConfig =
     xdgConfigDirMap [
+      # keep-sorted start
       "alacritty/keybinds"
       "cchook"
       "direnv"
@@ -84,8 +89,10 @@ in
       "yamllint"
       "zellij"
       "zeno"
+      # keep-sorted end
     ]
     // xdgConfigFileMap [
+      # keep-sorted start
       "alacritty/alacritty.toml"
       "alacritty/nord.toml"
       "ghostty/clipboard.conf"
@@ -100,11 +107,13 @@ in
       "ghostty/theme.conf"
       "ghostty/window.conf"
       "shellcheckrc"
+      # keep-sorted end
     ];
 
   dotLocalShare = {
     ".local/share/nvim/treesitter/parser".source = builtins.toString "/${
       myNurPkgs.nvim-treesitter-parsers [
+        # keep-sorted start
         "bash"
         "css"
         "diff"
@@ -132,6 +141,7 @@ in
         "vim"
         "vimdoc"
         "yaml"
+        # keep-sorted end
       ]
     }/parser";
   };
@@ -169,6 +179,7 @@ in
         # ".Xresources.d"
       ]
       // homeFileMap [
+        # keep-sorted start
         ".docker/config.json"
         ".face"
         ".gtkrc-2.0"
@@ -177,11 +188,13 @@ in
         ".xprofile"
         ".xserverrc"
         # ".Xresources"
+        # keep-sorted end
       ];
     dotConfig = {
       ".config/alacritty/os.toml".source = symlink /${xdgConfigHome}/alacritty/linux.toml;
     }
     // xdgConfigDirMap [
+      # keep-sorted start
       "bumblebee-status"
       "cantata"
       "dunst"
@@ -198,12 +211,15 @@ in
       "picom"
       "rofi"
       "xremap"
+      # keep-sorted end
     ]
     // xdgConfigFileMap [
+      # keep-sorted start
       "Code/User/settings.json"
       "ghostty/linux.conf"
       "ncpamixer.conf"
       "screenkey.json"
+      # keep-sorted end
     ];
   };
 }

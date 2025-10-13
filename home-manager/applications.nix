@@ -17,179 +17,205 @@ let
 in
 {
   nixTools = with pkgs; [
-    nix-prefetch-github
-    nix-output-monitor
-    nix-search-cli
-    nix-direnv
+    # keep-sorted start
     cachix
+    nix-direnv
+    nix-output-monitor
+    nix-prefetch-github
+    nix-search-cli
+    # keep-sorted end
   ];
 
   utilityTools = with pkgs; [
-    gnumake
+    # keep-sorted start
+    act
+    asciinema
+    asciinema-agg
+    awscli2
+    colorized-logs
+    deno
+    direnv
+    gh
     git
     git-credential-manager
     git-lfs
-    jnv
-    usql
     glow
-    gh
-    awscli2
-    ssm-session-manager-plugin
+    gnumake
+    jnv
+    kanata-with-cmd
     lemonade
-    unzip
-    direnv
+    lnav
+    myNurPkgs.safe-chain
+    pueue
+    ssm-session-manager-plugin
     tmux
+    tree-sitter
+    typos
+    unar
+    unzip
+    usql
     zellij
     zip
-    typos
-    lnav
-    deno
-    unar
-    kanata-with-cmd
-    colorized-logs
-    asciinema
-    asciinema-agg
-    pueue
-    tree-sitter
-    act
-    myNurPkgs.safe-chain
+    # keep-sorted end
   ];
 
   textEditors = with pkgs; [
+    # keep-sorted start
+    emacs
     myNurPkgs.neovim
     myNurPkgs.vim
-    neovim-remote
     neovide
-    emacs
+    neovim-remote
+    # keep-sorted end
   ];
 
   terminalEmulators =
     with pkgs;
     [
-      kitty
+      # keep-sorted start
       alacritty
+      kitty
+      # keep-sorted end
     ]
     ++ (optionalIsLinux [ ghostty ])
     ++ (optionalIsDarwin [ ghostty-bin ]);
 
   shellTools = with pkgs; [
-    sheldon
+    # keep-sorted start
     bat
     dasel
-    jq
-    yq
-    ripgrep
-    ghq
     delta
+    eza
     fd
     fzf
-    eza
-    yazi
-    tdf
+    ghq
+    jq
     rip2
+    ripgrep
+    sheldon
+    tdf
+    yazi
+    yq
+    # keep-sorted end
   ];
 
   languageServers = with pkgs; [
-    nixd
-    efm-langserver
-    pyright
+    # keep-sorted start
+    awk-language-server
     bash-language-server
-    typescript-language-server
-    yaml-language-server
+    efm-langserver
     emmet-ls
+    jq-lsp
+    nixd
+    pyright
+    sqls
+    taplo
+    terraform-ls
+    typescript-language-server
+    typos-lsp
     vscode-langservers-extracted
     vtsls
-    taplo
-    jq-lsp
-    typos-lsp
-    awk-language-server
-    terraform-ls
-    sqls
+    yaml-language-server
+    # keep-sorted end
   ];
 
   codingSupportTools = with pkgs; [
-    nixfmt-rfc-style
-    statix
-    shellcheck
-    blade-formatter
-    ruff
+    # keep-sorted start
     beautysh
-    sql-formatter
-    eslint_d
-    prettierd
     biome
+    blade-formatter
+    eslint_d
+    nixfmt-rfc-style
+    prettierd
+    ruff
+    shellcheck
+    sql-formatter
+    statix
     # actionlint
+    # keep-sorted end
   ];
 
   aiTools = with pkgs; [
+    # keep-sorted start
     codex
+    myNurPkgs.cc-sdd
+    myNurPkgs.ccexp
+    myNurPkgs.cchook
+    myNurPkgs.ccusage
     # goose-cli
     myNurPkgs.claude-code
-    myNurPkgs.ccusage
-    myNurPkgs.cchook
-    myNurPkgs.ccexp
-    myNurPkgs.cc-sdd
+    # keep-sorted end
   ]
   # ++ (optionalIsLinux [ inputs.claude-desktop.packages.${system}.claude-desktop ])
   ;
 
   libraries = with pkgs; [
+    # keep-sorted start
+    bun
     gcc
     go
-    bun
-    volta
-    rustup
-    ruby
     nodejs_24
+    perl
     pnpm
     python312Packages.uv
-    perl
+    ruby
+    rustup
+    volta
+    # keep-sorted end
   ];
 
   clojureTools = with pkgs; [
+    # keep-sorted start
+    babashka
+    clj-kondo
     clojure
     clojure-lsp
-    clj-kondo
     leiningen
-    babashka
+    # keep-sorted end
   ];
 
   guiTools = with pkgs; [
-    google-chrome
-    discord
+    # keep-sorted start
     dbeaver-bin
+    discord
+    google-chrome
     jetbrains-toolbox
+    # keep-sorted end
   ];
 
   linuxDesktop = {
     theme = with pkgs; [
-      themechanger
+      # keep-sorted start
       libsForQt5.qt5ct
       libsForQt5.qtstyleplugins
       nordic
-      nordzy-icon-theme
       nordzy-cursor-theme
+      nordzy-icon-theme
+      themechanger
+      # keep-sorted end
     ];
 
     desktopApps = with pkgs; [
-      gparted
-      slack
+      # keep-sorted start
       arandr
       blueberry
-      pavucontrol
-      gthumb
-      peek
-      simplescreenrecorder
+      clipmenu
+      dunst
+      feh
       font-manager
-      xfce.xfce4-screenshooter
+      gparted
+      gthumb
+      ncpamixer
+      pavucontrol
+      peek
+      picom
       rofi
       rofi-power-menu
-      feh
-      picom
-      dunst
-      clipmenu
-      ncpamixer
+      simplescreenrecorder
+      slack
+      xfce.xfce4-screenshooter
       xsel
+      # keep-sorted end
     ];
 
     i3wmTools =
@@ -197,27 +223,33 @@ in
         override-bumblebee-status = pkgs.bumblebee-status.override {
           plugins =
             p: with p; [
-              title
+              # keep-sorted start
+              battery
               cpu2
+              datetime
+              dunstctl
+              error
+              indicator
               memory
               nic
-              datetime
-              battery
-              dunstctl
-              indicator
-              error
+              title
+              # keep-sorted end
             ];
         };
       in
       with pkgs;
       [
+        # keep-sorted start
         i3status
         i3status-rust
         override-bumblebee-status
+        # keep-sorted end
       ];
   };
 
   macOs = with pkgs; [
+    # keep-sorted start
     aerospace
+    # keep-sorted end
   ];
 }
