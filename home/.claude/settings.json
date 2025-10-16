@@ -25,18 +25,6 @@
       "WebSearch",
       "Write"
     ],
-    "ask":[
-      "Bash(git push:*)",
-      "KillShell",
-      "WebFetch",
-      "Bash(curl:*)",
-      "Bash(wget:*)",
-      "Bash(rm:*)",
-      "Bash(rm -rf:*)",
-      "Bash(psql:*)",
-      "Bash(mysql:*)",
-      "Bash(mongod:*)"
-    ],
     "deny": [
       "Bash(sudo:*)",
       "Bash(git reset:*)",
@@ -51,6 +39,18 @@
       "Bash(nc:*)",
       "Bash(npm uninstall:*)",
       "Bash(npm remove:*)"
+    ],
+    "ask": [
+      "Bash(git push:*)",
+      "KillShell",
+      "WebFetch",
+      "Bash(curl:*)",
+      "Bash(wget:*)",
+      "Bash(rm:*)",
+      "Bash(rm -rf:*)",
+      "Bash(psql:*)",
+      "Bash(mysql:*)",
+      "Bash(mongod:*)"
     ],
     "defaultMode": "acceptEdits"
   },
