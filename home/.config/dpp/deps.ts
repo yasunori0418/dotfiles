@@ -30,7 +30,7 @@ export {
   type LazyMakeStateResult,
   type Params as LazyParams,
 } from "jsr:@shougo/dpp-ext-lazy@2.0.1";
-export { type Denops } from "jsr:@denops/core@8.0.0";
+export { type Denops } from "jsr:@denops/core@8.0.1";
 export * as fn from "jsr:@denops/std@8.1.0/function";
 export * as vars from "jsr:@denops/std@8.1.0/variable";
 export { ensure, is } from "jsr:@core/unknownutil@4.3.0";
