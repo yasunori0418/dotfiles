@@ -141,6 +141,7 @@ in
         "typescript"
         "vim"
         "vimdoc"
+        "xml"
         "yaml"
         # keep-sorted end
       ]

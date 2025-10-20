@@ -21,6 +21,7 @@ initialize()
 
 vim.api.nvim_create_autocmd("FileType", {
     pattern = {
+        -- keep-sorted start
         "bash",
         "css",
         "diff",
@@ -45,8 +46,10 @@ vim.api.nvim_create_autocmd("FileType", {
         "toml",
         "typescript",
         "vim",
+        "xml",
         "yaml",
         "zsh",
+        -- keep-sorted end
     },
     callback = function(ctx)
         -- syntax highlighting, provided by Neovim
