@@ -46,6 +46,7 @@ in
   // homeDirMap [
     # keep-sorted start
     ".claude/agents"
+    ".claude/commands"
     ".zsh"
     "bin"
     # keep-sorted end
