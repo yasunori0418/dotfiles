@@ -1,6 +1,33 @@
 ---
 name: prompt-optimizer
-description: Use this agent when you need to analyze, improve, or refine prompts for Claude Code or other AI systems. Specifically use this agent when:\n\n- A user provides a prompt and asks for improvements or optimization\n- A user wants feedback on how to better structure their instructions\n- A user needs help making their prompts more effective or specific\n- A user is creating system instructions (like CLAUDE.md files) and wants them reviewed\n- A user asks questions about prompt engineering best practices for Claude Code\n\nExamples of when to use this agent:\n\n<example>\nuser: "このプロンプトを改善してください: 'Nixパッケージを作って'"\nassistant: "プロンプト最適化エージェントを起動して、このプロンプトの改善案を提供します"\n<uses Task tool to launch prompt-optimizer agent>\n</example>\n\n<example>\nuser: "Claude Codeに与える指示をもっと明確にしたいんだけど、どうすればいい？"\nassistant: "プロンプトエンジニアリングの専門家であるprompt-optimizerエージェントを使って、効果的な指示の書き方をアドバイスします"\n<uses Task tool to launch prompt-optimizer agent>\n</example>\n\n<example>\nuser: "CLAUDE.mdファイルの内容をレビューして改善案をください"\nassistant: "prompt-optimizerエージェントを使って、CLAUDE.mdファイルの内容を分析し、改善提案を行います"\n<uses Task tool to launch prompt-optimizer agent>\n</example>
+description: |
+  Use this agent when you need to analyze, improve, or refine prompts for Claude Code or other AI systems. Specifically use this agent when:
+
+  - A user provides a prompt and asks for improvements or optimization
+  - A user wants feedback on how to better structure their instructions
+  - A user needs help making their prompts more effective or specific
+  - A user is creating system instructions (like CLAUDE.md files) and wants them reviewed
+  - A user asks questions about prompt engineering best practices for Claude Code
+
+  Examples of when to use this agent:
+
+  <example>
+  user: "このプロンプトを改善してください: 'Nixパッケージを作って'"
+  assistant: "プロンプト最適化エージェントを起動して、このプロンプトの改善案を提供します"
+  <uses Task tool to launch prompt-optimizer agent>
+  </example>
+
+  <example>
+  user: "Claude Codeに与える指示をもっと明確にしたいんだけど、どうすればいい？"
+  assistant: "プロンプトエンジニアリングの専門家であるprompt-optimizerエージェントを使って、効果的な指示の書き方をアドバイスします"
+  <uses Task tool to launch prompt-optimizer agent>
+  </example>
+
+  <example>
+  user: "CLAUDE.mdファイルの内容をレビューして改善案をください"
+  assistant: "prompt-optimizerエージェントを使って、CLAUDE.mdファイルの内容を分析し、改善提案を行います"
+  <uses Task tool to launch prompt-optimizer agent>
+  </example>
 model: sonnet
 ---
 
