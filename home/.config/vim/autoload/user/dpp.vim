@@ -12,7 +12,7 @@ const dpp_base_path = '$XDG_CACHE_HOME/dpp'->expand()
 
 def CheckFilesPattern(glob_patterns: list<string>): string
   return glob_patterns
-    ->mapnew((_, glob_pattern) => 
+    ->mapnew((_, glob_pattern) =>
       $'~/dotfiles/home/.config/vim/{glob_pattern},$XDG_CONFIG_HOME/vim/{glob_pattern}'->expand()
     )->join(',')
 enddef
