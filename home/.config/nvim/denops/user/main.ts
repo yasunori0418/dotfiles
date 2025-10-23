@@ -15,7 +15,7 @@ export const main: Entrypoint = (denops: Denops) => {
         messages,
       });
     },
-    async codex(prompt) {
+    async codex(prompt: unknown) {
       const messages = ensure(prompt, is.String);
       const { pipeOut, wait, finalize } = echoerrCommand(denops, "codex", {
         args: ["-q", messages, "--json"],
