@@ -90,6 +90,7 @@ in
     fzf
     ghq
     jq
+    myNurPkgs.gwq
     rip2
     ripgrep
     sheldon
