@@ -77,6 +77,7 @@ in
       "fd"
       "git"
       "glow"
+      "gwq"
       "ideavim"
       "jj"
       "kanata"
