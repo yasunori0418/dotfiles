@@ -15,6 +15,7 @@ export class Config extends BaseConfig {
     args.contextBuilder.patchGlobal({
       ui: "pum",
       sources: main_sources,
+      specialBufferCompletion: true,
       autoCompleteEvents: [
         "CmdlineChanged",
         "CmdlineEnter",
