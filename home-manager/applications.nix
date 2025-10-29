@@ -206,6 +206,8 @@ in
       font-manager
       gparted
       gthumb
+      kdePackages.okular
+      zathura
       ncpamixer
       pavucontrol
       peek
