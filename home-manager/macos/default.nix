@@ -22,11 +22,13 @@
           ;
       };
       clearDppStateAfterLinkGeneration = ../clear-dpp-state-after-link-generation.nix;
+      initialDotfilesCloneAfterOnFilesChange = ../initial-dotfiles-clone-after-on-files-change.nix;
     in
     [
       packages
       homeFile
       clearDppStateAfterLinkGeneration
+      initialDotfilesCloneAfterOnFilesChange
       inputs.mac-app-util.homeManagerModules.default
     ];
   programs.home-manager.enable = true;
