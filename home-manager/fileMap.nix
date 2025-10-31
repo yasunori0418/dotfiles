@@ -85,6 +85,7 @@ in
       "laminate"
       "nvim"
       "sheldon"
+      "sqls"
       "tmux"
       "typos"
       "vim"
@@ -214,7 +215,6 @@ in
       "paru"
       "picom"
       "rofi"
-      "sqls"
       "xremap"
       # keep-sorted end
     ]
