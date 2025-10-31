@@ -214,6 +214,7 @@ in
       "paru"
       "picom"
       "rofi"
+      "sqls"
       "xremap"
       # keep-sorted end
     ]
