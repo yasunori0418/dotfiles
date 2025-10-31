@@ -8,6 +8,7 @@ require("user.lsp")
 '''
 depends = ['ddc.vim', 'nvim-navic']
 on_ft = [
+  # keep-sorted start
   'awk',
   'bash',
   'css',
@@ -32,6 +33,7 @@ on_ft = [
   'typescriptreact',
   'yaml',
   'zsh',
+  # keep-sorted end
 ]
 # }}}
 

@@ -18,6 +18,7 @@ vim.lsp.config("*", {
 } --[[@as vim.lsp.Config]])
 
 vim.lsp.enable({
+    -- keep-sorted start
     "awk_ls",
     "bashls",
     "ccls",
@@ -35,6 +36,7 @@ vim.lsp.enable({
     -- "lua_ls",
     "nixd",
     "pyright",
+    "sqls",
     "taplo",
     "terraformls",
     "ts_query_ls",
@@ -44,4 +46,5 @@ vim.lsp.enable({
     -- "kotlin_language_server",
     -- "phpactor",
     -- "ts_ls",
+    -- keep-sorted end
 })

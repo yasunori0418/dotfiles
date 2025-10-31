@@ -207,7 +207,6 @@ in
       gparted
       gthumb
       kdePackages.okular
-      zathura
       ncpamixer
       pavucontrol
       peek
@@ -218,6 +217,7 @@ in
       slack
       xfce.xfce4-screenshooter
       xsel
+      zathura
       # keep-sorted end
     ];
 
