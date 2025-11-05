@@ -135,16 +135,6 @@
           }
         ]
       }
-    ],
-    "UserPromptSubmit": [
-      {
-        "hooks": [
-          {
-            "type": "command",
-            "command": "cchook -event UserPromptSubmit"
-          }
-        ]
-      }
     ]
   },
   "statusLine": {
