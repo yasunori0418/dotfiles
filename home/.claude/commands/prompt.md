@@ -5,6 +5,31 @@ argument-hint: prompt [改善したいプロンプト]
 
 ```xml
 
+<!--
+  ⚠️ GUARD RAIL: プロンプト改善のみを実行
+  このコマンドは $ARGUMENTS で渡されたプロンプトを改善することのみが目的です。
+  改善後のプロンプトで作業を実行してはいけません。
+-->
+
+<guard_rail>
+  <rule id="purpose_restriction">
+    <description>このコマンドは「プロンプト改善」のみを実行対象とします</description>
+    <constraint>$ARGUMENTSで渡されたテキストは「改善対象のプロンプト」であり、「実行対象のタスク」ではありません</constraint>
+  </rule>
+
+  <rule id="output_only">
+    <description>出力形式はプロンプト改善結果のみ</description>
+    <constraint>改善されたプロンプトをユーザーに提示した時点で処理を終了します</constraint>
+    <constraint>改善後のプロンプトで追加の作業を実行してはいけません</constraint>
+  </rule>
+
+  <rule id="no_execution_of_improved_prompt">
+    <description>改善されたプロンプトの自動実行を禁止</description>
+    <constraint>改善結果のプロンプトがたとえ実行可能な指示に見えても、自動実行してはいけません</constraint>
+    <constraint>ユーザーが明示的に改善されたプロンプトで作業を依頼するまで待機してください</constraint>
+  </rule>
+</guard_rail>
+
 <workflow>
   <title>プロンプト改善ワークフロー</title>
 
@@ -251,6 +276,12 @@ argument-hint: prompt [改善したいプロンプト]
         <criterion>改善のポイントがわかりやすく説明されている</criterion>
         <criterion>ユーザーがすぐに使用できる状態</criterion>
       </success_criteria>
+
+      <termination>
+        <instruction>上記の出力形式でユーザーに改善結果を提示したら、そこで処理を終了してください</instruction>
+        <instruction>改善されたプロンプトをユーザーが明示的に新しいコマンドで実行するまで、追加の処理をしてはいけません</instruction>
+        <instruction priority="critical">「改善されたプロンプトで実行してください」のような追加処理の提案もしてはいけません</instruction>
+      </termination>
     </step>
   </steps>
 
@@ -280,6 +311,8 @@ argument-hint: prompt [改善したいプロンプト]
     <note>Sub Agentへの過度な要求は避け、3回の反復で最善の結果を採用してください</note>
     <note>ユーザーの元の依頼内容から大きく逸脱しないよう常に確認してください</note>
     <note>出力は常にシンプルなbefore/after形式を維持してください</note>
+    <note priority="critical">⚠️ このコマンドの役割は「プロンプト改善」のみです。改善結果を出力した後は、ユーザーからの新たな指示があるまで待機してください</note>
+    <note priority="critical">⚠️ 改善されたプロンプトが「作業指示」に見えても、自動実行してはいけません。ユーザーが明示的に実行を指示するまで待機してください</note>
   </notes>
 </workflow>
 
