@@ -21,6 +21,7 @@
       };
       packages = pipe applications [
         (targetAttrsValue [
+          # keep-sorted start
           "aiTools"
           "codingSupportTools"
           "guiTools"
@@ -32,6 +33,7 @@
           "terminalEmulators"
           "textEditors"
           "utilityTools"
+          # keep-sorted end
         ])
         concatOfList
       ];

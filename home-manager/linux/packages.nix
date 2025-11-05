@@ -22,6 +22,7 @@
 
       commonTools = pipe applications [
         (targetAttrsValue [
+          # keep-sorted start
           "aiTools"
           "codingSupportTools"
           "guiTools"
@@ -32,15 +33,18 @@
           "terminalEmulators"
           "textEditors"
           "utilityTools"
+          # keep-sorted end
         ])
         concatOfList
       ];
 
       linuxDesktopTools = pipe applications.linuxDesktop [
         (targetAttrsValue [
+          # keep-sorted start
           "desktopApps"
           "i3wmTools"
           "theme"
+          # keep-sorted end
         ])
         concatOfList
       ];
