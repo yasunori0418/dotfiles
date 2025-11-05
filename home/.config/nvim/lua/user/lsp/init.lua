@@ -36,6 +36,7 @@ vim.lsp.enable({
     -- "lua_ls",
     "nixd",
     "pyright",
+    "rust_analyzer",
     "sqls",
     "taplo",
     "terraformls",
