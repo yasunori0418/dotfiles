@@ -160,8 +160,17 @@ in
     pnpm
     python312Packages.uv
     ruby
-    rustup
     volta
+    # keep-sorted end
+  ];
+
+  rustTOols = with pkgs; [
+    # keep-sorted start
+    cargo
+    crate2nix
+    rust-analyzer
+    rust.packages.stable.rustc-unwrapped
+    rustfmt
     # keep-sorted end
   ];
 
