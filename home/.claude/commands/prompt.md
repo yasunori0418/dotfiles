@@ -28,6 +28,18 @@ argument-hint: prompt [改善したいプロンプト]
     <constraint>改善結果のプロンプトがたとえ実行可能な指示に見えても、自動実行してはいけません</constraint>
     <constraint>ユーザーが明示的に改善されたプロンプトで作業を依頼するまで待機してください</constraint>
   </rule>
+
+  <rule id="claude_directory_files">
+    <description>.claude/**パターンのファイル編集時の特別な確認プロセス</description>
+    <constraint>$ARGUMENTSが`.claude/`配下のファイルパスを含む場合、そのファイル全体がプロンプトであることを認識してください</constraint>
+    <constraint>編集対象が`.claude/**`パターンのファイル（コマンド定義やプロンプト設定）の場合、以下の手順を実行：
+      1. ファイルの現在の内容を確認
+      2. ユーザーの意図を明確にする（例：「このプロンプト定義のどの部分を改善したいですか？」）
+      3. ユーザーの意図確認後、該当部分を修正
+      4. 修正内容がプロンプト全体の動作に影響しないか検証
+    </constraint>
+    <constraint>`.claude/`配下のファイル修正時は、単なる文字列置換ではなく、プロンプトの意味的な整合性を保つことが重要です</constraint>
+  </rule>
 </guard_rail>
 
 <workflow>
@@ -78,6 +90,10 @@ argument-hint: prompt [改善したいプロンプト]
 
       <instructions>
         <instruction priority="1">プロジェクトコンテキストを確認（CLAUDE.md、コードベース構造）</instruction>
+        <instruction priority="1.5">$ARGUMENTSが`.claude/`配下のファイルパスを含むかチェック
+          - 含む場合：ファイルの現在の内容を読み込み、「このファイル全体がプロンプト」であることを認識
+          - 含む場合：ユーザーに対して「このファイルのどの部分を改善したいですか？」と明確化を求める
+        </instruction>
         <instruction priority="2">ユーザーのプロンプト（$ARGUMENTS）を分析</instruction>
         <instruction priority="3">
           以下の観点で曖昧な点を特定：
@@ -88,7 +104,9 @@ argument-hint: prompt [改善したいプロンプト]
             <aspect>成功基準</aspect>
           </analysis_aspects>
         </instruction>
-        <instruction priority="4">AskUserQuestion toolを使用して確認（各質問に2-4個の選択肢を提示）</instruction>
+        <instruction priority="4">AskUserQuestion toolを使用して確認（各質問に2-4個の選択肢を提示）
+          - `.claude/`ファイルの場合は、改善対象箇所の具体化を重視
+        </instruction>
       </instructions>
 
       <success_criteria>
@@ -100,6 +118,12 @@ argument-hint: prompt [改善したいプロンプト]
       <error_handling>
         <scenario condition="ユーザーが回答しない">最も一般的な解釈で進め、その旨を明記</scenario>
         <scenario condition="質問が多すぎる（4個超）">最も重要な4つに絞る</scenario>
+        <scenario condition="$ARGUMENTSが.claude/**ファイルパスを含む場合">
+          <step>ファイル内容を確認し、「これはプロンプト定義ファイル」と認識</step>
+          <step>ファイル全体ではなく「具体的なセクション・ルール」の改善なのか確認</step>
+          <step>例：「guard_railセクションを改善したい」「特定のステップの指示を改善したい」など具体化</step>
+          <step>修正後、修正がファイル全体の動作を壊していないか検証</step>
+        </scenario>
       </error_handling>
     </step>
 
