@@ -164,7 +164,7 @@ in
     # keep-sorted end
   ];
 
-  rustTOols = with pkgs; [
+  rustTools = with pkgs; [
     # keep-sorted start
     cargo
     crate2nix
