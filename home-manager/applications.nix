@@ -215,6 +215,7 @@ in
       font-manager
       gparted
       gthumb
+      gimp
       kdePackages.okular
       ncpamixer
       pavucontrol
