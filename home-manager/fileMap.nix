@@ -179,13 +179,15 @@ in
 
   Linux = {
     homeDirectory =
-      homeDirMap [
+      {
+        ".docker/config.json".source = symlink /${homeDir}/.docker/linux_config.json;
+      }
+      // homeDirMap [
         ".icons"
         # ".Xresources.d"
       ]
       // homeFileMap [
         # keep-sorted start
-        ".docker/config.json"
         ".face"
         ".gtkrc-2.0"
         ".pam_environment"
