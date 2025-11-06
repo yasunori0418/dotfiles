@@ -227,6 +227,7 @@ in
       xfce.xfce4-screenshooter
       xsel
       zathura
+      zoom-us
       # keep-sorted end
     ];
 
