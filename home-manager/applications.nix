@@ -97,6 +97,7 @@ in
     tdf
     yazi
     yq
+    zoxide
     # keep-sorted end
   ];
 
