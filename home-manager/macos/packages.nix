@@ -8,7 +8,7 @@
   home.packages =
     let
       inherit (pkgs.lib) pipe;
-      inherit (inputs.yasunori-nur.legacyPackages.${pkgs.system}.lib.attrsets)
+      inherit (inputs.yasunori-nur.legacyPackages.${pkgs.stdenv.hostPlatform.system}.lib.attrsets)
         targetAttrsValue
         concatOfList
         ;

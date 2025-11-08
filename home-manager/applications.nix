@@ -13,7 +13,7 @@ let
     f;
   optionalIsLinux = optional pkgs.stdenv.isLinux;
   optionalIsDarwin = optional pkgs.stdenv.isDarwin;
-  myNurPkgs = inputs.yasunori-nur.packages.${pkgs.system};
+  myNurPkgs = inputs.yasunori-nur.packages.${pkgs.stdenv.hostPlatform.system};
 in
 {
   nixTools = with pkgs; [

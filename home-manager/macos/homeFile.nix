@@ -9,7 +9,7 @@
 }:
 let
   inherit (pkgs.lib) pipe;
-  myNurPkgs = inputs.yasunori-nur.legacyPackages.${pkgs.system};
+  myNurPkgs = inputs.yasunori-nur.legacyPackages.${pkgs.stdenv.hostPlatform.system};
   inherit (myNurPkgs.lib.attrsets)
     targetAttrsValue
     concatOfAttrs
