@@ -37,3 +37,4 @@
 bindkey "^Xe" edit-command-line
 bindkey "^X^e" edit-command-line
 bindkey "^[[Z" reverse-menu-complete  # Shift-Tabで補完候補を逆順する("\e[Z"でも動作する)
+bindkey "^G" deactivate-region
