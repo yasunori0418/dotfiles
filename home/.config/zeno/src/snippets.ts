@@ -1,0 +1,57 @@
+import { Snippet } from "@yuki-yano/zeno";
+
+export const define: Snippet[] = [
+  {
+    name: "git status",
+    keyword: "gs",
+    snippet: "git status --short --branch",
+  },
+  { name: "git add", keyword: "ga", snippet: "git add" },
+  { name: "git restore", keyword: "gr", snippet: "git restore" },
+  {
+    name: "git restore --staged",
+    keyword: "grs",
+    snippet: "git restore --staged",
+  },
+  { name: "git commit", keyword: "gc", snippet: "git commit" },
+  {
+    name: "git commit --amend",
+    keyword: "gcam",
+    snippet: "git commit --amend",
+  },
+  {
+    name: "git commit --all",
+    keyword: "gca",
+    snippet: "git commit --all",
+  },
+  {
+    name: "git commit --fixup",
+    keyword: "gcf",
+    snippet: "git commit --fixup",
+  },
+  { name: "git diff", keyword: "gd", snippet: "git diff" },
+  {
+    name: "git diff --staged",
+    keyword: "gds",
+    snippet: "git diff --staged",
+  },
+  { name: "git push", keyword: "gps", snippet: "git push" },
+  {
+    name: "git push --force-with-lease --force-if-includes",
+    keyword: "gpsf",
+    snippet: "git push --force-with-lease --force-if-includes",
+  },
+  { name: "git pull", keyword: "gpl", snippet: "git pull" },
+  {
+    name: "git pull --rebase",
+    keyword: "gplr",
+    snippet: "git pull --rebase",
+  },
+  { name: "git lol", keyword: "gl", snippet: "git lol" },
+  { name: "git fetch", keyword: "gf", snippet: "git fetch" },
+  {
+    name: "git fetch --prune",
+    keyword: "gfp",
+    snippet: "git fetch --prune",
+  },
+];
