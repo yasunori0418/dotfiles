@@ -1,0 +1,80 @@
+{
+  "version": "5",
+  "specifiers": {
+    "jsr:@404wolf/xdg-portable@0.1.0": "0.1.0",
+    "jsr:@std/assert@^1.0.14": "1.0.15",
+    "jsr:@std/expect@^1.0.17": "1.0.17",
+    "jsr:@std/fmt@1.0.8": "1.0.8",
+    "jsr:@std/fs@1.0.18": "1.0.18",
+    "jsr:@std/internal@^1.0.10": "1.0.12",
+    "jsr:@std/internal@^1.0.12": "1.0.12",
+    "jsr:@std/io@0.225.2": "0.225.2",
+    "jsr:@std/path@1.1.0": "1.1.0",
+    "jsr:@std/path@^1.0.8": "1.1.0",
+    "jsr:@std/yaml@1.0.8": "1.0.8",
+    "jsr:@yuki-yano/zeno@0.2": "0.2.0",
+    "npm:yargs-parser@21.1.1": "21.1.1"
+  },
+  "jsr": {
+    "@404wolf/xdg-portable@0.1.0": {
+      "integrity": "3a54d193601165deede0f84ab0a3e731ad8a1707ac4efa93c2a3db51ff270247",
+      "dependencies": [
+        "jsr:@std/path@^1.0.8"
+      ]
+    },
+    "@std/assert@1.0.15": {
+      "integrity": "d64018e951dbdfab9777335ecdb000c0b4e3df036984083be219ce5941e4703b",
+      "dependencies": [
+        "jsr:@std/internal@^1.0.12"
+      ]
+    },
+    "@std/expect@1.0.17": {
+      "integrity": "316b47dd65c33e3151344eb3267bf42efba17d1415425f07ed96185d67fc04d9",
+      "dependencies": [
+        "jsr:@std/assert",
+        "jsr:@std/internal@^1.0.10"
+      ]
+    },
+    "@std/fmt@1.0.8": {
+      "integrity": "71e1fc498787e4434d213647a6e43e794af4fd393ef8f52062246e06f7e372b7"
+    },
+    "@std/fs@1.0.18": {
+      "integrity": "24bcad99eab1af4fde75e05da6e9ed0e0dce5edb71b7e34baacf86ffe3969f3a"
+    },
+    "@std/internal@1.0.12": {
+      "integrity": "972a634fd5bc34b242024402972cd5143eac68d8dffaca5eaa4dba30ce17b027"
+    },
+    "@std/io@0.225.2": {
+      "integrity": "3c740cd4ee4c082e6cfc86458f47e2ab7cb353dc6234d5e9b1f91a2de5f4d6c7"
+    },
+    "@std/path@1.1.0": {
+      "integrity": "ddc94f8e3c275627281cbc23341df6b8bcc874d70374f75fec2533521e3d6886"
+    },
+    "@std/yaml@1.0.8": {
+      "integrity": "90b8aab62995e929fa0ea5f4151c287275b63e321ac375c35ff7406ca60c169d"
+    },
+    "@yuki-yano/zeno@0.2.0": {
+      "integrity": "57ad51c5ed2fac97d26773e91540b198823db44662d88dd33ef49cf049726e7c",
+      "dependencies": [
+        "jsr:@404wolf/xdg-portable",
+        "jsr:@std/fmt",
+        "jsr:@std/fs",
+        "jsr:@std/io",
+        "jsr:@std/path@1.1.0",
+        "jsr:@std/yaml",
+        "npm:yargs-parser"
+      ]
+    }
+  },
+  "npm": {
+    "yargs-parser@21.1.1": {
+      "integrity": "sha512-tVpsJW7DdjecAiFpbIB1e3qxIQsE6NoPc5/eTdrbbIC4h0LVsWhnoa3g+m2HclBIujHzsxZ4VJVA+GUuc2/LBw=="
+    }
+  },
+  "workspace": {
+    "dependencies": [
+      "jsr:@std/expect@^1.0.17",
+      "jsr:@yuki-yano/zeno@0.2"
+    ]
+  }
+}
