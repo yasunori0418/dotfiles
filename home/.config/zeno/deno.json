@@ -8,6 +8,7 @@
   },
   "imports": {
     "@std/expect": "jsr:@std/expect@^1.0.17",
+    "@std/log": "jsr:@std/log@^0.224.14",
     "@yuki-yano/zeno": "jsr:@yuki-yano/zeno@^0.2.0"
   }
 }
