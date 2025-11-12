@@ -214,9 +214,9 @@ in
       dunst
       feh
       font-manager
+      gimp
       gparted
       gthumb
-      gimp
       kdePackages.okular
       ncpamixer
       pavucontrol
@@ -226,6 +226,7 @@ in
       rofi-power-menu
       simplescreenrecorder
       slack
+      vlc
       xfce.xfce4-screenshooter
       xsel
       zathura

@@ -178,25 +178,24 @@ in
   };
 
   Linux = {
-    homeDirectory =
-      {
-        ".docker/config.json".source = symlink /${homeDir}/.docker/linux_config.json;
-      }
-      // homeDirMap [
-        ".icons"
-        # ".Xresources.d"
-      ]
-      // homeFileMap [
-        # keep-sorted start
-        ".face"
-        ".gtkrc-2.0"
-        ".pam_environment"
-        ".xinitrc"
-        ".xprofile"
-        ".xserverrc"
-        # ".Xresources"
-        # keep-sorted end
-      ];
+    homeDirectory = {
+      ".docker/config.json".source = symlink /${homeDir}/.docker/linux_config.json;
+    }
+    // homeDirMap [
+      ".icons"
+      # ".Xresources.d"
+    ]
+    // homeFileMap [
+      # keep-sorted start
+      ".face"
+      ".gtkrc-2.0"
+      ".pam_environment"
+      ".xinitrc"
+      ".xprofile"
+      ".xserverrc"
+      # ".Xresources"
+      # keep-sorted end
+    ];
     dotConfig = {
       ".config/alacritty/os.toml".source = symlink /${xdgConfigHome}/alacritty/linux.toml;
     }

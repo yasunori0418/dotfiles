@@ -2,7 +2,9 @@
 {
   nix = {
     checkConfig = true;
-    package = inputs.nix-monitored.packages.${pkgs.stdenv.hostPlatform.system}.default.override { withNotify = false; };
+    package = inputs.nix-monitored.packages.${pkgs.stdenv.hostPlatform.system}.default.override {
+      withNotify = false;
+    };
     settings = {
       auto-optimise-store = true;
       sandbox = true;
