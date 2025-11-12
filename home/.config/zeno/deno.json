@@ -12,7 +12,11 @@
       "write": true,
       "env": true,
       "run": true
-    }
+    },
+    "include": [
+      "./src/debug.ts",
+      "./src/*.test.ts"
+    ]
   },
   "tasks": {
     "test": "deno test -P"
