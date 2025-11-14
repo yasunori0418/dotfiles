@@ -45,6 +45,6 @@ command("DDCEchoFilter", function()
 end, {})
 
 command("CurrentPath", function(opts)
-    local path = vim.fn.fnamemodify(vim.fn.expand("%"), ifx(opts.bang, ":p", ""))
+    local path = vim.fn.fnamemodify(vim.fn.expand("%"), ifx(opts.bang, ":p", ":."))
     vim.fn.setreg("+", path)
 end, { bang = true })
