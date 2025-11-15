@@ -18,6 +18,11 @@
       "./src/*.test.ts"
     ]
   },
+  "lint": {
+    "rules": {
+      "exclude": ["no-import-prefix"]
+    }
+  },
   "tasks": {
     "test": "deno test -P"
   },
