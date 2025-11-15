@@ -24,15 +24,16 @@
     }
   },
   "tasks": {
-    "test": "deno test -P"
+    "test": "deno test -P",
+    "test:watch": "deno test -P --watch"
   },
   "imports": {
     "@david/dax": "jsr:@david/dax@^0.43.2",
+    "@remeda/remeda": "jsr:@remeda/remeda@^2.32.0",
     "@std/expect": "jsr:@std/expect@^1.0.17",
     "@std/fs": "jsr:@std/fs@^1.0.19",
     "@std/path": "jsr:@std/path@^1.1.2",
     "@std/testing": "jsr:@std/testing@^1.0.16",
-    "@yuki-yano/zeno": "jsr:@yuki-yano/zeno@^0.2.0",
-    "remeda": "npm:remeda@^2.32.0"
+    "@yuki-yano/zeno": "jsr:@yuki-yano/zeno@^0.2.0"
   }
 }
