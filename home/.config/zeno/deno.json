@@ -22,6 +22,7 @@
     "test": "deno test -P"
   },
   "imports": {
+    "@david/dax": "jsr:@david/dax@^0.43.2",
     "@std/expect": "jsr:@std/expect@^1.0.17",
     "@std/fs": "jsr:@std/fs@^1.0.19",
     "@std/path": "jsr:@std/path@^1.1.2",

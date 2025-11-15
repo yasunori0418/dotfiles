@@ -2,17 +2,26 @@
   "version": "5",
   "specifiers": {
     "jsr:@404wolf/xdg-portable@0.1.0": "0.1.0",
+    "jsr:@david/console-static-text@0.3": "0.3.0",
+    "jsr:@david/dax@~0.43.2": "0.43.2",
+    "jsr:@david/path@0.2": "0.2.0",
+    "jsr:@david/which@~0.4.1": "0.4.1",
     "jsr:@std/assert@^1.0.14": "1.0.15",
     "jsr:@std/assert@^1.0.15": "1.0.15",
+    "jsr:@std/bytes@^1.0.5": "1.0.6",
     "jsr:@std/data-structures@^1.0.9": "1.0.9",
     "jsr:@std/expect@^1.0.17": "1.0.17",
+    "jsr:@std/fmt@1": "1.0.8",
     "jsr:@std/fmt@1.0.8": "1.0.8",
+    "jsr:@std/fs@1": "1.0.19",
     "jsr:@std/fs@1.0.18": "1.0.18",
     "jsr:@std/fs@^1.0.19": "1.0.19",
     "jsr:@std/internal@^1.0.10": "1.0.12",
     "jsr:@std/internal@^1.0.12": "1.0.12",
     "jsr:@std/internal@^1.0.9": "1.0.12",
+    "jsr:@std/io@0.225": "0.225.2",
     "jsr:@std/io@0.225.2": "0.225.2",
+    "jsr:@std/path@1": "1.1.2",
     "jsr:@std/path@1.1.0": "1.1.0",
     "jsr:@std/path@^1.0.8": "1.1.2",
     "jsr:@std/path@^1.1.1": "1.1.2",
@@ -29,11 +38,39 @@
         "jsr:@std/path@^1.0.8"
       ]
     },
+    "@david/console-static-text@0.3.0": {
+      "integrity": "2dfb46ecee525755f7989f94ece30bba85bd8ffe3e8666abc1bf926e1ee0698d"
+    },
+    "@david/dax@0.43.2": {
+      "integrity": "8c7df175465d994c0e3568e3eb91102768c2f1c86d2a513d7fc4cab13f9cb328",
+      "dependencies": [
+        "jsr:@david/console-static-text",
+        "jsr:@david/path",
+        "jsr:@david/which",
+        "jsr:@std/fmt@1",
+        "jsr:@std/fs@1",
+        "jsr:@std/io@0.225",
+        "jsr:@std/path@1"
+      ]
+    },
+    "@david/path@0.2.0": {
+      "integrity": "f2d7aa7f02ce5a55e27c09f9f1381794acb09d328f8d3c8a2e3ab3ffc294dccd",
+      "dependencies": [
+        "jsr:@std/fs@1",
+        "jsr:@std/path@1"
+      ]
+    },
+    "@david/which@0.4.1": {
+      "integrity": "896a682b111f92ab866cc70c5b4afab2f5899d2f9bde31ed00203b9c250f225e"
+    },
     "@std/assert@1.0.15": {
       "integrity": "d64018e951dbdfab9777335ecdb000c0b4e3df036984083be219ce5941e4703b",
       "dependencies": [
         "jsr:@std/internal@^1.0.12"
       ]
+    },
+    "@std/bytes@1.0.6": {
+      "integrity": "f6ac6adbd8ccd99314045f5703e23af0a68d7f7e58364b47d2c7f408aeb5820a"
     },
     "@std/data-structures@1.0.9": {
       "integrity": "033d6e17e64bf1f84a614e647c1b015fa2576ae3312305821e1a4cb20674bb4d"
@@ -62,7 +99,10 @@
       "integrity": "972a634fd5bc34b242024402972cd5143eac68d8dffaca5eaa4dba30ce17b027"
     },
     "@std/io@0.225.2": {
-      "integrity": "3c740cd4ee4c082e6cfc86458f47e2ab7cb353dc6234d5e9b1f91a2de5f4d6c7"
+      "integrity": "3c740cd4ee4c082e6cfc86458f47e2ab7cb353dc6234d5e9b1f91a2de5f4d6c7",
+      "dependencies": [
+        "jsr:@std/bytes"
+      ]
     },
     "@std/path@1.1.0": {
       "integrity": "ddc94f8e3c275627281cbc23341df6b8bcc874d70374f75fec2533521e3d6886"
@@ -90,9 +130,9 @@
       "integrity": "57ad51c5ed2fac97d26773e91540b198823db44662d88dd33ef49cf049726e7c",
       "dependencies": [
         "jsr:@404wolf/xdg-portable",
-        "jsr:@std/fmt",
+        "jsr:@std/fmt@1.0.8",
         "jsr:@std/fs@1.0.18",
-        "jsr:@std/io",
+        "jsr:@std/io@0.225.2",
         "jsr:@std/path@1.1.0",
         "jsr:@std/yaml",
         "npm:yargs-parser"
@@ -106,6 +146,7 @@
   },
   "workspace": {
     "dependencies": [
+      "jsr:@david/dax@~0.43.2",
       "jsr:@std/expect@^1.0.17",
       "jsr:@std/fs@^1.0.19",
       "jsr:@std/path@^1.1.2",
