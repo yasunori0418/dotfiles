@@ -1,10 +1,13 @@
 import { type UserCompletionSource } from "@yuki-yano/zeno";
+import { findDirectories } from "./utils.ts";
 
 export const define: UserCompletionSource[] = [
   {
     name: "change directory.",
     patterns: ["^cd $"],
-    sourceCommand: "fd . --hidden --type d --exclude '.git' --color always",
+    // sourceCommand: "fd . --hidden --type d --exclude '.git' --color always",
+    sourceFunction: async ({ currentDirectory }) =>
+      await findDirectories(currentDirectory),
     options: {
       "--preview": "cd {} && ls -a | sed '/^[.]*$/d'",
       "--prompt": "'cd> '",
