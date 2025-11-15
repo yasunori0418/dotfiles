@@ -1,6 +1,17 @@
 import $ from "jsr:@david/dax@0.43.2";
+import * as R from "jsr:@remeda/remeda@2.32.0";
 
-export const findDirectories = async (path: string): Promise<string[]> =>
-  (await $`fd --hidden --exclude '.git' --color=never --type d --full-path ${path}`
-    .text())
-    .split("\n");
+export const findDirectories = async (path: string): Promise<string[]> => {
+  const output =
+    await $`fd --hidden --exclude '.git' --color=never --type d --full-path ${path}`
+      .text();
+
+  return R.pipe(
+    output,
+    R.split("\n"),
+    R.filter((line) => line.length > 0),
+    R.map((line) =>
+      line.startsWith(path) ? line.slice(path.length).replace(/^\//, "") : line
+    ),
+  );
+};

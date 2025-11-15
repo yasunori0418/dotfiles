@@ -36,7 +36,7 @@ describe("findDirectories", () => {
     const result = await findDirectories(testDir);
 
     // then
-    expect(result).toEqual([
+    expect(result).toStrictEqual([
       "abc/",
       "def/",
       "ghi/",
@@ -46,5 +46,11 @@ describe("findDirectories", () => {
       "mno/pqr/stu/",
       "vwxyz/",
     ]);
+  });
+  it.skip("case home directory", async () => {
+    const homeDir = Deno.env.get("HOME") as string;
+    Deno.chdir(homeDir);
+    const result = await findDirectories(homeDir);
+    console.log(homeDir, result);
   });
 });
