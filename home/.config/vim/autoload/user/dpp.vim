@@ -62,7 +62,9 @@ def DppSetup(extraArgs: types.ExtraArgs): void
     pattern: CheckFilesPattern(extraArgs.check_files_globs),
     cmd: [
       'echowindow "dpp check_files() is run"',
-      'call dpp#check_files()'
+      $'if !dpp#check_files("{dpp_base_path}", "vim")->empty()',
+      $'  dpp#make_state("{dpp_base_path}", "{'$XDG_CONFIG_HOME/dpp/config.ts'->expand()}", "vim", {extraArgs.ToDict()})',
+      'endif'
     ]->join(' | '),
   }
   const make_state_post_autocmd = {
