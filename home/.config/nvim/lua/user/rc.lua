@@ -72,12 +72,7 @@ local function auto_install_plugins(dpp)
 end
 
 local function make_state()
-    M.dpp.make_state(
-        M.dpp_base_path,
-        joinpath(vim.env.XDG_CONFIG_HOME, "dpp", "config.ts"),
-        M.nvim_appname,
-        M.extra_args
-    )
+    M.dpp.make_state(M.dpp_base_path, M.dpp_config_ts, M.nvim_appname, M.extra_args)
     vim.api.nvim_create_autocmd("User", {
         pattern = "Dpp:makeStatePost",
         group = M.rc_autocmds,
@@ -105,7 +100,9 @@ local function dpp_setup()
         group = M.rc_autocmds,
         callback = function()
             vim.notify("dpp check_files() is run", vim.log.levels.INFO)
-            M.dpp.check_files(M.nvim_appname)
+            if vim.fn.empty(M.dpp.check_files(M.dpp_base_path, M.nvim_appname)) ~= 1 then
+                M.dpp.make_state(M.dpp_base_path, M.dpp_config_ts, M.nvim_appname, M.extra_args)
+            end
         end,
     })
     vim.api.nvim_create_autocmd("User", {
@@ -140,6 +137,7 @@ end
 function M.setup()
     M.nvim_appname = vim.env.NVIM_APPNAME or "nvim"
     M.dpp_base_path = get_dpp_base_path(M.nvim_appname)
+    M.dpp_config_ts = joinpath(vim.env.XDG_CONFIG_HOME, "dpp", "config.ts")
     M.rc_autocmds = vim.api.nvim_create_augroup("RcAutocmds", { clear = true })
 
     ---@param dir string?
