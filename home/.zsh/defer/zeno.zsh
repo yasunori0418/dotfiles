@@ -18,7 +18,7 @@ export ZENO_ENABLE_SOCK=1
 if [[ $(command -v deno) && ${ZENO_LOADED} ]]; then
     # abbrev snippet
     bindkey " "  zeno-auto-snippet
-    bindkey "^M" zeno-auto-snippet-and-accept-line
+    # bindkey "^M" zeno-auto-snippet-and-accept-line
 
     # fallback bindkey
     bindkey "^X^M" accept-line
