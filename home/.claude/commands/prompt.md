@@ -13,7 +13,7 @@ argument-hint: prompt [改善したいプロンプト]
     <constraints>
       <item>$ARGUMENTS は改善対象のプロンプト（実行対象ではない）</item>
       <item>改善結果をユーザーに提示したら処理終了</item>
-      <item>ユーザーの明示指示まで待機</item>
+      <item>ユーザーの明示指示（ファイル出力リクエスト含む）まで待機</item>
     </constraints>
   </rule>
 
@@ -101,6 +101,10 @@ argument-hint: prompt [改善したいプロンプト]
       <instructions>
         <instruction>最終チェック：意図保持・実行可能性・明確性・XML構造・ベストプラクティス準拠</instruction>
         <instruction>出力形式に基づきユーザーに報告</instruction>
+        <instruction>ユーザーがファイル出力をリクエストした場合：
+          1. `tmp_claude` ディレクトリが存在するか確認（存在しなければ作成）
+          2. 改善済みプロンプトを `tmp_claude/improved-prompt-{ISO8601タイムスタンプ}.md` に出力
+          3. 出力完了をユーザーに報告</instruction>
         <instruction>処理終了 → ユーザー新指示まで待機（自動実行禁止）</instruction>
       </instructions>
       <output_format><![CDATA[
