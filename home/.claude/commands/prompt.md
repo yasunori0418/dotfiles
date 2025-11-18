@@ -37,14 +37,14 @@ argument-hint: prompt [改善したいプロンプト]
 
   <context>
     <user_request>
-      <description>ユーザーから渡された改善前のプロンプト</description>
+      <description>改善前プロンプト（ユーザー提供）</description>
       <content>$ARGUMENTS</content>
     </user_request>
 
     <guidelines>
-      <item>明確で直接的な指示、XML構造化、Chain of Thought適用</item>
-      <item>多例示（3-5個）、出力形式・検証基準の明確化</item>
-      <item>Claude Code利用可能ツール（Edit, Grep, Bash等）を考慮</item>
+      <item>明確・直接的指示、XML構造化、Chain of Thought適用</item>
+      <item>多例示（3-5個）、出力形式・検証基準明確化</item>
+      <item>Claude Codeツール考慮（Edit/Grep/Bash等）</item>
     </guidelines>
   </context>
 
@@ -52,12 +52,12 @@ argument-hint: prompt [改善したいプロンプト]
     <step number="1">
       <title>初期分析とユーザー確認</title>
       <instructions>
-        <instruction>プロジェクトコンテキスト（CLAUDE.md）を確認</instruction>
-        <instruction>.claude/**ファイル検出時：ファイル内容読み込み → 改善対象箇所をユーザーに確認</instruction>
+        <instruction>プロジェクトコンテキスト（CLAUDE.md）確認</instruction>
+        <instruction>.claude/**ファイル検出時：内容読み込み → 改善箇所をユーザー確認</instruction>
         <instruction>曖昧な点を分析：目的/範囲・出力形式・制約・成功基準</instruction>
         <instruction>AskUserQuestionで確認（2-4選択肢、最大4質問）</instruction>
       </instructions>
-      <success>意図・範囲・制約・出力が明確化</success>
+      <success>意図・範囲・制約・出力の明確化</success>
       <error_handling>
         <item condition="ユーザー無応答">最一般的解釈で進行（その旨明記）</item>
         <item condition=".claude/**ファイル">改善箇所を具体化（セクション/ルール単位で確認）</item>
@@ -77,16 +77,16 @@ argument-hint: prompt [改善したいプロンプト]
           <project_context>CLAUDE.md関連情報（技術スタック・特記事項）</project_context>
         </context>
         <task>
-          <role>プロンプトエンジニアリング専門家として、Claude Codeが効果的に作業できるプロンプトに改善してください</role>
+          <role>プロンプトエンジニアリング専門家。Claude Code用に効果的なプロンプトへ改善</role>
           <requirements>
-            <item>明確で具体的、XMLで構造化</item>
-            <item>複雑タスク時は&lt;thinking&gt;タグでChain of Thoughtを指示</item>
-            <item>3-5個の多様な例を含める</item>
-            <item>出力形式・成功基準・検証基準を明確化</item>
-            <item>Claude Code利用可能ツール（Edit, Grep, Bash等）を考慮</item>
-            <item>ユーザーの元の意図を保持</item>
+            <item>明確・具体的・XML構造化</item>
+            <item>複雑タスク時: &lt;thinking&gt;でChain of Thought指示</item>
+            <item>多様な例3-5個</item>
+            <item>出力形式・成功基準・検証基準明示</item>
+            <item>Claude Codeツール考慮（Edit/Grep/Bash等）</item>
+            <item>ユーザー意図保持必須</item>
           </requirements>
-          <output>改善済みプロンプト + 改善点の説明</output>
+          <output>改善プロンプト + 改善点説明</output>
         </task>
       </sub_agent_prompt_template>
       <validation>XML構造・明確性・完全性・ベストプラクティス適用・ツール互換性・意図保持</validation>
@@ -100,12 +100,12 @@ argument-hint: prompt [改善したいプロンプト]
       <title>最終検証とユーザー報告</title>
       <instructions>
         <instruction>最終チェック：意図保持・実行可能性・明確性・XML構造・ベストプラクティス準拠</instruction>
-        <instruction>出力形式に基づきユーザーに報告</instruction>
-        <instruction>ユーザーがファイル出力をリクエストした場合：
-          1. `tmp_claude` ディレクトリが存在するか確認（存在しなければ作成）
-          2. 改善済みプロンプトを `tmp_claude/improved-prompt-{ISO8601タイムスタンプ}.md` に出力
-          3. 出力完了をユーザーに報告</instruction>
-        <instruction>処理終了 → ユーザー新指示まで待機（自動実行禁止）</instruction>
+        <instruction>出力形式に基づきユーザー報告</instruction>
+        <instruction>ファイル出力リクエスト時：
+          1. `tmp_claude` ディレクトリ存在確認（無ければ作成）
+          2. 改善プロンプトを `tmp_claude/improved-prompt-{ISO8601タイムスタンプ}.md` に出力
+          3. 出力完了報告</instruction>
+        <instruction>処理終了 → ユーザー指示待機（自動実行禁止）</instruction>
       </instructions>
       <output_format><![CDATA[
 # プロンプト改善結果
@@ -118,7 +118,7 @@ argument-hint: prompt [改善したいプロンプト]
 
 ---
 
-## 主な改善点
+## 改善点
 - {改善カテゴリと説明} × 3-5個
 
 ## 推奨事項
@@ -129,15 +129,15 @@ argument-hint: prompt [改善したいプロンプト]
 
   <execution_guidelines>
     <priorities>
-      <item rank="1">ユーザーの元の意図を保持</item>
-      <item rank="2">Claude Code環境での実行可能性</item>
+      <item rank="1">ユーザー意図保持</item>
+      <item rank="2">Claude Code実行可能性</item>
       <item rank="3">ベストプラクティス準拠</item>
-      <item rank="4">簡潔さ ↔ 完全性のバランス</item>
+      <item rank="4">簡潔性 ↔ 完全性のバランス</item>
     </priorities>
     <decision_rules>
       <rule>複数案がある → より明確で具体的な方を選択</rule>
       <rule>シンプルな構造を優先</rule>
-      <rule>Claude Codeツール活用を考慮</rule>
+      <rule>Claude Codeツール活用考慮</rule>
     </decision_rules>
   </execution_guidelines>
 
@@ -145,7 +145,7 @@ argument-hint: prompt [改善したいプロンプト]
     <note>反復的ワークフロー。完璧より実用的改善を優先</note>
     <note>Sub Agent要求は控えめに。3反復で最善を採用</note>
     <note>ユーザー依頼から逸脱しないか常に確認</note>
-    <note priority="critical">⚠️ 役割：プロンプト改善のみ。自動実行禁止。ユーザー新指示まで待機</note>
+    <note priority="critical">⚠️ 役割：プロンプト改善のみ。自動実行禁止。ユーザー指示待機</note>
   </notes>
 </workflow>
 
