@@ -8,12 +8,13 @@
     let
       hardwareModules = with nixos-hardware.nixosModules; [
         common-cpu-amd-zenpower
-        common-gpu-nvidia-sync
+        # common-gpu-nvidia-sync
+        common-gpu-amd
         common-pc-ssd
       ];
       hardware = ./hardware-configuration.nix;
       extraMountFilesystems = ./extra-mount-filesystems.nix;
-      nvidia = ../settings/nvidia.nix;
+      # nvidia = ../settings/nvidia.nix;
 
       # configuration.nix top level keys
       nix = ../settings/nix.nix;
@@ -64,7 +65,7 @@
     [
       hardware
       extraMountFilesystems
-      nvidia
+      # nvidia
 
       # configuration.nix top level keys
       nix
@@ -88,6 +89,8 @@
     ++ systemdUserServiceUnits
     ++ hardwareModules
     ++ applications;
+
+  # services.xserver.videoDrivers = [ "amdgpu" "modesetting" ];
 
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions
