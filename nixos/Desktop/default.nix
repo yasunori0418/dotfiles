@@ -8,13 +8,13 @@
     let
       hardwareModules = with nixos-hardware.nixosModules; [
         common-cpu-amd-zenpower
-        # common-gpu-nvidia-sync
-        common-gpu-amd
+        common-gpu-nvidia-sync
+        # common-gpu-amd
         common-pc-ssd
       ];
       hardware = ./hardware-configuration.nix;
       extraMountFilesystems = ./extra-mount-filesystems.nix;
-      # nvidia = ../settings/nvidia.nix;
+      nvidia = ../settings/nvidia.nix;
 
       # configuration.nix top level keys
       nix = ../settings/nix.nix;
@@ -65,7 +65,7 @@
     [
       hardware
       extraMountFilesystems
-      # nvidia
+      nvidia
 
       # configuration.nix top level keys
       nix
@@ -89,6 +89,17 @@
     ++ systemdUserServiceUnits
     ++ hardwareModules
     ++ applications;
+
+  programs.sway = {
+    enable = true;
+    extraOptions = [
+      "--verbose"
+      "--debug"
+      "--unsupported-gpu"
+    ];
+  };
+  i18n.inputMethod.fcitx5.waylandFrontend = true;
+  hardware.graphics.enable = true;
 
   # services.xserver.videoDrivers = [ "amdgpu" "modesetting" ];
 
