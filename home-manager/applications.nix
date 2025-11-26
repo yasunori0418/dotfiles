@@ -45,6 +45,7 @@ in
     kanata-with-cmd
     lemonade
     lnav
+    myNurPkgs.pict
     myNurPkgs.safe-chain
     pueue
     ssm-session-manager-plugin
