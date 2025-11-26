@@ -169,6 +169,8 @@ in
   rustTools = with pkgs; [
     # keep-sorted start
     cargo
+    cargo-make
+    cargo-watch
     crate2nix
     rust-analyzer
     rust.packages.stable.rustc-unwrapped
