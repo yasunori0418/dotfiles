@@ -3,8 +3,13 @@ vim9script
 import autoload './dpp/types.vim' as types
 import autoload './dpp/plugin.vim' as plugin
 
-const GetBaseDir = (dir: string): string => ['$XDG_CONFIG_HOME/vim'->expand(), dir]->join('/')
-const base_dir = GetBaseDir(null_string)
+def GetBaseDir(dir: string = null_string): string
+  return ['$XDG_CONFIG_HOME/vim'->expand(), dir]->join('/')
+enddef
+defcompile GetBaseDir
+
+# const GetBaseDir = (dir: string): string => ['$XDG_CONFIG_HOME/vim'->expand(), dir]->join('/')
+const base_dir = GetBaseDir()
 const rc_dir = GetBaseDir('rc')
 const toml_dir = GetBaseDir('toml')
 GetBaseDir('hooks')->setenv('HOOKS_DIR')
