@@ -4,7 +4,7 @@ import autoload './dpp/types.vim' as types
 import autoload './dpp/plugin.vim' as plugin
 
 const GetBaseDir = (dir: string): string => ['$XDG_CONFIG_HOME/vim'->expand(), dir]->join('/')
-const base_dir = ['$XDG_CONFIG_HOME/vim'->expand(), null_string]->join('/')
+const base_dir = GetBaseDir(null_string)
 const rc_dir = GetBaseDir('rc')
 const toml_dir = GetBaseDir('toml')
 GetBaseDir('hooks')->setenv('HOOKS_DIR')
