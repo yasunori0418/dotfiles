@@ -78,6 +78,9 @@ efm_configs.setup({
         sql = {
             { kind = "formatters", name = "sql-formatter" },
         },
+        rust = {
+            { kind = "formatters", name = "rustfmt"},
+        },
     },
 })
 
