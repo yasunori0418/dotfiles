@@ -99,6 +99,7 @@ in
       # keep-sorted start
       "alacritty/alacritty.toml"
       "alacritty/nord.toml"
+      "environment.d/my-env.conf"
       "ghostty/clipboard.conf"
       "ghostty/command.conf"
       "ghostty/config"
