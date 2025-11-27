@@ -207,11 +207,13 @@ in
   linuxDesktop = {
     theme = with pkgs; [
       # keep-sorted start
+      glib
       libsForQt5.qt5ct
       libsForQt5.qtstyleplugins
       nordic
       nordzy-cursor-theme
       nordzy-icon-theme
+      nwg-look
       themechanger
       # keep-sorted end
     ];

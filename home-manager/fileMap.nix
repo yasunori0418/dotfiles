@@ -225,6 +225,7 @@ in
       # keep-sorted start
       "Code/User/settings.json"
       "ghostty/linux.conf"
+      "gtk-4.0/settings.ini"
       "ncpamixer.conf"
       "screenkey.json"
       # keep-sorted end
