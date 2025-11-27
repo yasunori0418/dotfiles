@@ -216,6 +216,7 @@ in
       "paru"
       "picom"
       "rofi"
+      "sway"
       "xremap"
       # keep-sorted end
     ]
