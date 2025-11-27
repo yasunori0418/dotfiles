@@ -171,6 +171,7 @@ in
     cargo
     cargo-make
     cargo-watch
+    clippy
     crate2nix
     rust-analyzer
     rust.packages.stable.rustc-unwrapped
