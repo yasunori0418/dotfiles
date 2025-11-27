@@ -152,19 +152,25 @@ in
   # ++ (optionalIsLinux [ inputs.claude-desktop.packages.${system}.claude-desktop ])
   ;
 
-  libraries = with pkgs; [
-    # keep-sorted start
-    bun
-    gcc
-    go
-    nodejs_24
-    perl
-    pnpm
-    python312Packages.uv
-    ruby
-    volta
-    # keep-sorted end
-  ];
+  libraries =
+    with pkgs;
+    [
+      # keep-sorted start
+      bun
+      go
+      nodejs_24
+      perl
+      pnpm
+      python312Packages.uv
+      ruby
+      volta
+      # keep-sorted end
+    ]
+    ++ (optionalIsLinux [ gcc ])
+    ++ (optionalIsDarwin [
+      llvmPackages.clangWithLibcAndBasicRtAndLibcxx
+      darwin.libiconv
+    ]);
 
   rustTools = with pkgs; [
     # keep-sorted start
