@@ -1,4 +1,5 @@
 {
+  config,
   nixos-hardware,
   xremap-flake,
   ...
@@ -13,7 +14,10 @@
       nix = ../settings/nix.nix;
       nixpkgs = ../settings/nixpkgs.nix;
       boot = ../settings/boot.nix;
-      networking = import ../settings/networking.nix { hostName = "yasunori-laptop"; };
+      networking = import ../settings/networking.nix {
+        hostName = "yasunori-laptop";
+        wifi-power-save = true;
+      };
       environment = ../settings/environment.nix;
       time = ../settings/time.nix;
       i18n = ../settings/i18n.nix;
@@ -29,6 +33,7 @@
         ../settings/services/openssh.nix
         ../settings/services/tlp.nix
         ../settings/services/displayManager/ly.nix
+        (import ../settings/services/resolved.nix { inherit config; })
       ];
 
       xserver = [
