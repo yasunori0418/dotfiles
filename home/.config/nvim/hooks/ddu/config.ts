@@ -373,7 +373,7 @@ export class Config extends BaseConfig {
       uiParams: {
         ff: {
           ...{
-            startAutoAction: true,
+            startAutoAction: false,
             autoAction: {
               delay: 0,
               name: "preview",
