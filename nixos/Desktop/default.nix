@@ -1,5 +1,6 @@
 {
   pkgs,
+  config,
   nixos-hardware,
   xremap-flake,
   ...
@@ -38,6 +39,7 @@
         ../settings/services/openssh.nix
         ../settings/services/tlp.nix
         ../settings/services/displayManager/ly.nix
+        (import ../settings/services/resolved.nix { inherit config; })
       ];
 
       xserver = [
