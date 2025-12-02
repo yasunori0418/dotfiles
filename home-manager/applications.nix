@@ -47,6 +47,7 @@ in
     lnav
     myNurPkgs.pict
     myNurPkgs.safe-chain
+    pqrs
     pueue
     ssm-session-manager-plugin
     tmux
