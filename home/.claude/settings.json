@@ -142,6 +142,5 @@
     "command": "bunx ccusage statusline",
     "padding": 0
   },
-  "alwaysThinkingEnabled": true,
-  "model": "haiku"
+  "alwaysThinkingEnabled": true
 }
