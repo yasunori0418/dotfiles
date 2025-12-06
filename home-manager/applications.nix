@@ -224,6 +224,7 @@ in
       arandr
       blueberry
       clipmenu
+      clipcat
       dunst
       feh
       font-manager
