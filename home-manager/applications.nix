@@ -240,6 +240,7 @@ in
       simplescreenrecorder
       slack
       vlc
+      wl-clipboard
       xfce.xfce4-screenshooter
       xsel
       zathura
