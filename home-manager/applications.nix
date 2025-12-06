@@ -223,8 +223,8 @@ in
       # keep-sorted start
       arandr
       blueberry
-      clipmenu
       clipcat
+      clipmenu
       dunst
       feh
       font-manager
