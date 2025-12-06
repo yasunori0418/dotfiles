@@ -1,7 +1,12 @@
-server_endpoint = "/run/user/1000/clipcat/grpc.sock"
+# Server endpoint.
+# `clipcatctl` connects to the server via a Unix domain socket if `server_endpoint` is a file path, such as:
+# "/run/user/<user-id>/clipcat/grpc.sock".
+# It connects via HTTP if `server_endpoint` is a URL, like: "http://127.0.0.1:45045".
+server_endpoint = "$XDG_RUNTIME_DIR/clipcat/grpc.sock"
 preview_length = 100
 
 [log]
+file_path = "$XDG_STATE_HOME/clipcat/clipcatctl.log"
 emit_journald = true
 emit_stdout = false
 emit_stderr = false
