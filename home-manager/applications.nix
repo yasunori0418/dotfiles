@@ -32,6 +32,7 @@ in
     asciinema
     asciinema-agg
     awscli2
+    clipcat
     colorized-logs
     deno
     direnv
@@ -223,7 +224,6 @@ in
       # keep-sorted start
       arandr
       blueberry
-      clipcat
       clipmenu
       dunst
       feh

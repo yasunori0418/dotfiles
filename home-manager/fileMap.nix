@@ -71,6 +71,7 @@ in
       # keep-sorted start
       "alacritty/keybinds"
       "cchook"
+      "clipcat"
       "direnv"
       "dpp"
       "fastfetch"
@@ -204,7 +205,6 @@ in
       # keep-sorted start
       "bumblebee-status"
       "cantata"
-      "clipcat"
       "dunst"
       "fcitx5"
       "gtk-2.0"
