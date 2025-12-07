@@ -51,6 +51,7 @@
       systemdUserServiceUnits = [
         # ../settings/systemd/polkit-kde-agent.nix
         ../settings/systemd/ssh-agent.nix
+        ../settings/systemd/clipcatd.nix
       ];
       systemd-conf = ../settings/systemd/system-conf.nix;
 
