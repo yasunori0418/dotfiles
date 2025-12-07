@@ -39,5 +39,10 @@
     username = "yasunori";
     homeDirectory = "/home/${config.home.username}";
     stateVersion = "24.05";
+    extraOutputsToInstall = [
+      "doc"
+      "info"
+      "devdoc"
+    ];
   };
 }

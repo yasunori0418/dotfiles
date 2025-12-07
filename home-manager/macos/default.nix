@@ -36,5 +36,10 @@
     username = "taiki.watanabe";
     homeDirectory = "/Users/${config.home.username}";
     stateVersion = "24.05";
+    extraOutputsToInstall = [
+      "doc"
+      "info"
+      "devdoc"
+    ];
   };
 }
