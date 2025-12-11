@@ -23,6 +23,9 @@
       };
       clearDppStateAfterLinkGeneration = ../clear-dpp-state-after-link-generation.nix;
       initialDotfilesCloneAfterOnFilesChange = ../initial-dotfiles-clone-after-on-files-change.nix;
+      launchd = [
+        ../settings/launchd/clipcatd.nix
+      ];
     in
     [
       packages
@@ -30,7 +33,8 @@
       clearDppStateAfterLinkGeneration
       initialDotfilesCloneAfterOnFilesChange
       inputs.mac-app-util.homeManagerModules.default
-    ];
+    ]
+    ++ launchd;
   programs.home-manager.enable = true;
   home = {
     username = "taiki.watanabe";
