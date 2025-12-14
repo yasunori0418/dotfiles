@@ -26,42 +26,44 @@ in
     # keep-sorted end
   ];
 
-  utilityTools = with pkgs; [
-    # keep-sorted start
-    act
-    asciinema
-    asciinema-agg
-    awscli2
-    clipcat
-    colorized-logs
-    deno
-    direnv
-    gh
-    git
-    git-credential-manager
-    git-lfs
-    glow
-    gnumake
-    inputs.zmx.packages.${pkgs.stdenv.hostPlatform.system}.default
-    jnv
-    kanata-with-cmd
-    lemonade
-    lnav
-    myNurPkgs.pict
-    myNurPkgs.safe-chain
-    pqrs
-    pueue
-    ssm-session-manager-plugin
-    tmux
-    tree-sitter
-    typos
-    unar
-    unzip
-    usql
-    zellij
-    zip
-    # keep-sorted end
-  ];
+  utilityTools =
+    with pkgs;
+    [
+      # keep-sorted start
+      act
+      asciinema
+      asciinema-agg
+      awscli2
+      clipcat
+      colorized-logs
+      deno
+      direnv
+      gh
+      git
+      git-credential-manager
+      git-lfs
+      glow
+      gnumake
+      jnv
+      kanata-with-cmd
+      lemonade
+      lnav
+      myNurPkgs.pict
+      myNurPkgs.safe-chain
+      pqrs
+      pueue
+      ssm-session-manager-plugin
+      tmux
+      tree-sitter
+      typos
+      unar
+      unzip
+      usql
+      zellij
+      zip
+      # keep-sorted end
+    ]
+    ++ (optionalIsLinux [ inputs.zmx.packages.${pkgs.stdenv.hostPlatform.system}.default ]);
 
   textEditors = with pkgs; [
     # keep-sorted start
