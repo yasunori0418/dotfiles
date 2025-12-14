@@ -21,7 +21,7 @@ bind k select-pane -U
 bind l select-pane -R
 
 bind c new-window -c "#{pane_current_path}"
-bind C new-session
+bind C command-prompt -p "New session name:" "new-session -s '%%'"
 
 bind a choose-tree
 bind e choose-session
