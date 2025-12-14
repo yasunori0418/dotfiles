@@ -25,6 +25,7 @@
       initialDotfilesCloneAfterOnFilesChange = ../initial-dotfiles-clone-after-on-files-change.nix;
       xdg = ../settings/xdg.nix;
       nix = ../settings/nix.nix;
+      systemd-user-units = [ ../settings/systemd/tmux.nix ];
     in
     [
       packages
@@ -33,7 +34,8 @@
       initialDotfilesCloneAfterOnFilesChange
       xdg
       nix
-    ];
+    ]
+    ++ systemd-user-units;
   programs.home-manager.enable = true;
   home = {
     username = "yasunori";
