@@ -11,8 +11,9 @@ set -g history-limit 100000
 set -g default-command $SHELL
 set -g escape-time 0
 set -g editor $EDITOR
-set -g exit-empty on
-set -g exit-unattached on
+set -g exit-empty off
+set -g exit-unattached off
+set -g detach-on-destroy off
 set -g history-file "~/.zhistory"
 set -g status-position top
 set -g mode-keys vi
