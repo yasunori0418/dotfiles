@@ -23,6 +23,6 @@ set -g @jump-key 'J'
 
 set -g @plugin 'tmux-plugins/tmux-copycat'
 
-run -b '${XDG_CONFIG_HOME}/tmux/initial'
+run -b '${XDG_CONFIG_HOME}/tmux/initial.sh'
 
 # vim:ft=tmux
