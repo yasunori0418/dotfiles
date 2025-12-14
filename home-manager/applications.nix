@@ -42,6 +42,7 @@ in
     git-lfs
     glow
     gnumake
+    inputs.zmx.packages.${pkgs.stdenv.hostPlatform.system}.default
     jnv
     kanata-with-cmd
     lemonade
