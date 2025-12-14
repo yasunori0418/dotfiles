@@ -12,6 +12,24 @@ function source {
     builtin source $1
 }
 
+
+if [[ -z "$TMUX" && -z "$VIM" && -z "$NVIM" ]] ; then
+    # セッション一覧を取得
+    sessions=$(tmux list-sessions -F "#{session_name}: #{session_windows} windows" 2>/dev/null)
+
+    if [[ -z "$sessions" ]]; then
+        # セッションが0個の場合は新規作成
+        tmux new-session -s main
+    else
+        selected_session=$(echo "$sessions" | fzf --select-1 | cut -d: -f1)
+
+        # fzfでキャンセルされた場合は何もしない
+        if [[ -n "$selected_session" ]]; then
+            tmux attach-session -t "$selected_session"
+        fi
+    fi
+fi
+
 # Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
 # Initialization code that may require console input (password prompts, [y/n]
 # confirmations, etc.) must go above this block; everything else may go below.
