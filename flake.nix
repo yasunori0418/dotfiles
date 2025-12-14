@@ -48,10 +48,7 @@
       url = "github:nix-darwin/nix-darwin";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    zmx = {
-      url = "github:neurosnap/zmx";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
+    zmx.url = "github:neurosnap/zmx";
   };
 
   nixConfig = {
