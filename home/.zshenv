@@ -23,6 +23,7 @@ PATH="${HOME}/.local/bin:${PATH}"
 PATH="${HOME}/bin:${PATH}"
 
 export EDITOR="$(which nvim)"
+export LANG="en_US.UTF-8"
 # export TERMINAL="/usr/bin/wezterm"
 export XDG_CONFIG_HOME="${HOME}/.config"
 export XDG_CACHE_HOME="${HOME}/.cache"
