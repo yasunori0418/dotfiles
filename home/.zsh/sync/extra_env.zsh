@@ -1,5 +1,17 @@
 ### extras environment variable ###
 
+# less options
+export LESS="\
+  --ignore-case \
+  --quit-if-one-screen \
+  --no-init \
+  --LONG-PROMPT \
+  --RAW-CONTROL-CHARS \
+  --hilite-search \
+  --HILITE-UNREAD \
+  --window=-4 \
+  --tabs=4"
+
 # if installed binary by rust-cargo
 cargo_bin="${HOME}/.cargo/bin"
 if [[ -d ${cargo_bin} ]]; then

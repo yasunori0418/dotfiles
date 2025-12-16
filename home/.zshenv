@@ -2,17 +2,6 @@
 # ~/.zshenv
 #
 
-export LESS="\
-  --ignore-case \
-  --quit-if-one-screen \
-  --no-init \
-  --LONG-PROMPT \
-  --RAW-CONTROL-CHARS \
-  --hilite-search \
-  --HILITE-UNREAD \
-  --window=-4 \
-  --tabs=4"
-
 export TERM=xterm-256color
 
 export DOTFILES="${HOME}/dotfiles"
