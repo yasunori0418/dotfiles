@@ -142,6 +142,7 @@ in
         "markdown"
         "markdown_inline"
         "nix"
+        "sway"
         "toml"
         "typescript"
         "vim"
