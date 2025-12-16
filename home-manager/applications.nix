@@ -38,6 +38,7 @@ in
       colorized-logs
       deno
       direnv
+      flock
       gh
       git
       git-credential-manager
