@@ -28,5 +28,3 @@ include $HOME/.config/i3/config.d/startup.conf
 include $HOME/.config/i3/config.d/bindkey.conf
 include $HOME/.config/i3/config.d/window.conf
 include $HOME/.config/i3/config.d/workspace.conf
-
-# vim:fdm=marker:fen:ft=i3config
