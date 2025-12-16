@@ -210,7 +210,7 @@ in
       "fcitx5"
       "gtk-2.0"
       "gtk-3.0"
-      "i3"
+      # "i3"
       "i3status-rust"
       "keynav"
       "libskk"
