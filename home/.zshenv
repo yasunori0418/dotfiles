@@ -15,7 +15,6 @@ export LESS="\
 
 export TERM=xterm-256color
 
-export DOTFILES_DATA="${HOME}/.local/dotfiles"
 export DOTFILES="${HOME}/dotfiles"
 
 # User local tools management directory.
