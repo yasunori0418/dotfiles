@@ -49,6 +49,13 @@ vim.opt_local.shiftwidth = 2
 vim.opt_local.wrap = true
 -- }}}
 
+-- lua_i3config_swayconfig {{{
+vim.opt_local.tabstop = 2
+vim.opt_local.softtabstop = 2
+vim.opt_local.shiftwidth = 2
+vim.opt_local.foldmethod = "marker"
+-- }}}
+
 -- lua_php {{{
 vim.opt_local.tabstop = 4
 vim.opt_local.softtabstop = 4

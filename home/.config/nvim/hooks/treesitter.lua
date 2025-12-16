@@ -6,6 +6,8 @@ treesitter.setup({
 
 vim.treesitter.language.register("bash", { "sh", "zsh" })
 
+vim.treesitter.language.register("sway", { "swayconfig" })
+
 local function initialize()
     local uv = vim.uv
     local joinpath = vim.fs.joinpath
@@ -43,6 +45,7 @@ vim.api.nvim_create_autocmd("FileType", {
         "markdown",
         "nix",
         "sh",
+        "swayconfig",
         "toml",
         "typescript",
         "vim",
