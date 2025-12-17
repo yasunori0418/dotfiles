@@ -130,6 +130,7 @@ in
 
   codingSupportTools = with pkgs; [
     # keep-sorted start
+    # actionlint
     beautysh
     biome
     blade-formatter
@@ -138,9 +139,8 @@ in
     prettierd
     ruff
     shellcheck
-    sql-formatter
+    sqruff
     statix
-    # actionlint
     # keep-sorted end
   ];
 

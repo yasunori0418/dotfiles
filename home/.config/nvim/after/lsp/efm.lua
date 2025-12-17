@@ -76,7 +76,7 @@ efm_configs.setup({
             -- { kind = "linters", name = "statix" },
         },
         sql = {
-            { kind = "formatters", name = "sql-formatter" },
+            { kind = "formatters", name = "sqruff" },
         },
         rust = {
             { kind = "formatters", name = "rustfmt" },
