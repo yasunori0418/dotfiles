@@ -234,6 +234,7 @@ in
       font-manager
       gimp
       gparted
+      grim
       gthumb
       kdePackages.okular
       ncpamixer
@@ -244,8 +245,10 @@ in
       rofi-power-menu
       simplescreenrecorder
       slack
+      slurp
       vlc
       wl-clipboard
+      wl-screenrec
       xfce.xfce4-screenshooter
       xsel
       zathura
