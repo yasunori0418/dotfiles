@@ -206,6 +206,6 @@ vim.filetype.add({
     pattern = {
         [".*%.blade%.php"] = "blade",
         [".*/i3/.*"] = "i3config",
-        [".*/sway/.*"] = "swayconfig",
+        [".*/sway/.*"] = "i3config",
     },
 })
