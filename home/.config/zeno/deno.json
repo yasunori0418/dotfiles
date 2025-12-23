@@ -29,7 +29,7 @@
   },
   "imports": {
     "@david/dax": "jsr:@david/dax@^0.44.0",
-    "@praha/byethrow": "npm:@praha/byethrow@^0.8.1",
+    "@praha/byethrow": "npm:@praha/byethrow@^0.9.0",
     "@remeda/remeda": "jsr:@remeda/remeda@^2.32.0",
     "@std/expect": "jsr:@std/expect@^1.0.17",
     "@std/fs": "jsr:@std/fs@^1.0.19",
