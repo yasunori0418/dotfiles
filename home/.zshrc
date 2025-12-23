@@ -13,7 +13,7 @@ function source {
 }
 
 
-if [[ -z "$TMUX" && -z "$VIM" && -z "$NVIM" && -z "$SSH_CONNECTION" ]] ; then
+if [[ -z "$TMUX" && -z "$VIM" && -z "$NVIM" && -z "$SSH_CONNECTION" && -z "$INTELLIJ_ENVIRONMENT_READER" ]] ; then
     # セッション一覧を取得
     sessions=$(tmux list-sessions -F "#{session_name}: #{session_windows} windows" 2>/dev/null)
 
