@@ -62,6 +62,7 @@ in
       usql
       zellij
       zip
+      python313Packages.datadog
       # keep-sorted end
     ]
     ++ (optionalIsLinux [ inputs.zmx.packages.${pkgs.stdenv.hostPlatform.system}.default ]);
