@@ -65,7 +65,8 @@ in
       python313Packages.datadog
       # keep-sorted end
     ]
-    ++ (optionalIsLinux [ inputs.zmx.packages.${pkgs.stdenv.hostPlatform.system}.default ]);
+    # ++ (optionalIsLinux [ inputs.zmx.packages.${pkgs.stdenv.hostPlatform.system}.default ])
+    ;
 
   textEditors = with pkgs; [
     # keep-sorted start
