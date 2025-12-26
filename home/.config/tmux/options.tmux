@@ -23,4 +23,11 @@ set -g focus-events on
 set -g set-clipboard off
 set -g aggressive-resize on
 
+# 決めたセッション名を変えないようにする
+set-window-option -g automatic-rename off
+set-option -g automatic-rename off
+set-option -g allow-rename off
+set-option -g allow-set-title off
+set-option -g set-titles off
+
 # vim:ft=tmux
