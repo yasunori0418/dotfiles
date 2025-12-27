@@ -57,6 +57,7 @@
         ../options/applications/thunar.nix
         ../options/applications/xss-i3lock.nix
         ../options/applications/_1password.nix
+        ../options/applications/sway.nix
       ];
     in
     [
