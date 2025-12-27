@@ -63,6 +63,7 @@
         ../options/applications/thunar.nix
         ../options/applications/xss-i3lock.nix
         ../options/applications/_1password.nix
+        ../options/applications/sway.nix
       ];
     in
     [
@@ -92,15 +93,6 @@
     ++ systemdUserServiceUnits
     ++ hardwareModules
     ++ applications;
-
-  programs.sway = {
-    enable = true;
-    extraOptions = [
-      "--verbose"
-      "--debug"
-      "--unsupported-gpu"
-    ];
-  };
 
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions
