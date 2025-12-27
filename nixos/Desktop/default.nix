@@ -1,5 +1,4 @@
 {
-  pkgs,
   config,
   nixos-hardware,
   xremap-flake,
@@ -102,9 +101,6 @@
       "--unsupported-gpu"
     ];
   };
-  hardware.graphics.enable = true;
-
-  # services.xserver.videoDrivers = [ "amdgpu" "modesetting" ];
 
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions
