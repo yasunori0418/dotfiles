@@ -44,7 +44,7 @@
 
       applications = [
         xremap-flake.nixosModules.default
-        ../options/applications/xremap.nix
+        ../options/applications/xremap_wl.nix
         ../options/applications/fcitx5.nix
         ../options/applications/tailscale.nix
         ../options/applications/pipewire.nix
