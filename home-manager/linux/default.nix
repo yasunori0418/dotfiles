@@ -23,8 +23,8 @@
       };
       clearDppStateAfterLinkGeneration = ../clear-dpp-state-after-link-generation.nix;
       initialDotfilesCloneAfterOnFilesChange = ../initial-dotfiles-clone-after-on-files-change.nix;
-      xdg = ../settings/xdg.nix;
-      nix = ../settings/nix.nix;
+      xdg = ../options/xdg.nix;
+      nix = ../options/nix.nix;
     in
     [
       packages
