@@ -11,52 +11,52 @@
       hardware = ./hardware-configuration.nix;
 
       # configuration.nix top level keys
-      nix = ../settings/nix.nix;
-      nixpkgs = ../settings/nixpkgs.nix;
-      boot = ../settings/boot.nix;
-      networking = import ../settings/networking.nix {
+      nix = ../options/nix.nix;
+      nixpkgs = ../options/nixpkgs.nix;
+      boot = ../options/boot.nix;
+      networking = import ../options/networking.nix {
         hostName = "yasunori-laptop";
         wifi-power-save = true;
       };
-      environment = ../settings/environment.nix;
-      time = ../settings/time.nix;
-      i18n = ../settings/i18n.nix;
-      security = ../settings/security.nix;
-      programs = ../settings/programs.nix;
-      users = ../settings/users.nix;
-      fonts = ../settings/fonts.nix;
-      virtualisation = ../settings/virtualisation.nix;
-      qt = ../settings/qt.nix;
+      environment = ../options/environment.nix;
+      time = ../options/time.nix;
+      i18n = ../options/i18n.nix;
+      security = ../options/security.nix;
+      programs = ../options/programs.nix;
+      users = ../options/users.nix;
+      fonts = ../options/fonts.nix;
+      virtualisation = ../options/virtualisation.nix;
+      qt = ../options/qt.nix;
 
       services = [
-        ../settings/services/printing.nix
-        ../settings/services/openssh.nix
-        ../settings/services/tlp.nix
-        ../settings/services/displayManager/ly.nix
-        (import ../settings/services/resolved.nix { inherit config; })
+        ../options/services/printing.nix
+        ../options/services/openssh.nix
+        ../options/services/tlp.nix
+        ../options/services/displayManager/ly.nix
+        (import ../options/services/resolved.nix { inherit config; })
       ];
 
       xserver = [
-        ../settings/xserver/base.nix
-        # (import ../settings/xserver/displayManager/lightdm.nix)
-        ../settings/xserver/windowManager/i3wm.nix
+        ../options/xserver/base.nix
+        # (import ../options/xserver/displayManager/lightdm.nix)
+        ../options/xserver/windowManager/i3wm.nix
       ];
 
       systemd = [
-        ../settings/systemd/system-conf.nix
-        # ../settings/systemd/polkit-kde-agent.nix
-        ../settings/systemd/ssh-agent.nix
+        ../options/systemd/system-conf.nix
+        # ../options/systemd/polkit-kde-agent.nix
+        ../options/systemd/ssh-agent.nix
       ];
 
       applications = [
         xremap-flake.nixosModules.default
-        ../settings/applications/xremap.nix
-        ../settings/applications/fcitx5.nix
-        ../settings/applications/tailscale.nix
-        ../settings/applications/pipewire.nix
-        ../settings/applications/thunar.nix
-        ../settings/applications/xss-i3lock.nix
-        ../settings/applications/_1password.nix
+        ../options/applications/xremap.nix
+        ../options/applications/fcitx5.nix
+        ../options/applications/tailscale.nix
+        ../options/applications/pipewire.nix
+        ../options/applications/thunar.nix
+        ../options/applications/xss-i3lock.nix
+        ../options/applications/_1password.nix
       ];
     in
     [

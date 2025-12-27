@@ -4,12 +4,12 @@
 }:
 {
   imports = [
-    (import ../settings/networking.nix {
+    (import ../options/networking.nix {
       hostName = "iso";
       wifi-power-save = true;
     })
-    ../settings/time.nix
-    ../settings/i18n.nix
+    ../options/time.nix
+    ../options/i18n.nix
   ];
   environment = {
     systemPackages = with pkgs; [

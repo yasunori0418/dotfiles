@@ -6,23 +6,23 @@
   imports =
     let
       # generated settings by orbstack.
-      defaultSettings = [
+      default-options = [
         "${modulesPath}/virtualisation/lxc-container.nix" # Include the default lxd configuration.
         ./orbstack.nix # Include the OrbStack-specific configuration.
         ./users.nix
         ./networking.nix
       ];
 
-      nix = ../settings/nix.nix;
-      nixpkgs = ../settings/nixpkgs.nix;
+      nix = ../options/nix.nix;
+      nixpkgs = ../options/nixpkgs.nix;
       hostToLocalSymlink = ./hostToLocalSymlink.nix;
-      environment = ../settings/environment.nix;
-      time = ../settings/time.nix;
-      i18n = ../settings/i18n.nix;
-      security = ../settings/security.nix;
-      programs = ../settings/programs.nix;
+      environment = ../options/environment.nix;
+      time = ../options/time.nix;
+      i18n = ../options/i18n.nix;
+      security = ../options/security.nix;
+      programs = ../options/programs.nix;
     in
-    # fonts = ../settings/fonts.nix;
+    # fonts = ../options/fonts.nix;
     [
       nix
       nixpkgs
@@ -34,7 +34,7 @@
       programs
       # fonts
     ]
-    ++ defaultSettings;
+    ++ default-options;
 
   # This option defines the first version of NixOS you have installed on this particular machine,
   # and is used to maintain compatibility with application data (e.g. databases) created on older NixOS versions.
