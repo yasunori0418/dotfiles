@@ -75,16 +75,18 @@
     ++ systemd
     ++ applications;
 
-  hardware.graphics = {
-    enable = true;
+  hardware = {
     enableRedistributableFirmware = true;
-    extraPackages = with pkgs; [
-      intel-media-driver # VA-API用 (iHDドライバ)
-      intel-vaapi-driver # 古いアプリケーション用
-      libvdpau-va-gl
-      vpl-gpu-rt # Intel Arc/12世代以降のQuick Sync (QSV) 用
-      intel-compute-runtime # OpenCL用
-    ];
+    graphics = {
+      enable = true;
+      extraPackages = with pkgs; [
+        intel-media-driver # VA-API用 (iHDドライバ)
+        intel-vaapi-driver # 古いアプリケーション用
+        libvdpau-va-gl
+        vpl-gpu-rt # Intel Arc/12世代以降のQuick Sync (QSV) 用
+        intel-compute-runtime # OpenCL用
+      ];
+    };
   };
 
   environment.sessionVariables = {
