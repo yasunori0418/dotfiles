@@ -28,3 +28,4 @@ include $HOME/.config/sway/config.d/startup.conf
 include $HOME/.config/sway/config.d/bindkey.conf
 include $HOME/.config/sway/config.d/window.conf
 include $HOME/.config/sway/config.d/workspace.conf
+include $HOME/.config/sway/outputs
