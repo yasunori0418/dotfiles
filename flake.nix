@@ -118,6 +118,10 @@
                   profileName = "ThinkPadE14Gen2";
                   inherit system;
                 });
+                yasunori-laptop2 = nixosSystem (nixosArgs {
+                  profileName = "ThinkPadP14sGen6";
+                  inherit system;
+                });
                 yasunori-desktop = nixosSystem (nixosArgs {
                   profileName = "Desktop";
                   inherit system;
