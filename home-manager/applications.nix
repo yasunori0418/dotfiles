@@ -228,7 +228,6 @@ in
 
     desktopApps = with pkgs; [
       # keep-sorted start
-      arandr
       blueberry
       clipmenu
       dunst
@@ -251,6 +250,7 @@ in
       vlc
       wl-clipboard
       wl-screenrec
+      wlr-randr
       xfce.xfce4-screenshooter
       zathura
       zoom-us
