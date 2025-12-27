@@ -56,7 +56,10 @@
         serif = [ "Noto Serif CJK JP" ];
         sansSerif = [ "Noto Sans CJK JP" ];
         monospace = [ "Noto Sans Mono CJK JP" ];
-        emoji = [ "Moralerspace Argon HW" "Noto Color Emoji" ];
+        emoji = [
+          "Moralerspace Argon HW"
+          "Noto Color Emoji"
+        ];
       };
     };
   };
