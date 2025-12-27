@@ -41,12 +41,6 @@
         (import ../options/services/resolved.nix { inherit config; })
       ];
 
-      xserver = [
-        ../options/xserver/base.nix
-        # (import ../options/xserver/displayManager/lightdm.nix { greeterName = "mini"; })
-        ../options/xserver/windowManager/i3wm.nix
-      ];
-
       systemdUserServiceUnits = [
         # ../options/systemd/polkit-kde-agent.nix
         ../options/systemd/ssh-agent.nix
@@ -89,7 +83,6 @@
       systemd-conf
     ]
     ++ services
-    ++ xserver
     ++ systemdUserServiceUnits
     ++ hardwareModules
     ++ applications;

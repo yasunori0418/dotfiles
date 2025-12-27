@@ -36,12 +36,6 @@
         (import ../options/services/resolved.nix { inherit config; })
       ];
 
-      xserver = [
-        ../options/xserver/base.nix
-        # (import ../options/xserver/displayManager/lightdm.nix)
-        ../options/xserver/windowManager/i3wm.nix
-      ];
-
       systemd = [
         ../options/systemd/system-conf.nix
         # ../options/systemd/polkit-kde-agent.nix
@@ -80,7 +74,6 @@
       qt
     ]
     ++ services
-    ++ xserver
     ++ systemd
     ++ applications;
 
