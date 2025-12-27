@@ -10,6 +10,7 @@
     })
     ../options/time.nix
     ../options/i18n.nix
+    ../options/services/resolved.nix
   ];
   environment = {
     systemPackages = with pkgs; [
