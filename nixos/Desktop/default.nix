@@ -102,7 +102,6 @@
       "--unsupported-gpu"
     ];
   };
-  i18n.inputMethod.fcitx5.waylandFrontend = true;
   hardware.graphics.enable = true;
 
   # services.xserver.videoDrivers = [ "amdgpu" "modesetting" ];
