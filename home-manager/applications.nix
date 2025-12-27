@@ -252,7 +252,6 @@ in
       wl-clipboard
       wl-screenrec
       xfce.xfce4-screenshooter
-      xsel
       zathura
       zoom-us
       # keep-sorted end
