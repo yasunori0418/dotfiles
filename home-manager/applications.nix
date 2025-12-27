@@ -237,6 +237,7 @@ in
       gthumb
       kdePackages.okular
       ncpamixer
+      nwg-displays
       pavucontrol
       peek
       picom
