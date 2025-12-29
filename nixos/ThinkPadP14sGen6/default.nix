@@ -39,6 +39,7 @@
         ../options/systemd/system-conf.nix
         # ../options/systemd/polkit-kde-agent.nix
         ../options/systemd/ssh-agent.nix
+        ../options/systemd/clipcatd.nix
       ];
 
       applications = [
