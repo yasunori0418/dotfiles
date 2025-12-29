@@ -21,11 +21,17 @@ if [[ -z "$TMUX" && -z "$VIM" && -z "$NVIM" && -z "$SSH_CONNECTION" && -z "$INTE
         # セッションが0個の場合は新規作成
         tmux new-session -s main
     else
-        selected_session=$(echo "$sessions" | fzf --select-1 | cut -d: -f1)
+        selected_session=$(echo "$sessions" | fzf | cut -d: -f1)
 
-        # fzfでキャンセルされた場合は何もしない
         if [[ -n "$selected_session" ]]; then
             tmux attach-session -t "$selected_session"
+        else
+            # fzfで選択されなかったらセッション名を指定して、
+            # 新しいセッションにアタッチする
+            read "session_name?tmux session name: "
+            if [[ -n "$session_name" ]]; then
+                tmux new-session -s "$session_name"
+            fi
         fi
     fi
 fi
