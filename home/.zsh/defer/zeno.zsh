@@ -22,19 +22,25 @@ export ZENO_FZF_TMUX_OPTIONS="-p"
 if [[ $(command -v deno) && ${ZENO_LOADED} ]]; then
     # abbrev snippet
     bindkey " "  zeno-auto-snippet
-    # bindkey "^M" zeno-auto-snippet-and-accept-line
+
+    # bindkey "^M" accept-line
+    bindkey "^X^M" zeno-auto-snippet-and-accept-line
 
     # fallback bindkey
-    bindkey "^X^M" accept-line
-    bindkey "^XM" accept-line
     bindkey "^X^ " zeno-insert-space
-    bindkey "^X " zeno-insert-space
 
     # completion
     bindkey "^I" zeno-completion
 
     # ZLE wigets
-    bindkey "^R" zeno-history-selection
-    bindkey '^X^S' zeno-insert-snippet
+    bindkey "^R" zeno-smart-history-selection
+    bindkey '^X^X' zeno-insert-snippet
     bindkey '^X^F' zeno-ghq-cd
+
+    # preprompt bindings
+    bindkey '^X^P' zeno-preprompt
+    bindkey '^X^S' zeno-preprompt-snippet
+    # Outside ZLE you can run `zeno-preprompt git {{cmd}}` or `zeno-preprompt-snippet foo`
+    # to set the next prompt prefix; invoking them with an empty argument resets the state.
+
 fi
