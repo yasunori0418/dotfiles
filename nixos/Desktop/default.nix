@@ -38,7 +38,7 @@
         ../options/services/openssh.nix
         ../options/services/tlp.nix
         ../options/services/displayManager/ly.nix
-        (import ../options/services/resolved.nix { inherit config; })
+        ../options/services/resolved.nix
       ];
 
       systemdUserServiceUnits = [
