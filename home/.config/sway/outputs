@@ -4,7 +4,7 @@ output "eDP-1" {
     mode  2560x1600@90.0Hz
     pos 0 1440
     transform normal
-    scale 1.0
+    scale 1.25
     scale_filter nearest
     adaptive_sync off
     dpms on
@@ -13,7 +13,7 @@ output "DP-2" {
     mode  2560x1440@59.951Hz
     pos 0 0
     transform normal
-    scale 1.0
+    scale 1.25
     scale_filter nearest
     adaptive_sync off
     dpms on
@@ -22,7 +22,7 @@ output "DP-3" {
     mode  2560x1440@59.951Hz
     pos 0 0
     transform normal
-    scale 1.0
+    scale 1.25
     scale_filter nearest
     adaptive_sync off
     dpms on
@@ -31,7 +31,7 @@ output "DP-4" {
     mode  2560x1440@59.951Hz
     pos 0 0
     transform normal
-    scale 1.0
+    scale 1.25
     scale_filter nearest
     adaptive_sync off
     dpms on
@@ -40,7 +40,7 @@ output "DP-5" {
     mode  2560x1440@59.951Hz
     pos 0 0
     transform normal
-    scale 1.0
+    scale 1.25
     scale_filter nearest
     adaptive_sync off
     dpms on
@@ -49,7 +49,7 @@ output "DP-6" {
     mode  2560x1440@59.951Hz
     pos 0 0
     transform normal
-    scale 1.0
+    scale 1.25
     scale_filter nearest
     adaptive_sync off
     dpms on
@@ -58,7 +58,7 @@ output "DP-7" {
     mode  2560x1440@59.951Hz
     pos 0 0
     transform normal
-    scale 1.0
+    scale 1.25
     scale_filter nearest
     adaptive_sync off
     dpms on
