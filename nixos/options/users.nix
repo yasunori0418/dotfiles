@@ -8,6 +8,7 @@
       extraGroups = [
         "networkmanager"
         "wheel"
+        "input"
       ];
     };
   };
