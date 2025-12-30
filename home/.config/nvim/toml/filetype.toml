@@ -20,11 +20,11 @@ repo = 'github.com/atusy/tsnode-marker.nvim'
 on_ft = 'markdown'
 hooks_file = '$HOOKS_DIR/tsnode_marker.lua'
 
-[[plugins]]
-repo = 'github.com/epwalsh/obsidian.nvim'
-on_ft = 'markdown'
-depends = ['plenary.nvim']
-hooks_file = '$HOOKS_DIR/obsidian.lua'
+# [[plugins]]
+# repo = 'github.com/epwalsh/obsidian.nvim'
+# on_ft = 'markdown'
+# depends = ['plenary.nvim']
+# hooks_file = '$HOOKS_DIR/obsidian.lua'
 
 [[plugins]]
 repo = 'github.com/hat0uma/csvview.nvim'
