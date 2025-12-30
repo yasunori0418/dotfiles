@@ -40,6 +40,7 @@
         # ../options/systemd/polkit-kde-agent.nix
         ../options/systemd/ssh-agent.nix
         ../options/systemd/clipcatd.nix
+        ../options/systemd/initial-dotfiles.nix
       ];
 
       applications = [
