@@ -31,7 +31,7 @@ alias cdr=git_root # ./commands.zsh
 
 # useful command aliases
 alias sync_status='watch grep -e Dirty: -e Writeback: /proc/meminfo'
-alias capswap='systemctl restart xremap.service'
+alias capswap='systemctl --user restart xremap.service'
 
 [[ $(command -v colordiff) ]] && alias diff='colordiff'
 
