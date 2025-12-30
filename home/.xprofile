@@ -1,3 +1,5 @@
+#!/usr/bin/env bash
+
 # fcitx
 export GTK_IM_MODULE=fcitx
 export QT_IM_MODULE=fcitx
@@ -6,16 +8,8 @@ export XMODIFIERS=@im=fcitx
 # Qt on Gtk+ 2 theme setting.
 export QT_QPA_PLATFORMTHEME='gtk2'
 
-# Clipmenu
-export CM_LAUNCHER=rofi
-
-if [[ $(uname -n) = 'yasunori-laptop' ]];then
-  ~/bin/multi_monitor_for_laptop.sh
-fi
-
 # https://superuser.com/questions/759759/writing-a-service-that-depends-on-xorg
 systemctl --user import-environment \
   PATH \
   XDG_SESSION_ID \
   QT_QPA_PLATFORMTHEME
-systemctl --user start xsession.target
