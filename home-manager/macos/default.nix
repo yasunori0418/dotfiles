@@ -22,7 +22,6 @@
           ;
       };
       clearDppStateAfterLinkGeneration = ../clear-dpp-state-after-link-generation.nix;
-      initialDotfilesCloneAfterOnFilesChange = ../initial-dotfiles-clone-after-on-files-change.nix;
       launchd = [
         ../options/launchd/clipcatd.nix
       ];
@@ -31,7 +30,6 @@
       packages
       homeFile
       clearDppStateAfterLinkGeneration
-      initialDotfilesCloneAfterOnFilesChange
       inputs.mac-app-util.homeManagerModules.default
     ]
     ++ launchd;
