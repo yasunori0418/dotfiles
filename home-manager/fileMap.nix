@@ -117,7 +117,7 @@ in
     ];
 
   dotLocalShare = {
-    ".local/share/nvim/treesitter/parser".source = builtins.toString "/${
+    ".local/share/nvim/treesitter/parser".source = toString "/${
       myNurPkgs.nvim-treesitter-parsers [
         # keep-sorted start
         "bash"
@@ -133,7 +133,7 @@ in
         "jsdoc"
         "json"
         "json5"
-        "jsonc"
+        # "jsonc"
         "kdl"
         "kotlin"
         "lua"
