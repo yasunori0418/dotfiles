@@ -231,6 +231,7 @@ in
       dunst
       feh
       font-manager
+      fuzzel
       gimp
       gparted
       grim
@@ -247,6 +248,7 @@ in
       slack
       slurp
       vlc
+      waybar
       wl-clipboard
       wl-screenrec
       wlr-randr
