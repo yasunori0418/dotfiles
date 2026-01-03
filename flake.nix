@@ -37,8 +37,6 @@
     xremap-flake = {
       url = "github:xremap/nix-flake";
       inputs.nixpkgs.follows = "nixpkgs";
-      inputs.treefmt-nix.follows = "treefmt-nix";
-      inputs.home-manager.follows = "home-manager";
     };
     home-manager = {
       url = "github:nix-community/home-manager";
