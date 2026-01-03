@@ -26,12 +26,12 @@
   boot.extraModulePackages = [ ];
 
   fileSystems."/" = {
-    device = "/dev/disk/by-uuid/51841723-d80d-48b9-938a-75c91068f62a";
+    device = "/dev/disk/by-label/NIX_ROOT";
     fsType = "btrfs";
   };
 
   fileSystems."/boot" = {
-    device = "/dev/disk/by-uuid/7EE6-D282";
+    device = "/dev/disk/by-label/NIX_BOOT";
     fsType = "vfat";
     options = [
       "fmask=0022"
