@@ -19,10 +19,15 @@ input {
             // If this section is empty, niri will fetch xkb settings
             // from org.freedesktop.locale1. You can control these using
             // localectl set-x11-keymap.
+            layout "us"
         }
 
         // Enable numlock on startup, omitting this setting disables it.
         numlock
+
+        // Delay is in milliseconds before the keyboard repeat starts. Rate is in characters per second.
+        repeat-delay 300
+        repeat-rate 32
     }
 
     // Next sections include libinput settings.
@@ -31,10 +36,10 @@ input {
     touchpad {
         // off
         tap
-        // dwt
-        // dwtp
-        // drag false
-        // drag-lock
+        dwt
+        dwtp
+        drag true
+        drag-lock
         natural-scroll
         // accel-speed 0.2
         // accel-profile "flat"
