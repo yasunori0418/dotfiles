@@ -216,6 +216,7 @@ in
       "libskk"
       "luacheck"
       "mpd"
+      "niri"
       "paru"
       "picom"
       "rofi"
