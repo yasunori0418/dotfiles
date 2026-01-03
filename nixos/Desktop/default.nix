@@ -31,7 +31,7 @@
       fonts = ../options/fonts.nix;
       virtualisation = ../options/virtualisation.nix;
       qt = ../options/qt.nix;
-      sane = ../options/hardware/sane.nix;
+      # sane = ../options/hardware/sane.nix;
 
       services = [
         ../options/services/printing.nix
@@ -81,7 +81,7 @@
       fonts
       virtualisation
       qt
-      sane
+      # sane
       systemd-conf
     ]
     ++ services
