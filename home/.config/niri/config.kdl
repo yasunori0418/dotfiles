@@ -156,12 +156,18 @@ layout {
     gaps 16
 
     // When to center a column when changing focus, options are:
-    // - "never", default behavior, focusing an off-screen column will keep at the left
-    //   or right edge of the screen.
+    // - "never", default behavior, focusing an off-screen column will keep at the left or right edge of the screen.
     // - "always", the focused column will always be centered.
-    // - "on-overflow", focusing a column will center it if it doesn't fit
-    //   together with the previously focused column.
-    center-focused-column "never"
+    // - "on-overflow", focusing a column will center it if it doesn't fit together with the previously focused column.
+    center-focused-column "on-overflow"
+
+    // Make all new columns tabbed by default.
+    default-column-display "tabbed"
+
+    // You may also want to hide the tab indicator when there's only a single window in a column.
+    tab-indicator {
+        hide-when-single-tab
+    }
 
     // You can customize the widths that "switch-preset-column-width" (Mod+R) toggles between.
     preset-column-widths {
@@ -180,20 +186,18 @@ layout {
     // preset-window-heights { }
 
     // You can change the default width of the new windows.
-    default-column-width { proportion 0.5; }
+    default-column-width { proportion 1.0; }
     // If you leave the brackets empty, the windows themselves will decide their initial width.
     // default-column-width {}
 
-    // By default focus ring and border are rendered as a solid background rectangle
-    // behind windows. That is, they will show up through semitransparent windows.
+    // By default focus ring and border are rendered as a solid background rectangle behind windows.
+    // That is, they will show up through semitransparent windows.
     // This is because windows using client-side decorations can have an arbitrary shape.
     //
     // If you don't like that, you should uncomment `prefer-no-csd` below.
-    // Niri will draw focus ring and border *around* windows that agree to omit their
-    // client-side decorations.
+    // Niri will draw focus ring and border *around* windows that agree to omit their client-side decorations.
     //
-    // Alternatively, you can override it with a window rule called
-    // `draw-border-with-background`.
+    // Alternatively, you can override it with a window rule called `draw-border-with-background`.
 
     // You can change how the focus ring looks.
     focus-ring {
@@ -209,13 +213,13 @@ layout {
         // - CSS-like notation: "rgb(255, 127, 0)", rgba(), hsl() and a few others.
 
         // Color of the ring on the active monitor.
-        active-color "#7fc8ff"
+        active-color "#3b4252"
 
         // Color of the ring on inactive monitors.
         //
         // The focus ring only draws around the active window, so the only place
         // where you can see its inactive-color is on other monitors.
-        inactive-color "#505050"
+        inactive-color "#4c566a"
 
         // You can also use gradients. They take precedence over solid colors.
         // Gradients are rendered the same as CSS linear-gradient(angle, from, to).
@@ -240,11 +244,11 @@ layout {
         off
 
         width 4
-        active-color "#ffc87f"
-        inactive-color "#505050"
+        active-color "#3b4252"
+        inactive-color "#4c566a"
 
         // Color of the border around windows that request your attention.
-        urgent-color "#9b0000"
+        urgent-color "#bf616a"
 
         // Gradients can use a few different interpolation color spaces.
         // For example, this is a pastel rainbow gradient via in="oklch longer hue".
@@ -257,21 +261,18 @@ layout {
     // You can enable drop shadows for windows.
     shadow {
         // Uncomment the next line to enable shadows.
-        // on
+        on
 
         // By default, the shadow draws only around its window, and not behind it.
         // Uncomment this setting to make the shadow draw behind its window.
         //
-        // Note that niri has no way of knowing about the CSD window corner
-        // radius. It has to assume that windows have square corners, leading to
-        // shadow artifacts inside the CSD rounded corners. This setting fixes
-        // those artifacts.
+        // Note that niri has no way of knowing about the CSD window corner radius.
+        // It has to assume that windows have square corners, leading to shadow artifacts inside the CSD rounded corners.
+        // This setting fixes those artifacts.
         //
-        // However, instead you may want to set prefer-no-csd and/or
-        // geometry-corner-radius. Then, niri will know the corner radius and
-        // draw the shadow correctly, without having to draw it behind the
-        // window. These will also remove client-side shadows if the window
-        // draws any.
+        // However, instead you may want to set prefer-no-csd and/or geometry-corner-radius.
+        // Then, niri will know the corner radius and draw the shadow correctly, without having to draw it behind the window.
+        // These will also remove client-side shadows if the window draws any.
         //
         // draw-behind-window true
 
@@ -288,14 +289,14 @@ layout {
         offset x=0 y=5
 
         // You can also change the shadow color and opacity.
-        color "#0007"
+        color "#2e3440"
     }
 
     // Struts shrink the area occupied by windows, similarly to layer-shell panels.
-    // You can think of them as a kind of outer gaps. They are set in logical pixels.
+    // You can think of them as a kind of outer gaps.
+    // They are set in logical pixels.
     // Left and right struts will cause the next window to the side to always be visible.
-    // Top and bottom struts will simply add outer gaps in addition to the area occupied by
-    // layer-shell panels and regular gaps.
+    // Top and bottom struts will simply add outer gaps in addition to the area occupied by layer-shell panels and regular gaps.
     struts {
         // left 64
         // right 64
