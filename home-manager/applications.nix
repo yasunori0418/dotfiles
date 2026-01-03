@@ -247,6 +247,7 @@ in
       simplescreenrecorder
       slack
       slurp
+      swaybg
       vlc
       waybar
       wl-clipboard
