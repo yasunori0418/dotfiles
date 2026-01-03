@@ -74,13 +74,11 @@ input {
     // focus-follows-mouse max-scroll-amount="0%"
 }
 
-// You can configure outputs by their name, which you can find
-// by running `niri msg outputs` while inside a niri instance.
+// You can configure outputs by their name, which you can find by running `niri msg outputs` while inside a niri instance.
 // The built-in laptop monitor is usually called "eDP-1".
-// Find more information on the wiki:
-// https://yalter.github.io/niri/Configuration:-Outputs
+// Find more information on the wiki: https://yalter.github.io/niri/Configuration:-Outputs
 // Remember to uncomment the node by removing "/-"!
-/-output "eDP-1" {
+output "eDP-1" {
     // Uncomment this line to disable this output.
     // off
 
@@ -90,10 +88,10 @@ input {
     // for the resolution.
     // If the mode is omitted altogether or is invalid, niri will pick one automatically.
     // Run `niri msg outputs` while inside a niri instance to list all outputs and their modes.
-    mode "1920x1080@120.030"
+    mode "2560x1600@90.000"
 
     // You can use integer or fractional scale, for example use 1.5 for 150% scale.
-    scale 2
+    scale 1
 
     // Transform allows to rotate the output counter-clockwise, valid values are:
     // normal, 90, 180, 270, flipped, flipped-90, flipped-180 and flipped-270.
@@ -106,9 +104,15 @@ input {
     // outputs are sized in logical, or scaled, pixels.
     // For example, a 3840×2160 output with scale 2.0 will have a logical size of 1920×1080,
     // so to put another output directly adjacent to it on the right, set its x to 1920.
-    // If the position is unset or results in an overlap, the output is instead placed
-    // automatically.
-    position x=1280 y=0
+    // If the position is unset or results in an overlap, the output is instead placed automatically.
+    position x=0 y=-1440
+}
+
+output "HDMI-A-2" {
+    mode "2560x1440@60.000"
+    scale 1
+    transform "normal"
+    position x=0 y=0
 }
 
 // Settings that influence how windows are positioned and sized.
