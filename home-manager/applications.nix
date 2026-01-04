@@ -254,6 +254,8 @@ in
       wl-screenrec
       wlr-randr
       xfce4-screenshooter
+      xwayland
+      xwayland-satellite
       zathura
       zoom-us
       # keep-sorted end
