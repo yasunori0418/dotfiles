@@ -40,7 +40,7 @@ input {
         dwtp
         drag true
         drag-lock
-        natural-scroll
+        // natural-scroll
         // accel-speed 0.2
         // accel-profile "flat"
         // scroll-method "two-finger"
@@ -315,12 +315,26 @@ layout {
 // See the binds section below for more spawn examples.
 
 // This line starts waybar, a commonly used bar for Wayland compositors.
-// spawn-at-startup "waybar"
-// spawn-sh-at-startup "swaybg --image ~/dotfiles/wallpaper.png --output * --mode fill"
+spawn-sh-at-startup "swaybg --image ~/dotfiles/wallpaper.png --output '*' --mode fill"
+spawn-sh-at-startup "thunar --daemon"
+spawn-sh-at-startup "slack --startup"
+spawn-at-startup "blueberry-tray"
+
+spawn-at-startup "ghostty"
+
+// spawn-at-startup "fcitx5"
+// environment {
+//     QT_IM_MODULE "fcitx"
+//     XMODIFIERS "@im=fcitx"
+//     SDL_IM_MODULE "fcitx"
+//     GLFW_IM_MODULE "ibus"
+//     QT_QPA_PLATFORMTHEME "qt6ct"
+//     DISPLAY ":0"
+// }
 
 // To run a shell command (with variables, pipes, etc.), use spawn-sh-at-startup:
 // spawn-sh-at-startup "qs -c ~/source/qs/MyAwesomeShell"
-spawn-sh-at-startup "systemctl --user import-environment PATH XDG_SESSION_ID XDG_CURRENT_DESKTOP QT_QPA_PLATFORMTHEME WAYLAND_DISPLAY DISPLAY XCURSOR_SIZE XCURSOR_THEME"
+// spawn-sh-at-startup "systemctl --user import-environment PATH XDG_SESSION_ID XDG_CURRENT_DESKTOP QT_QPA_PLATFORMTHEME WAYLAND_DISPLAY DISPLAY XCURSOR_SIZE XCURSOR_THEME"
 
 hotkey-overlay {
     // Uncomment this line to disable the "Important Hotkeys" pop-up at startup.
@@ -413,6 +427,7 @@ binds {
     Mod+Shift+Return hotkey-overlay-title="Open a Terminal: Alacritty" { spawn "alacritty"; }
     Mod+D hotkey-overlay-title="Run an Application: rofi" { spawn-sh "rofi -show drun"; }
     Mod+Alt+L hotkey-overlay-title="Lock the Screen: swaylock" { spawn "swaylock"; }
+    Mod+Alt+I hotkey-overlay-title="VIME(Vim Input Method Editor)" { spawn-sh "~/bin/vime.sh"; }
 
     // Use spawn-sh to run a shell command. Do this if you need pipes, multiple commands, etc.
     // Note: the entire command goes as a single argument. It's passed verbatim to `sh -c`.
