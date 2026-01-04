@@ -10,6 +10,7 @@ export QT_QPA_PLATFORMTHEME='gtk2'
 
 # https://superuser.com/questions/759759/writing-a-service-that-depends-on-xorg
 systemctl --user import-environment \
-  PATH \
-  XDG_SESSION_ID \
-  QT_QPA_PLATFORMTHEME
+    PATH \
+    XDG_SESSION_ID \
+    QT_QPA_PLATFORMTHEME
+
