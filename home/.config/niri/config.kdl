@@ -166,6 +166,9 @@ layout {
     // Make all new columns tabbed by default.
     default-column-display "tabbed"
 
+    // Set transparent workspace background color.
+    background-color "transparent"
+
     // You may also want to hide the tab indicator when there's only a single window in a column.
     tab-indicator {
         hide-when-single-tab
@@ -312,7 +315,8 @@ layout {
 // See the binds section below for more spawn examples.
 
 // This line starts waybar, a commonly used bar for Wayland compositors.
-spawn-at-startup "waybar"
+// spawn-at-startup "waybar"
+// spawn-sh-at-startup "swaybg --image ~/dotfiles/wallpaper.png --output * --mode fill"
 
 // To run a shell command (with variables, pipes, etc.), use spawn-sh-at-startup:
 // spawn-sh-at-startup "qs -c ~/source/qs/MyAwesomeShell"
@@ -405,6 +409,7 @@ binds {
 
     // Suggested binds for running programs: terminal, app launcher, screen locker.
     Mod+Return hotkey-overlay-title="Open a Terminal: Ghostty" { spawn "ghostty"; }
+    Mod+Shift+Return hotkey-overlay-title="Open a Terminal: Alacritty" { spawn "alacritty"; }
     Mod+D hotkey-overlay-title="Run an Application: rofi" { spawn-sh "rofi -show drun"; }
     Mod+Alt+L hotkey-overlay-title="Lock the Screen: swaylock" { spawn "swaylock"; }
 
