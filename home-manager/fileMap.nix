@@ -121,6 +121,7 @@ in
       myNurPkgs.nvim-treesitter-parsers [
         # keep-sorted start
         "bash"
+        "comment"
         "css"
         "diff"
         "dockerfile"
