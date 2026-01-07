@@ -143,6 +143,7 @@ in
         "markdown"
         "markdown_inline"
         "nix"
+        "python"
         "regex"
         "ron"
         "rust"
