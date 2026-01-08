@@ -76,6 +76,26 @@
         "type": "github"
       }
     },
+    "claude-code-overlay": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1767863743,
+        "narHash": "sha256-pEjEfsmg05CgQ5HbIcK5+ZE7DnPP2UQzuINvjsHd+lg=",
+        "owner": "ryoppippi",
+        "repo": "claude-code-overlay",
+        "rev": "231d4bbf492472b3cad582a579c9080e355cfea2",
+        "type": "github"
+      },
+      "original": {
+        "owner": "ryoppippi",
+        "repo": "claude-code-overlay",
+        "type": "github"
+      }
+    },
     "claude-desktop": {
       "inputs": {
         "flake-utils": "flake-utils",
@@ -816,6 +836,7 @@
     },
     "root": {
       "inputs": {
+        "claude-code-overlay": "claude-code-overlay",
         "claude-desktop": "claude-desktop",
         "devenv": "devenv",
         "flake-parts": "flake-parts_2",
