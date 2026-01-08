@@ -13,7 +13,9 @@ let
     f;
   optionalIsLinux = optional pkgs.stdenv.isLinux;
   optionalIsDarwin = optional pkgs.stdenv.isDarwin;
-  myNurPkgs = inputs.yasunori-nur.packages.${pkgs.stdenv.hostPlatform.system};
+  inherit (pkgs.stdenv.hostPlatform) system;
+  myNurPkgs = inputs.yasunori-nur.packages.${system};
+  llmAgentsPkgs = inputs.llm-agents-nix.packages.${system};
 in
 {
   nixTools = with pkgs; [
@@ -150,8 +152,8 @@ in
     myNurPkgs.cc-sdd
     myNurPkgs.ccexp
     myNurPkgs.cchook
-    myNurPkgs.ccusage
-    # goose-cli
+    llmAgentsPkgs.ccusage
+    llmAgentsPkgs.goose-cli
     myNurPkgs.claude-code
     # keep-sorted end
   ]
