@@ -25,14 +25,18 @@
       launchd = [
         ../options/launchd/clipcatd.nix
       ];
+      # programs = [
+      #   ../options/programs/claude-code.nix
+      # ];
     in
     [
+      # inputs.claude-code-overlay.homeManagerModules.default
       packages
       homeFile
       clearDppStateAfterLinkGeneration
       inputs.mac-app-util.homeManagerModules.default
     ]
-    ++ launchd;
+    ++ launchd /* ++ programs */;
   programs.home-manager.enable = true;
   home = {
     username = "taiki.watanabe";
