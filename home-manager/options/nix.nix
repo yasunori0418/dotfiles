@@ -8,7 +8,7 @@
     settings = {
       experimental-features = "nix-command flakes pipe-operators";
       max-jobs = 8;
-      sandbox = "relaxed";
+      # sandbox = "relaxed";
       substituters = [
         "https://nix-community.cachix.org"
         "https://yasunori0418.cachix.org"
