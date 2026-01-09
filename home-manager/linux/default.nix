@@ -22,21 +22,21 @@
           ;
       };
       clearDppStateAfterLinkGeneration = ../clear-dpp-state-after-link-generation.nix;
-      # programs = [
-      #   ../options/programs/claude-code.nix
-      # ];
+      programs = [
+        ../options/programs/claude-code.nix
+      ];
       xdg = ../options/xdg.nix;
       nix = ../options/nix.nix;
     in
     [
-      # inputs.claude-code-overlay.homeManagerModules.default
+      inputs.claude-code-overlay.homeManagerModules.default
       packages
       homeFile
       clearDppStateAfterLinkGeneration
       xdg
       nix
     ]
-    # ++ programs
+    ++ programs
     ;
   programs.home-manager.enable = true;
   home = {

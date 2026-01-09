@@ -154,8 +154,7 @@ in
     myNurPkgs.cchook
     llmAgentsPkgs.ccusage
     llmAgentsPkgs.goose-cli
-    llmAgentsPkgs.claude-code
-    # myNurPkgs.claude-code # use `github:ryoppippi/claude-code-overlay`
+    # llmAgentsPkgs.claude-code # use `github:ryoppippi/claude-code-overlay`
     # keep-sorted end
   ]
   # ++ (optionalIsLinux [ inputs.claude-desktop.packages.${system}.claude-desktop ])
