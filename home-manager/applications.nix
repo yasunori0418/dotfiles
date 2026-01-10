@@ -154,6 +154,7 @@ in
     myNurPkgs.cchook
     llmAgentsPkgs.ccusage
     llmAgentsPkgs.goose-cli
+    llmAgentsPkgs.amp
     # llmAgentsPkgs.claude-code # use `github:ryoppippi/claude-code-overlay`
     # keep-sorted end
   ]
