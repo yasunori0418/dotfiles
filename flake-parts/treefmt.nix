@@ -18,7 +18,7 @@ _: {
           };
           nixfmt = {
             enable = true;
-            package = pkgs.nixfmt-rfc-style;
+            package = pkgs.nixfmt;
           };
           stylua = {
             enable = true;

@@ -137,7 +137,7 @@ in
     biome
     blade-formatter
     eslint_d
-    nixfmt-rfc-style
+    nixfmt
     prettierd
     ruff
     shellcheck
