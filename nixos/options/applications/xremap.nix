@@ -13,6 +13,7 @@
   services.xremap = {
     enable = true;
     withWlroots = true;
+    watch = true;
     serviceMode = "user";
     userName = config.users.users.yasunori.name;
     userId = config.users.users.yasunori.uid;
