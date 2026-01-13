@@ -30,7 +30,6 @@
       ];
     in
     [
-      inputs.claude-code-overlay.homeManagerModules.default
       packages
       homeFile
       clearDppStateAfterLinkGeneration

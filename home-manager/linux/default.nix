@@ -29,7 +29,6 @@
       nix = ../options/nix.nix;
     in
     [
-      inputs.claude-code-overlay.homeManagerModules.default
       packages
       homeFile
       clearDppStateAfterLinkGeneration

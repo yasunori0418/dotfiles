@@ -12,6 +12,7 @@ let
   pkgs-stable = import nixpkgs-stable {
     inherit system;
     config.allowUnfree = true;
+    overlays = [ inputs.claude-code-overlay.overlays.default ];
   };
 in
 {
