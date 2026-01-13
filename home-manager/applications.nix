@@ -149,10 +149,10 @@ in
   aiTools = with pkgs; [
     # keep-sorted start
     codex
-    myNurPkgs.cc-sdd
     myNurPkgs.ccexp
     myNurPkgs.cchook
     llmAgentsPkgs.ccusage
+    llmAgentsPkgs.cc-sdd
     llmAgentsPkgs.goose-cli
     llmAgentsPkgs.amp
     # llmAgentsPkgs.claude-code # use `github:ryoppippi/claude-code-overlay`
