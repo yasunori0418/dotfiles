@@ -35,8 +35,7 @@
       xdg
       nix
     ]
-    ++ programs
-    ;
+    ++ programs;
   programs.home-manager.enable = true;
   home = {
     username = "yasunori";

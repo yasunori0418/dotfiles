@@ -35,7 +35,8 @@
       clearDppStateAfterLinkGeneration
       inputs.mac-app-util.homeManagerModules.default
     ]
-    ++ launchd ++ programs;
+    ++ launchd
+    ++ programs;
   programs.home-manager.enable = true;
   home = {
     username = "taiki.watanabe";
