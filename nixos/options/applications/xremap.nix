@@ -65,6 +65,8 @@
             # Delete
             C-d = "delete";
 
+            C-M-f = "C-f";
+
           };
           application = {
             not = [
