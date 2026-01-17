@@ -62,7 +62,7 @@ vim.opt_local.softtabstop = 4
 vim.opt_local.shiftwidth = 4
 -- }}}
 
--- lua_bash_zsh_sh {{{
+-- lua_bash_zsh_sh_fish {{{
 vim.opt_local.tabstop = 4
 vim.opt_local.softtabstop = 4
 vim.opt_local.shiftwidth = 4
