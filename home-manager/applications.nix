@@ -96,10 +96,12 @@ in
     delta
     eza
     fd
+    fish
     fzf
     ghq
     jq
     myNurPkgs.gwq
+    nushell
     rip2
     ripgrep
     sheldon
