@@ -255,9 +255,11 @@ in
       swaybg
       vlc
       waybar
+      wf-recorder
       wl-clipboard
       wl-screenrec
       wlr-randr
+      wshowkeys
       xfce4-screenshooter
       xwayland
       xwayland-satellite
