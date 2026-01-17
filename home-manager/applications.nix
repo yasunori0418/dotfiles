@@ -250,6 +250,7 @@ in
       picom
       rofi
       rofi-power-menu
+      showmethekey
       simplescreenrecorder
       slack
       slurp
@@ -260,7 +261,6 @@ in
       wl-clipboard
       wl-screenrec
       wlr-randr
-      wshowkeys
       xfce4-screenshooter
       xwayland
       xwayland-satellite
