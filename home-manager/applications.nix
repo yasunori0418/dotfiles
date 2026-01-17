@@ -84,6 +84,7 @@ in
       # keep-sorted start
       alacritty
       kitty
+      wezterm
       # keep-sorted end
     ]
     ++ (optionalIsLinux [ ghostty ])
