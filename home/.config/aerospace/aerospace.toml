@@ -133,6 +133,10 @@ if.window-title-regex-substring = 'FloatingVim'
 run = 'layout floating'
 
 [[on-window-detected]]
+if.app-name-regex-substring = 'coreautha'
+run = 'layout floating'
+
+[[on-window-detected]]
 if.app-name-regex-substring = 'Stats'
 run = 'layout floating'
 
