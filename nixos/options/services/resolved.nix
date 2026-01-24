@@ -2,8 +2,10 @@
 {
   services.resolved = {
     enable = true;
-    dnssec = "true";
-    dnsovertls = "true";
-    fallbackDns = config.networking.nameservers;
+    settings.Resolve = {
+      DNSSEC = true;
+      DNSOverTLS = true;
+      FallbackDNS = config.networking.nameservers;
+    };
   };
 }
