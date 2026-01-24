@@ -1,4 +1,4 @@
-export { TextLineStream } from "jsr:@std/streams@1.0.16";
+export { TextLineStream } from "jsr:@std/streams@1.0.17";
 
 export { type Denops, type Entrypoint } from "jsr:@denops/core@8.0.1";
 export { echoerrCommand } from "jsr:@kyoh86/denops-util@0.1.2/command";
