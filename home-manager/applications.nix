@@ -149,12 +149,12 @@ in
     # keep-sorted end
   ];
 
-  aiTools = with pkgs; [
+  aiTools = with llmAgentsPkgs; [
     # keep-sorted start
     codex
-    llmAgentsPkgs.amp
-    llmAgentsPkgs.cc-sdd
-    llmAgentsPkgs.ccusage
+    amp
+    cc-sdd
+    ccusage
     # llmAgentsPkgs.goose-cli
     myNurPkgs.ccexp
     myNurPkgs.cchook
