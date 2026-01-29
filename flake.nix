@@ -2,7 +2,8 @@
   description = "My dotfiles, all my wisdom, my castle.";
 
   inputs = {
-    nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
+    # nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
+    nixpkgs.url = "github:NixOS/nixpkgs/70801e06d9730c4f1704fbd3bbf5b8e11c03a2a7";
     nixpkgs-stable.url = "github:NixOS/nixpkgs/nixos-24.05";
     nixos-hardware.url = "github:NixOS/nixos-hardware/master";
     flake-parts.url = "github:hercules-ci/flake-parts";
