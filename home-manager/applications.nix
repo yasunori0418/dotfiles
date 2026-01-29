@@ -82,7 +82,8 @@ in
       # keep-sorted start
       emacs
       # myNurPkgs.neovim
-      myNurPkgs.vim
+      # myNurPkgs.vim
+      vim
       neovim-nightly-overlay
       neovide
       neovim-remote
