@@ -57,6 +57,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     zmx.url = "github:neurosnap/zmx";
+    neovim-nightly-overlay.url = "github:nix-community/neovim-nightly-overlay";
   };
 
   nixConfig = {

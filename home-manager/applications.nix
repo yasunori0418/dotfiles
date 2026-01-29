@@ -68,15 +68,26 @@ in
   # ++ (optionalIsLinux [ inputs.zmx.packages.${pkgs.stdenv.hostPlatform.system}.default ])
   ;
 
-  textEditors = with pkgs; [
-    # keep-sorted start
-    emacs
-    myNurPkgs.neovim
-    myNurPkgs.vim
-    neovide
-    neovim-remote
-    # keep-sorted end
-  ];
+  textEditors =
+    let
+      neovim-nightly-overlay =
+        inputs.neovim-nightly-overlay.packages.${system}.neovim.overrideAttrs
+          (prev: {
+            treesitter-parsers = { };
+          });
+
+    in
+    with pkgs;
+    [
+      # keep-sorted start
+      emacs
+      # myNurPkgs.neovim
+      myNurPkgs.vim
+      neovim-nightly-overlay
+      neovide
+      neovim-remote
+      # keep-sorted end
+    ];
 
   terminalEmulators =
     with pkgs;
