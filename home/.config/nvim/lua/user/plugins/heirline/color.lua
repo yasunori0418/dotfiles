@@ -7,7 +7,14 @@ end
 
 function M.set()
     --- :h nightfox-palette
-    local nightfox_palette = require("nightfox.palette." .. vim.g.colors_name).palette
+    if not vim.g.colors_name then
+        return
+    end
+    local ok, mod = pcall(require, "nightfox.palette." .. vim.g.colors_name)
+    if not ok then
+        return
+    end
+    local nightfox_palette = mod.palette
 
     ---@class HeirlineNightfoxPalette
     ---@diagnostic disable: duplicate-doc-field
