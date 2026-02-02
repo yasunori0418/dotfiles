@@ -23,7 +23,7 @@
       };
       clearDppStateAfterLinkGeneration = ../clear-dpp-state-after-link-generation.nix;
       launchd = [
-        ../options/launchd/clipcatd.nix
+        # ../options/launchd/clipcatd.nix
       ];
       programs = [
         ../options/programs/claude-code.nix
