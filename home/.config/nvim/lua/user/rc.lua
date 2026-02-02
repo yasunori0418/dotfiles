@@ -81,7 +81,7 @@ local function make_state()
             auto_install_plugins(M.dpp)
         end,
         once = true,
-        nested = true,
+        nested = false,
     })
 end
 
