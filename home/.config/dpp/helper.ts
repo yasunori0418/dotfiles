@@ -51,9 +51,9 @@ export const generateExtArgs = async (
     getExtFunc: GetExtFunc<P, E>,
   ) => Promise<ExtArgs<P, E>>
 > => {
-  const { denops, contextBuilder } = args;
+  const { denops, contextBuilder, dpp } = args;
   const [context, options] = await contextBuilder.get(denops);
-  const protocols = (await denops.dispatcher.getProtocols()) as ProtocolRecord;
+  const protocols = await dpp.getProtocols(denops, options);
   return async <P extends BaseParams, E extends BaseExt<P>>(
     getExtFunc: GetExtFunc<P, E>,
   ): Promise<ExtArgs<P, E>> => {
