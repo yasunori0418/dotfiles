@@ -28,7 +28,7 @@
     "test:watch": "deno test -P --watch"
   },
   "imports": {
-    "@david/dax": "jsr:@david/dax@^0.44.0",
+    "@david/dax": "jsr:@david/dax@^0.45.0",
     "@praha/byethrow": "npm:@praha/byethrow@^0.9.0",
     "@remeda/remeda": "jsr:@remeda/remeda@^2.32.0",
     "@std/expect": "jsr:@std/expect@^1.0.17",
