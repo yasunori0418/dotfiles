@@ -1,4 +1,4 @@
-import $ from "jsr:@david/dax@0.44.2";
+import $ from "jsr:@david/dax@0.45.0";
 import * as R from "jsr:@remeda/remeda@2.33.4";
 
 export const findDirectories = async (path: string): Promise<string[]> => {
