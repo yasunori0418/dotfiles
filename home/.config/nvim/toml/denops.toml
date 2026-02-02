@@ -49,7 +49,7 @@ on_func = 'kensaku_search#replace'
 
 [[plugins]]
 repo = 'github.com/kat0h/bufpreview.vim'
-depends = ['denops.vim', 'open-browser.vim']
+depends = ['denops.vim']
 build = 'deno task prepare'
 on_cmd = ['PreviewMarkdown', 'PreviewMarkdownToggle']
 lua_source = '''
