@@ -58,6 +58,7 @@
     zmx.url = "github:neurosnap/zmx";
     neovim-nightly-overlay.url = "github:nix-community/neovim-nightly-overlay";
     vim-overlay.url = "github:kawarimidoll/vim-overlay";
+    cryoflow.url = "github:yasunori0418/cryoflow";
   };
 
   nixConfig = {
@@ -76,7 +77,7 @@
       "devenv.cachix.org-1:w1cLUi8dv3hnoSPGAuibQv+f9TZLr6cv/Hm9XgU50cw="
       "niks3.numtide.com-1:DTx8wZduET09hRmMtKdQDxNNthLQETkc/yaX7M4qK0g="
       "yasunori0418.cachix.org-1:mC1j+M5A6063OHaOB5bH2nS0BiCW/BJsSRiOWjLeV9o="
-        "ryoppippi.cachix.org-1:b2LbtWNvJeL/qb1B6TYOMK+apaCps4SCbzlPRfSQIms="
+      "ryoppippi.cachix.org-1:b2LbtWNvJeL/qb1B6TYOMK+apaCps4SCbzlPRfSQIms="
     ];
   };
 

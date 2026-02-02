@@ -16,6 +16,7 @@ let
   inherit (pkgs.stdenv.hostPlatform) system;
   myNurPkgs = inputs.yasunori-nur.packages.${system};
   llmAgentsPkgs = inputs.llm-agents-nix.packages.${system};
+  cryoflow = inputs.cryoflow.packages.${system}.default;
 in
 {
   nixTools = with pkgs; [
@@ -36,6 +37,7 @@ in
     awscli2
     # clipcat
     colorized-logs
+    cryoflow
     deno
     direnv
     flock
@@ -163,10 +165,10 @@ in
 
   aiTools = with llmAgentsPkgs; [
     # keep-sorted start
-    codex
     amp
     cc-sdd
     ccusage
+    codex
     # llmAgentsPkgs.goose-cli
     myNurPkgs.ccexp
     myNurPkgs.cchook
