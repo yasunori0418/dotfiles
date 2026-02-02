@@ -81,12 +81,12 @@ in
     [
       # keep-sorted start
       emacs
+      neovide
+      neovim-nightly-overlay
+      neovim-remote
       # myNurPkgs.neovim
       # myNurPkgs.vim
       vim
-      neovim-nightly-overlay
-      neovide
-      neovim-remote
       # keep-sorted end
     ];
 
