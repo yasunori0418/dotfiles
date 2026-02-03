@@ -2,8 +2,9 @@
 # Editor support plugins {{{
 [[plugins]] # heirline.nvim
 repo = 'github.com/rebelot/heirline.nvim'
-depends = 'nvim-navic'
-on_event = ['WinNew', 'CursorHold']
+depends = ['nvim-navic', 'nvim-web-devicons']
+# on_event = ['WinNew', 'CursorHold']
+lazy = false
 hooks_file = '$HOOKS_DIR/heirline.lua'
 
 [[plugins]] # context_filetype.vim
@@ -93,4 +94,3 @@ on_lua = 'dial'
 on_cmd = ['DialIncrement', 'DialDecrement']
 hooks_file = '$HOOKS_DIR/dial.lua'
 # }}}
-

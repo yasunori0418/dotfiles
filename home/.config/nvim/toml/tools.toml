@@ -44,7 +44,6 @@ end, {})
 
 [[plugins]]
 repo = 'github.com/nvim-tree/nvim-web-devicons'
-on_lua = 'nvim-web-devicons'
 hooks_file = '$HOOKS_DIR/devicons.lua'
 
 [[plugins]]
