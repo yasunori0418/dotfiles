@@ -20,11 +20,11 @@ repo = 'github.com/skanehira/denops-translate.vim'
 depends = 'denops.vim'
 on_cmd = 'Translate'
 
-[[plugins]] # denops-silicon.vim
-repo = 'github.com/skanehira/denops-silicon.vim'
-depends = 'denops.vim'
-on_cmd = 'Silicon'
-hooks_file = '$HOOKS_DIR/silicon.lua'
+# [[plugins]] # denops-silicon.vim
+# repo = 'github.com/skanehira/denops-silicon.vim'
+# depends = 'denops.vim'
+# on_cmd = 'Silicon'
+# hooks_file = '$HOOKS_DIR/silicon.lua'
 
 [[plugins]]
 repo = 'github.com/yuki-yano/fuzzy-motion.vim'
