@@ -1,6 +1,7 @@
 [[plugins]]
 repo = 'github.com/mfussenegger/nvim-dap'
 on_lua = 'dap'
+if = false
 hooks_file = '$HOOKS_DIR/dap.lua'
 
 [[plugins]]
@@ -8,13 +9,16 @@ repo = 'github.com/rcarriga/nvim-dap-ui'
 depends = ['nvim-dap', 'nvim-nio']
 on_lua = 'dapui'
 on_source = 'nvim-dap'
+if = false
 hooks_file = '$HOOKS_DIR/dap_ui.lua'
 
 [[plugins]]
 repo = 'github.com/nvim-neotest/nvim-nio'
+if = false
 
 [[plugins]]
 repo = 'github.com/mfussenegger/nvim-dap-python'
 depends = 'nvim-dap'
 on_ft = 'python'
+if = false
 hooks_file = '$HOOKS_DIR/dap_python.lua'
