@@ -55,7 +55,6 @@ on_ft = [
 
 [[plugins]] # fidget.nvim
 repo = 'github.com/j-hui/fidget.nvim'
-on_lua = 'fidget'
 on_event = ['LspAttach', 'BufRead']
 on_cmd = 'Fidget'
 hooks_file = '$HOOKS_DIR/fidget.lua'
