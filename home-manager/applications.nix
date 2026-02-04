@@ -42,7 +42,7 @@ in
     flock
     gh
     git
-    # git-credential-manager
+    git-credential-manager
     git-lfs
     glow
     gnumake
@@ -55,7 +55,7 @@ in
     pqrs
     pueue
     python313Packages.datadog
-    # ssm-session-manager-plugin
+    ssm-session-manager-plugin
     tmux
     tree-sitter
     typos
@@ -115,7 +115,7 @@ in
     ghq
     jq
     myNurPkgs.gwq
-    # nushell
+    nushell
     rip2
     ripgrep
     sheldon
@@ -168,7 +168,7 @@ in
     cc-sdd
     ccusage
     codex
-    # llmAgentsPkgs.goose-cli
+    llmAgentsPkgs.goose-cli
     myNurPkgs.ccexp
     myNurPkgs.cchook
     # llmAgentsPkgs.claude-code # use `github:ryoppippi/claude-code-overlay`
