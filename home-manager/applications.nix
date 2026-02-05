@@ -220,14 +220,16 @@ in
     # keep-sorted end
   ];
 
-  guiTools = with pkgs; [
-    # keep-sorted start
-    dbeaver-bin
-    discord
-    google-chrome
-    jetbrains-toolbox
-    # keep-sorted end
-  ];
+  guiTools =
+    with pkgs;
+    [
+      # keep-sorted start
+      dbeaver-bin
+      discord
+      jetbrains-toolbox
+      # keep-sorted end
+    ]
+    ++ (optionalIsLinux [ google-chrome ]);
 
   linuxDesktop = {
     theme = with pkgs; [
