@@ -10,7 +10,6 @@
     "DISABLE_AUTOUPDATER": "1",
     "CLAUDE_CODE_EXPERIMENTAL_AGENT_TEAMS": "1"
   },
-  "teammateMode": "auto",
   "includeCoAuthoredBy": false,
   "permissions": {
     "allow": [
@@ -151,5 +150,7 @@
     "typescript-lsp@claude-plugins-official": true,
     "pyright-lsp@claude-plugins-official": true
   },
-  "alwaysThinkingEnabled": true
+  "alwaysThinkingEnabled": true,
+  "teammateMode": "auto",
+  "promptSuggestionEnabled": false
 }
