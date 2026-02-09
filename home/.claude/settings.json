@@ -15,11 +15,12 @@
   "permissions": {
     "allow": [
       "Bash",
-      "BashOutput",
+      "LS",
       "Edit",
       "ExitPlanMode",
       "Glob",
       "Grep",
+      "NotebookRead",
       "NotebookEdit",
       "Read",
       "SlashCommand",
