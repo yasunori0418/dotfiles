@@ -1,5 +1,5 @@
 import $ from "jsr:@david/dax@0.45.0";
-import * as R from "jsr:@remeda/remeda@2.33.4";
+import * as R from "jsr:@remeda/remeda@2.33.6";
 
 export const findDirectories = async (path: string): Promise<string[]> => {
   const output =
