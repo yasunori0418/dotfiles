@@ -1,6 +1,5 @@
 {
   pkgs,
-  config,
   xremap-flake,
   ...
 }:
@@ -33,7 +32,7 @@
         ../options/services/tlp.nix
         # ../options/services/displayManager/ly.nix
         ../options/services/displayManager/lemurs.nix
-        (import ../options/services/resolved.nix { inherit config; })
+        ../options/services/resolved.nix
       ];
 
       systemd = [
