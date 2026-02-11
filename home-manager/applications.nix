@@ -165,7 +165,7 @@ in
   aiTools = with llmAgentsPkgs; [
     # keep-sorted start
     amp
-    cc-sdd
+    # cc-sdd
     ccusage
     codex
     llmAgentsPkgs.goose-cli
