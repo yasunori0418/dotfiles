@@ -151,6 +151,6 @@
     "pyright-lsp@claude-plugins-official": true
   },
   "alwaysThinkingEnabled": true,
-  "teammateMode": "auto",
-  "promptSuggestionEnabled": false
+  "promptSuggestionEnabled": false,
+  "teammateMode": "auto"
 }
