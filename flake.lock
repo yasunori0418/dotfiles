@@ -141,11 +141,11 @@
         "uv2nix": "uv2nix"
       },
       "locked": {
-        "lastModified": 1770797180,
-        "narHash": "sha256-zTHLM4CNsjb2WQrJBF9SDpKZ0qN7UF/aoUL/QguoOS0=",
+        "lastModified": 1770825319,
+        "narHash": "sha256-/wjVZHkkbcZMOlwrVuMspBBDv7gupPGkwAoYcJ3IF5I=",
         "owner": "yasunori0418",
         "repo": "cryoflow",
-        "rev": "777a047a4b77dc7e670c80dbb6d339701e542dd6",
+        "rev": "394932ea9b31edf5f3a85024a3f626d26ef4ec9a",
         "type": "github"
       },
       "original": {
@@ -537,11 +537,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1770780014,
-        "narHash": "sha256-lcgSxJp7y13RqWfAO51UEcOOLQvTJewo+ZTEbEAcMMk=",
+        "lastModified": 1770820749,
+        "narHash": "sha256-cIOB895WerEm7MtK7SMCtcfhxtcE65zXvcyzRI8dgSA=",
         "owner": "numtide",
         "repo": "llm-agents.nix",
-        "rev": "a6a223b7f4c695fa470e9199a52fe3b13b0798f8",
+        "rev": "ce39a9e0e5a33406abd145b4c659bf4ff8eb00bc",
         "type": "github"
       },
       "original": {
