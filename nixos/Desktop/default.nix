@@ -36,8 +36,8 @@
         ../options/services/printing.nix
         ../options/services/openssh.nix
         ../options/services/tlp.nix
-        # ../options/services/displayManager/ly.nix
-        ../options/services/displayManager/lemurs.nix
+        ../options/services/displayManager/ly.nix
+        # ../options/services/displayManager/lemurs.nix
         ../options/services/resolved.nix
       ];
 
