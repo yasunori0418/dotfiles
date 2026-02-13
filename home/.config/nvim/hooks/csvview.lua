@@ -7,23 +7,36 @@ require("csvview").setup({
         --- @type integer
         async_chunksize = 50,
 
-        --- The delimiter character
-        --- You can specify a string, a table of delimiter characters for each file type,
-        --- or a function that returns a delimiter character.
-        --- e.g:
-        ---  delimiter = ","
-        ---  delimiter = function(bufnr) return "," end
-        ---  delimiter = {
-        ---    default = ",",
-        ---    ft = {
-        ---      tsv = "\t",
-        ---    },
-        ---  }
-        --- @type string | {default: string, ft: table<string,string>} | fun(bufnr:integer): string
+        --- Specifies the delimiter character to separate columns.
+        --- This can be configured in one of three ways:
+        ---
+        --- 1. As a single string for a fixed delimiter.
+        ---    e.g., delimiter = ","
+        ---
+        --- 2. As a function that dynamically returns the delimiter.
+        ---    e.g., delimiter = function(bufnr) return "\t" end
+        ---
+        --- 3. As a table for advanced configuration:
+        ---    - `ft`: Maps filetypes to specific delimiters. This has the highest priority.
+        ---    - `fallbacks`: An ordered list of delimiters to try for automatic detection
+        ---      when no `ft` rule matches. The plugin will test them in sequence and use
+        ---      the first one that highest scores based on the number of fields in each line.
+        ---
+        --- Note: Only fixed-length strings are supported as delimiters.
+        --- Regular expressions (e.g., `\s+`) are not currently supported.
+        --- @type CsvView.Options.Parser.Delimiter
         delimiter = {
-            default = ",",
             ft = {
+                csv = ",",
                 tsv = "\t",
+            },
+            fallbacks = {
+                ",",
+                "\t",
+                ";",
+                "|",
+                ":",
+                " ",
             },
         },
 
@@ -46,9 +59,9 @@ require("csvview").setup({
         --- :CsvViewEnable comment=#
         --- @type string[]
         comments = {
-            -- "#",
+            "#",
             "--",
-            -- "//",
+            "//",
         },
     },
     view = {
@@ -63,9 +76,42 @@ require("csvview").setup({
         --- The display method of the delimiter
         --- "highlight" highlights the delimiter
         --- "border" displays the delimiter with `│`
-        --- see `Features` section of the README.
-        ---@type "highlight" | "border"
-        display_mode = "highlight",
+        --- You can also specify it on the command line.
+        --- e.g:
+        --- :CsvViewEnable display_mode=border
+        ---@type CsvView.Options.View.DisplayMode
+        display_mode = "border",
+
+        --- The line number of the header row
+        --- Controls which line should be treated as the header for the CSV table.
+        --- This affects both visual styling and the sticky header feature.
+        ---
+        --- Values:
+        --- - `true`: Automatically detect the header line (default)
+        --- - `integer`: Specific line number to use as header (1-based)
+        --- - `false`: No header line, treat all lines as data rows
+        ---
+        --- When a header is defined, it will be:
+        --- - Highlighted with the CsvViewHeaderLine highlight group
+        --- - Used for the sticky header feature if enabled
+        --- - Excluded from normal data processing in some contexts
+        ---
+        --- See also: `view.sticky_header`
+        --- @type integer|false|true
+        header_lnum = true,
+
+        --- The sticky header feature settings
+        --- If `view.header_lnum` is set, the header line is displayed at the top of the window.
+        sticky_header = {
+            --- Whether to enable the sticky header feature
+            --- @type boolean
+            enabled = true,
+
+            --- The separator character for the sticky header window
+            --- set `false` to disable the separator
+            --- @type string|false
+            separator = "─",
+        },
     },
 })
 -- }}}
