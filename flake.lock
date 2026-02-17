@@ -141,11 +141,11 @@
         "uv2nix": "uv2nix"
       },
       "locked": {
-        "lastModified": 1771339088,
-        "narHash": "sha256-p8U2r/nhSBmJR0uNDuXBxVfpdgj4eawW4e+G3KhjEPs=",
+        "lastModified": 1771341128,
+        "narHash": "sha256-7PEmSFi1JFaaINMhgrW3hTBAP/bLvUQU7/j2Aar02VE=",
         "owner": "yasunori0418",
         "repo": "cryoflow",
-        "rev": "19fe3d9a2fe0c5ede130b9c3acf8672745060f21",
+        "rev": "6a2106a1379ea1d57f9d95e2113ee31fe13999f9",
         "type": "github"
       },
       "original": {
