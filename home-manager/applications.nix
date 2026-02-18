@@ -226,6 +226,7 @@ in
       # keep-sorted start
       dbeaver-bin
       discord
+      drawio
       jetbrains-toolbox
       # keep-sorted end
     ]
