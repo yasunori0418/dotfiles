@@ -35,6 +35,7 @@ in
     asciinema
     asciinema-agg
     awscli2
+    clipcat
     colorized-logs
     cryoflow
     deno
