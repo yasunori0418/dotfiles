@@ -170,7 +170,6 @@ in
     ccusage
     codex
     llmAgentsPkgs.goose-cli
-    myNurPkgs.ccexp
     myNurPkgs.cchook
     # llmAgentsPkgs.claude-code # use `github:ryoppippi/claude-code-overlay`
     # keep-sorted end
