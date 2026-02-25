@@ -11,6 +11,7 @@
       "1password-cli"
       "stats"
       "temurin@17"
+      "temurin@21"
       "rancher" # similar docker desktop
       "cursor"
       "as-timer"
