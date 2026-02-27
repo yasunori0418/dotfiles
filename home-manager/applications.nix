@@ -54,6 +54,7 @@ in
       lnav
       myNurPkgs.pict
       myNurPkgs.safe-chain
+      mise
       pqrs
       pueue
       python313Packages.datadog
