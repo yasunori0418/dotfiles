@@ -9,7 +9,7 @@ export LESS="\
   --RAW-CONTROL-CHARS \
   --hilite-search \
   --HILITE-UNREAD \
-  --window=-4 \
+  --window=4 \
   --tabs=4"
 
 # if installed binary by rust-cargo
