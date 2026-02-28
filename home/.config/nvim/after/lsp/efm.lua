@@ -31,8 +31,7 @@ efm_configs.setup({
         --     { kind = "linters", name = "jq" },
         -- },
         yaml = {
-            { kind = "linters", name = "yamllint" },
-            { kind = "linters", name = "actionlint" },
+            { kind = "linters", name = vim.env.NVIM_EFM_LS_LINTERS_YAML or "yamllint" },
         },
         php = {
             { kind = "linters", name = "phpcs" },
