@@ -189,7 +189,6 @@ in
       pnpm
       python312Packages.uv
       ruby
-      volta
       # keep-sorted end
     ]
     ++ (optionalIsLinux [ gcc ])
