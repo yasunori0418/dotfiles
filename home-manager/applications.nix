@@ -52,9 +52,9 @@ in
       kanata-with-cmd
       lemonade
       lnav
+      mise
       myNurPkgs.pict
       myNurPkgs.safe-chain
-      mise
       pqrs
       pueue
       python313Packages.datadog
