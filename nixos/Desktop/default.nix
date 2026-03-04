@@ -31,6 +31,7 @@
       virtualisation = ../options/virtualisation.nix;
       qt = ../options/qt.nix;
       # sane = ../options/hardware/sane.nix;
+      acplight = ../options/hardware/acplight.nix;
 
       services = [
         ../options/services/printing.nix
@@ -82,6 +83,7 @@
       virtualisation
       qt
       # sane
+      acplight
       systemd-conf
     ]
     ++ services

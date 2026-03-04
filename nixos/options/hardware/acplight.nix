@@ -1,0 +1,3 @@
+{
+  hardware.acpilight.enable = true;
+}

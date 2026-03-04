@@ -25,6 +25,7 @@
       fonts = ../options/fonts.nix;
       virtualisation = ../options/virtualisation.nix;
       qt = ../options/qt.nix;
+      acplight = ../options/acplight.nix;
 
       services = [
         ../options/services/printing.nix
@@ -73,6 +74,7 @@
       fonts
       virtualisation
       qt
+      acplight
     ]
     ++ services
     ++ systemd
