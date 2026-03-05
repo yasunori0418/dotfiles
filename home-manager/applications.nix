@@ -53,6 +53,7 @@ in
       lemonade
       lnav
       mise
+      myNurPkgs.gws
       myNurPkgs.pict
       myNurPkgs.safe-chain
       pqrs
