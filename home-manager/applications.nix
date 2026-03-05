@@ -48,6 +48,7 @@ in
       git-lfs
       glow
       gnumake
+      google-cloud-sdk
       jnv
       kanata-with-cmd
       lemonade
