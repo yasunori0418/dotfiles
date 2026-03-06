@@ -60,7 +60,7 @@ end
 local joinpath = vim.fs.joinpath
 local dpp = require("dpp")
 local basic_dict = dpp.get("dict").path
-local jawiki_dict = dpp.get("jawiki-kana-kanji-dict").path
+-- local jawiki_dict = dpp.get("jawiki-kana-kanji-dict").path
 
 local M = {}
 
@@ -70,7 +70,7 @@ function M.init()
         globalDictionaries = {
             joinpath(basic_dict, "SKK-JISYO.L"),
             joinpath(basic_dict, "SKK-JISYO.propernoun"),
-            joinpath(jawiki_dict, "SKK-JISYO.jawiki"),
+            -- joinpath(jawiki_dict, "SKK-JISYO.jawiki"),
             joinpath(basic_dict, "SKK-JISYO.emoji"),
             joinpath(basic_dict, "SKK-JISYO.jinmei"),
         },
