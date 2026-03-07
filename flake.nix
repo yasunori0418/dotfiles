@@ -102,13 +102,15 @@
         imports =
           let
             treefmt.default = importApply ./flake-parts/treefmt.nix;
-            devenv.default = importApply ./flake-parts/devenv.nix;
+            # devenv.default = importApply ./flake-parts/devenv.nix;
+            devshell.default = importApply ./flake-parts/devshell.nix;
           in
           [
             inputs.treefmt-nix.flakeModule
             treefmt.default
             inputs.devenv.flakeModule
-            devenv.default
+            # devenv.default
+            devshell.default
           ];
         systems = import inputs.systems;
         flake =
