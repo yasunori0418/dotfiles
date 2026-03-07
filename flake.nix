@@ -132,10 +132,6 @@
                   profileName = "Desktop";
                   inherit system;
                 });
-                macx64OrbStack = nixosSystem (nixosArgs {
-                  profileName = "MacX64_OrbStack";
-                  inherit system;
-                });
                 iso = nixosSystem {
                   inherit system;
                   modules = [
