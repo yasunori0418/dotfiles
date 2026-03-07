@@ -24,10 +24,6 @@
       url = "github:numtide/treefmt-nix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    devenv = {
-      url = "github:cachix/devenv";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
     systems.url = "github:nix-systems/default";
     nix2container = {
       url = "github:nlewo/nix2container";
@@ -65,7 +61,6 @@
     extra-substituters = [
       "https://cache.nixos.org/"
       "https://nix-community.cachix.org"
-      "https://devenv.cachix.org"
       "https://cache.numtide.com"
       "https://yasunori0418.cachix.org"
       "https://ryoppippi.cachix.org"
@@ -74,7 +69,6 @@
     extra-trusted-public-keys = [
       "cache.nixos.org-1:6NCHdD59X431o0gWypbMrAURkbJ16ZPMQFGspcDShjY="
       "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
-      "devenv.cachix.org-1:w1cLUi8dv3hnoSPGAuibQv+f9TZLr6cv/Hm9XgU50cw="
       "niks3.numtide.com-1:DTx8wZduET09hRmMtKdQDxNNthLQETkc/yaX7M4qK0g="
       "yasunori0418.cachix.org-1:mC1j+M5A6063OHaOB5bH2nS0BiCW/BJsSRiOWjLeV9o="
       "ryoppippi.cachix.org-1:b2LbtWNvJeL/qb1B6TYOMK+apaCps4SCbzlPRfSQIms="
@@ -102,14 +96,11 @@
         imports =
           let
             treefmt.default = importApply ./flake-parts/treefmt.nix;
-            # devenv.default = importApply ./flake-parts/devenv.nix;
             devshell.default = importApply ./flake-parts/devshell.nix;
           in
           [
             inputs.treefmt-nix.flakeModule
             treefmt.default
-            inputs.devenv.flakeModule
-            # devenv.default
             devshell.default
           ];
         systems = import inputs.systems;
