@@ -27,7 +27,7 @@
       fonts = ../options/fonts.nix;
       virtualisation = ../options/virtualisation.nix;
       qt = ../options/qt.nix;
-      acplight = ../options/acplight.nix;
+      acplight = ../options/hardware/acplight.nix;
 
       services = [
         ../options/services/printing.nix
