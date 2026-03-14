@@ -3,8 +3,7 @@
 [[plugins]] # heirline.nvim
 repo = 'github.com/rebelot/heirline.nvim'
 depends = ['nvim-navic', 'nvim-web-devicons']
-# on_event = ['WinNew', 'CursorHold']
-lazy = false
+on_event = ['WinNew', 'CursorHold']
 hooks_file = '$HOOKS_DIR/heirline.lua'
 
 [[plugins]] # context_filetype.vim
