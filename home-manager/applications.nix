@@ -74,24 +74,14 @@ in
     ++ (optionalIsLinux [ clipcat ]);
 
   textEditors =
-    let
-      neovim-nightly-overlay =
-        inputs.neovim-nightly-overlay.packages.${system}.neovim.overrideAttrs
-          (prev: {
-            treesitter-parsers = { };
-          });
-
-    in
     with pkgs;
     [
       # keep-sorted start
       emacs
       neovide
-      neovim-nightly-overlay
       neovim-remote
-      # myNurPkgs.neovim
-      # myNurPkgs.vim
-      vim
+      myNurPkgs.neovim-overlay
+      myNurPkgs.vim-overlay
       # keep-sorted end
     ];
 
