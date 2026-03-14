@@ -49,6 +49,7 @@ on_ft = [
   'yuck',
 ]
 build = 'cargo build --release > /dev/null'
+if = false
 hooks_file = '$HOOKS_DIR/parinfer-rust.lua'
 
 [[plugins]]
