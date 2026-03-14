@@ -18,7 +18,8 @@ vim.g['context_filetype#ignore_patterns'] = {
 
 [[plugins]] # nvim-notify
 repo = 'github.com/rcarriga/nvim-notify'
-lazy = false
+on_lua = 'nvim-notify'
+on_event = ['BufRead']
 lua_source = '''
 require("notify").setup({
   stages = "slide",
