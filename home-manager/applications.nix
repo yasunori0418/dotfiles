@@ -49,12 +49,12 @@ in
       glow
       gnumake
       google-cloud-sdk
+      gws
       jnv
       kanata-with-cmd
       lemonade
       lnav
       mise
-      myNurPkgs.gws
       myNurPkgs.pict
       myNurPkgs.safe-chain
       pqrs
