@@ -152,8 +152,7 @@ function M.setup()
         vimrcSkipRules = {
             {
                 name = "neovide.lua",
-                condition = vim.g.neovide --[[@as boolean]]
-                    or false,
+                condition = vim.g.neovide --[[@as boolean]] or false,
             },
         },
         directories = {
