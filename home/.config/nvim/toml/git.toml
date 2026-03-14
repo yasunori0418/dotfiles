@@ -7,5 +7,23 @@ hooks_file = '$HOOKS_DIR/gitsigns.lua'
 [[plugins]]
 repo = 'github.com/lambdalisue/vim-gin'
 depends = ['denops.vim']
-on_cmd = ['Gin', 'GinBranch', 'GinCd', 'GinChaperon', 'GinDiff', 'GinLog', 'GinPatch', 'GinStatus']
+on_cmd = [
+  'Gin',
+  'GinBuffer',
+  'GinBranch',
+  'GinBrowse',
+  'GinCd',
+  'GinLcd',
+  'GinTcd',
+  'GinChaperon',
+  'GinDiff',
+  'GinEdit',
+  'GinLog',
+  'GinRefLog',
+  'GinStash',
+  'GinTag',
+  'GinPatch',
+  'GinStatus',
+  'GinBlame',
+]
 hooks_file = '$HOOKS_DIR/gin.lua'
