@@ -149,6 +149,7 @@ in
         "regex"
         "ron"
         "rust"
+        "sql"
         "sway"
         "toml"
         "tsv"
