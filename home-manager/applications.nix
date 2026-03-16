@@ -73,17 +73,15 @@ in
     ]
     ++ (optionalIsLinux [ clipcat ]);
 
-  textEditors =
-    with pkgs;
-    [
-      # keep-sorted start
-      emacs
-      neovide
-      neovim-remote
-      myNurPkgs.neovim-overlay
-      myNurPkgs.vim-overlay
-      # keep-sorted end
-    ];
+  textEditors = with pkgs; [
+    # keep-sorted start
+    emacs
+    myNurPkgs.neovim-overlay
+    myNurPkgs.vim-overlay
+    neovide
+    neovim-remote
+    # keep-sorted end
+  ];
 
   terminalEmulators =
     with pkgs;
