@@ -47,8 +47,6 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     zmx.url = "github:neurosnap/zmx";
-    neovim-nightly-overlay.url = "github:nix-community/neovim-nightly-overlay";
-    vim-overlay.url = "github:kawarimidoll/vim-overlay";
     cryoflow.url = "github:yasunori0418/cryoflow";
   };
 
