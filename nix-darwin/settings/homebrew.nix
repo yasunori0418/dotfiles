@@ -21,6 +21,7 @@
       "jordanbaird-ice"
       "meetingbar"
       "keycastr"
+      "kotlin-lsp"
     ];
     brews = [
       "tailscale"
@@ -29,11 +30,9 @@
       "tfenv"
       "gh"
       "gh-asset"
-      "JetBrains/utils/kotlin-lsp"
     ];
     taps = [
       "YuitoSato/gh-asset"
-      "JetBrains/utils"
     ];
   };
 
