@@ -33,22 +33,5 @@ return {
                     end
                 )
         end
-
-        -- Add workspace folders for build.gradle.* (including submodules)
-        local build_gradle_files = vim.fn.glob(vim.env.PWD .. "/**/build.gradle*", false, true)
-        vim.iter(build_gradle_files)
-            :map(
-                ---@param file string
-                ---@return string
-                function(file)
-                    return vim.fn.fnamemodify(file, ":h")
-                end
-            )
-            :each(
-                ---@param dir string
-                function(dir)
-                    vim.lsp.buf.add_workspace_folder(dir)
-                end
-            )
     end,
 }
