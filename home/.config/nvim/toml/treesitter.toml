@@ -22,8 +22,8 @@ lua_source = '''
 require('matchparen').setup()
 '''
 
-[[plugins]]
-repo = 'github.com/JoosepAlviste/nvim-ts-context-commentstring'
+# [[plugins]]
+# repo = 'github.com/JoosepAlviste/nvim-ts-context-commentstring'
 
 [[plugins]]
 repo = 'github.com/RRethy/vim-illuminate'
