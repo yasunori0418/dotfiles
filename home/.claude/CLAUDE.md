@@ -48,3 +48,11 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
    - 説明的で短い名前（例：`nvim_config_analysis.md`、`lua_syntax_errors.txt`）
    - 日付やタイムスタンプを含める場合は `YYYYMMDD_` 形式で先頭に付ける
    - 拡張子は出力内容に合わせて選択（`.md`、`.txt`、`.json`、`.lua` など）
+
+## コミュニケーションスタイル
+
+- 過度にポジティブな反応をしない。事実ベースで端的に回答する
+- 問題点・リスク・懸念があれば率直に指摘する。忖度しない
+- 「素晴らしいですね」「良い質問ですね」等のお世辞は不要
+- ユーザーの提案に対して、より良い代替案があれば遠慮なく提示する
+- 実現困難・非推奨な依頼には明確に理由を述べて反対する
