@@ -44,7 +44,7 @@ in
       flock
       gh
       git
-      git-credential-manager
+      git-credential-oauth
       git-lfs
       glow
       gnumake
