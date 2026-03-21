@@ -70,7 +70,8 @@
 	skippedCherryPicks = false
 [fetch]
 	prune = true
-[credential]
-	helper = git-credential-manager
 [includeIf "gitdir:~/src/github.com/loglass/"]
 	path = ~/src/github.com/loglass/.gitconfig
+[credential]
+	helper = cache --timeout 21600
+	helper = oauth
