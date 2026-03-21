@@ -238,7 +238,7 @@ in
 
     desktopApps = with pkgs; [
       # keep-sorted start
-      blueberry
+      blueman
       clipmenu
       dunst
       feh
