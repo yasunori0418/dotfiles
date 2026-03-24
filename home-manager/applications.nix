@@ -17,6 +17,7 @@ let
   myNurPkgs = inputs.yasunori-nur.packages.${system};
   llmAgentsPkgs = inputs.llm-agents-nix.packages.${system};
   cryoflow = inputs.cryoflow.packages.${system}.default;
+  arto = inputs.arto.packages.${system}.default;
 in
 {
   nixTools = with pkgs; [
@@ -214,6 +215,7 @@ in
     with pkgs;
     [
       # keep-sorted start
+      arto
       dbeaver-bin
       discord
       drawio
