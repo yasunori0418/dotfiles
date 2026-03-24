@@ -1,0 +1,514 @@
+{
+  "global": [
+    {
+      "key": "Cmd+n",
+      "action": "window.new"
+    },
+    {
+      "key": "Cmd+t",
+      "action": "tab.new"
+    },
+    {
+      "key": "Cmd+w",
+      "action": "tab.close"
+    },
+    {
+      "key": "Cmd+o",
+      "action": "file.open"
+    },
+    {
+      "key": "Cmd+Shift+o",
+      "action": "file.open_directory"
+    },
+    {
+      "key": "Cmd+Shift+r",
+      "action": "file.reveal_in_finder"
+    },
+    {
+      "key": "Cmd+Shift+w",
+      "action": "window.close"
+    },
+    {
+      "key": "Cmd+f",
+      "action": "search.open"
+    },
+    {
+      "key": "Cmd+r",
+      "action": "window.reload"
+    },
+    {
+      "key": "Cmd+b",
+      "action": "window.toggle_sidebar"
+    },
+    {
+      "key": "Cmd+Shift+b",
+      "action": "window.toggle_right_sidebar"
+    },
+    {
+      "key": "Cmd+0",
+      "action": "zoom.reset"
+    },
+    {
+      "key": "Cmd+Equal",
+      "action": "zoom.in"
+    },
+    {
+      "key": "Cmd+Minus",
+      "action": "zoom.out"
+    },
+    {
+      "key": "Cmd+BracketLeft",
+      "action": "history.back"
+    },
+    {
+      "key": "Cmd+BracketRight",
+      "action": "history.forward"
+    },
+    {
+      "key": "Cmd+Comma",
+      "action": "file.preferences"
+    },
+    {
+      "key": "Cmd+Slash",
+      "action": "help.show_keyboard_shortcuts"
+    },
+    {
+      "key": "F1",
+      "action": "help.show_keyboard_shortcuts"
+    },
+    {
+      "key": "j",
+      "action": "scroll.down"
+    },
+    {
+      "key": "k",
+      "action": "scroll.up"
+    },
+    {
+      "key": "Ctrl+d",
+      "action": "scroll.half_page_down"
+    },
+    {
+      "key": "Ctrl+u",
+      "action": "scroll.half_page_up"
+    },
+    {
+      "key": "Ctrl+f",
+      "action": "scroll.page_down"
+    },
+    {
+      "key": "Ctrl+b",
+      "action": "scroll.page_up"
+    },
+    {
+      "key": "g g",
+      "action": "scroll.top"
+    },
+    {
+      "key": "Shift+g",
+      "action": "scroll.bottom"
+    },
+    {
+      "key": "Shift+h",
+      "action": "history.back"
+    },
+    {
+      "key": "Shift+l",
+      "action": "history.forward"
+    },
+    {
+      "key": "/",
+      "action": "search.open"
+    },
+    {
+      "key": "n",
+      "action": "search.next"
+    },
+    {
+      "key": "Shift+n",
+      "action": "search.prev"
+    },
+    {
+      "key": "g t",
+      "action": "tab.next"
+    },
+    {
+      "key": "g Shift+t",
+      "action": "tab.prev"
+    },
+    {
+      "key": "g r",
+      "action": "file.set_parent_as_root"
+    },
+    {
+      "key": "Ctrl+w t",
+      "action": "tab.new"
+    },
+    {
+      "key": "Ctrl+w Ctrl+t",
+      "action": "tab.new"
+    },
+    {
+      "key": "Ctrl+w Shift+t",
+      "action": "tab.open_in_new_window"
+    },
+    {
+      "key": "Ctrl+w n",
+      "action": "window.new"
+    },
+    {
+      "key": "Ctrl+w Ctrl+n",
+      "action": "window.new"
+    },
+    {
+      "key": "Ctrl+w q",
+      "action": "window.close"
+    },
+    {
+      "key": "Ctrl+w Ctrl+q",
+      "action": "window.close"
+    },
+    {
+      "key": "Ctrl+w c",
+      "action": "tab.close"
+    },
+    {
+      "key": "Ctrl+w Ctrl+c",
+      "action": "tab.close"
+    },
+    {
+      "key": "Ctrl+w o",
+      "action": "tab.close_others"
+    },
+    {
+      "key": "Ctrl+w Ctrl+o",
+      "action": "tab.close_others"
+    },
+    {
+      "key": "Ctrl+w a",
+      "action": "tab.close_all"
+    },
+    {
+      "key": "Ctrl+w Shift+c",
+      "action": "window.close_all_child_windows"
+    },
+    {
+      "key": "Ctrl+w Shift+q",
+      "action": "window.close_all_windows"
+    },
+    {
+      "key": "Ctrl+w r",
+      "action": "window.reload"
+    },
+    {
+      "key": "Ctrl+w Ctrl+r",
+      "action": "window.reload"
+    },
+    {
+      "key": "Ctrl+w p",
+      "action": "tab.toggle_pin"
+    },
+    {
+      "key": "Ctrl+w Ctrl+p",
+      "action": "tab.toggle_pin"
+    },
+    {
+      "key": "g f",
+      "action": "file.open_link"
+    },
+    {
+      "key": "Ctrl+w g f",
+      "action": "file.open_link_in_new_tab"
+    },
+    {
+      "key": "y y",
+      "action": "clipboard.copy_file_path_with_line"
+    },
+    {
+      "key": "y Shift+y",
+      "action": "clipboard.copy_file_path"
+    },
+    {
+      "key": "y m",
+      "action": "clipboard.copy_as_markdown"
+    },
+    {
+      "key": "y c",
+      "action": "clipboard.copy_code"
+    },
+    {
+      "key": "y Shift+c",
+      "action": "clipboard.copy_code_as_markdown"
+    },
+    {
+      "key": "y t",
+      "action": "clipboard.copy_table_as_tsv"
+    },
+    {
+      "key": "y Shift+t",
+      "action": "clipboard.copy_table_as_markdown"
+    },
+    {
+      "key": "y l",
+      "action": "clipboard.copy_link_path"
+    },
+    {
+      "key": "y i",
+      "action": "clipboard.copy_image"
+    },
+    {
+      "key": "y s",
+      "action": "file.save_image_as"
+    },
+    {
+      "key": "z i",
+      "action": "zoom.in"
+    },
+    {
+      "key": "z o",
+      "action": "zoom.out"
+    },
+    {
+      "key": "z z",
+      "action": "zoom.reset"
+    },
+    {
+      "key": "Ctrl+w h",
+      "action": "focus.left_sidebar"
+    },
+    {
+      "key": "Ctrl+w Ctrl+h",
+      "action": "focus.left_sidebar"
+    },
+    {
+      "key": "Ctrl+w l",
+      "action": "focus.right_sidebar"
+    },
+    {
+      "key": "Ctrl+w Ctrl+l",
+      "action": "focus.right_sidebar"
+    },
+    {
+      "key": "Backslash q",
+      "action": "focus.quick_access"
+    },
+    {
+      "key": "Escape",
+      "action": "cancel"
+    },
+    {
+      "key": "m m",
+      "action": "file.toggle_bookmark"
+    }
+  ],
+  "content": [
+    {
+      "key": "Enter",
+      "action": "content.open_viewer"
+    },
+    {
+      "key": "Ctrl+j",
+      "action": "content.next"
+    },
+    {
+      "key": "Ctrl+k",
+      "action": "content.prev"
+    },
+    {
+      "key": "] ]",
+      "action": "content.next_heading"
+    },
+    {
+      "key": "[ [",
+      "action": "content.prev_heading"
+    }
+  ],
+  "sidebar": [
+    {
+      "key": "j",
+      "action": "cursor.down"
+    },
+    {
+      "key": "k",
+      "action": "cursor.up"
+    },
+    {
+      "key": "Ctrl+n",
+      "action": "cursor.down"
+    },
+    {
+      "key": "Ctrl+p",
+      "action": "cursor.up"
+    },
+    {
+      "key": "l",
+      "action": "cursor.open"
+    },
+    {
+      "key": "Enter",
+      "action": "cursor.enter"
+    },
+    {
+      "key": "h",
+      "action": "cursor.collapse"
+    },
+    {
+      "key": "Backspace",
+      "action": "directory.parent"
+    },
+    {
+      "key": "z a",
+      "action": "sidebar.toggle_show_all_files"
+    },
+    {
+      "key": "Shift+h",
+      "action": "directory.back"
+    },
+    {
+      "key": "Shift+l",
+      "action": "directory.forward"
+    },
+    {
+      "key": "Ctrl+w h",
+      "action": "focus.left_sidebar"
+    },
+    {
+      "key": "Ctrl+w Ctrl+h",
+      "action": "focus.left_sidebar"
+    },
+    {
+      "key": "Ctrl+w l",
+      "action": "focus.content"
+    },
+    {
+      "key": "Ctrl+w Ctrl+l",
+      "action": "focus.content"
+    },
+    {
+      "key": "Ctrl+w j",
+      "action": "focus.quick_access"
+    },
+    {
+      "key": "Ctrl+w Ctrl+j",
+      "action": "focus.quick_access"
+    }
+  ],
+  "quickAccess": [
+    {
+      "key": "j",
+      "action": "cursor.down"
+    },
+    {
+      "key": "k",
+      "action": "cursor.up"
+    },
+    {
+      "key": "Ctrl+n",
+      "action": "cursor.down"
+    },
+    {
+      "key": "Ctrl+p",
+      "action": "cursor.up"
+    },
+    {
+      "key": "l",
+      "action": "cursor.open"
+    },
+    {
+      "key": "Enter",
+      "action": "cursor.open"
+    },
+    {
+      "key": "h",
+      "action": "cursor.collapse"
+    },
+    {
+      "key": "Ctrl+w h",
+      "action": "focus.left_sidebar"
+    },
+    {
+      "key": "Ctrl+w Ctrl+h",
+      "action": "focus.left_sidebar"
+    },
+    {
+      "key": "Ctrl+w l",
+      "action": "focus.content"
+    },
+    {
+      "key": "Ctrl+w Ctrl+l",
+      "action": "focus.content"
+    },
+    {
+      "key": "Ctrl+w k",
+      "action": "focus.left_sidebar"
+    },
+    {
+      "key": "Ctrl+w Ctrl+k",
+      "action": "focus.left_sidebar"
+    }
+  ],
+  "rightSidebar": [
+    {
+      "key": "j",
+      "action": "cursor.down"
+    },
+    {
+      "key": "k",
+      "action": "cursor.up"
+    },
+    {
+      "key": "Ctrl+n",
+      "action": "cursor.down"
+    },
+    {
+      "key": "Ctrl+p",
+      "action": "cursor.up"
+    },
+    {
+      "key": "l",
+      "action": "cursor.open"
+    },
+    {
+      "key": "Enter",
+      "action": "cursor.open"
+    },
+    {
+      "key": "h",
+      "action": "cursor.collapse"
+    },
+    {
+      "key": "Ctrl+w h",
+      "action": "focus.content"
+    },
+    {
+      "key": "Ctrl+w Ctrl+h",
+      "action": "focus.content"
+    },
+    {
+      "key": "Ctrl+w l",
+      "action": "focus.right_sidebar"
+    },
+    {
+      "key": "Ctrl+w Ctrl+l",
+      "action": "focus.right_sidebar"
+    }
+  ],
+  "search": [
+    {
+      "key": "Enter",
+      "action": "search.next"
+    },
+    {
+      "key": "Shift+Enter",
+      "action": "search.prev"
+    },
+    {
+      "key": "Escape",
+      "action": "search.clear"
+    },
+    {
+      "key": "Ctrl+Enter",
+      "action": "search.pin_current"
+    }
+  ]
+}

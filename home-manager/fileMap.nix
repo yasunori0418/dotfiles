@@ -172,6 +172,10 @@ in
         source = symlink /${homeDir}/Library/ApplicationSupport/AquaSKK;
         recursive = true;
       };
+      "Library/Application Support/arto" = {
+        source = symlink /${xdgConfigHome}/arto;
+        recursive = true;
+      };
       "Library/Application Support/Code/User/settings.json".source =
         symlink /${xdgConfigHome}/Code/User/settings.json;
       "Library/Application Support/Luacheck/.luacheckrc".source =
@@ -213,6 +217,7 @@ in
     }
     // xdgConfigDirMap [
       # keep-sorted start
+      "arto"
       "bumblebee-status"
       "cantata"
       "dunst"

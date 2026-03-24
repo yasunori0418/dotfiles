@@ -1,0 +1,70 @@
+{
+  "directory": {
+    "defaultDirectory": null,
+    "onStartup": "default",
+    "onNewWindow": "default"
+  },
+  "fileOpen": "last_focused",
+  "markdown": {
+    "autoLinkUrls": true
+  },
+  "theme": {
+    "defaultTheme": "light",
+    "onStartup": "default",
+    "onNewWindow": "default"
+  },
+  "sidebar": {
+    "defaultPinned": false,
+    "defaultWidth": 280.0,
+    "defaultShowAllFiles": false,
+    "defaultZoomLevel": 1.0,
+    "onStartup": "default",
+    "onNewWindow": "default"
+  },
+  "rightSidebar": {
+    "defaultPinned": false,
+    "defaultWidth": 220.0,
+    "defaultTab": "contents",
+    "defaultZoomLevel": 1.0,
+    "onStartup": "default",
+    "onNewWindow": "default"
+  },
+  "windowPosition": {
+    "defaultPosition": {
+      "x": {
+        "value": 50.0,
+        "unit": "percent"
+      },
+      "y": {
+        "value": 50.0,
+        "unit": "percent"
+      }
+    },
+    "defaultPositionMode": "coordinates",
+    "positionOffset": {
+      "x": 20,
+      "y": 20
+    },
+    "onStartup": "default",
+    "onNewWindow": "default"
+  },
+  "windowSize": {
+    "defaultSize": {
+      "width": {
+        "value": 1000.0,
+        "unit": "pixels"
+      },
+      "height": {
+        "value": 800.0,
+        "unit": "pixels"
+      }
+    },
+    "onStartup": "default",
+    "onNewWindow": "default"
+  },
+  "zoom": {
+    "defaultZoomLevel": 1.0,
+    "onStartup": "default",
+    "onNewWindow": "default"
+  }
+}
