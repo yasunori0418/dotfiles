@@ -48,6 +48,7 @@
     };
     zmx.url = "github:neurosnap/zmx";
     cryoflow.url = "github:yasunori0418/cryoflow";
+    arto.url = "github:arto-app/Arto";
   };
 
   nixConfig = {
@@ -57,6 +58,7 @@
       "https://cache.numtide.com"
       "https://yasunori0418.cachix.org"
       "https://ryoppippi.cachix.org"
+      "https://arto.cachix.org"
     ];
 
     extra-trusted-public-keys = [
@@ -65,6 +67,7 @@
       "niks3.numtide.com-1:DTx8wZduET09hRmMtKdQDxNNthLQETkc/yaX7M4qK0g="
       "yasunori0418.cachix.org-1:mC1j+M5A6063OHaOB5bH2nS0BiCW/BJsSRiOWjLeV9o="
       "ryoppippi.cachix.org-1:b2LbtWNvJeL/qb1B6TYOMK+apaCps4SCbzlPRfSQIms="
+      "arto.cachix.org-1:yaH0JQomRJTosIcTh2xZPKBEny41D7h6QUePYQzWYqc="
     ];
   };
 

@@ -20,6 +20,7 @@
         "https://devenv.cachix.org"
         "https://cache.numtide.com"
         "https://ryoppippi.cachix.org"
+        "https://arto.cachix.org"
       ];
       trusted-substituters = [
         "https://cache.nixos.org/"
@@ -28,6 +29,7 @@
         "https://devenv.cachix.org"
         "https://cache.numtide.com"
         "https://ryoppippi.cachix.org"
+        "https://arto.cachix.org"
       ];
       trusted-public-keys = [
         "cache.nixos.org-1:6NCHdD59X431o0gWypbMrAURkbJ16ZPMQFGspcDShjY="
@@ -36,6 +38,7 @@
         "devenv.cachix.org-1:w1cLUi8dv3hnoSPGAuibQv+f9TZLr6cv/Hm9XgU50cw="
         "niks3.numtide.com-1:DTx8wZduET09hRmMtKdQDxNNthLQETkc/yaX7M4qK0g="
         "ryoppippi.cachix.org-1:b2LbtWNvJeL/qb1B6TYOMK+apaCps4SCbzlPRfSQIms="
+        "arto.cachix.org-1:yaH0JQomRJTosIcTh2xZPKBEny41D7h6QUePYQzWYqc="
       ];
     };
     registry = {
