@@ -99,26 +99,6 @@
         "type": "github"
       }
     },
-    "claude-code-overlay": {
-      "inputs": {
-        "nixpkgs": [
-          "nixpkgs"
-        ]
-      },
-      "locked": {
-        "lastModified": 1774525081,
-        "narHash": "sha256-5KFUqokTqcmEUQNhrdxZVPfBFHUrDtAhljixn2fPhWI=",
-        "owner": "ryoppippi",
-        "repo": "claude-code-overlay",
-        "rev": "893ee907cd44982b98d9a6d1d3f884615f88460e",
-        "type": "github"
-      },
-      "original": {
-        "owner": "ryoppippi",
-        "repo": "claude-code-overlay",
-        "type": "github"
-      }
-    },
     "claude-desktop": {
       "inputs": {
         "flake-utils": "flake-utils",
@@ -586,6 +566,26 @@
         "type": "github"
       }
     },
+    "nix-claude-code": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1774525081,
+        "narHash": "sha256-5KFUqokTqcmEUQNhrdxZVPfBFHUrDtAhljixn2fPhWI=",
+        "owner": "ryoppippi",
+        "repo": "nix-claude-code",
+        "rev": "893ee907cd44982b98d9a6d1d3f884615f88460e",
+        "type": "github"
+      },
+      "original": {
+        "owner": "ryoppippi",
+        "repo": "nix-claude-code",
+        "type": "github"
+      }
+    },
     "nix-darwin": {
       "inputs": {
         "nixpkgs": [
@@ -976,13 +976,13 @@
     "root": {
       "inputs": {
         "arto": "arto",
-        "claude-code-overlay": "claude-code-overlay",
         "claude-desktop": "claude-desktop",
         "cryoflow": "cryoflow",
         "flake-parts": "flake-parts_2",
         "home-manager": "home-manager",
         "llm-agents-nix": "llm-agents-nix",
         "mac-app-util": "mac-app-util",
+        "nix-claude-code": "nix-claude-code",
         "nix-darwin": "nix-darwin",
         "nix-monitored": "nix-monitored",
         "nixos-hardware": "nixos-hardware",

@@ -16,6 +16,7 @@ let
   inherit (pkgs.stdenv.hostPlatform) system;
   myNurPkgs = inputs.yasunori-nur.packages.${system};
   llmAgentsPkgs = inputs.llm-agents-nix.packages.${system};
+  claude-code-by-ryoppippi = inputs.nix-claude-code.packages.${system}.default;
   cryoflow = inputs.cryoflow.packages.${system}.default;
   arto = inputs.arto.packages.${system}.default;
 in
@@ -158,8 +159,9 @@ in
   aiTools = with llmAgentsPkgs; [
     # keep-sorted start
     amp
-    # cc-sdd
     ccusage
+    # cc-sdd
+    claude-code-by-ryoppippi
     codex
     llmAgentsPkgs.goose-cli
     myNurPkgs.cchook

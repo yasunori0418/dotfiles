@@ -42,8 +42,8 @@
       inputs.nixpkgs.follows = "nixpkgs";
       inputs.treefmt-nix.follows = "treefmt-nix";
     };
-    claude-code-overlay = {
-      url = "github:ryoppippi/claude-code-overlay";
+    nix-claude-code = {
+      url = "github:ryoppippi/nix-claude-code";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     zmx.url = "github:neurosnap/zmx";

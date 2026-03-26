@@ -26,7 +26,7 @@
         # ../options/launchd/clipcatd.nix
       ];
       programs = [
-        ../options/programs/claude-code.nix
+        # ../options/programs/claude-code.nix
       ];
     in
     [

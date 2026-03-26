@@ -23,7 +23,7 @@
       };
       clearDppStateAfterLinkGeneration = ../clear-dpp-state-after-link-generation.nix;
       programs = [
-        ../options/programs/claude-code.nix
+        # ../options/programs/claude-code.nix
       ];
       xdg = ../options/xdg.nix;
       nix = ../options/nix.nix;
