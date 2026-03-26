@@ -68,3 +68,9 @@ if = false
 
 [[plugins]]
 repo = 'github.com/nvim-lua/plenary.nvim'
+
+[[plugins]]
+repo = 'github.com/yasunori0418/arto.vim'
+rev = 'feat-support-linux'
+on_cmd = ['Arto', 'ArtoVersion']
+hooks_file = '$HOOKS_DIR/arto.lua'
