@@ -222,6 +222,7 @@ in
       discord
       drawio
       jetbrains-toolbox
+      postman
       # keep-sorted end
     ]
     ++ (optionalIsLinux [ google-chrome ]);
