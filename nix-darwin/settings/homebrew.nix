@@ -21,7 +21,6 @@
       "jordanbaird-ice"
       "meetingbar"
       "keycastr"
-      "kotlin-lsp"
     ];
     brews = [
       "tailscale"
