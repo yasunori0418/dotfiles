@@ -127,6 +127,7 @@ in
     efm-langserver
     emmet-ls
     jq-lsp
+    myNurPkgs.kotlin-lsp
     nixd
     pyright
     sqls

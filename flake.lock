@@ -1277,11 +1277,11 @@
         "vim-overlay": "vim-overlay"
       },
       "locked": {
-        "lastModified": 1774963502,
-        "narHash": "sha256-sb11oARL33k+hv8NY775JjdmDuBnDvMGu3yY/UK16y8=",
+        "lastModified": 1774967711,
+        "narHash": "sha256-UQ/WvOc1A+LPIqj2NwqdpfUb9MxsHJcNLEpS88xoKKs=",
         "owner": "yasunori0418",
         "repo": "nur-packages",
-        "rev": "4fabddb15a8096d5af9a5edcb423c1c74c138dee",
+        "rev": "6dbe569c743bf08a34308649f1f0eef36ceb2082",
         "type": "github"
       },
       "original": {
