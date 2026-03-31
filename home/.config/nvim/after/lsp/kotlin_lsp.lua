@@ -101,7 +101,10 @@ return {
 
     ---@param client vim.lsp.Client
     ---@param initialize_result lsp.InitializeResult
-    on_init = function(client, _--[[, initialize_result]])
+    on_init = function(
+        client,
+        _ --[[, initialize_result]]
+    )
         -- vim.print(initialize_result)
         -- Add workspace folders from includeBuild in settings.gradle
         local settings_gradle_path = vim.fn.glob(vim.env.PWD .. "/settings.gradle*", false, true)[1]
