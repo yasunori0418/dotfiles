@@ -15,9 +15,9 @@ efm_configs.setup({
             { kind = "linters", name = "markdownlint" },
             { kind = "formatters", name = "mdformat" },
         },
-        make = {
-            { kind = "linters", name = "checkmake" },
-        },
+        -- make = {
+        --     { kind = "linters", name = "checkmake" },
+        -- },
         json = {
             { kind = "formatters", name = "jq" },
             { kind = "linters", name = "jq" },
