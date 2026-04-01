@@ -160,6 +160,7 @@
     "pyright-lsp@claude-plugins-official": true,
     "github@claude-plugins-official": true
   },
+  "showClearContextOnPlanAccept": true,
   "alwaysThinkingEnabled": true,
   "promptSuggestionEnabled": false,
   "teammateMode": "auto"
