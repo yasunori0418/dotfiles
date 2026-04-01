@@ -57,13 +57,14 @@ end
 
 ---@type vim.lsp.Config
 return {
-    on_init = function(client)
-        client.config.settings.Lua --[[@as table]] =
-            vim.tbl_deep_extend("force", client.config.settings.Lua --[[@as table]], {
-                workspace = {
-                    library = library(),
-                },
-            })
+    ---@param client vim.lsp.Client
+    ---@param initialize_result lsp.InitializeResult
+    on_init = function(client, _)
+        client.config.settings.Lua = vim.tbl_deep_extend("force", client.config.settings.Lua, {
+            workspace = {
+                library = library(),
+            },
+        })
     end,
     settings = {
         Lua = {
