@@ -249,11 +249,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1772408722,
-        "narHash": "sha256-rHuJtdcOjK7rAHpHphUb1iCvgkU3GpfvicLMwwnfMT0=",
+        "lastModified": 1775087534,
+        "narHash": "sha256-91qqW8lhL7TLwgQWijoGBbiD4t7/q75KTi8NxjVmSmA=",
         "owner": "hercules-ci",
         "repo": "flake-parts",
-        "rev": "f20dc5d9b8027381c474144ecabc9034d6a839a3",
+        "rev": "3107b77cd68437b9a76194f0f7f9c55f2329ca5b",
         "type": "github"
       },
       "original": {
@@ -494,11 +494,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1774992982,
-        "narHash": "sha256-zXb95QI1V6RoLZNoHQcUPUjBhz2ADLSDPhoW4JFViXo=",
+        "lastModified": 1775100504,
+        "narHash": "sha256-pPN8RQzB/5wUCwJFac7JC4u3zgtyFrhd76kbvJmosUI=",
         "owner": "numtide",
         "repo": "llm-agents.nix",
-        "rev": "fddbd65364b1ddc8a933aaebc23a2b451f52daa9",
+        "rev": "39ffaca2934a562d7702b95d01e9792401119dc5",
         "type": "github"
       },
       "original": {
@@ -1277,11 +1277,11 @@
         "vim-overlay": "vim-overlay"
       },
       "locked": {
-        "lastModified": 1774967711,
-        "narHash": "sha256-UQ/WvOc1A+LPIqj2NwqdpfUb9MxsHJcNLEpS88xoKKs=",
+        "lastModified": 1775122671,
+        "narHash": "sha256-bl9fVaU6JMKKoGecFVZlycj9WdZQa0IzaOfLYFidgXQ=",
         "owner": "yasunori0418",
         "repo": "nur-packages",
-        "rev": "6dbe569c743bf08a34308649f1f0eef36ceb2082",
+        "rev": "69e44341ecac76d3640865c90959ed5df21c4b47",
         "type": "github"
       },
       "original": {
