@@ -73,3 +73,8 @@ repo = 'github.com/nvim-lua/plenary.nvim'
 repo = 'github.com/arto-app/arto.vim'
 on_cmd = ['Arto', 'ArtoVersion']
 hooks_file = '$HOOKS_DIR/arto.lua'
+
+[[plugins]]
+repo = 'github.com/lambdalisue/nvim-aibo'
+on_cmd = ['Aibo', 'AiboSend']
+hooks_file = '$HOOKS_DIR/aibo.lua'
