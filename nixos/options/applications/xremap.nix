@@ -1,4 +1,9 @@
-{ config, ... }:
+{
+  inputs,
+  pkgs,
+  config,
+  ...
+}:
 {
 
   # # Run a single one-shot service that allows root's services to access user's X session
@@ -10,79 +15,85 @@
   #   environment.DISPLAY = ":0.0"; # NOTE: This is hardcoded for this flake
   # };
 
-  services.xremap = {
-    enable = true;
-    withWlroots = true;
-    watch = true;
-    serviceMode = "user";
-    userName = config.users.users.yasunori.name;
-    userId = config.users.users.yasunori.uid;
-    config = {
-      modmap = [
-        {
-          name = "Swapping Capslock and Ctrl_L";
-          remap = {
-            Capslock = "Ctrl_L";
-            Ctrl_L = "Capslock";
-          };
-          device = {
-            not = [ "HHKB" ];
-          };
-        }
-      ];
-      keymap = [
-        {
-          name = "Ctrl-h backspace";
-          remap = {
-            C-h = "backspace";
-          };
-        }
-        {
-          name = "emacs-like keybinds.";
-          # https://github.com/xremap/xremap/blob/master/example/emacs.yml
-          remap = {
-            C-h = "backspace";
+  services.xremap =
+    let
+      inherit (pkgs.stdenv.hostPlatform) system;
+      package = inputs.yasunori-nur.packages.${system}.xremap-wlroots;
+    in
+    {
+      inherit package;
+      enable = true;
+      withWlroots = true;
+      watch = true;
+      serviceMode = "user";
+      userName = config.users.users.yasunori.name;
+      userId = config.users.users.yasunori.uid;
+      config = {
+        modmap = [
+          {
+            name = "Swapping Capslock and Ctrl_L";
+            remap = {
+              Capslock = "Ctrl_L";
+              Ctrl_L = "Capslock";
+            };
+            device = {
+              not = [ "HHKB" ];
+            };
+          }
+        ];
+        keymap = [
+          {
+            name = "Ctrl-h backspace";
+            remap = {
+              C-h = "backspace";
+            };
+          }
+          {
+            name = "emacs-like keybinds.";
+            # https://github.com/xremap/xremap/blob/master/example/emacs.yml
+            remap = {
+              C-h = "backspace";
 
-            C-Shift-a = "C-Shift-a";
+              C-Shift-a = "C-Shift-a";
 
-            # Cursor
-            C-f = "right";
-            C-b = "left";
-            C-p = "up";
-            C-n = "down";
+              # Cursor
+              C-f = "right";
+              C-b = "left";
+              C-p = "up";
+              C-n = "down";
 
-            # Forward/Backward word
-            M-f = "C-right";
-            M-b = "C-left";
+              # Forward/Backward word
+              M-f = "C-right";
+              M-b = "C-left";
 
-            # Beginning/End of line
-            C-a = "home";
-            C-e = "end";
+              # Beginning/End of line
+              C-a = "home";
+              C-e = "end";
 
-            # newline
-            C-m = "enter";
+              # newline
+              C-m = "enter";
 
-            # Delete
-            C-d = "delete";
+              # Delete
+              C-d = "delete";
 
-            C-M-f = "C-f";
+              C-M-f = "C-f";
 
-          };
-          application = {
-            not = [
-              "com.mitchellh.ghostty"
-              "Alacritty"
-              "org.wezfurlong.wezterm"
-              "kitty"
-              "neovide"
-              "/Emacs/"
-            ];
-          };
-          device = {
-            not = [ ];
-          };
-        }
-      ];
+            };
+            application = {
+              not = [
+                "com.mitchellh.ghostty"
+                "Alacritty"
+                "org.wezfurlong.wezterm"
+                "kitty"
+                "neovide"
+                "/Emacs/"
+              ];
+            };
+            device = {
+              not = [ ];
+            };
+          }
+        ];
+      };
     };
-  };
 }
