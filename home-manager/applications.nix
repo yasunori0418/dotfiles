@@ -109,7 +109,7 @@ in
     ghq
     jq
     myNurPkgs.gwq
-    nushell
+    # nushell
     rip2
     ripgrep
     sheldon
