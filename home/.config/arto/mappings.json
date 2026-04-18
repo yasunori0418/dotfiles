@@ -1,22 +1,6 @@
 {
   "global": [
     {
-      "key": "Cmd+n",
-      "action": "window.new"
-    },
-    {
-      "key": "Cmd+t",
-      "action": "tab.new"
-    },
-    {
-      "key": "Cmd+w",
-      "action": "tab.close"
-    },
-    {
-      "key": "Cmd+o",
-      "action": "file.open"
-    },
-    {
       "key": "Cmd+Shift+o",
       "action": "file.open_directory"
     },
@@ -27,10 +11,6 @@
     {
       "key": "Cmd+Shift+w",
       "action": "window.close"
-    },
-    {
-      "key": "Cmd+f",
-      "action": "search.open"
     },
     {
       "key": "Cmd+r",
@@ -55,14 +35,6 @@
     {
       "key": "Cmd+Minus",
       "action": "zoom.out"
-    },
-    {
-      "key": "Cmd+BracketLeft",
-      "action": "history.back"
-    },
-    {
-      "key": "Cmd+BracketRight",
-      "action": "history.forward"
     },
     {
       "key": "Cmd+Comma",
@@ -129,11 +101,11 @@
       "action": "search.prev"
     },
     {
-      "key": "g t",
+      "key": "] t",
       "action": "tab.next"
     },
     {
-      "key": "g Shift+t",
+      "key": "[ t",
       "action": "tab.prev"
     },
     {

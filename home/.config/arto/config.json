@@ -14,7 +14,7 @@
     "onNewWindow": "default"
   },
   "sidebar": {
-    "defaultPinned": false,
+    "defaultPinned": true,
     "defaultWidth": 280.0,
     "defaultShowAllFiles": false,
     "defaultZoomLevel": 1.0,
