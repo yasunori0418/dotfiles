@@ -14,7 +14,8 @@
         "pipe-operators"
       ];
       max-jobs = 8;
-      sandbox = "relaxed";
+      # sandbox = "relaxed";
+      sandbox = false;
       substituters = [
         "https://cache.nixos.org/"
         "https://nix-community.cachix.org"

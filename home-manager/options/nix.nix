@@ -12,7 +12,7 @@
         "pipe-operators"
       ];
       max-jobs = 8;
-      sandbox = if pkgs.stdenv.isLinux then true else "relaxed";
+      sandbox = if pkgs.stdenv.isLinux then true else false;
       substituters = [
         "https://cache.nixos.org/"
         "https://nix-community.cachix.org"
