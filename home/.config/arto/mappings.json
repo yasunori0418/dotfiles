@@ -245,19 +245,11 @@
       "action": "zoom.reset"
     },
     {
-      "key": "Ctrl+w h",
+      "key": "Space w h",
       "action": "focus.left_sidebar"
     },
     {
-      "key": "Ctrl+w Ctrl+h",
-      "action": "focus.left_sidebar"
-    },
-    {
-      "key": "Ctrl+w l",
-      "action": "focus.right_sidebar"
-    },
-    {
-      "key": "Ctrl+w Ctrl+l",
+      "key": "Space w l",
       "action": "focus.right_sidebar"
     },
     {
@@ -341,27 +333,15 @@
       "action": "directory.forward"
     },
     {
-      "key": "Ctrl+w h",
+      "key": "Space w h",
       "action": "focus.left_sidebar"
     },
     {
-      "key": "Ctrl+w Ctrl+h",
-      "action": "focus.left_sidebar"
-    },
-    {
-      "key": "Ctrl+w l",
+      "key": "Space w l",
       "action": "focus.content"
     },
     {
-      "key": "Ctrl+w Ctrl+l",
-      "action": "focus.content"
-    },
-    {
-      "key": "Ctrl+w j",
-      "action": "focus.quick_access"
-    },
-    {
-      "key": "Ctrl+w Ctrl+j",
+      "key": "Space w j",
       "action": "focus.quick_access"
     }
   ],
