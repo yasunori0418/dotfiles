@@ -1,5 +1,8 @@
 # vim:fdm=marker
 
+## nohup
+nohup.out
+
 # https://github.com/github/gitignore/blob/main/Global/Backup.gitignore {{{
 *.bak
 *.gho
