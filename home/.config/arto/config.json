@@ -51,11 +51,11 @@
   "windowSize": {
     "defaultSize": {
       "width": {
-        "value": 1000.0,
+        "value": 2520.0,
         "unit": "pixels"
       },
       "height": {
-        "value": 800.0,
+        "value": 1382.0,
         "unit": "pixels"
       }
     },
