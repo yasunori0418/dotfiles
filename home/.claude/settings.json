@@ -155,8 +155,11 @@
     "typescript-lsp@claude-plugins-official": true,
     "pyright-lsp@claude-plugins-official": true
   },
-  "showClearContextOnPlanAccept": true,
   "alwaysThinkingEnabled": true,
   "promptSuggestionEnabled": false,
-  "teammateMode": "auto"
+  "showClearContextOnPlanAccept": true,
+  "teammateMode": "auto",
+  "editorMode": "vim",
+  "verbose": true,
+  "preferredNotifChannel": "ghostty"
 }
