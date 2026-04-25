@@ -7,11 +7,7 @@
     nixos-hardware.url = "github:NixOS/nixos-hardware/master";
     flake-parts.url = "github:hercules-ci/flake-parts";
     mac-app-util.url = "github:hraban/mac-app-util";
-    yasunori-nur = {
-      url = "github:yasunori0418/nur-packages";
-      inputs.nixpkgs.follows = "nixpkgs";
-      inputs.treefmt-nix.follows = "treefmt-nix";
-    };
+    yasunori-nur.url = "github:yasunori0418/nur-packages";
     nix-monitored = {
       url = "github:ners/nix-monitored";
       inputs.nixpkgs.follows = "nixpkgs";
