@@ -16,9 +16,7 @@ _: {
             hyperfine
             stylua
             luajitPackages.luacheck
-            # see: https://github.com/NixOS/nixpkgs/pull/503777
-            # see: https://nixpk.gs/pr-tracker.html?pr=503777
-            # luajitPackages.vusted
+            luajitPackages.vusted
             luajitPackages.luacov
             checkmake
             emmylua-ls
