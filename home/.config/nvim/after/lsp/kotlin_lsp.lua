@@ -44,7 +44,10 @@ return {
     --     defaultJdk = vim.fn.expand("$JAVA_HOME"),
     --     skipImport = false,
     -- },
-    init_options = vim.empty_dict(),
+    init_options = {
+        defaultJdk = vim.env.JAVA_HOME,
+        skipImport = false,
+    },
 
     -- ## root_markers: string[]
     -- プロジェクトルートを検出するためのマーカーファイル。
