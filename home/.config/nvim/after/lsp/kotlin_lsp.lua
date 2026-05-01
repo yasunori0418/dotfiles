@@ -1,9 +1,9 @@
 ---@type vim.lsp.Config
 return {
-    -- cmd = vim.lsp.rpc.connect("127.0.0.1", tonumber(9999)),
-
     -- ## cmd: string[] | fun(dispatchers: vim.lsp.rpc.Dispatchers): vim.lsp.rpc.PublicClient
     -- LSPサーバーの起動コマンド。stdioモードまたはTCP接続を指定する。
+    -- nvim-lspconfig の base config は `intellij-server` を呼ぶが、自前の Nix derivation
+    -- では `kotlin-lsp` のみ PATH に出しているので、ここで上書きする。
     -- コマンドライン引数 (KotlinLspServerRunConfig.kt):
     --   --stdio                     : stdioモードで起動 (デフォルトはTCPサーバーモード)
     --   --socket=<host>:<port>      : TCPソケットアドレス (デフォルト: 127.0.0.1:9999)
@@ -17,25 +17,34 @@ return {
     --                                 例: --log-category=com.jetbrains.ls:DEBUG
     --                                 環境変数 KOTLIN_LSP_LOG_CATEGORIES でも設定可 (カンマ区切り)
     --
-    -- 例:
-    -- cmd = { "kotlin-lsp", "--stdio" },
+    -- 他の起動例:
     -- cmd = { "kotlin-lsp", "--stdio", "--system-path=/tmp/kotlin-lsp", "--log-level=DEBUG" },
     -- cmd = vim.lsp.rpc.connect("127.0.0.1", tonumber(9999)),
+    cmd = { "kotlin-lsp", "--stdio" },
 
-    init_options = {
-        -- ## defaultJdk: string (パス)
-        -- シンボル解決に使用するJDKのパス。
-        -- サーバー側で initializationOptions.defaultJdk として読み取られる (initialize.kt)。
-        -- 例:
-        -- defaultJdk = "/usr/lib/jvm/java-21",
-        -- defaultJdk = vim.fn.expand("$JAVA_HOME"),
-
-        -- ## skipImport: boolean (デフォルト: false)
-        -- trueにするとワークスペースインポート (Gradle/Maven) をスキップする。
-        -- テスト・デバッグ用途。通常は設定不要。
-        -- 例:
-        -- skipImport = true,
-    },
+    -- ## init_options: table | vim.empty_dict
+    -- LSP `initialize` リクエストの `initializationOptions` に乗る値。
+    -- サーバー側 (com.jetbrains.ls.snapshot.api.impl.core.InitializeOptions) は
+    -- JsonObject を要求するため、空にする場合は Lua の `{}` ではなく
+    -- `vim.empty_dict()` を渡す (空テーブルは `[]` (JsonArray) としてシリアライズされ
+    -- "Failed to parse initialization options: []" の WARN を引き起こすため)。
+    --
+    -- セット可能なキー (initialize.kt より):
+    --   defaultJdk : string (パス)
+    --     シンボル解決に使用するJDKのパス。
+    --     例: defaultJdk = "/usr/lib/jvm/java-21",
+    --     例: defaultJdk = vim.fn.expand("$JAVA_HOME"),
+    --   skipImport : boolean (デフォルト: false)
+    --     true にするとワークスペースインポート (Gradle/Maven) をスキップする。
+    --     テスト・デバッグ用途。通常は設定不要。
+    --     例: skipImport = true,
+    --
+    -- 値を渡す場合の書き方:
+    -- init_options = {
+    --     defaultJdk = vim.fn.expand("$JAVA_HOME"),
+    --     skipImport = false,
+    -- },
+    init_options = vim.empty_dict(),
 
     -- ## root_markers: string[]
     -- プロジェクトルートを検出するためのマーカーファイル。
