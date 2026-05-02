@@ -48,6 +48,7 @@ in
       git
       git-credential-oauth
       git-lfs
+      git-wt
       glow
       gnumake
       google-cloud-sdk
