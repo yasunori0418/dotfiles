@@ -26,6 +26,7 @@
       virtualisation = ../options/virtualisation.nix;
       qt = ../options/qt.nix;
       acplight = ../options/hardware/acplight.nix;
+      bluetooth = ../options/hardware/bluetooth.nix;
 
       services = [
         ../options/services/printing.nix
@@ -75,6 +76,7 @@
       virtualisation
       qt
       acplight
+      bluetooth
     ]
     ++ services
     ++ systemd

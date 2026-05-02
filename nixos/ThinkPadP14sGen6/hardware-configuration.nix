@@ -20,9 +20,13 @@
     "nvme"
     "usb_storage"
     "sd_mod"
+    "i2c_hid_acpi" # ThinkPad P14s Gen6 タッチパッド (I2C HID)
   ];
   boot.initrd.kernelModules = [ ];
-  boot.kernelModules = [ "kvm-intel" ];
+  boot.kernelModules = [
+    "kvm-intel"
+    "i2c_dev" # I2C デバイスアクセス用
+  ];
   boot.extraModulePackages = [ ];
 
   fileSystems."/" = {
