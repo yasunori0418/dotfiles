@@ -61,6 +61,7 @@ in
       mise
       myNurPkgs.pict
       myNurPkgs.safe-chain
+      myNurPkgs.roots
       pqrs
       pueue
       python313Packages.datadog
