@@ -29,7 +29,7 @@
           "languageServers"
           "libraries"
           "nixTools"
-          "rustTools"
+          # "rustTools"
           "shellTools"
           "terminalEmulators"
           "textEditors"

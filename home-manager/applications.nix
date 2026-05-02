@@ -219,7 +219,7 @@ in
     [
       # keep-sorted start
       arto
-      dbeaver-bin
+      # dbeaver-bin
       discord
       drawio
       jetbrains-toolbox
