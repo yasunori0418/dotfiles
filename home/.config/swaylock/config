@@ -1,38 +1,222 @@
-screenshots
-clock
-indicator
-indicator-radius=100
-indicator-thickness=7
-effect-blur=7x5
-effect-vignette=0.5:0.5
-fade-in=0.2
-grace=2
+# ロック後にデタッチ(swayidle -w と組み合わせてロック完了を通知する)
 daemonize
 
+# ロック画面のフェードイン時間(秒)
+fade-in=0.0
+
+# 猶予時間(秒)。この時間内はパスワードなしで解除可能
+# grace=2
+
+# grace 中にマウス操作で解除しない
+grace-no-mouse
+
+# grace 中にタッチ操作で解除しない
+grace-no-touch
+
+# 空パスワードを検証しない
+ignore-empty-password
+
+# 認証失敗回数を表示
+show-failed-attempts
+
+# タッチイベントでパスワードを送信
+#submit-on-touch
+
+# --- 背景 ---
+
+# 画面キャプチャを背景に使用(image= と排他)
+screenshots
+
+# 背景画像を指定(screenshots と排他)。[[出力名]:]パス の形式
+#image=/path/to/image.png
+
+# 単色の背景色(rrggbb[aa])。image= 使用時は画像の背景色になる
+#color=2E3440
+
+# 画像のスケーリングモード: stretch / fill / fit / center / tile / solid_color
+#scaling=fill
+
+# scaling=tile と同等
+#tiling
+
+# --- エフェクト ---
+
+# ぼかし: radiusxtimes
+effect-blur=8x3
+
+# ビネット効果: base:factor(0〜1)
+effect-vignette=0.8:0.3
+
+# ピクセレート: 係数(例: 10 なら 10x10 ブロック単位で同色化)
+effect-pixelate=8
+
+# 画像をスケーリング(他のエフェクト高速化に使用。例: 0.5 で解像度を半減)
+effect-scale=2
+
+# グレースケール化
+effect-greyscale
+
+# 別画像を重ねる: [位置];[サイズ];[重力];パス(位置・サイズ・重力は省略可)
+#effect-compose=50%,50%;;center;/path/to/image.png
+
+# カスタムエフェクト(.so 共有ライブラリを指定)
+#effect-custom=/path/to/effect.so
+
+# 各エフェクトの処理時間をログ出力
+#time-effects
+
+# --- インジケーター ---
+
+# 常時インジケーターを表示
+indicator
+
+# インジケーターを非表示にする
+#no-unlock-indicator
+
+# アイドル中もインジケーターを表示
+# indicator-idle-visible
+
+# Caps Lock 状態をインジケーターに表示
+indicator-caps-lock
+
+# インジケーターの半径(px)
+indicator-radius=100
+
+# リングの太さ(px)
+indicator-thickness=38
+
+# インジケーターの X 座標(px)
+#indicator-x-position=0
+
+# インジケーターの Y 座標(px)
+#indicator-y-position=0
+
+# インジケーター内に時計を表示
+clock
+
+# 時刻フォーマット(strftime 書式、デフォルト: %T)
+#timestr=%T
+
+# 日付フォーマット(strftime 書式、デフォルト: %a, %x)
+datestr=%a, %Y-%m-%d
+
+# --- キーボード ---
+
+# 現在の xkb レイアウトを表示
+#show-keyboard-layout
+
+# レイアウト表示を強制非表示
+#hide-keyboard-layout
+
+# Caps Lock テキストを非表示
+#disable-caps-lock-text
+
+# --- フォント ---
+
+# テキストのフォント名
+#font=sans-serif
+
+# フォントサイズを固定(pt)
+#font-size=14
+
+# --- カラー: ring(外側リング) ---
+
+# 通常時
 ring-color=5E81AC
+
+# クリア時(入力がクリアされた状態)
 ring-clear-color=4C566A
+
+# 認証中
 ring-ver-color=EBCB8B
+
+# 認証失敗時
 ring-wrong-color=BF616A
+
+# Caps Lock 時
 ring-caps-lock-color=D08770
 
-inside-color=2E344088
-inside-clear-color=3B425288
-inside-ver-color=3B425288
-inside-wrong-color=BF616A33
-inside-caps-lock-color=D0877033
+# --- カラー: inside(インジケーター内側の塗り) ---
 
-line-color=00000000
-line-clear-color=00000000
-line-ver-color=00000000
-line-wrong-color=00000000
+# 通常時
+#inside-color=2E344088
 
-key-hl-color=88C0D0
-bs-hl-color=BF616A
+# クリア時
+#inside-clear-color=3B425288
 
-text-color=ECEFF4
-text-clear-color=D8DEE9
-text-ver-color=EBCB8B
-text-wrong-color=BF616A
-text-caps-lock-color=D08770
+# 認証中
+#inside-ver-color=3B425288
 
-separator-color=00000000
+# 認証失敗時
+#inside-wrong-color=BF616A33
+
+# Caps Lock 時
+#inside-caps-lock-color=D0877033
+
+# --- カラー: line(ring と inside の境界線) ---
+
+# ring または inside の色を流用する場合はいずれかを有効化(line-color より優先)
+#line-uses-inside
+#line-uses-ring
+
+# 通常時
+#line-color=00000000
+
+# クリア時
+#line-clear-color=00000000
+
+# 認証中
+#line-ver-color=00000000
+
+# 認証失敗時
+#line-wrong-color=00000000
+
+# Caps Lock 時
+#line-caps-lock-color=00000000
+
+# --- カラー: text ---
+
+# 通常時
+#text-color=ECEFF4
+
+# クリア時
+#text-clear-color=D8DEE9
+
+# 認証中
+#text-ver-color=EBCB8B
+
+# 認証失敗時
+#text-wrong-color=BF616A
+
+# Caps Lock 時
+#text-caps-lock-color=D08770
+
+# --- カラー: キー入力ハイライト ---
+
+# キー入力時のリング上のハイライト
+#key-hl-color=88C0D0
+
+# バックスペース時のリング上のハイライト
+#bs-hl-color=BF616A
+
+# Caps Lock 時のキーハイライト
+#caps-lock-key-hl-color=D08770
+
+# Caps Lock 時の BS ハイライト
+#caps-lock-bs-hl-color=BF616A
+
+# ハイライトセグメント間の区切り線
+#separator-color=00000000
+
+# --- カラー: レイアウトテキスト(show-keyboard-layout 使用時) ---
+
+# テキストの背景色
+#layout-bg-color=2E344088
+
+# テキストのボーダー色
+#layout-border-color=00000000
+
+# テキスト色
+#layout-text-color=ECEFF4
+
+# vim:ft=conf
