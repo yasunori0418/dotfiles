@@ -267,6 +267,7 @@ in
       slack
       slurp
       swaybg
+      swaylock-effects
       vlc
       waybar
       wf-recorder

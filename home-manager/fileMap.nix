@@ -236,6 +236,7 @@ in
       "rofi"
       "sway"
       "swayidle"
+      "swaylock"
       "xremap"
       # keep-sorted end
     ]
