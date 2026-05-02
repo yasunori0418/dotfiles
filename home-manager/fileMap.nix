@@ -235,6 +235,7 @@ in
       "picom"
       "rofi"
       "sway"
+      "swayidle"
       "xremap"
       # keep-sorted end
     ]
