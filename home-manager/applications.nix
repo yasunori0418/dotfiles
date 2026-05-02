@@ -54,6 +54,7 @@ in
       gws
       jnv
       kanata-with-cmd
+      lazysql
       lemonade
       lnav
       mise
