@@ -28,6 +28,7 @@ in
     nix-output-monitor
     nix-prefetch-github
     nix-search-cli
+    nix-sweep
     # keep-sorted end
   ];
 
@@ -60,8 +61,8 @@ in
       lnav
       mise
       myNurPkgs.pict
-      myNurPkgs.safe-chain
       myNurPkgs.roots
+      myNurPkgs.safe-chain
       pqrs
       pueue
       python313Packages.datadog
