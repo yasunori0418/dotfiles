@@ -269,6 +269,7 @@ in
       simplescreenrecorder
       slack
       slurp
+      sway-contrib.grimshot
       swaybg
       swaylock-effects
       vlc
