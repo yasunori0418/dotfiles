@@ -1,10 +1,6 @@
-{ inputs, pkgs, ... }:
 {
   nix = {
     checkConfig = true;
-    package = inputs.nix-monitored.packages.${pkgs.stdenv.hostPlatform.system}.default.override {
-      withNotify = false;
-    };
     nixPath = [
       "nixpkgs=flake:nixpkgs"
     ];

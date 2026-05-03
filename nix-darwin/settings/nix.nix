@@ -1,9 +1,7 @@
-{ inputs, pkgs, ... }:
 {
   nix = {
     enable = true;
     optimise.automatic = true;
-    package = inputs.nix-monitored.packages.${pkgs.stdenv.hostPlatform.system}.default;
     nixPath = [
       "nixpkgs=flake:nixpkgs"
     ];

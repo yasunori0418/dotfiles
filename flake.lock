@@ -624,26 +624,6 @@
         "type": "github"
       }
     },
-    "nix-monitored": {
-      "inputs": {
-        "nixpkgs": [
-          "nixpkgs"
-        ]
-      },
-      "locked": {
-        "lastModified": 1776859059,
-        "narHash": "sha256-UgBzotsKRz/C4W7Upuk++lO0I296YIMqRcgATUxq3Co=",
-        "owner": "ners",
-        "repo": "nix-monitored",
-        "rev": "963fd80bf215cf509536ea53c4e4461915afca03",
-        "type": "github"
-      },
-      "original": {
-        "owner": "ners",
-        "repo": "nix-monitored",
-        "type": "github"
-      }
-    },
     "nix-unit": {
       "inputs": {
         "nix-github-actions": "nix-github-actions",
@@ -1026,7 +1006,6 @@
         "mac-app-util": "mac-app-util",
         "nix-claude-code": "nix-claude-code",
         "nix-darwin": "nix-darwin",
-        "nix-monitored": "nix-monitored",
         "nixos-hardware": "nixos-hardware",
         "nixpkgs": "nixpkgs_7",
         "nixpkgs-stable": "nixpkgs-stable",

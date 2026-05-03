@@ -8,10 +8,6 @@
     flake-parts.url = "github:hercules-ci/flake-parts";
     mac-app-util.url = "github:hraban/mac-app-util";
     yasunori-nur.url = "github:yasunori0418/nur-packages";
-    nix-monitored = {
-      url = "github:ners/nix-monitored";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
     claude-desktop = {
       url = "github:k3d3/claude-desktop-linux-flake";
       inputs.nixpkgs.follows = "nixpkgs";
