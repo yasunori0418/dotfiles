@@ -45,7 +45,7 @@ vim.api.nvim_create_autocmd("FileType", {
         "markdown",
         "nix",
         "sh",
-        "swayconfig",
+        -- "swayconfig",
         "toml",
         "typescript",
         "vim",
