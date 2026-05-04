@@ -1,12 +1,12 @@
 # ls command aliases.
 if [[ $(command -v eza) ]]; then
-    alias eza='eza --icons -F'
+    alias eza='eza --color=always --icons -F'
     alias ls='eza'
     alias ll='eza -l --git'
     alias la='ll -a'
     alias lt='eza -T -L 3 -a -I ".git|.atom|.cache" --color=always'
     alias ltl='lt | less'
-    alias lal='la --color=always | less'
+    alias lal='la | ov'
 else
     alias ls='ls --color=always'
     alias la='ls -laA'

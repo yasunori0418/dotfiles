@@ -33,6 +33,7 @@
 # ReadWaitTime: 1s
 
 General:
+  Converter: "es"     # ANSIエスケープシーケンスを解釈してカラー表示 (es|raw|align)
   TabWidth: 8
   Header: 0
   AlternateRows: false
