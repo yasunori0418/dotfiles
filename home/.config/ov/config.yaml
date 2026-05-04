@@ -1,7 +1,7 @@
 # This is the ov config file.
 # See: https://github.com/noborus/ov
 #
-QuitSmall: true       # less --quit-if-one-screen 相当：1画面に収まる場合は即終了
+QuitSmall: true # less --quit-if-one-screen 相当：1画面に収まる場合は即終了
 # IsWriteOriginal: false
 # BeforeWriteOriginal: 0
 # AfterWriteOriginal: 0
@@ -33,7 +33,7 @@ QuitSmall: true       # less --quit-if-one-screen 相当：1画面に収まる�
 # ReadWaitTime: 1s
 
 General:
-  Converter: "es"     # ANSIエスケープシーケンスを解釈してカラー表示 (es|raw|align)
+  Converter: "es" # ANSIエスケープシーケンスを解釈してカラー表示 (es|raw|align)
   TabWidth: 4
   Header: 0
   AlternateRows: false
@@ -46,8 +46,8 @@ General:
   # VScrollLines: 2
   Prompt:
     Normal:
-      ShowFilename: true    # less --LONG-PROMPT相当：ファイル名表示
-      ProcessOfCount: true  # less --LONG-PROMPT相当：行数・割合表示
+      ShowFilename: true # less --LONG-PROMPT相当：ファイル名表示
+      ProcessOfCount: true # less --LONG-PROMPT相当：行数・割合表示
     #      InvertColor: true
     #      CursorType: 0
     Input:
@@ -56,59 +56,59 @@ General:
       #  SectionDelimiter: "^#"
   Style:
     Alternate:
-      Background: "#3B4252"        # Nord1 Polar Night
+      Background: "#3B4252" # Nord1 Polar Night
     Header:
       Bold: true
-      Foreground: "#88C0D0"        # Nord8 Frost
+      Foreground: "#88C0D0" # Nord8 Frost
     Body:
     LineNumber:
       Bold: true
-      Foreground: "#4C566A"        # Nord3 Polar Night
+      Foreground: "#4C566A" # Nord3 Polar Night
     SearchHighlight:
-      Foreground: "#2E3440"        # Nord0 Polar Night
-      Background: "#EBCB8B"        # Nord13 Aurora yellow
+      Foreground: "#2E3440" # Nord0 Polar Night
+      Background: "#EBCB8B" # Nord13 Aurora yellow
       Bold: true
     ColumnHighlight:
-      Foreground: "#2E3440"        # Nord0 Polar Night
-      Background: "#81A1C1"        # Nord9 Frost
+      Foreground: "#2E3440" # Nord0 Polar Night
+      Background: "#81A1C1" # Nord9 Frost
     MarkLine:
-      Background: "#D08770"        # Nord12 Aurora orange
-      Foreground: "#2E3440"        # Nord0 Polar Night
+      Background: "#D08770" # Nord12 Aurora orange
+      Foreground: "#2E3440" # Nord0 Polar Night
     SectionLine:
-      Background: "#5E81AC"        # Nord10 Frost
-      Foreground: "#ECEFF4"        # Nord6 Snow Storm
+      Background: "#5E81AC" # Nord10 Frost
+      Foreground: "#ECEFF4" # Nord6 Snow Storm
     VerticalHeader:
-      Foreground: "#88C0D0"        # Nord8 Frost
+      Foreground: "#88C0D0" # Nord8 Frost
       Bold: true
     Ruler:
-      Background: "#3B4252"        # Nord1 Polar Night
-      Foreground: "#4C566A"        # Nord3 Polar Night
+      Background: "#3B4252" # Nord1 Polar Night
+      Foreground: "#4C566A" # Nord3 Polar Night
       Bold: true
     HeaderBorder:
-      Foreground: "#4C566A"        # Nord3 Polar Night
+      Foreground: "#4C566A" # Nord3 Polar Night
     SectionHeaderBorder:
-      Foreground: "#5E81AC"        # Nord10 Frost
+      Foreground: "#5E81AC" # Nord10 Frost
     VerticalHeaderBorder:
-      Background: "#434C5E"        # Nord2 Polar Night
+      Background: "#434C5E" # Nord2 Polar Night
     MultiColorHighlight:
-      - Foreground: "#BF616A"      # Nord11 Aurora red
-      - Foreground: "#88C0D0"      # Nord8  Frost cyan
-      - Foreground: "#EBCB8B"      # Nord13 Aurora yellow
-      - Foreground: "#B48EAD"      # Nord15 Aurora purple
-      - Foreground: "#A3BE8C"      # Nord14 Aurora green
-      - Foreground: "#81A1C1"      # Nord9  Frost blue
-      - Foreground: "#D08770"      # Nord12 Aurora orange
+      - Foreground: "#BF616A" # Nord11 Aurora red
+      - Foreground: "#88C0D0" # Nord8  Frost cyan
+      - Foreground: "#EBCB8B" # Nord13 Aurora yellow
+      - Foreground: "#B48EAD" # Nord15 Aurora purple
+      - Foreground: "#A3BE8C" # Nord14 Aurora green
+      - Foreground: "#81A1C1" # Nord9  Frost blue
+      - Foreground: "#D08770" # Nord12 Aurora orange
     ColumnRainbow:
-      - Foreground: "#D8DEE9"      # Nord4  Snow Storm
-      - Foreground: "#BF616A"      # Nord11 Aurora red
-      - Foreground: "#88C0D0"      # Nord8  Frost cyan
-      - Foreground: "#EBCB8B"      # Nord13 Aurora yellow
-      - Foreground: "#A3BE8C"      # Nord14 Aurora green
-      - Foreground: "#81A1C1"      # Nord9  Frost blue
-      - Foreground: "#B48EAD"      # Nord15 Aurora purple
+      - Foreground: "#D8DEE9" # Nord4  Snow Storm
+      - Foreground: "#BF616A" # Nord11 Aurora red
+      - Foreground: "#88C0D0" # Nord8  Frost cyan
+      - Foreground: "#EBCB8B" # Nord13 Aurora yellow
+      - Foreground: "#A3BE8C" # Nord14 Aurora green
+      - Foreground: "#81A1C1" # Nord9  Frost blue
+      - Foreground: "#B48EAD" # Nord15 Aurora purple
     JumpTargetLine:
       Underline: true
-      Foreground: "#8FBCBB"        # Nord7 Frost
+      Foreground: "#8FBCBB" # Nord7 Frost
 
 StyleOverStrike:
   Bold: true
@@ -144,7 +144,7 @@ KeyBind:
   watch_interval:
     - "ctrl+w"
   follow_mode:
-    - "F"              # vim: like less's F (follow/tail)
+    - "F" # vim: like less's F (follow/tail)
   follow_all:
     - "ctrl+a"
   follow_section:
@@ -157,17 +157,17 @@ KeyBind:
     - "ctrl+alt+e"
   down:
     - "ctrl+n"
-    - "j"             # vim
+    - "j" # vim
   up:
-    - "k"             # vim
+    - "k" # vim
   top:
-    - "g"             # vim: gg相当
+    - "g" # vim: gg相当
   bottom:
-    - "G"             # vim
+    - "G" # vim
   left:
-    - "h"             # vim
+    - "h" # vim
   right:
-    - "l"             # vim
+    - "l" # vim
   half_left:
     - "ctrl+left"
   half_right:
@@ -175,7 +175,7 @@ KeyBind:
   page_up:
     - "ctrl+b"
   page_down:
-    - "ctrl+f"        # vim
+    - "ctrl+f" # vim
   page_half_up:
     - "ctrl+u"
   page_half_down:
@@ -211,7 +211,7 @@ KeyBind:
   alter_rows_mode:
     - "C"
   line_number_mode:
-    - "ctrl+G"        # vim: Gはbottomに割り当て
+    - "ctrl+G" # vim: Gはbottomに割り当て
   search:
     - "/"
   wrap_mode:
@@ -230,7 +230,7 @@ KeyBind:
   tabwidth:
     - "t"
   goto:
-    - ":"             # vim: :行番号 相当
+    - ":" # vim: :行番号 相当
   next_search:
     - "n"
   next_backsearch:
@@ -245,7 +245,7 @@ KeyBind:
   multi_color:
     - "."
   jump_target:
-    - "z"             # vim: zz相当（画面中央へ）
+    - "z" # vim: zz相当（画面中央へ）
   plain_mode:
     - "ctrl+e"
   rainbow_mode:
@@ -259,10 +259,10 @@ KeyBind:
     - "alt+right"
   begin_left:
     - "shift+Home"
-    - "0"             # vim
+    - "0" # vim
   end_right:
     - "shift+End"
-    - "$"             # vim
+    - "$" # vim
   column_width:
     - "alt+o"
   filter:
@@ -282,7 +282,7 @@ KeyBind:
   header_column:
     - "Y"
   fixed_column:
-    - "alt+shift+f"   # Fはfollow_modeに変更
+    - "alt+shift+f" # Fはfollow_modeに変更
   shrink_column:
     - "s"
   right_align:
