@@ -12,6 +12,8 @@ export LESS="\
   --window=4 \
   --tabs=4"
 
+export PAGER=ov
+
 # if installed binary by rust-cargo
 cargo_bin="${HOME}/.cargo/bin"
 if [[ -d ${cargo_bin} ]]; then
