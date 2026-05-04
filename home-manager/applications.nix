@@ -113,9 +113,9 @@ in
     ghq
     jq
     myNurPkgs.gwq
+    nushell
     ov
     rgx
-    nushell
     rip2
     ripgrep
     sheldon
