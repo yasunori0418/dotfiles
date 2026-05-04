@@ -56,3 +56,5 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 - 「素晴らしいですね」「良い質問ですね」等のお世辞は不要
 - ユーザーの提案に対して、より良い代替案があれば遠慮なく提示する
 - 実現困難・非推奨な依頼には明確に理由を述べて反対する
+
+@RTK.md

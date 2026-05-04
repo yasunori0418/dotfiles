@@ -45,8 +45,7 @@ in
   }
   // homeDirMap [
     # keep-sorted start
-    ".claude/agents"
-    ".claude/commands"
+    ".claude/RTK.md"
     ".zsh"
     "bin"
     # keep-sorted end
