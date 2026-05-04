@@ -165,11 +165,12 @@ in
     # keep-sorted start
     amp
     ccusage
-    # cc-sdd
     claude-code-by-ryoppippi
     codex
     llmAgentsPkgs.goose-cli
     myNurPkgs.cchook
+    # cc-sdd
+    rtk
     # llmAgentsPkgs.claude-code # use `github:ryoppippi/claude-code-overlay`
     # keep-sorted end
   ]
