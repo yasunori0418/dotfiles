@@ -1,7 +1,7 @@
 # This is the ov config file.
 # See: https://github.com/noborus/ov
 #
-# QuitSmall: false
+QuitSmall: true       # less --quit-if-one-screen 相当：1画面に収まる場合は即終了
 # IsWriteOriginal: false
 # BeforeWriteOriginal: 0
 # AfterWriteOriginal: 0
@@ -34,7 +34,7 @@
 
 General:
   Converter: "es"     # ANSIエスケープシーケンスを解釈してカラー表示 (es|raw|align)
-  TabWidth: 8
+  TabWidth: 4
   Header: 0
   AlternateRows: false
   ColumnMode: false
@@ -46,10 +46,9 @@ General:
   # VScrollLines: 2
   Prompt:
     Normal:
-    #      ShowFilename: true
-
+      ShowFilename: true    # less --LONG-PROMPT相当：ファイル名表示
+      ProcessOfCount: true  # less --LONG-PROMPT相当：行数・割合表示
     #      InvertColor: true
-    #      ProcessOfCount: true
     #      CursorType: 0
     Input:
       #      CursorType: 1
