@@ -250,6 +250,7 @@ in
 
     desktopApps = with pkgs; [
       # keep-sorted start
+      brightnessctl
       blueman
       clipmenu
       dunst
