@@ -73,6 +73,7 @@ in
       unar
       unzip
       usql
+      worktrunk
       zellij
       zip
       # keep-sorted end
@@ -250,8 +251,8 @@ in
 
     desktopApps = with pkgs; [
       # keep-sorted start
-      brightnessctl
       blueman
+      brightnessctl
       clipmenu
       dunst
       feh
