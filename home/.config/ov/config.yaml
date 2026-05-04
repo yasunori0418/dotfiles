@@ -41,18 +41,19 @@ General:
   WrapMode: true
   ColumnDelimiter: ","
   MarkStyleWidth: 1
-# HScrollWidth: 10%
-# VScrollLines: 2
+  # HScrollWidth: 10%
+  # VScrollLines: 2
   Prompt:
     Normal:
-#      ShowFilename: true
-#      InvertColor: true
-#      ProcessOfCount: true
-#      CursorType: 0
-    Input:
-#      CursorType: 1
+    #      ShowFilename: true
 
-#  SectionDelimiter: "^#"
+    #      InvertColor: true
+    #      ProcessOfCount: true
+    #      CursorType: 0
+    Input:
+      #      CursorType: 1
+
+      #  SectionDelimiter: "^#"
   Style:
     Alternate:
       Background: "gray"
@@ -103,217 +104,214 @@ StyleOverLine:
   Underline: true
 
 KeyBind:
-    exit:
-        - "Escape"
-        - "q"
-    cancel:
-        - "ctrl+c"
-    write_exit:
-        - "Q"
-    set_write_exit:
-        - "ctrl+q"
-    write_original:
-        - "alt+shift+F8"
-    suspend:
-        - "ctrl+z"
-    edit:
-        - "alt+v"
-    status_line:
-        - "ctrl+F10"
-    sync:
-        - "ctrl+l"
-    reload:
-        - "ctrl+alt+l"
-        - "F5"
-    watch:
-        - "ctrl+alt+w"
-        - "F4"
-    watch_interval:
-        - "ctrl+w"
-    follow_mode:
-        - "ctrl+f"
-    follow_all:
-        - "ctrl+a"
-    follow_section:
-        - "F2"
-    help:
-        - "h"
-        - "ctrl+alt+c"
-        - "ctrl+f1"
-    logdoc:
-        - "ctrl+f2"
-        - "ctrl+alt+e"
-    down:
-        - "Enter"
-        - "Down"
-        - "ctrl+n"
-    up:
-        - "Up"
-        - "ctrl+p"
-    top:
-        - "Home"
-    bottom:
-        - "End"
-    left:
-        - "left"
-    right:
-        - "right"
-    half_left:
-        - "ctrl+left"
-    half_right:
-        - "ctrl+right"
-    page_up:
-        - "PageUp"
-        - "ctrl+b"
-    page_down:
-        - "PageDown"
-        - "ctrl+v"
-    page_half_up:
-        - "ctrl+u"
-    page_half_down:
-        - "ctrl+d"
-    section_delimiter:
-        - "alt+d"
-    section_start:
-        - "ctrl+F3"
-        - "alt+s"
-    section_header_num:
-        - "F7"
-    hide_other:
-        - "alt+-"
-    next_section:
-        - "space"
-    last_section:
-        - "9"
-    previous_section:
-        - "^"
-    mark:
-        - "m"
-    remove_mark:
-        - "M"
-    remove_all_mark:
-        - "ctrl+delete"
-    next_mark:
-        - ">"
-    previous_mark:
-        - "<"
-    set_view_mode:
-        - "p"
-        - "P"
-    alter_rows_mode:
-        - "C"
-    line_number_mode:
-        - "G"
-    search:
-        - "/"
-    wrap_mode:
-        - "w"
-        - "W"
-    column_mode:
-        - "c"
-    backsearch:
-        - "?"
-    delimiter:
-        - "d"
-    header:
-        - "H"
-    skip_lines:
-        - "ctrl+s"
-    tabwidth:
-        - "t"
-    goto:
-        - "g"
-    next_search:
-        - "n"
-    next_backsearch:
-        - "N"
-    next_doc:
-        - "]"
-    previous_doc:
-        - "["
-    toggle_mouse:
-        - "ctrl+F8"
-        - "ctrl+alt+r"
-    multi_color:
-        - "."
-    jump_target:
-        - "j"
-    plain_mode:
-        - "ctrl+e"
-    rainbow_mode:
-        - "ctrl+r"
-    close_file:
-        - "ctrl+F9"
-        - "ctrl+alt+s"
-    width_left:
-        - "alt+left"
-    width_right:
-        - "alt+right"
-    begin_left:
-        - "shift+Home"
-    end_right:
-        - "shift+End"
-    column_width:
-        - "alt+o"
-    filter:
-        - "&"
-    close_doc:
-        - "ctrl+k"
-    close_all_filter:
-        - "K"
-    convert_type:
-        - "alt+t"
-    align_format:
-        - "alt+f"
-    raw_format:
-        - "alt+r"
-    vertical_header:
-        - "y"
-    header_column:
-        - "Y"
-    fixed_column:
-        - "F"
-    shrink_column:
-        - "s"
-    right_align:
-        - "alt+a"
-    toggle_ruler:
-        - "alt+shift+F9"
-    sidebar_help:
-        - "alt+h"
-    sidebar_marks:
-        - "alt+m"
-    sidebar_doc_list:
-        - "alt+l"
-    sidebar_sections:
-        - "alt+u"
-    sidebar_up:
-        - "shift+up"
-    sidebar_down:
-        - "shift+down"
-    sidebar_left:
-        - "shift+left"
-    sidebar_right:
-        - "shift+right"
+  exit:
+    - "Escape"
+    - "q"
+  cancel:
+    - "ctrl+c"
+  write_exit:
+    - "Q"
+  set_write_exit:
+    - "ctrl+q"
+  write_original:
+    - "alt+shift+F8"
+  suspend:
+    - "ctrl+z"
+  edit:
+    - "alt+v"
+  status_line:
+    - "ctrl+F10"
+  sync:
+    - "ctrl+l"
+  reload:
+    - "ctrl+alt+l"
+    - "F5"
+  watch:
+    - "ctrl+alt+w"
+    - "F4"
+  watch_interval:
+    - "ctrl+w"
+  follow_mode:
+    - "F"              # vim: like less's F (follow/tail)
+  follow_all:
+    - "ctrl+a"
+  follow_section:
+    - "F2"
+  help:
+    - "ctrl+alt+c"
+    - "ctrl+f1"
+  logdoc:
+    - "ctrl+f2"
+    - "ctrl+alt+e"
+  down:
+    - "ctrl+n"
+    - "j"             # vim
+  up:
+    - "k"             # vim
+  top:
+    - "g"             # vim: gg相当
+  bottom:
+    - "G"             # vim
+  left:
+    - "h"             # vim
+  right:
+    - "l"             # vim
+  half_left:
+    - "ctrl+left"
+  half_right:
+    - "ctrl+right"
+  page_up:
+    - "ctrl+b"
+  page_down:
+    - "ctrl+f"        # vim
+  page_half_up:
+    - "ctrl+u"
+  page_half_down:
+    - "ctrl+d"
+  section_delimiter:
+    - "alt+d"
+  section_start:
+    - "ctrl+F3"
+    - "alt+s"
+  section_header_num:
+    - "F7"
+  hide_other:
+    - "alt+-"
+  next_section:
+    - "space"
+  last_section:
+    - "9"
+  previous_section:
+    - "^"
+  mark:
+    - "m"
+  remove_mark:
+    - "M"
+  remove_all_mark:
+    - "ctrl+delete"
+  next_mark:
+    - ">"
+  previous_mark:
+    - "<"
+  set_view_mode:
+    - "p"
+    - "P"
+  alter_rows_mode:
+    - "C"
+  line_number_mode:
+    - "ctrl+G"        # vim: Gはbottomに割り当て
+  search:
+    - "/"
+  wrap_mode:
+    - "w"
+    - "W"
+  column_mode:
+    - "c"
+  backsearch:
+    - "?"
+  delimiter:
+    - "d"
+  header:
+    - "H"
+  skip_lines:
+    - "ctrl+s"
+  tabwidth:
+    - "t"
+  goto:
+    - ":"             # vim: :行番号 相当
+  next_search:
+    - "n"
+  next_backsearch:
+    - "N"
+  next_doc:
+    - "]"
+  previous_doc:
+    - "["
+  toggle_mouse:
+    - "ctrl+F8"
+    - "ctrl+alt+r"
+  multi_color:
+    - "."
+  jump_target:
+    - "z"             # vim: zz相当（画面中央へ）
+  plain_mode:
+    - "ctrl+e"
+  rainbow_mode:
+    - "ctrl+r"
+  close_file:
+    - "ctrl+F9"
+    - "ctrl+alt+s"
+  width_left:
+    - "alt+left"
+  width_right:
+    - "alt+right"
+  begin_left:
+    - "shift+Home"
+    - "0"             # vim
+  end_right:
+    - "shift+End"
+    - "$"             # vim
+  column_width:
+    - "alt+o"
+  filter:
+    - "&"
+  close_doc:
+    - "ctrl+k"
+  close_all_filter:
+    - "K"
+  convert_type:
+    - "alt+t"
+  align_format:
+    - "alt+f"
+  raw_format:
+    - "alt+r"
+  vertical_header:
+    - "y"
+  header_column:
+    - "Y"
+  fixed_column:
+    - "alt+shift+f"   # Fはfollow_modeに変更
+  shrink_column:
+    - "s"
+  right_align:
+    - "alt+a"
+  toggle_ruler:
+    - "alt+shift+F9"
+  sidebar_help:
+    - "alt+h"
+  sidebar_marks:
+    - "alt+m"
+  sidebar_doc_list:
+    - "alt+l"
+  sidebar_sections:
+    - "alt+u"
+  sidebar_up:
+    - "shift+up"
+  sidebar_down:
+    - "shift+down"
+  sidebar_left:
+    - "shift+left"
+  sidebar_right:
+    - "shift+right"
 
-    input_casesensitive:
-        - "alt+c"
-    input_smart_casesensitive:
-        - "alt+s"
-    input_incsearch:
-        - "alt+i"
-    input_regexp_search:
-        - "alt+r"
-    input_non_match:
-        - "!"
-    input_previous:
-        - "Up"
-    input_next:
-        - "Down"
-    input_copy:
-        - "ctrl+c"
-    input_paste:
-        - "ctrl+v"
+  input_casesensitive:
+    - "alt+c"
+  input_smart_casesensitive:
+    - "alt+s"
+  input_incsearch:
+    - "alt+i"
+  input_regexp_search:
+    - "alt+r"
+  input_non_match:
+    - "!"
+  input_previous:
+    - "Up"
+  input_next:
+    - "Down"
+  input_copy:
+    - "ctrl+c"
+  input_paste:
+    - "ctrl+v"
 
 Mode:
   markdown:
