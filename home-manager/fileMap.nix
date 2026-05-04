@@ -84,6 +84,7 @@ in
       "kitty"
       "laminate"
       "nvim"
+      "ov"
       "sheldon"
       "sqls"
       "tmux"
