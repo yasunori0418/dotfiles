@@ -56,47 +56,59 @@ General:
       #  SectionDelimiter: "^#"
   Style:
     Alternate:
-      Background: "gray"
+      Background: "#3B4252"        # Nord1 Polar Night
     Header:
       Bold: true
+      Foreground: "#88C0D0"        # Nord8 Frost
     Body:
     LineNumber:
       Bold: true
+      Foreground: "#4C566A"        # Nord3 Polar Night
     SearchHighlight:
-      Reverse: true
+      Foreground: "#2E3440"        # Nord0 Polar Night
+      Background: "#EBCB8B"        # Nord13 Aurora yellow
+      Bold: true
     ColumnHighlight:
-      Reverse: true
+      Foreground: "#2E3440"        # Nord0 Polar Night
+      Background: "#81A1C1"        # Nord9 Frost
     MarkLine:
-      Background: "darkgoldenrod"
+      Background: "#D08770"        # Nord12 Aurora orange
+      Foreground: "#2E3440"        # Nord0 Polar Night
     SectionLine:
-      Background: "slateblue"
+      Background: "#5E81AC"        # Nord10 Frost
+      Foreground: "#ECEFF4"        # Nord6 Snow Storm
     VerticalHeader:
+      Foreground: "#88C0D0"        # Nord8 Frost
+      Bold: true
     Ruler:
-      Background: "#333333"
-      Foreground: "#CCCCCC"
+      Background: "#3B4252"        # Nord1 Polar Night
+      Foreground: "#4C566A"        # Nord3 Polar Night
       Bold: true
     HeaderBorder:
+      Foreground: "#4C566A"        # Nord3 Polar Night
     SectionHeaderBorder:
+      Foreground: "#5E81AC"        # Nord10 Frost
     VerticalHeaderBorder:
-      Background: "#c0c0c0"
+      Background: "#434C5E"        # Nord2 Polar Night
     MultiColorHighlight:
-      - Foreground: "red"
-      - Foreground: "aqua"
-      - Foreground: "yellow"
-      - Foreground: "fuchsia"
-      - Foreground: "lime"
-      - Foreground: "blue"
-      - Foreground: "gray"
+      - Foreground: "#BF616A"      # Nord11 Aurora red
+      - Foreground: "#88C0D0"      # Nord8  Frost cyan
+      - Foreground: "#EBCB8B"      # Nord13 Aurora yellow
+      - Foreground: "#B48EAD"      # Nord15 Aurora purple
+      - Foreground: "#A3BE8C"      # Nord14 Aurora green
+      - Foreground: "#81A1C1"      # Nord9  Frost blue
+      - Foreground: "#D08770"      # Nord12 Aurora orange
     ColumnRainbow:
-      - Foreground: "white"
-      - Foreground: "crimson"
-      - Foreground: "aqua"
-      - Foreground: "lightsalmon"
-      - Foreground: "lime"
-      - Foreground: "blue"
-      - Foreground: "yellowgreen"
+      - Foreground: "#D8DEE9"      # Nord4  Snow Storm
+      - Foreground: "#BF616A"      # Nord11 Aurora red
+      - Foreground: "#88C0D0"      # Nord8  Frost cyan
+      - Foreground: "#EBCB8B"      # Nord13 Aurora yellow
+      - Foreground: "#A3BE8C"      # Nord14 Aurora green
+      - Foreground: "#81A1C1"      # Nord9  Frost blue
+      - Foreground: "#B48EAD"      # Nord15 Aurora purple
     JumpTargetLine:
       Underline: true
+      Foreground: "#8FBCBB"        # Nord7 Frost
 
 StyleOverStrike:
   Bold: true
