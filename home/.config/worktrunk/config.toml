@@ -1,40 +1,53 @@
+# シェル統合セットアップのプロンプトを抑制する
 skip-shell-integration-prompt = true
 
-# worktree-path = "{{ repo_path }}/../{{ repo }}.{{ branch | sanitize }}"
+# ワークツリーの作成先パスのテンプレート
+# デフォルト: リポジトリの兄弟ディレクトリ (例: ~/code/myproject.feature-auth)
+worktree-path = "{{ repo_path }}/../{{ repo }}.{{ branch | sanitize }}"
 
-# [commit.generation]
-# command = "CLAUDECODE= MAX_THINKING_TOKENS=0 claude -p --no-session-persistence --model=haiku --tools='' --disable-slash-commands --setting-sources='' --system-prompt=''"
+# LLMによるコミットメッセージ自動生成
+# wt merge / wt step squash 時にコミットメッセージを外部CLIで生成する
+[commit.generation]
+command = "CLAUDECODE= MAX_THINKING_TOKENS=0 claude -p --no-session-persistence --model=haiku --tools='' --disable-slash-commands --setting-sources='' --system-prompt=''"
 
+# wt list の表示オプションのデフォルト値
 [list]
-# summary = false
-# full = false
-# branches = false
-# remotes = false
-# task-timeout-ms = 0
-# timeout-ms = 0
+# summary = false     # LLMによるブランチ要約を表示 (commit.generation が必要)
+# full = false        # CI・diffstat・LLM要約を全表示 (--full)
+# branches = false    # ワークツリーのないブランチも表示 (--branches)
+# remotes = false     # リモートのみのブランチも表示 (--remotes)
+# task-timeout-ms = 0 # gitコマンドのタイムアウト(ms); 0で無効
+# timeout-ms = 0      # collectフェーズ全体のタイムアウト(ms); 0で無効
 
+# wt step commit / wt step squash / wt merge でのステージング設定
 [commit]
-# stage = "all"
+stage = "tracked" # コミット前のステージ対象: "all"(全ファイル) / "tracked"(追跡済みのみ) / "none"
 
+# wt merge の動作設定
 [merge]
-# squash = true
-# commit = true
-# rebase = true
-# remove = true
-# verify = true
-# ff = true
+# squash = true # コミットを1つにまとめる (--no-squash で履歴保持)
+# commit = true # 未コミット変更を先にコミット (--no-commit でスキップ)
+# rebase = true # マージ前にターゲットへrebase (--no-rebase でスキップ)
+# remove = true # マージ後にワークツリーを削除 (--no-remove で保持)
+# verify = true # プロジェクトフックを実行 (--no-hooks でスキップ)
+# ff = true     # fast-forwardマージ (--no-ff でマージコミットを作成)
 
+# wt remove の動作設定
 [remove]
-# delete-branch = true
+delete-branch = true # ワークツリー削除後にブランチも削除 (--no-delete-branch で保持)
 
+# wt switch の動作設定
 [switch]
-# cd = true
+cd = true # スイッチ後にディレクトリを移動 (--no-cd でスキップ)
 
-# [switch.picker]
-# pager = "delta --paging=never"
+# wt switch のピッカー設定
+[switch.picker]
+pager = "delta --paging=never"   # diffプレビューのpagerを上書き
 
+# wt step copy-ignored で無視ファイルをコピーする際の除外設定
 [step.copy-ignored]
-# exclude = []
+# exclude = []   # 追加の除外パス (例: [".cache/", ".turbo/"])
 
+# カスタムエイリアス: wt <name> で実行できるコマンドテンプレート
 # [aliases]
 # greet = "echo Hello from {{ branch }}"
