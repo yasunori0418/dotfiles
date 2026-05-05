@@ -91,6 +91,7 @@ in
       "typos"
       "vim"
       "wezterm"
+      "worktrunk"
       "yamllint"
       "zellij"
       "zeno"

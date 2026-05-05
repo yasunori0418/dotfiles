@@ -1,0 +1,40 @@
+skip-shell-integration-prompt = true
+
+# worktree-path = "{{ repo_path }}/../{{ repo }}.{{ branch | sanitize }}"
+
+# [commit.generation]
+# command = "CLAUDECODE= MAX_THINKING_TOKENS=0 claude -p --no-session-persistence --model=haiku --tools='' --disable-slash-commands --setting-sources='' --system-prompt=''"
+
+[list]
+# summary = false
+# full = false
+# branches = false
+# remotes = false
+# task-timeout-ms = 0
+# timeout-ms = 0
+
+[commit]
+# stage = "all"
+
+[merge]
+# squash = true
+# commit = true
+# rebase = true
+# remove = true
+# verify = true
+# ff = true
+
+[remove]
+# delete-branch = true
+
+[switch]
+# cd = true
+
+# [switch.picker]
+# pager = "delta --paging=never"
+
+[step.copy-ignored]
+# exclude = []
+
+# [aliases]
+# greet = "echo Hello from {{ branch }}"
