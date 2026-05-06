@@ -108,3 +108,6 @@ tags
 # claude-code
 CLAUDE.local.md
 .claude/settings.local.json
+
+# worktrunk
+.worktreeinclude
