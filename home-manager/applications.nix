@@ -54,7 +54,7 @@ in
       gnumake
       google-cloud-sdk
       gws
-      jnv
+      fx
       kanata-with-cmd
       lazysql
       lefthook
