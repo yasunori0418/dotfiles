@@ -37,6 +37,20 @@
 autoload -Uz select-word-style
 select-word-style shell
 
+function toggle-word-style() {
+    local current
+    zstyle -s ':zle:*' word-style current
+    if [[ $current == shell ]]; then
+        select-word-style bash
+        zle -M "word-style: bash"
+    else
+        select-word-style shell
+        zle -M "word-style: shell"
+    fi
+}
+zle -N toggle-word-style
+bindkey "^X^W" toggle-word-style
+
 ################################################################
 #                 Additional keybinds                          #
 ################################################################
