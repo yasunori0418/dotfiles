@@ -57,4 +57,12 @@ unset sheldon_cache sheldon_toml
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
+function prompt_word_style() {
+  local style
+  zstyle -s ':zle:*' word-style style
+  [[ -z $style ]] && style='shell'
+  p10k segment -f 6 -t "${style}"
+}
+POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS+=( word_style )
+
 unfunction source

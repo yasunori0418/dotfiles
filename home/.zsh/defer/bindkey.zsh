@@ -42,11 +42,11 @@ function toggle-word-style() {
     zstyle -s ':zle:*' word-style current
     if [[ $current == shell ]]; then
         select-word-style bash
-        zle -M "word-style: bash"
     else
         select-word-style shell
-        zle -M "word-style: shell"
     fi
+    _p9k_precmd
+    zle reset-prompt
 }
 zle -N toggle-word-style
 bindkey "^X^W" toggle-word-style
