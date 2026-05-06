@@ -41,3 +41,7 @@ zstyle ':completion:*' insert-tab false
 # セパレータを設定する
 zstyle ':completion:*' list-separator '-->'
 zstyle ':completion:*:manuals' separate-sections true
+
+# select-word-style bash で無視される WORDCHARS の代替設定
+# ワード文字として追加したい文字をここに指定する（例: '|,:'）
+# zstyle ':zle:*' word-chars '|,:'

@@ -68,9 +68,6 @@ export SAVEHIST=1000000
 # 補完リストが多いときに尋ねない
 export LISTMAX=100
 
-# "|,:"を単語の一部とみなさない
-export WORDCHARS="${WORDCHARS}|,:"
-
 # LS_COLORS
 if [[ $(command -v vivid) ]];then
     export LS_COLORS="$(vivid generate nord)"
