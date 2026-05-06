@@ -60,7 +60,10 @@ unset sheldon_cache sheldon_toml
 function prompt_word_style() {
   local style
   zstyle -s ':zle:*' word-style style
-  [[ -z $style ]] && style='shell'
+  case $style in
+    standard) style='bash' ;;
+    '')       style='shell' ;;
+  esac
   p10k segment -f 6 -t "${style}"
 }
 POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS+=( word_style )
