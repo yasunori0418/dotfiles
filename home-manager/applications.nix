@@ -57,6 +57,7 @@ in
       jnv
       kanata-with-cmd
       lazysql
+      lefthook
       lemonade
       lnav
       mise
