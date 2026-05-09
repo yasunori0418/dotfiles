@@ -33,8 +33,8 @@ stage = "tracked" # コミット前のステージ対象: "all"(全ファイル)
 # ff = true     # fast-forwardマージ (--no-ff でマージコミットを作成)
 
 # wt remove の動作設定
-[remove]
-delete-branch = true # ワークツリー削除後にブランチも削除 (--no-delete-branch で保持)
+# [remove]
+# delete-branch = true # ワークツリー削除後にブランチも削除 (--no-delete-branch で保持)
 
 # wt switch の動作設定
 [switch]
