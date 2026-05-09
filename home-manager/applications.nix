@@ -19,6 +19,7 @@ let
   claude-code-by-ryoppippi = inputs.nix-claude-code.packages.${system}.default;
   cryoflow = inputs.cryoflow.packages.${system}.default;
   arto = inputs.arto.packages.${system}.default;
+  nvimOverlay = inputs.neovim-nightly-overlay.packages.${system}.neovim;
 in
 {
   nixTools = with pkgs; [
@@ -84,7 +85,7 @@ in
   textEditors = with pkgs; [
     # keep-sorted start
     emacs
-    myNurPkgs.neovim-overlay
+    nvimOverlay
     myNurPkgs.vim-overlay
     neovide
     neovim-remote

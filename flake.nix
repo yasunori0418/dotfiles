@@ -41,6 +41,7 @@
     zmx.url = "github:neurosnap/zmx";
     cryoflow.url = "github:yasunori0418/cryoflow";
     arto.url = "github:arto-app/Arto";
+    neovim-nightly-overlay.url = "github:nix-community/neovim-nightly-overlay";
   };
 
   nixConfig = {
