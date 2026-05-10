@@ -115,7 +115,6 @@ in
     fzf
     ghq
     jq
-    myNurPkgs.gwq
     nushell
     ov
     rgx
