@@ -54,44 +54,192 @@ function toggle-word-style() {
 zle -N toggle-word-style
 bindkey "^X^W" toggle-word-style
 
+function _is-escaped() {
+    local _buf="$1" _pos=$2
+    local _count=0 _i=$((_pos - 1))
+    while (( _i > 0 )) && [[ "${_buf[_i]}" == '\' ]]; do
+        (( _count++ ))
+        (( _i-- ))
+    done
+    (( _count % 2 == 1 ))
+}
+
 function _find-word-start() {
-    local buf="$1" end=$2 _varname="$3"
-    local _i c="${buf[end]}"
-    if [[ "$c" == "'" || "$c" == '"' ]]; then
-        local q="$c"
-        (( _i = end - 1 ))
-        while (( _i > 0 )) && [[ "${buf[_i]}" != "$q" ]]; do
-            (( _i-- ))
-        done
-        (( _i > 0 )) && (( _i-- ))
+    local _buf="$1" _end=$2 _varname="$3"
+    local _i _c="${_buf[_end]}"
+    case "$_c" in
+        "'")
+            (( _i = _end - 1 ))
+            while (( _i > 0 )) && [[ "${_buf[_i]}" != "'" ]]; do
+                (( _i-- ))
+            done
+            if (( _i > 1 )) && [[ "${_buf[_i-1]}" != [[:space:]] ]]; then
+                _i=$(_find-word-start "$_buf" $((_i - 1)))
+            fi
+            ;;
+        '"')
+            (( _i = _end - 1 ))
+            while (( _i > 0 )); do
+                if [[ "${_buf[_i]}" == '"' ]] && ! _is-escaped "$_buf" $_i; then
+                    break
+                fi
+                (( _i-- ))
+            done
+            if (( _i > 1 )) && [[ "${_buf[_i-1]}" != [[:space:]] ]]; then
+                _i=$(_find-word-start "$_buf" $((_i - 1)))
+            fi
+            ;;
+        ")"|"]"|"}")
+            local _open _close="$_c"
+            case "$_c" in
+                ")") _open="(" ;;
+                "]") _open="[" ;;
+                "}") _open="{" ;;
+            esac
+            local _depth=1 _ch
+            (( _i = _end - 1 ))
+            while (( _i > 0 )); do
+                _ch="${_buf[_i]}"
+                if ! _is-escaped "$_buf" $_i; then
+                    if [[ "$_ch" == "$_close" ]]; then
+                        (( _depth++ ))
+                    elif [[ "$_ch" == "$_open" ]]; then
+                        (( _depth-- ))
+                        (( _depth == 0 )) && break
+                    fi
+                fi
+                (( _i-- ))
+            done
+            if (( _i > 1 )) && [[ "${_buf[_i-1]}" != [[:space:]] ]]; then
+                _i=$(_find-word-start "$_buf" $((_i - 1)))
+            fi
+            ;;
+        *)
+            (( _i = _end - 1 ))
+            while (( _i > 0 )) && [[ "${_buf[_i]}" != [[:space:]] ]]; do
+                case "${_buf[_i]}" in
+                    ")"|"]"|"}"|"'"|'"')
+                        if ! _is-escaped "$_buf" $_i; then
+                            _i=$(_find-word-start "$_buf" $_i)
+                        fi
+                        ;;
+                esac
+                (( _i-- ))
+            done
+            (( _i > 0 )) && [[ "${_buf[_i]}" == [[:space:]] ]] && (( _i++ ))
+            ;;
+    esac
+    (( _i < 1 )) && _i=1
+    if [[ -n "$_varname" ]]; then
+        eval "$_varname=$_i"
     else
-        (( _i = end - 1 ))
-        while (( _i > 0 )) && [[ "${buf[_i]}" != [[:space:]] ]]; do
-            (( _i-- ))
-        done
+        print -- $_i
     fi
-    eval "$_varname=$_i"
 }
 
 function _find-text-end() {
-    local buf="$1" _varname="$2"
-    local _i=${#buf}
+    local _buf="$1" _varname="$2"
+    local _i=${#_buf}
     [[ $_i -eq 0 ]] && return 1
-    while (( _i > 0 )) && [[ "${buf[_i]}" == [[:space:]] ]]; do
+    while (( _i > 0 )) && [[ "${_buf[_i]}" == [[:space:]] ]]; do
         (( _i-- ))
     done
     eval "$_varname=$_i"
 }
 
-function _kill-range() {
-    local buf="$1" i=$2 end=$3
-    local killed="${buf[i+1,end]}"
-    if [[ $LASTWIDGET = *kill* ]]; then
-        CUTBUFFER="${killed}${CUTBUFFER}"
+function _find-text-start() {
+    local _buf="$1" _start=$2 _varname="$3"
+    local _i=$_start
+    local _len=${#_buf}
+    while (( _i <= _len )) && [[ "${_buf[_i]}" == [[:space:]] ]]; do
+        (( _i++ ))
+    done
+    eval "$_varname=$_i"
+}
+
+function _find-word-end() {
+    local _buf="$1" _start=$2 _varname="$3"
+    local _i _c="${_buf[_start]}"
+    local _len=${#_buf}
+    case "$_c" in
+        "'")
+            (( _i = _start + 1 ))
+            while (( _i <= _len )) && [[ "${_buf[_i]}" != "'" ]]; do
+                (( _i++ ))
+            done
+            if (( _i < _len )) && [[ "${_buf[_i+1]}" != [[:space:]] ]]; then
+                _i=$(_find-word-end "$_buf" $((_i + 1)))
+            fi
+            ;;
+        '"')
+            (( _i = _start + 1 ))
+            while (( _i <= _len )); do
+                if [[ "${_buf[_i]}" == '"' ]] && ! _is-escaped "$_buf" $_i; then
+                    break
+                fi
+                (( _i++ ))
+            done
+            if (( _i < _len )) && [[ "${_buf[_i+1]}" != [[:space:]] ]]; then
+                _i=$(_find-word-end "$_buf" $((_i + 1)))
+            fi
+            ;;
+        "("|"["|"{")
+            local _open="$_c" _close
+            case "$_c" in
+                "(") _close=")" ;;
+                "[") _close="]" ;;
+                "{") _close="}" ;;
+            esac
+            local _depth=1 _ch
+            (( _i = _start + 1 ))
+            while (( _i <= _len )); do
+                _ch="${_buf[_i]}"
+                if ! _is-escaped "$_buf" $_i; then
+                    if [[ "$_ch" == "$_open" ]]; then
+                        (( _depth++ ))
+                    elif [[ "$_ch" == "$_close" ]]; then
+                        (( _depth-- ))
+                        (( _depth == 0 )) && break
+                    fi
+                fi
+                (( _i++ ))
+            done
+            if (( _i < _len )) && [[ "${_buf[_i+1]}" != [[:space:]] ]]; then
+                _i=$(_find-word-end "$_buf" $((_i + 1)))
+            fi
+            ;;
+        *)
+            (( _i = _start + 1 ))
+            while (( _i <= _len )) && [[ "${_buf[_i]}" != [[:space:]] ]]; do
+                case "${_buf[_i]}" in
+                    "("|"["|"{"|"'"|'"')
+                        if ! _is-escaped "$_buf" $_i; then
+                            _i=$(_find-word-end "$_buf" $_i)
+                        fi
+                        ;;
+                esac
+                (( _i++ ))
+            done
+            (( _i-- ))
+            ;;
+    esac
+    (( _i > _len )) && _i=$_len
+    if [[ -n "$_varname" ]]; then
+        eval "$_varname=$_i"
     else
-        CUTBUFFER="$killed"
+        print -- $_i
     fi
-    LBUFFER="${buf[1,i]}"
+}
+
+function _kill-range() {
+    local _buf="$1" _start=$2 _end=$3
+    local _killed="${_buf[_start,_end]}"
+    if [[ $LASTWIDGET = *kill* ]]; then
+        CUTBUFFER="${_killed}${CUTBUFFER}"
+    else
+        CUTBUFFER="$_killed"
+    fi
+    LBUFFER="${_buf[1,_start-1]}"
     zle -f kill
 }
 
@@ -100,11 +248,11 @@ function my-backward-kill-word() {
     zstyle -s ':zle:*' word-style current
     if [[ $current == shell ]]; then
         local buf="$LBUFFER"
-        local end i
+        local end start
         _find-text-end "$buf" end || return 1
         (( end == 0 )) && { LBUFFER=""; return }
-        _find-word-start "$buf" $end i
-        _kill-range "$buf" $i $end
+        _find-word-start "$buf" $end start
+        _kill-range "$buf" $start $end
     else
         local WORDCHARS=''
         zle .backward-kill-word
@@ -112,6 +260,47 @@ function my-backward-kill-word() {
 }
 zle -N my-backward-kill-word
 bindkey "^W" my-backward-kill-word
+
+function my-backward-word() {
+    local current
+    zstyle -s ':zle:*' word-style current
+    if [[ $current == shell ]]; then
+        local buf="$LBUFFER"
+        local end start
+        _find-text-end "$buf" end || return 0
+        (( end == 0 )) && { CURSOR=0; return }
+        _find-word-start "$buf" $end start
+        CURSOR=$((start - 1))
+    else
+        local WORDCHARS=''
+        zle .backward-word
+    fi
+}
+zle -N my-backward-word
+bindkey "^[b" my-backward-word
+
+function my-forward-word() {
+    local current
+    zstyle -s ':zle:*' word-style current
+    if [[ $current == shell ]]; then
+        local buf="$BUFFER"
+        local len=${#buf}
+        local pos=$((CURSOR + 1))
+        local start end
+        _find-text-start "$buf" $pos start
+        if (( start > len )); then
+            CURSOR=$len
+            return
+        fi
+        _find-word-end "$buf" $start end
+        CURSOR=$end
+    else
+        local WORDCHARS=''
+        zle .forward-word
+    fi
+}
+zle -N my-forward-word
+bindkey "^[f" my-forward-word
 
 ################################################################
 #                 Additional keybinds                          #
