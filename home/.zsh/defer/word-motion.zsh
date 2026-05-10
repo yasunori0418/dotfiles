@@ -204,61 +204,51 @@ function _kill-range() {
     zle -f kill
 }
 
-function my-backward-kill-word() {
+function _fallback-bash-style() {
     local current
     zstyle -s ':zle:*' word-style current
-    if [[ $current == shell ]]; then
-        local buf="$LBUFFER"
-        local end start
-        _find-text-end "$buf" end || return 1
-        (( end == 0 )) && { LBUFFER=""; return }
-        _find-word-start "$buf" $end start
-        _kill-range "$buf" $start $end
-    else
-        local WORDCHARS=''
-        zle .backward-kill-word
-    fi
+    [[ $current == shell ]] && return 1
+    local WORDCHARS=''
+    zle ".$1"
+}
+
+function my-backward-kill-word() {
+    _fallback-bash-style backward-kill-word && return
+    local buf="$LBUFFER"
+    local end start
+    _find-text-end "$buf" end || return 1
+    (( end == 0 )) && { LBUFFER=""; return }
+    _find-word-start "$buf" $end start
+    _kill-range "$buf" $start $end
 }
 zle -N my-backward-kill-word
 bindkey "^W" my-backward-kill-word
 
 function my-backward-word() {
-    local current
-    zstyle -s ':zle:*' word-style current
-    if [[ $current == shell ]]; then
-        local buf="$LBUFFER"
-        local end start
-        _find-text-end "$buf" end || return 0
-        (( end == 0 )) && { CURSOR=0; return }
-        _find-word-start "$buf" $end start
-        CURSOR=$((start - 1))
-    else
-        local WORDCHARS=''
-        zle .backward-word
-    fi
+    _fallback-bash-style backward-word && return
+    local buf="$LBUFFER"
+    local end start
+    _find-text-end "$buf" end || return 0
+    (( end == 0 )) && { CURSOR=0; return }
+    _find-word-start "$buf" $end start
+    CURSOR=$((start - 1))
 }
 zle -N my-backward-word
 bindkey "^[b" my-backward-word
 
 function my-forward-word() {
-    local current
-    zstyle -s ':zle:*' word-style current
-    if [[ $current == shell ]]; then
-        local buf="$BUFFER"
-        local len=${#buf}
-        local pos=$((CURSOR + 1))
-        local start end
-        _find-text-start "$buf" $pos start
-        if (( start > len )); then
-            CURSOR=$len
-            return
-        fi
-        _find-word-end "$buf" $start end
-        CURSOR=$end
-    else
-        local WORDCHARS=''
-        zle .forward-word
+    _fallback-bash-style forward-word && return
+    local buf="$BUFFER"
+    local len=${#buf}
+    local pos=$((CURSOR + 1))
+    local start end
+    _find-text-start "$buf" $pos start
+    if (( start > len )); then
+        CURSOR=$len
+        return
     fi
+    _find-word-end "$buf" $start end
+    CURSOR=$end
 }
 zle -N my-forward-word
 bindkey "^[f" my-forward-word
