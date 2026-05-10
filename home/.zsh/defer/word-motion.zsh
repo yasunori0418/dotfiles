@@ -22,6 +22,9 @@ function toggle-word-style() {
 zle -N toggle-word-style
 bindkey "^X^W" toggle-word-style
 
+typeset -gA _PAIR_OPEN_OF=( ')' '(' ']' '[' '}' '{' )
+typeset -gA _PAIR_CLOSE_OF=( '(' ')' '[' ']' '{' '}' )
+
 function _is-escaped() {
     local _buf="$1" _pos=$2
     local _count=0 _i=$((_pos - 1))
@@ -58,12 +61,7 @@ function _find-word-start() {
             fi
             ;;
         ")"|"]"|"}")
-            local _open _close="$_c"
-            case "$_c" in
-                ")") _open="(" ;;
-                "]") _open="[" ;;
-                "}") _open="{" ;;
-            esac
+            local _open="${_PAIR_OPEN_OF[$_c]}" _close="$_c"
             local _depth=1 _ch
             (( _i = _end - 1 ))
             while (( _i > 0 )); do
@@ -152,12 +150,7 @@ function _find-word-end() {
             fi
             ;;
         "("|"["|"{")
-            local _open="$_c" _close
-            case "$_c" in
-                "(") _close=")" ;;
-                "[") _close="]" ;;
-                "{") _close="}" ;;
-            esac
+            local _open="$_c" _close="${_PAIR_CLOSE_OF[$_c]}"
             local _depth=1 _ch
             (( _i = _start + 1 ))
             while (( _i <= _len )); do
