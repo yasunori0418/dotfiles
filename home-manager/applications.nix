@@ -75,7 +75,7 @@ in
       unar
       unzip
       usql
-      worktrunk
+      myNurPkgs.worktrunk
       zellij
       zip
       # keep-sorted end
