@@ -75,7 +75,3 @@ zmodload -F zsh/terminfo +p:terminfo
 # initial setting bindkeys
 bindkey -d # Reset bindkeys
 bindkey -e # emacs keybind
-
-# https://atsum.in/aws/ctrl-y/
-# awsのsession managerでctrl-yでセッションが切断されないようにする
-stty dsusp undef
