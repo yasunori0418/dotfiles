@@ -74,6 +74,7 @@ Temporary Items
 
 # claude-code作業用の一時ディレクトリ
 tmp_claude/
+tmp_claude
 
 **/.claude/settings.local.json
 
@@ -111,3 +112,4 @@ CLAUDE.local.md
 
 # worktrunk
 .worktreeinclude
+.worktreeskip

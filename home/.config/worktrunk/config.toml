@@ -50,7 +50,7 @@ pager = "delta --paging=never"   # diffプレビューのpagerを上書き
 #   2. 残りのgitignored物をsymlink化 (詳細は scripts/symlink-ignored.sh)
 #   3. direnv allow
 [[post-start]]
-copy-include = "[ -f .worktreeinclude ] && wt step copy-ignored || true"
+copy-include = "[ -f {{ primary_worktree_path }}/.worktreeinclude ] && wt step copy-ignored || true"
 
 [[post-start]]
 symlink-ignored = "$HOME/.config/worktrunk/scripts/symlink-ignored.sh {{ primary_worktree_path }}"
