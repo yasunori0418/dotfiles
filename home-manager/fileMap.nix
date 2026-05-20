@@ -45,7 +45,7 @@ in
   }
   // homeDirMap [
     # keep-sorted start
-    ".claude/RTK.md"
+    ".claude/skills"
     ".zsh"
     "bin"
     # keep-sorted end
@@ -56,6 +56,7 @@ in
     ".bash_profile"
     ".bashrc"
     ".claude/CLAUDE.md"
+    ".claude/RTK.md"
     ".claude/settings.json"
     ".dir_colors"
     ".p10k.zsh"
