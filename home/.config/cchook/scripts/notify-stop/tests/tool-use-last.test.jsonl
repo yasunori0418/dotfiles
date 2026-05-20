@@ -1,0 +1,2 @@
+{"type":"assistant","message":{"content":[{"type":"text","text":"# 前のタイトル\n本文"}]}}
+{"type":"assistant","message":{"content":[{"type":"tool_use","id":"toolu_test","name":"Bash","input":{"command":"ls"}}]}}
