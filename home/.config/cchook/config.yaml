@@ -5,7 +5,7 @@ PreToolUse:
         value: "https://github.com"
     actions:
       - type: output
-        message: "WebFetchではなく、`gh`コマンド経由で情報を取得しましょう"
+        message: "WebFetchではなく、`gh`コマンド経由で情報を取得"
 
 PostToolUse:
 
