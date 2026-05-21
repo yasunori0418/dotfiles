@@ -46,6 +46,7 @@ in
       deno
       direnv
       flock
+      fx
       gh
       git
       git-credential-oauth
@@ -55,7 +56,6 @@ in
       gnumake
       google-cloud-sdk
       gws
-      fx
       kanata-with-cmd
       lazysql
       lefthook
@@ -65,6 +65,7 @@ in
       myNurPkgs.pict
       myNurPkgs.roots
       myNurPkgs.safe-chain
+      myNurPkgs.worktrunk
       pqrs
       pueue
       python313Packages.datadog
@@ -75,7 +76,6 @@ in
       unar
       unzip
       usql
-      myNurPkgs.worktrunk
       zellij
       zip
       # keep-sorted end
@@ -85,10 +85,10 @@ in
   textEditors = with pkgs; [
     # keep-sorted start
     emacs
-    nvimOverlay
     myNurPkgs.vim-overlay
     neovide
     neovim-remote
+    nvimOverlay
     # keep-sorted end
   ];
 
@@ -171,11 +171,10 @@ in
     ccusage
     claude-code-by-ryoppippi
     codex
-    llmAgentsPkgs.goose-cli
+    goose-cli
     myNurPkgs.cchook
-    # cc-sdd
     rtk
-    # llmAgentsPkgs.claude-code # use `github:ryoppippi/claude-code-overlay`
+    # claude-code # use `github:ryoppippi/claude-code-overlay`
     # keep-sorted end
   ]
   # ++ (optionalIsLinux [ inputs.claude-desktop.packages.${system}.claude-desktop ])
