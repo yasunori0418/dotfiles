@@ -21,16 +21,16 @@ chmod +x "$TMPBIN/osascript" "$TMPBIN/notify-send"
 
 fail=0
 for case_label in "no-arg" "missing-file"; do
-  case "$case_label" in
-    no-arg)        ACTUAL=$(PATH="$TMPBIN:$PATH" "$NOTIFY") ;;
-    missing-file)  ACTUAL=$(PATH="$TMPBIN:$PATH" "$NOTIFY" "/tmp/__notify_stop_nonexistent__.jsonl") ;;
-  esac
-  if [ "$ACTUAL" = "$EXPECTED" ]; then
-    echo "PASS: $(basename "$0")[$case_label] -> '$ACTUAL'"
-  else
-    echo "FAIL: $(basename "$0")[$case_label] expected '$EXPECTED', got '$ACTUAL'"
-    fail=1
-  fi
+    case "$case_label" in
+        no-arg)        ACTUAL=$(PATH="$TMPBIN:$PATH" "$NOTIFY") ;;
+        missing-file)  ACTUAL=$(PATH="$TMPBIN:$PATH" "$NOTIFY" "/tmp/__notify_stop_nonexistent__.jsonl") ;;
+    esac
+    if [ "$ACTUAL" = "$EXPECTED" ]; then
+        echo "PASS: $(basename "$0")[$case_label] -> '$ACTUAL'"
+    else
+        echo "FAIL: $(basename "$0")[$case_label] expected '$EXPECTED', got '$ACTUAL'"
+        fail=1
+    fi
 done
 
 exit "$fail"

@@ -22,8 +22,8 @@ chmod +x "$TMPBIN/osascript" "$TMPBIN/notify-send"
 ACTUAL=$(PATH="$TMPBIN:$PATH" "$NOTIFY" "$FIXTURE")
 
 if [ "$ACTUAL" = "$EXPECTED" ]; then
-  echo "PASS: $(basename "$0") -> '$ACTUAL'"
+    echo "PASS: $(basename "$0") -> '$ACTUAL'"
 else
-  echo "FAIL: $(basename "$0") expected '$EXPECTED', got '$ACTUAL'"
-  exit 1
+    echo "FAIL: $(basename "$0") expected '$EXPECTED', got '$ACTUAL'"
+    exit 1
 fi
