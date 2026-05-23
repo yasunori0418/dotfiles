@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# Verifies: when no '# Heading' is present, SUMMARY falls back to 'Claude Code 完了'.
+# Verifies: when no ai-title record is present, SUMMARY falls back to 'Claude Code 完了'.
 set -euo pipefail
 SCRIPT_DIR=$(cd "$(dirname "$0")" && pwd)
 NOTIFY="$SCRIPT_DIR/../main.sh"

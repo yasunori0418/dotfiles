@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# Verifies: when last assistant text contains a '# Heading', SUMMARY equals the heading.
+# Verifies: when an ai-title record exists, SUMMARY equals the aiTitle value.
 set -euo pipefail
 SCRIPT_DIR=$(cd "$(dirname "$0")" && pwd)
 NOTIFY="$SCRIPT_DIR/../main.sh"

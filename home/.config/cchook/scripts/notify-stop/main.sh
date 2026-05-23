@@ -1,17 +1,12 @@
 #!/usr/bin/env bash
-# cchook Stop event: extract the first H1 heading from the latest assistant
-# text response and send a desktop notification (macOS / Linux).
+# cchook Stop event: extract the ai-title from the transcript and send a desktop notification (macOS / Linux).
 set -euo pipefail
 
 TRANSCRIPT="${1:-}"
 
 extract_title() {
     [ -n "$TRANSCRIPT" ] && [ -f "$TRANSCRIPT" ] || return 0
-    jq -rs '
-    [.[] | select(.type=="assistant") | .message.content[]? | select(.type=="text") | .text] | last
-    | split("\n") | map(select(startswith("# "))) | (.[0] // "")
-    | sub("^# "; "")
-  ' "$TRANSCRIPT" 2>/dev/null
+    jq -rs '[.[] | select(.type=="ai-title") | .aiTitle] | last // ""' "$TRANSCRIPT" 2>/dev/null
 }
 
 SUMMARY="$(extract_title)"

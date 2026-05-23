@@ -1,1 +1,1 @@
-{"type":"assistant","message":{"content":[{"type":"text","text":"# テストタイトル\n\n本文"}]}}
+{"type":"ai-title","aiTitle":"テストタイトル","sessionId":"test-session"}

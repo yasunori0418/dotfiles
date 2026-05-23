@@ -1,6 +1,5 @@
 #!/usr/bin/env bash
-# Verifies: when the LAST assistant record is a tool_use (no text), the heading
-# from the most recent text block is still picked up.
+# Verifies: when multiple ai-title records exist, the last one is used.
 set -euo pipefail
 SCRIPT_DIR=$(cd "$(dirname "$0")" && pwd)
 NOTIFY="$SCRIPT_DIR/../main.sh"
