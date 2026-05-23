@@ -26,6 +26,6 @@ case "$(uname)" in
             "$SUMMARY"
         ;;
     Linux)
-        notify-send "claude-code" "$SUMMARY"
+        dunstify "claude-code" "$SUMMARY"
         ;;
 esac

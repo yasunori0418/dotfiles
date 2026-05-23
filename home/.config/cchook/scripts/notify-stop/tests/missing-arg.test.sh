@@ -13,11 +13,11 @@ cat > "$TMPBIN/osascript" <<'MOCK'
 #!/usr/bin/env bash
 echo "${@: -1}"
 MOCK
-cat > "$TMPBIN/notify-send" <<'MOCK'
+cat > "$TMPBIN/dunstify" <<'MOCK'
 #!/usr/bin/env bash
 echo "$2"
 MOCK
-chmod +x "$TMPBIN/osascript" "$TMPBIN/notify-send"
+chmod +x "$TMPBIN/osascript" "$TMPBIN/dunstify"
 
 fail=0
 for case_label in "no-arg" "missing-file"; do

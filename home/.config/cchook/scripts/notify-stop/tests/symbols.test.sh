@@ -15,11 +15,11 @@ cat > "$TMPBIN/osascript" <<'MOCK'
 #!/usr/bin/env bash
 printf '%s\n' "${@: -1}"
 MOCK
-cat > "$TMPBIN/notify-send" <<'MOCK'
+cat > "$TMPBIN/dunstify" <<'MOCK'
 #!/usr/bin/env bash
 printf '%s\n' "$2"
 MOCK
-chmod +x "$TMPBIN/osascript" "$TMPBIN/notify-send"
+chmod +x "$TMPBIN/osascript" "$TMPBIN/dunstify"
 
 ACTUAL=$(PATH="$TMPBIN:$PATH" "$NOTIFY" "$FIXTURE")
 
