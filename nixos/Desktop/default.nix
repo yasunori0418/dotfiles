@@ -15,6 +15,7 @@
       hardware = ./hardware-configuration.nix;
       extraMountFilesystems = ./extra-mount-filesystems.nix;
       nvidia = ../options/nvidia.nix;
+      bluetooth = ../options/hardware/bluetooth.nix;
 
       # configuration.nix top level keys
       nix = ../options/nix.nix;
@@ -67,6 +68,7 @@
       hardware
       extraMountFilesystems
       nvidia
+      bluetooth
 
       # configuration.nix top level keys
       nix
