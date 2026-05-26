@@ -54,4 +54,12 @@ export const define: Snippet[] = [
     keyword: "gfp",
     snippet: "git fetch --prune",
   },
+  {
+    name: "nix flake update",
+    keyword: "update",
+    snippet: 'update --access-tokens "github.com=$(gh auth token)"',
+    context: {
+      lbuffer: "^nix flake update$",
+    },
+  },
 ];
