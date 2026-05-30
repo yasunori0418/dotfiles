@@ -43,7 +43,6 @@ in
       awscli2
       colorized-logs
       cryoflow
-      deno
       direnv
       flock
       fx
@@ -62,6 +61,7 @@ in
       lemonade
       lnav
       mise
+      myNurPkgs.deno
       myNurPkgs.pict
       myNurPkgs.roots
       myNurPkgs.safe-chain
