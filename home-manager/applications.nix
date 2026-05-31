@@ -230,6 +230,7 @@ in
       discord
       drawio
       postman
+      shotcut
       # keep-sorted end
     ]
     ++ (optionalIsLinux [ google-chrome ]);
