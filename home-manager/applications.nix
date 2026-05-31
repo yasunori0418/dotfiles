@@ -121,6 +121,7 @@ in
     ripgrep
     sheldon
     tdf
+    viddy
     yazi
     yq
     zoxide
