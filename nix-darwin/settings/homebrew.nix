@@ -21,6 +21,7 @@
       "jordanbaird-ice"
       "meetingbar"
       "keycastr"
+      "shotcut"
     ];
     brews = [
       "tailscale"
