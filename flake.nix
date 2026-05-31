@@ -43,6 +43,10 @@
     arto.url = "github:arto-app/Arto";
     neovim-nightly-overlay.url = "github:nix-community/neovim-nightly-overlay";
     agent-skills.url = "github:Kyure-A/agent-skills-nix";
+    nix-index-database = {
+      url = "github:nix-community/nix-index-database";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   nixConfig = {

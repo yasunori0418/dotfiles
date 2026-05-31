@@ -26,5 +26,8 @@ in
       pkgs-stable
       ;
   };
-  modules = [ ./${profileName} ];
+  modules = [
+    ./${profileName}
+    inputs.nix-index-database.homeModules.default
+  ];
 }

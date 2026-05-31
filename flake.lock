@@ -695,6 +695,26 @@
         "type": "github"
       }
     },
+    "nix-index-database": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1780210899,
+        "narHash": "sha256-4axz3OBPTKa6LIkXV8n0lc63MQU+et2CB5DGobEAi6k=",
+        "owner": "nix-community",
+        "repo": "nix-index-database",
+        "rev": "97df9dc0b7c924344b793a15c1e8e4522ebb854e",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nix-community",
+        "repo": "nix-index-database",
+        "type": "github"
+      }
+    },
     "nix-unit": {
       "inputs": {
         "nix-github-actions": "nix-github-actions",
@@ -1127,6 +1147,7 @@
         "neovim-nightly-overlay": "neovim-nightly-overlay",
         "nix-claude-code": "nix-claude-code",
         "nix-darwin": "nix-darwin",
+        "nix-index-database": "nix-index-database",
         "nixos-hardware": "nixos-hardware",
         "nixpkgs": "nixpkgs_10",
         "nixpkgs-stable": "nixpkgs-stable",
