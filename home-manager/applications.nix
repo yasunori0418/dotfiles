@@ -27,7 +27,6 @@ in
     cachix
     nix-direnv
     nix-output-monitor
-    nix-prefetch-github
     nix-search-cli
     nix-sweep
     # keep-sorted end
