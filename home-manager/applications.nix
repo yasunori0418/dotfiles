@@ -229,7 +229,6 @@ in
       arto
       discord
       drawio
-      jetbrains-toolbox
       postman
       # keep-sorted end
     ]
