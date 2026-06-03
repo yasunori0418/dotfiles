@@ -6,6 +6,34 @@ PreToolUse:
     actions:
       - type: output
         message: "WebFetchではなく、`gh`コマンド経由で情報を取得"
+  # settings.json の deny ルール `Bash(git rebase:*)` / `Bash(git reset:*)` を
+  # cchook 側で決定論的に二重化する。auto モード + 複合コマンド（`cd ... && git ...`）
+  # では deny が LLM 分類器にフォールバックして取りこぼす事故があったため、
+  # コマンド全文の部分一致で確実にブロックする。
+  - matcher: "Bash"
+    conditions:
+      - type: command_contains
+        value: "git rebase"
+    actions:
+      - type: output
+        message: "🚫 git rebase は禁止（settings.json deny `Bash(git rebase:*)`）。必要な場合はユーザーに確認を取ること。"
+        exit_status: 2
+  - matcher: "Bash"
+    conditions:
+      - type: command_contains
+        value: "git reset"
+    actions:
+      - type: output
+        message: "🚫 git reset は禁止（settings.json deny `Bash(git reset:*)`）。必要な場合はユーザーに確認を取ること。"
+        exit_status: 2
+  - matcher: "Bash"
+    conditions:
+      - type: command_contains
+        value: "sudo"
+    actions:
+      - type: output
+        message: "🚫 sudo は禁止（settings.json deny `Bash(sudo:*)`）。必要な場合はユーザーに確認を取ること。"
+        exit_status: 2
 
 PostToolUse:
 
