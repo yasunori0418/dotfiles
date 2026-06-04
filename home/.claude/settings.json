@@ -37,6 +37,7 @@
       "Bash(sudo:*)",
       "Bash(git reset:*)",
       "Bash(git rebase:*)",
+      "Bash(aws:*)",
       "Read(.env.*)",
       "Read(id_rsa)",
       "Read(id_ed25519)",
