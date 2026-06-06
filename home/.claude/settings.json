@@ -51,7 +51,6 @@
     "ask": [
       "Bash(git push:*)",
       "KillShell",
-      "WebFetch",
       "Bash(curl:*)",
       "Bash(wget:*)",
       "Bash(rm:*)",
