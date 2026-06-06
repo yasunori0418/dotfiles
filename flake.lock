@@ -1557,11 +1557,11 @@
         "xremap-flake": "xremap-flake_2"
       },
       "locked": {
-        "lastModified": 1780753363,
-        "narHash": "sha256-mtj/Um7HrOf2PIOsB0IIB9xeEFXSUFOSwgjz6JicBOI=",
+        "lastModified": 1780762243,
+        "narHash": "sha256-syt8rlXf9+Dun2pZyRfZr67T7uVfmL69bbZ6ueAb7cQ=",
         "owner": "yasunori0418",
         "repo": "nur-packages",
-        "rev": "ca265307c5a898ce680cfb818b8aadd575c3a5e6",
+        "rev": "4e6a391af5e410364d4cdff130bcde3b654bd4da",
         "type": "github"
       },
       "original": {
