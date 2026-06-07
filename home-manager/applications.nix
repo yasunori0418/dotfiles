@@ -83,7 +83,7 @@ in
 
   textEditors = with pkgs; [
     # keep-sorted start
-    emacs
+    # emacs
     myNurPkgs.vim-overlay
     neovide
     neovim-remote
