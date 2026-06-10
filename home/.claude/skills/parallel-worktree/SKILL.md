@@ -1,0 +1,113 @@
+---
+name: parallel-worktree
+description: "事前に作成した計画ファイルを読み込み、worktrunk(wt) で worktree を分けて並列・stacked に作業を進めるためのオーケストレーション。計画ファイル→plan モードで最終確認→独立タスクは tmux に独立 claude を立てて並列実行、依存連鎖は stacked PR として逐次構築する。各 worktree のエージェントが実装→コミット→feature ブランチ push→/pr-create で draft PR を作るところまで担う。「この計画で並列実装」「worktree 分けて」「stacked PR」「複数タスクを同時に」「サブエージェントでバックグラウンド作業」等を依頼されたときに使う。`disable-model-invocation: true` のため /parallel-worktree の明示実行時のみ動作する。"
+user-invocable: true
+disable-model-invocation: true
+argument-hint: "[計画ファイルのパス]"
+allowed-tools: Bash, Read, AskUserQuestion, ExitPlanMode
+---
+
+# parallel-worktree
+
+worktrunk(`wt`) で worktree を分け、独立タスクは tmux 上の独立 claude セッションで並列実行し、依存連鎖は stacked PR として組み立てるためのオーケストレーション・スキル。大量のサブエージェント起動・worktree 生成・push という外部影響の大きい操作を含むため、`/parallel-worktree` の明示実行時のみ動作する。
+
+## 前提と本質的な制約
+
+着手前にこの 3 点を頭に入れる。設計判断の根拠になる。
+
+1. **並列と stacked は相反する。** 並列＝タスク間が独立（同時に走らせられる）。stacked＝後段が前段のコードに依存する連鎖（前段がコミットされて初めて後段を切れる）。だから「全部まとめて並列 background」は stacked では成立しない。**独立タスク群は並列、依存連鎖は逐次** に振り分けるのがこのスキルの肝。
+
+2. **worktree は必ず `wt` で作る。** Claude の `isolation: "worktree"` は使わない。`wt switch --create` で作れば post-start hook が走り、gitignored の symlink 化・`direnv allow` まで済んでビルド可能な実環境になる。hook の走らない worktree でエージェントを動かすと、direnv/依存が無くビルド・テストが通らない事故になる。
+
+3. **`wt` は PR を作らない／stacked branch もネイティブ非対応。** stacked は「`wt switch --create <child> --base <parent>` でブランチを積む」＋「PR は `gh`（`/pr-create` スキル）で `--base <parent>` 指定」の合わせ技で実現する。
+
+## 決定論ツール（scripts/）と AI の責務分担
+
+このスキルは「意味理解が要る部分（AI）」と「機械的に確定できる部分（スクリプト）」を分ける。**AI の責務は計画ファイルから「タスクと依存辺」を読み取り JSON spec を組むところまで**。そこから先の環境前提収集・スケジュール算出・コマンド生成は決定論スクリプトに委譲し、再発明と順序ミスを防ぐ。
+
+スクリプトは Python プロジェクト（`pyproject.toml` + `uv.lock`）として梱包され、`uv` が `requires-python` に沿った `.venv` を skill ディレクトリ直下に構築して実行する。cwd 非依存なので、プラグインとして任意の環境へ配置しても動く。以下、skill 本体のパスを `<SKILL>` と表記する（プラグイン実行時は `${CLAUDE_PLUGIN_ROOT}/skills/parallel-worktree`、個人 skill 実行時はこの SKILL.md があるディレクトリ）。
+
+- **`scripts/preflight.sh`**（read-only）: `wt`/`gh`/`tmux` 有無・既定ブランチ・**未コミット変更**・既存 worktree/ブランチ名衝突を収集。`bash <SKILL>/scripts/preflight.sh` を実行し、`WARNING` を解消してから起動に進む。
+- **`scripts/plan_orchestration.py`**: AI が組んだ JSON spec を入力に、**循環検出・base 解決・並列ウェーブ算出・wt/tmux//pr-create コマンド列生成**を行う。実行は必ず `.venv` 経由:
+
+  ```bash
+  uv run --project "<SKILL>" python "<SKILL>/scripts/plan_orchestration.py" <spec.json>
+  ```
+
+  spec の形（`scripts/example-spec.json` 参照）:
+
+  ```json
+  {
+    "default_base": "main",
+    "tasks": [
+      {"id": "A",  "branch": "refactor-logger",  "depends_on": [],     "prompt": "..."},
+      {"id": "B2", "branch": "feat-client-retry", "depends_on": ["B1"], "prompt": "..."}
+    ]
+  }
+  ```
+
+  `depends_on` 空＝独立（並列・base はデフォルト）、親 1 つ＝その親ブランチを base にした stacked 段。出力の `SCHEDULE`（起動ウェーブ）と `COMMANDS`（実行コマンド列）をそのまま plan と実行に使う。スクリプトのロジック（順序・base・クォート）は SKILL.md 上で再現しない。
+
+## 全体フロー
+
+### Phase 0: 計画ファイルを読み、spec を組む
+
+入口は**事前に作成済みの計画ファイル**（引数のパス。無ければ所在をユーザーに確認）を読むこと。計画は別途 grill-me 方式（対話的な問い詰め）で固めてファイル化されている前提。
+
+読み込んだら、各タスクの **依存辺（A→B）** を意味的に判定し、上記 JSON spec に落とす。判定基準（同一ファイル/モジュールに触る、前段の型・関数・API・スキーマに依存する 等）は `references/orchestration.md` の「依存解析」を参照。**計画ファイルに依存関係やタスク境界が欠けている／曖昧なときは、憶測で埋めず grill-me 方式で確認する**（依存の読み違えは並列化を破綻させる）。
+
+### Phase 1: 事前確認・スケジュール算出 → plan 承認
+
+1. `bash <SKILL>/scripts/preflight.sh` を実行。`WARNING`（未コミット変更・ツール欠落・名前衝突）があれば先に解消する。
+2. `uv run --project "<SKILL>" python "<SKILL>/scripts/plan_orchestration.py" <spec.json>` でスケジュール／コマンド列を算出。`ERROR`（循環・未定義参照・重複）が出たら spec を直して再実行。
+3. その出力を土台に **plan を組み、`ExitPlanMode` で承認を取る**。plan には必ず含める:
+   - **振り分け表 / 起動ウェーブ**（スクリプトの `SCHEDULE`）
+   - **コミット計画**: `commit-flow` スキル準拠（plan 本文に必ず含める）
+   - **PR 戦略**: 各ブランチの base（スクリプトの `PR` セクション）
+
+承認なしで worktree 生成・エージェント起動に進まない。
+
+### Phase 2: worktree 作成・並列/stacked 起動
+
+承認後、スクリプトの `COMMANDS` をウェーブ順に実行する。コマンドの意味は `references/orchestration.md` を参照。
+
+- **wave 0（独立）**: まとめて並列起動してよい
+- **後続 wave（stacked）**: 前段の**コミット完了を `wt list` で確認してから**起動（後段が前段のコードを見られるように）
+
+各エージェントへ渡すプロンプトには必ず「実装範囲の境界（他タスクのファイルに触れない）」「コミット粒度（commit-flow 準拠）」「自分の feature ブランチを push してよい」「最後に `/pr-create [base]` を実行」を含める（spec の `prompt` に書く）。worktree は必ず `wt switch --create` で作り、`isolation: "worktree"` は使わない。
+
+### Phase 3: PR 作成
+
+各エージェントが実装・コミット完了後、**自分で `/pr-create [base]` を実行**して draft PR を作る（スクリプトの `PR` セクション通り）。
+
+- push ポリシー: エージェントは**自分の feature ブランチに限り push 可**。`main` 等の保護ブランチへは push しない
+- stacked: `/pr-create <parent-branch>` で base を前段に向ける
+- `/pr-create` はタイトル/本文をユーザー承認後に作成する対話ゲートを持つ。各 tmux pane で承認待ちになるので、ユーザーが pane を巡回して承認する
+
+### Phase 4: 監視・後始末
+
+- 進捗確認: `wt list`（各 worktree の状態・diff・CI を一覧）
+- マージ後: `wt remove` で worktree 削除（マージ済みブランチも削除）
+- stacked の再 rebase: 下段が変わったら上段を rebase。`wt merge --rebase` か手動 `git rebase`（この環境に `wt sync`/worktrunk-sync は無い）
+
+## 連携スキル
+
+このスキルは下記を**呼び出す側**であって、内容を重複させない。
+
+- `commit-flow`: コミット粒度と plan のコミット計画。Phase 1 と各エージェントのコミットで準拠
+- `pr-create`: PR 本文作成。Phase 4 で各エージェントが `/pr-create` を実行
+- `worktrunk`: `wt` の設定・hook の詳細が要るときに参照
+
+## 制約（厳守）
+
+- `/parallel-worktree` の明示実行時のみ動作（`disable-model-invocation: true`）
+- 計画は grill-me 方式で詰め、**plan モードで承認を得てから** worktree 生成・エージェント起動に進む
+- worktree は必ず `wt` で作る（`isolation: "worktree"` は使わない）
+- push は各エージェントの feature ブランチのみ。保護ブランチへの push 禁止
+- 依存のあるタスクを並列起動しない（データ不整合・無駄な手戻りの元）
+
+## 参照
+
+- `scripts/preflight.sh` — 環境前提・未コミット変更・名前衝突を収集する read-only スクリプト（Phase 1）
+- `scripts/plan_orchestration.py` — spec から循環検出・base 解決・ウェーブ算出・コマンド生成を行う決定論 CLI（Phase 1）。`scripts/example-spec.json` は spec の例、`scripts/test_plan_orchestration.py` は純粋関数のテスト
+- `references/orchestration.md` — 依存解析ヒューリスティック、`wt`/tmux/`gh` の具体コマンドレシピ、stacked 構築手順、タスクプロンプト雛形
