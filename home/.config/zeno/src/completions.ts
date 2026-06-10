@@ -38,4 +38,15 @@ export const define: UserCompletionSource[] = [
       "--preview": "glow $(git config --global --get ghq.root)/{}/README.md",
     },
   },
+  {
+    name: "GitHub runner watcher",
+    patterns: ["^gh run watch $"],
+    sourceCommand:
+      "gh run list --json databaseId,status,conclusion,workflowName,headBranch,displayTitle --jq '.[] | \"\\(.databaseId)\\t\\(.status)\\t\\(.conclusion)\\t\\(.workflowName)\\t\\(.headBranch)\\t\\(.displayTitle)\"'",
+    callback: "awk -F '\\t' '{print $1}'",
+    options: {
+      "--prompt": "'run watch> '",
+      "--preview": "gh run view {1}",
+    },
+  },
 ];
