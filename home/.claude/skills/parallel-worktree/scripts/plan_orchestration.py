@@ -109,28 +109,27 @@ def detect_cycle(plan: Plan) -> list[str] | None:
     graph = {t.id: list(t.depends_on) for t in plan.tasks}
     WHITE, GRAY, BLACK = 0, 1, 2
     color = {k: WHITE for k in graph}
-    found: list[str] | None = None
 
-    def dfs(node: str, stack: list[str]) -> None:
-        nonlocal found
-        if found is not None:
-            return
+    def dfs(node: str, stack: list[str]) -> list[str] | None:
+        """node から DFS。循環を見つけたら経路を返し、無ければ None。"""
         color[node] = GRAY
         for dep in graph.get(node, []):
             if dep not in color:
                 continue  # 未定義参照は validate 側で報告
             if color[dep] == GRAY:
-                found = stack + [node, dep]
-                return
+                return stack + [node, dep]
             if color[dep] == WHITE:
-                dfs(dep, stack + [node])
+                cycle = dfs(dep, stack + [node])
+                if cycle is not None:
+                    return cycle
         color[node] = BLACK
+        return None
 
     for k in graph:
         if color[k] == WHITE:
-            dfs(k, [])
-        if found is not None:
-            return found
+            cycle = dfs(k, [])
+            if cycle is not None:
+                return cycle
     return None
 
 
