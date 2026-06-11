@@ -1,6 +1,6 @@
 ---
 name: parallel-worktree
-description: "事前に作成した計画ファイルを読み込み、worktrunk(wt) で worktree を分けて並列・stacked に作業を進めるためのオーケストレーション。計画ファイル→plan モードで最終確認→独立タスクは tmux に独立 claude を立てて並列実行、依存連鎖は stacked PR として逐次構築する。各 worktree のエージェントが実装→コミット→feature ブランチ push→/pr-create で draft PR を作るところまで担う。「この計画で並列実装」「worktree 分けて」「stacked PR」「複数タスクを同時に」「サブエージェントでバックグラウンド作業」等を依頼されたときに使う。`disable-model-invocation: true` のため /parallel-worktree の明示実行時のみ動作する。"
+description: "計画ファイルを読み、worktrunk(wt) で worktree を分けて並列・stacked に実装を進めるオーケストレーション。独立タスクは tmux の独立 claude で並列実行、依存連鎖は stacked PR として逐次構築する。`/parallel-worktree [計画ファイル]` の明示実行専用。"
 user-invocable: true
 disable-model-invocation: true
 argument-hint: "[計画ファイルのパス]"
@@ -9,7 +9,7 @@ allowed-tools: Bash, Read, AskUserQuestion, ExitPlanMode
 
 # parallel-worktree
 
-worktrunk(`wt`) で worktree を分け、独立タスクは tmux 上の独立 claude セッションで並列実行し、依存連鎖は stacked PR として組み立てるためのオーケストレーション・スキル。大量のサブエージェント起動・worktree 生成・push という外部影響の大きい操作を含むため、`/parallel-worktree` の明示実行時のみ動作する。
+大量のサブエージェント起動・worktree 生成・push という外部影響の大きい操作を含むため、`disable-model-invocation: true` とし `/parallel-worktree` の明示実行時のみ動作する。
 
 ## 前提と本質的な制約
 
@@ -90,24 +90,11 @@ worktrunk(`wt`) で worktree を分け、独立タスクは tmux 上の独立 cl
 - マージ後: `wt remove` で worktree 削除（マージ済みブランチも削除）
 - stacked の再 rebase: 下段が変わったら上段を rebase。`wt merge --rebase` か手動 `git rebase`（この環境に `wt sync`/worktrunk-sync は無い）
 
-## 連携スキル
+## 連携スキル・参照
 
-このスキルは下記を**呼び出す側**であって、内容を重複させない。
+このスキルは下記を**呼び出す側**で、内容を重複させない。
 
-- `commit-flow`: コミット粒度と plan のコミット計画。Phase 1 と各エージェントのコミットで準拠
-- `pr-create`: PR 本文作成。Phase 4 で各エージェントが `/pr-create` を実行
-- `worktrunk`: `wt` の設定・hook の詳細が要るときに参照
-
-## 制約（厳守）
-
-- `/parallel-worktree` の明示実行時のみ動作（`disable-model-invocation: true`）
-- 計画は grill-me 方式で詰め、**plan モードで承認を得てから** worktree 生成・エージェント起動に進む
-- worktree は必ず `wt` で作る（`isolation: "worktree"` は使わない）
-- push は各エージェントの feature ブランチのみ。保護ブランチへの push 禁止
-- 依存のあるタスクを並列起動しない（データ不整合・無駄な手戻りの元）
-
-## 参照
-
-- `scripts/preflight.sh` — 環境前提・未コミット変更・名前衝突を収集する read-only スクリプト（Phase 1）
-- `scripts/plan_orchestration.py` — spec から循環検出・base 解決・ウェーブ算出・コマンド生成を行う決定論 CLI（Phase 1）。`scripts/example-spec.json` は spec の例、`scripts/test_plan_orchestration.py` は純粋関数のテスト
-- `references/orchestration.md` — 依存解析ヒューリスティック、`wt`/tmux/`gh` の具体コマンドレシピ、stacked 構築手順、タスクプロンプト雛形
+- `commit-flow`: コミット粒度と plan のコミット計画（Phase 1・各エージェント）
+- `pr-create`: PR 本文作成（Phase 4 で各エージェントが `/pr-create` を実行）
+- `worktrunk`: `wt` の設定・hook の詳細が要るとき
+- `references/orchestration.md`: 依存解析ヒューリスティック、`wt`/tmux/`gh` コマンドレシピ、stacked 構築手順、タスクプロンプト雛形
