@@ -55,6 +55,11 @@ export const define: Snippet[] = [
     snippet: "git fetch --prune",
   },
   {
+    name: "get git current branch",
+    keyword: "gbc",
+    snippet: "git branch --show-current",
+  },
+  {
     name: "nix flake update",
     keyword: "update",
     snippet: 'update --access-tokens "github.com=$(gh auth token)"',
