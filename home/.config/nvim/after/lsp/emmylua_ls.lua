@@ -36,7 +36,12 @@ end
 ---$LUA_PATHからモジュールを収集
 ---@return string[]
 local function gather_lua_path()
-    return vim.list.unique(vim.iter(vim.split(vim.env.LUA_PATH, ";", { trimempty = true }))
+    -- $LUA_PATH は環境によって未設定（nix dev shell 等）。nil/空なら収集対象なしとして扱う。
+    local lua_path = vim.env.LUA_PATH
+    if lua_path == nil or lua_path == "" then
+        return {}
+    end
+    return vim.list.unique(vim.iter(vim.split(lua_path, ";", { trimempty = true }))
         :map(function(v)
             return vim.fn.substitute(v, [[\v\/{-}\?.+$]], "", "")
         end)
