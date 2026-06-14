@@ -28,6 +28,7 @@ vim.lsp.enable({
     "efm",
     "emmet_ls",
     "emmylua_ls",
+    "gopls",
     "html", -- vscode-langservers-extracted
     "intelephense",
     "jqls",
