@@ -7,35 +7,7 @@ lua_source = '''
 require("user.lsp")
 '''
 depends = ['ddc.vim', 'nvim-navic']
-on_ft = [
-  # keep-sorted start
-  'awk',
-  'bash',
-  'css',
-  'html',
-  'javascript',
-  'json',
-  'json5',
-  'jsonc',
-  'kotlin',
-  'lua',
-  'make',
-  'markdown',
-  'nix',
-  'php',
-  'python',
-  'query',
-  'rust',
-  'sh',
-  'sql',
-  'terraform',
-  'toml',
-  'typescript',
-  'typescriptreact',
-  'yaml',
-  'zsh',
-  # keep-sorted end
-]
+on_event = ['BufReadPre', 'BufNewFile']
 # }}}
 
 # Support plugins {{{
