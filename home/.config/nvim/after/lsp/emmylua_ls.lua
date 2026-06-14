@@ -55,22 +55,20 @@ local function library()
         :totable()
 end
 
+-- emmylua_ls(Neovim クライアント)は `["Lua", "emmylua"]` の順で workspace/configuration を
+-- pull し、最後に見つかった非空 scope で上書きする。nvim-lspconfig の base config が
+-- `settings.emmylua`(codeLens/hint) を定義しているため、`Lua` scope は常に破棄される。
+-- よって設定は emmyrc ネイティブスキーマとして `emmylua` scope に置く必要がある。
+-- また `on_init` は didChangeConfiguration 送信より後に走り初回 pull に間に合わないため、
+-- library は静的な settings で渡す(after/lsp はluaバッファ初回アタッチ時=startup後に評価され、
+-- その時点で dpp プラグイン・runtimepath は揃っている)。
 ---@type vim.lsp.Config
 return {
-    ---@param client vim.lsp.Client
-    ---@param initialize_result lsp.InitializeResult
-    on_init = function(client, _)
-        client.config.settings.Lua = vim.tbl_deep_extend("force", client.config.settings.Lua, {
-            workspace = {
-                library = library(),
-            },
-        })
-    end,
     settings = {
-        Lua = {
+        emmylua = {
             runtime = { version = "LuaJIT" },
             workspace = {
-                checkThirdParty = false,
+                library = library(),
                 ignoreDir = {
                     ".vscode",
                     ".devenv",
