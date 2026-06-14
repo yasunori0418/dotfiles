@@ -183,6 +183,7 @@
   "alwaysThinkingEnabled": true,
   "promptSuggestionEnabled": false,
   "showClearContextOnPlanAccept": true,
+  "tui": "default",
   "editorMode": "vim",
   "verbose": true,
   "preferredNotifChannel": "ghostty",
