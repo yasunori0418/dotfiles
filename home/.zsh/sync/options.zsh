@@ -30,7 +30,7 @@ setopt CASE_MATCH
 setopt GLOB
 setopt MULTIBYTE
 
-setopt EXTENDED_GLOB
+unsetopt EXTENDED_GLOB
 setopt NUMERIC_GLOB_SORT
 
 ## History
