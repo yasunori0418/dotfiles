@@ -164,7 +164,8 @@
     "pyright-lsp@claude-plugins-official": true,
     "example-skills@anthropic-agent-skills": true,
     "document-skills@anthropic-agent-skills": true,
-    "worktrunk@worktrunk": true
+    "worktrunk@worktrunk": true,
+    "gopls-lsp@claude-plugins-official": true
   },
   "extraKnownMarketplaces": {
     "anthropic-agent-skills": {
