@@ -56,7 +56,6 @@ in
     ".bash_profile"
     ".bashrc"
     ".claude/CLAUDE.md"
-    ".claude/RTK.md"
     ".claude/settings.json"
     ".dir_colors"
     ".p10k.zsh"
