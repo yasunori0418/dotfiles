@@ -174,7 +174,6 @@ in
     goose-cli
     myNurPkgs.cchook
     myNurPkgs.headroom
-    rtk
     # claude-code # use `github:ryoppippi/claude-code-overlay`
     # keep-sorted end
   ]
