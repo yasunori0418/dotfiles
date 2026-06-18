@@ -1,5 +1,9 @@
 ### extras environment variable ###
 
+# headroom
+# opt out: disable telemetry: https://headroom-docs.vercel.app/docs/community-savings
+export HEADROOM_TELEMETRY=off
+
 # less options
 export LESS="\
   --ignore-case \
