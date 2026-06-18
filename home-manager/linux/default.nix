@@ -25,6 +25,9 @@
       programs = [
         ../options/programs/nix-index.nix
       ];
+      systemd = [
+        ../options/systemd/headroomd.nix
+      ];
       xdg = ../options/xdg.nix;
       nix = ../options/nix.nix;
     in
@@ -35,7 +38,8 @@
       xdg
       nix
     ]
-    ++ programs;
+    ++ programs
+    ++ systemd;
   programs.home-manager.enable = true;
   home = {
     username = "yasunori";
