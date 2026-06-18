@@ -27,7 +27,7 @@ export const define: Snippet[] = [
   {
     name: "git commit --fixup",
     keyword: "gcf",
-    snippet: "git commit --fixup",
+    snippet: "git commit --fixup={{}}",
   },
   { name: "git diff", keyword: "gd", snippet: "git diff" },
   {
