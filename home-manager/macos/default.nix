@@ -24,7 +24,6 @@
       clearDppStateAfterLinkGeneration = ../clear-dpp-state-after-link-generation.nix;
       launchd = [
         # ../options/launchd/clipcatd.nix
-        ../options/launchd/headroomd.nix
       ];
       programs = [
         ../options/programs/nix-index.nix
