@@ -5,7 +5,6 @@
     onActivation = {
       autoUpdate = true;
       cleanup = "uninstall"; # nix-darwin経由だけでbrew installさせる
-      extraFlags = [ "--force-cleanup" ];
     };
     casks = [
       "1password"
