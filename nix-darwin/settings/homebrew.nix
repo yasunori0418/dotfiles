@@ -32,7 +32,11 @@
       "gh-asset"
     ];
     taps = [
-      "YuitoSato/gh-asset"
+      {
+        # Homebrew 6.0.0以降は非公式tapをtrusted宣言しないとactivation時にformula/caskの読み込みを拒否する
+        name = "YuitoSato/gh-asset";
+        trusted = true;
+      }
     ];
   };
 
