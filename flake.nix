@@ -2,9 +2,9 @@
   description = "My dotfiles, all my wisdom, my castle.";
 
   inputs = {
-    nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
-    nixpkgs-stable.url = "github:NixOS/nixpkgs/nixos-24.05";
-    nixos-hardware.url = "github:NixOS/nixos-hardware/master";
+    nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-unstable?shallow=1";
+    nixpkgs-stable.url = "github:NixOS/nixpkgs/nixos-26.05";
+    nixos-hardware.url = "github:NixOS/nixos-hardware/master?shallow=1";
     flake-parts.url = "github:hercules-ci/flake-parts";
     mac-app-util.url = "github:hraban/mac-app-util";
     yasunori-nur.url = "github:yasunori0418/nur-packages";
@@ -38,7 +38,6 @@
       url = "github:ryoppippi/nix-claude-code";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    zmx.url = "github:neurosnap/zmx";
     cryoflow.url = "github:yasunori0418/cryoflow";
     arto.url = "github:arto-app/Arto";
     neovim-nightly-overlay.url = "github:nix-community/neovim-nightly-overlay";
