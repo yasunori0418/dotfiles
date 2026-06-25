@@ -41,7 +41,6 @@
     cryoflow.url = "github:yasunori0418/cryoflow";
     arto.url = "github:arto-app/Arto";
     neovim-nightly-overlay.url = "github:nix-community/neovim-nightly-overlay";
-    agent-skills.url = "github:Kyure-A/agent-skills-nix";
     nix-index-database = {
       url = "github:nix-community/nix-index-database";
       inputs.nixpkgs.follows = "nixpkgs";
