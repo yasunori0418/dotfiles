@@ -29,5 +29,6 @@ in
   modules = [
     ./${profileName}
     inputs.nix-index-database.homeModules.default
+    inputs.nput.homeManagerModules.default
   ];
 }
