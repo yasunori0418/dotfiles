@@ -20,6 +20,18 @@ let
   cryoflow = inputs.cryoflow.packages.${system}.default;
   arto = inputs.arto.packages.${system}.default;
   nvimOverlay = inputs.neovim-nightly-overlay.packages.${system}.neovim;
+
+  # mise 2026.6.11 は Darwin で oci::layer setuid テストがスキップされずビルド失敗する。
+  # https://github.com/NixOS/nixpkgs/pull/534965 の修正内容（スキップを OS 非依存化）を先取りで適用。
+  # Linux 側は nixpkgs 本体で既に lib.optionals isLinux でスキップ済みのため、Darwin でのみ追加する。
+  # nixpkgs に取り込まれたらこの override は削除する。
+  mise = pkgs.mise.overrideAttrs (old: {
+    checkFlags =
+      old.checkFlags
+      ++ optionalIsDarwin [
+        "--skip=oci::layer::tests::preserve_metadata_dir_layer_keeps_special_permission_bits"
+      ];
+  });
 in
 {
   nixTools = with pkgs; [
