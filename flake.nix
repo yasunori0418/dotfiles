@@ -46,6 +46,15 @@
       url = "github:nix-community/nix-index-database";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    nput = {
+      url = "github:yasunori0418/nput";
+      inputs = {
+        nixpkgs.follows = "nixpkgs";
+        flake-parts.follows = "flake-parts";
+        home-manager.follows = "home-manager";
+        treefmt-nix.follows = "treefmt-nix";
+      };
+    };
   };
 
   nixConfig = {
