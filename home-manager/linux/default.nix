@@ -11,12 +11,10 @@
       homeDir = /${dotfiles}/home;
       xdgConfigHome = /${homeDir}/.config;
       packages = ./packages.nix;
-      homeFile = import ./homeFile.nix {
+      nput = import ./nput.nix {
         inherit
           inputs
           pkgs
-          config
-          dotfiles
           homeDir
           xdgConfigHome
           ;
@@ -30,7 +28,7 @@
     in
     [
       packages
-      homeFile
+      nput
       clearDppStateAfterLinkGeneration
       xdg
       nix
