@@ -11,16 +11,6 @@
       homeDir = /${dotfiles}/home;
       xdgConfigHome = /${homeDir}/.config;
       packages = ./packages.nix;
-      homeFile = import ./homeFile.nix {
-        inherit
-          inputs
-          pkgs
-          config
-          dotfiles
-          homeDir
-          xdgConfigHome
-          ;
-      };
       clearDppStateAfterLinkGeneration = ../clear-dpp-state-after-link-generation.nix;
       launchd = [
         # ../options/launchd/clipcatd.nix
@@ -39,7 +29,6 @@
     in
     [
       packages
-      # homeFile
       clearDppStateAfterLinkGeneration
       inputs.mac-app-util.homeManagerModules.default
       nput
