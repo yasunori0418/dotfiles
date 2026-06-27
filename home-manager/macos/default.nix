@@ -31,9 +31,7 @@
       nput = import ./nput.nix {
         inherit
           inputs
-          config
           pkgs
-          dotfiles
           homeDir
           xdgConfigHome
           ;
@@ -41,7 +39,7 @@
     in
     [
       packages
-      homeFile
+      # homeFile
       clearDppStateAfterLinkGeneration
       inputs.mac-app-util.homeManagerModules.default
       nput
