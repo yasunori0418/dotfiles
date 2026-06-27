@@ -28,7 +28,7 @@
       programs = [
         ../options/programs/nix-index.nix
       ];
-      nput = import ../options/nput.nix {
+      nput = import ./nput.nix {
         inherit
           inputs
           config
