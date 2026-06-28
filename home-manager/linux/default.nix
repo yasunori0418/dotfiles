@@ -22,6 +22,7 @@
       clearDppStateAfterLinkGeneration = ../clear-dpp-state-after-link-generation.nix;
       programs = [
         ../options/programs/nix-index.nix
+        ../options/programs/discord.nix
       ];
       xdg = ../options/xdg.nix;
       nix = ../options/nix.nix;

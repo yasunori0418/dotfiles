@@ -238,7 +238,6 @@ in
     [
       # keep-sorted start
       arto
-      discord
       drawio
       postman
       # keep-sorted end

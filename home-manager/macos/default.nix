@@ -17,6 +17,7 @@
       ];
       programs = [
         ../options/programs/nix-index.nix
+        ../options/programs/discord.nix
       ];
       nput = import ./nput.nix {
         inherit
