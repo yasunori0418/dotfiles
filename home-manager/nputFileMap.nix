@@ -38,7 +38,6 @@ in
     ".bash_profile"
     ".bashrc"
     ".claude/CLAUDE.md"
-    ".claude/settings.json"
     ".claude/skills"
     ".dir_colors"
     ".p10k.zsh"
@@ -149,6 +148,7 @@ in
   MacOS = {
     homeDirectory = {
       # ".docker/config.json".src = mkOutOfStoreSymlink "${homeDir}/.docker/mac_config.json";
+      ".claude/settings.json".src = mkOutOfStoreSymlink "${homeDir}/.claude/settings.macos.json";
     };
     library = {
       "Library/Application Support/AquaSKK".src =
@@ -172,6 +172,7 @@ in
   Linux = {
     homeDirectory = {
       ".docker/config.json".src = mkOutOfStoreSymlink "${homeDir}/.docker/linux_config.json";
+      ".claude/settings.json".src = mkOutOfStoreSymlink "${homeDir}/.claude/settings.linux.json";
     }
     // homeMap [
       ".icons"

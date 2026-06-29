@@ -41,6 +41,7 @@ let
       "dotLocalShare"
     ] nputFileMap)
     // (concatFileMap [
+      "homeDirectory"
       "dotConfig"
       "library"
     ] nputFileMap.MacOS);

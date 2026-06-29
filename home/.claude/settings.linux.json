@@ -1,0 +1,182 @@
+{
+  "$schema": "https://json.schemastore.org/claude-code-settings.json",
+  "cleanupPeriodDays": 876000,
+  "env": {
+    "DISABLE_ERROR_REPORTING": "1",
+    "DISABLE_BUG_COMMAND": "1",
+    "ENABLE_TOOL_SEARCH": "true",
+    "DISABLE_AUTOUPDATER": "1",
+    "CLAUDE_CODE_EXPERIMENTAL_AGENT_TEAMS": "1",
+    "CLAUDE_CODE_DISABLE_FEEDBACK_SURVEY": "1"
+  },
+  "includeCoAuthoredBy": false,
+  "permissions": {
+    "allow": [
+      "Bash",
+      "Edit",
+      "ExitPlanMode",
+      "Glob",
+      "Grep",
+      "LSP",
+      "NotebookEdit",
+      "Read",
+      "Skill",
+      "TaskCreate",
+      "TaskGet",
+      "TaskList",
+      "TaskOutput",
+      "TaskStop",
+      "TaskUpdate",
+      "TodoWrite",
+      "ToolSearch",
+      "WebSearch",
+      "Write"
+    ],
+    "deny": [
+      "Bash(sudo:*)",
+      "Bash(git reset:*)",
+      "Bash(git rebase:*)",
+      "Bash(aws:*)",
+      "Read(.env.*)",
+      "Read(id_rsa)",
+      "Read(id_ed25519)",
+      "Read(**/*token*)",
+      "Write(.env*)",
+      "Write(**/secrets/**)",
+      "Bash(nc:*)",
+      "Bash(npm uninstall:*)",
+      "Bash(npm remove:*)"
+    ],
+    "ask": [
+      "Bash(git push:*)",
+      "KillShell",
+      "Bash(curl:*)",
+      "Bash(wget:*)",
+      "Bash(rm:*)",
+      "Bash(rm -rf:*)",
+      "Bash(psql:*)",
+      "Bash(mysql:*)",
+      "Bash(mongod:*)"
+    ],
+    "defaultMode": "acceptEdits"
+  },
+  "enableAllProjectMcpServers": true,
+  "hooks": {
+    "PreToolUse": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "cchook -event PreToolUse"
+          }
+        ]
+      }
+    ],
+    "PostToolUse": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "cchook -event PostToolUse"
+          }
+        ]
+      }
+    ],
+    "Stop": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "cchook -event Stop"
+          }
+        ]
+      }
+    ],
+    "SubagentStop": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "cchook -event SubagentStop"
+          }
+        ]
+      }
+    ],
+    "Notification": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "cchook -event Notification"
+          }
+        ]
+      }
+    ],
+    "PreCompact": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "cchook -event PreCompact"
+          }
+        ]
+      }
+    ],
+    "SessionStart": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "cchook -event SessionStart"
+          }
+        ]
+      }
+    ],
+    "SessionEnd": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "cchook -event SessionEnd"
+          }
+        ]
+      }
+    ]
+  },
+  "statusLine": {
+    "type": "command",
+    "command": "bunx ccusage statusline",
+    "padding": 0
+  },
+  "enabledPlugins": {
+    "rust-analyzer-lsp@claude-plugins-official": true,
+    "typescript-lsp@claude-plugins-official": true,
+    "pyright-lsp@claude-plugins-official": true,
+    "example-skills@anthropic-agent-skills": true,
+    "document-skills@anthropic-agent-skills": true,
+    "worktrunk@worktrunk": true,
+    "gopls-lsp@claude-plugins-official": true
+  },
+  "extraKnownMarketplaces": {
+    "anthropic-agent-skills": {
+      "source": {
+        "source": "github",
+        "repo": "anthropics/skills"
+      }
+    },
+    "worktrunk": {
+      "source": {
+        "source": "github",
+        "repo": "max-sixty/worktrunk"
+      }
+    }
+  },
+  "alwaysThinkingEnabled": true,
+  "promptSuggestionEnabled": false,
+  "showClearContextOnPlanAccept": true,
+  "tui": "default",
+  "editorMode": "vim",
+  "verbose": true,
+  "preferredNotifChannel": "ghostty",
+  "teammateMode": "auto"
+}
