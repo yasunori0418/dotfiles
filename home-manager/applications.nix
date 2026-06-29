@@ -81,6 +81,7 @@ in
       pueue
       python313Packages.datadog
       ssm-session-manager-plugin
+      tirith
       tmux
       tree-sitter
       typos
