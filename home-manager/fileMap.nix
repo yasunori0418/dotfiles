@@ -114,6 +114,7 @@ in
       "ghostty/theme.conf"
       "ghostty/window.conf"
       "shellcheckrc"
+      "tirith/policy.yaml"
       # keep-sorted end
     ];
 

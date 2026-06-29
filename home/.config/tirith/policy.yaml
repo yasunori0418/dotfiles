@@ -1,0 +1,42 @@
+# Tirith security policy
+# Documentation: https://tirith.dev/docs/policy
+
+# Fail mode: "open" (allow on error) or "closed" (block on error)
+fail_mode: open
+
+# Paranoia level (1-4): higher = more sensitive detection
+paranoia: 1
+
+# Allow TIRITH=0 bypass in interactive terminals
+allow_bypass_env: true
+
+# Require explicit acknowledgement for warn findings in interactive mode
+strict_warn: false
+
+# Severity overrides per rule (e.g., shortened_url: LOW)
+severity_overrides: {}
+
+# URL patterns to always allow
+allowlist: []
+
+# URL patterns to always block (overrides allowlist)
+blocklist: []
+
+# Force specific rules to block (upgrade only, cannot downgrade)
+# action_overrides:
+#   shortened_url: block
+
+# Escalation: upgrade warnings to blocks based on session history
+# escalation:
+#   - trigger: repeat_count    # block after N warnings for the same rule
+#     rule_ids: ["*"]          # "*" = any rule, or list specific rule IDs
+#     threshold: 5
+#     window_minutes: 60
+#     action: block
+#   - trigger: multi_medium    # block when N+ medium findings on one command
+#     min_findings: 3
+#     action: block
+
+# Glob patterns to ignore during scan
+scan:
+  ignore_patterns: []
