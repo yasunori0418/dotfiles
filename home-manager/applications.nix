@@ -97,7 +97,7 @@ in
     # keep-sorted start
     # emacs
     myNurPkgs.vim-overlay
-    neovide
+    # neovide
     neovim-remote
     nvimOverlay
     # keep-sorted end
@@ -182,7 +182,7 @@ in
     amp
     ccusage
     claude-code-by-ryoppippi
-    codex
+    # codex
     goose-cli
     myNurPkgs.cchook
     # claude-code # use `github:ryoppippi/claude-code-overlay`
