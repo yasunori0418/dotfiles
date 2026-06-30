@@ -9,6 +9,8 @@ AI が計画ファイルから抽出した「タスク + 依存辺」を JSON sp
 実行（cwd 非依存。uv が skill 直下の pyproject.toml から .venv を構築し、その中で実行）:
     uv run --project "<skill-dir>" python "<skill-dir>/scripts/plan_orchestration.py" <spec.json>
     ... <spec.json> の代わりに - で stdin から読む
+    ... --remote-control を付けると各 claude を --remote-control <ブランチ名> で起動する
+        （detached tmux のまま claude.ai 等からリモート接続できるようにする）
 
 依存は stdlib のみ。python バージョンは pyproject.toml の requires-python に従い、
 無ければ uv が自動取得する。
@@ -35,6 +37,7 @@ sanitize / render）には副作用を持たせない。I/O・終了コードは
 """
 from __future__ import annotations
 
+import argparse
 import json
 import re
 import shlex
@@ -200,8 +203,12 @@ def analyze(plan: Plan) -> Analysis:
     return Analysis(errors=[], warnings=warnings, levels=levels, bases=bases)
 
 
-def render(plan: Plan, an: Analysis) -> str:
-    """Plan + Analysis -> 人間/AI 向けテキスト出力（純粋）。"""
+def render(plan: Plan, an: Analysis, remote_control: bool = False) -> str:
+    """Plan + Analysis -> 人間/AI 向けテキスト出力（純粋）。
+
+    remote_control=True のとき、各 claude を --remote-control <ブランチ名> で起動する
+    コマンドを生成する（detached tmux のまま claude.ai 等からリモート接続できる）。
+    """
     out: list[str] = []
     out.append("=== VALIDATION ===")
     out.append(f"tasks: {len(plan.tasks)}  default_base: {plan.default_base}")
@@ -226,7 +233,8 @@ def render(plan: Plan, an: Analysis) -> str:
         kind = "独立・並列" if level == 0 else f"stacked {level}段目"
         out.append(f"  wave {level} ({kind}): {', '.join(wave)}")
 
-    out.append("\n=== COMMANDS (列挙のみ。実行前に plan 承認) ===")
+    rc_note = " [remote-control: 各 claude を --remote-control <ブランチ名> で起動]" if remote_control else ""
+    out.append(f"\n=== COMMANDS (列挙のみ。実行前に plan 承認){rc_note} ===")
     for level in range(max_level + 1):
         wave_tasks = [t for t in plan.tasks if an.levels[t.id] == level]
         if not wave_tasks:
@@ -243,7 +251,15 @@ def render(plan: Plan, an: Analysis) -> str:
             sess = sanitize(t.branch)
             prompt = t.prompt or f"<{t.id} のタスクプロンプト未記入>"
             base_part = "" if (level == 0 and base == plan.default_base) else f" --base {shlex.quote(base)}"
-            inner = f"wt switch --create {shlex.quote(t.branch)}{base_part} -x claude -- {shlex.quote(prompt)}"
+            # -x claude の -- 以降に渡す引数列。remote_control 時は claude を
+            # --remote-control <セッション名> で起動し、detached tmux のまま
+            # claude.ai 等から接続できるようにする。名前は tmux セッション名
+            # （sanitize 済みブランチ名）に揃え、tmux ls / wt list / リモート一覧で
+            # 同じ識別子で追えるようにする。--remote-control は値オプション省略可だが、
+            # 後続の prompt を名前として誤食いしないよう常に名前を明示する。
+            exec_args = (["--remote-control", sess] if remote_control else []) + [prompt]
+            args_str = " ".join(shlex.quote(a) for a in exec_args)
+            inner = f"wt switch --create {shlex.quote(t.branch)}{base_part} -x claude -- {args_str}"
             out.append(f"tmux new-session -d -s {shlex.quote(sess)} {shlex.quote(inner)}")
 
     out.append("\n=== PR (各エージェントが実装・コミット後に実行) ===")
@@ -278,16 +294,25 @@ def read_spec(arg: str) -> object:
 
 
 def main(argv: list[str]) -> int:
-    if len(argv) != 2:
-        print("使い方: plan_orchestration.py <spec.json|->", file=sys.stderr)
-        return 2
+    parser = argparse.ArgumentParser(
+        prog="plan_orchestration.py",
+        description="parallel-worktree オーケストレーション・スケジューラ（決定論 CLI）",
+    )
+    parser.add_argument("spec", help="spec.json のパス、または - で stdin から読む")
+    parser.add_argument(
+        "--remote-control",
+        action="store_true",
+        help="各 worktree の claude を --remote-control <ブランチ名> で起動し、"
+        "detached tmux のまま claude.ai 等からリモート接続できるようにする",
+    )
+    ns = parser.parse_args(argv[1:])
     try:
-        plan = parse_spec(read_spec(argv[1]))
+        plan = parse_spec(read_spec(ns.spec))
     except SpecError as e:
         print(f"ERROR: {e}", file=sys.stderr)
         return 1
     an = analyze(plan)
-    print(render(plan, an))
+    print(render(plan, an, remote_control=ns.remote_control))
     return 1 if an.errors else 0
 
 

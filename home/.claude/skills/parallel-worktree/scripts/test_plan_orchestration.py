@@ -203,6 +203,35 @@ def test_render_stacked_includes_base_and_ordering():
     assert "/pr-create s1" in out  # stacked PR の base 指定
 
 
+def test_render_remote_control_injects_flag():
+    """観点: remote_control=True で各 claude が --remote-control <ブランチ名> 付きで起動され、
+    名前が tmux セッション名（sanitize 済みブランチ）に揃い、prompt がその後ろに来る。"""
+    plan = mk([{"id": "A", "branch": "feat/foo", "prompt": "do A"}])
+    out = render(plan, analyze(plan), remote_control=True)
+    # sanitize('feat/foo') == 'feat-foo'。-x claude の -- 以降に名前→prompt の順で並ぶ。
+    # inner 全体が tmux 行で再度 shlex.quote されるため prompt 部分のクォートは確認せず、
+    # 素通しで残る --remote-control <名前> 部分を検証する。
+    assert "-x claude -- --remote-control feat-foo " in out
+    assert "tmux new-session -d -s feat-foo" in out
+
+
+def test_render_without_remote_control_has_no_flag():
+    """観点: 既定（remote_control=False）では --remote-control を一切出さない（オプトイン）。"""
+    plan = mk([{"id": "A", "branch": "feat-a", "prompt": "do A"}])
+    out = render(plan, analyze(plan))
+    assert "--remote-control" not in out
+
+
+def test_render_remote_control_stacked_keeps_base_and_flag():
+    """観点: stacked タスクでも --base と --remote-control が両立し、name→prompt の順序が保たれる。"""
+    plan = mk([
+        {"id": "S1", "branch": "s1", "prompt": "p1"},
+        {"id": "S2", "branch": "s2", "depends_on": ["S1"], "prompt": "p2"},
+    ])
+    out = render(plan, analyze(plan), remote_control=True)
+    assert "wt switch --create s2 --base s1 -x claude -- --remote-control s2 p2" in out
+
+
 def test_render_errors_skips_commands():
     """観点: 致命的エラーがあるとき render はコマンド列を出さず ERROR のみ提示する（誤った計画を実行させない）。"""
     plan = mk([{"id": "A", "branch": "a", "depends_on": ["X"]}])

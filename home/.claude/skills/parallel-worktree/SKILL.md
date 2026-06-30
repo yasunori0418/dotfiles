@@ -1,15 +1,22 @@
 ---
 name: parallel-worktree
-description: "計画ファイルを読み、worktrunk(wt) で worktree を分けて並列・stacked に実装を進めるオーケストレーション。独立タスクは tmux の独立 claude で並列実行、依存連鎖は stacked PR として逐次構築する。`/parallel-worktree [計画ファイル]` の明示実行専用。"
+description: "計画ファイルを読み、worktrunk(wt) で worktree を分けて並列・stacked に実装を進めるオーケストレーション。独立タスクは tmux の独立 claude で並列実行、依存連鎖は stacked PR として逐次構築する。`--remote-control` 指定で各 worktree の claude を Remote Control 付きで起動し、detached tmux のまま claude.ai 等からリモート接続できる。`/parallel-worktree [計画ファイル] [--remote-control]` の明示実行専用。"
 user-invocable: true
 disable-model-invocation: true
-argument-hint: "[計画ファイルのパス]"
+argument-hint: "[計画ファイルのパス] [--remote-control]"
 allowed-tools: Bash, Read, AskUserQuestion, ExitPlanMode
 ---
 
 # parallel-worktree
 
 大量のサブエージェント起動・worktree 生成・push という外部影響の大きい操作を含むため、`disable-model-invocation: true` とし `/parallel-worktree` の明示実行時のみ動作する。
+
+## 起動引数
+
+`/parallel-worktree [計画ファイルのパス] [--remote-control]`
+
+- **計画ファイルのパス**: 事前に作成済みの計画ファイル（無ければ所在をユーザーに確認）。
+- **`--remote-control`**（任意・オプトイン）: 起動引数にこのトークンが含まれていたら、Phase 1 の `plan_orchestration.py` 実行にそのまま `--remote-control` を渡す。各 worktree の claude が `--remote-control <ブランチ名>` で起動し、**detached tmux に入ったままでも claude.ai 等からリモート接続できる**（この親セッションと同じ Remote Control 接続方式）。Remote Control 名は tmux セッション名（sanitize 済みブランチ名）に揃うので、`tmux ls` / `wt list` / リモート一覧で同じ識別子で対応が取れる。無指定なら従来通りローカル tmux のみ（リモート登録しない）。
 
 ## 前提と本質的な制約
 
@@ -32,6 +39,8 @@ allowed-tools: Bash, Read, AskUserQuestion, ExitPlanMode
 
   ```bash
   uv run --project "<SKILL>" python "<SKILL>/scripts/plan_orchestration.py" <spec.json>
+  # 起動引数に --remote-control があれば末尾に付ける（各 claude を Remote Control 付きで起動）:
+  uv run --project "<SKILL>" python "<SKILL>/scripts/plan_orchestration.py" --remote-control <spec.json>
   ```
 
   spec の形（`scripts/example-spec.json` 参照）:
@@ -59,7 +68,7 @@ allowed-tools: Bash, Read, AskUserQuestion, ExitPlanMode
 ### Phase 1: 事前確認・スケジュール算出 → plan 承認
 
 1. `bash <SKILL>/scripts/preflight.sh` を実行。`WARNING`（未コミット変更・ツール欠落・名前衝突）があれば先に解消する。
-2. `uv run --project "<SKILL>" python "<SKILL>/scripts/plan_orchestration.py" <spec.json>` でスケジュール／コマンド列を算出。`ERROR`（循環・未定義参照・重複）が出たら spec を直して再実行。
+2. `uv run --project "<SKILL>" python "<SKILL>/scripts/plan_orchestration.py" <spec.json>` でスケジュール／コマンド列を算出。`ERROR`（循環・未定義参照・重複）が出たら spec を直して再実行。**起動引数に `--remote-control` があればこのコマンドにも `--remote-control` を付ける**（生成される tmux コマンドの claude が `--remote-control <ブランチ名>` 付きになる）。
 3. その出力を土台に **plan を組み、`ExitPlanMode` で承認を取る**。plan には必ず含める:
    - **振り分け表 / 起動ウェーブ**（スクリプトの `SCHEDULE`）
    - **コミット計画**: `commit-flow` スキル準拠（plan 本文に必ず含める）
@@ -82,7 +91,7 @@ allowed-tools: Bash, Read, AskUserQuestion, ExitPlanMode
 
 - push ポリシー: エージェントは**自分の feature ブランチに限り push 可**。`main` 等の保護ブランチへは push しない
 - stacked: `/pr-create <parent-branch>` で base を前段に向ける
-- `/pr-create` はタイトル/本文をユーザー承認後に作成する対話ゲートを持つ。各 tmux pane で承認待ちになるので、ユーザーが pane を巡回して承認する
+- `/pr-create` はタイトル/本文をユーザー承認後に作成する対話ゲートを持つ。各 tmux pane で承認待ちになるので、ユーザーが pane を巡回して承認する。**`--remote-control` 起動時は pane を巡回せず、claude.ai 等のリモート接続から各セッション（Remote Control 名＝ブランチ名）に入って承認できる**
 
 ### Phase 4: 監視・後始末
 
