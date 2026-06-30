@@ -85,6 +85,84 @@ detect_base() {
     fi
 }
 
+# --- リポジトリ同定 -------------------------------------------------------
+# 「今どのリポジトリ・どの作業ディレクトリに対して PR を作ろうとしているか」を
+# 明示する。呼び出し側は、これと PR を作る対象が一致することを確認し、
+# 会話に混ざった別リポジトリの内容を本文へ混入させないための錨にする。
+detect_repo_identity() {
+    local url host slug root
+    root=$(git rev-parse --show-toplevel 2>/dev/null || echo "?")
+    echo "worktree-root: $root"
+    url=$(git remote get-url origin 2>/dev/null || git remote get-url "$(git remote | head -1)" 2>/dev/null || echo "")
+    if [ -z "$url" ]; then
+        echo "remote: (なし)"
+        echo "repo: (不明)"
+        return
+    fi
+    host=$(printf '%s' "$url" | sed -E 's#^[a-zA-Z]+://##; s#^[^@/]+@##; s#[:/].*$##')
+    # slug = host より後ろの owner/repo（末尾 .git を除去）
+    slug=$(printf '%s' "$url" | sed -E 's#^[a-zA-Z]+://##; s#^[^@/]+@##; s#^[^:/]+[:/]##; s#\.git$##')
+    echo "remote: $url"
+    echo "host: $host"
+    echo "repo: $slug"
+}
+
+# --- テンプレート検出 -----------------------------------------------------
+# PR/MR テンプレートをリポジトリルートから決定論的に探す。モデルが手で find を
+# 打つと打ち忘れ・スキップが起きるため、ここで確定させる。単一テンプレ（探索順
+# で最初の 1 つを primary）と複数テンプレ（ディレクトリ形式。候補提示が必要）を
+# 区別して出す。
+detect_templates() {
+    local root c f
+    root=$(git rev-parse --show-toplevel 2>/dev/null) || { echo "(repo root 不明 — 検出不可)"; return; }
+
+    local -a singles=()
+    local -a multi=()
+
+    # GitHub 単一テンプレ候補（探索順。大小両表記を確認）
+    local -a gh_candidates=(
+        ".github/pull_request_template.md"
+        ".github/PULL_REQUEST_TEMPLATE.md"
+        "pull_request_template.md"
+        "PULL_REQUEST_TEMPLATE.md"
+        "docs/pull_request_template.md"
+        "docs/PULL_REQUEST_TEMPLATE.md"
+    )
+    for c in "${gh_candidates[@]}"; do
+        [ -f "$root/$c" ] && singles+=("$c")
+    done
+
+    # GitHub 複数テンプレ（.github/PULL_REQUEST_TEMPLATE/*.md）
+    if [ -d "$root/.github/PULL_REQUEST_TEMPLATE" ]; then
+        while IFS= read -r f; do [ -n "$f" ] && multi+=("$f"); done \
+            < <(cd "$root" && find .github/PULL_REQUEST_TEMPLATE -maxdepth 1 -iname '*.md' 2>/dev/null | sort)
+    fi
+
+    # GitLab MR テンプレ（.gitlab/merge_request_templates/*.md）
+    if [ -d "$root/.gitlab/merge_request_templates" ]; then
+        while IFS= read -r f; do [ -n "$f" ] && multi+=("$f"); done \
+            < <(cd "$root" && find .gitlab/merge_request_templates -maxdepth 1 -iname '*.md' 2>/dev/null | sort)
+    fi
+
+    if [ ${#singles[@]} -eq 0 ] && [ ${#multi[@]} -eq 0 ]; then
+        echo "(テンプレートなし — 汎用構成で本文を組む)"
+        return
+    fi
+    if [ ${#singles[@]} -gt 0 ]; then
+        echo "primary: $root/${singles[0]}  ← これを使う（独自フォーマット禁止）"
+        local i
+        for ((i = 1; i < ${#singles[@]}; i++)); do
+            echo "other:   $root/${singles[$i]}"
+        done
+    fi
+    if [ ${#multi[@]} -gt 0 ]; then
+        echo "multi (複数テンプレ。候補提示してユーザーに選んでもらう):"
+        for c in "${multi[@]}"; do
+            echo "  - $root/$c"
+        done
+    fi
+}
+
 # --- プラットフォーム判定 -------------------------------------------------
 # remote URL のホストから github / gitlab / bitbucket を判定し、使用 CLI と
 # その有無を出す。ホスト不明（GHE 等の self-hosted 含む）は unknown とし、
@@ -126,8 +204,16 @@ echo "=== CURRENT BRANCH ==="
 echo "$current"
 echo ""
 
+echo "=== REPO IDENTITY ==="
+detect_repo_identity
+echo ""
+
 echo "=== PLATFORM ==="
 detect_platform
+echo ""
+
+echo "=== TEMPLATE ==="
+detect_templates
 echo ""
 
 echo "=== BASE BRANCH ==="
