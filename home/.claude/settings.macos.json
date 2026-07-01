@@ -179,5 +179,6 @@
   "editorMode": "vim",
   "verbose": true,
   "preferredNotifChannel": "ghostty",
-  "teammateMode": "auto"
+  "teammateMode": "auto",
+  "model": "sonnet"
 }
