@@ -179,6 +179,5 @@
   "verbose": true,
   "preferredNotifChannel": "ghostty",
   "teammateMode": "auto",
-  "agentPushNotifEnabled": true,
-  "model": "sonnet"
+  "agentPushNotifEnabled": true
 }
