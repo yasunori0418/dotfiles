@@ -2,7 +2,14 @@
   description = "My dotfiles, all my wisdom, my castle.";
 
   inputs = {
-    nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-unstable?shallow=1";
+    # NOTE: nixpkgs-unstable の nixos-render-docs が --toc-depth を削除した
+    # (ad97f5573d66, 2026-07-02) が、nix-darwin の doc/manual/default.nix が
+    # 未だ --toc-depth を渡すため darwin-manual-html のビルドが失敗する。
+    # nix-darwin 側が --sidebar-depth 対応するまで直前の rev に pin する。
+    # nix-darwin issue: https://github.com/nix-darwin/nix-darwin/issues/1817
+    # 修正 PR (open): https://github.com/nix-darwin/nix-darwin/pull/1819
+    # → PR マージ後に nix-darwin を bump し、この pin を nixpkgs-unstable に戻す。
+    nixpkgs.url = "github:NixOS/nixpkgs/beaa2d926b31?shallow=1";
     nixpkgs-stable.url = "github:NixOS/nixpkgs/nixos-26.05";
     nixos-hardware.url = "github:NixOS/nixos-hardware/master?shallow=1";
     flake-parts.url = "github:hercules-ci/flake-parts";
