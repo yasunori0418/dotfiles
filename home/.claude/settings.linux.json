@@ -180,5 +180,6 @@
   "verbose": true,
   "preferredNotifChannel": "ghostty",
   "teammateMode": "auto",
-  "agentPushNotifEnabled": true
+  "agentPushNotifEnabled": true,
+  "effortLevel": "xhigh"
 }
