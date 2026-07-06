@@ -171,6 +171,7 @@
       }
     }
   },
+  "askUserQuestionTimeout": "never",
   "alwaysThinkingEnabled": true,
   "promptSuggestionEnabled": false,
   "showClearContextOnPlanAccept": true,
