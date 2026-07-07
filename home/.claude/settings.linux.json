@@ -34,8 +34,6 @@
     ],
     "deny": [
       "Bash(sudo:*)",
-      "Bash(git reset:*)",
-      "Bash(git rebase:*)",
       "Bash(aws:*)",
       "Read(.env.*)",
       "Read(id_rsa)",
@@ -49,6 +47,8 @@
     ],
     "ask": [
       "Bash(git push:*)",
+      "Bash(git reset:*)",
+      "Bash(git rebase:*)",
       "KillShell",
       "Bash(curl:*)",
       "Bash(wget:*)",

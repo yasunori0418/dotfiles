@@ -6,26 +6,55 @@ PreToolUse:
     actions:
       - type: output
         message: "WebFetchではなく、`gh`コマンド経由で情報を取得"
-  # settings.json の deny ルール `Bash(git rebase:*)` / `Bash(git reset:*)` を
-  # cchook 側で決定論的に二重化する。auto モード + 複合コマンド（`cd ... && git ...`）
-  # では deny が LLM 分類器にフォールバックして取りこぼす事故があったため、
-  # コマンド全文の部分一致で確実にブロックする。
+  # git rebase / git reset は全面禁止からスキル経由の許可制に変更。
+  # rebase-flow / reset-flow スキルの arm スクリプトが .git 内に置く解錠 marker
+  # （30 分有効）を git-guard が検証し、無ければ deny、あれば意見なし。
+  # 意見なしの場合は settings.json の ask（`Bash(git rebase:*)` / `Bash(git reset:*)`）
+  # に落ちるため、スキル経由でも実行直前にユーザー確認が入る（多層防御）。
+  # コマンド全文の部分一致で拾うのは従来どおり（auto モード + 複合コマンドで
+  # settings ルールが LLM 分類器にフォールバックして取りこぼす事故対策）。
   - matcher: "Bash"
     conditions:
       - type: command_contains
         value: "git rebase"
     actions:
-      - type: output
-        message: "🚫 git rebase は禁止（settings.json deny `Bash(git rebase:*)`）。必要な場合はユーザーに確認を取ること。"
-        exit_status: 2
+      - type: command
+        command: $HOME/.config/cchook/scripts/git-guard/main.sh rebase
+        use_stdin: true
+  - matcher: "Bash"
+    conditions:
+      - type: command_contains
+        value: "pull --rebase"
+    actions:
+      - type: command
+        command: $HOME/.config/cchook/scripts/git-guard/main.sh rebase
+        use_stdin: true
+  - matcher: "Bash"
+    conditions:
+      - type: command_contains
+        value: "git pull -r"
+    actions:
+      - type: command
+        command: $HOME/.config/cchook/scripts/git-guard/main.sh rebase
+        use_stdin: true
   - matcher: "Bash"
     conditions:
       - type: command_contains
         value: "git reset"
     actions:
-      - type: output
-        message: "🚫 git reset は禁止（settings.json deny `Bash(git reset:*)`）。必要な場合はユーザーに確認を取ること。"
-        exit_status: 2
+      - type: command
+        command: $HOME/.config/cchook/scripts/git-guard/main.sh reset
+        use_stdin: true
+  # raw の force push は禁止（gh-push スキル経由に限定。保護ブランチ拒否・明示 lease
+  # を script 側で強制するため）。通常 push は意見なし → settings の ask へ。
+  - matcher: "Bash"
+    conditions:
+      - type: command_contains
+        value: "git push"
+    actions:
+      - type: command
+        command: $HOME/.config/cchook/scripts/git-guard/main.sh push
+        use_stdin: true
   - matcher: "Bash"
     conditions:
       - type: command_contains
