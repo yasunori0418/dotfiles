@@ -171,15 +171,15 @@
       }
     }
   },
-  "askUserQuestionTimeout": "never",
   "alwaysThinkingEnabled": true,
+  "effortLevel": "xhigh",
   "promptSuggestionEnabled": false,
   "showClearContextOnPlanAccept": true,
+  "askUserQuestionTimeout": "never",
   "tui": "default",
   "editorMode": "vim",
   "verbose": true,
   "preferredNotifChannel": "ghostty",
   "teammateMode": "auto",
-  "agentPushNotifEnabled": true,
-  "effortLevel": "xhigh"
+  "agentPushNotifEnabled": true
 }
