@@ -87,6 +87,19 @@ tmux new-session -d -s feat-foo "wt switch --create feat-foo -x claude -- --remo
 - 名前は tmux セッション名（sanitize 済みブランチ名）に揃え、`tmux ls` / `wt list` / リモート一覧で同じ識別子で対応を取る。
 - このコマンド列は `plan_orchestration.py --remote-control` が生成する（手作業で組み立てない）。
 
+**モデル・パーミッションモード・effort の切り替え:**
+
+各 worktree の claude の起動設定は、claude 本体のフラグ `--model` / `--permission-mode` / `--effort` を `-x claude` の `--` 以降・プロンプトより前に置くことで切り替える。
+
+```bash
+tmux new-session -d -s feat-foo "wt switch --create feat-foo -x claude -- --model opus --permission-mode acceptEdits --effort high '<タスクプロンプト>'"
+```
+
+- 値の選択肢: `--permission-mode` は `acceptEdits`/`auto`/`bypassPermissions`/`manual`/`dontAsk`/`plan`、`--effort` は `low`/`medium`/`high`/`xhigh`/`max`。`--model` は alias（`opus` 等）かフルネーム
+- 解決順は **spec の task 個別指定（`model`/`permission_mode`/`effort`）> `plan_orchestration.py` の CLI フラグ（全 worktree 共通の既定）> 未指定**。未指定のフラグは出力せず、claude 自身のデフォルト（settings.json 等の呼び出し元設定）に委ねる
+- 用途例: 機械的な独立タスクだけ `"model": "sonnet", "effort": "low"` に落とす、レビュー必須の段だけ `"permission_mode": "plan"` にする
+- このコマンド列も `plan_orchestration.py` が生成する（手作業で組み立てない）
+
 **stacked（逐次。前段の実装・コミットを待ってから次段を起動）:**
 
 1段目を起動 → 完了（実装・コミット）を `wt list` 等で確認 → 2段目を `--base <前段ブランチ>` 付きで起動、を繰り返す。前段がコミットされる前に後段を切ると、後段が前段のコードを見られない。

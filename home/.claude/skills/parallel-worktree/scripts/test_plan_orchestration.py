@@ -7,10 +7,12 @@
 import pytest
 
 from plan_orchestration import (
+    Launch,
     SpecError,
     analyze,
     compute_levels,
     detect_cycle,
+    launch_flags,
     parse_spec,
     render,
     resolve_base,
@@ -207,7 +209,7 @@ def test_render_remote_control_injects_flag():
     """観点: remote_control=True で各 claude が --remote-control <ブランチ名> 付きで起動され、
     名前が tmux セッション名（sanitize 済みブランチ）に揃い、prompt がその後ろに来る。"""
     plan = mk([{"id": "A", "branch": "feat/foo", "prompt": "do A"}])
-    out = render(plan, analyze(plan), remote_control=True)
+    out = render(plan, analyze(plan), Launch(remote_control=True))
     # sanitize('feat/foo') == 'feat-foo'。-x claude の -- 以降に名前→prompt の順で並ぶ。
     # inner 全体が tmux 行で再度 shlex.quote されるため prompt 部分のクォートは確認せず、
     # 素通しで残る --remote-control <名前> 部分を検証する。
@@ -228,7 +230,7 @@ def test_render_remote_control_stacked_keeps_base_and_flag():
         {"id": "S1", "branch": "s1", "prompt": "p1"},
         {"id": "S2", "branch": "s2", "depends_on": ["S1"], "prompt": "p2"},
     ])
-    out = render(plan, analyze(plan), remote_control=True)
+    out = render(plan, analyze(plan), Launch(remote_control=True))
     assert "wt switch --create s2 --base s1 -x claude -- --remote-control s2 p2" in out
 
 
@@ -238,3 +240,80 @@ def test_render_errors_skips_commands():
     out = render(plan, analyze(plan))
     assert "ERROR" in out
     assert "COMMANDS" not in out  # 致命的エラー時はコマンドを出さない
+
+
+# ---- launch options (model / permission-mode / effort) ----
+
+def test_parse_spec_reads_launch_fields():
+    """観点: task の model/permission_mode/effort を parse_spec が読み取り、未指定は空文字になる。"""
+    plan = mk([
+        {"id": "A", "branch": "a", "model": "opus", "permission_mode": "plan", "effort": "high"},
+        {"id": "B", "branch": "b"},
+    ])
+    assert (plan.tasks[0].model, plan.tasks[0].permission_mode, plan.tasks[0].effort) == (
+        "opus", "plan", "high")
+    assert (plan.tasks[1].model, plan.tasks[1].permission_mode, plan.tasks[1].effort) == ("", "", "")
+
+
+def test_launch_flags_global_defaults():
+    """観点: task が未指定ならグローバル既定（Launch）の値でフラグ列が組まれる。"""
+    plan = mk([{"id": "A", "branch": "a", "prompt": "p"}])
+    flags = launch_flags(plan.tasks[0], Launch(model="sonnet", permission_mode="auto", effort="low"))
+    assert flags == ["--model", "sonnet", "--permission-mode", "auto", "--effort", "low"]
+
+
+def test_launch_flags_task_overrides_global():
+    """観点: task 個別指定がグローバル既定より優先される（task > Launch）。"""
+    plan = mk([{"id": "A", "branch": "a", "model": "opus", "effort": "max"}])
+    flags = launch_flags(plan.tasks[0], Launch(model="sonnet", permission_mode="plan", effort="low"))
+    # model/effort は task 値、permission_mode は task 未指定なのでグローバル値
+    assert flags == ["--model", "opus", "--permission-mode", "plan", "--effort", "max"]
+
+
+def test_launch_flags_none_when_unset():
+    """観点: task もグローバルも未指定なら flag を一切出さない（claude のデフォルトに委ねる）。"""
+    plan = mk([{"id": "A", "branch": "a"}])
+    assert launch_flags(plan.tasks[0], Launch()) == []
+
+
+def test_render_injects_launch_flags_before_prompt():
+    """観点: 起動フラグが -x claude -- 以降・prompt より前に並び、remote-control とも共存する。
+
+    prompt に空白があると inner 全体の shlex.quote で二重クォートされ突合しにくいので、
+    既存テスト同様クォート不要な prompt(pA) で順序（model→effort→remote-control→prompt）を検証する。
+    """
+    plan = mk([{"id": "A", "branch": "feat-a", "prompt": "pA"}])
+    out = render(plan, analyze(plan), Launch(model="opus", effort="high", remote_control=True))
+    assert "-x claude -- --model opus --effort high --remote-control feat-a pA" in out
+
+
+def test_render_launch_note_lists_global_defaults():
+    """観点: COMMANDS 見出しにグローバル既定が要約表示され、plan 承認時に何が効くか見える。"""
+    plan = mk([{"id": "A", "branch": "a", "prompt": "p"}])
+    out = render(plan, analyze(plan), Launch(model="opus", permission_mode="plan", effort="high"))
+    assert "起動既定:" in out
+    assert "model=opus" in out
+    assert "permission-mode=plan" in out
+    assert "effort=high" in out
+
+
+def test_analyze_rejects_bad_permission_mode():
+    """観点: task の不正な permission_mode を致命的エラーで弾く（起動時にコケる前に止める）。"""
+    plan = mk([{"id": "A", "branch": "a", "permission_mode": "yolo"}])
+    an = analyze(plan)
+    assert any("permission_mode" in e for e in an.errors)
+    assert an.levels == {}
+
+
+def test_analyze_rejects_bad_effort():
+    """観点: task の不正な effort を致命的エラーで弾く。"""
+    plan = mk([{"id": "A", "branch": "a", "effort": "ultra"}])
+    an = analyze(plan)
+    assert any("effort" in e for e in an.errors)
+
+
+def test_analyze_accepts_valid_launch_fields():
+    """観点: 妥当な model/permission_mode/effort は素通し（誤検出しない）。model は自由入力で検証しない。"""
+    plan = mk([{"id": "A", "branch": "a", "model": "some-custom-model", "permission_mode": "acceptEdits", "effort": "xhigh"}])
+    an = analyze(plan)
+    assert an.errors == []

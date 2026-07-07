@@ -1,9 +1,9 @@
 ---
 name: parallel-worktree
-description: "計画ファイルを読み、worktrunk(wt) で worktree を分けて並列・stacked に実装を進めるオーケストレーション。独立タスクは tmux の独立 claude で並列実行、依存連鎖は stacked PR として逐次構築する。`--remote-control` 指定で各 worktree の claude を Remote Control 付きで起動し、detached tmux のまま claude.ai 等からリモート接続できる。`/parallel-worktree [計画ファイル] [--remote-control]` の明示実行専用。"
+description: "計画ファイルを読み、worktrunk(wt) で worktree を分けて並列・stacked に実装を進めるオーケストレーション。独立タスクは tmux の独立 claude で並列実行、依存連鎖は stacked PR として逐次構築する。`--remote-control` 指定で各 worktree の claude を Remote Control 付きで起動し、detached tmux のまま claude.ai 等からリモート接続できる。`--model`/`--permission-mode`/`--effort` で各 claude の起動モデル・パーミッションモード・effort を切り替えられる（task 個別上書きも可）。`/parallel-worktree [計画ファイル] [オプション...]` の明示実行専用。"
 user-invocable: true
 disable-model-invocation: true
-argument-hint: "[計画ファイルのパス] [--remote-control]"
+argument-hint: "[計画ファイルのパス] [--remote-control] [--model <model>] [--permission-mode <mode>] [--effort <level>]"
 allowed-tools: Bash, Read, AskUserQuestion, ExitPlanMode
 ---
 
@@ -13,10 +13,15 @@ allowed-tools: Bash, Read, AskUserQuestion, ExitPlanMode
 
 ## 起動引数
 
-`/parallel-worktree [計画ファイルのパス] [--remote-control]`
+`/parallel-worktree [計画ファイルのパス] [--remote-control] [--model <model>] [--permission-mode <mode>] [--effort <level>]`
 
 - **計画ファイルのパス**: 事前に作成済みの計画ファイル（無ければ所在をユーザーに確認）。
 - **`--remote-control`**（任意・オプトイン）: 起動引数にこのトークンが含まれていたら、Phase 1 の `plan_orchestration.py` 実行にそのまま `--remote-control` を渡す。各 worktree の claude が `--remote-control <ブランチ名>` で起動し、**detached tmux に入ったままでも claude.ai 等からリモート接続できる**（この親セッションと同じ Remote Control 接続方式）。Remote Control 名は tmux セッション名（sanitize 済みブランチ名）に揃うので、`tmux ls` / `wt list` / リモート一覧で同じ識別子で対応が取れる。無指定なら従来通りローカル tmux のみ（リモート登録しない）。
+- **`--model <model>` / `--permission-mode <mode>` / `--effort <level>`**（任意）: 各 worktree の claude の起動既定。起動引数にあれば Phase 1 の `plan_orchestration.py` 実行へそのまま渡す（値ごと pass-through）。
+  - `--model`: alias（`opus`/`sonnet`/`fable` 等）またはフルネーム
+  - `--permission-mode`: `acceptEdits` / `auto` / `bypassPermissions` / `manual` / `dontAsk` / `plan`
+  - `--effort`: `low` / `medium` / `high` / `xhigh` / `max`
+  - 適用は **task 個別指定（spec の `model`/`permission_mode`/`effort`）> グローバル既定（このフラグ）> 未指定（claude 自身のデフォルト＝settings.json 等）** の優先順。タスクごとに変えたい場合は spec 側に書く。
 
 ## 前提と本質的な制約
 
@@ -39,8 +44,8 @@ allowed-tools: Bash, Read, AskUserQuestion, ExitPlanMode
 
   ```bash
   uv run --project "<SKILL>" python "<SKILL>/scripts/plan_orchestration.py" <spec.json>
-  # 起動引数に --remote-control があれば末尾に付ける（各 claude を Remote Control 付きで起動）:
-  uv run --project "<SKILL>" python "<SKILL>/scripts/plan_orchestration.py" --remote-control <spec.json>
+  # 起動引数のオプションはそのまま前に付ける（--remote-control / --model / --permission-mode / --effort）:
+  uv run --project "<SKILL>" python "<SKILL>/scripts/plan_orchestration.py" --remote-control --model opus --permission-mode acceptEdits --effort high <spec.json>
   ```
 
   spec の形（`scripts/example-spec.json` 参照）:
@@ -50,12 +55,13 @@ allowed-tools: Bash, Read, AskUserQuestion, ExitPlanMode
     "default_base": "main",
     "tasks": [
       {"id": "A",  "branch": "refactor-logger",  "depends_on": [],     "prompt": "..."},
-      {"id": "B2", "branch": "feat-client-retry", "depends_on": ["B1"], "prompt": "..."}
+      {"id": "B2", "branch": "feat-client-retry", "depends_on": ["B1"], "prompt": "...",
+       "model": "opus", "permission_mode": "plan", "effort": "high"}
     ]
   }
   ```
 
-  `depends_on` 空＝独立（並列・base はデフォルト）、親 1 つ＝その親ブランチを base にした stacked 段。出力の `SCHEDULE`（起動ウェーブ）と `COMMANDS`（実行コマンド列）をそのまま plan と実行に使う。スクリプトのロジック（順序・base・クォート）は SKILL.md 上で再現しない。
+  `depends_on` 空＝独立（並列・base はデフォルト）、親 1 つ＝その親ブランチを base にした stacked 段。task の `model`/`permission_mode`/`effort` は任意で、その task の claude だけ起動設定を上書きする（CLI のグローバル既定より優先。どちらも無ければ claude 自身のデフォルト）。出力の `SCHEDULE`（起動ウェーブ）と `COMMANDS`（実行コマンド列）をそのまま plan と実行に使う。スクリプトのロジック（順序・base・クォート）は SKILL.md 上で再現しない。
 
 ## 全体フロー
 
@@ -68,7 +74,7 @@ allowed-tools: Bash, Read, AskUserQuestion, ExitPlanMode
 ### Phase 1: 事前確認・スケジュール算出 → plan 承認
 
 1. `bash <SKILL>/scripts/preflight.sh` を実行。`WARNING`（未コミット変更・ツール欠落・名前衝突）があれば先に解消する。
-2. `uv run --project "<SKILL>" python "<SKILL>/scripts/plan_orchestration.py" <spec.json>` でスケジュール／コマンド列を算出。`ERROR`（循環・未定義参照・重複）が出たら spec を直して再実行。**起動引数に `--remote-control` があればこのコマンドにも `--remote-control` を付ける**（生成される tmux コマンドの claude が `--remote-control <ブランチ名>` 付きになる）。
+2. `uv run --project "<SKILL>" python "<SKILL>/scripts/plan_orchestration.py" <spec.json>` でスケジュール／コマンド列を算出。`ERROR`（循環・未定義参照・重複・不正な permission_mode/effort）が出たら spec を直して再実行。**起動引数に `--remote-control` / `--model` / `--permission-mode` / `--effort` があればこのコマンドにもそのまま付ける**（生成される tmux コマンドの claude にそのフラグが乗る）。
 3. その出力を土台に **plan を組み、`ExitPlanMode` で承認を取る**。plan には必ず含める:
    - **振り分け表 / 起動ウェーブ**（スクリプトの `SCHEDULE`）
    - **コミット計画**: `commit-flow` スキル準拠（plan 本文に必ず含める）
