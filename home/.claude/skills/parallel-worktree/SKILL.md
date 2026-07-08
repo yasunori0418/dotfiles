@@ -1,9 +1,9 @@
 ---
 name: parallel-worktree
-description: "計画ファイルを読み、worktrunk(wt) で worktree を分けて並列・stacked に実装を進めるオーケストレーション。独立タスクは tmux の独立 claude で並列実行、依存連鎖は stacked PR として逐次構築する。`--remote-control` 指定で各 worktree の claude を Remote Control 付きで起動し、detached tmux のまま claude.ai 等からリモート接続できる。`--model`/`--permission-mode`/`--effort` で各 claude の起動モデル・パーミッションモード・effort を切り替えられる（task 個別上書きも可）。`/parallel-worktree [計画ファイル] [オプション...]` の明示実行専用。"
+description: "計画ファイルを読み、worktrunk(wt) で worktree を分けて並列・stacked に実装を進めるオーケストレーション。独立タスクは tmux の独立 claude で並列実行、依存連鎖は stacked PR として逐次構築する。`--remote-control` 指定で各 worktree の claude を Remote Control 付きで起動し、detached tmux のまま claude.ai 等からリモート接続できる。`--model`/`--permission-mode`/`--effort` で各 claude の起動モデル・パーミッションモード・effort を切り替えられる（task 個別上書きも可）。`/parallel-worktree resume` でPCの強制終了・クラッシュ等による不意の中断後、全レーン（worktree）の未コミット・未push状態と対応する計画ファイルを機械的に一覧化する復旧モードにもなる。`/parallel-worktree [計画ファイル|resume] [オプション...]` の明示実行専用。"
 user-invocable: true
 disable-model-invocation: true
-argument-hint: "[計画ファイルのパス] [--remote-control] [--model <model>] [--permission-mode <mode>] [--effort <level>]"
+argument-hint: "resume | [計画ファイルのパス] [--remote-control] [--model <model>] [--permission-mode <mode>] [--effort <level>]"
 allowed-tools: Bash, Read, AskUserQuestion, ExitPlanMode
 ---
 
@@ -13,7 +13,9 @@ allowed-tools: Bash, Read, AskUserQuestion, ExitPlanMode
 
 ## 起動引数
 
-`/parallel-worktree [計画ファイルのパス] [--remote-control] [--model <model>] [--permission-mode <mode>] [--effort <level>]`
+`/parallel-worktree resume` — **クラッシュ復旧モード**（下記セクション参照）。第一引数が `resume` のときはこちらに分岐し、Phase 0 以降の通常オーケストレーションには進まない。
+
+`/parallel-worktree [計画ファイルのパス] [--remote-control] [--model <model>] [--permission-mode <mode>] [--effort <level>]` — 通常のオーケストレーション起動。
 
 - **計画ファイルのパス**: 事前に作成済みの計画ファイル（無ければ所在をユーザーに確認）。
 - **`--remote-control`**（任意・オプトイン）: 起動引数にこのトークンが含まれていたら、Phase 1 の `plan_orchestration.py` 実行にそのまま `--remote-control` を渡す。各 worktree の claude が `--remote-control <ブランチ名>` で起動し、**detached tmux に入ったままでも claude.ai 等からリモート接続できる**（この親セッションと同じ Remote Control 接続方式）。Remote Control 名は tmux セッション名（sanitize 済みブランチ名）に揃うので、`tmux ls` / `wt list` / リモート一覧で同じ識別子で対応が取れる。無指定なら従来通りローカル tmux のみ（リモート登録しない）。
@@ -22,6 +24,18 @@ allowed-tools: Bash, Read, AskUserQuestion, ExitPlanMode
   - `--permission-mode`: `acceptEdits` / `auto` / `bypassPermissions` / `manual` / `dontAsk` / `plan`
   - `--effort`: `low` / `medium` / `high` / `xhigh` / `max`
   - 適用は **task 個別指定（spec の `model`/`permission_mode`/`effort`）> グローバル既定（このフラグ）> 未指定（claude 自身のデフォルト＝settings.json 等）** の優先順。タスクごとに変えたい場合は spec 側に書く。
+
+## クラッシュ復旧モード（`/parallel-worktree resume`）
+
+PC の強制終了・クラッシュ等でセッションが不意に中断されたときのための read-only モード。並列・stacked で複数 worktree（レーン）を動かしている最中に落ちると、レーンの数だけ「どこまで終わっていたか」を手動で説明し直す必要が出るため、`wt list` を土台に全レーンの状態を一度に機械的に集計する。
+
+新しい worktree・tmux・エージェントは一切起動しない（Phase 2 には進まない）。**能動的な引き継ぎ用の `handoff` スキル（一部プロジェクトに導入済み）とは補完関係**: `handoff` はセッションを意図的に終える前に自分で書く前提のドキュメントで、不意打ちのクラッシュには使えない。`resume` は逆に、事前準備が無い不意の中断からの受け身の状況復元に使う。
+
+手順:
+
+1. `uv run --project "<SKILL>" python "<SKILL>/scripts/resume_check.py"` を実行する（`-C <path>` で対象リポジトリを指定可、既定は cwd）。内部で `wt list --format json` を呼び、レーンごとの `branch` / `path` / 未コミット変更（`dirty`） / 未push件数（`ahead`）/ 未pull件数（`behind`）を集計し、ブランチ名から `~/.claude/plans/`（既定。`--plans-dir` で変更可）内の対応しそうな計画ファイルも突き合わせる。
+2. 出力の `NEEDS ACTION` に挙がったレーン（`dirty=True` または `ahead>0`）を優先して、レーンごとに次アクション（`git status`/`git diff` で中身を確認 → 必要なら `/gh-push` や `/pr-create [base]`、または実装の続行）をユーザーに提示する。plan_candidates が見つかったレーンはその計画ファイルを読み、残タスクの位置を特定する材料にする。
+3. 複数レーンにまたがる作業がある場合、**憶測でまとめて処理せず、レーンごとにユーザーへ状況を要約してから次の対応を確認する**（各レーンの文脈は独立しているため）。
 
 ## 前提と本質的な制約
 
