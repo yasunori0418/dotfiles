@@ -16,6 +16,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 - ドキュメント・コードファイルを作成・更新したあとに `open <path>` で自動的にファイルを開かない。ユーザー環境は neovim + tmux 運用で、ターミナル制御で必要なファイルを自分で開き直す。「ファイルを更新しました: `<path>`」と表示するに留める
 - 時刻を表示・報告するときは UTC ではなく **JST（日本標準時、UTC+9）** で表記する。Datadog／CloudWatch／GitHub Actions などのログ調査結果を報告する際、タイムスタンプは全て JST に変換する（例：`2026-05-20 12:15:42 JST`）。URL内のUnixタイムスタンプはそのままで良いが、テキストで言及する時刻は必ず JST
+- GitHub（`github.com`・GitHub Enterprise）の PR・Issue・Actions（run/job ログ）・commit・diff・比較などの情報取得は、**`WebFetch` を使わず最初から `gh` コマンド経由**で行う（`gh run view --log-failed` / `gh pr view` / `gh api` 等）。cchook の PreToolUse が `github.com` への WebFetch を差し戻す設定になっているが、それは事後制御であり無駄打ちになるため、URL を渡された時点で gh に解決する
 
 ## symlink 運用（home-manager + dotfiles）
 
