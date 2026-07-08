@@ -89,26 +89,26 @@ echo ""
 
 echo "=== DIFF ==="
 if [ "$n_missing" -gt 0 ]; then
-    echo "MISSING（テンプレにあるが下書きに無い＝削り違反。該当なしでも見出しは残す）:"
-    while IFS= read -r l; do [ -n "$l" ] && echo "  - $(label "$l")"; done <<< "$missing"
+echo "MISSING（テンプレにあるが下書きに無い＝削り違反。該当なしでも見出しは残す）:"
+while IFS= read -r l; do [ -n "$l" ] && echo "  - $(label "$l")"; done <<< "$missing"
 fi
 if [ "$n_extra" -gt 0 ]; then
-    echo "EXTRA（下書きにあるがテンプレに無い＝勝手追加。補足はテンプレ末尾に最小限）:"
-    while IFS= read -r l; do [ -n "$l" ] && echo "  - $(label "$l")"; done <<< "$extra"
+echo "EXTRA（下書きにあるがテンプレに無い＝勝手追加。補足はテンプレ末尾に最小限）:"
+while IFS= read -r l; do [ -n "$l" ] && echo "  - $(label "$l")"; done <<< "$extra"
 fi
 if [ "$n_missing" -eq 0 ] && [ "$n_extra" -eq 0 ]; then
-    if diff -q "$ts" "$ds" >/dev/null 2>&1; then
-        echo "(差分なし)"
-    else
-        echo "REORDER（見出し・チェック項目の並び順がテンプレと違う＝加工。テンプレ順に戻す）"
-    fi
+if diff -q "$ts" "$ds" >/dev/null 2>&1; then
+echo "(差分なし)"
+else
+echo "REORDER（見出し・チェック項目の並び順がテンプレと違う＝加工。テンプレ順に戻す）"
+fi
 fi
 echo ""
 
 echo "=== RESULT ==="
 if [ "$n_missing" -eq 0 ] && [ "$n_extra" -eq 0 ] && diff -q "$ts" "$ds" >/dev/null 2>&1; then
-    echo "OK — 骨組みはテンプレと一致。承認フローに進んでよい。"
-    exit 0
+echo "OK — 骨組みはテンプレと一致。承認フローに進んでよい。"
+exit 0
 fi
 echo "DRIFT DETECTED — テンプレの骨組みと不一致。下書きをテンプレ構造に戻してから再チェックする。"
 echo "（入力箇所を埋める・[ ]→[x] にするのは可。見出し/チェック項目の削除・追加・改名・並べ替えは不可）"

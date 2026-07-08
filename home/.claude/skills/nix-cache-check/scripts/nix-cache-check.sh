@@ -52,82 +52,82 @@ die() { printf 'ERROR: %s\n' "$*" >&2; exit 1; }
 # uv があれば uv run で実行し、無ければ nix 経由で uv を取得して実行する。
 # どちらも無ければ諦める（生の python3 にフォールバックしない＝再現性を優先）。
 run_py() {
-  local script="$1"; shift
-  if command -v uv >/dev/null 2>&1; then
-    uv run "$script" "$@"
-  elif command -v nix >/dev/null 2>&1; then
-    nix run nixpkgs#uv -- run "$script" "$@"
-  else
-    die "uv も nix も見つかりません。https://docs.astral.sh/uv/ を導入するか nix をインストールしてください"
-  fi
+    local script="$1"; shift
+    if command -v uv >/dev/null 2>&1; then
+        uv run "$script" "$@"
+    elif command -v nix >/dev/null 2>&1; then
+        nix run nixpkgs#uv -- run "$script" "$@"
+    else
+        die "uv も nix も見つかりません。https://docs.astral.sh/uv/ を導入するか nix をインストールしてください"
+    fi
 }
 
 cmd="${1:-}"; shift || true
 
 case "$cmd" in
-  outpath)
-    ref="${1:?flake installable を指定してください（例: '.#packages.x86_64-linux.hello'）}"
-    echo "=== drvPath ==="
-    nix eval --raw "${ref}.drvPath"
-    echo
-    echo "=== outPath ==="
-    nix eval --raw "${ref}.outPath"
-    ;;
+    outpath)
+        ref="${1:?flake installable を指定してください（例: '.#packages.x86_64-linux.hello'）}"
+        echo "=== drvPath ==="
+        nix eval --raw "${ref}.drvPath"
+        echo
+        echo "=== outPath ==="
+        nix eval --raw "${ref}.outPath"
+        ;;
 
-  cache-check)
-    target="${1:?store path または先頭ハッシュを指定してください}"; shift || true
-    case "$target" in
-      /nix/store/*) hash="$(basename "$target" | cut -d- -f1)" ;;
-      *)            hash="$target" ;;
-    esac
+    cache-check)
+        target="${1:?store path または先頭ハッシュを指定してください}"; shift || true
+        case "$target" in
+            /nix/store/*) hash="$(basename "$target" | cut -d- -f1)" ;;
+            *)            hash="$target" ;;
+        esac
 
-    subs=("$@")
-    if [ "${#subs[@]}" -eq 0 ]; then
-      mapfile -t subs < <(nix show-config --json 2>/dev/null | jq -r '.substituters.value[]')
-    fi
-    [ "${#subs[@]}" -gt 0 ] || die "substituters を取得できませんでした（nix show-config を確認してください）"
+        subs=("$@")
+        if [ "${#subs[@]}" -eq 0 ]; then
+            mapfile -t subs < <(nix show-config --json 2>/dev/null | jq -r '.substituters.value[]')
+        fi
+        [ "${#subs[@]}" -gt 0 ] || die "substituters を取得できませんでした（nix show-config を確認してください）"
 
-    echo "=== cache check: ${hash} ==="
-    for sub in "${subs[@]}"; do
-      url="${sub%/}/${hash}.narinfo"
-      code="$(curl -s -o /dev/null -w '%{http_code}' "$url")"
-      case "$code" in
-        200) echo "HIT              $sub" ;;
-        404) echo "MISS             $sub" ;;
-        401|403) echo "NO_ACCESS($code)  $sub  # private cache の可能性。認証が要るかも" ;;
-        *) echo "UNKNOWN($code)      $sub" ;;
-      esac
-    done
-    ;;
+        echo "=== cache check: ${hash} ==="
+        for sub in "${subs[@]}"; do
+            url="${sub%/}/${hash}.narinfo"
+            code="$(curl -s -o /dev/null -w '%{http_code}' "$url")"
+            case "$code" in
+                200) echo "HIT              $sub" ;;
+                404) echo "MISS             $sub" ;;
+                401|403) echo "NO_ACCESS($code)  $sub  # private cache の可能性。認証が要るかも" ;;
+                *) echo "UNKNOWN($code)      $sub" ;;
+            esac
+        done
+        ;;
 
-  hydra)
-    pkg="${1:?パッケージ名を指定してください}"; shift || true
-    command -v hydra-check >/dev/null 2>&1 \
-      && hydra-check "$pkg" "$@" \
-      || nix run nixpkgs#hydra-check -- "$pkg" "$@"
-    ;;
+    hydra)
+        pkg="${1:?パッケージ名を指定してください}"; shift || true
+        command -v hydra-check >/dev/null 2>&1 \
+            && hydra-check "$pkg" "$@" \
+            || nix run nixpkgs#hydra-check -- "$pkg" "$@"
+        ;;
 
-  build-json)
-    id="${1:?Hydra build ID を指定してください}"
-    curl -s -H 'Accept: application/json' "https://hydra.nixos.org/build/${id}" \
-      | jq '{id, job, system, finished, buildstatus, drvpath, buildoutputs, starttime, stoptime}'
-    ;;
+    build-json)
+        id="${1:?Hydra build ID を指定してください}"
+        curl -s -H 'Accept: application/json' "https://hydra.nixos.org/build/${id}" \
+            | jq '{id, job, system, finished, buildstatus, drvpath, buildoutputs, starttime, stoptime}'
+        ;;
 
-  build-log)
-    id="${1:?Hydra build ID を指定してください}"
-    run_py "$(dirname "$0")/hydra_build_log.py" "$id"
-    ;;
+    build-log)
+        id="${1:?Hydra build ID を指定してください}"
+        run_py "$(dirname "$0")/hydra_build_log.py" "$id"
+        ;;
 
-  pr-ancestry)
-    repo="${1:?owner/repo を指定してください}"
-    base="${2:?base（例: PRのmerge commit sha）を指定してください}"
-    head="${3:?head（例: flake.lock がロックしている rev）を指定してください}"
-    command -v gh >/dev/null 2>&1 || die "gh が見つかりません"
-    gh api "repos/${repo}/compare/${base}...${head}" --jq '{status, ahead_by, behind_by}'
-    echo "# behind_by が 0 なら base は head の祖先＝取り込み済み"
-    ;;
+    pr-ancestry)
+        repo="${1:?owner/repo を指定してください}"
+        base="${2:?base（例: PRのmerge commit sha）を指定してください}"
+        head="${3:?head（例: flake.lock がロックしている rev）を指定してください}"
+        command -v gh >/dev/null 2>&1 || die "gh が見つかりません"
+        gh api "repos/${repo}/compare/${base}...${head}" --jq '{status, ahead_by, behind_by}'
+        echo "# behind_by が 0 なら base は head の祖先＝取り込み済み"
+        ;;
 
-  *)
-    die "未知のサブコマンド: '$cmd'（outpath | cache-check | hydra | build-json | build-log | pr-ancestry）"
-    ;;
+    *)
+        die "未知のサブコマンド: '$cmd'（outpath | cache-check | hydra | build-json | build-log | pr-ancestry）"
+        ;;
 esac
