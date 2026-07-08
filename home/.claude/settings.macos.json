@@ -173,6 +173,7 @@
     }
   },
   "alwaysThinkingEnabled": true,
+  "effortLevel": "xhigh",
   "promptSuggestionEnabled": false,
   "showClearContextOnPlanAccept": true,
   "askUserQuestionTimeout": "never",
@@ -180,6 +181,5 @@
   "editorMode": "vim",
   "verbose": true,
   "preferredNotifChannel": "ghostty",
-  "teammateMode": "auto",
-  "effortLevel": "xhigh"
+  "teammateMode": "auto"
 }
