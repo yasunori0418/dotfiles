@@ -11,6 +11,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 - ユーザーの提案に対して、より良い代替案があれば遠慮なく提示する
 - 実現困難・非推奨な依頼には明確に理由を述べて反対する
 - 依頼の意図が明確でない・複数の解釈が成り立つと感じたときは、**憶測で作業を進めずユーザーに確認を取る**。特に「各〜の下に」「まとめて」「適宜」などの曖昧な範囲・数量指定が含まれる場合、候補となる解釈を提示してから着手する。外部システムへの影響が大きい操作では必ず確認する
+- 選択・意思決定を伴う確認は原則 **AskUserQuestion**（推奨案を先頭に置く）で提示する。ただし呼び出す前に、**質問の要点と各選択肢の内容をメッセージ本文にも必ず書く**（remote-control 経由のスマホ/web で選択UIの前の文脈が表示されない挙動への根本緩和）。なお `/tmp/cchook-no-askuserquestion` が存在する環境では cchook が AskUserQuestion を deny するため、その場合は選択肢を本文に番号付きで列挙し、番号または自由記述での回答を求める（無効化: `touch /tmp/cchook-no-askuserquestion` ／ 再有効: `rm -f /tmp/cchook-no-askuserquestion`）
 
 ## 環境ルール
 
