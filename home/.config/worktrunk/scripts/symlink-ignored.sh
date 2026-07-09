@@ -31,6 +31,9 @@ SKIP_PATTERNS=(
     # こういう環境依存みたいなの消したい
     ".DS_Store"
 
+    # worktrunk 制御ファイル (メインworktreeからのみ読むので worktree には不要)
+    ".worktreesetup"
+
     # Gradle / JVM
     "build"
     ".gradle"
