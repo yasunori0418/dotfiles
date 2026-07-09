@@ -48,10 +48,12 @@ pager = "delta --paging=never"   # diffプレビューのpagerを上書き
 # ── pre-start (ブロッキング: cd の前に完了させる) ──
 #   1. .worktreeinclude があれば、そこに書かれたファイルを実体コピー (copy-include)
 #      (.worktreeinclude は global gitignore で無視されるので個人用ファイル)
-#   2. 残りのgitignored物をsymlink化 (symlink-ignored)。copy-include の後に走るので
-#      コピー済みファイルは symlink されない。cd 前に symlink を揃えるため pre-start に
-#      置くが、convenience 処理なので失敗しても作成を止めない (|| true)。
-#   3. コピー後に .envrc があれば direnv allow
+#   2. .worktreeinclude 配置忘れ対策のフォールバック: メインの .env/.envrc を
+#      新worktreeに無ければコピー (copy-env。詳細は scripts/copy-env.sh)
+#   3. 残りのgitignored物をsymlink化 (symlink-ignored)。copy-include/copy-env の後に
+#      走るのでコピー済みファイルは symlink されない。cd 前に symlink を揃えるため
+#      pre-start に置くが、convenience 処理なので失敗しても作成を止めない (|| true)。
+#   4. コピー後に .envrc があれば direnv allow
 #
 # direnv はプロンプト駆動 (chpwd/precmd でのみ環境をロード) なので、env の提供と
 # allow を cd の "前" に blocking で終わらせる必要がある。post-start に置くと、
@@ -62,13 +64,16 @@ pager = "delta --paging=never"   # diffプレビューのpagerを上書き
 copy-include = "[ -f {{ primary_worktree_path }}/.worktreeinclude ] && wt step copy-ignored || true"
 
 [[pre-start]]
+copy-env = "$HOME/.config/worktrunk/scripts/copy-env.sh {{ primary_worktree_path }}"
+
+[[pre-start]]
 symlink-ignored = "$HOME/.config/worktrunk/scripts/symlink-ignored.sh {{ primary_worktree_path }} || true"
 
 [[pre-start]]
 direnv = "[ -f .envrc ] && direnv allow || true"
 
 # ── post-start (バックグラウンド: cd を待たせない) ──
-#   4. プロジェクト固有のセットアップ (詳細は scripts/project-setup.sh):
+#   5. プロジェクト固有のセットアップ (詳細は scripts/project-setup.sh):
 #      メインworktree直下に個人用スクリプト .worktreesetup があれば、
 #      新worktreeルートを cwd として実行する (第1引数 = メインworktreeパス)。
 #      .worktreesetup は global gitignore で無視される個人用ファイルなので、
