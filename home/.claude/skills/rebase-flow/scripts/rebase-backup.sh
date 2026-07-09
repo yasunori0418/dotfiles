@@ -47,7 +47,7 @@ date +%s > "$marker"
 echo "=== BACKUP ==="
 echo "branch: $name"
 echo "sha: $(git rev-parse HEAD)"
-echo "armed: $marker（30 分有効 — git rebase が cchook guard を通過可能になる）"
+echo "armed: ${marker}（30 分有効 — git rebase が cchook guard を通過可能になる）"
 if upstream=$(git rev-parse --abbrev-ref --symbolic-full-name '@{u}' 2>/dev/null); then
     echo "upstream-tip: $(git rev-parse "$upstream") ($upstream — force-push 時の lease 候補)"
 fi
