@@ -45,6 +45,7 @@ in
   }
   // homeDirMap [
     # keep-sorted start
+    ".claude/agents"
     ".claude/output-styles"
     ".claude/skills"
     ".zsh"

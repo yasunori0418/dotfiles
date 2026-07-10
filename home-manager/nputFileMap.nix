@@ -38,6 +38,7 @@ in
     ".bash_profile"
     ".bashrc"
     ".claude/CLAUDE.md"
+    ".claude/agents"
     ".claude/output-styles"
     ".claude/skills"
     ".dir_colors"
