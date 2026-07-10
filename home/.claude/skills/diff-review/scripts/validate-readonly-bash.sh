@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 # diff-reviewer の PreToolUse hook: Bash を読み取り専用コマンドに制限する。
-# 許可リスト方式: git の参照系サブコマンドと基本テキスト処理のみ通し、
-# それ以外・リダイレクトは exit 2 でブロック(stderr がエージェントに返る)。
+# 許可リスト方式: 差分収集スクリプト(collect-diff.sh)、git の参照系サブコマンド、
+# 基本テキスト処理のみ通し、それ以外・リダイレクトは exit 2 でブロック(stderr がエージェントに返る)。
 set -euo pipefail
 
 INPUT=$(cat)
@@ -24,6 +24,8 @@ NORMALIZED=$(printf '%s' "$STRIPPED" | tr '\n`' ';;' | sed -E 's/\$\(/;/g; s/[()
 
 GIT_SUB_RE='^(diff|log|status|show|merge-base|ls-files|ls-tree|rev-parse|rev-list|symbolic-ref|blame|grep|shortlog|describe|for-each-ref|cat-file|name-rev)$'
 UTIL_RE='^(rg|grep|head|tail|wc|sort|uniq|cut|tr|cat|ls|jq|echo|true|basename|dirname|readlink)$'
+# 差分収集スクリプト(読み取り専用・stdout のみ)。~ / $HOME を展開した上で正規パスとの完全一致のみ許可
+COLLECT_SH="$HOME/.claude/skills/diff-review/scripts/collect-diff.sh"
 
 IFS=';' read -ra SEGMENTS <<< "$NORMALIZED"
 for seg in "${SEGMENTS[@]}"; do
@@ -32,7 +34,11 @@ for seg in "${SEGMENTS[@]}"; do
     read -ra words <<< "$seg"
     first="${words[0]}"
 
-    if [[ "$first" == "git" ]]; then
+    first_path="${first/#\~/$HOME}"
+    first_path="${first_path/#\$HOME/$HOME}"
+    if [[ "$first_path" == "$COLLECT_SH" ]]; then
+        continue
+    elif [[ "$first" == "git" ]]; then
         # グローバルフラグ(-C <path> / -c <k=v> 等)を飛ばしてサブコマンドを特定
         sub=""
         i=1
