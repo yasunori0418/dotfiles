@@ -1,19 +1,17 @@
 PreToolUse:
-  # AskUserQuestion トグル: /tmp/cchook-no-askuserquestion が存在するとき AskUserQuestion を deny。
-  # remote-control 経由のスマホ/web セッションでは、AskUserQuestion の質問文・選択肢の文脈が
-  # 選択UIの前に表示されない挙動があるため、その環境では無効化してテキスト質問へ倒す。
-  # 既定（マーカー不在）は有効。/tmp は macOS/Linux 共通の絶対パスで cchook は value を展開しないため直書き。
-  # 再起動で /tmp が消え自然に既定（有効）へ復帰する。
-  #   無効化: touch /tmp/cchook-no-askuserquestion
-  #   再有効: rm -f /tmp/cchook-no-askuserquestion
+  # AskUserQuestion をセッション単位で無効化する。remote-control 経由のスマホ/web
+  # セッションでは、質問文・選択肢の文脈が選択UIの前に表示されない挙動があるため、
+  # そのセッションだけテキスト質問へ倒す。判定は guard スクリプトが stdin の
+  # session_id からマーカー /tmp/cchook-no-askuserquestion.<session_id> を探し、
+  # 有れば deny・無ければ沈黙（通常進行）する。マーカーの作成/削除は下記
+  # UserPromptSubmit のトグル（プロンプトに #aq-off / #aq-on）が行う。
+  # 従来の PC 全体マーカー（/tmp/cchook-no-askuserquestion）は廃止。/tmp なので
+  # 再起動でマーカーが消え既定（有効）へ復帰する。
   - matcher: "AskUserQuestion"
-    conditions:
-      - type: file_exists
-        value: "/tmp/cchook-no-askuserquestion"
     actions:
-      - type: output
-        message: "このセッションでは AskUserQuestion は無効化されている（/tmp/cchook-no-askuserquestion が存在）。選択肢はメッセージ本文に番号付きで列挙し、ユーザーには番号または自由記述での回答を求めること。"
-        permission_decision: deny
+      - type: command
+        command: $HOME/.config/cchook/scripts/askuserquestion-guard/main.sh
+        use_stdin: true
   - matcher: "WebFetch"
     conditions:
       - type: url_starts_with
@@ -84,6 +82,13 @@ PostToolUse:
 Notification:
 
 UserPromptSubmit:
+  # AskUserQuestion 無効化トグル: プロンプトに #aq-off / #aq-on を含めると、その
+  # セッションのマーカー（/tmp/cchook-no-askuserquestion.<session_id>）を作成/削除する。
+  # セッション単位なので同一 PC・同一プロジェクトの並行セッションには影響しない。
+  - actions:
+      - type: command
+        command: $HOME/.config/cchook/scripts/askuserquestion-toggle/main.sh
+        use_stdin: true
 
 Stop:
   - actions:
