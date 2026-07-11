@@ -1,8 +1,0 @@
-{
-  "default_base": "main",
-  "tasks": [
-    {"id": "A",  "branch": "refactor-logger",  "depends_on": [],     "prompt": "pkg/logger 配下を構造化ログライブラリへ差し替え。呼び出し側 IF は据え置き。pkg/logger 以外に触れない。完了後 /pr-create。"},
-    {"id": "B1", "branch": "feat-config-retry", "depends_on": [],     "prompt": "internal/config/schema.go に RetryPolicy フィールド・パーサ・デフォルト値を追加。完了後 /pr-create。"},
-    {"id": "B2", "branch": "feat-client-retry", "depends_on": ["B1"], "prompt": "internal/client/http_client.go で B1 の RetryPolicy を読むリトライ処理を実装。完了後 /pr-create feat-config-retry。", "model": "opus", "permission_mode": "plan", "effort": "high"}
-  ]
-}

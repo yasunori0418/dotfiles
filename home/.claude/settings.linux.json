@@ -156,7 +156,8 @@
     "document-skills@anthropic-agent-skills": true,
     "worktrunk@worktrunk": true,
     "gopls-lsp@claude-plugins-official": true,
-    "plugin-dev@claude-plugins-official": true
+    "plugin-dev@claude-plugins-official": true,
+    "yasunori0418-skills@yasunori0418-skills": true
   },
   "extraKnownMarketplaces": {
     "anthropic-agent-skills": {
@@ -169,6 +170,12 @@
       "source": {
         "source": "github",
         "repo": "max-sixty/worktrunk"
+      }
+    },
+    "yasunori0418-skills": {
+      "source": {
+        "source": "directory",
+        "path": "/home/yasunori/src/github.com/yasunori0418/skills"
       }
     }
   },
