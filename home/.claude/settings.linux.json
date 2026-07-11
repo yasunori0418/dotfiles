@@ -155,7 +155,8 @@
     "example-skills@anthropic-agent-skills": true,
     "document-skills@anthropic-agent-skills": true,
     "worktrunk@worktrunk": true,
-    "gopls-lsp@claude-plugins-official": true
+    "gopls-lsp@claude-plugins-official": true,
+    "plugin-dev@claude-plugins-official": true
   },
   "extraKnownMarketplaces": {
     "anthropic-agent-skills": {
