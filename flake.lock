@@ -1181,7 +1181,8 @@
         "systems": "systems_5",
         "treefmt-nix": "treefmt-nix_4",
         "xremap-flake": "xremap-flake",
-        "yasunori-nur": "yasunori-nur"
+        "yasunori-nur": "yasunori-nur",
+        "yasunori-skills": "yasunori-skills"
       }
     },
     "rust-overlay": {
@@ -1600,6 +1601,22 @@
       "original": {
         "owner": "yasunori0418",
         "repo": "nur-packages",
+        "type": "github"
+      }
+    },
+    "yasunori-skills": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1783765932,
+        "narHash": "sha256-sAfkS3Y6hHHlHg2NQz702l3xjvgf/Ck8cdJ+U4uX/wE=",
+        "owner": "yasunori0418",
+        "repo": "skills",
+        "rev": "6fad44c4be61b3ff09790fc0f0a49f5bc0ae4d67",
+        "type": "github"
+      },
+      "original": {
+        "owner": "yasunori0418",
+        "repo": "skills",
         "type": "github"
       }
     }

@@ -1,4 +1,5 @@
 {
+  inputs,
   pkgs,
   myNurPkgs,
   homeDir,
@@ -22,6 +23,55 @@ let
     dist = ".config";
     src = xdgConfigHome;
   };
+
+  # yasunori0418/skills（flake input）から Claude Code のスキルを ~/.claude/skills/<name> へ
+  # 配置する。リポジトリは <category>/<skill-name> 構成のため subpath を明示列挙する。
+  # スキルの実体編集は ~/src/github.com/yasunori0418/skills 側で行い、
+  # push + `nix flake update yasunori-skills` + switch で反映する。
+  yasunoriSkillSubpaths = [
+    # keep-sorted start
+    "claude/external-writes"
+    "claude/response-format"
+    "claude/session-insights"
+    "claude/test-targeted"
+    "claude/tmp-output"
+    "git/commit-flow"
+    "git/diff-review"
+    "git/parallel-worktree"
+    "git/rebase-flow"
+    "git/reset-flow"
+    "github/gh-ci-investigate"
+    "github/gh-fetch"
+    "github/gh-push"
+    "github/pr-create"
+    "nix/nix-cache-check"
+    "nix/nix-devenv"
+    "product/biz-translate"
+    "product/product-spec"
+    # keep-sorted end
+  ];
+  yasunoriSkillEntries = builtins.listToAttrs (
+    map (p: {
+      name = ".claude/skills/${baseNameOf p}";
+      value = {
+        src = inputs.yasunori-skills;
+        subpath = p;
+      };
+    }) yasunoriSkillSubpaths
+  );
+
+  # per-skill 配置のワーカーサブエージェント（diff-review / product-spec 用）を
+  # ~/.claude/agents/<name>.md へ配置する。
+  yasunoriAgentEntries = {
+    ".claude/agents/diff-reviewer.md" = {
+      src = inputs.yasunori-skills;
+      subpath = "git/diff-review/agents/diff-reviewer.md";
+    };
+    ".claude/agents/product-researcher.md" = {
+      src = inputs.yasunori-skills;
+      subpath = "product/product-spec/agents/product-researcher.md";
+    };
+  };
 in
 {
   homeDirectory = {
@@ -38,9 +88,7 @@ in
     ".bash_profile"
     ".bashrc"
     ".claude/CLAUDE.md"
-    ".claude/agents"
     ".claude/output-styles"
-    ".claude/skills"
     ".dir_colors"
     ".p10k.zsh"
     ".screenrc"
@@ -49,7 +97,9 @@ in
     ".zshrc"
     "bin"
     # keep-sorted end
-  ];
+  ]
+  // yasunoriSkillEntries
+  // yasunoriAgentEntries;
 
   dotConfig = xdgConfigMap [
     # keep-sorted start

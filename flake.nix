@@ -60,6 +60,12 @@
       url = "github:mattpocock/skills";
       flake = false;
     };
+    # 自作 Claude Code スキル・エージェント集（yasunori0418/skills）。nput（HM 側）で
+    # ~/.claude/skills / ~/.claude/agents へ配置するため flake=false。flake.lock が rev を pin する。
+    yasunori-skills = {
+      url = "github:yasunori0418/skills";
+      flake = false;
+    };
   };
 
   nixConfig = {

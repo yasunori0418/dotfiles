@@ -19,6 +19,7 @@ let
   # nix path 値なので toString で文字列化する（"${path}" 補間と違い store へコピーされない）。
   nputFileMap = import ../nputFileMap.nix {
     inherit
+      inputs
       pkgs
       myNurPkgs
       mkOutOfStoreSymlink

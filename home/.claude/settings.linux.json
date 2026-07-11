@@ -157,7 +157,7 @@
     "worktrunk@worktrunk": true,
     "gopls-lsp@claude-plugins-official": true,
     "plugin-dev@claude-plugins-official": true,
-    "yasunori0418-skills@yasunori0418-skills": true
+    "yasunori0418-skills@yasunori0418-skills": false
   },
   "extraKnownMarketplaces": {
     "anthropic-agent-skills": {
