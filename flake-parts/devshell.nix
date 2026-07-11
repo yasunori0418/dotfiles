@@ -6,7 +6,7 @@ localFlake:
 # where this module was imported.
 _: {
   perSystem =
-    { pkgs, ... }:
+    { inputs', pkgs, ... }:
     {
       devShells = {
         default = pkgs.mkShell {
@@ -21,7 +21,12 @@ _: {
             checkmake
             emmylua-ls
             ts_query_ls
+            # mattpocock/skills を .claude/skills/ へ配置する nput（project mode 用に pin）
+            inputs'.nput.packages.nput
           ];
+          shellHook = ''
+            nput apply skills --no-wait
+          '';
         };
       };
     };
