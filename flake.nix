@@ -54,6 +54,12 @@
         treefmt-nix.follows = "treefmt-nix";
       };
     };
+    # Claude Code 用スキル集（mattpocock/skills）。nput の project mode で
+    # .claude/skills/ へ配置するため flake=false。flake.lock が rev を pin する。
+    matt-skills = {
+      url = "github:mattpocock/skills";
+      flake = false;
+    };
   };
 
   nixConfig = {
@@ -98,11 +104,14 @@
           let
             treefmt.default = importApply ./flake-parts/treefmt.nix;
             devshell.default = importApply ./flake-parts/devshell.nix;
+            nput.default = importApply ./flake-parts/nput.nix;
           in
           [
             inputs.treefmt-nix.flakeModule
+            inputs.nput.flakeModules.default
             treefmt.default
             devshell.default
+            nput.default
           ];
         systems = import inputs.systems;
         flake =

@@ -1,0 +1,7 @@
+# ---- Nix ----
+# nix build の out-link
+result
+result-*
+
+# ---- nput 配置物（devShell の shellHook が nput apply skills で生成）----
+.claude/skills/*
