@@ -12,6 +12,7 @@ let
     selectWallpaper
     fileMap
     ;
+  inherit (pkgs) lib;
 
   # nput の symlink 配置はファイル/ディレクトリを区別しないため、file-map.nix の
   # homeDirMap/homeFileMap・xdgConfigDirMap/xdgConfigFileMap は各 1 つに統合する。
@@ -73,6 +74,32 @@ let
       subpath = "product/product-spec/agents/product-researcher.md";
     };
   };
+
+  # plugin hook スクリプト（yasunori0418/skills の hooks/scripts/<name>/main.sh）を
+  # ~/.claude/hooks/<name>/main.sh へ配置する。このマシンでは skills plugin を
+  # ローカル無効にしているため hooks/hooks.json は読まれない。代わりに cchook
+  # （~/.config/cchook/config.yaml）がこの配置済みスクリプトを use_stdin で呼ぶ。
+  # スクリプトは flake input 由来で実行ビット付き read-only のためそのまま実行可能。
+  # 二重管理を避けるため、旧 cchook/scripts 実体は廃止し本エントリを single source とする。
+  yasunoriHookEntries = builtins.listToAttrs (
+    map (hook: {
+      name = ".claude/${lib.replaceString "scripts/" "" hook}";
+      value = {
+        src = inputs.yasunori-skills;
+        subpath = hook;
+      };
+    }) [
+      # keep-sorted start
+      "hooks/scripts/askuserquestion-guard"
+      "hooks/scripts/askuserquestion-toggle"
+      "hooks/scripts/git-guard"
+      "hooks/scripts/notify-stop"
+      "hooks/scripts/precompact-note"
+      "hooks/scripts/sudo-guard"
+      "hooks/scripts/webfetch-github-guard"
+      # keep-sorted end
+    ]
+  );
 in
 {
   homeDirectory = {
@@ -100,7 +127,8 @@ in
     # keep-sorted end
   ]
   // yasunoriSkillEntries
-  // yasunoriAgentEntries;
+  // yasunoriAgentEntries
+  // yasunoriHookEntries;
 
   dotConfig = xdgConfigMap [
     # keep-sorted start
