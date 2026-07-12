@@ -12,7 +12,6 @@ let
     selectWallpaper
     fileMap
     ;
-  inherit (pkgs) lib;
 
   # nput の symlink 配置はファイル/ディレクトリを区別しないため、file-map.nix の
   # homeDirMap/homeFileMap・xdgConfigDirMap/xdgConfigFileMap は各 1 つに統合する。
@@ -83,20 +82,19 @@ let
   # 二重管理を避けるため、旧 cchook/scripts 実体は廃止し本エントリを single source とする。
   yasunoriHookEntries = builtins.listToAttrs (
     map (hook: {
-      name = ".claude/${lib.replaceString "scripts/" "" hook}";
+      name = ".claude/${hook}";
       value = {
         src = inputs.yasunori-skills;
         subpath = hook;
       };
     }) [
       # keep-sorted start
-      "hooks/scripts/askuserquestion-guard"
-      "hooks/scripts/askuserquestion-toggle"
-      "hooks/scripts/git-guard"
-      "hooks/scripts/notify-stop"
-      "hooks/scripts/precompact-note"
-      "hooks/scripts/sudo-guard"
-      "hooks/scripts/webfetch-github-guard"
+      "hooks/askuserquestion-guard"
+      "hooks/askuserquestion-toggle"
+      "hooks/git-guard"
+      "hooks/notify-stop"
+      "hooks/sudo-guard"
+      "hooks/webfetch-github-guard"
       # keep-sorted end
     ]
   );

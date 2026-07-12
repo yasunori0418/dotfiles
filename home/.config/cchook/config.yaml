@@ -10,7 +10,7 @@ PreToolUse:
   - matcher: "AskUserQuestion"
     actions:
       - type: command
-        command: $HOME/.config/cchook/scripts/askuserquestion-guard/main.sh
+        command: $HOME/.claude/hooks/askuserquestion-guard/main.sh
         use_stdin: true
   - matcher: "WebFetch"
     conditions:
@@ -32,7 +32,7 @@ PreToolUse:
         value: "git rebase"
     actions:
       - type: command
-        command: $HOME/.config/cchook/scripts/git-guard/main.sh rebase
+        command: $HOME/.claude/hooks/git-guard/main.sh rebase
         use_stdin: true
   - matcher: "Bash"
     conditions:
@@ -40,7 +40,7 @@ PreToolUse:
         value: "pull --rebase"
     actions:
       - type: command
-        command: $HOME/.config/cchook/scripts/git-guard/main.sh rebase
+        command: $HOME/.claude/hooks/git-guard/main.sh rebase
         use_stdin: true
   - matcher: "Bash"
     conditions:
@@ -48,7 +48,7 @@ PreToolUse:
         value: "git pull -r"
     actions:
       - type: command
-        command: $HOME/.config/cchook/scripts/git-guard/main.sh rebase
+        command: $HOME/.claude/hooks/git-guard/main.sh rebase
         use_stdin: true
   - matcher: "Bash"
     conditions:
@@ -56,7 +56,7 @@ PreToolUse:
         value: "git reset"
     actions:
       - type: command
-        command: $HOME/.config/cchook/scripts/git-guard/main.sh reset
+        command: $HOME/.claude/hooks/git-guard/main.sh reset
         use_stdin: true
   # raw の force push は禁止（gh-push スキル経由に限定。保護ブランチ拒否・明示 lease
   # を script 側で強制するため）。通常 push は意見なし → settings の ask へ。
@@ -66,16 +66,13 @@ PreToolUse:
         value: "git push"
     actions:
       - type: command
-        command: $HOME/.config/cchook/scripts/git-guard/main.sh push
+        command: $HOME/.claude/hooks/git-guard/main.sh push
         use_stdin: true
   - matcher: "Bash"
-    conditions:
-      - type: command_contains
-        value: "sudo"
     actions:
-      - type: output
-        message: "🚫 sudo は禁止（settings.json deny `Bash(sudo:*)`）。必要な場合はユーザーに確認を取ること。"
-        exit_status: 2
+      - type: command
+        command: $HOME/.claude/hooks/sudo-guard/main.sh
+        use_stdin: true
 
 PostToolUse:
 
@@ -87,13 +84,13 @@ UserPromptSubmit:
   # セッション単位なので同一 PC・同一プロジェクトの並行セッションには影響しない。
   - actions:
       - type: command
-        command: $HOME/.config/cchook/scripts/askuserquestion-toggle/main.sh
+        command: $HOME/.claude/hooks/askuserquestion-toggle/main.sh
         use_stdin: true
 
 Stop:
   - actions:
       - type: command
-        command: $HOME/.config/cchook/scripts/notify-stop/main.sh '{.transcript_path}'
+        command: $HOME/.claude/hooks/notify-stop/main.sh '{.transcript_path}'
 
 SubagentStop:
 
