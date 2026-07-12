@@ -73,7 +73,7 @@ in
       tmux
       tree-sitter
       typos
-      unar
+      # unar
       unzip
       usql
       zellij
@@ -203,7 +203,7 @@ in
     # keep-sorted start
     cargo
     cargo-make
-    cargo-watch
+    # cargo-watch
     clippy
     crate2nix
     rust-analyzer
