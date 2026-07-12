@@ -31,6 +31,7 @@ let
   yasunoriSkillSubpaths = [
     # keep-sorted start
     "claude/external-writes"
+    "claude/latency-triage"
     "claude/response-format"
     "claude/session-insights"
     "claude/test-targeted"
