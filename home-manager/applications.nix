@@ -291,22 +291,39 @@ in
 
     i3wmTools =
       let
-        override-bumblebee-status = pkgs.bumblebee-status.override {
-          plugins =
-            p: with p; [
-              # keep-sorted start
-              battery
-              cpu2
-              datetime
-              dunstctl
-              error
-              indicator
-              memory
-              nic
-              title
-              # keep-sorted end
-            ];
-        };
+        override-bumblebee-status =
+          (pkgs.bumblebee-status.override {
+            plugins =
+              p: with p; [
+                # keep-sorted start
+                battery
+                cpu2
+                datetime
+                dunstctl
+                error
+                indicator
+                memory
+                nic
+                title
+                # keep-sorted end
+              ];
+          }).overrideAttrs
+            (old: {
+              # Python 3.14 で setuptools が site-packages から外れ、
+              # zpool.py の `from pkg_resources import parse_version` が
+              # ModuleNotFoundError になる。checkPhase の全モジュール走査で
+              # zpool.py が import され、ビルドが失敗する。
+              # 原因の 1 行を packaging.version へ置換して回避する。
+              postPatch = (old.postPatch or "") + ''
+                substituteInPlace bumblebee_status/modules/contrib/zpool.py \
+                  --replace-fail \
+                    'from pkg_resources import parse_version' \
+                    'from packaging.version import parse as parse_version'
+              '';
+              propagatedBuildInputs = (old.propagatedBuildInputs or [ ]) ++ [
+                pkgs.python3Packages.packaging
+              ];
+            });
       in
       with pkgs;
       [
