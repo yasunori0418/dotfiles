@@ -2,10 +2,10 @@ PreToolUse:
   # AskUserQuestion をセッション単位で無効化する。remote-control 経由のスマホ/web
   # セッションでは、質問文・選択肢の文脈が選択UIの前に表示されない挙動があるため、
   # そのセッションだけテキスト質問へ倒す。判定は guard スクリプトが stdin の
-  # session_id からマーカー /tmp/cchook-no-askuserquestion.<session_id> を探し、
+  # session_id からマーカー /tmp/claude-no-askuserquestion.<session_id> を探し、
   # 有れば deny・無ければ沈黙（通常進行）する。マーカーの作成/削除は下記
   # UserPromptSubmit のトグル（プロンプトに #aq-off / #aq-on）が行う。
-  # 従来の PC 全体マーカー（/tmp/cchook-no-askuserquestion）は廃止。/tmp なので
+  # 従来の PC 全体マーカー（/tmp/claude-no-askuserquestion）は廃止。/tmp なので
   # 再起動でマーカーが消え既定（有効）へ復帰する。
   - matcher: "AskUserQuestion"
     actions:
@@ -80,7 +80,7 @@ Notification:
 
 UserPromptSubmit:
   # AskUserQuestion 無効化トグル: プロンプトに #aq-off / #aq-on を含めると、その
-  # セッションのマーカー（/tmp/cchook-no-askuserquestion.<session_id>）を作成/削除する。
+  # セッションのマーカー（/tmp/claude-no-askuserquestion.<session_id>）を作成/削除する。
   # セッション単位なので同一 PC・同一プロジェクトの並行セッションには影響しない。
   - actions:
       - type: command
