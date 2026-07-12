@@ -13,6 +13,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 - 時刻を表示・報告するときは UTC ではなく **JST(日本標準時、UTC+9)** で表記する。Datadog／CloudWatch／GitHub Actions などのログ調査結果を報告する際、タイムスタンプは全て JST に変換する(例：`2026-05-20 12:15:42 JST`)。URL内のUnixタイムスタンプはそのままで良いが、テキストで言及する時刻は必ず JST
 - GitHub(`github.com`・GitHub Enterprise)の PR・Issue・Actions(run/job ログ)・commit・diff・比較などの情報取得は、**`WebFetch` を使わず最初から `gh` コマンド経由**で行う(`gh run view --log-failed` / `gh pr view` / `gh api` 等)。cchook の PreToolUse が `github.com` への WebFetch を差し戻す設定になっているが、それは事後制御であり無駄打ちになるため、URL を渡された時点で gh に解決する
 - **コンテキスト肥大を抑制する**。調査・分析の中間結果(ログ抜粋・一覧・比較表など、後続で再参照しないもの)はコンテキストに抱え込まず、scratchpad やプロジェクトの `tmp_claude/` へファイル退避する。コンテキストが肥大した長時間セッション(目安: peak 250k 超)で別トピックの依頼が来たら、新セッションでの継続を提案する(巨大コンテキスト × opus 系は1回の思考が数分〜10分級に伸びる実測があるため)
+- **opus 系は実効コンテキスト約 150k 超で日本語出力に英語 filler が滲む**。opus-4-8 セッションで実効コンテキスト(cache_read)が約 150k トークンを超えると、日本語の文頭 filler(「さて」「では」相当)が `course、` のような英語トークンで漏出し、以降のターンで断続的に混入し続ける事象を実測済み(他モデル fable-5 / sonnet-5 では 200k〜340k でも未発生の、opus 固有の生成劣化)。上の 250k 目安より早い。**opus 使用中は 150k 到達を目安に、中間成果をファイル退避のうえ新セッションへ切り替える**。混入に気づいたら `/model` で sonnet-5 / fable-5 へ替えるかセッションを畳む(fast mode の有無は無関係。standard で発生する)
 - **2分を超える見込みの重いコマンドは打ち切らせない**。nix ビルド(`nix build`・`nixos-rebuild`・`home-manager switch`)・プロジェクト全体テストなどは、Bash の `run_in_background: true` で実行して完了を待つか、`timeout` を明示的に延長する。既定2分タイムアウト(Exit 143)による作業中断を避ける
 
 ## symlink 運用(home-manager + dotfiles)
