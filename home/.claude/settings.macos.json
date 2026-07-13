@@ -172,13 +172,14 @@
       }
     }
   },
+  "outputStyle": "karakuchi",
   "alwaysThinkingEnabled": false,
   "effortLevel": "xhigh",
   "promptSuggestionEnabled": false,
   "showClearContextOnPlanAccept": true,
   "askUserQuestionTimeout": "never",
-  "outputStyle": "karakuchi",
   "tui": "default",
+  "skipWorkflowUsageWarning": true,
   "editorMode": "vim",
   "verbose": true,
   "preferredNotifChannel": "ghostty",
