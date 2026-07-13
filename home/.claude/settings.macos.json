@@ -31,7 +31,8 @@
       "TodoWrite",
       "ToolSearch",
       "WebSearch",
-      "Write"
+      "Write",
+      "mcp__notion__notion-fetch"
     ],
     "deny": [
       "Bash(sudo:*)",
