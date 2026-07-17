@@ -12,6 +12,12 @@ PreToolUse:
       - type: command
         command: $HOME/.claude/hooks/askuserquestion-guard/main.sh
         use_stdin: true
+      # AskUserQuestion 発火時にデスクトップ通知（remote-control 経由などで選択 UI に
+      # 気づかず回答が遅れるのを防ぐ）。notify 側で #aq-off マーカーを見て自己抑制する
+      # ので guard との順序依存はない。use_stdin 必須（main.sh は stdin から JSON を読む）。
+      - type: command
+        command: $HOME/.claude/hooks/askuserquestion-notify/main.sh
+        use_stdin: true
   - matcher: "WebFetch"
     conditions:
       - type: url_starts_with
