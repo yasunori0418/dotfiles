@@ -96,7 +96,8 @@ UserPromptSubmit:
 Stop:
   - actions:
       - type: command
-        command: $HOME/.claude/hooks/notify-stop/main.sh '{.transcript_path}'
+        command: $HOME/.claude/hooks/notify-stop/main.sh
+        use_stdin: true
 
 SubagentStop:
 
