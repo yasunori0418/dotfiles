@@ -81,22 +81,24 @@ let
   # スクリプトは flake input 由来で実行ビット付き read-only のためそのまま実行可能。
   # 二重管理を避けるため、旧 cchook/scripts 実体は廃止し本エントリを single source とする。
   yasunoriHookEntries = builtins.listToAttrs (
-    map (hook: {
-      name = ".claude/${hook}";
-      value = {
-        src = inputs.yasunori-skills;
-        subpath = hook;
-      };
-    }) [
-      # keep-sorted start
-      "hooks/askuserquestion-guard"
-      "hooks/askuserquestion-toggle"
-      "hooks/git-guard"
-      "hooks/notify-stop"
-      "hooks/sudo-guard"
-      "hooks/webfetch-github-guard"
-      # keep-sorted end
-    ]
+    map
+      (hook: {
+        name = ".claude/${hook}";
+        value = {
+          src = inputs.yasunori-skills;
+          subpath = hook;
+        };
+      })
+      [
+        # keep-sorted start
+        "hooks/askuserquestion-guard"
+        "hooks/askuserquestion-toggle"
+        "hooks/git-guard"
+        "hooks/notify-stop"
+        "hooks/sudo-guard"
+        "hooks/webfetch-github-guard"
+        # keep-sorted end
+      ]
   );
 in
 {
