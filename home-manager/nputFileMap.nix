@@ -30,11 +30,9 @@ let
   # push + `nix flake update yasunori-skills` + switch で反映する。
   yasunoriSkillSubpaths = [
     # keep-sorted start
-    "skills/claude/external-writes"
     "skills/claude/latency-triage"
     "skills/claude/response-format"
     "skills/claude/session-insights"
-    "skills/claude/test-targeted"
     "skills/claude/tmp-output"
     "skills/git/commit-flow"
     "skills/git/diff-review"
@@ -49,6 +47,8 @@ let
     "skills/nix/nix-devenv"
     "skills/product/biz-translate"
     "skills/product/product-spec"
+    "skills/workflow/external-writes"
+    "skills/workflow/test-targeted"
     # keep-sorted end
   ];
   yasunoriSkillEntries = builtins.listToAttrs (
