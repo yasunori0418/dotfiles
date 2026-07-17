@@ -92,6 +92,7 @@ let
       [
         # keep-sorted start
         "hooks/askuserquestion-guard"
+        "hooks/askuserquestion-notify"
         "hooks/askuserquestion-toggle"
         "hooks/git-guard"
         "hooks/notify-stop"
