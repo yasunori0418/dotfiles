@@ -83,18 +83,18 @@ let
   #
   # 配置先 name は常に .claude/hooks/<name>（cchook が参照するパス）で固定し、
   # subpath だけがリポジトリ内の実体パスを指す。upstream の skills 再構成で
-  # 汎用 hook は hooks/<name>、skill 連動 hook は skills/<category>/hooks/<name>
-  # へ分かれたため、<hook 名> = <subpath> の attrset で持つ（keep-sorted が 1 行 =
-  # 1 要素でソートできる形）。
+  # 汎用 hook は hook 単位のプラグイン hooks/<plugin>/hooks/<name>、skill 連動
+  # hook は skills/<category>/hooks/<name> へ分かれたため、<hook 名> = <subpath>
+  # の attrset で持つ（keep-sorted が 1 行 = 1 要素でソートできる形）。
   yasunoriHookSubpaths = {
     # keep-sorted start
-    askuserquestion-guard = "hooks/askuserquestion-guard";
-    askuserquestion-notify = "hooks/askuserquestion-notify";
-    askuserquestion-toggle = "hooks/askuserquestion-toggle";
+    askuserquestion-guard = "hooks/askuserquestion/hooks/askuserquestion-guard";
+    askuserquestion-notify = "hooks/askuserquestion/hooks/askuserquestion-notify";
+    askuserquestion-toggle = "hooks/askuserquestion/hooks/askuserquestion-toggle";
     git-guard = "skills/git/hooks/git-guard";
-    notify-stop = "hooks/notify-stop";
-    sudo-guard = "hooks/sudo-guard";
-    webfetch-github-guard = "hooks/webfetch-github-guard";
+    notify-stop = "hooks/notify-stop-plugin/hooks/notify-stop";
+    sudo-guard = "hooks/sudo-guard-plugin/hooks/sudo-guard";
+    webfetch-github-guard = "hooks/webfetch-github-guard-plugin/hooks/webfetch-github-guard";
     # keep-sorted end
   };
   yasunoriHookEntries = builtins.listToAttrs (
