@@ -25,30 +25,30 @@ let
   };
 
   # yasunori0418/skills（flake input）から Claude Code のスキルを ~/.claude/skills/<name> へ
-  # 配置する。リポジトリは <category>/<skill-name> 構成のため subpath を明示列挙する。
+  # 配置する。リポジトリは skills/<category>/<skill-name> 構成のため subpath を明示列挙する。
   # スキルの実体編集は ~/src/github.com/yasunori0418/skills 側で行い、
   # push + `nix flake update yasunori-skills` + switch で反映する。
   yasunoriSkillSubpaths = [
     # keep-sorted start
-    "claude/external-writes"
-    "claude/latency-triage"
-    "claude/response-format"
-    "claude/session-insights"
-    "claude/test-targeted"
-    "claude/tmp-output"
-    "git/commit-flow"
-    "git/diff-review"
-    "git/parallel-worktree"
-    "git/rebase-flow"
-    "git/reset-flow"
-    "github/gh-ci-investigate"
-    "github/gh-fetch"
-    "github/gh-push"
-    "github/pr-create"
-    "nix/nix-cache-check"
-    "nix/nix-devenv"
-    "product/biz-translate"
-    "product/product-spec"
+    "skills/claude/external-writes"
+    "skills/claude/latency-triage"
+    "skills/claude/response-format"
+    "skills/claude/session-insights"
+    "skills/claude/test-targeted"
+    "skills/claude/tmp-output"
+    "skills/git/commit-flow"
+    "skills/git/diff-review"
+    "skills/git/parallel-worktree"
+    "skills/git/rebase-flow"
+    "skills/git/reset-flow"
+    "skills/github/gh-ci-investigate"
+    "skills/github/gh-fetch"
+    "skills/github/gh-push"
+    "skills/github/pr-create"
+    "skills/nix/nix-cache-check"
+    "skills/nix/nix-devenv"
+    "skills/product/biz-translate"
+    "skills/product/product-spec"
     # keep-sorted end
   ];
   yasunoriSkillEntries = builtins.listToAttrs (
@@ -66,40 +66,47 @@ let
   yasunoriAgentEntries = {
     ".claude/agents/diff-reviewer.md" = {
       src = inputs.yasunori-skills;
-      subpath = "git/diff-review/agents/diff-reviewer.md";
+      subpath = "skills/git/diff-review/agents/diff-reviewer.md";
     };
     ".claude/agents/product-researcher.md" = {
       src = inputs.yasunori-skills;
-      subpath = "product/product-spec/agents/product-researcher.md";
+      subpath = "skills/product/product-spec/agents/product-researcher.md";
     };
   };
 
-  # plugin hook スクリプト（yasunori0418/skills の hooks/scripts/<name>/main.sh）を
+  # plugin hook スクリプト（yasunori0418/skills の <subpath>/main.sh）を
   # ~/.claude/hooks/<name>/main.sh へ配置する。このマシンでは skills plugin を
   # ローカル無効にしているため hooks/hooks.json は読まれない。代わりに cchook
   # （~/.config/cchook/config.yaml）がこの配置済みスクリプトを use_stdin で呼ぶ。
   # スクリプトは flake input 由来で実行ビット付き read-only のためそのまま実行可能。
   # 二重管理を避けるため、旧 cchook/scripts 実体は廃止し本エントリを single source とする。
+  #
+  # 配置先 name は常に .claude/hooks/<name>（cchook が参照するパス）で固定し、
+  # subpath だけがリポジトリ内の実体パスを指す。upstream の skills 再構成で
+  # 汎用 hook は hooks/<name>、skill 連動 hook は skills/<category>/hooks/<name>
+  # へ分かれたため、<hook 名> = <subpath> の attrset で持つ（keep-sorted が 1 行 =
+  # 1 要素でソートできる形）。
+  yasunoriHookSubpaths = {
+    # keep-sorted start
+    askuserquestion-guard = "hooks/askuserquestion-guard";
+    askuserquestion-notify = "hooks/askuserquestion-notify";
+    askuserquestion-toggle = "hooks/askuserquestion-toggle";
+    git-guard = "skills/git/hooks/git-guard";
+    notify-stop = "hooks/notify-stop";
+    sudo-guard = "hooks/sudo-guard";
+    webfetch-github-guard = "hooks/webfetch-github-guard";
+    # keep-sorted end
+  };
   yasunoriHookEntries = builtins.listToAttrs (
-    map
-      (hook: {
-        name = ".claude/${hook}";
+    builtins.attrValues (
+      builtins.mapAttrs (hookName: subpath: {
+        name = ".claude/hooks/${hookName}";
         value = {
           src = inputs.yasunori-skills;
-          subpath = hook;
+          inherit subpath;
         };
-      })
-      [
-        # keep-sorted start
-        "hooks/askuserquestion-guard"
-        "hooks/askuserquestion-notify"
-        "hooks/askuserquestion-toggle"
-        "hooks/git-guard"
-        "hooks/notify-stop"
-        "hooks/sudo-guard"
-        "hooks/webfetch-github-guard"
-        # keep-sorted end
-      ]
+      }) yasunoriHookSubpaths
+    )
   );
 in
 {
