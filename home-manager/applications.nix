@@ -25,6 +25,7 @@ in
   nixTools = with pkgs; [
     # keep-sorted start
     cachix
+    nh
     nix-direnv
     nix-output-monitor
     nix-search-cli
