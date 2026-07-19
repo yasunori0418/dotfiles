@@ -190,6 +190,5 @@
   "verbose": true,
   "preferredNotifChannel": "ghostty",
   "teammateMode": "auto",
-  "agentPushNotifEnabled": true,
-  "model": "claude-fable-5[1m]"
+  "agentPushNotifEnabled": true
 }
