@@ -175,7 +175,7 @@
   },
   "outputStyle": "karakuchi",
   "alwaysThinkingEnabled": false,
-  "effortLevel": "xhigh",
+  "effortLevel": "high",
   "promptSuggestionEnabled": false,
   "showClearContextOnPlanAccept": true,
   "askUserQuestionTimeout": "never",
