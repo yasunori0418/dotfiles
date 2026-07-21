@@ -31,9 +31,9 @@ let
   yasunoriSkillSubpaths = [
     # keep-sorted start
     "skills/claude/latency-triage"
+    "skills/claude/project-session"
     "skills/claude/response-format"
     "skills/claude/session-insights"
-    "skills/claude/project-session"
     "skills/claude/tmp-output"
     "skills/git/commit-flow"
     "skills/git/diff-review"
