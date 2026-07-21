@@ -184,5 +184,6 @@
   "editorMode": "vim",
   "verbose": true,
   "preferredNotifChannel": "ghostty",
-  "teammateMode": "auto"
+  "teammateMode": "auto",
+  "model": "claude-opus-4-7"
 }
