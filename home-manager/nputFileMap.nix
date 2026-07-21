@@ -48,6 +48,13 @@ let
     "skills/nix/nix-devenv"
     "skills/product/biz-translate"
     "skills/product/product-spec"
+    "skills/testing/test-analyze"
+    "skills/testing/test-design"
+    "skills/testing/test-execute"
+    "skills/testing/test-implement"
+    "skills/testing/test-monitor"
+    "skills/testing/test-plan"
+    "skills/testing/test-report"
     "skills/workflow/external-writes"
     "skills/workflow/test-targeted"
     # keep-sorted end
