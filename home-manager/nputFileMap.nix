@@ -44,10 +44,10 @@ let
     "skills/github/gh-fetch"
     "skills/github/gh-push"
     "skills/github/pr-create"
-    "skills/nix/nix-cache-check"
+    # "skills/nix/nix-cache-check"
     "skills/nix/nix-devenv"
     "skills/product/biz-translate"
-    "skills/product/product-spec"
+    # "skills/product/product-spec"
     "skills/testing/test-analyze"
     "skills/testing/test-design"
     "skills/testing/test-execute"
@@ -76,10 +76,10 @@ let
       src = inputs.yasunori-skills;
       subpath = "skills/git/diff-review/agents/diff-reviewer.md";
     };
-    ".claude/agents/product-researcher.md" = {
-      src = inputs.yasunori-skills;
-      subpath = "skills/product/product-spec/agents/product-researcher.md";
-    };
+    # ".claude/agents/product-researcher.md" = {
+    #   src = inputs.yasunori-skills;
+    #   subpath = "skills/product/product-spec/agents/product-researcher.md";
+    # };
   };
 
   # plugin hook スクリプト（yasunori0418/skills の <subpath>/main.sh）を
