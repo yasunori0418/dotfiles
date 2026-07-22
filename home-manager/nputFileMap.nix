@@ -69,6 +69,20 @@ let
     }) yasunoriSkillSubpaths
   );
 
+  mattpocockSkillSubPaths = [
+    "productivity/grilling"
+    "productivity/handoff"
+  ];
+  mattpocockSkillEntries = builtins.listToAttrs (
+    map (p: {
+      name = ".claude/skills/${baseNameOf p}";
+      value = {
+        src = inputs.matt-skills;
+        subpath = p;
+      };
+    }) mattpocockSkillSubPaths
+  );
+
   # per-skill 配置のワーカーサブエージェント（diff-review / product-spec 用）を
   # ~/.claude/agents/<name>.md へ配置する。
   yasunoriAgentEntries = {
@@ -142,6 +156,7 @@ in
     "bin"
     # keep-sorted end
   ]
+  // mattpocockSkillEntries
   // yasunoriSkillEntries
   // yasunoriAgentEntries
   // yasunoriHookEntries;
