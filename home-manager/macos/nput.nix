@@ -21,7 +21,6 @@ let
     inherit
       inputs
       pkgs
-      myNurPkgs
       mkOutOfStoreSymlink
       ;
     homeDir = toString homeDir;

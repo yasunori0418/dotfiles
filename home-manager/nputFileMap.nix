@@ -1,7 +1,6 @@
 {
   inputs,
   pkgs,
-  myNurPkgs,
   homeDir,
   xdgConfigHome,
   mkOutOfStoreSymlink,
@@ -13,6 +12,8 @@ let
     fileMap
     ;
 
+  inherit (pkgs) lib;
+
   # nput の symlink 配置はファイル/ディレクトリを区別しないため、file-map.nix の
   # homeDirMap/homeFileMap・xdgConfigDirMap/xdgConfigFileMap は各 1 つに統合する。
   homeMap = fileMap {
@@ -23,6 +24,18 @@ let
     dist = ".config";
     src = xdgConfigHome;
   };
+
+  # treesitter パーサーを nixpkgs（dotfiles 自身の pin）の
+  # vimPlugins.nvim-treesitter-parsers から symlinkJoin で束ねる。
+  # クエリは dpp 管理の nvim-treesitter checkout 側を使う
+  # （hooks/treesitter.lua の initialize() が install_dir へ symlink）ため配置しない。
+  # パーサーの更新は `nix flake update nixpkgs` + switch。
+  nvimTreesitterParsers =
+    parsers:
+    pkgs.symlinkJoin {
+      name = "nvim-treesitter-parsers";
+      paths = map (parser: pkgs.vimPlugins.nvim-treesitter-parsers.${parser}) parsers;
+    };
 
   # yasunori0418/skills（flake input）から Claude Code のスキルを ~/.claude/skills/<name> へ
   # 配置する。リポジトリは skills/<category>/<skill-name> 構成のため subpath を明示列挙する。
@@ -211,7 +224,7 @@ in
   # symlink ではなく store-backed src（derivation + subpath）で配置する。
   dotLocalShare = {
     ".local/share/nvim/treesitter/parser" = {
-      src = myNurPkgs.nvim-treesitter-parsers [
+      src = nvimTreesitterParsers [
         # keep-sorted start
         "bash"
         "comment"
