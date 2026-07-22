@@ -30,7 +30,7 @@ let
   # push + `nix flake update yasunori-skills` + switch で反映する。
   yasunoriSkillSubpaths = [
     # keep-sorted start
-    "skills/claude/latency-triage"
+    # "skills/claude/latency-triage"
     "skills/claude/project-session"
     "skills/claude/response-format"
     "skills/claude/session-insights"
