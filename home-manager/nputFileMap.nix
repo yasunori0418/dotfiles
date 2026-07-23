@@ -37,64 +37,71 @@ let
       paths = map (parser: pkgs.vimPlugins.nvim-treesitter-parsers.${parser}) parsers;
     };
 
-  # yasunori0418/skills（flake input）から Claude Code のスキルを ~/.claude/skills/<name> へ
-  # 配置する。リポジトリは skills/<category>/<skill-name> 構成のため subpath を明示列挙する。
-  # スキルの実体編集は ~/src/github.com/yasunori0418/skills 側で行い、
-  # push + `nix flake update yasunori-skills` + switch で反映する。
-  yasunoriSkillSubpaths = [
-    # keep-sorted start
-    # "skills/claude/latency-triage"
-    "skills/claude/project-session"
-    "skills/claude/response-format"
-    "skills/claude/session-insights"
-    "skills/claude/tmp-output"
-    "skills/git/commit-flow"
-    "skills/git/diff-review"
-    "skills/git/parallel-worktree"
-    "skills/git/rebase-flow"
-    "skills/git/reset-flow"
-    "skills/github/gh-ci-investigate"
-    "skills/github/gh-fetch"
-    "skills/github/gh-push"
-    "skills/github/pr-create"
-    # "skills/nix/nix-cache-check"
-    "skills/nix/nix-devenv"
-    "skills/product/biz-translate"
-    # "skills/product/product-spec"
-    "skills/testing/test-analyze"
-    "skills/testing/test-design"
-    "skills/testing/test-execute"
-    "skills/testing/test-implement"
-    "skills/testing/test-monitor"
-    "skills/testing/test-plan"
-    "skills/testing/test-report"
-    "skills/workflow/external-writes"
-    "skills/workflow/test-targeted"
-    # keep-sorted end
-  ];
-  yasunoriSkillEntries = builtins.listToAttrs (
-    map (p: {
-      name = ".claude/skills/${baseNameOf p}";
-      value = {
-        src = inputs.yasunori-skills;
-        subpath = p;
-      };
-    }) yasunoriSkillSubpaths
-  );
+  yasunoriSkillEntries =
+    lib.pipe
+      [
+        # keep-sorted start
+        # "skills/claude/latency-triage"
+        "skills/claude/project-session"
+        "skills/claude/response-format"
+        "skills/claude/session-insights"
+        "skills/claude/tmp-output"
+        "skills/git/commit-flow"
+        "skills/git/diff-review"
+        "skills/git/parallel-worktree"
+        "skills/git/rebase-flow"
+        "skills/git/reset-flow"
+        "skills/github/gh-ci-investigate"
+        "skills/github/gh-fetch"
+        "skills/github/gh-push"
+        "skills/github/pr-create"
+        "skills/learning/navigating"
+        "skills/learning/quizzing"
+        "skills/learning/tutoring"
+        # "skills/nix/nix-cache-check"
+        "skills/nix/nix-devenv"
+        "skills/product/biz-translate"
+        # "skills/product/product-spec"
+        "skills/testing/test-analyze"
+        "skills/testing/test-design"
+        "skills/testing/test-execute"
+        "skills/testing/test-implement"
+        "skills/testing/test-monitor"
+        "skills/testing/test-plan"
+        "skills/testing/test-report"
+        "skills/workflow/external-writes"
+        "skills/workflow/test-targeted"
+        # keep-sorted end
+      ]
+      [
+        (map (p: {
+          name = ".claude/skills/${baseNameOf p}";
+          value = {
+            src = inputs.yasunori-skills;
+            subpath = p;
+          };
+        }))
+        builtins.listToAttrs
+      ];
 
-  mattpocockSkillSubPaths = [
-    "productivity/grilling"
-    "productivity/handoff"
-  ];
-  mattpocockSkillEntries = builtins.listToAttrs (
-    map (p: {
-      name = ".claude/skills/${baseNameOf p}";
-      value = {
-        src = inputs.matt-skills;
-        subpath = p;
-      };
-    }) mattpocockSkillSubPaths
-  );
+  mattpocockSkillEntries =
+    lib.pipe
+      [
+        # keep-sorted start
+        "productivity/grilling"
+        "productivity/handoff"
+        # keep-sorted end
+      ]
+      [
+        (map (p: {
+          name = ".claude/skills/${baseNameOf p}";
+          value = {
+            src = inputs.matt-skills;
+            subpath = p;
+          };
+        }))
+        builtins.listToAttrs
+      ];
 
   # per-skill 配置のワーカーサブエージェント（diff-review / product-spec 用）を
   # ~/.claude/agents/<name>.md へ配置する。
@@ -109,18 +116,6 @@ let
     # };
   };
 
-  # plugin hook スクリプト（yasunori0418/skills の <subpath>/main.sh）を
-  # ~/.claude/hooks/<name>/main.sh へ配置する。このマシンでは skills plugin を
-  # ローカル無効にしているため hooks/hooks.json は読まれない。代わりに cchook
-  # （~/.config/cchook/config.yaml）がこの配置済みスクリプトを use_stdin で呼ぶ。
-  # スクリプトは flake input 由来で実行ビット付き read-only のためそのまま実行可能。
-  # 二重管理を避けるため、旧 cchook/scripts 実体は廃止し本エントリを single source とする。
-  #
-  # 配置先 name は常に .claude/hooks/<name>（cchook が参照するパス）で固定し、
-  # subpath だけがリポジトリ内の実体パスを指す。upstream の skills 再構成で
-  # 汎用 hook は hook 単位のプラグイン hooks/<plugin>/hooks/<name>、skill 連動
-  # hook は skills/<category>/hooks/<name> へ分かれたため、<hook 名> = <subpath>
-  # の attrset で持つ（keep-sorted が 1 行 = 1 要素でソートできる形）。
   yasunoriHookSubpaths = {
     # keep-sorted start
     askuserquestion-guard = "hooks/askuserquestion/hooks/askuserquestion-guard";
@@ -132,17 +127,13 @@ let
     webfetch-github-guard = "hooks/webfetch-github-guard-plugin/hooks/webfetch-github-guard";
     # keep-sorted end
   };
-  yasunoriHookEntries = builtins.listToAttrs (
-    builtins.attrValues (
-      builtins.mapAttrs (hookName: subpath: {
-        name = ".claude/hooks/${hookName}";
-        value = {
-          src = inputs.yasunori-skills;
-          inherit subpath;
-        };
-      }) yasunoriHookSubpaths
-    )
-  );
+  yasunoriHookEntries = lib.mapAttrs' (hookName: subpath: {
+    name = ".claude/hooks/${hookName}";
+    value = {
+      src = inputs.yasunori-skills;
+      inherit subpath;
+    };
+  }) yasunoriHookSubpaths;
 in
 {
   homeDirectory = {
