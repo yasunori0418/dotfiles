@@ -47,6 +47,7 @@ let
         "skills/claude/session-insights"
         "skills/claude/tmp-output"
         "skills/git/commit-flow"
+        "skills/git/commit-plan"
         "skills/git/diff-review"
         "skills/git/parallel-worktree"
         "skills/git/rebase-flow"
