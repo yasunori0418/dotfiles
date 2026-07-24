@@ -315,11 +315,26 @@ in
               # ModuleNotFoundError になる。checkPhase の全モジュール走査で
               # zpool.py が import され、ビルドが失敗する。
               # 原因の 1 行を packaging.version へ置換して回避する。
+              #
+              # 併せて setup.py の versioneer.get_version() を固定文字列に置換する。
+              # 上流は versioneer で git tag から version を取得するが、fetchFromGitHub の
+              # tarball には .git が無く `0+unknown` になる。新しい pythonMetadataCheckPhase が
+              # derivation の version ("2.2.0") と METADATA の version の不一致を検出して失敗する。
+              # pyproject.toml が存在しないため pyprojectVersionPatchHook は使えないので
+              # setup.py を直接パッチする。
               postPatch = (old.postPatch or "") + ''
                 substituteInPlace bumblebee_status/modules/contrib/zpool.py \
                   --replace-fail \
                     'from pkg_resources import parse_version' \
                     'from packaging.version import parse as parse_version'
+
+                substituteInPlace setup.py \
+                  --replace-fail \
+                    'version=versioneer.get_version(),' \
+                    'version="${old.version}",' \
+                  --replace-fail \
+                    'cmdclass=versioneer.get_cmdclass(),' \
+                    ""
               '';
               propagatedBuildInputs = (old.propagatedBuildInputs or [ ]) ++ [
                 pkgs.python3Packages.packaging
