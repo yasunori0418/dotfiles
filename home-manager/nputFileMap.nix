@@ -212,6 +212,7 @@ in
     "sheldon"
     "shellcheckrc"
     "sqls"
+    "tirith"
     "tmux"
     "typos"
     "vim"
