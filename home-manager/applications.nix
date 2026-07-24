@@ -173,7 +173,7 @@ in
     ccusage
     claude-code-by-ryoppippi
     # codex
-    goose-cli
+    # goose-cli
     myNurPkgs.cchook
     # claude-code # use `github:ryoppippi/claude-code-overlay`
     # keep-sorted end
