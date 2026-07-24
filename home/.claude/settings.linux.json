@@ -1,15 +1,153 @@
 {
   "$schema": "https://json.schemastore.org/claude-code-settings.json",
+  "agentPushNotifEnabled": true,
+  "alwaysThinkingEnabled": false,
+  "askUserQuestionTimeout": "never",
   "cleanupPeriodDays": 876000,
+  "editorMode": "vim",
+  "effortLevel": "high",
+  "enableAllProjectMcpServers": true,
+  "enabledPlugins": {
+    "document-skills@anthropic-agent-skills": true,
+    "example-skills@anthropic-agent-skills": true,
+    "gopls-lsp@claude-plugins-official": true,
+    "plugin-dev@claude-plugins-official": true,
+    "pyright-lsp@claude-plugins-official": true,
+    "rust-analyzer-lsp@claude-plugins-official": true,
+    "typescript-lsp@claude-plugins-official": true,
+    "worktrunk@worktrunk": true,
+    "yasunori0418-skills@yasunori0418-skills": false
+  },
   "env": {
-    "DISABLE_ERROR_REPORTING": "1",
-    "DISABLE_BUG_COMMAND": "1",
-    "ENABLE_TOOL_SEARCH": "true",
-    "DISABLE_AUTOUPDATER": "1",
+    "CLAUDE_CODE_DISABLE_FEEDBACK_SURVEY": "1",
     "CLAUDE_CODE_EXPERIMENTAL_AGENT_TEAMS": "1",
-    "CLAUDE_CODE_DISABLE_FEEDBACK_SURVEY": "1"
+    "DISABLE_AUTOUPDATER": "1",
+    "DISABLE_BUG_COMMAND": "1",
+    "DISABLE_ERROR_REPORTING": "1",
+    "ENABLE_TOOL_SEARCH": "true"
+  },
+  "extraKnownMarketplaces": {
+    "anthropic-agent-skills": {
+      "source": {
+        "repo": "anthropics/skills",
+        "source": "github"
+      }
+    },
+    "worktrunk": {
+      "source": {
+        "repo": "max-sixty/worktrunk",
+        "source": "github"
+      }
+    },
+    "yasunori0418-skills": {
+      "source": {
+        "path": "/home/yasunori/src/github.com/yasunori0418/skills",
+        "source": "directory"
+      }
+    }
+  },
+  "hooks": {
+    "Notification": [
+      {
+        "hooks": [
+          {
+            "command": "cchook -event Notification",
+            "type": "command"
+          }
+        ]
+      }
+    ],
+    "PostToolUse": [
+      {
+        "hooks": [
+          {
+            "command": "cchook -event PostToolUse",
+            "type": "command"
+          }
+        ]
+      }
+    ],
+    "PreCompact": [
+      {
+        "hooks": [
+          {
+            "command": "cchook -event PreCompact",
+            "type": "command"
+          }
+        ]
+      }
+    ],
+    "PreToolUse": [
+      {
+        "hooks": [
+          {
+            "command": "cchook -event PreToolUse",
+            "type": "command"
+          }
+        ]
+      },
+      {
+        "hooks": [
+          {
+            "command": "python3 \"$HOME/.claude/hooks/tirith-check.py\"",
+            "type": "command"
+          }
+        ],
+        "matcher": "Bash"
+      }
+    ],
+    "SessionEnd": [
+      {
+        "hooks": [
+          {
+            "command": "cchook -event SessionEnd",
+            "type": "command"
+          }
+        ]
+      }
+    ],
+    "SessionStart": [
+      {
+        "hooks": [
+          {
+            "command": "cchook -event SessionStart",
+            "type": "command"
+          }
+        ]
+      }
+    ],
+    "Stop": [
+      {
+        "hooks": [
+          {
+            "command": "cchook -event Stop",
+            "type": "command"
+          }
+        ]
+      }
+    ],
+    "SubagentStop": [
+      {
+        "hooks": [
+          {
+            "command": "cchook -event SubagentStop",
+            "type": "command"
+          }
+        ]
+      }
+    ]
   },
   "includeCoAuthoredBy": false,
+  "mcpServers": {
+    "tirith": {
+      "args": [
+        "mcp-server"
+      ],
+      "command": "tirith"
+    }
+  },
+  "model": "claude-opus-4-7",
+  "outputStyle": "karakuchi",
   "permissions": {
     "allow": [
       "Bash",
@@ -32,19 +170,6 @@
       "WebSearch",
       "Write"
     ],
-    "deny": [
-      "Bash(sudo:*)",
-      "Bash(aws:*)",
-      "Read(.env.*)",
-      "Read(id_rsa)",
-      "Read(id_ed25519)",
-      "Read(**/*token*)",
-      "Edit(.env*)",
-      "Edit(**/secrets/**)",
-      "Bash(nc:*)",
-      "Bash(npm uninstall:*)",
-      "Bash(npm remove:*)"
-    ],
     "ask": [
       "Bash(git push:*)",
       "Bash(git reset:*)",
@@ -58,138 +183,30 @@
       "Bash(mysql:*)",
       "Bash(mongod:*)"
     ],
-    "defaultMode": "acceptEdits"
-  },
-  "enableAllProjectMcpServers": true,
-  "hooks": {
-    "PreToolUse": [
-      {
-        "hooks": [
-          {
-            "type": "command",
-            "command": "cchook -event PreToolUse"
-          }
-        ]
-      }
-    ],
-    "PostToolUse": [
-      {
-        "hooks": [
-          {
-            "type": "command",
-            "command": "cchook -event PostToolUse"
-          }
-        ]
-      }
-    ],
-    "Stop": [
-      {
-        "hooks": [
-          {
-            "type": "command",
-            "command": "cchook -event Stop"
-          }
-        ]
-      }
-    ],
-    "SubagentStop": [
-      {
-        "hooks": [
-          {
-            "type": "command",
-            "command": "cchook -event SubagentStop"
-          }
-        ]
-      }
-    ],
-    "Notification": [
-      {
-        "hooks": [
-          {
-            "type": "command",
-            "command": "cchook -event Notification"
-          }
-        ]
-      }
-    ],
-    "PreCompact": [
-      {
-        "hooks": [
-          {
-            "type": "command",
-            "command": "cchook -event PreCompact"
-          }
-        ]
-      }
-    ],
-    "SessionStart": [
-      {
-        "hooks": [
-          {
-            "type": "command",
-            "command": "cchook -event SessionStart"
-          }
-        ]
-      }
-    ],
-    "SessionEnd": [
-      {
-        "hooks": [
-          {
-            "type": "command",
-            "command": "cchook -event SessionEnd"
-          }
-        ]
-      }
+    "defaultMode": "acceptEdits",
+    "deny": [
+      "Bash(sudo:*)",
+      "Bash(aws:*)",
+      "Read(.env.*)",
+      "Read(id_rsa)",
+      "Read(id_ed25519)",
+      "Read(**/*token*)",
+      "Edit(.env*)",
+      "Edit(**/secrets/**)",
+      "Bash(nc:*)",
+      "Bash(npm uninstall:*)",
+      "Bash(npm remove:*)"
     ]
   },
-  "statusLine": {
-    "type": "command",
-    "command": "bunx ccusage statusline",
-    "padding": 0
-  },
-  "enabledPlugins": {
-    "rust-analyzer-lsp@claude-plugins-official": true,
-    "typescript-lsp@claude-plugins-official": true,
-    "pyright-lsp@claude-plugins-official": true,
-    "example-skills@anthropic-agent-skills": true,
-    "document-skills@anthropic-agent-skills": true,
-    "worktrunk@worktrunk": true,
-    "gopls-lsp@claude-plugins-official": true,
-    "plugin-dev@claude-plugins-official": true,
-    "yasunori0418-skills@yasunori0418-skills": false
-  },
-  "extraKnownMarketplaces": {
-    "anthropic-agent-skills": {
-      "source": {
-        "source": "github",
-        "repo": "anthropics/skills"
-      }
-    },
-    "worktrunk": {
-      "source": {
-        "source": "github",
-        "repo": "max-sixty/worktrunk"
-      }
-    },
-    "yasunori0418-skills": {
-      "source": {
-        "source": "directory",
-        "path": "/home/yasunori/src/github.com/yasunori0418/skills"
-      }
-    }
-  },
-  "outputStyle": "karakuchi",
-  "alwaysThinkingEnabled": false,
-  "effortLevel": "high",
+  "preferredNotifChannel": "ghostty",
   "promptSuggestionEnabled": false,
   "showClearContextOnPlanAccept": true,
-  "askUserQuestionTimeout": "never",
-  "tui": "default",
-  "editorMode": "vim",
-  "verbose": true,
-  "preferredNotifChannel": "ghostty",
+  "statusLine": {
+    "command": "bunx ccusage statusline",
+    "padding": 0,
+    "type": "command"
+  },
   "teammateMode": "auto",
-  "agentPushNotifEnabled": true,
-  "model": "claude-opus-4-7"
+  "tui": "default",
+  "verbose": true
 }
