@@ -1153,6 +1153,7 @@
         "nixpkgs-stable": "nixpkgs-stable",
         "nput": "nput",
         "systems": "systems_5",
+        "tirith": "tirith",
         "treefmt-nix": "treefmt-nix_4",
         "xremap-flake": "xremap-flake",
         "yasunori-nur": "yasunori-nur",
@@ -1264,6 +1265,22 @@
       "original": {
         "owner": "nix-systems",
         "repo": "default",
+        "type": "github"
+      }
+    },
+    "tirith": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1784789867,
+        "narHash": "sha256-Z0WVFLBcsgvpFTAApesPJt16ccOkTTt0duEFnZVY7nE=",
+        "owner": "sheeki03",
+        "repo": "tirith",
+        "rev": "beedfb9919be1d1e28a06561549f629d48ec570c",
+        "type": "github"
+      },
+      "original": {
+        "owner": "sheeki03",
+        "repo": "tirith",
         "type": "github"
       }
     },

@@ -66,6 +66,13 @@
       url = "github:yasunori0418/skills";
       flake = false;
     };
+    # tirith 公式リポジトリ。crates/tirith/assets/hooks/tirith-check.py を
+    # nput 経由で ~/.claude/hooks/tirith/tirith-check.py へ symlink 配置し、
+    # cchook から uv 経由で呼び出す。flake.lock が rev を pin する。
+    tirith = {
+      url = "github:sheeki03/tirith";
+      flake = false;
+    };
   };
 
   nixConfig = {
