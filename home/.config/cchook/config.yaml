@@ -79,6 +79,15 @@ PreToolUse:
       - type: command
         command: $HOME/.claude/hooks/sudo-guard/main.sh
         use_stdin: true
+  # tirith による Bash コマンド走査（URL の homograph 検査・pipe-to-shell 検知など）。
+  # tirith リポジトリ配布の tirith-check.py を nput で symlink 配置しており、
+  # 依存パッケージは標準ライブラリのみ。uv 経由で python バージョンを 3.13 に固定
+  # （システム python の差異で挙動が変わらないようにする）。
+  - matcher: "Bash"
+    actions:
+      - type: command
+        command: uv run --python 3.13 -- $HOME/.claude/hooks/tirith/tirith-check.py
+        use_stdin: true
 
 PostToolUse:
 
