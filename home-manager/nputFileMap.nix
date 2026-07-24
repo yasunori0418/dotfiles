@@ -134,6 +134,17 @@ let
       inherit subpath;
     };
   }) yasunoriHookSubpaths;
+
+  # tirith 公式リポジトリの hook スクリプトを ~/.claude/hooks/tirith/ 配下へ
+  # 単ファイル symlink として配置。cchook 側から
+  # `uv run --python 3.13 -- $HOME/.claude/hooks/tirith/tirith-check.py` として
+  # 呼び出す（python バージョンを uv で固定）。
+  tirithHookEntries = {
+    ".claude/hooks/tirith/tirith-check.py" = {
+      src = inputs.tirith;
+      subpath = "crates/tirith/assets/hooks/tirith-check.py";
+    };
+  };
 in
 {
   homeDirectory = {
@@ -163,7 +174,8 @@ in
   // mattpocockSkillEntries
   // yasunoriSkillEntries
   // yasunoriAgentEntries
-  // yasunoriHookEntries;
+  // yasunoriHookEntries
+  // tirithHookEntries;
 
   dotConfig = xdgConfigMap [
     # keep-sorted start
