@@ -14,7 +14,13 @@ allow_bypass_env: true
 strict_warn: false
 
 # Severity overrides per rule (e.g., shortened_url: LOW)
-severity_overrides: {}
+severity_overrides:
+  # 日本語の句点「。」(U+3002) が ASCII の '.' と混同判定される false positive を
+  # 抑制する。日本語コミットメッセージや日本語コメントを含む Bash が常に HIGH で
+  # deny されてしまうため。paranoia: 1（Medium+ のみ有効）に対して LOW へ落とすと
+  # 検出結果からは隠れ、hook もブロックしなくなる。
+  # 誤検知の再現: `tirith policy test --file <日本語文の混じった shell スクリプト>`。
+  confusable_text: LOW
 
 # URL patterns to always allow
 allowlist: []
