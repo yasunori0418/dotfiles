@@ -60,10 +60,13 @@ start_daemon() {
     log "nix-daemon を起動する"
     # daemon が substituter を引くので proxy / CA を明示的に渡す。呼び出し元のシェルが
     # 終わっても生き残るよう setsid で切り離す。
+    # NIX_REMOTE は必ず外す。main が export した daemon を daemon 自身が受け取ると、
+    # fork したワーカーが自分の socket へ繋ぎ直そうとして即死し、クライアント側は
+    # `read of 32768 bytes: Connection reset by peer` で落ちる。
     # NOTE: proxy の待受ポートはセッション途中で変わることがある。cache.nixos.org へ
     #       繋がらなくなったら daemon を kill して本スクリプトを再実行すること
     #       （daemon は起動時の proxy 設定を握り続ける）。
-    setsid nohup env \
+    setsid nohup env -u NIX_REMOTE \
         HTTPS_PROXY="${HTTPS_PROXY:-}" https_proxy="${https_proxy:-}" \
         NIX_SSL_CERT_FILE="${NIX_SSL_CERT_FILE:-}" \
         "${NIX_PROFILE_DIR}/bin/nix-daemon" >/tmp/nix-daemon.log 2>&1 </dev/null &
