@@ -7,7 +7,7 @@ Nix flakesと`flake-parts`を使用したモジュラー設定管理を採用。
 
 ### ディレクトリ構成
 
-- **`/home-manager/`**: クロスプラットフォームのユーザー環境設定（`linux/`、`macos/`）
+- **`/home-manager/`**: クロスプラットフォームのユーザー環境設定（`linux/`、`macos/`、`claude-web/`）
 - **`/nixos/`**: Linuxシステム設定（マシン固有プロファイル）
 - **`/nix-darwin/`**: macOSシステム設定
 - **`/home/`**: 実際のdotfiles（`home-manager/lib/file-map.nix`経由でシンボリックリンク）
@@ -15,8 +15,23 @@ Nix flakesと`flake-parts`を使用したモジュラー設定管理を採用。
 
 ### プラットフォーム固有の注意点
 
-- **ユーザー名**: Linuxでは`yasunori`、macOSでは`taiki.watanabe`
+- **ユーザー名**: Linuxでは`yasunori`、macOSでは`taiki.watanabe`、claude-webでは`root`
 - **Neovim設定**: `home/.config/nvim/`で管理（dpp.vim + Denops構成）
+
+### claude-webプロファイル
+
+Claude Code on the webのセッション向けスタンドアロンHome Manager設定
+（`home-manager/claude-web/`、`homeConfigurations.claude-web`）。
+
+- コンテナは毎セッション破棄されるため、`make claude-web`（=`scripts/claude-web-setup.sh`）を
+  セッション開始ごとに実行する。環境のsetup scriptへ登録するとClaude Code起動前に走る。
+- 配置は`nputFileMap.nix`をlinuxプロファイルと共用し、`dotLocalShare`（treesitter parser）
+  だけ外す。repoは`~/dotfiles`ではなく`/home/user/dotfiles`にcloneされるため、
+  out-of-store symlinkの起点をそちらへ向ける。
+- imageが`/root/.bashrc`・`/root/.zshrc`を持つため`nput.backup`を有効にして退避・置換する。
+- systemdが無いのでNixは`nix-installer --init none`で入れ、`nix-daemon`はスクリプトが起動する。
+- **egress policyが`github.com`/`api.github.com`を許可している必要がある**
+  （flakeのinputが`github:`のため）。
 
 ## 主要コマンド
 

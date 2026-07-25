@@ -100,3 +100,6 @@ nput-rollback: ## nput rollback default (roll back to the previous generation)
 ## Environment Setup Tools ##
 nix-install: ## Install nix.
 	@curl --proto '=https' --tlsv1.2 -sSf -L https://install.determinate.systems/nix | sh -s -- install
+
+claude-web: ## Setup a Claude Code on the web session (nix install + home-manager activate).
+	@./scripts/claude-web-setup.sh
