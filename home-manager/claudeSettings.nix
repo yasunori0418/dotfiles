@@ -51,6 +51,11 @@ let
     cleanupPeriodDays = 876000;
 
     env = {
+      # 重いコマンド（nix build / nixos-rebuild / home-manager switch・全体テスト）が
+      # 既定 2 分タイムアウト（Exit 143）で打ち切られるのを恒久的に回避する。
+      # 3000000ms = 50 分。
+      BASH_DEFAULT_TIMEOUT_MS = "3000000";
+      BASH_MAX_TIMEOUT_MS = "3000000";
       CLAUDE_CODE_DISABLE_FEEDBACK_SURVEY = "1";
       CLAUDE_CODE_EXPERIMENTAL_AGENT_TEAMS = "1";
       DISABLE_AUTOUPDATER = "1";
