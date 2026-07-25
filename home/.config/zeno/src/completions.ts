@@ -1,4 +1,5 @@
 import { type UserCompletionSource } from "@yuki-yano/zeno";
+import { fetchGitHubRuns } from "./utils.ts";
 
 export const define: UserCompletionSource[] = [
   {
@@ -41,9 +42,9 @@ export const define: UserCompletionSource[] = [
   {
     name: "GitHub runner watcher",
     patterns: ["^gh run watch $"],
-    sourceCommand:
-      "gh run list --json databaseId,status,conclusion,workflowName,headBranch,displayTitle --jq '.[] | \"\\(.databaseId)\\t\\(.status)\\t\\(.conclusion)\\t\\(.workflowName)\\t\\(.headBranch)\\t\\(.displayTitle)\"'",
-    callback: "awk -F '\\t' '{print $1}'",
+    sourceFunction: () => fetchGitHubRuns(),
+    callbackFunction: ({ selected }) =>
+      selected.map((line) => line.split("\t")[0]),
     options: {
       "--prompt": "'run watch> '",
       "--preview": "gh run view {1}",
