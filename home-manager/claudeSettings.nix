@@ -1,0 +1,189 @@
+/*
+  ~/.claude/settings.json を Nix attrset から生成する。
+
+  従来は home/.claude/settings.{linux,macos}.json の 2 つの手書き JSON を
+  out-of-store symlink で配置していたが、OS 間で共通部（hooks 8 event・
+  permissions・env の大半）が重複し、差分が意図せず揺れていた。
+  共通部を common に一元化し、OS 固有分だけを perOS で上書きする。
+
+  配置は nput の method = "copy"（nputFileMap.nix 側）。symlink（store 直結）だと
+  Claude Code の TUI / `/config` が settings.json へ書き戻す項目
+  （effortLevel・outputStyle・enabledPlugins 等）が read-only エラーになるため。
+  nput の copy は store の read-only モードに owner-write を加えて配置するので
+  書き戻せる。
+
+  ただし copy は place-once（→ nput ADR-0002, ADR-0020）で、一度実体化した
+  target には以降 `nput apply` は触れない。ここを編集して反映するには
+  `nput apply --recopy` か `nput reset` 後の再適用が要る。
+  逆に TUI 側の書き戻しは --recopy で失われるため、恒久化したい変更は
+  この Nix 側へ手で戻す運用になる（SSOT は Nix 側）。
+*/
+{ pkgs, isDarwin }:
+let
+  inherit (pkgs) lib;
+
+  jsonFormat = pkgs.formats.json { };
+
+  # cchook は 8 つの event をすべて同じ形で受けるため、event 名から生成する。
+  cchookEvents = [
+    "Notification"
+    "PostToolUse"
+    "PreCompact"
+    "PreToolUse"
+    "SessionEnd"
+    "SessionStart"
+    "Stop"
+    "SubagentStop"
+  ];
+  hooks = lib.genAttrs cchookEvents (event: [
+    {
+      hooks = [
+        {
+          type = "command";
+          command = "cchook -event ${event}";
+        }
+      ];
+    }
+  ]);
+
+  common = {
+    "$schema" = "https://json.schemastore.org/claude-code-settings.json";
+    cleanupPeriodDays = 876000;
+
+    env = {
+      CLAUDE_CODE_DISABLE_FEEDBACK_SURVEY = "1";
+      CLAUDE_CODE_EXPERIMENTAL_AGENT_TEAMS = "1";
+      DISABLE_AUTOUPDATER = "1";
+      DISABLE_BUG_COMMAND = "1";
+      DISABLE_ERROR_REPORTING = "1";
+      ENABLE_TOOL_SEARCH = "true";
+    };
+
+    includeCoAuthoredBy = false;
+
+    permissions = {
+      allow = [
+        "Bash"
+        "Edit"
+        "ExitPlanMode"
+        "Glob"
+        "Grep"
+        "LSP"
+        "NotebookEdit"
+        "Read"
+        "Skill"
+        "TaskCreate"
+        "TaskGet"
+        "TaskList"
+        "TaskOutput"
+        "TaskStop"
+        "TaskUpdate"
+        "TodoWrite"
+        "ToolSearch"
+        "WebSearch"
+        "Write"
+      ];
+      deny = [
+        "Bash(sudo:*)"
+        "Bash(aws:*)"
+        "Read(.env.*)"
+        "Read(id_rsa)"
+        "Read(id_ed25519)"
+        "Read(**/*token*)"
+        "Edit(.env*)"
+        "Edit(**/secrets/**)"
+        "Bash(nc:*)"
+        "Bash(npm uninstall:*)"
+        "Bash(npm remove:*)"
+      ];
+      ask = [
+        "Bash(git push:*)"
+        "Bash(git reset:*)"
+        "Bash(git rebase:*)"
+        "KillShell"
+        "Bash(curl:*)"
+        "Bash(wget:*)"
+        "Bash(rm:*)"
+        "Bash(rm -rf:*)"
+        "Bash(psql:*)"
+        "Bash(mysql:*)"
+        "Bash(mongod:*)"
+      ];
+      defaultMode = "acceptEdits";
+    };
+
+    enableAllProjectMcpServers = true;
+
+    inherit hooks;
+
+    statusLine = {
+      type = "command";
+      command = "bunx ccusage statusline";
+      padding = 0;
+    };
+
+    enabledPlugins = {
+      "document-skills@anthropic-agent-skills" = true;
+      "example-skills@anthropic-agent-skills" = true;
+      "gopls-lsp@claude-plugins-official" = true;
+      "pyright-lsp@claude-plugins-official" = true;
+      "rust-analyzer-lsp@claude-plugins-official" = true;
+      "typescript-lsp@claude-plugins-official" = true;
+      "worktrunk@worktrunk" = true;
+    };
+
+    extraKnownMarketplaces = {
+      anthropic-agent-skills.source = {
+        source = "github";
+        repo = "anthropics/skills";
+      };
+      worktrunk.source = {
+        source = "github";
+        repo = "max-sixty/worktrunk";
+      };
+    };
+
+    outputStyle = "karakuchi";
+    alwaysThinkingEnabled = false;
+    effortLevel = "high";
+    promptSuggestionEnabled = false;
+    showClearContextOnPlanAccept = true;
+    askUserQuestionTimeout = "never";
+    tui = "default";
+    skipWorkflowUsageWarning = true;
+    editorMode = "vim";
+    verbose = true;
+    preferredNotifChannel = "ghostty";
+    teammateMode = "auto";
+    agentPushNotifEnabled = true;
+
+    mcpServers = {
+      tirith = {
+        command = "tirith";
+        args = [ "mcp-server" ];
+      };
+    };
+  };
+
+  macos = {
+    # 仕事用 macOS のみテレメトリを止める。
+    env.DISABLE_TELEMETRY = "1";
+    permissions.allow = common.permissions.allow ++ [ "mcp__notion__notion-fetch" ];
+  };
+
+  linux = {
+    # yasunori0418/skills はこのマシンでは nput が ~/.claude/skills へ直接配置する。
+    # plugin（ローカル marketplace）経由と重複するため plugin 側は無効のまま登録する。
+    enabledPlugins = {
+      "plugin-dev@claude-plugins-official" = true;
+      "yasunori0418-skills@yasunori0418-skills" = false;
+    };
+    extraKnownMarketplaces.yasunori0418-skills.source = {
+      source = "directory";
+      path = "/home/yasunori/src/github.com/yasunori0418/skills";
+    };
+  };
+
+  settings = lib.recursiveUpdate common (if isDarwin then macos else linux);
+in
+jsonFormat.generate "claude-settings.json" settings

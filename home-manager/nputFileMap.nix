@@ -151,6 +151,24 @@ let
       subpath = "crates/tirith/assets/hooks/tirith-check.py";
     };
   };
+
+  /*
+    ~/.claude/settings.json は Nix attrset から生成した JSON を copy で配置する。
+
+    symlink（store 直結）だと Claude Code の TUI / `/config` による書き戻し
+    （effortLevel・outputStyle・enabledPlugins 等）が read-only で失敗するため
+    method = "copy" にする。nput の copy は store の read-only モードに
+    owner-write を加えて配置するので書き戻せる。
+
+    copy は place-once なので、claudeSettings.nix を編集しただけでは
+    switch で反映されない。反映には `nput apply --recopy` が要る。
+  */
+  claudeSettingsEntry = isDarwin: {
+    ".claude/settings.json" = {
+      src = import ./claudeSettings.nix { inherit pkgs isDarwin; };
+      method = "copy";
+    };
+  };
 in
 {
   homeDirectory = {
@@ -283,8 +301,8 @@ in
   MacOS = {
     homeDirectory = {
       # ".docker/config.json".src = mkOutOfStoreSymlink "${homeDir}/.docker/mac_config.json";
-      ".claude/settings.json".src = mkOutOfStoreSymlink "${homeDir}/.claude/settings.macos.json";
-    };
+    }
+    // claudeSettingsEntry true;
     library = {
       "Library/Application Support/AquaSKK".src =
         mkOutOfStoreSymlink "${homeDir}/Library/ApplicationSupport/AquaSKK";
@@ -307,8 +325,8 @@ in
   Linux = {
     homeDirectory = {
       ".docker/config.json".src = mkOutOfStoreSymlink "${homeDir}/.docker/linux_config.json";
-      ".claude/settings.json".src = mkOutOfStoreSymlink "${homeDir}/.claude/settings.linux.json";
     }
+    // claudeSettingsEntry false
     // homeMap [
       ".icons"
       ".face"
