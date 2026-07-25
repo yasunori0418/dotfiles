@@ -128,13 +128,16 @@ let
     };
 
     enabledPlugins = {
+      # keep-sorted start
       "document-skills@anthropic-agent-skills" = true;
       "example-skills@anthropic-agent-skills" = true;
       "gopls-lsp@claude-plugins-official" = true;
+      "plugin-dev@claude-plugins-official" = true;
       "pyright-lsp@claude-plugins-official" = true;
       "rust-analyzer-lsp@claude-plugins-official" = true;
       "typescript-lsp@claude-plugins-official" = true;
       "worktrunk@worktrunk" = true;
+      # keep-sorted end
     };
 
     extraKnownMarketplaces = {
@@ -176,13 +179,7 @@ let
     permissions.allow = common.permissions.allow ++ [ "mcp__notion__notion-fetch" ];
   };
 
-  linux = {
-    # yasunori0418/skills はこのマシンでは nput が ~/.claude/skills へ直接配置するため、
-    # plugin（ローカル marketplace）としては登録しない。
-    enabledPlugins = {
-      "plugin-dev@claude-plugins-official" = true;
-    };
-  };
+  linux = { };
 
   settings = lib.recursiveUpdate common (if isDarwin then macos else linux);
 in
