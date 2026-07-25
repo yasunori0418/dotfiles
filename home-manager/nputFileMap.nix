@@ -136,6 +136,7 @@ let
     git-guard = "skills/git/hooks/git-guard";
     notify-stop = "hooks/notify-stop-plugin/hooks/notify-stop";
     sudo-guard = "hooks/sudo-guard-plugin/hooks/sudo-guard";
+    task-boundary = "hooks/task-boundary-plugin/hooks/task-boundary";
     webfetch-github-guard = "hooks/webfetch-github-guard-plugin/hooks/webfetch-github-guard";
     # keep-sorted end
   };

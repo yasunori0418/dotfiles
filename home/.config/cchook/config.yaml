@@ -1,4 +1,9 @@
 PreToolUse:
+  - matcher: "Edit|Write|NotebookEdit"
+    actions:
+      - type: command
+        command: $HOME/.claude/hooks/task-boundary/main.sh
+        use_stdin: true
   # AskUserQuestion をセッション単位で無効化する。remote-control 経由のスマホ/web
   # セッションでは、質問文・選択肢の文脈が選択UIの前に表示されない挙動があるため、
   # そのセッションだけテキスト質問へ倒す。判定は guard スクリプトが stdin の
