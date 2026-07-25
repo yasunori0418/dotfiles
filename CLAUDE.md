@@ -30,8 +30,11 @@ Claude Code on the webのセッション向けスタンドアロンHome Manager�
   out-of-store symlinkの起点をそちらへ向ける。
 - imageが`/root/.bashrc`・`/root/.zshrc`を持つため`nput.backup`を有効にして退避・置換する。
 - systemdが無いのでNixは`nix-installer --init none`で入れ、`nix-daemon`はスクリプトが起動する。
-- **egress policyが`github.com`/`api.github.com`を許可している必要がある**
-  （flakeのinputが`github:`のため）。
+- **egress policyがサードパーティのgithub.comへのアクセスを許可している必要がある**。
+  flakeのinputが`github:`スキームのため、`github.com/<owner>/<repo>/archive/*.tar.gz`が
+  引けないと入力解決の時点で403になる。既定のclaude-web policyはgithub.comを
+  セッションに紐づいたrepoだけに絞るので、この状態では主flakeを評価できない
+  （cachix系のsubstituterも同様に403。`nix build`はcache.nixos.orgへfallbackする）。
 
 ## 主要コマンド
 
