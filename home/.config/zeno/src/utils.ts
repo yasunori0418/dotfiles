@@ -14,10 +14,17 @@ export const GITHUB_RUN_FIELDS = [
   "displayTitle",
 ] as const;
 
-type GitHubRun = Record<(typeof GITHUB_RUN_FIELDS)[number], string | number>;
+/**
+ * `conclusion` は実行中の run では null になる（REST API の workflow-run スキーマ準拠）。
+ * 未知フィールドの追加に備え、値は nullable として扱う。
+ */
+type GitHubRun = Record<
+  (typeof GITHUB_RUN_FIELDS)[number],
+  string | number | null
+>;
 
 export const formatGitHubRun = (run: GitHubRun): string =>
-  GITHUB_RUN_FIELDS.map((field) => run[field]).join("\t");
+  GITHUB_RUN_FIELDS.map((field) => run[field] ?? "").join("\t");
 
 /** `gh run list --json` の出力を fzf 用のタブ区切り行へ整形する。 */
 export const listGitHubRuns = (json: string): string[] =>
