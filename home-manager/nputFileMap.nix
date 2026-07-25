@@ -70,6 +70,7 @@ let
         "skills/testing/test-monitor"
         "skills/testing/test-plan"
         "skills/testing/test-report"
+        "skills/testing/test-review"
         "skills/workflow/external-writes"
         "skills/workflow/test-targeted"
         # keep-sorted end
@@ -110,6 +111,10 @@ let
     ".claude/agents/diff-reviewer.md" = {
       src = inputs.yasunori-skills;
       subpath = "skills/git/diff-review/agents/diff-reviewer.md";
+    };
+    ".claude/agents/test-reviewer.md" = {
+      src = inputs.yasunori-skills;
+      subpath = "skills/testing/test-review/agents/test-reviewer.md";
     };
     # ".claude/agents/product-researcher.md" = {
     #   src = inputs.yasunori-skills;
