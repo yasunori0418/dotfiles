@@ -1,20 +1,6 @@
 {
   "$schema": "https://json.schemastore.org/claude-code-settings.json",
-  "alwaysThinkingEnabled": false,
-  "askUserQuestionTimeout": "never",
   "cleanupPeriodDays": 876000,
-  "editorMode": "vim",
-  "effortLevel": "high",
-  "enableAllProjectMcpServers": true,
-  "enabledPlugins": {
-    "document-skills@anthropic-agent-skills": true,
-    "example-skills@anthropic-agent-skills": true,
-    "gopls-lsp@claude-plugins-official": true,
-    "pyright-lsp@claude-plugins-official": true,
-    "rust-analyzer-lsp@claude-plugins-official": true,
-    "typescript-lsp@claude-plugins-official": true,
-    "worktrunk@worktrunk": true
-  },
   "env": {
     "CLAUDE_CODE_DISABLE_FEEDBACK_SURVEY": "1",
     "CLAUDE_CODE_EXPERIMENTAL_AGENT_TEAMS": "1",
@@ -24,113 +10,7 @@
     "DISABLE_TELEMETRY": "1",
     "ENABLE_TOOL_SEARCH": "true"
   },
-  "extraKnownMarketplaces": {
-    "anthropic-agent-skills": {
-      "source": {
-        "repo": "anthropics/skills",
-        "source": "github"
-      }
-    },
-    "worktrunk": {
-      "source": {
-        "repo": "max-sixty/worktrunk",
-        "source": "github"
-      }
-    }
-  },
-  "hooks": {
-    "Notification": [
-      {
-        "hooks": [
-          {
-            "command": "cchook -event Notification",
-            "type": "command"
-          }
-        ]
-      }
-    ],
-    "PostToolUse": [
-      {
-        "hooks": [
-          {
-            "command": "cchook -event PostToolUse",
-            "type": "command"
-          }
-        ]
-      }
-    ],
-    "PreCompact": [
-      {
-        "hooks": [
-          {
-            "command": "cchook -event PreCompact",
-            "type": "command"
-          }
-        ]
-      }
-    ],
-    "PreToolUse": [
-      {
-        "hooks": [
-          {
-            "command": "cchook -event PreToolUse",
-            "type": "command"
-          }
-        ]
-      }
-    ],
-    "SessionEnd": [
-      {
-        "hooks": [
-          {
-            "command": "cchook -event SessionEnd",
-            "type": "command"
-          }
-        ]
-      }
-    ],
-    "SessionStart": [
-      {
-        "hooks": [
-          {
-            "command": "cchook -event SessionStart",
-            "type": "command"
-          }
-        ]
-      }
-    ],
-    "Stop": [
-      {
-        "hooks": [
-          {
-            "command": "cchook -event Stop",
-            "type": "command"
-          }
-        ]
-      }
-    ],
-    "SubagentStop": [
-      {
-        "hooks": [
-          {
-            "command": "cchook -event SubagentStop",
-            "type": "command"
-          }
-        ]
-      }
-    ]
-  },
   "includeCoAuthoredBy": false,
-  "mcpServers": {
-    "tirith": {
-      "args": [
-        "mcp-server"
-      ],
-      "command": "tirith"
-    }
-  },
-  "model": "claude-opus-4-7",
-  "outputStyle": "karakuchi",
   "permissions": {
     "allow": [
       "Bash",
@@ -154,6 +34,19 @@
       "Write",
       "mcp__notion__notion-fetch"
     ],
+    "deny": [
+      "Bash(sudo:*)",
+      "Bash(aws:*)",
+      "Read(.env.*)",
+      "Read(id_rsa)",
+      "Read(id_ed25519)",
+      "Read(**/*token*)",
+      "Edit(.env*)",
+      "Edit(**/secrets/**)",
+      "Bash(nc:*)",
+      "Bash(npm uninstall:*)",
+      "Bash(npm remove:*)"
+    ],
     "ask": [
       "Bash(git push:*)",
       "Bash(git reset:*)",
@@ -167,31 +60,137 @@
       "Bash(mysql:*)",
       "Bash(mongod:*)"
     ],
-    "defaultMode": "acceptEdits",
-    "deny": [
-      "Bash(sudo:*)",
-      "Bash(aws:*)",
-      "Read(.env.*)",
-      "Read(id_rsa)",
-      "Read(id_ed25519)",
-      "Read(**/*token*)",
-      "Edit(.env*)",
-      "Edit(**/secrets/**)",
-      "Bash(nc:*)",
-      "Bash(npm uninstall:*)",
-      "Bash(npm remove:*)"
+    "defaultMode": "acceptEdits"
+  },
+  "enableAllProjectMcpServers": true,
+  "hooks": {
+    "Notification": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "cchook -event Notification"
+          }
+        ]
+      }
+    ],
+    "PostToolUse": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "cchook -event PostToolUse"
+          }
+        ]
+      }
+    ],
+    "PreCompact": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "cchook -event PreCompact"
+          }
+        ]
+      }
+    ],
+    "PreToolUse": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "cchook -event PreToolUse"
+          }
+        ]
+      }
+    ],
+    "SessionEnd": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "cchook -event SessionEnd"
+          }
+        ]
+      }
+    ],
+    "SessionStart": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "cchook -event SessionStart"
+          }
+        ]
+      }
+    ],
+    "Stop": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "cchook -event Stop"
+          }
+        ]
+      }
+    ],
+    "SubagentStop": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "cchook -event SubagentStop"
+          }
+        ]
+      }
     ]
   },
-  "preferredNotifChannel": "ghostty",
+  "statusLine": {
+    "type": "command",
+    "command": "bunx ccusage statusline",
+    "padding": 0
+  },
+  "enabledPlugins": {
+    "document-skills@anthropic-agent-skills": true,
+    "example-skills@anthropic-agent-skills": true,
+    "gopls-lsp@claude-plugins-official": true,
+    "pyright-lsp@claude-plugins-official": true,
+    "rust-analyzer-lsp@claude-plugins-official": true,
+    "typescript-lsp@claude-plugins-official": true,
+    "worktrunk@worktrunk": true
+  },
+  "extraKnownMarketplaces": {
+    "anthropic-agent-skills": {
+      "source": {
+        "source": "github",
+        "repo": "anthropics/skills"
+      }
+    },
+    "worktrunk": {
+      "source": {
+        "source": "github",
+        "repo": "max-sixty/worktrunk"
+      }
+    }
+  },
+  "outputStyle": "karakuchi",
+  "alwaysThinkingEnabled": false,
+  "effortLevel": "high",
   "promptSuggestionEnabled": false,
   "showClearContextOnPlanAccept": true,
-  "skipWorkflowUsageWarning": true,
-  "statusLine": {
-    "command": "bunx ccusage statusline",
-    "padding": 0,
-    "type": "command"
-  },
-  "teammateMode": "auto",
+  "askUserQuestionTimeout": "never",
   "tui": "default",
-  "verbose": true
+  "skipWorkflowUsageWarning": true,
+  "editorMode": "vim",
+  "verbose": true,
+  "preferredNotifChannel": "ghostty",
+  "teammateMode": "auto",
+  "mcpServers": {
+    "tirith": {
+      "args": [
+        "mcp-server"
+      ],
+      "command": "tirith"
+    }
+  }
 }
