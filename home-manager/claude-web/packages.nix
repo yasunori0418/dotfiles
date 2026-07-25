@@ -6,6 +6,12 @@
   Nix 側から入れる。
 
   ここに足す前に、その設定・skill・hook が本当にそれを exec しているか確認すること。
+
+  gh は入れない。claude-web の GH_TOKEN は policy proxy のプレースホルダで、
+  `gh auth status` は invalid、repo スコープの REST（`repos/.../pulls` 等）と GraphQL
+  （`gh pr view` / `gh pr checks`）はどちらも proxy が 403 を返す。github 系 skill の
+  実行経路（`gh pr create` / `gh pr checks` / `gh run view` / `gh auth git-credential`）が
+  丸ごと機能しないため、GitHub 操作は GitHub MCP に寄せる。
 */
 { inputs, pkgs, ... }:
 let
@@ -17,7 +23,6 @@ in
   ]
   ++ (with pkgs; [
     # keep-sorted start
-    gh # github 系 skill・gh-push の push 経路
     gitMinimal # ほぼ全ての skill / hook の土台。perl/python 依存を落とした版で足りる
     jq # 全 hook が stdin の JSON を読むのに使う
     python312Packages.uv # cchook config が tirith-check.py を uv 経由で回す
