@@ -185,6 +185,7 @@
   "verbose": true,
   "preferredNotifChannel": "ghostty",
   "teammateMode": "auto",
+  "agentPushNotifEnabled": true,
   "mcpServers": {
     "tirith": {
       "args": [

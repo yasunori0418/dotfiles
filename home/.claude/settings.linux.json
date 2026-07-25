@@ -186,6 +186,7 @@
   "showClearContextOnPlanAccept": true,
   "askUserQuestionTimeout": "never",
   "tui": "default",
+  "skipWorkflowUsageWarning": true,
   "editorMode": "vim",
   "verbose": true,
   "preferredNotifChannel": "ghostty",
