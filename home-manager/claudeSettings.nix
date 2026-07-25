@@ -177,15 +177,10 @@ let
   };
 
   linux = {
-    # yasunori0418/skills はこのマシンでは nput が ~/.claude/skills へ直接配置する。
-    # plugin（ローカル marketplace）経由と重複するため plugin 側は無効のまま登録する。
+    # yasunori0418/skills はこのマシンでは nput が ~/.claude/skills へ直接配置するため、
+    # plugin（ローカル marketplace）としては登録しない。
     enabledPlugins = {
       "plugin-dev@claude-plugins-official" = true;
-      "yasunori0418-skills@yasunori0418-skills" = false;
-    };
-    extraKnownMarketplaces.yasunori0418-skills.source = {
-      source = "directory";
-      path = "/home/yasunori/src/github.com/yasunori0418/skills";
     };
   };
 
