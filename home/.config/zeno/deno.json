@@ -14,7 +14,6 @@
       "run": true
     },
     "include": [
-      "./src/debug.ts",
       "./src/*.test.ts"
     ]
   },
@@ -25,7 +24,8 @@
   },
   "tasks": {
     "test": "deno test -P",
-    "test:watch": "deno test -P --watch"
+    "test:watch": "deno test -P --watch",
+    "debug": "deno test -P --allow-ffi ./src/debug.ts"
   },
   "imports": {
     "@david/dax": "jsr:@david/dax@^0.45.0",
