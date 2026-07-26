@@ -1,49 +1,31 @@
 {
   inputs,
   pkgs,
-  homeDir,
-  xdgConfigHome,
+  homeDirectory,
+  dotfilesDir,
   ...
 }:
 let
-  inherit (pkgs.lib) pipe;
   inherit (pkgs.stdenv.hostPlatform) system;
-  myNurPkgs = inputs.yasunori-nur.legacyPackages.${system};
-  inherit (myNurPkgs.lib.attrsets)
-    targetAttrsValue
-    concatOfAttrs
-    ;
-  inherit (inputs.nput.lib) mkOutOfStoreSymlink;
 
-  # nput の src（out-of-store marker）には絶対パス文字列を渡す。homeDir / xdgConfigHome は
-  # nix path 値なので toString で文字列化する（"${path}" 補間と違い store へコピーされない）。
-  nputFileMap = import ../nputFileMap.nix {
+  # entries の組み立ては linux / macos・flake-parts の nput profile と共有する
+  # （../nputEntries.nix）。claude-web 固有の差は引数 2 つで表現する。
+  #
+  #   - dotfilesDir: clone 先が homeDirectory（/root）の配下ではない
+  #   - commonTargets: nvim を使わないので dotLocalShare（treesitter parser）を取らない
+  entries = import ../nputEntries.nix {
     inherit
       inputs
       pkgs
-      mkOutOfStoreSymlink
+      homeDirectory
+      dotfilesDir
       ;
-    homeDir = toString homeDir;
-    xdgConfigHome = toString xdgConfigHome;
-  };
-
-  concatFileMap =
-    targetNames: fileMap:
-    pipe fileMap [
-      (targetAttrsValue targetNames)
-      concatOfAttrs
+    isDarwin = false;
+    commonTargets = [
+      "homeDirectory"
+      "dotConfig"
     ];
-
-  # nvim を使わないセッションでは treesitter parser が要らないので dotLocalShare は取らない。
-  entries =
-    (concatFileMap [
-      "homeDirectory"
-      "dotConfig"
-    ] nputFileMap)
-    // (concatFileMap [
-      "homeDirectory"
-      "dotConfig"
-    ] nputFileMap.Linux);
+  };
 in
 {
   nput = {

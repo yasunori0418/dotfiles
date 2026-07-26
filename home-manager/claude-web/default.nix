@@ -18,18 +18,13 @@
 {
   imports =
     let
-      # claude-web のセッションでは repo がこの位置に clone される。
-      dotfiles = /home/user/dotfiles;
-      homeDir = /${dotfiles}/home;
-      xdgConfigHome = /${homeDir}/.config;
       packages = ./packages.nix;
       nput = import ./nput.nix {
-        inherit
-          inputs
-          pkgs
-          homeDir
-          xdgConfigHome
-          ;
+        inherit inputs pkgs;
+        homeDirectory = "/root";
+        # claude-web のセッションでは repo がこの位置に clone される
+        # （homeDirectory の配下ではないので nputEntries の既定値を上書きする）。
+        dotfilesDir = "/home/user/dotfiles";
       };
     in
     [
