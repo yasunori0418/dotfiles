@@ -173,9 +173,15 @@ prime_input_from_git() {
     fi
 }
 
-# ビルドし、github archive の 403 で落ちたら該当 input を git 経由で入れて再試行する。
-# 先回りで全部入れると vim/vim のような巨大 repo まで引くので、必要になった分だけ。
-# substituter から引ける input はそもそもここへ来ない。
+# ビルドし、落ちた原因が復帰可能なら手当てして再試行する。扱うのは 2 つ。
+#
+#   - github archive の 403 → 該当 input を git 経由で入れる。先回りで全部入れると
+#     vim/vim のような巨大 repo まで引くので、必要になった分だけ。substituter から
+#     引ける input はそもそもここへ来ない
+#   - daemon 断 → 起動し直して同じビルドをやり直す。初回セッションは closure を丸ごと
+#     引くのでビルドが長く、その最中に daemon が落ちると 1 回の実行では復帰できない
+#
+# それ以外の失敗は握り潰さず、nix の出力をそのまま出して抜ける。
 build_activation_package() {
     local err url slug rev out
     err=$(mktemp)
@@ -189,6 +195,12 @@ build_activation_package() {
             rm -f "${err}"
             printf '%s\n' "${out}"
             return 0
+        fi
+
+        if grep -q 'cannot connect to socket' "${err}"; then
+            log "ビルド中に nix-daemon が落ちた。起動し直して再試行する"
+            start_daemon
+            continue
         fi
 
         url=$(grep -o 'https://github.com/[^/]\+/[^/]\+/archive/[0-9a-f]\+\.tar\.gz' "${err}" | head -1)
