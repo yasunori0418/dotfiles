@@ -73,6 +73,30 @@ nix-rebuild: ## nixos or nix-darwin rebuild switch
 nixos-generate: ## nixos-generator
 	@nix run 'nixpkgs#nixos-generators' -- --flake '.#iso' -f iso | xargs -I{} ln -svf {} ./
 
+## nput placement commands ##
+# nput.default（home mode）は home-manager の activation と同じ profile 名 `default`
+# を共有する。よって switch を挟まずに CLI から配置を反映できる。
+nput-apply: ## nput apply default (home mode placement without home-manager switch)
+	@nput apply default --verbose
+
+nput-recopy: ## nput apply default --recopy (re-copy copy targets e.g. ~/.claude/settings.json)
+	@nput apply default --recopy --verbose
+
+nput-dryrun: ## nput apply default --dryrun (preview placement, no side effects)
+	@nput apply default --dryrun --verbose
+
+nput-skills: ## nput apply skills (project mode placement into .claude/skills)
+	@nput apply skills --verbose
+
+nput-gitignore: ## nput gitignore --all (print project mode placement targets)
+	@nput gitignore --all
+
+nput-generations: ## nput list-generations default
+	@nput list-generations default
+
+nput-rollback: ## nput rollback default (roll back to the previous generation)
+	@nput rollback default --verbose
+
 ## Environment Setup Tools ##
 nix-install: ## Install nix.
 	@curl --proto '=https' --tlsv1.2 -sSf -L https://install.determinate.systems/nix | sh -s -- install
