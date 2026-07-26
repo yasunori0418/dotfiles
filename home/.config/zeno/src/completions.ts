@@ -50,4 +50,26 @@ export const define: UserCompletionSource[] = [
       "--preview": "gh run view {1}",
     },
   },
+  {
+    name: "GitHub runner viewer",
+    patterns: ["^gh run view $"],
+    sourceFunction: () => fetchGitHubRuns(),
+    callbackFunction: ({ selected }) =>
+      selected.map((line) => line.split("\t")[0]),
+    options: {
+      "--prompt": "'run watch> '",
+      "--preview": "gh run view {1}",
+    },
+  },
+  {
+    name: "GitHub runner rerun",
+    patterns: ["^gh run rerun $"],
+    sourceFunction: () => fetchGitHubRuns(),
+    callbackFunction: ({ selected }) =>
+      selected.map((line) => line.split("\t")[0]),
+    options: {
+      "--prompt": "'run watch> '",
+      "--preview": "gh run view {1}",
+    },
+  },
 ];
