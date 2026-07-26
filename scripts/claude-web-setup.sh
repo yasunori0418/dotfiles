@@ -11,8 +11,10 @@
 # ~/.claude/settings.json の hook もそのセッションから有効になる。
 #
 # 前提:
-#   - egress policy が github.com / api.github.com を許可していること。flake の input は
-#     `github:` で書かれているため、塞がれている環境では入力解決の時点で 403 になる。
+#   - egress policy がサードパーティ repo の `github.com/<owner>/<repo>/archive/*.tar.gz`
+#     を許可していること。flake の input は `github:` で書かれているため、塞がれている
+#     環境では入力解決の時点で 403 になる。github.com がホストとして通ることとは別で、
+#     既定の claude-web policy はセッションに紐づいた repo だけに絞る。
 #   - root で実行すること（--init none の Nix は root 専用になる）。
 
 set -euo pipefail
