@@ -50,6 +50,7 @@ let
         "skills/git/commit-plan"
         "skills/git/diff-review"
         "skills/git/parallel-worktree"
+        "skills/git/post-merge-cleanup"
         "skills/git/rebase-flow"
         "skills/git/reset-flow"
         "skills/git/review-converge"
