@@ -217,7 +217,13 @@ activate_home_manager() {
     log "activate: ${activation_package}"
     # home-manager の activate は USER を参照する。非ログインシェルでは未設定なので
     # ここで明示する（未設定だと unbound variable で即死する）。
-    HOME="${HOME:-/root}" USER="${USER:-root}" "${activation_package}/activate"
+    # PATH も渡す。activate は自前の PATH を組み立てるとき、末尾へ
+    # `dirname $(readlink -m $(type -p nix-env))` を継ぎ足して Nix の bin を拾う。
+    # PATH に Nix が無いとこれが空になり、`nix-build: command not found` で落ちる
+    # （その手前に出る readlink / dirname の "missing operand" も同じ原因）。
+    HOME="${HOME:-/root}" USER="${USER:-root}" \
+        PATH="${NIX_PROFILE_DIR}/bin:${PATH}" \
+        "${activation_package}/activate"
 }
 
 # settings.json の hook（`cchook -event <E>`）は Claude Code が直接 spawn する。この
