@@ -30,18 +30,15 @@ Claude Code on the webのセッション向けスタンドアロンHome Manager�
   out-of-store symlinkの起点をそちらへ向ける。
 - imageが`/root/.bashrc`・`/root/.zshrc`を持つため`nput.backup`を有効にして退避・置換する。
 - systemdが無いのでNixは`nix-installer --init none`で入れ、`nix-daemon`はスクリプトが起動する。
-- **egress policyがサードパーティのgithub.comへのアクセスを許可している必要がある**。
-  flakeのinputが`github:`スキームのため、`github.com/<owner>/<repo>/archive/*.tar.gz`が
-  引けないと入力解決の時点で403になる。既定のclaude-web policyはgithub.comを
-  セッションに紐づいたrepoだけに絞るので、この状態では主flakeを評価できない。
-  `api.github.com`のrepo系エンドポイントとcodeloadも同じ絞り込みの対象で、
-  tarballの取得経路は残らない。
-- substituterの到達性はセッションによって変わる（cachix系が通るセッションもある）。
-  通る場合はflake inputの多くをcacheから解決できるが、cacheに無いinputは結局
-  github.comを要求するため、評価できない状況は変わらない。
-- `add_repo`は**同一ownerのrepoしか追加できない**。`nput`や`nur-packages`は足せても、
-  それらが依存する`nix-community/nix-unit`のようなサードパーティのinputは足せないので、
-  egress policyの制限に対する回避手段にはならない。
+- **GitHub proxyは、セッションに紐づいていないrepoのarchive tarballとAPIを403にする**。
+  これは環境のnetwork access levelと独立していて、**Fullにしても変わらない**
+  （`github.com`・`codeload.github.com`はTrustedの既定allowlistに入っているのに403）。
+  flakeのinputは`github:`スキーム＝archive経由なので、素の`nix build`は入力解決で必ず止まる。
+- 回避は`scripts/claude-web-setup.sh`が持つ。git smart-HTTPには同じ制限がかからず、
+  `github:`のtarballを展開したtreeとgitのtreeはNARが一致する（＝store pathが同じ）ため、
+  403で落ちたinputだけgit経由でstoreへ入れて再試行する。substituterから引けるinputは
+  そこへ来ない（実測では9件だけgit経由が必要だった）。
+- `add_repo`は**同一ownerのrepoしか追加できない**ため、この制限の回避手段にはならない。
 
 ## 主要コマンド
 
