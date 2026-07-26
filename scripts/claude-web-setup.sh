@@ -240,6 +240,18 @@ link_hook_binaries() {
     done
 }
 
+# cchook config の tirith hook は `uv run --python 3.13 -- .../tirith-check.py` で走る。
+# uv は自前で管理する python が無いと image 同梱の /usr/bin/python3.13 を拾うため、
+# image がそれを落とすと hook が動かなくなる（python-build-standalone の release page は
+# proxy が 403 にするが、release asset の実体は取得できるので install は通る）。
+# uv 管理の python は image のものより優先されるので、明示的に入れて依存を断つ。
+readonly HOOK_PYTHON_VERSION="3.13" # cchook config の `--python` と一致させること
+
+install_hook_python() {
+    log "tirith hook 用の python ${HOOK_PYTHON_VERSION} を uv で導入する"
+    "${HOME}/.nix-profile/bin/uv" python install "${HOOK_PYTHON_VERSION}"
+}
+
 main() {
     if [[ ${EUID} -ne 0 ]]; then
         echo "root で実行すること（--init none の Nix は root 専用）" >&2
@@ -253,6 +265,7 @@ main() {
     start_daemon
     activate_home_manager
     link_hook_binaries
+    install_hook_python
 
     log "完了。~/.claude 配下の skills / agents / hooks / settings.json を配置した"
 }
