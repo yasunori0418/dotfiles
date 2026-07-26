@@ -1,49 +1,19 @@
 {
   inputs,
   pkgs,
-  homeDir,
-  xdgConfigHome,
+  homeDirectory,
   ...
 }:
 let
-  inherit (pkgs.lib) pipe;
   inherit (pkgs.stdenv.hostPlatform) system;
-  myNurPkgs = inputs.yasunori-nur.legacyPackages.${system};
-  inherit (myNurPkgs.lib.attrsets)
-    targetAttrsValue
-    concatOfAttrs
-    ;
-  inherit (inputs.nput.lib) mkOutOfStoreSymlink;
 
-  # nput の src（out-of-store marker）には絶対パス文字列を渡す。homeDir / xdgConfigHome は
-  # nix path 値なので toString で文字列化する（"${path}" 補間と違い store へコピーされない）。
-  nputFileMap = import ../nputFileMap.nix {
-    inherit
-      inputs
-      pkgs
-      mkOutOfStoreSymlink
-      ;
-    homeDir = toString homeDir;
-    xdgConfigHome = toString xdgConfigHome;
+  # entries の組み立ては flake-parts の nput profile と共有する
+  # （../nputEntries.nix・同じ entries から HM activation 用 manifest と
+  # flake output `nput.<system>.default` が生成される）。
+  entries = import ../nputEntries.nix {
+    inherit inputs pkgs homeDirectory;
+    isDarwin = false;
   };
-
-  concatFileMap =
-    targetNames: fileMap:
-    pipe fileMap [
-      (targetAttrsValue targetNames)
-      concatOfAttrs
-    ];
-
-  entries =
-    (concatFileMap [
-      "homeDirectory"
-      "dotConfig"
-      "dotLocalShare"
-    ] nputFileMap)
-    // (concatFileMap [
-      "homeDirectory"
-      "dotConfig"
-    ] nputFileMap.Linux);
 in
 {
   nput = {

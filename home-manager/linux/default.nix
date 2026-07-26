@@ -7,17 +7,13 @@
 {
   imports =
     let
-      dotfiles = /${config.home.homeDirectory}/dotfiles;
-      homeDir = /${dotfiles}/home;
-      xdgConfigHome = /${homeDir}/.config;
       packages = ./packages.nix;
       nput = import ./nput.nix {
         inherit
           inputs
           pkgs
-          homeDir
-          xdgConfigHome
           ;
+        inherit (config.home) homeDirectory;
       };
       clearDppStateAfterLinkGeneration = ../clear-dpp-state-after-link-generation.nix;
       programs = [
