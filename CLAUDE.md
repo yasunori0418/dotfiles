@@ -25,11 +25,14 @@ Claude Code on the webのセッション向けスタンドアロンHome Manager�
 
 - コンテナは毎セッション破棄されるため、`make claude-web`（=`scripts/claude-web-setup.sh`）を
   セッション開始ごとに実行する。環境のsetup scriptへ登録するとClaude Code起動前に走る。
-- 配置は`nputFileMap.nix`をlinuxプロファイルと共用し、`dotLocalShare`（treesitter parser）
-  だけ外す。repoは`~/dotfiles`ではなく`/home/user/dotfiles`にcloneされるため、
-  out-of-store symlinkの起点をそちらへ向ける。
+- 配置のentriesは`nputEntries.nix`をlinux/macosと共用する。claude-web固有の差は引数2つだけ。
+  `dotfilesDir`はrepoが`~/dotfiles`ではなく`/home/user/dotfiles`にcloneされるため、
+  `commonTargets`はnvimを使わないので`dotLocalShare`（treesitter parser）を外すため。
 - imageが`/root/.bashrc`・`/root/.zshrc`を持つため`nput.backup`を有効にして退避・置換する。
 - systemdが無いのでNixは`nix-installer --init none`で入れ、`nix-daemon`はスクリプトが起動する。
+- cchookのtirith hookは`uv run --python 3.13`で走る。uv管理のpythonが無いとimage同梱の
+  `/usr/bin/python3.13`を拾ってしまうため、setup scriptが`uv python install`で明示的に入れる
+  （python-build-standaloneのrelease pageは403だが、release assetの実体は取得できる）。
 - **GitHub proxyは、セッションに紐づいていないrepoのarchive tarballとAPIを403にする**。
   これは環境のnetwork access levelと独立していて、**Fullにしても変わらない**
   （`github.com`・`codeload.github.com`はTrustedの既定allowlistに入っているのに403）。
