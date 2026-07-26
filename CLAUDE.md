@@ -33,8 +33,15 @@ Claude Code on the webのセッション向けスタンドアロンHome Manager�
 - **egress policyがサードパーティのgithub.comへのアクセスを許可している必要がある**。
   flakeのinputが`github:`スキームのため、`github.com/<owner>/<repo>/archive/*.tar.gz`が
   引けないと入力解決の時点で403になる。既定のclaude-web policyはgithub.comを
-  セッションに紐づいたrepoだけに絞るので、この状態では主flakeを評価できない
-  （cachix系のsubstituterも同様に403。`nix build`はcache.nixos.orgへfallbackする）。
+  セッションに紐づいたrepoだけに絞るので、この状態では主flakeを評価できない。
+  `api.github.com`のrepo系エンドポイントとcodeloadも同じ絞り込みの対象で、
+  tarballの取得経路は残らない。
+- substituterの到達性はセッションによって変わる（cachix系が通るセッションもある）。
+  通る場合はflake inputの多くをcacheから解決できるが、cacheに無いinputは結局
+  github.comを要求するため、評価できない状況は変わらない。
+- `add_repo`は**同一ownerのrepoしか追加できない**。`nput`や`nur-packages`は足せても、
+  それらが依存する`nix-community/nix-unit`のようなサードパーティのinputは足せないので、
+  egress policyの制限に対する回避手段にはならない。
 
 ## 主要コマンド
 
