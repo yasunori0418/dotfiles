@@ -123,10 +123,10 @@ let
       src = inputs.yasunori-skills;
       subpath = "skills/testing/test-review/agents/test-reviewer.md";
     };
-    # ".claude/agents/product-researcher.md" = {
-    #   src = inputs.yasunori-skills;
-    #   subpath = "skills/product/product-spec/agents/product-researcher.md";
-    # };
+    ".claude/agents/product-researcher.md" = {
+      src = inputs.yasunori-skills;
+      subpath = "skills/product/product-spec/agents/product-researcher.md";
+    };
   };
 
   yasunoriHookSubpaths = {
