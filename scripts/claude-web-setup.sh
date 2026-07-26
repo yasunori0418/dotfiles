@@ -27,7 +27,10 @@ readonly DOTFILES_DIR
 # 証明書検証で落ちる。proxy の無い環境では単に存在しないパスとして無視される。
 readonly CCR_CA_BUNDLE="/root/.ccr/ca-bundle.crt"
 
-log() { printf '\033[1;32m==>\033[0m %s\n' "$1"; }
+# 進捗は stderr へ出す。build_activation_package は stdout で store path を返すので、
+# ログが stdout に混ざると `$(build_activation_package)` の結果が汚れて
+# `${activation_package}/activate` が壊れたパスになる。
+log() { printf '\033[1;32m==>\033[0m %s\n' "$1" >&2; }
 
 install_nix() {
     if [[ -x ${NIX_PROFILE_DIR}/bin/nix ]]; then
