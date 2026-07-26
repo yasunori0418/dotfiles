@@ -51,11 +51,22 @@ install_nix() {
     printf 'extra-experimental-features = flakes\n' >>/etc/nix/nix.custom.conf
 }
 
+# socket ファイルは daemon が死んでも残る。存在確認だけで「起動済み」と判断すると、
+# 死んだ daemon を掴んだまま先へ進んでビルドが
+# `cannot connect to socket ...: Connection refused` で落ちる。実際に応答するかで見る。
+daemon_is_alive() {
+    [[ -S ${DAEMON_SOCKET} ]] || return 1
+    "${NIX_PROFILE_DIR}/bin/nix" store info --store daemon >/dev/null 2>&1
+}
+
 start_daemon() {
-    if [[ -S ${DAEMON_SOCKET} ]]; then
+    if daemon_is_alive; then
         log "nix-daemon は起動済み"
         return
     fi
+
+    # 死んだ daemon が残した socket は bind の邪魔になるので先に落とす。
+    rm -f "${DAEMON_SOCKET}"
 
     log "nix-daemon を起動する"
     # daemon が substituter を引くので proxy / CA を明示的に渡す。呼び出し元のシェルが
@@ -72,11 +83,11 @@ start_daemon() {
         "${NIX_PROFILE_DIR}/bin/nix-daemon" >/tmp/nix-daemon.log 2>&1 </dev/null &
 
     for _ in $(seq 1 30); do
-        [[ -S ${DAEMON_SOCKET} ]] && return
+        daemon_is_alive && return
         sleep 1
     done
 
-    echo "nix-daemon の socket が現れない: /tmp/nix-daemon.log を確認すること" >&2
+    echo "nix-daemon が応答しない: /tmp/nix-daemon.log を確認すること" >&2
     exit 1
 }
 
