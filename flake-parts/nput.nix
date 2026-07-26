@@ -33,9 +33,7 @@ let
   # 埋めるため、system ごとにユーザー名 / home ディレクトリを解決する。
   # 値は home-manager/{linux,macos}/default.nix の home.username /
   # home.homeDirectory と一致させること（ズレると配置先が食い違う）。
-  homeDirectoryFor =
-    system: if isDarwinSystem system then "/Users/taiki.watanabe" else "/home/yasunori";
-  isDarwinSystem = system: builtins.match ".*-darwin" system != null;
+  homeDirectoryFor = isDarwin: if isDarwin then "/Users/taiki.watanabe" else "/home/yasunori";
 
   # 展開する skill を明示列挙する（mattpocock/skills の skills/ 配下の相対パス）。
   skillSubpaths = [
@@ -65,7 +63,10 @@ let
 in
 {
   perSystem =
-    { pkgs, system, ... }:
+    { pkgs, ... }:
+    let
+      inherit (pkgs.stdenv.hostPlatform) isDarwin;
+    in
     {
       # perSystem.nput.<name> → flake.nput.<system>.<name> へ自動転置される（nput flakeModule）。
       nput = {
@@ -73,9 +74,8 @@ in
           inherit pkgs;
           root = nputLib.homeRoot;
           entries = import ../home-manager/nputEntries.nix {
-            inherit inputs pkgs;
-            homeDirectory = homeDirectoryFor system;
-            isDarwin = isDarwinSystem system;
+            inherit inputs pkgs isDarwin;
+            homeDirectory = homeDirectoryFor isDarwin;
           };
         };
 
