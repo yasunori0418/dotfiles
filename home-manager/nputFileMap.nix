@@ -68,7 +68,7 @@ let
         "skills/product/def-done"
         "skills/product/doc-integrate"
         "skills/product/feature-spec"
-        # "skills/product/product-spec"
+        "skills/product/product-spec"
         "skills/testing/test-analyze"
         "skills/testing/test-design"
         "skills/testing/test-execute"
