@@ -64,7 +64,7 @@ let
       ENABLE_TOOL_SEARCH = "true";
     };
 
-    includeCoAuthoredBy = false;
+    includeCoAuthoredBy = true;
 
     permissions = {
       allow = [
