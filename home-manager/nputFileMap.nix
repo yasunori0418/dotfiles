@@ -97,8 +97,8 @@ let
     lib.pipe
       [
         # keep-sorted start
-        "productivity/grilling"
-        "productivity/handoff"
+        "skills/productivity/grilling"
+        "skills/productivity/handoff"
         # keep-sorted end
       ]
       [
