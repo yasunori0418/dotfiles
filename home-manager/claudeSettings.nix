@@ -129,12 +129,7 @@ let
 
     enabledPlugins = {
       # keep-sorted start
-      "document-skills@anthropic-agent-skills" = true;
-      "example-skills@anthropic-agent-skills" = true;
-      "gopls-lsp@claude-plugins-official" = true;
-      "plugin-dev@claude-plugins-official" = true;
       "pyright-lsp@claude-plugins-official" = true;
-      "rust-analyzer-lsp@claude-plugins-official" = true;
       "typescript-lsp@claude-plugins-official" = true;
       "worktrunk@worktrunk" = true;
       # keep-sorted end
