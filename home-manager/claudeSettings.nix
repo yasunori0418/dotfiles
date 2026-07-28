@@ -114,7 +114,7 @@ let
         "Bash(mysql:*)"
         "Bash(mongod:*)"
       ];
-      defaultMode = "acceptEdits";
+      defaultMode = "auto";
     };
 
     enableAllProjectMcpServers = true;
