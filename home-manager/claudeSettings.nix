@@ -64,8 +64,6 @@ let
       ENABLE_TOOL_SEARCH = "true";
     };
 
-    includeCoAuthoredBy = true;
-
     permissions = {
       allow = [
         "Bash"
