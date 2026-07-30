@@ -19,7 +19,7 @@ end)
 ---@return string|nil
 local function find_root(path)
     ---@type string|nil
-    local project_root = vim.fs.root(path, vim.iter({ ".git", ft.deno_files }):flatten(math.huge):totable())
+    local project_root = vim.fs.root(path, vim.iter({ ft.deno_files, ".git" }):flatten(math.huge):totable())
     project_root = project_root or vim.env.PWD --[[@as string]]
 
     -- when node files found, not launch denols.
