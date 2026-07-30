@@ -9,7 +9,10 @@ lsp_utils.on_attach(function(client, bufnr)
     if client.name ~= "denols" then
         return
     end
-    local efm_client = vim.lsp.get_clients({ name = "efm" })[1]
+    local efm_client = vim.lsp.get_clients({ name = "efm" })[1] --[[@type vim.lsp.Client?]]
+    if efm_client == nil then
+        return
+    end
     vim.lsp.buf_detach_client(bufnr, efm_client.id)
 end)
 
