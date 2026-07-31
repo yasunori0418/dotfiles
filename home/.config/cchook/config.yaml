@@ -112,6 +112,17 @@ Stop:
       - type: command
         command: $HOME/.claude/hooks/notify-stop/main.sh
         use_stdin: true
+  # 並列エージェント(agent teams)の滞留防止。stdin の background_tasks から
+  # type が subagent / teammate のものを抽出し、残っていれば decision: "block" +
+  # reason で TaskStop を促す。idle_notification は「終了」ではなく「空いて待機中」
+  # の意味で、明示的に止めない限り滞留し続けるため(実測で 1 セッション 18 体)。
+  # 出力は decision/reason 形式。cchook は Stop の hookSpecificOutput を
+  # "not supported" として握り潰すため additionalContext 形式は使えない。
+  # 残留が無ければ沈黙。stop_hook_active では自己抑制するので空転しない。
+  - actions:
+      - type: command
+        command: $HOME/.claude/hooks/teammate-leak-guard/main.sh
+        use_stdin: true
 
 SubagentStop:
 
