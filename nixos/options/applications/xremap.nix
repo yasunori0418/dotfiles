@@ -1,5 +1,6 @@
 {
   inputs,
+  lib,
   pkgs,
   config,
   ...
@@ -96,4 +97,14 @@
         ];
       };
     };
+
+  # services.xremap が生成する WantedBy=graphical-session.target は
+  # nixos-fake-graphical-session.target 経由で sway の起動完了前に発火するため、
+  # WAYLAND_DISPLAY を持たないまま起動して wlroots への接続に失敗する
+  # (journal に "Could not find wayland compositor" が出る)。
+  # sway が import-environment 後に起動する sway-session.target へ紐付ける。
+  systemd.user.services.xremap = {
+    wantedBy = lib.mkForce [ "sway-session.target" ];
+    after = [ "sway-session.target" ];
+  };
 }
