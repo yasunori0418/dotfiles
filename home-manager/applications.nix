@@ -20,6 +20,7 @@ let
   cryoflow = inputs.cryoflow.packages.${system}.default;
   arto = inputs.arto.packages.${system}.default;
   nvimOverlay = inputs.neovim-nightly-overlay.packages.${system}.neovim;
+  nordic-darker = pkgs.callPackage ./packages/nordic-darker.nix { };
 in
 {
   nixTools = with pkgs; [
@@ -235,18 +236,20 @@ in
     ++ (optionalIsLinux [ google-chrome ]);
 
   linuxDesktop = {
-    theme = with pkgs; [
+    theme = [
+      nordic-darker
+    ]
+    ++ (with pkgs; [
       # keep-sorted start
       glib
       libsForQt5.qt5ct
       libsForQt5.qtstyleplugins
-      nordic
       nordzy-cursor-theme
       nordzy-icon-theme
       nwg-look
       themechanger
       # keep-sorted end
-    ];
+    ]);
 
     desktopApps = with pkgs; [
       # keep-sorted start
