@@ -49,9 +49,6 @@ SKIP_PATTERNS=(
     ".pytest_cache"
     ".ruff_cache"
 
-    # AI関連 (プロジェクト内設定は worktree ごとに独立、共有しない)
-    ".claude"
-
     # その他のビルド/キャッシュ/出力 (汎用ツール由来)
     ".husky"
     "nohup.out"
