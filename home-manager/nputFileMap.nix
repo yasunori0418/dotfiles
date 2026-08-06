@@ -14,6 +14,10 @@ let
 
   inherit (pkgs) lib;
 
+  # GTK4 はテーマディレクトリを検索せず ~/.config/gtk-4.0/gtk.css しか読まないため、
+  # applications.nix と同じ derivation から css を store-backed で配置する。
+  nordic-darker = pkgs.callPackage ./packages/nordic-darker.nix { };
+
   # nput の symlink 配置はファイル/ディレクトリを区別しないため、file-map.nix の
   # homeDirMap/homeFileMap・xdgConfigDirMap/xdgConfigFileMap は各 1 つに統合する。
   homeMap = fileMap {
@@ -349,6 +353,17 @@ in
     ];
     dotConfig = {
       ".config/alacritty/os.toml".src = mkOutOfStoreSymlink "${xdgConfigHome}/alacritty/linux.toml";
+
+      # themechanger / nwg-look が野良で張っていた symlink を nput 管理下に取り込む。
+      # ~/dotfiles ではなく nix store 由来のため store-backed src で配置する。
+      ".config/gtk-4.0/gtk.css" = {
+        src = nordic-darker;
+        subpath = "share/themes/Nordic-darker/gtk-4.0/gtk.css";
+      };
+      ".config/gtk-4.0/gtk-dark.css" = {
+        src = nordic-darker;
+        subpath = "share/themes/Nordic-darker/gtk-4.0/gtk-dark.css";
+      };
     }
     // xdgConfigMap [
       # keep-sorted start

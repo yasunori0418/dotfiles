@@ -246,8 +246,6 @@ in
       libsForQt5.qtstyleplugins
       nordzy-cursor-theme
       nordzy-icon-theme
-      nwg-look
-      themechanger
       # keep-sorted end
     ]);
 
