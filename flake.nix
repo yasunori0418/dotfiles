@@ -40,6 +40,7 @@
     };
     cryoflow.url = "github:yasunori0418/cryoflow";
     arto.url = "github:arto-app/Arto";
+    cclens.url = "github:lambdalisue/cclens";
     neovim-nightly-overlay.url = "github:nix-community/neovim-nightly-overlay";
     nix-index-database = {
       url = "github:nix-community/nix-index-database";
@@ -83,6 +84,7 @@
       "https://yasunori0418.cachix.org"
       "https://ryoppippi.cachix.org"
       "https://arto.cachix.org"
+      "https://cclens.cachix.org"
     ];
 
     extra-trusted-public-keys = [
@@ -92,6 +94,7 @@
       "yasunori0418.cachix.org-1:mC1j+M5A6063OHaOB5bH2nS0BiCW/BJsSRiOWjLeV9o="
       "ryoppippi.cachix.org-1:b2LbtWNvJeL/qb1B6TYOMK+apaCps4SCbzlPRfSQIms="
       "arto.cachix.org-1:yaH0JQomRJTosIcTh2xZPKBEny41D7h6QUePYQzWYqc="
+      "cclens.cachix.org-1:0QUNU6PuVyf+yXOvg3n1rd3FksBoB3s3/Jty50iKRNQ="
     ];
   };
 

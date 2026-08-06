@@ -19,6 +19,7 @@ let
   claude-code-by-ryoppippi = inputs.nix-claude-code.packages.${system}.default;
   cryoflow = inputs.cryoflow.packages.${system}.default;
   arto = inputs.arto.packages.${system}.default;
+  cclens = inputs.cclens.packages.${system}.default;
   nvimOverlay = inputs.neovim-nightly-overlay.packages.${system}.neovim;
   nordic-darker = pkgs.callPackage ./packages/nordic-darker.nix { };
 in
@@ -171,6 +172,7 @@ in
   aiTools = with llmAgentsPkgs; [
     # keep-sorted start
     amp
+    cclens
     ccusage
     claude-code-by-ryoppippi
     # codex
