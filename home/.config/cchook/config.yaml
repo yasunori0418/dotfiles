@@ -96,6 +96,8 @@ PreToolUse:
 
 PostToolUse:
 
+PermissionRequest:
+
 Notification:
 
 UserPromptSubmit:
@@ -123,6 +125,8 @@ Stop:
       - type: command
         command: $HOME/.claude/hooks/teammate-leak-guard/main.sh
         use_stdin: true
+
+SubagentStart:
 
 SubagentStop:
 

@@ -2,7 +2,7 @@
   ~/.claude/settings.json を Nix attrset から生成する。
 
   従来は home/.claude/settings.{linux,macos}.json の 2 つの手書き JSON を
-  out-of-store symlink で配置していたが、OS 間で共通部（hooks 8 event・
+  out-of-store symlink で配置していたが、OS 間で共通部（hooks の全 event・
   permissions・env の大半）が重複し、差分が意図せず揺れていた。
   共通部を common に一元化し、OS 固有分だけを perOS で上書きする。
 
@@ -24,16 +24,23 @@ let
 
   jsonFormat = pkgs.formats.json { };
 
-  # cchook は 8 つの event をすべて同じ形で受けるため、event 名から生成する。
+  # cchook が受け付ける event をすべて同じ形で受けるため、event 名から生成する。
+  # 一覧は `cchook -event <invalid>` のエラーメッセージが権威（= cchook 側の
+  # サポート範囲）。cchook を更新したらここも追随させる。config.yaml に
+  # 該当セクションが無い event は何もせず終了するので、空セクションでも
+  # 登録しておいて問題ない。
   cchookEvents = [
     "Notification"
+    "PermissionRequest"
     "PostToolUse"
     "PreCompact"
     "PreToolUse"
     "SessionEnd"
     "SessionStart"
     "Stop"
+    "SubagentStart"
     "SubagentStop"
+    "UserPromptSubmit"
   ];
   hooks = lib.genAttrs cchookEvents (event: [
     {
