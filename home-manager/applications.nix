@@ -61,6 +61,7 @@ in
       lazysql
       lefthook
       lemonade
+      llmAgentsPkgs.herdr
       lnav
       mise
       myNurPkgs.deno
