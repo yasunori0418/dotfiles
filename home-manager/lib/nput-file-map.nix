@@ -37,7 +37,7 @@
     配置元と配置先の命名が一致しているときだけ使える
 
     nput の symlink 配置はファイル/ディレクトリを区別しない（どちらも 1 本の
-    symlink）ため、file-map.nix の is_recursive 相当の区別は不要。
+    symlink）ため、旧 home.file 実装の is_recursive 相当の区別は不要。
 
     dist: 配置先（root からの相対。root は HM モジュールが homeRoot に pin する）
     src: ~/dotfiles 上のファイルパス（絶対パス文字列）

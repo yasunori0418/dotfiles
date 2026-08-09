@@ -18,8 +18,8 @@ let
   # applications.nix と同じ derivation から css を store-backed で配置する。
   nordic-darker = pkgs.callPackage ./packages/nordic-darker.nix { };
 
-  # nput の symlink 配置はファイル/ディレクトリを区別しないため、file-map.nix の
-  # homeDirMap/homeFileMap・xdgConfigDirMap/xdgConfigFileMap は各 1 つに統合する。
+  # nput の symlink 配置はファイル/ディレクトリを区別しないため、旧 home.file 実装が
+  # 持っていた homeDirMap/homeFileMap・xdgConfigDirMap/xdgConfigFileMap は各 1 つに統合する。
   homeMap = fileMap {
     dist = "";
     src = homeDir;

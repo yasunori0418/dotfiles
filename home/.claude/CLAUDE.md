@@ -21,12 +21,12 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 - **並列エージェント(agent teams)は使い終わったら明示的に停止する**。`idle_notification`(`idleReason: "available"`)は「作業が終了した」ではなく「空いて待機中」の意味で、放置するとチームメイトが滞留し続ける。成果物を回収してそのエージェントへの追加依頼が無いと判断した時点で `TaskStop` を呼ぶ。反復作業(評価ループ等)で次のイテレーションのエージェントを起動する前には、`TaskList` で前イテレーションの残留を棚卸しして停止済みにしてから起動する。応答終了時の取りこぼしは teammate-leak-guard hook が `decision: block` で差し戻すが、hook はターン終端でしか発火しないため、ターン内での棚卸しはこのルールで担保する
 - **エージェントからの返信が来ないときの再送は 1 回まで**。`idle_notification` だけが届いて成果物本体が来ない状態は返信経路の障害とみなし、1 回再送しても届かなければ `TaskStop` で打ち切る。自分で代替検証できるなら実施し、できないならその旨をユーザーへ報告して指示を仰ぐ(応答を待ち続けるポーリングはしない)
 
-## symlink 運用(home-manager + dotfiles)
+## symlink 運用(nput + dotfiles)
 
-この環境は home-manager 管理で、`~/.claude/`・`~/.config/` 配下は `mkOutOfStoreSymlink`(`home-manager/fileMap.nix`)により **dotfiles リポジトリ実体(`~/dotfiles/home/...`)へ直結した symlink**。nix store へのコピーではなく**可変**。これを前提に振る舞う。
+この環境の `~/.claude/`・`~/.config/` 配下は nput 管理で、`mkOutOfStoreSymlink`(`home-manager/nputFileMap.nix`)により **dotfiles リポジトリ実体(`~/dotfiles/home/...`)へ直結した symlink**。nix store へのコピーではなく**可変**。これを前提に振る舞う。
 
 - **検索は symlink を追従させる**。`fd`・`rg`、および Grep/Glob ツールはデフォルトでディレクトリ symlink を降りない。`~/.claude` / `~/.config` など symlink を含む木を探索するときは `rg -L` / `fd -L`(Bash)を使うか、`readlink` で実体を解決してから探索する。**追従なしの検索が空を返しても「存在しない」と結論しない**(一度 `-L` で再確認する)
 - **存在確認はリストを信用しすぎない**。skill が `disable-model-invocation: true` だと起動時の available-skills リストに載らない。skill / command の有無を判断するときは、リストの不在だけで決めず `~/.claude/skills` 等を `-L` 付きで列挙して確かめる
-- **編集はリポジトリ実体に直接書き込まれる**。`~/.claude/*`・`~/.config/*` は dotfiles 本体へ直結しているため、`~/.claude/CLAUDE.md` 等を編集するとそのまま `~/dotfiles/home/...`(＝編集すべき source)に書き込まれる。**content の変更は即時反映で `home-manager switch` 不要**。switch が要るのは fileMap にファイルを増減する**構造変更のときだけ**。(万一あるパスが `/nix/store/...` に解決する場合のみ read-only。その時は dotfiles 側を編集する)
+- **編集はリポジトリ実体に直接書き込まれる**。`~/.claude/*`・`~/.config/*` は dotfiles 本体へ直結しているため、`~/.claude/CLAUDE.md` 等を編集するとそのまま `~/dotfiles/home/...`(＝編集すべき source)に書き込まれる。**content の変更は即時反映で再配置不要**。再配置が要るのは `home-manager/nputFileMap.nix` の entries にファイルを増減する**構造変更のときだけ**で、そのときも `home-manager switch` ではなく `make nput-apply` で足りる。(万一あるパスが `/nix/store/...` に解決する場合のみ read-only。その時は dotfiles 側を編集する)
 - **例外: `~/.claude/settings.json` は Nix 生成物の copy 配置**。実体は `home-manager/claudeSettings.nix` の Nix attrset（OS 共通部 + Linux/macOS 差分）から生成し、nput の `method = "copy"` で配置する。copy なので**書き込み可能**（TUI / `/config` の書き戻しは通る）が、**place-once のため switch では追従しない**。Nix 側の変更を反映するには `nput apply --recopy` が要る。逆に TUI が書き戻した内容は `--recopy` で失われるので、恒久化したい変更は `claudeSettings.nix` へ手で戻す（SSOT は Nix 側）
 - **例外: `~/.claude/skills/*`・`~/.claude/agents/*` は store 直結の read-only**。これらは dotfiles 実体ではなく `yasunori0418/skills` リポジトリ(flake input `yasunori-skills`)から nput が配置する。編集は `~/src/github.com/yasunori0418/skills` で行い、**push → `~/dotfiles` で `nix flake update yasunori-skills` → switch** で反映する(即時反映ではない)。同リポジトリは Claude Code plugin(ローカル marketplace)としても配布しているが、このマシンでは重複回避のため plugin はローカル無効(`enabledPlugins` で false)

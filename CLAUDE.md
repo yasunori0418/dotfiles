@@ -10,7 +10,7 @@ Nix flakesと`flake-parts`を使用したモジュラー設定管理を採用。
 - **`/home-manager/`**: クロスプラットフォームのユーザー環境設定（`linux/`、`macos/`）
 - **`/nixos/`**: Linuxシステム設定（マシン固有プロファイル）
 - **`/nix-darwin/`**: macOSシステム設定
-- **`/home/`**: 実際のdotfiles（`home-manager/lib/file-map.nix`経由でシンボリックリンク）
+- **`/home/`**: 実際のdotfiles（`home-manager/nputFileMap.nix`経由でシンボリックリンク）
 - **`/nix-overlays/`**: カスタムパッケージ定義
 
 ### プラットフォーム固有の注意点
