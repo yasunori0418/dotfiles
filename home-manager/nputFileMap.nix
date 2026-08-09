@@ -239,6 +239,7 @@ in
     "git"
     "glow"
     "gwq"
+    "herdr/config.toml"
     "ideavim"
     "jj"
     "kanata"
