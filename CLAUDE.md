@@ -10,7 +10,7 @@ Nix flakesと`flake-parts`を使用したモジュラー設定管理を採用。
 - **`/home-manager/`**: クロスプラットフォームのユーザー環境設定（`linux/`、`macos/`）
 - **`/nixos/`**: Linuxシステム設定（マシン固有プロファイル）
 - **`/nix-darwin/`**: macOSシステム設定
-- **`/home/`**: 実際のdotfiles（`home-manager/nputFileMap.nix`経由でシンボリックリンク）
+- **`/home/`**: 実際のdotfiles（`home-manager/nputEntries.nix`経由でシンボリックリンク）
 - **`/nix-overlays/`**: カスタムパッケージ定義
 
 ### プラットフォーム固有の注意点
@@ -30,7 +30,7 @@ make help           # 全コマンド一覧
 
 ## nput による設定ファイル配置
 
-`~/.claude/*`・`~/.config/*` などの配置は home-manager の `home.file` ではなく
+`~/.claude/*`・`~/.config/*` などの配置は
 [nput](https://github.com/yasunori0418/nput) が行う（home-manager にはモジュールとして
 import され、`home.activation` から起動される）。
 
