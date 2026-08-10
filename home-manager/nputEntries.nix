@@ -14,6 +14,18 @@
   pkgs,
   homeDirectory,
   isDarwin,
+
+  # repo の位置。既定は homeDirectory 配下だが、claude-web のように clone 先が
+  # homeDirectory の外にあるプロファイルがあるので上書きできるようにしている。
+  dotfilesDir ? "${homeDirectory}/dotfiles",
+
+  # OS 共通で配置する target。nvim を使わないプロファイルは dotLocalShare
+  # （treesitter parser）を落とすなど、プロファイル側で取捨選択する。
+  commonTargets ? [
+    "homeDirectory"
+    "dotConfig"
+    "dotLocalShare"
+  ],
 }:
 let
   inherit (pkgs.lib) pipe;
@@ -26,8 +38,7 @@ let
   inherit (inputs.nput.lib) mkOutOfStoreSymlink;
 
   # nput の src（out-of-store marker）には絶対パス文字列を渡す。
-  dotfiles = "${homeDirectory}/dotfiles";
-  homeDir = "${dotfiles}/home";
+  homeDir = "${dotfilesDir}/home";
   xdgConfigHome = "${homeDir}/.config";
 
   nputFileMap = import ./nputFileMap.nix {
@@ -47,11 +58,7 @@ let
       concatOfAttrs
     ];
 
-  common = concatFileMap [
-    "homeDirectory"
-    "dotConfig"
-    "dotLocalShare"
-  ] nputFileMap;
+  common = concatFileMap commonTargets nputFileMap;
 
   osSpecific =
     if isDarwin then

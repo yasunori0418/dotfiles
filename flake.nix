@@ -186,6 +186,12 @@
                   profileName = "macos";
                   system = "aarch64-darwin";
                 });
+                # Claude Code on the web のセッション用（root / HOME=/root・
+                # 適用は scripts/claude-web-setup.sh）。
+                claude-web = homeManagerConfiguration (hmArgs {
+                  profileName = "claude-web";
+                  system = "x86_64-linux";
+                });
               };
 
             darwinConfigurations =

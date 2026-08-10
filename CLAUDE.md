@@ -7,7 +7,7 @@ Nix flakesと`flake-parts`を使用したモジュラー設定管理を採用。
 
 ### ディレクトリ構成
 
-- **`/home-manager/`**: クロスプラットフォームのユーザー環境設定（`linux/`、`macos/`）
+- **`/home-manager/`**: クロスプラットフォームのユーザー環境設定（`linux/`、`macos/`、`claude-web/`）
 - **`/nixos/`**: Linuxシステム設定（マシン固有プロファイル）
 - **`/nix-darwin/`**: macOSシステム設定
 - **`/home/`**: 実際のdotfiles（`home-manager/nputEntries.nix`経由でシンボリックリンク）
@@ -15,8 +15,33 @@ Nix flakesと`flake-parts`を使用したモジュラー設定管理を採用。
 
 ### プラットフォーム固有の注意点
 
-- **ユーザー名**: Linuxでは`yasunori`、macOSでは`taiki.watanabe`
+- **ユーザー名**: Linuxでは`yasunori`、macOSでは`taiki.watanabe`、claude-webでは`root`
 - **Neovim設定**: `home/.config/nvim/`で管理（dpp.vim + Denops構成）
+
+### claude-webプロファイル
+
+Claude Code on the webのセッション向けスタンドアロンHome Manager設定
+（`home-manager/claude-web/`、`homeConfigurations.claude-web`）。
+
+- コンテナは毎セッション破棄されるため、`make claude-web`（=`scripts/claude-web-setup.sh`）を
+  セッション開始ごとに実行する。環境のsetup scriptへ登録するとClaude Code起動前に走る。
+- 配置のentriesは`nputEntries.nix`をlinux/macosと共用する。claude-web固有の差は引数2つだけ。
+  `dotfilesDir`はrepoが`~/dotfiles`ではなく`/home/user/dotfiles`にcloneされるため、
+  `commonTargets`はnvimを使わないので`dotLocalShare`（treesitter parser）を外すため。
+- imageが`/root/.bashrc`・`/root/.zshrc`を持つため`nput.backup`を有効にして退避・置換する。
+- systemdが無いのでNixは`nix-installer --init none`で入れ、`nix-daemon`はスクリプトが起動する。
+- cchookのtirith hookは`uv run --python 3.13`で走る。uv管理のpythonが無いとimage同梱の
+  `/usr/bin/python3.13`を拾ってしまうため、setup scriptが`uv python install`で明示的に入れる
+  （python-build-standaloneのrelease pageは403だが、release assetの実体は取得できる）。
+- **GitHub proxyは、セッションに紐づいていないrepoのarchive tarballとAPIを403にする**。
+  これは環境のnetwork access levelと独立していて、**Fullにしても変わらない**
+  （`github.com`・`codeload.github.com`はTrustedの既定allowlistに入っているのに403）。
+  flakeのinputは`github:`スキーム＝archive経由なので、素の`nix build`は入力解決で必ず止まる。
+- 回避は`scripts/claude-web-setup.sh`が持つ。git smart-HTTPには同じ制限がかからず、
+  `github:`のtarballを展開したtreeとgitのtreeはNARが一致する（＝store pathが同じ）ため、
+  403で落ちたinputだけgit経由でstoreへ入れて再試行する。substituterから引けるinputは
+  そこへ来ない（実測では9件だけgit経由が必要だった）。
+- `add_repo`は**同一ownerのrepoしか追加できない**ため、この制限の回避手段にはならない。
 
 ## 主要コマンド
 
