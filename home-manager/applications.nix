@@ -77,7 +77,7 @@ in
       tmux
       tree-sitter
       typos
-      # unar
+      unar
       unzip
       usql
       zellij
