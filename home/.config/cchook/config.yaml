@@ -137,5 +137,20 @@ PreCompact:
         message: "直前の作業内容と最初の依頼内容は圧縮しないこと。過去の作業途中の内容を圧縮"
 
 SessionStart:
+  # herdr（コーディングエージェント用ターミナルマルチプレクサ）へ、この pane で
+  # 動いている Claude セッションの session_id / transcript_path を報告する。
+  # herdr 側の integration インストーラは settings.json へ直接 hook を書き込むが、
+  # hook 定義は cchook へ集約する方針なのでこちらに置く（settings.json は
+  # claudeSettings.nix が SSOT で、recopy すると herdr の書き込みは消える）。
+  # スクリプトは stdin の hook JSON から session_id を読むため use_stdin 必須。
+  # HERDR_ENV / HERDR_SOCKET_PATH / HERDR_PANE_ID が無ければ自己抑制して終了する。
+  # 実体は nput 配置（nputFileMap.nix の herdrEntries、flake input `herdr`）で、
+  # herdr リポジトリ側のアセットに実行ビットが無い（store 上で -r--r--r--）ため
+  # 直接起動すると exit 126 になる。herdr 純正の settings.json 定義と同様に
+  # インタプリタ（sh）経由で起動する。
+  - actions:
+      - type: command
+        command: sh $HOME/.claude/hooks/herdr/herdr-agent-state.sh session
+        use_stdin: true
 
 SessionEnd:

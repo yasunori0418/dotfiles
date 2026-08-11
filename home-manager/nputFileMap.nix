@@ -165,6 +165,17 @@ let
     };
   };
 
+  herdrEntries = {
+    ".claude/hooks/herdr/herdr-agent-state.sh" = {
+      src = inputs.herdr;
+      subpath = "src/integration/assets/claude/herdr-agent-state.sh";
+    };
+    ".claude/skills/herdr" = {
+      src = inputs.herdr;
+      subpath = "skills/herdr";
+    };
+  };
+
   /*
     ~/.claude/settings.json は Nix attrset から生成した JSON を copy で配置する。
 
@@ -212,7 +223,8 @@ in
   // yasunoriSkillEntries
   // yasunoriAgentEntries
   // yasunoriHookEntries
-  // tirithHookEntries;
+  // tirithHookEntries
+  // herdrEntries;
 
   dotConfig = xdgConfigMap [
     # keep-sorted start

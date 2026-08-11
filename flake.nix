@@ -74,6 +74,10 @@
       url = "github:sheeki03/tirith";
       flake = false;
     };
+    herdr = {
+      url = "github:herdrdev/herdr";
+      flake = false;
+    };
   };
 
   nixConfig = {
