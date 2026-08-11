@@ -13,6 +13,14 @@ function source {
 }
 
 
+# herdr を自動起動したい場合は、下記 tmux ブロックをコメントアウトして
+# こちらを有効化する（tmux 前提の skill を使うときは tmux 側へ戻す）。
+# herdr は persistent session の起動/アタッチを自動判定するため、
+# tmux 版のようなセッション一覧選択は不要。
+# if [[ -z "$HERDR_ENV" && -z "$VIM" && -z "$NVIM" && -z "$SSH_CONNECTION" && -z "$INTELLIJ_ENVIRONMENT_READER" ]] ; then
+#     exec herdr
+# fi
+
 if [[ -z "$TMUX" && -z "$VIM" && -z "$NVIM" && -z "$SSH_CONNECTION" && -z "$INTELLIJ_ENVIRONMENT_READER" ]] ; then
     # セッション一覧を取得
     sessions=$(tmux list-sessions -F "#{session_name}: #{session_windows} windows" 2>/dev/null)
