@@ -3,7 +3,7 @@
 
 # Show first-run notification setup on startup.
 # Missing also shows onboarding; set false after you've chosen.
-# onboarding = true
+onboarding = false
 
 [theme]
 # Built-in themes: catppuccin, terminal, tokyo-night, dracula, nord,
@@ -76,8 +76,8 @@ open_worktree = "prefix+shift+g"    # optional, unset by default
 remove_worktree = ""  # optional, unset by default; opens confirmation
 rename_workspace = "prefix+shift+w" # Worktree management is left to worktrunk
 close_workspace = "prefix+shift+d"
-previous_workspace = "prefix+shift+p" # optional, unset by default
-next_workspace = "prefix+shift+n"     # optional, unset by default
+previous_workspace = "" # optional, unset by default
+next_workspace = ""     # optional, unset by default
 previous_agent = "prefix+alt+p"     # optional, unset by default
 next_agent = "prefix+alt+n"         # optional, unset by default
 focus_agent = ""        # optional indexed binding, e.g. "prefix+alt+1..9"
@@ -239,7 +239,7 @@ rows = [["state_icon", "workspace"], ["branch", "git_status"]]
 
 # Accent color for highlights, borders, and navigation UI.
 # Accepts: hex (#89b4fa), named colors (cyan, blue, magenta), or rgb(r,g,b)
-accent = "#b48ead" # default: cyan
+# accent = "cyan"
 
 # Background notification popup delivery
 [ui.toast]
