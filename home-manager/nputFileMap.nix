@@ -83,6 +83,8 @@ let
         "skills/testing/test-review"
         "skills/workflow/dev-pipeline"
         "skills/workflow/external-writes"
+        "skills/workflow/job-graph"
+        "skills/workflow/lane-ops"
         "skills/workflow/test-targeted"
         # keep-sorted end
       ]
