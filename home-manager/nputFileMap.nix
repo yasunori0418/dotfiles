@@ -45,7 +45,6 @@ let
     lib.pipe
       [
         # keep-sorted start
-        # "skills/claude/latency-triage"
         "skills/claude/project-session"
         "skills/claude/response-format"
         "skills/claude/session-insights"
