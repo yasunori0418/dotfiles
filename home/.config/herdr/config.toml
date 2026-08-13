@@ -128,6 +128,16 @@ navigate_pane_right = "l"     # right arrow always focuses the pane to the right
 # width = "80%"
 # height = "80%"
 
+# セッション一覧の確認。herdr には session 間を移動するキーバインド／API が
+# 無いため、ここでは一覧の表示だけを行う。切り替えは detach（prefix+d）して
+# .zshrc 側の fzf 選択に戻る導線を使う。
+[[keys.command]]
+key = "prefix+shift+s"
+type = "popup"
+command = "sh -c 'herdr session list; echo; printf \"press enter to close \"; read _'"
+width = "80%"
+height = "50%"
+
 # Legacy indexed shortcut config is still parsed for compatibility.
 # Prefer switch_tab, switch_workspace, and focus_agent for new configs.
 # [keys.indexed]
