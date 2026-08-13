@@ -13,35 +13,41 @@ function source {
 }
 
 
-# herdr を自動起動したい場合は、下記 tmux ブロックをコメントアウトして
-# こちらを有効化する（tmux 前提の skill を使うときは tmux 側へ戻す）。
-# herdr は persistent session の起動/アタッチを自動判定するため、
-# tmux 版のようなセッション一覧選択は不要。
-# if [[ -z "$HERDR_ENV" && -z "$VIM" && -z "$NVIM" && -z "$SSH_CONNECTION" && -z "$INTELLIJ_ENVIRONMENT_READER" ]] ; then
-#     exec herdr
-# fi
+# tmux の session に相当するのは herdr の session（workspace ではない）。
+# `herdr --session <name>` は起動/アタッチを自動判定するので、
+# tmux 版のような new-session / attach-session の分岐は不要。
+#
+# herdr には session 間を移動するキーバインド／API が無い（workspace_picker 等は
+# 単一 session 内が対象）。そのため exec せずループで回し、detach（prefix+d）で
+# herdr を抜けたら再びこの選択画面に戻す。これが実質のセッション切り替え導線。
+# ループを抜けて素の zsh に落ちたいときは fzf を Esc → 名前も空で確定する。
+if [[ -z "$HERDR_ENV" && -z "$VIM" && -z "$NVIM" && -z "$SSH_CONNECTION" && -z "$INTELLIJ_ENVIRONMENT_READER" ]] ; then
+    while true; do
+        # セッション一覧を取得
+        sessions=$(herdr session list --json 2>/dev/null \
+            | jq -r '.sessions[] | "\(.name): \(if .running then "running" else "stopped" end)"')
 
-if [[ -z "$TMUX" && -z "$VIM" && -z "$NVIM" && -z "$SSH_CONNECTION" && -z "$INTELLIJ_ENVIRONMENT_READER" ]] ; then
-    # セッション一覧を取得
-    sessions=$(tmux list-sessions -F "#{session_name}: #{session_windows} windows" 2>/dev/null)
-
-    if [[ -z "$sessions" ]]; then
-        # セッションが0個の場合は新規作成
-        tmux new-session -s main
-    else
-        selected_session=$(echo "$sessions" | fzf | cut -d: -f1)
-
-        if [[ -n "$selected_session" ]]; then
-            tmux attach-session -t "$selected_session"
+        if [[ -z "$sessions" ]]; then
+            # セッションが0個の場合はデフォルトセッションで起動
+            herdr
         else
-            # fzfで選択されなかったらセッション名を指定して、
-            # 新しいセッションにアタッチする
-            read "session_name?tmux session name: "
-            if [[ -n "$session_name" ]]; then
-                tmux new-session -s "$session_name"
+            selected_session=$(echo "$sessions" | fzf | cut -d: -f1)
+
+            if [[ -n "$selected_session" ]]; then
+                herdr --session "$selected_session"
+            else
+                # fzfで選択されなかったらセッション名を指定して、
+                # 新しいセッションにアタッチする
+                read "session_name?herdr session name (empty to quit): "
+                if [[ -n "$session_name" ]]; then
+                    herdr --session "$session_name"
+                else
+                    break
+                fi
             fi
         fi
-    fi
+    done
+    unset sessions selected_session session_name
 fi
 
 # Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
