@@ -266,15 +266,12 @@ in
       grim
       gthumb
       kdePackages.okular
-      ncpamixer
       nwg-displays
       pavucontrol
       peek
-      picom
       rofi
       rofi-power-menu
       showmethekey
-      simplescreenrecorder
       slack
       slurp
       sway-contrib.grimshot
@@ -282,15 +279,13 @@ in
       swaylock-effects
       vlc
       waybar
-      wf-recorder
       wl-clipboard
       wl-screenrec
       wlr-randr
-      xfce4-screenshooter
       xwayland
       xwayland-satellite
       zathura
-      zoom-us
+      # zoom-us
       # keep-sorted end
     ];
 
