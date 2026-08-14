@@ -22,6 +22,7 @@
       ];
       xdg = ../options/xdg.nix;
       nix = ../options/nix.nix;
+      dconf = ../options/dconf.nix;
     in
     [
       packages
@@ -29,6 +30,7 @@
       clearDppStateAfterLinkGeneration
       xdg
       nix
+      dconf
     ]
     ++ programs;
   programs.home-manager.enable = true;
