@@ -242,6 +242,8 @@ row_gap = 0
 rows = [["state_icon", "workspace", "tab"], ["agent"]]
 # Optional canonical agent IDs replace the default rows for matching agents.
 [ui.sidebar.agents.rows_by_agent]
+# Complete Agent-row overrides keyed by strict canonical agent id.
+# Agents without an override use `ui.sidebar.agents.rows`.
 claude = [["state_icon", "workspace", "tab"], ["terminal_title_stripped"], ["agent"]]
 
 # Expanded space rows. Built-ins are state_icon, state_text, workspace, branch, and git_status.
@@ -263,14 +265,14 @@ rows = [["state_icon", "workspace"], ["branch", "git_status"]]
 # terminal = ask the outer terminal to show a desktop notification
 # system = ask the OS notification service directly
 delivery = "herdr" # default: off
-delay_seconds = 1
+delay_seconds = 0 # default: 1
 
 [ui.toast.herdr]
 position = "bottom-right"
 
 [ui.toast.clipboard]
 enabled = true
-position = "bottom-center"
+position = "bottom-right" # default: bottom-center
 
 # Play sounds when agents change state in background workspaces
 [ui.sound]
