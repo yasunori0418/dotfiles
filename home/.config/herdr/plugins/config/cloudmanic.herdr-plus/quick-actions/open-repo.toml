@@ -1,0 +1,34 @@
+# herdr-plus 公式サンプル（examples/quick-actions/open-repo.toml）の owner を
+# yasunori0418 へ差し替えたもの。
+#
+# type = "select" は二段目に fuzzy な選択肢一覧を出し、選んだ option の value が
+# {{.Value}} に入る。value 省略時は label がそのまま値になる。
+
+name = "Open Repo on GitHub"
+description = "自分のリポジトリを GitHub で開く"
+type = "select"
+command = "{{opener}} https://github.com/yasunori0418/{{.Value}}"
+
+[[options]]
+label = "dotfiles"
+description = "yasunori0418/dotfiles"
+
+[[options]]
+label = "nput"
+description = "yasunori0418/nput"
+
+[[options]]
+label = "niface"
+description = "yasunori0418/niface"
+
+[[options]]
+label = "skills"
+description = "yasunori0418/skills"
+
+[[options]]
+label = "nur-packages"
+description = "yasunori0418/nur-packages"
+
+[[options]]
+label = "blog"
+description = "yasunori0418/blog"

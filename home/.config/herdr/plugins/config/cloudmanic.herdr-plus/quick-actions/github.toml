@@ -1,0 +1,7 @@
+# herdr-plus 公式サンプル（examples/quick-actions/github.toml）そのまま。
+# type 省略時は "command"（選んだ即座に command を実行する）。
+# {{opener}} は OS 既定の open コマンド（open / xdg-open / Start-Process）に展開される。
+
+name = "GitHub"
+description = "Open https://github.com"
+command = "{{opener}} https://github.com"

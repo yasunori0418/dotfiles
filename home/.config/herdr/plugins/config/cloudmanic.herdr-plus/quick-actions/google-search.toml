@@ -1,0 +1,12 @@
+# herdr-plus 公式サンプル（examples/quick-actions/google-search.toml）そのまま。
+# type = "form" は入力欄を出し、打った文字列が {{.Value}} に入る。
+# urlquery は text/template 組み込みの関数で、URL に埋めても安全な形へエスケープする。
+
+name = "Search Google"
+description = "Type a query and open the results"
+type = "form"
+command = "{{opener}} 'https://www.google.com/search?q={{.Value | urlquery}}'"
+
+[form]
+prompt = "Search Google for"
+placeholder = "e.g. herdr terminal multiplexer"
