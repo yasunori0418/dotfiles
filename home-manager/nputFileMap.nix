@@ -276,6 +276,7 @@ in
     "glow"
     "gwq"
     "herdr/config.toml"
+    "herdr/plugins/config/herdr-navigator/config.toml"
     "ideavim"
     "jj"
     "kanata"
