@@ -1,0 +1,7 @@
+name = "niface"
+description = "n-tools interface（結果エンベロープの共通規格）"
+group = "yasunori0418"
+working_dir = "~/src/github.com/yasunori0418/niface"
+
+[[tabs]]
+name = "shell"

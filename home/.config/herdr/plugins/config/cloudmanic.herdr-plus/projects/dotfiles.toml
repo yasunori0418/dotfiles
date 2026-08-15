@@ -1,0 +1,7 @@
+name = "dotfiles"
+description = "Nix dotfiles (NixOS / nix-darwin / home-manager)"
+group = "yasunori0418"
+working_dir = "~/dotfiles"
+
+[[tabs]]
+name = "shell"

@@ -1,0 +1,7 @@
+name = "skills"
+description = "Claude Code 向けスキル・エージェント集"
+group = "yasunori0418"
+working_dir = "~/src/github.com/yasunori0418/skills"
+
+[[tabs]]
+name = "shell"

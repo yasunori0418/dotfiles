@@ -1,0 +1,7 @@
+name = "blog"
+description = "blog.yasunori0418.dev"
+group = "yasunori0418"
+working_dir = "~/src/github.com/yasunori0418/blog"
+
+[[tabs]]
+name = "shell"

@@ -1,0 +1,7 @@
+name = "nur-packages"
+description = "自作 Nix パッケージ（NUR）"
+group = "yasunori0418"
+working_dir = "~/src/github.com/yasunori0418/nur-packages"
+
+[[tabs]]
+name = "shell"

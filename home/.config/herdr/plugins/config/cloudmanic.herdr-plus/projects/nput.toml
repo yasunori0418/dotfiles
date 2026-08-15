@@ -1,0 +1,7 @@
+name = "nput"
+description = "dotfiles 配置エンジン（nput）"
+group = "yasunori0418"
+working_dir = "~/src/github.com/yasunori0418/nput"
+
+[[tabs]]
+name = "shell"
