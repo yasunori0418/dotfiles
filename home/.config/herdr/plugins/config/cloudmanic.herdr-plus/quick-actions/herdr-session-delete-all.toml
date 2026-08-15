@@ -1,0 +1,20 @@
+# default 以外の herdr セッションをまとめて削除する。
+#
+# stop と違い戻せないので type = "select" で確認を一段挟む。
+# 選んだ値は {{.Value}} に入り、sh -c でコマンド全体が実行される
+# （"no" 側は : = 何もしない no-op）。誤って開いたときは Esc で抜ける。
+
+name = "Herdr: delete all sessions"
+description = "default 以外の herdr セッションを全削除（確認あり）"
+type = "select"
+command = "{{.Value}}"
+
+[[options]]
+label = "no — 何もしない"
+value = ":"
+description = "キャンセル（no-op）"
+
+[[options]]
+label = "yes — default 以外を全削除"
+value = "herdr session list --json | jq -r '.sessions[].name' | rg -v default | xargs -I{} herdr session delete {}"
+description = "戻せないので注意"
