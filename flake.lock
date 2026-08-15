@@ -572,6 +572,38 @@
         "type": "github"
       }
     },
+    "herdr-navigator": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1786472710,
+        "narHash": "sha256-ZfC0iWnBXYN+wPQPpUSuEd5W89sapnjxMNut3NH6XbA=",
+        "owner": "thanhdat77",
+        "repo": "herdr-navigator",
+        "rev": "b94ef1ea2e042cd82dcd4d60881fcbc5beee6e48",
+        "type": "github"
+      },
+      "original": {
+        "owner": "thanhdat77",
+        "repo": "herdr-navigator",
+        "type": "github"
+      }
+    },
+    "herdr-worktrunk": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1784875428,
+        "narHash": "sha256-+G4EzlQisIr8SQ1NwDfzV/27iOiC3r/2nkxjcV/aU/k=",
+        "owner": "devashish2203",
+        "repo": "herdr-worktrunk",
+        "rev": "a3107ca566bafcd463bc138007a0c01051970784",
+        "type": "github"
+      },
+      "original": {
+        "owner": "devashish2203",
+        "repo": "herdr-worktrunk",
+        "type": "github"
+      }
+    },
     "home-manager": {
       "inputs": {
         "nixpkgs": [
@@ -1289,6 +1321,8 @@
         "cryoflow": "cryoflow",
         "flake-parts": "flake-parts_2",
         "herdr": "herdr",
+        "herdr-navigator": "herdr-navigator",
+        "herdr-worktrunk": "herdr-worktrunk",
         "home-manager": "home-manager",
         "llm-agents-nix": "llm-agents-nix",
         "mac-app-util": "mac-app-util",

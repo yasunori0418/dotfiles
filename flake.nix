@@ -78,6 +78,25 @@
       url = "github:herdrdev/herdr";
       flake = false;
     };
+    # herdr プラグイン。herdr はプラグインをディレクトリ走査で発見せず
+    # ~/.config/herdr/plugins.json（レジストリ）に登録された plugin_root の
+    # 絶対パスを見る。よって derivation でビルド・整形 → nput で
+    # ~/.local/share/herdr-plugins/ へ配置 → `herdr plugin link` で登録する。
+    # marketplace の `herdr plugin install` は使わない（managed checkout が
+    # Nix 管理外になるため）。更新は flake.lock の rev 更新 + switch。
+    # ref は指定せず default branch を追う（rev の pin は flake.lock が担う）。
+    # 更新は `nix flake update herdr-<name>` + switch。
+    # なお herdr-navigator は Rust なので、更新で Cargo.lock が変わると
+    # packages/herdr-navigator.nix の cargoHash が合わなくなりビルドが落ちる。
+    # そのときは hash mismatch が出す `got:` の値へ差し替える。
+    herdr-worktrunk = {
+      url = "github:devashish2203/herdr-worktrunk";
+      flake = false;
+    };
+    herdr-navigator = {
+      url = "github:thanhdat77/herdr-navigator";
+      flake = false;
+    };
   };
 
   nixConfig = {
