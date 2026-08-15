@@ -97,6 +97,13 @@ nput-generations: ## nput list-generations default
 nput-rollback: ## nput rollback default (roll back to the previous generation)
 	@nput rollback default --verbose
 
+## herdr plugin commands ##
+# nput が配置した ~/.local/share/herdr-plugins/* を herdr のレジストリへ登録する。
+# home-manager の activation も同じスクリプトを呼ぶので、switch を挟まずに
+# `make nput-apply` で配置だけ差し替えたときはこれを続けて叩けば反映できる。
+herdr-plugin-link: ## register placed herdr plugins into herdr's registry
+	@./scripts/herdr-plugin-link.sh
+
 ## Environment Setup Tools ##
 nix-install: ## Install nix.
 	@curl --proto '=https' --tlsv1.2 -sSf -L https://install.determinate.systems/nix | sh -s -- install
