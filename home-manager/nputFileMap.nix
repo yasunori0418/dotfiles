@@ -287,6 +287,9 @@ in
     "herdr/plugins/config/cloudmanic.herdr-plus/quick-actions"
     "herdr/plugins/config/cloudmanic.herdr-plus/worktrees"
     "herdr/plugins/config/herdr-navigator/config.toml"
+    # config.toml の [[keys.command]] から呼ぶスクリプト。TOML に直書きすると
+    # sh の引用が多重エスケープになって読めないものはここへ出す。
+    "herdr/scripts"
     "ideavim"
     "jj"
     "kanata"

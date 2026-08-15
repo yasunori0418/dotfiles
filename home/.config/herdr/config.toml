@@ -142,6 +142,33 @@ command = "sh -c 'herdr session list; echo; printf \"press enter to close \"; re
 width = "80%"
 height = "50%"
 
+# セッションの停止・削除を fzf で選んで実行する。実体は scripts/session-pick.sh。
+#
+# quick-action（herdr-plus）ではなく popup なのは、選択に TTY が要るため。
+# quick-action はアクション実行直後に pane が破棄され、かつ herdr-plus が
+# cmd.Stdin を繋がないので fzf が "inappropriate ioctl for device" で落ちる。
+#
+# 処理をスクリプトへ出しているのは、TOML に直書きすると sh の引用が
+# 多重エスケープになって読めなくなるため（jq のフィルタ・fzf の prompt・
+# xargs の {} が全て引用を要求する）。
+#
+# キーを足したら `herdr config check` を通すこと。衝突しても herdr は
+# エラーにせず [[keys.command]] 側を黙って無効化するため、動かない形でしか
+# 表面化しない（例: prefix+shift+x は close_tab が優先される）。
+[[keys.command]]
+key = "prefix+alt+x"
+type = "popup"
+command = "~/.config/herdr/scripts/session-pick.sh stop"
+width = "60%"
+height = "50%"
+
+[[keys.command]]
+key = "prefix+alt+z"
+type = "popup"
+command = "~/.config/herdr/scripts/session-pick.sh delete"
+width = "60%"
+height = "50%"
+
 # Legacy indexed shortcut config is still parsed for compatibility.
 # Prefer switch_tab, switch_workspace, and focus_agent for new configs.
 # [keys.indexed]
