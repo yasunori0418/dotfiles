@@ -77,13 +77,13 @@ unset sheldon_cache sheldon_toml
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
 function prompt_word_style() {
-  local style
-  zstyle -s ':zle:*' word-style style
-  case $style in
-    standard) style='bash' ;;
-    '')       style='shell' ;;
-  esac
-  p10k segment -f 6 -t "${style}"
+    local style
+    zstyle -s ':zle:*' word-style style
+    case $style in
+        standard) style='bash' ;;
+        '')       style='shell' ;;
+    esac
+    p10k segment -f 6 -t "${style}"
 }
 POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS+=( word_style )
 
