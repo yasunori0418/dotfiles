@@ -40,14 +40,27 @@ if [[ -z ${current} ]]; then
     current="default"
 fi
 
+# herdr 側の制約に合わせて候補を絞る。取り違えると必ずエラーになる:
+#   stop   … running なものだけ（停止済みは session_stop_failed）
+#   delete … 停止済みのものだけ（running は session_delete_failed）
+case "${action}" in
+    stop) want_running=true ;;
+    delete) want_running=false ;;
+esac
+
 targets=$(
     printf '%s' "${sessions_json}" |
-    jq -r --arg current "${current}" \
-        '.sessions[] | select(.name != $current) | .name'
+    jq -r --arg current "${current}" --argjson running "${want_running}" \
+        '.sessions[] | select(.name != $current and .running == $running) | .name'
 )
 
 if [[ -z ${targets} ]]; then
-    printf '%s 以外のセッションはありません\n' "${current}"
+    if [[ ${action} == stop ]]; then
+        printf '停止できるセッション（%s 以外で起動中）はありません\n' "${current}"
+    else
+        printf '削除できるセッション（停止済み）はありません\n'
+        printf '起動中のものは先に stop（prefix+alt+x）してください\n'
+    fi
     printf 'press enter to close '
     read -r _
     exit 0
