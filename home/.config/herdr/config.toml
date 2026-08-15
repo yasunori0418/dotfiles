@@ -173,6 +173,18 @@ type = "plugin_action"
 command = "worktrunk.open"
 description = "Worktree: switch / create from default branch"
 
+[[keys.command]]
+key = "prefix+ctrl+p"
+type = "plugin_action"
+command = "cloudmanic.herdr-plus.projects"
+description = "herdr-plus: projects"
+
+[[keys.command]]
+key = "prefix+ctrl+n"
+type = "plugin_action"
+command = "cloudmanic.herdr-plus.quick-actions"
+description = "herdr-plus: quick actions"
+
 # [worktrees]
 # directory = "~/.herdr/worktrees"
 
