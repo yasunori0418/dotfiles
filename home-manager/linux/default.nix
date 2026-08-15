@@ -16,6 +16,7 @@
         inherit (config.home) homeDirectory;
       };
       clearDppStateAfterLinkGeneration = ../clear-dpp-state-after-link-generation.nix;
+      linkHerdrPlugins = ../link-herdr-plugins.nix;
       programs = [
         ../options/programs/nix-index.nix
         ../options/programs/discord.nix
@@ -28,6 +29,7 @@
       packages
       nput
       clearDppStateAfterLinkGeneration
+      linkHerdrPlugins
       xdg
       nix
       dconf

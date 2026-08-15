@@ -9,6 +9,7 @@
     let
       packages = ./packages.nix;
       clearDppStateAfterLinkGeneration = ../clear-dpp-state-after-link-generation.nix;
+      linkHerdrPlugins = ../link-herdr-plugins.nix;
       launchd = [
         # ../options/launchd/clipcatd.nix
       ];
@@ -27,6 +28,7 @@
     [
       packages
       clearDppStateAfterLinkGeneration
+      linkHerdrPlugins
       inputs.mac-app-util.homeManagerModules.default
       nput
     ]
