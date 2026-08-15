@@ -38,13 +38,13 @@ agent_sort = "herdr"
 # Show the right-side preview pane on open. Ctrl-O toggles it at runtime.
 preview = true
 
-# Use Herdr-style source-aware rows: metadata aligns right, while zoxide/root
-# entries expand to a second full-path line. Set false for the compact list.
+# Use Herdr-style source-aware rows: metadata aligns right, while zoxide/root entries expand to a second full-path line.
+# Set false for the compact list.
 detailed_rows = true
 
-# Check GitHub releases in the background at most once per day. Network errors
-# are ignored; a newer version appears as a badge in the Navigator header.
-check_updates = true
+# Check GitHub releases in the background at most once per day.
+# Network errors are ignored; a newer version appears as a badge in the Navigator header.
+check_updates = false
 
 # Optional Herdr Plus project filename. Alt-Enter applies its tabs/panes to the
 # selected zoxide/root dir, appending new tabs if its workspace already exists.
@@ -52,10 +52,10 @@ check_updates = true
 # directory_template_key = "alt-enter" # also accepts Ctrl forms such as "ctrl-g"
 
 # Vim-style normal mode: j/k move, source keys filter, and / starts searching.
-vim_mode = false
+vim_mode = true
 
 # Start searching immediately after a Vim source-filter key.
-vim_filter_search = false
+vim_filter_search = true
 
 # Optional: override source filter shortcuts. Values accept "ctrl-x", "ctrl+x", "^x", or "x".
 # Defaults: server=ctrl-s, agent=ctrl-a, quick=ctrl-q, workspace=ctrl-w, project=ctrl-p,
@@ -93,10 +93,10 @@ open_workspaces = true
 herdr_plus_projects = true
 
 # zoxide history from `zoxide query -l`.
-zoxide = true
+zoxide = false
 
 # Direct filesystem scan of [[roots]] below.
-roots = true
+roots = false
 
 # Agent panes from Herdr pane metadata. Selecting focuses the agent.
 agents = true
