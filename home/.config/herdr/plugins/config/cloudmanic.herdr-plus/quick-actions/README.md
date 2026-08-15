@@ -14,6 +14,20 @@ command = "{{opener}} https://github.com"
 `type` は省略時 `"command"`。ほかに `select` / `form` がある（README 参照:
 https://github.com/cloudmanic/herdr-plus#quick-actions ）。
 
+## 出力を読む用途には使えない
+
+quick-action は**副作用を起こすもの専用**と考える。一覧表示のような
+「出力を読みたい」ものは動かない:
+
+- アクションは picker の TUI を抜けた直後、**pane が破棄される直前**に実行される
+  （herdr-plus の quickactionspicker.go）。出力はその pane に出て即座に消える
+- `read` で待たせる回避も効かない。herdr-plus は `cmd.Stdout` / `cmd.Stderr` しか
+  設定せず **`cmd.Stdin` を繋がない**ため、`read` は即 EOF で返る
+
+出力を読みたいものは herdr 本体の keybinding を使う。
+`~/.config/herdr/config.toml` の `[[keys.command]]` に `type = "popup"` で書き、
+`read` で閉じるのを待たせる（例: `prefix+shift+s` のセッション一覧）。
+
 リポジトリ固有のアクションは、そのリポジトリの `.herdr-plus/quick-actions/` に置くと
 そのディレクトリで起動したときだけ一覧に出る（こちらは herdr-plus が生成しない opt-in）。
 

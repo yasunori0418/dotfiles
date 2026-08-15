@@ -1,5 +1,0 @@
-# herdr のセッション一覧。停止・削除の前に何が残っているかを見る用。
-
-name = "Herdr: sessions"
-description = "herdr セッション一覧"
-command = "herdr session list"

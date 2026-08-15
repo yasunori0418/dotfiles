@@ -1,7 +1,0 @@
-# default 以外の herdr セッションをまとめて停止する。
-# 手で組み直していたワンライナー（session list --json → jq で名前だけ抜き
-# → default を除外 → xargs で stop）をそのまま固定したもの。
-
-name = "Herdr: stop all sessions"
-description = "default 以外の herdr セッションを全停止"
-command = "herdr session list --json | jq -r '.sessions[].name' | rg -v default | xargs -I{} herdr session stop {}"
