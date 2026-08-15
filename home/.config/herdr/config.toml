@@ -72,7 +72,7 @@ workspace_picker = "prefix+w" # Open the workspace navigation surface.
 goto = "prefix+g" # Open the session navigator.
 new_workspace = "prefix+shift+n" # Create a new workspace.
 new_worktree = "" # default: prefix+shift+g | Worktree management is left to worktrunk
-open_worktree = "prefix+shift+g" # optional, unset by default
+open_worktree = "" # optional, unset by default
 remove_worktree = "" # optional, unset by default; opens confirmation
 rename_workspace = "prefix+shift+w" # Worktree management is left to worktrunk
 close_workspace = "prefix+shift+d" # Close the selected workspace.
@@ -148,6 +148,18 @@ height = "50%"
 # tabs = ""       # e.g. "ctrl" makes ctrl+1..9 switch tabs directly
 # workspaces = "" # e.g. "ctrl+shift" makes ctrl+shift+1..9 switch workspaces directly
 # agents = ""     # e.g. "alt" makes alt+1..9 focus agent rows directly
+
+[[keys.command]]
+key = "prefix+t"
+type = "plugin_action"
+command = "herdr-navigator.open"
+description = "jump to anything"
+
+[[keys.command]]
+key = "prefix+shift+g"
+type = "plugin_action"
+command = "worktrunk.open"
+description = "Worktree: switch / create from default branch"
 
 # [worktrees]
 # directory = "~/.herdr/worktrees"
