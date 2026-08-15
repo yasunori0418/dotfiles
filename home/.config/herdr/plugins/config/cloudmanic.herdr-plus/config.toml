@@ -1,0 +1,12 @@
+# Herdr Plus default config
+# Location after first run:
+#   $(herdr plugin config-dir cloudmanic.herdr-plus)/config.toml
+#
+# 同じディレクトリの projects/ quick-actions/ worktrees/ も
+# dotfiles 管理下（nput の symlink 配置）。
+
+[worktree]
+# projects ブラウザ（ctrl+g）で bare なブランチ名を打ったときに前置される。
+# 値はそのまま連結されるので、区切りの "/" は自分で含める。
+# 空文字なら前置しない。"/" を含む名前を打った場合は変換されない。
+branch_prefix = ""
