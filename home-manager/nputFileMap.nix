@@ -198,6 +198,9 @@ let
     ".local/share/herdr-plugins/navigator".src = pkgs.callPackage ./packages/herdr-navigator.nix {
       src = inputs.herdr-navigator;
     };
+    ".local/share/herdr-plugins/plus".src = pkgs.callPackage ./packages/herdr-plus.nix {
+      src = inputs.herdr-plus;
+    };
   };
 
   /*
