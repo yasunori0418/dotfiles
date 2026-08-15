@@ -55,7 +55,7 @@ check_updates = false
 vim_mode = true
 
 # Start searching immediately after a Vim source-filter key.
-vim_filter_search = true
+vim_filter_search = false
 
 # Optional: override source filter shortcuts. Values accept "ctrl-x", "ctrl+x", "^x", or "x".
 # Defaults: server=ctrl-s, agent=ctrl-a, quick=ctrl-q, workspace=ctrl-w, project=ctrl-p,
