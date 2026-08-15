@@ -1,0 +1,165 @@
+# Herdr Navigator default config
+# Location after first run:
+#   $(herdr plugin config-dir herdr-navigator)/config.toml
+
+[picker]
+# What happens after selecting an entry:
+# - true: focus an already-open workspace for the selected path
+# - false: always use create_missing behavior
+reuse_existing = true
+
+# Create a new Herdr workspace when the selected path is not open yet.
+create_missing = true
+
+# Prefix new workspace labels with their Navigator kind (project: / dir:).
+# Set false to keep labels plain; Navigator still persists the kind separately.
+prefix_workspace_labels = true
+
+# Search engine: "nucleo" | "skim" | "simple"
+# - nucleo: best default; fast, fzf-like scoring, good Unicode support
+# - skim: skim/fzf-style matcher via fuzzy-matcher crate
+# - simple: tiny built-in ordered-character matcher for debugging
+engine = "nucleo"
+
+# Source priority controls initial ordering and tie/near-tie ranking.
+# Accepted names: agent, server/remote, workspace/open, project, session, zoxide, root, quick, plugin.
+source_order = ["workspace", "agent", "project", "session", "zoxide", "root", "server", "quick", "plugin"]
+
+# How strongly source_order influences search ranking.
+# Set 0 for pure matcher score.
+source_priority_boost = 5
+
+# Agent view sorting for `@` and Ctrl-A:
+# - herdr: read Herdr's agent_panel_sort setting
+# - priority: blocked/error, attention/request, done, working, then idle
+# - spaces: keep Herdr/pane order
+agent_sort = "herdr"
+
+# Show the right-side preview pane on open. Ctrl-O toggles it at runtime.
+preview = true
+
+# Use Herdr-style source-aware rows: metadata aligns right, while zoxide/root
+# entries expand to a second full-path line. Set false for the compact list.
+detailed_rows = true
+
+# Check GitHub releases in the background at most once per day. Network errors
+# are ignored; a newer version appears as a badge in the Navigator header.
+check_updates = true
+
+# Optional Herdr Plus project filename. Alt-Enter applies its tabs/panes to the
+# selected zoxide/root dir, appending new tabs if its workspace already exists.
+# directory_template = "default.toml"
+# directory_template_key = "alt-enter" # also accepts Ctrl forms such as "ctrl-g"
+
+# Vim-style normal mode: j/k move, source keys filter, and / starts searching.
+vim_mode = false
+
+# Start searching immediately after a Vim source-filter key.
+vim_filter_search = false
+
+# Optional: override source filter shortcuts. Values accept "ctrl-x", "ctrl+x", "^x", or "x".
+# Defaults: server=ctrl-s, agent=ctrl-a, quick=ctrl-q, workspace=ctrl-w, project=ctrl-p,
+# zoxide=ctrl-z, root=ctrl-r, session=ctrl-l.
+# [picker.filter_keys]
+# server = "ctrl-g"
+
+[notifications]
+# Show Navigator success/error notifications.
+enabled = true
+# Enable notification audio. Notifications remain visible when this is false.
+audio = false
+# Audio mode when enabled: "default" uses Herdr's done/request sounds;
+# "custom" plays custom_sound with afplay (macOS) or pw-play/paplay/aplay (Linux).
+sound = "default"
+custom_sound = "" # Example: "~/sounds/navigator.wav"
+
+[jump_back]
+# Master switch for Jump Back.
+# - true: remember successful local workspace changes and enable the jump-back action
+# - false: do not record, pin, or jump; any saved history is kept for later re-enabling
+# The global keybinding itself belongs in Herdr's main config; see README.md.
+enabled = true
+
+# Put the previous workspace first when the picker opens with no query or source filter.
+# This only changes the initial view; typed searches and Ctrl source filters keep normal ranking.
+pin_previous = true
+
+[sources]
+# Existing Herdr workspaces. Selecting focuses the workspace.
+open_workspaces = true
+
+# Herdr Plus project templates from:
+# ~/.config/herdr/plugins/config/cloudmanic.herdr-plus/projects/*.toml
+herdr_plus_projects = true
+
+# zoxide history from `zoxide query -l`.
+zoxide = true
+
+# Direct filesystem scan of [[roots]] below.
+roots = true
+
+# Agent panes from Herdr pane metadata. Selecting focuses the agent.
+agents = true
+
+# Remote Herdr targets from remote entries in [sessions] below.
+servers = true
+# Local Herdr sessions from `herdr session list --json` and local [sessions] entries below.
+sessions = true
+
+# Herdr Plus Quick Actions. Selecting opens the Quick Actions picker.
+herdr_plus_quick_actions = true
+
+[theme]
+# Optional Navigator base palette. Supports the same named palettes as Herdr,
+# for example "dracula", "nord", and "tokyo-night".
+# name = "dracula"
+#
+# Read ~/.config/herdr/config.toml theme and [theme.custom] tokens when name is unset.
+# If name is set and inheritance remains enabled, inherited Herdr custom tokens
+# layer over that base; Navigator [theme.custom] tokens below win over both.
+inherit_herdr = true
+#
+# [theme.custom]
+# accent = "#ff00ff"
+
+# Keep roots short; zoxide should handle most frequent directories.
+[[roots]]
+path = "~/workspace"
+max_depth = 3
+
+[[roots]]
+path = "~/projects"
+max_depth = 3
+
+# Optional agent aliases. All match fields are optional and matched as text contains.
+# Aliases become extra search terms for matching agent panes.
+#
+# [[agent_aliases]]
+# alias = "main ai dot"
+# agent = "claude"
+# workspace = "Dotfiles"
+# path = "dotfiles"
+
+[sessions]
+# Include local named sessions from `herdr session list --json`.
+local = true
+
+# Manual remote targets. Selecting runs: herdr --remote <remote> --handoff.
+# [[sessions.entries]]
+# name = "prod"
+# remote = "prod-api"
+# tags = ["prod", "api"]
+
+# Optional command/JSON integrations. A plugin only needs:
+# - collect: command that prints JSON array
+# - open: command to run when the item is selected
+#
+# [[integrations]]
+# id = "demo"
+# label = "Bookmarks"
+# enabled = true
+# collect = "bookmarks list --json"
+# open = "bookmarks open {{id}}"
+# notify_success = true
+# notify_error = true
+#
