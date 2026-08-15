@@ -22,15 +22,32 @@ case "${action}" in
         ;;
 esac
 
-# default は運用の土台なので候補から外す（誤って落とせないようにする）。
+# 自分が乗っているセッションは候補から外す（操作した瞬間に足元が消えるため）。
+#
+# herdr に「現在のセッション名」を直接返すコマンドは無いので、pane へ注入される
+# HERDR_SOCKET_PATH と session list の socket_path を突き合わせて逆引きする。
+sessions_json=$(herdr session list --json)
+
+current=$(
+    printf '%s' "${sessions_json}" |
+    jq -r --arg sock "${HERDR_SOCKET_PATH:-}" \
+        '.sessions[] | select(.socket_path == $sock) | .name'
+)
+
+# 逆引きに失敗したときは default を守る側に倒す（除外なしにすると
+# 自分自身を落とせてしまうため、保守的に既定セッションを残す）。
+if [[ -z ${current} ]]; then
+    current="default"
+fi
+
 targets=$(
-    herdr session list --json |
-    jq -r '.sessions[].name' |
-    rg -v '^default$' || true
+    printf '%s' "${sessions_json}" |
+    jq -r --arg current "${current}" \
+        '.sessions[] | select(.name != $current) | .name'
 )
 
 if [[ -z ${targets} ]]; then
-    printf 'default 以外のセッションはありません\n'
+    printf '%s 以外のセッションはありません\n' "${current}"
     printf 'press enter to close '
     read -r _
     exit 0
