@@ -588,6 +588,22 @@
         "type": "github"
       }
     },
+    "herdr-plus": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1784825099,
+        "narHash": "sha256-IDn/FGieyy5VD1vrYeRTAidqJI6i2RiJcX5/qK80Nfk=",
+        "owner": "cloudmanic",
+        "repo": "herdr-plus",
+        "rev": "a9aca9da3ca6d7406f3d878a1df1c1b9775e2723",
+        "type": "github"
+      },
+      "original": {
+        "owner": "cloudmanic",
+        "repo": "herdr-plus",
+        "type": "github"
+      }
+    },
     "herdr-worktrunk": {
       "flake": false,
       "locked": {
@@ -1322,6 +1338,7 @@
         "flake-parts": "flake-parts_2",
         "herdr": "herdr",
         "herdr-navigator": "herdr-navigator",
+        "herdr-plus": "herdr-plus",
         "herdr-worktrunk": "herdr-worktrunk",
         "home-manager": "home-manager",
         "llm-agents-nix": "llm-agents-nix",

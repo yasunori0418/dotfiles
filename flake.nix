@@ -86,15 +86,21 @@
     # Nix 管理外になるため）。更新は flake.lock の rev 更新 + switch。
     # ref は指定せず default branch を追う（rev の pin は flake.lock が担う）。
     # 更新は `nix flake update herdr-<name>` + switch。
-    # なお herdr-navigator は Rust なので、更新で Cargo.lock が変わると
-    # packages/herdr-navigator.nix の cargoHash が合わなくなりビルドが落ちる。
-    # そのときは hash mismatch が出す `got:` の値へ差し替える。
+    # なお herdr-navigator（Rust）と herdr-plus（Go）は依存の固定ハッシュを持つ
+    # ため、更新で Cargo.lock / go.sum が変わると packages/*.nix の
+    # cargoHash / vendorHash が合わなくなりビルドが落ちる。そのときは
+    # hash mismatch が出す `got:` の値へ差し替える
+    # （`make nput-dryrun` で switch 前に検出できる）。
     herdr-worktrunk = {
       url = "github:devashish2203/herdr-worktrunk";
       flake = false;
     };
     herdr-navigator = {
       url = "github:thanhdat77/herdr-navigator";
+      flake = false;
+    };
+    herdr-plus = {
+      url = "github:cloudmanic/herdr-plus";
       flake = false;
     };
   };
