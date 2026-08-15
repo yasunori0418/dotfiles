@@ -23,15 +23,20 @@ function source {
 # ループを抜けて素の zsh に落ちたいときは fzf を Esc → 名前も空で確定する。
 if [[ -z "$HERDR_ENV" && -z "$VIM" && -z "$NVIM" && -z "$SSH_CONNECTION" && -z "$INTELLIJ_ENVIRONMENT_READER" ]] ; then
     while true; do
-        # セッション一覧を取得
-        sessions=$(herdr session list --json 2>/dev/null \
-            | jq -r '.sessions[] | "\(.name): \(if .running then "running" else "stopped" end)"')
+        # セッション一覧を取得する。件数で分岐するので配列で受ける
+        # （(@f) で改行分割。0 件のときは空要素が 1 つ残るので :# で捨てる）。
+        sessions=("${(@f)$(herdr session list --json 2>/dev/null \
+            | jq -r '.sessions[] | "\(.name): \(if .running then "running" else "stopped" end)"')}")
+        sessions=(${sessions:#})
 
-        if [[ -z "$sessions" ]]; then
+        if (( ${#sessions} == 0 )); then
             # セッションが0個の場合はデフォルトセッションで起動
             herdr
+        elif (( ${#sessions} == 1 )) && [[ ${sessions[1]} == *": stopped" ]]; then
+            # 停止済みが 1 つだけなら選ばせる意味が無いので、そのまま再開する。
+            herdr --session "${sessions[1]%%:*}"
         else
-            selected_session=$(echo "$sessions" | fzf | cut -d: -f1)
+            selected_session=$(print -l -- "${sessions[@]}" | fzf | cut -d: -f1)
 
             if [[ -n "$selected_session" ]]; then
                 herdr --session "$selected_session"
