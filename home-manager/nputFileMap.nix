@@ -72,14 +72,6 @@ let
         "skills/product/doc-integrate"
         "skills/product/feature-spec"
         "skills/product/product-spec"
-        "skills/testing/test-analyze"
-        "skills/testing/test-design"
-        "skills/testing/test-execute"
-        "skills/testing/test-implement"
-        "skills/testing/test-monitor"
-        "skills/testing/test-plan"
-        "skills/testing/test-report"
-        "skills/testing/test-review"
         "skills/workflow/dev-pipeline"
         "skills/workflow/external-writes"
         "skills/workflow/job-graph"
@@ -123,10 +115,6 @@ let
     ".claude/agents/diff-reviewer.md" = {
       src = inputs.yasunori-skills;
       subpath = "skills/git/diff-review/agents/diff-reviewer.md";
-    };
-    ".claude/agents/test-reviewer.md" = {
-      src = inputs.yasunori-skills;
-      subpath = "skills/testing/test-review/agents/test-reviewer.md";
     };
     ".claude/agents/product-researcher.md" = {
       src = inputs.yasunori-skills;
