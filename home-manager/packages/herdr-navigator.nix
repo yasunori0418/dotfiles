@@ -11,6 +11,7 @@
 # herdr 側は target/release の方を参照する）。
 {
   lib,
+  stdenv,
   rustPlatform,
   src,
 }:
@@ -27,6 +28,20 @@ rustPlatform.buildRustPackage {
   # Cargo.lock が変わるとここが合わなくなりビルドが落ちるので、
   # hash mismatch が出す `got:` の値へ差し替える。
   cargoHash = "sha256-1fvQ8hyarP1WQwqIRvqKCkttwAMj3wGieue91/VNll8=";
+
+  # upstream のテストのうち 3 件は `/tmp` を実パスとして扱う前提で書かれており、
+  # `/tmp` が `/private/tmp` への symlink である darwin では必ず落ちる。
+  # プロダクションコード側は `fs::canonicalize`（src/paths.rs: canonical_str）で
+  # 正規化したパスを workspace の索引キーにしており、そこは symlink を跨いでも
+  # 正しく動く。テストだけが未正規化の "/tmp" をリテラルでキーに差し込み、
+  # 参照側は canonicalize 済みのキーで引くため、darwin でのみ不一致になる。
+  # 上流の darwin 未対応であってビルド成果物の欠陥ではないので、
+  # darwin でのみ該当 3 件を skip する（残り 96 件の検証は維持する）。
+  checkFlags = lib.optionals stdenv.hostPlatform.isDarwin [
+    "--skip=app::tests::close_target_matches_entry_kind"
+    "--skip=app::tests::source_specific_reuse_distinguishes_same_path_workspaces"
+    "--skip=sources::tests::persisted_workspace_kind_survives_label_changes_and_legacy_labels_migrate"
+  ];
 
   # ビルド済みバイナリを target/release/ へ据え直す。buildRustPackage の
   # 既定 installPhase は $out/bin にしか置かないため上書きする。
