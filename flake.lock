@@ -653,11 +653,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1787102162,
-        "narHash": "sha256-Zegl5b0Y9J8z0kLp3uAivx4mlD4eva4QqK9ldFKnIGw=",
+        "lastModified": 1787114088,
+        "narHash": "sha256-LYHdEFpZ5Zx6VgKmbhG3SGEUUtV/zksg+YcZT3e9mHg=",
         "owner": "numtide",
         "repo": "llm-agents.nix",
-        "rev": "423bff68ca3b27856d3dc4a8752784dac8ac48c0",
+        "rev": "c4c6673c4c1ceb69d845fa665a714e1273d0acac",
         "type": "github"
       },
       "original": {
@@ -1879,11 +1879,11 @@
     "yasunori-skills": {
       "flake": false,
       "locked": {
-        "lastModified": 1786881515,
-        "narHash": "sha256-O6Yqegk9fouri1dw+qfJ9AbIrsMOLLd0Hkpm372/Ew4=",
+        "lastModified": 1787108162,
+        "narHash": "sha256-0rf59UfoAMVyaM7v78/XeQ0nqJ0ZhP66Lt1WOOaek/Q=",
         "owner": "yasunori0418",
         "repo": "skills",
-        "rev": "ee06b1922fb533d7691ee52f2efa9e756999578e",
+        "rev": "519ec30ecb467dc34503ce4680cd356240605dff",
         "type": "github"
       },
       "original": {
