@@ -103,17 +103,12 @@ nput-rollback: ## nput rollback default (roll back to the previous generation)
 
 ## Claude Code settings injection commands ##
 # ~/.claude/settings.json へ環境固有の値を注入する。
-# この環境にしか存在しない設定を含むため値も注入ロジックもリポジトリ外
-# （~/.claude/inject/）で管理し、home-manager の activation
-# （home-manager/inject-claude-settings.nix）も同じスクリプトを呼ぶ。
-# 実体が無ければ何もしない。
+# 注入する値はこの環境にしか存在しないため ~/.claude/inject/ に置き、
+# このターゲットはそこにある *.json を settings.json へマージするだけ。
+# home-manager の activation も同じスクリプトを呼ぶので、switch を挟まずに
+# 注入だけやり直したいときはこれを叩けばよい。
 claude-settings-inject: ## inject env-specific values into ~/.claude/settings.json (no-op if not set up)
-	@claude_inject="$${HOME}/.claude/inject/inject.sh"
-	if [ -x "$$claude_inject" ]; then
-		"$$claude_inject"
-	else
-		echo "claude-settings-inject: skipped (no $$claude_inject)" >&2
-	fi
+	@./scripts/claude-settings-inject.sh
 
 ## herdr plugin commands ##
 # nput が配置した ~/.local/share/herdr-plugins/* を herdr のレジストリへ登録する。
