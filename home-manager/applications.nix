@@ -11,8 +11,8 @@ let
       f = v: lib.optionals env v;
     in
     f;
-  optionalIsLinux = optional pkgs.stdenv.isLinux;
-  optionalIsDarwin = optional pkgs.stdenv.isDarwin;
+  optionalIsLinux = optional pkgs.stdenv.hostPlatform.isLinux;
+  optionalIsDarwin = optional pkgs.stdenv.hostPlatform.isDarwin;
   inherit (pkgs.stdenv.hostPlatform) system;
   myNurPkgs = inputs.yasunori-nur.packages.${system};
   llmAgentsPkgs = inputs.llm-agents-nix.packages.${system};
