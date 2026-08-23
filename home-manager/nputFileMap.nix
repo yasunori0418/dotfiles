@@ -128,6 +128,7 @@ let
     askuserquestion-notify = "hooks/askuserquestion/hooks/askuserquestion-notify";
     askuserquestion-toggle = "hooks/askuserquestion/hooks/askuserquestion-toggle";
     git-guard = "skills/git/hooks/git-guard";
+    noclobber-guard = "hooks/noclobber-guard-plugin/hooks/noclobber-guard";
     notify-stop = "hooks/notify-stop-plugin/hooks/notify-stop";
     sudo-guard = "hooks/sudo-guard-plugin/hooks/sudo-guard";
     task-boundary = "hooks/task-boundary-plugin/hooks/task-boundary";
