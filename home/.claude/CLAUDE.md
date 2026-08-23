@@ -14,6 +14,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 - 時刻を表示・報告するときは UTC ではなく **JST(日本標準時、UTC+9)** で表記する。Datadog／CloudWatch／GitHub Actions などのログ調査結果を報告する際、タイムスタンプは全て JST に変換する(例：`2026-05-20 12:15:42 JST`)。URL内のUnixタイムスタンプはそのままで良いが、テキストで言及する時刻は必ず JST
 - GitHub(`github.com`・GitHub Enterprise)の PR・Issue・Actions(run/job ログ)・commit・diff・比較などの情報取得は、**`WebFetch` を使わず最初から `gh` コマンド経由**で行う(`gh run view --log-failed` / `gh pr view` / `gh api` 等)。URL を渡された時点で gh に解決する
 - **コンテキスト肥大を抑制する**。調査・分析の中間結果(ログ抜粋・一覧・比較表など、後続で再参照しないもの)はコンテキストに抱え込まず、scratchpad やプロジェクトの `tmp_claude/` へファイル退避する。コンテキストが肥大した長時間セッション(目安: peak 250k 超)で別トピックの依頼が来たら、新セッションでの継続を提案する
+- **Bash は `setopt noclobber` の zsh で実行される**。既存ファイルへ `>` で書くと上書きされずに `zsh: file exists:` で失敗する。上書きしたいときは `>|` を使う(特にループ内のリダイレクトは 2 周目以降が全て失敗し、exit code は 0 のまま出力が 1 周目で固定される)
 - **2分を超える見込みの重いコマンドは打ち切らせない**。nix ビルド(`nix build`・`nixos-rebuild`・`home-manager switch`)・プロジェクト全体テストなどは、Bash の `run_in_background: true` で実行して完了を待つか、`timeout` を明示的に延長する。既定2分タイムアウト(Exit 143)による作業中断を避ける
 - **完了待ちを `sleep` + 再確認のポーリングで行わない**。バックグラウンド処理・別セッションの完了待ちは Bash の `run_in_background: true` の完了通知か Monitor ツールを使う(`sleep N` を挟むポーリングは harness にブロックされ無駄打ちになる)
 - **書き出すドキュメントはタスクに必要な長さに合わせる**。レポート・計画・要約・調査結果などのファイル出力は、実質を網羅しつつ、水増しセクション・冗長な再要約・定型文で膨らませない
