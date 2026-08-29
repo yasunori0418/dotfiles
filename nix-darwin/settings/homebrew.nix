@@ -13,18 +13,12 @@
       "temurin@17"
       "temurin@21"
       "rancher" # similar docker desktop
-      "cursor"
       "as-timer"
-      "obsidian"
-      "claude"
       "raycast"
       "jordanbaird-ice"
-      "meetingbar"
       "keycastr"
-      "shotcut"
     ];
     brews = [
-      "tailscale"
       "watch"
       "coreutils"
       "tfenv"
