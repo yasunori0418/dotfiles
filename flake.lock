@@ -1879,11 +1879,11 @@
     "yasunori-skills": {
       "flake": false,
       "locked": {
-        "lastModified": 1788043726,
-        "narHash": "sha256-enBPK6CbOE3P096SI2VuiiYfJB/ubU/KRQZ8hKhr/pA=",
+        "lastModified": 1788098087,
+        "narHash": "sha256-jyYd/LdgOjy0DLTM8l5q/3SyHfzrFHFlCfadZd403zc=",
         "owner": "yasunori0418",
         "repo": "skills",
-        "rev": "b20c5adb48c5d821397bbd739a9caaa948de1d37",
+        "rev": "c00f0bb18f7c87f329bd4ecfa29a673a1224b104",
         "type": "github"
       },
       "original": {
