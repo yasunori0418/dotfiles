@@ -109,8 +109,10 @@ let
         builtins.listToAttrs
       ];
 
-  # per-skill 配置のワーカーサブエージェント（diff-review / product-spec 用）を
-  # ~/.claude/agents/<name>.md へ配置する。
+  # per-skill 配置のワーカーサブエージェント（diff-review / review-converge /
+  # product-spec 用）を ~/.claude/agents/<name>.md へ配置する。
+  # skills 側で agents/*.md が増えてもここは手動登録なので、flake input を
+  # 更新したら追随漏れが無いか突き合わせる。
   yasunoriAgentEntries = {
     ".claude/agents/diff-reviewer.md" = {
       src = inputs.yasunori-skills;
@@ -119,6 +121,10 @@ let
     ".claude/agents/product-researcher.md" = {
       src = inputs.yasunori-skills;
       subpath = "skills/product/product-spec/agents/product-researcher.md";
+    };
+    ".claude/agents/review-aggregator.md" = {
+      src = inputs.yasunori-skills;
+      subpath = "skills/git/review-converge/agents/review-aggregator.md";
     };
   };
 
