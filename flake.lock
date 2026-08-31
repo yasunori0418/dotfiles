@@ -559,11 +559,11 @@
     "herdr": {
       "flake": false,
       "locked": {
-        "lastModified": 1788048205,
-        "narHash": "sha256-66Y3PEB7EeQimbBOld4qXUnYCt/N6Bh4F3eI1zinnpU=",
+        "lastModified": 1788120028,
+        "narHash": "sha256-kUPG7RzVlpW4JGpNQbz8PYSpnhUPrjImOpb8qxfniDI=",
         "owner": "herdrdev",
         "repo": "herdr",
-        "rev": "4a3b04f59ba3b7d8a15cea187b23e1e80c343b0c",
+        "rev": "2290257acb2085ce6842ba5c7e3ca50c3ba64f02",
         "type": "github"
       },
       "original": {
@@ -653,11 +653,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1788063845,
-        "narHash": "sha256-SdJE2vyoZJr+8iOoau7UDZAKD2hRhi51LYSBCDthiHM=",
+        "lastModified": 1788126251,
+        "narHash": "sha256-XWa7++jRhXl52KVtR4UkZWcjy8oyrckCDvD+3DhKftI=",
         "owner": "numtide",
         "repo": "llm-agents.nix",
-        "rev": "b7e6d6d4cb01ee1bc704db8e11629adec7e2509c",
+        "rev": "461871c22df47477c78ae7ea6bf2f5bcf004beb5",
         "type": "github"
       },
       "original": {
@@ -1879,11 +1879,11 @@
     "yasunori-skills": {
       "flake": false,
       "locked": {
-        "lastModified": 1788098087,
-        "narHash": "sha256-jyYd/LdgOjy0DLTM8l5q/3SyHfzrFHFlCfadZd403zc=",
+        "lastModified": 1788129516,
+        "narHash": "sha256-wBlSW0dJbBl1IfqcEiQiH6RrSsPP7D8Ath76oBUzEZM=",
         "owner": "yasunori0418",
         "repo": "skills",
-        "rev": "c00f0bb18f7c87f329bd4ecfa29a673a1224b104",
+        "rev": "9817dc7024a523a47580a5cee48c02e0b6c1a2fa",
         "type": "github"
       },
       "original": {
