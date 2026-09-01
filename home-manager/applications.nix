@@ -203,19 +203,6 @@ in
       darwin.libiconv
     ]);
 
-  rustTools = with pkgs; [
-    # keep-sorted start
-    cargo
-    cargo-make
-    # cargo-watch
-    clippy
-    crate2nix
-    rust-analyzer
-    rust.packages.stable.rustc-unwrapped
-    rustfmt
-    # keep-sorted end
-  ];
-
   clojureTools = with pkgs; [
     # keep-sorted start
     babashka
