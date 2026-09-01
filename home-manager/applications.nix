@@ -39,48 +39,33 @@ in
     with pkgs;
     [
       # keep-sorted start
-      act
-      asciinema
-      asciinema-agg
       awscli2
-      colorized-logs
+      coreutils-full
       cryoflow
       direnv
       flock
-      fx
       gh
       git
       git-credential-oauth
       git-lfs
-      git-wt
-      glow
       gnumake
-      google-cloud-sdk
-      gws
-      kanata-with-cmd
-      lazysql
       lefthook
       lemonade
       llmAgentsPkgs.herdr
-      lnav
       mise
       myNurPkgs.deno
       myNurPkgs.pict
       myNurPkgs.roots
       myNurPkgs.safe-chain
       myNurPkgs.worktrunk
-      pqrs
-      pueue
       python313Packages.datadog
       ssm-session-manager-plugin
       tirith
-      tmux
       tree-sitter
       typos
       unar
       unzip
       usql
-      zellij
       zip
       # keep-sorted end
     ]
@@ -124,9 +109,6 @@ in
     rip2
     ripgrep
     sheldon
-    tdf
-    viddy
-    yazi
     yq
     zoxide
     # keep-sorted end
@@ -155,10 +137,7 @@ in
 
   codingSupportTools = with pkgs; [
     # keep-sorted start
-    # actionlint
     beautysh
-    biome
-    blade-formatter
     eslint_d
     nixfmt
     prettierd
@@ -171,14 +150,10 @@ in
 
   aiTools = with llmAgentsPkgs; [
     # keep-sorted start
-    amp
     cclens
     ccusage
     claude-code-by-ryoppippi
-    # codex
-    # goose-cli
     myNurPkgs.cchook
-    # claude-code # use `github:ryoppippi/claude-code-overlay`
     # keep-sorted end
   ]
   # ++ (optionalIsLinux [ inputs.claude-desktop.packages.${system}.claude-desktop ])
