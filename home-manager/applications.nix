@@ -203,16 +203,6 @@ in
       darwin.libiconv
     ]);
 
-  clojureTools = with pkgs; [
-    # keep-sorted start
-    babashka
-    clj-kondo
-    clojure
-    clojure-lsp
-    leiningen
-    # keep-sorted end
-  ];
-
   guiTools =
     with pkgs;
     [
