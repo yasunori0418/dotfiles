@@ -120,7 +120,6 @@ in
     ghq
     jq
     nushell
-    ov
     rgx
     rip2
     ripgrep
