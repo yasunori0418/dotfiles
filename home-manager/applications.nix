@@ -223,7 +223,7 @@ in
       clipmenu
       dunst
       feh
-      font-manager
+      # font-manager
       fuzzel
       gimp
       gparted
