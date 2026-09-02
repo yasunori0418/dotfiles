@@ -29,6 +29,7 @@
           "libraries"
           "macOs"
           "nixTools"
+          "rustTools"
           "shellTools"
           "terminalEmulators"
           "textEditors"
