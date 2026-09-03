@@ -133,6 +133,7 @@ let
     askuserquestion-guard = "hooks/askuserquestion/hooks/askuserquestion-guard";
     askuserquestion-notify = "hooks/askuserquestion/hooks/askuserquestion-notify";
     askuserquestion-toggle = "hooks/askuserquestion/hooks/askuserquestion-toggle";
+    fabricated-toolcall-guard = "hooks/fabricated-toolcall-guard-plugin/hooks/fabricated-toolcall-guard";
     git-guard = "skills/git/hooks/git-guard";
     noclobber-guard = "hooks/noclobber-guard-plugin/hooks/noclobber-guard";
     notify-stop = "hooks/notify-stop-plugin/hooks/notify-stop";
