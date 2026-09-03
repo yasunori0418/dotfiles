@@ -22,6 +22,16 @@ severity_overrides:
   # 誤検知の再現: `tirith policy test --file <日本語文の混じった shell スクリプト>`。
   confusable_text: LOW
 
+  # ブロックされた rm も file_delete イベントとして計上されるため、20 秒以内に
+  # 再試行すると自分のブロック記録が相関窓を延命させ、再びブロックされる。
+  # tmp_claude/ のような作業用一時ディレクトリの掃除で 20 秒内に 3 発以上 rm を
+  # 撃つと恒常的に踏む。paranoia: 1（Medium+ のみ有効）に対して LOW へ落として
+  # 無効化する。暴走した再帰削除の検知は失うが、破壊的操作の主防壁は git と
+  # バックアップ側に置く方針。
+  # 誤検知の再現: 20 秒内に別ファイルへ rm を 3 回発行し、直後にもう 1 回撃つ。
+  # 一時回避（policy を変えない場合）: 20 秒待つか TIRITH=0 を前置する。
+  mass_file_deletion: LOW
+
 # URL patterns to always allow
 allowlist: []
 
