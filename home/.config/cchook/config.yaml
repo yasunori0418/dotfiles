@@ -139,6 +139,25 @@ Stop:
       - type: command
         command: $HOME/.claude/hooks/teammate-leak-guard/main.sh
         use_stdin: true
+  # 捏造ツール呼び出しの検出。ツールを実行していないのに実行したかのように
+  # 応答する現象を Stop 時に捕まえ、decision: "block" + reason で未検証の記述を
+  # 洗い直させる。transcript を末尾から遡って今回のターンだけを走査するので
+  # use_stdin 必須(transcript_path を読む)。独立した 2 チェックを持つ。
+  #   1. XML 混入型 — ツール呼び出しの XML が text ブロックへ平文として書かれ、
+  #      実行結果まで作り話になる(self-rollout)。あらゆるツールが対象。
+  #      コードフェンス・インラインコード除去後にマッチするため、現象を
+  #      引用・言及しただけのテキストでは発火しない。
+  #   2. 未実行完了主張型 — XML の痕跡を残さず「作成しました」とだけ報告し、
+  #      そのターンに Write/Edit が無い。主張パスの実在確認まで行う。
+  # このマシンの全 561 セッション走査では、1 が 4 セッション 10 件で実発生、
+  # 2 は 0 件。最終ターンへ適用した場合の誤検出は 0 件。検出無しなら沈黙。
+  # ただし XML を伴わない Bash 実行の捏造(「ビルドを開始しました」等)や
+  # 調査結果の捏造は依然として検出できない部分対策であり、
+  # 沈黙は捏造が無かったことの保証にはならない。
+  - actions:
+      - type: command
+        command: $HOME/.claude/hooks/fabricated-toolcall-guard/main.sh
+        use_stdin: true
 
 SubagentStart:
 
