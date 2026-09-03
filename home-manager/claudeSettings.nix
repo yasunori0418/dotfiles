@@ -176,6 +176,8 @@ let
   };
 
   macos = {
+    # 仕事用 macOS のみテレメトリを止める。
+    env.DISABLE_TELEMETRY = "1";
     permissions.allow = common.permissions.allow ++ [ "mcp__notion__notion-fetch" ];
   };
 
