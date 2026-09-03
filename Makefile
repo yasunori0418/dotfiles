@@ -82,6 +82,7 @@ nput-apply: ## nput apply default (home mode placement without home-manager swit
 # recopy は ~/.claude/settings.json を Nix 生成の JSON に戻すので、
 # 環境固有に注入した値（claude-settings-inject）はそのたびに消える。
 # 消えた状態を残さないため recopy に続けて注入し直す。
+# 実行前に何が変わるかは make claude-settings-diff で確認できる。
 nput-recopy: ## nput apply default --recopy (re-copy copy targets e.g. ~/.claude/settings.json)
 	@nput apply default --recopy --verbose
 	@$(MAKE) --no-print-directory claude-settings-inject
@@ -109,6 +110,12 @@ nput-rollback: ## nput rollback default (roll back to the previous generation)
 # 注入だけやり直したいときはこれを叩けばよい。
 claude-settings-inject: ## inject env-specific values into ~/.claude/settings.json (no-op if not set up)
 	@./scripts/claude-settings-inject.sh
+
+# make nput-recopy が ~/.claude/settings.json をどう書き換えるかを事前に確認する。
+# Nix 生成 JSON + inject の断片を重ねた「recopy 後の姿」と現行をキーパス単位で比較し、
+# TUI が書き戻して recopy で消える項目を洗い出す。差分があれば exit 1。
+claude-settings-diff: ## preview key-level diff of ~/.claude/settings.json against `make nput-recopy` result
+	@./scripts/claude-settings-diff.sh
 
 ## herdr plugin commands ##
 # nput が配置した ~/.local/share/herdr-plugins/* を herdr のレジストリへ登録する。
