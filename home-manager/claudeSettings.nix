@@ -69,6 +69,7 @@ let
       DISABLE_BUG_COMMAND = "1";
       DISABLE_ERROR_REPORTING = "1";
       ENABLE_TOOL_SEARCH = "true";
+      CLAUDE_CODE_ENABLE_EXPERIMENTAL_ADVISOR_TOOL = "1";
     };
 
     permissions = {
@@ -164,6 +165,7 @@ let
     preferredNotifChannel = "ghostty";
     teammateMode = "auto";
     agentPushNotifEnabled = true;
+    advisorModel = "fable";
 
     mcpServers = {
       tirith = {
