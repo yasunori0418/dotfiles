@@ -152,6 +152,16 @@ let
       };
     };
 
+    # auto mode 有効時に繰り返し提示される組み込みコマンド /auto-mode-setup
+    # （環境をスキャンして autoMode 分類器ルールを提案するウィザード）を止める。
+    # 起動条件のもう一方 envOnboarding はサーバ配信のフィーチャーフラグ
+    # （~/.claude.json の cachedGrowthBookFeatures 配下）でこちらからは制御できず、
+    # skillOverrides が唯一の恒久的な抑止手段。off にすると手動実行も無効になる。
+    # auto mode 自体は組み込みの分類器ルールで動くため、この無効化による劣化はない。
+    skillOverrides = {
+      "auto-mode-setup" = "off";
+    };
+
     outputStyle = "karakuchi";
     alwaysThinkingEnabled = false;
     effortLevel = "high";
