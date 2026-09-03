@@ -20,7 +20,6 @@
     ];
     brews = [
       "watch"
-      "coreutils"
       "tfenv"
       "gh"
       "gh-asset"
