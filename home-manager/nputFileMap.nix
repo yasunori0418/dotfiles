@@ -52,7 +52,6 @@ let
         "skills/git/commit-flow"
         "skills/git/commit-plan"
         "skills/git/diff-review"
-        "skills/git/parallel-worktree"
         "skills/git/post-merge-cleanup"
         "skills/git/rebase-flow"
         "skills/git/reset-flow"
@@ -66,13 +65,7 @@ let
         "skills/learning/tutoring"
         # "skills/nix/nix-cache-check"
         "skills/nix/nix-devenv"
-        "skills/product/basic-design"
         "skills/product/biz-translate"
-        "skills/product/def-done"
-        "skills/product/doc-integrate"
-        "skills/product/feature-spec"
-        "skills/product/product-spec"
-        "skills/workflow/dev-pipeline"
         "skills/workflow/external-writes"
         "skills/workflow/job-graph"
         "skills/workflow/lane-ops"
@@ -118,10 +111,10 @@ let
       src = inputs.yasunori-skills;
       subpath = "skills/git/diff-review/agents/diff-reviewer.md";
     };
-    ".claude/agents/product-researcher.md" = {
-      src = inputs.yasunori-skills;
-      subpath = "skills/product/product-spec/agents/product-researcher.md";
-    };
+    # ".claude/agents/product-researcher.md" = {
+    #   src = inputs.yasunori-skills;
+    #   subpath = "skills/product/product-spec/agents/product-researcher.md";
+    # };
     ".claude/agents/review-aggregator.md" = {
       src = inputs.yasunori-skills;
       subpath = "skills/git/review-converge/agents/review-aggregator.md";
