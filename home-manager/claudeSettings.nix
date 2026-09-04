@@ -75,6 +75,11 @@ let
     permissions = {
       allow = [
         "Bash"
+        # auto モードでは bare "Bash" だけでは classifier に拒否されることがある。
+        # send_instruction.sh は指示ファイルを読んで herdr agent prompt を叩くだけで
+        # 副作用が無いため、個別に allow して親セッションの停滞を防ぐ。
+        # パスは nix store 直結なので store hash を含まない glob で書く。
+        "Bash(bash */lane-ops/scripts/send_instruction.sh *)"
         "Edit"
         "ExitPlanMode"
         "Glob"
