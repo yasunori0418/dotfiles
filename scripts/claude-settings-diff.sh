@@ -18,8 +18,8 @@
 # 後者に inject を重ねるのは、make nput-recopy が recopy に続けて
 # claude-settings-inject を流すため。素の Nix 生成 JSON と比べると、
 # 実際には注入で戻ってくる値まで「消える」と表示されてしまう。
-# マージ規則（辞書順・`*` による再帰マージ・object でないファイルはスキップ）は
-# scripts/claude-settings-inject.sh と揃えてある。
+# マージ規則（辞書順・object は再帰合成・array は既存に無い要素の追記・
+# object でないファイルはスキップ）は scripts/claude-settings-inject.sh と揃えてある。
 #
 # 出力は 1 行 1 キーパスで、記号は git diff と同じ向き（現行 → recopy 後）。
 #
@@ -101,8 +101,18 @@ for fragment in "${fragments[@]}"; do
     fi
 done
 
-expected="$(jq -s 'reduce .[] as $item ({}; . * $item)' \
-    "${nix_json}" ${valid_fragments+"${valid_fragments[@]}"})"
+# scripts/claude-settings-inject.sh の merge と同じ定義。変えるときは両方を揃える。
+expected="$(jq -s '
+    def merge($base; $frag):
+        if ($base | type) == "object" and ($frag | type) == "object" then
+            reduce ($frag | keys_unsorted[]) as $k ($base; .[$k] = merge($base[$k]; $frag[$k]))
+        elif ($base | type) == "array" and ($frag | type) == "array" then
+            $base + [$frag[] | select(IN($base[]) | not)]
+        else
+            $frag
+        end;
+    reduce .[] as $item ({}; merge(.; $item))
+' "${nix_json}" ${valid_fragments+"${valid_fragments[@]}"})"
 
 if [[ -t 1 ]]; then
     c_del=$'\033[31m' c_add=$'\033[32m' c_mod=$'\033[33m' c_dim=$'\033[2m' c_off=$'\033[0m'

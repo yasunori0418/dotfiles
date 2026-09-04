@@ -9,7 +9,16 @@
 #
 # 各 JSON は settings.json のトップレベルからの部分木として書く。
 # 例えば env を足すなら {"env": {"FOO": "bar"}}。ファイル名は任意で、
-# 複数ある場合は辞書順に重ねる（後のファイルが勝つ）。
+# 複数ある場合は辞書順に重ねる。マージ規則は以下。
+#
+#   object : 再帰的に深く合成する
+#   array  : 置換せず、既存に無い要素だけを末尾へ追記する
+#            （hooks.PreToolUse に matcher 付きの hook を足す、といった用途）
+#   その他 : 後のファイルの値で上書きする
+#
+# 配列の重複判定は要素の丸ごと一致なので、inject 側の要素を書き換えると
+# 古い要素は残ったまま新しい要素が足される。その場合は make nput-recopy で
+# Nix 生成の JSON からやり直す。
 # 何を注入するかはこのスクリプトの関心事ではないため、リポジトリ側には
 # 注入する値もキー名も持たない。
 #
@@ -54,10 +63,23 @@ for fragment in "${fragments[@]}"; do
     skip "${fragment} is not a JSON object"
 done
 
-# `*` は再帰マージ（同じ階層のオブジェクトを深く合成する）。
-# `+` だと env のようなオブジェクトが丸ごと置き換わってしまう。
-merged="$(jq -s 'reduce .[] as $item ({}; . * $item)' \
-    "${SETTINGS_FILE}" "${fragments[@]}")"
+# jq の `*` は配列を丸ごと置き換えるため、配列だけ追記にした再帰マージを自前で持つ。
+# 同じ要素を毎回足さないのは、switch のたびに流れても結果が変わらないようにするため
+# （下の「内容が変わらないなら書き換えない」判定がこれに依存する）。
+# 引数を $ 付きにしているのは、素の引数だと呼び出し時ではなく使用箇所の `.` に対して
+# 評価され、reduce の中で別のものを指してしまうため。
+# scripts/claude-settings-diff.sh にも同じ定義があるので、変えるときは両方を揃える。
+merged="$(jq -s '
+    def merge($base; $frag):
+        if ($base | type) == "object" and ($frag | type) == "object" then
+            reduce ($frag | keys_unsorted[]) as $k ($base; .[$k] = merge($base[$k]; $frag[$k]))
+        elif ($base | type) == "array" and ($frag | type) == "array" then
+            $base + [$frag[] | select(IN($base[]) | not)]
+        else
+            $frag
+        end;
+    reduce .[] as $item ({}; merge(.; $item))
+' "${SETTINGS_FILE}" "${fragments[@]}")"
 
 # 内容が変わらないなら書き換えない（mtime を動かさない）。
 if [[ ${merged} == "$(cat "${SETTINGS_FILE}")" ]]; then
