@@ -68,6 +68,7 @@ let
         "skills/product/biz-translate"
         "skills/workflow/external-writes"
         "skills/workflow/job-graph"
+        "skills/workflow/job-plan"
         "skills/workflow/lane-ops"
         "skills/workflow/test-targeted"
         # keep-sorted end
