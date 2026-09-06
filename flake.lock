@@ -6,11 +6,11 @@
         "nixpkgs": "nixpkgs"
       },
       "locked": {
-        "lastModified": 1788693630,
-        "narHash": "sha256-FcsJp9PzvEDxnj2ocprYlXaoIeruciiikTppZdtlnEA=",
+        "lastModified": 1788696444,
+        "narHash": "sha256-NIkZU41cuXzYTZb8TFPeGFrncTos0e1a2GH64MWAGDQ=",
         "owner": "arto-app",
         "repo": "Arto",
-        "rev": "caa8cb2e04f9701fef283f10c839199531bcc67b",
+        "rev": "a8a395ecb45600c8b9efafe2a106e49f117f5660",
         "type": "github"
       },
       "original": {
@@ -560,11 +560,11 @@
     "herdr": {
       "flake": false,
       "locked": {
-        "lastModified": 1788691333,
-        "narHash": "sha256-JSvQ06h/t8N/K7n/OvK65wc6q+ZH8N5qUeRUzAg/J50=",
+        "lastModified": 1788701795,
+        "narHash": "sha256-HvfD235uwVUPaKjgNKUQ/LaF2ydIS1qPu8bLcH/fDjg=",
         "owner": "herdrdev",
         "repo": "herdr",
-        "rev": "e366a05f03b6e37549c7a1744c3551553017c541",
+        "rev": "5a64e8da4551990367dd26d77cf3b654dfa27a73",
         "type": "github"
       },
       "original": {
