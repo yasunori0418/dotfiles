@@ -5,7 +5,7 @@ if [[ ! -f ${wt_cache} || ${dotfiles_flake_lock} -nt ${wt_cache} ]]; then
     # NOTE: worktrunk itself emits `command rm -f` for the temp file cleanup
     # inside wt(), so the `rm` alias in aliases.zsh is already bypassed. No
     # patching needed here (a `command` prefix patch would double up and break).
-    wt config shell init zsh > ${wt_cache}
+    wt config shell init zsh >| ${wt_cache}
 fi
 source ${wt_cache}
 unset wt_cache dotfiles_flake_lock
