@@ -63,7 +63,6 @@ let
         "skills/learning/navigating"
         "skills/learning/quizzing"
         "skills/learning/tutoring"
-        # "skills/nix/nix-cache-check"
         "skills/nix/nix-devenv"
         "skills/product/biz-translate"
         "skills/workflow/external-writes"

@@ -35,18 +35,9 @@ let
   # home.homeDirectory と一致させること（ズレると配置先が食い違う）。
   homeDirectoryFor = isDarwin: if isDarwin then "/Users/taiki.watanabe" else "/home/yasunori";
 
-  # 展開する skill を明示列挙する（mattpocock/skills の skills/ 配下の相対パス）。
   skillSubpaths = [
-    "engineering/grill-with-docs"
-    "engineering/improve-codebase-architecture"
-    "engineering/prototype"
-    "engineering/setup-matt-pocock-skills"
-    "engineering/tdd"
-    "engineering/to-tickets"
-    "engineering/to-spec"
-    "engineering/triage"
-    "productivity/grilling"
-    "productivity/handoff"
+    "nix/nix-cache-check"
+    "nix/nix-store-lookup"
   ];
 
   # skill ごとに { ".claude/skills/<name>" = entry; } を組む。
@@ -55,7 +46,7 @@ let
     map (p: {
       name = ".claude/skills/${baseNameOf p}";
       value = {
-        src = inputs.matt-skills;
+        src = inputs.yasunori-skills;
         subpath = "skills/${p}";
       };
     }) skillSubpaths
