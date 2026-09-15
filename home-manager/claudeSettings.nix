@@ -70,6 +70,7 @@ let
       DISABLE_ERROR_REPORTING = "1";
       ENABLE_TOOL_SEARCH = "true";
       CLAUDE_CODE_ENABLE_EXPERIMENTAL_ADVISOR_TOOL = "1";
+      CLAUDE_CODE_SUBAGENT_MODEL = "opus";
     };
 
     permissions = {
