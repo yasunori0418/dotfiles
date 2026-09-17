@@ -32,6 +32,19 @@ severity_overrides:
   # 一時回避（policy を変えない場合）: 20 秒待つか TIRITH=0 を前置する。
   mass_file_deletion: LOW
 
+  # `xargs -I{}` / `-i{}` / `--replace={}` の `{}` を tirith がブレースグループ
+  # (動的なシェル本体) と誤認し、HIGH の analysis_incomplete 2 件で deny する。
+  # `{}` は xargs の既定プレースホルダで、ワンライナーで多用するため実用上ブロッカー。
+  # bare な `{}` (`echo {}`) や `find -exec rm {} \;` は通り、`-I@` / `-Ifoo` も通る。
+  # 落ちるのは replace-string フラグに brace 付きトークンが直付けされた形だけ。
+  # 誤検知の再現: `tirith policy test 'ls | xargs -I{} echo {}'`
+  #   (`XDG_CONFIG_HOME=/nonexistent` を付けても再現＝既定 policy でも発生)。
+  # 一時回避（policy を変えない場合）: プレースホルダを `-I@` にするか TIRITH=0 を前置。
+  # 失う検知は `xargs -I{} rm -rf {}` 系だが、`xargs rm -rf`・`xargs -n1 rm -rf` は
+  # 既定 policy でも Allow のため、`-I` を外せば素通りする。防壁として機能しておらず
+  # 実質的な保護の損失はない（破壊的操作の主防壁は git とバックアップ側）。
+  analysis_incomplete: LOW
+
 # URL patterns to always allow
 allowlist: []
 
