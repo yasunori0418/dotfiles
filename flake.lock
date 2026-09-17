@@ -560,11 +560,11 @@
     "herdr": {
       "flake": false,
       "locked": {
-        "lastModified": 1789647888,
-        "narHash": "sha256-EzMLw6/uF9sDH5x3fvUsj4y+sm88wqG3Sl7HPrUQZyQ=",
+        "lastModified": 1789651984,
+        "narHash": "sha256-CZoebdfs1eQt9PUSEuD9OknT8pneuvQ8QtIWo9jPxXc=",
         "owner": "herdrdev",
         "repo": "herdr",
-        "rev": "529eeca41d3136275d3f7d31c5d32d5912cc3ff3",
+        "rev": "5c61d8ec2eeb296bd5e31bdd4e8f14ebadd5b7e1",
         "type": "github"
       },
       "original": {
@@ -628,11 +628,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1789618856,
-        "narHash": "sha256-OSqj7eOijvCZfN7owFWRxLWRhej5lZI+Kt82q3INLvc=",
+        "lastModified": 1789652175,
+        "narHash": "sha256-OVgwnH7e/GlJRscTPXnJ8wwy6Mh+hk0MedEw360o8U8=",
         "owner": "nix-community",
         "repo": "home-manager",
-        "rev": "afa6821c70560bb19d1a8c577bff398f7f239869",
+        "rev": "f2785222a14e90f8c5ad2ff62474ce88453c3421",
         "type": "github"
       },
       "original": {
@@ -1864,11 +1864,11 @@
         "xremap-flake": "xremap-flake_2"
       },
       "locked": {
-        "lastModified": 1789634243,
-        "narHash": "sha256-VJiIhpGTsUqEMzIZJ9gREFBDmHcJBr91WRI+6MC+Q/0=",
+        "lastModified": 1789652025,
+        "narHash": "sha256-X8961AKH+uGEar32VqWv9j7xBH4WUEucFd3O+j6OOs4=",
         "owner": "yasunori0418",
         "repo": "nur-packages",
-        "rev": "d0a0c898670cd061c0ba741ee2c37ef3ea2eb6ad",
+        "rev": "4a480d49073d33b579b49350b3362be282ff4ba0",
         "type": "github"
       },
       "original": {
