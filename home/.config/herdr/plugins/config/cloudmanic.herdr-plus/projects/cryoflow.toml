@@ -1,0 +1,7 @@
+name = "cryoflow"
+description = "polarsでデータ操作を設定ファイル駆動にするCLI"
+group = "yasunori0418"
+working_dir = "~/src/github.com/yasunori0418/cryoflow"
+
+[[tabs]]
+name = "shell"
