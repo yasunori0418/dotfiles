@@ -1,5 +1,9 @@
 ### extras environment variable ###
 
+# nix-darwin の既定は "less -R" だが、PAGER をシェル経由せず exec するツール(usql 等)が
+# コマンド名ごと解決しようとして失敗するため、コマンド名のみにする。-R 相当は LESS 側で付与。
+export PAGER="less"
+
 # less options
 export LESS="\
   --ignore-case \
