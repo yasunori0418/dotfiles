@@ -102,10 +102,24 @@ PreToolUse:
   # tirith リポジトリ配布の tirith-check.py を nput で symlink 配置しており、
   # 依存パッケージは標準ライブラリのみ。uv 経由で python バージョンを 3.13 に固定
   # （システム python の差異で挙動が変わらないようにする）。
+  #
+  # env -u で uv 系の環境変数を落としてから起動する。これは config に定義した
+  # hook のうち唯一「外部インタプリタを config から直接起動する」形であり、
+  # 呼び出し元セッションの環境変数をそのまま受けるため。実際、cryoflow の
+  # devShell（dev/flake.nix）が direnv 経由で注入する
+  # UV_PYTHON_PREFERENCE=only-system + UV_PYTHON_DOWNLOADS=never により
+  # uv 管理の 3.13 が候補から外れて uv が exit 2 で落ち、cchook が非ゼロ終了を
+  # permissionDecision: "deny" に変換した結果、Bash がコマンド内容に依らず
+  # 全面 deny になる事故が起きた（2026-09-19 17:32 JST / session 3796d142）。
+  #
+  # fail-open: tirith は走査であって可用性の前提ではないので、落ちても Bash を
+  # 止めない。TIRITH_FAIL_OPEN=1 は tirith-check.py 内部エラー用の公式スイッチで、
+  # uv 自体の起動失敗（上記の事故）はそこへ到達しないため `||` 側で拾う。
+  # 走査が黙って無効化されるのを避けるため stderr に警告を残す。
   - matcher: "Bash"
     actions:
       - type: command
-        command: uv run --python 3.13 -- $HOME/.claude/hooks/tirith/tirith-check.py
+        command: env -u UV_PYTHON -u UV_PYTHON_PREFERENCE -u UV_PYTHON_DOWNLOADS -u UV_NO_SYNC TIRITH_FAIL_OPEN=1 uv run --python 3.13 -- $HOME/.claude/hooks/tirith/tirith-check.py || { echo "tirith hook skipped (uv/python unavailable); Bash scanning disabled for this call" >&2; exit 0; }
         use_stdin: true
 
 PostToolUse:
