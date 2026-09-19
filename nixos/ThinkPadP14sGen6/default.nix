@@ -35,6 +35,7 @@
         ../options/services/displayManager/ly.nix
         # ../options/services/displayManager/lemurs.nix
         ../options/services/resolved.nix
+        ../options/services/logind.nix
       ];
 
       systemd = [
