@@ -179,7 +179,7 @@ let
     editorMode = "vim";
     verbose = true;
     preferredNotifChannel = "ghostty";
-    teammateMode = "auto";
+    teammateMode = "in-process";
     agentPushNotifEnabled = true;
     advisorModel = "fable";
 
