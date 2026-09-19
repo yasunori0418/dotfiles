@@ -189,6 +189,14 @@ let
         args = [ "mcp-server" ];
       };
     };
+
+    pluginConfigs = {
+      "agents-md@builtin" = {
+        options = {
+          instructionFiles = "claude-md-or-agents-md";
+        };
+      };
+    };
   };
 
   macos = {
