@@ -117,7 +117,6 @@ let
         "Bash(git push:*)"
         "Bash(git reset:*)"
         "Bash(git rebase:*)"
-        "KillShell"
         "Bash(curl:*)"
         "Bash(wget:*)"
         "Bash(rm:*)"
