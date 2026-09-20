@@ -52,6 +52,9 @@ SKIP_PATTERNS=(
     # その他のビルド/キャッシュ/出力 (汎用ツール由来)
     ".husky"
     "nohup.out"
+
+    # Claude Code
+    ".claude"
 )
 
 # プロジェクト固有パターンを <primary>/.worktreeskip から追加
