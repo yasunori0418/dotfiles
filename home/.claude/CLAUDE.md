@@ -22,12 +22,12 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 - **並列エージェント(agent teams)は使い終わったら明示的に停止する**。`idle_notification`(`idleReason: "available"`)は「作業が終了した」ではなく「空いて待機中」の意味で、放置するとチームメイトが滞留し続ける。成果物を回収してそのエージェントへの追加依頼が無いと判断した時点で `TaskStop` を呼ぶ。反復作業(評価ループ等)で次のイテレーションのエージェントを起動する前には、`TaskList` で前イテレーションの残留を棚卸しして停止済みにしてから起動する。応答終了時の取りこぼしは teammate-leak-guard hook が `decision: block` で差し戻すが、hook はターン終端でしか発火しないため、ターン内での棚卸しはこのルールで担保する
 - **エージェントからの返信が来ないときの再送は 1 回まで**。`idle_notification` だけが届いて成果物本体が来ない状態は返信経路の障害とみなし、1 回再送しても届かなければ `TaskStop` で打ち切る。自分で代替検証できるなら実施し、できないならその旨をユーザーへ報告して指示を仰ぐ(応答を待ち続けるポーリングはしない)
 
-## symlink 運用(nput + dotfiles)
+## symlink 運用(layat + dotfiles)
 
-この環境の `~/.claude/`・`~/.config/` 配下は nput 管理で、`mkOutOfStoreSymlink`(`home-manager/nputEntries.nix`)により **dotfiles リポジトリ実体(`~/dotfiles/home/...`)へ直結した symlink**。nix store へのコピーではなく**可変**。これを前提に振る舞う。
+この環境の `~/.claude/`・`~/.config/` 配下は layat 管理で、`mkOutOfStoreSymlink`(`home-manager/layatEntries.nix`)により **dotfiles リポジトリ実体(`~/dotfiles/home/...`)へ直結した symlink**。nix store へのコピーではなく**可変**。これを前提に振る舞う。
 
 - **検索は symlink を追従させる**。`fd`・`rg`、および Grep/Glob ツールはデフォルトでディレクトリ symlink を降りない。`~/.claude` / `~/.config` など symlink を含む木を探索するときは `rg -L` / `fd -L`(Bash)を使うか、`readlink` で実体を解決してから探索する。**追従なしの検索が空を返しても「存在しない」と結論しない**(一度 `-L` で再確認する)
 - **存在確認はリストを信用しすぎない**。skill が `disable-model-invocation: true` だと起動時の available-skills リストに載らない。skill / command の有無を判断するときは、リストの不在だけで決めず `~/.claude/skills` 等を `-L` 付きで列挙して確かめる
-- **編集はリポジトリ実体に直接書き込まれる**。`~/.claude/*`・`~/.config/*` は dotfiles 本体へ直結しているため、`~/.claude/CLAUDE.md` 等を編集するとそのまま `~/dotfiles/home/...`(＝編集すべき source)に書き込まれる。**content の変更は即時反映で再配置不要**。再配置が要るのは `home-manager/nputEntries.nix` の entries にファイルを増減する**構造変更のときだけ**で、そのときも `home-manager switch` ではなく `make nput-apply` で足りる。(万一あるパスが `/nix/store/...` に解決する場合のみ read-only。その時は dotfiles 側を編集する)
-- **例外: `~/.claude/settings.json` は copy 配置**。SSOT は `home-manager/claudeSettings.nix`。TUI の書き戻しは通るが `nput apply --recopy` で失われるため、恒久化したい変更は Nix 側へ戻す(詳細は `~/dotfiles/CLAUDE.md`)
-- **例外: `~/.claude/skills/*`・`~/.claude/agents/*` は store 直結の read-only**。これらは dotfiles 実体ではなく `yasunori0418/skills` リポジトリ(flake input `yasunori-skills`)から nput が配置する。編集は `~/src/github.com/yasunori0418/skills` で行い、**push → `~/dotfiles` で `nix flake update yasunori-skills` → switch** で反映する(即時反映ではない)。同リポジトリは Claude Code plugin(ローカル marketplace)としても配布しているが、このマシンでは重複回避のため plugin はローカル無効(`enabledPlugins` で false)
+- **編集はリポジトリ実体に直接書き込まれる**。`~/.claude/*`・`~/.config/*` は dotfiles 本体へ直結しているため、`~/.claude/CLAUDE.md` 等を編集するとそのまま `~/dotfiles/home/...`(＝編集すべき source)に書き込まれる。**content の変更は即時反映で再配置不要**。再配置が要るのは `home-manager/layatEntries.nix` の entries にファイルを増減する**構造変更のときだけ**で、そのときも `home-manager switch` ではなく `make layat-apply` で足りる。(万一あるパスが `/nix/store/...` に解決する場合のみ read-only。その時は dotfiles 側を編集する)
+- **例外: `~/.claude/settings.json` は copy 配置**。SSOT は `home-manager/claudeSettings.nix`。TUI の書き戻しは通るが `layat apply --recopy` で失われるため、恒久化したい変更は Nix 側へ戻す(詳細は `~/dotfiles/CLAUDE.md`)
+- **例外: `~/.claude/skills/*`・`~/.claude/agents/*` は store 直結の read-only**。これらは dotfiles 実体ではなく `yasunori0418/skills` リポジトリ(flake input `yasunori-skills`)から layat が配置する。編集は `~/src/github.com/yasunori0418/skills` で行い、**push → `~/dotfiles` で `nix flake update yasunori-skills` → switch** で反映する(即時反映ではない)。同リポジトリは Claude Code plugin(ローカル marketplace)としても配布しているが、このマシンでは重複回避のため plugin はローカル無効(`enabledPlugins` で false)

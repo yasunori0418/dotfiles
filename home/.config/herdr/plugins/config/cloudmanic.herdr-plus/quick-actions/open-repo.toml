@@ -14,8 +14,8 @@ label = "dotfiles"
 description = "yasunori0418/dotfiles"
 
 [[options]]
-label = "nput"
-description = "yasunori0418/nput"
+label = "layat"
+description = "yasunori0418/layat"
 
 [[options]]
 label = "niface"

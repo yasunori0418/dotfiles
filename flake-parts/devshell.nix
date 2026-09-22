@@ -21,11 +21,11 @@ _: {
             checkmake
             emmylua-ls
             ts_query_ls
-            # mattpocock/skills を .claude/skills/ へ配置する nput（project mode 用に pin）
-            inputs'.nput.packages.nput
+            # mattpocock/skills を .claude/skills/ へ配置する layat（project mode 用に pin）
+            inputs'.layat.packages.layat
           ];
           shellHook = ''
-            nput apply skills --no-wait
+            layat apply skills --no-wait
           '';
         };
       };

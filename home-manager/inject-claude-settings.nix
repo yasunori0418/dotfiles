@@ -1,14 +1,14 @@
 # switch のたびに ~/.claude/settings.json へ環境固有の値を注入し直す
 # activation（macOS 限定）。
 #
-# settings.json は claudeSettings.nix から生成した JSON を nput が配置するが、
+# settings.json は claudeSettings.nix から生成した JSON を layat が配置するが、
 # その環境にしか存在しない値は Nix 側に置けない。そうした値は
 # ~/.claude/inject/*.json に置き、配置後の settings.json へ後から重ねる。
 # 何を注入するかはリポジトリ側の関心事ではないため、ここには持たない。
 #
-# settings.json は nput の method = "copy"（place-once）で配置される。
-# `nput apply --recopy` すると Nix 生成の JSON に戻って注入分が消えるため、
-# recopy 後は make nput-recopy が続けて同じスクリプトを流す（Makefile 側）。
+# settings.json は layat の method = "copy"（place-once）で配置される。
+# `layat apply --recopy` すると Nix 生成の JSON に戻って注入分が消えるため、
+# recopy 後は make layat-recopy が続けて同じスクリプトを流す（Makefile 側）。
 #
 # 処理の実体は scripts/claude-settings-inject.sh で、`make claude-settings-inject`
 # と共有する。activation からは store へコピーしたものを実行する（~/dotfiles の
@@ -27,9 +27,9 @@ let
   '';
 in
 {
-  # nput の配置（home.activation.nput）が終わって ~/.claude/settings.json が
-  # 実体化した後でないと注入対象が無いため、entryAfter は nput を指定する。
-  home.activation.injectClaudeSettings = lib.hm.dag.entryAfter [ "nput" ] ''
+  # layat の配置（home.activation.layat）が終わって ~/.claude/settings.json が
+  # 実体化した後でないと注入対象が無いため、entryAfter は layat を指定する。
+  home.activation.injectClaudeSettings = lib.hm.dag.entryAfter [ "layat" ] ''
     run ${injectClaudeSettings}/bin/claude-settings-inject
   '';
 }

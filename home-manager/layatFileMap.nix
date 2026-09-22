@@ -7,7 +7,7 @@
   ...
 }:
 let
-  inherit (import ./lib/nput-file-map.nix { inherit pkgs mkOutOfStoreSymlink homeDir; })
+  inherit (import ./lib/layat-file-map.nix { inherit pkgs mkOutOfStoreSymlink homeDir; })
     selectWallpaper
     fileMap
     ;
@@ -18,7 +18,7 @@ let
   # applications.nix と同じ derivation から css を store-backed で配置する。
   nordic-darker = pkgs.callPackage ./packages/nordic-darker.nix { };
 
-  # nput の symlink 配置はファイル/ディレクトリを区別しないため、旧 home.file 実装が
+  # layat の symlink 配置はファイル/ディレクトリを区別しないため、旧 home.file 実装が
   # 持っていた homeDirMap/homeFileMap・xdgConfigDirMap/xdgConfigFileMap は各 1 つに統合する。
   homeMap = fileMap {
     dist = "";
@@ -197,11 +197,11 @@ let
 
     symlink（store 直結）だと Claude Code の TUI / `/config` による書き戻し
     （effortLevel・outputStyle・enabledPlugins 等）が read-only で失敗するため
-    method = "copy" にする。nput の copy は store の read-only モードに
+    method = "copy" にする。layat の copy は store の read-only モードに
     owner-write を加えて配置するので書き戻せる。
 
     copy は place-once なので、claudeSettings.nix を編集しただけでは
-    switch で反映されない。反映には `nput apply --recopy` が要る。
+    switch で反映されない。反映には `layat apply --recopy` が要る。
   */
   claudeSettingsEntry = isDarwin: {
     ".claude/settings.json" = {
@@ -395,7 +395,7 @@ in
     dotConfig = {
       ".config/alacritty/os.toml".src = mkOutOfStoreSymlink "${xdgConfigHome}/alacritty/linux.toml";
 
-      # themechanger / nwg-look が野良で張っていた symlink を nput 管理下に取り込む。
+      # themechanger / nwg-look が野良で張っていた symlink を layat 管理下に取り込む。
       # ~/dotfiles ではなく nix store 由来のため store-backed src で配置する。
       ".config/gtk-4.0/gtk.css" = {
         src = nordic-darker;

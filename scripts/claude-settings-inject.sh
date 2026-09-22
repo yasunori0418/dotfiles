@@ -2,7 +2,7 @@
 
 # ~/.claude/inject/*.json の内容を ~/.claude/settings.json へマージする。
 #
-# settings.json は home-manager/claudeSettings.nix から生成した JSON を nput が
+# settings.json は home-manager/claudeSettings.nix から生成した JSON を layat が
 # 配置するが、その環境にしか存在しない値（接続先・資格情報など）は Nix 側に
 # 置けない。そうした値は ~/.claude/inject/ に JSON として置き、このスクリプトが
 # 配置後の settings.json へ後から重ねる。
@@ -17,14 +17,14 @@
 #   その他 : 後のファイルの値で上書きする
 #
 # 配列の重複判定は要素の丸ごと一致なので、inject 側の要素を書き換えると
-# 古い要素は残ったまま新しい要素が足される。その場合は make nput-recopy で
+# 古い要素は残ったまま新しい要素が足される。その場合は make layat-recopy で
 # Nix 生成の JSON からやり直す。
 # 何を注入するかはこのスクリプトの関心事ではないため、リポジトリ側には
 # 注入する値もキー名も持たない。
 #
-# settings.json は nput の method = "copy"（place-once）で配置される。
-# `nput apply --recopy` すると Nix 生成の JSON に戻って注入分が消えるため、
-# 配置をやり直したあとは流し直す必要がある（Makefile の nput-recopy が続けて呼ぶ）。
+# settings.json は layat の method = "copy"（place-once）で配置される。
+# `layat apply --recopy` すると Nix 生成の JSON に戻って注入分が消えるため、
+# 配置をやり直したあとは流し直す必要がある（Makefile の layat-recopy が続けて呼ぶ）。
 #
 # home-manager の activation（home-manager/inject-claude-settings.nix）と
 # `make claude-settings-inject` の両方から同じ処理を呼ぶための実体。

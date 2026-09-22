@@ -18,7 +18,7 @@
         ../options/programs/nix-index.nix
         ../options/programs/discord.nix
       ];
-      nput = import ./nput.nix {
+      layat = import ./layat.nix {
         inherit
           inputs
           pkgs
@@ -32,7 +32,7 @@
       linkHerdrPlugins
       injectClaudeSettings
       inputs.mac-app-util.homeManagerModules.default
-      nput
+      layat
     ]
     ++ launchd
     ++ programs;

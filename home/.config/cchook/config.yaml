@@ -99,7 +99,7 @@ PreToolUse:
         command: $HOME/.claude/hooks/noclobber-guard/main.sh
         use_stdin: true
   # tirith による Bash コマンド走査（URL の homograph 検査・pipe-to-shell 検知など）。
-  # tirith リポジトリ配布の tirith-check.py を nput で symlink 配置しており、
+  # tirith リポジトリ配布の tirith-check.py を layat で symlink 配置しており、
   # 依存パッケージは標準ライブラリのみ。uv 経由で python バージョンを 3.13 に固定
   # （システム python の差異で挙動が変わらないようにする）。
   #
@@ -191,7 +191,7 @@ SessionStart:
   # claudeSettings.nix が SSOT で、recopy すると herdr の書き込みは消える）。
   # スクリプトは stdin の hook JSON から session_id を読むため use_stdin 必須。
   # HERDR_ENV / HERDR_SOCKET_PATH / HERDR_PANE_ID が無ければ自己抑制して終了する。
-  # 実体は nput 配置（nputFileMap.nix の herdrEntries、flake input `herdr`）で、
+  # 実体は layat 配置（layatFileMap.nix の herdrEntries、flake input `herdr`）で、
   # herdr リポジトリ側のアセットに実行ビットが無い（store 上で -r--r--r--）ため
   # 直接起動すると exit 126 になる。herdr 純正の settings.json 定義と同様に
   # インタプリタ（sh）経由で起動する。

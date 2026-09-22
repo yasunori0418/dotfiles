@@ -3,5 +3,5 @@
 result
 result-*
 
-# ---- nput 配置物（devShell の shellHook が nput apply skills で生成）----
+# ---- layat 配置物（devShell の shellHook が layat apply skills で生成）----
 .claude/skills/*

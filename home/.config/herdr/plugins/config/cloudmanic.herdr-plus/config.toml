@@ -3,7 +3,7 @@
 #   $(herdr plugin config-dir cloudmanic.herdr-plus)/config.toml
 #
 # 同じディレクトリの projects/ quick-actions/ worktrees/ も
-# dotfiles 管理下（nput の symlink 配置）。
+# dotfiles 管理下（layat の symlink 配置）。
 
 [worktree]
 # projects ブラウザ（ctrl+g）で bare なブランチ名を打ったときに前置される。

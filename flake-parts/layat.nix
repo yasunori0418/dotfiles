@@ -1,22 +1,22 @@
-# nput の配置 config をまとめる flake-parts module。
-# nput の flakeModules.default（flake.nix の imports が読む）を前提に、
-# perSystem.nput.<name> へ manifest を宣言する。宣言したものは
-# flake.nput.<system>.<name> へ転置され、`nput apply <name>` から直接叩ける。
+# layat の配置 config をまとめる flake-parts module。
+# layat の flakeModules.default（flake.nix の imports が読む）を前提に、
+# perSystem.layat.<name> へ manifest を宣言する。宣言したものは
+# flake.layat.<system>.<name> へ転置され、`layat apply <name>` から直接叩ける。
 #
 # - default: home mode（root = homeRoot）。~/.claude/* や ~/.config/* の配置。
-#   entries は home-manager 側（home-manager/{linux,macos}/nput.nix）と
-#   ../home-manager/nputEntries.nix を共有するので内容は完全に一致する。
+#   entries は home-manager 側（home-manager/{linux,macos}/layat.nix）と
+#   ../home-manager/layatEntries.nix を共有するので内容は完全に一致する。
 #   名前を `default` にしているのは HM モジュールの activation
-#   （`nput apply --manifest <path>`・位置引数なし = profile 名 `default`）と
-#   同じ generation profile（<state>/nix/profiles/nput/default）へ載せるため。
+#   （`layat apply --manifest <path>`・位置引数なし = profile 名 `default`）と
+#   同じ generation profile（<state>/nix/profiles/layat/default）へ載せるため。
 #   別名にすると CLI 適用と HM activation が別 profile になり、同じ配置先を
 #   互いに奪い合って stale 削除が壊れる。
-#   これにより `nput apply --recopy`（settings.json の copy 再配置）が
+#   これにより `layat apply --recopy`（settings.json の copy 再配置）が
 #   home-manager switch を挟まずに Makefile から叩ける。
 #
 # - skills: project mode（root = projectRoot）。mattpocock/skills を
 #   .claude/skills/<name> へ配置する。devShell の shellHook
-#   （flake-parts/devshell.nix）が `nput apply skills` でビルド・配置する。
+#   （flake-parts/devshell.nix）が `layat apply skills` でビルド・配置する。
 #   配置物は .gitignore 済みの ephemeral。
 
 # The importApply argument. Use this to reference things defined locally,
@@ -27,7 +27,7 @@ localFlake:
 # where this module was imported.
 { inputs, ... }:
 let
-  nputLib = inputs.nput.lib;
+  layatLib = inputs.layat.lib;
 
   # home mode の entries は out-of-store symlink の src に $HOME の絶対パスを
   # 埋めるため、system ごとにユーザー名 / home ディレクトリを解決する。
@@ -59,20 +59,20 @@ in
       inherit (pkgs.stdenv.hostPlatform) isDarwin;
     in
     {
-      # perSystem.nput.<name> → flake.nput.<system>.<name> へ自動転置される（nput flakeModule）。
-      nput = {
-        default = nputLib.mkManifest {
+      # perSystem.layat.<name> → flake.layat.<system>.<name> へ自動転置される（layat flakeModule）。
+      layat = {
+        default = layatLib.mkManifest {
           inherit pkgs;
-          root = nputLib.homeRoot;
-          entries = import ../home-manager/nputEntries.nix {
+          root = layatLib.homeRoot;
+          entries = import ../home-manager/layatEntries.nix {
             inherit inputs pkgs isDarwin;
             homeDirectory = homeDirectoryFor isDarwin;
           };
         };
 
-        skills = nputLib.mkManifest {
+        skills = layatLib.mkManifest {
           inherit pkgs;
-          root = nputLib.projectRoot;
+          root = layatLib.projectRoot;
           entries = skillEntries;
         };
       };

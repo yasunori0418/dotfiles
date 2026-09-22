@@ -1,11 +1,11 @@
 #!/usr/bin/env bash
 
-# `make nput-recopy` を実行したら ~/.claude/settings.json がどう変わるかを、
+# `make layat-recopy` を実行したら ~/.claude/settings.json がどう変わるかを、
 # JSON のキーパス単位で事前に確認する。
 #
-# settings.json は home-manager/claudeSettings.nix から生成した JSON を nput が
-# method = "copy"（place-once）で配置する。copy 済みの target に `nput apply` は
-# 触れないため、Nix 側を編集しただけでは反映されず `nput apply --recopy` が要る。
+# settings.json は home-manager/claudeSettings.nix から生成した JSON を layat が
+# method = "copy"（place-once）で配置する。copy 済みの target に `layat apply` は
+# 触れないため、Nix 側を編集しただけでは反映されず `layat apply --recopy` が要る。
 # 逆に recopy は Claude Code の TUI が settings.json へ書き戻した項目
 # （outputStyle・effortLevel・enabledPlugins 等）を Nix 生成の内容へ巻き戻す。
 # その巻き戻しで何が消えるのかを、実行前に見えるようにするのがこのスクリプト。
@@ -15,7 +15,7 @@
 #   現行      : ${CLAUDE_SETTINGS_FILE}（既定 ~/.claude/settings.json）
 #   recopy 後 : Nix 生成 JSON に ~/.claude/inject/*.json を重ねたもの
 #
-# 後者に inject を重ねるのは、make nput-recopy が recopy に続けて
+# 後者に inject を重ねるのは、make layat-recopy が recopy に続けて
 # claude-settings-inject を流すため。素の Nix 生成 JSON と比べると、
 # 実際には注入で戻ってくる値まで「消える」と表示されてしまう。
 # マージ規則（辞書順・object は再帰合成・array は既存に無い要素の追記・
@@ -69,10 +69,10 @@ readonly REPO_ROOT
 
 system="$(nix config show system)"
 
-# nput manifest をビルドして、.claude/settings.json エントリの src（Nix 生成 JSON の
-# store path）を引く。nput apply が実際に copy してくるのと同じ実体。
-manifest_dir="$(nix build --no-link --print-out-paths "${REPO_ROOT}#nput.${system}.default")" ||
-die "failed to build nput.${system}.default"
+# layat manifest をビルドして、.claude/settings.json エントリの src（Nix 生成 JSON の
+# store path）を引く。layat apply が実際に copy してくるのと同じ実体。
+manifest_dir="$(nix build --no-link --print-out-paths "${REPO_ROOT}#layat.${system}.default")" ||
+die "failed to build layat.${system}.default"
 
 nix_json="$(jq -r '
     .entries[]

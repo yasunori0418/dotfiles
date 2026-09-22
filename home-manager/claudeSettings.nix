@@ -6,15 +6,15 @@
   permissions・env の大半）が重複し、差分が意図せず揺れていた。
   共通部を common に一元化し、OS 固有分だけを perOS で上書きする。
 
-  配置は nput の method = "copy"（nputFileMap.nix 側）。symlink（store 直結）だと
+  配置は layat の method = "copy"（layatFileMap.nix 側）。symlink（store 直結）だと
   Claude Code の TUI / `/config` が settings.json へ書き戻す項目
   （effortLevel・outputStyle・enabledPlugins 等）が read-only エラーになるため。
-  nput の copy は store の read-only モードに owner-write を加えて配置するので
+  layat の copy は store の read-only モードに owner-write を加えて配置するので
   書き戻せる。
 
-  ただし copy は place-once（→ nput ADR-0002, ADR-0020）で、一度実体化した
-  target には以降 `nput apply` は触れない。ここを編集して反映するには
-  `nput apply --recopy` か `nput reset` 後の再適用が要る。
+  ただし copy は place-once（→ layat ADR-0002, ADR-0020）で、一度実体化した
+  target には以降 `layat apply` は触れない。ここを編集して反映するには
+  `layat apply --recopy` か `layat reset` 後の再適用が要る。
   逆に TUI 側の書き戻しは --recopy で失われるため、恒久化したい変更は
   この Nix 側へ手で戻す運用になる（SSOT は Nix 側）。
 */

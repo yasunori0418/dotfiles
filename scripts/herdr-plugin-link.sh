@@ -1,10 +1,10 @@
 #!/usr/bin/env bash
 
-# ~/.local/share/herdr-plugins/ 配下へ nput が配置した herdr プラグインを
+# ~/.local/share/herdr-plugins/ 配下へ layat が配置した herdr プラグインを
 # herdr のレジストリ（~/.config/herdr/plugins.json）へ登録する。
 #
 # herdr はプラグインをディレクトリ走査で発見せず、レジストリに登録された
-# plugin_root の絶対パスだけを見る。よって nput で配置しただけでは有効にならず
+# plugin_root の絶対パスだけを見る。よって layat で配置しただけでは有効にならず
 # この link が要る。
 #
 # `herdr plugin link` は

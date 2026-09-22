@@ -1,6 +1,6 @@
 # switch のたびに herdr プラグインをレジストリへ登録し直す activation。
 #
-# nput が ~/.local/share/herdr-plugins/* へ配置しても herdr は認識しない
+# layat が ~/.local/share/herdr-plugins/* へ配置しても herdr は認識しない
 # （herdr はディレクトリ走査ではなく ~/.config/herdr/plugins.json への登録を見る）。
 # さらに link は実体（= store パス）を記録するため、プラグイン更新で store パスが
 # 変わるたび登録が stale になる。よって配置後に毎回 link を流す。
@@ -28,14 +28,14 @@ let
   '';
 in
 {
-  # nput の配置（home.activation.nput）が終わってからでないと
+  # layat の配置（home.activation.layat）が終わってからでないと
   # ~/.local/share/herdr-plugins/* がまだ無い、あるいは古い世代を指しているため
-  # entryAfter は writeBoundary/linkGeneration ではなく nput を指定する。
+  # entryAfter は writeBoundary/linkGeneration ではなく layat を指定する。
   #
   # NixOS の HM は activation を systemd service で走らせ、その PATH は
   # coreutils 等の最小構成に固定される（herdr は PATH から引けない）。
   # よって herdr の在り処は HERDR_BIN で明示的に渡す。
-  home.activation.linkHerdrPlugins = lib.hm.dag.entryAfter [ "nput" ] ''
+  home.activation.linkHerdrPlugins = lib.hm.dag.entryAfter [ "layat" ] ''
     run env HERDR_BIN=${lib.getExe herdr} ${linkHerdrPlugins}/bin/herdr-plugin-link
   '';
 }

@@ -1,0 +1,7 @@
+name = "layat"
+description = "dotfiles 配置エンジン（layat）"
+group = "yasunori0418"
+working_dir = "~/src/github.com/yasunori0418/layat"
+
+[[tabs]]
+name = "shell"

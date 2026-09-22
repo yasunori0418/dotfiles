@@ -24,5 +24,5 @@ name = "terminal"
 
 発火したかは `herdr plugin log list --plugin cloudmanic.herdr-plus` で確認できる。
 
-このディレクトリは nput 管理下（dotfiles の実体への symlink）なので、
+このディレクトリは layat 管理下（dotfiles の実体への symlink）なので、
 ファイルを足せば即反映される。

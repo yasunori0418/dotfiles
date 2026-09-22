@@ -5,7 +5,7 @@
 # herdr-navigator の herdr-plugin.toml は実行ファイルを
 # `./target/release/herdr-navigator` という相対パスで指しているため、
 # $out 直下に herdr-plugin.toml と target/release/<bin> が並ぶ形へ整形する。
-# ($out がそのまま plugin_root になり、nput が symlink 配置する)
+# ($out がそのまま plugin_root になり、layat が symlink 配置する)
 #
 # バイナリは $out/bin にも置く（デバッグ時に直接叩けるようにするだけで、
 # herdr 側は target/release の方を参照する）。

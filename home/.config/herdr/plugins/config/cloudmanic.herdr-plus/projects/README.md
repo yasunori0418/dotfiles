@@ -28,7 +28,7 @@ name = "watch"
 
 [[tabs.panes]]
 label = "build"
-command = "make nput-dryrun"
+command = "make layat-dryrun"
 
 [[tabs.panes]]
 label = "log"
@@ -36,5 +36,5 @@ command = "tail -f /tmp/build.log"
 split = "down"
 ```
 
-このディレクトリは nput 管理下（dotfiles の実体への symlink）なので、
+このディレクトリは layat 管理下（dotfiles の実体への symlink）なので、
 ファイルを足せば即反映される。

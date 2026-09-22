@@ -5,10 +5,10 @@
 }:
 {
   /*
-    壁紙の配置元を返す（nput の entry value 形式）
+    壁紙の配置元を返す（layat の entry value 形式）
 
     type が `nixos-artwork` のときは nixos-artwork の store パスから配置する。
-    nput の src は bare string を受け付けないため、derivation を src・store 内の
+    layat の src は bare string を受け付けないため、derivation を src・store 内の
     相対パスを subpath に渡す store-backed entry にする。
     refer: https://github.com/NixOS/nixos-artwork/tree/master/wallpapers
 
@@ -29,14 +29,14 @@
       { src = mkOutOfStoreSymlink "${homeDir}/.background-image"; };
 
   /*
-    ファイル/ディレクトリ配置をいい感じに nput.entries へマップする
+    ファイル/ディレクトリ配置をいい感じに layat.entries へマップする
     ```
     ".config/hoge/conf".src = mkOutOfStoreSymlink "${xdgConfigHome}/conf";
     ```
     ↑こういう記述が連続するのを減らせる
     配置元と配置先の命名が一致しているときだけ使える
 
-    nput の symlink 配置はファイル/ディレクトリを区別しない（どちらも 1 本の
+    layat の symlink 配置はファイル/ディレクトリを区別しない（どちらも 1 本の
     symlink）ため、旧 home.file 実装の is_recursive 相当の区別は不要。
 
     dist: 配置先（root からの相対。root は HM モジュールが homeRoot に pin する）

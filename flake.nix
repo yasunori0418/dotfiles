@@ -46,8 +46,8 @@
       url = "github:nix-community/nix-index-database";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    nput = {
-      url = "github:yasunori0418/nput";
+    layat = {
+      url = "github:yasunori0418/layat";
       inputs = {
         nixpkgs.follows = "nixpkgs";
         flake-parts.follows = "flake-parts";
@@ -55,20 +55,20 @@
         treefmt-nix.follows = "treefmt-nix";
       };
     };
-    # Claude Code 用スキル集（mattpocock/skills）。nput の project mode で
+    # Claude Code 用スキル集（mattpocock/skills）。layat の project mode で
     # .claude/skills/ へ配置するため flake=false。flake.lock が rev を pin する。
     matt-skills = {
       url = "github:mattpocock/skills";
       flake = false;
     };
-    # 自作 Claude Code スキル・エージェント集（yasunori0418/skills）。nput（HM 側）で
+    # 自作 Claude Code スキル・エージェント集（yasunori0418/skills）。layat（HM 側）で
     # ~/.claude/skills / ~/.claude/agents へ配置するため flake=false。flake.lock が rev を pin する。
     yasunori-skills = {
       url = "github:yasunori0418/skills";
       flake = false;
     };
     # tirith 公式リポジトリ。crates/tirith/assets/hooks/tirith-check.py を
-    # nput 経由で ~/.claude/hooks/tirith/tirith-check.py へ symlink 配置し、
+    # layat 経由で ~/.claude/hooks/tirith/tirith-check.py へ symlink 配置し、
     # cchook から uv 経由で呼び出す。flake.lock が rev を pin する。
     tirith = {
       url = "github:sheeki03/tirith";
@@ -80,7 +80,7 @@
     };
     # herdr プラグイン。herdr はプラグインをディレクトリ走査で発見せず
     # ~/.config/herdr/plugins.json（レジストリ）に登録された plugin_root の
-    # 絶対パスを見る。よって derivation でビルド・整形 → nput で
+    # 絶対パスを見る。よって derivation でビルド・整形 → layat で
     # ~/.local/share/herdr-plugins/ へ配置 → `herdr plugin link` で登録する。
     # marketplace の `herdr plugin install` は使わない（managed checkout が
     # Nix 管理外になるため）。更新は flake.lock の rev 更新 + switch。
@@ -90,7 +90,7 @@
     # ため、更新で Cargo.lock / go.sum が変わると packages/*.nix の
     # cargoHash / vendorHash が合わなくなりビルドが落ちる。そのときは
     # hash mismatch が出す `got:` の値へ差し替える
-    # （`make nput-dryrun` で switch 前に検出できる）。
+    # （`make layat-dryrun` で switch 前に検出できる）。
     herdr-worktrunk = {
       url = "github:devashish2203/herdr-worktrunk";
       flake = false;
@@ -149,14 +149,14 @@
           let
             treefmt.default = importApply ./flake-parts/treefmt.nix;
             devshell.default = importApply ./flake-parts/devshell.nix;
-            nput.default = importApply ./flake-parts/nput.nix;
+            layat.default = importApply ./flake-parts/layat.nix;
           in
           [
             inputs.treefmt-nix.flakeModule
-            inputs.nput.flakeModules.default
+            inputs.layat.flakeModules.default
             treefmt.default
             devshell.default
-            nput.default
+            layat.default
           ];
         systems = import inputs.systems;
         flake =

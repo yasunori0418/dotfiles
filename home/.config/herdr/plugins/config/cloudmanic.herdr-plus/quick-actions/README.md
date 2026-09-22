@@ -34,8 +34,8 @@ quick-action は**副作用を起こすもの専用**と考える。一覧表示
 ## seed について
 
 herdr-plus はこのディレクトリが**存在しないとき**に限り、同梱の例
-（`examples/quick-actions/`）を書き込む。nput が symlink を張るので既に存在し、
+（`examples/quick-actions/`）を書き込む。layat が symlink を張るので既に存在し、
 seed は走らない。例が要るなら upstream から手で持ってくる。
 
-このディレクトリは nput 管理下（dotfiles の実体への symlink）なので、
+このディレクトリは layat 管理下（dotfiles の実体への symlink）なので、
 ファイルを足せば即反映される。

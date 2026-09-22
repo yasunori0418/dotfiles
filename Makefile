@@ -73,34 +73,34 @@ nix-rebuild: ## nixos or nix-darwin rebuild switch
 nixos-generate: ## nixos-generator
 	@nix run 'nixpkgs#nixos-generators' -- --flake '.#iso' -f iso | xargs -I{} ln -svf {} ./
 
-## nput placement commands ##
-# nput.default（home mode）は home-manager の activation と同じ profile 名 `default`
+## layat placement commands ##
+# layat.default（home mode）は home-manager の activation と同じ profile 名 `default`
 # を共有する。よって switch を挟まずに CLI から配置を反映できる。
-nput-apply: ## nput apply default (home mode placement without home-manager switch)
-	@nput apply default --verbose
+layat-apply: ## layat apply default (home mode placement without home-manager switch)
+	@layat apply default --verbose
 
 # recopy は ~/.claude/settings.json を Nix 生成の JSON に戻すので、
 # 環境固有に注入した値（claude-settings-inject）はそのたびに消える。
 # 消えた状態を残さないため recopy に続けて注入し直す。
 # 実行前に何が変わるかは make claude-settings-diff で確認できる。
-nput-recopy: ## nput apply default --recopy (re-copy copy targets e.g. ~/.claude/settings.json)
-	@nput apply default --recopy --verbose
+layat-recopy: ## layat apply default --recopy (re-copy copy targets e.g. ~/.claude/settings.json)
+	@layat apply default --recopy --verbose
 	@$(MAKE) --no-print-directory claude-settings-inject
 
-nput-dryrun: ## nput apply default --dryrun (preview placement, no side effects)
-	@nput apply default --dryrun --verbose
+layat-dryrun: ## layat apply default --dryrun (preview placement, no side effects)
+	@layat apply default --dryrun --verbose
 
-nput-skills: ## nput apply skills (project mode placement into .claude/skills)
-	@nput apply skills --verbose
+layat-skills: ## layat apply skills (project mode placement into .claude/skills)
+	@layat apply skills --verbose
 
-nput-gitignore: ## nput gitignore --all (print project mode placement targets)
-	@nput gitignore --all
+layat-gitignore: ## layat gitignore --all (print project mode placement targets)
+	@layat gitignore --all
 
-nput-generations: ## nput list-generations default
-	@nput list-generations default
+layat-generations: ## layat list-generations default
+	@layat list-generations default
 
-nput-rollback: ## nput rollback default (roll back to the previous generation)
-	@nput rollback default --verbose
+layat-rollback: ## layat rollback default (roll back to the previous generation)
+	@layat rollback default --verbose
 
 ## Claude Code settings injection commands ##
 # ~/.claude/settings.json へ環境固有の値を注入する。
@@ -111,16 +111,16 @@ nput-rollback: ## nput rollback default (roll back to the previous generation)
 claude-settings-inject: ## inject env-specific values into ~/.claude/settings.json (no-op if not set up)
 	@./scripts/claude-settings-inject.sh
 
-# make nput-recopy が ~/.claude/settings.json をどう書き換えるかを事前に確認する。
+# make layat-recopy が ~/.claude/settings.json をどう書き換えるかを事前に確認する。
 # Nix 生成 JSON + inject の断片を重ねた「recopy 後の姿」と現行をキーパス単位で比較し、
 # TUI が書き戻して recopy で消える項目を洗い出す。差分があれば exit 1。
-claude-settings-diff: ## preview key-level diff of ~/.claude/settings.json against `make nput-recopy` result
+claude-settings-diff: ## preview key-level diff of ~/.claude/settings.json against `make layat-recopy` result
 	@./scripts/claude-settings-diff.sh
 
 ## herdr plugin commands ##
-# nput が配置した ~/.local/share/herdr-plugins/* を herdr のレジストリへ登録する。
+# layat が配置した ~/.local/share/herdr-plugins/* を herdr のレジストリへ登録する。
 # home-manager の activation も同じスクリプトを呼ぶので、switch を挟まずに
-# `make nput-apply` で配置だけ差し替えたときはこれを続けて叩けば反映できる。
+# `make layat-apply` で配置だけ差し替えたときはこれを続けて叩けば反映できる。
 herdr-plugin-link: ## register placed herdr plugins into herdr's registry
 	@./scripts/herdr-plugin-link.sh
 

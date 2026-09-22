@@ -1,14 +1,14 @@
-# nput の home mode（root = homeRoot）entries を組み立てる共有モジュール。
+# layat の home mode（root = homeRoot）entries を組み立てる共有モジュール。
 #
-# home-manager モジュール（home-manager/{linux,macos}/nput.nix）と flake-parts の
-# nput profile（flake-parts/nput.nix）の両方から import される。HM の `config` に
+# home-manager モジュール（home-manager/{linux,macos}/layat.nix）と flake-parts の
+# layat profile（flake-parts/layat.nix）の両方から import される。HM の `config` に
 # 依存しないよう、homeDirectory は呼び出し側が絶対パス文字列で渡す
-# （HM 側は config.home.homeDirectory、flake-parts 側は flake-parts/nput.nix の
+# （HM 側は config.home.homeDirectory、flake-parts 側は flake-parts/layat.nix の
 # 定義値を渡す。両者が食い違うと配置先がズレるので値は一致させること）。
 #
 # entries そのものは root 非依存（root は mkManifest / HM モジュールが homeRoot に
 # pin する）ため、同じ entries から HM activation 用の manifest と CLI 用の
-# flake output `nput.<system>.default` が同一内容で生成される。
+# flake output `layat.<system>.default` が同一内容で生成される。
 {
   inputs,
   pkgs,
@@ -23,14 +23,14 @@ let
     targetAttrsValue
     concatOfAttrs
     ;
-  inherit (inputs.nput.lib) mkOutOfStoreSymlink;
+  inherit (inputs.layat.lib) mkOutOfStoreSymlink;
 
-  # nput の src（out-of-store marker）には絶対パス文字列を渡す。
+  # layat の src（out-of-store marker）には絶対パス文字列を渡す。
   dotfiles = "${homeDirectory}/dotfiles";
   homeDir = "${dotfiles}/home";
   xdgConfigHome = "${homeDir}/.config";
 
-  nputFileMap = import ./nputFileMap.nix {
+  layatFileMap = import ./layatFileMap.nix {
     inherit
       inputs
       pkgs
@@ -51,7 +51,7 @@ let
     "homeDirectory"
     "dotConfig"
     "dotLocalShare"
-  ] nputFileMap;
+  ] layatFileMap;
 
   osSpecific =
     if isDarwin then
@@ -59,11 +59,11 @@ let
         "homeDirectory"
         "dotConfig"
         "library"
-      ] nputFileMap.MacOS
+      ] layatFileMap.MacOS
     else
       concatFileMap [
         "homeDirectory"
         "dotConfig"
-      ] nputFileMap.Linux;
+      ] layatFileMap.Linux;
 in
 common // osSpecific

@@ -8,7 +8,7 @@
   imports =
     let
       packages = ./packages.nix;
-      nput = import ./nput.nix {
+      layat = import ./layat.nix {
         inherit
           inputs
           pkgs
@@ -27,7 +27,7 @@
     in
     [
       packages
-      nput
+      layat
       clearDppStateAfterLinkGeneration
       linkHerdrPlugins
       xdg
