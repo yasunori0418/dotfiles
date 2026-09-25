@@ -31,7 +31,7 @@ let
   # 登録しておいて問題ない。
   cchookEvents = [
     "Notification"
-    "PermissionRequest"
+    # "PermissionRequest"
     "PostToolUse"
     "PreCompact"
     "PreToolUse"
