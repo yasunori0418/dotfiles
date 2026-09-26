@@ -48,7 +48,6 @@ let
         "skills/claude/project-session"
         "skills/claude/response-format"
         "skills/claude/session-insights"
-        "skills/claude/tmp-output"
         "skills/git/commit-flow"
         "skills/git/commit-plan"
         "skills/git/diff-review"
@@ -70,6 +69,7 @@ let
         "skills/workflow/job-plan"
         "skills/workflow/lane-ops"
         "skills/workflow/test-targeted"
+        "skills/workflow/tmp-output"
         # keep-sorted end
       ]
       [
