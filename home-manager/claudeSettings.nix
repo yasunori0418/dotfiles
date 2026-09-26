@@ -113,10 +113,12 @@ let
         "Bash(npm uninstall:*)"
         "Bash(npm remove:*)"
       ];
+      # git rebase / git reset は ask に入れない。cchook の git-guard が解錠 marker
+      # （rebase-flow / reset-flow スキルの計画提示 → ユーザー承認 → arm 後に作成）の
+      # 無い実行を deny するため、ここで ask すると承認済みの操作を二重に確認する。
+      # 並列レーン（job-graph）ではこの二重確認でレーンが blocked のまま滞留していた。
       ask = [
         "Bash(git push:*)"
-        "Bash(git reset:*)"
-        "Bash(git rebase:*)"
         "Bash(curl:*)"
         "Bash(wget:*)"
         "Bash(rm:*)"
