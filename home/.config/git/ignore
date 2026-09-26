@@ -72,7 +72,10 @@ Temporary Items
 .envrc
 .env
 
-# claude-code作業用の一時ディレクトリ
+# AIエージェント作業用の一時ディレクトリ
+# (末尾スラッシュなしは worktree で symlink 化された場合にも一致させるため)
+tmp-agents
+# 旧名 (移行期間中は併存)
 tmp_claude/
 tmp_claude
 
