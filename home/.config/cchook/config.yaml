@@ -33,8 +33,8 @@ PreToolUse:
   # git rebase / git reset は全面禁止からスキル経由の許可制に変更。
   # rebase-flow / reset-flow スキルの arm スクリプトが .git 内に置く解錠 marker
   # （30 分有効）を git-guard が検証し、無ければ deny、あれば意見なし。
-  # 意見なしの場合は settings.json の ask（`Bash(git rebase:*)` / `Bash(git reset:*)`）
-  # に落ちるため、スキル経由でも実行直前にユーザー確認が入る（多層防御）。
+  # ユーザー確認はスキルの計画提示 → 承認 → arm の段で済んでいるため、settings.json の
+  # ask には git rebase / git reset を入れない（二重確認でレーンが滞留するため）。
   # コマンド全文の部分一致で拾うのは従来どおり（auto モード + 複合コマンドで
   # settings ルールが LLM 分類器にフォールバックして取りこぼす事故対策）。
   - matcher: "Bash"
