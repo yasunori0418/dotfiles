@@ -1,0 +1,7 @@
+name = "outturn"
+description = "結果エンベロープ仕様（各ツールが stdout に出す実行結果の JSON 文書）"
+group = "yasunori0418"
+working_dir = "~/src/github.com/yasunori0418/outturn"
+
+[[tabs]]
+name = "shell"
