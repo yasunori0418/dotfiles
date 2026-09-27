@@ -103,7 +103,7 @@ split_horizontal = "prefix+s" # Split pane horizontally (stacked).
 close_pane = "prefix+x" # Close the focused pane.
 zoom = "prefix+z" # legacy alias: fullscreen
 resize_mode = "prefix+r" # Enter resize mode.
-toggle_sidebar = "prefix+b" # Toggle sidebar collapse.
+toggle_sidebar = "" # default: prefix+b | サイドバーは使わず prefix+w の sidebar-pick.sh popup で代替する
 copy_mode = "prefix+[" # Enter keyboard copy mode for the focused pane.
 
 # Navigate-mode movement. These local shortcuts win while navigate mode is open.
@@ -227,14 +227,17 @@ description = "herdr-plus: quick actions"
 # directory = "~/.herdr/worktrees"
 
 [ui]
+# サイドバーは使わない（prefix+w の sidebar-pick.sh popup で代替）。展開時にしか
+# 効かない sidebar_*width と [ui.sidebar.*] はコメントアウトしている。
+# sidebar_start_collapsed / sidebar_collapsed_mode は隠し続けるために必要なので残す。
 # Sidebar width (auto-scaled based on workspace names, this sets the default)
-sidebar_width = 26
+# sidebar_width = 26
 
 # Minimum sidebar width when expanded (columns)
-sidebar_min_width = 18
+# sidebar_min_width = 18
 
 # Maximum sidebar width when expanded (columns)
-sidebar_max_width = 36
+# sidebar_max_width = 36
 
 # Start with the sidebar collapsed. Changes take effect on the next launch.
 sidebar_start_collapsed = true # default: false
@@ -310,23 +313,23 @@ agent_panel_sort = "spaces"
 # Custom values reported through pane metadata use a $name token.
 # A token occurrence may be styled with `{ token = "workspace", fg = "#89b4fa", bold = true, dim = false }`.
 # Omitted style fields preserve the contextual default.
-[ui.sidebar.agents]
+# [ui.sidebar.agents]
 # Blank rows between agent entries. Set to 1 to restore the previous spacing.
-row_gap = 0
-rows = [["state_icon", "workspace", "tab"], ["agent"]]
+# row_gap = 0
+# rows = [["state_icon", "workspace", "tab"], ["agent"]]
 # Optional canonical agent IDs replace the default rows for matching agents.
-[ui.sidebar.agents.rows_by_agent]
+# [ui.sidebar.agents.rows_by_agent]
 # Complete Agent-row overrides keyed by strict canonical agent id.
 # Agents without an override use `ui.sidebar.agents.rows`.
-claude = [["state_icon", "workspace", "tab"], ["terminal_title_stripped"], ["agent"]]
+# claude = [["state_icon", "workspace", "tab"], ["terminal_title_stripped"], ["agent"]]
 
 # Expanded space rows. Built-ins are state_icon, state_text, workspace, branch, and git_status.
 # Custom values reported through workspace metadata use a $name token, for example $jj_status.
 # Inline token styles accept strict #RGB/#RRGGBB foregrounds plus bold and dim booleans.
-[ui.sidebar.spaces]
+# [ui.sidebar.spaces]
 # Blank rows between space entries. Set to 1 to restore the previous spacing.
-row_gap = 0
-rows = [["state_icon", "workspace"], ["branch", "git_status"]]
+# row_gap = 0
+# rows = [["state_icon", "workspace"], ["branch", "git_status"]]
 
 # Accent color for highlights, borders, and navigation UI.
 # Accepts: hex (#89b4fa), named colors (cyan, blue, magenta), or rgb(r,g,b)
