@@ -68,7 +68,7 @@ settings = "" # default: prefix+s | 設定ってテキストファイルで操�
 detach = "prefix+d" # default: prefix+q Detach from server/client mode, or exit --no-session mode.
 reload_config = "prefix+shift+r" # Reload config.toml in the running app/server.
 open_notification_target = "prefix+o" # Focus the currently visible notification target.
-workspace_picker = "prefix+w" # Open the workspace navigation surface.
+workspace_picker = "" # default: prefix+w | サイドバー hidden 運用では選択が見えないため、prefix+w は sidebar-pick.sh の popup に回す
 goto = "prefix+g" # Open the session navigator.
 new_workspace = "prefix+shift+n" # Create a new workspace.
 new_worktree = "" # default: prefix+shift+g | Worktree management is left to worktrunk
@@ -175,6 +175,17 @@ height = "50%"
 # tabs = ""       # e.g. "ctrl" makes ctrl+1..9 switch tabs directly
 # workspaces = "" # e.g. "ctrl+shift" makes ctrl+shift+1..9 switch workspaces directly
 # agents = ""     # e.g. "alt" makes alt+1..9 focus agent rows directly
+
+# サイドバー相当の一覧（workspace とその配下の agent）を popup で出して移動する。
+# 実体は scripts/sidebar-pick.sh。サイドバーは hidden 運用で、組み込みの
+# navigate mode（workspace_picker）では選択が見えないため prefix+w を置き換える。
+# herdr には navigate mode 中だけサイドバーを開く設定も開閉 API も無い。
+[[keys.command]]
+key = "prefix+w"
+type = "popup"
+command = "~/.config/herdr/scripts/sidebar-pick.sh"
+width = "80%"
+height = "80%"
 
 [[keys.command]]
 key = "prefix+t"
