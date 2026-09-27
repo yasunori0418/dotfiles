@@ -5,3 +5,8 @@ working_dir = "~/src/github.com/yasunori0418/blog"
 
 [[tabs]]
 name = "shell"
+
+# Linux のみ Remote Control を有効化（macOS は素の claude）
+[[tabs]]
+name = "claude"
+command = 'if [ "$(uname)" = Linux ]; then claude --remote-control blog; else claude; fi'
