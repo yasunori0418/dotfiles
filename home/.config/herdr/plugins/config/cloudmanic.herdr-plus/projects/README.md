@@ -38,3 +38,6 @@ split = "down"
 
 このディレクトリは layat 管理下（dotfiles の実体への symlink）なので、
 ファイルを足せば即反映される。
+
+マシン固有でコミットしたくない定義は `*.local.toml` という名前で置く
+（`.gitignore` で除外済み。herdr-plus からは通常の定義と同じく読み込まれる）。
