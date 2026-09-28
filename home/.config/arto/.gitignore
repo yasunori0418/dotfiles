@@ -2,3 +2,4 @@ state.json
 .build-id
 visits.json
 bookmarks.json
+baselines/
