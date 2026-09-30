@@ -52,6 +52,7 @@ in
       lefthook
       lemonade
       llmAgentsPkgs.herdr
+      mermaid-cli
       mise
       myNurPkgs.deno
       myNurPkgs.pict
