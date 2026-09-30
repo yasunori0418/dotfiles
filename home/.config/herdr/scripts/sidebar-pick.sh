@@ -24,19 +24,19 @@ icon() {
     case "$1" in
         working) printf '\e[33m●\e[0m' ;;
         blocked) printf '\e[31m▲\e[0m' ;;
-        done) printf '\e[32m✓\e[0m' ;;
-        idle) printf '\e[34m○\e[0m' ;;
-        *) printf '\e[90m·\e[0m' ;;
-    esac
+    done) printf '\e[32m✓\e[0m' ;;
+    idle) printf '\e[34m○\e[0m' ;;
+    *) printf '\e[90m·\e[0m' ;;
+esac
 }
 
 # 1 行 = "<kind>\t<id>\t<preview pane>\t<表示文字列>"。先頭 3 列は fzf では隠し、
 # 選択後の分岐と preview に使う。
 list() {
-    # snapshot 1 回で workspace / tab / pane / agent が全部取れる。
-    # jq は素材を US(\x1f)区切りで吐くだけにし、整形（アイコン・branch）は shell 側で行う。
-    herdr api snapshot |
-        jq -r '
+# snapshot 1 回で workspace / tab / pane / agent が全部取れる。
+# jq は素材を US(\x1f)区切りで吐くだけにし、整形（アイコン・branch）は shell 側で行う。
+herdr api snapshot |
+jq -r '
             .result.snapshot as $s
             | ($s.tabs | map({(.tab_id): .}) | add // {}) as $tabs
             | ($s.layouts | map({(.tab_id): .focused_pane_id}) | add // {}) as $focus
@@ -53,54 +53,54 @@ list() {
                   ($tabs[.tab_id].label // ""), .agent, (.terminal_title_stripped // "")]
                | join("\u001f"))
         ' |
-        # タブは IFS 上「空白」扱いで連続すると空フィールドが潰れるため、
-        # 非空白の US を区切りに使う。
-        while IFS=$'\x1f' read -r kind id status focused f5 f6 f7; do
-            # workspace 行は f7 にアクティブタブのフォーカス pane、agent 行は自分の pane。
-            mark=' '
-            [[ ${focused} == true ]] && mark='*'
-            case "${kind}" in
-                ws)
-                    branch=''
-                    if [[ -n ${f6} ]]; then
-                        branch=$(git -C "${f6}" branch --show-current 2>/dev/null || true)
-                    fi
-                    printf 'ws\t%s\t%s\t%s %s \e[1m%s\e[0m  \e[36m%s\e[0m\n' \
-                        "${id}" "${f7}" "${mark}" "$(icon "${status}")" "${f5}" "${branch}"
-                    ;;
-                agent)
-                    printf 'agent\t%s\t%s\t%s   %s %s \e[90m[%s]\e[0m %s\n' \
-                        "${id}" "${id}" "${mark}" "$(icon "${status}")" "${f6}" "${f5}" "${f7}"
+# タブは IFS 上「空白」扱いで連続すると空フィールドが潰れるため、
+# 非空白の US を区切りに使う。
+while IFS=$'\x1f' read -r kind id status focused f5 f6 f7; do
+    # workspace 行は f7 にアクティブタブのフォーカス pane、agent 行は自分の pane。
+    mark=' '
+    [[ ${focused} == true ]] && mark='*'
+    case "${kind}" in
+        ws)
+            branch=''
+            if [[ -n ${f6} ]]; then
+                branch=$(git -C "${f6}" branch --show-current 2>/dev/null || true)
+            fi
+            printf 'ws\t%s\t%s\t%s %s \e[1m%s\e[0m  \e[36m%s\e[0m\n' \
+            "${id}" "${f7}" "${mark}" "$(icon "${status}")" "${f5}" "${branch}"
+                ;;
+            agent)
+                printf 'agent\t%s\t%s\t%s   %s %s \e[90m[%s]\e[0m %s\n' \
+                "${id}" "${id}" "${mark}" "$(icon "${status}")" "${f6}" "${f5}" "${f7}"
                     ;;
             esac
         done
-}
+    }
 
-preview() {
-    local pane=$1
-    [[ -n ${pane} ]] || exit 0
-    # pane read は CRLF で返すので CR を落とす（残すと fzf の preview が崩れる）。
-    herdr pane read "${pane}" --source visible --format ansi 2>/dev/null | tr -d '\r'
-}
+    preview() {
+        local pane=$1
+        [[ -n ${pane} ]] || exit 0
+        # pane read は CRLF で返すので CR を落とす（残すと fzf の preview が崩れる）。
+        herdr pane read "${pane}" --source visible --format ansi 2>/dev/null | tr -d '\r'
+    }
 
-case "${1:-}" in
-    list)
-        list
-        exit 0
-        ;;
-    preview)
-        preview "${2:-}"
-        exit 0
-        ;;
-esac
+    case "${1:-}" in
+        list)
+            list
+            exit 0
+            ;;
+        preview)
+            preview "${2:-}"
+            exit 0
+            ;;
+    esac
 
-lines=$(list)
+    lines=$(list)
 
-# 初期カーソルを現在の workspace 行に合わせる（fzf の pos は 1 始まり）。
-start=$(printf '%s\n' "${lines}" | awk -F'\t' '$1 == "ws" && $4 ~ /^\*/ { print NR; exit }')
+    # 初期カーソルを現在の workspace 行に合わせる（fzf の pos は 1 始まり）。
+    start=$(printf '%s\n' "${lines}" | awk -F'\t' '$1 == "ws" && $4 ~ /^\*/ { print NR; exit }')
 
-selected=$(
-    printf '%s\n' "${lines}" |
+    selected=$(
+        printf '%s\n' "${lines}" |
         fzf --ansi --layout=reverse --no-sort \
             --delimiter=$'\t' --with-nth=4.. \
             --preview="$0 preview {3}" \
@@ -109,15 +109,15 @@ selected=$(
             --header='enter: focus / ctrl-r: reload / esc: close' \
             --bind="load:pos(${start:-1})" \
             --bind="ctrl-r:reload($0 list)"
-) || true
+    ) || true
 
-if [[ -z ${selected} ]]; then
-    exit 0
-fi
+    if [[ -z ${selected} ]]; then
+        exit 0
+    fi
 
-IFS=$'\t' read -r kind id _ <<<"${selected}"
+    IFS=$'\t' read -r kind id _ <<<"${selected}"
 
-case "${kind}" in
-    ws) herdr workspace focus "${id}" >/dev/null ;;
-    agent) herdr agent focus "${id}" >/dev/null ;;
-esac
+    case "${kind}" in
+        ws) herdr workspace focus "${id}" >/dev/null ;;
+        agent) herdr agent focus "${id}" >/dev/null ;;
+    esac
