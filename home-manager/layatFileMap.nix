@@ -59,6 +59,7 @@ let
         "skills/github/gh-fetch"
         "skills/github/gh-push"
         "skills/github/pr-create"
+        "skills/github/pr-visualize"
         "skills/learning/navigating"
         "skills/learning/quizzing"
         "skills/learning/tutoring"
