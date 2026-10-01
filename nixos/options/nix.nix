@@ -1,10 +1,10 @@
 {
   nix = {
     checkConfig = true;
-    nixPath = [
-      "nixpkgs=flake:nixpkgs"
-    ];
     settings = {
+      nix-path = [
+        "nixpkgs=flake:nixpkgs"
+      ];
       auto-optimise-store = true;
       sandbox = true;
       keep-outputs = true;
