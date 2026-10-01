@@ -22,6 +22,20 @@ let
   cclens = inputs.cclens.packages.${system}.default;
   nvimOverlay = inputs.neovim-nightly-overlay.packages.${system}.neovim;
   nordic-darker = pkgs.callPackage ./packages/nordic-darker.nix { };
+
+  # nixpkgs の chromium は Linux 専用で、darwin では PUPPETEER_EXECUTABLE_PATH が設定されず
+  # puppeteer が chrome-headless-shell を探して失敗する。darwin だけ既存の Google Chrome を指す。
+  mermaid-cli =
+    if pkgs.stdenv.hostPlatform.isDarwin then
+      pkgs.mermaid-cli.overrideAttrs (old: {
+        nativeBuildInputs = (old.nativeBuildInputs or [ ]) ++ [ pkgs.makeWrapper ];
+        postFixup = (old.postFixup or "") + ''
+          wrapProgram $out/bin/mmdc \
+            --set-default PUPPETEER_EXECUTABLE_PATH "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome"
+        '';
+      })
+    else
+      pkgs.mermaid-cli;
 in
 {
   nixTools = with pkgs; [
@@ -52,7 +66,7 @@ in
       lefthook
       lemonade
       llmAgentsPkgs.herdr
-      mermaid-cli
+      mermaid-cli # let で darwin 向けに上書き
       mise
       myNurPkgs.deno
       myNurPkgs.pict
