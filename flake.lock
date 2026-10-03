@@ -660,11 +660,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1790999198,
-        "narHash": "sha256-lzZgunMbAbZdKIJv79FGuL5YlaDSPX5EcS4uqVZYR6s=",
+        "lastModified": 1791036598,
+        "narHash": "sha256-PgTsRnFta8Ts9yN8/dErNNP1yWFB2XzPJS+zyjIBlJo=",
         "owner": "yasunori0418",
         "repo": "layat",
-        "rev": "493beb5a816d38c185c06cf7eeb4b16391b1888a",
+        "rev": "63664fe4c144b47213067b715c5e3d71786031ad",
         "type": "github"
       },
       "original": {
