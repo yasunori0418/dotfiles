@@ -131,6 +131,7 @@ let
     git-guard = "skills/git/hooks/git-guard";
     noclobber-guard = "hooks/noclobber-guard-plugin/hooks/noclobber-guard";
     notify-stop = "hooks/notify-stop-plugin/hooks/notify-stop";
+    permission-gate = "hooks/permission-gate-plugin/hooks/permission-gate";
     sudo-guard = "hooks/sudo-guard-plugin/hooks/sudo-guard";
     task-boundary = "hooks/task-boundary-plugin/hooks/task-boundary";
     teammate-leak-guard = "hooks/teammate-leak-guard-plugin/hooks/teammate-leak-guard";
