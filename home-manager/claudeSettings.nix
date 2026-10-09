@@ -31,7 +31,10 @@ let
   # 登録しておいて問題ない。
   cchookEvents = [
     "Notification"
-    # "PermissionRequest"
+    # PermissionRequest は cchook を経由させない。cchook は config.yaml の
+    # PermissionRequest セクションが空だと無条件 allow を返し、settings の ask ルール
+    # （git push / rm 等）が全て自動承認になる（2026-09-25 まで実際に起きていた）。
+    # 代わりに下の permissionRequestHooks で permission-gate を直接登録する。
     "PostToolUse"
     "PreCompact"
     "PreToolUse"
@@ -42,16 +45,35 @@ let
     "SubagentStop"
     "UserPromptSubmit"
   ];
-  hooks = lib.genAttrs cchookEvents (event: [
-    {
-      hooks = [
-        {
-          type = "command";
-          command = "cchook -event ${event}";
-        }
-      ];
-    }
-  ]);
+  # yasunori-skills の permission-gate（layatFileMap.nix で ~/.claude/hooks/permission-gate
+  # へ配置）。settings の ask で出る許可ダイアログの直前に呼ばれ、arm 済み
+  # （push-flow.armed）の通常 push と session 専用の一時領域だけの rm を allow し、
+  # 全ダイアログを ${XDG_STATE_HOME}/claude/permission-prompts.jsonl に記録する。
+  # matcher なし（全 tool のダイアログを受け、規則は Bash だけ判定する）。
+  permissionRequestHooks = {
+    PermissionRequest = [
+      {
+        hooks = [
+          {
+            type = "command";
+            command = "$HOME/.claude/hooks/permission-gate/main.sh";
+          }
+        ];
+      }
+    ];
+  };
+  hooks =
+    lib.genAttrs cchookEvents (event: [
+      {
+        hooks = [
+          {
+            type = "command";
+            command = "cchook -event ${event}";
+          }
+        ];
+      }
+    ])
+    // permissionRequestHooks;
 
   common = {
     "$schema" = "https://json.schemastore.org/claude-code-settings.json";
