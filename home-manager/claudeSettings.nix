@@ -18,62 +18,16 @@
   逆に TUI 側の書き戻しは --recopy で失われるため、恒久化したい変更は
   この Nix 側へ手で戻す運用になる（SSOT は Nix 側）。
 */
-{ pkgs, isDarwin }:
+{
+  pkgs,
+  isDarwin,
+  # claudeHooks.nix が組み立てた hooks（yasunori-skills の hooks.json + 手書き分）
+  hooks,
+}:
 let
   inherit (pkgs) lib;
 
   jsonFormat = pkgs.formats.json { };
-
-  # cchook が受け付ける event をすべて同じ形で受けるため、event 名から生成する。
-  # 一覧は `cchook -event <invalid>` のエラーメッセージが権威（= cchook 側の
-  # サポート範囲）。cchook を更新したらここも追随させる。config.yaml に
-  # 該当セクションが無い event は何もせず終了するので、空セクションでも
-  # 登録しておいて問題ない。
-  cchookEvents = [
-    "Notification"
-    # PermissionRequest は cchook を経由させない。cchook は config.yaml の
-    # PermissionRequest セクションが空だと無条件 allow を返し、settings の ask ルール
-    # （git push / rm 等）が全て自動承認になる（2026-09-25 まで実際に起きていた）。
-    # 代わりに下の permissionRequestHooks で permission-gate を直接登録する。
-    "PostToolUse"
-    "PreCompact"
-    "PreToolUse"
-    "SessionEnd"
-    "SessionStart"
-    "Stop"
-    "SubagentStart"
-    "SubagentStop"
-    "UserPromptSubmit"
-  ];
-  # yasunori-skills の permission-gate（layatFileMap.nix で ~/.claude/hooks/permission-gate
-  # へ配置）。settings の ask で出る許可ダイアログの直前に呼ばれ、arm 済み
-  # （push-flow.armed）の通常 push と session 専用の一時領域だけの rm を allow し、
-  # 全ダイアログを ${XDG_STATE_HOME}/claude/permission-prompts.jsonl に記録する。
-  # matcher なし（全 tool のダイアログを受け、規則は Bash だけ判定する）。
-  permissionRequestHooks = {
-    PermissionRequest = [
-      {
-        hooks = [
-          {
-            type = "command";
-            command = "$HOME/.claude/hooks/permission-gate/main.sh";
-          }
-        ];
-      }
-    ];
-  };
-  hooks =
-    lib.genAttrs cchookEvents (event: [
-      {
-        hooks = [
-          {
-            type = "command";
-            command = "cchook -event ${event}";
-          }
-        ];
-      }
-    ])
-    // permissionRequestHooks;
 
   common = {
     "$schema" = "https://json.schemastore.org/claude-code-settings.json";
@@ -135,7 +89,7 @@ let
         "Bash(npm uninstall:*)"
         "Bash(npm remove:*)"
       ];
-      # git rebase / git reset は ask に入れない。cchook の git-guard が解錠 marker
+      # git rebase / git reset は ask に入れない。PreToolUse の git-guard hook が解錠 marker
       # （rebase-flow / reset-flow スキルの計画提示 → ユーザー承認 → arm 後に作成）の
       # 無い実行を deny するため、ここで ask すると承認済みの操作を二重に確認する。
       # 並列レーン（job-graph）ではこの二重確認でレーンが blocked のまま滞留していた。
