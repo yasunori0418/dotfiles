@@ -45,6 +45,7 @@ let
     lib.pipe
       [
         # keep-sorted start
+        "skills/claude/agent-teams"
         "skills/claude/project-session"
         "skills/claude/response-format"
         "skills/claude/session-insights"
