@@ -69,7 +69,8 @@
     };
     # tirith 公式リポジトリ。crates/tirith/assets/hooks/tirith-check.py を
     # layat 経由で ~/.claude/hooks/tirith/tirith-check.py へ symlink 配置し、
-    # cchook から uv 経由で呼び出す。flake.lock が rev を pin する。
+    # settings.json の PreToolUse hook（home-manager/claudeHooks.nix）から uv 経由で呼び出す。
+    # flake.lock が rev を pin する。
     tirith = {
       url = "github:sheeki03/tirith";
       flake = false;

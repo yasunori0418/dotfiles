@@ -168,7 +168,6 @@ in
     cclens
     ccusage
     claude-code-by-ryoppippi
-    myNurPkgs.cchook
     # keep-sorted end
   ]
   # ++ (optionalIsLinux [ inputs.claude-desktop.packages.${system}.claude-desktop ])

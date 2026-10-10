@@ -256,7 +256,6 @@ in
     "alacritty/alacritty.toml"
     "alacritty/keybinds"
     "alacritty/nord.toml"
-    "cchook"
     "clipcat"
     "direnv"
     "dpp"
