@@ -45,10 +45,10 @@ let
     lib.pipe
       [
         # keep-sorted start
-        "skills/claude/agent-teams"
-        "skills/claude/project-session"
-        "skills/claude/response-format"
-        "skills/claude/session-insights"
+        "skills/agent-ops/agent-teams"
+        "skills/agent-ops/project-session"
+        "skills/agent-ops/response-format"
+        "skills/agent-ops/session-insights"
         "skills/git/commit-flow"
         "skills/git/commit-plan"
         "skills/git/diff-review"
