@@ -147,7 +147,7 @@ let
   }) yasunoriHookSubpaths;
 
   # tirith 公式リポジトリの hook スクリプトを ~/.claude/hooks/tirith/ 配下へ
-  # 単ファイル symlink として配置。cchook 側から
+  # 単ファイル symlink として配置。settings.json の PreToolUse hook（claudeHooks.nix）から
   # `uv run --python 3.13 -- $HOME/.claude/hooks/tirith/tirith-check.py` として
   # 呼び出す（python バージョンを uv で固定）。
   tirithHookEntries = {
@@ -207,7 +207,14 @@ let
   */
   claudeSettingsEntry = isDarwin: {
     ".claude/settings.json" = {
-      src = import ./claudeSettings.nix { inherit pkgs isDarwin; };
+      src = import ./claudeSettings.nix {
+        inherit pkgs isDarwin;
+        hooks = import ./claudeHooks.nix {
+          inherit lib;
+          skills = inputs.yasunori-skills;
+          hookSubpaths = yasunoriHookSubpaths;
+        };
+      };
       method = "copy";
     };
   };
