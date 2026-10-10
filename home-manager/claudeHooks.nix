@@ -31,26 +31,35 @@
 let
   hookRoot = "$HOME/.claude/hooks/";
 
-  # "<plugin>/hooks/<name>" → "<plugin>"
-  pluginDirs = lib.unique (map (p: dirOf (dirOf p)) (lib.attrValues hookSubpaths));
+  pluginDirs = lib.pipe hookSubpaths [
+    lib.attrValues
+    (map (p: dirOf (dirOf p)))
+    lib.unique
+  ];
 
   readPluginHooks =
     plugin: (builtins.fromJSON (builtins.readFile "${skills}/${plugin}/hooks/hooks.json")).hooks;
 
   pluginRoot = "\${CLAUDE_PLUGIN_ROOT}";
 
-  # event → [ { matcher, hooks = [ { command } ] } ] とリストが挟まるので、
-  # attrs だけを辿る lib.mapAttrsRecursive ではなく attrs / list 両方を再帰する。
-  rewriteRoot =
-    v:
-    if lib.isString v then
-      lib.replaceStrings [ "${pluginRoot}/hooks/" ] [ hookRoot ] v
-    else if lib.isList v then
-      map rewriteRoot v
-    else if lib.isAttrs v then
-      lib.mapAttrs (_: rewriteRoot) v
-    else
-      v;
+  # hooks.json の形は event → [ { matcher, hooks = [ { type, command } ] } ] で固定。
+  # 読み替えるのは hooks[].command だけ（matcher 等は触らない）。
+  rewriteRoot = lib.mapAttrs (
+    _event:
+    map (
+      m:
+      m
+      // {
+        hooks = map (
+          h:
+          if h ? command then
+            h // { command = lib.replaceString "${pluginRoot}/hooks/" hookRoot h.command; }
+          else
+            h
+        ) m.hooks;
+      }
+    )
+  );
 
   # 複数 plugin / 手書き分を event ごとにリスト連結する（recursiveUpdate はリストを
   # 置き換えてしまうので使わない）。
@@ -62,7 +71,7 @@ let
     lib.attrValues
     lib.concatLists
     (lib.concatMap (m: m.hooks))
-    (map (h: h.command))
+    (lib.concatMap (h: lib.optional (h ? command) h.command))
   ];
   # 読み替えられなかった command（hooks/ 直下以外を指すなど、置換パターン外の形）
   unrewritten = lib.filter (lib.hasInfix pluginRoot) skillCommands;
