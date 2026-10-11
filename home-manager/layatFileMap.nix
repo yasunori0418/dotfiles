@@ -104,10 +104,10 @@ let
         builtins.listToAttrs
       ];
 
+  # SKILL.md に textlint 併用の節を足した derivation を配置する（詳細は packages 側）。
   cojiSkillEntries = {
-    ".claude/skills/natural-japanese" = {
+    ".claude/skills/natural-japanese".src = pkgs.callPackage ./packages/natural-japanese-skill.nix {
       src = inputs.natural-japanese;
-      subpath = "skills/natural-japanese";
     };
   };
 
