@@ -189,6 +189,7 @@ let
         };
       };
     };
+    model = "opus";
   };
 
   macos = {
