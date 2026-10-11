@@ -217,6 +217,7 @@ let
     ".claude/settings.json" = {
       src = import ./claudeSettings.nix {
         inherit pkgs isDarwin;
+        textlintConfig = "${xdgConfigHome}/textlint/.textlintrc.json";
         hooks = import ./claudeHooks.nix {
           inherit lib;
           skills = inputs.yasunori-skills;

@@ -23,9 +23,13 @@
   isDarwin,
   # claudeHooks.nix が組み立てた hooks（yasunori-skills の hooks.json + 手書き分）
   hooks,
+  # textlint MCP サーバーに `--config` で渡す .textlintrc.json の絶対パス
+  textlintConfig,
 }:
 let
   inherit (pkgs) lib;
+
+  textlint = pkgs.callPackage ./packages/textlint.nix { };
 
   jsonFormat = pkgs.formats.json { };
 
@@ -75,6 +79,8 @@ let
         "ToolSearch"
         "WebSearch"
         "Write"
+        # textlint MCP のツールは lint 結果・修正後の本文を返すだけでファイルを書き換えない。
+        "mcp__textlint"
       ];
       deny = [
         "Bash(sudo:*)"
@@ -164,6 +170,15 @@ let
       tirith = {
         command = "tirith";
         args = [ "mcp-server" ];
+      };
+      # PATH に依存しないよう store の絶対パスで起動する。
+      textlint = {
+        command = "${textlint}/bin/textlint";
+        args = [
+          "--mcp"
+          "--config"
+          textlintConfig
+        ];
       };
     };
 
