@@ -306,6 +306,7 @@ in
     "sheldon"
     "shellcheckrc"
     "sqls"
+    "textlint"
     "tirith"
     "tmux"
     "typos"

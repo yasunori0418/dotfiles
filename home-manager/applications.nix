@@ -22,6 +22,8 @@ let
   cclens = inputs.cclens.packages.${system}.default;
   nvimOverlay = inputs.neovim-nightly-overlay.packages.${system}.neovim;
   nordic-darker = pkgs.callPackage ./packages/nordic-darker.nix { };
+  # with pkgs より let 束縛が優先されるため、codingSupportTools の textlint はこちらを指す。
+  textlint = pkgs.callPackage ./packages/textlint.nix { };
 
   # nixpkgs の chromium は Linux 専用で、darwin では PUPPETEER_EXECUTABLE_PATH が設定されず
   # puppeteer が chrome-headless-shell を探して失敗する。darwin だけ既存の Google Chrome を指す。
@@ -160,6 +162,7 @@ in
     shellcheck
     sqruff
     statix
+    textlint
     # keep-sorted end
   ];
 
