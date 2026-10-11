@@ -104,6 +104,13 @@ let
         builtins.listToAttrs
       ];
 
+  cojiSkillEntries = {
+    ".claude/skills/natural-japanese" = {
+      src = inputs.natural-japanese;
+      subpath = "skills/natural-japanese";
+    };
+  };
+
   # per-skill 配置のワーカーサブエージェント（diff-review / review-converge /
   # product-spec 用）を ~/.claude/agents/<name>.md へ配置する。
   # skills 側で agents/*.md が増えてもここは手動登録なので、flake input を
@@ -246,6 +253,7 @@ in
     # keep-sorted end
   ]
   // mattpocockSkillEntries
+  // cojiSkillEntries
   // yasunoriSkillEntries
   // yasunoriAgentEntries
   // yasunoriHookEntries

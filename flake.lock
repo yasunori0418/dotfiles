@@ -763,6 +763,22 @@
         "type": "github"
       }
     },
+    "natural-japanese": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1788522342,
+        "narHash": "sha256-9n8BMG6f10sYibw8qhZ5YWHpYhTtjAlwZVmI4DCVPm0=",
+        "owner": "coji",
+        "repo": "natural-japanese",
+        "rev": "9a78a42964096da509b8f3e011f0085a5f080151",
+        "type": "github"
+      },
+      "original": {
+        "owner": "coji",
+        "repo": "natural-japanese",
+        "type": "github"
+      }
+    },
     "neovim-nightly-overlay": {
       "inputs": {
         "flake-parts": "flake-parts_5",
@@ -1346,6 +1362,7 @@
         "llm-agents-nix": "llm-agents-nix",
         "mac-app-util": "mac-app-util",
         "matt-skills": "matt-skills",
+        "natural-japanese": "natural-japanese",
         "neovim-nightly-overlay": "neovim-nightly-overlay",
         "nix-claude-code": "nix-claude-code",
         "nix-darwin": "nix-darwin",
