@@ -117,6 +117,13 @@ claude-settings-inject: ## inject env-specific values into ~/.claude/settings.js
 claude-settings-diff: ## preview key-level diff of ~/.claude/settings.json against `make layat-recopy` result
 	@./scripts/claude-settings-diff.sh
 
+## Claude Code MCP server commands ##
+# layat が配置した ~/.claude/mcp-servers.json の定義を user スコープ（~/.claude.json）へ登録する。
+# home-manager の activation も同じスクリプトを呼ぶので、switch を挟まずに
+# `make layat-apply` で定義だけ差し替えたときはこれを続けて叩けば反映できる。
+claude-mcp-register: ## register MCP servers from ~/.claude/mcp-servers.json into user scope
+	@./scripts/claude-mcp-register.sh
+
 ## herdr plugin commands ##
 # layat が配置した ~/.local/share/herdr-plugins/* を herdr のレジストリへ登録する。
 # home-manager の activation も同じスクリプトを呼ぶので、switch を挟まずに

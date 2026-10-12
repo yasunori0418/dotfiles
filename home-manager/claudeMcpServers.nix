@@ -8,8 +8,8 @@
   `claude mcp add-json --scope user` で ~/.claude.json へ登録する。
 
   値は `claude mcp add-json` にそのまま渡す形（type / command / args）で書く。
-  add-json は渡した JSON をそのまま ~/.claude.json へ保存するので、登録スクリプトは
-  両者を丸ごと比較して差分を判定する。
+  登録スクリプトはこの値と ~/.claude.json に保存された定義を比べて差分を判定する
+  （add-json が保存時に補う空の既定値は比較から除く）。
 */
 {
   pkgs,
