@@ -19,6 +19,9 @@
 # 状態ファイルに記録し、前回記録にあって今回の定義に無い名前だけを remove する。
 # 手で `claude mcp add` したサーバーは記録に載らないので触らない。
 #
+# 定義はマシン非依存にするため、args の "~/" 始まりの文字列を $HOME に展開してから
+# 比較・登録する（Nix 側は $HOME の絶対パスを知らずに済む）。
+#
 # home-manager の activation（home-manager/register-claude-mcp-servers.nix）と
 # `make claude-mcp-register` の両方から同じ処理を呼ぶための実体。
 
@@ -55,6 +58,16 @@ command -v jq >/dev/null 2>&1 || skip "jq not found"
 jq -e 'type == "object"' "${SERVERS_FILE}" >/dev/null 2>&1 ||
 skip "${SERVERS_FILE} is not a JSON object"
 
+# args の "~/" を $HOME へ展開した定義。以降の比較・登録・記録はすべてこれを使う。
+# "~/" 始まりの文字列だけを $home へ置き換える。
+# shellcheck disable=SC2016
+readonly JQ_EXPAND_TILDE='def expand: if type == "string" and startswith("~/") then $home + .[1:] else . end;'
+# args を持つサーバーだけ、その要素へ expand を当てる。
+readonly JQ_EXPAND_ARGS="${JQ_EXPAND_TILDE}"' map_values(if .args then .args |= map(expand) else . end)'
+
+servers="$(jq -c --arg home "${HOME}" "${JQ_EXPAND_ARGS}" "${SERVERS_FILE}")"
+readonly servers
+
 # ~/.claude.json は Claude Code を一度も起動していなければ存在しない。
 current='{}'
 if [[ -f ${CLAUDE_JSON} ]]; then
@@ -72,18 +85,18 @@ fi
 readonly JQ_SAME='def strip: with_entries(select(.value | IN([], {}, null) | not)); ($a | strip) == ($b | strip)'
 # 前回このスクリプトが登録し、今回の定義から消え、まだ ~/.claude.json に残る名前。
 # shellcheck disable=SC2016
-readonly JQ_STALE='$prev[] as $n | select(($want[0] | has($n)) | not) | select($cur | has($n)) | $n'
+readonly JQ_STALE='$prev[] as $n | select(($want | has($n)) | not) | select($cur | has($n)) | $n'
 
 failed=0
 
 # macOS の /usr/bin/env bash は 3.2 に解決されうるので mapfile は使わず while read で回す。
 # here-string は空文字列でも 1 行として渡すため、空行は読み飛ばす。
 # ループの標準入力を claude に食われないよう、claude は </dev/null で呼ぶ。
-desired="$(jq -r 'keys[]' "${SERVERS_FILE}")"
+desired="$(jq -r 'keys[]' <<<"${servers}")"
 while IFS= read -r name; do
     [[ -n ${name} ]] || continue
 
-    want="$(jq -c --arg n "${name}" '.[$n]' "${SERVERS_FILE}")"
+    want="$(jq -c --arg n "${name}" '.[$n]' <<<"${servers}")"
     have="$(jq -c --arg n "${name}" '.[$n]' <<<"${current}")"
 
     if [[ ${have} != null ]]; then
@@ -108,7 +121,7 @@ done <<<"${desired}"
 
 # 前回このスクリプトが登録し、今回の定義から消えた名前だけを外す。
 # remove に失敗した名前は次回また試せるよう記録に残す。
-stale="$(jq -rn --argjson prev "${previous}" --argjson cur "${current}" --slurpfile want "${SERVERS_FILE}" "${JQ_STALE}")"
+stale="$(jq -rn --argjson prev "${previous}" --argjson cur "${current}" --argjson want "${servers}" "${JQ_STALE}")"
 kept='[]'
 while IFS= read -r name; do
     [[ -n ${name} ]] || continue
@@ -122,7 +135,7 @@ while IFS= read -r name; do
     fi
 done <<<"${stale}"
 
-managed="$(jq -cn --argjson kept "${kept}" --slurpfile want "${SERVERS_FILE}" '$kept + ($want[0] | keys) | unique')"
+managed="$(jq -cn --argjson kept "${kept}" --argjson want "${servers}" '$kept + ($want | keys) | unique')"
 
 # 内容が変わらないなら書き換えない。部分書き込みで記録を壊さないよう
 # 同一ディレクトリの一時ファイルへ書いてから rename する。
