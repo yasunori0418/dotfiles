@@ -165,6 +165,15 @@ let
     };
   };
 
+  # Claude Code の user スコープへ登録する MCP サーバー定義（詳細は claudeMcpServers.nix）。
+  # Claude Code 自身はこのファイルを読まない。scripts/claude-mcp-register.sh の入力。
+  claudeMcpServersEntry = {
+    ".claude/mcp-servers.json".src = import ./claudeMcpServers.nix {
+      inherit pkgs;
+      textlintConfig = "${xdgConfigHome}/textlint/.textlintrc.json";
+    };
+  };
+
   herdrEntries = {
     ".claude/hooks/herdr/herdr-agent-state.sh" = {
       src = inputs.herdr;
@@ -259,6 +268,7 @@ in
   // yasunoriAgentEntries
   // yasunoriHookEntries
   // tirithHookEntries
+  // claudeMcpServersEntry
   // herdrEntries;
 
   dotConfig = xdgConfigMap [
