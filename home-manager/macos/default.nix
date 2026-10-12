@@ -10,6 +10,7 @@
       packages = ./packages.nix;
       clearDppStateAfterLinkGeneration = ../clear-dpp-state-after-link-generation.nix;
       linkHerdrPlugins = ../link-herdr-plugins.nix;
+      registerClaudeMcpServers = ../register-claude-mcp-servers.nix;
       injectClaudeSettings = ../inject-claude-settings.nix;
       launchd = [
         # ../options/launchd/clipcatd.nix
@@ -30,6 +31,7 @@
       packages
       clearDppStateAfterLinkGeneration
       linkHerdrPlugins
+      registerClaudeMcpServers
       injectClaudeSettings
       inputs.mac-app-util.homeManagerModules.default
       layat

@@ -17,6 +17,7 @@
       };
       clearDppStateAfterLinkGeneration = ../clear-dpp-state-after-link-generation.nix;
       linkHerdrPlugins = ../link-herdr-plugins.nix;
+      registerClaudeMcpServers = ../register-claude-mcp-servers.nix;
       programs = [
         ../options/programs/nix-index.nix
         ../options/programs/discord.nix
@@ -30,6 +31,7 @@
       layat
       clearDppStateAfterLinkGeneration
       linkHerdrPlugins
+      registerClaudeMcpServers
       xdg
       nix
       dconf
