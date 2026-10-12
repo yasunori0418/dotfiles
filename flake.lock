@@ -561,11 +561,11 @@
     "herdr": {
       "flake": false,
       "locked": {
-        "lastModified": 1791759048,
-        "narHash": "sha256-/KMQbdh5X6Sa1GTUqyKf3vHdHDgpuRfJr9iHommwiH8=",
+        "lastModified": 1791812917,
+        "narHash": "sha256-JllxvjVGUQegynJEVmEs7B8pjQLumrjly0D/vrnS/oA=",
         "owner": "herdrdev",
         "repo": "herdr",
-        "rev": "dc6b6e5f42831ea7114f34dcf12900680eb36ae0",
+        "rev": "212b710b929315044a2c049bbe34b091c82df47d",
         "type": "github"
       },
       "original": {
@@ -661,11 +661,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1791806581,
-        "narHash": "sha256-KY16g+qtr1Nu1NAEYL44NzxZByXdY2KKi/6/xmwnRtQ=",
+        "lastModified": 1791811454,
+        "narHash": "sha256-LkvXb2yV3Fb6qbIkx9zN95RPwW99uBKQwnFmp/FS8Bc=",
         "owner": "yasunori0418",
         "repo": "layat",
-        "rev": "42adaa05a3a42b1292379db9431097508d0f3d54",
+        "rev": "a84ed00d407f85e28d7c1caeb64bb4a49e96e791",
         "type": "github"
       },
       "original": {
