@@ -13,7 +13,6 @@
           inputs
           pkgs
           ;
-        inherit (config.home) homeDirectory;
       };
       clearDppStateAfterLinkGeneration = ../clear-dpp-state-after-link-generation.nix;
       linkHerdrPlugins = ../link-herdr-plugins.nix;

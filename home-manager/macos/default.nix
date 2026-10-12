@@ -24,7 +24,6 @@
           inputs
           pkgs
           ;
-        inherit (config.home) homeDirectory;
       };
     in
     [

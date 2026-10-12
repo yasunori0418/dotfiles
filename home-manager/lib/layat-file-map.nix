@@ -1,6 +1,6 @@
 {
   pkgs,
-  mkOutOfStoreSymlink,
+  mkRootRelativeSymlink,
   homeDir,
 }:
 {
@@ -13,7 +13,7 @@
     refer: https://github.com/NixOS/nixos-artwork/tree/master/wallpapers
 
     type が default または null のときは ~/dotfiles 配下の実体を
-    out-of-store symlink で参照する。
+    root 相対 symlink（mkRootRelativeSymlink）で参照する。
   */
   selectWallpaper =
     {
@@ -26,12 +26,12 @@
         subpath = "share/backgrounds/nixos/nix-wallpaper-${name}.png";
       }
     else
-      { src = mkOutOfStoreSymlink "${homeDir}/.background-image"; };
+      { src = mkRootRelativeSymlink "${homeDir}/.background-image"; };
 
   /*
     ファイル/ディレクトリ配置をいい感じに layat.entries へマップする
     ```
-    ".config/hoge/conf".src = mkOutOfStoreSymlink "${xdgConfigHome}/conf";
+    ".config/hoge/conf".src = mkRootRelativeSymlink "${xdgConfigHome}/conf";
     ```
     ↑こういう記述が連続するのを減らせる
     配置元と配置先の命名が一致しているときだけ使える
@@ -40,7 +40,7 @@
     symlink）ため、旧 home.file 実装の is_recursive 相当の区別は不要。
 
     dist: 配置先（root からの相対。root は HM モジュールが homeRoot に pin する）
-    src: ~/dotfiles 上のファイルパス（絶対パス文字列）
+    src: ~/dotfiles 上のファイルパス（$HOME からの相対パス文字列）
     return: ファイル名のリストが引数となる関数
   */
   fileMap =
@@ -58,7 +58,7 @@
           in
           acc
           // {
-            ${target}.src = mkOutOfStoreSymlink "${src}/${file}";
+            ${target}.src = mkRootRelativeSymlink "${src}/${file}";
           }
         ) { } files;
     in

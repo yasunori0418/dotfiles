@@ -13,7 +13,8 @@
 */
 {
   pkgs,
-  # textlint MCP サーバーに `--config` で渡す .textlintrc.json の絶対パス
+  # textlint MCP サーバーに `--config` で渡す .textlintrc.json のパス。
+  # "~/" 始まりで渡し、scripts/claude-mcp-register.sh が登録時に $HOME へ展開する。
   textlintConfig,
 }:
 let

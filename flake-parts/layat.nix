@@ -29,12 +29,6 @@ localFlake:
 let
   layatLib = inputs.layat.lib;
 
-  # home mode の entries は out-of-store symlink の src に $HOME の絶対パスを
-  # 埋めるため、system ごとにユーザー名 / home ディレクトリを解決する。
-  # 値は home-manager/{linux,macos}/default.nix の home.username /
-  # home.homeDirectory と一致させること（ズレると配置先が食い違う）。
-  homeDirectoryFor = isDarwin: if isDarwin then "/Users/taiki.watanabe" else "/home/yasunori";
-
   skillSubpaths = [
     "nix/nix-cache-check"
     "nix/nix-store-lookup"
@@ -66,7 +60,6 @@ in
           root = layatLib.homeRoot;
           entries = import ../home-manager/layatEntries.nix {
             inherit inputs pkgs isDarwin;
-            homeDirectory = homeDirectoryFor isDarwin;
           };
         };
 

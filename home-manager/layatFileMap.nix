@@ -3,11 +3,11 @@
   pkgs,
   homeDir,
   xdgConfigHome,
-  mkOutOfStoreSymlink,
+  mkRootRelativeSymlink,
   ...
 }:
 let
-  inherit (import ./lib/layat-file-map.nix { inherit pkgs mkOutOfStoreSymlink homeDir; })
+  inherit (import ./lib/layat-file-map.nix { inherit pkgs mkRootRelativeSymlink homeDir; })
     selectWallpaper
     fileMap
     ;
@@ -170,7 +170,9 @@ let
   claudeMcpServersEntry = {
     ".claude/mcp-servers.json".src = import ./claudeMcpServers.nix {
       inherit pkgs;
-      textlintConfig = "${xdgConfigHome}/textlint/.textlintrc.json";
+      # MCP サーバーの引数は layat の src ではないため、"~/" 始まりで渡して
+      # scripts/claude-mcp-register.sh に登録時に $HOME へ展開させる。
+      textlintConfig = "~/${xdgConfigHome}/textlint/.textlintrc.json";
     };
   };
 
@@ -329,7 +331,7 @@ in
     # keep-sorted end
   ];
 
-  # treesitter parser だけは ~/dotfiles ではなく nix store 由来のため、out-of-store
+  # treesitter parser だけは ~/dotfiles ではなく nix store 由来のため、root 相対
   # symlink ではなく store-backed src（derivation + subpath）で配置する。
   dotLocalShare = {
     ".local/share/nvim/treesitter/parser" = {
@@ -382,20 +384,20 @@ in
 
   MacOS = {
     homeDirectory = {
-      # ".docker/config.json".src = mkOutOfStoreSymlink "${homeDir}/.docker/mac_config.json";
+      # ".docker/config.json".src = mkRootRelativeSymlink "${homeDir}/.docker/mac_config.json";
     }
     // claudeSettingsEntry true;
     library = {
       "Library/Application Support/AquaSKK".src =
-        mkOutOfStoreSymlink "${homeDir}/Library/ApplicationSupport/AquaSKK";
-      "Library/Application Support/arto".src = mkOutOfStoreSymlink "${xdgConfigHome}/arto";
+        mkRootRelativeSymlink "${homeDir}/Library/ApplicationSupport/AquaSKK";
+      "Library/Application Support/arto".src = mkRootRelativeSymlink "${xdgConfigHome}/arto";
       "Library/Application Support/Code/User/settings.json".src =
-        mkOutOfStoreSymlink "${xdgConfigHome}/Code/User/settings.json";
+        mkRootRelativeSymlink "${xdgConfigHome}/Code/User/settings.json";
       "Library/Application Support/Luacheck/.luacheckrc".src =
-        mkOutOfStoreSymlink "${xdgConfigHome}/luacheck/.luacheckrc";
+        mkRootRelativeSymlink "${xdgConfigHome}/luacheck/.luacheckrc";
     };
     dotConfig = {
-      ".config/alacritty/os.toml".src = mkOutOfStoreSymlink "${xdgConfigHome}/alacritty/mac.toml";
+      ".config/alacritty/os.toml".src = mkRootRelativeSymlink "${xdgConfigHome}/alacritty/mac.toml";
     }
     // xdgConfigMap [
       "ghostty/macos.conf"
@@ -406,7 +408,7 @@ in
 
   Linux = {
     homeDirectory = {
-      ".docker/config.json".src = mkOutOfStoreSymlink "${homeDir}/.docker/linux_config.json";
+      ".docker/config.json".src = mkRootRelativeSymlink "${homeDir}/.docker/linux_config.json";
     }
     // claudeSettingsEntry false
     // homeMap [
@@ -421,7 +423,7 @@ in
       # ".Xresources.d"
     ];
     dotConfig = {
-      ".config/alacritty/os.toml".src = mkOutOfStoreSymlink "${xdgConfigHome}/alacritty/linux.toml";
+      ".config/alacritty/os.toml".src = mkRootRelativeSymlink "${xdgConfigHome}/alacritty/linux.toml";
 
       # themechanger / nwg-look が野良で張っていた symlink を layat 管理下に取り込む。
       # ~/dotfiles ではなく nix store 由来のため store-backed src で配置する。

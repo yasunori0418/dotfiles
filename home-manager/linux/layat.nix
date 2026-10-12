@@ -1,7 +1,6 @@
 {
   inputs,
   pkgs,
-  homeDirectory,
   ...
 }:
 let
@@ -11,7 +10,7 @@ let
   # （../layatEntries.nix・同じ entries から HM activation 用 manifest と
   # flake output `layat.<system>.default` が生成される）。
   entries = import ../layatEntries.nix {
-    inherit inputs pkgs homeDirectory;
+    inherit inputs pkgs;
     isDarwin = false;
   };
 in

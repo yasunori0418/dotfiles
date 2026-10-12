@@ -1,10 +1,9 @@
 # layat の home mode（root = homeRoot）entries を組み立てる共有モジュール。
 #
 # home-manager モジュール（home-manager/{linux,macos}/layat.nix）と flake-parts の
-# layat profile（flake-parts/layat.nix）の両方から import される。HM の `config` に
-# 依存しないよう、homeDirectory は呼び出し側が絶対パス文字列で渡す
-# （HM 側は config.home.homeDirectory、flake-parts 側は flake-parts/layat.nix の
-# 定義値を渡す。両者が食い違うと配置先がズレるので値は一致させること）。
+# layat profile（flake-parts/layat.nix）の両方から import される。配置元は
+# root 相対 marker で $HOME からの相対パスとして書くため、home ディレクトリの
+# 絶対パスには依存しない。
 #
 # entries そのものは root 非依存（root は mkManifest / HM モジュールが homeRoot に
 # pin する）ため、同じ entries から HM activation 用の manifest と CLI 用の
@@ -12,7 +11,6 @@
 {
   inputs,
   pkgs,
-  homeDirectory,
   isDarwin,
 }:
 let
@@ -23,10 +21,11 @@ let
     targetAttrsValue
     concatOfAttrs
     ;
-  inherit (inputs.layat.lib) mkOutOfStoreSymlink;
+  inherit (inputs.layat.lib) mkRootRelativeSymlink;
 
-  # layat の src（out-of-store marker）には絶対パス文字列を渡す。
-  dotfiles = "${homeDirectory}/dotfiles";
+  # layat の src（root 相対 marker）には配置 root（home mode なので $HOME）からの
+  # 相対パスを渡す。engine が target の親を起点とする相対リンクを張る。
+  dotfiles = "dotfiles";
   homeDir = "${dotfiles}/home";
   xdgConfigHome = "${homeDir}/.config";
 
@@ -34,7 +33,7 @@ let
     inherit
       inputs
       pkgs
-      mkOutOfStoreSymlink
+      mkRootRelativeSymlink
       homeDir
       xdgConfigHome
       ;
