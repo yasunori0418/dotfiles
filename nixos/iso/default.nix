@@ -1,8 +1,10 @@
 {
   pkgs,
+  modulesPath,
   ...
 }:
 {
+
   imports = [
     (import ../options/networking.nix {
       hostName = "iso";
@@ -12,6 +14,28 @@
     ../options/i18n.nix
     ../options/services/resolved.nix
   ];
+
+  # `nixos-rebuild build-image --image-variant iso-installer --flake .#iso` で生成する。
+  # installer 固有の設定は toplevel に置かず、ISO イメージ用のモジュール内に閉じ込める。
+  image.modules.iso-installer = {
+    imports = [ "${modulesPath}/installer/cd-dvd/installation-cd-minimal.nix" ];
+    system.installer.channel.enable = false;
+    # インストールメディアのときにデフォルトで有効になるisoImageの定義を明示
+    isoImage = {
+      makeBiosBootable = true;
+      makeEfiBootable = true;
+      makeUsbBootable = true;
+    };
+  };
+
+  # 以下は toplevel を評価可能にするためのダミー。
+  # ISO 側は iso-image.nix が mkImageMediaOverride で同じ値を強制するため影響しない。
+  fileSystems."/" = {
+    device = "none";
+    fsType = "tmpfs";
+  };
+  boot.loader.grub.enable = false;
+
   environment = {
     systemPackages = with pkgs; [
       git
@@ -24,7 +48,6 @@
     "nix-command"
     "pipe-operators"
   ];
-  system.installer.channel.enable = false;
   programs = {
     sway = {
       enable = true;

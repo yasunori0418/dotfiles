@@ -201,10 +201,7 @@
                 });
                 iso = nixosSystem {
                   inherit system;
-                  modules = [
-                    "${inputs.nixpkgs.outPath}/nixos/modules/installer/cd-dvd/installation-cd-minimal.nix"
-                    ./nixos/iso
-                  ];
+                  modules = [ ./nixos/iso ];
                 };
               };
 

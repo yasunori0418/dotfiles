@@ -70,8 +70,8 @@ nix-darwin: ## nix run nix-darwin -- switch --flake .
 nix-rebuild: ## nixos or nix-darwin rebuild switch
 	@./scripts/nix-rebuild.sh
 
-nixos-generate: ## nixos-generator
-	@nix run 'nixpkgs#nixos-generators' -- --flake '.#iso' -f iso | xargs -I{} ln -svf {} ./
+nixos-iso: ## nixos-rebuild build-image --image-variant iso-installer --flake .#iso
+	@nixos-rebuild build-image --image-variant iso-installer --flake '.#iso'
 
 ## layat placement commands ##
 # layat.default（home mode）は home-manager の activation と同じ profile 名 `default`
