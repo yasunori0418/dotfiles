@@ -63,6 +63,15 @@
       settings.main.font = "Moralerspace Argon HW:size=14";
     };
   };
+  # 起動後に ly が nixos ユーザーで自動ログインし、そのまま sway を立ち上げる
+  services.displayManager = {
+    ly.enable = true;
+    defaultSession = "sway";
+    autoLogin = {
+      enable = true;
+      user = "nixos";
+    };
+  };
   security.polkit.enable = true;
   fonts = {
     packages = with pkgs; [
