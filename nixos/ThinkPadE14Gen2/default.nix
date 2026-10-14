@@ -27,6 +27,7 @@
       virtualisation = ../options/virtualisation.nix;
       qt = ../options/qt.nix;
       acplight = ../options/hardware/acplight.nix;
+      bluetooth = ../options/hardware/bluetooth.nix;
 
       services = [
         ../options/services/printing.nix
@@ -34,6 +35,7 @@
         ../options/services/tlp.nix
         ../options/services/displayManager/ly.nix
         ../options/services/resolved.nix
+        ../options/services/logind.nix
       ];
 
       systemd = [
@@ -75,10 +77,16 @@
       virtualisation
       qt
       acplight
+      bluetooth
     ]
     ++ services
     ++ systemd
     ++ applications;
+
+  environment.sessionVariables = {
+    # Waylandを使用する場合、Electronアプリ等の安定性を向上
+    NIXOS_OZONE_WL = "1";
+  };
 
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions
