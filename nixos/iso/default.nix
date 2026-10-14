@@ -23,6 +23,8 @@
   image.modules.iso-installer = {
     imports = [ "${modulesPath}/installer/cd-dvd/installation-cd-minimal.nix" ];
     system.installer.channel.enable = false;
+    # installation-cd-minimal.nix が fontconfig を無効化(mkOverride 500)するため明示的に有効へ戻す
+    fonts.fontconfig.enable = true;
     # インストールメディアのときにデフォルトで有効になるisoImageの定義を明示
     isoImage = {
       makeBiosBootable = true;
