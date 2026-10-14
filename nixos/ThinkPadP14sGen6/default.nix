@@ -56,7 +56,6 @@
         # ../options/applications/xss-i3lock.nix
         ../options/applications/_1password.nix
         ../options/applications/sway.nix
-        # ../options/applications/niri.nix
       ];
     in
     [

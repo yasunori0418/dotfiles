@@ -456,7 +456,6 @@ in
       "luacheck"
       "mpd"
       "ncpamixer.conf"
-      "niri"
       "paru"
       "picom"
       "rofi"
