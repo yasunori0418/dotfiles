@@ -38,6 +38,30 @@ let
       })
     else
       pkgs.mermaid-cli;
+
+  # home-manager で入れた gparted の polkit アクション(exec.allow_gui 付き)は polkitd が読む
+  # system profile に載らず、汎用の org.freedesktop.policykit.exec に落ちて表示用の環境変数が
+  # 消される。pkexec env で Wayland の接続先を明示的に渡し、root 化済みの gparted を起動する。
+  # rofi は起動したプロセスを切り離すため、exec すると pkexec の親が init になり
+  # "Refusing to render service to dead parents." で拒否される。シェルを親として残す。
+  gparted =
+    let
+      launcher = pkgs.writeShellScript "gparted" ''
+        /run/wrappers/bin/pkexec --disable-internal-agent ${pkgs.coreutils}/bin/env \
+          WAYLAND_DISPLAY="$XDG_RUNTIME_DIR/''${WAYLAND_DISPLAY:-wayland-0}" \
+          ${pkgs.gparted}/bin/gparted "$@"
+      '';
+    in
+    pkgs.symlinkJoin {
+      name = "gparted-pkexec-${pkgs.gparted.version}";
+      paths = [ pkgs.gparted ];
+      postBuild = ''
+        rm $out/bin/gparted $out/share/applications/gparted.desktop
+        ln -s ${launcher} $out/bin/gparted
+        sed 's|^Exec=.*|Exec=${launcher} %f|' \
+          ${pkgs.gparted}/share/applications/gparted.desktop > $out/share/applications/gparted.desktop
+      '';
+    };
 in
 {
   nixTools = with pkgs; [
@@ -243,7 +267,7 @@ in
       # font-manager
       fuzzel
       gimp
-      gparted
+      gparted # let で pkexec 経由に上書き
       grim
       gthumb
       kdePackages.okular
