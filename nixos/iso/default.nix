@@ -10,6 +10,9 @@
       hostName = "iso";
       wifi-power-save = true;
     })
+    ../options/nix.nix
+    ../options/nixpkgs.nix
+    ../options/fonts.nix
     ../options/time.nix
     ../options/i18n.nix
     ../options/services/resolved.nix
@@ -43,11 +46,6 @@
       gnumake
     ];
   };
-  nix.settings.experimental-features = [
-    "flakes"
-    "nix-command"
-    "pipe-operators"
-  ];
   programs = {
     sway = {
       enable = true;
@@ -73,29 +71,6 @@
     };
   };
   security.polkit.enable = true;
-  fonts = {
-    packages = with pkgs; [
-      noto-fonts
-      noto-fonts-cjk-serif
-      noto-fonts-cjk-sans
-      noto-fonts-color-emoji
-      nerd-fonts.hack
-      hackgen-nf-font
-      moralerspace-hw
-    ];
-    fontDir.enable = true;
-    fontconfig = {
-      defaultFonts = {
-        serif = [ "Noto Serif CJK JP" ];
-        sansSerif = [ "Noto Sans CJK JP" ];
-        monospace = [ "Noto Sans Mono CJK JP" ];
-        emoji = [
-          "Moralerspace Argon HW"
-          "Noto Color Emoji"
-        ];
-      };
-    };
-  };
   xdg.portal = {
     enable = true;
     extraPortals = with pkgs; [
