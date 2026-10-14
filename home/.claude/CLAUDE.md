@@ -12,6 +12,7 @@
 - GitHub(`github.com`・GitHub Enterprise)の PR・Issue・Actions(run/job ログ)・commit・diff・比較などの情報取得は、`WebFetch` を使わず最初から `gh` コマンド経由で行う(`gh run view --log-failed` / `gh pr view` / `gh api` 等)。URL を渡された時点で gh に解決する
 - コンテキスト肥大を抑制する。調査・分析の中間結果(ログ抜粋・一覧・比較表など、後続で再参照しないもの)はコンテキストに抱え込まず、scratchpad へファイル退避する(ユーザー向けの成果物は tmp-output スキルに従う)。コンテキストが肥大した長時間セッション(目安: peak 250k 超)で別トピックの依頼が来たら、新セッションでの継続を提案する
 - Bash は `setopt noclobber` の zsh で実行される。既存ファイルへ `>` で書くと上書きされずに `zsh: file exists:` で失敗する。上書きしたいときは `>|` を使う(特にループ内のリダイレクトは 2 周目以降が全て失敗し、exit code は 0 のまま出力が 1 周目で固定される)
+- 一時領域(scratchpad・`/tmp`・gitignore 済みの `tmp-agents/` 等)の `rm` は、他の処理と混ぜずに単独の Bash 呼び出しにする。対象は絶対パスか同じコマンド内の単純な代入で書き、引用符・glob・パイプ・バックグラウンド実行を使わない(確認用の `ls` / `echo` / `git status` と `2>/dev/null`・`|| echo` は並べてよい)。permission-gate はこの形だけを自動承認し、混ぜると毎回確認ダイアログが出る
 - 既定の Bash タイムアウトは 50 分(`BASH_DEFAULT_TIMEOUT_MS`)。それを超えうる nix ビルド・全体テストは `run_in_background: true` で実行する
 
 ## symlink 運用(layat + dotfiles)
