@@ -16,6 +16,7 @@
     ../options/time.nix
     ../options/i18n.nix
     ../options/services/resolved.nix
+    ../options/security.nix
   ];
 
   # `nixos-rebuild build-image --image-variant iso-installer --flake .#iso` で生成する。
@@ -72,7 +73,6 @@
       user = "nixos";
     };
   };
-  security.polkit.enable = true;
   xdg.portal = {
     enable = true;
     extraPortals = with pkgs; [
