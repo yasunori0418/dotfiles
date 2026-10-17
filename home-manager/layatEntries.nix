@@ -1,26 +1,25 @@
-# layat の home mode（root = homeRoot）entries を組み立てる共有モジュール。
+# layat の home mode（root = homeRoot）entries を profile ごとに組み立てる共有モジュール。
 #
-# home-manager モジュール（home-manager/{linux,macos}/layat.nix）と flake-parts の
-# layat profile（flake-parts/layat.nix）の両方から import される。配置元は
-# root 相対 marker で $HOME からの相対パスとして書くため、home ディレクトリの
-# 絶対パスには依存しない。
+# home-manager モジュール（home-manager/layat.nix）と flake-parts の layat profile
+# （flake-parts/layat.nix）の両方から import される。返り値は
+# `{ <profile 名> = entries; }` で、HM 側は `layat.configs.<name>.entries`、
+# flake-parts 側は `perSystem.layat.<name>` へ同じ名前で配線する
+# （profile 名を両経路で 1:1 に揃えないと、CLI 適用と HM activation が別 profile に
+# なって同じ配置先を奪い合うため、名前はここから一箇所で決める）。
 #
-# entries そのものは root 非依存（root は mkManifest / HM モジュールが homeRoot に
-# pin する）ため、同じ entries から HM activation 用の manifest と CLI 用の
-# flake output `layat.<system>.default` が同一内容で生成される。
+# 配置元は root 相対 marker で $HOME からの相対パスとして書くため、home ディレクトリの
+# 絶対パスには依存しない。entries そのものは root 非依存（root は mkManifest / HM
+# モジュールが homeRoot に pin する）。
+#
+# profile 間で同じ target を持つと eval 時の assert で止める。layat の `apply --all`
+# 前段検査は名指しの `layat apply <name>` を通らないため、設計側で重複を弾く。
 {
   inputs,
   pkgs,
   isDarwin,
 }:
 let
-  inherit (pkgs.lib) pipe;
-  inherit (pkgs.stdenv.hostPlatform) system;
-  myNurPkgs = inputs.yasunori-nur.legacyPackages.${system};
-  inherit (myNurPkgs.lib.attrsets)
-    targetAttrsValue
-    concatOfAttrs
-    ;
+  inherit (pkgs) lib;
   inherit (inputs.layat.lib) mkRootRelativeSymlink;
 
   # layat の src（root 相対 marker）には配置 root（home mode なので $HOME）からの
@@ -39,30 +38,22 @@ let
       ;
   };
 
-  concatFileMap =
-    targetNames: fileMap:
-    pipe fileMap [
-      (targetAttrsValue targetNames)
-      concatOfAttrs
-    ];
+  # profile ごとに common と OS 固有を合成する。
+  resolveProfile = profile: profile.common // (if isDarwin then profile.MacOS else profile.Linux);
 
-  common = concatFileMap [
-    "homeDirectory"
-    "dotConfig"
-    "dotLocalShare"
-  ] layatFileMap;
+  configs = lib.mapAttrs (_: resolveProfile) layatFileMap;
 
-  osSpecific =
-    if isDarwin then
-      concatFileMap [
-        "homeDirectory"
-        "dotConfig"
-        "library"
-      ] layatFileMap.MacOS
-    else
-      concatFileMap [
-        "homeDirectory"
-        "dotConfig"
-      ] layatFileMap.Linux;
+  # target（attr キー）が複数 profile に現れていないか。
+  duplicatedTargets = lib.pipe configs [
+    (lib.mapAttrsToList (name: entries: map (target: { inherit name target; }) (lib.attrNames entries)))
+    lib.concatLists
+    (lib.groupBy (x: x.target))
+    (lib.filterAttrs (_: xs: builtins.length xs > 1))
+    (lib.mapAttrsToList (target: xs: "${target} (${lib.concatMapStringsSep ", " (x: x.name) xs})"))
+  ];
 in
-common // osSpecific
+assert lib.assertMsg (duplicatedTargets == [ ]) ''
+  layatEntries.nix: 同じ target が複数の layat profile に定義されています:
+  ${lib.concatStringsSep "\n" (map (t: "  - ${t}") duplicatedTargets)}
+'';
+configs

@@ -1,3 +1,21 @@
+/*
+  layat の home mode entries を profile ごとに定義する。
+
+  最上位キーが profile 名（= `layat.configs.<name>` / `flake.layat.<system>.<name>`）で、
+  各 profile は `common` / `MacOS` / `Linux` の 3 つを持つ。OS の選択と合成は
+  layatEntries.nix が行う（ここは両 OS の entry を素のまま持つだけ）。
+
+  profile の切り方は「rollback したい単位」と「apply / recopy を掛けたい範囲」:
+
+  - home:            ~/dotfiles/home の手書き設定のうち下記以外の全部（shell・git・CLI ツール等）
+  - desktop:         WM・GUI・テーマ・入力メソッド・壁紙（nixpkgs 由来の gtk css を含む）
+  - nvim:            nvim / dpp / vim / ideavim と nixpkgs 由来の treesitter parser
+  - claude:          ~/.claude/ 配下の symlink 全部（CLAUDE.md・skills・agents・hooks・mcp-servers.json）
+  - claude-settings: ~/.claude/settings.json（method = "copy"）だけ。recopy の影響範囲をここに閉じる
+  - herdr-plugins:   ~/.local/share/herdr-plugins/*（herdr-plugin-link の対象）
+
+  同じ target を 2 つの profile に書くと layatEntries.nix の assert で eval が止まる。
+*/
 {
   inputs,
   pkgs,
@@ -177,6 +195,8 @@ let
     };
   };
 
+  # herdr の Claude Code 統合（hook と skill）。配置先が ~/.claude/ 配下なので
+  # profile は claude（herdr-plugins ではない）。
   herdrEntries = {
     ".claude/hooks/herdr/herdr-agent-state.sh" = {
       src = inputs.herdr;
@@ -223,7 +243,8 @@ let
     owner-write を加えて配置するので書き戻せる。
 
     copy は place-once なので、claudeSettings.nix を編集しただけでは
-    switch で反映されない。反映には `layat apply --recopy` が要る。
+    switch で反映されない。反映には `make layat-recopy`
+    （`layat apply claude-settings --recopy` + inject）が要る。
   */
   claudeSettingsEntry = isDarwin: {
     ".claude/settings.json" = {
@@ -240,192 +261,125 @@ let
   };
 in
 {
-  homeDirectory = {
-    ".background-image" = selectWallpaper {
-      type = "default";
-      name = "";
-      # type = "nixos-artwork";
-      # name = "nineish-solarized-dark";
-    };
-  }
-  // homeMap [
-    # keep-sorted start
-    ".bash_logout"
-    ".bash_profile"
-    ".bashrc"
-    ".claude/CLAUDE.md"
-    ".claude/output-styles"
-    ".dir_colors"
-    ".p10k.zsh"
-    ".screenrc"
-    ".zsh"
-    ".zshenv"
-    ".zshrc"
-    "bin"
-    # keep-sorted end
-  ]
-  // mattpocockSkillEntries
-  // cojiSkillEntries
-  // yasunoriSkillEntries
-  // yasunoriAgentEntries
-  // yasunoriHookEntries
-  // tirithHookEntries
-  // claudeMcpServersEntry
-  // herdrEntries;
-
-  dotConfig = xdgConfigMap [
-    # keep-sorted start
-    "alacritty/alacritty.toml"
-    "alacritty/keybinds"
-    "alacritty/nord.toml"
-    "clipcat"
-    "direnv"
-    "dpp"
-    "fastfetch"
-    "fd"
-    "ghostty/clipboard.conf"
-    "ghostty/command.conf"
-    "ghostty/config"
-    "ghostty/core.conf"
-    "ghostty/font.conf"
-    "ghostty/keybinds.conf"
-    "ghostty/mouse.conf"
-    "ghostty/quick.conf"
-    "ghostty/resize.conf"
-    "ghostty/theme.conf"
-    "ghostty/window.conf"
-    "git"
-    "glow"
-    "gwq"
-    "herdr/config.toml"
-    # herdr-plus の設定一式。config.toml 以外の 3 つはディレクトリごと配置する
-    # （quick-actions/ は「ディレクトリが無いとき」だけ herdr-plus が例を seed
-    # するので、symlink が先にあれば seed されない）。
-    "herdr/plugins/config/cloudmanic.herdr-plus/config.toml"
-    "herdr/plugins/config/cloudmanic.herdr-plus/projects"
-    "herdr/plugins/config/cloudmanic.herdr-plus/quick-actions"
-    "herdr/plugins/config/cloudmanic.herdr-plus/worktrees"
-    "herdr/plugins/config/herdr-navigator/config.toml"
-    # config.toml の [[keys.command]] から呼ぶスクリプト。TOML に直書きすると
-    # sh の引用が多重エスケープになって読めないものはここへ出す。
-    "herdr/scripts"
-    "ideavim"
-    "jj"
-    "kanata"
-    "kitty"
-    "laminate"
-    "nvim"
-    "ov"
-    "sheldon"
-    "shellcheckrc"
-    "sqls"
-    "textlint"
-    "tirith"
-    "tmux"
-    "typos"
-    "vim"
-    "wezterm"
-    "worktrunk"
-    "yamllint"
-    "zellij"
-    "zeno"
-    # keep-sorted end
-  ];
-
-  # treesitter parser だけは ~/dotfiles ではなく nix store 由来のため、root 相対
-  # symlink ではなく store-backed src（derivation + subpath）で配置する。
-  dotLocalShare = {
-    ".local/share/nvim/treesitter/parser" = {
-      src = nvimTreesitterParsers [
+  home = {
+    common =
+      homeMap [
         # keep-sorted start
-        "bash"
-        "comment"
-        "css"
-        "csv"
-        "diff"
-        "dockerfile"
-        "fish"
-        "git_config"
-        "git_rebase"
-        "gitattributes"
-        "gitcommit"
-        "gitignore"
-        "html"
-        "jsdoc"
-        "json"
-        "json5"
-        # "jsonc"
-        "kdl"
-        "kotlin"
-        "lua"
-        "luadoc"
-        "make"
-        "markdown"
-        "markdown_inline"
-        "nix"
-        "python"
-        "regex"
-        "ron"
-        "rust"
-        "sql"
-        "sway"
-        "toml"
-        "tsv"
-        "typescript"
-        "vim"
-        "vimdoc"
-        "xml"
-        "yaml"
+        ".bash_logout"
+        ".bash_profile"
+        ".bashrc"
+        ".dir_colors"
+        ".p10k.zsh"
+        ".screenrc"
+        ".zsh"
+        ".zshenv"
+        ".zshrc"
+        "bin"
+        # keep-sorted end
+      ]
+      // xdgConfigMap [
+        # keep-sorted start
+        "alacritty/alacritty.toml"
+        "alacritty/keybinds"
+        "alacritty/nord.toml"
+        "clipcat"
+        "direnv"
+        "fastfetch"
+        "fd"
+        "ghostty/clipboard.conf"
+        "ghostty/command.conf"
+        "ghostty/config"
+        "ghostty/core.conf"
+        "ghostty/font.conf"
+        "ghostty/keybinds.conf"
+        "ghostty/mouse.conf"
+        "ghostty/quick.conf"
+        "ghostty/resize.conf"
+        "ghostty/theme.conf"
+        "ghostty/window.conf"
+        "git"
+        "glow"
+        "gwq"
+        "herdr/config.toml"
+        # herdr-plus の設定一式。config.toml 以外の 3 つはディレクトリごと配置する
+        # （quick-actions/ は「ディレクトリが無いとき」だけ herdr-plus が例を seed
+        # するので、symlink が先にあれば seed されない）。
+        "herdr/plugins/config/cloudmanic.herdr-plus/config.toml"
+        "herdr/plugins/config/cloudmanic.herdr-plus/projects"
+        "herdr/plugins/config/cloudmanic.herdr-plus/quick-actions"
+        "herdr/plugins/config/cloudmanic.herdr-plus/worktrees"
+        "herdr/plugins/config/herdr-navigator/config.toml"
+        # config.toml の [[keys.command]] から呼ぶスクリプト。TOML に直書きすると
+        # sh の引用が多重エスケープになって読めないものはここへ出す。
+        "herdr/scripts"
+        "jj"
+        "kanata"
+        "kitty"
+        "laminate"
+        "ov"
+        "sheldon"
+        "shellcheckrc"
+        "sqls"
+        "textlint"
+        "tirith"
+        "tmux"
+        "typos"
+        "wezterm"
+        "worktrunk"
+        "yamllint"
+        "zellij"
+        "zeno"
         # keep-sorted end
       ];
-      subpath = "parser";
-    };
-  }
-  // herdrPluginEntries;
-
-  MacOS = {
-    homeDirectory = {
+    MacOS = {
       # ".docker/config.json".src = mkRootRelativeSymlink "${homeDir}/.docker/mac_config.json";
-    }
-    // claudeSettingsEntry true;
-    library = {
-      "Library/Application Support/AquaSKK".src =
-        mkRootRelativeSymlink "${homeDir}/Library/ApplicationSupport/AquaSKK";
+      ".config/alacritty/os.toml".src = mkRootRelativeSymlink "${xdgConfigHome}/alacritty/mac.toml";
       "Library/Application Support/arto".src = mkRootRelativeSymlink "${xdgConfigHome}/arto";
       "Library/Application Support/Code/User/settings.json".src =
         mkRootRelativeSymlink "${xdgConfigHome}/Code/User/settings.json";
       "Library/Application Support/Luacheck/.luacheckrc".src =
         mkRootRelativeSymlink "${xdgConfigHome}/luacheck/.luacheckrc";
-    };
-    dotConfig = {
-      ".config/alacritty/os.toml".src = mkRootRelativeSymlink "${xdgConfigHome}/alacritty/mac.toml";
     }
     // xdgConfigMap [
       "ghostty/macos.conf"
-      "aerospace"
-      "karabiner"
+    ];
+    Linux = {
+      ".docker/config.json".src = mkRootRelativeSymlink "${homeDir}/.docker/linux_config.json";
+      ".config/alacritty/os.toml".src = mkRootRelativeSymlink "${xdgConfigHome}/alacritty/linux.toml";
+    }
+    // homeMap [
+      ".pam_environment"
+    ]
+    // xdgConfigMap [
+      # keep-sorted start
+      "Code/User/settings.json"
+      "arto"
+      "environment.d/my-env.conf"
+      "ghostty/linux.conf"
+      "luacheck"
+      "paru"
+      # keep-sorted end
     ];
   };
 
-  Linux = {
-    homeDirectory = {
-      ".docker/config.json".src = mkRootRelativeSymlink "${homeDir}/.docker/linux_config.json";
+  desktop = {
+    common = {
+      ".background-image" = selectWallpaper {
+        type = "default";
+        name = "";
+        # type = "nixos-artwork";
+        # name = "nineish-solarized-dark";
+      };
+    };
+    MacOS = {
+      "Library/Application Support/AquaSKK".src =
+        mkRootRelativeSymlink "${homeDir}/Library/ApplicationSupport/AquaSKK";
     }
-    // claudeSettingsEntry false
-    // homeMap [
-      ".icons"
-      ".face"
-      ".gtkrc-2.0"
-      ".pam_environment"
-      ".xinitrc"
-      ".xprofile"
-      ".xserverrc"
-      # ".Xresources"
-      # ".Xresources.d"
+    // xdgConfigMap [
+      "aerospace"
+      "karabiner"
     ];
-    dotConfig = {
-      ".config/alacritty/os.toml".src = mkRootRelativeSymlink "${xdgConfigHome}/alacritty/linux.toml";
-
+    Linux = {
       # themechanger / nwg-look が野良で張っていた symlink を layat 管理下に取り込む。
       # ~/dotfiles ではなく nix store 由来のため store-backed src で配置する。
       ".config/gtk-4.0/gtk.css" = {
@@ -437,26 +391,32 @@ in
         subpath = "share/themes/Nordic-darker/gtk-4.0/gtk-dark.css";
       };
     }
+    // homeMap [
+      # keep-sorted start
+      ".face"
+      ".gtkrc-2.0"
+      ".icons"
+      ".xinitrc"
+      ".xprofile"
+      ".xserverrc"
+      # ".Xresources"
+      # ".Xresources.d"
+      # keep-sorted end
+    ]
     // xdgConfigMap [
       # keep-sorted start
-      "Code/User/settings.json"
-      "arto"
       "bumblebee-status"
       "cantata"
       "dunst"
-      "environment.d/my-env.conf"
       "fcitx5"
-      "ghostty/linux.conf"
       "gtk-2.0"
       "gtk-3.0"
       "gtk-4.0/settings.ini"
       "i3status-rust"
       "keynav"
       "libskk"
-      "luacheck"
       "mpd"
       "ncpamixer.conf"
-      "paru"
       "picom"
       "rofi"
       "screenkey.json"
@@ -466,5 +426,98 @@ in
       "xremap"
       # keep-sorted end
     ];
+  };
+
+  nvim = {
+    common =
+      xdgConfigMap [
+        # keep-sorted start
+        "dpp"
+        "ideavim"
+        "nvim"
+        "vim"
+        # keep-sorted end
+      ]
+      // {
+        # treesitter parser だけは ~/dotfiles ではなく nix store 由来のため、root 相対
+        # symlink ではなく store-backed src（derivation + subpath）で配置する。
+        ".local/share/nvim/treesitter/parser" = {
+          src = nvimTreesitterParsers [
+            # keep-sorted start
+            "bash"
+            "comment"
+            "css"
+            "csv"
+            "diff"
+            "dockerfile"
+            "fish"
+            "git_config"
+            "git_rebase"
+            "gitattributes"
+            "gitcommit"
+            "gitignore"
+            "html"
+            "jsdoc"
+            "json"
+            "json5"
+            # "jsonc"
+            "kdl"
+            "kotlin"
+            "lua"
+            "luadoc"
+            "make"
+            "markdown"
+            "markdown_inline"
+            "nix"
+            "python"
+            "regex"
+            "ron"
+            "rust"
+            "sql"
+            "sway"
+            "toml"
+            "tsv"
+            "typescript"
+            "vim"
+            "vimdoc"
+            "xml"
+            "yaml"
+            # keep-sorted end
+          ];
+          subpath = "parser";
+        };
+      };
+    MacOS = { };
+    Linux = { };
+  };
+
+  claude = {
+    common =
+      homeMap [
+        ".claude/CLAUDE.md"
+        ".claude/output-styles"
+      ]
+      // mattpocockSkillEntries
+      // cojiSkillEntries
+      // yasunoriSkillEntries
+      // yasunoriAgentEntries
+      // yasunoriHookEntries
+      // tirithHookEntries
+      // claudeMcpServersEntry
+      // herdrEntries;
+    MacOS = { };
+    Linux = { };
+  };
+
+  claude-settings = {
+    common = { };
+    MacOS = claudeSettingsEntry true;
+    Linux = claudeSettingsEntry false;
+  };
+
+  herdr-plugins = {
+    common = herdrPluginEntries;
+    MacOS = { };
+    Linux = { };
   };
 }
