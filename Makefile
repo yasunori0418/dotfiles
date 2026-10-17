@@ -74,21 +74,32 @@ nixos-iso: ## nixos-rebuild build-image --image-variant iso-installer --flake .#
 	@nixos-rebuild build-image --image-variant iso-installer --flake '.#iso'
 
 ## layat placement commands ##
-# layat.default（home mode）は home-manager の activation と同じ profile 名 `default`
-# を共有する。よって switch を挟まずに CLI から配置を反映できる。
-layat-apply: ## layat apply default (home mode placement without home-manager switch)
-	@layat apply default --verbose
+# home mode の profile（home / desktop / nvim / claude / claude-settings / herdr-plugins）は
+# home-manager の activation と同じ profile 名を共有する（home-manager/layatEntries.nix が
+# 両経路の SSOT）。よって switch を挟まずに CLI から配置を反映できる。
+# P=<profile> で 1 profile に絞る（例: make layat-apply P=claude）。未指定なら
+# home mode の全 profile（--all --home-root。project mode の skills は含まない）。
+LAYAT_TARGET = $(if $(P),$(P),--all --home-root)
+define layat-require-profile
+test -n "$(P)" || { echo "P=<profile> is required (e.g. make $@ P=claude)" >&2; exit 2; }
+endef
+
+layat-apply: ## layat apply [P=<profile>] (home mode placement without home-manager switch)
+	@layat apply $(LAYAT_TARGET) --verbose
 
 # recopy は ~/.claude/settings.json を Nix 生成の JSON に戻すので、
 # 環境固有に注入した値（claude-settings-inject）はそのたびに消える。
 # 消えた状態を残さないため recopy に続けて注入し直す。
+# copy entry は claude-settings profile にしか無いので対象をそこに固定する。
 # 実行前に何が変わるかは make claude-settings-diff で確認できる。
-layat-recopy: ## layat apply default --recopy (re-copy copy targets e.g. ~/.claude/settings.json)
-	@layat apply default --recopy --verbose
-	@$(MAKE) --no-print-directory claude-settings-inject
+# 注入は $(MAKE) 経由ではなくスクリプトを直接呼ぶ。.ONESHELL の recipe に $(MAKE) が
+# 含まれると GNU make は `make -n` でも recipe 全体を実行してしまい、recopy が走る。
+layat-recopy: ## layat apply claude-settings --recopy (re-copy ~/.claude/settings.json, then inject)
+	@layat apply claude-settings --recopy --verbose
+	./scripts/claude-settings-inject.sh
 
-layat-dryrun: ## layat apply default --dryrun (preview placement, no side effects)
-	@layat apply default --dryrun --verbose
+layat-dryrun: ## layat apply [P=<profile>] --dryrun (preview placement, no side effects)
+	@layat apply $(LAYAT_TARGET) --dryrun --verbose
 
 layat-skills: ## layat apply skills (project mode placement into .claude/skills)
 	@layat apply skills --verbose
@@ -96,11 +107,13 @@ layat-skills: ## layat apply skills (project mode placement into .claude/skills)
 layat-gitignore: ## layat gitignore --all (print project mode placement targets)
 	@layat gitignore --all
 
-layat-generations: ## layat list-generations default
-	@layat list-generations default
+layat-generations: ## layat list-generations P=<profile> (P is required)
+	@$(layat-require-profile)
+	layat list-generations $(P)
 
-layat-rollback: ## layat rollback default (roll back to the previous generation)
-	@layat rollback default --verbose
+layat-rollback: ## layat rollback P=<profile> (P is required; roll back to the previous generation)
+	@$(layat-require-profile)
+	layat rollback $(P) --verbose
 
 ## Claude Code settings injection commands ##
 # ~/.claude/settings.json へ環境固有の値を注入する。
