@@ -8,9 +8,9 @@ let
   inherit (pkgs.stdenv.hostPlatform) system isDarwin;
 
   # entries の組み立ては flake-parts の layat profile と共有する
-  # （./layatEntries.nix・同じ `{ <name> = entries; }` から HM activation 用の
+  # （./entries.nix・同じ `{ <name> = entries; }` から HM activation 用の
   # manifest と flake output `layat.<system>.<name>` が生成される）。
-  configs = import ./layatEntries.nix {
+  configs = import ./entries.nix {
     inherit inputs pkgs isDarwin;
   };
 in

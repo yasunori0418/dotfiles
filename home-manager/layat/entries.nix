@@ -1,6 +1,6 @@
 # layat の home mode（root = homeRoot）entries を profile ごとに組み立てる共有モジュール。
 #
-# home-manager モジュール（home-manager/layat.nix）と flake-parts の layat profile
+# home-manager モジュール（home-manager/layat/default.nix）と flake-parts の layat profile
 # （flake-parts/layat.nix）の両方から import される。返り値は
 # `{ <profile 名> = entries; }` で、HM 側は `layat.configs.<name>.entries`、
 # flake-parts 側は `perSystem.layat.<name>` へ同じ名前で配線する
@@ -28,7 +28,7 @@ let
   homeDir = "${dotfiles}/home";
   xdgConfigHome = "${homeDir}/.config";
 
-  layatFileMap = import ./layatFileMap.nix {
+  layatFileMap = import ./profiles.nix {
     inherit
       inputs
       pkgs
@@ -53,7 +53,7 @@ let
   ];
 in
 assert lib.assertMsg (duplicatedTargets == [ ]) ''
-  layatEntries.nix: 同じ target が複数の layat profile に定義されています:
+  layat/entries.nix: 同じ target が複数の layat profile に定義されています:
   ${lib.concatStringsSep "\n" (map (t: "  - ${t}") duplicatedTargets)}
 '';
 configs

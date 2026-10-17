@@ -75,7 +75,7 @@ nixos-iso: ## nixos-rebuild build-image --image-variant iso-installer --flake .#
 
 ## layat placement commands ##
 # home mode の profile（home / desktop / nvim / claude / claude-settings / herdr-plugins）は
-# home-manager の activation と同じ profile 名を共有する（home-manager/layatEntries.nix が
+# home-manager の activation と同じ profile 名を共有する（home-manager/layat/entries.nix が
 # 両経路の SSOT）。よって switch を挟まずに CLI から配置を反映できる。
 # P=<profile> で 1 profile に絞る（例: make layat-apply P=claude）。未指定なら
 # home mode の全 profile（--all --home-root。project mode の skills は含まない）。

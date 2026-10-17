@@ -5,7 +5,7 @@
   各 plugin の hooks/hooks.json に settings.json と同じ構造（event → [{matcher, hooks}]）の
   定義が同梱されている。ここではそれを Nix 評価時に読み込み、plugin 用の
   `${CLAUDE_PLUGIN_ROOT}/hooks/<name>/main.sh` を layat が配置する
-  `$HOME/.claude/hooks/<name>/main.sh`（layatFileMap.nix の yasunoriHookSubpaths）へ
+  `$HOME/.claude/hooks/<name>/main.sh`（layat/profiles.nix の yasunoriHookSubpaths）へ
   読み替えてマージする。定義を手で写さないので、skills 側の matcher 変更に
   flake update だけで追随できる。
 
@@ -24,7 +24,7 @@
   lib,
   # inputs.yasunori-skills
   skills,
-  # layatFileMap.nix の yasunoriHookSubpaths（<name> = "<plugin>/hooks/<name>"）。
+  # layat/profiles.nix の yasunoriHookSubpaths（<name> = "<plugin>/hooks/<name>"）。
   # plugin 一覧をここから導出し、hooks.json が参照する hook が全て配置されることを検査する。
   hookSubpaths,
 }:
@@ -122,7 +122,7 @@ let
             # herdr 側の integration インストーラは settings.json へ直接 hook を書き込むが、
             # settings.json は claudeSettings.nix が SSOT で recopy すると消えるためここに置く。
             # HERDR_ENV / HERDR_SOCKET_PATH / HERDR_PANE_ID が無ければ自己抑制して終了する。
-            # 実体は layat 配置（layatFileMap.nix の herdrEntries、flake input `herdr`）で、
+            # 実体は layat 配置（layat/profiles.nix の herdrEntries、flake input `herdr`）で、
             # herdr リポジトリ側のアセットに実行ビットが無い（store 上で -r--r--r--）ため
             # herdr 純正の settings.json 定義と同様にインタプリタ（sh）経由で起動する。
             command = "sh $HOME/.claude/hooks/herdr/herdr-agent-state.sh session";
@@ -139,7 +139,7 @@ assert lib.assertMsg (
   referencedHookNames != [ ]
 ) "claudeHooks.nix: hooks.json から hook が 1 つも読めていない";
 assert lib.assertMsg (missingHooks == [ ]) ''
-  claudeHooks.nix: hooks.json が参照する hook が layatFileMap.nix の yasunoriHookSubpaths に無い: ${toString missingHooks}
+  claudeHooks.nix: hooks.json が参照する hook が layat/profiles.nix の yasunoriHookSubpaths に無い: ${toString missingHooks}
 '';
 mergeHooks [
   fromSkills

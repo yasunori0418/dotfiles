@@ -3,7 +3,7 @@
 
   最上位キーが profile 名（= `layat.configs.<name>` / `flake.layat.<system>.<name>`）で、
   各 profile は `common` / `MacOS` / `Linux` の 3 つを持つ。OS の選択と合成は
-  layatEntries.nix が行う（ここは両 OS の entry を素のまま持つだけ）。
+  entries.nix が行う（ここは両 OS の entry を素のまま持つだけ）。
 
   profile の切り方は「rollback したい単位」と「apply / recopy を掛けたい範囲」:
 
@@ -14,7 +14,7 @@
   - claude-settings: ~/.claude/settings.json（method = "copy"）だけ。recopy の影響範囲をここに閉じる
   - herdr-plugins:   ~/.local/share/herdr-plugins/*（herdr-plugin-link の対象）
 
-  同じ target を 2 つの profile に書くと layatEntries.nix の assert で eval が止まる。
+  同じ target を 2 つの profile に書くと entries.nix の assert で eval が止まる。
 */
 {
   inputs,
@@ -25,7 +25,7 @@
   ...
 }:
 let
-  inherit (import ./lib/layat-file-map.nix { inherit pkgs mkRootRelativeSymlink homeDir; })
+  inherit (import ./lib.nix { inherit pkgs mkRootRelativeSymlink homeDir; })
     selectWallpaper
     fileMap
     ;
@@ -34,7 +34,7 @@ let
 
   # GTK4 はテーマディレクトリを検索せず ~/.config/gtk-4.0/gtk.css しか読まないため、
   # applications.nix と同じ derivation から css を store-backed で配置する。
-  nordic-darker = pkgs.callPackage ./packages/nordic-darker.nix { };
+  nordic-darker = pkgs.callPackage ../packages/nordic-darker.nix { };
 
   # layat の symlink 配置はファイル/ディレクトリを区別しないため、旧 home.file 実装が
   # 持っていた homeDirMap/homeFileMap・xdgConfigDirMap/xdgConfigFileMap は各 1 つに統合する。
@@ -124,7 +124,7 @@ let
 
   # SKILL.md に textlint 併用の節を足した derivation を配置する（詳細は packages 側）。
   cojiSkillEntries = {
-    ".claude/skills/natural-japanese".src = pkgs.callPackage ./packages/natural-japanese-skill.nix {
+    ".claude/skills/natural-japanese".src = pkgs.callPackage ../packages/natural-japanese-skill.nix {
       src = inputs.natural-japanese;
     };
   };
@@ -187,7 +187,7 @@ let
   # Claude Code の user スコープへ登録する MCP サーバー定義（詳細は claudeMcpServers.nix）。
   # Claude Code 自身はこのファイルを読まない。scripts/claude-mcp-register.sh の入力。
   claudeMcpServersEntry = {
-    ".claude/mcp-servers.json".src = import ./claudeMcpServers.nix {
+    ".claude/mcp-servers.json".src = import ../claudeMcpServers.nix {
       inherit pkgs;
       # MCP サーバーの引数は layat の src ではないため、"~/" 始まりで渡して
       # scripts/claude-mcp-register.sh に登録時に $HOME へ展開させる。
@@ -223,13 +223,13 @@ let
     （同一 plugin_id は上書きされる冪等操作）。
   */
   herdrPluginEntries = {
-    ".local/share/herdr-plugins/worktrunk".src = pkgs.callPackage ./packages/herdr-worktrunk.nix {
+    ".local/share/herdr-plugins/worktrunk".src = pkgs.callPackage ../packages/herdr-worktrunk.nix {
       src = inputs.herdr-worktrunk;
     };
-    ".local/share/herdr-plugins/navigator".src = pkgs.callPackage ./packages/herdr-navigator.nix {
+    ".local/share/herdr-plugins/navigator".src = pkgs.callPackage ../packages/herdr-navigator.nix {
       src = inputs.herdr-navigator;
     };
-    ".local/share/herdr-plugins/plus".src = pkgs.callPackage ./packages/herdr-plus.nix {
+    ".local/share/herdr-plugins/plus".src = pkgs.callPackage ../packages/herdr-plus.nix {
       src = inputs.herdr-plus;
     };
   };
@@ -248,9 +248,9 @@ let
   */
   claudeSettingsEntry = isDarwin: {
     ".claude/settings.json" = {
-      src = import ./claudeSettings.nix {
+      src = import ../claudeSettings.nix {
         inherit pkgs isDarwin;
-        hooks = import ./claudeHooks.nix {
+        hooks = import ../claudeHooks.nix {
           inherit lib;
           skills = inputs.yasunori-skills;
           hookSubpaths = yasunoriHookSubpaths;

@@ -6,7 +6,7 @@
   permissions・env の大半）が重複し、差分が意図せず揺れていた。
   共通部を common に一元化し、OS 固有分だけを perOS で上書きする。
 
-  配置は layat の method = "copy"（layatFileMap.nix 側）。symlink（store 直結）だと
+  配置は layat の method = "copy"（layat/profiles.nix 側）。symlink（store 直結）だと
   Claude Code の TUI / `/config` が settings.json へ書き戻す項目
   （effortLevel・outputStyle・enabledPlugins 等）が read-only エラーになるため。
   layat の copy は store の read-only モードに owner-write を加えて配置するので

@@ -10,7 +10,7 @@ Nix flakesと`flake-parts`を使用したモジュラー設定管理を採用。
 - **`/home-manager/`**: クロスプラットフォームのユーザー環境設定（`linux/`、`macos/`）
 - **`/nixos/`**: Linuxシステム設定（マシン固有プロファイル）
 - **`/nix-darwin/`**: macOSシステム設定
-- **`/home/`**: 実際のdotfiles（`home-manager/layatEntries.nix`経由でシンボリックリンク）
+- **`/home/`**: 実際のdotfiles（`home-manager/layat/entries.nix`経由でシンボリックリンク）
 - **`/nix-overlays/`**: カスタムパッケージ定義
 
 ### プラットフォーム固有の注意点
@@ -34,8 +34,8 @@ make help           # 全コマンド一覧
 [layat](https://github.com/yasunori0418/layat) が行う（home-manager にはモジュールとして
 import され、`home.activation` から起動される）。
 
-entries は役割ごとの profile に分かれる。定義は `home-manager/layatFileMap.nix`
-（profile × OS）にあり、`home-manager/layatEntries.nix` が `{ <profile> = entries; }` に
+entries は役割ごとの profile に分かれる。定義は `home-manager/layat/profiles.nix`
+（profile × OS）にあり、`home-manager/layat/entries.nix` が `{ <profile> = entries; }` に
 畳んで以下 2 経路へ同じ名前で供給する。
 
 | profile | 中身 |
@@ -47,15 +47,15 @@ entries は役割ごとの profile に分かれる。定義は `home-manager/lay
 | `claude-settings` | `~/.claude/settings.json`（`method = "copy"`）だけ |
 | `herdr-plugins` | `~/.local/share/herdr-plugins/*` |
 
-- **home-manager 経由**: `home-manager/layat.nix` の `layat.configs.<profile>` → switch 時に
+- **home-manager 経由**: `home-manager/layat/default.nix` の `layat.configs.<profile>` → switch 時に
   activation（`layat apply --all --manifest <profile>=<link-farm> …` の 1 回起動）から適用
 - **flake-parts 経由**: `flake-parts/layat.nix` の `layat.<profile>` → `layat` CLI から直接適用
 
 両者は同じ entries から同一の manifest を生成し、profile ごとに同じ generation profile
 （`<state>/nix/profiles/layat/<profile>`）を共有する。よって switch を挟まずに
 CLI から配置を反映できる。profile 名は両経路で 1:1 に揃える必要があり、
-`layatEntries.nix` が唯一の供給元になることで構造的に保たれる。同じ target を
-2 つの profile に書くと `layatEntries.nix` の assert で eval が止まる。
+`layat/entries.nix` が唯一の供給元になることで構造的に保たれる。同じ target を
+2 つの profile に書くと `layat/entries.nix` の assert で eval が止まる。
 
 ```bash
 make layat-dryrun [P=<profile>] # 配置差分のプレビュー（副作用なし）

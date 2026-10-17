@@ -5,7 +5,7 @@
 #
 # - home mode（root = homeRoot）の profile 群（home / desktop / nvim / claude /
 #   claude-settings / herdr-plugins）: entries は home-manager 側
-#   （home-manager/layat.nix）と ../home-manager/layatEntries.nix を共有するので
+#   （home-manager/layat/default.nix）と ../home-manager/layat/entries.nix を共有するので
 #   内容と profile 名は完全に一致する。HM モジュールの activation
 #   （`layat apply --all --manifest <name>=<link-farm> …`）と同じ generation profile
 #   （<state>/nix/profiles/layat/<name>）へ載せるため、名前を揃えることが必須。
@@ -53,7 +53,7 @@ in
     let
       inherit (pkgs.stdenv.hostPlatform) isDarwin;
 
-      homeConfigs = import ../home-manager/layatEntries.nix {
+      homeConfigs = import ../home-manager/layat/entries.nix {
         inherit inputs pkgs isDarwin;
       };
     in
