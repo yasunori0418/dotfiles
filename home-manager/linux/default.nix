@@ -8,7 +8,7 @@
   imports =
     let
       packages = ./packages.nix;
-      layat = import ./layat.nix {
+      layat = import ../layat.nix {
         inherit
           inputs
           pkgs

@@ -19,7 +19,7 @@
         ../options/programs/nix-index.nix
         ../options/programs/discord.nix
       ];
-      layat = import ./layat.nix {
+      layat = import ../layat.nix {
         inherit
           inputs
           pkgs
