@@ -3,21 +3,22 @@
 # perSystem.layat.<name> へ manifest を宣言する。宣言したものは
 # flake.layat.<system>.<name> へ転置され、`layat apply <name>` から直接叩ける。
 #
-# - default: home mode（root = homeRoot）。~/.claude/* や ~/.config/* の配置。
-#   entries は home-manager 側（home-manager/{linux,macos}/layat.nix）と
-#   ../home-manager/layatEntries.nix を共有するので内容は完全に一致する。
-#   名前を `default` にしているのは HM モジュールの activation
-#   （`layat apply --manifest <path>`・位置引数なし = profile 名 `default`）と
-#   同じ generation profile（<state>/nix/profiles/layat/default）へ載せるため。
+# - home mode（root = homeRoot）の profile 群（home / desktop / vim / claude /
+#   claude-settings / herdr-plugins）: entries は home-manager 側
+#   （home-manager/layat/default.nix）と ../home-manager/layat/entries.nix を共有するので
+#   内容と profile 名は完全に一致する。HM モジュールの activation
+#   （`layat apply --all --manifest <name>=<link-farm> …`）と同じ generation profile
+#   （<state>/nix/profiles/layat/<name>）へ載せるため、名前を揃えることが必須。
 #   別名にすると CLI 適用と HM activation が別 profile になり、同じ配置先を
 #   互いに奪い合って stale 削除が壊れる。
-#   これにより `layat apply --recopy`（settings.json の copy 再配置）が
-#   home-manager switch を挟まずに Makefile から叩ける。
+#   これにより `make layat-apply` / `make layat-recopy`（claude-settings の copy 再配置）が
+#   home-manager switch を挟まずに叩ける。
 #
 # - skills: project mode（root = projectRoot）。mattpocock/skills を
 #   .claude/skills/<name> へ配置する。devShell の shellHook
 #   （flake-parts/devshell.nix）が `layat apply skills` でビルド・配置する。
-#   配置物は .gitignore 済みの ephemeral。
+#   配置物は .gitignore 済みの ephemeral。Makefile の `--all --home-root` には
+#   乗らない。
 
 # The importApply argument. Use this to reference things defined locally,
 # as opposed to the flake where this is imported.
@@ -25,7 +26,7 @@ localFlake:
 
 # Regular module arguments; self, inputs, etc all reference the final user flake,
 # where this module was imported.
-{ inputs, ... }:
+{ inputs, lib, ... }:
 let
   layatLib = inputs.layat.lib;
 
@@ -51,23 +52,27 @@ in
     { pkgs, ... }:
     let
       inherit (pkgs.stdenv.hostPlatform) isDarwin;
+
+      homeConfigs = import ../home-manager/layat/entries.nix {
+        inherit inputs pkgs isDarwin;
+      };
     in
     {
       # perSystem.layat.<name> → flake.layat.<system>.<name> へ自動転置される（layat flakeModule）。
-      layat = {
-        default = layatLib.mkManifest {
-          inherit pkgs;
-          root = layatLib.homeRoot;
-          entries = import ../home-manager/layatEntries.nix {
-            inherit inputs pkgs isDarwin;
+      layat =
+        lib.mapAttrs (
+          _: entries:
+          layatLib.mkManifest {
+            inherit pkgs entries;
+            root = layatLib.homeRoot;
+          }
+        ) homeConfigs
+        // {
+          skills = layatLib.mkManifest {
+            inherit pkgs;
+            root = layatLib.projectRoot;
+            entries = skillEntries;
           };
         };
-
-        skills = layatLib.mkManifest {
-          inherit pkgs;
-          root = layatLib.projectRoot;
-          entries = skillEntries;
-        };
-      };
     };
 }

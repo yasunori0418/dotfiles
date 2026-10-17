@@ -71,8 +71,8 @@ system="$(nix config show system)"
 
 # layat manifest をビルドして、.claude/settings.json エントリの src（Nix 生成 JSON の
 # store path）を引く。layat apply が実際に copy してくるのと同じ実体。
-manifest_dir="$(nix build --no-link --print-out-paths "${REPO_ROOT}#layat.${system}.default")" ||
-die "failed to build layat.${system}.default"
+manifest_dir="$(nix build --no-link --print-out-paths "${REPO_ROOT}#layat.${system}.claude-settings")" ||
+die "failed to build layat.${system}.claude-settings"
 
 nix_json="$(jq -r '
     .entries[]
