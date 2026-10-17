@@ -45,7 +45,7 @@ profile の定義は `home-manager/layat/profiles/<profile>.nix`（1 profile 1 �
 |---|---|
 | `home` | `home/` の手書き設定のうち下記以外の全部（shell・git・CLI ツール・ターミナル等） |
 | `desktop` | WM・GUI・テーマ・入力メソッド・壁紙（nixpkgs 由来の gtk css を含む） |
-| `nvim` | nvim / dpp / vim / ideavim と nixpkgs 由来の treesitter parser |
+| `vim` | nvim / dpp / vim / ideavim と nixpkgs 由来の treesitter parser |
 | `claude` | `~/.claude/` 配下の symlink 全部（CLAUDE.md・skills・agents・hooks・mcp-servers.json） |
 | `claude-settings` | `~/.claude/settings.json`（`method = "copy"`）だけ |
 | `herdr-plugins` | `~/.local/share/herdr-plugins/*` |

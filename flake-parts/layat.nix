@@ -3,7 +3,7 @@
 # perSystem.layat.<name> へ manifest を宣言する。宣言したものは
 # flake.layat.<system>.<name> へ転置され、`layat apply <name>` から直接叩ける。
 #
-# - home mode（root = homeRoot）の profile 群（home / desktop / nvim / claude /
+# - home mode（root = homeRoot）の profile 群（home / desktop / vim / claude /
 #   claude-settings / herdr-plugins）: entries は home-manager 側
 #   （home-manager/layat/default.nix）と ../home-manager/layat/entries.nix を共有するので
 #   内容と profile 名は完全に一致する。HM モジュールの activation

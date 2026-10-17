@@ -1,4 +1,4 @@
-# profile `home`: ~/dotfiles/home の手書き設定のうち desktop / nvim / claude 以外の全部
+# profile `home`: ~/dotfiles/home の手書き設定のうち desktop / vim / claude 以外の全部
 # （shell・git・CLI ツール・ターミナル等）。
 {
   homeDir,

@@ -1,4 +1,4 @@
-# profile `nvim`: nvim / dpp / vim / ideavim と nixpkgs 由来の treesitter parser。
+# profile `vim`: nvim / dpp / vim / ideavim と nixpkgs 由来の treesitter parser。
 {
   pkgs,
   xdgConfigMap,
