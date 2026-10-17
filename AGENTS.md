@@ -34,9 +34,12 @@ make help           # 全コマンド一覧
 [layat](https://github.com/yasunori0418/layat) が行う（home-manager にはモジュールとして
 import され、`home.activation` から起動される）。
 
-entries は役割ごとの profile に分かれる。定義は `home-manager/layat/profiles.nix`
-（profile × OS）にあり、`home-manager/layat/entries.nix` が `{ <profile> = entries; }` に
-畳んで以下 2 経路へ同じ名前で供給する。
+entries は役割ごとの profile に分かれ、layat 向けの定義は `home-manager/layat/` に集めてある。
+profile の定義は `home-manager/layat/profiles/<profile>.nix`（1 profile 1 ファイル。
+各ファイルが `common` / `MacOS` / `Linux` を返す）で、ファイル名がそのまま profile 名になる。
+`home-manager/layat/entries.nix` が `profiles/` を readDir で列挙して
+`{ <profile> = entries; }` に畳み、以下 2 経路へ同じ名前で供給する
+（profile を足すときはファイルを足して `git add` するだけ）。
 
 | profile | 中身 |
 |---|---|
