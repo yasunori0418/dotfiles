@@ -1473,11 +1473,11 @@
         "nixpkgs": "nixpkgs_12"
       },
       "locked": {
-        "lastModified": 1792219666,
-        "narHash": "sha256-RMO08tKD+hFIL5ryWi85VY4aHE5oIpdV1h4kVFctOkw=",
+        "lastModified": 1792307278,
+        "narHash": "sha256-wJgFFtw/vlzsjWrQFmTn40TTkSkqHM4XXN0nh4q4uMk=",
         "owner": "oxalica",
         "repo": "rust-overlay",
-        "rev": "a110337465cfb76e3806b81b9db3094c3e6e770a",
+        "rev": "42076d1c6a0fb405ed04f9a674e4a8f69de62ba3",
         "type": "github"
       },
       "original": {
@@ -1846,11 +1846,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1792183172,
-        "narHash": "sha256-72jI88Ove5CA117HuuWZ2aihXKzor5vXLy06JZPMq2o=",
+        "lastModified": 1792302850,
+        "narHash": "sha256-lGguDtt8xTiYiRwTGwzudWCbB4dJ8llbv5qmnr59YaU=",
         "owner": "max-sixty",
         "repo": "worktrunk",
-        "rev": "56890db5a509c00fc6e3a7ee78fabfcf4df1a671",
+        "rev": "5e5c65b2bba5c97f84ef870f2e23ee9f2e81e529",
         "type": "github"
       },
       "original": {
@@ -1950,11 +1950,11 @@
         "xremap-flake": "xremap-flake_2"
       },
       "locked": {
-        "lastModified": 1792244024,
-        "narHash": "sha256-7HZkAF5w3GWgfnhW5iwP7xkur+An0e4TvUr5q0AMhPU=",
+        "lastModified": 1792334008,
+        "narHash": "sha256-AapPo6CrdGF1U9DFeVthYJePTSDcZfskYXCYg/tBe1g=",
         "owner": "yasunori0418",
         "repo": "nur-packages",
-        "rev": "5fc7cce336fbad9f0c49d03473bd34f90b391128",
+        "rev": "67d3ecf5702cf50944c50174935685956c20e4d7",
         "type": "github"
       },
       "original": {
