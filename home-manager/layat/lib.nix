@@ -39,7 +39,8 @@
     layat の symlink 配置はファイル/ディレクトリを区別しない（どちらも 1 本の
     symlink）ため、旧 home.file 実装の is_recursive 相当の区別は不要。
 
-    dist: 配置先（root からの相対。root は HM モジュールが homeRoot に pin する）
+    dist: 配置先（profile の基点からの相対。基点は $HOME、subdir 付き profile ではその subdir。
+          subdir 付き profile で基点直下へ置くときは dist = ""）
     src: ~/dotfiles 上のファイルパス（$HOME からの相対パス文字列）
     return: ファイル名のリストが引数となる関数
   */

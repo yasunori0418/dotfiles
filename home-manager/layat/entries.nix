@@ -2,14 +2,17 @@
 #
 # home-manager モジュール（home-manager/layat/default.nix）と flake-parts の layat profile
 # （flake-parts/layat.nix）の両方から import される。返り値は
-# `{ <profile 名> = entries; }` で、HM 側は `layat.configs.<name>.entries`、
-# flake-parts 側は `perSystem.layat.<name>` へ同じ名前で配線する
+# `{ <profile 名> = { subdir; entries; }; }` で、HM 側は `layat.configs.<name>.{subdir,entries}`、
+# flake-parts 側は `perSystem.layat.<name>`（root = `homeRoot { subdir }`）へ同じ名前で配線する
 # （profile 名を両経路で 1:1 に揃えないと、CLI 適用と HM activation が別 profile に
 # なって同じ配置先を奪い合うため、名前はここから一箇所で決める）。
 #
 # profile の定義は ./profiles/<profile 名>.nix（1 profile 1 ファイル。ファイル名が
 # そのまま profile 名 = `layat.configs.<name>` / `flake.layat.<system>.<name>`）。
-# 各ファイルは `{ common; MacOS; Linux; }` を返し、OS の選択と合成はここで行う。
+# 各ファイルは `{ subdir?; common; MacOS; Linux; }` を返し、OS の選択と合成はここで行う。
+# `subdir`（省略時 null）は $HOME 配下の基点で、entries のキーはそこからの相対になる
+# （layat の root subdir: root は $HOME のまま全 target に subdir を前置する eval 時糖衣）。
+# 配置先が 1 つのディレクトリに収まる profile だけが使う。
 # ./profiles を readDir で列挙するので、ファイルを足せば profile が増える
 # （Nix は git 管理下のファイルしか見ないため、新規ファイルは git add が要る）。
 #
@@ -18,16 +21,16 @@
 #   - home:            ~/dotfiles/home の手書き設定のうち下記以外の全部（shell・git・CLI ツール等）
 #   - desktop:         WM・GUI・テーマ・入力メソッド・壁紙（nixpkgs 由来の gtk css を含む）
 #   - vim:             nvim / dpp / vim / ideavim と nixpkgs 由来の treesitter parser
-#   - claude:          ~/.claude/ 配下の symlink 全部（CLAUDE.md・skills・agents・hooks・mcp-servers.json）
-#   - claude-settings: ~/.claude/settings.json（method = "copy"）だけ。recopy の影響範囲をここに閉じる
-#   - herdr-plugins:   ~/.local/share/herdr-plugins/*（herdr-plugin-link の対象）
+#   - claude:          ~/.claude/ 配下の symlink 全部（CLAUDE.md・skills・agents・hooks・mcp-servers.json）。subdir = .claude
+#   - claude-settings: ~/.claude/settings.json（method = "copy"）だけ。recopy の影響範囲をここに閉じる。subdir = .claude
+#   - herdr-plugins:   ~/.local/share/herdr-plugins/*（herdr-plugin-link の対象）。subdir = .local/share/herdr-plugins
 #
 # 配置元は root 相対 marker で $HOME からの相対パスとして書くため、home ディレクトリの
-# 絶対パスには依存しない。entries そのものは root 非依存（root は mkManifest / HM
-# モジュールが homeRoot に pin する）。
+# 絶対パスには依存しない（subdir があっても root は $HOME なので、src は常に $HOME 相対）。
+# entries そのものは root 非依存（root は mkManifest / HM モジュールが homeRoot に pin する）。
 #
-# profile 間で同じ target を持つと eval 時の assert で止める。layat の `apply --all`
-# 前段検査は名指しの `layat apply <name>` を通らないため、設計側で重複を弾く。
+# profile 間で同じ target（subdir を前置した後の文字列）を持つと eval 時の assert で止める。
+# layat の `apply --all` 前段検査は名指しの `layat apply <name>` を通らないため、設計側で重複を弾く。
 {
   inputs,
   pkgs,
@@ -68,13 +71,14 @@ let
       mkRootRelativeSymlink
       homeDir
       xdgConfigHome
+      fileMap
       homeMap
       xdgConfigMap
       selectWallpaper
       ;
   };
 
-  # ./profiles/<name>.nix → { <name> = { common; MacOS; Linux; }; }
+  # ./profiles/<name>.nix → { <name> = { subdir?; common; MacOS; Linux; }; }
   profiles = lib.pipe (builtins.readDir ./profiles) [
     (lib.filterAttrs (file: type: type == "regular" && lib.hasSuffix ".nix" file))
     (lib.mapAttrs' (
@@ -84,13 +88,21 @@ let
   ];
 
   # profile ごとに common と OS 固有を合成する。
-  resolveProfile = profile: profile.common // (if isDarwin then profile.MacOS else profile.Linux);
+  resolveProfile = profile: {
+    subdir = profile.subdir or null;
+    entries = profile.common // (if isDarwin then profile.MacOS else profile.Linux);
+  };
 
   configs = lib.mapAttrs (_: resolveProfile) profiles;
 
-  # target（attr キー）が複数 profile に現れていないか。
+  # subdir を前置した target が複数 profile に現れていないか（attr キーのままだと
+  # subdir 付き profile の "foo" と別 profile の ".config/foo" の重複を見逃す）。
+  targetsOf =
+    { subdir, entries }:
+    map (key: if subdir == null then key else "${subdir}/${key}") (lib.attrNames entries);
+
   duplicatedTargets = lib.pipe configs [
-    (lib.mapAttrsToList (name: entries: map (target: { inherit name target; }) (lib.attrNames entries)))
+    (lib.mapAttrsToList (name: config: map (target: { inherit name target; }) (targetsOf config)))
     lib.concatLists
     (lib.groupBy (x: x.target))
     (lib.filterAttrs (_: xs: builtins.length xs > 1))
