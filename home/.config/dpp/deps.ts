@@ -5,7 +5,7 @@ export {
   type MultipleHook,
 } from "jsr:@shougo/dpp-vim@6.6.0/config";
 export { type Dpp } from "jsr:@shougo/dpp-vim@6.6.0/dpp";
-export { type Protocol } from "jsr:@shougo/dpp-vim/protocol";
+export { type Protocol } from "jsr:@shougo/dpp-vim@6.6.0/protocol";
 export {
   type Action,
   type ActionArguments,
