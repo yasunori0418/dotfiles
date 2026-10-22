@@ -1,62 +1,74 @@
 {
-  "version": "4",
+  "version": "5",
   "specifiers": {
     "jsr:@core/unknownutil@^4.3.0": "4.3.0",
-    "jsr:@david/dax@~0.43.1": "0.43.1",
-    "jsr:@david/path@0.2": "0.2.0",
-    "jsr:@david/which@~0.4.1": "0.4.1",
-    "jsr:@std/bytes@^1.0.5": "1.0.6",
-    "jsr:@std/fmt@1": "1.0.8",
-    "jsr:@std/fs@1": "1.0.17",
-    "jsr:@std/io@0.225": "0.225.2",
-    "jsr:@std/path@1": "1.1.0",
-    "jsr:@std/path@^1.0.9": "1.1.0"
+    "jsr:@david/console-static-text@~0.3.5": "0.3.5",
+    "jsr:@david/dax@~0.50.1": "0.50.1",
+    "jsr:@david/path@~0.3.4": "0.3.4",
+    "jsr:@david/shell@~0.7.2": "0.7.2",
+    "jsr:@david/which@~0.7.4": "0.7.4",
+    "jsr:@std/bytes@^1.0.6": "1.0.6",
+    "jsr:@std/fmt@1": "1.0.10",
+    "jsr:@std/internal@^1.0.14": "1.0.14",
+    "jsr:@std/io@0.225": "0.225.3",
+    "jsr:@std/path@1": "1.1.6",
+    "jsr:@std/path@^1.1.6": "1.1.6"
   },
   "jsr": {
     "@core/unknownutil@4.3.0": {
       "integrity": "538a3687ffa81028e91d148818047df219663d0da671d906cecd165581ae55cc"
     },
-    "@david/dax@0.43.1": {
-      "integrity": "2891dd94b53b8dec5d9caeeefe8378346a245d58edeb275274ef562b9434180e",
+    "@david/console-static-text@0.3.5": {
+      "integrity": "7a6ab3610e6f0fa5743d56f7a05347a96afa9fae19de2d84ff964f09de441101"
+    },
+    "@david/dax@0.50.1": {
+      "integrity": "baa67d0dda45447ff846bfa1ee25d070770ff1d6f92cf1edd512cf75a5e8e6d5",
       "dependencies": [
+        "jsr:@david/console-static-text",
+        "jsr:@david/path",
+        "jsr:@david/shell"
+      ]
+    },
+    "@david/path@0.3.4": {
+      "integrity": "6e9c8e8914401fa7489c50cc9214d5593229bdeb96b23c494f43ed2a518cbf67",
+      "dependencies": [
+        "jsr:@std/path@^1.1.6"
+      ]
+    },
+    "@david/shell@0.7.2": {
+      "integrity": "faea8457525c58c8409c189107a67abbfff7d9f3de6b3a369ee635be474b33ee",
+      "dependencies": [
+        "jsr:@david/console-static-text",
         "jsr:@david/path",
         "jsr:@david/which",
         "jsr:@std/fmt",
-        "jsr:@std/fs",
         "jsr:@std/io",
         "jsr:@std/path@1"
       ]
     },
-    "@david/path@0.2.0": {
-      "integrity": "f2d7aa7f02ce5a55e27c09f9f1381794acb09d328f8d3c8a2e3ab3ffc294dccd",
-      "dependencies": [
-        "jsr:@std/fs",
-        "jsr:@std/path@1"
-      ]
-    },
-    "@david/which@0.4.1": {
-      "integrity": "896a682b111f92ab866cc70c5b4afab2f5899d2f9bde31ed00203b9c250f225e"
+    "@david/which@0.7.4": {
+      "integrity": "b4ed8e7f489b3689afb4b8315944211c807f91c03229e48ab888e55336c73087"
     },
     "@std/bytes@1.0.6": {
       "integrity": "f6ac6adbd8ccd99314045f5703e23af0a68d7f7e58364b47d2c7f408aeb5820a"
     },
-    "@std/fmt@1.0.8": {
-      "integrity": "71e1fc498787e4434d213647a6e43e794af4fd393ef8f52062246e06f7e372b7"
+    "@std/fmt@1.0.10": {
+      "integrity": "90dfba288802ac6de82fb31d0917eb9e4450b9925b954d5e51fc29ac07419db5"
     },
-    "@std/fs@1.0.17": {
-      "integrity": "1c00c632677c1158988ef7a004cb16137f870aafdb8163b9dce86ec652f3952b",
-      "dependencies": [
-        "jsr:@std/path@^1.0.9"
-      ]
+    "@std/internal@1.0.14": {
+      "integrity": "291516b3d4c35024d6ffbc0a9df5bf4c64116e05b50012cf846710152d2ffdf7"
     },
-    "@std/io@0.225.2": {
-      "integrity": "3c740cd4ee4c082e6cfc86458f47e2ab7cb353dc6234d5e9b1f91a2de5f4d6c7",
+    "@std/io@0.225.3": {
+      "integrity": "27b07b591384d12d7b568f39e61dff966b8230559122df1e9fd11cc068f7ddd1",
       "dependencies": [
         "jsr:@std/bytes"
       ]
     },
-    "@std/path@1.1.0": {
-      "integrity": "ddc94f8e3c275627281cbc23341df6b8bcc874d70374f75fec2533521e3d6886"
+    "@std/path@1.1.6": {
+      "integrity": "c68485c2a4dfbb5ae3cc74fae4e8c4e5d874cf8a8ed12927917235c758b46cbe",
+      "dependencies": [
+        "jsr:@std/internal"
+      ]
     }
   },
   "redirects": {
@@ -355,6 +367,76 @@
     "https://deno.land/x/karabinerts@1.31.0/utils/with-condition.ts": "44ab7e95673094f81479d24260bfad9984235bdf1bb323eb64fddddc67a16030",
     "https://deno.land/x/karabinerts@1.31.0/utils/with-mapper.ts": "3b6aca69277c73a0e853d875d0233a4d4acfa358e0664ac35eb167571a4bc642",
     "https://deno.land/x/karabinerts@1.31.0/utils/with-modifier.ts": "6ec0223c4132199921e1807f61a85940aa87a6f4252d1c4c9092bd85af453b6c",
+    "https://deno.land/x/karabinerts@1.36.0/config/complex-modifications.ts": "8656a3ac7b53571428ab5f62006d808d2214d8fd3bde55498ad7f1d0ea2847c5",
+    "https://deno.land/x/karabinerts@1.36.0/config/condition.ts": "72d2b4bfac1edc26a3058692601069cf4cccecae44ea33a679d114336d54a9fa",
+    "https://deno.land/x/karabinerts@1.36.0/config/double-tap.ts": "90063f8043494fe5c3fddb36845bb96cda088f76480dae6508a4c7d1a51edc96",
+    "https://deno.land/x/karabinerts@1.36.0/config/duo-layer.ts": "bb8a284d264698544d87c7d90b417e61483cc71276cd6449eb495f8ff54e4c0f",
+    "https://deno.land/x/karabinerts@1.36.0/config/from.ts": "76b9b97cae213569af542a7b98f9db544bce2b69e34e2c902d5640f0ae8cc7a9",
+    "https://deno.land/x/karabinerts@1.36.0/config/layer.ts": "001cd8392f5a1b8329ed50da6d74cf5e5982935d048ce0788f600dfc985e34d9",
+    "https://deno.land/x/karabinerts@1.36.0/config/manipulator.ts": "594ef428d4f64907f6a92252eed76441f5b35cda244471ca5223b7e8d0a3f503",
+    "https://deno.land/x/karabinerts@1.36.0/config/modifier.ts": "dcfbbecadbb72e9e579e64f3374040744ab4de60f0242dc7883e3670879d048d",
+    "https://deno.land/x/karabinerts@1.36.0/config/mouse-motion-to-scroll.ts": "1c3a341f62d08ff4dea9b47e8785acda87ca9d9b869a09a67834ec5dada1691d",
+    "https://deno.land/x/karabinerts@1.36.0/config/rule.ts": "7ffdde469a58ad57cf0ac930632e1e32a7db0473de70683920fc43218164024e",
+    "https://deno.land/x/karabinerts@1.36.0/config/simlayer.ts": "bed1fb4c5a8daa6db13d8039e2d67aaeced9b4d7c48b7b31629e3eb2669e515a",
+    "https://deno.land/x/karabinerts@1.36.0/config/simple-modifications.ts": "15c9be2737d4610c2b96a6c5d9ed8fcc0987cc42934694b35305b80120da8bba",
+    "https://deno.land/x/karabinerts@1.36.0/config/simultaneous.ts": "bd93237458a8f077a44f19eaa048bd428eb544c03e5e07466b1a0df7546562e3",
+    "https://deno.land/x/karabinerts@1.36.0/config/support-manipulator.ts": "cab0a76d25196904c91fcec7672222e3f75bdeb5192f1022606b07eddfd02754",
+    "https://deno.land/x/karabinerts@1.36.0/config/to-type-sequence.ts": "4c2abf5f162b9db08117d6974f3c52720dc1603b6116751f8bef6bd5a0a22954",
+    "https://deno.land/x/karabinerts@1.36.0/config/to.ts": "60797fb35620dad936a51788986b80dcbdb9a44ffe058ad628730542291c5235",
+    "https://deno.land/x/karabinerts@1.36.0/deno.ts": "4c1eb9c1f75c51ac5061dbcb75e980a1b576dd634eb10fa4e8dadb787bff67e2",
+    "https://deno.land/x/karabinerts@1.36.0/imports/import-json.ts": "04cccef65b048bd3affee033107ec19d24adacfa669175d168f0c9b0b2a092ed",
+    "https://deno.land/x/karabinerts@1.36.0/imports/import-profile.ts": "ac6627bfe1fbd47e8e14c81dc3efc95c4a3f8adeb702e688e8f8d9aced9b8293",
+    "https://deno.land/x/karabinerts@1.36.0/index.ts": "fe56bfc29ca3b6a87439ecbb4b235af477a59f675f72f676e5dccb6ae2261879",
+    "https://deno.land/x/karabinerts@1.36.0/karabiner/consumer-key-code.ts": "3b5bb0d69a9cb460531646a40c62bff84632b5941d7b005713ade79db100ddd1",
+    "https://deno.land/x/karabinerts@1.36.0/karabiner/karabiner-config.ts": "8947780bd9bbd5a0c763fafe0d27ff1bacd7129d286e0820cd1452683555f2bb",
+    "https://deno.land/x/karabinerts@1.36.0/karabiner/key-code.ts": "f23f1ecea7c593e40638f700fc0778d9cd1abf75def536830dd04b9689fd16b2",
+    "https://deno.land/x/karabinerts@1.36.0/karabiner/pointing-button.ts": "7e821adc943c2b25a80590aed06c3531a3b50cb74a60d40fcad4cefeccb8886f",
+    "https://deno.land/x/karabinerts@1.36.0/output.ts": "5fb2f51821ed12de31e568dcf36355e423979db387dd9d419164e8ab1841180d",
+    "https://deno.land/x/karabinerts@1.36.0/utils/build-context.ts": "a89a1ed7aa3d6231f60657b8ebfb8db7d505570acfbc82d5923b59e98308b4b6",
+    "https://deno.land/x/karabinerts@1.36.0/utils/from-modifier-overload.ts": "998a654e91f419ac83f9c4988c8533f3a5d5952145b0245f91a3cef104406154",
+    "https://deno.land/x/karabinerts@1.36.0/utils/key-alias.ts": "7b0b076fc8b19ccbfa323963ee65b9a33c846fb996f0624d776d3320aaab31e4",
+    "https://deno.land/x/karabinerts@1.36.0/utils/leader-mode.ts": "bbc524585bbae0d3913c6ff343275fa427471035d7861fcf2e9b2d508eade47a",
+    "https://deno.land/x/karabinerts@1.36.0/utils/multi-modifier.ts": "4de32677e63a37e26f4d7340db460f5223e0ab5b2d330db8d7007ba521951dac",
+    "https://deno.land/x/karabinerts@1.36.0/utils/optional-modifiers.ts": "7e6368097b983d2ce15f147a59125126b73fe69b564b3f84bb162c2f2becef68",
+    "https://deno.land/x/karabinerts@1.36.0/utils/to-array.ts": "2465381ada706d013f8fce11fb073303cef14ed2e01ed17930395021d2886e62",
+    "https://deno.land/x/karabinerts@1.36.0/utils/with-condition.ts": "39673d8b06cc8232578ff26198a3b90e668b6d3a7d12f4903274a230d190f556",
+    "https://deno.land/x/karabinerts@1.36.0/utils/with-mapper.ts": "b35ea960d25c0c6707ee346afcc567a744ed3203bc68dd866d42fb56862f19e3",
+    "https://deno.land/x/karabinerts@1.36.0/utils/with-modifier.ts": "169cf782d91e8dda6b10cd00dd647607bda2ad3a9271fd1effdb4b15c98d928b",
+    "https://deno.land/x/karabinerts@1.38.0/config/complex-modifications.ts": "8656a3ac7b53571428ab5f62006d808d2214d8fd3bde55498ad7f1d0ea2847c5",
+    "https://deno.land/x/karabinerts@1.38.0/config/condition.ts": "1e53b867602369eb83a4f4276acbe2a463a2616d0fd42d1b22a6f67caf00491e",
+    "https://deno.land/x/karabinerts@1.38.0/config/double-tap.ts": "90063f8043494fe5c3fddb36845bb96cda088f76480dae6508a4c7d1a51edc96",
+    "https://deno.land/x/karabinerts@1.38.0/config/duo-layer.ts": "bb8a284d264698544d87c7d90b417e61483cc71276cd6449eb495f8ff54e4c0f",
+    "https://deno.land/x/karabinerts@1.38.0/config/from.ts": "76b9b97cae213569af542a7b98f9db544bce2b69e34e2c902d5640f0ae8cc7a9",
+    "https://deno.land/x/karabinerts@1.38.0/config/layer.ts": "001cd8392f5a1b8329ed50da6d74cf5e5982935d048ce0788f600dfc985e34d9",
+    "https://deno.land/x/karabinerts@1.38.0/config/manipulator.ts": "80924e06c5cedf5044098aebf81869610c841d9ceca9616ababdd9abd1385573",
+    "https://deno.land/x/karabinerts@1.38.0/config/modifier.ts": "dcfbbecadbb72e9e579e64f3374040744ab4de60f0242dc7883e3670879d048d",
+    "https://deno.land/x/karabinerts@1.38.0/config/mouse-motion-to-scroll.ts": "1c3a341f62d08ff4dea9b47e8785acda87ca9d9b869a09a67834ec5dada1691d",
+    "https://deno.land/x/karabinerts@1.38.0/config/rule.ts": "7ffdde469a58ad57cf0ac930632e1e32a7db0473de70683920fc43218164024e",
+    "https://deno.land/x/karabinerts@1.38.0/config/simlayer.ts": "bed1fb4c5a8daa6db13d8039e2d67aaeced9b4d7c48b7b31629e3eb2669e515a",
+    "https://deno.land/x/karabinerts@1.38.0/config/simple-modifications.ts": "15c9be2737d4610c2b96a6c5d9ed8fcc0987cc42934694b35305b80120da8bba",
+    "https://deno.land/x/karabinerts@1.38.0/config/simultaneous.ts": "bd93237458a8f077a44f19eaa048bd428eb544c03e5e07466b1a0df7546562e3",
+    "https://deno.land/x/karabinerts@1.38.0/config/support-manipulator.ts": "cab0a76d25196904c91fcec7672222e3f75bdeb5192f1022606b07eddfd02754",
+    "https://deno.land/x/karabinerts@1.38.0/config/to-type-sequence.ts": "4c2abf5f162b9db08117d6974f3c52720dc1603b6116751f8bef6bd5a0a22954",
+    "https://deno.land/x/karabinerts@1.38.0/config/to.ts": "a772df45c096b2c4df14e4597ff3796cc8c8c6d9257cc1d4969134e3a232953a",
+    "https://deno.land/x/karabinerts@1.38.0/deno.ts": "4c1eb9c1f75c51ac5061dbcb75e980a1b576dd634eb10fa4e8dadb787bff67e2",
+    "https://deno.land/x/karabinerts@1.38.0/imports/import-json.ts": "04cccef65b048bd3affee033107ec19d24adacfa669175d168f0c9b0b2a092ed",
+    "https://deno.land/x/karabinerts@1.38.0/imports/import-profile.ts": "ac6627bfe1fbd47e8e14c81dc3efc95c4a3f8adeb702e688e8f8d9aced9b8293",
+    "https://deno.land/x/karabinerts@1.38.0/index.ts": "fe56bfc29ca3b6a87439ecbb4b235af477a59f675f72f676e5dccb6ae2261879",
+    "https://deno.land/x/karabinerts@1.38.0/karabiner/consumer-key-code.ts": "fbb2b3c56bb86ef55b9f29b8ae907b8588052c78e3d8cfcc7f3419262227aced",
+    "https://deno.land/x/karabinerts@1.38.0/karabiner/karabiner-config.ts": "bd70164065a65477b1f9600859abd68de002f23936a1a7fb6a2320a0ce89c945",
+    "https://deno.land/x/karabinerts@1.38.0/karabiner/key-code.ts": "f23f1ecea7c593e40638f700fc0778d9cd1abf75def536830dd04b9689fd16b2",
+    "https://deno.land/x/karabinerts@1.38.0/karabiner/pointing-button.ts": "7e821adc943c2b25a80590aed06c3531a3b50cb74a60d40fcad4cefeccb8886f",
+    "https://deno.land/x/karabinerts@1.38.0/output.ts": "45a3a9ea75ac9f9569edca9fd383762fcefbf6c8c3d50c469b416b69e3c1cb52",
+    "https://deno.land/x/karabinerts@1.38.0/utils/build-context.ts": "a89a1ed7aa3d6231f60657b8ebfb8db7d505570acfbc82d5923b59e98308b4b6",
+    "https://deno.land/x/karabinerts@1.38.0/utils/from-modifier-overload.ts": "998a654e91f419ac83f9c4988c8533f3a5d5952145b0245f91a3cef104406154",
+    "https://deno.land/x/karabinerts@1.38.0/utils/key-alias.ts": "7b0b076fc8b19ccbfa323963ee65b9a33c846fb996f0624d776d3320aaab31e4",
+    "https://deno.land/x/karabinerts@1.38.0/utils/leader-mode.ts": "bbc524585bbae0d3913c6ff343275fa427471035d7861fcf2e9b2d508eade47a",
+    "https://deno.land/x/karabinerts@1.38.0/utils/multi-modifier.ts": "4de32677e63a37e26f4d7340db460f5223e0ab5b2d330db8d7007ba521951dac",
+    "https://deno.land/x/karabinerts@1.38.0/utils/optional-modifiers.ts": "7e6368097b983d2ce15f147a59125126b73fe69b564b3f84bb162c2f2becef68",
+    "https://deno.land/x/karabinerts@1.38.0/utils/to-array.ts": "2465381ada706d013f8fce11fb073303cef14ed2e01ed17930395021d2886e62",
+    "https://deno.land/x/karabinerts@1.38.0/utils/with-condition.ts": "39673d8b06cc8232578ff26198a3b90e668b6d3a7d12f4903274a230d190f556",
+    "https://deno.land/x/karabinerts@1.38.0/utils/with-mapper.ts": "b35ea960d25c0c6707ee346afcc567a744ed3203bc68dd866d42fb56862f19e3",
+    "https://deno.land/x/karabinerts@1.38.0/utils/with-modifier.ts": "169cf782d91e8dda6b10cd00dd647607bda2ad3a9271fd1effdb4b15c98d928b",
     "https://deno.land/x/os_paths@v7.2.0/dist/esm/lib/OSPaths.js": "db4f5f05765a1c862e7b1e0f0c293fc752e94e213eabff19f3c03af9b2164f98",
     "https://deno.land/x/os_paths@v7.2.0/src/mod.deno.ts": "5e34d7c1a033665276a1a06e3957a52218bf4711a801f38cf92978aacfad5666",
     "https://deno.land/x/os_paths@v7.2.0/src/platform-adapters/_base.ts": "ca9adf679709824e070631921932620ab4dc2a39fff9706f95592d1620e34dc6",
@@ -373,7 +455,7 @@
   "workspace": {
     "dependencies": [
       "jsr:@core/unknownutil@^4.3.0",
-      "jsr:@david/dax@~0.43.1"
+      "jsr:@david/dax@~0.50.1"
     ]
   }
 }
