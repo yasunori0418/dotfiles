@@ -3,14 +3,14 @@ export {
   type ConfigArguments,
   type ConfigReturn,
   type MultipleHook,
-} from "jsr:@shougo/dpp-vim@6.0.0/config";
-export { type Dpp } from "jsr:@shougo/dpp-vim@6.0.0/dpp";
+} from "jsr:@shougo/dpp-vim@6.6.0/config";
+export { type Dpp } from "jsr:@shougo/dpp-vim@6.6.0/dpp";
 export { type Protocol } from "jsr:@shougo/dpp-vim/protocol";
 export {
   type Action,
   type ActionArguments,
   type BaseExt,
-} from "jsr:@shougo/dpp-vim@6.0.0/ext";
+} from "jsr:@shougo/dpp-vim@6.6.0/ext";
 export {
   type BaseParams,
   type Context,
@@ -18,8 +18,8 @@ export {
   type DppOptions,
   type ExtOptions,
   type Plugin,
-} from "jsr:@shougo/dpp-vim@6.0.0/types";
-export { mergeFtplugins } from "jsr:@shougo/dpp-vim@6.0.0/utils";
+} from "jsr:@shougo/dpp-vim@6.6.0/types";
+export { mergeFtplugins } from "jsr:@shougo/dpp-vim@6.6.0/utils";
 export {
   Ext as TomlExt,
   type Params as TomlParams,
@@ -35,5 +35,5 @@ export * as fn from "jsr:@denops/std@8.2.0/function";
 export * as vars from "jsr:@denops/std@8.2.0/variable";
 export { ensure, is } from "jsr:@core/unknownutil@4.3.0";
 
-export { join } from "jsr:@std/path@1.1.4";
-export { expandGlobSync, type WalkEntry } from "jsr:@std/fs@1.0.23";
+export { join } from "jsr:@std/path@1.1.6";
+export { expandGlobSync, type WalkEntry } from "jsr:@std/fs@1.0.24";
