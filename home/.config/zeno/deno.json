@@ -28,13 +28,13 @@
     "debug": "deno test -P --allow-ffi ./src/debug.ts"
   },
   "imports": {
-    "@david/dax": "jsr:@david/dax@^0.45.0",
-    "@praha/byethrow": "npm:@praha/byethrow@^0.10.0",
-    "@remeda/remeda": "jsr:@remeda/remeda@^2.32.0",
-    "@std/expect": "jsr:@std/expect@^1.0.17",
-    "@std/fs": "jsr:@std/fs@^1.0.19",
-    "@std/path": "jsr:@std/path@^1.1.2",
-    "@std/testing": "jsr:@std/testing@^1.0.16",
-    "@yuki-yano/zeno": "jsr:@yuki-yano/zeno@^0.4.0"
+    "@david/dax": "jsr:@david/dax@^0.50.1",
+    "@praha/byethrow": "npm:@praha/byethrow@^0.12.0",
+    "@remeda/remeda": "jsr:@remeda/remeda@^2.53.0",
+    "@std/expect": "jsr:@std/expect@^1.0.20",
+    "@std/fs": "jsr:@std/fs@^1.0.24",
+    "@std/path": "jsr:@std/path@^1.1.6",
+    "@std/testing": "jsr:@std/testing@^1.0.21",
+    "@yuki-yano/zeno": "jsr:@yuki-yano/zeno@^0.4.1"
   }
 }
