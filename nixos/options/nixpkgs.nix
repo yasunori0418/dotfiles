@@ -1,6 +1,6 @@
 _: {
   nixpkgs = {
     config.allowUnfree = true;
-    overlays = [ ];
+    overlays = [ (import ../../nix-overlays/clipcat.nix) ];
   };
 }
