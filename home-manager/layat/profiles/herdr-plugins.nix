@@ -19,14 +19,15 @@
     変わり登録が stale になるため、link は switch のたびに再実行する
     （同一 plugin_id は上書きされる冪等操作）。
   */
+  subdir = ".local/share/herdr-plugins";
   common = {
-    ".local/share/herdr-plugins/worktrunk".src = pkgs.callPackage ../../packages/herdr-worktrunk.nix {
+    "worktrunk".src = pkgs.callPackage ../../packages/herdr-worktrunk.nix {
       src = inputs.herdr-worktrunk;
     };
-    ".local/share/herdr-plugins/navigator".src = pkgs.callPackage ../../packages/herdr-navigator.nix {
+    "navigator".src = pkgs.callPackage ../../packages/herdr-navigator.nix {
       src = inputs.herdr-navigator;
     };
-    ".local/share/herdr-plugins/plus".src = pkgs.callPackage ../../packages/herdr-plus.nix {
+    "plus".src = pkgs.callPackage ../../packages/herdr-plus.nix {
       src = inputs.herdr-plus;
     };
   };

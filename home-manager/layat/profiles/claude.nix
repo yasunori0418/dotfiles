@@ -1,12 +1,14 @@
 # profile `claude`: ~/.claude/ 配下の symlink 全部
 # （CLAUDE.md・output-styles・skills・agents・hooks・mcp-servers.json）。
 # settings.json（copy）は recopy の影響範囲を切り離すため profiles/claude-settings.nix に置く。
+# subdir = ".claude" なので entries のキーは ~/.claude からの相対で書く。
 {
   pkgs,
   lib,
   inputs,
+  homeDir,
   xdgConfigHome,
-  homeMap,
+  fileMap,
   ...
 }:
 let
@@ -45,7 +47,7 @@ let
       ]
       [
         (map (p: {
-          name = ".claude/skills/${baseNameOf p}";
+          name = "skills/${baseNameOf p}";
           value = {
             src = inputs.yasunori-skills;
             subpath = p;
@@ -64,7 +66,7 @@ let
       ]
       [
         (map (p: {
-          name = ".claude/skills/${baseNameOf p}";
+          name = "skills/${baseNameOf p}";
           value = {
             src = inputs.matt-skills;
             subpath = p;
@@ -75,7 +77,7 @@ let
 
   # SKILL.md に textlint 併用の節を足した derivation を配置する（詳細は packages 側）。
   cojiSkillEntries = {
-    ".claude/skills/natural-japanese".src = pkgs.callPackage ../../packages/natural-japanese-skill.nix {
+    "skills/natural-japanese".src = pkgs.callPackage ../../packages/natural-japanese-skill.nix {
       src = inputs.natural-japanese;
     };
   };
@@ -85,15 +87,15 @@ let
   # skills 側で agents/*.md が増えてもここは手動登録なので、flake input を
   # 更新したら追随漏れが無いか突き合わせる。
   yasunoriAgentEntries = {
-    ".claude/agents/diff-reviewer.md" = {
+    "agents/diff-reviewer.md" = {
       src = inputs.yasunori-skills;
       subpath = "skills/git/diff-review/agents/diff-reviewer.md";
     };
-    # ".claude/agents/product-researcher.md" = {
+    # "agents/product-researcher.md" = {
     #   src = inputs.yasunori-skills;
     #   subpath = "skills/product/product-spec/agents/product-researcher.md";
     # };
-    ".claude/agents/review-aggregator.md" = {
+    "agents/review-aggregator.md" = {
       src = inputs.yasunori-skills;
       subpath = "skills/git/review-converge/agents/review-aggregator.md";
     };
@@ -102,7 +104,7 @@ let
   # hook の一覧は settings.json 側（profiles/claude-settings.nix → claudeHooks.nix）と
   # 共有するため ../claude-hook-subpaths.nix に置く。
   yasunoriHookEntries = lib.mapAttrs' (hookName: subpath: {
-    name = ".claude/hooks/${hookName}";
+    name = "hooks/${hookName}";
     value = {
       src = inputs.yasunori-skills;
       inherit subpath;
@@ -114,7 +116,7 @@ let
   # `uv run --python 3.13 -- $HOME/.claude/hooks/tirith/tirith-check.py` として
   # 呼び出す（python バージョンを uv で固定）。
   tirithHookEntries = {
-    ".claude/hooks/tirith/tirith-check.py" = {
+    "hooks/tirith/tirith-check.py" = {
       src = inputs.tirith;
       subpath = "crates/tirith/assets/hooks/tirith-check.py";
     };
@@ -123,7 +125,7 @@ let
   # Claude Code の user スコープへ登録する MCP サーバー定義（詳細は claudeMcpServers.nix）。
   # Claude Code 自身はこのファイルを読まない。scripts/claude-mcp-register.sh の入力。
   claudeMcpServersEntry = {
-    ".claude/mcp-servers.json".src = import ../../claudeMcpServers.nix {
+    "mcp-servers.json".src = import ../../claudeMcpServers.nix {
       inherit pkgs;
       # MCP サーバーの引数は layat の src ではないため、"~/" 始まりで渡して
       # scripts/claude-mcp-register.sh に登録時に $HOME へ展開させる。
@@ -134,22 +136,28 @@ let
   # herdr の Claude Code 統合（hook と skill）。配置先が ~/.claude/ 配下なので
   # profile は claude（herdr-plugins ではない）。
   herdrEntries = {
-    ".claude/hooks/herdr/herdr-agent-state.sh" = {
+    "hooks/herdr/herdr-agent-state.sh" = {
       src = inputs.herdr;
       subpath = "src/integration/assets/claude/herdr-agent-state.sh";
     };
-    ".claude/skills/herdr" = {
+    "skills/herdr" = {
       src = inputs.herdr;
       subpath = "skills/herdr";
     };
   };
 in
 {
+  subdir = ".claude";
   common =
-    homeMap [
-      ".claude/CLAUDE.md"
-      ".claude/output-styles"
-    ]
+    fileMap
+      {
+        dist = "";
+        src = "${homeDir}/.claude";
+      }
+      [
+        "CLAUDE.md"
+        "output-styles"
+      ]
     // mattpocockSkillEntries
     // cojiSkillEntries
     // yasunoriSkillEntries

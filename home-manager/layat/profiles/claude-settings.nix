@@ -20,7 +20,7 @@ let
     （`layat apply claude-settings --recopy` + inject）が要る。
   */
   claudeSettingsEntry = isDarwin: {
-    ".claude/settings.json" = {
+    "settings.json" = {
       src = import ../../claudeSettings.nix {
         inherit pkgs isDarwin;
         hooks = import ../../claudeHooks.nix {
@@ -35,6 +35,7 @@ let
   };
 in
 {
+  subdir = ".claude";
   common = { };
   MacOS = claudeSettingsEntry true;
   Linux = claudeSettingsEntry false;
