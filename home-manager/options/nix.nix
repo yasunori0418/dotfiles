@@ -1,6 +1,8 @@
-{ pkgs, ... }:
+{ lib, pkgs, ... }:
 {
   nix = {
+    # standalone の homeConfigurations 用。NixOS/nix-darwin モジュール経由では OS 側の nix.package が優先される
+    package = lib.mkDefault pkgs.nix;
     checkConfig = true;
     nixPath = [
       "nixpkgs=flake:nixpkgs"
