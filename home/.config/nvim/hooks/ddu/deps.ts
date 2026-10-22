@@ -13,12 +13,7 @@ export * as op from "jsr:@denops/std@8.2.0/option";
 export * as vars from "jsr:@denops/std@8.2.0/variable";
 
 export type {
-  ActionData as GitCommitActionData,
-} from "https://denopkg.com/kyoh86/ddu-source-git_log@main/denops/%40ddu-kinds/git_commit.ts";
-export type {
-  ActionData as GitBranchActionData,
-} from "https://denopkg.com/kyoh86/ddu-source-git_branch@main/denops/%40ddu-kinds/git_branch.ts";
-export type {
-  ActionData as NvimNotifyActionData,
+  GitCommitActionData,
   Notification,
-} from "https://denopkg.com/yuki-yano/ddu-source-nvim-notify@main/denops/%40ddu-kinds/nvim-notify.ts";
+  NvimNotifyActionData,
+} from "./kinds.ts";
