@@ -21,9 +21,9 @@
 #   - home:            ~/dotfiles/home の手書き設定のうち下記以外の全部（shell・git・CLI ツール等）
 #   - desktop:         WM・GUI・テーマ・入力メソッド・壁紙（nixpkgs 由来の gtk css を含む）
 #   - vim:             nvim / dpp / vim / ideavim と nixpkgs 由来の treesitter parser
-#   - claude:          ~/.claude/ 配下の symlink 全部（CLAUDE.md・skills・agents・hooks・mcp-servers.json）
-#   - claude-settings: ~/.claude/settings.json（method = "copy"）だけ。recopy の影響範囲をここに閉じる
-#   - herdr-plugins:   ~/.local/share/herdr-plugins/*（herdr-plugin-link の対象）
+#   - claude:          ~/.claude/ 配下の symlink 全部（CLAUDE.md・skills・agents・hooks・mcp-servers.json）。subdir = .claude
+#   - claude-settings: ~/.claude/settings.json（method = "copy"）だけ。recopy の影響範囲をここに閉じる。subdir = .claude
+#   - herdr-plugins:   ~/.local/share/herdr-plugins/*（herdr-plugin-link の対象）。subdir = .local/share/herdr-plugins
 #
 # 配置元は root 相対 marker で $HOME からの相対パスとして書くため、home ディレクトリの
 # 絶対パスには依存しない（subdir があっても root は $HOME なので、src は常に $HOME 相対）。

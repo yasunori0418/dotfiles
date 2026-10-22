@@ -36,19 +36,24 @@ import され、`home.activation` から起動される）。
 
 entries は役割ごとの profile に分かれ、layat 向けの定義は `home-manager/layat/` に集めてある。
 profile の定義は `home-manager/layat/profiles/<profile>.nix`（1 profile 1 ファイル。
-各ファイルが `common` / `MacOS` / `Linux` を返す）で、ファイル名がそのまま profile 名になる。
+各ファイルが `common` / `MacOS` / `Linux` と任意の `subdir` を返す）で、ファイル名がそのまま profile 名になる。
 `home-manager/layat/entries.nix` が `profiles/` を readDir で列挙して
-`{ <profile> = entries; }` に畳み、以下 2 経路へ同じ名前で供給する
+`{ <profile> = { subdir; entries; }; }` に畳み、以下 2 経路へ同じ名前で供給する
 （profile を足すときはファイルを足して `git add` するだけ）。
 
-| profile | 中身 |
-|---|---|
-| `home` | `home/` の手書き設定のうち下記以外の全部（shell・git・CLI ツール・ターミナル等） |
-| `desktop` | WM・GUI・テーマ・入力メソッド・壁紙（nixpkgs 由来の gtk css を含む） |
-| `vim` | nvim / dpp / vim / ideavim と nixpkgs 由来の treesitter parser |
-| `claude` | `~/.claude/` 配下の symlink 全部（CLAUDE.md・skills・agents・hooks・mcp-servers.json） |
-| `claude-settings` | `~/.claude/settings.json`（`method = "copy"`）だけ |
-| `herdr-plugins` | `~/.local/share/herdr-plugins/*` |
+`subdir` は layat の root subdir（`homeRoot { subdir }`）で、root は `$HOME` のまま
+全 target に subdir を前置する。entries のキーは subdir からの相対で書けるが、
+配置元（`mkRootRelativeSymlink`）は常に `$HOME` からの相対。配置先が 1 つの
+ディレクトリに収まる profile だけが使う（役割で切った profile の境界は崩さない）。
+
+| profile | subdir | 中身 |
+|---|---|---|
+| `home` | — | `home/` の手書き設定のうち下記以外の全部（shell・git・CLI ツール・ターミナル等） |
+| `desktop` | — | WM・GUI・テーマ・入力メソッド・壁紙（nixpkgs 由来の gtk css を含む） |
+| `vim` | — | nvim / dpp / vim / ideavim と nixpkgs 由来の treesitter parser |
+| `claude` | `.claude` | `~/.claude/` 配下の symlink 全部（CLAUDE.md・skills・agents・hooks・mcp-servers.json） |
+| `claude-settings` | `.claude` | `~/.claude/settings.json`（`method = "copy"`）だけ |
+| `herdr-plugins` | `.local/share/herdr-plugins` | `~/.local/share/herdr-plugins/*` |
 
 - **home-manager 経由**: `home-manager/layat/default.nix` の `layat.configs.<profile>` → switch 時に
   activation（`layat apply --all --manifest <profile>=<link-farm> …` の 1 回起動）から適用
