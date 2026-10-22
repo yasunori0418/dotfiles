@@ -6,9 +6,10 @@
 # - home mode（root = homeRoot）の profile 群（home / desktop / vim / claude /
 #   claude-settings / herdr-plugins）: entries は home-manager 側
 #   （home-manager/layat/default.nix）と ../home-manager/layat/entries.nix を共有するので
-#   内容と profile 名は完全に一致する。HM モジュールの activation
-#   （`layat apply --all --manifest <name>=<link-farm> …`）と同じ generation profile
-#   （<state>/nix/profiles/layat/<name>）へ載せるため、名前を揃えることが必須。
+#   内容・subdir・profile 名は完全に一致する（subdir は HM モジュールの
+#   `configs.<name>.subdir` と同じく `homeRoot { subdir }` の適用形で渡す）。
+#   HM モジュールの activation（`layat apply --all --manifest <name>=<link-farm> …`）と
+#   同じ generation profile（<state>/nix/profiles/layat/<name>）へ載せるため、名前を揃えることが必須。
 #   別名にすると CLI 適用と HM activation が別 profile になり、同じ配置先を
 #   互いに奪い合って stale 削除が壊れる。
 #   これにより `make layat-apply` / `make layat-recopy`（claude-settings の copy 再配置）が
@@ -61,10 +62,12 @@ in
       # perSystem.layat.<name> → flake.layat.<system>.<name> へ自動転置される（layat flakeModule）。
       layat =
         lib.mapAttrs (
-          _: entries:
+          _:
+          { subdir, entries }:
           layatLib.mkManifest {
             inherit pkgs entries;
-            root = layatLib.homeRoot;
+            # HM モジュールの configs.<name>.subdir と同じ適用形にして manifest を一致させる。
+            root = if subdir == null then layatLib.homeRoot else layatLib.homeRoot { inherit subdir; };
           }
         ) homeConfigs
         // {
