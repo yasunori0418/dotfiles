@@ -2,8 +2,7 @@
   description = "My dotfiles, all my wisdom, my castle.";
 
   inputs = {
-    # clipcat 0.26.0 が rustc 1.99 でビルドできないため、rustc 1.98.1 の nixpkgs-unstable に固定する
-    nixpkgs.url = "github:NixOS/nixpkgs/f20cd90e28fe0403873f473b29e42662cd86e8c4";
+    nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
     nixpkgs-stable.url = "github:NixOS/nixpkgs/nixos-26.05";
     nixos-hardware.url = "github:NixOS/nixos-hardware/master";
     flake-parts.url = "github:hercules-ci/flake-parts";
