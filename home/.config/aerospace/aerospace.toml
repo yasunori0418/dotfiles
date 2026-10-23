@@ -219,3 +219,7 @@ run = 'move-node-to-workspace 10'
 [[on-window-detected]]
 if.app-id = "com.jetbrains.toolbox"
 run = 'layout floating'
+
+[[on-window-detected]]
+if.app-id = "com.okta.mobile"
+run = 'layout floating'
