@@ -13,6 +13,7 @@
       homebrew = ../settings/homebrew.nix;
       fonts = ../settings/fonts.nix;
       time = ../settings/time.nix;
+      security = ../settings/security.nix;
       networking = import ../settings/networking.nix {
         inherit hostName name;
       };
@@ -25,6 +26,7 @@
       homebrew
       fonts
       time
+      security
       networking
       system
     ];
