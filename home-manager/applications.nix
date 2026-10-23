@@ -137,6 +137,7 @@ in
   shellTools = with pkgs; [
     # keep-sorted start
     bat
+    curlFull
     dasel
     delta
     eza
