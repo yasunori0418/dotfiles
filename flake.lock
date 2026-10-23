@@ -1846,11 +1846,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1792680234,
-        "narHash": "sha256-gjxWJMmUKZzPCR0HuHgG0L7rCs8jQxHscGt9HU4i7c0=",
+        "lastModified": 1792718091,
+        "narHash": "sha256-Xlt7Q45MB0tOKrcMkKqW1Bg2gtrI6etqsKiI39fDLcA=",
         "owner": "max-sixty",
         "repo": "worktrunk",
-        "rev": "ec5dfb1a3d25a3c5599f5e3bead01e59889776ca",
+        "rev": "bc828a714322d63a795ede6e0350ad6ab23876f6",
         "type": "github"
       },
       "original": {
@@ -1950,11 +1950,11 @@
         "xremap-flake": "xremap-flake_2"
       },
       "locked": {
-        "lastModified": 1792683584,
-        "narHash": "sha256-k1FpAk9gDHGPIcmY8zgDw815J3gx3svUUPXTE5subdM=",
+        "lastModified": 1792724706,
+        "narHash": "sha256-ZVNa5XaN9J50hTYLJTduGcTY7ElMgqSVClyi3iwD4Gk=",
         "owner": "yasunori0418",
         "repo": "nur-packages",
-        "rev": "d1343f6ca47d48a3c51bb5e01ff6eb71f1965176",
+        "rev": "52b90d9685754d734c79d7ba56ae0bee05ecfea6",
         "type": "github"
       },
       "original": {
