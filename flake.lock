@@ -664,11 +664,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1792941554,
-        "narHash": "sha256-YGDfghPZZiB8IAe4Z/dMhcLHEixLLuygMMHCObfiT4M=",
+        "lastModified": 1793199368,
+        "narHash": "sha256-QxoPnvL3MWoHL08g16iPz5OXGjcbU66lwmZBTKS5OvU=",
         "owner": "yasunori0418",
         "repo": "layat",
-        "rev": "3cab77eb64c8661b3fd3c67bbd98ee03cf915a7d",
+        "rev": "b32942aa2f4eb05409af4cfb37d0fc8076bcd752",
         "type": "github"
       },
       "original": {
@@ -1974,11 +1974,11 @@
     "yasunori-skills": {
       "flake": false,
       "locked": {
-        "lastModified": 1792681531,
-        "narHash": "sha256-7Ec2QS+TG+icPX0h+hNPbG8XiU9UrDjCObUjDrzIpcQ=",
+        "lastModified": 1793199529,
+        "narHash": "sha256-IuNvMLEGkzcKiwLJdREih9moDycr5zCY3bENToAjSk4=",
         "owner": "yasunori0418",
         "repo": "skills",
-        "rev": "64016be16eff0259f1d064e2e259e555c69d66c2",
+        "rev": "289edf68e65e60ee2369209c061895c59fe96a2a",
         "type": "github"
       },
       "original": {
