@@ -6,7 +6,10 @@
     nixpkgs-stable.url = "github:NixOS/nixpkgs/nixos-26.05";
     nixos-hardware.url = "github:NixOS/nixos-hardware/master";
     flake-parts.url = "github:hercules-ci/flake-parts";
-    mac-app-util.url = "github:hraban/mac-app-util";
+    mac-app-util = {
+      url = "github:hraban/mac-app-util";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     yasunori-nur.url = "github:yasunori0418/nur-packages";
     claude-desktop = {
       url = "github:k3d3/claude-desktop-linux-flake";
