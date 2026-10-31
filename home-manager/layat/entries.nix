@@ -2,7 +2,7 @@
 #
 # home-manager モジュール（home-manager/layat/default.nix）と flake-parts の layat profile
 # （flake-parts/layat.nix）の両方から import される。返り値は
-# `{ <profile 名> = { subdir; entries; }; }` で、HM 側は `layat.configs.<name>.{subdir,entries}`、
+# `{ <profile 名> = { subdir; identity; entries; }; }` で、HM 側は `layat.configs.<name>.{subdir,identity,entries}`、
 # flake-parts 側は `perSystem.layat.<name>`（root = `homeRoot { subdir }`）へ同じ名前で配線する
 # （profile 名を両経路で 1:1 に揃えないと、CLI 適用と HM activation が別 profile に
 # なって同じ配置先を奪い合うため、名前はここから一箇所で決める）。
@@ -88,17 +88,21 @@ let
   ];
 
   # profile ごとに common と OS 固有を合成する。
-  resolveProfile = profile: {
+  # identity は manifest の出所の識別子で、HM activation と CLI（`make layat-apply`）の
+  # 両経路に同じ値を渡すことで、交互に apply しても layat が出所の食い違い
+  # （W_LAYAT_ORIGIN_MISMATCH）を警告しなくなる。profile 名から一箇所で導出する。
+  resolveProfile = name: profile: {
     subdir = profile.subdir or null;
+    identity = "dotfiles/${name}";
     entries = profile.common // (if isDarwin then profile.MacOS else profile.Linux);
   };
 
-  configs = lib.mapAttrs (_: resolveProfile) profiles;
+  configs = lib.mapAttrs resolveProfile profiles;
 
   # subdir を前置した target が複数 profile に現れていないか（attr キーのままだと
   # subdir 付き profile の "foo" と別 profile の ".config/foo" の重複を見逃す）。
   targetsOf =
-    { subdir, entries }:
+    { subdir, entries, ... }:
     map (key: if subdir == null then key else "${subdir}/${key}") (lib.attrNames entries);
 
   duplicatedTargets = lib.pipe configs [

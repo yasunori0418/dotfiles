@@ -6,7 +6,7 @@
 # - home mode（root = homeRoot）の profile 群（home / desktop / vim / claude /
 #   claude-settings / herdr-plugins）: entries は home-manager 側
 #   （home-manager/layat/default.nix）と ../home-manager/layat/entries.nix を共有するので
-#   内容・subdir・profile 名は完全に一致する（subdir は HM モジュールの
+#   内容・subdir・identity・profile 名は完全に一致する（subdir は HM モジュールの
 #   `configs.<name>.subdir` と同じく `homeRoot { subdir }` の適用形で渡す）。
 #   HM モジュールの activation（`layat apply --all --manifest <name>=<link-farm> …`）と
 #   同じ generation profile（<state>/nix/profiles/layat/<name>）へ載せるため、名前を揃えることが必須。
@@ -63,9 +63,13 @@ in
       layat =
         lib.mapAttrs (
           _:
-          { subdir, entries }:
+          {
+            subdir,
+            identity,
+            entries,
+          }:
           layatLib.mkManifest {
-            inherit pkgs entries;
+            inherit pkgs identity entries;
             # HM モジュールの configs.<name>.subdir と同じ適用形にして manifest を一致させる。
             root = if subdir == null then layatLib.homeRoot else layatLib.homeRoot { inherit subdir; };
           }
