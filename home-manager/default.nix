@@ -19,7 +19,6 @@ in
     inherit system;
     config.allowUnfree = true;
     overlays = [
-      (import ../nix-overlays/clipcat.nix)
       (import ../nix-overlays/curl.nix)
     ];
   };
