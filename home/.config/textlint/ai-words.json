@@ -223,6 +223,30 @@
       ]
     },
     {
+      "message": "\"orphan\" は日本語の文中に混ざった英単語です。sara の親 relation が無い item なら「接続漏れ」、root が消えた profile や管理から外れた copy なら「孤児」など日本語で書くか、識別子・ラベルとして残すならコード表記（`orphan`）にしてください。",
+      "tokens": [
+        {
+          "surface_form": "orphan"
+        }
+      ]
+    },
+    {
+      "message": "\"orphans\" は日本語の文中に混ざった英単語です。sara の親 relation が無い item なら「接続漏れ」、root が消えた profile や管理から外れた copy なら「孤児」など日本語で書くか、識別子・ラベルとして残すならコード表記（`orphans`）にしてください。",
+      "tokens": [
+        {
+          "surface_form": "orphans"
+        }
+      ]
+    },
+    {
+      "message": "\"orphaned\" は日本語の文中に混ざった英単語です。sara の親 relation が無い item なら「接続漏れ」、root が消えた profile や管理から外れた copy なら「孤児」など日本語で書くか、識別子・ラベルとして残すならコード表記（`orphaned`）にしてください。",
+      "tokens": [
+        {
+          "surface_form": "orphaned"
+        }
+      ]
+    },
+    {
       "message": "\"pass\" は日本語の文中に混ざった英単語です。「通過・成功」など日本語で書くか、識別子・ラベルとして残すならコード表記（`pass`）にしてください。",
       "tokens": [
         {
