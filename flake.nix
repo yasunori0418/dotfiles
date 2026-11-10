@@ -64,10 +64,10 @@
       url = "github:mattpocock/skills";
       flake = false;
     };
-    # 日本語文章の推敲スキル（coji/natural-japanese）。layat で ~/.claude/skills へ
+    # 日本語文章の推敲スキル（nanaism/yomiyasu）。layat で ~/.claude/skills へ
     # 配置するため flake=false。flake.lock が rev を pin する。
-    natural-japanese = {
-      url = "github:coji/natural-japanese";
+    yomiyasu = {
+      url = "github:nanaism/yomiyasu";
       flake = false;
     };
     # 自作 Claude Code スキル・エージェント集（yasunori0418/skills）。layat（HM 側）で

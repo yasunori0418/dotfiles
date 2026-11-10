@@ -76,9 +76,9 @@ let
       ];
 
   # SKILL.md に textlint 併用の節を足した derivation を配置する（詳細は packages 側）。
-  cojiSkillEntries = {
-    "skills/natural-japanese".src = pkgs.callPackage ../../packages/natural-japanese-skill.nix {
-      src = inputs.natural-japanese;
+  nanaismSkillEntries = {
+    "skills/yomiyasu".src = pkgs.callPackage ../../packages/yomiyasu-skill.nix {
+      src = inputs.yomiyasu;
     };
   };
 
@@ -159,7 +159,7 @@ in
         "output-styles"
       ]
     // mattpocockSkillEntries
-    // cojiSkillEntries
+    // nanaismSkillEntries
     // yasunoriSkillEntries
     // yasunoriAgentEntries
     // yasunoriHookEntries
