@@ -169,6 +169,12 @@ let
         };
       };
     };
+    modelSettings = {
+      claude-fable-5-2 = {
+        effortLevel = "high";
+        maxEffortLevel = "xhigh";
+      };
+    };
   };
 
   macos = {
