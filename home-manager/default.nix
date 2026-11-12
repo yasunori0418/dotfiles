@@ -18,9 +18,6 @@ in
   pkgs = import nixpkgs {
     inherit system;
     config.allowUnfree = true;
-    overlays = [
-      (import ../nix-overlays/curl.nix)
-    ];
   };
   extraSpecialArgs = {
     inherit
