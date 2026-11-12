@@ -4,7 +4,7 @@
 # flake.layat.<system>.<name> へ転置され、`layat apply <name>` から直接叩ける。
 #
 # - home mode（root = homeRoot）の profile 群（home / desktop / vim / claude /
-#   claude-settings / herdr-plugins）: entries は home-manager 側
+#   claude-settings / herdr-plugins / gh_extension）: entries は home-manager 側
 #   （home-manager/layat/default.nix）と ../home-manager/layat/entries.nix を共有するので
 #   内容・subdir・identity・profile 名は完全に一致する（subdir は HM モジュールの
 #   `configs.<name>.subdir` と同じく `homeRoot { subdir }` の適用形で渡す）。

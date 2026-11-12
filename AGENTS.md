@@ -11,7 +11,7 @@ NixOS・nix-darwin・スタンドアロン Home Manager を 1 つの flake（`fl
 
 `~/.claude/*`・`~/.config/*` などの配置は
 [layat](https://github.com/yasunori0418/layat) が行う。entries は役割ごとの profile
-（`home` / `desktop` / `vim` / `claude` / `claude-settings` / `herdr-plugins`）に分かれ、
+（`home` / `desktop` / `vim` / `claude` / `claude-settings` / `herdr-plugins` / `gh_extension`）に分かれ、
 定義は `home-manager/layat/profiles/<profile>.nix`（ファイル名が profile 名）。
 profile の切り方・`subdir`・二経路（home-manager activation と `layat` CLI）の設計は
 `home-manager/layat/entries.nix` の冒頭コメントを正とする。

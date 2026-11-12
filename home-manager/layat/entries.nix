@@ -24,6 +24,7 @@
 #   - claude:          ~/.claude/ 配下の symlink 全部（CLAUDE.md・skills・agents・hooks・mcp-servers.json）。subdir = .claude
 #   - claude-settings: ~/.claude/settings.json（method = "copy"）だけ。recopy の影響範囲をここに閉じる。subdir = .claude
 #   - herdr-plugins:   ~/.local/share/herdr-plugins/*（herdr-plugin-link の対象）。subdir = .local/share/herdr-plugins
+#   - gh_extension:    ~/.local/share/gh/extensions/*（gh CLI の拡張と manifest.yml）。subdir = .local/share/gh/extensions
 #
 # 配置元は root 相対 marker で $HOME からの相対パスとして書くため、home ディレクトリの
 # 絶対パスには依存しない（subdir があっても root は $HOME なので、src は常に $HOME 相対）。

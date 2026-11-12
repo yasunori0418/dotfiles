@@ -56,6 +56,10 @@ fi
 # bat theme
 export BAT_THEME="Nord"
 
+# gh extension は nix(layat の gh_extension profile)で管理しており `gh extension upgrade` では
+# 更新できないため、拡張の更新通知を止める。
+export GH_NO_EXTENSION_UPDATE_NOTIFIER=1
+
 # diff-highlight
 PATH="${PATH}:/usr/share/git/diff-highlight"
 
