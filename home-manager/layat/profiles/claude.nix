@@ -37,6 +37,7 @@ let
         "skills/learning/tutoring"
         "skills/nix/nix-devenv"
         "skills/product/biz-translate"
+        "skills/product/product-naming"
         "skills/workflow/external-writes"
         "skills/workflow/job-graph"
         "skills/workflow/job-plan"
