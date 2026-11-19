@@ -36,6 +36,7 @@
         # ../options/services/displayManager/lemurs.nix
         ../options/services/resolved.nix
         ../options/services/logind.nix
+        ../options/services/fwupd.nix
       ];
 
       systemd = [
