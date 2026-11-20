@@ -47,6 +47,7 @@ let
       ENABLE_TOOL_SEARCH = "true";
       CLAUDE_CODE_ENABLE_EXPERIMENTAL_ADVISOR_TOOL = "1";
       CLAUDE_CODE_SUBAGENT_MODEL = "opus";
+      CLAUDE_CODE_EXPERIMENTAL_CODE_MODE = "1";
     };
 
     permissions = {
