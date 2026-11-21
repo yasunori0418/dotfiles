@@ -184,7 +184,9 @@ let
     permissions.allow = common.permissions.allow ++ [ "mcp__notion__notion-fetch" ];
   };
 
-  linux = { };
+  linux = {
+    remoteControlAtStartup = true;
+  };
 
   settings = lib.recursiveUpdate common (if isDarwin then macos else linux);
 in
