@@ -89,6 +89,7 @@ in
       git-credential-oauth
       git-lfs
       gnumake
+      leaf-markdown-viewer
       lefthook
       lemonade
       llmAgentsPkgs.herdr
