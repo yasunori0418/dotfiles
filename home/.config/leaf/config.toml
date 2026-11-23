@@ -18,7 +18,7 @@
 # e.g. "rose-pine-moon" for themes/rose-pine-moon.toml.
 # Priority: --theme flag > LEAF_THEME > this setting > ocean
 # Default: ocean
-theme = "ocean"
+theme = "nord" # themes/nord.toml
 
 # Custom theme example:
 # theme = "/path/to/custom-theme.toml"
