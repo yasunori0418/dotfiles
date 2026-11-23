@@ -20,33 +20,7 @@
 # Default: ocean
 theme = "nord" # themes/nord.toml
 
-# Custom theme example:
-# theme = "/path/to/custom-theme.toml"
-#
-# On Windows, use single quotes to avoid escaping backslashes:
-# theme = 'C:\path\to\custom-theme.toml'
-#
-# See gruvbox.toml in the repository for a complete example.
-
-# Default editor for Ctrl+E
-# Any editor name available in PATH: nano, vim, nvim, micro,
-# hx, emacs, code, subl, gedit, kate, mousepad, zed, etc.
-#
-# For paths with spaces, just write the path:
-# editor = 'C:\Program Files\Notepad++\notepad++.exe'
-#
-# For paths with spaces AND arguments, use inner quotes:
-# editor = '"C:\Program Files\Notepad++\notepad++.exe" --some-flag'
-#
-# Use {$line} to open the editor at the viewport middle line (Ctrl+E):
-# editor = 'nano +{$line}'
-# editor = 'nvim +{$line} +"normal! zz"'
-#
-# Also, {$path} offers more customization options:
-# editor = 'code -g {$path}:{$line}'
-#
-# Priority: --editor flag > LEAF_EDITOR > this setting > EDITOR > nano (notepad on Windows)
-# editor = "nano"
+editor = 'nvim +{$line} +"normal! zz"'
 
 # Maximum content width (number of columns)
 # Limits how wide the rendered content can be.
@@ -59,14 +33,14 @@ theme = "nord" # themes/nord.toml
 # Watch mode: automatically reload when the file changes
 # Only applies when opening a file (ignored for stdin)
 # Default: false
-watch = false
+watch = true
 
 # Extra file types shown in the file picker
 # Add other extensions to also show them (without the dot).
 # Code files (py, sh, css, html...) get syntax highlighting.
 # Text files (txt, csv, log...) are rendered as plain Markdown.
 # Default: [] (Markdown only)
-# extras = ["txt", "csv", "rs", "java", "json", "yaml"]
+extras = ["txt", "csv", "tsv", "json", "yaml", "toml", "log", "html", "css"]
 
 # Width of the file picker (fuzzy + file browser)
 # Accepted formats:
@@ -95,7 +69,7 @@ watch = false
 # Priority: LEAF_MAIN_LINE_NUMBERS > this setting > default (false)
 # Accepted env values: 1 = true, 0 = false (other values ignored)
 # Default: false
-# main-line-numbers = false
+main-line-numbers = true
 
 # Show line numbers inside fenced code blocks
 # Only affects code block gutters, the main document line numbers are independent.
