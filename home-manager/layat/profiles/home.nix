@@ -48,16 +48,11 @@
       "glow"
       "gwq"
       "herdr/config.toml"
-      # herdr-plus の設定一式。config.toml 以外の 3 つはディレクトリごと配置する
-      # （quick-actions/ は「ディレクトリが無いとき」だけ herdr-plus が例を seed
-      # するので、symlink が先にあれば seed されない）。
       "herdr/plugins/config/cloudmanic.herdr-plus/config.toml"
       "herdr/plugins/config/cloudmanic.herdr-plus/projects"
       "herdr/plugins/config/cloudmanic.herdr-plus/quick-actions"
       "herdr/plugins/config/cloudmanic.herdr-plus/worktrees"
       "herdr/plugins/config/herdr-navigator/config.toml"
-      # config.toml の [[keys.command]] から呼ぶスクリプト。TOML に直書きすると
-      # sh の引用が多重エスケープになって読めないものはここへ出す。
       "herdr/scripts"
       "jj"
       "kanata"
