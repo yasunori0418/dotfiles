@@ -43,7 +43,7 @@
     };
     cryoflow.url = "github:yasunori0418/cryoflow";
     arto.url = "github:arto-app/Arto";
-    cclens.url = "github:lambdalisue/cclens";
+    cclens.url = "github:lambdalisue/cclens/v0.5.0";
     neovim-nightly-overlay.url = "github:nix-community/neovim-nightly-overlay";
     nix-index-database = {
       url = "github:nix-community/nix-index-database";
