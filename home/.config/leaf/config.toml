@@ -1,0 +1,141 @@
+# leaf configuration file
+#
+# Copy this file to your config directory:
+#   Linux / macOS / Termux:  ~/.config/leaf/config.toml
+#   Windows:                 %APPDATA%\leaf\config.toml
+#
+# On Linux / macOS, $XDG_CONFIG_HOME/leaf/config.toml is used if set.
+#
+# All settings are optional. If a setting is missing or the file
+# does not exist, leaf uses its built-in defaults.
+# Command-line arguments always take priority over this file.
+
+# Color theme
+# Built-in themes: arctic, forest, ocean, solarized-dark
+# Or set this to a custom theme file path.
+# Relative paths are resolved from this config file's directory.
+# Or set this to the name of a file in the themes folder next to this file,
+# e.g. "rose-pine-moon" for themes/rose-pine-moon.toml.
+# Priority: --theme flag > LEAF_THEME > this setting > ocean
+# Default: ocean
+theme = "ocean"
+
+# Custom theme example:
+# theme = "/path/to/custom-theme.toml"
+#
+# On Windows, use single quotes to avoid escaping backslashes:
+# theme = 'C:\path\to\custom-theme.toml'
+#
+# See gruvbox.toml in the repository for a complete example.
+
+# Default editor for Ctrl+E
+# Any editor name available in PATH: nano, vim, nvim, micro,
+# hx, emacs, code, subl, gedit, kate, mousepad, zed, etc.
+#
+# For paths with spaces, just write the path:
+# editor = 'C:\Program Files\Notepad++\notepad++.exe'
+#
+# For paths with spaces AND arguments, use inner quotes:
+# editor = '"C:\Program Files\Notepad++\notepad++.exe" --some-flag'
+#
+# Use {$line} to open the editor at the viewport middle line (Ctrl+E):
+# editor = 'nano +{$line}'
+# editor = 'nvim +{$line} +"normal! zz"'
+#
+# Also, {$path} offers more customization options:
+# editor = 'code -g {$path}:{$line}'
+#
+# Priority: --editor flag > LEAF_EDITOR > this setting > EDITOR > nano (notepad on Windows)
+# editor = "nano"
+
+# Maximum content width (number of columns)
+# Limits how wide the rendered content can be.
+# Useful on wide terminals for better readability.
+# Priority: --width flag > LEAF_WIDTH > this setting > terminal width
+# Minimum: 20
+# Default: terminal width (no limit)
+# width = 80
+
+# Watch mode: automatically reload when the file changes
+# Only applies when opening a file (ignored for stdin)
+# Default: false
+watch = false
+
+# Extra file types shown in the file picker
+# Add other extensions to also show them (without the dot).
+# Code files (py, sh, css, html...) get syntax highlighting.
+# Text files (txt, csv, log...) are rendered as plain Markdown.
+# Default: [] (Markdown only)
+# extras = ["txt", "csv", "rs", "java", "json", "yaml"]
+
+# Width of the file picker (fuzzy + file browser)
+# Accepted formats:
+#   "NN%":     percent of terminal width, converted to cells (ceil)
+#   "NNcells": absolute number of terminal cells
+# The final width is always capped by (terminal_width - 2) cells.
+#
+# Priority: LEAF_FILE_PICKER_WIDTH > this setting > default ("78cells")
+# Minimum: 78 cells. Applies to both formats.
+# Default: "78cells"
+# file-picker-width = "78cells"
+
+# Width of the TOC and file-list side panels
+# Accepted formats:
+#   "NN%":     percent of terminal width, converted to cells (ceil)
+#   "NNcells": absolute number of terminal cells
+# The final width is capped by (terminal_width / 2) cells.
+#
+# Priority: LEAF_TOC_FILELIST_WIDTH > this setting > default ("30cells")
+# Minimum: 20 cells. Maximum: 50% of terminal width.
+# Default: "30cells"
+# toc-filelist-width = "30cells"
+
+# Show line numbers in the main document by default
+# Can still be toggled interactively with 'l' or 'Shift+L'.
+# Priority: LEAF_MAIN_LINE_NUMBERS > this setting > default (false)
+# Accepted env values: 1 = true, 0 = false (other values ignored)
+# Default: false
+# main-line-numbers = false
+
+# Show line numbers inside fenced code blocks
+# Only affects code block gutters, the main document line numbers are independent.
+# Priority: LEAF_CODE_LINE_NUMBERS > this setting > default (true)
+# Accepted env values: 1 = true, 0 = false (other values ignored)
+# Default: true
+# code-line-numbers = true
+
+# Maximum tab title length (in characters)
+# Controls the tab title of the terminal: "leaf: <filename>".
+# When the filename is long, it is truncated: "leaf: prefix...ext".
+# Priority: LEAF_TAB_TITLE_LENGTH > this setting > default (-1)
+# Minimum accepted: 20. Any other value falls back to no truncation.
+# Default: -1 (no truncation)
+# tab-title-length = -1
+
+# Maximum number of recently opened files to keep in history
+# History is stored in "history.toml" next to this config file.
+# Maximum accepted: 50. Values above are clamped.
+# Default: 0 (disables history recording)
+# file-history-length = 0
+
+# Prefix shown before Markdown link text, like #leaf for [leaf](url)
+# Any single non-space character. Set to "" to show no prefix.
+# Default: "#"
+# hyper-link-prefix = "#"
+
+# Scroll the preview with Enter
+# Enter scrolls down and Alt+Enter scrolls up, one line at a time.
+# During an active search, Enter still jumps to the next match.
+# Some terminals capture Alt+Enter (e.g. Windows Terminal toggles fullscreen),
+# and macOS terminals need "Use Option as Meta" enabled for Alt to work.
+# Default: false
+# scroll-with-enter = false
+
+# Scroll distance for u/d and PageUp/PageDown keys
+# Accepted formats:
+#   "NN%":     viewport percentage
+#   "NNrows":  fixed number of rows
+#   "-NNrows": keep NN rows visible as overlap
+# Percentages above 100 are allowed. Invalid values use the default.
+# Default: "20rows"
+# page-scroll-size = "20rows"

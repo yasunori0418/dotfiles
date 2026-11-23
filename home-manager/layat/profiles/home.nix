@@ -63,6 +63,7 @@
       "kanata"
       "kitty"
       "laminate"
+      "leaf"
       "ov"
       "sheldon"
       "shellcheckrc"
