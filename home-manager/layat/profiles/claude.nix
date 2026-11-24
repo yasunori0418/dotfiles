@@ -1,5 +1,5 @@
 # profile `claude`: ~/.claude/ 配下の symlink 全部
-# （CLAUDE.md・output-styles・skills・agents・hooks・mcp-servers.json）。
+# （CLAUDE.md・output-styles・themes・skills・agents・hooks・mcp-servers.json）。
 # settings.json（copy）は recopy の影響範囲を切り離すため profiles/claude-settings.nix に置く。
 # subdir = ".claude" なので entries のキーは ~/.claude からの相対で書く。
 {
@@ -158,6 +158,7 @@ in
       [
         "CLAUDE.md"
         "output-styles"
+        "themes"
       ]
     // mattpocockSkillEntries
     // nanaismSkillEntries
