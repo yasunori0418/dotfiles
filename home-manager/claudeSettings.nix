@@ -172,10 +172,11 @@ let
     };
     modelSettings = {
       claude-fable-5-2 = {
-        effortLevel = "high";
+        effortLevel = "medium";
         maxEffortLevel = "xhigh";
       };
     };
+    theme = "custom:nord";
   };
 
   macos = {
